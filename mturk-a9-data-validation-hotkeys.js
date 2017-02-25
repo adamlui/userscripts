@@ -4,7 +4,8 @@
 // @version       2017.02.25
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
-// @include       /(.*)\.(mturk|amazonaws)\.com/
+// @include       https://*.mturk.com/*
+// @include       https://*.amazonaws.com/*
 // @icon          https://mturkers.org/images/04nrzj7K_400x400.png
 // @requesterURL  https://www.mturk.com/mturk/searchbar?selectedSearchType=hitgroups&requesterId=A3HLF55H6JSTI0
 // @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
