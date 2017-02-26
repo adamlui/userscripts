@@ -1,22 +1,28 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
 // @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.25
+// @version       2017.02.25.1
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
 // @include       https://*.amazonaws.com/*
-// @icon          https://mturkers.org/images/04nrzj7K_400x400.png
+// @icon          http://joycecroft.com/images/work/amazon/a9_logo_reverse.png
 // @requesterURL  https://www.mturk.com/mturk/searchbar?selectedSearchType=hitgroups&requesterId=A3HLF55H6JSTI0
 // @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
 // @downloadURL   https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
 // ==/UserScript==
 
 /*
-USAGE NOTES:
-- Press A-G or 1-5 to select bubbles
-- Press E or Enter to submit
-- Set autoSubmit to 'true' to auto-submit after selections
+HOTKEYS:
+ A or 1 - Strongly Dissimilar
+ S or 2 - Somewhat Dissimilar
+ D or 3 - Neither Similar nor Dissimilar
+ F or 4 - Somewhat Similar
+ G or 5 - Strongly Similar
+ 
+ E or Enter - Submit HIT
+ 
+ Note: To activate auto-submission, replace line 28 with "var autoSubmit = true"
 */
 
 var autoSubmit = false;
