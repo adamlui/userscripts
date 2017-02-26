@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
 // @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.25.1
+// @version       2017.02.25.2
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
