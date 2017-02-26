@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
 // @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.25.2
+// @version       2017.02.25.3
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
@@ -39,5 +39,5 @@ window.addEventListener(`keydown`, function(event) {
         else if (mkey.match(/[g5]/)) document.querySelector(`[type='radio'][value='5']`).click();
         if (autoSubmit) document.querySelector(`[type='submit']`).click();
     }
-    if (mkey.match(/e/)) document.querySelector(`[type='submit']`).click();
+    if (mkey.match('e')) document.querySelector(`[type='submit']`).click();
 });
