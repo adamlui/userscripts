@@ -27,7 +27,7 @@ HOTKEYS:
 
 var autoSubmit = false;
 
-var mframe = document.querySelector("iframe");
+var mframe = document.querySelector('iframe');
 if (mframe) mframe.focus();
 window.addEventListener(`keydown`, function(event) {
     const mkey = event.key;
