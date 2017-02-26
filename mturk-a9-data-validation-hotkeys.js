@@ -22,7 +22,7 @@ HOTKEYS:
  
  E or Enter - Submit HIT
  
- Note: To activate auto-submission, replace line 28 with "var autoSubmit = true"
+ NOTE: To activate auto-submission, replace line 28 with "var autoSubmit = true"
 */
 
 var autoSubmit = false;
