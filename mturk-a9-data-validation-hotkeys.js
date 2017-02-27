@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
 // @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.26
+// @version       2017.02.27
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
@@ -23,15 +23,13 @@ HOTKEYS:
 
  E or Enter - Submit HIT
 
-NOTE: To activate auto-submission, replace the third line below with "var autoSubmit = true"
+NOTE: To activate auto-submission, replace the third line after this with "var autoSubmit = true"
 */
 
 var autoSubmit = false;
 
-var a9 = $('center:contains(On a scale of 1 to 5, rate how)');
-var mframe = document.querySelector('iframe');
-if (mframe) mframe.focus();
-if (a9.length) {
+if (document.querySelector('iframe')) document.querySelector('iframe').focus();
+if ($('center:contains(On a scale of 1 to 5, rate how)').length) {
     window.addEventListener(`keydown`, function(event) {
         const mkey = event.key;
         if (mkey.match(/[asdfg1-5]/)) {
