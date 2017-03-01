@@ -5,6 +5,8 @@
 // @description   Enables pressing grave (`) to submit HITs on MTurk
 // @author        adaaaam
 // @include       *
+// @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-submit-hit-hotkey.js
+// @downloadURL   https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-submit-hit-hotkey.js
 // ==/UserScript==
 
 if (document.querySelector('iframe')) document.querySelector('iframe').focus();
