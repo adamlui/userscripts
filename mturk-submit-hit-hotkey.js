@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name          MTurk Submit HIT Hotkey
 // @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.28.1
+// @version       2017.02.28.2
 // @description   Enables pressing grave (`) to submit HITs on MTurk
 // @author        adaaaam
 // @include       *
+// @require       http://code.jquery.com/jquery-latest.min.js
 // @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-submit-hit-hotkey.js
 // @downloadURL   https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-submit-hit-hotkey.js
 // ==/UserScript==
