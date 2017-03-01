@@ -6,7 +6,7 @@
 // @author        adaaaam
 // @include       https://*.mturk.com/*
 // @include       https://*.amazonaws.com/*
-// @require       https://code.jquery.com/jquery-3.1.1.min.js
+// @require       http://code.jquery.com/jquery-latest.min.js
 // @icon          http://i.imgur.com/UIjnpzD.png
 // @requesterURL  https://www.mturk.com/mturk/searchbar?selectedSearchType=hitgroups&requesterId=A3HLF55H6JSTI0
 // @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
