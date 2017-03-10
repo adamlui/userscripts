@@ -6,8 +6,9 @@
 // @author        adaaaam
 // @include       https://www.mturk.com/mturk/searchbar*
 // @include       https://www.mturk.com/mturk/findhits*
+// @include       https://www.mturk.com/mturk/viewhits*
+// @include       https://www.mturk.com/mturk/sorthits*
 // @include       https://www.mturk.com/mturk/myhits*
-// @require       http://code.jquery.com/jquery-latest.min.js
 // @grant         GM_setClipboard
 // @grant         GM_notification
 // ==/UserScript==
