@@ -2,13 +2,14 @@
 // @name          MTurk HIT Export to Facebook
 // @namespace     https://mturkers.org/adaaaam
 // @description   Export MTurk HIT information to post on Facebook
-// @version       2017.03.10.1
+// @version       2017.03.10.2
 // @author        adaaaam
 // @include       https://www.mturk.com/mturk/*searchbar*
 // @include       https://www.mturk.com/mturk/findhits*
 // @include       https://www.mturk.com/mturk/viewhits*
 // @include       https://www.mturk.com/mturk/sorthits*
 // @include       https://www.mturk.com/mturk/myhits*
+// @exclude       https://www.mturk.com/mturk/*selectedSearchType=quals*
 // @grant         GM_setClipboard
 // @grant         GM_notification
 // ==/UserScript==
