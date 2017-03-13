@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          MTurk HIT Export to Facebook
+// @name          HITshare for MTurk
 // @namespace     https://mturkers.org/adaaaam
 // @description   Export MTurk HIT information to post on Facebook
 // @version       2017.03.12
