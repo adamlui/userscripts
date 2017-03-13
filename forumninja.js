@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        XenForo/vBulletin Stealth Mode
+// @name        ForumNinja
 // @version     2017.03.13
 // @author      adaaaam
 // @namespace   https://mturkers.org/adaaaam
