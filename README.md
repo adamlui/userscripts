@@ -2,7 +2,7 @@
 
 This is a repository of my Greasemonkey userscripts written either as a request or to boost overall productivity.
 
-## hmu
+## contact me
 
 * https://twitter.com/adamllui
 * https://mturkers.org/adaaaam
