@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name          HITshare for MTurk
+// @name          MTurk HIT Share
 // @namespace     https://mturkers.org/adaaaam
 // @description   Export MTurk HIT information to post on Facebook
-// @version       2017.03.12
+// @version       2017.03.15
 // @author        adaaaam
 // @icon          http://www.google.com/s2/favicons?domain=facebook.com
 // @include       https://www.mturk.com/mturk/*searchbar*
