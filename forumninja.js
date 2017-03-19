@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name        ForumNinja
+// @name        XenForo/vBulletin Media Killer
 // @version     2017.03.13
 // @author      adaaaam
 // @namespace   https://mturkers.org/adaaaam
 // @description Hides images/videos from XenForo and vBulletin forums.
 // @include     *
-// @require       http://code.jquery.com/jquery-latest.min.js
+// @require     http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
 
 if (document.querySelector('html[id^="vbulletin"]') || document.querySelector('html[id^="XenForo"]')) {
