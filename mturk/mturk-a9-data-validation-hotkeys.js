@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
-// @namespace     https://mturkers.org/adaaaam
-// @version       2017.02.27
+// @namespace     https://mturkers.org/
+// @version       2017.05.12
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
@@ -9,8 +9,6 @@
 // @require       http://code.jquery.com/jquery-latest.min.js
 // @icon          http://i.imgur.com/UIjnpzD.png
 // @requesterURL  https://www.mturk.com/mturk/searchbar?selectedSearchType=hitgroups&requesterId=A3HLF55H6JSTI0
-// @updateURL     https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
-// @downloadURL   https://raw.githubusercontent.com/adaaaam/userscripts/master/mturk-a9-data-validation-hotkeys.js
 // ==/UserScript==
 
 /*
@@ -29,11 +27,16 @@ NOTE: To activate auto-submission, replace the third line after this with "var a
 var autoSubmit = false;
 
 if (document.querySelector('iframe')) document.querySelector('iframe').focus();
-if ($('center:contains(On a scale of 1 to 5, rate how)').length) {
+if ($('center:contains(a scale of 1 to 5, rate)').length) {
     window.addEventListener(`keydown`, function(event) {
         const mkey = event.key;
-        if (mkey.match(/[asdfg1-5]/)) {
-            if (mkey.match(/[a1]/)) document.querySelector(`[type='radio'][value='1']`).click();
+        if (mkey.match(/[asdfgqwert1-5]/)) {
+            if (mkey.match('q')) document.querySelectorAll(`[type='radio']`)[0].click();
+            else if (mkey.match('w')) document.querySelectorAll(`[type='radio']`)[1].click();
+            else if (mkey.match('e')) document.querySelectorAll(`[type='radio']`)[2].click();
+            else if (mkey.match('r')) document.querySelectorAll(`[type='radio']`)[3].click();
+            else if (mkey.match('t')) document.querySelectorAll(`[type='radio']`)[4].click();
+            else if (mkey.match(/[a1]/)) document.querySelector(`[type='radio'][value='1']`).click();
             else if (mkey.match(/[s2]/)) document.querySelector(`[type='radio'][value='2']`).click();
             else if (mkey.match(/[d3]/)) document.querySelector(`[type='radio'][value='3']`).click();
             else if (mkey.match(/[f4]/)) document.querySelector(`[type='radio'][value='4']`).click();
