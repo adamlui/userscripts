@@ -19,7 +19,13 @@ HOTKEYS:
  F or 4 - Somewhat Similar
  G or 5 - Strongly Similar
 
- E or Enter - Submit HIT
+Q - Poor Lighting / Blurry
+W - No Product in Image
+E - Product Obscured
+R - Too Small
+T - Top/Side Obscured
+
+E or Enter - Submit HIT
 
 NOTE: To activate auto-submission, replace the third line after this with "var autoSubmit = true"
 */
