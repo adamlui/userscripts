@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
-// @namespace     https://mturkers.org/
-// @version       2017.05.13
+// @namespace     https://mturkers.org/tools/mturk-a9-data-validation-hotkeys/
+// @version       2017.05.16
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        adaaaam
 // @include       https://*.mturk.com/*
@@ -27,7 +27,7 @@ B - Top/Side Obscured
 
 E or Enter - Submit HIT
 
-NOTE: To activate auto-submission, replace the third line after this with "var autoSubmit = true"
+NOTE: To activate auto-submission, replace the third line after this with "var autoSubmit = true;"
 */
 
 var autoSubmit = false;
