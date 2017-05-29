@@ -3,6 +3,7 @@
 // @version     2017.05.28
 // @namespace   https://mturkers.org
 // @description Kalido
+// @include     *
 // ==/UserScript==
 
 var content = document.getElementById("wrapper");
