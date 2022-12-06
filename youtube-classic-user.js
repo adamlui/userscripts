@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         YouTube Classic
 // @author       Adam Lui, Magma_Craft, Anarios & JRWR
+// @namespace    https://elonsucks.org/@adam
 // @version      2022.12.06
-// @description  Reverts to YouTube classic design
+// @description  Reverts to YouTube's classic design (pre-rounded corners & hidden dislikes)
 // @match        https://*.youtube.com/*
 // @icon         https://i.imgur.com/0nQsOmv.png
 // @run-at       document-start
 // @grant        none
-// @downloadURL  https://greasyfork.org/scripts/456132-youtube-classic/code/YouTube%20Classic.user.js
 // ==/UserScript==
 
 // Regular config keys.
