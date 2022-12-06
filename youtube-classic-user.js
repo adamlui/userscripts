@@ -8,6 +8,7 @@
 // @icon         https://i.imgur.com/0nQsOmv.png
 // @run-at       document-start
 // @grant        none
+// @downloadURL  https://greasyfork.org/scripts/456132-youtube-classic/code/YouTube%20Classic.user.js
 // ==/UserScript==
 
 // Regular config keys.
