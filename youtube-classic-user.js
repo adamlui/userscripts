@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         YouTube Classic
+// @name         📺 YouTube Classic
 // @author       Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace    https://elonsucks.org/@adam
 // @version      2022.12.06
