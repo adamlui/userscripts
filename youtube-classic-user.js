@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         YouTube Classic
+// @name         YouTube™ Classic 📺
 // @author       Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace    https://elonsucks.org/@adam
-// @version      2022.12.06.1
+// @version      2022.12.06.2
 // @description  Reverts to YouTube's classic design (pre-rounded corners & hidden dislikes)
 // @match        https://*.youtube.com/*
 // @icon         https://i.imgur.com/0nQsOmv.png
