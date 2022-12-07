@@ -276,7 +276,7 @@ function getButtons() {
         return (
             document.querySelector("ytd-menu-renderer.ytd-watch-metadata > div") ??
             document.querySelector("ytd-menu-renderer.ytd-video-primary-info-renderer > div")
-    );
+        );
     } else {
         return document
             .getElementById("menu-container")
