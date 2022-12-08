@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name        XenForo/vBulletin Media Killer
-// @version     2017.03.13
+// @name        Hide Forum Images
+// @version     2022.12.07
 // @author      adaaaam
-// @namespace   https://mturkers.org/adaaaam
+// @namespace   https://elonsucks.org/adam
 // @description Hides images/videos from XenForo and vBulletin forums.
 // @include     *
 // @require     http://code.jquery.com/jquery-latest.min.js
