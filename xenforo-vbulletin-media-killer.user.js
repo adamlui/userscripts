@@ -2,7 +2,7 @@
 // @name        Hide Forum Images
 // @version     2022.12.07.3
 // @author      Adam Lui
-// @namespace   https://elonsucks.org/adam
+// @namespace   https://elonsucks.org/@adam
 // @description Hides images + videos from XenForo and vBulletin forums.
 // @include     *
 // @require     http://code.jquery.com/jquery-latest.min.js
