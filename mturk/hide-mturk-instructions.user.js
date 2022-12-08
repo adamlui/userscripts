@@ -4,7 +4,7 @@
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hide instructions from HITs on MTurk
-// @match        *.mturkcontent.com/*
+// @match        https://*.mturkcontent.com/*
 // @run-at       document-start
 // @grant        GM_addStyle
 // @updateURL    https://greasyfork.org/scripts/28351-hide-mturk-instructions/code/hide-mturk-instructions.meta.js
