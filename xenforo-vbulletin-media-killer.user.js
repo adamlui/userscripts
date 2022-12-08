@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        Hide Forum Images
-// @version     2022.12.07
+// @version     2022.12.07.2
 // @author      adaaaam
 // @namespace   https://elonsucks.org/adam
-// @description Hides images/videos from XenForo and vBulletin forums.
+// @description Hides images + videos from XenForo and vBulletin forums.
 // @include     *
 // @require     http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
