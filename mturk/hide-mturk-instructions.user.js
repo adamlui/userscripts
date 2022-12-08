@@ -3,7 +3,7 @@
 // @version      2022.12.08
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
-// @description  Hide instructions from HITs on MTurk
+// @description  Hides instructions from HITs on MTurk
 // @match        https://*.mturkcontent.com/*
 // @run-at       document-start
 // @grant        GM_addStyle
