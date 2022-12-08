@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube™ Classic 📺
-// @version      2022.12.07
+// @version      2022.12.07.2
 // @author       Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace    https://elonsucks.org/@adam
 // @description  Reverts YouTube to its classic design (before rounded corners & hidden dislikes)
@@ -128,7 +128,11 @@ class YTP {
 }
 
 window.addEventListener("yt-page-data-updated", function tmp() {
-    var innerHTML = "<img style='margin-left:5px;' height=65 src='https://i.imgur.com/rHLcxEs.png'>"; // Replace YouTube logo
+    const appearance = document.getElementsByClassName("ytd-toggle-theme-compact-link-renderer")
+    var innerHTML = "<img style='margin-left:5px;' height=65 src='" // Replace YouTube logo
+        + (((location.pathname.startsWith('/watch')) || document.querySelector('html').getAttribute('dark'))
+           ? "https://i.imgur.com/brCETJj.png" // in dark mode
+           : "https://i.imgur.com/rHLcxEs.png") + "'>"; // or light mode
     document.getElementById('logo-icon').innerHTML = innerHTML;
     YTP.stop();
     for (i = 0; i < ATTRS.length; i++) { document.getElementsByTagName("html")[0].removeAttribute(ATTRS[i]); }
@@ -276,7 +280,7 @@ function getButtons() {
         return (
             document.querySelector("ytd-menu-renderer.ytd-watch-metadata > div") ??
             document.querySelector("ytd-menu-renderer.ytd-video-primary-info-renderer > div")
-        );
+    );
     } else {
         return document
             .getElementById("menu-container")
