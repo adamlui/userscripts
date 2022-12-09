@@ -5,9 +5,10 @@
 // @namespace    https://elonsucks.org/@adam
 // @description  Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
 // @supportURL   https://github.com/adamlui/userscripts/issues
-// @license mit
+// @license      mit
 // @match        https://*.youtube.com/*
-// @icon         https://i.imgur.com/0nQsOmv.png
+// @icon         https://i.imgur.com/CjjORCn.png
+// @icon64       https://i.imgur.com/25wY8QL.png
 // @run-at       document-start
 // @grant        none
 // @updateURL    https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.meta.js
