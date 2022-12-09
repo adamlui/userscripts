@@ -1,18 +1,20 @@
 // ==UserScript==
-// @name         YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version      2022.12.08.2
-// @author       Adam Lui, Magma_Craft, Anarios & JRWR
-// @namespace    https://elonsucks.org/@adam
-// @description  Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
-// @supportURL   https://github.com/adamlui/userscripts/issues
-// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @match        https://*.youtube.com/*
-// @icon         https://i.imgur.com/TQgnM4o.png
-// @icon64       https://i.imgur.com/25wY8QL.png
-// @run-at       document-start
-// @grant        none
-// @updateURL    https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.meta.js
-// @downloadURL  https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.user.js
+// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
+// @version          2022.12.08.3
+// @author           Adam Lui, Magma_Craft, Anarios & JRWR
+// @namespace        https://elonsucks.org/@adam
+// @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
+// @homepageURL      https://www.ytclassic.com
+// @supportURL       https://github.com/adamlui/userscripts/issues
+// @contributionURL  https://paypal.me/adamlui
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @icon             https://i.imgur.com/9vzrMBf.png
+// @icon64           https://i.imgur.com/25wY8QL.png
+// @match            https://*.youtube.com/*
+// @run-at           document-start
+// @grant            none
+// @updateURL        https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.meta.js
+// @downloadURL      https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.user.js
 // ==/UserScript==
 
 // Config keys
