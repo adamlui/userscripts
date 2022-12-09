@@ -4,6 +4,7 @@
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hides instructions from HITs on MTurk
+// @license      mit
 // @match        https://*.mturkcontent.com/*
 // @icon         https://www.mturk.com/assets/images/favicon.ico
 // @run-at       document-start
