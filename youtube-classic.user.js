@@ -4,11 +4,17 @@
 // @author           Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
+// @homepageURL      https://www.ytclassic.com
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @contributionURL  https://paypal.me/adamlui
 // @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @icon             https://i.imgur.com/9vzrMBf.png
 // @icon64           https://i.imgur.com/25wY8QL.png
+// @compatible       chrome
+// @compatible       firefox
+// @compatible       opera
+// @compatible       safari
+// @compatible       edge
 // @match            https://*.youtube.com/*
 // @run-at           document-start
 // @grant            none
