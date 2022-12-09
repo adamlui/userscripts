@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2022.12.09.2
+// @version          2022.12.09.3
 // @author           Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
 // @supportURL       https://github.com/adamlui/userscripts/issues
-// @contributionURL  https://paypal.me/adamlui
 // @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @icon             https://i.imgur.com/9vzrMBf.png
 // @icon64           https://i.imgur.com/25wY8QL.png
@@ -20,6 +19,22 @@
 // @updateURL        https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.meta.js
 // @downloadURL      https://greasyfork.org/scripts/456132-youtube-classic/code/youtube-classic.user.js
 // ==/UserScript==
+
+// Set icons
+(function() {
+    var favicon = document.querySelector("link[rel*='shortcut icon']") || document.createElement('link');
+    favicon.type = 'image/x-icon'; favicon.rel = 'shortcut icon'; favicon.href = 'https://i.imgur.com/Bg6LKKf.png';
+    var icon_32 = document.querySelector("link[sizes*='32']") || document.createElement('link');
+    icon_32.rel = 'icon'; icon_32.href = 'https://i.imgur.com/J6ajf4C.png';
+    var icon_48 = document.querySelector("link[sizes*='48']") || document.createElement('link');
+    icon_48.rel = 'icon'; icon_48.href = 'https://i.imgur.com/rD8qBn7.png';
+    var icon_96 = document.querySelector("link[sizes*='96']") || document.createElement('link');
+    icon_96.rel = 'icon'; icon_96.href = 'https://i.imgur.com/DyPp9nk.png';
+    var icon_144 = document.querySelector("link[sizes*='144']") || document.createElement('link');
+    icon_144.rel = 'icon'; icon_144.href = 'https://i.imgur.com/MBsuO7P.png';
+    favicon.innerHTML += icon_32.outerHTML + icon_48.outerHTML + icon_96.outerHTML + icon_144.outerHTML;
+    document.getElementsByTagName('head')[0].appendChild(favicon);
+})();
 
 // Config keys
 const CONFIGS = { BUTTON_REWORK: false }
