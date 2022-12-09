@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2022.12.09.3
+// @version          2022.12.09.4
 // @author           Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
@@ -151,9 +151,8 @@ class YTP {
 }
 
 window.addEventListener("yt-page-data-updated", function tmp() {
-    const appearance = document.getElementsByClassName("ytd-toggle-theme-compact-link-renderer")
     var innerHTML = "<img style='margin-left:5px;' height=65 src='" // Replace YouTube logo
-        + (((location.pathname.startsWith('/watch')) || document.querySelector('html').getAttribute('dark'))
+        + (document.querySelector('ytd-masthead').getAttribute('dark') !== null
            ? "https://i.imgur.com/brCETJj.png" // in dark mode
            : "https://i.imgur.com/rHLcxEs.png") + "'>"; // or light mode
     document.getElementById('logo-icon').innerHTML = innerHTML;
