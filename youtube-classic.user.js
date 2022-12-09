@@ -5,6 +5,7 @@
 // @namespace    https://elonsucks.org/@adam
 // @description  Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
 // @supportURL   https://github.com/adamlui/userscripts/issues
+// @license      mit
 // @match        https://*.youtube.com/*
 // @icon         https://i.imgur.com/0nQsOmv.png
 // @run-at       document-start
