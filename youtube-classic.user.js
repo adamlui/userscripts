@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2022.12.16.2
+// @version          2022.12.25
 // @author           Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
@@ -19,22 +19,6 @@
 // @updateURL        https://ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://ytclassic.com/us/code/youtube-classic.user.js
 // ==/UserScript==
-
-// Set icons
-(function() {
-    var favicon = document.querySelector("link[rel*='shortcut icon']") || document.createElement('link');
-    favicon.type = 'image/x-icon'; favicon.rel = 'shortcut icon'; favicon.href = 'https://i.imgur.com/Bg6LKKf.png';
-    var icon_32 = document.querySelector("link[sizes*='32']") || document.createElement('link');
-    icon_32.rel = 'icon'; icon_32.href = 'https://i.imgur.com/J6ajf4C.png';
-    var icon_48 = document.querySelector("link[sizes*='48']") || document.createElement('link');
-    icon_48.rel = 'icon'; icon_48.href = 'https://i.imgur.com/rD8qBn7.png';
-    var icon_96 = document.querySelector("link[sizes*='96']") || document.createElement('link');
-    icon_96.rel = 'icon'; icon_96.href = 'https://i.imgur.com/DyPp9nk.png';
-    var icon_144 = document.querySelector("link[sizes*='144']") || document.createElement('link');
-    icon_144.rel = 'icon'; icon_144.href = 'https://i.imgur.com/MBsuO7P.png';
-    favicon.innerHTML += icon_32.outerHTML + icon_48.outerHTML + icon_96.outerHTML + icon_144.outerHTML;
-    document.getElementsByTagName('head')[0].appendChild(favicon);
-})();
 
 // Config keys
 const CONFIGS = { BUTTON_REWORK: false }
