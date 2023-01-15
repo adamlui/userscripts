@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2022.12.25
+// @version          2023.01.15
 // @author           Adam Lui, Magma_Craft, Anarios & JRWR
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
@@ -16,8 +16,6 @@
 // @match            https://*.youtube.com/*
 // @run-at           document-start
 // @grant            none
-// @updateURL        https://ytclassic.com/us/code/youtube-classic.meta.js
-// @downloadURL      https://ytclassic.com/us/code/youtube-classic.user.js
 // ==/UserScript==
 
 // Config keys
@@ -25,19 +23,18 @@ const CONFIGS = { BUTTON_REWORK: false }
 
 // Experiment flags
 const EXPFLAGS = {
-    enable_programmed_playlist_redesign: false,
+    kevlar_unavailable_video_error_ui_client: false,
     kevlar_refresh_on_theme_change: false,
-    kevlar_use_ytd_player: false,
     kevlar_watch_cinematics: false,
     kevlar_watch_metadata_refresh: false,
     kevlar_watch_modern_metapanel: false,
-    kevlar_watch_modern_panels: false,
     web_amsterdam_playlists: false,
     web_animated_like: false,
-    web_animated_like_lazy_load: false,
     web_button_rework: false,
+    web_button_rework_with_live: false,
     web_darker_dark_theme: false,
     web_guide_ui_refresh: false,
+    web_modern_ads: false,
     web_modern_buttons: false,
     web_modern_chips: false,
     web_modern_dialogs: false,
@@ -52,7 +49,10 @@ const EXPFLAGS = {
 }
 
 // Player flags
-const PLYRFLAGS = { web_player_move_autonav_toggle: "true" }
+const PLYRFLAGS = {
+    web_rounded_containers: "false",
+    web_rounded_thumbnails: "false"
+}
 
 class YTP {
     static observer = new MutationObserver(this.onNewScript);
@@ -63,7 +63,6 @@ class YTP {
     static mergeDeep(target, ...sources) {
         if (!sources.length) return target;
         const source = sources.shift();
-
         if (this.isObject(target) && this.isObject(source)) {
             for (const key in source) {
                 if (this.isObject(source[key])) {
@@ -134,6 +133,7 @@ class YTP {
     }
 }
 
+const ATTRS = [];
 window.addEventListener("yt-page-data-updated", function tmp() {
     var innerHTML = "<img style='margin-left:5px;' height=65 src='" // Replace YouTube logo
         + (document.querySelector('ytd-masthead').getAttribute('dark') !== null
@@ -146,43 +146,46 @@ window.addEventListener("yt-page-data-updated", function tmp() {
 });
 
 YTP.start();
-
 YTP.setCfgMulti(CONFIGS);
 YTP.setExpMulti(EXPFLAGS);
 YTP.setPlyrFlags(PLYRFLAGS);
 
-
 function $(q) { return document.querySelector(q); }
 
-// CSS tweaks
-(function() {
-ApplyCSS();
-function ApplyCSS() {
-var styles = document.createElement("style");
-styles.innerHTML=`
-    div#clarify-box.attached-message.style-scope.ytd-watch-flexy, #cinematics.ytd-watch-flexy {
-        display: none;
-    }
-    div#ytp-id-18.ytp-popup,ytp-settings-menu.ytp-rounded-menu, div.branding-context-container-inner.ytp-rounded-branding-context, div.ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded {
-        border-radius: 2px;
-    }
-    div.iv-card.iv-card-video.ytp-rounded-info, div.iv-card.iv-card-playlist.ytp-rounded-info, div.iv-card.iv-card-channel.ytp-rounded-info, div.iv-card.ytp-rounded-info, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg {
-        border-radius: 0px;
-    }
-    yt-formatted-string.style-scope.ytd-button-renderer.style-suggestive.size-small, yt-formatted-string.style-scope.ytd-button-renderer.style-suggestive.size-default, yt-formatted-string#text.style-scope.ytd-button-renderer.style-destructive.size-default, yt-formatted-string.style-scope.ytd-toggle-button-renderer.style-text, yt-formatted-string.style-scope.ytd-button-renderer.style-default.size-default, yt-formatted-string.style-scope.ytd-toggle-button-renderer.style-default-active, yt-formatted-string#text.style-scope.ytd-button-renderer, yt-formatted-stringx#text, div#icon-label.yt-dropdown-menu, tp-yt-paper-tab tp-yt-paper-tab .tp-yt-paper-tab[style-target=tab-content], .tp-yt-paper-tab[style-target=tab-content], yt-formatted-string#guide-section-title.style-scope.ytd-guide-section-renderer {
-        letter-spacing: 0.5px;
-    }
-    yt-formatted-string.style-scope.yt-chip-cloud-chip-renderer {
-        font-size: 1.4rem;;
-        letter-spacing: 0.2px;
-        padding-bottom: 1px;
-    }`
-document.head.appendChild(styles);
-}
-})();
-
 // Fix YouTube dislikes
+const abtnconfig = { unsegmentLikeButton: false, noFlexibleItems: true };
+function updateBtns() {
+    var watchFlexy = document.querySelector("ytd-watch-flexy");
+    var results = watchFlexy.data.contents.twoColumnWatchNextResults.results.results.contents;
+    for (var i = 0; i < results.length; i++) {
+        if (results[i].videoPrimaryInfoRenderer) {
+            var actions = results[i].videoPrimaryInfoRenderer.videoActions.menuRenderer;
 
+            if (abtnconfig.unsegmentLikeButton) {
+                if (actions.topLevelButtons[0].segmentedLikeDislikeButtonRenderer) {
+                    var segmented = actions.topLevelButtons[0].segmentedLikeDislikeButtonRenderer;
+                    actions.topLevelButtons.splice(0, 1);
+                    actions.topLevelButtons.unshift(segmented.dislikeButton);
+                    actions.topLevelButtons.unshift(segmented.likeButton);
+                }
+            }
+            if (abtnconfig.noFlexibleItems) {
+                for (var i = 0; i < actions.flexibleItems.length; i++) {
+                    actions.topLevelButtons.push(actions.flexibleItems[i].menuFlexibleItemRenderer.topLevelButton);
+                }
+                delete actions.flexibleItems
+            }
+        }
+    }
+    var temp = watchFlexy.data;
+    watchFlexy.data = {};
+    watchFlexy.data = temp;
+}
+document.addEventListener("yt-page-data-updated", (e) => {
+    if (e.detail.pageType == "watch") {
+        updateBtns();
+    }
+});
 addEventListener('yt-page-data-updated', function() {
     if(!location.pathname.startsWith('/watch')) return;
     var lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed');
@@ -217,6 +220,174 @@ addEventListener('yt-page-data-updated', function() {
     dislike.querySelector('a').insertBefore(dlabel, dislike.querySelector('tp-yt-paper-tooltip'));
     $('ytd-video-primary-info-renderer').removeAttribute('flex-menu-enabled');
 });
+
+// Restore classic comments UI
+var observingComments = false;
+var hl;
+const cfconfig = { unicodeEmojis: false };
+const cfi18n = {
+    en: {
+        viewSingular: "View reply",
+        viewMulti: "View %s replies",
+        viewSingularOwner: "View reply from %s",
+        viewMultiOwner: "View %s replies from %s and others",
+        hideSingular: "Hide reply",
+        hideMulti: "Hide replies",
+        replyCountIsolator: /( REPLIES)|( REPLY)/
+    }
+}
+function getString(string, hl = "en", ...args) {
+    if (!string) return;
+    var str;
+    if (cfi18n[hl]) {
+        if (cfi18n[hl][string]) {
+            str = cfi18n[hl][string];
+        } else if (cfi18n.en[string]) {
+            str = cfi18n.en[string];
+        } else {
+            return;
+        }
+    } else { if (cfi18n.en[string]) str = cfi18n.en[string]; }
+    for (var i = 0; i < args.length; i++) {
+        str = str.replace(/%s/, args[i]);
+    }
+    return str;
+}
+async function waitForElm(selector, base = document) {
+    if (!selector) return null;
+    if (!base.querySelector) return null;
+    while (base.querySelector(selector) == null) {
+        await new Promise(r => requestAnimationFrame(r));
+    };
+    return base.querySelector(selector);
+};
+function inArray(needle, haystack) {
+    for (var i = 0; i < haystack.length; i++) {
+        if (needle == haystack[i]) return true;
+    }
+    return false;
+}
+function getSimpleString(object) {
+    if (object.simpleText) return object.simpleText;
+    var str = "";
+    for (var i = 0; i < object.runs.length; i++) {
+        str += object.runs[i].text;
+    }
+    return str;
+}
+function formatComment(comment) {
+    if (cfconfig.unicodeEmojis) {
+        var runs;
+        try {
+            runs = comment.contentText.runs
+            for (var i = 0; i < runs.length; i++) {
+                delete runs[i].emoji;
+                delete runs[i].loggingDirectives;
+            }
+        } catch(err) {}
+    }
+    return comment;
+}
+async function formatCommentThread(thread) {
+    if (thread.comment.commentRenderer) {
+        thread.comment.commentRenderer = formatComment(thread.comment.commentRenderer);
+    }
+    var replies;
+    try {
+        replies = thread.replies.commentRepliesRenderer;
+        if (replies.viewRepliesIcon) {
+            replies.viewReplies.buttonRenderer.icon = replies.viewRepliesIcon.buttonRenderer.icon;
+            delete replies.viewRepliesIcon;
+        }
+        if (replies.hideRepliesIcon) {
+            replies.hideReplies.buttonRenderer.icon = replies.hideRepliesIcon.buttonRenderer.icon;
+            delete replies.hideRepliesIcon;
+        }
+        var creatorName;
+        try {
+            creatorName = replies.viewRepliesCreatorThumbnail.accessibility.accessibilityData.label;
+            delete replies.viewRepliesCreatorThumbnail;
+        } catch(err) {}
+        var replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text);
+        replyCount = +replyCount.replace(getString("replyCountIsolator", hl), "");
+        var viewMultiString = creatorName ? "viewMultiOwner" : "viewMulti";
+        var viewSingleString = creatorName ? "viewSingularOwner" : "viewSingular";
+        replies.viewReplies.buttonRenderer.text = {
+            runs: [
+                {
+                    text: (replyCount > 1) ? getString(viewMultiString, hl, replyCount, creatorName) : getString(viewSingleString, hl, creatorName)
+                }
+            ]
+        }
+        replies.hideReplies.buttonRenderer.text = {
+            runs: [
+                {
+                    text: (replyCount > 1) ? getString("hideMulti", hl) :  getString("hideSingular", hl)
+                }
+            ]
+        };
+    } catch(err) {}
+    return thread;
+}
+function refreshData(element) {
+    var clone = element.cloneNode();
+    clone.data = element.data;
+    clone.data.fixedByCF = true;
+    for (var i in element.properties) { clone[i] = element[i]; }
+    element.insertAdjacentElement("afterend", clone);
+    element.remove();
+}
+var commentObserver = new MutationObserver((list) => {
+    list.forEach(async (mutation) => {
+        if (mutation.addedNodes) {
+            for (var i = 0; i < mutation.addedNodes.length; i++) {
+                var elm = mutation.addedNodes[i];
+                if (elm.classList && elm.data && !elm.data.fixedByCF) {
+                    if (elm.tagName == "YTD-COMMENT-THREAD-RENDERER") {
+                        elm.data = await formatCommentThread(elm.data);
+                        refreshData(elm);
+                    } else if (elm.tagName == "YTD-COMMENT-RENDERER") {
+                        if (!elm.classList.contains("ytd-comment-thread-renderer")) {
+                            elm.data = formatComment(elm.data);
+                            refreshData(elm);
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+document.addEventListener("yt-page-data-updated", async (e) => {
+    hl = yt.config_.HL;
+    commentObserver.observe(document.querySelector("ytd-app"),  { childList: true, subtree: true });
+});
+
+// CSS tweaks
+(function() {
+ApplyCSS();
+function ApplyCSS() {
+var styles = document.createElement("style");
+styles.innerHTML=`
+    #cinematics.ytd-watch-flexy { display: none !important; }
+    div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important; }
+    ytd-clarification-renderer.style-scope.ytd-item-section-renderer, ytd-clarification-renderer.style-scope.ytd-watch-flexy {
+        border: 1px solid !important;
+        border-color: #0000001a !important;
+        border-radius: 0px !important;
+    }
+    yt-formatted-string.description.style-scope.ytd-clarification-renderer { font-size: 1.4rem !important; }
+    div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important; }
+    div.ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded { border-radius: 2px !important; }
+    .yt-spec-button-shape-next--size-m { background-color: transparent !important; padding-right: 6px !important; }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal { background-color: transparent !important; }
+    div.cbox.yt-spec-button-shape-next--button-text-content, div.yt-spec-button-shape-next__secondary-icon { display: none !important; }
+    div#ytp-id-18.ytp-popup,ytp-settings-menu.ytp-rounded-menu, div.branding-context-container-inner.ytp-rounded-branding-context { border-radius: 2px !important; }
+    div.iv-card.iv-card-video.ytp-rounded-info, div.iv-card.iv-card-playlist.ytp-rounded-info, div.iv-card.iv-card-channel.ytp-rounded-info, div.iv-card.ytp-rounded-info, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg, .ytp-ce-video.ytp-ce-medium-round, .ytp-ce-playlist.ytp-ce-medium-round, .ytp-ce-medium-round .ytp-ce-expanding-overlay-background, div.ytp-autonav-endscreen-upnext-thumbnail.rounded-thumbnail, .ytp-videowall-still-image { border-radius: 0px !important; }
+    button.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-cancel-button.ytp-autonav-endscreen-upnext-button-rounded, a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important; }
+    tp-yt-paper-button.style-scope.ytd-subscribe-button-renderer { display: flex !important; }`
+document.head.appendChild(styles);
+}
+})();
 
 const extConfig = {
     // BEGIN USER OPTIONS
