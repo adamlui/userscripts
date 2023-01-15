@@ -18,4 +18,5 @@
 // ==/UserScript==
 
 if (document.querySelector('[src*="vbulletin"]') || document.querySelector('a[href*="xenforo"]')) {
-    GM_addStyle('img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }');}
+    GM_addStyle('img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }');
+}
