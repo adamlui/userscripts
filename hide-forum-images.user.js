@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Hide Forum Images
-// @version          2023.01.15
+// @version          2023.01.15.1
 // @author           Adam Lui
 // @namespace        https://elonsucks.org/@adam
 // @description      Hides images/videos from XenForo and vBulletin forums.
