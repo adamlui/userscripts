@@ -14,6 +14,8 @@
 // @compatible   edge
 // @match        https://worker.mturk.com/*
 // @grant        GM_addStyle
+// @updateURL    https://greasyfork.org/scripts/458346-hide-mturk-alerts/code/hide-mturk-alerts.meta.js
+// @downloadURL  https://greasyfork.org/scripts/458346-hide-mturk-alerts/code/hide-mturk-alerts.user.js
 // ==/UserScript==
 
 GM_addStyle('.mturk-alert, .title { display:none !important; }');
