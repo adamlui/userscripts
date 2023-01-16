@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Hide MTurk Instructions
-// @version      2023.01.16
+// @version      2023.01.16.1
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hides instructions from HITs on MTurk
+// @supportURL   https://github.com/adamlui/userscripts/issues
 // @license      MIT
 // @icon         https://www.mturk.com/assets/images/favicon.ico
 // @compatible   chrome
