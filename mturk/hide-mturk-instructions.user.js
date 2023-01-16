@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Hide MTurk Instructions
-// @version      2022.12.09
+// @version      2023.01.16
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hides instructions from HITs on MTurk
-// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @license      MIT
 // @icon         https://www.mturk.com/assets/images/favicon.ico
 // @compatible   chrome
 // @compatible   firefox
@@ -19,4 +19,7 @@
 // ==/UserScript==
 
 GM_addStyle('[id*="instruction"], [class*="instruction"] { display:none !important; }');
+GM_addStyle('.guidance, .headerContainer { display:none !important; }');
+GM_addStyle('.top_bar { height:0px !important; }');
+GM_addStyle('.everything { display: flex; margin-right: 35%; margin-left: -5% }');
 document.getElementsByClassName('panel panel-primary')[0].style.display='none';
