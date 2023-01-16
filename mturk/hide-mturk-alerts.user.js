@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Hide MTurk Alerts
-// @version      2022.12.08
+// @version      2023.01.16
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hides MTurk alerts.
