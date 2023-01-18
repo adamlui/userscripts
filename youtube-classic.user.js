@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes + Redirect YT Shorts)
-// @version          2023.01.18
+// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
+// @version          2023.01.18.1
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR & Fuim
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
