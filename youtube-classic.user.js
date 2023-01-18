@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.01.16
-// @author           Adam Lui, Magma_Craft, Anarios & JRWR
+// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes + Redirect YT Shorts)
+// @version          2023.01.18
+// @author           Adam Lui, Magma_Craft, Anarios, JRWR & Fuim
 // @namespace        https://elonsucks.org/@adam
-// @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes)
+// @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
 // @homepageURL      https://www.ytclassic.com
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
@@ -20,6 +20,31 @@
 // @updateURL        https://ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://ytclassic.com/us/code/youtube-classic.user.js
 // ==/UserScript==
+
+// Redirect Shorts
+var oldHref = document.location.href;
+if (window.location.href.match(/shorts\/.+/)) {
+    window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+}
+window.onload = function() {
+    var bodyList = document.querySelector("body")
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (oldHref != document.location.href) {
+                oldHref = document.location.href;
+                console.log('location changed!');
+                if (window.location.href.match(/shorts\/.+/)) {
+                    window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+                }
+            }
+        });
+    });
+    var config = {
+        childList: true,
+        subtree: true
+    };
+    observer.observe(bodyList, config);
+};
 
 // Config keys
 const CONFIGS = { BUTTON_REWORK: false }
