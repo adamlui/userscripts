@@ -8,13 +8,13 @@ MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tam
 ---
 
 ### [Hide Forum Images](hide-forum-images)
-Hides images/videos from XenForo and vBulletin forums. [Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Hides images/videos from XenForo and vBulletin forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### [Highlight Radio Bubbles](highlight-radio-bubbles)
-Makes bubbles bigger and more colorful when brought to focus using Tab key. [Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### [MTurk scripts](mturk)
-Userscripts for Amazon's Mechanical Turk. [View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Userscripts for Amazon's Mechanical Turk. &nbsp;[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### [YouTube Classic](youtube-classic)
-Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. [Install](https://ytclassic.com/us/code/youtube-classic.user.js) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. &nbsp;[Install](https://ytclassic.com/us/code/youtube-classic.user.js) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
