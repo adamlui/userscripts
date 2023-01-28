@@ -3,7 +3,7 @@
     <div xmlns="http://www.w3.org/1999/xhtml"
          style="display: inline-block;
                 background-color: #1e971e;
-                padding: .7em 1em .7em .9em;
+                padding: .7em 1em .7em 1em;
                 color: #fff;
                 font-family: Open Sans, sans-serif">
 
