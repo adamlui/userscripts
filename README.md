@@ -2,7 +2,7 @@
 MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 ![star](https://img.shields.io/github/stars/adamlui/userscripts)
-![license](https://img.shields.io/badge/License-MIT-green.svg)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge-989898.svg)
 ![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts)
 
