@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.01.18.1
-// @author           Adam Lui, Magma_Craft, Anarios, JRWR & Fuim
+// @version          2023.01.28
+// @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
 // @homepageURL      https://www.ytclassic.com
@@ -396,6 +396,10 @@ ApplyCSS();
 function ApplyCSS() {
 var styles = document.createElement("style");
 styles.innerHTML=`
+
+    /* Hide 'People also watched' & 'For you' sections from search results */
+    #contents > ytd-shelf-renderer.style-scope.ytd-item-section-renderer[thumbnail-style]:not(*[prominent-thumb-style], *:first-child), #contents > ytd-horizontal-card-list-renderer { display:none; }
+    
     #cinematics.ytd-watch-flexy { display: none !important; }
     div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important; }
     ytd-clarification-renderer.style-scope.ytd-item-section-renderer, ytd-clarification-renderer.style-scope.ytd-watch-flexy {
