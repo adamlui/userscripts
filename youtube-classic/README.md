@@ -34,4 +34,4 @@
 </ul>
 <a href="https://ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
-<a href="https://elonsucks.org/@adam" target="_blank">Contact author</a>
+<a href="https://github.com/adamlui/userscripts" target="_blank">Other userscripts</a>
