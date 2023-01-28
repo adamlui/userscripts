@@ -19,3 +19,7 @@ Userscripts for Amazon's Mechanical Turk. &nbsp;[View scripts](mturk) / [Discuss
 
 ### [YouTube Classic](youtube-classic)
 Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. &nbsp;[Install](https://ytclassic.com/us/code/youtube-classic.user.js) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+#
+
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
