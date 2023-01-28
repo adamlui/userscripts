@@ -11,7 +11,7 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://ytclassic.com/us/code/youtube-classic.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://www.ytclassic.com/us/code/youtube-classic.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
@@ -39,7 +39,7 @@
 
 #
 
-<a href="https://ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
+<a href="https://www.ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a> / 
 <a href="https://elonsucks.org/@adam" target="_blank">Contact author</a>
