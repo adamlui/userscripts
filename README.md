@@ -4,6 +4,7 @@ MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tam
 ![star](https://img.shields.io/github/stars/adamlui/userscripts)
 ![license](https://img.shields.io/badge/License-MIT-green.svg)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge-989898.svg)
+![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts)
 
 ---
 
