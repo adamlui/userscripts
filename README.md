@@ -5,6 +5,8 @@ MTurk, web and other Greasemonkey userscripts.
 ![license](https://img.shields.io/badge/License-MIT-green.svg)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge-989898.svg)
 
+---
+
 ### [Hide Forum Images](hide-forum-images)
 Hides images/videos from XenForo and vBulletin forums. [Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
