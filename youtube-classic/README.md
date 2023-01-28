@@ -11,13 +11,17 @@
 
 <b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.
 
-<a href="https://ytclassic.com/us/code/youtube-classic.user.js"><img src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a>
+<a href="https://ytclassic.com/us/code/youtube-classic.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a>
+<br>
+[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
+[Contact author](https://elonsucks.org/@adam)
 
 <h2>What it does</h2>
 <ul>
 <li><b>Restores dislike counter</b> so you can judge the quality of content before watching
 (based on <a href="https://github.com/Anarios/return-youtube-dislike" target="_blank">Return YouTube Dislike</a>)
-<p><img width=400px src="https://i.imgur.com/9i6S9ki.png"></li><br>![image](https://user-images.githubusercontent.com/10906554/215258862-0df6e343-088d-4339-a535-9e4e20b5e79e.png)
+<p><img width=400px src="https://i.imgur.com/9i6S9ki.png"></li><br>
 
 <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round
 (based on <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design" target="_blank">Non-Rounded YouTube Design</a>)
@@ -28,4 +32,6 @@
 <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li><br>
 <li><b>Redirects YouTube Shorts</b> to classic player for increased usability</li>
 </ul>
-<a href="https://greasyfork.org/scripts/456132-youtube-classic/code/YouTube%20Classic.user.js">Install this script</a> / <a href="https://elonsucks.org/@adam" target="_blank">Contact author</a>
+<a href="https://ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
+<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
+<a href="https://elonsucks.org/@adam" target="_blank">Contact author</a>
