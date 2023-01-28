@@ -1,5 +1,5 @@
 # Greasemonkey userscripts
-MTurk, web and other Greasemonkey userscripts.
+MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 ![star](https://img.shields.io/github/stars/adamlui/userscripts)
 ![license](https://img.shields.io/badge/License-MIT-green.svg)
