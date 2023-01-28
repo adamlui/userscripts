@@ -10,3 +10,8 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key.
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/en/scripts/26311/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
+
+<br>
+
+[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
