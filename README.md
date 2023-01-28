@@ -8,10 +8,10 @@ MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tam
 ---
 
 ### [Hide Forum Images](hide-forum-images)
-Hides images/videos from XenForo and vBulletin forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Hides images/videos from XenForo and vBulletin forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### [Highlight Radio Bubbles](highlight-radio-bubbles)
-Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Readme](highlight-radio-bubbles/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### [MTurk scripts](mturk)
 Userscripts for Amazon's Mechanical Turk. &nbsp;[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
