@@ -1,5 +1,7 @@
 <h1><img height=53 src="https://i.imgur.com/HQNKZEN.png"></h1>
 
+![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript) 
+
 <b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.
 
 <h2>What it does</h2>
