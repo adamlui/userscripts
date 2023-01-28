@@ -2,7 +2,7 @@
 
 <b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.
 
-<h1>What it does</h1>
+<h2>What it does</h2>
 <ul>
 <li><b>Restores dislike counter</b> so you can judge the quality of content before watching
 (based on <a href="https://github.com/Anarios/return-youtube-dislike" target="_blank">Return YouTube Dislike</a>)
