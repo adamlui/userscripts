@@ -1,4 +1,4 @@
-# Greasemonkey userscripts
+# Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 ![star](https://img.shields.io/github/stars/adamlui/userscripts)
