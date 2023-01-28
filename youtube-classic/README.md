@@ -4,6 +4,8 @@
 
 <b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.
 
+<a href="https://ytclassic.com/us/code/youtube-classic.user.js"><img src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a>
+
 <h2>What it does</h2>
 <ul>
 <li><b>Restores dislike counter</b> so you can judge the quality of content before watching
