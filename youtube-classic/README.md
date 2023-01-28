@@ -37,13 +37,13 @@
   <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li>
 </ul>
 
-## Script links
+## Script links {#heading-ids}
 
 <a href="https://www.ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 [Leave a review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a> /
-<a href="/#">Back to top ↑</a>
+<a href="#--------------">Back to top ↑</a>
 
 #### Author links:
 
