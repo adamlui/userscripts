@@ -42,10 +42,12 @@
 <a href="https://www.ytclassic.com/us/code/youtube-classic.user.js">Install this script</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 [Leave a review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
-<a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a> /
-<a href="#--------------">Back to top ↑</a>
+<a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
 #### Author links:
 
 [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
+
+
+<a href="#--------------">Back to top ↑</a>
