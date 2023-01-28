@@ -1,4 +1,4 @@
-<h1><img height=53 src="https://i.imgur.com/yHBtTpi.png"></h1>
+<h1><img height=53 src="https://i.imgur.com/HQNKZEN.png"></h1>
 
 <b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.
 
