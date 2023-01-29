@@ -9,7 +9,7 @@ MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tam
 ---
 
 ### <img src="https://i.imgur.com/TABwyUq.png" width=17> [Hide Forum Images](hide-forum-images)
-Hides images/videos from XenForo and vBulletin forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](highlight-radio-bubbles)
 Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Readme](highlight-radio-bubbles/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
