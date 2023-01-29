@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.01.28.1
+// @version          2023.01.29
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -377,6 +377,13 @@ var commentObserver = new MutationObserver((list) => {
                     if (elm.tagName == "YTD-COMMENT-THREAD-RENDERER") {
                         elm.data = await formatCommentThread(elm.data);
                         refreshData(elm);
+                        // Pluralize view-reply links
+                        const viewReplyLinks = Array.prototype.filter.call( // Build array of view-reply nodes
+                            document.querySelectorAll('yt-formatted-string'), // Select all yt formatted strings for filtering
+                            function(ytString) { return RegExp(/view.*repl/i).test(ytString.textContent); } // Filter in view-reply nodes
+                        );
+                        for (let i = 0; i < viewReplyLinks.length; i++) { // Replace all nodes' text
+                            viewReplyLinks[i].innerHTML = 'View replies'}
                     } else if (elm.tagName == "YTD-COMMENT-RENDERER") {
                         if (!elm.classList.contains("ytd-comment-thread-renderer")) {
                             elm.data = formatComment(elm.data);
