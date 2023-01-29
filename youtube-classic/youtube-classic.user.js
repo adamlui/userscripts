@@ -7,8 +7,8 @@
 // @homepageURL      https://www.ytclassic.com
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
-// @icon             https://i.imgur.com/9vzrMBf.png
-// @icon64           https://i.imgur.com/25wY8QL.png
+// @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/youtube-classic/images/icon48.png
+// @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/youtube-classic/images/icon64.png
 // @compatible       chrome
 // @compatible       firefox
 // @compatible       opera
