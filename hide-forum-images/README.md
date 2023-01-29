@@ -1,4 +1,4 @@
-# Hide Forum Images &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/hide-forum-images&hashtags=greasemonkey,userscripts,javascript)
+# <img src="https://i.imgur.com/TABwyUq.png" width=28> Hide Forum Images &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/hide-forum-images&hashtags=greasemonkey,userscripts,javascript)
 
 ![license](https://img.shields.io/badge/License-MIT-green.svg)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
