@@ -3,7 +3,6 @@ Userscripts that utilize the astounding AI of ChatGPT. A userscript manager such
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox-989898.svg)
-![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts)
 
 ---
 
