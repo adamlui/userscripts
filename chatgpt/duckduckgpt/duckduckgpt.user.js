@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name             DuckDuckGPT
+// @name             DuckDuckGPT 🤖
 // @version          2023.02.11
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
