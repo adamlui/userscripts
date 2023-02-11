@@ -8,7 +8,7 @@ MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tam
 ---
 
 ### <img alt="ChatGPT logo" src="https://openai.com/favicon.ico" width=15> [ChatGPT scripts](chatgpt)
-Userscripts that utilize the astounding power of ChatGPT. &nbsp;[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Userscripts that utilize the astounding AI of ChatGPT. &nbsp;[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](hide-forum-images)
 Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
