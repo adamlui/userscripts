@@ -3,7 +3,7 @@
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-dm.png">
     <img height=65 alt="DuckDuckGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-lm.png">
   </picture>
-  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img alt="Tweet" style="margin:0 0 14px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
+  <a href="https://twitter.com/intent/tweet?text=Want%20%23ChatGPT%20answers%20right%20alongside%20DuckDuckGo%20results%3F%20This%20%23userscript%20does%20just%20that%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt&hashtags=greasemonkey,javascript,ai"><img alt="Tweet" style="margin:0 0 14px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
