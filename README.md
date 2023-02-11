@@ -7,7 +7,7 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 
 ---
 
-### <img alt="ChatGPT logo" src="https://openai.com/favicon.ico" width=15> [ChatGPT scripts](chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT logo" src="https://openai.com/favicon.ico"></picture> [ChatGPT scripts](chatgpt)
 Userscripts that utilize the astounding AI of ChatGPT. &nbsp;[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](hide-forum-images)
