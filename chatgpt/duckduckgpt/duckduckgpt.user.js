@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name             DuckDuckGPT
-// @version          2023.01.29.1
+// @version          2023.01.29.2
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
+// @homepageURL      https://www.duckduckgpt.com
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
 // @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/duckduckgpt/images/ddgpt-icon48.png
@@ -45,7 +46,7 @@ var alerts = {
 function uuidv4() {
     var s = [], hexDigits = "0123456789abcdef"
     for (var i = 0; i < 36; i++) {
-        s[i] = hexDigits.substr(Math.floor(Math.random() * 16), 1); }
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 16), 1) }
     s[14] = "4"
     s[19] = hexDigits.substr(s[19] & 3 | 8, 1)
     s[8] = s[13] = s[18] = s[23] = "-"
