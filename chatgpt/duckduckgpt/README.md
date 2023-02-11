@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-dm.png">
-    <img height=65 alt="DuckDuckGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-lm.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-dark-mode-65x371.png">
+    <img alt="DuckDuckGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-light-mode-65x371.png">
   </picture>
   <a href="https://twitter.com/intent/tweet?text=Want%20%23ChatGPT%20answers%20right%20alongside%20DuckDuckGo%20results%3F%20This%20%23userscript%20does%20just%20that%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt&hashtags=greasemonkey,javascript,ai"><img alt="Tweet" style="margin:0 0 14px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
