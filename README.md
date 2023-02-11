@@ -1,5 +1,5 @@
 # Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
-MTurk, web and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
+MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Safari-989898.svg)
