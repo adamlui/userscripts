@@ -29,7 +29,7 @@
 
 ## Compatibility
 
-DuckDuckGPT is compatible with Chrome & Firefox using all userscript managers. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+DuckDuckGPT is compatible with Chrome & Firefox using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 ## Script links
 
