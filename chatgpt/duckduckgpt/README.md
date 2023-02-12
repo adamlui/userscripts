@@ -11,19 +11,30 @@
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
-<a href="https://www.duckduckgpt.com/us/code/duckduckgpt.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
-[Review](https://duckduckgpt.com/us/review) /
+[Review](https://duckduckgpt.com/userscript/review) /
 [Contact author](https://elonsucks.org/@adam)
 ##
 <img src="https://i.imgur.com/IIVJ7Bc.png">
 
+## Installation
+
+1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/))
+
+2. Install [DuckDuckGPT](https://duckduckgpt.com/userscript/code/duckduckgpt.user.js) (will load in userscript manager installed above)
+
+3. Visit [duckduckgo.com](https://duckduckgo.com), type your search, engage bot!
+
+## Compatibility
+
+DuckDuckGPT is compatible with Chrome & Firefox using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+
 ## Script links
 
-<a href="https://duckduckgpt.com/us/code/duckduckgpt.user.js">Install this script</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
-[Leave a review](https://duckduckgpt.com/us/review) /
+[Leave a review](https://duckduckgpt.com/userscript/review) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
 #### Author links:

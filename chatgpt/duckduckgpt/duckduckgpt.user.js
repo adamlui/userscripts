@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name             DuckDuckGPT
+// @name             DuckDuckGPT 🤖
 // @version          2023.02.11
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
@@ -18,8 +18,8 @@
 // @grant            GM_setValue
 // @grant            GM_info
 // @grant            GM_xmlhttpRequest
-// @updateURL        https://www.duckduckgpt.com/us/code/duckduckgpt.meta.js
-// @downloadURL      https://www.duckduckgpt.com/us/code/duckduckgpt.user.js
+// @updateURL        https://www.duckduckgpt.com/userscript/code/duckduckgpt.meta.js
+// @downloadURL      https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js
 // ==/UserScript==
 
 var monkeyWindow = window
