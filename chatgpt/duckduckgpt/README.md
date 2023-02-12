@@ -11,7 +11,7 @@
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
-<a href="https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
@@ -23,7 +23,7 @@
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/))
 
-2. Install [DuckDuckGPT](https://duckduckgpt.com/userscript/code/duckduckgpt.user.js) (will load in userscript manager installed above)
+2. Install [DuckDuckGPT](https://greasyfork.org/en/scripts/459849-duckduckgpt) (will load in userscript manager installed above)
 
 3. Visit [duckduckgo.com](https://duckduckgo.com), type your search, engage bot!
 
