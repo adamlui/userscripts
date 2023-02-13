@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             DuckDuckGPT 🤖
-// @version          2023.02.11
+// @version          2023.02.13
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
@@ -22,10 +22,9 @@
 // @downloadURL      https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js
 // ==/UserScript==
 
-var monkeyWindow = window
 var GM_setValue = (() => window.GM_setValue)()
 var GM_deleteValue = (() => window.GM_deleteValue)()
-var GM_info = (() => monkeyWindow.GM_info)()
+var GM_info = (() => window.GM_info)()
 var GM_xmlhttpRequest = (() => window.GM_xmlhttpRequest)()
 var GM_getValue = (() => window.GM_getValue)()
 
