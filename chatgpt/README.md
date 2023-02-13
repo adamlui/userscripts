@@ -6,7 +6,8 @@ Userscripts that utilize the astounding AI of ChatGPT. A userscript manager such
 
 ---
 
-### <img alt="DuckDuckGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-icon48.png" width=18> [DuckDuckGPT](duckduckgpt)
+### <img alt="DuckDuckGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-icon48.png" width=18> [DuckDuckGPT](duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 117px; height: 26px; margin:0 0 -4px 5px;" width="117" height="26" /></a>
+
 Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://duckduckgpt.com/us/code/duckduckgpt.user.js) / [Readme](duckduckgpt/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 #
 
