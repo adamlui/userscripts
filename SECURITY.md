@@ -1,5 +1,5 @@
 # Security Policy
 
-If you find a vulnerability, please send an email to adam@elonsucks.org
+If you find a vulnerability, please report it using [this form](https://github.com/adamlui/userscripts/security/advisories/new).
 
-Pull requests are also welcome, but for safety reasons, should not be made public until an email response.
+Pull requests are also welcome, but for safety reasons, send an email to adam@elonsucks.org and wait for a response before making it public.
