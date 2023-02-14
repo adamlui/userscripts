@@ -12,16 +12,16 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 Userscripts that utilize the astounding AI of ChatGPT. &nbsp;[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](hide-forum-images)
-Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;[Install](https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;[Install](https://greasyfork.org/scripts/12639) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](highlight-radio-bubbles)
-Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js) / [Readme](highlight-radio-bubbles/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311) / [Readme](highlight-radio-bubbles/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](mturk)
 Userscripts for Amazon's Mechanical Turk. &nbsp;[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic)
-Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. &nbsp;[Install](https://ytclassic.com/us/code/youtube-classic.user.js) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. &nbsp;[Install](https://greasyfork.org/en/scripts/456132) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
 
