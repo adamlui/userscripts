@@ -28,6 +28,8 @@
 
 3. Visit [duckduckgo.com](https://duckduckgo.com), type your search, engage bot!
 
+![ddgpt-live-demo](https://user-images.githubusercontent.com/10906554/219514703-34b638bd-5098-4e63-96a8-539759ff3802.gif)
+
 ## Compatibility
 
 DuckDuckGPT is compatible with Chrome & Firefox using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
