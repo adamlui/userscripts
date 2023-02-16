@@ -1,3 +1,5 @@
+<a rel="me" href="https://technodon.org/@duckduckgpt">Mastodon</a>
+
 <h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/images/ddgpt-logo-dark-mode-65x371.png">
