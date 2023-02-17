@@ -40,9 +40,9 @@ DuckDuckGPT is compatible with Chrome & Firefox using Tampermonkey or Violentmon
 [Leave a review](https://duckduckgpt.com/userscript/review) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
-#### Social links:
+#### Mastodon links:
 
-<a href="https://technodon.org/@duckduckgpt" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109876284007792895?domain=https%3A%2F%2Ftechnodon.org&style=social" alt="Follow @duckduckgpt on Mastodon" title="Mastodon"></a> [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
+<a href="https://technodon.org/@duckduckgpt" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109876284007792895?domain=https%3A%2F%2Ftechnodon.org&style=social" alt="Follow @duckduckgpt on Mastodon" title="Mastodon"></a>
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
 
 
