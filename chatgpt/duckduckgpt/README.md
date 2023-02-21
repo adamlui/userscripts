@@ -28,7 +28,7 @@
 
 3. Visit [duckduckgo.com](https://duckduckgo.com), type your search, engage bot!
 
-![ddgpt-live-demo](https://user-images.githubusercontent.com/10906554/219514703-34b638bd-5098-4e63-96a8-539759ff3802.gif)
+![ddgpt-demo](https://user-images.githubusercontent.com/10906554/220238659-9b59de4f-31d0-468a-a41d-528ac924732f.gif)
 
 ## Compatibility
 
