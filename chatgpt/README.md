@@ -2,7 +2,7 @@
 Userscripts that utilize the astounding AI of ChatGPT. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome/Firefox-989898.svg)
+![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave-989898.svg)
 
 ---
 
