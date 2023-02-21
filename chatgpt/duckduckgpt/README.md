@@ -8,7 +8,7 @@
 </h1>
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](../../LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome/Firefox-989898.svg) 
+![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge-989898.svg) 
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
@@ -32,7 +32,7 @@
 
 ## Compatibility
 
-DuckDuckGPT is compatible with Chrome & Firefox using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+DuckDuckGPT is compatible with Chrome, Firefox & Edge using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 ## Script links
 
