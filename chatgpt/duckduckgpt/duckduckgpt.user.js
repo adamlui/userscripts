@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             DuckDuckGPT 🤖
-// @version          2023.02.21.4
+// @version          2023.02.22
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
@@ -15,12 +15,14 @@
 // @compatible       brave
 // @compatible       vivaldi
 // @match            https://duckduckgo.com/*
+// @include          https://auth0.openai.com
 // @connect          chat.openai.com
 // @grant            GM.deleteValue
 // @grant            GM.getValue
 // @grant            GM.setValue
 // @grant            GM.info
 // @grant            GM.xmlHttpRequest
+// @grant            GM_cookie
 // @updateURL        https://www.duckduckgpt.com/userscript/code/duckduckgpt.meta.js
 // @downloadURL      https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js
 // ==/UserScript==
@@ -31,13 +33,6 @@ var GM_info = (() => GM.info)()
 var GM_xmlhttpRequest = (() => GM.xmlHttpRequest)()
 var GM_getValue = (() => GM.getValue)()
 
-function getUserscriptManager() {
-    try {
-        const userscriptManager = GM_info.scriptHandler
-        return userscriptManager
-    } catch (error) { return "other" }
-}
-
 var alerts = {
     waitingResponse: "Waiting for ChatGPT response...",
     login: "Please login @ ",
@@ -45,7 +40,18 @@ var alerts = {
     checkCloudflare: "Please pass Cloudflare security check @ ",
     unknowError: "Oops, maybe it is a bug, please check or submit ",
     networkException: "Network exception, please refresh the page."
-};
+}
+
+function getUserscriptManager() {
+    try { return GM_info.scriptHandler } catch (error) { return "other" }}
+
+function deleteOpenAIcookies() {
+    if (getUserscriptManager() !== "Tampermonkey") return
+    var openAIauthURL = 'https://auth0.openai.com'
+    GM_cookie.list({ url: openAIauthURL }, function(cookies, error) {
+        if (!error) { for (var i = 0; i < cookies.length; i++) {
+            GM_cookie.delete({ url: openAIauthURL, name: cookies[i].name })
+}}})}
 
 function uuidv4() {
     var s = [], hexDigits = "0123456789abcdef"
@@ -76,7 +82,9 @@ function containerAlert(htmlStr) {
 }
 
 function alertLogin() {
-    containerAlert(`<p>${i18n("login")}<a href="https://chat.openai.com" target="_blank" rel="noreferrer">chat.openai.com</a></p>`) }
+    deleteOpenAIcookies()
+    containerAlert(`<p>${i18n("login")}<a href="https://chat.openai.com" target="_blank" rel="noreferrer">chat.openai.com</a></p>`)
+}
 
 function alertBlockedByCloudflare() {
     containerAlert(`<p>${i18n("checkCloudflare")}<a href="https://chat.openai.com" target="_blank" rel="noreferrer">chat.openai.com</a></p>`) }
