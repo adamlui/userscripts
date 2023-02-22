@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             DuckDuckGPT 🤖
-// @version          2023.02.21.3
+// @version          2023.02.21.4
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
@@ -92,9 +92,12 @@ function isBlockedbyCloudflare(resp) {
     } catch (error) { return false }
 }
 
+var timeoutPromise = new Promise((resolve, reject) => {
+  setTimeout(() => { reject(new Error('Timeout occurred')) }, 3000) })
+
 async function getAnswer(question, callback) {
     try {
-        var accessToken = await getAccessToken()
+        var accessToken = await Promise.race([getAccessToken(), timeoutPromise])
         GM_xmlhttpRequest({
             method: "POST",
             url: "https://chat.openai.com/backend-api/conversation",
