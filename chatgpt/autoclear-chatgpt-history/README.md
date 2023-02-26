@@ -39,4 +39,4 @@ Special thanks to [Tripp1e](https://github.com/Tripp1e) for [requesting](https:/
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a> [![GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20Tripp1e&style=social)](https://github.com/Tripp1e)
 
 
-<a href="#--------------">Back to top ↑</a>
+<a href="#-auto-clear-chatgpt-history-">Back to top ↑</a>
