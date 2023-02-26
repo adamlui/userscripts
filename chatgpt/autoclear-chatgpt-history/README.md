@@ -5,10 +5,10 @@
 
 Auto-clears chat history when visiting chat.openai.com
 
-<a href="/"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
-[Review](/) /
+[Review](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
 ##
 <img src="https://i.imgur.com/PpSiARF.png">
@@ -28,7 +28,7 @@ Auto-Clear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brav
 ## Script links
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
-[Leave a review](/) /
+[Leave a review](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history/feedback#post-discussion) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
 Special thanks to [Tripp1e](https://github.com/Tripp1e) for [requesting](https://github.com/adamlui/userscripts/issues/11) this functionality! 
