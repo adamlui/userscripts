@@ -3,7 +3,7 @@
 ![license](https://img.shields.io/badge/License-MIT-green.svg)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
 
-Hides images/videos from XenForo and vBulletin forums.
+Hides images/videos from XenForo, vBulletin & Discourse forums.
 
 <a href="https://greasyfork.org/en/scripts/12639-hide-forum-images"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
