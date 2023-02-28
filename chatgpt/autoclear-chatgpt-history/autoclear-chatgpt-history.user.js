@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.02.26.1
+// @version          2023.02.27
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -17,14 +17,18 @@
 // @match            https://chat.openai.com/*
 // @run-at           document-end
 // @grant            none
+// @updateURL        https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.meta.js
+// @downloadURL      https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.user.js
 // ==/UserScript==
 
 var labels = ['Clear conversations', 'Confirm clear conversations']
 var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     if (mutation.addedNodes[0]?.innerHTML.includes(labels[0])) {
-      clearAllMsgs() ; observer.disconnect()
-}})})
+      clearAllMsgs() ; observer.disconnect() }})
+    // Also disconnect after 5sec to avoid clearing new convos
+    setTimeout(function() { observer.disconnect() }, 5000)
+})
 observer.observe(document, {childList: true, subtree: true})
 
 var labelCnt = 0
