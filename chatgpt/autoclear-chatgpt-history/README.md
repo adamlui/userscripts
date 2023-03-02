@@ -23,7 +23,7 @@ Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 
 ## Compatibility
 
-Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey, Violentmonkey or Greasemonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 ## Script links
 
