@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.2
+// @version          2023.03.04.3
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -80,7 +80,12 @@ if (localStorage.getItem("autoclear") == 'true') {
 // Functions
 
 function updateToggleHTML() {
-    toggleLabel.innerHTML = `<img width="18px" src="https://i.imgur.com/TIIqQPv.png">Auto-clear ${localStorage.getItem("autoclear") == 'true' ? "enabled" : "disabled"} <label class="switch" ><input id="autoclearToggle" type="checkbox" ${localStorage.getItem("autoclear") == 'true' ? "checked='true'" : ""} onclick="window.toggleAutoclear()" ><span class="slider"></span></label>`
+    toggleLabel.innerHTML = `
+        <img width="18px" src="https://i.imgur.com/TIIqQPv.png">
+        Auto-clear ${localStorage.getItem("autoclear") == 'true' ? "enabled" : "disabled"}
+        <label class="switch" ><input id="autoclearToggle" type="checkbox" 
+            ${localStorage.getItem("autoclear") == 'true' ? "checked='true'" : ""} 
+            onclick="window.toggleAutoclear()" ><span class="slider"></span></label>`
 }
 
 function insertToggle() {
@@ -92,8 +97,7 @@ function insertToggle() {
 window.toggleAutoclear = function() {
     localStorage.setItem( // save setting
         'autoclear', true ? document.querySelector('input#autoclearToggle').checked : false)
-    setTimeout(function() { // sync label change w/ switch movement
-        updateToggleHTML() }, 200)
+    setTimeout(updateToggleHTML, 200) // sync label change w/ switch movement
 }
 
 function clearAllMsgs() {
