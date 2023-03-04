@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.6
+// @version          2023.03.04.7
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -64,7 +64,7 @@ var labels = ['Clear conversations', 'Confirm clear conversations']
 var clearObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         if (mutation.addedNodes[0]?.innerHTML.includes(labels[0])) {
-            var labelCnt = 0 ; clearAllMsgs() ; clearObserver.disconnect() }})
+            clearAllMsgs() ; clearObserver.disconnect() }})
         // Also disconnect after 5sec to avoid clearing new convos
         setTimeout(function() { clearObserver.disconnect() }, 5000)
 })
@@ -78,7 +78,7 @@ function updateToggleHTML() {
     toggleLabel.innerHTML = `
         <img width="18px" src="https://i.imgur.com/TIIqQPv.png">
         Auto-clear ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "enabled" : "disabled"}
-        <label class="switch" ><input id="autoclearToggle" type="checkbox" 
+        <label class="switch" ><input id="autoclearToggle" type="checkbox"
             ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "checked='true'" : ""} >
             <span class="slider"></span></label>`
 }
@@ -92,10 +92,11 @@ function insertToggle() {
 window.toggleAutoclear = function() {
     document.querySelector('#autoclearToggle').click()
     localStorage.setItem( // save setting
-        'chatGPT_autoclear', true ? document.querySelector('input#autoclearToggle').checked : false)
+        'chatGPT_autoclear', document.querySelector('input#autoclearToggle').checked)
     setTimeout(updateToggleHTML, 200) // sync label change w/ switch movement
 }
 
+var labelCnt = 0
 function clearAllMsgs() {
     if (labelCnt >= labels.length) return // exit if already confirmed
     for (var link of document.querySelectorAll('a')) {
