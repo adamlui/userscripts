@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.5
+// @version          2023.03.04.6
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -43,6 +43,7 @@ document.head.appendChild(styleNode)
 
 // Create toggle label & add classes/HTML
 var toggleLabel = document.createElement("div") // create label div
+toggleLabel.setAttribute("onclick", "window.toggleAutoclear()") // link to toggleAutoclear()
 for (var link of document.querySelectorAll('a')) { // inspect sidebar links for classes
     if (link.innerHTML.includes('New chat')) { // focus on 'New chat'
         toggleLabel.setAttribute("class", link.classList) // borrow its classes
@@ -56,37 +57,30 @@ var navObserver = new MutationObserver(function(mutations) {
         if (mutation.type === 'childList' && mutation.addedNodes.length) {
             insertToggle()
 }})})
-navObserver.observe(document.documentElement, {childList: true, subtree: true});
-
-// Toggle switch on label clicks too
-document.addEventListener('click', event => {
-    if (event.target == toggleLabel) {
-        document.querySelector('#autoclearToggle').click()
-}})
+navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
 // Auto-clear chats if activated
-var labels = ['Clear conversations', 'Confirm clear conversations'], labelCnt = 0
+var labels = ['Clear conversations', 'Confirm clear conversations']
 var clearObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         if (mutation.addedNodes[0]?.innerHTML.includes(labels[0])) {
-            clearAllMsgs() ; clearObserver.disconnect() }})
+            var labelCnt = 0 ; clearAllMsgs() ; clearObserver.disconnect() }})
         // Also disconnect after 5sec to avoid clearing new convos
         setTimeout(function() { clearObserver.disconnect() }, 5000)
 })
 if (localStorage.getItem('chatGPT_autoclear') == 'true') {
-    clearObserver.observe(document, {childList: true, subtree: true})
-}
+    clearObserver.observe(document, {childList: true, subtree: true}) }
+
 
 // Functions
 
 function updateToggleHTML() {
     toggleLabel.innerHTML = `
         <img width="18px" src="https://i.imgur.com/TIIqQPv.png">
-        Auto-clear ${ localStorage.getItem('chatGPT_autoclear') == 'true' ? 'enabled' : 'disabled' }
-        <label class="switch" >
-            <input id="autoclearToggle" type="checkbox" ${ localStorage.getItem('chatGPT_autoclear') == 'true' ? "checked='true'" : "" } 
-                onclick="window.toggleAutoclear()" ><span class="slider"></span>
-        </label>`
+        Auto-clear ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "enabled" : "disabled"}
+        <label class="switch" ><input id="autoclearToggle" type="checkbox" 
+            ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "checked='true'" : ""} >
+            <span class="slider"></span></label>`
 }
 
 function insertToggle() {
@@ -96,15 +90,16 @@ function insertToggle() {
 }}}
 
 window.toggleAutoclear = function() {
+    document.querySelector('#autoclearToggle').click()
     localStorage.setItem( // save setting
         'chatGPT_autoclear', true ? document.querySelector('input#autoclearToggle').checked : false)
     setTimeout(updateToggleHTML, 200) // sync label change w/ switch movement
 }
 
 function clearAllMsgs() {
-    if (labelCnt >= labels.length) return
+    if (labelCnt >= labels.length) return // exit if already confirmed
     for (var link of document.querySelectorAll('a')) {
         if (link.innerHTML.includes(labels[labelCnt])) {
             link.click() ; labelCnt++
-            setTimeout(clearAllMsgs, 500) ; return
+            setTimeout(clearAllMsgs, 500) ; return // repeat to confirm
 }}}
