@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.9
+// @version          2023.03.04.10
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -91,7 +91,6 @@ function insertToggle() {
 }}}
 
 window.toggleAutoclear = function() {
-    var toggleInput = document.querySelector('#autoclearToggle')
     document.querySelector('#autoclearToggle').click()
     localStorage.setItem( // save setting
         'chatGPT_autoclear', document.querySelector('#autoclearToggle').checked)
