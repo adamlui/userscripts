@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.1
+// @version          2023.03.04.2
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -90,9 +90,8 @@ function insertToggle() {
 }}}
 
 window.toggleAutoclear = function() {
-    if (document.querySelector('input#autoclearToggle').checked) {
-        localStorage.setItem('autoclear', true)
-    } else { localStorage.setItem('autoclear', false) }
+    localStorage.setItem( // save setting
+        'autoclear', true ? document.querySelector('input#autoclearToggle').checked : false)
     setTimeout(function() { // sync label change w/ switch movement
         updateToggleHTML() }, 200)
 }
