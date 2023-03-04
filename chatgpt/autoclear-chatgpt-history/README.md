@@ -10,7 +10,10 @@ Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
-##
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/10906554/222903818-b621f0eb-74c2-4dff-ae1a-010305da327b.png)
 <img src="https://i.imgur.com/PpSiARF.png">
 
 ## Installation
