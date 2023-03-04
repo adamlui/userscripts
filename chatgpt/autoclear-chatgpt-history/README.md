@@ -18,7 +18,7 @@ Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 
 ## Installation
 
-1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)), Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)), or Greasemonkey ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/))
+1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
 
 2. Install [Autoclear ChatGPT History](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history) (will load in userscript manager installed above)
 
@@ -26,7 +26,7 @@ Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 
 ## Compatibility
 
-Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey, Violentmonkey or Greasemonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 ## Script links
 
