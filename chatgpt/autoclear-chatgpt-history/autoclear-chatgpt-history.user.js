@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04
+// @version          2023.03.04.1
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -64,7 +64,7 @@ document.addEventListener('click', event => {
         document.querySelector('#autoclearToggle').click()
 }})
 
-// Auto-clear chat if activated
+// Auto-clear chats if activated
 var labels = ['Clear conversations', 'Confirm clear conversations'], labelCnt = 0
 var clearObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -79,18 +79,17 @@ if (localStorage.getItem("autoclear") == 'true') {
 
 // Functions
 
-function updateToggleHTML () {
+function updateToggleHTML() {
     toggleLabel.innerHTML = `<img width="18px" src="https://i.imgur.com/TIIqQPv.png">Auto-clear ${localStorage.getItem("autoclear") == 'true' ? "enabled" : "disabled"} <label class="switch" ><input id="autoclearToggle" type="checkbox" ${localStorage.getItem("autoclear") == 'true' ? "checked='true'" : ""} onclick="window.toggleAutoclear()" ><span class="slider"></span></label>`
 }
 
 function insertToggle() {
-    var navs = document.querySelectorAll('nav');
-    for (var nav of navs) {
+    for (var nav of document.querySelectorAll('nav')) {
         if (!nav.contains(toggleLabel)) { // check if label exists first
             nav.insertBefore(toggleLabel, nav.childNodes[0]) // insert before 'New chat'
 }}}
 
-window.toggleAutoclear = function () {
+window.toggleAutoclear = function() {
     if (document.querySelector('input#autoclearToggle').checked) {
         localStorage.setItem('autoclear', true)
     } else { localStorage.setItem('autoclear', false) }
@@ -100,8 +99,7 @@ window.toggleAutoclear = function () {
 
 function clearAllMsgs() {
     if (labelCnt >= labels.length) return
-    var links = document.querySelectorAll('a')
-    for (var link of links) {
+    for (var link of document.querySelectorAll('a')) {
         if (link.innerHTML.includes(labels[labelCnt])) {
             link.click() ; labelCnt++
             setTimeout(clearAllMsgs, 500) ; return
