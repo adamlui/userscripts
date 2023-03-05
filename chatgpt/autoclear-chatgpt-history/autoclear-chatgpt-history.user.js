@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.04.10
+// @version          2023.03.04.11
 // @author           Adam Lui & Tripp1e
 // @namespace        https://github.com/adamlui
 // @description      Auto-clears chat history when visiting chat.openai.com
@@ -77,7 +77,7 @@ if (localStorage.getItem('chatGPT_autoclear') == 'true') {
 
 function updateToggleHTML() {
     toggleLabel.innerHTML = `
-        <img width="18px" src="https://i.imgur.com/TIIqQPv.png">
+        <img width="18px" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/autoclear-chatgpt-history/navicon.png">
         Auto-clear ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "enabled" : "disabled"}
         <label class="switch" ><input id="autoclearToggle" type="checkbox"
             ${localStorage.getItem('chatGPT_autoclear') == 'true' ? "checked='true'" : ""} >
