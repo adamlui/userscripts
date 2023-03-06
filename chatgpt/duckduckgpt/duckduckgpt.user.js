@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             DuckDuckGPT 🤖
-// @version          2023.02.22
+// @version          2023.03.06
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
@@ -33,15 +33,6 @@ var GM_info = (() => GM.info)()
 var GM_xmlhttpRequest = (() => GM.xmlHttpRequest)()
 var GM_getValue = (() => GM.getValue)()
 
-var alerts = {
-    waitingResponse: "Waiting for ChatGPT response...",
-    login: "Please login @ ",
-    tooManyRequests: "ChatGPT is flooded with too many requests. Check back later!",
-    checkCloudflare: "Please pass Cloudflare security check @ ",
-    unknowError: "Oops, maybe it is a bug, please check or submit ",
-    networkException: "Network exception, please refresh the page."
-}
-
 function getUserscriptManager() {
     try { return GM_info.scriptHandler } catch (error) { return "other" }}
 
@@ -64,11 +55,25 @@ function uuidv4() {
     return uuid
 }
 
-function i18n(name, param) {
-    return alerts[name] ? alerts[name].replace("#t#", param) : name }
-
 var container = document.createElement("div")
 function getContainer() { return container }
+
+var alerts = {
+    waitingResponse: "Waiting for ChatGPT response...",
+    login: "Please login @ ",
+    tooManyRequests: "ChatGPT is flooded with too many requests. Check back later!",
+    checkCloudflare: "Please pass Cloudflare security check @ ",
+    unknowError: "An unknown error has occurred",
+    networkException: "Network exception, please refresh the page",
+}
+function chatGPTalert(msg) {
+    if (msg.includes('login')) deleteOpenAIcookies()
+    container.innerHTML = (
+        /waiting|loading/i.test(msg) ? // if alert involves loading, add class
+            '<p class="loading">' : '<p>') + alerts[msg]
+        + (alerts[msg].includes('@') ? // if msg needs a link, add it
+            '<a href="https://chat.openai.com" target="_blank">chat.openai.com</a></p>' : '</p>')
+}
 
 function containerShow(answer) {
     var container2 = getContainer()
@@ -80,17 +85,6 @@ function containerAlert(htmlStr) {
     var container2 = getContainer()
     container2.innerHTML = htmlStr
 }
-
-function alertLogin() {
-    deleteOpenAIcookies()
-    containerAlert(`<p>${i18n("login")}<a href="https://chat.openai.com" target="_blank" rel="noreferrer">chat.openai.com</a></p>`)
-}
-
-function alertBlockedByCloudflare() {
-    containerAlert(`<p>${i18n("checkCloudflare")}<a href="https://chat.openai.com" target="_blank" rel="noreferrer">chat.openai.com</a></p>`) }
-
-function alertFrequentRequests() {
-    containerAlert(`<p>${i18n("tooManyRequests")}</p>`) }
 
 function isBlockedbyCloudflare(resp) {
     try {
@@ -135,7 +129,7 @@ async function getAnswer(question, callback) {
     } catch (error) {
         if (error === "UNAUTHORIZED") {
             GM_deleteValue("accessToken")
-            alertLogin()
+            chatGPTalert('login')
         }
         console.error("getAnswer error: ", error)
     }
@@ -145,9 +139,9 @@ async function getAnswer(question, callback) {
     }
     function onLoad() {
         return function(event) {
-            if (event.status === 401) { GM_deleteValue("accessToken") ; alertLogin() }
-            if (event.status === 403) { alertBlockedByCloudflare() }
-            if (event.status === 429) { alertFrequentRequests() }
+            if (event.status === 401) { GM_deleteValue("accessToken") ; chatGPTalert('login') }
+            if (event.status === 403) { chatGPTalert('checkCloudflare') }
+            if (event.status === 429) { chatGPTalert('tooManyRequests') }
             if (getUserscriptManager() !== "Tampermonkey") {
                 if (event.response) {
                     const answer = JSON.parse(event.response
@@ -185,7 +179,7 @@ function getAccessToken() {
                 url: "https://chat.openai.com/api/auth/session",
                 onload: function(response) {
                     if (isBlockedbyCloudflare(response.responseText)) {
-                        alertLogin() ; return }
+                        chatGPTalert('login') ; return }
                     var accessToken2 = JSON.parse(response.responseText).accessToken;
                     if (!accessToken2) { rejcet("UNAUTHORIZED") }
                     GM_setValue("accessToken", accessToken2)
@@ -215,18 +209,18 @@ document.head.appendChild(styleNode)
 async function main() {
 
         // Initialize container
-        var container2 = getContainer();
-        container2.className = "chatgpt-container";
-        container2.innerHTML = `<p class="loading">${i18n("waitingResponse")}</p>`;
+        var container2 = getContainer()
+        container2.className = "chatgpt-container"
+        chatGPTalert('waitingResponse')
 
         // Initialize feedback link
-        var container3 = document.createElement("div");
-        container3.className = "feedback-prompt chatgpt-feedback";
-        container3.innerHTML = `<a href="https://github.com/adamlui/userscripts/discussions/new/choose" class="feedback-prompt__link" target="_blank">Share Feedback</a>`;
+        var container3 = document.createElement("div")
+        container3.className = "feedback-prompt chatgpt-feedback"
+        container3.innerHTML = `<a href="https://github.com/adamlui/userscripts/discussions/new/choose" class="feedback-prompt__link" target="_blank">Share Feedback</a>`
 
         // Inject container + feedback link
-        var siderbarContainer = document.getElementsByClassName("results--sidebar")[0];
-        siderbarContainer.prepend(container2, container3);
-        getAnswer(new URL(window.location.href).searchParams.get("q"));
+        var siderbarContainer = document.getElementsByClassName("results--sidebar")[0]
+        siderbarContainer.prepend(container2, container3)
+        getAnswer(new URL(window.location.href).searchParams.get("q"))
 
 } ; main()
