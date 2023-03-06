@@ -15,7 +15,6 @@
 // @grant       GM_unregisterMenuCommand
 // @grant       GM_getResourceText
 // @grant       GM_getResourceURL
-// @grant       GM_openInTab
 // @grant       unsafeWindow
 // @run-at      document-start
 // @author      github.com @XiaoYingYo
@@ -94,14 +93,14 @@ channel.onmessage = function (e) {
     let data = message.data;
     if (code == 0001) {
         let primaryBtn = GlobalVariable["primaryBtn"];
-        let openInTab = GlobalVariable["openInTab"];
+        let openIframe = GlobalVariable["openIframe"];
         if (primaryBtn != null) {
             global_module.clickElement($(primaryBtn)[0]);
             primaryBtn = null;
         }
-        if (openInTab != null) {
-            openInTab.close();
-            openInTab = null;
+        if (openIframe != null) {
+            openIframe.remove();
+            openIframe = null;
         }
         MaskLayer.hide();
     }
@@ -130,10 +129,7 @@ async function MaskLayerDisappear() {
     });
 }
 
-async function OpenNewChatGPT(force) {
-    if (force == null) {
-        force = false;
-    }
+async function OpenNewChatGPTIniframe(force) { 
     if (!force) {
         if (GlobalVariable["NetworkErrorElement"] == null) {
             return;
@@ -153,12 +149,12 @@ async function OpenNewChatGPT(force) {
         }
         GlobalVariable["primaryBtn"] = await global_module.waitForElement("button[class*='btn-primary']", null, null, 100, -1, LastMessageElement);
     }
-    GlobalVariable["openInTab"] = GM_openInTab("https://chat.openai.com/", {
-        active: false,
-        insert: true,
-        setParent: true
-    });
-};
+    let iframe = document.createElement("iframe");
+    iframe.src = "https://chat.openai.com/";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    GlobalVariable["openIframe"] = iframe;
+}
 
 async function FindAndDealWith() {
     return new Promise(async (resolve) => {
@@ -171,7 +167,7 @@ async function FindAndDealWith() {
             return;
         }
         MaskLayer.show();
-        OpenNewChatGPT();
+        OpenNewChatGPTIniframe(false);
         resolve();
     });
 }
@@ -226,11 +222,11 @@ async function CheckInspection() {
         if (!Check) {
             if (!MaskLayerIsExist()) {
                 MaskLayer.show();
-                OpenNewChatGPT(true);
+                OpenNewChatGPTIniframe(true);
             }
             await MaskLayerDisappear();
         }
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await new Promise((resolve) => setTimeout(resolve, 8888));
     }
 }
 
