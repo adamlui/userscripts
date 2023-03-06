@@ -224,11 +224,11 @@ async function CheckInspection() {
     while (true) {
         let Check = await that.Inspection();
         if (!Check) {
-            if (MaskLayerIsExist()) {
+            if (!MaskLayerIsExist()) {
                 MaskLayer.show();
                 OpenNewChatGPT(true);
-                await MaskLayerDisappear();
             }
+            await MaskLayerDisappear();
         }
         await new Promise((resolve) => setTimeout(resolve, 5000));
     }
