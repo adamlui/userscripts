@@ -12,6 +12,10 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 Auto-clear your ChatGPT query history for maximum privacy. &nbsp;[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / [Readme](autoclear-chatgpt-history/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
+### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](bravegpt)
+
+Display ChatGPT answers in Brave Search sidebar. &nbsp;[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
