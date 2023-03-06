@@ -21,6 +21,8 @@
 // @author      github.com @XiaoYingYo
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
+// @icon        https://www.google.com/s2/favicons?sz=48&domain=openai.com
+// @icon64      https://www.google.com/s2/favicons?sz=64&domain=openai.com
 // @description 2023-3-6 13:25:06
 // ==/UserScript==
 
@@ -188,7 +190,7 @@ function isChatGPT() {
 
 async function CheckInspection() {
     let that = this;
-    let CheckURL = "/apple-touch-icon.png";
+    let CheckURL = "/chat";
     that.Inspection = async function () {
         return new Promise(async (resolve) => {
             let res = null;
@@ -197,12 +199,6 @@ async function CheckInspection() {
                     method: 'GET',
                     mode: 'no-cors',
                     cache: 'no-cache',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    redirect: 'follow',
-                    referrerPolicy: 'no-referrer',
                 });
             } catch (e) {
                 console.log(e);
@@ -211,11 +207,16 @@ async function CheckInspection() {
                 resolve(false);
                 return false;
             }
-            let type = res.headers.get("content-type");
-            if (type != "image/png") {
+            let status = res.status;
+            if (status != 200) {
                 resolve(false);
                 return false;
-            };
+            }
+            let html = await res.text();
+            if (html.indexOf(">Redirecting...</p>") != -1) {
+                resolve(false);
+                return false;
+            }
             resolve(true);
             return true;
         });
