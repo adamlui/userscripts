@@ -16,5 +16,10 @@ Auto-clear your ChatGPT query history for maximum privacy. &nbsp;[Install](https
 Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / [Readme](duckduckgpt/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 #
 
+### [ChatGPT Heartbeat](ChatGPT-Heartbeat)
+Best improvement of high -quality script using ChatGPT
+
+Make when sending messages to ChatGPT, if you encounter network errors, then use a new tab page and wait for loading to complete, and continue to send the news that has just sent a failure
+
 [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
