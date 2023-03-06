@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        ChatGPT Heartbeat
+// @name        Try Cloudflare Verify
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @grant       none
