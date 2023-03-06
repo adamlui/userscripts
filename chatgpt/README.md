@@ -14,7 +14,7 @@ Auto-clear your ChatGPT query history for maximum privacy. &nbsp;[Install](https
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](chatgpt-heartbeat)
 
-Keeps conversations flowing when network errors are encountered.
+Keeps conversations flowing when network errors are encountered. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png" width=17> [DuckDuckGPT](duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
