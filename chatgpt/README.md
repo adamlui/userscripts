@@ -24,7 +24,7 @@ Keeps conversations flowing when network errors are encountered. &nbsp;[Install]
 
 Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / [Readme](duckduckgpt/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-## Script links
+#
 
 <a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a>
@@ -35,4 +35,4 @@ Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfor
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
 [![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
 
-<a href="#chatgpt-userscripts-">Back to top ↑</a>
+
