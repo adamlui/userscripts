@@ -20,8 +20,7 @@ Display ChatGPT answers in Brave Search sidebar. &nbsp;[Install](https://bravegp
 
 Keeps conversations flowing when network errors are encountered. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> 
-[Try Cloudflare Verify](try-cloudflare-verify)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture>[Try Cloudflare Verify](try-cloudflare-verify)
 
 In the Cloudflare verification page, try to click the selection box and the button I am a human beings. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/try-cloudflare-verify/Try-Cloudflare-Verify.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
