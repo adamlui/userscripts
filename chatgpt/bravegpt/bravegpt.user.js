@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             BraveGPT 🤖
-// @version          2023.03.05
+// @version          2023.03.05.1
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to Brave Search sidebar
@@ -77,7 +77,7 @@ function getUserscriptManager() {
 // ANSWER functions
 
 function show(answer) {
-    chatGPTcontainer.innerHTML = `<span class="chatgpt-icon"><img width=25 src="https://i.imgur.com/8N4B3QE.png"></span><span class="prefix">ChatGPT</span><pre></pre>`
+    chatGPTcontainer.innerHTML = `<span class="chatgpt-icon"><img width=25 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/robot-emoji.png"></span><span class="prefix">ChatGPT</span><pre></pre>`
     chatGPTcontainer.querySelector('pre').textContent = answer
     chatGPTcontainer.appendChild(chatGPTfooter) // append feedback link
 }
