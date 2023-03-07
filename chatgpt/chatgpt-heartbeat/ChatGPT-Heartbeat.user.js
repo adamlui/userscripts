@@ -45,24 +45,7 @@ MaskLayer = {
 
 let GlobalVariable = {};
 
-unsafeWindow.getCommunicationID = function () {
-    if (unsafeWindow != unsafeWindow.parent) {
-        try {
-            return unsafeWindow.parent.getCommunicationID();
-        } catch (e) {
-            return null;
-        };
-    }
-    if (GlobalVariable["RandomString"] != null) {
-        return GlobalVariable["RandomString"];
-    }
-    GlobalVariable["RandomString"] = global_module.getRandomString();
-    return GlobalVariable["RandomString"];
-}
-
-let channel = new BroadcastChannel(unsafeWindow.getCommunicationID());
-
-channel.onmessage = function (e) {
+unsafeWindow["ChatGPTHeartbeat.user"].PostMessage = function (e) {
     let message = JSON.parse(e.data);
     if (typeof message == "string") {
         message = JSON.parse(message);
@@ -230,7 +213,9 @@ async function Main() {
     if (!isChatGPT()) {
         return;
     }
-    channel.postMessage(JSON.stringify({ "code": 0001, "data": {} }));
+    if (window != window.parent) {
+        unsafeWindow["ChatGPTHeartbeat.user"].postMessage(JSON.stringify({ "code": 0001, "data": {} }));
+    }
     CheckInspection();
     $(document).ready(async function () {
         errorToLog();
