@@ -44,12 +44,9 @@ MaskLayer = {
 }
 
 let GlobalVariable = {};
+unsafeWindow["ChatGPTHeartbeat.user.function"] = {};
 
-unsafeWindow["ChatGPTHeartbeat.user"].PostMessage = function (e) {
-    let message = JSON.parse(e.data);
-    if (typeof message == "string") {
-        message = JSON.parse(message);
-    }
+unsafeWindow["ChatGPTHeartbeat.user.function"]["PostMessage"] = function (message) {
     let code = message.code;
     let data = message.data;
     if (code == 0001) {
@@ -214,7 +211,7 @@ async function Main() {
         return;
     }
     if (window != window.parent) {
-        unsafeWindow["ChatGPTHeartbeat.user"].postMessage(JSON.stringify({ "code": 0001, "data": {} }));
+        unsafeWindow.parent["ChatGPTHeartbeat.user.function"].PostMessage({ "code": 0001, "data": {} });
     }
     CheckInspection();
     $(document).ready(async function () {
