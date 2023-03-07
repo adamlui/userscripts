@@ -147,9 +147,9 @@ async function OpenNewChatGPTIniframe(force) {
             await new Promise(async (resolve) => { setTimeout(resolve, 1000); });
             that.createiframe();
         });
+        GlobalVariable["openIframe"] = iframe;
     };
     that.createiframe();
-    GlobalVariable["openIframe"] = iframe;
 }
 
 async function FindAndDealWith() {
