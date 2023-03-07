@@ -24,6 +24,10 @@ Keeps conversations flowing when network errors are encountered. &nbsp;[Install]
 
 Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / [Readme](duckduckgpt/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
+### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Pass Cloudflare CAPTCHA](pass-cloudflare-captcha)
+
+Automatically verify your humanity during Cloudflare Turnstile challenges. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
 #
 
 <a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
@@ -34,5 +38,3 @@ Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfor
 [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
 [![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
-
-
