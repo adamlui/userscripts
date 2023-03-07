@@ -8,6 +8,12 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 
 ---
 
+### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](autopass-cloudflare-captcha)
+
+Automatically verify your humanity during Cloudflare Turnstile challenges / 在 Cloudflare Turnstile 挑战期间自动验证您的人性
+
+[Install](https://github.com/adamlui/userscripts/raw/master/autopass-cloudflare-captcha/autopass-cloudflare-captcha.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT logo" src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT scripts](chatgpt)
 
 Userscripts that utilize the astounding AI of ChatGPT / 利用 ChatGPT 惊人的 AI 的用户脚本
@@ -31,12 +37,6 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key / 使
 Userscripts for Amazon's Mechanical Turk / 亚马逊 Mechanical Turk 的用户脚本
 
 [View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
-
-### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Pass Cloudflare CAPTCHA](pass-cloudflare-captcha)
-
-Automatically verify your humanity during Cloudflare Turnstile challenges / 在 Cloudflare Turnstile 挑战期间自动验证您的人性
-
-[Install](https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic)
 
