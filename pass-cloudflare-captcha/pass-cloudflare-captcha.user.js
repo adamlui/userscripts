@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Pass Cloudflare CAPTCHA
 // @namespace    Violentmonkey Scripts
-// @match        *://chat.openai.com/*
+// @match        https://challenges.cloudflare.com/*
 // @grant        none
-// @version      2023.03.06.2
+// @version      2023.03.06.3
 // @grant        none
 // @run-at       document-start
 // @author       github.com @XiaoYingYo
