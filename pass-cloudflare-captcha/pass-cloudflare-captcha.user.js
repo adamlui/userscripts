@@ -1,17 +1,18 @@
 // ==UserScript==
-// @name        Try Cloudflare Verify
-// @namespace   Violentmonkey Scripts
-// @match       *://chat.openai.com/*
-// @grant       none
-// @version     2023.03.06
-// @grant       none
-// @run-at      document-start
-// @author      github.com @XiaoYingYo
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
-// @icon        https://www.google.com/s2/favicons?sz=48&domain=openai.com
-// @icon64      https://www.google.com/s2/favicons?sz=64&domain=openai.com
-// @description 2023-3-6 13:25:06
+// @name         Try Cloudflare Verify
+// @namespace    Violentmonkey Scripts
+// @match        *://chat.openai.com/*
+// @grant        none
+// @version      2023.03.06.1
+// @grant        none
+// @run-at       document-start
+// @author       github.com @XiaoYingYo
+// @require      https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
+// @require      https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
+// @icon         https://www.google.com/s2/favicons?sz=48&domain=openai.com
+// @icon64       https://www.google.com/s2/favicons?sz=64&domain=openai.com
+// @description  2023-3-6 13:25:06
+// @downloadURL  https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js
 // ==/UserScript==
 
 global_module = window["global_module"];
