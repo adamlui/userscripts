@@ -2,6 +2,7 @@
 // @name         Pass Cloudflare CAPTCHA
 // @namespace    Violentmonkey Scripts
 // @match        https://challenges.cloudflare.com/*
+// @match        https://chat.openai.com/*
 // @grant        none
 // @version      2023.03.06.3
 // @grant        none
