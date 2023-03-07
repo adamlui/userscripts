@@ -9,18 +9,27 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 ---
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT logo" src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT scripts](chatgpt)
+
 Userscripts that utilize the astounding AI of ChatGPT. &nbsp;[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](hide-forum-images)
+
 Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;[Install](https://greasyfork.org/scripts/12639) / [Readme](hide-forum-images/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](highlight-radio-bubbles)
+
 Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;[Install](https://greasyfork.org/scripts/26311) / [Readme](highlight-radio-bubbles/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](mturk)
+
 Userscripts for Amazon's Mechanical Turk. &nbsp;[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
+### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Pass Cloudflare CAPTCHA](pass-cloudflare-captcha)
+
+Automatically verify your humanity during Cloudflare Turnstile challenges. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic)
+
 Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts. &nbsp;[Install](https://greasyfork.org/en/scripts/456132) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
