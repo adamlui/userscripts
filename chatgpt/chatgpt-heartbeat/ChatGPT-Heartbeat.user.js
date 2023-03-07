@@ -35,7 +35,7 @@ MaskLayer = {
         if (MaskLayerIsExist()) {
             return;
         }
-        let html = "<div id='_MaskLayer_' style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999999999;'><div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 20px; font-weight: bold;'>ChatGPT Checking whether you are a man-machine, please wait a moment, we are providing you with a better user experience in automation</div></div>";
+        let html = "<div id='_MaskLayer_' style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999999999;'><div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 20px; font-weight: bold;'>ChatGPT Checking whether you are a man-machine, please wait a moment, we are providing you with a better user experience in automation<br>If you stay here for a long time, please refresh the page directly!<br><br>ChatGPT 正在检测您是不是人机,请稍等,我们正在自动化为您提供更好的用户体验<br>如果您久留,请直接刷新页面!</div></div>";
         $("body").eq(0).append(html);
     },
     hide: function () {
@@ -72,6 +72,7 @@ channel.onmessage = function (e) {
     if (code == 0001) {
         let primaryBtn = GlobalVariable["primaryBtn"];
         let openIframe = GlobalVariable["openIframe"];
+        let MainElement = GlobalVariable["MainElement"];
         if (primaryBtn != null) {
             global_module.clickElement($(primaryBtn)[0]);
             primaryBtn = null;
@@ -79,6 +80,10 @@ channel.onmessage = function (e) {
         if (openIframe != null) {
             openIframe.remove();
             openIframe = null;
+        }
+        if (MainElement != null) {
+            $(MainElement).show();
+            MainElement = null;
         }
         MaskLayer.hide();
     }
@@ -108,6 +113,8 @@ async function MaskLayerDisappear() {
 }
 
 async function OpenNewChatGPTIniframe(force) {
+    let that = this;
+    GlobalVariable["MainElement"] = await global_module.waitForElement("main[class^='relative ']", null, null, 100, -1);
     if (!force) {
         if (GlobalVariable["NetworkErrorElement"] == null) {
             return;
@@ -127,11 +134,21 @@ async function OpenNewChatGPTIniframe(force) {
         }
         GlobalVariable["primaryBtn"] = await global_module.waitForElement("button[class*='btn-primary']", null, null, 100, -1, LastMessageElement);
     }
-    let iframe = document.createElement("iframe");
-    iframe.src = "https://chat.openai.com/";
-    iframe.style.width = "100%";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
+    $(GlobalVariable["MainElement"]).hide();
+    that.createiframe = function () {
+        let iframe = document.createElement("iframe");
+        iframe.src = "https://chat.openai.com/";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.display = "block";
+        $(GlobalVariable["MainElement"]).after(iframe);
+        iframe.addEventListener("error", async function () {
+            iframe.remove();
+            await new Promise(async (resolve) => { setTimeout(resolve, 1000); });
+            that.createiframe();
+        });
+    };
+    that.createiframe();
     GlobalVariable["openIframe"] = iframe;
 }
 
