@@ -24,7 +24,7 @@ Keeps conversations flowing when network errors are encountered. &nbsp;[Install]
 
 Display ChatGPT answers in DuckDuckGo sidebar. &nbsp;[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / [Readme](duckduckgpt/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Pass Cloudflare CAPTCHA](pass-cloudflare-captcha)
+### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Pass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/pass-cloudflare-captcha)
 
 Automatically verify your humanity during Cloudflare Turnstile challenges. &nbsp;[Install](https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
