@@ -43,46 +43,24 @@ MaskLayer = {
     },
 }
 
-function getCookie(name, force) {
-    if (name == null || name.length == 0) {
-        return null;
-    }
-    if (!force) {
-        if (cookiescache[name] != null) {
-            return cookiescache[name];
-        }
-    }
-    let cookies = document.cookie;
-    let cookieArray = cookies.split(";");
-    for (let i = 0; i < cookieArray.length; i++) {
-        let kv = cookieArray[i].split("=");
-        cookiescache[kv[0].trim()] = kv[1];
-    }
-    return cookiescache[name];
-}
-
-function setCookie(name, value, expire) {
-    if (expire == null) {
-        expire = 10 * 365 * 24 * 60 * 60 * 1000;
-    }
-    let date = new Date();
-    date.setTime(date.getTime() + expire);
-    document.cookie = name + "=" + value + ";expires=" + date.toGMTString();
-    cookiescache[name] = value;
-}
-
-function getCommunicationID() {
-    let communicationID = getCookie("communicationID");
-    if (communicationID == null) {
-        communicationID = Math.random();
-        setCookie("communicationID", communicationID);
-    }
-    return communicationID;
-}
-
-let channel = new BroadcastChannel(getCommunicationID());
-
 let GlobalVariable = {};
+
+unsafeWindow.getCommunicationID = function () {
+    if (unsafeWindow != unsafeWindow.parent) {
+        try {
+            return unsafeWindow.parent.getCommunicationID();
+        } catch (e) {
+            return null;
+        };
+    }
+    if (GlobalVariable["RandomString"] != null) {
+        return GlobalVariable["RandomString"];
+    }
+    GlobalVariable["RandomString"] = global_module.getRandomString();
+    return GlobalVariable["RandomString"];
+}
+
+let channel = new BroadcastChannel(unsafeWindow.getCommunicationID());
 
 channel.onmessage = function (e) {
     let message = JSON.parse(e.data);
@@ -129,7 +107,7 @@ async function MaskLayerDisappear() {
     });
 }
 
-async function OpenNewChatGPTIniframe(force) { 
+async function OpenNewChatGPTIniframe(force) {
     if (!force) {
         if (GlobalVariable["NetworkErrorElement"] == null) {
             return;
@@ -151,6 +129,7 @@ async function OpenNewChatGPTIniframe(force) {
     }
     let iframe = document.createElement("iframe");
     iframe.src = "https://chat.openai.com/";
+    iframe.style.width = "100%";
     iframe.style.display = "none";
     document.body.appendChild(iframe);
     GlobalVariable["openIframe"] = iframe;
