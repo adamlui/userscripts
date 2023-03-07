@@ -4,14 +4,14 @@
 // @match        https://challenges.cloudflare.com/*
 // @match        https://chat.openai.com/*
 // @grant        none
-// @version      2023.03.06.3
+// @version      2023.03.06.4
 // @grant        none
 // @run-at       document-start
 // @author       github.com @XiaoYingYo
 // @require      https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
 // @require      https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
-// @icon         https://www.google.com/s2/favicons?sz=48&domain=openai.com
-// @icon64       https://www.google.com/s2/favicons?sz=64&domain=openai.com
+// @icon         https://www.google.com/s2/favicons?sz=48&domain=cloudflare.com
+// @icon64       https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com
 // @description  2023-3-6 13:25:06
 // @downloadURL  https://github.com/adamlui/userscripts/raw/master/pass-cloudflare-captcha/pass-cloudflare-captcha.user.js
 // ==/UserScript==
