@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name             ChatGPT Theater Mode
-// @version          2023.03.07
+// @version          2023.03.07.1
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
-// @description      Auto-clears chat history when visiting chat.openai.com
+// @description      Adds Theater + Full-Window modes to ChatGPT for enhanced viewing
 // @homepageURL      https://github.com/adamlui/userscripts
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
