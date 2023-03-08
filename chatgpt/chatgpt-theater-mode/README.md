@@ -38,6 +38,7 @@ Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。<br>
 [Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
+[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
