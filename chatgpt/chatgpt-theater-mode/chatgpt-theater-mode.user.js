@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Theater Mode
-// @version          2023.03.07.2
+// @version          2023.03.07.3
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -13,6 +13,7 @@
 // @icon64           https://www.google.com/s2/favicons?sz=64&domain=openai.com
 // @grant            none
 // @downloadURL      https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js
+// @updateURL        https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js
 // ==/UserScript==
 
 (function() {
