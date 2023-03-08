@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](../../LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi-989898.svg) 
 
-Auto-clears chat history when visiting chat.openai.com for maximum privacy.
+### Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 
 <a href="https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
