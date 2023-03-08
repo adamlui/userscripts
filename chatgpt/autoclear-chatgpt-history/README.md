@@ -41,6 +41,7 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 
 Adds Theater + Full-Window modes to ChatGPT for enhanced viewing. // 为 ChatGPT 添加 Theater + Full-Window 模式以增强观看效果。<br>
 [Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js) / 
+[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-theater-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
