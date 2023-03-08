@@ -32,7 +32,7 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 [Leave a review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
-<a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
+<a href="https://github.com/adamlui/userscripts/tree/master/chatgpt" target="_blank">More ChatGPT userscripts</a>
 
 #### Author links:
 
