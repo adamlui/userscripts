@@ -28,18 +28,37 @@ Auto-clears chat history when visiting chat.openai.com for maximum privacy.
 
 Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
-## Script links
-
-<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
+[Install this script](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history) / 
+[Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
-<a href="https://github.com/adamlui/userscripts/tree/master/chatgpt" target="_blank">More ChatGPT userscripts</a>
-
-#### Author links:
-
-[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a> [![GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20Tripp1e&style=social)](https://github.com/Tripp1e)
+[More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 *Special thanks to [Tripp1e](https://github.com/Tripp1e) for [requesting](https://github.com/adamlui/userscripts/issues/11) this functionality!*
+
+## Related scripts
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Theater Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-theater-mode)
+
+Adds Theater + Full-Window modes to ChatGPT for enhanced viewing. // 为 ChatGPT 添加 Theater + Full-Window 模式以增强观看效果。<br>
+[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js) / 
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
+
+Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。<br>
+[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
+
+Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。<br>
+[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+#
+
+[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
 
 
 <a href="#-autoclear-chatgpt-history-">Back to top ↑</a>
