@@ -34,8 +34,6 @@
 
 DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
-## Script links
-
 [Install this script](https://greasyfork.org/en/scripts/459849-duckduckgpt) / 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 [Leave a review](https://duckduckgpt.com/userscript/review) /
