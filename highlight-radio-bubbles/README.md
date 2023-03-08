@@ -1,6 +1,6 @@
 # <img width=24 src="https://i.imgur.com/ribh0wE.png"> Highlight Radio Bubbles &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles&hashtags=greasemonkey,userscripts,javascript)
 
-![license](https://img.shields.io/badge/License-MIT-green.svg)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key.
