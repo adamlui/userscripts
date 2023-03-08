@@ -41,7 +41,7 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tamp
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History]([autoclear-chatgpt-history](https://github.com/adamlui/userscripts/blob/master/chatgpt/autoclear-chatgpt-history))
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/blob/master/chatgpt/autoclear-chatgpt-history)
 
 Auto-clear your ChatGPT query history for maximum privacy. &nbsp;[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / [Readme]([autoclear-chatgpt-history/README.md](https://github.com/adamlui/userscripts/blob/master/chatgpt/autoclear-chatgpt-history/README.md)) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
