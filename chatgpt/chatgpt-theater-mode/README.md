@@ -4,7 +4,7 @@
 
 ### Adds Theater + Full-Window modes to ChatGPT for enhanced viewing.
 
-<a href="https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Review](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode/feedback#post-discussion) / 
@@ -20,9 +20,18 @@
 
 3. Visit [chat.openai.com](https://chat.openai.com) as normal & mode toggles are added to chatbar!
 
+<div align="center">
+
 ![Full-Window toggle](https://user-images.githubusercontent.com/10906554/223853489-d29244bb-0a67-4cf8-94dc-521398f1b261.png)
 
-[Install this script](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode) / 
+</div>
+
+## Compatibility
+
+ChatGPT Theater Mode is compatible with browsers when accessing chat.openai.com using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+
+<a href="https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode/feedback#post-discussion) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
