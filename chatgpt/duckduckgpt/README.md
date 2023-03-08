@@ -38,7 +38,7 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tamp
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 [Leave a review](https://duckduckgpt.com/userscript/review) /
-<a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
+<a href="https://github.com/adamlui/userscripts/tree/master/chatgpt">More ChatGPT userscripts</a>
 
 #### Mastodon links:
 
