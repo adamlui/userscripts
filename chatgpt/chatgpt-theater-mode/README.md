@@ -7,31 +7,32 @@ Adds Theater + Full-Window modes to ChatGPT for enhanced viewing.
 <a href="https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
+[Review](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode/feedback#post-discussion) / 
 [Contact author](https://elonsucks.org/@adam)
-
-#
-
+##
 ![Full-Window mode](https://user-images.githubusercontent.com/10906554/223853808-4de8e340-24a4-46c9-9764-3d20ce8c217a.png)
 
 ## Installation
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
 
-2. Install ChatGPT Theater Mode (will load in userscript manager installed above)
+2. Install [ChatGPT Theater Mode](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode) (will load in userscript manager installed above)
 
 3. Visit [chat.openai.com](https://chat.openai.com) as normal & mode toggles are added to chatbar!
 
 ![Full-Window toggle](https://user-images.githubusercontent.com/10906554/223853489-d29244bb-0a67-4cf8-94dc-521398f1b261.png)
 
+[Install this script](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
+[Leave a review](https://greasyfork.org/en/scripts/461473-chatgpt-theater-mode/feedback#post-discussion) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](autoclear-chatgpt-history)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
 
 Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私。
-<br>[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / [Readme](autoclear-chatgpt-history/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+<br>[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
 
