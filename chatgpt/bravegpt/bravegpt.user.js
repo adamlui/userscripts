@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             BraveGPT 🤖
-// @version          2023.03.05.1
+// @version          2023.03.07
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to Brave Search sidebar
@@ -18,6 +18,7 @@
 // @grant            GM.xmlHttpRequest
 // @grant            GM_cookie
 // @downloadURL      https://bravegpt.com/userscript/code/bravegpt.user.js
+// @updateURL        https://bravegpt.com/userscript/code/bravegpt.user.js
 // ==/UserScript==
 
 var GM_deleteValue = (() => GM.deleteValue)()
