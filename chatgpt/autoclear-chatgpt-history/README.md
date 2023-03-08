@@ -13,7 +13,6 @@
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/10906554/222903818-b621f0eb-74c2-4dff-ae1a-010305da327b.png)
 <img src="https://i.imgur.com/PpSiARF.png">
 
 ## Installation
@@ -22,18 +21,30 @@
 
 2. Install [Autoclear ChatGPT History](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history) (will load in userscript manager installed above)
 
-3. Visit [chat.openai.com](https://chat.openai.com) as normal & chat history is auto-cleared!
+3. Visit [chat.openai.com](https://chat.openai.com) as normal, and a toggle appears!
+
+<div align="center">
+
+![image](https://user-images.githubusercontent.com/10906554/222903818-b621f0eb-74c2-4dff-ae1a-010305da327b.png)
+
+</div>
 
 ## Compatibility
 
 Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
-[Install this script](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history) / 
+## Special thanks
+
+*Special thanks to [Tripp1e](https://github.com/Tripp1e) for [requesting](https://github.com/adamlui/userscripts/issues/11) this functionality!*
+
+<br>
+<a href="#"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<br>
+
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
-
-*Special thanks to [Tripp1e](https://github.com/Tripp1e) for [requesting](https://github.com/adamlui/userscripts/issues/11) this functionality!*
+<br>
 
 ## Related scripts
 
