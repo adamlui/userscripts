@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Theater Mode
-// @version          2023.03.08
+// @version          2023.03.09
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -73,7 +73,7 @@
         mutations.forEach(function(mutation) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
                 insertToggles()
-                if (!virginToggled) { // load keys to restore previous state
+                if (!virginToggled) { // load keys to restore previous session's state
                     if (localStorage.getItem('chatGPT_theater') == 'on') toggleMode('theater', 'ON')
                     if (localStorage.getItem('chatGPT_fullWindow') == 'on') toggleMode('fullWindow', 'ON')
                     virginToggled = true
@@ -109,9 +109,9 @@
     }
 
     function insertToggles() {
-        var chatBox = document.querySelector("form button[class*='bottom']").parentNode
-        if (!chatBox.contains(fullWindowButton)) { // insert toggles if missing
-            chatBox.append(fullWindowButton, theaterButton)
+        var chatbar = document.querySelector("form button[class*='bottom']").parentNode
+        if (!chatbar.contains(fullWindowButton)) { // if toggles missing from chatbar
+            chatbar.append(fullWindowButton, theaterButton) // add them
     }}
 
     function isModeON(mode) { // hard check to avoid faulty storage
@@ -120,12 +120,14 @@
     }
 
     function toggleMode(mode, state = '') {
-        var modeCSS = ( mode ==
-            'theater' ? '.text-base { max-width: 96% !important }' :
-            'fullWindow' ? sidebarClasses + '{ display: none }'
-                + sidepadClasses + '{ padding-left: 0px }' : '' )
-        var modeStyle = document.getElementById(mode + '-mode') // check if style node exists
-        if (state.toUpperCase() == 'ON' || !modeStyle ) {
+
+        var modeCSS = ( mode == // build CSS based on mode
+            'theater' ? '.text-base { max-width: 96% !important }' : // if Theater, expand txt to 96% of window
+            'fullWindow' ? sidebarClasses + '{ display: none }' // if Full-Window, hide sidebar...
+                + sidepadClasses + '{ padding-left: 0px }' : '' ) // + remove sidebar padding
+
+        var modeStyle = document.getElementById(mode + '-mode') // look for existing style node
+        if (state.toUpperCase() == 'ON' || !modeStyle ) { // if missing or ON-state passed
 
             // Activate mode
             modeStyle = document.createElement('style')
@@ -139,7 +141,7 @@
             localStorage.setItem('chatGPT_' + mode, 'off')
         }
 
-        updateSVG(mode) // to reflect change
+        updateSVG(mode) // to reflect change in button
     }
 
 })()
