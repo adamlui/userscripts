@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](../../LICENSE.md)
 
-Adds Theater + Full-Window modes to ChatGPT for enhanced viewing.
+### Adds Theater + Full-Window modes to ChatGPT for enhanced viewing.
 
 <a href="https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
