@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Theater Mode
-// @version          2023.03.09
+// @version          2023.03.10
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -122,7 +122,7 @@
     function toggleMode(mode, state = '') {
 
         var modeCSS = ( mode == // build CSS based on mode
-            'theater' ? '.text-base { max-width: 96% !important }' : // if Theater, expand txt to 96% of window
+            'theater' ? '.text-base { max-width: 96% !important }' : // if Theater, expand txt to 96% of txt window
             'fullWindow' ? sidebarClasses + '{ display: none }' // if Full-Window, hide sidebar...
                 + sidepadClasses + '{ padding-left: 0px }' : '' ) // + remove sidebar padding
 
