@@ -1,6 +1,6 @@
 # <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=23 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> ChatGPT Theater Mode &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Theater%20%26%20Full-Window%20modes%20were%20just%20added%20to%20ChatGPT%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-theater-modey&hashtags=greasemonkey,openai,chatgpt)
 
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](../../LICENSE.md)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
 
 ### Adds Theater + Full-Window modes to ChatGPT for enhanced viewing.
 
