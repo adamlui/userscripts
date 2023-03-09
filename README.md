@@ -1,5 +1,5 @@
 # Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
-MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts. // MTurk、ChatGPT 和其他 Greasemonkey 用户脚本。 运行这些脚本需要一个用户脚本管理器，例如 [Tampermonkey](https://www.tampermonkey.net/)。
+MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts. // MTurk、ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
 [![stars](https://img.shields.io/github/stars/adamlui/userscripts)](https://github.com/adamlui/userscripts/stargazers)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
@@ -35,7 +35,7 @@ Userscripts for Amazon's Mechanical Turk // 亚马逊 Mechanical Turk 的用户�
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic)
 
-Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts // 将 YouTube 恢复为经典设计（在所有圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts
+Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts // 将 YouTube 恢复为经典设计(在所有圆角和隐藏的不喜欢之前)+ 重定向 YouTube Shorts
 <br>[Install](https://greasyfork.org/en/scripts/456132) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
