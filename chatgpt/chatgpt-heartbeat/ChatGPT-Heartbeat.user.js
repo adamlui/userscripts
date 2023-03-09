@@ -146,7 +146,10 @@ async function FindPrimaryBtn(NetworkErrorElement) {
         for (let i = 0; i < buttons.length; i++) {
             let button = buttons.eq(i);
             let classStr = button.attr("class");
-            if (classStr.indexOf("rounded-md") != -1) {
+            let title = button.attr("title") || "";
+            let svg = button.find("svg").eq(0);
+            let svg_stroke = svg.attr("stroke-linejoin") || "";
+            if (classStr.indexOf("rounded-md") != -1 && title == "" && svg_stroke == "round") {
                 button.click();
                 break;
             }
@@ -163,7 +166,7 @@ async function FindAndDealWith() {
         await MaskLayerDisappear();
         let NetworkErrorElement = await FindNetworkErrorElement(true);
         let Check = await PassTest();
-        if (!Check) {
+        if (Check) {
             // Explain that this NetworkErrorElement does not prompt a network error, but other related red warnings. In order to prevent repeated discovery of NetworkErrorElement, its `class` feature should be changed so that it does not meet the conditions.
             // 说明这个 NetworkErrorElement 并不是提示网络错误,而是其他相关的红色警告,为了防止重复找到 NetworkErrorElement,应该改变它的`类`特征,使它不符合条件成立
             NetworkErrorElement.attr("class", NetworkErrorElement.attr("class").replace("-red-", "-"));
