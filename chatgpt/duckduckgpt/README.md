@@ -59,7 +59,7 @@ Display ChatGPT answers in Brave Search sidebar. &nbsp;
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
 
-Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 为 ChatGPT 添加 Widescreen + Full-Window 模式以增强观看效果。
+Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
