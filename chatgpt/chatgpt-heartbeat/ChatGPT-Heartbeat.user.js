@@ -44,6 +44,8 @@ MaskLayer = {
 }
 
 let GlobalVariable = {};
+GlobalVariable["NetworkErrorClass"] = "flex flex-col items-start gap-4 whitespace-pre-wrap flex flex-row gap-2 text-red-500";
+
 unsafeWindow["ChatGPTHeartbeat.user.function"] = {};
 
 unsafeWindow["ChatGPTHeartbeat.user.function"]["PostMessage"] = function (message) {
@@ -56,7 +58,22 @@ unsafeWindow["ChatGPTHeartbeat.user.function"]["PostMessage"] = function (messag
         if (primaryBtn != null) {
             global_module.clickElement($(primaryBtn)[0]);
             primaryBtn = null;
-        }
+        } else {
+            (async function () {
+                let NetworkErrorElement = await FindNetworkErrorElement(false);
+                if (NetworkErrorElement == null) {
+                    return;
+                }
+                if (!StringConditionIsTrue(NetworkErrorElement)) {
+                    return;
+                }
+                let primaryBtn = await FindPrimaryBtn(NetworkErrorElement);
+                if (primaryBtn == null) {
+                    return;
+                }
+                global_module.clickElement($(primaryBtn)[0]);
+            })();
+        };
         if (openIframe != null) {
             openIframe.remove();
             openIframe = null;
@@ -96,23 +113,7 @@ async function OpenNewChatGPTIniframe(force) {
     let that = this;
     GlobalVariable["MainElement"] = await global_module.waitForElement("main[class^='relative ']", null, null, 100, -1);
     if (!force) {
-        if (GlobalVariable["NetworkErrorElement"] == null) {
-            return;
-        }
-        let w_full = "div[class^='w-full']";
-        let LastMessageParent = $(GlobalVariable["NetworkErrorElement"]).parents(w_full).eq(0);
-        GlobalVariable["NetworkErrorElement"] = null;
-        let LastMessageElement = $(LastMessageParent).prev(w_full).eq(0);
-        let buttons = $(LastMessageElement).find("button");
-        for (let i = 0; i < buttons.length; i++) {
-            let button = buttons.eq(i);
-            let classStr = button.attr("class");
-            if (classStr.indexOf("rounded-md") != -1) {
-                button.click();
-                break;
-            }
-        }
-        GlobalVariable["primaryBtn"] = await global_module.waitForElement("button[class*='btn-primary']", null, null, 100, -1, LastMessageElement);
+        await FindPrimaryBtn();
     }
     $(GlobalVariable["MainElement"]).hide();
     that.createiframe = function () {
@@ -132,13 +133,39 @@ async function OpenNewChatGPTIniframe(force) {
     that.createiframe();
 }
 
+async function FindPrimaryBtn(NetworkErrorElement) {
+    return new Promise(async (resolve) => {
+        if (NetworkErrorElement == null) {
+            NetworkErrorElement = GlobalVariable["NetworkErrorElement"];
+        }
+        if (NetworkErrorElement == null) {
+            resolve(null);
+            return null;
+        }
+        let w_full = "div[class^='w-full']";
+        let LastMessageParent = $(NetworkErrorElement).parents(w_full).eq(0);
+        let LastMessageElement = $(LastMessageParent).prev(w_full).eq(0);
+        let buttons = $(LastMessageElement).find("button");
+        for (let i = 0; i < buttons.length; i++) {
+            let button = buttons.eq(i);
+            let classStr = button.attr("class");
+            if (classStr.indexOf("rounded-md") != -1) {
+                button.click();
+                break;
+            }
+        }
+        let primaryBtn = await global_module.waitForElement("button[class*='btn-primary']", null, null, 100, -1, LastMessageElement);
+        primaryBtn = $(primaryBtn).eq(0);
+        GlobalVariable["primaryBtn"] = primaryBtn;
+        resolve(primaryBtn);
+    });
+}
+
 async function FindAndDealWith() {
     return new Promise(async (resolve) => {
         await MaskLayerDisappear();
-        let NetworkErrorClass = "flex flex-col items-start gap-4 whitespace-pre-wrap flex flex-row gap-2 text-red-500";
-        GlobalVariable["NetworkErrorElement"] = await global_module.waitForElement("div[class*='" + NetworkErrorClass + "']", null, null, 500, -1);
-        let Text = $(GlobalVariable["NetworkErrorElement"]).html();
-        if (Text.indexOf("help.") == -1 || Text.indexOf(".com") == -1) {
+        let NetworkErrorElement = await FindNetworkErrorElement(true);
+        if (!StringConditionIsTrue(NetworkErrorElement)) {
             resolve();
             return;
         }
@@ -146,6 +173,31 @@ async function FindAndDealWith() {
         OpenNewChatGPTIniframe(false);
         resolve();
     });
+}
+
+function StringConditionIsTrue(NetworkErrorElement) {
+    let text = $(NetworkErrorElement).text();
+    let html = $(NetworkErrorElement).html();
+    if (html.indexOf("help.") != -1 && html.indexOf(".com") != -1) {
+        return true;
+    }
+    if (text.indexOf("network error") != -1) {
+        return true;
+    }
+    return false;
+}
+
+async function FindNetworkErrorElement(wait) {
+    let timeOut = 1000;
+    if (wait) {
+        timeOut = -1;
+    }
+    let Element = await global_module.waitForElement("div[class*='" + GlobalVariable["NetworkErrorClass"] + "']", null, null, 500, timeOut);
+    if (Element == null) {
+        return null;
+    }
+    GlobalVariable["NetworkErrorElement"] = Element;
+    return Element;
 }
 
 function isChatGPT() {
