@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name             ChatGPT Theater Mode
-// @version          2023.03.10
+// @name             ChatGPT Widescreen Mode 🖥️
+// @version          2023.03.09
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
