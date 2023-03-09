@@ -85,7 +85,7 @@ var clearObserver = new MutationObserver(function (mutations) {
 })
 
 if (GM_getValue('chatGPT_autoclear', false)) {
-    clearObserver.observe(document, { childList: true, subtree: true })
+    clearObserver.observe(document, { childList: true, subtree: true });
 }
 
 // Functions
