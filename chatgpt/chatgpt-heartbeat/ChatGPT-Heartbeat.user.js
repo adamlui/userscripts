@@ -64,9 +64,6 @@ unsafeWindow["ChatGPTHeartbeat.user.function"]["PostMessage"] = function (messag
                 if (NetworkErrorElement == null) {
                     return;
                 }
-                if (!StringConditionIsTrue(NetworkErrorElement)) {
-                    return;
-                }
                 let primaryBtn = await FindPrimaryBtn(NetworkErrorElement);
                 if (primaryBtn == null) {
                     return;
@@ -165,7 +162,11 @@ async function FindAndDealWith() {
     return new Promise(async (resolve) => {
         await MaskLayerDisappear();
         let NetworkErrorElement = await FindNetworkErrorElement(true);
-        if (!StringConditionIsTrue(NetworkErrorElement)) {
+        let Check = await PassTest();
+        if (!Check) {
+            // Explain that this NetworkErrorElement does not prompt a network error, but other related red warnings. In order to prevent repeated discovery of NetworkErrorElement, its `class` feature should be changed so that it does not meet the conditions.
+            // 说明这个 NetworkErrorElement 并不是提示网络错误,而是其他相关的红色警告,为了防止重复找到 NetworkErrorElement,应该改变它的`类`特征,使它不符合条件成立
+            NetworkErrorElement.attr("class", NetworkErrorElement.attr("class").replace("-red-", "-"));
             resolve();
             return;
         }
@@ -173,18 +174,6 @@ async function FindAndDealWith() {
         OpenNewChatGPTIniframe(false);
         resolve();
     });
-}
-
-function StringConditionIsTrue(NetworkErrorElement) {
-    let text = $(NetworkErrorElement).text();
-    let html = $(NetworkErrorElement).html();
-    if (html.indexOf("help.") != -1 && html.indexOf(".com") != -1) {
-        return true;
-    }
-    if (text.indexOf("network error") != -1) {
-        return true;
-    }
-    return false;
 }
 
 async function FindNetworkErrorElement(wait) {
@@ -212,41 +201,41 @@ function isChatGPT() {
     return false;
 }
 
-async function CheckInspection() {
-    let that = this;
+async function PassTest() {
     let CheckURL = "/chat";
-    that.Inspection = async function () {
-        return new Promise(async (resolve) => {
-            let res = null;
-            try {
-                res = await fetch(CheckURL, {
-                    method: 'GET',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                });
-            } catch (e) {
-                console.log(e);
-            }
-            if (res == null) {
-                resolve(false);
-                return false;
-            }
-            let status = res.status;
-            if (status != 200) {
-                resolve(false);
-                return false;
-            }
-            let html = await res.text();
-            if (html.indexOf(">Redirecting...</p>") != -1) {
-                resolve(false);
-                return false;
-            }
-            resolve(true);
-            return true;
-        });
-    };
+    return new Promise(async (resolve) => {
+        let res = null;
+        try {
+            res = await fetch(CheckURL, {
+                method: 'GET',
+                mode: 'no-cors',
+                cache: 'no-cache',
+            });
+        } catch (e) {
+            console.log(e);
+        }
+        if (res == null) {
+            resolve(false);
+            return false;
+        }
+        let status = res.status;
+        if (status != 200) {
+            resolve(false);
+            return false;
+        }
+        let html = await res.text();
+        if (html.indexOf(">Redirecting...</p>") != -1) {
+            resolve(false);
+            return false;
+        }
+        resolve(true);
+        return true;
+    });
+}
+
+async function CheckInspection() {
     while (true) {
-        let Check = await that.Inspection();
+        let Check = await PassTest();
         if (!Check) {
             if (!MaskLayerIsExist()) {
                 MaskLayer.show();
