@@ -128,7 +128,7 @@ async function OpenNewChatGPTIniframe(force) {
         }
         let interval = setInterval(() => {
             try {
-                let href = $("iframe")[0].contentWindow.location.href;
+                let href = $(iframe)[0].contentWindow.location.href;
                 if (href == null) {
                     that.reset();
                 }
@@ -139,7 +139,7 @@ async function OpenNewChatGPTIniframe(force) {
                     that.reset();
                 }
             }
-        }, 100);
+        }, 5000);
         GlobalVariable["openIframe"] = iframe;
     };
     that.createiframe();
