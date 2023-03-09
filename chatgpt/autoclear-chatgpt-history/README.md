@@ -47,7 +47,7 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
 
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。<br>
-[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-widescreen-mode/chatgpt-widescreen-mode.user.js) / 
+[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
