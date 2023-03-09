@@ -137,7 +137,7 @@ async function FindAndDealWith() {
         await MaskLayerDisappear();
         let NetworkErrorClass = "flex flex-col items-start gap-4 whitespace-pre-wrap flex flex-row gap-2 text-red-500";
         GlobalVariable["NetworkErrorElement"] = await global_module.waitForElement("div[class*='" + NetworkErrorClass + "']", null, null, 500, -1);
-        let Text = $(NetworkErrorElement).html();
+        let Text = $(GlobalVariable["NetworkErrorElement"]).html();
         if (Text.indexOf("help.") == -1 || Text.indexOf(".com") == -1) {
             resolve();
             return;
