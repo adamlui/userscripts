@@ -114,17 +114,32 @@ async function OpenNewChatGPTIniframe(force) {
     }
     $(GlobalVariable["MainElement"]).hide();
     that.createiframe = function () {
+        let that = this;
         let iframe = document.createElement("iframe");
         iframe.src = "https://chat.openai.com/";
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.display = "block";
         $(GlobalVariable["MainElement"]).after(iframe);
-        iframe.addEventListener("error", async function () {
+        that.reset = async function () {
             iframe.remove();
             await new Promise(async (resolve) => { setTimeout(resolve, 1000); });
             that.createiframe();
-        });
+        }
+        let interval = setInterval(() => {
+            try {
+                let href = $("iframe")[0].contentWindow.location.href;
+                if (href == null) {
+                    that.reset();
+                }
+            } catch (e) {
+                let ee = e.toString();
+                if (ee.indexOf("Blocked a frame with origin") != -1 && ee.indexOf("from accessing a cross-origin frame") != -1) {
+                    clearInterval(interval);
+                    that.reset();
+                }
+            }
+        }, 100);
         GlobalVariable["openIframe"] = iframe;
     };
     that.createiframe();
