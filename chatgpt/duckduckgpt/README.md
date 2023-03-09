@@ -17,8 +17,10 @@
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
 [Contact author](https://elonsucks.org/@adam)
-##
-<img src="https://i.imgur.com/IIVJ7Bc.png">
+
+#
+
+<img src="https://i.imgur.com/emsmP6p.png">
 
 ## Installation
 
