@@ -44,24 +44,24 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tamp
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/blob/master/chatgpt/autoclear-chatgpt-history)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
 
 Auto-clear your ChatGPT query history for maximum privacy. &nbsp;
 [Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / 
-[Readme]([autoclear-chatgpt-history/README.md](https://github.com/adamlui/userscripts/blob/master/chatgpt/autoclear-chatgpt-history/README.md)) / 
+[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
+### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt)
 
 Display ChatGPT answers in Brave Search sidebar. &nbsp;
 [Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Theater Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-theater-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
 
-Adds Theater + Full-Window modes to ChatGPT for enhanced viewing. // 为 ChatGPT 添加 Theater + Full-Window 模式以增强观看效果。
-<br>[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-theater-mode/chatgpt-theater-mode.user.js) / 
-[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-theater-mode/README.md) / 
+Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 为 ChatGPT 添加 Widescreen + Full-Window 模式以增强观看效果。
+<br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
+[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
