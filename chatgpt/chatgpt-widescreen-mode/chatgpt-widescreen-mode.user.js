@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09
+// @version          2023.03.09.1
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
-// @description      Adds Theater + Full-Window modes to ChatGPT for enhanced viewing
+// @description      Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling
 // @homepageURL      https://github.com/adamlui/userscripts
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
@@ -12,8 +12,8 @@
 // @icon             https://www.google.com/s2/favicons?sz=48&domain=openai.com
 // @icon64           https://www.google.com/s2/favicons?sz=64&domain=openai.com
 // @grant            none
-// @downloadURL      https://greasyfork.org/scripts/461473/code/chatgpt-theater-mode.user.js
-// @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-theater-mode.meta.js
+// @downloadURL      https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.user.js
+// @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
 // ==/UserScript==
 
 (function() {
