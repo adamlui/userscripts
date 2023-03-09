@@ -11,9 +11,9 @@
 [Review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
 
-## Screenshots
+#
 
-<img src="https://i.imgur.com/PpSiARF.png">
+![imageedit_1_7666612425](https://user-images.githubusercontent.com/10906554/223881135-dacad119-a10a-4f7c-9ca1-e5286691003f.png)
 
 ## Installation
 
