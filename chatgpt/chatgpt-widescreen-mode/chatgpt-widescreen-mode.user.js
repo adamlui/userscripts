@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.4
+// @version          2023.03.09.5
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -123,13 +123,13 @@
     }
 
     function updateSVG(mode) {
-        var button = mode == 'wideScreen' ? wideScreenButton : fullWindowButton
-        var ONpaths = mode == 'wideScreen' ? wideScreenONpaths : fullWindowONpaths
-        var OFFpaths = mode == 'wideScreen' ? wideScreenOFFpaths : fullWindowOFFpaths
+        var [button, ONpaths, OFFpaths] = ( mode ==
+            'wideScreen' ? [ wideScreenButton, wideScreenONpaths, wideScreenOFFpaths]
+                         : [ fullWindowButton, fullWindowONpaths, fullWindowOFFpaths] )
 
         // Initialize rem margin offset vs. OpenAI's .mr-1 for hover overlay centeredness
-        var lMargin = mode == 'wideScreen' ? .11 : .12
-        var rMargin = (.25 - lMargin)
+        var lMargin = mode == 'wideScreen' ? 0.11 : 0.12
+        var rMargin = (0.25 - lMargin)
 
         // Update SVG
         button.innerHTML = '<svg '
