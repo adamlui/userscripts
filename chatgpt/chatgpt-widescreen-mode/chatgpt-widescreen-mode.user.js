@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.7
+// @version          2023.03.09.8
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -48,7 +48,7 @@
     wideScreenStyle.id = 'wideScreen-mode' // for toggleMode()
     wideScreenStyle.innerHTML = '.text-base { max-width: 96% !important }'
 
-    // Create full window style
+    // Create full-window style
     var fullWindowStyle = document.createElement('style')
     fullWindowStyle.id = 'fullWindow-mode' // for toggleMode()
     fullWindowStyle.innerHTML = sidebarClasses + '{ display: none }' // hide sidebar
@@ -84,13 +84,13 @@
     wideScreenButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
     wideScreenButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
 
-    // Create full window button & add classes/SVG/position/listeners
+    // Create full-window button & add classes/SVG/position/listeners
     var fullWindowButton = document.createElement('button') // create button
     fullWindowButton.id = 'fullWindow-button' // for toggleTooltip()
     fullWindowButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     updateSVG('fullWindow') // insert SVG
     fullWindowButton.style.cssText = 'right: 2.17rem' // position left of wide screen button
-    fullWindowButton.addEventListener('click', () => { // on clicks
+    fullWindowButton.addEventListener( 'click', () => { // on clicks
         if (!document.getElementById('fullWindow-mode')) { // if not full-window
             toggleMode('wideScreen', 'ON') } // then make fuller screen
         toggleMode('fullWindow') }) // but toggle full-window in any case
@@ -101,16 +101,15 @@
 
     // Monitor node changes to maintain button visibility + auto-toggle once
     var prevSessionChecked = false
-    var navObserver = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                insertToggles()
-                if (!prevSessionChecked) { // load keys to restore previous session's state
-                    if (localStorage.getItem('chatGPT_wideScreen') == 'on') toggleMode('wideScreen', 'ON')
-                    if (localStorage.getItem('chatGPT_fullWindow') == 'on') toggleMode('fullWindow', 'ON')
-                    prevSessionChecked = true
-                }
-    }})})
+    var navObserver = new MutationObserver( ([{addedNodes, type}]) => {
+        if (type === 'childList' && addedNodes.length) {
+            insertToggles()
+            if (!prevSessionChecked) { // load keys to restore previous session's state
+                if (localStorage.getItem('chatGPT_wideScreen') == 'on') toggleMode('wideScreen', 'ON')
+                if (localStorage.getItem('chatGPT_fullWindow') == 'on') toggleMode('fullWindow', 'ON')
+                prevSessionChecked = true;
+            }
+        }})
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
 
