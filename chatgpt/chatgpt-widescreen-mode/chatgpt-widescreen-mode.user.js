@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.3
+// @version          2023.03.09.4
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -143,9 +143,9 @@
 
     function insertToggles() {
         var chatbar = document.querySelector("form button[class*='bottom']").parentNode
-        if (!chatbar.contains(fullWindowButton)) { // if toggles missing from chatbar
-            chatbar.append(fullWindowButton, wideScreenButton, tooltipDiv) // add them + tooltip
-    }}
+        chatbar.contains(fullWindowButton) ? '' // if toggles aren't missing, exit
+            : chatbar.append(fullWindowButton, wideScreenButton, tooltipDiv) // otherwise add them + tooltip
+    }
 
     function toggleMode(mode, state = '') {
         var modeStyle = document.getElementById(mode + '-mode') // look for existing style node
