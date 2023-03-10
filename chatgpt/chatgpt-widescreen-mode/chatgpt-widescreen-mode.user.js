@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.2
+// @version          2023.03.09.3
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -20,16 +20,16 @@
 
     var tooltips = {
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
-        fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode',
-        sendButton: 'Send message'
-    }
+        fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode' }
+
+	// Initialize mode states for updateTooltips() in case auto-toggle never triggers
+    var wideScreenState = 'off', fullWindowState = 'off'
 
     // Create/stylize tooltip div
     var tooltipDiv = document.createElement('div')
     tooltipDiv.classList.add('toggle-tooltip')
     var tooltipStyle = document.createElement('style')
-    tooltipStyle.innerHTML = `
-        .toggle-tooltip {
+    tooltipStyle.innerHTML = `.toggle-tooltip {
             /* Box style */   background: black ; padding: 5px ; border-radius: 5px ;
             /* Font style */  font-size: 0.7rem ; color: white ;
             /* Visibility */  position: absolute ; top: -22px ; opacity: 0 ; transition: opacity 0.1s ; z-index: 9999 }`
@@ -45,16 +45,16 @@
 
     // Create wide screen style
     var wideScreenStyle = document.createElement('style')
-    wideScreenStyle.id = 'wideScreen-mode' // for isModeOn()
+    wideScreenStyle.id = 'wideScreen-mode' // for toggleMode()
     wideScreenStyle.innerHTML = '.text-base { max-width: 96% !important }'
 
     // Create full window style
     var fullWindowStyle = document.createElement('style')
-    fullWindowStyle.id = 'fullWindow-mode' // for isModeOn()
+    fullWindowStyle.id = 'fullWindow-mode' // for toggleMode()
     fullWindowStyle.innerHTML = sidebarClasses + '{ display: none }' // hide sidebar
                               + sidepadClasses + '{ padding-left: 0px }' // remove side padding
 
-    // Define SVG viewbox/paths
+    // Define SVG viewbox + paths
     var svgViewBox = '8 8 ' // move to XY coords to crop whitespace
                    + '20 20' // shrink to 20x20 to match Send button size
     var wideScreenONpaths = `
@@ -100,15 +100,15 @@
     insertToggles() // on page load
 
     // Monitor node changes to maintain button visibility + auto-toggle once
-    var iniStateChecked = false, wideScreenState, fullWindowState
+    var prevSessionChecked = false
     var navObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
                 insertToggles()
-                if (!iniStateChecked) { // load keys to restore previous session's state
+                if (!prevSessionChecked) { // load keys to restore previous session's state
                     if (localStorage.getItem('chatGPT_wideScreen') == 'on') toggleMode('wideScreen', 'ON')
                     if (localStorage.getItem('chatGPT_fullWindow') == 'on') toggleMode('fullWindow', 'ON')
-                    iniStateChecked = true
+                    prevSessionChecked = true
                 }
     }})})
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
@@ -147,7 +147,6 @@
             chatbar.append(fullWindowButton, wideScreenButton, tooltipDiv) // add them + tooltip
     }}
 
-    var wideScreenState = 'off', fullWindowState = 'off'
     function toggleMode(mode, state = '') {
         var modeStyle = document.getElementById(mode + '-mode') // look for existing style node
         if (state.toUpperCase() == 'ON' || !modeStyle ) { // if missing or ON-state passed
@@ -162,12 +161,10 @@
     }
 
     function toggleTooltip() {
-        if (event.type === 'mouseover') {
-            var [buttonType, modeState] = ( event.target.id.includes('wide') ?
-                ['wideScreen', wideScreenState] : ['fullWindow', fullWindowState] )
-            updateTooltip(buttonType, modeState)
-            tooltipDiv.style.opacity = '0.8' // make visible
-        } else { tooltipDiv.style.opacity = '0' }
+        var [buttonType, modeState] = ( event.target.id.includes('wide') ?
+            ['wideScreen', wideScreenState] : ['fullWindow', fullWindowState] )
+        updateTooltip(buttonType, modeState) // since mouseover's can indicate change
+        tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
     }
 
     function updateTooltip(buttonType, modeState) { // text & position
