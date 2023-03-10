@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.5
+// @version          2023.03.09.6
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -117,9 +117,8 @@
     // Functions
 
     function classListToCSS(classList) { // convert DOM classList to single CSS selector
-        return '.' + classList.toString() // prepend dot to converted string
-            .replace(/ /g, '.') // concatenate classes w/ dots
-            .replace(/([:\[\]])/g, '\\$1') // escape CSS special chars
+        return '.' + [...classList].join('.') // prepend dot to dot-separated string
+            .replaceAll(/([:\[\]])/g, '\\$1') // escape CSS special chars
     }
 
     function updateSVG(mode) {
