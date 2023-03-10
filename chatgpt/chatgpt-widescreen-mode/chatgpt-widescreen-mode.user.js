@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.8
+// @version          2023.03.09.9
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -36,7 +36,6 @@
     document.head.appendChild(tooltipStyle)
 
     // Collect OpenAI classes/colors
-    var sendButton = document.querySelector('form button[class*="bottom"]')
     var sendButtonColor = 'currentColor' // changes w/ scheme
     var sendButtonClasses = document.querySelector('form button[class*="bottom"]').classList
     var sendSVGclasses = document.querySelector('form button[class*="bottom"] > svg').classList
