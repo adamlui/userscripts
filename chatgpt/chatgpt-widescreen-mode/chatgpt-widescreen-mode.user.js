@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.09.6
+// @version          2023.03.09.7
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -22,7 +22,7 @@
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
         fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode' }
 
-	// Initialize mode states for updateTooltips() in case auto-toggle never triggers
+    // Initialize mode states for updateTooltips() in case auto-toggle never triggers
     var wideScreenState = 'off', fullWindowState = 'off'
 
     // Create/stylize tooltip div
@@ -171,7 +171,7 @@
         var ctrAddend = 17, overlayWidth = 30
         var iniRoffset = overlayWidth * ( buttonType.includes('Window') ? 1 : 2 ) + ctrAddend
         tooltipDiv.style.right = `${ // horizontal position
-                iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
+            iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
 
 })()
