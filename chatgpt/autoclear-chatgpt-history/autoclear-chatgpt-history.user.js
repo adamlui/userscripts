@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.11.1
+// @version          2023.03.11.2
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -76,7 +76,7 @@ var clearObserver = new MutationObserver(function(mutations) {
         // Also disconnect after 5sec to avoid clearing new chats // 还要在5秒后断开连接,以避免清除新的频道
         setTimeout(function() { clearObserver.disconnect() }, 5000)
 })
-if (loadSetting('autoclear') === true) {
+if (config.autoclear) {
     clearObserver.observe(document, {childList: true, subtree: true}) }
 
 
@@ -89,7 +89,7 @@ function updateToggleHTML() {
         <label class="switch" ><input id="autoclearToggle" type="checkbox"
             ${ config.autoclear ? "checked='true'" : ""} >
             <span class="slider"></span></label>`
-    toggleLabel.style.display = config.autoclear ? 'none' : 'flex'
+    toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex'
 }
 
 function insertToggle() {
