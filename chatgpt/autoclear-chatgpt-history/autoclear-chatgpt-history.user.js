@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.11
+// @version          2023.03.11.1
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -21,15 +21,18 @@
 // @run-at           document-end
 // @grant            GM_setValue
 // @grant            GM_getValue
+// @grant            GM_registerMenuCommand
+// @grant            GM_unregisterMenuCommand
 // @updateURL        https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.meta.js
 // @downloadURL      https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.user.js
 // ==/UserScript==
 
-// Load settings
-var config = {} ; loadSetting('autoclear', 'toggleHidden')
+// Initialize script
+var config = {} ; loadSetting('autoclear', 'toggleHidden') // load settings
+registerMenu() // load toggle visiblity menu
 
 // Stylize toggle switch
-var switchStyle = document.createElement('style')
+var switchStyle = document.createElement('style');
 switchStyle.innerHTML = `/* Stylize switch */
         .switch { position:absolute ; right:22px ; width:34px ; height:18px }
         .switch input { opacity:0 ; width:0 ; height:0 } /* hide checkbox */
@@ -82,11 +85,11 @@ if (loadSetting('autoclear') === true) {
 function updateToggleHTML() {
     toggleLabel.innerHTML = `
         <img width="18px" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/autoclear-chatgpt-history/navicon.png">
-        Auto-clear ${ config['autoclear'] ? 'enabled' : 'disabled' }
+        Auto-clear ${ config.autoclear ? 'enabled' : 'disabled' }
         <label class="switch" ><input id="autoclearToggle" type="checkbox"
-            ${ config['autoclear'] ? "checked='true'" : ""} >
+            ${ config.autoclear ? "checked='true'" : ""} >
             <span class="slider"></span></label>`
-    toggleLabel.style.display = config['toggleHidden'] ? 'none' : 'flex'
+    toggleLabel.style.display = config.autoclear ? 'none' : 'flex'
 }
 
 function insertToggle() {
@@ -95,7 +98,7 @@ function insertToggle() {
             nav.insertBefore(toggleLabel, nav.childNodes[0]) // insert before 'New chat'// 在"新聊天"之前插入
 }}}
 
-toggleAutoclear = function() {
+function toggleAutoclear() {
     if (event.target == toggleLabel) { // to avoid double-toggle
         document.querySelector('#autoclearToggle').click() }
     saveSetting( // save setting
@@ -119,5 +122,14 @@ function saveSetting(key, value) {
 
 function loadSetting(...keys) {
     keys.forEach(function(key) {
-        config[key] = GM_getValue('chatGPT_' + key)
+        config[key] = GM_getValue('chatGPT_' + key, false)
 })}
+
+function registerMenu() {
+    var menuID = [], state = ['Enabled ✔️', 'Disabled ❌']
+    menuID.push(GM_registerMenuCommand('Toggle ' + state[+config.toggleHidden], function () {
+        saveSetting('toggleHidden', !config.toggleHidden)
+        toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex'
+        for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+    }))
+}
