@@ -6,7 +6,7 @@ MTurk、ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一
 [![stars](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars)](https://github.com/adamlui/userscripts/stargazers)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Safari-989898.svg)
-![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts)
+![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)
 
 ---
 
