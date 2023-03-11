@@ -1,7 +1,7 @@
 # <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=23 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> ChatGPT Widescreen Mode &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Tired%20of%20scrolling%20thru%20ChatGPT%3F%20Widescreen%20mode%20has%20been%20released%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode&hashtags=greasemonkey,openai,chatgpt)
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Vivaldi-989898.svg)](#compatibility)
 
 ### Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling.
 
