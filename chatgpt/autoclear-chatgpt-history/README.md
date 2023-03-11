@@ -66,8 +66,7 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 
 #
 
-[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a> [![GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20%40Tripp1e&style=social)](https://github.com/Tripp1e) [![GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a> [![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui) [![GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20%40Tripp1e&style=social)](https://github.com/Tripp1e) [![GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
 
 
 <a href="#-autoclear-chatgpt-history-">Back to top ↑</a>
