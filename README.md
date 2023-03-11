@@ -3,7 +3,7 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 
 MTurk、ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
-[![stars](https://img.shields.io/github/stars/adamlui/userscripts)](https://github.com/adamlui/userscripts/stargazers)
+[![stars](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars)](https://github.com/adamlui/userscripts/stargazers)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Safari-989898.svg)
 ![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts)
