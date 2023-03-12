@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.12.1
+// @version          2023.03.12.2
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -30,7 +30,7 @@
 
 (function() {
 
-// Initialize script
+    // Initialize script
     var config = {}, configKeyPrefix = 'chatGPT_'
     loadSetting('autoclear', 'toggleHidden') // load script settings
     registerMenu() // create browser toolbar menu
