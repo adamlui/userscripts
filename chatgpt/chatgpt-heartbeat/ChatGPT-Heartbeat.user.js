@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @grant       none
-// @version     1.0
+// @version     2023.03.11
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -20,8 +20,8 @@
 // @author      github.com @XiaoYingYo
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
-// @icon        https://www.google.com/s2/favicons?sz=48&domain=openai.com
-// @icon64      https://www.google.com/s2/favicons?sz=64&domain=openai.com
+// @icon        https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
+// @icon64      https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
 // @description 2023-3-6 13:25:06
 // ==/UserScript==
 
