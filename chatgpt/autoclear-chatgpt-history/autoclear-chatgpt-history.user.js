@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.12
+// @version          2023.03.12.1
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -31,8 +31,9 @@
 (function() {
 
 // Initialize script
-    var config = {} ; loadSetting('autoclear', 'toggleHidden') // load settings
-    registerMenu() // load toggle visiblity menu
+    var config = {}, configKeyPrefix = 'chatGPT_'
+    loadSetting('autoclear', 'toggleHidden') // load script settings
+    registerMenu() // create browser toolbar menu
 
     // Stylize toggle switch
     var switchStyle = document.createElement('style')
@@ -84,7 +85,42 @@
     }
 
 
-    // Functions // 功能
+    // General functions // 一般功能
+
+    function getUserscriptManager() {
+        try { return GM_info.scriptHandler } catch (error) { return "other" }}
+
+    function loadSetting(...keys) {
+        keys.forEach(function(key) {
+            config[key] = GM_getValue(configKeyPrefix + key, false)
+    })}
+
+    function saveSetting(key, value) {
+        GM_setValue(configKeyPrefix + key, value) // save to browser
+        config[key] = value // and memory
+    }
+
+    // Script functions
+
+    function registerMenu() {
+        var menuID = [] // to store registered commands for removal while preserving order
+
+        // Add 'Toggle Visibility' command
+        var tvState = ['ON ✔️', 'OFF ❌'] // for toggle visibility
+        var tvLabel = 'Toggle Visibility'
+            + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
+            + tvState[+config.toggleHidden]
+        menuID.push(GM_registerMenuCommand(tvLabel, function() {
+            saveSetting('toggleHidden', !config.toggleHidden)
+            toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
+            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+        }))
+
+        // Add 'Get Help' command
+        menuID.push(GM_registerMenuCommand('Get Help', function() {
+            window.open('https://github.com/adamlui/userscripts/issues', '_blank')
+        }))
+    }
 
     function updateToggleHTML() {
         toggleLabel.innerHTML = `
@@ -118,23 +154,4 @@
                 setTimeout(clearAllMsgs, 500) ; return // repeat to confirm
     }}}
 
-    function loadSetting(...keys) {
-        keys.forEach(function(key) {
-            config[key] = GM_getValue('chatGPT_' + key, false)
-    })}
-
-    function saveSetting(key, value) {
-        GM_setValue('chatGPT_' + key, value) // save to browser
-        config[key] = value // and memory
-    }
-
-    function registerMenu() {
-        var menuID = [], state = ['Enabled ✔️', 'Disabled ❌']
-        menuID.push(GM_registerMenuCommand('Toggle ' + state[+config.toggleHidden], function () {
-            saveSetting('toggleHidden', !config.toggleHidden)
-            toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex'
-            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
-        }))
-    }
-        
 })()
