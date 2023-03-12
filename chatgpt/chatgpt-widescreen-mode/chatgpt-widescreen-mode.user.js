@@ -167,7 +167,6 @@
 
     function insertButtons() {
         var chatbar = document.querySelector("form button[class*='bottom']").parentNode
-        var textArea = document.querySelector("form button[class*='bottom']").previousSibling
         if (chatbar.contains(fullWindowButton)) {
             return // if buttons aren't missing, exit
         } else {
