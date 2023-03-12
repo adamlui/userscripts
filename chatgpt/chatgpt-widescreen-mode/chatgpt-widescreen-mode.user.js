@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.11.1
+// @version          2023.03.12.1
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -27,7 +27,8 @@
 
     var tooltips = {
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
-        fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode' }
+        fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode',
+        newChat: 'New chat' }
 
     // Initialize mode states for updateTooltips() in case auto-toggle never triggers
     var wideScreenState = 'off', fullWindowState = 'off'
@@ -103,6 +104,16 @@
     fullWindowButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
     fullWindowButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
 
+    // Create new chat button & add classes/icon/position/listener
+    var newChatButton = document.createElement('button') // create button
+    newChatButton.id = 'newChat-button' // for toggleTooltip()
+    newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
+    newChatButton.innerHTML = '<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 110-12 6 6 0 010 12zm-1-5a1 1 0 100-2 1 1 0 000 2zm2.5-4.5a1 1 0 100-2 1 1 0 000 2zm-5 0a1 1 0 100-2 1 1 0 000 2z"/></svg>'
+    newChatButton.style.cssText = 'right: 5.5rem' // position right of wide screen button
+    newChatButton.addEventListener( 'click', () => { getNewChatButton().click() })
+    newChatButton.addEventListener( 'mouseover', () => { toggleTooltip() })
+    newChatButton.addEventListener( 'mouseout', () => { toggleTooltip() })
+
     insertToggles() // on page load
 
     // Monitor node changes to maintain button visibility + auto-toggle once
@@ -148,7 +159,7 @@
     function insertToggles() {
         var chatbar = document.querySelector("form button[class*='bottom']").parentNode
         chatbar.contains(fullWindowButton) ? '' // if toggles aren't missing, exit
-            : chatbar.append(fullWindowButton, wideScreenButton, tooltipDiv) // otherwise add them + tooltip
+            : chatbar.append(newChatButton ,fullWindowButton, wideScreenButton, tooltipDiv) // otherwise add them + tooltip
     }
 
     function toggleMode(mode, state = '') {
@@ -166,7 +177,8 @@
 
     function toggleTooltip() {
         var [buttonType, modeState] = ( event.target.id.includes('wide') ?
-            ['wideScreen', wideScreenState] : ['fullWindow', fullWindowState] )
+            ['wideScreen', wideScreenState] : event.target.id.includes('full') ?
+            ['fullWindow', fullWindowState] : ['newChat', ''] )
         updateTooltip(buttonType, modeState) // since mouseover's can indicate change
         tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
     }
@@ -174,9 +186,19 @@
     function updateTooltip(buttonType, modeState) { // text & position
         tooltipDiv.innerHTML = tooltips[buttonType + modeState.toUpperCase()]
         var ctrAddend = 17, overlayWidth = 30
-        var iniRoffset = overlayWidth * ( buttonType.includes('Window') ? 1 : 2 ) + ctrAddend
+        var iniRoffset = overlayWidth * ( buttonType.includes('Window') ? 
+            1 : buttonType.includes('Screen') ? 2 : 3 ) + ctrAddend
         tooltipDiv.style.right = `${ // horizontal position
             iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
 
+    function getNewChatButton() {
+        var aElements = document.getElementsByTagName('a');
+        for (let i = 0; i < aElements.length; i++) {
+          if (aElements[i].text === 'New chat') {
+            return aElements[i];
+          }
+        }
+        return null; // if the <a> element is not found
+    }
 })()
