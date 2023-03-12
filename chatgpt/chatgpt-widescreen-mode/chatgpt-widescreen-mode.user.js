@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.11
+// @version          2023.03.11.1
 // @author           Adam Lui & Xiao Ying Yo
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -16,8 +16,8 @@
 // @compatible       vivaldi
 // @compatible       librewolf
 // @match            https://chat.openai.com/*
-// @icon             https://www.google.com/s2/favicons?sz=48&domain=openai.com
-// @icon64           https://www.google.com/s2/favicons?sz=64&domain=openai.com
+// @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
+// @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
 // @grant            none
 // @downloadURL      https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.user.js
 // @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
