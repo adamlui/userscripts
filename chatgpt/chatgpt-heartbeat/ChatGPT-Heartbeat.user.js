@@ -3,19 +3,8 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @grant       none
-// @version     2023.03.11
-// @grant       GM_info
-// @grant       GM_getValue
-// @grant       GM_setValue
-// @grant       GM_addStyle
-// @grant       GM_deleteValue
-// @grant       GM_xmlhttpRequest
-// @grant       GM_setClipboard
-// @grant       GM_registerMenuCommand
-// @grant       GM_unregisterMenuCommand
-// @grant       GM_getResourceText
-// @grant       GM_getResourceURL
-// @grant       unsafeWindow
+// @version     2023.03.12
+// @grant       none
 // @run-at      document-start
 // @author      github.com @XiaoYingYo
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
