@@ -43,6 +43,11 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tamp
 [Leave a review](https://duckduckgpt.com/userscript/review) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
+## Mastodon links
+
+<a href="https://technodon.org/@duckduckgpt" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109876284007792895?domain=https%3A%2F%2Ftechnodon.org&style=social" alt="Follow @duckduckgpt on Mastodon" title="Mastodon"></a>
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
+
 ## Related scripts
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
@@ -65,10 +70,5 @@ Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 向 Chat
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-#
 
-<a href="https://technodon.org/@duckduckgpt" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109876284007792895?domain=https%3A%2F%2Ftechnodon.org&style=social" alt="Follow @duckduckgpt on Mastodon" title="Mastodon"></a>
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
-
-
-<a href="#--------------">Back to top ↑</a>
+<br><a href="#--------------">Back to top ↑</a>
