@@ -74,5 +74,7 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 [Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-<br>
+#
+
+<a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
 <a href="#-chatgpt-widescreen-mode-">Back to top ↑</a>
