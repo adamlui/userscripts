@@ -10,7 +10,9 @@
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Review](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode/feedback#post-discussion) / 
 [Contact author](https://elonsucks.org/@adam)
+
 ##
+
 ![Full-Window mode](https://user-images.githubusercontent.com/10906554/223853808-4de8e340-24a4-46c9-9764-3d20ce8c217a.png)
 
 ## Installation
@@ -46,7 +48,6 @@ ChatGPT Widescreen Mode is compatible with Chrome, Firefox, Edge, Opera, Brave, 
 [![Follow @AdamLuiTube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40AdamLuiTube&style=social)](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
 [![Follow @adamllui on Twitter](https://img.shields.io/twitter/follow/adamllui?style=social)](https://twitter.com/adamllui)
-<br><br>
 
 #### Xiao-Ying Yo 小影哟:
 [![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
@@ -54,6 +55,7 @@ ChatGPT Widescreen Mode is compatible with Chrome, Firefox, Edge, Opera, Brave, 
 #### mefengl 冯不游:
 [![Follow @mefengl on GitHub](https://img.shields.io/github/followers/mefengl?label=Follow%20%40mefenglo&style=social "GitHub")](https://github.com/mefengl)
 [![Follow @mefengl on Twitter](https://img.shields.io/twitter/follow/mefengl?style=social)](https://twitter.com/mefengl)
+<br><br>
 
 ## Related scripts
 
