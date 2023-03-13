@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.13.1
+// @version          2023.03.13.2
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -34,7 +34,7 @@
     var tooltips = {
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
         fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode',
-        newChat: 'New chat' }
+        newChat: 'New chat', sendMsg: 'Send message' }
 
     // Collect OpenAI classes/colors
     var sendButtonColor = 'currentColor' // changes w/ scheme
@@ -132,16 +132,28 @@
 
     insertButtons() // on page load
 
-    // Monitor node changes to maintain button visibility + auto-toggle once
+    // Monitor node changes to maintain button visibility + auto-toggle once + add tooltip to send button
     var prevSessionChecked = false
     var navObserver = new MutationObserver( ([{addedNodes, type}]) => {
         if (type === 'childList' && addedNodes.length) {
-            insertButtons()
-            if (!prevSessionChecked) { // check loaded keys to restore previous session's state
+
+            insertButtons() // again or they constantly disappear
+
+            // Check loaded keys to restore previous session's state
+            if (!prevSessionChecked) {
                 if (config.wideScreen) toggleMode('wideScreen', 'ON')
                 if (config.fullWindow) toggleMode('fullWindow', 'ON')
                 prevSessionChecked = true
-    }}})
+            }
+
+            // Add tooltip to Send button
+            var sendButton = document.querySelector('form button[class*="bottom"]')
+            if (sendButton && !sendButton.hasAttribute('hasTooltip')) {
+                sendButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
+                sendButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
+                sendButton.setAttribute('hasTooltip', true)
+            }
+    }})
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
 
@@ -194,17 +206,19 @@
     function toggleTooltip() {
         var buttonType = (
             event.target.id.includes('wide') ? 'wideScreen' :
-            event.target.id.includes('full') ? 'fullWindow' : 'newChat' )
+            event.target.id.includes('full') ? 'fullWindow' :
+            event.target.id.includes('new') ? 'newChat' : 'sendMsg' )
         updateTooltip(buttonType) // since mouseover's can indicate button change
         tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
     }
 
     function updateTooltip(buttonType) { // text & position
         tooltipDiv.innerHTML = tooltips[buttonType + (
-            buttonType.includes('new') ? '' : (config[buttonType] ? 'ON' : 'OFF' ))]
+            !/full|wide/i.test(buttonType) ? '' : (config[buttonType] ? 'ON' : 'OFF' ))]
         var ctrAddend = 17, overlayWidth = 30
         var iniRoffset = overlayWidth * (
-                buttonType.includes('Window') ? 1
+                buttonType.includes('send') ? 0
+              : buttonType.includes('Window') ? 1
               : buttonType.includes('Screen') ? 2 : 3 ) + ctrAddend
         tooltipDiv.style.right = `${ // horizontal position
             iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
