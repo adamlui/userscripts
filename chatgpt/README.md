@@ -15,7 +15,7 @@ Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/autopass-cloudflare-captcha)
+### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/autopass-cloudflare-captcha)
 
 Automatically verify your humanity during Cloudflare Turnstile challenges. // 在 Cloudflare Turnstile 挑战期间自动验证您的人性.
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/autopass-cloudflare-captcha/autopass-cloudflare-captcha.user.js) / 
