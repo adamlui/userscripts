@@ -45,10 +45,17 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 
 ## Author links
 
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
-[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
-[![GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20%40Tripp1e&style=social)](https://github.com/Tripp1e)
-[![GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
+#### Adam Lui:
+[![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
+[![Follow @AdamLuiTube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40AdamLuiTube&style=social)](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
+[![Follow @adamllui on Twitter](https://img.shields.io/twitter/follow/adamllui?style=social)](https://twitter.com/adamllui)
+
+#### Tripp1e:
+[![Follow @Tripp1e on GitHub](https://img.shields.io/github/followers/Tripp1e?label=Follow%20%40Tripp1e&style=social "GitHub")](https://github.com/Tripp1e)
+
+#### Xiao-Ying Yo 小影哟:
+[![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
 
 ## Related scripts
 
