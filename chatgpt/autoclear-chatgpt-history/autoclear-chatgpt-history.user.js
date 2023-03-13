@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.12.2
+// @version          2023.03.13
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -114,11 +114,6 @@
             saveSetting('toggleHidden', !config.toggleHidden)
             toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
             for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
-        }))
-
-        // Add 'Get Help' command
-        menuID.push(GM_registerMenuCommand('Get Help', function() {
-            window.open('https://github.com/adamlui/userscripts/issues', '_blank')
         }))
     }
 
