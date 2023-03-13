@@ -21,6 +21,10 @@
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
+## Author links
+
+[![GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
+
 ## Related scripts
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
@@ -41,10 +45,6 @@ Automatically verify your humanity during Cloudflare Turnstile challenges. // �
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.<br>
 [Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
-
-#
-
-[![GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
 
 
 <a href="#-chatgpt-heartbeat-">Back to top ↑</a>
