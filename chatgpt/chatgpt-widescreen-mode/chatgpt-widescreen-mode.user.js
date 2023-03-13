@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.12
+// @version          2023.03.12.1
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -56,7 +56,7 @@
 
     // Re-stylize input text area to accomodate buttons
     var inputTextAreaStyle = document.createElement('style')
-    inputTextAreaStyle.innerHTML = classListToCSS(inputTextAreaClasses) + '{ padding: 0 112px 0 25px; }'
+    inputTextAreaStyle.innerHTML = classListToCSS(inputTextAreaClasses) + '{ padding-right: 115px }'
     document.head.appendChild(inputTextAreaStyle)
 
     // Create wide screen style
@@ -120,7 +120,7 @@
     var newChatButton = document.createElement('button') // create button
     newChatButton.id = 'newChat-button' // for toggleTooltip()
     newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
-    newChatButton.style.cssText = 'left: 0.5rem' // position at left end of chat bar
+    newChatButton.style.cssText = 'right: 5.5rem' // position left of full-window button
     newChatButton.innerHTML = '<svg ' // insert icon
         + `class="${ sendSVGclasses }" ` // assign borrowed classes
         + `style="margin: .24rem .05rem -.08rem .16rem ; ` // center overlay
@@ -206,7 +206,7 @@
         var ctrAddend = 17, overlayWidth = 30
         var iniRoffset = overlayWidth * (
             buttonType.includes('Window') ? 1
-          : buttonType.includes('Screen') ? 2 : 24 ) + ctrAddend
+          : buttonType.includes('Screen') ? 2 : 3 ) + ctrAddend
         tooltipDiv.style.right = `${ // horizontal position
             iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
