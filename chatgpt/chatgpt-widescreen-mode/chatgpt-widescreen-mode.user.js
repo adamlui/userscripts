@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.12.1
+// @version          2023.03.13
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -29,7 +29,7 @@
 
     // Initialize script
     var config = {}, configKeyPrefix = 'chatGPT_'
-    loadSetting('wideScreen', 'fullWindow') // load script settings
+    loadSetting('wideScreen', 'fullWindow')
 
     var tooltips = {
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
@@ -93,22 +93,22 @@
         <path fill="${ sendButtonColor }"
             d="M22,13h-4v4h-2v-4h-4v-2h4V7h2v4h4V13z M14,7H2v1h12V7z M2,12h8v-1H2V12z M2,16h8v-1H2V16z"></path>`
 
-    // Create wide screen button & add classes/position/icon/listeners
+    // Create wide screen button & add icon/classes/position/icon/listeners
     var wideScreenButton = document.createElement('button') // create button
     wideScreenButton.id = 'wideScreen-button' // for toggleTooltip()
+    updateSVG('wideScreen') // insert icon
     wideScreenButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     wideScreenButton.style.cssText = 'right: 3.83rem' // position left of Send button
-    updateSVG('wideScreen') // insert icon
     wideScreenButton.addEventListener( 'click', () => { toggleMode('wideScreen') })
     wideScreenButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
     wideScreenButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
 
-    // Create full-window button & add classes/position/icon/listeners
+    // Create full-window button & add icon/classes/position/listeners
     var fullWindowButton = document.createElement('button') // create button
     fullWindowButton.id = 'fullWindow-button' // for toggleTooltip()
+    updateSVG('fullWindow') // insert icon
     fullWindowButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     fullWindowButton.style.cssText = 'right: 2.17rem' // position left of wide screen button
-    updateSVG('fullWindow') // insert icon
     fullWindowButton.addEventListener( 'click', () => { // on clicks
         if (!document.getElementById('fullWindow-mode')) { // if not full-window
             toggleMode('wideScreen', 'ON') } // then make fuller screen
@@ -116,16 +116,16 @@
     fullWindowButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
     fullWindowButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
 
-    // Create new chat button & add classes/position/icon/listeners
+    // Create new chat button & add icon/classes/position/icon/listeners
     var newChatButton = document.createElement('button') // create button
     newChatButton.id = 'newChat-button' // for toggleTooltip()
-    newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
-    newChatButton.style.cssText = 'right: 5.5rem' // position left of full-window button
     newChatButton.innerHTML = '<svg ' // insert icon
         + `class="${ sendSVGclasses }" ` // assign borrowed classes
         + `style="margin: .24rem .05rem -.08rem .16rem ; ` // center overlay
         + `pointer-events: none" ` // prevent triggering tooltips twice
         + `viewBox="11 8 13 13"> ${ newChatPaths } </svg>` // set viewbox & insert paths
+    newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
+    newChatButton.style.cssText = 'right: 5.5rem' // position left of full-window button
     newChatButton.addEventListener( 'click', () => { startNewChat() })
     newChatButton.addEventListener( 'mouseover', () => { toggleTooltip() })
     newChatButton.addEventListener( 'mouseout', () => { toggleTooltip() })
@@ -137,12 +137,11 @@
     var navObserver = new MutationObserver( ([{addedNodes, type}]) => {
         if (type === 'childList' && addedNodes.length) {
             insertButtons()
-            if (!prevSessionChecked) { // load keys to restore previous session's state
+            if (!prevSessionChecked) { // check loaded keys to restore previous session's state
                 if (config.wideScreen) toggleMode('wideScreen', 'ON')
                 if (config.fullWindow) toggleMode('fullWindow', 'ON')
                 prevSessionChecked = true
-            }
-        }})
+    }}})
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
 
@@ -189,24 +188,24 @@
             document.head.removeChild(modeStyle) ; state = 'off'
         }
         saveSetting(mode, state.toUpperCase() == 'ON' ? true : false )
-        updateSVG(mode) ; updateTooltip(mode, state) // update icon/tooltip
+        updateSVG(mode) ; updateTooltip(mode) // update icon/tooltip
     }
 
     function toggleTooltip() {
-        var [buttonType, modeState] = (
-            event.target.id.includes('wide') ? ['wideScreen', config.wideScreen ? 'ON' : 'OFF'] :
-            event.target.id.includes('full') ? ['fullWindow', config.fullWindow ? 'ON' : 'OFF'] :
-                                               ['newChat', ''] )
-        updateTooltip(buttonType, modeState) // since mouseover's can indicate button change
+        var buttonType = (
+            event.target.id.includes('wide') ? 'wideScreen' :
+            event.target.id.includes('full') ? 'fullWindow' : 'newChat' )
+        updateTooltip(buttonType) // since mouseover's can indicate button change
         tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
     }
 
-    function updateTooltip(buttonType, modeState) { // text & position
-        tooltipDiv.innerHTML = tooltips[buttonType + modeState.toUpperCase()]
+    function updateTooltip(buttonType) { // text & position
+        tooltipDiv.innerHTML = tooltips[buttonType + (
+            !buttonType.includes('new') ? (config[buttonType] ? 'ON' : 'OFF' ) : '' )]
         var ctrAddend = 17, overlayWidth = 30
         var iniRoffset = overlayWidth * (
-            buttonType.includes('Window') ? 1
-          : buttonType.includes('Screen') ? 2 : 3 ) + ctrAddend
+                buttonType.includes('Window') ? 1
+              : buttonType.includes('Screen') ? 2 : 3 ) + ctrAddend
         tooltipDiv.style.right = `${ // horizontal position
             iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
@@ -226,7 +225,7 @@
             + `style="margin: 0 ${ rMargin }rem 0 ${ lMargin }rem ; ` // center overlay
             + `pointer-events: none" ` // prevent triggering tooltips twice
             + `viewBox="${ svgViewBox }"> ` // set viewbox pre-tweaked to match Send
-            + (config[mode] ? ONpaths : OFFpaths + '</svg>') // dynamically insert paths based on browser key
+            + (config[mode] ? ONpaths : OFFpaths + '</svg>') // dynamically insert paths based on loaded key
     }
 
 })()
