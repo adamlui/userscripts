@@ -3,8 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://challenges.cloudflare.com/*
 // @match        https://chat.openai.com/*
-// @grant        none
-// @version      2023.03.06.6
+// @version      2023.03.12
 // @grant        none
 // @run-at       document-start
 // @author       github.com @XiaoYingYo
