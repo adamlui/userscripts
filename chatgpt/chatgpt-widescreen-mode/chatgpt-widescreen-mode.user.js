@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.13
+// @version          2023.03.13.1
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -201,7 +201,7 @@
 
     function updateTooltip(buttonType) { // text & position
         tooltipDiv.innerHTML = tooltips[buttonType + (
-            !buttonType.includes('new') ? (config[buttonType] ? 'ON' : 'OFF' ) : '' )]
+            buttonType.includes('new') ? '' : (config[buttonType] ? 'ON' : 'OFF' ))]
         var ctrAddend = 17, overlayWidth = 30
         var iniRoffset = overlayWidth * (
                 buttonType.includes('Window') ? 1
