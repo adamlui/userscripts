@@ -8,14 +8,14 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 ---
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
 
 Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私.
 <br>[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/autopass-cloudflare-captcha)
+### <img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/autopass-cloudflare-captcha)
 
 Automatically verify your humanity during Cloudflare Turnstile challenges. // 在 Cloudflare Turnstile 挑战期间自动验证您的人性.
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/autopass-cloudflare-captcha/autopass-cloudflare-captcha.user.js) / 
@@ -27,14 +27,14 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 <br>[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅.
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode)
 
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动.
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
