@@ -23,7 +23,9 @@
 
 <div align="center">
 
-![Full-Window toggle](https://user-images.githubusercontent.com/10906554/223853489-d29244bb-0a67-4cf8-94dc-521398f1b261.png)
+![Full-Window toggle](https://i.imgur.com/wdoxZuh.png)
+
+*NOTE: Since full-window mode removes the sidebar, press '+' to start new chats*
 
 </div>
 
