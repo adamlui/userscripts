@@ -56,6 +56,7 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 
 #### Xiao-Ying Yo 小影哟:
 [![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
+<br><br>
 
 ## Related scripts
 
