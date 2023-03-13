@@ -66,5 +66,4 @@ Display ChatGPT answers in DuckDuckGo sidebar. // 在 DuckDuckGo 侧边栏中显
 #
 
 <a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
-<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 <a href="#chatgpt-userscripts-">Back to top ↑</a>
