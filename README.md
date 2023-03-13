@@ -55,5 +55,7 @@ Reverts YouTube to its classic design (before all the rounded corners & hidden d
 [![Follow @mefengl on GitHub](https://img.shields.io/github/followers/mefengl?label=Follow%20%40mefenglo&style=social "GitHub")](https://github.com/mefengl)
 [![Follow @mefengl on Twitter](https://img.shields.io/twitter/follow/mefengl?style=social)](https://twitter.com/mefengl)
 
-<br>
+#
+
+<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 <a href="#greasemonkey-userscripts-">Back to top ↑</a>
