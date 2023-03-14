@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.14.1
+// @version          2023.03.14.2
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -215,7 +215,7 @@
         var hideDelay = ( // set delay before fading
             fadeDuration > notificationDuration ? 0 // don't delay if fade exceeds notification duration
                 : notificationDuration - fadeDuration ) // otherwise delay for difference
-        notify.hideTimer = setTimeout(function hidenotif() { // maintain notification visibility, then fade out
+        notify.hideTimer = setTimeout(function hideNotif() { // maintain notification visibility, then fade out
             notificationDiv.style.transition = `opacity ${ fadeDuration }s` // add fade effect
             notificationDiv.style.opacity = 0 // hide notification...
             notify.isDisplaying = false
