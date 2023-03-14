@@ -1,4 +1,4 @@
-# Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
+# 🐵 Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 MTurk、ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
@@ -58,4 +58,4 @@ Reverts YouTube to its classic design (before all the rounded corners & hidden d
 #
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
-<a href="#greasemonkey-userscripts-">Back to top ↑</a>
+<a href="#-greasemonkey-userscripts-">Back to top ↑</a>
