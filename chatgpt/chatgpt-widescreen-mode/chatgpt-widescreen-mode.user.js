@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.14
+// @version          2023.03.14.1
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -183,9 +183,9 @@
     }
 
     function notify(msg, position='') {
-        var vOffset = 13, hOffset = 27 // offset from viewport (in px)
-        var notificationDuration = 1.75 // duration to maintain notification (in secs)
-        var fadeDuration = 0.6 // duration of fade-out (in secs)
+        var vOffset = 13, hOffset = 27 // px offset from viewport border
+        var notificationDuration = 1.75 // sec duration to maintain notification visibility
+        var fadeDuration = 0.6 // sec duration of fade-out
 
         // Find or make div
         var notificationDiv = document.querySelector('#notification-alert')
@@ -215,11 +215,11 @@
         var hideDelay = ( // set delay before fading
             fadeDuration > notificationDuration ? 0 // don't delay if fade exceeds notification duration
                 : notificationDuration - fadeDuration ) // otherwise delay for difference
-        notify.hideTimer = setTimeout(() => { // maintain notification before fading
+        notify.hideTimer = setTimeout(function hidenotif() { // maintain notification visibility, then fade out
             notificationDiv.style.transition = `opacity ${ fadeDuration }s` // add fade effect
-            notificationDiv.style.opacity = 0 // hide notification
+            notificationDiv.style.opacity = 0 // hide notification...
             notify.isDisplaying = false
-        }, hideDelay * 1000) // after pre-set duration
+        }, hideDelay * 1000) // ...after pre-set duration
     }
 
     // Script functions
