@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.13.2
+// @version          2023.03.13.3
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -21,6 +21,8 @@
 // @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
 // @grant            GM_setValue
 // @grant            GM_getValue
+// @grant            GM_registerMenuCommand
+// @grant            GM_unregisterMenuCommand
 // @downloadURL      https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.user.js
 // @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
 // ==/UserScript==
@@ -29,7 +31,8 @@
 
     // Initialize script
     var config = {}, configKeyPrefix = 'chatGPT_'
-    loadSetting('wideScreen', 'fullWindow')
+    loadSetting('wideScreen', 'fullWindow', 'notifHidden')
+    registerMenu() // create browser toolbar menu
 
     var tooltips = {
         wideScreenON: 'Exit wide screen', wideScreenOFF: 'Wide screen',
@@ -49,9 +52,10 @@
     tooltipDiv.classList.add('toggle-tooltip')
     var tooltipStyle = document.createElement('style')
     tooltipStyle.innerHTML = `.toggle-tooltip {
-            /* Box style */   background: black ; padding: 5px ; border-radius: 5px ;
-            /* Font style */  font-size: 0.7rem ; color: white ;
-            /* Visibility */  position: absolute ; top: -22px ; opacity: 0 ; transition: opacity 0.1s ; z-index: 9999 }`
+        /* Box style */   background: black ; padding: 5px ; border-radius: 6px ;
+        /* Font style */  font-size: 0.7rem ; color: white ;
+        /* V-position */  position: absolute ; top: -22px ;
+        /* Visibility */  opacity: 0 ; transition: opacity 0.1s ; z-index: 9999 }`
     document.head.appendChild(tooltipStyle)
 
     // Re-stylize input text area to accomodate buttons
@@ -159,6 +163,9 @@
 
     // General functions // 一般功能
 
+    function getUserscriptManager() {
+        try { return GM_info.scriptHandler } catch (error) { return "other" }}
+
     function loadSetting(...keys) {
         keys.forEach(function(key) {
             config[key] = GM_getValue(configKeyPrefix + key, false)
@@ -174,15 +181,69 @@
             .replaceAll(/([:\[\]])/g, '\\$1') // escape CSS special chars
     }
 
+    function notify(msg, position='') {
+        var vOffset = 13, hOffset = 27 // offset from viewport (in px)
+        var notificationDuration = 1.75 // duration to maintain notification (in secs)
+        var fadeDuration = 0.6 // duration of fade-out (in secs)
+
+        // Find or make div
+        var notificationDiv = document.querySelector('#notification-alert')
+        if (!notificationDiv) { // if missing
+            notificationDiv = document.createElement('div') // make div
+            notificationDiv.id = 'notification-alert'
+            notificationDiv.style.cssText = ( // stylize it
+                '/* Box style */   background-color: black ; padding: 10px ; border-radius: 5px ; '
+              + '/* Visibility */  opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white' )
+            document.body.appendChild(notificationDiv) // insert into DOM
+        }
+
+        // Position notification (defaults to top-right)
+        notificationDiv.style.top = !/low|bottom/i.test(position) ? `${ vOffset }px` : ''
+        notificationDiv.style.bottom = /low|bottom/i.test(position) ? `${ vOffset }px` : ''
+        notificationDiv.style.right = !/left/i.test(position) ? `${ hOffset }px` : ''
+        notificationDiv.style.left = /left/i.test(position) ? `${ hOffset }px` : ''
+
+        // Show notification
+        if (notify.isDisplaying) clearTimeout(notify.hideTimer) // clear previous hide
+        notificationDiv.innerHTML = msg // insert msg
+        notificationDiv.style.transition = 'none' // remove fade effect
+        notificationDiv.style.opacity = 1 // show msg
+        notify.isDisplaying = true
+
+        // Hide notification
+        var hideDelay = ( // set delay before fading
+            fadeDuration > notificationDuration ? 0 // don't delay if fade exceeds notification duration
+                : notificationDuration - fadeDuration ) // otherwise delay for difference
+        notify.hideTimer = setTimeout(() => { // maintain notification before fading
+            notificationDiv.style.transition = `opacity ${ fadeDuration }s` // add fade effect
+            notificationDiv.style.opacity = 0 // hide notification
+            notify.isDisplaying = false
+        }, hideDelay * 1000) // after pre-set duration
+    }
+
     // Script functions
+
+    function registerMenu() {
+        var menuID = [] // to store registered commands for removal while preserving order
+        var um = getUserscriptManager() // store userscript manager for different aesthetic
+
+        // Add 'Mode Notification' command
+        var mnState = [`ENABLED ${ um === 'Tampermonkey' ? '☑' : '✔️'  }`,
+                       `DISABLED ${ um === 'Tampermonkey' ? '☒' : '❌'  }`]
+        var mnLabel = 'Mode Notifications'
+            + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
+            + mnState[+config.notifHidden]
+        menuID.push(GM_registerMenuCommand(mnLabel, function() {
+            saveSetting('notifHidden', !config.notifHidden)
+            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+        }))
+    }
 
     function insertButtons() {
         var chatbar = document.querySelector("form button[class*='bottom']").parentNode
         if (chatbar.contains(fullWindowButton)) {
             return // if buttons aren't missing, exit
-        } else {
-            chatbar.append(newChatButton, fullWindowButton, wideScreenButton, tooltipDiv)
-        }
+        } else { chatbar.append(newChatButton, fullWindowButton, wideScreenButton, tooltipDiv) }
     }
 
     function startNewChat() {
@@ -192,6 +253,7 @@
     }}}
 
     function toggleMode(mode, state = '') {
+
         var modeStyle = document.getElementById(mode + '-mode') // look for existing mode style
         if (state.toUpperCase() == 'ON' || !modeStyle ) { // if missing or ON-state passed
             modeStyle = mode == 'wideScreen' ? wideScreenStyle : fullWindowStyle
@@ -201,6 +263,8 @@
         }
         saveSetting(mode, state.toUpperCase() == 'ON' ? true : false )
         updateSVG(mode) ; updateTooltip(mode) // update icon/tooltip
+        if(!config.notifHidden) { // show mode notification if enabled
+            notify(`${ mode == 'wideScreen' ? 'Wide screen' : 'Full-window' } ${ state.toUpperCase() }`)}
     }
 
     function toggleTooltip() {
