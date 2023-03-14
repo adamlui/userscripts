@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.13.3
+// @version          2023.03.13.4
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -192,7 +192,7 @@
             notificationDiv = document.createElement('div') // make div
             notificationDiv.id = 'notification-alert'
             notificationDiv.style.cssText = ( // stylize it
-                '/* Box style */   background-color: black ; padding: 10px ; border-radius: 5px ; '
+                '/* Box style */   background-color: black ; padding: 10px ; border-radius: 8px ; '
               + '/* Visibility */  opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white' )
             document.body.appendChild(notificationDiv) // insert into DOM
         }
