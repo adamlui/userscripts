@@ -13,7 +13,7 @@
 
 ##
 
-![Full-Window mode](https://user-images.githubusercontent.com/10906554/223853808-4de8e340-24a4-46c9-9764-3d20ce8c217a.png)
+![Full-Window mode](https://i.imgur.com/bw0y43m.png)
 
 ## Installation
 
