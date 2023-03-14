@@ -4,7 +4,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 利用 ChatGPT 惊人的 AI 或增强其 UX 的用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/LibreWolf-989898.svg)
+![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/LibreWolf/QQ-989898.svg)
 
 ---
 
