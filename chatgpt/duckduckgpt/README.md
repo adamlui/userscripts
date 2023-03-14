@@ -9,7 +9,7 @@
 
 ![usercount](https://img.shields.io/greasyfork/dt/459849?label=Users)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Vivaldi-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Vivaldi/QQ-989898.svg)](#compatibility)
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
@@ -35,7 +35,7 @@
 
 ## Compatibility
 
-DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave & Vivaldi using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Vivaldi & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
