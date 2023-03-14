@@ -104,9 +104,11 @@
 
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
+        var um = getUserscriptManager() // store userscript manager for different aesthetic
 
         // Add 'Toggle Visibility' command
-        var tvState = ['ON ✔️', 'OFF ❌'] // for toggle visibility
+        var tvState = [`ON ${ um === 'Tampermonkey' ? '☑' : '✔️' }`,
+                       `OFF ${ um === 'Tampermonkey' ? '☒' : '❌' }`]
         var tvLabel = 'Toggle Visibility'
             + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
             + tvState[+config.toggleHidden]
