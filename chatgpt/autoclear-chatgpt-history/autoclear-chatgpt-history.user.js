@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.13
+// @version          2023.03.14
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -18,6 +18,7 @@
 // @compatible       brave
 // @compatible       vivaldi
 // @compatible       librewolf
+// @compatible       qq
 // @match            https://chat.openai.com/*
 // @run-at           document-end
 // @grant            GM_setValue
