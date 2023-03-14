@@ -1,7 +1,7 @@
 # <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=23 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> ChatGPT Widescreen Mode &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Tired%20of%20scrolling%20thru%20ChatGPT%3F%20Widescreen%20mode%20has%20been%20released%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode&hashtags=greasemonkey,openai,chatgpt)
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf/QQ-989898.svg)](#compatibility)
 
 ### Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling.
 
@@ -33,7 +33,7 @@
 
 ## Compatibility
 
-ChatGPT Widescreen Mode is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi & LibreWolf using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+ChatGPT Widescreen Mode is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreWolf & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 <a href="https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
