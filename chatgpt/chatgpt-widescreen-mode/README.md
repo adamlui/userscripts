@@ -13,7 +13,7 @@
 
 ##
 
-![Full-Window mode](https://i.imgur.com/bw0y43m.png)
+![Full-Window mode](https://i.imgur.com/KKWdLuF.png)
 
 ## Installation
 
