@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.14
+// @version          2023.03.14.1
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -108,11 +108,11 @@
         var um = getUserscriptManager() // store userscript manager for different aesthetic
 
         // Add 'Toggle Visibility' command
-        var tvState = [`ON ${ um === 'Tampermonkey' ? '☑' : '✔️' }`,
-                       `OFF ${ um === 'Tampermonkey' ? '☒' : '❌' }`]
-        var tvLabel = 'Toggle Visibility'
+        var tvStateSymbol = ['✔️', '❌']
+        var tvStateWord = ['ON', 'OFF']
+        var tvLabel = tvStateSymbol[+config.toggleHidden] + ' Toggle Visibility'
             + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
-            + tvState[+config.toggleHidden]
+            + tvStateWord[+config.toggleHidden]
         menuID.push(GM_registerMenuCommand(tvLabel, function() {
             saveSetting('toggleHidden', !config.toggleHidden)
             toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
