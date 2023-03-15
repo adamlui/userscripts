@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.14.3
+// @version          2023.03.14.4
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -225,7 +225,6 @@
     // Script functions
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
-        var um = getUserscriptManager() // store userscript manager for different aesthetic
 
         // Add 'Mode Notification' command
         var mnStateSymbol = ['✔️', '❌']
