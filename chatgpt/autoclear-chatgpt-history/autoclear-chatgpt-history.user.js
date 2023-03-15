@@ -1,6 +1,6 @@
     // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.14.1
+// @version          2023.03.14.2
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -105,7 +105,6 @@
 
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
-        var um = getUserscriptManager() // store userscript manager for different aesthetic
 
         // Add 'Toggle Visibility' command
         var tvStateSymbol = ['✔️', '❌']
