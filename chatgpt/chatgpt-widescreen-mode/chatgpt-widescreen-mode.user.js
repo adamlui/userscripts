@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.14.2
+// @version          2023.03.14.3
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -223,17 +223,16 @@
     }
 
     // Script functions
-
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
         var um = getUserscriptManager() // store userscript manager for different aesthetic
 
         // Add 'Mode Notification' command
-        var mnState = [`ENABLED ${ um === 'Tampermonkey' ? '☑' : '✔️'  }`,
-                       `DISABLED ${ um === 'Tampermonkey' ? '☒' : '❌'  }`]
-        var mnLabel = 'Mode Notifications'
+        var mnStateSymbol = ['✔️', '❌']
+        var mnStateWord = ['ENABLED', 'DISABLED']
+        var mnLabel = mnStateSymbol[+config.notifHidden] + ' Mode Notifications'
             + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
-            + mnState[+config.notifHidden]
+            + mnStateWord[+config.notifHidden]
         menuID.push(GM_registerMenuCommand(mnLabel, function() {
             saveSetting('notifHidden', !config.notifHidden)
             for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
