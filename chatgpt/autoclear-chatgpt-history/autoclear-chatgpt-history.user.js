@@ -1,6 +1,6 @@
-    // ==UserScript==
+// ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.14.2
+// @version          2023.03.15
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -25,6 +25,7 @@
 // @grant            GM_getValue
 // @grant            GM_registerMenuCommand
 // @grant            GM_unregisterMenuCommand
+// @require          https://raw.githubusercontent.com/adamlui/chatgpt.js/main/chatgpt.js
 // @updateURL        https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.meta.js
 // @downloadURL      https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.user.js
 // ==/UserScript==
@@ -32,7 +33,8 @@
 (function() {
 
     // Initialize script
-    var config = {}, configKeyPrefix = 'chatGPT_'
+    var chatgpt = window.chatgpt // retrieve chatgpt.js from window object
+    var config = {}, configKeyPrefix = 'chatGPT_' // initialize config variables
     loadSetting('autoclear', 'toggleHidden') // load script settings
     registerMenu() // create browser toolbar menu
 
@@ -73,16 +75,15 @@
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
     // Auto-clear chats if activated // 自动清除聊天是否激活
-    var labels = ['Clear conversations', 'Confirm clear conversations']
     var clearObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-            if (mutation.addedNodes[0]?.innerHTML.includes(labels[0])) {
-                clearAllMsgs() ; clearObserver.disconnect() }})
+            if (mutation.addedNodes[0]?.innerHTML.includes('Clear conversations')) {
+                chatgpt.clearConversations() ; clearObserver.disconnect() }})
     })
     if (config.autoclear) {
         clearObserver.observe(document, {childList: true, subtree: true})
-        // Also disconnect after 2.5sec to avoid clearing new chats // 还要在2.5秒后断开连接,以避免清除新的频道
-        setTimeout(function() { clearObserver.disconnect() }, 2500)
+        // Auto-disconnect after 5sec to avoid clearing new chats // 还要在2.5秒后断开连接,以避免清除新的频道
+        setTimeout(function() { clearObserver.disconnect() }, 5000)
     }
 
 
@@ -141,14 +142,5 @@
         setTimeout(updateToggleHTML, 200) // sync label change w/ switch movement
         saveSetting('autoclear', toggleInput.checked)
     }
-
-    var labelCnt = 0
-    function clearAllMsgs() {
-        if (labelCnt >= labels.length) return // exit if already confirmed
-        for (var link of document.querySelectorAll('a')) {
-            if (link.innerHTML.includes(labels[labelCnt])) {
-                link.click() ; labelCnt++
-                setTimeout(clearAllMsgs, 500) ; return // repeat to confirm
-    }}}
 
 })()
