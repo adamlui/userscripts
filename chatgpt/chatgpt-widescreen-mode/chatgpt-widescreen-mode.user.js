@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.15
+// @version          2023.03.15.1
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -234,10 +234,9 @@
         }))
 
         // Add command to also activate wide screen in full-window
-        var aeLabel = stateSymbol[+!config.fullerWindow]
-                    + ' Fuller Windows'
+        var fwLabel = stateSymbol[+!config.fullerWindow] + ' Fuller Windows'
                     + stateSeparator + stateWord[+!config.fullerWindow]
-        menuID.push(GM_registerMenuCommand(aeLabel, function() {
+        menuID.push(GM_registerMenuCommand(fwLabel, function() {
             saveSetting('fullerWindow', !config.fullerWindow)
             for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
         }))
