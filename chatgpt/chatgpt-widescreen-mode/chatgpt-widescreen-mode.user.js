@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.14.4
+// @version          2023.03.15
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -32,7 +32,7 @@
 
     // Initialize script
     var config = {}, configKeyPrefix = 'chatGPT_'
-    loadSetting('wideScreen', 'fullWindow', 'notifHidden')
+    loadSetting('wideScreen', 'fullWindow', 'notifHidden', 'fullerWindow')
     registerMenu() // create browser toolbar menu
 
     var tooltips = {
@@ -114,10 +114,7 @@
     updateSVG('fullWindow') // insert icon
     fullWindowButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     fullWindowButton.style.cssText = 'right: 2.17rem' // position left of wide screen button
-    fullWindowButton.addEventListener( 'click', () => { // on clicks
-        if (!document.getElementById('fullWindow-mode')) { // if not full-window
-            toggleMode('wideScreen', 'ON') } // then make fuller screen
-        toggleMode('fullWindow') }) // but toggle full-window in any case
+    fullWindowButton.addEventListener( 'click', () => { toggleMode('fullWindow') })
     fullWindowButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
     fullWindowButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
 
@@ -225,15 +222,23 @@
     // Script functions
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
+        var stateSymbol = ['✔️', '❌'], stateWord = ['ON', 'OFF']
+        var stateSeparator = getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': '
 
-        // Add 'Mode Notification' command
-        var mnStateSymbol = ['✔️', '❌']
-        var mnStateWord = ['ENABLED', 'DISABLED']
-        var mnLabel = mnStateSymbol[+config.notifHidden] + ' Mode Notifications'
-            + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
-            + mnStateWord[+config.notifHidden]
+        // Add command to show notifications when switching modes
+        var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
+                    + stateSeparator + stateWord[+config.notifHidden]
         menuID.push(GM_registerMenuCommand(mnLabel, function() {
             saveSetting('notifHidden', !config.notifHidden)
+            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+        }))
+
+        // Add command to also activate wide screen in full-window
+        var aeLabel = stateSymbol[+!config.fullerWindow]
+                    + ' Fuller Windows'
+                    + stateSeparator + stateWord[+!config.fullerWindow]
+        menuID.push(GM_registerMenuCommand(aeLabel, function() {
+            saveSetting('fullerWindow', !config.fullerWindow)
             for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
         }))
     }
@@ -256,8 +261,12 @@
         var modeStyle = document.getElementById(mode + '-mode') // look for existing mode style
         if (state.toUpperCase() == 'ON' || !modeStyle ) { // if missing or ON-state passed
             modeStyle = mode == 'wideScreen' ? wideScreenStyle : fullWindowStyle
+            if (mode == 'fullWindow' && config.fullerWindow) { // activate fuller window if enabled for full window
+                if (!config.wideScreen) document.head.appendChild(wideScreenStyle) }
             document.head.appendChild(modeStyle) ; state = 'on' // activate mode
         } else { // de-activate mode
+            if (mode == 'fullWindow' && !config.wideScreen) { // if exiting full-window & wide screen wasn't manually enabled
+                try { document.head.removeChild(wideScreenStyle) } catch {} } // also remove wide screen since fuller window turns it on
             document.head.removeChild(modeStyle) ; state = 'off'
         }
         saveSetting(mode, state.toUpperCase() == 'ON' ? true : false )
