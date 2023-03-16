@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Autoclear ChatGPT History
-// @version          2023.03.15
+// @version          2023.03.16
 // @author           Adam Lui, Tripp1e & Xiao-Ying Yo
 // @description      Auto-clears chat history when visiting chat.openai.com
 // @namespace        https://github.com/adamlui
@@ -78,7 +78,7 @@
     var clearObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.addedNodes[0]?.innerHTML.includes('Clear conversations')) {
-                chatgpt.clearConversations() ; clearObserver.disconnect() }})
+                chatgpt.clearChats() ; clearObserver.disconnect() }})
     })
     if (config.autoclear) {
         clearObserver.observe(document, {childList: true, subtree: true})
