@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.15.1
+// @version          2023.03.17
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -105,8 +105,8 @@
     wideScreenButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     wideScreenButton.style.cssText = 'right: 3.83rem' // position left of Send button
     wideScreenButton.addEventListener( 'click', () => { toggleMode('wideScreen') })
-    wideScreenButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
-    wideScreenButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
+    wideScreenButton.addEventListener('mouseover', toggleTooltip)
+    wideScreenButton.addEventListener('mouseover', toggleTooltip)
 
     // Create full-window button & add icon/classes/position/listeners
     var fullWindowButton = document.createElement('button') // create button
@@ -115,8 +115,8 @@
     fullWindowButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     fullWindowButton.style.cssText = 'right: 2.17rem' // position left of wide screen button
     fullWindowButton.addEventListener( 'click', () => { toggleMode('fullWindow') })
-    fullWindowButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
-    fullWindowButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
+    fullWindowButton.addEventListener('mouseover', toggleTooltip)
+    fullWindowButton.addEventListener('mouseout', toggleTooltip)
 
     // Create new chat button & add icon/classes/position/icon/listeners
     var newChatButton = document.createElement('button') // create button
@@ -129,12 +129,12 @@
     newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     newChatButton.style.cssText = 'right: 5.5rem' // position left of full-window button
     newChatButton.addEventListener( 'click', () => { startNewChat() })
-    newChatButton.addEventListener( 'mouseover', () => { toggleTooltip() })
-    newChatButton.addEventListener( 'mouseout', () => { toggleTooltip() })
+    newChatButton.addEventListener('mouseover', toggleTooltip)
+    newChatButton.addEventListener('mouseout', toggleTooltip)
 
     insertButtons() // on page load
 
-    // Monitor node changes to maintain button visibility + auto-toggle once + add tooltip to send button
+    // Monitor node changes to maintain button visibility + auto-toggle once + manage send button's tooltip
     var prevSessionChecked = false
     var navObserver = new MutationObserver( ([{addedNodes, type}]) => {
         if (type === 'childList' && addedNodes.length) {
@@ -148,13 +148,20 @@
                 prevSessionChecked = true
             }
 
-            // Add tooltip to Send button
-            var sendButton = document.querySelector('form button[class*="bottom"]')
-            if (sendButton && !sendButton.hasAttribute('hasTooltip')) {
-                sendButton.addEventListener( 'mouseover', (event) => { toggleTooltip() })
-                sendButton.addEventListener( 'mouseout', (event) => { toggleTooltip() })
-                sendButton.setAttribute('hasTooltip', true)
+            // Manage send button's tooltip
+            var sendButton = document.querySelector('form button[class*="bottom"]');
+            if (sendButton) { // add/remove tooltip based on enabled state
+                if (!sendButton.hasAttribute('disabled') && !sendButton.hasAttribute('hasTooltip')) {
+                    sendButton.addEventListener('mouseover', toggleTooltip);
+                    sendButton.addEventListener('mouseout', toggleTooltip);
+                    sendButton.setAttribute('hasTooltip', true);
+                } else if (sendButton.hasAttribute('disabled') && sendButton.hasAttribute('hasTooltip')) {
+                    sendButton.removeEventListener('mouseover', toggleTooltip);
+                    sendButton.removeEventListener('mouseout', toggleTooltip);
+                    sendButton.removeAttribute('hasTooltip');
+                }
             }
+
     }})
     navObserver.observe(document.documentElement, {childList: true, subtree: true})
 
@@ -274,7 +281,7 @@
             notify(`${ mode == 'wideScreen' ? 'Wide screen' : 'Full-window' } ${ state.toUpperCase() }`)}
     }
 
-    function toggleTooltip() {
+    function toggleTooltip(event) {
         var buttonType = (
             event.target.id.includes('wide') ? 'wideScreen' :
             event.target.id.includes('full') ? 'fullWindow' :
