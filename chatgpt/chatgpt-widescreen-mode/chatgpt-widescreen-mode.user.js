@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.17
+// @version          2023.03.18
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -156,6 +156,7 @@
                     sendButton.addEventListener('mouseout', toggleTooltip);
                     sendButton.setAttribute('hasTooltip', true);
                 } else if (sendButton.hasAttribute('disabled') && sendButton.hasAttribute('hasTooltip')) {
+                    tooltipDiv.style.opacity = '0' // hide tooltip in case cursor was hovering
                     sendButton.removeEventListener('mouseover', toggleTooltip);
                     sendButton.removeEventListener('mouseout', toggleTooltip);
                     sendButton.removeAttribute('hasTooltip');
