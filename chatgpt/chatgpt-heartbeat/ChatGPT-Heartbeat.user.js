@@ -5,7 +5,7 @@
 // @grant       none
 // @version     2023.03.12
 // @grant       none
-// @run-at      document-start
+// @run-at      document-body
 // @author      github.com @XiaoYingYo
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
 // @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
@@ -213,11 +213,16 @@ async function PassTest() {
     return new Promise(async (resolve) => {
         let res = null;
         try {
-            res = await fetch(CheckURL, {
-                method: 'GET',
-                mode: 'no-cors',
-                cache: 'no-cache',
-            });
+            res = await Promise.race([
+                fetch(CheckURL, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                }),
+                new Promise((_, reject) =>
+                    setTimeout(() => reject(new Error(CheckURL + ' timeout')), 5000)
+                )
+            ]);
             if (res == null) {
                 resolve(false);
                 return false;
