@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @grant       none
-// @version     2023.03.12
+// @version     2023-3-21
 // @grant       none
 // @run-at      document-body
 // @author      github.com @XiaoYingYo
@@ -19,17 +19,32 @@ var $ = window["$$$"];
 
 let cookiescache = {};
 
+unsafeWindow.ResetIframeFun = null;
+
 MaskLayer = {
     show: function () {
         if (MaskLayerIsExist()) {
             return;
         }
-        let html = "<div id='_MaskLayer_' style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999999999;'><div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 20px; font-weight: bold;'>ChatGPT Checking whether you are a man-machine, please wait a moment, we are providing you with a better user experience in automation<br>If you stay here for a long time, please refresh the page directly!<br><br>ChatGPT 正在检测您是不是人机,请稍等,我们正在自动化为您提供更好的用户体验<br>如果您久留,请直接刷新页面!</div></div>";
+        let html = "<div id='_MaskLayer_' style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999999999;'><div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 20px; font-weight: bold;'>ChatGPT Checking whether you are a man-machine, please wait a moment, we are providing you with a better user experience in automation<br>If you stay here for a long time, please refresh the page directly!<br><br>ChatGPT 正在检测您是不是人机,请稍等,我们正在自动化为您提供更好的用户体验<br>如果您久留,请直接刷新页面!" + getRefreshIcon() + "</div></div>";
         $("body").eq(0).append(html);
     },
     hide: function () {
         $("div#_MaskLayer_").eq(0).remove();
     },
+}
+
+function getRefreshIcon() {
+    return `<button onclick="ResetIframeFun();" style="display: flex; justify-content: center; align-items: center; border: 1px solid black; padding: 5px; border-radius: 5px;"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M4 12a8 8 0 1 0 4.83 7.15" />
+    <path d="M4 4v4h4" />
+    <path d="M4 16v4h4" />
+    <path d="M16 11.5a4.5 4.5 0 0 0 -4.5 4.5" />
+    <path d="M16 4.5a7.5 7.5 0 0 0 -7.5 7.5" />
+    <path d="M16 4.5h4v4" />
+    <path d="M16 19.5h4v4" />
+    </svg><span style="margin-left: 5px;">Retry</span></button>`;
 }
 
 let GlobalVariable = {};
@@ -115,6 +130,7 @@ async function OpenNewChatGPTIniframe(force) {
             await new Promise(async (resolve) => { setTimeout(resolve, 1000); });
             that.createiframe();
         }
+        unsafeWindow.ResetIframeFun = that.reset;
         let interval = setInterval(() => {
             try {
                 let href = $(iframe)[0].contentWindow.location.href;
