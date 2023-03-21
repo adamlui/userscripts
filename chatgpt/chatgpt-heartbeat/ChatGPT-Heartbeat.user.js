@@ -218,25 +218,27 @@ async function PassTest() {
                 mode: 'no-cors',
                 cache: 'no-cache',
             });
+            if (res == null) {
+                resolve(false);
+                return false;
+            }
+            let status = res.status;
+            if (status != 200) {
+                resolve(false);
+                return false;
+            }
+            let html = await res.text();
+            if (html.indexOf(">Redirecting...</p>") != -1) {
+                resolve(false);
+                return false;
+            }
+            resolve(true);
+            return true;
         } catch (e) {
             console.log(e);
-        }
-        if (res == null) {
             resolve(false);
             return false;
         }
-        let status = res.status;
-        if (status != 200) {
-            resolve(false);
-            return false;
-        }
-        let html = await res.text();
-        if (html.indexOf(">Redirecting...</p>") != -1) {
-            resolve(false);
-            return false;
-        }
-        resolve(true);
-        return true;
     });
 }
 
