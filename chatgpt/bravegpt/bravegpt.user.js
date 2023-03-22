@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             BraveGPT 🤖
-// @version          2023.03.21
+// @version          2023.03.22
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to Brave Search sidebar
@@ -8,6 +8,14 @@
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
 // @icon             https://brave.com/static-assets/images/brave-favicon.png
+// @compatible       chrome
+// @compatible       firefox
+// @compatible       edge
+// @compatible       opera
+// @compatible       brave
+// @compatible       vivaldi
+// @compatible       librewolf
+// @compatible       qq
 // @match            https://search.brave.com/*
 // @include          https://auth0.openai.com
 // @connect          chat.openai.com
@@ -78,7 +86,7 @@ function getUserscriptManager() {
 // ANSWER functions
 
 function show(answer) {
-    chatGPTcontainer.innerHTML = `${ getUserscriptManager() !== 'Violentmonkey' ? // only load robot emoji if not VM
+    chatGPTcontainer.innerHTML = `${ navigator.userAgent.includes('Firefox') ? // only load robot emoji in FF + forks
         '<span class="chatgpt-icon"><img width=25 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/robot-emoji.png"></span>' : '' }<span class="prefix">ChatGPT</span><pre></pre>`
     chatGPTcontainer.querySelector('pre').textContent = answer
     chatGPTcontainer.appendChild(chatGPTfooter) // append feedback link
