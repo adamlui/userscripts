@@ -9,7 +9,7 @@
 
 ![usercount](https://img.shields.io/greasyfork/dt/459849?label=Users)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Vivaldi/QQ-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/QQ-989898.svg)](#compatibility)
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
@@ -35,7 +35,7 @@
 
 ## Compatibility
 
-DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Vivaldi & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
@@ -54,7 +54,7 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Vivaldi & QQ using 
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
 
 Auto-clear your ChatGPT query history for maximum privacy. &nbsp;
 [Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / 
@@ -67,7 +67,7 @@ Display ChatGPT answers in Brave Search sidebar. &nbsp;
 [Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=openai.com"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
 
 Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
