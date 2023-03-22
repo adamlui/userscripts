@@ -8,7 +8,7 @@
 </h1>
 
 ![usercount](https://img.shields.io/greasyfork/dt/459849?label=Users)
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 [![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf/QQ-989898.svg)](#compatibility)
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
