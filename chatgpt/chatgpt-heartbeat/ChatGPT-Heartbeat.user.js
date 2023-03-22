@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @grant       none
-// @version     2023-3-21
+// @version     2023-3-23 06:37:50
 // @grant       none
 // @run-at      document-body
 // @author      github.com @XiaoYingYo
@@ -224,6 +224,17 @@ function isChatGPT() {
     return false;
 }
 
+async function refreshPage() {
+    return new Promise(async (resolve) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/api/auth/session");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            resolve();
+        }
+    });
+}
+
 async function PassTest() {
     let CheckURL = "/chat";
     return new Promise(async (resolve) => {
@@ -232,12 +243,13 @@ async function PassTest() {
             res = await Promise.race([
                 fetch(CheckURL, {
                     method: 'GET',
-                    mode: 'no-cors',
                     cache: 'no-cache',
                 }),
-                new Promise((_, reject) =>
-                    setTimeout(() => reject(new Error(CheckURL + ' timeout')), 5000)
-                )
+                new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(null);
+                    }, 5000);
+                })
             ]);
             if (res == null) {
                 resolve(false);
@@ -248,6 +260,7 @@ async function PassTest() {
                 resolve(false);
                 return false;
             }
+            await refreshPage();
             let html = await res.text();
             if (html.indexOf(">Redirecting...</p>") != -1) {
                 resolve(false);
