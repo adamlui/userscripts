@@ -51,14 +51,14 @@ Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 Cha
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。<br>
 [Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
+### <img src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/bravegpt-icon48.png" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
 
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。<br>
 [Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
