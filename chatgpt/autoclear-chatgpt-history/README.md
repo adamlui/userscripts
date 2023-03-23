@@ -31,7 +31,7 @@
 
 ## Dependencies
 
-ChatGPT Auto Refresh relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
+Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
 
 ## Compatibility
 
