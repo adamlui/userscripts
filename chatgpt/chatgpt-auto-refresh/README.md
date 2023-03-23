@@ -4,11 +4,11 @@
 
 ### Keeps ChatGPT sessions fresh to avoid Cloudflare checks.
 
-<a href="/"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
-[Review](/) /
-[Contact author](https://elonsucks.org/@adam)
+[Review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
+[Contact author](https://github.com/adamlui)
 
 #
 
@@ -20,7 +20,7 @@
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
 
-2. Install [ChatGPT Auto Refresh](/) (will load in userscript manager installed above)
+2. Install [ChatGPT Auto Refresh](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) (will load in userscript manager installed above)
 
 3. Visit [chat.openai.com](https://chat.openai.com) as normal, and sessions will auto-refresh!
 
@@ -37,7 +37,7 @@ ChatGPT Auto Refresh is compatible w/ browsers using Tampermonkey or Violentmonk
 <a href="/"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
-[Leave a review](/) /
+[Leave a review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 ## Author links
@@ -46,6 +46,7 @@ ChatGPT Auto Refresh is compatible w/ browsers using Tampermonkey or Violentmonk
 [![Follow @AdamLuiTube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40AdamLuiTube&style=social)](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 <a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
 [![Follow @adamllui on Twitter](https://img.shields.io/twitter/follow/adamllui?style=social)](https://twitter.com/adamllui)
+<br><br>
 
 ## Related scripts
 
