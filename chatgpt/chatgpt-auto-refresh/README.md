@@ -32,7 +32,7 @@ ChatGPT Auto Refresh is compatible w/ browsers using Tampermonkey or Violentmonk
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
-[**More ChatGPT userscripts**](https://github.com/adamlui/userscripts/tree/master/chatgpt)
+[More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 ## Author links
 
