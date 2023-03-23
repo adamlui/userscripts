@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Auto Refresh ↻
-// @version          2023.03.23.2
+// @version          2023.03.23.3
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Keeps ChatGPT sessions fresh to avoid Cloudflare checks
@@ -10,6 +10,7 @@
 // @match            https://chat.openai.com/chat*
 // @compatible       chrome
 // @compatible       firefox
+// @compatible       edge
 // @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
 // @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
 // @grant            GM_setValue
