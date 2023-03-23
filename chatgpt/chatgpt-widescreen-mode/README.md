@@ -64,7 +64,7 @@ ChatGPT Widescreen Mode is compatible with Chrome, Firefox, Edge, Opera, Brave, 
 Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私。
 <br>[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。<br>
 [Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
