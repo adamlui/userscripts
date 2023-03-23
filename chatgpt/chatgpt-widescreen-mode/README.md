@@ -71,10 +71,11 @@ Keeps conversations flowing when network errors are encountered. // 在遇到网
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh)
 
-Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。<br>
-[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
+Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
+<br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
+[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
