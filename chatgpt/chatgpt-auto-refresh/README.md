@@ -24,6 +24,10 @@
 
 3. Visit [chat.openai.com](https://chat.openai.com) as normal, and sessions will auto-refresh at a regular interval!
 
+## Dependencies
+
+ChatGPT Auto Refresh relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
+
 ## Compatibility
 
 ChatGPT Auto Refresh is compatible w/ browsers using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
