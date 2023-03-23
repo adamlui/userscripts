@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.22
+// @version          2023-3-23
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -67,7 +67,7 @@
     // Create wide screen style
     var wideScreenStyle = document.createElement('style')
     wideScreenStyle.id = 'wideScreen-mode' // for toggleMode()
-    wideScreenStyle.innerHTML = '.text-base { max-width: 94% !important }'
+    wideScreenStyle.innerHTML = '.text-base { max-width: 93% !important }'
 
     // Create full-window style
     var fullWindowStyle = document.createElement('style')
