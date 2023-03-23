@@ -32,7 +32,7 @@ ChatGPT Auto Refresh is compatible w/ browsers using Tampermonkey or Violentmonk
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
-[More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
+[**More ChatGPT userscripts**](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 ## Author links
 
@@ -66,5 +66,5 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 
 #
   
-<a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
-<a href="#-chatgpt-auto-refresh-">Back to top ↑</a>
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
+<a href="#-chatgpt-auto-refresh--">Back to top ↑</a>
