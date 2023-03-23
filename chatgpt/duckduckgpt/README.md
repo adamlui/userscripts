@@ -54,11 +54,11 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi, Lib
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [Autoclear ChatGPT History](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh)
 
-Auto-clear your ChatGPT query history for maximum privacy. &nbsp;
-[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / 
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / 
+Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
+<br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
+[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt)
