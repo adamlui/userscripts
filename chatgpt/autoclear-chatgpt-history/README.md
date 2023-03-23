@@ -29,6 +29,10 @@
 
 </div>
 
+## Dependencies
+
+ChatGPT Auto Refresh relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
+
 ## Compatibility
 
 Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreWolf & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
