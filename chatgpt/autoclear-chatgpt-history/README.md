@@ -78,10 +78,12 @@ Keeps conversations flowing when network errors are encountered. // 在遇到网
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
 
-Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。<br>
-[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
+### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt)
+
+Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.
+<br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
+[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
