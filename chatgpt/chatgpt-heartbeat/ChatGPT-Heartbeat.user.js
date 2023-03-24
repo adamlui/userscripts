@@ -159,8 +159,16 @@ async function FindPrimaryBtn(NetworkErrorElement) {
             resolve(null);
             return null;
         }
-        let w_full = "div[class^='w-full']";
-        let LastMessageParent = $(NetworkErrorElement).parents(w_full).eq(0);
+        let dialogeleclass = ["w-full", "group w-full"];
+        let LastMessageParent = null;
+        let length = dialogeleclass.length;
+        for (let i = 0; i < length; i++) {
+            LastMessageParent = $(NetworkErrorElement).parents("div[class^='" + dialogeleclass[i] + "']").eq(0);
+            console.log("div[class^='" + dialogeleclass[i] + "']");
+            if (LastMessageParent.length > 0) {
+                break;
+            }
+        }
         let LastMessageElement = $(LastMessageParent).prev(w_full).eq(0);
         let buttons = $(LastMessageElement).find("button");
         for (let i = 0; i < buttons.length; i++) {
