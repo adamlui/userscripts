@@ -82,4 +82,4 @@ Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 Cha
 #
 
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
-<a href="#--------------">Back to top ↑</a>
+<a href="#----------------">Back to top ↑</a>
