@@ -78,7 +78,5 @@ Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 Cha
 
 #
 
-<a rel="me" href="https://technodon.org/@bravegpt">Mastodon</a>
-
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#--------------">Back to top ↑</a>
