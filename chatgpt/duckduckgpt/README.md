@@ -77,5 +77,5 @@ Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 向 Chat
 
 #
 
-<a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#--------------">Back to top ↑</a>
