@@ -29,6 +29,12 @@
 
 3. Visit [search.brave.com](https://search.brave.com), type your search, engage bot!
 
+<div align="center">
+
+![bravegpt-demo](https://user-images.githubusercontent.com/10906554/227460370-40576bde-4190-46fb-b9e2-4bba0a777f96.gif)
+
+</div>
+
 ## Compatibility
 
 BraveGPT is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreWolf & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
