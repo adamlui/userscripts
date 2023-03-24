@@ -224,19 +224,12 @@ function isChatGPT() {
     return false;
 }
 
-async function refreshPage() {
-    return new Promise(async (resolve) => {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', "/api/auth/session");
-        xhr.send();
-        xhr.onreadystatechange = function () {
-            resolve();
-        }
-    });
-}
-
 async function PassTest() {
-    let CheckURL = "/chat";
+    let CheckURLObj = {
+        "freegpt.one": "/",
+        "chat.openai.com": "/chat",
+    }
+    let CheckURL = CheckURLObj[location.host];
     return new Promise(async (resolve) => {
         let res = null;
         try {
@@ -260,7 +253,6 @@ async function PassTest() {
                 resolve(false);
                 return false;
             }
-            await refreshPage();
             let html = await res.text();
             if (html.indexOf(">Redirecting...</p>") != -1) {
                 resolve(false);
