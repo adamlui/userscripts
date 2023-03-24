@@ -67,14 +67,14 @@ Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 
 ### <img src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png" width=17> [DuckDuckGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
-Display ChatGPT answers in DuckDuckGo sidebar. // 在 DuckDuckGo 侧边栏中显示 ChatGPT 答案.
+Display ChatGPT answers in DuckDuckGo sidebar.
 <br>[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode)
 
-Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动.
+Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling.
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
