@@ -85,4 +85,4 @@ Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 #
 
 <a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
-<a href="#-chatgpt-widescreen-mode-">Back to top ↑</a>
+<a href="#-chatgpt-widescreen-mode-%EF%B8%8F-">Back to top ↑</a>
