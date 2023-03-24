@@ -2,7 +2,8 @@
 // @name        ChatGPT Heartbeat
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
-// @version     2023-3-23 06:37:50
+// @match       *://freegpt.one/*
+// @version     2023.3.24 10:47:30
 // @grant       none
 // @run-at      document-body
 // @author      github.com @XiaoYingYo

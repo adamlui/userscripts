@@ -30,7 +30,7 @@
 // @downloadURL      https://greasyfork.org/scripts/460805/code/autoclear-chatgpt-history.user.js
 // ==/UserScript==
 
-(function() {
+(function () {
 
     // Initialize script
     var chatgpt = window.chatgpt // retrieve chatgpt.js from window object
@@ -58,44 +58,51 @@
 
     // Create toggle label & add listener/classes/HTML
     var toggleLabel = document.createElement("div") // create label div
-    toggleLabel.addEventListener( 'click', (event) => { toggleAutoclear(event) })
+    toggleLabel.addEventListener('click', (event) => { toggleAutoclear(event) })
     for (var link of document.querySelectorAll('a')) { // inspect sidebar links for classes
         if (link.innerHTML.includes('New chat')) { // focus on 'New chat'
             toggleLabel.setAttribute("class", link.classList) // borrow its classes
             break // stop looping since class assignment is done
-    }} ; updateToggleHTML()
+        }
+    }; updateToggleHTML()
 
     // Insert full toggle on page load + during navigation // 在导航期间插入页面加载 + 的完整切换
     insertToggle()
-    var navObserver = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
+    var navObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
                 insertToggle()
-    }})})
-    navObserver.observe(document.documentElement, {childList: true, subtree: true})
+            }
+        })
+    })
+    navObserver.observe(document.documentElement, { childList: true, subtree: true })
 
     // Auto-clear chats if activated // 自动清除聊天是否激活
-    var clearObserver = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
+    var clearObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
             if (mutation.addedNodes[0]?.innerHTML.includes('Clear conversations')) {
-                chatgpt.clearChats() ; clearObserver.disconnect() }})
+                chatgpt.clearChats(); clearObserver.disconnect()
+            }
+        })
     })
     if (config.autoclear) {
-        clearObserver.observe(document, {childList: true, subtree: true})
+        clearObserver.observe(document, { childList: true, subtree: true })
         // Auto-disconnect after 5sec to avoid clearing new chats // 还要在2.5秒后断开连接,以避免清除新的频道
-        setTimeout(function() { clearObserver.disconnect() }, 5000)
+        setTimeout(function () { clearObserver.disconnect() }, 5000)
     }
 
 
     // General functions // 一般功能
 
     function getUserscriptManager() {
-        try { return GM_info.scriptHandler } catch (error) { return "other" }}
+        try { return GM_info.scriptHandler } catch (error) { return "other" }
+    }
 
     function loadSetting(...keys) {
-        keys.forEach(function(key) {
+        keys.forEach(function (key) {
             config[key] = GM_getValue(configKeyPrefix + key, false)
-    })}
+        })
+    }
 
     function saveSetting(key, value) {
         GM_setValue(configKeyPrefix + key, value) // save to browser
@@ -113,19 +120,19 @@
         var tvLabel = tvStateSymbol[+config.toggleHidden] + ' Toggle Visibility'
             + (getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ')
             + tvStateWord[+config.toggleHidden]
-        menuID.push(GM_registerMenuCommand(tvLabel, function() {
+        menuID.push(GM_registerMenuCommand(tvLabel, function () {
             saveSetting('toggleHidden', !config.toggleHidden)
             toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
-            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
         }))
     }
 
     function updateToggleHTML() {
         toggleLabel.innerHTML = `
             <img width="18px" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/autoclear-chatgpt-history/navicon.png">
-            Auto-clear ${ config.autoclear ? 'enabled' : 'disabled' }
+            Auto-clear ${config.autoclear ? 'enabled' : 'disabled'}
             <label class="switch" ><input id="autoclearToggle" type="checkbox"
-                ${ config.autoclear ? "checked='true'" : ""} >
+                ${config.autoclear ? "checked='true'" : ""} >
                 <span class="slider"></span></label>`
         toggleLabel.style.display = config.toggleHidden ? 'none' : 'flex'
     }
@@ -134,7 +141,9 @@
         for (var nav of document.querySelectorAll('nav')) {
             if (!nav.contains(toggleLabel)) { // check if label exists first // 检查标签是否首先存在
                 nav.insertBefore(toggleLabel, nav.childNodes[0]) // insert before 'New chat'// 在"新聊天"之前插入
-    }}}
+            }
+        }
+    }
 
     function toggleAutoclear() {
         var toggleInput = document.querySelector('#autoclearToggle')
