@@ -41,10 +41,11 @@ Automatically verify your humanity during Cloudflare Turnstile challenges. // �
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/autopass-cloudflare-captcha/autopass-cloudflare-captcha.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" width=16> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
+### <img src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/bravegpt-icon48.png" width=18> [BraveGPT](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt)
 
-Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.<br>
-[Install](https://bravegpt.com/userscript/code/bravegpt.user.js) / 
+Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.
+<br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
+[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 #
