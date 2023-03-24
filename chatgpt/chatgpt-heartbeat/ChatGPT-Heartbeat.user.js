@@ -120,7 +120,7 @@ async function OpenNewChatGPTIniframe(force) {
     that.createiframe = function () {
         let that = this;
         let iframe = document.createElement("iframe");
-        iframe.src = "https://chat.openai.com/";
+        iframe.src = "/";
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.display = "block";
