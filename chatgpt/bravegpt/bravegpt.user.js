@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             BraveGPT 🤖
-// @version          2023.03.24
+// @version          2023.03.25
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to Brave Search sidebar
@@ -17,7 +17,7 @@
 // @compatible       librewolf
 // @compatible       qq
 // @match            https://search.brave.com/*
-// @connect          chatgpt-api.shn.hk
+// @connect          api.pawan.krd
 // @grant            GM_xmlhttpRequest
 // @downloadURL      https://greasyfork.org/scripts/462440/code/bravegpt.user.js
 // @updateURL        https://greasyfork.org/scripts/462440/code/bravegpt.meta.js
@@ -78,31 +78,22 @@ function show(answer) {
 }
 
 async function getAnswer(question, callback) {
-    try {
-        GM_xmlhttpRequest({
-            method: 'POST',
-            url: 'https://chatgpt-api.shn.hk/v1/',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            responseType: 'text', // Set the default response type to text
-            data: JSON.stringify({
-                model: 'gpt-3.5-turbo',
-                messages: [{ role: 'user', content: JSON.stringify({ content_type: "text", parts: [question] }) }]
-            }),
-            onload: onLoad,
-            onerror: function(error) {
-                console.error(error);
-            }
-        });
 
-    } catch (error) {
-        console.error("getAnswer error: ", error)
-    }
+    GM_xmlhttpRequest({
+        method: 'POST',
+        url: 'https://api.pawan.krd/v1/chat/completions',
+        headers: { 'Content-Type': 'application/json',
+                    Authorization: 'Bearer pk-pJNAtlAqCHbUDTrDudubjSKeUVgbOMvkRQWMLtscqsdiKmhI' },
+        responseType: 'text',
+        data: JSON.stringify({
+            messages: [{ role: 'user', content: question }],
+            model: 'gpt-3.5-turbo'
+        }),
+        onload: onLoad,
+        onerror: function(error) { console.error(error) }
+    })
 
     function onLoad(event) {
-        console.log(event.status);
-        console.log(event.responseText);
         if (event.status === 429) {
             chatGPTcontainer.innerHTML = '<p>ChatGPT is flooded with too many requests. Check back later!</p>'
         }
