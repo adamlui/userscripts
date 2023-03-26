@@ -60,7 +60,7 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi, Lib
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh)
 
-Keeps your ChatGPT sessions active to avoid constant Cloudflare checks. // 让您的 ChatGPT 会话保持活动状态，以避免持续的 Cloudflare 检查。
+Keeps your ChatGPT sessions active to avoid constant Cloudflare checks. // 保持 ChatGPT 会话处于活动状态以避免持续的 Cloudflare 检查。
 <br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
