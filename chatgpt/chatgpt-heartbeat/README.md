@@ -50,5 +50,5 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 
 #
 
-<a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#-chatgpt-heartbeat-">Back to top ↑</a>
