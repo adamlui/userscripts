@@ -1,4 +1,4 @@
-name: Sync DuckDuckGPT w/ adamlui/duckduckgpt/src/greasemonkey
+name: Sync DuckDuckGPT to adamlui/duckduckgpt/src/greasemonkey
 
 on:
   push:
