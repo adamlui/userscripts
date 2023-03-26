@@ -16,6 +16,7 @@ jobs:
       - name: Checkout adamlui/userscripts
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
@@ -23,6 +24,7 @@ jobs:
       - name: Checkout adamlui/duckduckgpt
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/duckduckgpt
           path: adamlui/duckduckgpt
 
@@ -32,10 +34,10 @@ jobs:
       
       # Push to adamlui/duckduckgpt
       - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4       
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_SYNC_PAT }}
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          push_options: --force
           commit_message: "Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}"
           file_pattern: 'src/greasemonkey/*'
           branch: main
@@ -49,3 +51,5 @@ jobs:
           disable_globbing: false
           create_branch: false
           internal_git_binary: git
+
+
