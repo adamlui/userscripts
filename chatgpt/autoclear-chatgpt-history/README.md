@@ -82,10 +82,10 @@ Keeps conversations flowing when network errors are encountered. // 在遇到网
 
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
-[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Readme](https://github.com/adamlui/bravegpt/blob/master/src/greasemonkey/README.md) / 
+[Discuss](https://github.com/adamlui/bravegpt/discussions)
 
 #
   
-<a href="https://github.com/adamlui/userscripts">More userscripts</a> / 
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#-autoclear-chatgpt-history-">Back to top ↑</a>
