@@ -28,7 +28,7 @@ jobs:
           repository: adamlui/duckduckgpt
           path: adamlui/duckduckgpt
 
-      # Sync adamlui/userscripts/chatgpt/duckduckgpt w/ adamlui/duckduckgpt/src/greasemonkey
+      # Sync adamlui/userscripts/chatgpt/duckduckgpt to adamlui/duckduckgpt/src/greasemonkey
       - name: Sync duckduckgpt
         run: rsync -av ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/duckduckgpt/src/greasemonkey/
       
@@ -36,20 +36,7 @@ jobs:
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          token: ${{ secrets.REPO_SYNC_PAT }}
           push_options: --force
           commit_message: "Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}"
           file_pattern: 'src/greasemonkey/*'
-          branch: main
           repository: adamlui/duckduckgpt
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          commit_author: adamlui <adamlui@users.noreply.github.com>
-          skip_dirty_check: false
-          skip_fetch: false
-          skip_checkout: false
-          disable_globbing: false
-          create_branch: false
-          internal_git_binary: git
-
-
