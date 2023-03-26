@@ -26,7 +26,7 @@ Automatically verify your humanity during Cloudflare Turnstile challenges. // �
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/bravegpt/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh)
 
@@ -54,7 +54,7 @@ Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 Cha
 Display ChatGPT answers in DuckDuckGo sidebar. // 在 DuckDuckGo 侧边栏中显示 ChatGPT 答案.
 <br>[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/duckduckgpt/discussions)
 
 #
 
