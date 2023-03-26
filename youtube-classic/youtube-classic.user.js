@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.01.29.3
+// @version          2023.03.25
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -20,6 +20,8 @@
 // @updateURL        https://www.ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://www.ytclassic.com/us/code/youtube-classic.user.js
 // ==/UserScript==
+
+
 
 // Redirect Shorts
 var oldHref = document.location.href;
@@ -51,6 +53,7 @@ const CONFIGS = { BUTTON_REWORK: false }
 
 // Experiment flags
 const EXPFLAGS = {
+    enable_header_channel_handler_ui: false,
     kevlar_unavailable_video_error_ui_client: false,
     kevlar_refresh_on_theme_change: false,
     kevlar_watch_cinematics: false,
@@ -67,12 +70,13 @@ const EXPFLAGS = {
     web_modern_chips: false,
     web_modern_dialogs: false,
     web_modern_playlists: false,
-    web_modern_subscribe: false,
     web_rounded_containers: false,
     web_rounded_thumbnails: false,
     web_searchbar_style: "default",
     web_segmented_like_dislike_button: false,
     web_sheets_ui_refresh: false,
+//    web_modern_subscribe: false,
+//    web_filled_subscribed_button: false,
     web_snackbar_ui_refresh: false
 }
 
@@ -183,40 +187,52 @@ YTP.setPlyrFlags(PLYRFLAGS);
 
 function $(q) { return document.querySelector(q); }
 
-// Fix YouTube dislikes
-const abtnconfig = { unsegmentLikeButton: false, noFlexibleItems: true };
-function updateBtns() {
-    var watchFlexy = document.querySelector("ytd-watch-flexy");
-    var results = watchFlexy.data.contents.twoColumnWatchNextResults.results.results.contents;
-    for (var i = 0; i < results.length; i++) {
-        if (results[i].videoPrimaryInfoRenderer) {
-            var actions = results[i].videoPrimaryInfoRenderer.videoActions.menuRenderer;
+// Restore Explore tab in sidebar & replace Shorts tab
+function waitForElm(selector) {
+    return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+        return resolve(document.querySelector(selector))
+    }
+    var observer = new MutationObserver(mutations => {
+        if (document.querySelector(selector)) {
+            resolve(document.querySelector(selector))
+            observer.disconnect()
+    }})
+    observer.observe(document.body, { childList: true, subtree: true })
+})}
 
-            if (abtnconfig.unsegmentLikeButton) {
-                if (actions.topLevelButtons[0].segmentedLikeDislikeButtonRenderer) {
-                    var segmented = actions.topLevelButtons[0].segmentedLikeDislikeButtonRenderer;
-                    actions.topLevelButtons.splice(0, 1);
-                    actions.topLevelButtons.unshift(segmented.dislikeButton);
-                    actions.topLevelButtons.unshift(segmented.likeButton);
-                }
-            }
-            if (abtnconfig.noFlexibleItems) {
-                for (var i = 0; i < actions.flexibleItems.length; i++) {
-                    actions.topLevelButtons.push(actions.flexibleItems[i].menuFlexibleItemRenderer.topLevelButton);
-                }
-                delete actions.flexibleItems
-            }
-        }
+function restoreTrending() {
+    var trendingData = {
+        'navigationEndpoint': {
+            'clickTrackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
+            'commandMetadata': {
+                'webCommandMetadata': {
+                    'url': '/feed/explore',
+                    'webPageType': 'WEB_PAGE_TYPE_BROWSE',
+                    'rootVe': 6827,
+                    'apiUrl': '/youtubei/v1/browse'
+                 }
+            },
+            'browseEndpoint': { 'browseId': 'FEtrending' }
+        },
+        'icon': { 'iconType': 'EXPLORE' },
+        'trackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
+        'formattedTitle': { 'simpleText': 'Explore' },
+        'accessibility': { 'accessibilityData': { 'label': 'Explore' }},
+        'isPrimary': true
     }
-    var temp = watchFlexy.data;
-    watchFlexy.data = {};
-    watchFlexy.data = temp;
+    var guidetemplate = `<ytd-guide-entry-renderer class="style-scope ytd-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`
+    document.querySelector(`#items > ytd-guide-entry-renderer:nth-child(2)`).data = trendingData
+    var miniguidetemplate = `<ytd-mini-guide-entry-renderer class="style-scope ytd-mini-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`
+    document.querySelector(`#items > ytd-mini-guide-entry-renderer:nth-child(2)`).data = trendingData
 }
-document.addEventListener("yt-page-data-updated", (e) => {
-    if (e.detail.pageType == "watch") {
-        updateBtns();
-    }
-});
+
+// Restore Explore in guide + mini-guide
+waitForElm("#items.ytd-guide-section-renderer").then((elm) => { restoreTrending() })
+waitForElm("#items.ytd-mini-guide-section-renderer").then((elm) => { restoreTrending() })
+
+// Fix YouTube dislikes
+function $(q) { return document.querySelector(q) }
 addEventListener('yt-page-data-updated', function() {
     if(!location.pathname.startsWith('/watch')) return;
     var lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed');
@@ -402,34 +418,96 @@ document.addEventListener("yt-page-data-updated", async (e) => {
 
 // CSS tweaks
 (function() {
-ApplyCSS();
-function ApplyCSS() {
-var styles = document.createElement("style");
-styles.innerHTML=`
+    var styles = document.createElement('style')
+    styles.innerHTML = `
+        /* Disable rounded corners on search box + revert old channel UI */
+        #container.ytd-searchbox { background-color: var(--ytd-searchbox-background) !important ;
+            border-radius: 2px 0 0 2px !important ;
+            box-shadow: inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color) !important ;
+            color: var(--ytd-searchbox-text-color) !important ; padding: 2px 6px !important
+        }
+        ytd-searchbox[desktop-searchbar-style="rounded_corner_dark_btn"] #searchbox-button.ytd-searchbox {
+            display: none !important }
+        ytd-searchbox[desktop-searchbar-style="rounded_corner_light_btn"] #searchbox-button.ytd-searchbox {
+            display: none !important }
+        #search[has-focus] #search-input { margin-left: 32px !important }
+        #search-icon-legacy.ytd-searchbox { display: block !important ; border-radius: 0px 2px 2px 0px !important }
+        .sbsb_a { border-radius: 2px !important }
+        .sbsb_c { padding-left: 10px !important }
+        div.sbqs_c::before { margin-right: 10px !important }
+        ytd-searchbox[has-focus] #search-icon.ytd-searchbox { padding-left: 10px !important ; padding-right: 10px !important }
+        #channel-container.ytd-c4-tabbed-header-renderer { height: 100px !important }
+        #contentContainer.tp-yt-app-header-layout { padding-top: 353px !important }
+        #channel-header-container.ytd-c4-tabbed-header-renderer { padding-top: 0 !important }
+        ytd-c4-tabbed-header-renderer[use-modern-style] #channel-name.ytd-c4-tabbed-header-renderer {
+            margin-bottom: 0px !important }
+        ytd-c4-tabbed-header-renderer[use-modern-style] #avatar-editor.ytd-c4-tabbed-header-renderer {
+            --ytd-channel-avatar-editor-size: 80px !important }
+        #avatar.ytd-c4-tabbed-header-renderer { width: 80px !important ; height: 80px !important ;
+            margin: 0 24px 0 0 !important ; flex: none !important ; border-radius: 50% !important ;
+            background-color: transparent !important ; overflow: hidden !important
+        }
+        #wrapper > .ytd-channel-tagline-renderer.style-scope,#videos-count { display: none !important }
 
-    /* Hide 'People also watched' & 'For you' sections from search results */
-    #contents > ytd-shelf-renderer.style-scope.ytd-item-section-renderer[thumbnail-style]:not(*[prominent-thumb-style], *:first-child), #contents > ytd-horizontal-card-list-renderer { display:none; }
-    
-    #cinematics.ytd-watch-flexy { display: none !important; }
-    div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important; }
-    ytd-clarification-renderer.style-scope.ytd-item-section-renderer, ytd-clarification-renderer.style-scope.ytd-watch-flexy {
-        border: 1px solid !important;
-        border-color: #0000001a !important;
-        border-radius: 0px !important;
-    }
-    yt-formatted-string.description.style-scope.ytd-clarification-renderer { font-size: 1.4rem !important; }
-    div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important; }
-    div.ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded { border-radius: 2px !important; }
-    .yt-spec-button-shape-next--size-m { background-color: transparent !important; padding-right: 6px !important; }
-    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal { background-color: transparent !important; }
-    div.cbox.yt-spec-button-shape-next--button-text-content, div.yt-spec-button-shape-next__secondary-icon { display: none !important; }
-    div#ytp-id-18.ytp-popup,ytp-settings-menu.ytp-rounded-menu, div.branding-context-container-inner.ytp-rounded-branding-context { border-radius: 2px !important; }
-    div.iv-card.iv-card-video.ytp-rounded-info, div.iv-card.iv-card-playlist.ytp-rounded-info, div.iv-card.iv-card-channel.ytp-rounded-info, div.iv-card.ytp-rounded-info, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg, .ytp-ce-video.ytp-ce-medium-round, .ytp-ce-playlist.ytp-ce-medium-round, .ytp-ce-medium-round .ytp-ce-expanding-overlay-background, div.ytp-autonav-endscreen-upnext-thumbnail.rounded-thumbnail, .ytp-videowall-still-image { border-radius: 0px !important; }
-    button.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-cancel-button.ytp-autonav-endscreen-upnext-button-rounded, a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important; }
-    tp-yt-paper-button.style-scope.ytd-subscribe-button-renderer { display: flex !important; }`
-document.head.appendChild(styles);
-}
-})();
+        /* Disable more rounded corners on watch page */
+        #cinematics.ytd-watch-flexy { display: none !important }
+        div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important }
+        ytd-clarification-renderer.style-scope.ytd-item-section-renderer {
+            border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }
+        ytd-clarification-renderer.style-scope.ytd-watch-flexy {
+            border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }
+        yt-formatted-string.description.style-scope.ytd-clarification-renderer { font-size: 1.4rem !important }
+        div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important }
+        ytd-rich-metadata-renderer[rounded] { border-radius: 0px !important }
+        ytd-live-chat-frame[rounded-container] { border-radius: 0px !important }
+        ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer {
+            border-radius: 0px !important }
+        ytd-playlist-panel-renderer[modern-panels]:not([hide-header-text]) .title.ytd-playlist-panel-renderer {
+            font-family: Roboto !important ; font-size: 1.4rem !important ;
+            line-height: 2rem !important ; font-weight: 500 !important
+        }
+        ytd-tvfilm-offer-module-renderer[modern-panels] { border-radius: 0px !important }
+        ytd-tvfilm-offer-module-renderer[modern-panels] #header.ytd-tvfilm-offer-module-renderer {
+            border-radius: 0px !important ;  font-family: Roboto !important ; font-size: 1.6rem !important ;
+            line-height: 2.2rem !important ; font-weight: 400 !important
+        }
+        ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy { border-radius: 0px !important }
+        ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
+            font-family: Roboto !important ; font-size: 1.6rem !important ; font-weight: 500 !important }
+        .ytp-ad-player-overlay-flyout-cta-rounded { border-radius: 2px !important }
+        .ytp-flyout-cta .ytp-flyout-cta-action-button.ytp-flyout-cta-action-button-rounded {
+            border-radius: 2px !important ; text-transform: uppercase !important }
+        .ytp-ad-action-interstitial-action-button.ytp-ad-action-interstitial-action-button-rounded {
+            border-radius: 2px !important ; text-transform: uppercase !important }
+        .ytp-settings-menu.ytp-rounded-menu, .ytp-screen-mode-menu.ytp-rounded-menu { border-radius: 2px !important }
+        .ytp-videowall-still-image { border-radius: 0px !important }
+        .ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded { border-radius: 2px !important }
+        div.branding-context-container-inner.ytp-rounded-branding-context { border-radius: 2px !important }
+        div.iv-card.iv-card-video.ytp-rounded-info { border-radius: 0px !important }
+        div.iv-card.iv-card-playlist.ytp-rounded-info { border-radius: 0px !important }
+        div.iv-card.iv-card-channel.ytp-rounded-info { border-radius: 0px !important }
+        div.iv-card.ytp-rounded-info { border-radius: 0px !important }
+        .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview, .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg {
+                border-radius: 0px !important }
+        .ytp-ce-video.ytp-ce-medium-round, .ytp-ce-playlist.ytp-ce-medium-round, .ytp-ce-medium-round .ytp-ce-expanding-overlay-background {
+                border-radius: 0px !important }
+        div.ytp-autonav-endscreen-upnext-thumbnail.rounded-thumbnail { border-radius: 0px !important }
+        button.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-cancel-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important }
+        a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important }
+        .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-overlay-image img, .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-text-overlay, .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-enhanced-overlay {
+                border-radius: 0px !important }
+        .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg {
+            border-top-left-radius: 0px !important ; border-bottom-left-radius: 0px !important }
+        .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview { border-radius: 0px !important }
+
+        /* Remove Shorts, Trending, Podcasts, Shopping */
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-mini-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Trending"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Podcasts"] { display: none !important }
+        ytd-guide-entry-renderer > a[href*="/channel/UCkYQyvc_i9hXEo4xic9Hh2g"] { display: none !important }`
+    document.head.appendChild(styles)
+})()
 
 const extConfig = {
     // BEGIN USER OPTIONS
