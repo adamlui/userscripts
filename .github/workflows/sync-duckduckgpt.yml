@@ -30,7 +30,7 @@ jobs:
 
       # Sync adamlui/userscripts/chatgpt/duckduckgpt to adamlui/duckduckgpt/src/greasemonkey
       - name: Sync duckduckgpt
-        run: rsync -av ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/duckduckgpt/src/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/duckduckgpt/src/greasemonkey/
       
       # Push to adamlui/duckduckgpt
       - name: Push changes
