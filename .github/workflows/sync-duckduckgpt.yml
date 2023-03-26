@@ -32,7 +32,9 @@ jobs:
       
       # Push to adamlui/duckduckgpt
       - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4       
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_SYNC_PAT }}
         with:
           commit_message: "Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}"
           file_pattern: 'src/greasemonkey/*'
@@ -47,5 +49,3 @@ jobs:
           disable_globbing: false
           create_branch: false
           internal_git_binary: git
-
-
