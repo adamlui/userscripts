@@ -1,3 +1,0 @@
-[submodule "chatgpt/duckduckgpt"]
-	path = chatgpt/duckduckgpt
-	url = https://github.com/adamlui/duckduckgpt.git
