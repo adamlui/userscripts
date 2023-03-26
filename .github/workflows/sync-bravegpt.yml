@@ -1,0 +1,43 @@
+name: Sync chatgpt/bravegpt to adamlui/bravegpt/src/greasemonkey
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'chatgpt/bravegpt/**'
+
+jobs:
+  sync-bravegpt:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout adamlui/userscripts
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      # Checkout adamlui/bravegpt
+      - name: Checkout adamlui/bravegpt
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/bravegpt
+          path: adamlui/bravegpt
+
+      # Sync adamlui/userscripts/chatgpt/bravegpt to adamlui/bravegpt/src/greasemonkey
+      - name: Sync bravegpt
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/bravegpt/src/greasemonkey/
+      
+      # Push to adamlui/bravegpt
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_message: 'Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}'
+          file_pattern: 'src/greasemonkey/*'
+          repository: adamlui/bravegpt
