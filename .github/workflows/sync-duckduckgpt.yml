@@ -1,0 +1,39 @@
+name: Sync DuckDuckGPT w/ adamlui/duckduckgpt/src/greasemonkey
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'chatgpt/duckduckgpt/**'
+
+jobs:
+  sync-duckduckgpt:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout adamlui/userscripts
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+
+      # Checkout adamlui/duckduckgpt
+      - name: Checkout adamlui/duckduckgpt
+        uses: actions/checkout@v2
+        with:
+          repository: adamlui/duckduckgpt
+          ref: main
+
+      # Sync adamlui/userscripts/chatgpt/duckduckgpt w/ adamlui/duckduckgpt/src/greasyfork
+      - name: Sync duckduckgpt
+        run: rsync -av ${{ github.workspace }}/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/duckduckgpt/src/greasemonkey/
+      
+      # Push to adamlui/duckduckgpt
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}"
+          repository_name: adamlui/duckduckgpt
+          file_pattern: 'src/greasemonkey/*'
+          branch: main
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_SYNC_PAT }}
