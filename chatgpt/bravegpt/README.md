@@ -15,7 +15,7 @@
 
 <a href="https://greasyfork.org/en/scripts/462440-bravegpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) / 
+[Discuss](https://github.com/adamlui/bravegpt/discussions) / 
 [Review](https://greasyfork.org/en/scripts/462440-bravegpt/feedback#post-discussion) / 
 [Contact author](https://elonsucks.org/@adam)
 
@@ -43,7 +43,7 @@ BraveGPT is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreW
 
 <a href="https://greasyfork.org/en/scripts/462440-bravegpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/bravegpt/discussions) /
 [Leave a review](https://greasyfork.org/en/scripts/462440-bravegpt/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
@@ -70,7 +70,7 @@ Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 Display ChatGPT answers in DuckDuckGo sidebar.
 <br>[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/duckduckgpt/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode)
 
