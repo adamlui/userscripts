@@ -69,7 +69,7 @@ Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 
 Display ChatGPT answers in DuckDuckGo sidebar.
 <br>[Install](https://greasyfork.org/en/scripts/459849-duckduckgpt) / 
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/README.md) / 
+[Readme](https://github.com/adamlui/duckduckgpt/blob/master/src/greasemonkey/README.md) / 
 [Discuss](https://github.com/adamlui/duckduckgpt/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode)
