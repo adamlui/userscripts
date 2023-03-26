@@ -15,7 +15,7 @@
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/duckduckgpt/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
 [Contact author](https://elonsucks.org/@adam)
 
@@ -43,7 +43,7 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi, Lib
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/duckduckgpt/discussions) /
 [Leave a review](https://duckduckgpt.com/userscript/review) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
