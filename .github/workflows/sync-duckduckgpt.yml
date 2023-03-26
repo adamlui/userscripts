@@ -3,7 +3,7 @@ name: Sync DuckDuckGPT w/ adamlui/duckduckgpt/src/greasemonkey
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'chatgpt/duckduckgpt/**'
 
