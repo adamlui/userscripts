@@ -21,7 +21,7 @@
 
 #
 
-<img src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/screenshots/brave-ai.png">
+<img src="https://raw.githubusercontent.com/adamlui/bravegpt/master/media/images/screenshots/brave-ai.png">
 
 ## Installation
 
