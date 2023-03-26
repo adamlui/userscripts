@@ -37,7 +37,7 @@ jobs:
           commit_message: "Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}"
           file_pattern: 'src/greasemonkey/*'
           branch: main
-          repository: .
+          repository: adamlui/duckduckgpt
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: adamlui <adamlui@users.noreply.github.com>
@@ -47,4 +47,5 @@ jobs:
           disable_globbing: false
           create_branch: false
           internal_git_binary: git
+
 
