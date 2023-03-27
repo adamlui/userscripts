@@ -17,7 +17,7 @@
 <br>
 [Discuss](https://github.com/kudoai/bravegpt/discussions) / 
 [Review](https://greasyfork.org/en/scripts/462440-bravegpt/feedback#post-discussion) / 
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 #
 
