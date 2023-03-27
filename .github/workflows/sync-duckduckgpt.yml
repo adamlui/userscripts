@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'chatgpt/duckduckgpt/**'
-    if: 'github.actor != "auto-sync[bot]"'
+    if: 'github.actor != "github-actions[bot]"'
 
 jobs:
   sync-duckduckgpt:
