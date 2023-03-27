@@ -1,4 +1,4 @@
-name: Sync chatgpt/duckduckgpt to adamlui/duckduckgpt/greasemonkey
+name: Sync chatgpt/duckduckgpt to kudoai/duckduckgpt/greasemonkey
 
 on:
   push:
@@ -21,19 +21,19 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      # Checkout adamlui/duckduckgpt
-      - name: Checkout adamlui/duckduckgpt
+      # Checkout kudoai/duckduckgpt
+      - name: Checkout kudoai/duckduckgpt
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/duckduckgpt
-          path: adamlui/duckduckgpt
+          repository: kudoai/duckduckgpt
+          path: kudoai/duckduckgpt
 
       # Sync adamlui/userscripts/chatgpt/duckduckgpt to adamlui/duckduckgpt/greasemonkey
       - name: Sync duckduckgpt
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/duckduckgpt/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
       
-      # Push to adamlui/duckduckgpt
+      # Push to kudoai/duckduckgpt
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -42,4 +42,4 @@ jobs:
           commit_user_name: 'auto-sync[bot]'
           commit_message: '${{ github.event.head_commit.message }} (synced from adamlui/userscripts)'
           file_pattern: 'greasemonkey/*'
-          repository: adamlui/duckduckgpt
+          repository: kudoai/duckduckgpt

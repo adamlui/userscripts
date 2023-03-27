@@ -1,4 +1,4 @@
-name: Sync chatgpt/bravegpt to adamlui/bravegpt/greasemonkey
+name: Sync chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
 
 on:
   push:
@@ -21,19 +21,19 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      # Checkout adamlui/bravegpt
-      - name: Checkout adamlui/bravegpt
+      # Checkout kudoai/bravegpt
+      - name: Checkout kudoai/bravegpt
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/bravegpt
-          path: adamlui/bravegpt
+          repository: kudoai/bravegpt
+          path: kudoai/bravegpt
 
-      # Sync adamlui/userscripts/chatgpt/bravegpt to adamlui/bravegpt/greasemonkey
+      # Sync adamlui/userscripts/chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
       - name: Sync bravegpt
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/bravegpt/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
       
-      # Push to adamlui/bravegpt
+      # Push to kudoai/bravegpt
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -42,4 +42,4 @@ jobs:
           commit_user_name: 'auto-sync[bot]'
           commit_message: '${{ github.event.head_commit.message }} (synced from adamlui/userscripts)'
           file_pattern: 'greasemonkey/*'
-          repository: adamlui/bravegpt
+          repository: kudoai/bravegpt
