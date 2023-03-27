@@ -17,7 +17,7 @@
 <br>
 [Discuss](https://github.com/kudoai/duckduckgpt/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 #
 
