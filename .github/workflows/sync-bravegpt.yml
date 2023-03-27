@@ -31,9 +31,7 @@ jobs:
 
       # Sync adamlui/userscripts/chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
       - name: Sync bravegpt
-        run: |
-          rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
-          rsync -av ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md ${{ github.workspace }}/kudoai/bravegpt/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
       
       # Push to kudoai/bravegpt
       - name: Push changes

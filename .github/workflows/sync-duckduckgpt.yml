@@ -31,9 +31,7 @@ jobs:
 
       # Sync adamlui/userscripts/chatgpt/duckduckgpt to adamlui/duckduckgpt/greasemonkey
       - name: Sync duckduckgpt
-        run: |
-          rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
-          rsync -av ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/README.md ${{ github.workspace }}/kudoai/duckduckgpt/     
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
       
       # Push to kudoai/duckduckgpt
       - name: Push changes
