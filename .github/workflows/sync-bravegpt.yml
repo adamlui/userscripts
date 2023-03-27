@@ -40,6 +40,6 @@ jobs:
           push_options: '--force'
           add_options: '--all'
           commit_user_name: auto-sync[bot]
-          commit_message: '${{ github.event.head_commit.message }} (synced from adamlui/userscripts)'
+          commit_message: '${{ github.event.head_commit.message }} [auto-synced from adamlui/userscripts]'
           file_pattern: 'greasemonkey/*'
           repository: kudoai/bravegpt
