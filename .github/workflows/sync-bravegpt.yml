@@ -31,7 +31,9 @@ jobs:
 
       # Sync adamlui/userscripts/chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
       - name: Sync bravegpt
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
+        run: |
+          rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
+          rsync -av ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md ${{ github.workspace }}/kudoai/bravegpt/
       
       # Push to kudoai/bravegpt
       - name: Push changes
@@ -40,6 +42,6 @@ jobs:
           push_options: '--force'
           add_options: '--all'
           commit_user_name: auto-sync[bot]
-          commit_message: '${{ github.event.head_commit.message }} [auto-synced from adamlui/userscripts]'
-          file_pattern: 'greasemonkey/*'
+          commit_message: '${{ github.event.head_commit.message }} ← `adamlui/userscripts` auto-sync'
+          file_pattern: '*'
           repository: kudoai/bravegpt
