@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name             DuckDuckGPT 🤖
-// @version          2023.03.22.1
+// @version          2023.03.26
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to DuckDuckGo sidebar
 // @homepageURL      https://www.duckduckgpt.com
-// @supportURL       https://github.com/adamlui/userscripts/issues
+// @supportURL       https://github.com/adamlui/duckduckgpt/issues
 // @license          MIT
 // @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png
 // @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon64.png
