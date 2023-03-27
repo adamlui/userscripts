@@ -42,6 +42,6 @@ jobs:
           push_options: '--force'
           add_options: '--all'
           commit_user_name: 'auto-sync[bot]'
-          commit_message: '${{ github.event.head_commit.message }} [auto-synced from adamlui/userscripts]'
+          commit_message: '${{ github.event.head_commit.message }} ← `adamlui/userscripts` auto-sync'
           file_pattern: '*'
           repository: kudoai/duckduckgpt
