@@ -41,12 +41,12 @@ Automatically verify your humanity during Cloudflare Turnstile challenges. // �
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/autopass-cloudflare-captcha/autopass-cloudflare-captcha.user.js) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon48.png" width=18> [BraveGPT](https://github.com/adamlui/bravegpt/tree/main/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
+### <img src="https://raw.githubusercontent.com/kudoai/bravegpt/main/media/images/bravegpt-icon48.png" width=18> [BraveGPT](https://github.com/kudoai/bravegpt/tree/main/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
-Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案.
+Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
-[Readme](https://github.com/adamlui/bravegpt/blob/main/greasemonkey/README.md) / 
-[Discuss](https://github.com/adamlui/bravegpt/discussions)
+[Readme](https://github.com/kudoai/bravegpt/blob/main/greasemonkey/README.md) / 
+[Discuss](https://github.com/kudoai/bravegpt/discussions)
 
 #
 
