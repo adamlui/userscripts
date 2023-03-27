@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/duckduckgpt/main/media/images/ddgpt-logo-dark-mode-371x65.png">
-    <img alt="DuckDuckGPT" src="https://raw.githubusercontent.com/adamlui/duckduckgpt/main/media/images/ddgpt-logo-light-mode-371x65.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kudoai/duckduckgpt/main/media/images/ddgpt-logo-dark-mode-371x65.png">
+    <img alt="DuckDuckGPT" src="https://raw.githubusercontent.com/kudoai/duckduckgpt/main/media/images/ddgpt-logo-light-mode-371x65.png">
   </picture>
 <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 156px; height: 34px; margin:0 0 11px 5px;" width="156" height="34" /></a>
   <a href="https://twitter.com/intent/tweet?text=Want%20%23ChatGPT%20answers%20right%20alongside%20DuckDuckGo%20results%3F%20This%20%23userscript%20does%20just%20that%21&url=https://duckduckgpt.com&hashtags=greasemonkey,javascript,ai"><img alt="Tweet" style="margin:0 0 14px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
@@ -15,7 +15,7 @@
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/duckduckgpt/discussions) /
+[Discuss](https://github.com/kudoai/duckduckgpt/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
 [Contact author](https://elonsucks.org/@adam)
 
