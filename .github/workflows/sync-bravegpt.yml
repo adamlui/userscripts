@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'chatgpt/bravegpt/**'
-    if: 'github.actor != "github-actions[bot]"'
+    if: 'github.event.head_commit.committer.username != "github-actions[bot]"'
 
 jobs:
   sync-bravegpt:
