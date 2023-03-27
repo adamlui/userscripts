@@ -38,6 +38,6 @@ jobs:
         with:
           push_options: '--force'
           add_options: '--all'
-          commit_message: 'Synced from adamlui/userscripts: ${{ github.event.head_commit.message }}'
+          commit_message: '${{ github.event.head_commit.message }} (synced from adamlui/userscripts)'
           file_pattern: 'greasemonkey/*'
           repository: adamlui/duckduckgpt
