@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'chatgpt/bravegpt/**'
+    if: 'github.actor != "auto-sync[bot]"'
 
 jobs:
   sync-bravegpt:
@@ -38,6 +39,7 @@ jobs:
         with:
           push_options: '--force'
           add_options: '--all'
+          commit_user_name: 'auto-sync[bot]'
           commit_message: '${{ github.event.head_commit.message }} (synced from adamlui/userscripts)'
           file_pattern: 'greasemonkey/*'
           repository: adamlui/bravegpt
