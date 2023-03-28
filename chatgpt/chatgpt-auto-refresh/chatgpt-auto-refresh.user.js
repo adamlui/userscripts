@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Auto Refresh ↻
-// @version          2023.03.23.10
+// @version          2023.03.27
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Keeps ChatGPT sessions fresh to avoid Cloudflare checks
@@ -30,28 +30,28 @@
 
     // Import chatgpt.js functions
 
-    var chatGPTauthURL = 'https://chat.openai.com/api/auth/session'
+    var chatGPTsessURL = 'https://chat.openai.com/api/auth/session';
     var autoRefreshTimer = 60; // secs between session auto-refreshes
     var chatgpt = {
 
         activateAutoRefresh: function() {
             if (!this.activateAutoRefresh.intervalId) {
-                console.info('Auto refresh activated');
+                console.info('↻ ChatGPT >> Auto refresh activated');
                 this.activateAutoRefresh.intervalId = setInterval(function() {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', chatGPTauthURL);
+                    xhr.open('GET', chatGPTsessURL);
                     xhr.send(); console.info('ChatGPT session refreshed');
                 }, autoRefreshTimer * 1000); // refresh every pre-set interval
-            } else { console.info('Auto refresh already active!'); }
+            } else { console.info('↻ ChatGPT >> Auto refresh already active!'); }
         },
 
         deactivateAutoRefresh: function() {
-            console.info(this.activateAutoRefresh.intervalId ?
-                         'Auto refresh de-activated' : 'Refresher is not running!');
+            console.info('↻ ChatGPT >> ' + this.activateAutoRefresh.intervalId ?
+                'Auto refresh de-activated' : 'Refresher is not running!');
             clearInterval(this.activateAutoRefresh.intervalId);
         },
 
-        notify: function(msg, position = '', notifDuration = '') {
+        notify: function(msg, position, notifDuration) {
             notifDuration = notifDuration ? +notifDuration : 1.75; // sec duration to maintain notification visibility
             var fadeDuration = 0.6; // sec duration of fade-out
             var vpYoffset = 13, vpXoffset = 27; // px offset from viewport border
@@ -64,31 +64,33 @@
             document.body.appendChild(notificationDiv); // insert into DOM
 
             // Determine div position/quadrant
-            notificationDiv.isTop = !/low|bottom/i.test(position) ? true : false;
-            notificationDiv.isRight = !/left/i.test(position) ? true : false;
+            notificationDiv.isTop = !position || !/low|bottom/i.test(position) ? true : false;
+            notificationDiv.isRight = !position || !/left/i.test(position) ? true : false;
             notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
-                + (notificationDiv.isRight ? 'Right' : 'Left');
+                                     + (notificationDiv.isRight ? 'Right' : 'Left');
 
             // Store div in memory
-            for (var quadrant of ['topRight', 'bottomRight', 'bottomLeft', 'topLeft']) {
-                if (!this.notify[quadrant]) this.notify[quadrant] = []; } // initialize storage arrays
+            var quadrants = ['topRight', 'bottomRight', 'bottomLeft', 'topLeft'];
+            for (var i = 0 ; i < quadrants.length ; i++ ) { // initialize storage arrays
+                if (!this.notify[quadrants[i]]) this.notify[quadrants[i]] = []; }
             var thisQuadrantDivs = this.notify[notificationDiv.quadrant];
             thisQuadrantDivs.push(notificationDiv); // store div
 
             // Position notification (defaults to top-right)
-            notificationDiv.style.top = notificationDiv.isTop ? `${vpYoffset}px` : '';
-            notificationDiv.style.bottom = !notificationDiv.isTop ? `${vpYoffset}px` : '';
-            notificationDiv.style.right = notificationDiv.isRight ? `${vpXoffset}px` : '';
-            notificationDiv.style.left = !notificationDiv.isRight ? `${vpXoffset}px` : '';
+            notificationDiv.style.top = notificationDiv.isTop ? vpYoffset.toString() + 'px' : '';
+            notificationDiv.style.bottom = !notificationDiv.isTop ? vpYoffset.toString() + 'px' : '';
+            notificationDiv.style.right = notificationDiv.isRight ? vpYoffset.toString() + 'px' : '';
+            notificationDiv.style.left = !notificationDiv.isRight ? vpYoffset.toString() + 'px' : '';
 
             // Reposition old notifications
             if (thisQuadrantDivs.length > 1) {
                 var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
-                for (var oldDiv of divsToMove) {
+                for (var j = 0 ; divsToMove.length ; j++) {
+                    var oldDiv = divsToMove[j];
                     var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
                     var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
                     oldDiv.style[offsetProp] = `${vOffset}px`; // change prop
-                }}
+            }}
 
             // Show notification
             notificationDiv.innerHTML = msg; // insert msg
@@ -114,18 +116,18 @@
 
         toggleAutoRefresh: function() {
             if (!this.activateAutoRefresh.intervalId) {
-                console.info('Auto refresh activated');
+                console.info('↻ ChatGPT >> Auto refresh activated');
                 this.activateAutoRefresh.intervalId = setInterval(function() {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', chatGPTauthURL);
-                    xhr.send(); console.info('ChatGPT session refreshed');
+                    xhr.open('GET', chatGPTsessURL);
+                    xhr.send(); console.info('↻ ChatGPT >> ChatGPT session refreshed');
                 }, autoRefreshTimer * 1000); // refresh every pre-set interval
             } else {
                 clearInterval(this.activateAutoRefresh.intervalId);
                 this.activateAutoRefresh.intervalId = null;
-                console.info('Auto refresh deactivated');
+                console.info('↻ ChatGPT >> Auto refresh de-activated');
             }
-        },
+        }
     };
 
     // Define script functions
@@ -137,30 +139,33 @@
 
         // Add command to toggle auto-refresh
         var arLabel = stateSymbol[+config.arDisabled] + ' Auto-Refresh ↻ '
-        + stateSeparator + stateWord[+config.arDisabled]
+                    + stateSeparator + stateWord[+config.arDisabled]
         menuID.push(GM_registerMenuCommand(arLabel, function() {
             chatgpt.toggleAutoRefresh()
             saveSetting('arDisabled', !config.arDisabled)
             if (!config.notifHidden) chatgpt.notify('Auto-Refresh: ' + stateWord[+config.arDisabled])
-            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+            for (var i = 0 ; i < menuID.length ; i++) GM_unregisterMenuCommand(menuID[i]) // remove all cmd's
+            registerMenu() // serve fresh one
         }))
 
         // Add command to show notifications when switching modes
         var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
-        + stateSeparator + stateWord[+config.notifHidden]
+                    + stateSeparator + stateWord[+config.notifHidden]
         menuID.push(GM_registerMenuCommand(mnLabel, function() {
             saveSetting('notifHidden', !config.notifHidden)
-            for (var id of menuID) { GM_unregisterMenuCommand(id) } ; registerMenu() // refresh menu
+            for (var i = 0 ; i < menuID.length ; i++) GM_unregisterMenuCommand(menuID[i]) // remove all cmd's
+            registerMenu() // serve fresh one
         }))
     }
 
     function getUserscriptManager() {
         try { return GM_info.scriptHandler } catch (error) { return "other" }}
 
-    function loadSetting(...keys) {
+    function loadSetting() {
+        var keys = [].slice.call(arguments)
         keys.forEach(function(key) {
             config[key] = GM_getValue(configKeyPrefix + key, false)
-        })}
+    })}
 
     function saveSetting(key, value) {
         GM_setValue(configKeyPrefix + key, value) // save to browser
