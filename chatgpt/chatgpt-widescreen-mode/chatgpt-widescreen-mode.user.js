@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.23
+// @version          2023.03.27
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -29,10 +29,197 @@
 // @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
 // ==/UserScript==
 
+// NOTE: This script uses code from the powerful chatgpt.js library @ https://chatgptjs.org (c) 2023 Adam Lui & 冯不游 under the MIT license.
+
 (function () {
 
+    // Import chatgpt.js functions
+
+    var navLinkLabels = { newChat: location.host === 'freegpt.one' ? 'Reset Thread' : 'New chat' };
+    var chatgpt = {
+
+        notify: function(msg, position = '', notifDuration = '') {
+            notifDuration = notifDuration ? +notifDuration : 1.75; // sec duration to maintain notification visibility
+            var fadeDuration = 0.6; // sec duration of fade-out
+            var vpYoffset = 13, vpXoffset = 27; // px offset from viewport border
+
+            // Make/stylize/insert div
+            var notificationDiv = document.createElement('div'); // make div
+            notificationDiv.style.cssText = ( // stylize it
+                '/* Box style */   background-color: black ; padding: 10px ; border-radius: 8px ; '
+                + '/* Visibility */  opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white');
+            document.body.appendChild(notificationDiv); // insert into DOM
+
+            // Determine div position/quadrant
+            notificationDiv.isTop = !/low|bottom/i.test(position) ? true : false;
+            notificationDiv.isRight = !/left/i.test(position) ? true : false;
+            notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
+                                     + (notificationDiv.isRight ? 'Right' : 'Left');
+
+            // Store div in memory
+            for (var quadrant of ['topRight', 'bottomRight', 'bottomLeft', 'topLeft']) {
+                if (!this.notify[quadrant]) this.notify[quadrant] = []; } // initialize storage arrays
+            var thisQuadrantDivs = this.notify[notificationDiv.quadrant];
+            thisQuadrantDivs.push(notificationDiv); // store div
+
+            // Position notification (defaults to top-right)
+            notificationDiv.style.top = notificationDiv.isTop ? `${vpYoffset}px` : '';
+            notificationDiv.style.bottom = !notificationDiv.isTop ? `${vpYoffset}px` : '';
+            notificationDiv.style.right = notificationDiv.isRight ? `${vpXoffset}px` : '';
+            notificationDiv.style.left = !notificationDiv.isRight ? `${vpXoffset}px` : '';
+
+            // Reposition old notifications
+            if (thisQuadrantDivs.length > 1) {
+                var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
+                for (var oldDiv of divsToMove) {
+                    var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
+                    var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
+                    oldDiv.style[offsetProp] = `${vOffset}px`; // change prop
+            }}
+
+            // Show notification
+            notificationDiv.innerHTML = msg; // insert msg
+            notificationDiv.style.transition = 'none'; // remove fade effect
+            notificationDiv.style.opacity = 1; // show msg
+
+            // Hide notification
+            var hideDelay = ( // set delay before fading
+                fadeDuration > notifDuration ? 0 // don't delay if fade exceeds notification duration
+                : notifDuration - fadeDuration); // otherwise delay for difference
+            notificationDiv.hideTimer = setTimeout(function hideNotif() { // maintain notification visibility, then fade out
+                notificationDiv.style.transition = `opacity ${fadeDuration}s`; // add fade effect
+                notificationDiv.style.opacity = 0; // hide notification
+                notificationDiv.hideTimer = null; // prevent memory leaks
+            }, hideDelay * 1000); // ...after pre-set duration
+
+            // Destroy notification
+            notificationDiv.destroyTimer = setTimeout(function destroyNotif() {
+                notificationDiv.remove(); thisQuadrantDivs.shift(); // remove from DOM + memory
+                notificationDiv.destroyTimer = null; // prevent memory leaks
+            }, Math.max(fadeDuration, notifDuration) * 1000); // ...after notification hid
+        },        
+
+        startNewChat: function() {
+            for (var navLink of document.querySelectorAll('nav > a')) {
+                if (navLink.text.includes(navLinkLabels.newChat)) {
+                    navLink.click(); return;
+        }}}
+    }
+
+    // Define script functions
+
+    function registerMenu() {
+        var menuID = [] // to store registered commands for removal while preserving order
+        var stateSymbol = ['✔️', '❌'], stateWord = ['ON', 'OFF']
+        var stateSeparator = getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': '
+
+        // Add command to show notifications when switching modes
+        var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
+            + stateSeparator + stateWord[+config.notifHidden]
+        menuID.push(GM_registerMenuCommand(mnLabel, function () {
+            saveSetting('notifHidden', !config.notifHidden)
+            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
+        }))
+
+        // Add command to also activate wide screen in full-window
+        var fwLabel = stateSymbol[+!config.fullerWindow] + ' Fuller Windows'
+            + stateSeparator + stateWord[+!config.fullerWindow]
+        menuID.push(GM_registerMenuCommand(fwLabel, function () {
+            saveSetting('fullerWindow', !config.fullerWindow)
+            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
+        }))
+    }
+
+    function getUserscriptManager() {
+        try { return GM_info.scriptHandler } catch (error) { return 'other' }}
+
+    function loadSetting(...keys) {
+        keys.forEach(function (key) {
+            config[key] = GM_getValue(configKeyPrefix + key, false)
+    })}
+
+    function saveSetting(key, value) {
+        GM_setValue(configKeyPrefix + key, value) // save to browser
+        config[key] = value // and memory
+    }
+
+    function classListToCSS(classList) { // convert DOM classList to single CSS selector
+        return '.' + [...classList].join('.') // prepend dot to dot-separated string
+            .replaceAll(/([:\[\]])/g, '\\$1') // escape CSS special chars
+    }
+
+    function insertButtons() {
+        var chatbar = document.querySelector("form button[class*='bottom']").parentNode
+        if (chatbar.contains(fullWindowButton)) {
+            return // if buttons aren't missing, exit
+        } else { chatbar.append(newChatButton, fullWindowButton, wideScreenButton, tooltipDiv) }
+    }
+
+    function toggleMode(mode, state = '') {
+
+        var modeStyle = document.getElementById(mode + '-mode') // look for existing mode style
+        if (state.toUpperCase() == 'ON' || !modeStyle) { // if missing or ON-state passed
+            modeStyle = mode == 'wideScreen' ? wideScreenStyle : fullWindowStyle
+            if (mode == 'fullWindow' && config.fullerWindow) { // activate fuller window if enabled for full window
+                if (!config.wideScreen) document.head.appendChild(wideScreenStyle)
+            }
+            document.head.appendChild(modeStyle); state = 'on' // activate mode
+        } else { // de-activate mode
+            if (mode == 'fullWindow' && !config.wideScreen) { // if exiting full-window & wide screen wasn't manually enabled
+                try { document.head.removeChild(wideScreenStyle) } catch { }
+            } // also remove wide screen since fuller window turns it on
+            document.head.removeChild(modeStyle); state = 'off'
+        }
+        saveSetting(mode, state.toUpperCase() == 'ON' ? true : false)
+        updateSVG(mode); updateTooltip(mode) // update icon/tooltip
+        if (!config.notifHidden) { // show mode notification if enabled
+            chatgpt.notify(`${mode == 'wideScreen' ? 'Wide screen' : 'Full-window'} ${state.toUpperCase()}`)
+        }
+    }
+
+    function toggleTooltip(event) {
+        var buttonType = (
+            event.target.id.includes('wide') ? 'wideScreen' :
+                event.target.id.includes('full') ? 'fullWindow' :
+                    event.target.id.includes('new') ? 'newChat' : 'sendMsg')
+        updateTooltip(buttonType) // since mouseover's can indicate button change
+        tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
+    }
+
+    function updateTooltip(buttonType) { // text & position
+        tooltipDiv.innerHTML = tooltips[buttonType + (
+            !/full|wide/i.test(buttonType) ? '' : (config[buttonType] ? 'ON' : 'OFF'))]
+        var ctrAddend = 17, overlayWidth = 30
+        var iniRoffset = overlayWidth * (
+            buttonType.includes('send') ? 0
+                : buttonType.includes('Window') ? 1
+                    : buttonType.includes('Screen') ? 2 : 3) + ctrAddend
+        tooltipDiv.style.right = `${ // horizontal position
+            iniRoffset - tooltipDiv.getBoundingClientRect().width / 2}px`
+    }
+
+    function updateSVG(mode) {
+        var [button, ONpaths, OFFpaths] = (mode ==
+            'wideScreen' ? [wideScreenButton, wideScreenONpaths, wideScreenOFFpaths]
+            : [fullWindowButton, fullWindowONpaths, fullWindowOFFpaths])
+
+        // Initialize rem margin offset vs. OpenAI's .mr-1 for hover overlay centeredness
+        var lMargin = mode == 'wideScreen' ? .11 : .12
+        var rMargin = (.25 - lMargin)
+
+        // Update SVG
+        button.innerHTML = '<svg '
+            + `class="${sendSVGclasses}" ` // assign borrowed classes
+            + `style="margin: 0 ${rMargin}rem 0 ${lMargin}rem ; ` // center overlay
+            + `pointer-events: none" ` // prevent triggering tooltips twice
+            + `viewBox="${svgViewBox}"> ` // set viewbox pre-tweaked to match Send
+            + (config[mode] ? ONpaths : OFFpaths + '</svg>') // dynamically insert paths based on loaded key
+    }
+
+    // Run main routine
+
     // Initialize script
-    var config = {}, configKeyPrefix = 'chatGPT_'
+    var config = {}, configKeyPrefix = 'chatGPTws_'
     loadSetting('wideScreen', 'fullWindow', 'notifHidden', 'fullerWindow')
     registerMenu() // create browser toolbar menu
 
@@ -46,9 +233,14 @@
     var sendButtonColor = 'currentColor' // changes w/ scheme
     var sendButtonClasses = document.querySelector('form button[class*="bottom"]').classList
     var sendSVGclasses = document.querySelector('form button[class*="bottom"] > svg').classList
+    if (location.host === 'freegpt.one') { // remove rotation effect
+        [...sendSVGclasses].forEach(sendSVGclass => {
+            if (sendSVGclass.includes('rotate')) sendSVGclasses.remove(sendSVGclass)
+    })}
     var inputTextAreaClasses = document.querySelector("form button[class*='bottom']").previousSibling.classList
     var sidepadClasses = document.querySelector('#__next > div > div').classList
-    var sidebarClasses = document.querySelector('#__next > div > div.dark').classList
+    var sidebarClasses = document.querySelector(`#__next > div > div.${
+        location.host === 'freegpt.one' ? 'hidden' : 'dark' }`).classList
 
     // Create/stylize tooltip div
     var tooltipDiv = document.createElement('div')
@@ -130,7 +322,7 @@
         + `viewBox="11 8 13 13"> ${newChatPaths} </svg>` // set viewbox & insert paths
     newChatButton.setAttribute('class', sendButtonClasses) // assign borrowed classes
     newChatButton.style.cssText = 'right: 5.5rem' // position left of full-window button
-    newChatButton.addEventListener('click', () => { startNewChat() })
+    newChatButton.addEventListener('click', () => { chatgpt.startNewChat() })
     newChatButton.addEventListener('mouseover', toggleTooltip)
     newChatButton.addEventListener('mouseout', toggleTooltip)
 
@@ -168,190 +360,5 @@
         }
     })
     navObserver.observe(document.documentElement, { childList: true, subtree: true })
-
-
-    // General functions // 一般功能
-
-    function getUserscriptManager() {
-        try { return GM_info.scriptHandler } catch (error) { return "other" }
-    }
-
-    function loadSetting(...keys) {
-        keys.forEach(function (key) {
-            config[key] = GM_getValue(configKeyPrefix + key, false)
-        })
-    }
-
-    function saveSetting(key, value) {
-        GM_setValue(configKeyPrefix + key, value) // save to browser
-        config[key] = value // and memory
-    }
-
-    function classListToCSS(classList) { // convert DOM classList to single CSS selector
-        return '.' + [...classList].join('.') // prepend dot to dot-separated string
-            .replaceAll(/([:\[\]])/g, '\\$1') // escape CSS special chars
-    }
-
-    function notify(msg, position = '', notifDuration = '') {
-        notifDuration = notifDuration ? +notifDuration : 1.75; // sec duration to maintain notification visibility
-        var fadeDuration = 0.6; // sec duration of fade-out
-        var vpYoffset = 13, vpXoffset = 27; // px offset from viewport border
-
-        // Make/stylize/insert div
-        var notificationDiv = document.createElement('div'); // make div
-        notificationDiv.style.cssText = ( // stylize it
-            '/* Box style */   background-color: black ; padding: 10px ; border-radius: 8px ; '
-            + '/* Visibility */  opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white');
-        document.body.appendChild(notificationDiv); // insert into DOM
-
-        // Determine div position/quadrant
-        notificationDiv.isTop = !/low|bottom/i.test(position) ? true : false;
-        notificationDiv.isRight = !/left/i.test(position) ? true : false;
-        notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
-            + (notificationDiv.isRight ? 'Right' : 'Left');
-
-        // Store div in memory
-        for (var quadrant of ['topRight', 'bottomRight', 'bottomLeft', 'topLeft']) {
-            if (!notify[quadrant]) notify[quadrant] = [];
-        } // initialize storage arrays
-        var thisQuadrantDivs = notify[notificationDiv.quadrant];
-        thisQuadrantDivs.push(notificationDiv); // store div
-
-        // Position notification (defaults to top-right)
-        notificationDiv.style.top = notificationDiv.isTop ? `${vpYoffset}px` : '';
-        notificationDiv.style.bottom = !notificationDiv.isTop ? `${vpYoffset}px` : '';
-        notificationDiv.style.right = notificationDiv.isRight ? `${vpXoffset}px` : '';
-        notificationDiv.style.left = !notificationDiv.isRight ? `${vpXoffset}px` : '';
-
-        // Reposition old notifications
-        if (thisQuadrantDivs.length > 1) {
-            var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
-            for (var oldDiv of divsToMove) {
-                var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
-                var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
-                oldDiv.style[offsetProp] = `${vOffset}px`; // change prop
-            }
-        }
-
-        // Show notification
-        notificationDiv.innerHTML = msg; // insert msg
-        notificationDiv.style.transition = 'none'; // remove fade effect
-        notificationDiv.style.opacity = 1; // show msg
-
-        // Hide notification
-        var hideDelay = ( // set delay before fading
-            fadeDuration > notifDuration ? 0 // don't delay if fade exceeds notification duration
-                : notifDuration - fadeDuration); // otherwise delay for difference
-        notificationDiv.hideTimer = setTimeout(function hideNotif() { // maintain notification visibility, then fade out
-            notificationDiv.style.transition = `opacity ${fadeDuration}s`; // add fade effect
-            notificationDiv.style.opacity = 0; // hide notification
-            notificationDiv.hideTimer = null; // prevent memory leaks
-        }, hideDelay * 1000); // ...after pre-set duration
-
-        // Destroy notification
-        notificationDiv.destroyTimer = setTimeout(function destroyNotif() {
-            notificationDiv.remove(); thisQuadrantDivs.shift(); // remove from DOM + memory
-            notificationDiv.destroyTimer = null; // prevent memory leaks
-        }, Math.max(fadeDuration, notifDuration) * 1000); // ...after notification hid
-    }
-
-    // Script functions
-    function registerMenu() {
-        var menuID = [] // to store registered commands for removal while preserving order
-        var stateSymbol = ['✔️', '❌'], stateWord = ['ON', 'OFF']
-        var stateSeparator = getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': '
-
-        // Add command to show notifications when switching modes
-        var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
-            + stateSeparator + stateWord[+config.notifHidden]
-        menuID.push(GM_registerMenuCommand(mnLabel, function () {
-            saveSetting('notifHidden', !config.notifHidden)
-            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
-        }))
-
-        // Add command to also activate wide screen in full-window
-        var fwLabel = stateSymbol[+!config.fullerWindow] + ' Fuller Windows'
-            + stateSeparator + stateWord[+!config.fullerWindow]
-        menuID.push(GM_registerMenuCommand(fwLabel, function () {
-            saveSetting('fullerWindow', !config.fullerWindow)
-            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
-        }))
-    }
-
-    function insertButtons() {
-        var chatbar = document.querySelector("form button[class*='bottom']").parentNode
-        if (chatbar.contains(fullWindowButton)) {
-            return // if buttons aren't missing, exit
-        } else { chatbar.append(newChatButton, fullWindowButton, wideScreenButton, tooltipDiv) }
-    }
-
-    function startNewChat() {
-        for (var link of document.getElementsByTagName('a')) {
-            if (link.text.includes('New chat')) {
-                link.click(); break
-            }
-        }
-    }
-
-    function toggleMode(mode, state = '') {
-
-        var modeStyle = document.getElementById(mode + '-mode') // look for existing mode style
-        if (state.toUpperCase() == 'ON' || !modeStyle) { // if missing or ON-state passed
-            modeStyle = mode == 'wideScreen' ? wideScreenStyle : fullWindowStyle
-            if (mode == 'fullWindow' && config.fullerWindow) { // activate fuller window if enabled for full window
-                if (!config.wideScreen) document.head.appendChild(wideScreenStyle)
-            }
-            document.head.appendChild(modeStyle); state = 'on' // activate mode
-        } else { // de-activate mode
-            if (mode == 'fullWindow' && !config.wideScreen) { // if exiting full-window & wide screen wasn't manually enabled
-                try { document.head.removeChild(wideScreenStyle) } catch { }
-            } // also remove wide screen since fuller window turns it on
-            document.head.removeChild(modeStyle); state = 'off'
-        }
-        saveSetting(mode, state.toUpperCase() == 'ON' ? true : false)
-        updateSVG(mode); updateTooltip(mode) // update icon/tooltip
-        if (!config.notifHidden) { // show mode notification if enabled
-            notify(`${mode == 'wideScreen' ? 'Wide screen' : 'Full-window'} ${state.toUpperCase()}`)
-        }
-    }
-
-    function toggleTooltip(event) {
-        var buttonType = (
-            event.target.id.includes('wide') ? 'wideScreen' :
-                event.target.id.includes('full') ? 'fullWindow' :
-                    event.target.id.includes('new') ? 'newChat' : 'sendMsg')
-        updateTooltip(buttonType) // since mouseover's can indicate button change
-        tooltipDiv.style.opacity = event.type === 'mouseover' ? '0.8' : '0' // toggle visibility
-    }
-
-    function updateTooltip(buttonType) { // text & position
-        tooltipDiv.innerHTML = tooltips[buttonType + (
-            !/full|wide/i.test(buttonType) ? '' : (config[buttonType] ? 'ON' : 'OFF'))]
-        var ctrAddend = 17, overlayWidth = 30
-        var iniRoffset = overlayWidth * (
-            buttonType.includes('send') ? 0
-                : buttonType.includes('Window') ? 1
-                    : buttonType.includes('Screen') ? 2 : 3) + ctrAddend
-        tooltipDiv.style.right = `${ // horizontal position
-            iniRoffset - tooltipDiv.getBoundingClientRect().width / 2}px`
-    }
-
-    function updateSVG(mode) {
-        var [button, ONpaths, OFFpaths] = (mode ==
-            'wideScreen' ? [wideScreenButton, wideScreenONpaths, wideScreenOFFpaths]
-            : [fullWindowButton, fullWindowONpaths, fullWindowOFFpaths])
-
-        // Initialize rem margin offset vs. OpenAI's .mr-1 for hover overlay centeredness
-        var lMargin = mode == 'wideScreen' ? .11 : .12
-        var rMargin = (.25 - lMargin)
-
-        // Update SVG
-        button.innerHTML = '<svg '
-            + `class="${sendSVGclasses}" ` // assign borrowed classes
-            + `style="margin: 0 ${rMargin}rem 0 ${lMargin}rem ; ` // center overlay
-            + `pointer-events: none" ` // prevent triggering tooltips twice
-            + `viewBox="${svgViewBox}"> ` // set viewbox pre-tweaked to match Send
-            + (config[mode] ? ONpaths : OFFpaths + '</svg>') // dynamically insert paths based on loaded key
-    }
 
 })()
