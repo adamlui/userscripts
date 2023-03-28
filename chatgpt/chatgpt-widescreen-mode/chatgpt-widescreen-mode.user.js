@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.28.2
+// @version          2023.03.28.3
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -132,7 +132,7 @@
             + stateSeparator + stateWord[+!config.fullerWindow]
         menuID.push(GM_registerMenuCommand(fwLabel, function () {
             saveSetting('fullerWindow', !config.fullerWindow)
-            chatgpt.notify('Fuller Windows: ' + stateWord[+!config.fullerWindow])
+            if (!config.notifHidden) chatgpt.notify('Fuller Windows: ' + stateWord[+!config.fullerWindow])
             for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
         }))
     }
