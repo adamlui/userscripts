@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.27.2
+// @version          2023.03.27.3
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -72,8 +72,8 @@
             // Reposition old notifications
             if (thisQuadrantDivs.length > 1) {
                 var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
-                for (var i = 0 ; divsToMove.length ; i++) {
-                    var oldDiv = divsToMove[i];
+                for (var j = 0 ; j < divsToMove.length ; j++) {
+                    var oldDiv = divsToMove[j];
                     var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
                     var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
                     oldDiv.style[offsetProp] = `${vOffset}px`; // change prop

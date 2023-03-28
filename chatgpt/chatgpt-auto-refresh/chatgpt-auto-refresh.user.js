@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Auto Refresh ↻
-// @version          2023.03.27
+// @version          2023.03.27.1
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Keeps ChatGPT sessions fresh to avoid Cloudflare checks
@@ -85,7 +85,7 @@
             // Reposition old notifications
             if (thisQuadrantDivs.length > 1) {
                 var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
-                for (var j = 0 ; divsToMove.length ; j++) {
+                for (var j = 0 ; j < divsToMove.length ; j++) {
                     var oldDiv = divsToMove[j];
                     var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
                     var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
