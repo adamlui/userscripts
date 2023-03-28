@@ -53,7 +53,7 @@ ChatGPT Widescreen Mode can be activated on the following sites...
 - LibreWolf
 - QQ
 
-[Pull requests](https://github.com/adamlui/userscripts/pulls) to expand compatibility always welcome!
+If you've tested it to work in a browser not listed, create a [pull request](https://github.com/adamlui/userscripts/pulls) to become a contributor!
 
 <a href="https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
