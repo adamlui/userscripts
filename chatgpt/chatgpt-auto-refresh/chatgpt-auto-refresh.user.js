@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Auto Refresh ↻
-// @version          2023.03.27.1
+// @version          2023.03.28
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Keeps ChatGPT sessions fresh to avoid Cloudflare checks
@@ -30,6 +30,12 @@
 
     // Import chatgpt.js functions
 
+    unsafeWindow.chatgptNotifyProps = { // NOTE: `unsafeWindow` is safe! `@match` is limited in scope.
+        // (Only if `@match` is highly inclusive, a malicious website could make userscripts do bad things.)
+        // Because this script uses GM methods (which isolates script in sandbox) `unsafeWindow` is
+        // required to create global object for notification positioning across scripts (but is safe!)
+        quadrants: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }
+    };
     var chatGPTsessURL = 'https://chat.openai.com/api/auth/session';
     var autoRefreshTimer = 60; // secs between session auto-refreshes
     var chatgpt = {
@@ -69,12 +75,8 @@
             notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
                                      + (notificationDiv.isRight ? 'Right' : 'Left');
 
-            // Store div in memory
-            var quadrants = ['topRight', 'bottomRight', 'bottomLeft', 'topLeft'];
-            for (var i = 0 ; i < quadrants.length ; i++ ) { // initialize storage arrays
-                if (!this.notify[quadrants[i]]) this.notify[quadrants[i]] = []; }
-            var thisQuadrantDivs = this.notify[notificationDiv.quadrant];
-            thisQuadrantDivs.push(notificationDiv); // store div
+            // Store div in global memory
+            unsafeWindow.chatgptNotifyProps.quadrants[notificationDiv.quadrant].push(notificationDiv);
 
             // Position notification (defaults to top-right)
             notificationDiv.style.top = notificationDiv.isTop ? vpYoffset.toString() + 'px' : '';
@@ -83,11 +85,12 @@
             notificationDiv.style.left = !notificationDiv.isRight ? vpYoffset.toString() + 'px' : '';
 
             // Reposition old notifications
+            var thisQuadrantDivs = unsafeWindow.chatgptNotifyProps.quadrants[notificationDiv.quadrant];
             if (thisQuadrantDivs.length > 1) {
                 var divsToMove = thisQuadrantDivs.slice(0, -1); // exclude new div
-                for (var j = 0 ; j < divsToMove.length ; j++) {
+                for (var j = 0; j < divsToMove.length; j++) {
                     var oldDiv = divsToMove[j];
-                    var offsetProp = oldDiv.style.top ? 'top' : 'bottom'; // pick property to change
+                    var offsetProp = oldDiv.style.top ? "top" : "bottom"; // pick property to change
                     var vOffset = +oldDiv.style[offsetProp].match(/\d+/)[0] + 5 + oldDiv.getBoundingClientRect().height;
                     oldDiv.style[offsetProp] = `${vOffset}px`; // change prop
             }}
