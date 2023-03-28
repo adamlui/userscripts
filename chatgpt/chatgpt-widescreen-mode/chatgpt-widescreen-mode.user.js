@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.27
+// @version          2023.03.27.1
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -332,7 +332,6 @@
     var prevSessionChecked = false
     var navObserver = new MutationObserver(([{ addedNodes, type }]) => {
         if (type === 'childList' && addedNodes.length) {
-
             insertButtons() // again or they constantly disappear
 
             // Check loaded keys to restore previous session's state
@@ -356,9 +355,7 @@
                     sendButton.removeAttribute('hasTooltip');
                 }
             }
-
-        }
-    })
+    }})
     navObserver.observe(document.documentElement, { childList: true, subtree: true })
 
 })()
