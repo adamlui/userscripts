@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.28.1
+// @version          2023.03.28.2
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -52,7 +52,7 @@
             // Make/stylize/insert div
             var notificationDiv = document.createElement('div'); // make div
             notificationDiv.style.cssText = ( // stylize it
-                '/* Box style */   background-color: black ; padding: 10px ; border-radius: 8px ; '
+                  '/* Box style */   background-color: black ; padding: 10px ; border-radius: 8px ; '
                 + '/* Visibility */  opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white');
             document.body.appendChild(notificationDiv); // insert into DOM
 
@@ -123,6 +123,7 @@
             + stateSeparator + stateWord[+config.notifHidden]
         menuID.push(GM_registerMenuCommand(mnLabel, function () {
             saveSetting('notifHidden', !config.notifHidden)
+            chatgpt.notify('Mode Notifications: ' + stateWord[+config.notifHidden])
             for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
         }))
 
@@ -131,6 +132,7 @@
             + stateSeparator + stateWord[+!config.fullerWindow]
         menuID.push(GM_registerMenuCommand(fwLabel, function () {
             saveSetting('fullerWindow', !config.fullerWindow)
+            chatgpt.notify('Fuller Windows: ' + stateWord[+!config.fullerWindow])
             for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
         }))
     }
