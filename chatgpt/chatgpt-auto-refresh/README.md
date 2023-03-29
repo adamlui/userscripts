@@ -8,7 +8,7 @@
 
 <a href="https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
 [Review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
 [Contact author](https://github.com/adamlui)
 
@@ -28,15 +28,26 @@
 
 ## Dependencies
 
-ChatGPT Auto Refresh relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
+ChatGPT Auto Refresh relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license.
 
 ## Compatibility
 
-ChatGPT Auto Refresh is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreWolf & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+ChatGPT Auto Refresh is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/):
+
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Opera
+- Brave
+- Vivaldi
+- LibreWolf
+- QQ
+
+If you've tested it to work in a browser not listed, create a [pull request](https://github.com/adamlui/chatgpt-auto-refresh/pulls) to become a contributor!
 
 <a href="https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) / 
+[Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
@@ -50,26 +61,26 @@ ChatGPT Auto Refresh is compatible with Chrome, Firefox, Edge, Opera, Brave, Viv
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey)
 
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。<br>
 [Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
-[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Readme](https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey/README.md) / 
+[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
+  ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。<br>
 [Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
 [Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://raw.githubusercontent.com/kudoai/bravegpt/main/media/images/bravegpt-icon48.png" width=18> [BraveGPT](https://github.com/kudoai/bravegpt/tree/main/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
+### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](https://bravegpt.com/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
-[Readme](https://github.com/kudoai/bravegpt/blob/main/greasemonkey/README.md) / 
-[Discuss](https://github.com/kudoai/bravegpt/discussions)
+[Readme](https://bravegpt.com/greasemonkey/README.md) / 
+[Discuss](https://github.bravegpt.com/discussions)
 
 #
   
