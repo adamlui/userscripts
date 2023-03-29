@@ -91,7 +91,7 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/chatgpt-auto-refresh/tree/main/greasemonkey)
 
-Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
+Keeps your ChatGPT sessions active to avoid constant Cloudflare checks. // 使您的 ChatGPT 会话保持活动状态以避免 Cloudflare 检查。
 <br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
 [Readme](https://github.com/adamlui/chatgpt-auto-refresh/tree/main/greasemonkey/README.md) / 
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions)
