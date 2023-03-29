@@ -1,11 +1,11 @@
-name: Sync chatgpt/chatgpt-widescreen to adamlui/chatgpt-widescreen/greasemonkey
+name: Sync chatgpt/chatgpt-widescreen-mode to adamlui/chatgpt-widescreen/greasemonkey
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'chatgpt/chatgpt-widescreen/**'
+      - 'chatgpt/chatgpt-widescreen-mode/**'
     if: 'github.event.head_commit.committer.username != "auto-sync[bot]"'
 
 jobs:
@@ -29,9 +29,9 @@ jobs:
           repository: adamlui/chatgpt-widescreen
           path: adamlui/chatgpt-widescreen
 
-      # Sync adamlui/userscripts/chatgpt/chatgpt-widescreen to adamlui/chatgpt-widescreen/greasemonkey
+      # Sync adamlui/userscripts/chatgpt/chatgpt-widescreen-mode to adamlui/chatgpt-widescreen/greasemonkey
       - name: Sync chatgpt-widescreen
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen-mode/ ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
       
       # Push to adamlui/chatgpt-widescreen
       - name: Push changes
