@@ -35,7 +35,7 @@ Keeps your ChatGPT sessions active to avoid constant Cloudflare checks. // 使�
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered. // 在遇到网络错误时保持对话流畅。
 <br>[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
