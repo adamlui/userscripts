@@ -8,9 +8,9 @@
 
 <a href="https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) /
 [Review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 #
 
@@ -32,15 +32,26 @@
 
 ## Dependencies
 
-Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license
+Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license.
 
 ## Compatibility
 
-Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave, Vivaldi, LibreWolf & QQ using Tampermonkey or Violentmonkey. ([Pull requests](https://github.com/adamlui/userscripts/pulls) always welcome!)
+Autoclear ChatGPT History is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/):
+
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Opera
+- Brave
+- Vivaldi
+- LibreWolf
+- QQ
+
+If you've tested it to work in a browser not listed, create a [pull request](https://github.com/adamlui/autoclear-chatgpt-history/pulls) to become a contributor!
 
 <a href="https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) / 
+[Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) / 
 [Leave a review](https://greasyfork.org/en/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
@@ -60,12 +71,12 @@ Autoclear ChatGPT History is compatible with Chrome, Firefox, Edge, Opera, Brave
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey)
 
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。<br>
 [Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
-[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Readme](https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey/README.md) / 
+[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-heartbeat)
 
