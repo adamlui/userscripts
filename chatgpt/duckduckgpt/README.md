@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kudoai/duckduckgpt/main/media/images/ddgpt-logo-dark-mode-371x65.png">
-    <img alt="DuckDuckGPT" src="https://raw.githubusercontent.com/kudoai/duckduckgpt/main/media/images/ddgpt-logo-light-mode-371x65.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://media.duckduckgpt.com/images/ddgpt-logo-dark-mode-371x65.png">
+    <img alt="DuckDuckGPT" src="https://media.duckduckgpt.com/images/ddgpt-logo-light-mode-371x65.png">
   </picture>
 <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 156px; height: 34px; margin:0 0 11px 5px;" width="156" height="34" /></a>
   <a href="https://twitter.com/intent/tweet?text=Want%20%23ChatGPT%20answers%20right%20alongside%20DuckDuckGo%20results%3F%20This%20%23userscript%20does%20just%20that%21&url=https://duckduckgpt.com&hashtags=greasemonkey,javascript,ai"><img alt="Tweet" style="margin:0 0 14px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
@@ -15,7 +15,7 @@
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/kudoai/duckduckgpt/discussions) /
+[Discuss](https://github.duckduckgpt.com/discussions) /
 [Review](https://duckduckgpt.com/userscript/review) /
 [Contact author](https://github.com/adamlui)
 
@@ -37,13 +37,24 @@
   
 </div>
 
-## Compatibility
+## Compatibility 
 
-DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi, LibreWolf & QQ using Tampermonkey (recommended due to streaming suppport resulting in faster responses) or Violentmonkey. ([Pull requests](https://github.com/kudoai/duckduckgpt/pulls) always welcome!)
+**DuckDuckGPT** is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/):
+
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Opera
+- Brave
+- Vivaldi
+- LibreWolf
+- QQ
+
+If you've tested it to work in a browser not listed, create a [pull request](https://github.duckduckgpt.com/pulls) to become a contributor!
 
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/duckduckgpt/discussions) /
+[Discuss](https://github.duckduckgpt.com/discussions) /
 [Leave a review](https://duckduckgpt.com/userscript/review) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
@@ -58,26 +69,26 @@ DuckDuckGPT is compatible with Chrome, Firefox, Edge, Brave, Opera, Vivaldi, Lib
 
 ## Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Auto Refresh ↻](https://github.com/adamlui/chatgpt-auto-refresh/tree/main/greasemonkey)
 
-Keeps your ChatGPT sessions active to avoid constant Cloudflare checks. // 保持 ChatGPT 会话处于活动状态以避免持续的 Cloudflare 检查。
+Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 <br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Readme](https://github.com/adamlui/chatgpt-auto-refresh/tree/main/greasemonkey/README.md) / 
+[Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions)
 
-### <img src="https://raw.githubusercontent.com/kudoai/bravegpt/main/media/images/bravegpt-icon48.png" width=18> [BraveGPT](https://github.com/kudoai/bravegpt/tree/main/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
+### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](https://bravegpt.com/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
-Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。
+Display ChatGPT answers in Brave Search sidebar.
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
-[Readme](https://github.com/kudoai/bravegpt/blob/main/greasemonkey/README.md) / 
-[Discuss](https://github.com/kudoai/bravegpt/discussions)
+[Readme](https://bravegpt.com/greasemonkey/README.md) / 
+[Discuss](https://github.bravegpt.com/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://github.com/adamlui/chatgpt-widescreen/tree/main/greasemonkey)
 
-Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动。
+Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing.
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
-[Readme](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Readme](https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey/README.md) / 
+[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
 #
 
