@@ -90,7 +90,7 @@ Keeps conversations flowing when network errors are encountered. // 在遇到网
 Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏中显示 ChatGPT 答案。
 <br>[Install](https://greasyfork.org/en/scripts/462440-bravegpt) / 
 [Readme](https://bravegpt.com/greasemonkey/README.md) / 
-[Discuss](https://github.com/kudoai/bravegpt/discussions)
+[Discuss](https://github.bravegpt.com/discussions)
 
 #
   
