@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             BraveGPT 🤖
-// @version          2023.03.26.1
+// @version          2023.03.29
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Adds ChatGPT answers to Brave Search sidebar
@@ -18,7 +18,6 @@
 // @compatible       librewolf
 // @compatible       qq
 // @match            https://search.brave.com/*
-// @connect          gpt.bot.nu
 // @connect          api.pawan.krd
 // @grant            GM.xmlHttpRequest
 // @downloadURL      https://greasyfork.org/scripts/462440/code/bravegpt.user.js
@@ -26,8 +25,7 @@
 // ==/UserScript==
 
 (function() {
-    var endpointMap = { 'https://gpt.bot.nu' : '',
-                        'https://api.pawan.krd' : 'pk-pJNAtlAqCHbUDTrDudubjSKeUVgbOMvkRQWMLtscqsdiKmhI' }
+    var endpointMap = { 'https://api.pawan.krd' : 'pk-pJNAtlAqCHbUDTrDudubjSKeUVgbOMvkRQWMLtscqsdiKmhI' }
     var braveGPTdivAlerts = { tooManyRequests: 'ChatGPT is flooded with too many requests. Check back later!' }
 
     // Stylize ChatGPT container + children
@@ -98,7 +96,8 @@
             responseType: 'text',
             data: JSON.stringify({
                 messages: [{ role: 'user', content: question }],
-                model: 'gpt-3.5-turbo'
+                model: 'text-davinci-003',
+                max_tokens: 4000
             }),
             onload: onLoad,
             onerror: function(error) { if (getShowAnswer.attemptCnt < 1) {
@@ -125,7 +124,7 @@
 
     function braveGPTshow(answer) {
         braveGPTdiv.innerHTML = `${ navigator.userAgent.includes('Firefox') ? // only load robot emoji in FF + forks
-            '<span class="chatgpt-icon"><img width=25 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/bravegpt/media/images/robot-emoji.png"></span>' : '' }<span class="prefix">ChatGPT</span><pre></pre>`
+            '<span class="chatgpt-icon"><img width=25 src="https://media.bravegpt.com/images/robot-emoji.png"></span>' : '' }<span class="prefix">ChatGPT</span><pre></pre>`
         braveGPTdiv.querySelector('pre').textContent = answer
         braveGPTdiv.appendChild(chatGPTfooter) // append feedback link
     }
