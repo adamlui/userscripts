@@ -13,7 +13,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 Auto-clear your ChatGPT query history for maximum privacy. // 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私.
 <br>[Install](https://greasyfork.org/en/scripts/460805-auto-clear-chatgpt-history) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions)
 
 ### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/blob/master/autopass-cloudflare-captcha)
 
@@ -33,7 +33,7 @@ Display ChatGPT answers in Brave Search sidebar. // 在 Brave Search 侧边栏�
 Keeps your ChatGPT sessions active to avoid constant Cloudflare checks.
 <br>[Install](https://greasyfork.org/en/scripts/462422-chatgpt-auto-refresh) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-heartbeat)
 
@@ -47,7 +47,7 @@ Keeps conversations flowing when network errors are encountered. // 在遇到网
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling. // 向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动.
 <br>[Install](https://greasyfork.org/en/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen-mode/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
+[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
 ### <img src="https://raw.githubusercontent.com/kudoai/duckduckgpt/main/media/images/ddgpt-icon48.png" width=17> [DuckDuckGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
