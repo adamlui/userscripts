@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.28.3
+// @version          2023.03.29
 // @author           Adam Lui, Xiao-Ying Yo & mefengl
 // @namespace        https://github.com/adamlui
 // @namespace        https://github.com/xiaoyingyo
@@ -118,21 +118,21 @@
         var stateSymbol = ['✔️', '❌'], stateWord = ['ON', 'OFF']
         var stateSeparator = getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': '
 
-        // Add command to show notifications when switching modes
-        var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
-            + stateSeparator + stateWord[+config.notifHidden]
-        menuID.push(GM_registerMenuCommand(mnLabel, function () {
-            saveSetting('notifHidden', !config.notifHidden)
-            chatgpt.notify('Mode Notifications: ' + stateWord[+config.notifHidden])
-            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
-        }))
-
         // Add command to also activate wide screen in full-window
         var fwLabel = stateSymbol[+!config.fullerWindow] + ' Fuller Windows'
             + stateSeparator + stateWord[+!config.fullerWindow]
         menuID.push(GM_registerMenuCommand(fwLabel, function () {
             saveSetting('fullerWindow', !config.fullerWindow)
             if (!config.notifHidden) chatgpt.notify('Fuller Windows: ' + stateWord[+!config.fullerWindow])
+            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
+        }))
+
+        // Add command to show notifications when switching modes
+        var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
+            + stateSeparator + stateWord[+config.notifHidden]
+        menuID.push(GM_registerMenuCommand(mnLabel, function () {
+            saveSetting('notifHidden', !config.notifHidden)
+            chatgpt.notify('Mode Notifications: ' + stateWord[+config.notifHidden])
             for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
         }))
     }
