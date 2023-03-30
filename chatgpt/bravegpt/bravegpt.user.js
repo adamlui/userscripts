@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                BraveGPT 🤖
-// @version             2023.03.29.1
+// @version             2023.03.29.2
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
 // @description         Adds ChatGPT answers to Brave Search sidebar
@@ -16,8 +16,8 @@
 // @description:fr      Ajoute les réponses ChatGPT à la barre latérale de Brave Search
 // @description:it      Aggiunge le risposte ChatGPT alla barra laterale di Brave Search
 // @license             MIT
-// @icon                https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon48.png
-// @icon64              https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon64.png
+// @icon                https://media.bravegpt.com/images/bravegpt-icon48.png
+// @icon64              https://media.bravegpt.com/images/bravegpt-icon64.png
 // @compatible          chrome
 // @compatible          firefox
 // @compatible          edge
