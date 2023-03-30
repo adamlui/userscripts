@@ -1,32 +1,54 @@
 // ==UserScript==
-// @name             ChatGPT Widescreen Mode 🖥️
-// @version          2023.03.29
-// @author           Adam Lui, Xiao-Ying Yo & mefengl
-// @namespace        https://github.com/adamlui
-// @namespace        https://github.com/xiaoyingyo
-// @namespace        https://github.com/mefengl
-// @description      Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling
-// @homepageURL      https://github.com/adamlui/userscripts
-// @supportURL       https://github.com/adamlui/userscripts/issues
-// @license          MIT
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       edge
-// @compatible       opera
-// @compatible       brave
-// @compatible       vivaldi
-// @compatible       librewolf
-// @compatible       qq
-// @match            https://chat.openai.com/*
-// @match            https://freegpt.one/*
-// @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
-// @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
-// @grant            GM_setValue
-// @grant            GM_getValue
-// @grant            GM_registerMenuCommand
-// @grant            GM_unregisterMenuCommand
-// @downloadURL      https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.user.js
-// @updateURL        https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
+// @name                ChatGPT Widescreen Mode 🖥️
+// @version             2023.03.29.1
+// @description         Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling
+// @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
+// @namespace           https://github.com/adamlui
+// @namespace           https://github.com/xiaoyingyo
+// @namespace           https://github.com/mefengl
+// @name:zh-CN          ChatGPT 宽屏模式🖥️
+// @name:zh-SG          ChatGPT 宽屏模式🖥️
+// @name:zh-TW          ChatGPT 寬屏模式🖥️
+// @name:zh-HK          ChatGPT 寬屏模式🖥️
+// @name:ja             ChatGPTワイドスクリーンモード🖥️
+// @name:ko             ChatGPT 와이드스크린 모드 🖥️
+// @name:ru             Широкоэкранный Режим ChatGPT 🖥️
+// @name:de             ChatGPT-Breitbildmodus 🖥️
+// @name:es             Modo de Pantalla Ancha de ChatGPT 🖥️
+// @name:fr             Ajoute les modes écran large + pleine fenêtre à ChatGPT pour un défilement réduit
+// @name:it             Aggiunge le modalità Widescreen + Full-Window a ChatGPT per uno scorrimento ridotto
+// @description:zh-CN   向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动
+// @description:zh-SG   向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动
+// @description:zh-TW   向 ChatGPT 添加寬屏 + 全窗口模式以減少滾動
+// @description:zh-HK   向 ChatGPT 添加寬屏 + 全窗口模式以減少滾動
+// @description:ja      スクロールを減らすために、ChatGPT にワイドスクリーン + フルウィンドウ モードを追加します。
+// @description:ko      스크롤 감소를 위해 ChatGPT에 와이드스크린 + 전체 창 모드를 추가합니다.
+// @description:ru      Добавляет широкоэкранный и полноэкранный режимы в ChatGPT для уменьшения прокрутки.
+// @description:de      Fügt Widescreen + Full-Window-Modi zu ChatGPT hinzu, um das Scrollen zu reduzieren
+// @description:es      Agrega modos de pantalla ancha + ventana completa a ChatGPT para reducir el desplazamiento
+// @description:fr      Efface automatiquement l'historique des discussions lors de la visite de chat.openai.com
+// @description:it      Cancella automaticamente la cronologia chat quando visiti chat.openai.com
+// @license             MIT
+// @compatible          chrome
+// @compatible          firefox
+// @compatible          edge
+// @compatible          opera
+// @compatible          brave
+// @compatible          vivaldi
+// @compatible          librewolf
+// @compatible          qq
+// @match               https://chat.openai.com/*
+// @match               https://freegpt.one/*
+// @icon                https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
+// @icon64              https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
+// @grant               GM_setValue
+// @grant               GM_getValue
+// @grant               GM_registerMenuCommand
+// @grant               GM_unregisterMenuCommand
+// @downloadURL         https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.user.js
+// @updateURL           https://greasyfork.org/scripts/461473/code/chatgpt-widescreen-mode.meta.js
+// @homepageURL         https://github.com/adamlui/chatgpt-widescreen
+// @supportURL          https://github.com/adamlui/chatgpt-widescreen/issues
 // ==/UserScript==
 
 // NOTE: This script uses code from the powerful chatgpt.js library @ https://chatgptjs.org (c) 2023 Adam Lui & 冯不游 under the MIT license.
