@@ -1,27 +1,38 @@
 // ==UserScript==
-// @name             BraveGPT 🤖
-// @version          2023.03.29
-// @author           Adam Lui
-// @namespace        https://github.com/adamlui
-// @description      Adds ChatGPT answers to Brave Search sidebar
-// @homepageURL      https://www.bravegpt.com
-// @supportURL       https://github.com/adamlui/bravegpt/issues
-// @license          MIT
-// @icon             https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon48.png
-// @icon64           https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon64.png
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       edge
-// @compatible       opera
-// @compatible       brave
-// @compatible       vivaldi
-// @compatible       librewolf
-// @compatible       qq
-// @match            https://search.brave.com/*
-// @connect          api.pawan.krd
-// @grant            GM.xmlHttpRequest
-// @downloadURL      https://greasyfork.org/scripts/462440/code/bravegpt.user.js
-// @updateURL        https://greasyfork.org/scripts/462440/code/bravegpt.meta.js
+// @name                BraveGPT 🤖
+// @version             2023.03.29.1
+// @author              Adam Lui
+// @namespace           https://github.com/adamlui
+// @description         Adds ChatGPT answers to Brave Search sidebar
+// @description:zh-CN   将 ChatGPT 答案添加到 Brave Search 侧边栏
+// @description:zh-SG   将 ChatGPT 答案添加到 Brave Search 侧边栏
+// @description:zh-TW   將 ChatGPT 答案添加到 Brave Search 側邊欄
+// @description:zh-HK   將 ChatGPT 答案添加到 Brave Search 側邊欄
+// @description:ja      Brave Search サイドバーに ChatGPT の回答を追加します
+// @description:ko      Brave Search 사이드바에 ChatGPT 답변 추가
+// @description:ru      Добавляет ответы ChatGPT на боковую панель Brave Search
+// @description:de      Fügt ChatGPT-Antworten zur Brave Search-Seitenleiste hinzu
+// @description:es      Agrega respuestas de ChatGPT a la barra lateral de Brave Search
+// @description:fr      Ajoute les réponses ChatGPT à la barre latérale de Brave Search
+// @description:it      Aggiunge le risposte ChatGPT alla barra laterale di Brave Search
+// @license             MIT
+// @icon                https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon48.png
+// @icon64              https://raw.githubusercontent.com/adamlui/bravegpt/main/media/images/bravegpt-icon64.png
+// @compatible          chrome
+// @compatible          firefox
+// @compatible          edge
+// @compatible          opera
+// @compatible          brave
+// @compatible          vivaldi
+// @compatible          librewolf
+// @compatible          qq
+// @match               https://search.brave.com/*
+// @connect             api.pawan.krd
+// @grant               GM.xmlHttpRequest
+// @downloadURL         https://greasyfork.org/scripts/462440/code/bravegpt.user.js
+// @updateURL           https://greasyfork.org/scripts/462440/code/bravegpt.meta.js
+// @homepageURL         https://www.bravegpt.com
+// @supportURL          https://github.bravegpt.com/issues
 // ==/UserScript==
 
 (function() {
