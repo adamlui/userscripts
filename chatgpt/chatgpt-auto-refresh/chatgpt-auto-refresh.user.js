@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                ChatGPT Auto Refresh ↻
-// @version             2023.03.29
+// @version             2023.03.29.1
 // @description         Keeps ChatGPT sessions fresh to avoid Cloudflare checks
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
@@ -10,11 +10,11 @@
 // @name:zh-HK          ChatGPT 自動刷新 ↻
 // @name:ja             ChatGPT 自動更新 ↻
 // @name:ko             ChatGPT 자동 새로 고침 ↻
-// @name:ru             Автоматическое обновление ChatGPT ↻
+// @name:ru             Автоматическое Обновление ChatGPT ↻
 // @name:de             Automatische ChatGPT-Aktualisierung ↻
-// @name:es             Actualización automática de ChatGPT ↻
-// @name:fr             Actualisation automatique de ChatGPT ↻
-// @name:it             Aggiornamento automatico ChatGPT ↻
+// @name:es             Actualización Automática de ChatGPT ↻
+// @name:fr             Actualisation Automatique de ChatGPT ↻
+// @name:it             Aggiornamento Automatico ChatGPT ↻
 // @description:zh-CN   保持 ChatGPT 会话新鲜以避免 Cloudflare 检查
 // @description:zh-SG   保持 ChatGPT 会话新鲜以避免 Cloudflare 检查
 // @description:zh-TW   保持 ChatGPT 會話新鮮以避免 Cloudflare 檢查
