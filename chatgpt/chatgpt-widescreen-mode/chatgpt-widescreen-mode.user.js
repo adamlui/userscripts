@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                ChatGPT Widescreen Mode 🖥️
-// @version             2023.03.29.1
+// @version             2023.03.29.2
 // @description         Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling
 // @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
 // @namespace           https://github.com/adamlui
@@ -15,8 +15,8 @@
 // @name:ru             Широкоэкранный Режим ChatGPT 🖥️
 // @name:de             ChatGPT-Breitbildmodus 🖥️
 // @name:es             Modo de Pantalla Ancha de ChatGPT 🖥️
-// @name:fr             Ajoute les modes écran large + pleine fenêtre à ChatGPT pour un défilement réduit
-// @name:it             Aggiunge le modalità Widescreen + Full-Window a ChatGPT per uno scorrimento ridotto
+// @name:fr             Mode Écran Large ChatGPT 🖥️
+// @name:it             ChatGPT Modalità Widescreen 🖥️
 // @description:zh-CN   向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动
 // @description:zh-SG   向 ChatGPT 添加宽屏 + 全窗口模式以减少滚动
 // @description:zh-TW   向 ChatGPT 添加寬屏 + 全窗口模式以減少滾動
@@ -26,8 +26,8 @@
 // @description:ru      Добавляет широкоэкранный и полноэкранный режимы в ChatGPT для уменьшения прокрутки.
 // @description:de      Fügt Widescreen + Full-Window-Modi zu ChatGPT hinzu, um das Scrollen zu reduzieren
 // @description:es      Agrega modos de pantalla ancha + ventana completa a ChatGPT para reducir el desplazamiento
-// @description:fr      Efface automatiquement l'historique des discussions lors de la visite de chat.openai.com
-// @description:it      Cancella automaticamente la cronologia chat quando visiti chat.openai.com
+// @description:fr      Ajoute les modes écran large + pleine fenêtre à ChatGPT pour un défilement réduit
+// @description:it      Aggiunge le modalità Widescreen + Full-Window a ChatGPT per uno scorrimento ridotto
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
