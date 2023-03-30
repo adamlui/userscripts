@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                DuckDuckGPT 🤖
-// @version             2023.03.29
+// @version             2023.03.29.1
 // @description         Adds ChatGPT answers to DuckDuckGo sidebar
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
@@ -16,8 +16,8 @@
 // @description:fr      Ajoute les réponses ChatGPT à la barre latérale DuckDuckGo
 // @description:it      Aggiunge le risposte di ChatGPT alla barra laterale di DuckDuckGo
 // @license             MIT
-// @icon                https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png
-// @icon64              https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon64.png
+// @icon                https://media.ddgpt.com/images/ddgpt-icon48.png
+// @icon64              https://media.ddgpt.com/images/ddgpt-icon64.png
 // @compatible          chrome
 // @compatible          firefox
 // @compatible          edge
