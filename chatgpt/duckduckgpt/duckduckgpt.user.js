@@ -1,32 +1,43 @@
 // ==UserScript==
-// @name             DuckDuckGPT 🤖
-// @version          2023.03.26
-// @author           Adam Lui
-// @namespace        https://github.com/adamlui
-// @description      Adds ChatGPT answers to DuckDuckGo sidebar
-// @homepageURL      https://www.duckduckgpt.com
-// @supportURL       https://github.com/adamlui/duckduckgpt/issues
-// @license          MIT
-// @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png
-// @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon64.png
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       edge
-// @compatible       opera
-// @compatible       brave
-// @compatible       vivaldi
-// @compatible       librewolf
-// @compatible       qq
-// @match            https://duckduckgo.com/*
-// @include          https://auth0.openai.com
-// @connect          chat.openai.com
-// @grant            GM.deleteValue
-// @grant            GM.getValue
-// @grant            GM.setValue
-// @grant            GM.xmlHttpRequest
-// @grant            GM_cookie
-// @updateURL        https://www.duckduckgpt.com/userscript/code/duckduckgpt.meta.js
-// @downloadURL      https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js
+// @name                DuckDuckGPT 🤖
+// @version             2023.03.29
+// @description         Adds ChatGPT answers to DuckDuckGo sidebar
+// @author              Adam Lui
+// @namespace           https://github.com/adamlui
+// @description:zh-CN   将 ChatGPT 答案添加到 DuckDuckGo 侧边栏
+// @description:zh-SG   将 ChatGPT 答案添加到 DuckDuckGo 侧边栏
+// @description:zh-TW   將 ChatGPT 答案添加到 DuckDuckGo 側邊欄
+// @description:zh-HK   將 ChatGPT 答案添加到 DuckDuckGo 側邊欄
+// @description:ja      ChatGPT の回答を DuckDuckGo サイドバーに追加します
+// @description:ko      DuckDuckGo 사이드바에 ChatGPT 답변 추가
+// @description:ru      Добавляет ответы ChatGPT на боковую панель DuckDuckGo
+// @description:de      Fügt ChatGPT-Antworten zur Seitenleiste von DuckDuckGo hinzu
+// @description:es      Agrega respuestas de ChatGPT a la barra lateral de DuckDuckGo
+// @description:fr      Ajoute les réponses ChatGPT à la barre latérale DuckDuckGo
+// @description:it      Aggiunge le risposte di ChatGPT alla barra laterale di DuckDuckGo
+// @license             MIT
+// @icon                https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon48.png
+// @icon64              https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/duckduckgpt/media/images/ddgpt-icon64.png
+// @compatible          chrome
+// @compatible          firefox
+// @compatible          edge
+// @compatible          opera
+// @compatible          brave
+// @compatible          vivaldi
+// @compatible          librewolf
+// @compatible          qq
+// @match               https://duckduckgo.com/*
+// @include             https://auth0.openai.com
+// @connect             chat.openai.com
+// @grant               GM.deleteValue
+// @grant               GM.getValue
+// @grant               GM.setValue
+// @grant               GM.xmlHttpRequest
+// @grant               GM_cookie
+// @downloadURL         https://www.duckduckgpt.com/userscript/code/duckduckgpt.user.js
+// @updateURL           https://www.duckduckgpt.com/userscript/code/duckduckgpt.meta.js
+// @homepageURL         https://www.duckduckgpt.com
+// @supportURL          https://github.duckduckgpt.com/issues
 // ==/UserScript==
 
 var GM_setValue = (() => GM.setValue)()
