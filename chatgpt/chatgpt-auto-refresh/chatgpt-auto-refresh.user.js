@@ -1,27 +1,51 @@
 // ==UserScript==
-// @name             ChatGPT Auto Refresh ↻
-// @version          2023.03.28.2
-// @author           Adam Lui
-// @namespace        https://github.com/adamlui
-// @description      Keeps ChatGPT sessions fresh to avoid Cloudflare checks
-// @homepageURL      https://github.com/adamlui/userscripts
-// @supportURL       https://github.com/adamlui/userscripts/issues
-// @license          MIT
-// @match            https://chat.openai.com/chat*
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       edge
-// @compatible       opera
-// @compatible       brave
-// @compatible       vivaldi
-// @compatible       librewolf
-// @compatible       qq
-// @icon             https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
-// @icon64           https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
-// @grant            GM_setValue
-// @grant            GM_getValue
-// @grant            GM_registerMenuCommand
-// @grant            GM_unregisterMenuCommand
+// @name                ChatGPT Auto Refresh ↻
+// @version             2023.03.29
+// @description         Keeps ChatGPT sessions fresh to avoid Cloudflare checks
+// @author              Adam Lui
+// @namespace           https://github.com/adamlui
+// @name:zh-CN          ChatGPT 自动刷新 ↻
+// @name:zh-SG          ChatGPT 自动刷新 ↻
+// @name:zh-TW          ChatGPT 自動刷新 ↻
+// @name:zh-HK          ChatGPT 自動刷新 ↻
+// @name:ja             ChatGPT 自動更新 ↻
+// @name:ko             ChatGPT 자동 새로 고침 ↻
+// @name:ru             Автоматическое обновление ChatGPT ↻
+// @name:de             Automatische ChatGPT-Aktualisierung ↻
+// @name:es             Actualización automática de ChatGPT ↻
+// @name:fr             Actualisation automatique de ChatGPT ↻
+// @name:it             Aggiornamento automatico ChatGPT ↻
+// @description:zh-CN   保持 ChatGPT 会话新鲜以避免 Cloudflare 检查
+// @description:zh-SG   保持 ChatGPT 会话新鲜以避免 Cloudflare 检查
+// @description:zh-TW   保持 ChatGPT 會話新鮮以避免 Cloudflare 檢查
+// @description:zh-HK   保持 ChatGPT 會話新鮮以避免 Cloudflare 檢查
+// @description:ja      Cloudflare チェックを回避するために、ChatGPT セッションを最新の状態に保ちます
+// @description:ko      Cloudflare 검사를 피하기 위해 ChatGPT 세션을 최신 상태로 유지합니다.
+// @description:ru      Сохраняет актуальность сеансов ChatGPT, чтобы избежать проверок Cloudflare
+// @description:de      Hält ChatGPT-Sitzungen frisch, um Cloudflare-Prüfungen zu vermeiden
+// @description:es      Mantiene las sesiones de ChatGPT actualizadas para evitar las comprobaciones de Cloudflare
+// @description:fr      Maintient les sessions ChatGPT à jour pour éviter les contrôles Cloudflare
+// @description:it      Mantiene aggiornate le sessioni di ChatGPT per evitare i controlli di Cloudflare
+// @license             MIT
+// @match               https://chat.openai.com/chat*
+// @compatible          chrome
+// @compatible          firefox
+// @compatible          edge
+// @compatible          opera
+// @compatible          brave
+// @compatible          vivaldi
+// @compatible          librewolf
+// @compatible          qq
+// @icon                https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
+// @icon64              https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
+// @grant               GM_setValue
+// @grant               GM_getValue
+// @grant               GM_registerMenuCommand
+// @grant               GM_unregisterMenuCommand
+// @downloadURL         https://greasyfork.org/scripts/462422/code/chatgpt-auto-refresh.user.js
+// @updateURL           https://greasyfork.org/scripts/462422/code/chatgpt-auto-refresh.meta.js
+// @homepageURL         https://github.com/adamlui/chatgpt-auto-refresh
+// @supportURL          https://github.com/adamlui/chatgpt-auto-refresh/issues
 // ==/UserScript==
 
 // NOTE: This script uses code from the powerful chatgpt.js library @ https://chatgptjs.org (c) 2023 Adam Lui & 冯不游 under the MIT license.
