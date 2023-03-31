@@ -47,6 +47,7 @@ Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://
 
 </div>
 </h6>
+
 ## Compatibility
 
 Autoclear ChatGPT History is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/):
