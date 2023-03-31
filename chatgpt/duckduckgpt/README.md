@@ -10,7 +10,7 @@
 ![usercount](https://img.shields.io/greasyfork/dt/459849?label=Users)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 [![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf/QQ-989898.svg)](#compatibility)
-[![Mentioned in Awesome Userscripts](https://awesome.re/mentioned-badge.svg)](https://github.com/awesome-scripts/awesome-userscripts)
+[![Mentioned in Awesome Userscripts](https://awesome.re/mentioned-badge.svg)](https://awesome.re)
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to search results.</h3>
 
@@ -55,12 +55,12 @@ If you've tested it to work in a browser not listed, create a [pull request](htt
 
 ## Proxy Mode
 
-Proxy API Mode (enabled by default) returns text responses without the need for a chat.openai.com account!
+Proxy API Mode (enabled by default) returns text responses, without the need for a chat.openai.com account!
 
-Tampermonkey users (w/ registered accounts) may experience even faster streaming responses (like the one in demo) by disabling it:
+For even *faster* stream-type responses (like the one in demo), Tampermonkey users (w/ registered accounts) can disable it like this:
 
 <div align='center'>
- 
+
 ![image](https://user-images.githubusercontent.com/10906554/229062641-abff9d17-21cc-49b2-a98e-7793c231c4f2.png)
 ![image](https://user-images.githubusercontent.com/10906554/229062275-fe67713f-cb93-4e08-b4ad-7e273eef2cd1.png)
 
