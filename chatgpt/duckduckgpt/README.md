@@ -53,6 +53,21 @@
 
 If you've tested it to work in a browser not listed, create a [pull request](https://github.duckduckgpt.com/pulls) to become a contributor!
 
+## Proxy Mode
+
+Proxy API Mode (enabled by default) returns text responses without the need for a chat.openai.com account!
+
+Tampermonkey users (w/ registered accounts) may experience even faster streaming responses (like the one in demo) by disabling it:
+
+<div align='center'>
+ 
+![image](https://user-images.githubusercontent.com/10906554/229062641-abff9d17-21cc-49b2-a98e-7793c231c4f2.png)
+![image](https://user-images.githubusercontent.com/10906554/229062275-fe67713f-cb93-4e08-b4ad-7e273eef2cd1.png)
+
+</div>
+
+<br>
+
 <a href="https://greasyfork.org/en/scripts/459849-duckduckgpt"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Discuss](https://github.duckduckgpt.com/discussions) /
