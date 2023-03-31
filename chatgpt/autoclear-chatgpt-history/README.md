@@ -32,8 +32,21 @@
 
 ## Dependencies
 
-Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://chatgptjs.org) library (c) 2023 Adam Lui & 冯不游 under the MIT license.
+<h6>
+<div align="center">
+<br />
 
+<a href="https://github.com/chatgptjs/chatgpt.js">
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/chatgptjs/chatgpt.js/main/media/images/chatgpt.js-logo-dark-mode-5995x614.png">
+    <img width=546 alt="chatgpt.js" src="https://raw.githubusercontent.com/chatgptjs/chatgpt.js/main/media/images/chatgpt.js-logo-light-mode-5995x614.png">
+</picture></a>
+<br /><br />
+
+Autoclear ChatGPT History relies on code from the powerful [chatgpt.js](https://github.com/chatgptjs/chatgpt.js) library (c) 2023 Adam Lui, 冯不游 & chatgpt.js under the MIT license.
+
+</div>
+</h6>
 ## Compatibility
 
 Autoclear ChatGPT History is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/):
