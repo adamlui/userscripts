@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                ChatGPT Auto Refresh ↻
-// @version             2023.03.30
+// @version             2023.03.31
 // @description         Keeps ChatGPT sessions fresh to avoid Cloudflare checks
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
@@ -200,6 +200,7 @@
     loadSetting('arDisabled', 'notifHidden')
     registerMenu() // create browser toolbar menu
     if (!config.arDisabled) chatgpt.activateAutoRefresh()
-    if (!config.notifHidden) chatgpt.notify('Auto-Refresh: ' + (config.arDisabled ? 'OFF' : 'ON'))
+    if (!config.notifHidden && document.title === 'New chat') {
+        chatgpt.notify('Auto-Refresh: ' + (config.arDisabled ? 'OFF' : 'ON')) }
 
 })()
