@@ -2,14 +2,13 @@ name: Sync chatgpt/chatgpt-auto-refresh to adamlui/chatgpt-auto-refresh/greasemo
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master, main ]
     paths:
       - 'chatgpt/chatgpt-auto-refresh/**'
-    if: 'github.event.head_commit.committer.username != "auto-sync-bot"'
 
 jobs:
-  sync-chatgpt-auto-refresh:
+  build:
+    if: github.event.commits[0].committer.username != 'auto-sync-bot'
     runs-on: ubuntu-latest
     steps:
 
