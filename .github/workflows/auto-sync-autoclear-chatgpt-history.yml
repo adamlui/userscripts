@@ -6,14 +6,13 @@ on:
       - master
     paths:
       - 'chatgpt/autoclear-chatgpt-history/**'
-    if: 'github.event.head_commit.committer.username != "auto-sync[bot]"'
+    if: 'github.event.head_commit.committer.username != "auto-sync-bot"'
 
 jobs:
   sync-autoclear-chatgpt-history:
     runs-on: ubuntu-latest
     steps:
 
-      # Checkout adamlui/userscripts
       - name: Checkout adamlui/userscripts
         uses: actions/checkout@v2
         with:
@@ -21,7 +20,6 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      # Checkout adamlui/autoclear-chatgpt-history
       - name: Checkout adamlui/autoclear-chatgpt-history
         uses: actions/checkout@v2
         with:
@@ -29,17 +27,14 @@ jobs:
           repository: adamlui/autoclear-chatgpt-history
           path: adamlui/autoclear-chatgpt-history
 
-      # Sync adamlui/userscripts/chatgpt/autoclear-chatgpt-history to adamlui/autoclear-chatgpt-history/greasemonkey
-      - name: Sync autoclear-chatgpt-history
+      - name: Sync adamlui/userscripts/chatgpt/autoclear-chatgpt-history to adamlui/autoclear-chatgpt-history/greasemonkey
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
       
-      # Push to adamlui/autoclear-chatgpt-history
-      - name: Push changes
+      - name: Push to adamlui/autoclear-chatgpt-history
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           push_options: '--force'
           add_options: '--all'
-          commit_user_name: 'auto-sync[bot]'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
           file_pattern: '*'

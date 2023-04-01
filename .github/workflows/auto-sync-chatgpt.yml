@@ -1,4 +1,4 @@
-name: Sync chatgpt to adamlui/chatgpt-userscripts
+name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
 
 on:
   push:
