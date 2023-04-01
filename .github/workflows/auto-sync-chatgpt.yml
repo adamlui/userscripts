@@ -9,7 +9,7 @@ on:
     if: 'github.event.head_commit.committer.username != "auto-sync[bot]"'
 
 jobs:
-  sync-duckduckgpt:
+  sync-chatgpt:
     runs-on: ubuntu-latest
     steps:
 
