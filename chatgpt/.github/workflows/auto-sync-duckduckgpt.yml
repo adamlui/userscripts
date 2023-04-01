@@ -1,0 +1,46 @@
+name: Sync chatgpt/duckduckgpt to kudoai/duckduckgpt/greasemonkey
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'chatgpt/duckduckgpt/**'
+    if: 'github.event.head_commit.committer.username != "github-actions[bot]"'
+
+jobs:
+  sync-duckduckgpt:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout adamlui/userscripts
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      # Checkout kudoai/duckduckgpt
+      - name: Checkout kudoai/duckduckgpt
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: kudoai/duckduckgpt
+          path: kudoai/duckduckgpt
+
+      # Sync adamlui/userscripts/chatgpt/duckduckgpt to adamlui/duckduckgpt/greasemonkey
+      - name: Sync duckduckgpt
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
+      
+      # Push to kudoai/duckduckgpt
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_name: 'auto-sync[bot]'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: '*'
+          repository: kudoai/duckduckgpt
