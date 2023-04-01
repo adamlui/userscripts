@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Checkout adamlui/userscripts
       - name: Checkout adamlui/userscripts
         uses: actions/checkout@v2
         with:
@@ -21,7 +20,6 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      # Checkout adamlui/chatgpt-userscripts
       - name: Checkout adamlui/chatgpt-userscripts
         uses: actions/checkout@v2
         with:
@@ -29,17 +27,14 @@ jobs:
           repository: adamlui/chatgpt-userscripts
           path: adamlui/chatgpt-userscripts
 
-      # Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
-      - name: Sync chatgpt
+      - name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/ ${{ github.workspace }}/adamlui/chatgpt-userscripts/
       
-      # Push to adamlui/chatgpt-userscripts
-      - name: Push changes
+      - name: Push to adamlui/chatgpt-userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           push_options: '--force'
           add_options: '--all'
-          commit_user_name: 'auto-sync[bot]'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
           file_pattern: '*'
