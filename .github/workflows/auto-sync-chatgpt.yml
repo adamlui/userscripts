@@ -2,14 +2,13 @@ name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master, main ]
     paths:
       - 'chatgpt/**'
-    if: 'github.event.head_commit.committer.username != "auto-sync-bot"'
 
 jobs:
-  sync-userscripts-chatgpt:
+  build:
+    if: github.event.commits[0].committer.username != 'auto-sync-bot'
     runs-on: ubuntu-latest
     steps:
 
