@@ -13,7 +13,7 @@
 
 <a href="https://greasyfork.org/en/scripts/456132"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/userscripts/discussions) /
+[Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
 
@@ -40,14 +40,17 @@
 ## Script links
 
 <a href="https://greasyfork.org/en/scripts/456132">Install this script</a> / 
-<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
+<a href="https://github.com/adamlui/youtube-classic/discussions">Discuss</a> / 
 [Leave a review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
-#### Author links:
+#### Contributor links:
 
 [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon"></a>
+[![Follow @adamluitube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social)](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
+[![Follow @adamllui on Twitter](https://img.shields.io/twitter/follow/adamllui?style=social)](https://twitter.com/adamllui)
+[![Follow @Anarios on GitHub](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "GitHub")](https://github.com/Anarios)
 
 
 <a href="#--------------">Back to top ↑</a>
