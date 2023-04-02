@@ -9,6 +9,7 @@
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg)
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
+[![Mentioned in Awesome Userscripts](https://awesome.re/mentioned-badge.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
