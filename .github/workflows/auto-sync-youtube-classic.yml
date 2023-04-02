@@ -28,7 +28,7 @@ jobs:
 
       - name: Sync adamlui/userscripts/youtube-classic to adamlui/youtube-classic/greasemonkey
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/youtube-classic/ ${{ github.workspace }}/adamlui/youtube-classic/greasemonkey/
-      
+
       - name: Push to adamlui/youtube-classic
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
