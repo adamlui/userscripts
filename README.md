@@ -35,7 +35,7 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key // �
 Userscripts for Amazon's Mechanical Turk // 亚马逊 Mechanical Turk 的用户脚本
 <br>[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
+### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
 Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts // 将 YouTube 恢复为经典设计(在所有圆角和隐藏的不喜欢之前)+ 重定向 YouTube Shorts
 <br>[Install](https://greasyfork.org/en/scripts/456132) / [Readme](youtube-classic/README.md) / [Discuss](https://github.com/adamlui/userscripts/discussions)
