@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/adamlui/userscripts/master/youtube-classic/images/yt-classic-dark-mode-logo.png">
-    <img height=53 alt="YouTube Classic logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/youtube-classic/images/yt-classic-light-mode-logo.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://media.ytclassic.com/images/yt-classic-dark-mode-logo.png">
+    <img height=53 alt="YouTube Classic logo" src="https://media.ytclassic.com/images/yt-classic-light-mode-logo.png">
   </picture>
   <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img alt="Tweet" style="margin:0 0 6px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
