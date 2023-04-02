@@ -28,7 +28,7 @@ jobs:
 
       - name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
         run: rsync -av --delete --exclude=".*/" ${{ github.workspace }}/adamlui/userscripts/chatgpt/ ${{ github.workspace }}/adamlui/chatgpt-userscripts/
-      
+
       - name: Push to adamlui/chatgpt-userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
