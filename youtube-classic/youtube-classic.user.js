@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.04.03
+// @version          2023.04.03.1
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -20,8 +20,6 @@
 // @updateURL        https://www.ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://www.ytclassic.com/us/code/youtube-classic.user.js
 // ==/UserScript==
-
-
 
 // Redirect Shorts
 var oldHref = document.location.href;
@@ -437,7 +435,6 @@ document.addEventListener("yt-page-data-updated", async (e) => {
         div.sbqs_c::before { margin-right: 10px !important }
         ytd-searchbox[has-focus] #search-icon.ytd-searchbox { padding-left: 10px !important ; padding-right: 10px !important }
         #channel-container.ytd-c4-tabbed-header-renderer { height: 100px !important }
-        #contentContainer.tp-yt-app-header-layout { padding-top: 353px !important }
         #channel-header-container.ytd-c4-tabbed-header-renderer { padding-top: 0 !important }
         ytd-c4-tabbed-header-renderer[use-modern-style] #channel-name.ytd-c4-tabbed-header-renderer {
             margin-bottom: 0px !important }
@@ -459,6 +456,9 @@ document.addEventListener("yt-page-data-updated", async (e) => {
         div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important }
         ytd-rich-metadata-renderer[rounded] { border-radius: 0px !important }
         ytd-live-chat-frame[rounded-container] { border-radius: 0px !important }
+        ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame {
+            border-radius: 0px !important }
+        iframe.style-scope.ytd-live-chat-frame { border-radius: 0px !important }
         ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer {
             border-radius: 0px !important }
         ytd-playlist-panel-renderer[modern-panels]:not([hide-header-text]) .title.ytd-playlist-panel-renderer {
@@ -504,10 +504,10 @@ document.addEventListener("yt-page-data-updated", async (e) => {
         #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Trending"] { display: none !important }
         #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Podcasts"] { display: none !important }
         ytd-guide-entry-renderer > a[href*="/channel/UCkYQyvc_i9hXEo4xic9Hh2g"] { display: none !important }
-    
+
         /* Fix disappearing bar in masthead */
         #background.ytd-masthead { opacity: 1!important }`
-    
+
     document.head.appendChild(styles)
 })()
 
