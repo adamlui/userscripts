@@ -29,6 +29,9 @@ jobs:
       - name: Sync adamlui/userscripts/chatgpt/autoclear-chatgpt-history to adamlui/autoclear-chatgpt-history/greasemonkey
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
 
+      - name: Copy README.md to adamlui/autoclear-chatgpt-history
+        run: cp -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/README.md ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/README.md
+
       - name: Push to adamlui/autoclear-chatgpt-history
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
