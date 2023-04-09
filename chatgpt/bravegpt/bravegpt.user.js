@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name                BraveGPT 🤖
-// @version             2023.04.06
+// @version             2023.04.09
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
 // @description         Adds ChatGPT answers to Brave Search sidebar
@@ -374,7 +374,7 @@
         .chatgpt-container pre { /* ChatGPT output box */
             /* text spacing */ white-space: pre-wrap ; line-height: 21px ;
             font-family: Consolas, Menlo, Monaco, monospace ;
-            /* box spacing */ padding: 0.55em ; margin: .5em 0 ; border-radius: 5px ;
+            /* box spacing */ padding: 1.2em ; margin: .5em 0 ; border-radius: 15px 15px 15px 0 ;
             background-color: #eaeaea
         }
         .chatgpt-container .footer {
