@@ -33,8 +33,8 @@ jobs:
           repository: adamlui/chatgpt-addons
           path: adamlui/chatgpt-addons
 
-      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-addons/bravegpt/
-        run: cp -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md ${{ github.workspace }}/kudoai/bravegpt/README.md && cp -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/README.md
+      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-addons/bravegpt
+        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/README.md"
 
       - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
@@ -49,7 +49,7 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'greasemonkey/*'
+          file_pattern: '*'
           repository: kudoai/bravegpt
 
       - name: Push to adamlui/chatgpt-addons
@@ -59,5 +59,5 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'bravegpt/greasemonkey/*' 
+          file_pattern: 'bravegpt/*' 
           repository: adamlui/chatgpt-addons
