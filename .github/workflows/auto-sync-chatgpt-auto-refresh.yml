@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-auto-refresh to adamlui/chatgpt-auto-refresh/greasemonkey
+name: Sync chatgpt/chatgpt-auto-refresh/ to (adamlui/chatgpt-auto-refresh/greasemonkey/ && adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/)
 
 on:
   push:
@@ -26,11 +26,21 @@ jobs:
           repository: adamlui/chatgpt-auto-refresh
           path: adamlui/chatgpt-auto-refresh
 
-      - name: Sync adamlui/userscripts/chatgpt/chatgpt-auto-refresh to adamlui/chatgpt-auto-refresh/greasemonkey
+      - name: Checkout adamlui/chatgpt-addons
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-addons
+          path: adamlui/chatgpt-addons
+
+      - name: Copy README.md to adamlui/chatgpt-auto-refresh/ && adamlui/chatgpt-addons/chatgpt-auto-refresh
+        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/README.md<<<"${{ github.workspace }}/adamlui/chatgpt-auto-refresh/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-auto-refresh/README.md"
+
+      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
 
-      - name: Copy README.md to adamlui/chatgpt-auto-refresh
-        run: cp -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/README.md ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/README.md
+      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/
 
       - name: Push to adamlui/chatgpt-auto-refresh
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -39,5 +49,15 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: '*'
+          file_pattern: 'greasemonkey/*'
           repository: adamlui/chatgpt-auto-refresh
+
+      - name: Push to adamlui/chatgpt-addons
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'chatgpt-auto-refresh/greasemonkey/*' 
+          repository: adamlui/chatgpt-addons

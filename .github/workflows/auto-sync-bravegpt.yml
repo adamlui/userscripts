@@ -1,4 +1,4 @@
-name: Sync chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
+name: Sync chatgpt/bravegpt/ to (kudoai/bravegpt/greasemonkey/ && adamlui/chatgpt-addons/bravegpt/greasemonkey/)
 
 on:
   push:
@@ -26,11 +26,21 @@ jobs:
           repository: kudoai/bravegpt
           path: kudoai/bravegpt
 
-      - name: Sync adamlui/userscripts/chatgpt/bravegpt to kudoai/bravegpt/greasemonkey
+      - name: Checkout adamlui/chatgpt-addons
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-addons
+          path: adamlui/chatgpt-addons
+
+      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-addons/bravegpt
+        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/README.md"
+
+      - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
 
-      - name: Copy README.md to kudoai/bravegpt
-        run: cp -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md ${{ github.workspace }}/kudoai/bravegpt/README.md
+      - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-addons/bravegpt/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/greasemonkey/
 
       - name: Push to kudoai/bravegpt
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -39,5 +49,15 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: '*'
+          file_pattern: 'greasemonkey/*'
           repository: kudoai/bravegpt
+
+      - name: Push to adamlui/chatgpt-addons
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'bravegpt/greasemonkey/*' 
+          repository: adamlui/chatgpt-addons

@@ -1,10 +1,10 @@
-name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
+name: Sync chatgpt/chatgpt-heartbeat/ to adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
 
 on:
   push:
     branches: [ master, main ]
     paths:
-      - 'chatgpt/**'
+      - 'chatgpt/chatgpt-heartbeat/**'
 
 jobs:
   build:
@@ -19,22 +19,22 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout adamlui/chatgpt-userscripts
+      - name: Checkout adamlui/chatgpt-addons
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-userscripts
-          path: adamlui/chatgpt-userscripts
+          repository: adamlui/chatgpt-addons
+          path: adamlui/chatgpt-addons
 
-      - name: Sync adamlui/userscripts/chatgpt to adamlui/chatgpt-userscripts
-        run: rsync -av --delete --exclude=".*/" ${{ github.workspace }}/adamlui/userscripts/chatgpt/ ${{ github.workspace }}/adamlui/chatgpt-userscripts/
+      - name: Sync chatgpt/chatgpt-heartbeat/ to adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-heartbeat/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
 
-      - name: Push to adamlui/chatgpt-userscripts
+      - name: Push to adamlui/chatgpt-addons
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           push_options: '--force'
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: '*'
-          repository: adamlui/chatgpt-userscripts
+          file_pattern: 'chatgpt-heartbeat/*' 
+          repository: adamlui/chatgpt-addons
