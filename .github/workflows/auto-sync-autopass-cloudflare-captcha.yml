@@ -1,0 +1,40 @@
+name: Sync autopass-cloudflare-captcha/ to adamlui/chatgpt-addons/autopass-cloudflare-captcha/
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'autopass-cloudflare-captcha/**'
+
+jobs:
+  build:
+    if: github.event.commits[0].committer.username != 'auto-sync-bot'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout adamlui/chatgpt-addons
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-addons
+          path: adamlui/chatgpt-addons
+
+      - name: Sync autopass-cloudflare-captcha/ to adamlui/chatgpt-addons/autopass-cloudflare-captcha/
+        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/autopass-cloudflare-captcha/ ${{ github.workspace }}/adamlui/chatgpt-addons/autopass-cloudflare-captcha/
+
+      - name: Push to adamlui/chatgpt-addons
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'autopass-cloudflare-captcha/*'
+          repository: adamlui/chatgpt-addons
