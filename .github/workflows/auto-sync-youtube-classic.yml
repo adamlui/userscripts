@@ -26,11 +26,11 @@ jobs:
           repository: adamlui/youtube-classic
           path: adamlui/youtube-classic
 
-      - name: Copy README.md to adamlui/youtube-classic
-        run: cp -f ${{ github.workspace }}/adamlui/userscripts/youtube-classic/README.md ${{ github.workspace }}/adamlui/youtube-classic/README.md
-
       - name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
         run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/youtube-classic/ ${{ github.workspace }}/adamlui/youtube-classic/greasemonkey/
+
+      - name: Copy README.md to adamlui/youtube-classic
+        run: cp -f ${{ github.workspace }}/adamlui/userscripts/youtube-classic/README.md ${{ github.workspace }}/adamlui/youtube-classic/README.md
 
       - name: Push to adamlui/youtube-classic
         uses: stefanzweifel/git-auto-commit-action@v4
