@@ -36,5 +36,5 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'chatgpt-heartbeat/*' 
+          file_pattern: 'chatgpt-heartbeat/*'
           repository: adamlui/chatgpt-addons
