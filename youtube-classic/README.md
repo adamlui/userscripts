@@ -12,7 +12,7 @@
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 [![Mentioned in Awesome Userscripts](https://awesome.re/mentioned-badge.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
 
-<h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
+<h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics</h3>
 
 <a href="https://greasyfork.org/en/scripts/456132"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
