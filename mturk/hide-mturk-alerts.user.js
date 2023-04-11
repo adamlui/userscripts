@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Hide MTurk Alerts
-// @version      2023.01.16
+// @version      2023.04.10
 // @author       Adam Lui
 // @namespace    https://elonsucks.org/@adam
 // @description  Hides MTurk alerts.
@@ -14,6 +14,7 @@
 // @compatible   edge
 // @match        https://worker.mturk.com/*
 // @grant        GM_addStyle
+// @require      https://cdn.jsdelivr.net/gh/jquery/jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944/dist/jquery.min.js
 // @updateURL    https://greasyfork.org/scripts/458346-hide-mturk-alerts/code/hide-mturk-alerts.meta.js
 // @downloadURL  https://greasyfork.org/scripts/458346-hide-mturk-alerts/code/hide-mturk-alerts.user.js
 // ==/UserScript==
