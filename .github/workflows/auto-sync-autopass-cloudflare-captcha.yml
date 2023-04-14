@@ -27,7 +27,7 @@ jobs:
           path: adamlui/chatgpt-addons
 
       - name: Sync autopass-cloudflare-captcha/ to adamlui/chatgpt-addons/autopass-cloudflare-captcha/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/autopass-cloudflare-captcha/ ${{ github.workspace }}/adamlui/chatgpt-addons/autopass-cloudflare-captcha/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/autopass-cloudflare-captcha/ ${{ github.workspace }}/adamlui/chatgpt-addons/autopass-cloudflare-captcha/
 
       - name: Push to adamlui/chatgpt-addons
         uses: stefanzweifel/git-auto-commit-action@v4

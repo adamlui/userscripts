@@ -37,10 +37,10 @@ jobs:
         run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/README.md<<<"${{ github.workspace }}/adamlui/autoclear-chatgpt-history/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/autoclear-chatgpt-history/README.md"
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/chatgpt-addons/autoclear-chatgpt-history/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/chatgpt-addons/autoclear-chatgpt-history/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/chatgpt-addons/autoclear-chatgpt-history/greasemonkey/
 
       - name: Push to adamlui/autoclear-chatgpt-history
         uses: stefanzweifel/git-auto-commit-action@v4

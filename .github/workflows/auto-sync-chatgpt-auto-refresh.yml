@@ -37,10 +37,10 @@ jobs:
         run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/README.md<<<"${{ github.workspace }}/adamlui/chatgpt-auto-refresh/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-auto-refresh/README.md"
 
       - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
 
       - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-auto-refresh/greasemonkey/
 
       - name: Push to adamlui/chatgpt-auto-refresh
         uses: stefanzweifel/git-auto-commit-action@v4

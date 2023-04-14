@@ -27,7 +27,7 @@ jobs:
           path: adamlui/chatgpt-addons
 
       - name: Sync chatgpt/chatgpt-heartbeat/ to adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-heartbeat/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-heartbeat/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-heartbeat/greasemonkey/
 
       - name: Push to adamlui/chatgpt-addons
         uses: stefanzweifel/git-auto-commit-action@v4

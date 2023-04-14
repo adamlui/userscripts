@@ -37,10 +37,10 @@ jobs:
         run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/README.md"
 
       - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
 
       - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-addons/bravegpt/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/greasemonkey/
 
       - name: Push to kudoai/bravegpt
         uses: stefanzweifel/git-auto-commit-action@v4

@@ -34,10 +34,10 @@ jobs:
           path: adamlui/chatgpt-addons
 
       - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
 
       - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-addons/chatgpt-widescreen/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-widescreen/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ ${{ github.workspace }}/adamlui/chatgpt-addons/chatgpt-widescreen/greasemonkey/
 
       - name: Push to adamlui/chatgpt-widescreen
         uses: stefanzweifel/git-auto-commit-action@v4

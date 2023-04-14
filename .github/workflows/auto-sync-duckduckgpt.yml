@@ -37,10 +37,10 @@ jobs:
         run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/README.md<<<"${{ github.workspace }}/kudoai/duckduckgpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/duckduckgpt/README.md"
 
       - name: Sync chatgpt/duckduckgpt/ to kudoai/duckduckgpt/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/kudoai/duckduckgpt/greasemonkey/
 
       - name: Sync chatgpt/duckduckgpt/ to adamlui/chatgpt-addons/duckduckgpt/greasemonkey/
-        run: rsync -av --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/duckduckgpt/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/duckduckgpt/greasemonkey/
 
       - name: Push to kudoai/duckduckgpt
         uses: stefanzweifel/git-auto-commit-action@v4
