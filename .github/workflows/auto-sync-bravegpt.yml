@@ -1,4 +1,4 @@
-name: Sync chatgpt/bravegpt/ to (kudoai/bravegpt/greasemonkey/ && adamlui/chatgpt-addons/bravegpt/greasemonkey/)
+name: Sync chatgpt/bravegpt/ to (kudoai/bravegpt/greasemonkey/ && adamlui/chatgpt-apps/bravegpt/greasemonkey/)
 
 on:
   push:
@@ -26,21 +26,21 @@ jobs:
           repository: kudoai/bravegpt
           path: kudoai/bravegpt
 
-      - name: Checkout adamlui/chatgpt-addons
+      - name: Checkout adamlui/chatgpt-apps
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-addons
-          path: adamlui/chatgpt-addons
+          repository: adamlui/chatgpt-apps
+          path: adamlui/chatgpt-apps
 
-      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-addons/bravegpt
-        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/README.md"
+      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-apps/bravegpt
+        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/README.md"
 
       - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
         run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
 
-      - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-addons/bravegpt/greasemonkey/
-        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-addons/bravegpt/greasemonkey/
+      - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-apps/bravegpt/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/greasemonkey/
 
       - name: Push to kudoai/bravegpt
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -52,7 +52,7 @@ jobs:
           file_pattern: '*'
           repository: kudoai/bravegpt
 
-      - name: Push to adamlui/chatgpt-addons
+      - name: Push to adamlui/chatgpt-apps
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           push_options: '--force'
@@ -60,4 +60,4 @@ jobs:
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
           file_pattern: 'bravegpt/*'
-          repository: adamlui/chatgpt-addons
+          repository: adamlui/chatgpt-apps
