@@ -21,7 +21,7 @@ Automatically verify your humanity during Cloudflare Turnstile challenges // 在
 Userscripts that utilize the astounding AI of ChatGPT // 利用 ChatGPT 惊人的 AI 的用户脚本
 <br>[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [Pikpak scripts](pikpak)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://mypikpak.com/favicon-32x32.png"><img width=15 alt="Pikpak logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [Pikpak scripts](pikpak)
 
 Improve the user experience of lighter operation for Pikpak // 为 Pikpak 提高更轻便的用户操作体验
 <br>[View scripts](pikpak) / [Discuss](https://github.com/adamlui/userscripts/discussions)
