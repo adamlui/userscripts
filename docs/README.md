@@ -2,7 +2,7 @@
 MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 [![stars](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars)](https://github.com/adamlui/userscripts/stargazers)
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Librewolf/QQ-989898.svg)
 [![commits](https://img.shields.io/github/commit-activity/w/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
 [![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
@@ -28,7 +28,7 @@ Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;
 [Readme](../hide-forum-images/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](highlight-radio-bubbles)
+### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;
 [Install](https://greasyfork.org/scripts/26311) / 
