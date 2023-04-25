@@ -36,10 +36,12 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key // �
 Userscripts for Amazon's Mechanical Turk // 亚马逊 Mechanical Turk 的用户脚本
 <br>[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=15 alt="Pikpak logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [PikPak scripts](pikpak)
+### <img width=15 alt="PikPak logo" src="https://mypikpak.com/favicon-32x32.png"> [PikPak Enhance](pikpak-enhance)
 
-Scripts that enhance PikPak's user experience // 增强 PikPak 用户体验的脚本
-<br>[View scripts](pikpak) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+Turbo-charges the PikPak user experience // 涡轮增压 PikPak 用户体验
+<br>[Install](https://greasyfork.org/en/scripts/464781-pikpak-enhance) / 
+[Readme](pikpak-enhance/README.md) / 
+[Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
