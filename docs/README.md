@@ -32,7 +32,7 @@ Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbsp;
 [Install](https://greasyfork.org/scripts/26311) / 
-[Readme](highlight-radio-bubbles/README.md) / 
+[Readme](../highlight-radio-bubbles/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
