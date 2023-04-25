@@ -21,11 +21,6 @@ Automatically verify your humanity during Cloudflare Turnstile challenges // 在
 Userscripts that utilize the astounding AI of ChatGPT // 利用 ChatGPT 惊人的 AI 的用户脚本
 <br>[View scripts](chatgpt) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://mypikpak.com/favicon-32x32.png"><img width=15 alt="Pikpak logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [Pikpak scripts](pikpak)
-
-Improve the user experience of lighter operation for Pikpak // 为 Pikpak 提高更轻便的用户操作体验
-<br>[View scripts](pikpak) / [Discuss](https://github.com/adamlui/userscripts/discussions)
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](hide-forum-images)
 
 Hides images/videos from XenForo, vBulletin & Discourse forums // 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频
@@ -40,6 +35,11 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key // �
 
 Userscripts for Amazon's Mechanical Turk // 亚马逊 Mechanical Turk 的用户脚本
 <br>[View scripts](mturk) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <img width=15 alt="Pikpak logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [PikPak scripts](pikpak)
+
+Scripts that enhance PikPak's user experience // 增强 PikPak 用户体验的脚本
+<br>[View scripts](pikpak) / [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
