@@ -1,27 +1,15 @@
-# 🤖 Pikpak userscripts
-Improve the user experience of lighter operation for Pikpak
-Ps:Running these scripts requires a user script manager
-1.[Tampermonkey](https://www.tampermonkey.net/)
-2.[Violentmonkey](https://violentmonkey.github.io/) [recommend]
+# <img height=35 width=auto alt="PikPak logo" style="margin-bottom:-5px" src="https://i.imgur.com/ZNofCO0.png"> Pikpak 提高
 
-为 Pikpak 提高更轻便的用户操作体验
-注意:运行这些脚本需要一个用户脚本管理器
-1.[Tampermonkey](https://www.tampermonkey.net/)
-2.[Violentmonkey](https://violentmonkey.github.io/) [推荐]
+### ⚡ 提升您的 PikPak 用户体验！
+[English](../README.md) | [中文](#-pikpak-%E6%8F%90%E9%AB%98)
 
----
+<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<br>
+[发表评论](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) /
+[联系作者](https://github.com/xiaoyingyo)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://mypikpak.com/favicon-32x32.png"><img width=15 alt="Pikpak logo" src="https://mypikpak.com/favicon-32x32.png"></picture> [Pikpak Enhance](pikpak-enhance)
-- English explanation
-1. In the `All Files` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
-2. In the `All Files` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
-3. In the `Recently Added` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
-4. In the `Recently Added` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
-5. In the `Recycle Bin` tab, when clicking `Permanent Delete` for the right-click menu, click Permanent Delete immediately without confirmation
-6. Remove the download progress pop-up window that pops up for the first cloud download, and it will no longer be displayed automatically next time
-7. Remove the cookie agreement that pops up when you log in for the first time, and automatically accept all cookie permissions
-8. When using the mailbox to log in on the login interface, add automatic identification of the mailbox and password, and automatically fill in and log in automatically
-- 中文解释
+## 它能做什么
+
 1. 在`全部文件`选项卡时,为右键菜单点击`删除`时,无需确认立即点击删除
 2. 在`全部文件`选项卡时,为右键菜单点击`下载`时,无需确认立即点击浏览器下载
 3. 在`最近添加`选项卡时,为右键菜单点击`删除`时,无需确认立即点击删除
@@ -30,4 +18,24 @@ Ps:Running these scripts requires a user script manager
 6. 移除第一次云下载弹出的下载进度弹窗,自动不再下次不再显示
 7. 移除第一次登录时弹窗的Cookie协议,自动接受全部Cookie许可
 8. 在登录界面使用邮箱登录时,新增自动识别邮箱和密码,并自动填充并自动登录
-<br>[View scripts](pikpak-enhance) / [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+## 安装
+
+1. 安装 Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)) 或者 Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
+
+2. 安装 [PikPak Enhance](https://greasyfork.org/en/scripts/464781-pikpak-enhance) (将在上面安装的用户脚本管理器中加载)
+
+3. 访问 PikPak, 享受涡轮增压体验!
+
+## 脚本链接
+
+<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance">安装这个脚本</a> / 
+[发表评论](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) / 
+[联系作者](https://github.com/xiaoyingyo)
+
+## 作者链接
+
+[![在 GitHub 上关注@XiaoYingYo](https://img.shields.io/github/followers/XiaoYingYo?label=跟随%20%40XiaoYingYo&style=social)](https://github.com/XiaoYingYo)
+<br><br>
+
+[回到顶部 ↑](#-pikpak-%E6%8F%90%E9%AB%98)
