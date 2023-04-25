@@ -3,7 +3,7 @@
 ### ⚡ 提升您的 PikPak 用户体验！
 [English](../README.md) | [中文](#-pikpak-%E6%8F%90%E9%AB%98)
 
-<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#安装" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [发表评论](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) /
 [联系作者](https://github.com/xiaoyingyo)
