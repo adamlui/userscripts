@@ -3,19 +3,27 @@
 ### ⚡ Turbo-charge your PikPak user experience!</h3>  
 [English](#-pikpak-enhance) | [中文](zh-cn/README.md)
 
-<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#installation" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
 [Leave a review](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) /
 [Contact author](https://github.com/xiaoyingyo)
 
 ## What it does
 
-1. Adds **auto-login** for faster access
-2. Disables the **cookie agreement** pop-up when logging in (auto-accepts all permissions)
-3. Disables the **download progress** pop-up for cloud downloads
-4. Removes confirmation when right-clicking to **delete** files
-5. Removes confirmation when right-clicking to **download** files
-6. Removes confirmation when right-clicking to **permanently delete** from `Recycle Bin`
+- Adds **auto-login** for faster access
+- Disables the **cookie agreement** pop-up when logging in (auto-accepts all permissions)
+- Disables the **download progress** pop-up for cloud downloads
+- Removes confirmation when right-clicking to **delete** files
+- Removes confirmation when right-clicking to **download** files
+- Removes confirmation when right-clicking to **permanently delete** from `Recycle Bin`
+
+## Installation
+
+1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
+
+2. Install [PikPak Enhance](https://greasyfork.org/en/scripts/464781-pikpak-enhance) (will load in userscript manager installed above)
+
+3. Visit PikPak, enjoy turbo-charged experience!
 
 ## Script links
 
