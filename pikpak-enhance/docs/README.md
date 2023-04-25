@@ -1,4 +1,4 @@
-# <img height=35 width=auto alt="PikPak logo" style="margin-bottom:-5px" src="https://i.imgur.com/ZNofCO0.png"> [Pikpak Enhance](pikpak-enhance)
+# <img height=35 width=auto alt="PikPak logo" style="margin-bottom:-5px" src="https://i.imgur.com/ZNofCO0.png"> PikPak Enhance
 
 ### ⚡ Turbo-charge your PikPak user experience!</h3>  
 [English](#-pikpak-enhance) | [中文](zh-cn/README.md)
@@ -30,6 +30,10 @@
 <a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance">Install this script</a> / 
 [Leave a review](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) / 
 [Contact author](https://github.com/xiaoyingyo)
-<br><br>
+
+## Author links
 
 [![Follow @XiaoYingYo on GitHub](https://img.shields.io/github/followers/XiaoYingYo?label=Follow%20%40XiaoYingYo&style=social "GitHub")](https://github.com/XiaoYingYo)
+<br><br>
+
+[Back to top ↑](#-pikpak-enhance)
