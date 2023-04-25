@@ -3,8 +3,8 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     1.0
-// @grant       GM_info 
+// @version     2023.4.27
+// @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @grant       GM_addStyle
@@ -19,8 +19,9 @@
 // @grant       unsafeWindow
 // @run-at      document-start
 // @author      github.com @XiaoYingYo
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
+// @require     https://greasyfork.org/scripts/464779-module-jquery/code/module_jquery.js
+// @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
+// @downloadURL  https://raw.githubusercontent.com/XiaoYingYo/MonkeyUserScripts/main/pikpak/pikpak-enhance/pikpak-enhance.js
 // @description 2023/4/23 20:06:50
 // ==/UserScript==
 

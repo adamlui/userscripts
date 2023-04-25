@@ -3,14 +3,15 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://chat.openai.com/*
 // @match       *://freegpt.one/*
-// @version     2023.4.9.1
+// @version     2023.4.27
 // @grant       none
 // @run-at      document-body
 // @author      github.com @XiaoYingYo
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module_jquery.js
-// @require     https://raw.githubusercontent.com/XiaoYingYo/ScriptModule/main/module.js
+// @require     https://greasyfork.org/scripts/464779-module-jquery/code/module_jquery.js
+// @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
 // @icon        https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
 // @icon64      https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
+// @downloadURL  https://raw.githubusercontent.com/XiaoYingYo/MonkeyUserScripts/main/chatgpt/chatgpt-heartbeat/chatgpt-heartbeat.js
 // @description 2023-3-6 13:25:06
 // ==/UserScript==
 
