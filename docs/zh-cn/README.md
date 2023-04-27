@@ -7,6 +7,8 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [![提交](https://img.shields.io/github/commit-activity/w/adamlui/userscripts?label=提交)](https://github.com/adamlui/userscripts/commits/master)
 [![代码质量](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
+简体中文 | [English](../README.md)
+
 ---
 
 ### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](autopass-cloudflare-captcha)
@@ -58,5 +60,4 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 #
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> / 
-<a href="../README.md">English</a> / 
 <a href="#-greasemonkey-%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC-">回到顶部 ↑</a>
