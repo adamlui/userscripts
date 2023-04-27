@@ -33,8 +33,8 @@ jobs:
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
 
-      - name: Copy README.md to adamlui/chatgpt-auto-refresh/ && adamlui/chatgpt-apps/chatgpt-auto-refresh
-        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/README.md<<<"${{ github.workspace }}/adamlui/chatgpt-auto-refresh/README.md ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-refresh/README.md"
+      - name: Sync docs to adamlui/chatgpt-auto-refresh/docs/ && adamlui/chatgpt-apps/chatgpt-auto-refresh/docs/
+        run: cp -r -f -vh ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/ && cp -r ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-refresh/
 
       - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/
         run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
