@@ -7,6 +7,8 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 [![commits](https://img.shields.io/github/commit-activity/w/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
 [![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
+English | [简体中文](zh-cn/README.md)
+
 ---
 
 ### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](../autopass-cloudflare-captcha)
@@ -58,5 +60,4 @@ Reverts YouTube to its classic design (before all the rounded corners & hidden d
 #
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
-<a href="zh-cn/README.md">中文</a> / 
 <a href="#-greasemonkey-userscripts-">Back to top ↑</a>
