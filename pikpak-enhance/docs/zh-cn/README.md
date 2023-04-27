@@ -1,7 +1,7 @@
 # <img height=35 width=auto alt="PikPak logo" style="margin-bottom:-5px" src="https://i.imgur.com/ZNofCO0.png"> Pikpak 提高
 
 ### ⚡ 提升您的 PikPak 用户体验！
-[English](../README.md) | [中文](#-pikpak-%E6%8F%90%E9%AB%98)
+[English](../README.md) | 简体中文
 
 <a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance"><img alt="Install this script" src="https://raw.githubusercontent.com/adamlui/userscripts/master/install-button.svg"></a><a href="#安装" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/help-button.svg"></a>
 <br>
