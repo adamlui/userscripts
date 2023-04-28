@@ -7,7 +7,7 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 [![commits](https://img.shields.io/github/commit-activity/w/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
 [![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
-English | [简体中文](zh-cn/README.md)
+###### English | [简体中文](zh-cn/README.md)
 
 ---
 
