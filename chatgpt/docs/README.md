@@ -5,6 +5,8 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 ![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/LibreWolf/QQ-989898.svg)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
 
+###### English | [简体中文](docs/zh-cn/README.md)
+
 ---
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [Autoclear ChatGPT History](../autoclear-chatgpt-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
