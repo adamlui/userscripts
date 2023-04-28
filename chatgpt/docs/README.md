@@ -12,7 +12,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 Auto-clear your ChatGPT query history for maximum privacy.
 <br>[Install](https://greasyfork.org/scripts/460805-auto-clear-chatgpt-history) / 
 [Readme](autoclear-chatgpt-history/README.md) / 
-[Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions)
+[Discuss](https://chatgptevo.com/autoclear/discussions)
 
 ### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](https://github.com/adamlui/userscripts/tree/master/autopass-cloudflare-captcha)
 
@@ -32,7 +32,7 @@ Display ChatGPT answers in Brave Search sidebar.
 Keeps ChatGPT sessions fresh to eliminate network errors + Cloudflare checks.
 <br>[Install](https://greasyfork.org/scripts/462422-chatgpt-auto-refresh) / 
 [Readme](chatgpt-auto-refresh/docs/README.md) / 
-[Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions)
+[Discuss](https://chatgptevo.com/autorefresh/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](chatgpt-heartbeat)
 
@@ -46,7 +46,7 @@ Keeps conversations flowing when network errors are encountered.
 Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling.
 <br>[Install](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](chatgpt-widescreen/README.md) / 
-[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
+[Discuss](https://chatgptevo.com/widescreen/discussions)
 
 ### <img src="https://media.duckduckgpt.com/images/ddgpt-icon48.png" width=17> [DuckDuckGPT](duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
