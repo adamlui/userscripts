@@ -1,5 +1,9 @@
-# Security Policy
+# 安全政策
 
-If you find a vulnerability, please open a [draft security advisory](https://github.com/adamlui/chatgpt-userscripts/security/advisories/new).
+###### 简体中文 | [English](../SECURITY.md)
 
-Pull requests are also welcome, but for safety reasons, send an email to adamlui@pm.me and wait for a response before making it public.
+<br>
+
+如果您发现漏洞，请打开一个[安全建议草案](https://github.com/adamlui/chatgpt-userscripts/security/advisories/new)。
+
+也欢迎拉取请求，但出于安全原因，请发送电子邮件至 adamlui@pm.me 并在公开之前等待回复。
