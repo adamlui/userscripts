@@ -5,6 +5,8 @@
 ![兼容性](https://img.shields.io/badge/兼容性-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/LibreWolf/QQ-989898.svg)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
 
+###### 简体中文 | [English](../README.md)
+
 ---
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
