@@ -7,7 +7,7 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [![提交](https://img.shields.io/github/commit-activity/w/adamlui/userscripts?label=提交)](https://github.com/adamlui/userscripts/commits/master)
 [![代码质量](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
-简体中文 | [English](../README.md)
+###### 简体中文 | [English](../README.md)
 
 ---
 
