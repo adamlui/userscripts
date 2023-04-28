@@ -1,0 +1,63 @@
+name: Sync chatgpt/chatgpt-infinity/ to (adamlui/chatgpt-infinity/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/)
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'chatgpt/chatgpt-infinity/**'
+
+jobs:
+  build:
+    if: github.event.commits[0].committer.username != 'auto-sync-bot'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout adamlui/chatgpt-infinity
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-infinity
+          path: adamlui/chatgpt-infinity
+
+      - name: Checkout adamlui/chatgpt-apps
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-apps
+          path: adamlui/chatgpt-apps
+
+      - name: Sync docs to adamlui/chatgpt-infinity/docs/ && adamlui/chatgpt-apps/chatgpt-infinity/docs/
+        run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs ${{ github.workspace }}/adamlui/chatgpt-infinity/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/
+
+      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
+
+      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
+
+      - name: Push to adamlui/chatgpt-infinity
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: '*'
+          repository: adamlui/chatgpt-infinity
+
+      - name: Push to adamlui/chatgpt-apps
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'chatgpt-infinity/*'
+          repository: adamlui/chatgpt-apps
