@@ -37,7 +37,7 @@ Keeps ChatGPT sessions fresh to eliminate network errors + Cloudflare checks.
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT Heartbeat 💓](../chatgpt-heartbeat)
 
 Keeps conversations flowing when network errors are encountered.
-<br>[Install](https://github.com/adamlui/userscripts/raw/master/chatgpt/chatgpt-heartbeat/ChatGPT-Heartbeat.user.js) / 
+<br>[Install](https://greasyfork.org/en/scripts/464783-chatgpt-heartbeat) / 
 [Readme](../chatgpt-heartbeat#readme) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
