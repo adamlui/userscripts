@@ -31,7 +31,7 @@
 ## 脚本链接
 
 <a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance">安装这个脚本</a> / 
-[发表评论](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) / 
+[发表评论](https://greasyfork.org/en/scripts/464781/feedback#post-discussion) / 
 [联系作者](https://github.com/xiaoyingyo)
 
 ## 作者链接
