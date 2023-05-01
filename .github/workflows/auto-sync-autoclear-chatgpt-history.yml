@@ -33,8 +33,8 @@ jobs:
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
 
-      - name: Copy README.md to adamlui/autoclear-chatgpt-history/ && adamlui/chatgpt-apps/autoclear-chatgpt-history
-        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/README.md<<<"${{ github.workspace }}/adamlui/autoclear-chatgpt-history/README.md ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/README.md"
+      - name: Sync docs to adamlui/autoclear-chatgpt-history/docs/ && adamlui/chatgpt-apps/autoclear-chatgpt-history/docs/
+        run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/
         run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
