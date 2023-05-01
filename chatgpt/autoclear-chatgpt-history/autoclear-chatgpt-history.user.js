@@ -234,7 +234,7 @@
                 div.innerHTML = Svg[div.name] + "Clear Conversations";
                 return;
             }
-            if (div.name == 0) {
+            if (div.name === 0) {
                 div.name = 1;
             } else {
                 CreateClearButtonOrShow("none");
@@ -250,7 +250,7 @@
     FetchMap.set("/backend-api/conversations", async function (f) {
         let json = await f.json();
         CreateClearButtonOrShow(null);
-        if(json.items.length == 0){
+        if(json.items.length === 0){
             CreateClearButtonOrShow("none");
         }else{
             CreateClearButtonOrShow();
