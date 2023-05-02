@@ -2,7 +2,7 @@
 
 ![usercount](https://img.shields.io/greasyfork/dt/462422?label=Users&color=)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/LibreWolf/QQ-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/LibreWolf/Ghost/QQ-989898.svg)](#compatibility)
 [![commits](https://img.shields.io/github/commit-activity/w/adamlui/chatgpt-auto-refresh?label=Commits)](https://github.com/adamlui/chatgpt-auto-refresh/commits/main)
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/chatgpt-auto-refresh?label=Code%20Quality)](https://www.codefactor.io/repository/github/adamlui/chatgpt-auto-refresh)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/AwQqCmB.png"></a>
@@ -126,14 +126,14 @@ Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling.
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
 [Discuss](https://chatgptevo.com/widescreen/discussions)
 
-### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](https://bravegpt.com/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
+### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](https://bravegpt.com/greasemonkey) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -3px 5px;" width="112" height="24" /></a>
 
 Display ChatGPT answers in Brave Search sidebar.
 <br>[Install](https://greasyfork.org/scripts/462440-bravegpt) / 
 [Readme](https://github.bravegpt.com/#readme) / 
 [Discuss](https://github.bravegpt.com/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT Infinity ∞](https://chatgptevo.com/infinity/github) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT Infinity ∞](https://chatgptevo.com/infinity/github) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 4px"></a>
 
 Generate endless answers from all-knowing ChatGPT (in any language!)
 <br>[Install](https://greasyfork.org/scripts/465051-chatgpt-infinity) / 
