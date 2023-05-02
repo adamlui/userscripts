@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.04.03.2
+// @version          2023.5.2
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -73,8 +73,6 @@ const EXPFLAGS = {
     web_searchbar_style: "default",
     web_segmented_like_dislike_button: false,
     web_sheets_ui_refresh: false,
-//    web_modern_subscribe: false,
-//    web_filled_subscribed_button: false,
     web_snackbar_ui_refresh: false
 }
 
@@ -474,14 +472,15 @@ document.addEventListener("yt-page-data-updated", async (e) => {
         ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy { border-radius: 0px !important }
         ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
             font-family: Roboto !important ; font-size: 1.6rem !important ; font-weight: 500 !important }
+        ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer { border-radius: 0px !important }
+        ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer { border-radius: 0px !important }
+        ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer { border-radius: 0px !important }
         .ytp-ad-player-overlay-flyout-cta-rounded { border-radius: 2px !important }
         .ytp-flyout-cta .ytp-flyout-cta-action-button.ytp-flyout-cta-action-button-rounded {
             border-radius: 2px !important ; text-transform: uppercase !important }
         .ytp-ad-action-interstitial-action-button.ytp-ad-action-interstitial-action-button-rounded {
             border-radius: 2px !important ; text-transform: uppercase !important }
-        .ytp-settings-menu.ytp-rounded-menu, .ytp-screen-mode-menu.ytp-rounded-menu { border-radius: 2px !important }
-        .ytp-videowall-still-image { border-radius: 0px !important }
-        .ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded { border-radius: 2px !important }
+        div#ytp-id-18.ytp-popup, ytp-settings-menu.ytp-rounded-menu { border-radius: 2px !important }
         div.branding-context-container-inner.ytp-rounded-branding-context { border-radius: 2px !important }
         div.iv-card.iv-card-video.ytp-rounded-info { border-radius: 0px !important }
         div.iv-card.iv-card-playlist.ytp-rounded-info { border-radius: 0px !important }
@@ -494,11 +493,40 @@ document.addEventListener("yt-page-data-updated", async (e) => {
         div.ytp-autonav-endscreen-upnext-thumbnail.rounded-thumbnail { border-radius: 0px !important }
         button.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-cancel-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important }
         a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button.ytp-autonav-endscreen-upnext-button-rounded { border-radius: 2px !important }
-        .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-overlay-image img, .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-text-overlay, .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-enhanced-overlay {
-                border-radius: 0px !important }
-        .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview .ytp-tooltip-bg {
-            border-top-left-radius: 0px !important ; border-bottom-left-radius: 0px !important }
-        .ytp-tooltip.ytp-rounded-tooltip.ytp-text-detail.ytp-preview { border-radius: 0px !important }
+        .ytp-videowall-still-image { border-radius: 0px !important }
+        div.ytp-sb-subscribe.ytp-sb-rounded, .ytp-sb-unsubscribe.ytp-sb-rounded  { border-radius: 2px !important }
+        #buttons.ytd-c4-tabbed-header-renderer { flex-direction: row-reverse !important }
+
+        /* Subscribe button fixes */
+        yt-button-shape.style-scope.ytd-subscribe-button-renderer { display: flex !important }
+        #subscribe-button ytd-subscribe-button-renderer button {
+            height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ; text-transform: uppercase !important }
+        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+            color: #fff !important ; background: #c00 !important ; border-radius: 2px !important ; text-transform: uppercase !important ; letter-spacing: 0.5px !important }
+        button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-s {
+            height: 25px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ; text-transform: uppercase !important }
+        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m {
+            background-color: transparent !important ; border-radius: 16px !important ; padding-left: 14px !important ; padding-right: 2px !important ; margin-left: 4px !important }
+        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.cbox.yt-spec-button-shape-next--button-text-content {
+            display: none !important }
+        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.yt-spec-button-shape-next__secondary-icon {
+            display: none !important }
+
+        /* General UI fixes */
+        ytd-guide-entry-renderer[guide-refresh] { width: 100% !important ; border-radius: 0px !important }
+        tp-yt-paper-item.style-scope.ytd-guide-entry-renderer { border-radius: 0px !important ; padding-left: 24px !important }
+        ytd-guide-section-renderer.style-scope.ytd-guide-renderer { padding-left: 0px !important }
+        .style-scope.ytd-guide-entry-renderer:hover { border-radius: 0 !important }
+        ytd-mini-guide-renderer[guide-refresh] { padding: 0 !important }
+        ytd-mini-guide-entry-renderer[guide-refresh] { padding-left: 4px !important ; border-radius: 0 !important }
+        yt-chip-cloud-chip-renderer { height: 32px !important ; border: 1px solid var(--yt-spec-10-percent-layer) !important ; border-radius: 16px !important ; box-sizing: border-box !important }
+        [page-subtype="home"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+            background-color: var(--yt-spec-brand-background-primary) !important ; border-top: 1px solid var(--yt-spec-10-percent-layer) !important ; border-bottom: 1px solid var(--yt-spec-10-percent-layer) !important }
+        ytd-feed-filter-chip-bar-renderer[component-style=FEED_FILTER_CHIP_BAR_STYLE_TYPE_CHANNEL_PAGE_GRID] #chips-wrapper.ytd-feed-filter-chip-bar-renderer { background-color: transparent !important }
+        #meta #avatar { width: 48px ; height: 48px ; margin-right: 16px }
+        #meta #avatar img { width: 100% }
+        #channel-name.ytd-video-owner-renderer { font-size: 1.4rem }
+
         /* Remove Shorts, Trending, Podcasts, Shopping */
         #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
         #endpoint.yt-simple-endpoint.ytd-mini-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
