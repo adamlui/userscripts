@@ -11,7 +11,7 @@
 // @name:es             Modo de Pantalla Ancha de ChatGPT 🖥️
 // @name:fr             Mode Écran Large ChatGPT 🖥️
 // @name:it             ChatGPT Modalità Widescreen 🖥️
-// @version             2023.5.2
+// @version             2023.5.2.1
 // @description         Adds Widescreen + Full-Window modes to ChatGPT for reduced scrolling
 // @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
 // @namespace           https://github.com/adamlui
@@ -55,7 +55,7 @@
 
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org (c) 2023 Adam Lui, chatgpt.js & contributors under the MIT license.
 
-(function () {
+(function() {
 
     // Initialize script
     var config = {}, configKeyPrefix = 'chatGPTws_'
@@ -212,19 +212,19 @@
         // Add command to also activate wide screen in full-window
         var fwLabel = stateSymbol[+!config.fullerWindow] + ' Fuller Windows'
             + stateSeparator + stateWord[+!config.fullerWindow]
-        menuID.push(GM_registerMenuCommand(fwLabel, function () {
+        menuID.push(GM_registerMenuCommand(fwLabel, function() {
             saveSetting('fullerWindow', !config.fullerWindow)
             if (!config.notifHidden) chatgpt.notify('Fuller Windows: ' + stateWord[+!config.fullerWindow], '', '', chatgpt.isDarkMode() ? '' : 'shadow')
-            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
+            for (var id of menuID) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
         }))
 
         // Add command to show notifications when switching modes
         var mnLabel = stateSymbol[+config.notifHidden] + ' Mode Notifications'
             + stateSeparator + stateWord[+config.notifHidden]
-        menuID.push(GM_registerMenuCommand(mnLabel, function () {
+        menuID.push(GM_registerMenuCommand(mnLabel, function() {
             saveSetting('notifHidden', !config.notifHidden)
             chatgpt.notify('Mode Notifications: ' + stateWord[+config.notifHidden], '', '', chatgpt.isDarkMode() ? '' : 'shadow')
-            for (var id of menuID) { GM_unregisterMenuCommand(id) }; registerMenu() // refresh menu
+            for (var id of menuID) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
         }))
     }
 
@@ -244,7 +244,7 @@
 
     function classListToCSS(classList) { // convert DOM classList to single CSS selector
         return '.' + [...classList].join('.') // prepend dot to dot-separated string
-            .replaceAll(/([:\[\]])/g, '\\$1') // escape CSS special chars
+            .replaceAll(/([:[\]])/g, '\\$1') // escape CSS special chars
     }
 
     function insertButtons() {
