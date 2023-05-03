@@ -17,7 +17,7 @@ module.exports  = {
     },
     'globals': { 'chatgpt': true, 'global_module': true, '$': true },
     'parserOptions': {
-        'ecmaVersion': 2017,
+        'ecmaVersion': 2020,
         'sourceType': 'script'
     },
     'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
