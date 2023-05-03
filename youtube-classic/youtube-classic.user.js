@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.4
+// @version          2023.5.3.5
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -282,18 +282,12 @@ async function waitForElm(selector, base = document) {
     if (!base.querySelector) return null;
     while (base.querySelector(selector) == null) {
         await new Promise(r => requestAnimationFrame(r));
-    };
-    return base.querySelector(selector);
-};
-function inArray(needle, haystack) {
-    for (var i = 0; i < haystack.length; i++) {
-        if (needle == haystack[i]) return true;
     }
-    return false;
+    return base.querySelector(selector);
 }
 function getSimpleString(object) {
     if (object.simpleText) return object.simpleText;
-    var str = "";
+    var str = '';
     for (var i = 0; i < object.runs.length; i++) {
         str += object.runs[i].text;
     }
@@ -333,9 +327,9 @@ async function formatCommentThread(thread) {
             delete replies.viewRepliesCreatorThumbnail;
         } catch(err) {}
         var replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text);
-        replyCount = +replyCount.replace(getString("replyCountIsolator", hl), "");
-        var viewMultiString = creatorName ? "viewMultiOwner" : "viewMulti";
-        var viewSingleString = creatorName ? "viewSingularOwner" : "viewSingular";
+        replyCount = +replyCount.replace(getString('replyCountIsolator', hl), '');
+        var viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti';
+        var viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular';
         replies.viewReplies.buttonRenderer.text = {
             runs: [
                 {
@@ -344,11 +338,7 @@ async function formatCommentThread(thread) {
             ]
         }
         replies.hideReplies.buttonRenderer.text = {
-            runs: [
-                {
-                    text: (replyCount > 1) ? getString("hideMulti", hl) :  getString("hideSingular", hl)
-                }
-            ]
+            runs: [{ text: (replyCount > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
         };
     } catch(err) {}
     return thread;
