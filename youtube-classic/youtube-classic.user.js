@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.2
+// @version          2023.5.3.3
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -171,7 +171,7 @@ window.addEventListener('yt-page-data-updated', function tmp() {
            : 'https://i.imgur.com/rHLcxEs.png') + '">'; // or light mode
     document.getElementById('logo-icon').innerHTML = innerHTML;
     YTP.stop();
-    for (i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]); }
+    for (var i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]); }
     window.removeEventListener('yt-page-date-updated', tmp);
 });
 
@@ -188,7 +188,7 @@ function waitForElm(selector) {
     if (document.querySelector(selector)) {
         return resolve(document.querySelector(selector))
     }
-    var observer = new MutationObserver(mutations => {
+    var observer = new MutationObserver(() => {
         if (document.querySelector(selector)) {
             resolve(document.querySelector(selector))
             observer.disconnect()
@@ -206,7 +206,7 @@ function restoreTrending() {
                     'webPageType': 'WEB_PAGE_TYPE_BROWSE',
                     'rootVe': 6827,
                     'apiUrl': '/youtubei/v1/browse'
-                 }
+                }
             },
             'browseEndpoint': { 'browseId': 'FEtrending' }
         },
@@ -216,15 +216,13 @@ function restoreTrending() {
         'accessibility': { 'accessibilityData': { 'label': 'Explore' }},
         'isPrimary': true
     }
-    var guidetemplate = `<ytd-guide-entry-renderer class="style-scope ytd-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`
-    document.querySelector(`#items > ytd-guide-entry-renderer:nth-child(2)`).data = trendingData
-    var miniguidetemplate = `<ytd-mini-guide-entry-renderer class="style-scope ytd-mini-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`
-    document.querySelector(`#items > ytd-mini-guide-entry-renderer:nth-child(2)`).data = trendingData
+    document.querySelector('#items > ytd-guide-entry-renderer:nth-child(2)').data = trendingData
+    document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
 }
 
 // Restore Explore in guide + mini-guide
-waitForElm("#items.ytd-guide-section-renderer").then((elm) => { restoreTrending() })
-waitForElm("#items.ytd-mini-guide-section-renderer").then((elm) => { restoreTrending() })
+waitForElm('#items.ytd-guide-section-renderer').then((elm) => { restoreTrending() })
+waitForElm('#items.ytd-mini-guide-section-renderer').then((elm) => { restoreTrending() })
 
 // Fix YouTube dislikes
 function $(q) { return document.querySelector(q) }
