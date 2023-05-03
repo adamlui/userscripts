@@ -11,11 +11,11 @@
 
 ## What it does
 
-1. In the `All Files` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
-2. In the `All Files` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
-3. In the `Recently Added` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
-4. In the `Recently Added` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
-5. In the `Recycle Bin` tab, when clicking `Permanent Delete` for the right-click menu, click Permanent Delete immediately without confirmation
+1. In the `All Files` tab, when clicking `Delete` from the right-click menu, click Delete immediately without confirmation
+2. In the `All Files` tab, when clicking `Download` from the right-click menu, click the browser to download immediately without confirmation
+3. In the `Recently Added` tab, when clicking `Delete` from the right-click menu, click Delete immediately without confirmation
+4. In the `Recently Added` tab, when clicking `Download` from the right-click menu, click the browser to download immediately without confirmation
+5. In the `Recycle Bin` tab, when clicking `Permanent Delete` from the right-click menu, click Permanent Delete immediately without confirmation
 6. Remove the download progress pop-up window that pops up for the first cloud download, and it will no longer be displayed automatically next time
 7. Remove the cookie agreement that pops up when you log in for the first time, and automatically accept all cookie permissions
 8. [Freely toggle this feature on or off from the Violent Monkey extension menu] When using the mailbox to log in on the login interface, add automatic identification of the mailbox and password, and automatically fill in and log in automatically
