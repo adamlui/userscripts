@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.8
+// @version          2023.5.3.9
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -525,9 +525,6 @@ const extConfig = {
     // END USER OPTIONS
 };
 
-const LIKED_STATE = 'LIKED_STATE';
-const DISLIKED_STATE = 'DISLIKED_STATE';
-const NEUTRAL_STATE = 'NEUTRAL_STATE';
 let previousState = 3; // 1=LIKED, 2=DISLIKED, 3=NEUTRAL
 let likesvalue = 0;
 let dislikesvalue = 0;
@@ -654,27 +651,7 @@ if (isShorts() && mutationObserver.exists !== true) {
             }
             cLog('unexpected mutation observer event: ' + mutation.target + mutation.type);
     })})
-}
-
-function isVideoLiked() {
-    if (isMobile) {
-        return (
-            getLikeButton().querySelector('button').getAttribute('aria-label') ==
-            'true'
-        );
-    }
-    return getLikeButton().classList.contains('style-default-active');
-}
-
-function isVideoDisliked() {
-    if (isMobile) {
-        return (
-            getDislikeButton().querySelector('button').getAttribute('aria-label') ==
-            'true'
-        );
-    }
-    return getDislikeButton().classList.contains('style-default-active');
-}
+}   
 
 function checkForUserAvatarButton() {
     if (isMobile) { return; }
@@ -703,11 +680,9 @@ function setDislikes(dislikesCount) {
 function getLikeCountFromButton() {
     try {
         if (isShorts()) { return false; }
-        let likeButton = getLikeButton()
-        .querySelector('yt-formatted-string#text') ??
+        let likeButton = getLikeButton().querySelector('yt-formatted-string#text') ??
         getLikeButton().querySelector('button');
-        let likesStr = likeButton.getAttribute('aria-label')
-        .replace(/\D/g, '');
+        let likesStr = likeButton.getAttribute('aria-label').replace(/\D/g, '');
         return likesStr.length > 0 ? parseInt(likesStr) : false;
     }
     catch { return false; }
@@ -1009,13 +984,13 @@ function setEventListeners() {
     jsInitChecktimer = setInterval(checkForJS_Finish, 111);
 }
 
-(function () {
+(function() {
     window.addEventListener('yt-navigate-finish', setEventListeners, true);
     setEventListeners();
 })();
 if (isMobile) {
     let originalPush = history.pushState;
-    history.pushState = function (...args) {
+    history.pushState = function(...args) {
         window.returnDislikeButtonlistenersSet = false;
         setEventListeners(args[2]);
         return originalPush.apply(history, args);
