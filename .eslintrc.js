@@ -14,7 +14,8 @@ module.exports  = {
         'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }], // enforce spacing in object properties
         'comma-dangle': ['error', 'never'], // enforce no trailing commas in arrays or objects
         'no-async-promise-executor': 'off', // allow promise executor functions to be async (to accomodate await lines)
-        'no-constant-condition': 'off' // to accomodate while (true)
+        'no-constant-condition': 'off', // allow constant conditions
+        'no-empty': 'off' // allow empty blocks
     },
     'globals': { 'chatgpt': true, 'global_module': true, '$': true, 'GM_cookie': true },
     'parserOptions': {
