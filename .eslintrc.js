@@ -21,5 +21,5 @@ module.exports  = {
         'ecmaVersion': 2020,
         'sourceType': 'script'
     },
-    'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
+    'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true, 'tampermonkey': true }
 };
