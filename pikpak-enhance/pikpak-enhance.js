@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.13
+// @version     XiaoYing_2023.05.14
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -558,6 +558,14 @@ FetchMap.set('/vip/v1/vip/info', async (f) => {
     let expireDate = new Date(expire);
     let day = (expireDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000);
     day = Math.ceil(day);
+    if (day < 0) {
+        return;
+    }
+    if (unsafeWindow['Pikpak_Archive'] != null) {
+        try {
+            unsafeWindow['Pikpak_Archive']();
+        } catch (e) {}
+    }
     await new Promise((resolve) => {
         let Time = setInterval(() => {
             if (GlobalVariable.language == null) {
