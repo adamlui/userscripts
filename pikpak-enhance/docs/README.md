@@ -36,7 +36,7 @@
 ## Script links
 
 <a href="https://greasyfork.org/en/scripts/464781-pikpak-enhance">Install this script</a> / 
-[Leave a review](https://greasyfork.org/en/scripts/46478/feedback#post-discussion) / 
+[Leave a review](https://greasyfork.org/en/scripts/464781/feedback#post-discussion) / 
 [Contact author](https://github.com/xiaoyingyo)
 
 ## Author links
