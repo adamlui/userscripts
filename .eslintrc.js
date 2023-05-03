@@ -14,7 +14,7 @@ module.exports  = {
         'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }], // enforce spacing in object properties
         'comma-dangle': ['error', 'never'] // enforce no trailing commas in arrays or objects
     },
-    "globals": { "GM*": "off" },
+    'globals': { 'GM*': 'readonly' },
     'parserOptions': {
         'ecmaVersion': 2017,
         'sourceType': 'script'
