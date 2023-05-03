@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.5
+// @version          2023.5.3.6
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -348,16 +348,16 @@ function refreshData(element) {
     clone.data = element.data;
     clone.data.fixedByCF = true;
     for (var i in element.properties) { clone[i] = element[i]; }
-    element.insertAdjacentElement("afterend", clone);
+    element.insertAdjacentElement('afterend', clone);
     element.remove();
 }
 var commentObserver = new MutationObserver((list) => {
-    list.forEach(async (mutation) => {
+    list.forEach(async(mutation) => {
         if (mutation.addedNodes) {
             for (var i = 0; i < mutation.addedNodes.length; i++) {
                 var elm = mutation.addedNodes[i];
                 if (elm.classList && elm.data && !elm.data.fixedByCF) {
-                    if (elm.tagName == "YTD-COMMENT-THREAD-RENDERER") {
+                    if (elm.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
                         elm.data = await formatCommentThread(elm.data);
                         refreshData(elm);
                         // Pluralize view/hide reply links
@@ -367,8 +367,8 @@ var commentObserver = new MutationObserver((list) => {
                         );
                         for (let i = 0; i < viewHideReplyLinks.length; i++) { // Replace all nodes' text
                             viewHideReplyLinks[i].innerHTML = viewHideReplyLinks[i].innerHTML.match(/view/i) ? 'View replies' : 'Hide replies';}
-                    } else if (elm.tagName == "YTD-COMMENT-RENDERER") {
-                        if (!elm.classList.contains("ytd-comment-thread-renderer")) {
+                    } else if (elm.tagName == 'YTD-COMMENT-RENDERER') {
+                        if (!elm.classList.contains('ytd-comment-thread-renderer')) {
                             elm.data = formatComment(elm.data);
                             refreshData(elm);
                         }
@@ -378,8 +378,7 @@ var commentObserver = new MutationObserver((list) => {
         }
     });
 });
-document.addEventListener("yt-page-data-updated", async (e) => {
-    hl = yt.config_.HL;
+document.addEventListener('yt-page-data-updated', async() => {
     commentObserver.observe(document.querySelector("ytd-app"),  { childList: true, subtree: true });
 });
 
@@ -518,26 +517,26 @@ const extConfig = {
     disableVoteSubmission: false, // [true, false*] Disable like/dislike submission (Stops counting your likes and dislikes)
     coloredThumbs: false, // [true, false*] Colorize thumbs (Use custom colors for thumb icons)
     coloredBar: false, // [true, false*] Colorize ratio bar (Use custom colors for ratio bar)
-    colorTheme: "classic", // [classic*, accessible, neon] Color theme (red/green, blue/yellow, pink/cyan)
-    numberDisplayFormat: "compactShort", // [compactShort*, compactLong, standard] Number format (For non-English locale users, you may be able to improve appearance with a different option. Please file a feature request if your locale is not covered)
+    colorTheme: 'classic', // [classic*, accessible, neon] Color theme (red/green, blue/yellow, pink/cyan)
+    numberDisplayFormat: 'compactShort', // [compactShort*, compactLong, standard] Number format (For non-English locale users, you may be able to improve appearance with a different option. Please file a feature request if your locale is not covered)
     numberDisplayRoundDown: true, // [true*, false] Round down numbers (Show rounded down numbers)
-    tooltipPercentageMode: "none", // [none*, dash_like, dash_dislike, both, only_like, only_dislike] Mode of showing percentage in like/dislike bar tooltip.
+    tooltipPercentageMode: 'none', // [none*, dash_like, dash_dislike, both, only_like, only_dislike] Mode of showing percentage in like/dislike bar tooltip.
     numberDisplayReformatLikes: false, // [true, false*] Re-format like numbers (Make likes and dislikes format consistent)
     // END USER OPTIONS
 };
 
-const LIKED_STATE = "LIKED_STATE";
-const DISLIKED_STATE = "DISLIKED_STATE";
-const NEUTRAL_STATE = "NEUTRAL_STATE";
+const LIKED_STATE = 'LIKED_STATE';
+const DISLIKED_STATE = 'DISLIKED_STATE';
+const NEUTRAL_STATE = 'NEUTRAL_STATE';
 let previousState = 3; // 1=LIKED, 2=DISLIKED, 3=NEUTRAL
 let likesvalue = 0;
 let dislikesvalue = 0;
-let isMobile = location.hostname == "m.youtube.com";
-let isShorts = () => location.pathname.startsWith("/shorts");
+let isMobile = location.hostname == 'm.youtube.com';
+let isShorts = () => location.pathname.startsWith('/shorts');
 let mobileDislikes = 0;
 
-function cLog(text, subtext = "") {
-    subtext = subtext.trim() === "" ? "" : `(${subtext})`;
+function cLog(text, subtext = '') {
+    subtext = subtext.trim() === '' ? '' : `(${subtext})`;
     console.log(`[Return YouTube Dislikes] ${text} ${subtext}`);
 }
 
@@ -560,8 +559,8 @@ function getButtons() {
     if (isShorts()) {
         let elements = document.querySelectorAll(
             isMobile
-                ? "ytm-like-button-renderer"
-                : "#like-button > ytd-like-button-renderer"
+                ? 'ytm-like-button-renderer'
+                : '#like-button > ytd-like-button-renderer'
         );
         for (let element of elements) {
             if (isInViewport(element)) {
@@ -571,56 +570,56 @@ function getButtons() {
     }
     if (isMobile) {
         return (
-            document.querySelector(".slim-video-action-bar-actions .segmented-buttons") ??
-            document.querySelector(".slim-video-action-bar-actions")
+            document.querySelector('.slim-video-action-bar-actions .segmented-buttons') ??
+            document.querySelector('.slim-video-action-bar-actions')
         );
     }
-    if (document.getElementById("menu-container")?.offsetParent === null) {
+    if (document.getElementById('menu-container')?.offsetParent === null) {
         return (
-            document.querySelector("ytd-menu-renderer.ytd-watch-metadata > div") ??
-            document.querySelector("ytd-menu-renderer.ytd-video-primary-info-renderer > div")
+            document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div') ??
+            document.querySelector('ytd-menu-renderer.ytd-video-primary-info-renderer > div')
     );
     } else {
         return document
-            .getElementById("menu-container")
-            ?.querySelector("#top-level-buttons-computed");
+            .getElementById('menu-container')
+            ?.querySelector('#top-level-buttons-computed');
     }
 }
 
 function getLikeButton() {
     return getButtons().children[0].tagName ===
-        "YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER"
+        'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
         ? getButtons().children[0].children[0]
         : getButtons().children[0];
 }
 
 function getLikeTextContainer() {
     return (
-        getLikeButton().querySelector("#text") ??
-        getLikeButton().getElementsByTagName("yt-formatted-string")[0] ??
-        getLikeButton().querySelector("span[role='text']")
+        getLikeButton().querySelector('#text') ??
+        getLikeButton().getElementsByTagName('yt-formatted-string')[0] ??
+        getLikeButton().querySelector('span[role="text"]')
     );
 }
 
 function getDislikeButton() {
     return getButtons().children[0].tagName ===
-        "YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER"
+        'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
         ? getButtons().children[0].children[1]
         : getButtons().children[1];
 }
 
 function getDislikeTextContainer() {
     let result =
-        getDislikeButton().querySelector("#text") ??
-        getDislikeButton().getElementsByTagName("yt-formatted-string")[0] ??
-        getDislikeButton().querySelector("span[role='text']")
+        getDislikeButton().querySelector('#text') ??
+        getDislikeButton().getElementsByTagName('yt-formatted-string')[0] ??
+        getDislikeButton().querySelector('span[role="text"]')
     if (result === null) {
         let textSpan = document.createElement("span");
         textSpan.id = "text";
         textSpan.style.marginLeft = "2px";
-        getDislikeButton().querySelector("button").appendChild(textSpan);
-        getDislikeButton().querySelector("button").style.width = "auto";
-        result = getDislikeButton().querySelector("#text");
+        getDislikeButton().querySelector('button').appendChild(textSpan);
+        getDislikeButton().querySelector('button').style.width = 'auto';
+        result = getDislikeButton().querySelector('#text');
     }
     return result;
 }
@@ -628,7 +627,7 @@ function getDislikeTextContainer() {
 let mutationObserver = new Object();
 
 if (isShorts() && mutationObserver.exists !== true) {
-    cLog("initializing mutation observer");
+    cLog('initializing mutation observer');
     mutationObserver.options = {
         childList: false,
         attributes: true,
@@ -641,23 +640,23 @@ if (isShorts() && mutationObserver.exists !== true) {
     ) {
         mutationList.forEach((mutation) => {
             if (
-                mutation.type === "attributes" &&
-                mutation.target.nodeName === "TP-YT-PAPER-BUTTON" &&
-                mutation.target.id === "button"
+                mutation.type === 'attributes' &&
+                mutation.target.nodeName === 'TP-YT-PAPER-BUTTON' &&
+                mutation.target.id === 'button'
             ) {
-                cLog("Short thumb button status changed");
-                if (mutation.target.getAttribute("aria-pressed") === "true") {
+                cLog('Short thumb button status changed');
+                if (mutation.target.getAttribute('aria-pressed') === 'true') {
                     mutation.target.style.color =
-                        mutation.target.parentElement.parentElement.id === "like-button"
+                        mutation.target.parentElement.parentElement.id === 'like-button'
                     ? getColorFromTheme(true)
                     : getColorFromTheme(false);
                 } else {
-                    mutation.target.style.color = "unset";
+                    mutation.target.style.color = 'unset';
                 }
                 return;
             }
             cLog(
-                "unexpected mutation observer event: " + mutation.target + mutation.type
+                'unexpected mutation observer event: ' + mutation.target + mutation.type
             );
         });
     });
@@ -666,17 +665,17 @@ if (isShorts() && mutationObserver.exists !== true) {
 function isVideoLiked() {
     if (isMobile) {
         return (
-            getLikeButton().querySelector("button").getAttribute("aria-label") ==
-            "true"
+            getLikeButton().querySelector('button').getAttribute('aria-label') ==
+            'true'
         );
     }
-    return getLikeButton().classList.contains("style-default-active");
+    return getLikeButton().classList.contains('style-default-active');
 }
 
 function isVideoDisliked() {
     if (isMobile) {
         return (
-            getDislikeButton().querySelector("button").getAttribute("aria-label") ==
+            getDislikeButton().querySelector('button').getAttribute("aria-label") ==
             "true"
         );
     }
@@ -728,7 +727,7 @@ function getLikeCountFromButton() {
         if (isShorts()) { return false; }
         let likeButton = getLikeButton()
         .querySelector("yt-formatted-string#text") ??
-        getLikeButton().querySelector("button");
+        getLikeButton().querySelector('button');
         let likesStr = likeButton.getAttribute("aria-label")
         .replace(/\D/g, "");
         return likesStr.length > 0 ? parseInt(likesStr) : false;
