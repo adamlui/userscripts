@@ -12,12 +12,6 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 
 ---
 
-### <img width=16 src="https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"> [Autopass Cloudflare CAPTCHA](autopass-cloudflare-captcha)
-
-在 Cloudflare Turnstile 挑战期间自动验证您的人性. &nbsp;
-[安装](https://greasyfork.org/en/scripts/464785-autopass-cloudflare-captcha) / 
-[讨论](https://github.com/adamlui/userscripts/discussions)
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT 标志" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 利用 ChatGPT 惊人的 AI 的用户脚本. &nbsp;
