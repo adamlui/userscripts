@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.2
+// @version          2023.5.3
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -27,9 +27,9 @@ if (window.location.href.match(/shorts\/.+/)) {
     window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
 }
 window.onload = function() {
-    var bodyList = document.querySelector("body")
+    var bodyList = document.querySelector('body')
     var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
+        mutations.forEach(function() {
             if (oldHref != document.location.href) {
                 oldHref = document.location.href;
                 console.log('location changed!');
@@ -70,7 +70,7 @@ const EXPFLAGS = {
     web_modern_playlists: false,
     web_rounded_containers: false,
     web_rounded_thumbnails: false,
-    web_searchbar_style: "default",
+    web_searchbar_style: 'default',
     web_segmented_like_dislike_button: false,
     web_sheets_ui_refresh: false,
     web_snackbar_ui_refresh: false
@@ -78,15 +78,15 @@ const EXPFLAGS = {
 
 // Player flags
 const PLYRFLAGS = {
-    web_rounded_containers: "false",
-    web_rounded_thumbnails: "false"
+    web_rounded_containers: 'false',
+    web_rounded_thumbnails: 'false'
 }
 
 class YTP {
     static observer = new MutationObserver(this.onNewScript);
     static _config = {};
     static isObject(item) {
-        return (item && typeof item === "object" && !Array.isArray(item));
+        return (item && typeof item === 'object' && !Array.isArray(item));
     }
     static mergeDeep(target, ...sources) {
         if (!sources.length) return target;
@@ -105,7 +105,7 @@ class YTP {
     }
     static onNewScript(mutations) {
         for (var mut of mutations) {
-            for (var node of mut.addedNodes) {
+            for (var _node of mut.addedNodes) {
                 YTP.bruteforce();
             }
         }
@@ -120,28 +120,28 @@ class YTP {
     static setCfg(name, value) { this._config[name] = value; }
     static setCfgMulti(configs) { this.mergeDeep(this._config, configs); }
     static setExp(name, value) {
-        if (!("EXPERIMENT_FLAGS" in this._config)) this._config.EXPERIMENT_FLAGS = {};
+        if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {};
         this._config.EXPERIMENT_FLAGS[name] = value;
     }
     static setExpMulti(exps) {
-        if (!("EXPERIMENT_FLAGS" in this._config)) this._config.EXPERIMENT_FLAGS = {};
+        if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {};
         this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps);
     }
     static decodePlyrFlags(flags) {
         var obj = {},
-            dflags = flags.split("&");
+            dflags = flags.split('&');
         for (var i = 0; i < dflags.length; i++) {
-            var dflag = dflags[i].split("=");
+            var dflag = dflags[i].split('=');
             obj[dflag[0]] = dflag[1];
         }
         return obj;
     }
     static encodePlyrFlags(flags) {
         var keys = Object.keys(flags),
-            response = "";
+            response = '';
         for (var i = 0; i < keys.length; i++) {
-            if (i > 0) { response += "&"; }
-            response += keys[i] + "=" + flags[keys[i]];
+            if (i > 0) { response += '&'; }
+            response += keys[i] + '=' + flags[keys[i]];
         }
         return response;
     }
@@ -150,7 +150,7 @@ class YTP {
         if (!window.yt.config_) return;
         if (!window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS) return;
         var conCfgs = window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS;
-        if (!("WEB_PLAYER_CONTEXT_CONFIGS" in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {};
+        if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {};
         for (var cfg in conCfgs) {
             var dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags);
             this.mergeDeep(dflags, flags);
@@ -162,18 +162,17 @@ class YTP {
 }
 
 const ATTRS = [ // Attributes to remove from <html>
-    "darker-dark-theme",
-    "darker-dark-theme-deprecate"
+    'darker-dark-theme', 'darker-dark-theme-deprecate'
 ];
-window.addEventListener("yt-page-data-updated", function tmp() {
-    var innerHTML = "<img style='margin-left:5px;' height=65 src='" // Replace YouTube logo
+window.addEventListener('yt-page-data-updated', function tmp() {
+    var innerHTML = '<img style="margin-left:5px;" height=65 src="' // Replace YouTube logo
         + (document.querySelector('ytd-masthead').getAttribute('dark') !== null
-           ? "https://i.imgur.com/brCETJj.png" // in dark mode
-           : "https://i.imgur.com/rHLcxEs.png") + "'>"; // or light mode
+           ? 'https://i.imgur.com/brCETJj.png' // in dark mode
+           : 'https://i.imgur.com/rHLcxEs.png') + '">'; // or light mode
     document.getElementById('logo-icon').innerHTML = innerHTML;
     YTP.stop();
-    for (i = 0; i < ATTRS.length; i++) { document.getElementsByTagName("html")[0].removeAttribute(ATTRS[i]); }
-    window.removeEventListener("yt-page-date-updated", tmp);
+    for (i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]); }
+    window.removeEventListener('yt-page-date-updated', tmp);
 });
 
 YTP.start();
