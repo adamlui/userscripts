@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.12
+// @version     XiaoYing_2023.05.13
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -61,7 +61,7 @@ var global_module = window['global_module'];
 var GlobalVariable = {};
 
 async function DealWithoverlay(i, callback) {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         let overlay = $('div.el-overlay:not([style*="display"])').eq(0);
         if (overlay.length === 0) {
             resolve();
@@ -550,7 +550,7 @@ async function main() {
 }
 
 var FetchMap = new Map();
-FetchMap.set('/vip/v1/vip/info', async(f) => {
+FetchMap.set('/vip/v1/vip/info', async (f) => {
     let json = await f.json();
     let data = json.data;
     let expire = data.expire;
@@ -597,7 +597,7 @@ async function HookFetch() {
     });
     const originalFetch = unsafeWindow.fetch;
     unsafeWindow.fetch = (...args) => {
-        (async() => {
+        (async () => {
             let url = new URL(args[0]);
             let pathname = url.pathname;
             let callback = FetchMap.get(pathname);
