@@ -12,7 +12,8 @@ module.exports  = {
         'quotes': ['error', 'single'], // enforce single quotes for string literals
         'space-before-function-paren': ['error', 'never'], // enforce no space before function parentheses
         'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }], // enforce spacing in object properties
-        'comma-dangle': ['error', 'never'] // enforce no trailing commas in arrays or objects
+        'comma-dangle': ['error', 'never'], // enforce no trailing commas in arrays or objects
+        'no-async-promise-executor': 'off' // allow promise executor functions to be async (to accomodate await lines)
     },
     'globals': { 'chatgpt': true, 'global_module': true },
     'parserOptions': {
