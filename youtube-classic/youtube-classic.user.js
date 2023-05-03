@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.3
+// @version          2023.5.3.4
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -180,21 +180,7 @@ YTP.setCfgMulti(CONFIGS);
 YTP.setExpMulti(EXPFLAGS);
 YTP.setPlyrFlags(PLYRFLAGS);
 
-function $(q) { return document.querySelector(q); }
-
-// Restore Explore tab in sidebar & replace Shorts tab
-function waitForElm(selector) {
-    return new Promise(resolve => {
-    if (document.querySelector(selector)) {
-        return resolve(document.querySelector(selector))
-    }
-    var observer = new MutationObserver(() => {
-        if (document.querySelector(selector)) {
-            resolve(document.querySelector(selector))
-            observer.disconnect()
-    }})
-    observer.observe(document.body, { childList: true, subtree: true })
-})}
+function $(q) { return document.querySelector(q) }
 
 function restoreTrending() {
     var trendingData = {
@@ -221,11 +207,10 @@ function restoreTrending() {
 }
 
 // Restore Explore in guide + mini-guide
-waitForElm('#items.ytd-guide-section-renderer').then((elm) => { restoreTrending() })
-waitForElm('#items.ytd-mini-guide-section-renderer').then((elm) => { restoreTrending() })
+waitForElm('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
+waitForElm('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
 
 // Fix YouTube dislikes
-function $(q) { return document.querySelector(q) }
 addEventListener('yt-page-data-updated', function() {
     if(!location.pathname.startsWith('/watch')) return;
     var lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed');
@@ -255,28 +240,27 @@ addEventListener('yt-page-data-updated', function() {
     dislike.setAttribute('style-action-button', '');
     var dlabel = document.createElement('yt-formatted-stringx');
     dlabel.setAttribute('id', 'text');
-    if(dislike.getAttribute('class').includes('style-default-active')) {
-        dlabel.setAttribute('class', dlabel.getAttribute('class').replace('style-default', 'style-default-active')) };
+    if (dislike.getAttribute('class').includes('style-default-active')) {
+        dlabel.setAttribute('class', dlabel.getAttribute('class').replace('style-default', 'style-default-active')) }
     dislike.querySelector('a').insertBefore(dlabel, dislike.querySelector('tp-yt-paper-tooltip'));
     $('ytd-video-primary-info-renderer').removeAttribute('flex-menu-enabled');
 });
 
 // Restore classic comments UI
-var observingComments = false;
 var hl;
 const cfconfig = { unicodeEmojis: false };
 const cfi18n = {
     en: {
-        viewSingular: "View reply",
-        viewMulti: "View %s replies",
-        viewSingularOwner: "View reply from %s",
-        viewMultiOwner: "View %s replies from %s and others",
-        hideSingular: "Hide reply",
-        hideMulti: "Hide replies",
+        viewSingular: 'View reply',
+        viewMulti: 'View %s replies',
+        viewSingularOwner: 'View reply from %s',
+        viewMultiOwner: 'View %s replies from %s and others',
+        hideSingular: 'Hide reply',
+        hideMulti: 'Hide replies',
         replyCountIsolator: /( REPLIES)|( REPLY)/
     }
 }
-function getString(string, hl = "en", ...args) {
+function getString(string, hl = 'en', ...args) {
     if (!string) return;
     var str;
     if (cfi18n[hl]) {
