@@ -158,20 +158,6 @@
         });
     }
 
-    async function hookFetch() {
-        let unsafeWindow = document.defaultView
-        const originalFetch = unsafeWindow.fetch
-        unsafeWindow.fetch = function(...args) {
-            (async function() {
-                let U = args[0]
-                if (U.indexOf('http') == -1) return
-                let url = new URL(U), pathname = url.pathname, callback = fetchMap.get(pathname)
-                if (callback == null) return
-                callback(await originalFetch.apply(this, args))
-            })()
-            return originalFetch.apply(this, args)
-    }}
-
     function createOrShowClearButton(Show = null) {
         if (document.getElementById('_clearButton_') != null) {
             if (Show != null) document.getElementById('_clearButton_').style.display = Show
@@ -185,8 +171,8 @@
         div.className = className
         border.insertBefore(div, border.childNodes[0]);
         (async function() {
-            if (clearSvg == null) { 
-                if (!await InitSvg()) { 
+            if (clearSvg == null) {
+                if (!await InitSvg()) {
                     return
                 }
             }
@@ -235,14 +221,13 @@
     // Initialize/fill conversation map
     var fetchMap = new Map()
     fetchMap.set('conversations', {})
-    fetchMap.set('/backend-api/conversations', async function(f) {
-        let json = await f.json()
+    unsafeWindow["chatgpt.js.org"].FetchCallback.add('/backend-api/conversations', async (text) => { 
+        let json = JSON.parse(text)
         fetchMap.set('conversations', json)
         createOrShowClearButton(null)
         if (json.items.length === 0) createOrShowClearButton('none')
         else createOrShowClearButton('')
-    })
-    hookFetch()
+    });
 
     // Create toggle label & add listener/classes/HTML
     var toggleLabel = document.createElement('div') // create label div
