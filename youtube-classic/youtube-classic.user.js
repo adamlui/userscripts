@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3
+// @version          2023.5.3.1
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -105,7 +105,7 @@ class YTP {
     }
     static onNewScript(mutations) {
         for (var mut of mutations) {
-            for (var _node of mut.addedNodes) {
+            for (var node of mut.addedNodes) {
                 YTP.bruteforce();
             }
         }
