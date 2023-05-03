@@ -42,7 +42,6 @@
 // @compatible          qq
 // @match               https://chat.openai.com/*
 // @run-at              document-end
-// @require             https://cdn.jsdelivr.net/gh/chatgptjs/chatgpt.js@6f86ebd392312d2521a5c814c8df721ba55965a3/dist/chatgpt-1.6.2.min.js
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
@@ -221,7 +220,7 @@
     // Initialize/fill conversation map
     var fetchMap = new Map()
     fetchMap.set('conversations', {})
-    unsafeWindow["chatgpt.js.org"].FetchCallback.add('/backend-api/conversations', async (text) => { 
+    unsafeWindow['chatgpt.js.org'].FetchCallback.add('/backend-api/conversations', async (text) => { 
         let json = JSON.parse(text)
         fetchMap.set('conversations', json)
         createOrShowClearButton(null)
