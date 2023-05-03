@@ -9,7 +9,7 @@ module.exports  = {
             'BinaryExpression', // string concatenations, math, comparison, etc.,
             'BlockStatement', 'SwitchCase' // closing braces
         ]}],
-        'quotes': ['error', 'single'], // enforce single quotes for string literals
+        'quotes': ['error', 'single', { 'avoidEscape': true }], // enforce single quotes for string literals
         'space-before-function-paren': ['error', 'never'], // enforce no space before function parentheses
         'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }], // enforce spacing in object properties
         'comma-dangle': ['error', 'never'], // enforce no trailing commas in arrays or objects
