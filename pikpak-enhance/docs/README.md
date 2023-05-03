@@ -11,12 +11,19 @@
 
 ## What it does
 
-- Adds **auto-login** for faster access
-- Disables the **cookie agreement** pop-up when logging in (auto-accepts all permissions)
-- Disables the **download progress** pop-up for cloud downloads
-- Removes confirmation when right-clicking to **delete** files
-- Removes confirmation when right-clicking to **download** files
-- Removes confirmation when right-clicking to **permanently delete** from `Recycle Bin`
+1. In the `All Files` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
+2. In the `All Files` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
+3. In the `Recently Added` tab, when clicking `Delete` for the right-click menu, click Delete immediately without confirmation
+4. In the `Recently Added` tab, when clicking `Download` for the right-click menu, click the browser to download immediately without confirmation
+5. In the `Recycle Bin` tab, when clicking `Permanent Delete` for the right-click menu, click Permanent Delete immediately without confirmation
+6. Remove the download progress pop-up window that pops up for the first cloud download, and it will no longer be displayed automatically next time
+7. Remove the cookie agreement that pops up when you log in for the first time, and automatically accept all cookie permissions
+8. [Freely toggle this feature on or off from the Violent Monkey extension menu] When using the mailbox to log in on the login interface, add automatic identification of the mailbox and password, and automatically fill in and log in automatically
+9. [Freely toggle this feature on or off from the Violent Monkey extension menu] When you click `Delete All` on the cloud download panel, you can automatically click OK to delete
+10. Added the membership expiry time displayed in the upper right corner
+11. [From the Violent Monkey extension menu click on Login] Support to obtain free shared member account and log in automatically
+12. Change the logout to a hidden logout, not a complete logout, so that multiple browser devices can use the same account at the same time
+13. Add a new menu for users to give feedback on the use of member accounts
 
 ## Installation
 
