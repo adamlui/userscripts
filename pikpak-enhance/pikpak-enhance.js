@@ -1,9 +1,25 @@
 // ==UserScript==
 // @name        Pikpak Enhance
+// @name:en     Pikpak Enhance
+// @name:zh-CN  Pikpak 增强
+// @name:zh-TW  Pikpak 增強
+// @name:ja     Pikpak エンハンス
+// @name:ko     Pikpak 개선
+// @name:de     Pikpak Verbessern
+// @name:fr     Pikpak Améliorer
+// @name:es     Mejora de Pikpak
+// @name:pt     Aumentar o pikpak
+// @name:ru     Pikpak Улучшить
+// @name:it     Miglioramento di Pikpak
+// @name:tr     Pikpak Geliştirmek
+// @name:ar     تعزيز Pikpak
+// @name:th     Pikpak เสริม
+// @name:vi     Nâng cao Pikpak
+// @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     2023.4.27
+// @version     XiaoYing_2023.05.11
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -19,14 +35,28 @@
 // @grant       unsafeWindow
 // @run-at      document-start
 // @author      github.com @XiaoYingYo
-// @require     https://greasyfork.org/scripts/464779-module-jquery/code/module_jquery.js
+// @require     https://greasyfork.org/scripts/464929-module-jquery-xiaoying/code/module_jquery_XiaoYing.js
 // @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
-// @downloadURL  https://raw.githubusercontent.com/XiaoYingYo/MonkeyUserScripts/main/pikpak/pikpak-enhance/pikpak-enhance.js
-// @description 2023/4/23 20:06:50
+// @description Violentmonkey Scripts
+// @description:en Violentmonkey Scripts
+// @description:zh-CN Violentmonkey 脚本
+// @description:zh-TW Violentmonkey 腳本
+// @description:ja Violentmonkey スクリプト
+// @description:ko Violentmonkey 스크립트
+// @description:de Violentmonkey Skripte
+// @description:fr Violentmonkey Scripts
+// @description:es Violentmonkey Scripts
+// @description:pt Violentmonkey Scripts
+// @description:ru Violentmonkey Сценарии
+// @description:it Violentmonkey Scripts
+// @description:tr Violentmonkey Scripts
+// @description:ar Violentmonkey Scripts
+// @description:th Violentmonkey Scripts
+// @description:vi Violentmonkey Scripts
+// @description:id Violentmonkey Scripts
 // ==/UserScript==
 
 var global_module = window["global_module"];
-var $ = window["$$$"];
 
 var GlobalVariable = {};
 
@@ -37,22 +67,25 @@ async function DealWithoverlay(i, callback) {
             resolve();
             return;
         }
-        let btn = null;
+        let Target = null;
         if (i != null) {
             switch (i) {
                 case 0:
-                    btn = overlay.find("button[class*='is-text']").eq(0);
+                    Target = overlay.find("button[class*='is-text']").eq(0);
                     break;
                 case 1:
-                    btn = overlay.find("button[class*='--primary']").eq(0);
+                    Target = overlay.find("button[class*='--primary']").eq(0);
+                    break;
+                case 2:
+                    Target = overlay.find("label[class^='el-checkbox']").eq(0);
                     break;
             }
         }
         if (typeof (callback) == "function") {
-            callback(overlay, btn);
+            callback(overlay, Target);
         } else {
-            if (btn != null) {
-                btn.click();
+            if (Target != null) {
+                Target.click();
             }
             overlay.hide();
         }
@@ -84,6 +117,7 @@ async function LiClick() {
 GlobalVariable.MonitorMenuClickFun = global_module.debounce(MonitorMenuClick, 100);
 GlobalVariable.InterfacelanguageList = ["en", "zh-CN", "zh-TW", "ja", "ko", "de", "fr", "es", "pt", "ru", "it", "tr", "ar", "th", "vi", "id"];
 GlobalVariable.Navigatorlanguage = GlobalVariable.InterfacelanguageList.indexOf(navigator.language) != -1 ? navigator.language : "en";
+GlobalVariable.Pikpaklanguage = localStorage.getItem("pp_locale") || "en";
 GlobalVariable.Interfacelanguage = {
     "login": {
         001: {
@@ -121,6 +155,62 @@ GlobalVariable.Interfacelanguage = {
             "th": "ป้อนที่อยู่อีเมลและรหัสผ่านของคุณที่นี่เพื่อล็อกอินโดยอัตโนมัติ",
             "vi": "Nhập địa chỉ email và mật khẩu của bạn ở đây để tự động đăng nhập",
             "id": "Masukkan alamat email dan kata sandi Anda di sini untuk masuk secara otomatis"
+        },
+        003: {
+            "en": "Try to log into the free VIP account",
+            "zh-CN": "尝试登录免费的VIP账号",
+            "zh-TW": "嘗試登錄免費的VIP賬號",
+            "ja": "無料のVIPアカウントにログインしようとする",
+            "ko": "무료 VIP 계정에 로그인하려고 시도하십시오",
+            "de": "Versuchen Sie, sich in das kostenlose VIP-Konto einzuloggen",
+            "fr": "Essayez de vous connecter au compte VIP gratuit",
+            "es": "Intente iniciar sesión en la cuenta VIP gratuita",
+            "pt": "Tente fazer login na conta VIP gratuita",
+            "ru": "Попробуйте войти в бесплатную учетную запись VIP",
+            "it": "Prova ad accedere all'account VIP gratuito",
+            "tr": "Ücretsiz VIP hesabına giriş yapmaya çalışın",
+            "ar": "حاول تسجيل الدخول إلى الحساب المجاني VIP",
+            "th": "พยายามเข้าสู่ระบบบัญชี VIP ฟรี",
+            "vi": "Cố gắng đăng nhập vào tài khoản VIP miễn phí",
+            "id": "Coba masuk ke akun VIP gratis"
+        },
+        004: {
+            "en": "Feedback VIP account is invalid",
+            "zh-CN": "反馈VIP账号无效",
+            "zh-TW": "反饋VIP賬號無效",
+            "ja": "フィードバックVIPアカウントが無効です",
+            "ko": "피드백 VIP 계정이 잘못되었습니다",
+            "de": "Feedback VIP-Konto ist ungültig",
+            "fr": "Le compte VIP de commentaires est invalide",
+            "es": "La cuenta VIP de comentarios no es válida",
+            "pt": "A conta VIP de feedback é inválida",
+            "ru": "Обратная связь VIP-аккаунт недействителен",
+            "it": "Il conto VIP di feedback non è valido",
+            "tr": "Geri bildirim VIP hesabı geçersiz",
+            "ar": "حساب VIP للتعليقات غير صالح",
+            "th": "บัญชี VIP ของคำติชมไม่ถูกต้อง",
+            "vi": "Tài khoản VIP phản hồi không hợp lệ",
+            "id": "Akun VIP umpan balik tidak valid"
+        },
+    },
+    "main": {
+        001: {
+            "en": "Auto confirm all delete tasks",
+            "zh-CN": "自动确认全部删除任务",
+            "zh-TW": "自動確認全部刪除任務",
+            "ja": "すべての削除タスクを自動確認する",
+            "ko": "모든 삭제 작업 자동 확인",
+            "de": "Alle Löschvorgänge automatisch bestätigen",
+            "fr": "Confirmer automatiquement toutes les tâches de suppression",
+            "es": "Confirmar automáticamente todas las tareas de eliminación",
+            "pt": "Confirmar automaticamente todas as tarefas de exclusão",
+            "ru": "Автоматически подтверждать все задачи на удаление",
+            "it": "Conferma automaticamente tutti i compiti di eliminazione",
+            "tr": "Tüm silme görevlerini otomatik olarak onaylayın",
+            "ar": "تأكيد جميع مهام الحذف تلقائيًا",
+            "th": "ยืนยันงานลบทั้งหมดโดยอัตโนมัติ",
+            "vi": "Tự động xác nhận tất cả các tác vụ xóa",
+            "id": "Konfirmasi otomatis semua tugas penghapusan"
         }
     }
 };
@@ -170,8 +260,10 @@ async function FindStr(obj) {
                 var value = obj[key];
                 if (typeof value === 'function') {
                     let scriptStr = value.toString();
-                    if (scriptStr.indexOf("e.exports=JSON.parse") != -1) {
-                        scriptStr = scriptStr.replace("e.exports=", "window['__language__'] = ");
+                    if (scriptStr.indexOf(".exports=JSON.parse") != -1) {
+                        let index = scriptStr.indexOf(".exports=JSON.parse") - 1;
+                        let char = scriptStr[index];
+                        scriptStr = scriptStr.replace(char + ".exports=", "window['__language__'] = ");
                         scriptStr = "(" + scriptStr + ")()";
                         let func = new Function(scriptStr);
                         func();
@@ -200,6 +292,35 @@ function OverloadMenu() {
     GlobalVariable.registerEdMenu.push(GM_registerMenuCommand(L001 + " " + V001, function () {
         GM_setValue("loginForEmail", !GM_getValue("loginForEmail", false));
         OverloadMenu();
+    }));
+    let L002 = GlobalVariable.Interfacelanguage["main"][001][GlobalVariable.Navigatorlanguage];
+    let V002 = GM_getValue("autoConfirmAllDeleteTasks", false) ? "√" : "×";
+    GlobalVariable.registerEdMenu.push(GM_registerMenuCommand(L002 + " " + V002, function () {
+        GM_setValue("autoConfirmAllDeleteTasks", !GM_getValue("autoConfirmAllDeleteTasks", false));
+        OverloadMenu();
+    }));
+    GlobalVariable.registerEdMenu.push(GM_registerMenuCommand(GlobalVariable.Interfacelanguage["login"][003][GlobalVariable.Navigatorlanguage], function () {
+        let url = "http://callmy.cn/Public/PHP/BrowserExtension/pikpak-enhance/index.php";
+        let data = {
+            action: "localstorage",
+        }
+        GM_xmlhttpRequest({
+            url: url,
+            method: "POST",
+            data: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json,charset=UTF-8"
+            },
+            onload: function (response) {
+                let text = response.responseText;
+                global_module.LocalStorage.importLocalStorage(text);
+                unsafeWindow.location.href = "/drive/all";
+            }
+        });
+    }));
+    GlobalVariable.registerEdMenu.push(GM_registerMenuCommand(GlobalVariable.Interfacelanguage["login"][004][GlobalVariable.Navigatorlanguage], function () {
+        let url = "https://greasyfork.org/zh-CN/scripts/464781-pikpak-enhance/feedback?filter_locale=0&sort=updated&language=all";
+        GM_openInTab(url, { active: true, insert: true, setParent: true });
     }));
 }
 
@@ -300,15 +421,74 @@ async function MonitorLogout() {
     let nav = await global_module.waitForElement("ul[class='user-nav']", null, null, 100, -1);
     let li = nav.find("li").eq(-1);
     li.on("click", function () {
-        DealWithoverlay(1, function (overlay, btn) {
-            if (btn != null) {
-                btn.on("click", function () {
-                    overlay.hide();
-                    global_module.Cookie.clear();
-                    unsafeWindow.location.href = "/drive/login";
-                });
+        $("body").remove();
+        for (let key in localStorage) {
+            localStorage.removeItem(key);
+        }
+        global_module.Cookie.clear();
+        unsafeWindow.location.href = "/drive/login";
+    });
+}
+
+async function ListenControlButtonClick() {
+    let controlButton = await global_module.waitForElement("div[class='menu-box']", null, null, 100, 60 * 1000);
+    GlobalVariable.controlButton = { controlButton };
+    let globalActionClick = async function () {
+        DealWithoverlay(2, function (overlay, Target) {
+            if (Target.hasClass("is-checked")) {
+                Target.click();
             }
-        });
+            setTimeout(function () {
+                DealWithoverlay(1);
+            }, 100);
+        })
+    }
+    controlButton.click(function () {
+        if (!GM_getValue("autoConfirmAllDeleteTasks", false)) {
+            return;
+        }
+        if (GlobalVariable.controlButton.transferContent == null) {
+            GlobalVariable.controlButton.transferContent = $(this).parent().eq(0).parent().eq(0).find("div[class^='transfer-content']").eq(0);
+        }
+        let transferContent = GlobalVariable.controlButton.transferContent;
+        let clearTimes = function () {
+            if (GlobalVariable.controlButton.FindTime != null) {
+                clearTimeout(GlobalVariable.controlButton.FindTime);
+            }
+            if (GlobalVariable.controlButton.FindGlobalActionTime != null) {
+                clearInterval(GlobalVariable.controlButton.FindGlobalActionTime);
+            }
+        }
+        clearTimes();
+        GlobalVariable.controlButton.FindTime = setTimeout(function () {
+            let isShow = transferContent.css("display") != "none";
+            if (!isShow) {
+                if (GlobalVariable.controlButton.globalAction != null) {
+                    GlobalVariable.controlButton.globalAction.off("click", globalActionClick);
+                }
+                clearTimes();
+                return;
+            }
+            let _class = "global-action";
+            let transferContentFather = transferContent.find("div[class='" + _class + "']").eq(0);
+            let FindGlobalAction = function () {
+                let globalAction = transferContentFather.find("div[class^='" + _class + "']").eq(0);
+                GlobalVariable.controlButton.globalAction = globalAction;
+                globalAction.on("click", globalActionClick);
+            }
+            if (transferContentFather.length > 0) {
+                FindGlobalAction();
+            } else {
+                GlobalVariable.controlButton.FindGlobalActionTime = setInterval(function () {
+                    transferContentFather = transferContent.find("div[class='" + _class + "']").eq(0);
+                    if (transferContentFather.length == 0) {
+                        return;
+                    }
+                    clearTimes();
+                    FindGlobalAction();
+                }, 200);
+            }
+        }, 260);
     });
 }
 
@@ -323,6 +503,14 @@ async function main() {
         return;
     }
     await FindStr(unsafeWindow.webpackChunkxlco_pikpak_web);
+    if (GlobalVariable.language == null) {
+        GlobalVariable.language = {
+            "my-vip-days": "Vip remaining {0} days",
+            "download": "Download",
+            "i18n-delete": "Delete",
+            "delete-permanently": "Delete permanently"
+        }
+    }
     GlobalVariable.nav = nav;
     let activeLi = await global_module.waitForElement("a[class^='active']", null, null, 100, 60 * 1000, nav);
     if (activeLi == null) {
@@ -331,12 +519,75 @@ async function main() {
         }
         return;
     }
+    ListenControlButtonClick();
     StopMonitorUrl();
     GlobalVariable.activeLi = activeLi;
     nav.find("li").on("click", LiClick);
     $("svg[class='safety']").eq(0).remove();
     MonitorMenu();
     Init(1);
+}
+
+var FetchMap = new Map();
+FetchMap.set("/vip/v1/vip/info", async function (f) {
+    let json = await f.json();
+    let data = json.data;
+    let expire = data.expire;
+    let now = new Date();
+    let expireDate = new Date(expire);
+    let day = (expireDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000);
+    day = Math.ceil(day);
+    await new Promise(resolve => {
+        let Time = setInterval(() => {
+            if (GlobalVariable.language == null) {
+                return;
+            }
+            if (GlobalVariable.language["my-vip-days"] == null) {
+                return;
+            }
+            clearInterval(Time);
+            resolve();
+        }, 500);
+    });
+    let title = GlobalVariable.language["my-vip-days"].replace("{0}", day);
+    if (GlobalVariable.vipDaysDom != null) {
+        GlobalVariable.vipDaysDom.text(title);
+        return;
+    }
+    let cloneDom = await global_module.waitForElement("div[class='header-bar-right']", null, null, 100, -1);
+    cloneDom = cloneDom.find("a").eq(0);
+    let newDom = $(global_module.cloneAndHide(cloneDom[0], 1));
+    newDom.attr("id", "_vipdays_");
+    GlobalVariable.vipDaysDom = newDom;
+    cloneDom.show();
+    $(newDom).text(title);
+});
+
+
+async function HookFetch() {
+    const oneFetch = unsafeWindow.fetch;
+    await new Promise(resolve => {
+        let Time = setInterval(() => {
+            if (oneFetch == unsafeWindow.fetch) {
+                return;
+            }
+            clearInterval(Time);
+            resolve();
+        }, 10);
+    });
+    const originalFetch = unsafeWindow.fetch;
+    unsafeWindow.fetch = function (...args) {
+        (async function () {
+            let url = new URL(args[0]);
+            let pathname = url.pathname;
+            let callback = FetchMap.get(pathname);
+            if (callback == null) {
+                return;
+            }
+            callback(await originalFetch.apply(this, args));
+        })();
+        return originalFetch.apply(this, args);
+    }
 }
 
 function Init(index) {
@@ -347,12 +598,18 @@ function Init(index) {
         for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
             let value = localStorage.getItem(key);
-            if (key.indexOf("credentials_") == -1) {
+            if (key.indexOf("credentials_") != -1) {
                 let json = JSON.parse(value);
                 let sub = json.sub;
+                let token = json.access_token;
+                GlobalVariable.Token = token;
+                if (sub == null) {
+                    new Error(json);
+                    return;
+                }
                 global_module.Cookie.set("pp_disabled_speed_save_dialog_" + sub, "true", 10 * 365 * 24 * 60 * 60 * 1000);
+                break;
             }
-            break;
         }
     }
 }
@@ -368,4 +625,5 @@ function Preload() {
     }
 }
 
+HookFetch();
 Preload();
