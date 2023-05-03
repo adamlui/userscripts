@@ -1,0 +1,40 @@
+name: Sync pikpak-enhance/ to XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'pikpak-enhance/**'
+
+jobs:
+  build:
+    if: github.event.commits[0].committer.username != 'auto-sync-bot'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout XiaoYingYo/MonkeyUserScripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: XiaoYingYo/MonkeyUserScripts
+          path: XiaoYingYo/MonkeyUserScripts
+
+      - name: Sync pikpak-enhance/ to XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
+        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/pikpak-enhance/ ${{ github.workspace }}/XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
+
+      - name: Push to XiaoYingYo/MonkeyUserScripts
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@userscripts.co
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'pikpak/pikpak-enhance/*'
+          repository: XiaoYingYo/MonkeyUserScripts
