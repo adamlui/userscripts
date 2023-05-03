@@ -15,7 +15,7 @@ module.exports  = {
         'comma-dangle': ['error', 'never'], // enforce no trailing commas in arrays or objects
         'no-async-promise-executor': 'off' // allow promise executor functions to be async (to accomodate await lines)
     },
-    'globals': { 'chatgpt': true, 'global_module': true },
+    'globals': { 'chatgpt': true, 'global_module': true, '$': true },
     'parserOptions': {
         'ecmaVersion': 2017,
         'sourceType': 'script'
