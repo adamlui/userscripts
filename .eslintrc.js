@@ -16,10 +16,10 @@ module.exports  = {
         'no-async-promise-executor': 'off', // allow promise executor functions to be async (to accomodate await lines)
         'no-constant-condition': 'off' // to accomodate while (true)
     },
-    'globals': { 'chatgpt': true, 'global_module': true, '$': true },
+    'globals': { 'chatgpt': true, 'global_module': true, '$': true, 'GM_cookie': true },
     'parserOptions': {
         'ecmaVersion': 2020,
         'sourceType': 'script'
     },
-    'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true, 'tampermonkey': true }
+    'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
 };
