@@ -10,7 +10,6 @@ module.exports  = {
             'BlockStatement', 'SwitchCase' // closing braces
         ]}],
         'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }], // enforce single quotes for string literals
-        'space-before-function-paren': ['error', 'never'], // enforce no space before function parentheses
         'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }], // enforce spacing in object properties
         'comma-dangle': ['error', 'never'], // enforce no trailing commas in arrays or objects
         'no-async-promise-executor': 'off', // allow promise executor functions to be async (to accomodate await lines)
