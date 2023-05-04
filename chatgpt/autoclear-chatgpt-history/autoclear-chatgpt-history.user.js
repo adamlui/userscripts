@@ -220,8 +220,11 @@
     // Initialize/fill conversation map
     var fetchMap = new Map()
     fetchMap.set('conversations', {})
-    unsafeWindow['chatgpt.js.org'].FetchCallback.add('/backend-api/conversations', async (text) => { 
-        let json = JSON.parse(text)
+    unsafeWindow['chatgpt.js.org'].FetchCallback.add('/backend-api/conversations', async (_object,period) => { 
+        if (period !== 'done') { 
+            return;
+        }
+        let json = JSON.parse(_object.text)
         fetchMap.set('conversations', json)
         createOrShowClearButton(null)
         if (json.items.length === 0) createOrShowClearButton('none')
