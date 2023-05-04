@@ -81,7 +81,7 @@ jobs:
         run: cp -f -v ${{ github.workspace }}/adamlui/userscripts/.eslintrc.js ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/.eslintrc.js
 
       - name: Sync /.eslintrc.js to adamlui/chatgpt-auto-refresh/.eslintrc.js
-        run: cp -f -v ${{ github.workspace }}/adamlui/userscripts/.eslintrc.js ${{ github.workspace }}/adamlui/userscrichatgpt-auto-refreshpts/.eslintrc.js
+        run: cp -f -v ${{ github.workspace }}/adamlui/userscripts/.eslintrc.js ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/.eslintrc.js
 
       - name: Sync /.eslintrc.js to adamlui/chatgpt-infinity/.eslintrc.js
         run: cp -f -v ${{ github.workspace }}/adamlui/userscripts/.eslintrc.js ${{ github.workspace }}/adamlui/chatgpt-infinity/.eslintrc.js
