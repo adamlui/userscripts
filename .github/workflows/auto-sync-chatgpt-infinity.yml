@@ -37,10 +37,10 @@ jobs:
         run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs ${{ github.workspace }}/adamlui/chatgpt-infinity/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
-        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
+        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
-        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
+        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
 
       - name: Push to adamlui/chatgpt-infinity
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -49,7 +49,7 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: '*'
+          file_pattern: '**'
           repository: adamlui/chatgpt-infinity
 
       - name: Push to adamlui/chatgpt-apps
@@ -59,5 +59,5 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'chatgpt-infinity/*'
+          file_pattern: 'chatgpt-infinity/**'
           repository: adamlui/chatgpt-apps

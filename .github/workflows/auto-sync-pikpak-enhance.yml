@@ -27,7 +27,7 @@ jobs:
           path: XiaoYingYo/MonkeyUserScripts
 
       - name: Sync pikpak-enhance/ to XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
-        run: rsync -avh --delete ${{ github.workspace }}/adamlui/userscripts/pikpak-enhance/ ${{ github.workspace }}/XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
+        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/pikpak-enhance/ ${{ github.workspace }}/XiaoYingYo/MonkeyUserScripts/pikpak/pikpak-enhance/
 
       - name: Push to XiaoYingYo/MonkeyUserScripts
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -36,5 +36,5 @@ jobs:
           add_options: '--all'
           commit_user_email: auto-sync@userscripts.co
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'pikpak/pikpak-enhance/*'
+          file_pattern: 'pikpak/pikpak-enhance/**'
           repository: XiaoYingYo/MonkeyUserScripts
