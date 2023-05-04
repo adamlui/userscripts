@@ -3,7 +3,7 @@
 
 ![用户](https://img.shields.io/badge/用户-10,000+-brightgreen)
 [![许可](https://img.shields.io/badge/许可-MIT-green.svg)](LICENSE.md)
-![兼容性](https://img.shields.io/badge/兼容性-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/LibreWolf/QQ-989898.svg)
+![兼容性](https://img.shields.io/badge/兼容性-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/Waterfox/LibreWolf/Ghost/QQ-989898.svg)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
 
 ###### 简体中文 | [English](../README.md)
