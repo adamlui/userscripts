@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.17
+// @version     XiaoYing_2023.05.18
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -249,35 +249,26 @@ async function MonitorMenu() {
     $(menu).on('DOMSubtreeModified', GlobalVariable.MonitorMenuClickFun);
 }
 
-async function FindStr(obj) {
-    return new Promise((resolve) => {
-        if (Array.isArray(obj)) {
-            obj.forEach((item) => {
-                FindStr(item);
-            });
-        } else if (typeof obj === 'object' && obj !== null) {
-            Object.keys(obj).forEach((key) => {
-                var value = obj[key];
-                if (typeof value === 'function') {
-                    let scriptStr = value.toString();
-                    if (scriptStr.indexOf('.exports=JSON.parse') != -1) {
-                        let index = scriptStr.indexOf('.exports=JSON.parse') - 1;
-                        let char = scriptStr[index];
-                        scriptStr = scriptStr.replace(char + '.exports=', 'window["__language__"]=');
-                        scriptStr = '(' + scriptStr + ')()';
-                        let func = new Function(scriptStr);
-                        func();
-                        GlobalVariable.language = unsafeWindow.__language__;
-                        unsafeWindow.GlobalVariable = GlobalVariable;
-                        resolve();
-                        return;
-                    }
-                } else {
-                    FindStr(value);
-                }
-            });
+function FindStr(obj) {
+    global_module.objectDepthEnumerate(obj, function (key, obj) {
+        if (key == null) { 
+            return false;
         }
-        resolve();
+        if (typeof obj === 'function') {
+            let scriptStr = obj.toString();
+            if (scriptStr.indexOf('.exports=JSON.parse') != -1) {
+                let index = scriptStr.indexOf('.exports=JSON.parse') - 1;
+                let char = scriptStr[index];
+                scriptStr = scriptStr.replace(char + '.exports=', 'window["__language__"]=');
+                scriptStr = '(' + scriptStr + ')()';
+                let func = new Function(scriptStr);
+                func();
+                GlobalVariable.language = unsafeWindow.__language__;
+                unsafeWindow.GlobalVariable = GlobalVariable;
+                return true;
+            }
+        }
+        return false;
     });
 }
 
@@ -524,7 +515,7 @@ async function main() {
         }
         return;
     }
-    await FindStr(unsafeWindow.webpackChunkxlco_pikpak_web);
+    FindStr(unsafeWindow.webpackChunkxlco_pikpak_web);
     if (GlobalVariable.language == null) {
         GlobalVariable.language = {
             'my-vip-days': 'Vip remaining {0} days',
