@@ -1,6 +1,6 @@
 module.exports  = {
     'extends': ['eslint:recommended'],
-    'ignorePatterns': ['**/*.md'],
+    'ignorePatterns': ['**/*.md', '**/*.min.js'],
     'rules': {
         'indent': ['error', 4, { 'ignoredNodes': [ // enforce 4-space indentation, except for...
             'TemplateLiteral > *', // template literal children
@@ -15,12 +15,10 @@ module.exports  = {
         'no-async-promise-executor': 'off', // allow promise executor functions to be async (to accomodate await lines)
         'no-constant-condition': 'off', // allow constant conditions
         'no-empty': 'off', // allow empty blocks
-        'no-useless-escape': 'off' // allow all escape chars because ESLint sucks at detecting useless ones
+        'no-useless-escape': 'off' // allow all escape chars cause ESLint sucks at detecting truly useless ones
     },
-    'globals': { 'chatgpt': true, 'global_module': true, '$': true, 'GM_cookie': true },
-    'parserOptions': {
-        'ecmaVersion': 2022,
-        'sourceType': 'script'
-    },
+    'globals': { '$': true, 'chatgpt': true, 'chrome': true, 'global_module': true, 'GM_cookie': true },
+    'parserOptions': { 'ecmaVersion': 2022, 'sourceType': 'script' },
+    'overrides': [{ 'files': ['**/lib*/**.js'], 'parserOptions': { 'sourceType': 'module' }}],
     'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
 };
