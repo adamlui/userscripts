@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.15
+// @version     XiaoYing_2023.05.16
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -37,6 +37,7 @@
 // @author      github.com @XiaoYingYo
 // @require     https://greasyfork.org/scripts/464929-module-jquery-xiaoying/code/module_jquery_XiaoYing.js
 // @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
+// @require     https://greasyfork.org/scripts/465483-hookrequestandfetch/code/hookRequestAndFetch.js
 // @description Violentmonkey Scripts
 // @description:en Violentmonkey Scripts
 // @description:zh-CN Violentmonkey 脚本
@@ -549,74 +550,53 @@ async function main() {
     Init(1);
 }
 
-var FetchMap = new Map();
-FetchMap.set('/vip/v1/vip/info', async (f) => {
-    let json = await f.json();
-    let data = json.data;
-    let expire = data.expire;
-    let now = new Date();
-    let expireDate = new Date(expire);
-    let day = (expireDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000);
-    day = Math.ceil(day);
-    if (day < 0) {
-        return;
-    }
-    if (unsafeWindow['Pikpak_Archive'] != null) {
-        try {
-            unsafeWindow['Pikpak_Archive']();
-        } catch (e) {}
-    }
-    await new Promise((resolve) => {
-        let Time = setInterval(() => {
-            if (GlobalVariable.language == null) {
-                return;
-            }
-            if (GlobalVariable.language['my-vip-days'] == null) {
-                return;
-            }
-            clearInterval(Time);
-            resolve();
-        }, 500);
-    });
-    let title = GlobalVariable.language['my-vip-days'].replace('{0}', day);
-    if (GlobalVariable.vipDaysDom != null) {
-        GlobalVariable.vipDaysDom.text(title);
-        return;
-    }
-    let cloneDom = await global_module.waitForElement('div[class="header-bar-right"]', null, null, 100, -1);
-    cloneDom = cloneDom.find('a').eq(0);
-    let newDom = $(global_module.cloneAndHide(cloneDom[0], 1));
-    newDom.attr('id', '_vipdays_');
-    GlobalVariable.vipDaysDom = newDom;
-    cloneDom.show();
-    $(newDom).text(title);
-});
-
-async function HookFetch() {
-    const oneFetch = unsafeWindow.fetch;
-    await new Promise((resolve) => {
-        let Time = setInterval(() => {
-            if (oneFetch == unsafeWindow.fetch) {
-                return;
-            }
-            clearInterval(Time);
-            resolve();
-        }, 10);
-    });
-    const originalFetch = unsafeWindow.fetch;
-    unsafeWindow.fetch = (...args) => {
+unsafeWindow['__hookRequest__'].FetchCallback.add('/vip/v1/vip/info', (_object, period) => {
+    if (period === 'preRequest') {
+        return null;
+    } else if (period === 'done') {
         (async () => {
-            let url = new URL(args[0]);
-            let pathname = url.pathname;
-            let callback = FetchMap.get(pathname);
-            if (callback == null) {
+            let json = JSON.parse(_object.text);
+            let data = json.data;
+            let expire = data.expire;
+            let now = new Date();
+            let expireDate = new Date(expire);
+            let day = (expireDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000);
+            day = Math.ceil(day);
+            if (day < 0) {
                 return;
             }
-            callback(await originalFetch.apply(this, args));
+            if (unsafeWindow['Pikpak_Archive'] != null) {
+                try {
+                    unsafeWindow['Pikpak_Archive']();
+                } catch (e) {}
+            }
+            await new Promise((resolve) => {
+                let Time = setInterval(() => {
+                    if (GlobalVariable.language == null) {
+                        return;
+                    }
+                    if (GlobalVariable.language['my-vip-days'] == null) {
+                        return;
+                    }
+                    clearInterval(Time);
+                    resolve();
+                }, 500);
+            });
+            let title = GlobalVariable.language['my-vip-days'].replace('{0}', day);
+            if (GlobalVariable.vipDaysDom != null) {
+                GlobalVariable.vipDaysDom.text(title);
+                return;
+            }
+            let cloneDom = await global_module.waitForElement('div[class="header-bar-right"]', null, null, 100, -1);
+            cloneDom = cloneDom.find('a').eq(0);
+            let newDom = $(global_module.cloneAndHide(cloneDom[0], 1));
+            newDom.attr('id', '_vipdays_');
+            GlobalVariable.vipDaysDom = newDom;
+            cloneDom.show();
+            $(newDom).text(title);
         })();
-        return originalFetch.apply(this, args);
-    };
-}
+    }
+});
 
 function Init(index) {
     global_module.Cookie.set('allow_analysis', 'true', 10 * 365 * 24 * 60 * 60 * 1000);
@@ -652,5 +632,4 @@ function Preload() {
     }
 }
 
-HookFetch();
 Preload();
