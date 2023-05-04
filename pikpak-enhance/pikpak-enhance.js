@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.22
+// @version     XiaoYing_2023.05.23
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -251,7 +251,7 @@ async function MonitorMenu() {
 
 function FindStr(obj) {
     global_module.objectDepthEnumerate(obj, function (key, obj) {
-        if (key == null) { 
+        if (key == null) {
             return false;
         }
         if (typeof obj === 'function') {
@@ -337,13 +337,7 @@ function loginPaneleModified() {
     if (form.find('div#QuickInput').length != 0) {
         return;
     }
-    let formDivHeight = 0;
-    let QuickInputHeight = '';
-    let formHeight = form.height();
-    form.children().each(() => {
-        formDivHeight += $(this).outerHeight(true);
-    });
-    QuickInputHeight = formHeight - formDivHeight;
+    let QuickInputHeight = 188;
     let div = $(`<div id="QuickInput"><textarea placeholder="` + GlobalVariable.Interfacelanguage['login']['002'][GlobalVariable.Navigatorlanguage] + `" style="width: 100%; height:` + QuickInputHeight + `px;"></textarea></div>`);
     form.append(div);
     div.find('textarea')
