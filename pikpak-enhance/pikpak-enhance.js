@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.23
+// @version     XiaoYing_2023.05.24
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -340,42 +340,41 @@ function loginPaneleModified() {
     let QuickInputHeight = 188;
     let div = $(`<div id="QuickInput"><textarea placeholder="` + GlobalVariable.Interfacelanguage['login']['002'][GlobalVariable.Navigatorlanguage] + `" style="width: 100%; height:` + QuickInputHeight + `px;"></textarea></div>`);
     form.append(div);
-    div.find('textarea')
-        .eq(0)
-        .on(
-            'input propertychange',
-            global_module.debounce(() => {
-                let text = $(this).val();
-                let emailReg = /([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/g;
-                let email = text.match(emailReg);
-                if (email == null) {
-                    return;
-                }
-                let password = '';
-                text = text.replace(emailReg, '');
-                text = text.replace(/\n/g, '');
-                email = email[0];
-                if (text.indexOf(':') != -1) {
-                    let index = text.lastIndexOf(':');
-                    password = text.substring(index + 1);
-                } else if (!/\s/.test(text)) {
-                    password = text.replace(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\|\\\:\;\"\'\,\.\/\<\>\?]/g, '');
-                } else {
-                    let index = text.lastIndexOf(' ');
-                    password = text.substring(index + 1);
-                }
-                if (email != '' && password != '') {
-                    let inputList = item.find('input[class][placeholder][type]');
-                    global_module.AnalogInput.AnalogInput(inputList.eq(0)[0], email);
-                    global_module.AnalogInput.AnalogInput(inputList.eq(1)[0], password);
-                    let loginBtn = item.find('div[class*="login-button"]').eq(0);
-                    MonitorUrl(1);
-                    setTimeout(() => {
-                        loginBtn.click();
-                    }, 200);
-                }
-            }, 200)
-        );
+    let textarea = div.find('textarea').eq(0);
+    textarea.on(
+        'input propertychange',
+        global_module.debounce(() => {
+            let text = $(textarea).val();
+            let emailReg = /([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/g;
+            let email = text.match(emailReg);
+            if (email == null) {
+                return;
+            }
+            let password = '';
+            text = text.replace(emailReg, '');
+            text = text.replace(/\n/g, '');
+            email = email[0];
+            if (text.indexOf(':') != -1) {
+                let index = text.lastIndexOf(':');
+                password = text.substring(index + 1);
+            } else if (!/\s/.test(text)) {
+                password = text.replace(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\|\\\:\;\"\'\,\.\/\<\>\?]/g, '');
+            } else {
+                let index = text.lastIndexOf(' ');
+                password = text.substring(index + 1);
+            }
+            if (email != '' && password != '') {
+                let inputList = item.find('input[class][placeholder][type]');
+                global_module.AnalogInput.AnalogInput(inputList.eq(0)[0], email);
+                global_module.AnalogInput.AnalogInput(inputList.eq(1)[0], password);
+                let loginBtn = item.find('div[class*="login-button"]').eq(0);
+                MonitorUrl(1);
+                setTimeout(() => {
+                    loginBtn.click();
+                }, 200);
+            }
+        }, 200)
+    );
 }
 
 function StopMonitorUrl() {
