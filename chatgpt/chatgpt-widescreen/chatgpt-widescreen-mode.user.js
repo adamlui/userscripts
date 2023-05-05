@@ -11,7 +11,7 @@
 // @name:zh-HK          ChatGPT 寬屏模式🖥️
 // @name:zh-SG          ChatGPT 宽屏模式🖥️
 // @name:zh-TW          ChatGPT 寬屏模式🖥️
-// @version             2023.5.4
+// @version             2023.5.4.1
 // @description         Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing
 // @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
 // @namespace           https://github.com/adamlui
@@ -41,7 +41,7 @@
 // @match               https://chat.openai.com/*
 // @icon                https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon48.png
 // @icon64              https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png
-// @require             https://cdn.jsdelivr.net/gh/chatgptjs/chatgpt.js@25d3b75b45a09687caa47c741b2718187927fee0/dist/chatgpt-1.2.3.min.js
+// @require             https://cdn.jsdelivr.net/gh/chatgptjs/chatgpt.js@51dc48d5bff8e5539e8cee273032360d0691c6a6/dist/chatgpt-1.6.5.min.js
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
@@ -55,7 +55,7 @@
 
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org (c) 2023 Adam Lui, chatgpt.js & contributors under the MIT license.
 
-(function() {
+(async () => {
 
     // Initialize script
     var config = {}, configKeyPrefix = 'chatGPTws_'
@@ -67,6 +67,8 @@
         fullWindowON: 'Exit full window', fullWindowOFF: 'Full-window mode',
         newChat: 'New chat', sendMsg: 'Send message'
     }
+
+    await chatgpt.isLoaded()
 
     // Collect OpenAI classes/colors
     var sendButtonColor = 'currentColor' // changes w/ scheme
@@ -201,9 +203,9 @@
             }
     }})
     navObserver.observe(document.documentElement, { childList: true, subtree: true })
-    
+
     // Define script functions
-    
+
     function registerMenu() {
         var menuID = [] // to store registered commands for removal while preserving order
         var stateSymbol = ['✔️', '❌'], stateWord = ['ON', 'OFF']
