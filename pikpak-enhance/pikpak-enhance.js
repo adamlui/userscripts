@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.25.4
+// @version     XiaoYing_2023.05.25.5
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
