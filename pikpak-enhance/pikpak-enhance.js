@@ -19,7 +19,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
 // @grant       none
-// @version     XiaoYing_2023.05.25.6
+// @version     XiaoYing_2023.05.25.8
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -37,7 +37,7 @@
 // @author      github.com @XiaoYingYo
 // @require     https://greasyfork.org/scripts/464929-module-jquery-xiaoying/code/module_jquery_XiaoYing.js
 // @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
-// @require     https://greasyfork.org/scripts/465483-hookrequestandfetch/code/hookRequestAndFetch.js
+// @require     https://greasyfork.org/scripts/465483-hookfetch/code/hookFetch.js
 // @description Violentmonkey Scripts
 // @description:en Violentmonkey Scripts
 // @description:zh-CN Violentmonkey 脚本
