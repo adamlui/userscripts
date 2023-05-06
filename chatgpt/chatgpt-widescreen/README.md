@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![usercount](https://img.shields.io/badge/Users-1,500+-brightgreen)
+![usercount](https://img.shields.io/greasyfork/dt/461473?label=Users)
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf/QQ-989898.svg)](#compatibility)
+[![support](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Opera/Brave/Vivaldi/LibreWolf/Ghost/QQ-989898.svg)](#compatibility)
 [![commits](https://img.shields.io/github/commit-activity/w/adamlui/chatgpt-widescreen?label=Commits)](https://github.com/adamlui/chatgpt-widescreen/commits/main)
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/chatgpt-widescreen?label=Code%20Quality)](https://www.codefactor.io/repository/github/adamlui/chatgpt-widescreen)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/AwQqCmB.png"></a>
@@ -95,6 +95,7 @@ ChatGPT Widescreen Mode is compatible w/ the following browsers (via [Tampermonk
 - Brave
 - Vivaldi
 - LibreWolf
+- Ghost
 - QQ
 
 If you've tested it to work in a browser not listed above, simply create a [pull request](https://github.com/adamlui/chatgpt-widescreen/pulls) to become a contributor!
