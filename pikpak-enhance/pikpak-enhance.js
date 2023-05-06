@@ -18,8 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @grant       none
-// @version     XiaoYing_2023.05.25.18
+// @version     XiaoYing_2023.05.25.19
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -57,7 +56,6 @@
 // @description:id Violentmonkey Scripts
 // ==/UserScript==
 
-var global_module = window['global_module'];
 
 var GlobalVariable = {};
 
