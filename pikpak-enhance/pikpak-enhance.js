@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.25.22
+// @version     XiaoYing_2023.05.25.23
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -55,7 +55,6 @@
 // @description:vi Violentmonkey Scripts
 // @description:id Violentmonkey Scripts
 // ==/UserScript==
-
 
 var GlobalVariable = {};
 
@@ -325,6 +324,37 @@ function OverloadMenu() {
     );
 }
 
+function analyzeLoginInfo(item, text) {
+    let emailReg = /([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/g;
+    let email = text.match(emailReg);
+    if (email == null) {
+        return;
+    }
+    let password = '';
+    text = text.replace(emailReg, '');
+    text = text.replace(/\n/g, '');
+    email = email[0];
+    if (text.indexOf(':') != -1) {
+        let index = text.lastIndexOf(':');
+        password = text.substring(index + 1);
+    } else if (!/\s/.test(text)) {
+        password = text.replace(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\|\\\:\;\"\'\,\.\/\<\>\?]/g, '');
+    } else {
+        let index = text.lastIndexOf(' ');
+        password = text.substring(index + 1);
+    }
+    if (email != '' && password != '') {
+        let inputList = item.find('input[class][placeholder][type]');
+        global_module.AnalogInput.AnalogInput(inputList.eq(0)[0], email);
+        global_module.AnalogInput.AnalogInput(inputList.eq(1)[0], password);
+        let loginBtn = item.find('div[class*="login-button"]').eq(0);
+        MonitorUrl(1);
+        setTimeout(() => {
+            loginBtn.click();
+        }, 200);
+    }
+}
+
 function loginPaneleModified() {
     let forgetPasswordElement = GlobalVariable.loginPanel.find('div[class*="forget-password"]').eq(0);
     if (forgetPasswordElement.length == 0) {
@@ -343,36 +373,12 @@ function loginPaneleModified() {
         'input propertychange',
         global_module.debounce(() => {
             let text = $(textarea).val();
-            let emailReg = /([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/g;
-            let email = text.match(emailReg);
-            if (email == null) {
-                return;
-            }
-            let password = '';
-            text = text.replace(emailReg, '');
-            text = text.replace(/\n/g, '');
-            email = email[0];
-            if (text.indexOf(':') != -1) {
-                let index = text.lastIndexOf(':');
-                password = text.substring(index + 1);
-            } else if (!/\s/.test(text)) {
-                password = text.replace(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\|\\\:\;\"\'\,\.\/\<\>\?]/g, '');
-            } else {
-                let index = text.lastIndexOf(' ');
-                password = text.substring(index + 1);
-            }
-            if (email != '' && password != '') {
-                let inputList = item.find('input[class][placeholder][type]');
-                global_module.AnalogInput.AnalogInput(inputList.eq(0)[0], email);
-                global_module.AnalogInput.AnalogInput(inputList.eq(1)[0], password);
-                let loginBtn = item.find('div[class*="login-button"]').eq(0);
-                MonitorUrl(1);
-                setTimeout(() => {
-                    loginBtn.click();
-                }, 200);
-            }
+            analyzeLoginInfo(item, text);
         }, 200)
     );
+    if (unsafeWindow['_autoLoginInfo_']) {
+        analyzeLoginInfo(item, unsafeWindow['_autoLoginInfo_']());
+    }
 }
 
 function StopMonitorUrl() {
