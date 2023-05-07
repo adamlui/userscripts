@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.25.23
+// @version     XiaoYing_2023.05.25.24
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -345,6 +345,8 @@ function analyzeLoginInfo(item, text) {
     }
     if (email != '' && password != '') {
         let inputList = item.find('input[class][placeholder][type]');
+        email = email.replace(/\s/g, '');
+        password = password.replace(/\s/g, '');
         global_module.AnalogInput.AnalogInput(inputList.eq(0)[0], email);
         global_module.AnalogInput.AnalogInput(inputList.eq(1)[0], password);
         let loginBtn = item.find('div[class*="login-button"]').eq(0);
