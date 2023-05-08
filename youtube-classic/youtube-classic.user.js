@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.5.3.9
+// @version          2023.5.7
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://elonsucks.org/@adam
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
-// @homepageURL      https://www.ytclassic.com
-// @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
 // @icon             https://media.ytclassic.com/images/icon48.png
 // @icon64           https://media.ytclassic.com/images/icon64.png
@@ -19,6 +17,8 @@
 // @grant            none
 // @updateURL        https://www.ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://www.ytclassic.com/us/code/youtube-classic.user.js
+// @homepageURL      https://www.ytclassic.com
+// @supportURL       https://github.com/adamlui/userscripts/issues
 // ==/UserScript==
 
 // Redirect Shorts
@@ -468,7 +468,7 @@ document.addEventListener('yt-page-data-updated', async() => {
         #buttons.ytd-c4-tabbed-header-renderer { flex-direction: row-reverse !important }
 
         /* Subscribe button fixes */
-        yt-button-shape.style-scope.ytd-subscribe-button-renderer { display: flex !important }
+        yt-button-shape.style-scope.ytd-subscribe-button-renderer, .ytd-subscribe-button-renderer { display: flex !important }
         #subscribe-button ytd-subscribe-button-renderer button {
             height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ; text-transform: uppercase !important }
         .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
