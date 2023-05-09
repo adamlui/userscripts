@@ -11,7 +11,7 @@
 // @name:zh-HK          ChatGPT 寬屏模式🖥️
 // @name:zh-SG          ChatGPT 宽屏模式🖥️
 // @name:zh-TW          ChatGPT 寬屏模式🖥️
-// @version             2023.5.9
+// @version             2023.5.9.1
 // @description         Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing
 // @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
 // @namespace           https://github.com/adamlui
@@ -60,7 +60,7 @@
     // Initialize settings
     var config = { userLanguage: navigator.languages[0] || navigator.language || '' }
     var configKeyPrefix = 'chatGPTws_', messages = {}
-    loadSetting('wideScreen', 'fullWindow', 'notifHidden', 'fullerWinsdow')
+    loadSetting('wideScreen', 'fullWindow', 'notifHidden', 'fullerWindows')
 
     // Define messages
     switch (config.userLanguage) {
@@ -318,12 +318,12 @@
         var stateSeparator = getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': '
 
         // Add command to also activate wide screen in full-window
-        var fwLabel = stateSymbol[+!config.fullerWinsdow] + ' ' + messages.menuLabels.fullerWins
-            + stateSeparator + stateWord[+!config.fullerWinsdow]
+        var fwLabel = stateSymbol[+!config.fullerWindows] + ' ' + messages.menuLabels.fullerWins
+            + stateSeparator + stateWord[+!config.fullerWindows]
         menuID.push(GM_registerMenuCommand(fwLabel, function() {
-            saveSetting('fullerWinsdow', !config.fullerWinsdow)
+            saveSetting('fullerWindows', !config.fullerWindows)
             if (!config.notifHidden) {
-                chatgpt.notify(messages.menuLabels.fullerWins + ': '+ stateWord[+!config.fullerWinsdow],
+                chatgpt.notify(messages.menuLabels.fullerWins + ': '+ stateWord[+!config.fullerWindows],
                     '', '', chatgpt.isDarkMode() ? '' : 'shadow')
             } for (var id of menuID) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
         }))
@@ -369,7 +369,7 @@
         var modeStyle = document.getElementById(mode + '-mode') // look for existing mode style
         if (state.toUpperCase() == 'ON' || !modeStyle) { // if missing or ON-state passed
             modeStyle = mode == 'wideScreen' ? wideScreenStyle : fullWindowStyle
-            if (mode == 'fullWindow' && config.fullerWinsdow) { // activate fuller window if enabled for full window
+            if (mode == 'fullWindow' && config.fullerWindows) { // activate fuller window if enabled for full window
                 if (!config.wideScreen) document.head.appendChild(wideScreenStyle)
             }
             document.head.appendChild(modeStyle); state = 'on' // activate mode
