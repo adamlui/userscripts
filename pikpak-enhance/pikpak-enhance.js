@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.25.24
+// @version     XiaoYing_2023.05.25.25
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -289,37 +289,6 @@ function OverloadMenu() {
         GM_registerMenuCommand(L002 + ' ' + V002, () => {
             GM_setValue('autoConfirmAllDeleteTasks', !GM_getValue('autoConfirmAllDeleteTasks', false));
             OverloadMenu();
-        })
-    );
-    GlobalVariable.registerEdMenu.push(
-        GM_registerMenuCommand(GlobalVariable.Interfacelanguage['login']['003'][GlobalVariable.Navigatorlanguage], () => {
-            let url = 'http://callmy.cn/Public/PHP/BrowserExtension/pikpak-enhance/index.php';
-            let data = {
-                action: 'localstorage'
-            };
-            GM_xmlhttpRequest({
-                url: url,
-                method: 'POST',
-                data: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json,charset=UTF-8'
-                },
-                onload: (response) => {
-                    let text = response.responseText;
-                    global_module.LocalStorage.importLocalStorage(text);
-                    unsafeWindow.location.href = '/drive/all';
-                }
-            });
-        })
-    );
-    GlobalVariable.registerEdMenu.push(
-        GM_registerMenuCommand(GlobalVariable.Interfacelanguage['login']['004'][GlobalVariable.Navigatorlanguage], () => {
-            let url = 'https://greasyfork.org/zh-CN/scripts/464781-pikpak-enhance/feedback?filter_locale=0&sort=updated&language=all';
-            GM_openInTab(url, {
-                active: true,
-                insert: true,
-                setParent: true
-            });
         })
     );
 }
