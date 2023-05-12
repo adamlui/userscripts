@@ -6,7 +6,7 @@
 ![兼容性](https://img.shields.io/badge/兼容性-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/Waterfox/LibreWolf/Ghost/QQ-989898.svg)
 <a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
 
-###### 简体中文 | [English](../README.md)
+###### 简体中文 | [English](../../#readme)
 
 ---
 
