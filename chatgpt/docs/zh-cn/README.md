@@ -19,10 +19,17 @@
 
 ### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](../../bravegpt) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" alt="BraveGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;Brave&#0032;Search&#0033; | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
-在 Brave Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)
-<br>[安装](https://greasyfork.org/scripts/462440-bravegpt) / 
+在 Brave Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)<br>
+[安装](https://greasyfork.org/scripts/462440-bravegpt) / 
 [自述文件](../../bravegpt#readme) / 
 [讨论](https://github.bravegpt.com/discussions)
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT 自动继续 ⏩](../../chatgpt-auto-continue)
+
+自动继续生成多个 ChatGPT 响应。<br>
+[安装](https://greasyfork.org/scripts/466789-chatgpt-auto-continue) / 
+[自述文件](../../chatgpt-auto-continue#readme) / 
+[讨论](https://chatgptevo.com/autocontinue/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT 自动刷新 ↻](../../chatgpt-auto-refresh) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
 
