@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.25.25
+// @version     XiaoYing_2023.05.27.1
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -155,40 +155,22 @@ GlobalVariable.Interfacelanguage = {
             id: 'Masukkan alamat email dan kata sandi Anda di sini untuk masuk secara otomatis'
         },
         '003': {
-            en: 'Try to log into the free VIP account',
-            'zh-CN': '尝试登录免费的VIP账号',
-            'zh-TW': '嘗試登錄免費的VIP賬號',
-            ja: '無料のVIPアカウントにログインしようとする',
-            ko: '무료 VIP 계정에 로그인하려고 시도하십시오',
-            de: 'Versuchen Sie, sich in das kostenlose VIP-Konto einzuloggen',
-            fr: 'Essayez de vous connecter au compte VIP gratuit',
-            es: 'Intente iniciar sesión en la cuenta VIP gratuita',
-            pt: 'Tente fazer login na conta VIP gratuita',
-            ru: 'Попробуйте войти в бесплатную учетную запись VIP',
-            it: 'Prova ad accedere all account VIP gratuito',
-            tr: 'Ücretsiz VIP hesabına giriş yapmaya çalışın',
-            ar: 'حاول تسجيل الدخول إلى الحساب المجاني VIP',
-            th: 'พยายามเข้าสู่ระบบบัญชี VIP ฟรี',
-            vi: 'Cố gắng đăng nhập vào tài khoản VIP miễn phí',
-            id: 'Coba masuk ke akun VIP gratis'
-        },
-        '004': {
-            en: 'Feedback VIP account is invalid',
-            'zh-CN': '反馈VIP账号无效',
-            'zh-TW': '反饋VIP賬號無效',
-            ja: 'フィードバックVIPアカウントが無効です',
-            ko: '피드백 VIP 계정이 잘못되었습니다',
-            de: 'Feedback VIP-Konto ist ungültig',
-            fr: 'Le compte VIP de commentaires est invalide',
-            es: 'La cuenta VIP de comentarios no es válida',
-            pt: 'A conta VIP de feedback é inválida',
-            ru: 'Обратная связь VIP-аккаунт недействителен',
-            it: 'Il conto VIP di feedback non è valido',
-            tr: 'Geri bildirim VIP hesabı geçersiz',
-            ar: 'حساب VIP للتعليقات غير صالح',
-            th: 'บัญชี VIP ของคำติชมไม่ถูกต้อง',
-            vi: 'Tài khoản VIP phản hồi không hợp lệ',
-            id: 'Akun VIP umpan balik tidak valid'
+            en: 'Register new account with one click and log in immediately',
+            'zh-CN': '一键注册新的账号并立即登录',
+            'zh-TW': '一鍵註冊新的賬號並立即登錄',
+            ja: 'ワンクリックで新しいアカウントを登録してすぐにログインする',
+            ko: '한 번의 클릭으로 새 계정을 등록하고 즉시 로그인하십시오',
+            de: 'Registrieren Sie ein neues Konto mit einem Klick und melden Sie sich sofort an',
+            fr: 'Enregistrez un nouveau compte en un clic et connectez-vous immédiatement',
+            es: 'Registre una nueva cuenta con un clic e inicie sesión de inmediato',
+            pt: 'Registre uma nova conta com um clique e faça login imediatamente',
+            ru: 'Зарегистрируйте новую учетную запись одним щелчком и войдите в систему немедленно',
+            it: 'Registra un nuovo account con un clic e accedi immediatamente',
+            tr: 'Bir tıklamayla yeni bir hesabı kaydedin ve hemen oturum açın',
+            ar: 'سجل حساب جديد بنقرة واحدة وسجل الدخول على الفور',
+            th: 'ลงทะเบียนบัญชี ใหม่ด้วยคลิกเดียวและเข้าสู่ระบบทันที',
+            vi: 'Đăng ký tài khoản mới chỉ với một cú nhấp chuột và đăng nhập ngay lập tức',
+            id: 'Daftar akun baru dengan satu klik dan masuk segera'
         }
     },
     main: {
@@ -291,6 +273,92 @@ function OverloadMenu() {
             OverloadMenu();
         })
     );
+    let L003 = GlobalVariable.Interfacelanguage['login']['003'][GlobalVariable.Navigatorlanguage];
+    GlobalVariable.registerEdMenu.push(
+        GM_registerMenuCommand(L003, () => {
+            RegisterNewAccount();
+        })
+    );
+}
+
+async function _sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, ms);
+    });
+}
+
+async function RegisterNewAccount() {
+    let QuickInput = $('div#QuickInput').eq(0);
+    if (QuickInput.length === 0) {
+        alert('Not in the login interface, unable to continue');
+        return;
+    }
+    if ($('input[class*="-login"][class*="password-repeat"][type="password"]').eq(0).length === 0) {
+        let tipsLink = $('span[class*="tips-link"]').eq(0);
+        global_module.clickElement(tipsLink[0]);
+    }
+    let formEmail = $('input[class*="-login"][class*="email"][type="text"]').eq(0);
+    global_module.AnalogInput.AnalogInput(formEmail[0], 'Registering...');
+    let email = await global_module.Mail.Change();
+    global_module.AnalogInput.AnalogInput(formEmail[0], email);
+    let sendCode = $('div[class*="-login"][class*="send-message"]').eq(0);
+    global_module.clickElement(sendCode[0]);
+    while (true) {
+        let Mails = await global_module.Mail.getMails();
+        if (Mails.length !== 0) {
+            let r = await handlingPikpakCaptchasAndLogin(Mails);
+            if (r) {
+                break;
+            }
+        }
+        await _sleep(1000);
+    }
+}
+
+function extractNumbers(str) {
+    let reg = /\d{6}/g;
+    str = str.match(reg);
+    if (str == null) {
+        return null;
+    }
+    return str[0];
+}
+
+async function handlingPikpakCaptchasAndLogin(Mails) {
+    return new Promise((resolve) => {
+        let code = null;
+        for (let i = 0; i < Mails.length; i++) {
+            let Mail = Mails[i];
+            let sender = Mail.sender;
+            if (sender.search(/Pikpak/i) === -1) {
+                continue;
+            }
+            let text = Mail.text;
+            code = extractNumbers(text);
+            if (code === null) {
+                continue;
+            }
+            break;
+        }
+        if (code == null) {
+            resolve(false);
+            return false;
+        }
+        let formCode = $('input[class*="-login"][class*="code"][type="text"]').eq(0);
+        let formPassword = $('input[class*="-login"][class*="password"][type="password"]').eq(0);
+        let formPasswordRepeat = $('input[class*="-login"][class*="password-repeat"][type="password"]').eq(0);
+        global_module.AnalogInput.AnalogInput(formCode[0], code);
+        let pass = 'LoveMyPikpak.Com';
+        global_module.AnalogInput.AnalogInput(formPassword[0], pass);
+        global_module.AnalogInput.AnalogInput(formPasswordRepeat[0], pass);
+        let loginBtn = $('div[class*="-login"][class*="button"]').eq(0);
+        setTimeout(() => {
+            global_module.clickElement(loginBtn[0]);
+            resolve(true);
+        }, 200);
+    });
 }
 
 function analyzeLoginInfo(item, text) {
