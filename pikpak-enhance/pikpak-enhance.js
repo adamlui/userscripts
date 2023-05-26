@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.1
+// @version     XiaoYing_2023.05.27.3
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
