@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.3
+// @version     XiaoYing_2023.05.27.4
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -300,8 +300,8 @@ async function RegisterNewAccount() {
         global_module.clickElement(tipsLink[0]);
     }
     let formEmail = $('input[class*="-login"][class*="email"][type="text"]').eq(0);
-    global_module.AnalogInput.AnalogInput(formEmail[0], 'Registering...');
     let email = await global_module.Mail.Change();
+    await _sleep(1000);
     global_module.AnalogInput.AnalogInput(formEmail[0], email);
     let sendCode = $('div[class*="-login"][class*="send-message"]').eq(0);
     global_module.clickElement(sendCode[0]);
