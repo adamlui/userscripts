@@ -299,9 +299,9 @@ async function RegisterNewAccount() {
         let tipsLink = $('span[class*="tips-link"]').eq(0);
         global_module.clickElement(tipsLink[0]);
     }
-    let formEmail = $('input[class*="-login"][class*="email"][type="text"]').eq(0);
     let email = await global_module.Mail.Change();
     await _sleep(1000);
+    let formEmail = $('input[class*="-login"][class*="email"][type="text"]').eq(0);
     global_module.AnalogInput.AnalogInput(formEmail[0], email);
     let sendCode = $('div[class*="-login"][class*="send-message"]').eq(0);
     global_module.clickElement(sendCode[0]);
