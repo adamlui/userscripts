@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.10
+// @version     XiaoYing_2023.05.27.11
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -421,6 +421,7 @@ function loginPaneleModified() {
     form.append(div);
     let formHeight = form.height();
     form.css('height', formHeight + QuickInputHeight + 'px');
+    form.find('div[class="agreement"]').eq(0).css('display', 'none');
     let textarea = div.find('textarea').eq(0);
     textarea.on(
         'input propertychange',
