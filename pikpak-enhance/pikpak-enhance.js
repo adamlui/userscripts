@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.7
+// @version     XiaoYing_2023.05.27.8
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -56,6 +56,7 @@
 // @description:id Violentmonkey Scripts
 // ==/UserScript==
 
+global_module.Cookie.set('pp_access_to_visit', 'true', 3650);
 var GlobalVariable = {};
 
 async function DealWithoverlay(i, callback) {
