@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.8
+// @version     XiaoYing_2023.05.27.9
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -56,7 +56,6 @@
 // @description:id Violentmonkey Scripts
 // ==/UserScript==
 
-global_module.Cookie.set('pp_access_to_visit', 'true', 3650);
 var GlobalVariable = {};
 
 async function DealWithoverlay(i, callback) {
@@ -639,7 +638,8 @@ unsafeWindow['__hookRequest__'].FetchCallback.add('/vip/v1/vip/info', (_object, 
 });
 
 function Init(index) {
-    global_module.Cookie.set('allow_analysis', 'true', 10 * 365 * 24 * 60 * 60 * 1000);
+    global_module.Cookie.set('pp_access_to_visit', 'true', 3650);
+    global_module.Cookie.set('allow_analysis', 'true', 3650);
     if (index == 0) {
     } else if (index == 1) {
         for (let i = 0; i < localStorage.length; i++) {
@@ -654,7 +654,7 @@ function Init(index) {
                     new Error(json);
                     return;
                 }
-                global_module.Cookie.set('pp_disabled_speed_save_dialog_" + sub, "true', 10 * 365 * 24 * 60 * 60 * 1000);
+                global_module.Cookie.set('pp_disabled_speed_save_dialog_' + sub, 'true', 3650);
                 break;
             }
         }
