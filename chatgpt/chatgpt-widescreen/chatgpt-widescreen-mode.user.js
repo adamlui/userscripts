@@ -14,7 +14,7 @@
 // @name:zh-HK          ChatGPT 寬屏模式 🖥️
 // @name:zh-SG          ChatGPT 宽屏模式 🖥️
 // @name:zh-TW          ChatGPT 寬屏模式 🖥️
-// @version             2023.6.7
+// @version             2023.6.7.1
 // @description         Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing + reduced scrolling
 // @author              Adam Lui (刘展鹏), Xiao-Ying Yo (小影哟) & mefengl (冯不游)
 // @namespace           https://github.com/adamlui
@@ -211,8 +211,7 @@
                     sendButton.removeAttribute('hasTooltip');
                 }
             }
-    }})
-    nodeObserver.observe(document.documentElement, { childList: true, subtree: true })
+    }}) ; nodeObserver.observe(document.documentElement, { childList: true, subtree: true })
 
     // Monitor scheme changes to update button colors
     var schemeObserver = new MutationObserver(([{ type, target }]) => {
@@ -221,14 +220,14 @@
             updateBtnSVG('fullScreen') ; updateBtnSVG('fullWindow') ; updateBtnSVG('wideScreen') ; updateBtnSVG('newChat')
     }}) ; schemeObserver.observe(document.documentElement, { attributes: true })
 
-    // Add fullscren listeners to update setting/button + notify toggle disabled
+    // Add fullscreen listeners to update setting/button + enable F11 flag
     window.addEventListener('resize', function() { // sync fullscreen settings/button
         var fullScreenState = isFullScreen()
         if ((config.fullScreen && !fullScreenState) || (!config.fullScreen && fullScreenState)) syncFullScreen()
         if (!fullScreenState) config.f11 = false
     })
-    window.addEventListener('keydown', function() { // set F11 flag for toggleMode() disabled warning
-        if ((event.key === 'F11' || event.keyCode === 122) && !config.fullScreen)
+    window.addEventListener('keydown', function() { // enable F11 flag for toggleMode() disabled warning
+        if ((event.key === 'F11' || event.keyCode === 122) && !config.fullScreen) // if entering fullscreen via F11
             config.f11 = true
     })
 
@@ -413,9 +412,9 @@
              : browser === 'ie' ? document.msFullscreenElement : document.webkitIsFullScreen
     }
 
-    function syncFullScreen() { // settings + toggle icon
+    function syncFullScreen() { // setting + toggle icon
         var fullScreenState = isFullScreen()
-        saveSetting('fullScreen', fullScreenState) ; updateBtnSVG('fullScreen')
+        saveSetting('fullScreen', isFullScreen()) ; updateBtnSVG('fullScreen')
         if (!config.notifHidden) { // show exit notification if enabled
             chatgpt.notify(`${ appSymbol } ${ messages.mode_fullScreen } ${ fullScreenState ? 'ON' : 'OFF' }`,
                 '', '', chatgpt.isDarkMode() ? '' : 'shadow') }
