@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.05.27.11
+// @version     XiaoYing_2023.06.08.1
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -235,7 +235,7 @@ function FindStr(obj) {
         }
         if (typeof obj === 'function') {
             let scriptStr = obj.toString();
-            if (scriptStr.indexOf('.exports=JSON.parse') != -1) {
+            if (scriptStr.indexOf('.exports=JSON.parse') != -1 && GlobalVariable['allFileText'] && scriptStr.indexOf(GlobalVariable['allFileText']) != -1) {
                 let index = scriptStr.indexOf('.exports=JSON.parse') - 1;
                 let char = scriptStr[index];
                 scriptStr = scriptStr.replace(char + '.exports=', 'window["__language__"]=');
@@ -566,6 +566,19 @@ async function main() {
         }
         return;
     }
+    await new Promise((resolve) => {
+        let timer = setInterval(() => {
+            try {
+                let text = $('span[class="nav-item-name"]').eq(0).text();
+                if (text == null || text == '') {
+                    return;
+                }
+                clearInterval(timer);
+                GlobalVariable['allFileText'] = text;
+                resolve();
+            } catch (e) {}
+        }, 200);
+    });
     FindStr(unsafeWindow.webpackChunkxlco_pikpak_web);
     if (GlobalVariable.language == null) {
         GlobalVariable.language = {
