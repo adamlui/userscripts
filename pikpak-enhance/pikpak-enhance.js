@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.06.08.1
+// @version     XiaoYing_2023.06.11.1
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -350,7 +350,7 @@ async function handlingPikpakCaptchasAndLogin(Mails) {
         let formPassword = $('input[class*="-login"][class*="password"][type="password"]').eq(0);
         let formPasswordRepeat = $('input[class*="-login"][class*="password-repeat"][type="password"]').eq(0);
         global_module.AnalogInput.AnalogInput(formCode[0], code);
-        let pass = 'LoveMyPikpak_Com';
+        let pass = global_module.getRandomString(16);
         global_module.AnalogInput.AnalogInput(formPassword[0], pass);
         global_module.AnalogInput.AnalogInput(formPasswordRepeat[0], pass);
         let loginBtn = $('div[class*="-login"][class*="button"]').eq(0);
@@ -364,6 +364,7 @@ async function handlingPikpakCaptchasAndLogin(Mails) {
                     return false;
                 }
                 if (window.location.href.search(/login/i) === -1) {
+                    alert('Your password is:' + pass);
                     clearInterval(t);
                     MonitorUrl(1);
                 }
