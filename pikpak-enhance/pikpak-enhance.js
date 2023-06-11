@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.06.11.1
+// @version     XiaoYing_2023.06.11.2
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -364,8 +364,8 @@ async function handlingPikpakCaptchasAndLogin(Mails) {
                     return false;
                 }
                 if (window.location.href.search(/login/i) === -1) {
-                    alert('Your password is:' + pass);
                     clearInterval(t);
+                    alert('Your password is:' + pass);
                     MonitorUrl(1);
                 }
             }, 1000);
