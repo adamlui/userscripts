@@ -4,7 +4,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 ![](https://img.shields.io/badge/Users-15,000+-brightgreen)
 [![](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
 ![](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/Waterfox/LibreWolf/Ghost/QQ-989898.svg)
-<a alt="chatgpt.js" href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
+<a href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
 
 ###### English | [简体中文](zh-cn#readme)
 
