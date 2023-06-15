@@ -1,13 +1,13 @@
-# 🐵 Greasemonkey userscripts &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
+# 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
-![usercount](https://img.shields.io/badge/Users-20,000+-brightgreen)
-[![stars](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars)](https://github.com/adamlui/userscripts/stargazers)
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
-[![commits](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
-![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/adamlui/userscripts?label=Vulnerabilities&labelColor=464646&color=gold)
-[![code quality](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
+![](https://img.shields.io/badge/Users-20,000+-brightgreen)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
+![](https://img.shields.io/badge/Support-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
+[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
+![](https://img.shields.io/snyk/vulnerabilities/github/adamlui/userscripts?label=Vulnerabilities&labelColor=464646&color=gold)
+[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 ###### English | [简体中文](zh-cn#readme)
 
