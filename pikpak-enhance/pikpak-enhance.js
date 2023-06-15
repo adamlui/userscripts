@@ -18,7 +18,7 @@
 // @name:id     Tingkatkan Pikpak
 // @namespace   Violentmonkey Scripts
 // @match       *://mypikpak.com/drive/*
-// @version     XiaoYing_2023.06.16.2
+// @version     XiaoYing_2023.06.16.3
 // @grant       GM_info
 // @grant       GM_getValue
 // @grant       GM_setValue
@@ -680,7 +680,7 @@ function Init(index) {
 
 function SaveStorage(key, value) {
     global_module.Cookie.set(key, value, 365);
-    localStorage.set(key, value);
+    localStorage.setItem(key, value);
 }
 
 function Preload() {
