@@ -59,7 +59,7 @@
 [自述文件](../../duckduckgpt#readme) / 
 [讨论](https://github.duckduckgpt.com/discussions)
 
-#
+<img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**更多用户脚本**</a> / 
 <a href="#-chatgpt-%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC-">回到顶部 ↑</a>
