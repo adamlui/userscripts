@@ -11,7 +11,7 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 
 ###### 简体中文 | [English](../../#readme)
 
----
+<img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT 标志" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
