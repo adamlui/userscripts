@@ -53,7 +53,7 @@ Reverts YouTube to its classic design (before all the rounded corners & hidden d
 [Readme](../youtube-classic/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-#
+<img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
 <a href="#-greasemonkey-userscripts-">Back to top ↑</a>
