@@ -33,8 +33,8 @@ jobs:
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
 
-      - name: Copy README.md to kudoai/bravegpt/ && adamlui/chatgpt-apps/bravegpt
-        run: xargs -n 1 cp -v -f ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/README.md<<<"${{ github.workspace }}/kudoai/bravegpt/README.md ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/README.md"
+      - name: Sync docs to to kudoai/duckduckgpt/docs/ && adamlui/chatgpt-apps/duckduckgpt/docs/
+        run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs ${{ github.workspace }}/kudoai/duckduckgpt/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs ${{ github.workspace }}/adamlui/chatgpt-apps/duckduckgpt/
 
       - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
         run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
