@@ -19,12 +19,16 @@ Userscripts that utilize the astounding AI of ChatGPT. &nbsp;
 [View scripts](../chatgpt) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
+#
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 Hides images/videos from XenForo, vBulletin & Discourse forums. &nbsp;
 [Install](https://greasyfork.org/scripts/12639) / 
 [Readme](../hide-forum-images/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+#
 
 ### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
@@ -33,11 +37,15 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key. &nbs
 [Readme](../highlight-radio-bubbles/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
+#
+
 ### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
 
 Userscripts for Amazon's Mechanical Turk. &nbsp;
 [View scripts](../mturk) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+#
 
 ### <img width=15 alt="PikPak logo" src="https://mypikpak.com/favicon-32x32.png"> [PikPak Enhance](../pikpak-enhance)
 
@@ -45,6 +53,8 @@ Turbo-charges the PikPak user experience. &nbsp;
 [Install](https://greasyfork.org/en/scripts/464781-pikpak-enhance) / 
 [Readme](../pikpak-enhance/docs/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
+
+#
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
