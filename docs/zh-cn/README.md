@@ -47,15 +47,6 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 
 #
 
-### <img width=15 alt="PikPak 标识" src="https://mypikpak.com/favicon-32x32.png"> [PikPak 提高](../../pikpak-enhance)
-
-涡轮增压 PikPak 用户体验.<br>
-[安装](https://greasyfork.org/en/scripts/464781-pikpak-enhance) / 
-[自述文件](../../pikpak-enhance/docs/zh-cn/README.md) / 
-[讨论](https://github.com/adamlui/userscripts/discussions)
-
-#
-
 ### <img alt="YouTube 经典版 标识" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
 
 将 YouTube 恢复为经典设计(在所有圆角和隐藏的不喜欢之前)+ 重定向 YouTube Shorts.<br>

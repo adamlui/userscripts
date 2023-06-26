@@ -47,15 +47,6 @@ Userscripts for Amazon's Mechanical Turk.<br>
 
 #
 
-### <img width=15 alt="PikPak logo" src="https://mypikpak.com/favicon-32x32.png"> [PikPak Enhance](../pikpak-enhance)
-
-Turbo-charges the PikPak user experience.<br>
-[Install](https://greasyfork.org/en/scripts/464781-pikpak-enhance) / 
-[Readme](../pikpak-enhance/docs/README.md) / 
-[Discuss](https://github.com/adamlui/userscripts/discussions)
-
-#
-
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
 Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.<br>
