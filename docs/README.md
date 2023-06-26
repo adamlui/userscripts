@@ -28,8 +28,6 @@ Hides images/videos from XenForo, vBulletin & Discourse forums.<br>
 [Readme](../hide-forum-images/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-#
-
 ### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key.<br>
@@ -37,15 +35,11 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key.<br>
 [Readme](../highlight-radio-bubbles/README.md) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-#
-
 ### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
 
 Userscripts for Amazon's Mechanical Turk.<br>
 [View scripts](../mturk) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
-
-#
 
 ### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
 
