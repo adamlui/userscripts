@@ -19,16 +19,12 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [查看脚本](../../chatgpt) / 
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-#
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="隐藏论坛图片标志" src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频.<br>
 [安装](https://greasyfork.org/scripts/12639) / 
 [自述文件](../../hide-forum-images/README.md) / 
 [讨论](https://github.com/adamlui/userscripts/discussions)
-
-#
 
 ### <img alt="突出单选气泡标识" src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
 
@@ -37,15 +33,11 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [自述文件](../../highlight-radio-bubbles/README.md) / 
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-#
-
 ### <img alt="Amazon Mechanical Turk 标识" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
 
 亚马逊 Mechanical Turk 的用户脚本.<br>
 [查看脚本](../../mturk) / 
 [讨论](https://github.com/adamlui/userscripts/discussions)
-
-#
 
 ### <img alt="YouTube 经典版 标识" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
 
