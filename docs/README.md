@@ -19,8 +19,6 @@ Userscripts that utilize the astounding AI of ChatGPT.<br>
 [View scripts](../chatgpt) / 
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-#
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.<br>
