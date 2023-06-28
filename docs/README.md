@@ -6,7 +6,6 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 [![](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
 ![](https://img.shields.io/badge/Support-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
-![](https://img.shields.io/snyk/vulnerabilities/github/adamlui/userscripts?label=Vulnerabilities&labelColor=464646&color=gold)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 ###### English | [简体中文](zh-cn#readme)
