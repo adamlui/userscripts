@@ -6,7 +6,6 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [![执照](https://img.shields.io/badge/执照-MIT-green.svg)](../../LICENSE.md)
 ![支持](https://img.shields.io/badge/支持-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
 [![提交](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交)](https://github.com/adamlui/userscripts/commits/master)
-![弱点](https://img.shields.io/snyk/vulnerabilities/github/adamlui/userscripts?label=弱点&labelColor=464646&color=gold)
 [![代码质量](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 ###### 简体中文 | [English](../../#readme)
