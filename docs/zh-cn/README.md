@@ -2,7 +2,7 @@
 MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
 ![用户](https://img.shields.io/badge/用户-30,000+-0ad4fc)
-[![星星](https://img.shields.io/github/stars/adamlui/userscripts?label=星星)](https://github.com/adamlui/userscripts/stargazers)
+[![星星](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow)](https://github.com/adamlui/userscripts/stargazers)
 [![执照](https://img.shields.io/badge/执照-MIT-green.svg)](../../LICENSE.md)
 ![支持](https://img.shields.io/badge/支持-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
 [![提交](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交)](https://github.com/adamlui/userscripts/commits/master)
