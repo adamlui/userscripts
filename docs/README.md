@@ -2,7 +2,7 @@
 MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 ![](https://img.shields.io/badge/Users-30,000+-0ad4fc)
-[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&color=gold)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&color=yellow)](https://github.com/adamlui/userscripts/stargazers)
 [![](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
 ![](https://img.shields.io/badge/Support-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits)](https://github.com/adamlui/userscripts/commits/master)
