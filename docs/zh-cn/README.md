@@ -1,12 +1,11 @@
 # 🐵 Greasemonkey 用户脚本<br>[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=刚刚找到这些史诗般的用户脚本！&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
-![用户](https://img.shields.io/badge/用户-30,000+-0ad4fc)
-[![星星](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow)](https://github.com/adamlui/userscripts/stargazers)
-[![执照](https://img.shields.io/badge/执照-MIT-green.svg)](../../LICENSE.md)
-![支持](https://img.shields.io/badge/支持-Chrome/Safari/Firefox/Edge/Opera/Brave/Vivaldi/Waterfox/Librewolf/Ghost/QQ-989898.svg)
-[![提交](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交)](https://github.com/adamlui/userscripts/commits/master)
-[![代码质量](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量)](https://www.codefactor.io/repository/github/adamlui/userscripts)
+![](https://img.shields.io/badge/用户-30,000+-0ad4fc?logo=docusign&logoColor=white&style=for-the-badge)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/badge/执照-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](../LICENSE.md)
+[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
+[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 ###### 简体中文 | [English](../../#readme)
 
