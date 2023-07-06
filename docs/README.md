@@ -1,5 +1,10 @@
+<div align="right">
+
+<h5>English | <a href="zh-cn#readme">简体中文</a></h5>
+
+</div>
+
 # 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
-MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 ![](https://img.shields.io/badge/Installs-30,000+-0ad4fc?logo=docusign&logoColor=white&style=for-the-badge)
 [![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&color=yellow&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
@@ -7,7 +12,7 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
-###### English | [简体中文](zh-cn#readme)
+MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
