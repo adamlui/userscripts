@@ -1,12 +1,14 @@
+<div align="right">
+<h5>English | <a href="zh-cn#readme">简体中文</a></h5>
+</div>
+
 # 🤖 ChatGPT userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23ChatGPT%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt&hashtags=greasemonkey,userscript,javascript,ai)
+
+![](https://img.shields.io/badge/Installs-20,000+-0ad4fc?logo=docusign&logoColor=white&style=for-the-badge)
+[![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](../LICENSE.md)
+![](https://img.shields.io/badge/Powered_by-chatgpt.js-d909f9?logo=gamejolt&logoColor=white&style=for-the-badge)
+
 Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
-
-![](https://img.shields.io/badge/Users-20,000+-0ad4fc)
-[![](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE.md)
-![](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Brave/Opera/Vivaldi/Waterfox/LibreWolf/Ghost/QQ-989898.svg)
-<a href="https://chatgpt.js.org"><img height=20 src="https://i.imgur.com/IlqFZJI.png"></a>
-
-###### English | [简体中文](zh-cn#readme)
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
