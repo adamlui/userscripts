@@ -6,7 +6,7 @@
 
 ![](https://img.shields.io/badge/Installs-20,000+-0ad4fc?logo=docusign&logoColor=white&style=for-the-badge)
 [![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](../LICENSE.md)
-![](https://img.shields.io/badge/Powered_by-chatgpt.js-d909f9?logo=gamejolt&logoColor=white&style=for-the-badge)
+[![](https://img.shields.io/badge/Powered_by-chatgpt.js-d909f9?logo=gamejolt&logoColor=white&style=for-the-badge)](https://github.com/kudoai/chatgpt.js)
 
 Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
