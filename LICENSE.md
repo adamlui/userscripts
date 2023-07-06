@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2015–2023 Adam Lui (刘展鹏) & 贡献者
+Copyright (c) 2015–2023 Adam Lui & contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
