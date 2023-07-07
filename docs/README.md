@@ -4,11 +4,11 @@
 
 # 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
-![](https://img.shields.io/badge/Installs-30,000+-2bbbd8?logo=docusign&logoColor=white&style=for-the-badge)
-[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&color=yellow&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
-[![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](../LICENSE.md)
-[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
-[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
+![](https://img.shields.io/badge/Installs-30,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&color=yellow&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
+[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
+[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
