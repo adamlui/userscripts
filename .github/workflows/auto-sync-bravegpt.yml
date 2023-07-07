@@ -47,7 +47,7 @@ jobs:
         with:
           push_options: '--force'
           add_options: '--all'
-          commit_user_email: auto-sync@userscripts.co
+          commit_user_email: auto-sync@kudoai.com
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
           file_pattern: '**'
           repository: kudoai/bravegpt
@@ -57,7 +57,7 @@ jobs:
         with:
           push_options: '--force'
           add_options: '--all'
-          commit_user_email: auto-sync@userscripts.co
+          commit_user_email: auto-sync@kudoai.com
           commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
           file_pattern: 'bravegpt/**'
           repository: adamlui/chatgpt-apps
