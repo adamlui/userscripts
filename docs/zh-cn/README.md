@@ -6,7 +6,7 @@
 
 ![](https://img.shields.io/badge/安装-30,000+-2bbbd8?logo=docusign&logoColor=white&style=for-the-badge)
 [![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
-[![](https://img.shields.io/badge/执照-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](LICENSE.md)
+[![](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](LICENSE.md)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
