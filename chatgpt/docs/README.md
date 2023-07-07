@@ -64,4 +64,4 @@ Display ChatGPT answers in DuckDuckGo sidebar (powered by GPT-4!)
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
-<a href="#-chatgpt-userscripts-">Back to top ↑</a>
+<a href="#english--%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">Back to top ↑</a>
