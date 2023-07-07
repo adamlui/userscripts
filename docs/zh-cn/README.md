@@ -50,4 +50,4 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> / 
-<a href="#-greasemonkey-%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC-">回到顶部 ↑</a>
+<a href="#%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87--english">回到顶部 ↑</a>
