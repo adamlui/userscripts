@@ -4,7 +4,7 @@
 
 # 🐵 Greasemonkey 用户脚本 &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=刚刚找到这些史诗般的用户脚本！&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
-![](https://img.shields.io/badge/安装-30,000+-0ad4fc?logo=docusign&logoColor=white&style=for-the-badge)
+![](https://img.shields.io/badge/安装-30,000+-14bee0?logo=docusign&logoColor=white&style=for-the-badge)
 [![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
 [![](https://img.shields.io/badge/执照-MIT-green.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](LICENSE.md)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
