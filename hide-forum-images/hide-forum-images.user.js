@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name             Hide Forum Images
-// @version          2023.01.29
+// @version          2023.07.21
 // @author           Adam Lui
-// @namespace        https://elonsucks.org/@adam
+// @namespace        https://github.com/adamlui
 // @description      Hides images/videos from XenForo, vBulletin & Discourse forums.
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
@@ -17,8 +17,8 @@
 // @downloadURL      https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js
 // ==/UserScript==
 
-if (document.querySelector('[src*="vbulletin"], [src*="discourse"]') || document.querySelector('.copyright').textContent.match(/xenforo/i)) {
-    var css = `img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }`
-    var styleNode = document.createElement('style') ; styleNode.innerText = css
+if (document.querySelector('[src*="vbulletin"], [src*="discourse"]') || /xenforo/i.test(document.querySelector('.copyright').textContent)) {
+    const css = `img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }`
+    const styleNode = document.createElement('style') ; styleNode.innerText = css
     document.head.appendChild(styleNode)
 }
