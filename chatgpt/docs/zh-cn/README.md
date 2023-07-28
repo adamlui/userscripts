@@ -5,7 +5,7 @@
 # 🤖 ChatGPT 用户脚本 &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=检查这些%20ChatGPT%20用户脚本%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt&hashtags=greasemonkey,userscript,javascript,ai)
 利用 ChatGPT 惊人的 AI 或增强其 UX 的用户脚本。 运行这些脚本需要一个用户脚本管理器，例如 [Tampermonkey](https://www.tampermonkey.net/)。
 
-![](https://img.shields.io/badge/安装-25,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
+![](https://img.shields.io/badge/安装-30,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
 [![](https://img.shields.io/badge/供电-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/kudoai/chatgpt.js)
 
