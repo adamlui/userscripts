@@ -34,13 +34,25 @@ jobs:
           path: adamlui/chatgpt-apps
 
       - name: Sync docs to adamlui/autoclear-chatgpt-history/docs/ && adamlui/chatgpt-apps/autoclear-chatgpt-history/docs/
-        run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/
+        run: |
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs \
+            ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/
-        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
+            ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/
-        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/
 
       - name: Push to adamlui/autoclear-chatgpt-history
         uses: stefanzweifel/git-auto-commit-action@v4
