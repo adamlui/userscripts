@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-infinity/ to (adamlui/chatgpt-infinity/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/)
+name: Sync chatgpt/chatgpt-infinity/ to (adamlui/chatgpt-infinity/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/), then /greasemonkey/_locales/ to adamlui/chatgpt-apps/chatgpt-infinity/(chrome|edge|opera)/extension/_locales/
 
 on:
   push:
@@ -32,15 +32,6 @@ jobs:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
-
-      - name: Sync docs to adamlui/chatgpt-infinity/docs/ && adamlui/chatgpt-apps/chatgpt-infinity/docs/
-        run: |
-          cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-infinity/
-          cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
         run: |
