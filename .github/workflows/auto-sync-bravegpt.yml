@@ -34,13 +34,25 @@ jobs:
           path: adamlui/chatgpt-apps
 
       - name: Sync docs to to kudoai/duckduckgpt/docs/ && adamlui/chatgpt-apps/duckduckgpt/docs/
-        run: cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs ${{ github.workspace }}/kudoai/duckduckgpt/ && cp -r -f -v ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs ${{ github.workspace }}/adamlui/chatgpt-apps/duckduckgpt/
+        run: |
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
+            ${{ github.workspace }}/kudoai/duckduckgpt/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/duckduckgpt/
 
       - name: Sync chatgpt/bravegpt/ to kudoai/bravegpt/greasemonkey/
-        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
+            ${{ github.workspace }}/kudoai/bravegpt/greasemonkey/
 
       - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-apps/bravegpt/greasemonkey/
-        run: rsync -avhr --delete ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/greasemonkey/
 
       - name: Push to kudoai/bravegpt
         uses: stefanzweifel/git-auto-commit-action@v4
