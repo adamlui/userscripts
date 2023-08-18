@@ -1,9 +1,19 @@
 // ==UserScript==
 // @name                GitHub Star History ⭐
+// @name:zh             GitHub 之星历史 ⭐
+// @name:zh-CN          GitHub 之星历史 ⭐
+// @name:zh-HK          GitHub 之星曆史 ⭐
+// @name:zh-SG          GitHub 之星历史 ⭐
+// @name:zh-TW          GitHub 之星曆史 ⭐
 // @description         Adds star history chart to sidebar of GitHub repos
+// @description:zh      将明星历史图表添加到 GitHub 存储库的侧边栏
+// @description:zh-CN   将明星历史图表添加到 GitHub 存储库的侧边栏
+// @description:zh-HK   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
+// @description:zh-SG   将明星历史图表添加到 GitHub 存储库的侧边栏
+// @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.18.5
+// @version             2023.8.18.6
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
