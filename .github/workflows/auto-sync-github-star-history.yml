@@ -26,11 +26,11 @@ jobs:
           repository: adamlui/github-star-history
           path: adamlui/github-star-history
 
-      - name: Copy README.md to adamlui/github-star-history
+      - name: Sync docs/** to adamlui/github-star-history/docs/**
         run: |
-          cp -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/github-star-history/README.md \
-            ${{ github.workspace }}/adamlui/github-star-history/README.md
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/github-star-history/docs \
+            ${{ github.workspace }}/adamlui/github-star-history/
 
       - name: Sync github-star-history/ to adamlui/github-star-history/greasemonkey/
         run: |
