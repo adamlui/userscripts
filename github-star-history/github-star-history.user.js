@@ -3,7 +3,7 @@
 // @description         Adds star history graph to sidebar of GitHub repos
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.18
+// @version             2023.8.18.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -11,7 +11,7 @@
 
 (async () => {
 
-	// Observe DOM for need to insert star history
+    // Observe DOM for need to insert star history
     let starHistoryAdded = false
     const repoObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -35,7 +35,7 @@
 
             if (img.complete && img.naturalHeight !== 0) {
 
-            	// Create div + add attrs/HTML/listener
+                // Create div + add attrs/HTML/listener
                 const starHistoryDiv = document.createElement('div')
                 starHistoryDiv.id = 'star-history'
                 starHistoryDiv.style.cursor = 'pointer'
@@ -60,38 +60,38 @@
         })
     }
 
-	function zoomStarHistory(imgURL) {
-	    const user = /github\.com\/(.*?)\//.exec(window.location)[1],
-	          repo = /.*\/(.*)/.exec(window.location)[1]              
+    function zoomStarHistory(imgURL) {
+        const user = /github\.com\/(.*?)\//.exec(window.location)[1],
+              repo = /.*\/(.*)/.exec(window.location)[1]              
 
         // Create/stylize overlay
-	    const overlay = document.createElement('div')
-	    overlay.style.position = 'fixed'
-	    overlay.style.top = '0'
-	    overlay.style.left = '0'
-	    overlay.style.width = '100%'
-	    overlay.style.height = '100%'
-	    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'
-	    overlay.style.display = 'flex'
-	    overlay.style.alignItems = 'center'
-	    overlay.style.justifyContent = 'center'
-	    overlay.style.zIndex = '9999'
+        const overlay = document.createElement('div')
+        overlay.style.position = 'fixed'
+        overlay.style.top = '0'
+        overlay.style.left = '0'
+        overlay.style.width = '100%'
+        overlay.style.height = '100%'
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'
+        overlay.style.display = 'flex'
+        overlay.style.alignItems = 'center'
+        overlay.style.justifyContent = 'center'
+        overlay.style.zIndex = '9999'
 
-	    // Stylize zoomed img
-	    const zoomedImg = new Image()
-	    zoomedImg.style.maxWidth = '90%'
-	    zoomedImg.style.maxHeight = '90%'
-	    zoomedImg.style.cursor = 'pointer'
-	    zoomedImg.src = imgURL
-	    zoomedImg.title = 'View on star-history.com'
+        // Stylize zoomed img
+        const zoomedImg = new Image()
+        zoomedImg.style.maxWidth = '90%'
+        zoomedImg.style.maxHeight = '90%'
+        zoomedImg.style.cursor = 'pointer'
+        zoomedImg.src = imgURL
+        zoomedImg.title = 'View on star-history.com'
 
-	    // Add listeners
-	    zoomedImg.addEventListener('click', () => { // view on star-history.com
-	        window.open(`https://star-history.com/#${ user }/${ repo }&Date`, '_blank') })
-	    overlay.addEventListener('click', () => { document.body.removeChild(overlay) })
+        // Add listeners
+        zoomedImg.addEventListener('click', () => { // view on star-history.com
+            window.open(`https://star-history.com/#${ user }/${ repo }&Date`, '_blank') })
+        overlay.addEventListener('click', () => { document.body.removeChild(overlay) })
 
-	    // Append elements
-	    overlay.appendChild(zoomedImg) ; document.body.appendChild(overlay)
-	}
+        // Append elements
+        overlay.appendChild(zoomedImg) ; document.body.appendChild(overlay)
+    }
 
 })()
