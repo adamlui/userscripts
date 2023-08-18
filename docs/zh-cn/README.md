@@ -14,40 +14,47 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT 标志" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 利用 ChatGPT 惊人的 AI 的用户脚本.<br>
-[查看脚本](../../chatgpt) / 
+[查看脚本](../../chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="隐藏论坛图片标志" src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
+### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../github-star-history)
+
+将明星历史图表添加到 GitHub 存储库的侧边栏.<br>
+[安装](https://greasyfork.org/scripts/473377) /
+[自述文件](../../github-star-history#readme) /
+[讨论](https://github.com/adamlui/userscripts/discussions)
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频.<br>
-[安装](https://greasyfork.org/scripts/12639) / 
-[自述文件](../../hide-forum-images/README.md) / 
+[安装](https://greasyfork.org/scripts/12639) /
+[自述文件](../../hide-forum-images/README.md) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="突出单选气泡标识" src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
+### <img src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
 
 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳.<br>
-[安装](https://greasyfork.org/scripts/26311) / 
-[自述文件](../../highlight-radio-bubbles/README.md) / 
+[安装](https://greasyfork.org/scripts/26311) /
+[自述文件](../../highlight-radio-bubbles/README.md) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="Amazon Mechanical Turk 标识" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
+### <img src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
 
 亚马逊 Mechanical Turk 的用户脚本.<br>
-[查看脚本](../../mturk) / 
+[查看脚本](../../mturk) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="YouTube 经典版 标识" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 将 YouTube 恢复为经典设计(在所有圆角和隐藏的不喜欢之前)+ 重定向 YouTube Shorts.<br>
-[安装](https://greasyfork.org/en/scripts/456132) / 
-[自述文件](../../youtube-classic/README.md) / 
+[安装](https://greasyfork.org/en/scripts/456132) /
+[自述文件](../../youtube-classic/README.md) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-<a href="https://github.com/adamlui/userscripts/discussions">讨论</a> / 
+<a href="https://github.com/adamlui/userscripts/discussions">讨论</a> /
 <a href="#%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87--english">回到顶部 ↑</a>
