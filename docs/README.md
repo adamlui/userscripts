@@ -14,41 +14,48 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 alt="ChatGPT logo" src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
 
 Userscripts that utilize the astounding AI of ChatGPT.<br>
-[View scripts](../chatgpt) / 
+[View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 alt="Hide Forum Images logo" src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
+### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Star History ⭐](../github-star-history)
+
+Adds star history chart to sidebar of GitHub repos.<br>
+[Install](https://greasyfork.org/scripts/473377) /
+[Readme](../github-star-history#readme) /
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.<br>
-[Install](https://greasyfork.org/scripts/12639) / 
-[Readme](../hide-forum-images/README.md) / 
+[Install](https://greasyfork.org/scripts/12639) /
+[Readme](../hide-forum-images/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="Highlight Radio Bubbles logo" src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key.<br>
-[Install](https://greasyfork.org/scripts/26311) / 
-[Readme](../highlight-radio-bubbles/README.md) / 
+[Install](https://greasyfork.org/scripts/26311) /
+[Readme](../highlight-radio-bubbles/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="Amazon Mechanical Turk logo" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
+### <img src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
 
 Userscripts for Amazon's Mechanical Turk.<br>
-[View scripts](../mturk) / 
+[View scripts](../mturk) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img alt="YouTube Classic logo" src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Userscripts" style="margin:0 0 -2px 5px"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.<br>
-[Install](https://greasyfork.org/en/scripts/456132) / 
-[Readme](../youtube-classic/README.md) / 
+[Install](https://greasyfork.org/en/scripts/456132) /
+[Readme](../youtube-classic/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> / 
+<a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> /
 <a href="#english--%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">Back to top ↑</a>
 <div align="right">
