@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.18.7
+// @version             2023.8.18.8
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -45,8 +45,8 @@
         if (!document.querySelector('#star-history')) {
 
             try { // to load/insert star history chart
-                const imgURL = 'https://api.star-history.com/svg?repos='
-                             + `${ user }/${ repo }&type=Date`,
+                const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
+                                               + `${ user }/${ repo }&type=Date`),
                       img = await loadImg(imgURL)
 
                 if (img.complete && img.naturalHeight !== 0) {
@@ -75,6 +75,12 @@
             img.onerror = (error) => reject(error)
             img.src = url
         })
+    }
+
+    function sanitizeImgURL(url) {
+        if (!url.startsWith('https://api.star-history.com/svg'))
+            throw new Error('>> Invalid URL')
+        return url
     }
 
     function zoomStarHistory(imgURL) {
