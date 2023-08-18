@@ -1,0 +1,49 @@
+name: Sync github-star-history/ to adamlui/github-star-history/greasemonkey/
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'github-star-history/**'
+
+jobs:
+  build:
+    if: github.event.commits[0].committer.username != 'kudo-sync-bot'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout adamlui/github-star-history
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/github-star-history
+          path: adamlui/github-star-history
+
+      - name: Copy README.md to adamlui/github-star-history
+        run: |
+          cp -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/github-star-history/README.md \
+            ${{ github.workspace }}/adamlui/github-star-history/README.md
+
+      - name: Sync github-star-history/ to adamlui/github-star-history/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/github-star-history/ \
+            ${{ github.workspace }}/adamlui/github-star-history/greasemonkey/
+
+      - name: Push to adamlui/github-star-history
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: '**'
+          repository: adamlui/github-star-history
