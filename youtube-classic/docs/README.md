@@ -1,9 +1,9 @@
 <h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://media.ytclassic.com/images/yt-classic-dark-mode-logo.png">
-    <img height=53 alt="YouTube Classic logo" src="https://media.ytclassic.com/images/yt-classic-light-mode-logo.png">
+    <img height=53 src="https://media.ytclassic.com/images/yt-classic-light-mode-logo.png">
   </picture>
-  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img alt="Tweet" style="margin:0 0 6px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
+  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img style="margin:0 0 6px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
 
 ![usercount](https://img.shields.io/greasyfork/dt/456132?label=Users&color=brightgreen&style=flat-square)
@@ -14,7 +14,7 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://greasyfork.org/en/scripts/456132"><img alt="Install this script" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/456132"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
@@ -49,11 +49,11 @@
 
 #### Contributor links:
 
-[![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
-[![Follow @adamluitube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social)](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" alt="Follow @adam on Mastodon" title="Mastodon">
-[![Follow @adamllui on Twitter](https://img.shields.io/twitter/follow/adamllui?style=social)](https://twitter.com/adamllui)
-[![Follow @Anarios on GitHub](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "GitHub")](https://github.com/Anarios)
+[![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
+[![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" title="Mastodon">
+[![](https://img.shields.io/twitter/follow/adamllui?style=social "X")](https://x.com/adamllui)
+[![](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "GitHub")](https://github.com/Anarios)
 
 
 <a href="#--------------">Back to top ↑</a>
