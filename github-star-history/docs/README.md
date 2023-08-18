@@ -18,7 +18,10 @@
 
 <div align="center">
 
-![](https://raw.githubusercontent.com/adamlui/github-star-history/7a8a50d27bab4a170efdda3174e67adb70617218/media/images/screenshots/star-history-sidebar.png)
+<picture>
+    <source type="image/webp" srcset="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-sidebar.webp">
+    <img src="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-sidebar.png">
+</picture>
 
 </div>
 
