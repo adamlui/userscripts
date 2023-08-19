@@ -5,15 +5,15 @@
 // @name:zh-HK          GitHub 寬銀幕 🖥️
 // @name:zh-SG          GitHub 宽银幕 🖥️
 // @name:zh-TW          GitHub 寬銀幕 🖥️
-// @description         Auto-hides obtrusive side panels from various views on GitHub
-// @description:zh      自动隐藏 GitHub 上各种视图中引人注目的侧面板
-// @description:zh-CN   自动隐藏 GitHub 上各种视图中引人注目的侧面板
-// @description:zh-HK   自動隱藏 GitHub 上各種視圖中引人注目的側面板
-// @description:zh-SG   自动隐藏 GitHub 上各种视图中引人注目的侧面板
-// @description:zh-TW   自動隱藏 GitHub 上各種視圖中引人注目的側面板
+// @description         Auto-hides obtrusive side panels on GitHub
+// @description:zh      自动隐藏 GitHub 上引人注目的侧面板
+// @description:zh-CN   自动隐藏 GitHub 上引人注目的侧面板
+// @description:zh-HK   自動隱藏 GitHub 上引人注目的側面板
+// @description:zh-SG   自动隐藏 GitHub 上引人注目的侧面板
+// @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.19.2
+// @version             2023.8.19.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
