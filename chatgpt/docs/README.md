@@ -52,7 +52,7 @@ Generate endless answers from all-knowing ChatGPT (in any language!)
 Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) / 
 [Readme](../chatgpt-widescreen#readme) / 
-[Discuss](https://chatgptevo.com/widescreen/discussions)
+[Discuss](https://chatgptwidescreen.com/discussions)
 
 ### <img style="margin-bottom:-1px" src="https://media.duckduckgpt.com/images/ddgpt-icon48.png" width=17> [DuckDuckGPT](../duckduckgpt) <a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" alt="DuckDuckGPT - Bring&#0032;the&#0032;magic&#0032;of&#0032;ChatGPT&#0032;to&#0032;DuckDuckGo | Product Hunt" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 

@@ -86,12 +86,12 @@ Generate endless answers from all-knowing ChatGPT (in any language!)
 [Readme](https://github.com/adamlui/chatgpt-infinity#readme) / 
 [Discuss](https://chatgptevo.com/infinity/discussions)
 
-### <img width=17 style="margin-bottom:-1px" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 5px;" width="auto" height="24" />
+### <img width=17 style="margin-bottom:-1px" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 5px;" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
-[Discuss](https://chatgptevo.com/widescreen/discuss)
+[Discuss](https://chatgptwidescreen.com/discuss)
 
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
   
