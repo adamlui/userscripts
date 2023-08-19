@@ -20,7 +20,7 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [查看脚本](../../chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../github-star-history)
+### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 将明星历史图表添加到 GitHub 存储库的侧边栏.<br>
 [安装](https://greasyfork.org/scripts/473377) /
