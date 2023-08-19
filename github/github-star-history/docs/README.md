@@ -13,16 +13,9 @@
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
 [Contact author](https://github.com/adamlui)
 
-## What it does
-
-- #### Adds star history chart on the side of repo pages:
-
 <div align="center">
 
-<picture>
-    <source type="image/webp" srcset="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-sidebar.webp">
-    <img src="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-sidebar.png">
-</picture>
+<img src="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-in-sidebar.png">
 
 </div>
 
