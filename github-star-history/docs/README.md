@@ -3,6 +3,7 @@
 [![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/github-star-history?label=Commits&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/commits/main)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-star-history)
+[![](https://img.shields.io/badge/Mentioned_in-Awesome-cca8c4?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/awesome-scripts/awesome-userscripts#github)
 
 ### Adds star history chart to sidebar of GitHub repos.
 
