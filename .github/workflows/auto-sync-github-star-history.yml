@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, main ]
     paths:
-      - 'github-star-history/**'
+      - 'github/github-star-history/**'
 
 jobs:
   build:
