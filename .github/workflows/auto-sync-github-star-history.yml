@@ -1,4 +1,4 @@
-name: Sync github-star-history/ to adamlui/github-star-history/greasemonkey/
+name: Sync github/github-star-history/ to adamlui/github-star-history/greasemonkey/
 
 on:
   push:
@@ -26,16 +26,16 @@ jobs:
           repository: adamlui/github-star-history
           path: adamlui/github-star-history
 
-      - name: Sync docs/** to adamlui/github-star-history/docs/**
+      - name: Sync github/github-star-history/docs/** to adamlui/github-star-history/docs/**
         run: |
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/github-star-history/docs \
+            ${{ github.workspace }}/adamlui/userscripts/github/github-star-history/docs \
             ${{ github.workspace }}/adamlui/github-star-history/
 
-      - name: Sync github-star-history/ to adamlui/github-star-history/greasemonkey/
+      - name: Sync github/github-star-history/ to adamlui/github-star-history/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/github-star-history/ \
+            ${{ github.workspace }}/adamlui/userscripts/github/github-star-history/ \
             ${{ github.workspace }}/adamlui/github-star-history/greasemonkey/
 
       - name: Push to adamlui/github-star-history
