@@ -1,0 +1,48 @@
+# <img width=28 style="margin-bottom: -2px" src="https://github.githubassets.com/favicons/favicon.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
+
+[![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
+
+### Auto-hides obtrusive side panels from GitHub
+
+<a href="https://greasyfork.org/scripts/473377-github-star-history"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<br>
+[Discuss](https://github.com/adamlui/github-widescreen/discussions) /
+[Review](https://greasyfork.org/scripts/473439-github-widescreen/feedback#post-discussion) /
+[Contact author](https://github.com/adamlui)
+
+## ⚡ Installation
+
+1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
+
+2. Install [GitHub Widescreen](https://greasyfork.org/scripts/473439-github-widescreen) (will load in userscript manager installed above)
+
+3. Visit [github.com](https://github.com) as normal, and side panels (like the symbols navigator) will auto-hide on first load!
+
+## 🪶 Author links
+
+[![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
+[![Follow @AdamLuiTube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
+<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" title="Mastodon">
+[![Follow @adamllui on X](https://img.shields.io/twitter/follow/adamllui?style=social "X")](https://x.com/adamllui)
+<br><br>
+
+## 📜 Related scripts
+
+### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Star History ⭐](../github/github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+
+Adds star history chart to sidebar of GitHub repos.<br>
+[Install](https://greasyfork.org/scripts/473377) /
+[Readme](https://github.com/adamlui/github-star-history#readme) /
+[Discuss](https://github.com/adamlui/github-star-history/discussions)
+
+### <img width=17 style="margin-bottom:-1px" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 5px;" width="auto" height="24" />
+
+Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
+<br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
+[Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
+[Discuss](https://chatgptwidescreen.com/discuss)
+
+<img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
+  
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
+<a href="#-github-widescreen--">Back to top ↑</a>
