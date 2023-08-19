@@ -20,7 +20,7 @@ Userscripts that utilize the astounding AI of ChatGPT.<br>
 [View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
+### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
 
 Userscripts that enhance the GitHub experience.<br>
 [View scripts](../github) /
@@ -33,14 +33,14 @@ Hides images/videos from XenForo, vBulletin & Discourse forums.<br>
 [Readme](../hide-forum-images/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/ribh0wE.png" width=15> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img width=15 style="margin-right: 1px" src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key.<br>
 [Install](https://greasyfork.org/scripts/26311) /
 [Readme](../highlight-radio-bubbles/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
+### <img style="margin-right: 2px" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
 
 Userscripts for Amazon's Mechanical Turk.<br>
 [View scripts](../mturk) /
