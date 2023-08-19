@@ -20,7 +20,7 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [查看脚本](../../chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../github)
+### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../github)
 
 增强 GitHub 体验的用户脚本。<br>
 [查看脚本](../github) /
@@ -33,14 +33,14 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [自述文件](../../hide-forum-images/README.md) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
+### <img width=15 style="margin-right: 1px" src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
 
 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。<br>
 [安装](https://greasyfork.org/scripts/26311) /
 [自述文件](../../highlight-radio-bubbles/README.md) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
+### <img style="margin-right: 2px" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
 
 亚马逊 Mechanical Turk 的用户脚本。<br>
 [查看脚本](../../mturk) /
