@@ -19,7 +19,7 @@
 
 </div>
 
-## Installation
+## ⚡ Installation
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)) or Violentmonkey ([Chrome](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao))
 
@@ -35,7 +35,7 @@
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
 [More userscripts](https://github.com/adamlui/userscripts)
 
-## Author links
+## 🪶 Author links
 
 [![Follow @adamlui on GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
 [![Follow @AdamLuiTube on YouTube](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
@@ -43,12 +43,12 @@
 [![Follow @adamllui on X](https://img.shields.io/twitter/follow/adamllui?style=social "X")](https://x.com/adamllui)
 <br><br>
 
-## Related scripts
+## 📜 Related scripts
 
 ### <img width=17 style="margin: 0 2px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
-[Install](https://greasyfork.org/scripts/473439) /
+[Install](https://github.com/adamlui/github-widescreen#-installation) /
 [Readme](https://github.com/adamlui/github-widescreen#readme) /
 [Discuss](https://github.com/adamlui/github-widescreen/discussions)
 
