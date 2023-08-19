@@ -20,11 +20,11 @@ Userscripts that utilize the astounding AI of ChatGPT.<br>
 [View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Star History ⭐](../github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Star History ⭐](../github/github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 Adds star history chart to sidebar of GitHub repos.<br>
 [Install](https://greasyfork.org/scripts/473377) /
-[Readme](../github-star-history#readme) /
+[Readme](../github/github-star-history#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
