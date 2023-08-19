@@ -10,14 +10,14 @@
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../../github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../../github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 将明星历史图表添加到 GitHub 存储库的侧边栏。<br>
 [安装](https://greasyfork.org/scripts/473377) /
 [自述文件](../../github-star-history#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 宽银幕 🖥️](../../github-widescreen)
+### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 宽银幕 🖥️](../../github-widescreen)
 
 自动隐藏 GitHub 上引人注目的侧面板。<br>
 [安装](https://greasyfork.org/scripts/473439) /
