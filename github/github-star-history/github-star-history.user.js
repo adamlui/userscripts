@@ -13,10 +13,15 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.18.8
+// @version             2023.8.20
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
+// @compatible          chrome
+// @compatible          firefox
+// @compatible          brave
 // @match               *://github.com/*
+// @connect             api.star-history.com
+// @grant               GM.xmlHttpRequest
 // @downloadURL         https://greasyfork.org/scripts/473377/code/github-star-history.user.js
 // @updateURL           https://greasyfork.org/scripts/473377/code/github-star-history.meta.js
 // @homepageURL         https://github.com/adamlui/github-star-history
@@ -39,53 +44,58 @@
 
     // Define FUNCTIONS
 
-    async function insertStarHistory() {
-        const user = /github\.com\/(.*?)\//.exec(window.location)[1],
-              repo = /.*\/(.*)/.exec(window.location)[1]
-        if (!document.querySelector('#star-history')) {
-
-            try { // to load/insert star history chart
-                const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
-                                               + `${ user }/${ repo }&type=Date`),
-                      img = await loadImg(imgURL)
-
-                if (img.complete && img.naturalHeight !== 0) {
-
-                    // Create div + add attrs/HTML/listener
-                    const starHistoryDiv = document.createElement('div')
-                    starHistoryDiv.id = 'star-history'
-                    starHistoryDiv.style.cursor = 'pointer'
-                    starHistoryDiv.innerHTML = '<img style="width: 100% ; padding: 20px 0" '
-                        + 'src="' + imgURL + '">'
-                    starHistoryDiv.addEventListener('click', () => { zoomStarHistory(imgURL) })
-
-                    // Insert div
-                    const aboutSection = document.querySelector('[class$="sidebar"] > div > div')
-                    aboutSection.insertAdjacentElement('afterend', starHistoryDiv)
-                }
-
-            } catch (err) { console.error('>> Error loading star history chart:', err) }
-        }
-    }
-
-    function loadImg(url) {
-        return new Promise((resolve, reject) => {
-            const img = new Image()
-            img.onload = () => resolve(img)
-            img.onerror = (error) => reject(error)
-            img.src = url
-        })
-    }
-
     function sanitizeImgURL(url) {
         if (!url.startsWith('https://api.star-history.com/svg'))
             throw new Error('>> Invalid URL')
         return url
     }
 
+    async function insertStarHistory() {
+        const user = /github\.com\/(.*?)\//.exec(window.location)[1],
+              repo = /.*\/(.*)/.exec(window.location)[1]
+        if (!document.querySelector('#star-history')) {
+
+            try { // to load/insert star history chart
+
+                // Craft image URL
+                const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
+                    + `${ user }/${ repo }&type=Date`
+                    + ( document.documentElement.dataset.colorMode === 'dark' ||
+                        document.documentElement.dataset.darkreaderScheme === 'dark'
+                            ? '&theme=dark' : '' ))
+
+                // Fetch image as blob
+                const response = await GM.xmlHttpRequest({
+                    method: 'GET', url: imgURL, responseType: 'blob' })
+                if (response.status !== 200) 
+                    throw new Error('>> Failed to fetch image')
+
+                // Convert blob to data URL
+                const imgDataURL = await new Promise((resolve) => {
+                    const reader = new FileReader()
+                    reader.onload = () => resolve(reader.result)
+                    reader.readAsDataURL(response.response)
+                })
+
+                // Create #star-history div + add attrs/HTML/listener
+                const starHistoryDiv = document.createElement('div')
+                starHistoryDiv.id = 'star-history'
+                starHistoryDiv.style.cursor = 'pointer'
+                starHistoryDiv.innerHTML = '<img style="width: 100% ; padding: 20px 0" '
+                    + 'src="' + imgDataURL  + '">'
+                starHistoryDiv.addEventListener('click', () => { zoomStarHistory(imgDataURL) })
+
+                // Insert div
+                const aboutSection = document.querySelector('[class$="sidebar"] > div > div')
+                aboutSection.insertAdjacentElement('afterend', starHistoryDiv)
+
+            } catch (err) { console.error('>> Error loading star history chart:', err) }
+        }
+    }
+
     function zoomStarHistory(imgURL) {
         const user = /github\.com\/(.*?)\//.exec(window.location)[1],
-              repo = /.*\/(.*)/.exec(window.location)[1]              
+              repo = /.*\/(.*)/.exec(window.location)[1]
 
         // Create/stylize overlay
         const overlay = document.createElement('div')
