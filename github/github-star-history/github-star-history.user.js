@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.20
+// @version             2023.8.20.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -57,18 +57,15 @@
 
             try { // to load/insert star history chart
 
-                // Craft image URL
+                // Fetch image as blob
                 const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
                     + `${ user }/${ repo }&type=Date`
                     + ( document.documentElement.dataset.colorMode === 'dark' ||
                         document.documentElement.dataset.darkreaderScheme === 'dark'
                             ? '&theme=dark' : '' ))
-
-                // Fetch image as blob
                 const response = await GM.xmlHttpRequest({
                     method: 'GET', url: imgURL, responseType: 'blob' })
-                if (response.status !== 200) 
-                    throw new Error('>> Failed to fetch image')
+                if (response.status !== 200) throw new Error('>> Failed to fetch image')
 
                 // Convert blob to data URL
                 const imgDataURL = await new Promise((resolve) => {
