@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.21
+// @version             2023.8.21.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -37,7 +37,7 @@
 
     // Init CONFIG
     const config = {
-        prefix: 'githubStarHistory', appSymbol: '⭐',
+        appSymbol: '⭐',
         gitHubURL: 'https://github.com/adamlui/github-star-history',
         greasyForkURL: 'https://greasyfork.org/scripts/473377-github-star-history' }
     config.updateURL = config.greasyForkURL + '/code/github-star-history.meta.js'
@@ -95,8 +95,8 @@
                 // Compare versions
                 const latestVer = /@version +(.*)/.exec(response.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                    const currentSubVer = parseInt(currentVer.split('.')[i]) || 0,
-                          latestSubVer = parseInt(latestVer.split('.')[i]) || 0
+                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
                     else if (latestSubVer > currentSubVer) { // if outdated
 
