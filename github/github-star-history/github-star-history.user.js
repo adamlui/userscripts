@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.21.3
+// @version             2023.8.22
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -377,7 +377,7 @@
                 // Create #star-history div + add attrs/HTML/listener
                 const starHistoryDiv = document.createElement('div')
                 starHistoryDiv.id = 'star-history'
-                starHistoryDiv.style.cursor = 'pointer'
+                starHistoryDiv.style.cursor = 'crosshair'
                 starHistoryDiv.innerHTML = '<img style="width: 100% ; padding: 20px 0" '
                     + 'src="' + imgDataURL  + '">'
                 starHistoryDiv.addEventListener('click', () => { zoomStarHistory(imgDataURL) })
