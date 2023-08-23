@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.7.1
+// @version          2023.8.22
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://github.com/adamlui
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -630,10 +630,7 @@ document.addEventListener('yt-page-data-updated', async() => {
         yt-smartimation.ytd-subscribe-button-renderer {display: flex !important }
 
         /* Fix disappearing bar in masthead */
-        #background.ytd-masthead { opacity: 1!important }
-
-        /* Fix disappearing header in channel homepage */
-        .ytd-two-column-browse-results-renderer { margin-top: 21px }`
+        #background.ytd-masthead { opacity: 1!important }`
 
     document.head.appendChild(styles)
 })()
