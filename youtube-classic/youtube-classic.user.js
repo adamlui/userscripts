@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.9.6
+// @version          2023.9.6.1
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://github.com/adamlui
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -13,11 +13,11 @@
 // @compatible       safari
 // @compatible       edge
 // @match            https://*.youtube.com/*
-// @run-at           document-start
 // @grant            GM_registerMenuCommand
 // @grant            GM_unregisterMenuCommand
 // @grant            GM_getValue
 // @grant            GM_setValue
+// @run-at           document-start
 // @updateURL        https://www.ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://www.ytclassic.com/us/code/youtube-classic.user.js
 // @homepageURL      https://www.ytclassic.com
@@ -41,8 +41,8 @@ function registerMenu() {
     menuIDs.push(GM_registerMenuCommand(rsLabel, () => {
         saveSetting('disableShorts', !config.disableShorts)
         for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
-        if (window.location.href.match(/shorts\/.+/))
-            window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
+        if (unsafeWindow.location.href.match(/shorts\/.+/))
+            unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
     }))
 }
 
@@ -55,16 +55,16 @@ registerMenu()
 // Redirect Shorts
 if (config.disableShorts) {
     var oldHref = document.location.href;
-    if (window.location.href.match(/shorts\/.+/))
-        window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
-    window.onload = () => {
+    if (unsafeWindow.location.href.match(/shorts\/.+/))
+        unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
+    unsafeWindow.onload = () => {
         var bodyList = document.querySelector('body')
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function() {
                 if (oldHref != document.location.href) {
                     oldHref = document.location.href
-                    if (window.location.href.match(/shorts\/.+/))
-                        window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
+                    if (unsafeWindow.location.href.match(/shorts\/.+/))
+                        unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
         }})})
         var config = { childList: true, subtree: true }
         observer.observe(bodyList, config);
@@ -140,9 +140,9 @@ class YTP {
     static start() { this.observer.observe(document, {childList: true, subtree: true}); }
     static stop() { this.observer.disconnect(); }
     static bruteforce() {
-        if (!window.yt) return;
-        if (!window.yt.config_) return;
-        this.mergeDeep(window.yt.config_, this._config);
+        if (!unsafeWindow.yt) return;
+        if (!unsafeWindow.yt.config_) return;
+        this.mergeDeep(unsafeWindow.yt.config_, this._config);
     }
     static setCfg(name, value) { this._config[name] = value; }
     static setCfgMulti(configs) { this.mergeDeep(this._config, configs); }
@@ -173,10 +173,10 @@ class YTP {
         return response;
     }
     static setPlyrFlags(flags) {
-        if (!window.yt) return;
-        if (!window.yt.config_) return;
-        if (!window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS) return;
-        var conCfgs = window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS;
+        if (!unsafeWindow.yt) return;
+        if (!unsafeWindow.yt.config_) return;
+        if (!unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS) return;
+        var conCfgs = unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS;
         if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {};
         for (var cfg in conCfgs) {
             var dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags);
@@ -191,7 +191,7 @@ class YTP {
 const ATTRS = [ // Attributes to remove from <html>
     'darker-dark-theme', 'darker-dark-theme-deprecate'
 ];
-window.addEventListener('yt-page-data-updated', function tmp() {
+unsafeWindow.addEventListener('yt-page-data-updated', function tmp() {
     var innerHTML = '<img style="margin-left:5px;" height=65 src="' // Replace YouTube logo
         + (document.querySelector('ytd-masthead').getAttribute('dark') !== null
            ? 'https://i.imgur.com/brCETJj.png' // in dark mode
@@ -199,7 +199,7 @@ window.addEventListener('yt-page-data-updated', function tmp() {
     document.getElementById('logo-icon').innerHTML = innerHTML;
     YTP.stop();
     for (var i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]); }
-    window.removeEventListener('yt-page-date-updated', tmp);
+    unsafeWindow.removeEventListener('yt-page-date-updated', tmp);
 });
 
 YTP.start();
@@ -1023,7 +1023,7 @@ function dislikeClicked() {
 function setInitialState() { setState(); }
 
 function getVideoId() {
-    const urlObject = new URL(window.location.href);
+    const urlObject = new URL(unsafeWindow.location.href);
     const pathname = urlObject.pathname;
     if (pathname.startsWith('/clip')) { return document.querySelector('meta[itemprop="videoId"]').content;
     } else {
@@ -1119,7 +1119,7 @@ function setEventListeners() {
     function checkForJS_Finish() {
         if (isShorts() || (getButtons()?.offsetParent && isVideoLoaded())) {
             const buttons = getButtons();
-            if (!window.returnDislikeButtonlistenersSet) {
+            if (!unsafeWindow.returnDislikeButtonlistenersSet) {
                 cLog('Registering button listeners...');
                 try {
                     buttons.children[0].addEventListener('click', likeClicked);
@@ -1127,7 +1127,7 @@ function setEventListeners() {
                     buttons.children[0].addEventListener('touchstart', likeClicked);
                     buttons.children[1].addEventListener('touchstart', dislikeClicked);
                 } catch { return; }
-                window.returnDislikeButtonlistenersSet = true;
+                unsafeWindow.returnDislikeButtonlistenersSet = true;
             }
             setInitialState();
             clearInterval(jsInitChecktimer);
@@ -1138,13 +1138,13 @@ function setEventListeners() {
 }
 
 (function() {
-    window.addEventListener('yt-navigate-finish', setEventListeners, true);
+    unsafeWindow.addEventListener('yt-navigate-finish', setEventListeners, true);
     setEventListeners();
 })();
 if (isMobile) {
     let originalPush = history.pushState;
     history.pushState = function(...args) {
-        window.returnDislikeButtonlistenersSet = false;
+        unsafeWindow.returnDislikeButtonlistenersSet = false;
         setEventListeners(args[2]);
         return originalPush.apply(history, args);
     };
