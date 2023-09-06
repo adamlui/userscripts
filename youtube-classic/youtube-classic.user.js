@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.8.22
+// @version          2023.9.6
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://github.com/adamlui
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -14,37 +14,62 @@
 // @compatible       edge
 // @match            https://*.youtube.com/*
 // @run-at           document-start
-// @grant            none
+// @grant            GM_registerMenuCommand
+// @grant            GM_unregisterMenuCommand
+// @grant            GM_getValue
+// @grant            GM_setValue
 // @updateURL        https://www.ytclassic.com/us/code/youtube-classic.meta.js
 // @downloadURL      https://www.ytclassic.com/us/code/youtube-classic.user.js
 // @homepageURL      https://www.ytclassic.com
 // @supportURL       https://github.com/adamlui/userscripts/issues
 // ==/UserScript==
 
-// Redirect Shorts
-var oldHref = document.location.href;
-if (window.location.href.match(/shorts\/.+/)) {
-    window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+// Define FUNCTIONS
+
+function loadSetting(...keys) { keys.forEach(key => { config[key] = GM_getValue(config.prefix + '_' + key, false) })}
+function saveSetting(key, value) { GM_setValue(config.prefix + '_' + key, value) ; config[key] = value }
+function getUserscriptManager() { try { return GM_info.scriptHandler } catch (error) { return 'other' }}
+function registerMenu() {
+    const menuIDs = [] // to store registered commands for removal while preserving order
+    const state = {
+        symbol: ['✔️', '❌'], word: ['ON', 'OFF'],
+        separator: getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ' }
+
+    // Add command to toggle Shorts redirect
+    const rsLabel = state.symbol[+!config.disableShorts] + ' Redirect Shorts '
+                  + state.separator + state.word[+!config.disableShorts]
+    menuIDs.push(GM_registerMenuCommand(rsLabel, () => {
+        saveSetting('disableShorts', !config.disableShorts)
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
+        if (window.location.href.match(/shorts\/.+/))
+            window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
+    }))
 }
-window.onload = function() {
-    var bodyList = document.querySelector('body')
-    var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function() {
-            if (oldHref != document.location.href) {
-                oldHref = document.location.href;
-                console.log('location changed!');
-                if (window.location.href.match(/shorts\/.+/)) {
-                    window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
-                }
-            }
-        });
-    });
-    var config = {
-        childList: true,
-        subtree: true
-    };
-    observer.observe(bodyList, config);
-};
+
+// Run MAIN routine
+
+const config = { prefix: 'ytClassic' }
+loadSetting('disableShorts')
+registerMenu()
+
+// Redirect Shorts
+if (config.disableShorts) {
+    var oldHref = document.location.href;
+    if (window.location.href.match(/shorts\/.+/))
+        window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
+    window.onload = () => {
+        var bodyList = document.querySelector('body')
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function() {
+                if (oldHref != document.location.href) {
+                    oldHref = document.location.href
+                    if (window.location.href.match(/shorts\/.+/))
+                        window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='))
+        }})})
+        var config = { childList: true, subtree: true }
+        observer.observe(bodyList, config);
+    }
+}
 
 // Config keys
 const CONFIGS = { BUTTON_REWORK: false }
@@ -630,7 +655,10 @@ document.addEventListener('yt-page-data-updated', async() => {
         yt-smartimation.ytd-subscribe-button-renderer {display: flex !important }
 
         /* Fix disappearing bar in masthead */
-        #background.ytd-masthead { opacity: 1!important }`
+        #background.ytd-masthead { opacity: 1!important }
+
+        /* Fix disappearing header in channel homepage */
+        .ytd-two-column-browse-results-renderer { margin-top: 21px }`
 
     document.head.appendChild(styles)
 })()
