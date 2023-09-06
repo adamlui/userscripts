@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.22
+// @version             2023.9.5
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -74,7 +74,7 @@
     const repoObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                const onRepoPage = window.location.href.split('/').length === 5
+                const onRepoPage = /^https?:\/\/[^/]+\/[^/]+\/[^/]+\/?$/.test(window.location.href);
                 if (onRepoPage && !starHistoryAdded) {
                     insertStarHistory() ; starHistoryAdded = true
                 } else if (!onRepoPage && starHistoryAdded) starHistoryAdded = false
