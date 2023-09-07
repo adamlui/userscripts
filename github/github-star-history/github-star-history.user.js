@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.9.5
+// @version             2023.9.7
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -356,16 +356,17 @@
     async function insertStarHistory() {
         const user = /github\.com\/(.*?)\//.exec(window.location)[1],
               repo = /.*\/(.*)/.exec(window.location)[1]
-        if (!document.querySelector('#star-history')) {
 
-            try { // to load/insert star history chart
+        try { // to load/insert star history chart
 
-                // Fetch image as blob
-                const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
-                    + `${ user }/${ repo }&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
-                const response = await GM.xmlHttpRequest({
-                    method: 'GET', url: imgURL, responseType: 'blob' })
-                if (response.status !== 200) throw new Error('>> Failed to fetch image')
+            // Fetch image as blob
+            const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
+                + `${ user }/${ repo }&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
+            const response = await GM.xmlHttpRequest({
+                method: 'GET', url: imgURL, responseType: 'blob' })
+            if (response.status !== 200) throw new Error('>> Failed to fetch image')
+
+            if (!document.querySelector('#star-history')) {
 
                 // Convert blob to data URL
                 const imgDataURL = await new Promise((resolve) => {
@@ -385,9 +386,9 @@
                 // Insert div
                 const aboutSection = document.querySelector('[class$="sidebar"] > div > div')
                 aboutSection.insertAdjacentElement('afterend', starHistoryDiv)
+            }
 
-            } catch (err) { console.error('>> Error loading star history chart:', err) }
-        }
+        } catch (err) { console.error('>> Error loading star history chart:', err) }
     }
 
     function zoomStarHistory(imgURL) {
