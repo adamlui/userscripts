@@ -29,21 +29,21 @@
 
 自动继续生成多个 ChatGPT 响应。<br>
 [安装](https://greasyfork.org/scripts/466789-chatgpt-auto-continue) /
-[自述文件](../../chatgpt-auto-continue#readme) /
+[自述文件](../../chatgpt-auto-continue/docs/zh-cn#readme) /
 [讨论](https://chatgptautocontinue.com/discuss)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT 自动刷新 ↻](../../chatgpt-auto-refresh) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 5px"></a>
 
 保持 ChatGPT 会话新鲜以消除网络错误 + Cloudflare 检查。
 <br>[安装](https://greasyfork.org/scripts/462422-chatgpt-auto-refresh) /
-[自述文件](../../chatgpt-auto-refresh/docs/zh-cn/README.md) /
+[自述文件](../../chatgpt-auto-refresh/docs/zh-cn#readme) /
 [讨论](https://chatgptautorefresh.com/discuss)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT无限 ∞](../../chatgpt-infinity) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" alt="在 Awesome Userscripts 中提到" style="margin:0 0 -2px 4px"></a>
 
 从无所不知的 ChatGPT 生成无穷无尽的答案 (用任何语言!)
 <br>[安装](https://greasyfork.org/scripts/465051-chatgpt-infinity) /
-[自述文件](../../chatgpt-infinity/docs/zh-cn/README.md) /
+[自述文件](../../chatgpt-infinity#readme) /
 [讨论](https://chatgptinfinity.com/discuss)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT 宽屏模式 🖥️](../../chatgpt-widescreen) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" alt="ChatGPT&#0032;Widescreen&#0032;Mode - Add&#0032;widescreen&#0032;&#0043;&#0032;full&#0032;window&#0032;modes&#0032;to&#0032;ChatGPT | Product Hunt" style="width: auto; height: 24px; margin:0 0 -4px 3px;" width="auto" height="24" />
