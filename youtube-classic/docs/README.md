@@ -14,10 +14,10 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://greasyfork.org/en/scripts/456132"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/456132"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts" target="_blank"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
+[Review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
 [Contact author](https://elonsucks.org/@adam)
 
 <h2>What it does</h2>
@@ -32,19 +32,19 @@
     <p><i>&nbsp;After:</i><br>
       <img src="https://i.imgur.com/LLc2xK3.png"></li><br>
   <li><b>Redirects YouTube Shorts</b> to classic player for increased usability<br>
-    (based on fuim's <a href="https://greasyfork.org/en/scripts/439993-youtube-shorts-redirect" target="_blank">YouTube Shorts Redirect</a>)
+    (based on fuim's <a href="https://greasyfork.org/scripts/439993-youtube-shorts-redirect" target="_blank">YouTube Shorts Redirect</a>)
     <p><img width=400 src="https://i.imgur.com/uew2gcD.png"></li><br>
   <li><b>Hides sneaky recommendations</b> from search for more accurate results<br>
-    (based on hoothin's <a href="https://greasyfork.org/en/scripts/441189-youtube-hide-for-you-suggestion-when-search" target="_blank">
+    (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search" target="_blank">
       YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>
   <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li>
 </ul>
 
 ## Script links
 
-<a href="https://greasyfork.org/en/scripts/456132">Install this script</a> / 
+<a href="https://greasyfork.org/scripts/456132">Install this script</a> / 
 <a href="https://github.com/adamlui/youtube-classic/discussions">Discuss</a> / 
-[Leave a review](https://greasyfork.org/en/scripts/456132/feedback#post-discussion) /
+[Leave a review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
 <a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
 
 #### Contributor links:
