@@ -109,7 +109,7 @@ If OpenAI API is acting unreliable, enable Proxy Mode like this:
 <br><a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" title="Follow @adam on Mastodon"></a>
 [![](https://img.shields.io/badge/Follow%20@adamllui-2.1k-blue?logo=x&style=social "Follow @adamllui on X")](https://x.com/adamllui)
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @adamluitube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
-[![](https://img.shields.io/badge/Follow%20in%2fadamlui-441-blue?logo=linkedin&style=social "Follow in/adamlui on LinkedIn")](https://linkedin.com/in/adamlui)
+[![](https://img.shields.io/badge/Follow%20in%2fadamlui-462-blue?logo=linkedin&style=social "Follow in/adamlui on LinkedIn")](https://linkedin.com/in/adamlui)
 [![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
 
 ## Contributors
@@ -139,26 +139,26 @@ For even more epic ChatGPT apps, go here: https://github.com/adamlui/chatgpt-app
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT Infinity ∞](https://chatgptinfinity.com) <a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 4px"></a>
 
-> Generate endless answers from all-knowing ChatGPT (in any language!)
-
-[Install](https://github.com/adamlui/chatgpt-infinity#installation) //
-[Readme](https://github.com/adamlui/chatgpt-infinity#readme) //
+Generate endless answers from all-knowing ChatGPT (in any language!)
+<br>
+[Install](https://github.com/adamlui/chatgpt-infinity#installation) /
+[Readme](https://github.com/adamlui/chatgpt-infinity#readme) /
 [Discuss](https://chatgptinfinity.com/discuss)
 
 ### <img src="https://media.bravegpt.com/images/bravegpt-icon48.png" width=18> [BraveGPT](https://bravegpt.com) <a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light" style="width: 112px; height: 24px; margin:0 0 -4px 5px;" width="112" height="24" /></a>
 
-> Display ChatGPT answers in Brave Search sidebar.
-
-[Install](https://github.bravegpt.com/#installation) //
-[Readme](https://github.bravegpt.com/#readme) //
+Display ChatGPT answers in Brave Search sidebar.
+<br>
+[Install](https://github.bravegpt.com/#installation) /
+[Readme](https://github.bravegpt.com/#readme) /
 [Discuss](https://github.bravegpt.com/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=16 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT Widescreen Mode 🖥️](https://chatgptwidescreen.com) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 3px;" width="auto" height="24" />
 
-> Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing.
-
-[Install](https://github.com/adamlui/chatgpt-widescreen#installation) //
-[Readme](https://github.com/adamlui/chatgpt-widescreen#readme) //
+Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing.
+<br>
+[Install](https://github.com/adamlui/chatgpt-widescreen#installation) /
+[Readme](https://github.com/adamlui/chatgpt-widescreen#readme) /
 [Discuss](https://chatgptwidescreen.com/discuss)
 
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
