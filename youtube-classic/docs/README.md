@@ -42,18 +42,18 @@
 
 ## Script links
 
-<a href="https://greasyfork.org/scripts/456132">Install this script</a> / 
-<a href="https://github.com/adamlui/youtube-classic/discussions">Discuss</a> / 
+[Install this script](https://greasyfork.org/scripts/456132) /
+[Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Leave a review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
-<a href="https://github.com/adamlui/userscripts" target="_blank">More userscripts</a>
+[More userscripts](https://github.com/adamlui/userscripts)
 
 #### Contributor links:
 
-[![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "GitHub")](https://github.com/adamlui)
-[![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social" title="Mastodon">
-[![](https://img.shields.io/twitter/follow/adamllui?style=social "X")](https://x.com/adamllui)
-[![](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "GitHub")](https://github.com/Anarios)
+[![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
+[![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @AdamLuiTube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
+[![](https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social)](https://elonsucks.org/@adam "Follow @adam on Mastodon")
+[![](https://img.shields.io/twitter/follow/adamllui?style=social "Follow @adamllui on X")](https://x.com/adamllui)
+[![](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "Follow @Anarios on GitHub")](https://github.com/Anarios)
 
 
 <a href="#--------------">Back to top ↑</a>
