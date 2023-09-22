@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Вимагають" },
   "menuLabel_beforeQuery": { "message": "перед запитом" },
   "menuLabel_afterQuery": { "message": "після запиту" },
-  "menuLabel_fatterSidebar": { "message": "Більш товста бічна панель" },
   "menuLabel_replyLanguage": { "message": "Мова відповіді" },
   "menuLabel_about": { "message": "Про нас" },
   "buttonLabel_updateCheck": { "message": "Перевірка оновлень" },

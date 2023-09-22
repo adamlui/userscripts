@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Kræv" },
   "menuLabel_beforeQuery": { "message": "før forespørgsel" },
   "menuLabel_afterQuery": { "message": "efter forespørgsel" },
-  "menuLabel_fatterSidebar": { "message": "Federe sidebjælke" },
   "menuLabel_replyLanguage": { "message": "Svarsprog" },
   "menuLabel_about": { "message": "Om" },
   "buttonLabel_updateCheck": { "message": "Tjek for Opdateringer" },

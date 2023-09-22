@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "الزامی" },
   "menuLabel_beforeQuery": { "message": "قبل از پرس و جو" },
   "menuLabel_afterQuery": { "message": "پس از پرس و جو" },
-  "menuLabel_fatterSidebar": { "message": "نوار کناری چاق تر" },
   "menuLabel_replyLanguage": { "message": "زبان پاسخ" },
   "menuLabel_about": { "message": "درباره" },
   "buttonLabel_updateCheck": { "message": "بررسی به روز رسانی" },

@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "དགོས་མ།" },
   "menuLabel_beforeQuery": { "message": "དྲི་བཀོད་མ་འབད་བའི་ཧེ་མ་" },
   "menuLabel_afterQuery": { "message": "དྲི་བཀོད་འབད་བའི་ཤུལ་ལས་" },
-  "menuLabel_fatterSidebar": { "message": "ཕྱོགས་ཟུར་ཟུར་ཚུ།" },
   "menuLabel_replyLanguage": { "message": "ལན་སློག" },
   "menuLabel_about": { "message": "སྐོར་ལས་" },
   "buttonLabel_updateCheck": { "message": "ད་ལྟོའི་དུས་ཚོད། བསྒྱུར་བཅོས་འབད་" },

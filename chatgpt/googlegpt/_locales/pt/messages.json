@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Exigir" },
   "menuLabel_beforeQuery": { "message": "antes da consulta" },
   "menuLabel_afterQuery": { "message": "após consulta" },
-  "menuLabel_fatterSidebar": { "message": "Barra lateral mais gorda" },
   "menuLabel_replyLanguage": { "message": "Idioma da resposta" },
   "menuLabel_about": { "message": "Quem somos" },
   "buttonLabel_updateCheck": { "message": "Verificar se há atualizações" },

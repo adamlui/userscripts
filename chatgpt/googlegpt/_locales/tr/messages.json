@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Gerekli" },
   "menuLabel_beforeQuery": { "message": "Sorgudan Önce" },
   "menuLabel_afterQuery": { "message": "sorgudan sonra" },
-  "menuLabel_fatterSidebar": { "message": "Fatter Sidebar" },
   "menuLabel_replyLanguage": { "message": "Cevap Dili" },
   "menuLabel_about": { "message": "Hakkımızda" },
   "buttonLabel_updateCheck": { "message": "Güncellemeleri Kontrol Et" },

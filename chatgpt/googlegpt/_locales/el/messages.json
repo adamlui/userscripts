@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Απαιτείται" },
   "menuLabel_beforeQuery": { "message": "πριν από το ερώτημα" },
   "menuLabel_afterQuery": { "message": "κατόπιν ερωτήματος" },
-  "menuLabel_fatterSidebar": { "message": "Παχύτερη πλευρική στήλη" },
   "menuLabel_replyLanguage": { "message": "Γλώσσα απάντησης" },
   "menuLabel_about": { "message": "Σχετικά" },
   "buttonLabel_updateCheck": { "message": "Έλεγχος για ενημερώσεις" },

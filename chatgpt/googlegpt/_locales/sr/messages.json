@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Obavezno" },
   "menuLabel_beforeQuery": { "message": "pre upita" },
   "menuLabel_afterQuery": { "message": "nakon upita" },
-  "menuLabel_fatterSidebar": { "message": "Deblja bočna traka" },
   "menuLabel_replyLanguage": { "message": "Jezik odgovora" },
   "menuLabel_about": { "message": "O nama" },
   "buttonLabel_updateCheck": { "message": "Провери допуне" },

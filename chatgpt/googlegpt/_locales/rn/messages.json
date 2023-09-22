@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Ibisabwa" },
   "menuLabel_beforeQuery": { "message": "imbere yo kubaza ibibazo" },
   "menuLabel_afterQuery": { "message": "inyuma y'ikibazo" },
-  "menuLabel_fatterSidebar": { "message": "Fatter Sidebar None None" },
   "menuLabel_replyLanguage": { "message": "Musubize Ururimi" },
   "menuLabel_about": { "message": "Ku vyerekeye" },
   "buttonLabel_updateCheck": { "message": "Raba amakuru agezweho" },

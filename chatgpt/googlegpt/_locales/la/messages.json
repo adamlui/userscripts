@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "peto" },
   "menuLabel_beforeQuery": { "message": "query" },
   "menuLabel_afterQuery": { "message": "post query" },
-  "menuLabel_fatterSidebar": { "message": "Sidebar Fatter" },
   "menuLabel_replyLanguage": { "message": "Reply Language" },
   "menuLabel_about": { "message": "De Hac Re" },
   "buttonLabel_updateCheck": { "message": "Check for Updates" },

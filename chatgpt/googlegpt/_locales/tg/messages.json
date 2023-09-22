@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Require" },
   "menuLabel_beforeQuery": { "message": "before query" },
   "menuLabel_afterQuery": { "message": "after query" },
-  "menuLabel_fatterSidebar": { "message": "Fatter Sidebar" },
   "menuLabel_replyLanguage": { "message": "Reply Language" },
   "menuLabel_about": { "message": "About" },
   "buttonLabel_updateCheck": { "message": "Check for Updates" },

@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "پێویست دەکات، پێویستبون، پێویستی پێ بوون، داوالێکردن، پێویستبوون، پێویستی پێبوون، داواکردن، ویستن، داوای لێدەکا، بەسەری دەسەپێنێ، فەرمانی دەدات بە\n[کۆمپیوتەر]: پێویستبوون" },
   "menuLabel_beforeQuery": { "message": "berî pirsê" },
   "menuLabel_afterQuery": { "message": "piştî lêpirsînê" },
-  "menuLabel_fatterSidebar": { "message": "Fatter Sidebar" },
   "menuLabel_replyLanguage": { "message": "Zimanê bersivê" },
   "menuLabel_about": { "message": "Derbarê de..." },
   "buttonLabel_updateCheck": { "message": "Ji bo Nûvekirinan kontrol bikin" },

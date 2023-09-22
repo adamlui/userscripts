@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "आवश्यक" },
   "menuLabel_beforeQuery": { "message": "क्वेरी अघि" },
   "menuLabel_afterQuery": { "message": "क्वेरी पछि" },
-  "menuLabel_fatterSidebar": { "message": "फ्याटर साइडबार" },
   "menuLabel_replyLanguage": { "message": "जवाफ भाषा" },
   "menuLabel_about": { "message": "बारेमा" },
   "buttonLabel_updateCheck": { "message": "अद्यावधिकका लागि जाँच गर्नुहोस्" },

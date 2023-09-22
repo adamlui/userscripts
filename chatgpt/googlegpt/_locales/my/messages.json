@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "လိုအပ်သည်" },
   "menuLabel_beforeQuery": { "message": "qUERY မတိုင်မီ" },
   "menuLabel_afterQuery": { "message": "qUERY ပြီးနောက်" },
-  "menuLabel_fatterSidebar": { "message": "Fatter Sidebar" },
   "menuLabel_replyLanguage": { "message": "ပြန်ကြားချက်ဘာသာစကား" },
   "menuLabel_about": { "message": "အကြောင်း" },
   "buttonLabel_updateCheck": { "message": "အသစ်ထွက်ရှိမှု့ကိုစစ်ဆေးမည်" },

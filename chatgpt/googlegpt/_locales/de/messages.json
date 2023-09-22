@@ -5,7 +5,6 @@
   "menuLabel_require": { "message": "Erfordern" },
   "menuLabel_beforeQuery": { "message": "vor der Abfrage" },
   "menuLabel_afterQuery": { "message": "nach Abfrage" },
-  "menuLabel_fatterSidebar": { "message": "Fettere Seitenleiste" },
   "menuLabel_replyLanguage": { "message": "Antwortsprache" },
   "menuLabel_about": { "message": "Über" },
   "buttonLabel_updateCheck": { "message": "Nach Updates suchen" },
