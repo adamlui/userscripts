@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.9.23.1
+// @version             2023.9.23.2
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -726,7 +726,7 @@
             + ( isDarkMode() ? 'background: #3a3a3a ; color: #f2f2f2 } ' : 'background: #eaeaea } ' )
         + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
         + '.googlegpt-container section.loading {'
-            + 'padding-left: 5px ;' // left-pad loading status when sending replies
+            + 'padding: 15px 0 0 5px ;' // left/top-pad loading status when sending replies
             + '-webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
         + '.chatgpt-feedback { margin: 2px 0 25px }'
         + '.balloon-tip { content: "" ; position: relative ; top: 5px ; right: 15.9em ; border: 7px solid transparent ;'
