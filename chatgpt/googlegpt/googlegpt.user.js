@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.9.23.2
+// @version             2023.9.23.3
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -505,8 +505,9 @@
                 } else if (!config.proxyAPIenabled && getUserscriptManager() !== 'Tampermonkey') {
                     if (event.response) {
                         try { // to parse txt response from OpenAI endpoint for non-TM users
-                            const answer = JSON.parse(event.response
-                                .split('\n\n').slice(-3, -2)[0].slice(6)).message.content.parts[0]
+                            const responseParts = event.response.split('\n\n'),
+                                  finalResponse = JSON.parse(responseParts[responseParts.length - 4].slice(6)),
+                                  answer = finalResponse.message.content.parts[0]
                             googleGPTshow(answer)
                         } catch (error) {
                             googleGPTconsole.error(googleGPTalerts.parseFailed + ': ' + error)
