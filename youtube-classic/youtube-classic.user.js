@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.9.6.1
+// @version          2023.9.26
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://github.com/adamlui
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -76,31 +76,44 @@ const CONFIGS = { BUTTON_REWORK: false }
 
 // Experiment flags
 const EXPFLAGS = {
+    enable_channel_page_header_profile_section: false,
     enable_header_channel_handler_ui: false,
     kevlar_unavailable_video_error_ui_client: false,
     kevlar_refresh_on_theme_change: false,
+    kevlar_modern_sd_v2: false,
     kevlar_watch_cinematics: false,
+    kevlar_watch_comments_panel_button: false,
+    kevlar_watch_grid: false,
+    kevlar_watch_grid_hide_chips: false,
     kevlar_watch_metadata_refresh: false,
+    kevlar_watch_metadata_refresh_no_old_secondary_data: false,
     kevlar_watch_modern_metapanel: false,
+    kevlar_watch_modern_panels: false,
+    kevlar_watch_panel_height_matches_player: false,
+    smartimation_background: false,
     web_amsterdam_playlists: false,
+    web_animated_actions: false,
     web_animated_like: false,
     web_button_rework: false,
     web_button_rework_with_live: false,
     web_darker_dark_theme: false,
-    web_filled_subscribed_button: false,
+    web_enable_youtab: false,
     web_guide_ui_refresh: false,
     web_modern_ads: false,
     web_modern_buttons: false,
     web_modern_chips: false,
+    web_modern_collections_v2: false,
     web_modern_dialogs: false,
     web_modern_playlists: false,
-    web_modern_subscribe: false,
+    web_modern_subscribe: true,
+    web_modern_tabs: false,
     web_rounded_containers: false,
     web_rounded_thumbnails: false,
     web_searchbar_style: 'default',
     web_segmented_like_dislike_button: false,
     web_sheets_ui_refresh: false,
-    web_snackbar_ui_refresh: false
+    web_snackbar_ui_refresh: false,
+    web_watch_rounded_player_large: false
 }
 
 // Player flags
@@ -209,33 +222,49 @@ YTP.setPlyrFlags(PLYRFLAGS);
 
 function $(q) { return document.querySelector(q) }
 
-function restoreTrending() {
-    var trendingData = {
-        'navigationEndpoint': {
-            'clickTrackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
-            'commandMetadata': {
-                'webCommandMetadata': {
-                    'url': '/feed/explore',
-                    'webPageType': 'WEB_PAGE_TYPE_BROWSE',
-                    'rootVe': 6827,
-                    'apiUrl': '/youtubei/v1/browse'
-                }
-            },
-            'browseEndpoint': { 'browseId': 'FEtrending' }
-        },
-        'icon': { 'iconType': 'EXPLORE' },
-        'trackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
-        'formattedTitle': { 'simpleText': 'Explore' },
-        'accessibility': { 'accessibilityData': { 'label': 'Explore' }},
-        'isPrimary': true
-    }
-    document.querySelector('#items > ytd-guide-entry-renderer:nth-child(2)').data = trendingData
-    document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
+// Re-add 'Explore' tab in sidebar (it also replaces the 'Shorts' tab)
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector))
+            return resolve(document.querySelector(selector))
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector))
+                observer.disconnect()
+            }
+        })
+        observer.observe(document.body, { childList: true, subtree: true })
+    })
 }
 
-// Restore Explore in guide + mini-guide
-waitForElm('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
-waitForElm('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
+function restoreTrending() {
+    var trendingData = {
+        "navigationEndpoint": {
+            "clickTrackingParams": "CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==",
+            "commandMetadata": {
+                "webCommandMetadata": {
+                    "url": "/feed/explore",
+                    "webPageType": "WEB_PAGE_TYPE_BROWSE",
+                    "rootVe": 6827,
+                    "apiUrl": "/youtubei/v1/browse"
+                }
+            },
+            "browseEndpoint": { "browseId": "FEtrending" }
+        },
+        "icon": { "iconType": "EXPLORE" },
+        "trackingParams": "CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==",
+        "formattedTitle": { "simpleText": "Explore" },
+        "accessibility": { "accessibilityData": { "label": "Explore" }},
+        "isPrimary": true
+    }
+    var guidetemplate = `<ytd-guide-entry-renderer class="style-scope ytd-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`;
+    document.querySelector(`#items > ytd-guide-entry-renderer:nth-child(2)`).data = trendingData
+    var miniguidetemplate = `<ytd-mini-guide-entry-renderer class="style-scope ytd-mini-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`
+    document.querySelector(`#items > ytd-mini-guide-entry-renderer:nth-child(2)`).data = trendingData
+}
+
+waitForElm("#items.ytd-guide-section-renderer").then((elm) => { restoreTrending() })
+waitForElm("#items.ytd-mini-guide-section-renderer").then((elm) => { restoreTrending() })
 
 // Fix YouTube dislikes
 addEventListener('yt-page-data-updated', function() {
@@ -413,12 +442,59 @@ document.addEventListener('yt-page-data-updated', async() => {
 (function() {
     var styles = document.createElement('style')
     styles.innerHTML = `
-        /* Unround corners of video player */ ytd-player { border-radius: 0 !important }
+
+        /* Revert old background color and buttons */
+        html[dark] {
+            --yt-spec-general-background-a: #181818 !important ;
+            --yt-spec-general-background-b: #0f0f0f !important ;
+            --yt-spec-brand-background-primary: rgba(33, 33, 33, 0.98) !important ;
+            --yt-spec-10-percent-layer: rgba(255, 255, 255, 0.1) !important }
+        html:not([dark]) {
+            --yt-spec-general-background-a: #f9f9f9 !important ;
+            --yt-spec-general-background-b: #f1f1f1 !important ;
+            --yt-spec-brand-background-primary: rgba(255, 255, 255, 0.98) !important ;
+            --yt-spec-10-percent-layer: rgba(0, 0, 0, 0.1) !important }
+
+        ytd-player { border-radius: 0 !important }
         ytd-masthead { background: var(--yt-spec-brand-background-solid) !important }
         ytd-app { background: var(--yt-spec-general-background-a) !important }
         ytd-browse[page-subtype="channels"] { background: var(--yt-spec-general-background-b) !important }
         ytd-c4-tabbed-header-renderer {
             --yt-lightsource-section1-color: var(--yt-spec-general-background-a) !important }
+        ytd-mini-guide-renderer, ytd-mini-guide-entry-renderer {
+            background-color: var(--yt-spec-brand-background-solid) !important }
+        #cinematics.ytd-watch-flexy { display: none !important }
+        #tabs-divider.ytd-c4-tabbed-header-renderer { border-bottom: 0px !important }
+        #header.ytd-rich-grid-renderer { width: 100% !important }
+        #chips.ytd-feed-filter-chip-bar-renderer { padding-left: 24px !important }
+        [page-subtype="home"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+            background-color: var(--yt-spec-brand-background-primary) !important ;
+            border-top: 1px solid var(--yt-spec-10-percent-layer) !important ;
+            border-bottom: 1px solid var(--yt-spec-10-percent-layer) !important }
+        ytd-feed-filter-chip-bar-renderer[is-dark-theme] #left-arrow.ytd-feed-filter-chip-bar-renderer::after {
+            background: linear-gradient(to right, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important }
+        ytd-feed-filter-chip-bar-renderer[is-dark-theme] #right-arrow.ytd-feed-filter-chip-bar-renderer::before {
+            background: linear-gradient(to left, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important }
+        ytd-feed-filter-chip-bar-renderer #left-arrow-button.ytd-feed-filter-chip-bar-renderer,
+                ytd-feed-filter-chip-bar-renderer #right-arrow-button.ytd-feed-filter-chip-bar-renderer {
+            background-color: var(--yt-spec-brand-background-primary) !important }
+        yt-chip-cloud-renderer[is-dark-theme] #right-arrow.yt-chip-cloud-renderer::before {
+            background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important }
+        yt-chip-cloud-renderer #left-arrow-button.yt-chip-cloud-renderer,
+                yt-chip-cloud-renderer #right-arrow-button.yt-chip-cloud-renderer {
+            background: var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) !important }
+        yt-chip-cloud-renderer[is-dark-theme] #left-arrow.yt-chip-cloud-renderer::after {
+            background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important }
+        yt-chip-cloud-renderer #left-arrow.yt-chip-cloud-renderer::after {
+            background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important }
+        yt-chip-cloud-renderer #right-arrow.yt-chip-cloud-renderer::before {
+            background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important }
+        ytd-feed-filter-chip-bar-renderer[component-style="FEED_FILTER_CHIP_BAR_STYLE_TYPE_HASHTAG_LANDING_PAGE"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer,
+                ytd-feed-filter-chip-bar-renderer[component-style="FEED_FILTER_CHIP_BAR_STYLE_TYPE_CHANNEL_PAGE_GRID"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+            background-color: var(--yt-spec-general-background-b) !important }
+        yt-chip-cloud-chip-renderer {
+            height: 32px !important ; border: 1px solid var(--yt-spec-10-percent-layer) !important ;
+            border-radius: 16px !important ; box-sizing: border-box !important }
         #container.ytd-searchbox {
             background-color: var(--ytd-searchbox-background) !important;
             border-radius: 2px 0 0 2px !important;
@@ -430,69 +506,39 @@ document.addEventListener('yt-page-data-updated', async() => {
         ytd-searchbox[desktop-searchbar-style="rounded_corner_light_btn"] #searchbox-button.ytd-searchbox {
             display: none !important }
         #search[has-focus] #search-input { margin-left: 32px !important }
-        #search-icon-legacy.ytd-searchbox {
-            display: block !important ; border-radius: 0px 2px 2px 0px !important }
+        #search-icon-legacy.ytd-searchbox { display: block !important ; border-radius: 0px 2px 2px 0px !important }
         .sbsb_a { border-radius: 2px !important }
         .sbsb_c { padding-left: 10px !important }
         div.sbqs_c::before { margin-right: 10px !important }
         ytd-searchbox[has-focus] #search-icon.ytd-searchbox {
-            padding-left: 10px !important ; padding-right: 10px !important }
-        ytd-clarification-renderer.style-scope.ytd-item-section-renderer {
-            border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }
+            padding-left: 10px !important ;  padding-right: 10px !important }
+        #voice-search-button.ytd-masthead {
+            background-color: var(--yt-spec-general-background-a) !important ; margin-left: 4px !important }
+        #voice-search-button.ytd-masthead {
+            background-color: var(--yt-spec-general-background-a) !important ; margin-left: 4px !important }
+        #guide-content.ytd-app { background: var(--yt-spec-brand-background-solid) !important }
+        yt-interaction.ytd-guide-entry-renderer, ytd-guide-entry-renderer { border-radius: 0px !important }
+        a#endpoint.yt-simple-endpoint.style-scope.ytd-mini-guide-entry-renderer { margin: 0px !important }
         ytd-guide-entry-renderer[guide-refresh] { width: 100% !important ; border-radius: 0px !important }
-        ytd-mini-guide-renderer { background-color: var(--yt-spec-brand-background-solid) !important }
-        ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy { border-radius: 0px !important }
-        ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
-            font-family: Roboto !important ; font-size: 1.6rem !important ; font-weight: 500 !important }
-        ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer {
-            border-radius: 0px !important }
-        ytd-compact-link-renderer.ytd-settings-sidebar-renderer {
-            margin: 0px !important ; border-radius: 0px !important }
-        img#img.style-scope.yt-image-shadow { border-radius: 50px !important }
-        #title.style-scope.ytd-feed-nudge-renderer { font-family: Roboto !important }
-        style-scope.ytd-guide-entry-renderer:hover { border-radius: 0 !important }
+        tp-yt-paper-item.ytd-guide-entry-renderer { --paper-item-focused-before-border-radius: 0px !important }
+        ytd-mini-guide-entry-renderer { border-radius: 0 !important }
+        ytd-guide-section-renderer.style-scope.ytd-guide-renderer { padding-left: 0px !important }
+        ytd-mini-guide-renderer[guide-refresh] { padding: 0 !important }
+        ytd-guide-entry-renderer[active] { border-radius: 0px !important }
+        .style-scope.ytd-guide-entry-renderer:hover { border-radius: 0 !important }
         tp-yt-paper-item.style-scope.ytd-guide-entry-renderer {
             border-radius: 0px !important ; padding-left: 24px !important }
         #guide-section-title.ytd-guide-section-renderer {
-            color: var(--yt-spec-text-secondary) !important;
-            padding: 8px 24px !important;
-            font-size: var(--ytd-tab-system-font-size) !important;
-            font-weight: var(--ytd-tab-system-font-weight) !important;
-            letter-spacing: var(--ytd-tab-system-letter-spacing) !important;
-            text-transform: var(--ytd-tab-system-text-transform) !important;
-        }
-        yt-chip-cloud-chip-renderer {
-            height: 32px !important ; border: 1px solid var(--yt-spec-10-percent-layer) !important ;
-            border-radius: 16px !important ; box-sizing: border-box !important }
-        [page-subtype="home"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
-            background-color: var(--yt-spec-brand-background-primary) !important ;
-            border-top: 1px solid var(--yt-spec-10-percent-layer) !important ;
-            border-bottom: 1px solid var(--yt-spec-10-percent-layer) !important }
-        ytd-feed-filter-chip-bar-renderer[is-dark-theme] #left-arrow.ytd-feed-filter-chip-bar-renderer::after {
-        background: linear-gradient(to right, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important }
-        ytd-feed-filter-chip-bar-renderer[is-dark-theme] #right-arrow.ytd-feed-filter-chip-bar-renderer::before {
-            background: linear-gradient(to left, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important }
-        ytd-feed-filter-chip-bar-renderer #left-arrow-button.ytd-feed-filter-chip-bar-renderer,
-        ytd-feed-filter-chip-bar-renderer #right-arrow-button.ytd-feed-filter-chip-bar-renderer {
-            background-color: var(--yt-spec-brand-background-primary) !important }
-        yt-chip-cloud-renderer[is-dark-theme] #right-arrow.yt-chip-cloud-renderer::before {
-            background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important }
-        yt-chip-cloud-renderer #left-arrow-button.yt-chip-cloud-renderer,
-        yt-chip-cloud-renderer #right-arrow-button.yt-chip-cloud-renderer {
-            background: var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) !important }
-        .yt-chip-cloud-renderer[is-dark-theme] #left-arrow.yt-chip-cloud-renderer::after {
-            background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important }
-        yt-chip-cloud-renderer #left-arrow.yt-chip-cloud-renderer::after {
-            background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important }
-        yt-chip-cloud-renderer #right-arrow.yt-chip-cloud-renderer::before {
-            background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important }
-        ytd-feed-filter-chip-bar-renderer[component-style="FEED_FILTER_CHIP_BAR_STYLE_TYPE_HASHTAG_LANDING_PAGE"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer,
-        ytd-feed-filter-chip-bar-renderer[component-style="FEED_FILTER_CHIP_BAR_STYLE_TYPE_CHANNEL_PAGE_GRID"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
-            background-color: var(--yt-spec-general-background-b) !important }
+            color: var(--yt-spec-text-secondary) !important ; padding: 8px 24px !important ;
+            font-size: var(--ytd-tab-system-font-size) !important ;
+            font-weight: var(--ytd-tab-system-font-weight) !important ;
+            letter-spacing: var(--ytd-tab-system-letter-spacing) !important ;
+            text-transform: var(--ytd-tab-system-text-transform) !important }
         .style-scope.ytd-rich-item-renderer { border-radius: 2px !important }
-        /* Subscribe button fixes */
         .style-scope.ytd-item-section-renderer { border-radius: 0px !important }
         #tooltip.tp-yt-paper-tooltip { border-radius: 2px !important }
+        div.style-scope.yt-tooltip-renderer { border-radius: 0px !important }
+        div.style-scope.yt-tooltip-renderer { border-radius: 0px !important }
         .style-scope.ytd-topic-link-renderer { border-radius: 2px !important }
         .bold.style-scope.yt-formatted-string { font-family: Roboto !important }
         .style-scope.yt-formatted-string { font-family: Roboto !important }
@@ -503,69 +549,112 @@ document.addEventListener('yt-page-data-updated', async() => {
         yt-dropdown-menu { --paper-menu-button-content-border-radius:  2px !important }
         ytd-menu-popup-renderer { border-radius: 2px !important }
         .style-scope.ytd-shared-post-renderer { border-radius: 0px !important }
+        div#repost-context.style-scope.ytd-shared-post-renderer { border-radius: 0px !important }
+        ytd-post-renderer.style-scope.ytd-shared-post-renderer { border-radius: 0px !important }
         div#dismissed.style-scope.ytd-compact-video-renderer { border-radius: 0px !important }
-        .style-scope.ytd-feed-nudge-renderer { border-radius: 2px !important }
+        .style-scope.ytd-feed-nudge-renderer {  border-radius: 2px !important }
+        .style-scope.ytd-brand-video-shelf-renderer { border-radius: 0px !important }
         tp-yt-paper-button#button.style-scope.ytd-button-renderer.style-inactive-outline.size-default {
             border-radius: 2px !important }
         div#dismissed.style-scope.ytd-rich-grid-media { border-radius: 0px !important }
-        ytd-thumbnail-overlay-toggle-button-renderer.style-scope.ytd-thumbnail {
-            border-radius: 2px !important }
-        ytd-guide-entry-renderer[active] { border-radius: 0px !important }
-        yt-chip-cloud-chip-renderer.style-scope.ytd-feed-nudge-renderer {
-            border-radius: 50px !important }
+        ytd-thumbnail[size="large"] a.ytd-thumbnail, ytd-thumbnail[size="large"]::before {
+            border-radius: 0 !important }
+        ytd-thumbnail[size="medium"] a.ytd-thumbnail, ytd-thumbnail[size="medium"]::before {
+            border-radius: 0 !important }
+        ytd-playlist-thumbnail[size="medium"] a.ytd-playlist-thumbnail, ytd-playlist-thumbnail[size="medium"]::before {
+            border-radius: 0 !important }
+        ytd-playlist-thumbnail[size="large"] a.ytd-playlist-thumbnail, ytd-playlist-thumbnail[size="large"]::before {
+            border-radius: 0 !important }
+        ytd-thumbnail-overlay-toggle-button-renderer.style-scope.ytd-thumbnail { border-radius: 2px !important }
+        ytd-compact-link-renderer[compact-link-style=compact-link-style-type-settings-sidebar][active] {
+            border-radius: 0 !important }
+        tp-yt-paper-item.style-scope.ytd-compact-link-renderer::before { border-radius: 0 !important }
+        ytd-compact-link-renderer[compact-link-style=compact-link-style-type-settings-sidebar] tp-yt-paper-item.ytd-compact-link-renderer {
+            padding-left: 24px !important ; padding-right: 24px !important }
+        yt-chip-cloud-chip-renderer.style-scope.ytd-feed-nudge-renderer { border-radius: 50px !important }
+        div#label-container.style-scope.ytd-thumbnail-overlay-toggle-button-renderer {
+            border: 2px !important ; text-transform: uppercase !important }
+        ytd-thumbnail-overlay-time-status-renderer.style-scope.ytd-thumbnail { border-radius: 2px !important }
+        ytd-backstage-post-dialog-renderer { border-radius: 2px !important }
+        yt-bubble-hint-renderer { border-radius: 2px !important }
+        #top-row.ytd-watch-metadata > div#actions.item.style-scope.ytd-watch-metadata > div#actions-inner.style-scope.ytd-watch-metadata > div#menu.style-scope.ytd-watch-metadata > ytd-menu-renderer.style-scope.ytd-watch-metadata > div#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer > ytd-button-renderer, #top-row.ytd-watch-metadata > div#actions.item.style-scope.ytd-watch-metadata > div#actions-inner.style-scope.ytd-watch-metadata > div#menu.style-scope.ytd-watch-metadata > ytd-menu-renderer.style-scope.ytd-watch-metadata > div#flexible-item-buttons.style-scope.ytd-menu-renderer > ytd-button-renderer, #top-row.ytd-watch-metadata > div#actions.item.style-scope.ytd-watch-metadata > div#actions-inner.style-scope.ytd-watch-metadata > div#menu.style-scope.ytd-watch-metadata > ytd-menu-renderer.style-scope.ytd-watch-metadata > div#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer > ytd-segmented-like-dislike-button-renderer.style-scope.ytd-menu-renderer > yt-smartimation.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-buttons-wrapper.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-like-button.style-scope.ytd-segmented-like-dislike-button-renderer > ytd-toggle-button-renderer {
+                text-transform: capitalize !important }
+        #top-row.ytd-watch-metadata > div#actions.item.style-scope.ytd-watch-metadata > div#actions-inner.style-scope.ytd-watch-metadata > div#menu.style-scope.ytd-watch-metadata > ytd-menu-renderer.style-scope.ytd-watch-metadata > div#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer > ytd-segmented-like-dislike-button-renderer.style-scope.ytd-menu-renderer > yt-smartimation.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-buttons-wrapper.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-dislike-button.style-scope.ytd-segmented-like-dislike-button-renderer > ytd-toggle-button-renderer.style-scope.ytd-segmented-like-dislike-button-renderer.style-text > a.yt-simple-endpoint.style-scope.ytd-toggle-button-renderer > yt-icon-button#button.yt-simple-endpoint.style-scope.ytd-toggle-button-renderer > button#button.style-scope.yt-icon-button {
+                width: 24px !important ; height: 24px !important }
+        #top-row.ytd-watch-metadata > div#actions.item.style-scope.ytd-watch-metadata > div#actions-inner.style-scope.ytd-watch-metadata > div#menu.style-scope.ytd-watch-metadata > ytd-menu-renderer.style-scope.ytd-watch-metadata > div#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer > ytd-segmented-like-dislike-button-renderer.style-scope.ytd-menu-renderer > yt-smartimation.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-buttons-wrapper.style-scope.ytd-segmented-like-dislike-button-renderer > div#segmented-dislike-button.style-scope.ytd-segmented-like-dislike-button-renderer > ytd-toggle-button-renderer.style-scope.ytd-segmented-like-dislike-button-renderer.style-text > a.yt-simple-endpoint.style-scope.ytd-toggle-button-renderer > yt-icon-button#button.yt-simple-endpoint.style-scope.ytd-toggle-button-renderer {
+                padding: 6px !important }
+        ytd-watch-metadata[modern-metapanel] #description.ytd-watch-metadata, #description.ytd-watch-metadata {
+            background-color: transparent !important ; border-radius: 0px !important }
+        ytd-watch-metadata[modern-metapanel] #description-inner.ytd-watch-metadata, #description-inner.ytd-watch-metadata {
+            margin: 0px !important }
+        ytd-watch-metadata[modern-metapanel-order] #comment-teaser.ytd-watch-metadata, #comment-teaser.ytd-watch-metadata {
+            border: 1px solid var(--yt-spec-10-percent-layer) !important ; border-radius: 4px !important }
+        ytd-comments-entry-point-header-renderer[modern-metapanel], #comment-teaser.ytd-watch-metadata {
+            background-color: transparent !important }
+        div#title.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        div#count.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        div#owner-name.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        div#published-date.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        div#subscribe-button.skeleton-bg-color { border-radius: 4px !important }
+        div.rich-thumbnail.skeleton-bg-color { border-radius: 0px !important }
+        div.rich-video-title.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        div.rich-video-meta.text-shell.skeleton-bg-color { border-radius: 2px !important }
+        ytd-video-view-count-renderer { font-size: 1.4rem !important }
+        ytd-video-view-count-renderer { font-size: 1.4rem !important }
         #meta #avatar { width: 48px ; height: 48px ; margin-right: 16px }
-        ytd-guide-section-renderer.style-scope.ytd-guide-renderer { padding-left: 0px !important }
-        ytd-mini-guide-renderer[guide-refresh] { padding: 0 !important }        
-        ytd-mini-guide-entry-renderer[guide-refresh] { padding-left: 4px !important ; border-radius: 0 !important }
+        #meta #avatar img { width: 100% }
+        #channel-name.ytd-video-owner-renderer { font-size: 1.4rem !important }
+        #info.ytd-video-primary-info-renderer { height: 40px !important }
+        ytd-merch-shelf-renderer { background-color: transparent !important }
+        div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important }
+        ytd-clarification-renderer.style-scope.ytd-item-section-renderer,
+                ytd-clarification-renderer.style-scope.ytd-watch-flexy {
+            border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }
+        ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
+            font-family: Roboto !important ; font-size: 1.6rem !important ; font-weight: 500 !important }
+        ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer {
+            border-radius: 0px !important }
+        ytd-compact-link-renderer.ytd-settings-sidebar-renderer {
+            margin: 0px !important ; border-radius: 0px !important }
+        img#img.style-scope.yt-image-shadow { border-radius: 50px !important }
+        #title.style-scope.ytd-feed-nudge-renderer { font-family: Roboto !important }
+        yt-formatted-string.style-scope.yt-chip-cloud-chip-renderer { font-weight: 400 !important }
+
+        /* Subscribe button fixes */
+        .style-scope.ytd-item-section-renderer { border-radius: 0px !important }
+        .style-scope.ytd-feed-nudge-renderer { border-radius: 2px !important }
+        .style-scope.ytd-inline-survey-renderer { border-radius: 2px !important }
+        #meta #avatar { width: 48px ; height: 48px ; margin-right: 16px }
         #meta #avatar img { width: 100% }
         #channel-name.ytd-video-owner-renderer { font-size: 1.4rem !important }
         #info.ytd-video-primary-info-renderer { height: 40px !important }
         div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important }
-        ytd-clarification-renderer.style-scope.ytd-item-section-renderer {
-            border: 1px solid !important ; border-color: #0000001a !important ;
-            border-radius: 0px !important }
-        ytd-clarification-renderer.style-scope.ytd-watch-flexy {
-            border: 1px solid !important ; border-color: #0000001a !important ;
-            border-radius: 0px !important }
         yt-formatted-string.description.style-scope.ytd-clarification-renderer {
             font-size: 1.4rem !important }
         div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important }
-        ytd-rich-metadata-renderer[rounded] { border-radius: 0px !important }
-        ytd-live-chat-frame[rounded-container] { border-radius: 0px !important }
-        ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame {
+        ytd-watch-flexy[rounded-player-large][default-layout] #ytd-player.ytd-watch-flexy {
             border-radius: 0px !important }
-        iframe.style-scope.ytd-live-chat-frame { border-radius: 0px !important }
-        ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer {
+        ytd-rich-metadata-renderer[rounded] { border-radius: 0px !important }
+        ytd-toggle-button-renderer.style-scope.ytd-live-chat-frame,
+                yt-live-chat-header-renderer.style-scope.yt-live-chat-renderer {
+            background: var(--yt-spec-brand-background-solid) !important }
+        ytd-live-chat-frame[rounded-container], ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame, iframe.style-scope.ytd-live-chat-frame {
+                border-radius: 0px !important }
+        ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer,
+                ytd-tvfilm-offer-module-renderer[modern-panels],
+                ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy {
             border-radius: 0px !important }
         ytd-playlist-panel-renderer[modern-panels]:not([hide-header-text]) .title.ytd-playlist-panel-renderer {
             font-family: Roboto !important ; font-size: 1.4rem !important ;
             line-height: 2rem !important ; font-weight: 500 !important }
-        ytd-tvfilm-offer-module-renderer[modern-panels] { border-radius: 0px !important }
         ytd-tvfilm-offer-module-renderer[modern-panels] #header.ytd-tvfilm-offer-module-renderer {
             border-radius: 0px !important ; font-family: Roboto !important ;
             font-size: 1.6rem !important ; line-height: 2.2rem !important ; font-weight: 400 !important }
-        ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer {
-            border-radius: 0px !important }
-        ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer {
-            border-radius: 0px !important }
-        #title.ytd-settings-sidebar-renderer {
-            font-family: Roboto !important ; font-weight: 400 !important }
-        ytd-compact-link-renderer.ytd-settings-sidebar-renderer {
-            margin: 0px !omportant ; border-radius: 0 !important }
         ytd-compact-link-renderer[compact-link-style=compact-link-style-type-settings-sidebar][active] {
             border-radius: 0 !important }
-        #channel-container.ytd-c4-tabbed-header-renderer { height: 100px !important }
-        #contentContainer.tp-yt-app-header-layout { padding-top: 353px !important }
-        #channel-header-container.ytd-c4-tabbed-header-renderer { padding-top: 0 !important }
-        ytd-c4-tabbed-header-renderer[use-modern-style] #channel-name.ytd-c4-tabbed-header-renderer {
-            margin-bottom: 0px !important }
-        ytd-c4-tabbed-header-renderer[use-modern-style] #avatar-editor.ytd-c4-tabbed-header-renderer {
-            --ytd-channel-avatar-editor-size: 80px !important }
-        #avatar.ytd-c4-tabbed-header-renderer {
-            width: 80px !important ; height: 80px !important ; margin: 0 24px 0 0 !important ;
-            flex: none !important ; border-radius: 50% !important ;
-            background-color: transparent !important ; overflow: hidden !important }
-        #wrapper > .ytd-channel-tagline-renderer.style-scope,#videos-count { display: none !important }
+        ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,
+                ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer {
+            border-radius: 0px !important }
 
         /* Remove rounded corners from the video player */
         .ytp-ad-player-overlay-flyout-cta-rounded { border-radius: 2px !important }
@@ -577,7 +666,7 @@ document.addEventListener('yt-page-data-updated', async() => {
             margin: 0 8px 0 0 !important ; max-width: 140px !important ; padding: 0 10px !important }
         .ytp-ad-action-interstitial-action-button.ytp-ad-action-interstitial-action-button-rounded {
             background-color: #167ac6 !important ; border: none !important ; border-radius: 2px ;
-            font-family: Arial !important ; font-size: 23px !important ; height: 46px !important ;
+            font-family: Roboto !important ; font-size: 23px !important ; height: 46px !important ;
             line-height: 46px !important ; min-width: 164px !important ; padding: 0 20px !important }
         .ytp-settings-menu { border-radius: 2px !important }
         .ytp-sb-subscribe {
@@ -624,35 +713,94 @@ document.addEventListener('yt-page-data-updated', async() => {
             border-radius: 0 !important }
         ytd-miniplayer #player-container.ytd-miniplayer, ytd-miniplayer #video-container.ytd-miniplayer .video.ytd-miniplayer, ytd-miniplayer #card.ytd-miniplayer, ytd-miniplayer {
             border-radius: 0 !important }
-        #player.ytd-channel-video-player-renderer { border-radius: 0 !important }
-        #player.ytd-channel-video-player-renderer .ytp-small-mode .ytp-chrome-bottom {
-            eight: 36px !important }
-        ytd-video-masthead-ad-primary-video-renderer[rounded] #player-container.ytd-video-masthead-ad-primary-video-renderer {
-            border-radius: 0 !important }
+        ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer { border-radius: 0 !important }
+        .ytp-small-mode .ytp-chrome-bottom { height: 36px !important }
+        #movie_player > div.ytp-promotooltip-wrapper > div.ytp-promotooltip-container { border-radius: 2px !important }
+        .ytp-chrome-controls .ytp-jump-button { display: none !important }
 
-        /* Subscribe button fix when you are logged in */
+        /* Subscribe button fixes + Old compact channel header UI */
         #buttons.ytd-c4-tabbed-header-renderer { flex-direction: row-reverse !important }
         yt-button-shape.style-scope.ytd-subscribe-button-renderer { display: flex !important }
         #subscribe-button ytd-subscribe-button-renderer button {
             height: 37px !important ; letter-spacing: 0.5px !important ;
             border-radius: 2px !important ; text-transform: uppercase !important }
         .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-            color: #fff !important ; background: #c00 !important ; border-radius: 2px !important ;
-            text-transform: uppercase !important ; letter-spacing: 0.5px !important }
+            color: #fff !important ; background: var(--yt-spec-brand-button-background) !important ;
+            border-radius: 2px !important ; text-transform: uppercase !important ; letter-spacing: 0.5px !important }
         button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m {
             height: 37px !important ; letter-spacing: 0.5px !important ;
             border-radius: 2px !important ; text-transform: uppercase !important }
+        #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
+            background-color: var(--yt-spec-badge-chip-background) !important ;
+            color: var(--yt-spec-text-secondary) !important }
         button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-s {
+            background-color: var(--yt-spec-badge-chip-background) !important ;
+            color: var(--yt-spec-text-secondary) !important ;
             height: 25px !important ; letter-spacing: 0.5px !important;
             border-radius: 2px !important ; text-transform: uppercase !important }
         div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m {
-        background-color: transparent !important ; border-radius: 16px !important ;
-        padding-left: 14px !important ; padding-right: 2px !important ; margin-left: 4px !important }
-        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.cbox.yt-spec-button-shape-next--button-text-content {
-            display: none !important }
-        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.yt-spec-button-shape-next__secondary-icon {
-            display: none !important }
+                background-color: transparent !important ; border-radius: 16px !important ;
+                padding-left: 14px !important ; padding-right: 2px !important ; margin-left: 4px !important }
+        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.cbox.yt-spec-button-shape-next__button-text-content, div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m > div.yt-spec-button-shape-next__secondary-icon {
+                display: none !important }
+        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer > yt-button-shape > .yt-spec-button-shape-next--size-m {
+                border-radius: 100px !important ; width: 37px !important }
         yt-smartimation.ytd-subscribe-button-renderer {display: flex !important }
+        ytd-channel-tagline-renderer { display: none !important }
+        #avatar.ytd-c4-tabbed-header-renderer {
+            width: 80px !important ; height: 80px !important ; margin: 0 24px 0 0 !important ;
+            flex: none !important ; overflow: hidden !important }
+        #avatar-editor.ytd-c4-tabbed-header-renderer { --ytd-channel-avatar-editor-size: 80px !important }
+        #channel-name.ytd-c4-tabbed-header-renderer { margin-bottom: 0 !important }
+        #channel-header-container.ytd-c4-tabbed-header-renderer {
+            padding-top: 0 !important ; align-items: center !important }
+        #inner-header-container.ytd-c4-tabbed-header-renderer {
+            margin-top: 0 !important ; align-items: center !important }
+        yt-formatted-string#channel-handle.style-scope.ytd-c4-tabbed-header-renderer {
+            display: none !important }
+        #videos-count { display: none !important }
+        .meta-item.ytd-c4-tabbed-header-renderer { display: block !important }
+        div#channel-header-links.style-scope.ytd-c4-tabbed-header-renderer { display: none !important }
+        ytd-c4-tabbed-header-renderer[use-page-header-style] #channel-name.ytd-c4-tabbed-header-renderer {
+            font-size: 2.4em !important ; font-weight: 400 !important ;
+            line-height: var(--yt-channel-title-line-height, 3rem) !important }
+        span.delimiter.style-scope.ytd-c4-tabbed-header-renderer { display: none !important }
+        div#meta.style-scope.ytd-c4-tabbed-header-renderer { width: auto !important }
+        ytd-c4-tabbed-header-renderer[use-page-header-style] #inner-header-container.ytd-c4-tabbed-header-renderer {
+            flex-direction: row !important }
+        div.page-header-banner.style-scope.ytd-c4-tabbed-header-renderer {
+            margin-left: 0px !important ; margin-right: 0px !important }
+        ytd-c4-tabbed-header-renderer[use-page-header-style] .page-header-banner.ytd-c4-tabbed-header-renderer {
+            border-radius: 0px !important }
+
+        /* Remove Shorts, Trending, Podcasts and Shopping in the guide menus + Other elements to be fixed and removed */  
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-mini-guide-entry-renderer.style-scope[title="Shorts"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Trending"] { display: none !important }
+        #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Podcasts"] { display: none !important }
+        ytd-guide-entry-renderer > a[href*="/channel/UCkYQyvc_i9hXEo4xic9Hh2g"] { display: none !important }
+        .yt-tab-shape-wiz { padding: 0 32px !important ; margin-right: 0 !important }
+        .yt-tab-shape-wiz__tab {
+            font-size: 14px !important ; font-weight: 500 !important ;
+            letter-spacing: var(--ytd-tab-system-letter-spacing) !important ; text-transform: uppercase !important }
+        .yt-tab-group-shape-wiz__slider { display: none !important }
+        .yt-tab-shape-wiz__tab-bar { display: none !important }
+        yt-formatted-string.style-scope.yt-chip-cloud-chip-renderer { font-weight: 400 !important }
+        span.style-scope.ytd-rich-shelf-renderer { font-weight: 400 !important }
+        span.style-scope.ytd-shelf-renderer { font-size: 1.6rem !important ; font-weight: 500 !important }
+        .count-text.ytd-comments-header-renderer {
+            font-size: 1.6rem !important ; line-height: 2.2rem !important ; font-weight: 400 !important }
+        ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer,
+                ytd-reel-shelf-renderer.ytd-structured-description-content-renderer {
+            display: none !important }
+        ytd-video-description-infocards-section-renderer.style-scope.ytd-structured-description-content-renderer > #header.ytd-video-description-infocards-section-renderer,
+                ytd-video-description-infocards-section-renderer.style-scope.ytd-structured-description-content-renderer > #action-buttons.ytd-video-description-infocards-section-renderer {
+            display: none !important }
+        button.ytp-button.ytp-jump-button.ytp-jump-button-enabled { display: none !important }
+        ytd-player#ytd-player.style-scope.ytd-watch-flexy > div#container.style-scope.ytd-player > .html5-video-player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-left-controls > a.ytp-next-button.ytp-button {
+                display: block !important }
+        div#chip-bar.style-scope.ytd-search-header-renderer > yt-chip-cloud-renderer.style-scope.ytd-search-header-renderer > div#container.style-scope.yt-chip-cloud-renderer {
+                display: none !important }
 
         /* Fix disappearing bar in masthead */
         #background.ytd-masthead { opacity: 1!important }
@@ -662,6 +810,552 @@ document.addEventListener('yt-page-data-updated', async() => {
 
     document.head.appendChild(styles)
 })()
+
+((__CONTEXT__) => {
+ 
+  // Purpose 1: Remove Obsolete Flags
+  // Purpose 2: Remove Flags bring no visual difference
+  // Purpose 3: Enable Flags bring performance boost
+ 
+  const DISABLE_CINEMATICS = false; // standard design
+  const NO_SerializedExperiment = true;
+  const KEEP_PLAYER_QUALITY_STICKY = true; // see https://greasyfork.org/scripts/471033/
+  const DISABLE_serializedExperimentIds = true;
+  const DISABLE_serializedExperimentFlags = true;
+  const ENABLE_EXPERIMENT_FLAGS_MAINTAIN_STABLE_LIST = {
+    defaultValue: true, // performance boost
+    useExternal: () => typeof localStorage.EXPERIMENT_FLAGS_MAINTAIN_STABLE_LIST !== 'undefined',
+    externalValue: () => (+localStorage.EXPERIMENT_FLAGS_MAINTAIN_STABLE_LIST ? true : false)
+  };
+  const ENABLE_EXPERIMENT_FLAGS_MAINTAIN_REUSE_COMPONENTS = {
+    defaultValue: true, // not sure
+    useExternal: () => typeof localStorage.EXPERIMENT_FLAGS_MAINTAIN_REUSE_COMPONENTS !== 'undefined',
+    externalValue: () => (+localStorage.EXPERIMENT_FLAGS_MAINTAIN_REUSE_COMPONENTS ? true : false)
+  };
+  const ENABLE_EXPERIMENT_FLAGS_DEFER_DETACH = {
+    defaultValue: true, // not sure
+    useExternal: () => typeof localStorage.ENABLE_EXPERIMENT_FLAGS_DEFER_DETACH !== 'undefined',
+    externalValue: () => (+localStorage.ENABLE_EXPERIMENT_FLAGS_DEFER_DETACH ? true : false)
+  };
+ 
+  const ALLOW_ALL_LIVE_CHATS_FLAGS = false;
+ 
+ 
+ 
+  // TBC
+  // kevlar_tuner_should_always_use_device_pixel_ratio
+  // kevlar_tuner_should_clamp_device_pixel_ratio
+  // kevlar_tuner_clamp_device_pixel_ratio
+  // kevlar_tuner_should_use_thumbnail_factor
+  // kevlar_tuner_thumbnail_factor
+  // kevlar_tuner_min_thumbnail_quality
+  // kevlar_tuner_max_thumbnail_quality
+ 
+  // kevlar_tuner_should_test_visibility_time_between_jobs
+  // kevlar_tuner_visibility_time_between_jobs_ms
+ 
+  // kevlar_tuner_default_comments_delay
+  // kevlar_tuner_run_default_comments_delay
+ 
+  let settled = null;
+  // cinematic feature is no longer an experimential feature.
+  // It has been officially implemented.
+  // To disable cinematics, the user shall use other userscripts or just turn off the option in the video options.
+ 
+  const getSettingValue = (fm) => fm.useExternal() ? fm.externalValue() : fm.defaultValue;
+ 
+  const win = this instanceof Window ? this : window;
+ 
+  // Create a unique key for the script and check if it is already running
+  const hkey_script = 'jmimcvowrlzl';
+  if (win[hkey_script]) throw new Error('Duplicated Userscript Calling'); // avoid duplicated scripting
+  win[hkey_script] = true;
+ 
+  /** @type {globalThis.PromiseConstructor} */
+  const Promise = ((async () => { })()).constructor;
+ 
+  let isMainWindow = false;
+  let mzFlagDetected = new Set();
+  let zPlayerKevlar = false;
+  try {
+    isMainWindow = window.document === window.top.document
+  } catch (e) { }
+ 
+  function fixSerializedExperiment(conf) {
+ 
+    if (DISABLE_serializedExperimentIds && typeof conf.serializedExperimentIds === 'string') {
+      let ids = conf.serializedExperimentIds.split(',');
+      let newIds = [];
+      for (const id of ids) {
+        let keep = false;
+        if (keep) {
+          newIds.push(id);
+        }
+      }
+      conf.serializedExperimentIds = newIds.join(',');
+    }
+ 
+    if (DISABLE_serializedExperimentFlags && typeof conf.serializedExperimentFlags === 'string') {
+      const fg = conf.serializedExperimentFlags;
+      const rx = /(^|&)(\w+)=([^=&|\s\{\}\[\]\(\)?]*)/g;
+      let res = [];
+      for (let m; m = rx.exec(fg);) {
+        let key = m[2];
+        let value = m[3];
+        let keep = false;
+        if (KEEP_PLAYER_QUALITY_STICKY) {
+          if (key === 'html5_exponential_memory_for_sticky' || key.startsWith('h5_expr_')) {
+            keep = true;
+          }
+        }
+        if (!DISABLE_CINEMATICS) {
+          if (key === 'web_cinematic_watch_settings') {
+            keep = true;
+          }
+        }
+        if (keep) res.push(`${key}=${value}`);
+      }
+      conf.serializedExperimentFlags = res.join('&');
+    }
+ 
+  }
+ 
+  const all_live_chat_flags = `live_chat_banner_expansion_fix
+  live_chat_enable_mod_view
+  live_chat_enable_qna_banner_overflow_menu_actions
+  live_chat_enable_qna_channel
+  live_chat_enable_send_button_in_slow_mode
+  live_chat_filter_emoji_suggestions
+  live_chat_increased_min_height
+  live_chat_over_playlist
+  live_chat_web_enable_command_handler
+  live_chat_web_use_emoji_manager_singleton
+  live_chat_whole_message_clickable`.trim().split(/\s+/)
+ 
+  const hLooper = ((fn) => {
+ 
+    let nativeFnLoaded = false;
+    let kc1 = 0;
+ 
+    const setIntervalW = setInterval;
+    const clearIntervalW = clearInterval;
+    let microDisconnectFn = null;
+    let fStopLooper = false;
+    const looperFn = () => {
+      if (fStopLooper) return;
+ 
+      let config_ = null;
+      let EXPERIMENT_FLAGS = null;
+      try {
+        config_ = yt.config_;
+        EXPERIMENT_FLAGS = config_.EXPERIMENT_FLAGS
+      } catch (e) { }
+ 
+      if (EXPERIMENT_FLAGS) {
+ 
+        fn(EXPERIMENT_FLAGS, config_);
+ 
+        if (microDisconnectFn) {
+          let isYtLoaded = false;
+          try {
+            isYtLoaded = typeof ytcfg.set === 'function';
+          } catch (e) { }
+          if (isYtLoaded) {
+            microDisconnectFn();
+          }
+        }
+ 
+      }
+ 
+      let playerKevlar = null;
+ 
+      try {
+        playerKevlar = ytcfg.data_.WEB_PLAYER_CONTEXT_CONFIGS.WEB_PLAYER_CONTEXT_CONFIG_ID_KEVLAR_WATCH;
+      } catch (e) { }
+ 
+      if (playerKevlar && !zPlayerKevlar) {
+        zPlayerKevlar = true;
+ 
+        if (NO_SerializedExperiment && typeof playerKevlar.serializedExperimentFlags === 'string' && typeof playerKevlar.serializedExperimentIds === 'string') {
+          fixSerializedExperiment(playerKevlar);
+        }
+ 
+ 
+      }
+ 
+ 
+ 
+    };
+ 
+    const controller = {
+      start() {
+        kc1 = setIntervalW(looperFn, 1);
+        (async () => {
+          while (true && !nativeFnLoaded) {
+            looperFn();
+            if (fStopLooper) break;
+            await (new Promise(requestAnimationFrame));
+          }
+        })();
+        looperFn();
+      },
+      /**
+       *
+       * @param {Window} __CONTEXT__
+       */
+      setupForCleanContext(__CONTEXT__) {
+ 
+        const { requestAnimationFrame, setInterval, clearInterval, setTimeout, clearTimeout } = __CONTEXT__;
+ 
+        (async () => {
+          while (true) {
+            looperFn();
+            if (fStopLooper) break;
+            await (new Promise(requestAnimationFrame));
+          }
+        })();
+ 
+        let kc2 = setInterval(looperFn, 1);
+ 
+        const marcoDisconnectFn = () => {
+          if (fStopLooper) return;
+          Promise.resolve().then(() => {
+            if (kc1 || kc2) {
+              kc1 && clearIntervalW(kc1); kc1 = 0;
+              kc2 && clearInterval(kc2); kc2 = 0;
+              looperFn();
+            }
+            fStopLooper = true;
+          });
+          document.removeEventListener('yt-page-data-fetched', marcoDisconnectFn, false);
+          document.removeEventListener('yt-navigate-finish', marcoDisconnectFn, false);
+          document.removeEventListener('spfdone', marcoDisconnectFn, false);
+        };
+        document.addEventListener('yt-page-data-fetched', marcoDisconnectFn, false);
+        document.addEventListener('yt-navigate-finish', marcoDisconnectFn, false);
+        document.addEventListener('spfdone', marcoDisconnectFn, false);
+ 
+ 
+        function onReady() {
+          if (!fStopLooper) {
+            setTimeout(() => {
+              !fStopLooper && marcoDisconnectFn();
+            }, 1000);
+          }
+        }
+ 
+        Promise.resolve().then(() => {
+          if (document.readyState !== 'loading') {
+            onReady();
+          } else {
+            window.addEventListener("DOMContentLoaded", onReady, false);
+          }
+        });
+ 
+        nativeFnLoaded = true;
+ 
+        microDisconnectFn = () => Promise.resolve(marcoDisconnectFn).then(setTimeout);
+ 
+      }
+    };
+ 
+    return controller;
+  })((EXPERIMENT_FLAGS, config_) => {
+ 
+    if (!EXPERIMENT_FLAGS) return;
+ 
+    if (!settled) {
+      settled = {
+        use_maintain_stable_list: getSettingValue(ENABLE_EXPERIMENT_FLAGS_MAINTAIN_STABLE_LIST),
+        use_maintain_reuse_components: getSettingValue(ENABLE_EXPERIMENT_FLAGS_MAINTAIN_REUSE_COMPONENTS),
+        use_defer_detach: getSettingValue(ENABLE_EXPERIMENT_FLAGS_DEFER_DETACH),
+      }
+      if (settled.use_maintain_stable_list) Promise.resolve().then(() => console.debug("use_maintain_stable_list"));
+      if (settled.use_maintain_reuse_components) Promise.resolve().then(() => console.debug("use_maintain_reuse_components"));
+      if (settled.use_defer_detach) Promise.resolve().then(() => console.debug("use_defer_detach"));
+    }
+    const { use_maintain_stable_list, use_maintain_reuse_components, use_defer_detach } = settled;
+ 
+    const setFalseFn = (EXPERIMENT_FLAGS) => {
+ 
+ 
+      for (const [key, value] of Object.entries(EXPERIMENT_FLAGS)) {
+ 
+ 
+        if (value === true) {
+          // if(key.indexOf('modern')>=0 || key.indexOf('enable')>=0 || key.indexOf('theme')>=0 || key.indexOf('skip')>=0  || key.indexOf('ui')>=0 || key.indexOf('observer')>=0 || key.indexOf('polymer')>=0 )continue;
+ 
+          if (mzFlagDetected.has(key)) continue;
+          mzFlagDetected.add(key);
+          const kl = key.length;
+          const kl7 = kl % 7;
+          const kl5 = kl % 5;
+          const kl3 = kl % 3;
+          const kl2 = kl % 2;
+ 
+          if (!DISABLE_CINEMATICS) {
+ 
+ 
+            if (key === 'kevlar_measure_ambient_mode_idle' || key === 'kevlar_watch_cinematics_invisible' || key === 'web_cinematic_theater_mode' || key === 'web_cinematic_fullscreen') {
+              continue;
+            }
+ 
+ 
+            let cineKey = key === 'enable_cinematic_blur_desktop_loading' ? 1
+              : key === 'kevlar_watch_cinematics' ? 2
+                : key === 'web_cinematic_masthead' ? 3
+                  : key === 'web_watch_cinematics_preferred_reduced_motion_default_disabled' ? 4 : 0;
+            if (cineKey > 0) {
+              return;
+            }
+          }
+ 
+ 
+          if (key.indexOf('kevlar_') >= 0) {
+            if (kl7 === 2 && kl5 === 2 && kl2 === 1 && kl3 === 1) {
+              if (key === 'kevlar_rendererstamper_event_listener') continue; // https://github.com/cyfung1031/userscript-supports/issues/11
+            }
+ 
+            if (kl === 22) {
+              // kevlar_enable_up_arrow - no use
+              // kevlar_help_use_locale - might use
+              // kevlar_refresh_gesture - might use
+              // kevlar_smart_downloads - might use
+              // kevlar_thumbnail_fluid
+              // kevlar_ytb_live_badges
+ 
+              if (key === 'kevlar_ytb_live_badges') continue;
+ 
+            }
+ 
+ 
+            if (!use_maintain_stable_list) {
+ 
+              if (key === 'kevlar_tuner_should_test_maintain_stable_list') continue;
+              if (key === 'kevlar_should_maintain_stable_list') continue;
+              if (key === 'kevlar_tuner_should_maintain_stable_list') continue; // fallback
+            }
+            if (!use_maintain_reuse_components) {
+ 
+              if (key === 'kevlar_tuner_should_test_reuse_components') continue;
+              if (key === 'kevlar_tuner_should_reuse_components') continue;
+              if (key === 'kevlar_should_reuse_components') continue; // fallback
+            }
+ 
+            if (kl7 === 5 && kl5 == 4 && kl2 === 1 && kl3 === 1) {
+              if (key === 'kevlar_system_icons') continue;
+            }
+ 
+            // if(key==='kevlar_prefetch_data_augments_network_data') continue;
+ 
+            if (kl7 === 6 && kl5 === 0 && kl3 === 2 && kl2 === 0) { // home page / watch page icons
+ 
+              if (key === 'kevlar_three_dot_ink') continue;
+              if (key === 'kevlar_use_wil_icons') continue;
+              if (key === 'kevlar_home_skeleton') continue;
+            }
+ 
+            if (kl7 === 4 && kl5 === 0 && kl3 === 1 && kl2 === 1) {
+ 
+              if (key === 'kevlar_fluid_touch_scroll') continue;
+              if (key === 'kevlar_watch_color_update') continue;
+              if (key === 'kevlar_use_vimio_behavior') continue; // home page - channel icon
+ 
+            }
+ 
+            if (kl3 === 2 && kl5 === 4 && kl2 < 2) {  // collapsed meta
+              // no teaser, use latest collapsed meta design
+              if (key === 'kevlar_structured_description_content_inline') continue;
+              if (key === 'kevlar_watch_metadata_refresh') continue;
+ 
+            }
+ 
+ 
+            if (kl5 === 3 && kl3 === 1 && kl2 === 0) {
+ 
+              if (key === 'kevlar_watch_js_panel_height') continue; // affect Tabview Youtube
+ 
+ 
+            }
+ 
+ 
+          } else {
+ 
+ 
+            if (ALLOW_ALL_LIVE_CHATS_FLAGS && all_live_chat_flags.indexOf(key) >= 0) {
+              continue;
+              /*
+               *
+              live_chat_banner_expansion_fix
+              live_chat_enable_mod_view
+              live_chat_enable_qna_banner_overflow_menu_actions
+              live_chat_enable_qna_channel
+              live_chat_enable_send_button_in_slow_mode
+              live_chat_filter_emoji_suggestions
+              live_chat_increased_min_height
+              live_chat_over_playlist
+              live_chat_web_enable_command_handler
+              live_chat_web_use_emoji_manager_singleton
+              live_chat_whole_message_clickable
+ 
+              */
+            }
+ 
+            if (kl7 === 1 && kl5 === 1 && kl2 === 0 && kl3 === 0) {
+              if (key === 'live_chat_web_enable_command_handler') continue;
+ 
+            }
+            if (kl7 === 1 && kl5 === 4 && kl3 === 2 && kl2 === 1) {
+ 
+              if (key === 'shorts_desktop_watch_while_p2') continue;
+            }
+ 
+            if (key === 'web_button_rework') continue;
+ 
+            if (kl7 === 3 && kl5 == 1 && kl2 === 1 && kl3 === 1) {
+              if (key === 'web_darker_dark_theme_live_chat') continue;
+            }
+ 
+            if (kl5 === 1 && kl3 === 0 && kl2 === 1 && kl7 === 0) {
+              if (key === 'web_darker_dark_theme') return; // it also affect cinemtaics
+            }
+ 
+            if (kl3 === 0 && kl5 === 2) {  // modern menu
+ 
+              if (key === 'web_button_rework_with_live') continue;
+              if (key === 'web_fix_fine_scrubbing_drag') continue;
+            }
+ 
+ 
+            if (kl3 === 1 && kl5 === 4 && kl2 === 1) {  // full screen -buggy
+              if (key === 'external_fullscreen') continue;
+            }
+ 
+            if (kl3 === 0 && kl5 === 3 && kl2 === 0) { // minimize menu
+              if (key === 'web_modern_buttons') continue;
+              if (key === 'web_modern_dialogs') continue;
+ 
+            }
+ 
+            if (kl3 === 1 && kl5 === 0 && kl7 === 5 && kl2 === 0) { // Tabview Youtube - multiline transcript
+              if (key === 'enable_mixed_direction_formatted_strings') continue;
+            }
+ 
+          }
+ 
+          // console.log(key)
+          EXPERIMENT_FLAGS[key] = false;
+        }
+      }
+ 
+    }
+ 
+    setFalseFn(EXPERIMENT_FLAGS);
+    if (config_.EXPERIMENTS_FORCED_FLAGS) setFalseFn(config_.EXPERIMENTS_FORCED_FLAGS);
+ 
+    EXPERIMENT_FLAGS.desktop_delay_player_resizing = false;
+    EXPERIMENT_FLAGS.web_animated_like = false;
+    EXPERIMENT_FLAGS.web_animated_like_lazy_load = false;
+ 
+    if (use_maintain_stable_list) {
+      EXPERIMENT_FLAGS.kevlar_tuner_should_test_maintain_stable_list = true;
+      EXPERIMENT_FLAGS.kevlar_should_maintain_stable_list = true;
+      EXPERIMENT_FLAGS.kevlar_tuner_should_maintain_stable_list = true; // fallback
+    }
+ 
+    if (use_maintain_reuse_components) {
+      EXPERIMENT_FLAGS.kevlar_tuner_should_test_reuse_components = true;
+      EXPERIMENT_FLAGS.kevlar_tuner_should_reuse_components = true;
+      EXPERIMENT_FLAGS.kevlar_should_reuse_components = true; // fallback
+    }
+ 
+    if (use_defer_detach) {
+      EXPERIMENT_FLAGS.kevlar_tuner_should_defer_detach = true;
+    }
+ 
+    // EXPERIMENT_FLAGS.kevlar_prefetch_data_augments_network_data = true; // TBC
+  });
+ 
+  hLooper.start();
+ 
+ 
+  const cleanContext = async (win) => {
+    const waitFn = requestAnimationFrame; // shall have been binded to window
+    try {
+      let mx = 16; // MAX TRIAL
+      const frameId = 'vanillajs-iframe-v1'
+      let frame = document.getElementById(frameId);
+      let removeIframeFn = null;
+      if (!frame) {
+        frame = document.createElement('iframe');
+        frame.id = 'vanillajs-iframe-v1';
+        frame.sandbox = 'allow-same-origin'; // script cannot be run inside iframe but API can be obtained from iframe
+        let n = document.createElement('noscript'); // wrap into NOSCRPIT to avoid reflow (layouting)
+        n.appendChild(frame);
+        while (!document.documentElement && mx-- > 0) await new Promise(waitFn); // requestAnimationFrame here could get modified by YouTube engine
+        const root = document.documentElement;
+        root.appendChild(n); // throw error if root is null due to exceeding MAX TRIAL
+        removeIframeFn = (setTimeout) => {
+          const removeIframeOnDocumentReady = (e) => {
+            e && win.removeEventListener("DOMContentLoaded", removeIframeOnDocumentReady, false);
+            win = null;
+            setTimeout(() => {
+              n.remove();
+              n = null;
+            }, 200);
+          }
+          if (document.readyState !== 'loading') {
+            removeIframeOnDocumentReady();
+          } else {
+            win.addEventListener("DOMContentLoaded", removeIframeOnDocumentReady, false);
+          }
+        }
+      }
+      while (!frame.contentWindow && mx-- > 0) await new Promise(waitFn);
+      const fc = frame.contentWindow;
+      if (!fc) throw "window is not found."; // throw error if root is null due to exceeding MAX TRIAL
+      const { requestAnimationFrame, setInterval, setTimeout, clearInterval, clearTimeout } = fc;
+      const res = { requestAnimationFrame, setInterval, setTimeout, clearInterval, clearTimeout };
+      for (let k in res) res[k] = res[k].bind(win); // necessary
+      if (removeIframeFn) Promise.resolve(res.setTimeout).then(removeIframeFn);
+      return res;
+    } catch (e) {
+      console.warn(e);
+      return null;
+    }
+  };
+ 
+  cleanContext(win).then(__CONTEXT__ => {
+ 
+    const { requestAnimationFrame, setInterval, clearInterval, setTimeout, clearTimeout } = __CONTEXT__;
+ 
+    hLooper.setupForCleanContext(__CONTEXT__)
+ 
+  });
+ 
+ 
+  if (isMainWindow) {
+ 
+    console.groupCollapsed(
+      "%cYouTube EXPERIMENT_FLAGS Tamer",
+      "background-color: #EDE43B ; color: #000 ; font-weight: bold ; padding: 4px ;"
+    );
+ 
+    console.log("Script is loaded.");
+    console.log("This might affect the new features when YouTube rolls them out to general users.");
+    console.log("If you found any issue in using YouTube, please disable this script to check whether the issue is due to this script or not.");
+ 
+    console.groupEnd();
+ 
+  }
+ 
+})(null);
+ 
+Object.defineProperties(document, { 'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'}, 'webkitVisibilityState': {value: 'visible'} });
+ 
+setInterval(function(){
+    document.dispatchEvent( new KeyboardEvent( 'keyup', { bubbles: true, cancelable: true, keyCode: 143, which: 143 } ) );
+}, 60000)
 
 const extConfig = {
     // BEGIN USER OPTIONS
