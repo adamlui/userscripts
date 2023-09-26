@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.9.26
+// @version          2023.9.26.1
 // @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace        https://github.com/adamlui
 // @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -227,7 +227,7 @@ function waitForElm(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector))
             return resolve(document.querySelector(selector))
-        const observer = new MutationObserver(mutations => {
+        const observer = new MutationObserver(() => {
             if (document.querySelector(selector)) {
                 resolve(document.querySelector(selector))
                 observer.disconnect()
@@ -239,23 +239,23 @@ function waitForElm(selector) {
 
 function restoreTrending() {
     var trendingData = {
-        "navigationEndpoint": {
-            "clickTrackingParams": "CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==",
-            "commandMetadata": {
-                "webCommandMetadata": {
-                    "url": "/feed/explore",
-                    "webPageType": "WEB_PAGE_TYPE_BROWSE",
-                    "rootVe": 6827,
-                    "apiUrl": "/youtubei/v1/browse"
+        'navigationEndpoint': {
+            'clickTrackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
+            'commandMetadata': {
+                'webCommandMetadata': {
+                    'url': '/feed/explore',
+                    'webPageType': 'WEB_PAGE_TYPE_BROWSE',
+                    'rootVe': 6827,
+                    'apiUrl': '/youtubei/v1/browse'
                 }
             },
-            "browseEndpoint": { "browseId": "FEtrending" }
+            'browseEndpoint': { 'browseId': 'FEtrending' }
         },
-        "icon": { "iconType": "EXPLORE" },
-        "trackingParams": "CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==",
-        "formattedTitle": { "simpleText": "Explore" },
-        "accessibility": { "accessibilityData": { "label": "Explore" }},
-        "isPrimary": true
+        'icon': { 'iconType': 'EXPLORE' },
+        'trackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
+        'formattedTitle': { 'simpleText': 'Explore' },
+        'accessibility': { 'accessibilityData': { 'label': 'Explore' }},
+        'isPrimary': true
     }
     var guidetemplate = `<ytd-guide-entry-renderer class="style-scope ytd-guide-section-renderer" is-primary="" line-end-style="none"><!--css-build:shady--><a id="endpoint" class="yt-simple-endpoint style-scope ytd-guide-entry-renderer" tabindex="-1" role="tablist"><tp-yt-paper-item role="tab" class="style-scope ytd-guide-entry-renderer" tabindex="0" aria-disabled="false"><!--css-build:shady--><yt-icon class="guide-icon style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><yt-img-shadow height="24" width="24" class="style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-img-shadow><yt-formatted-string class="title style-scope ytd-guide-entry-renderer"><!--css-build:shady--></yt-formatted-string><span class="guide-entry-count style-scope ytd-guide-entry-renderer"></span><yt-icon class="guide-entry-badge style-scope ytd-guide-entry-renderer" disable-upgrade=""></yt-icon><div id="newness-dot" class="style-scope ytd-guide-entry-renderer"></div></tp-yt-paper-item></a><yt-interaction class="style-scope ytd-guide-entry-renderer"><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></ytd-guide-entry-renderer>`;
     document.querySelector(`#items > ytd-guide-entry-renderer:nth-child(2)`).data = trendingData
