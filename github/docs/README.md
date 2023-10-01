@@ -13,16 +13,14 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 ### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Star History ⭐](../github-star-history) <a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 > Adds star history chart to sidebar of GitHub repos.
-
-[Install](../github-star-history#-installation) /
+<br>[Install](../github-star-history#-installation) /
 [Readme](../github-star-history#readme) /
 [Discuss](https://github.com/adamlui/github-star-history/discussions)
 
 ### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Widescreen 🖥️](../github-widescreen)
 
 > Auto-hides obtrusive side panels on GitHub.
-
-[Install](../github-widescreen#-installation) /
+<br>[Install](../github-widescreen#-installation) /
 [Readme](../github-widescreen#readme) /
 [Discuss](https://github.com/adamlui/github-widescreen/discussions)
 
