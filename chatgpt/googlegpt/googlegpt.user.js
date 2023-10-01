@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.9.23.3
+// @version             2023.10.1
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -235,7 +235,7 @@
 
     // Define MENU functions
 
-    function getUserscriptManager() { try { return GM_info.scriptHandler } catch (error) { return 'other' }}
+    function getUserscriptManager() { try { return GM_info.scriptHandler } catch (err) { return 'other' }}
 
     function registerMenu() {
         const menuIDs = [] // to store registered commands for removal while preserving order
@@ -370,7 +370,7 @@
             const html = new DOMParser().parseFromString(resp, 'text/html'),
                   title = html.querySelector('title')
             return title.innerText === messages.alert_justAmoment + '...'
-        } catch (error) { return false }
+        } catch (err) { return false }
     }
 
     function deleteOpenAIcookies() {
@@ -449,8 +449,8 @@
             method: 'POST', url: endpoint,
             headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + accessKey },
             responseType: responseType(), data: data, onloadstart: onLoadStart(), onload: onLoad(),
-            onerror: (error) => {
-                googleGPTconsole.error(error)
+            onerror: (err) => {
+                googleGPTconsole.error(err)
                 if (!config.proxyAPIenabled) googleGPTalert(!accessKey ? 'login' : 'suggestProxy')
                 else { // if proxy mode
                     if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
@@ -493,7 +493,7 @@
             return (event) => {
                 if (event.status !== 200) {
                     googleGPTconsole.error('Event status: ' + event.status)
-                    googleGPTconsole.info('Event response: ' + event.responseText)
+                    googleGPTconsole.error('Event response: ' + event.responseText)
                     if (config.proxyAPIenabled && getShowReply.attemptCnt < proxyEndpoints.length)
                         retryDiffHost()
                     else if (event.status === 401 && !config.proxyAPIenabled) {
@@ -509,9 +509,9 @@
                                   finalResponse = JSON.parse(responseParts[responseParts.length - 4].slice(6)),
                                   answer = finalResponse.message.content.parts[0]
                             googleGPTshow(answer)
-                        } catch (error) {
-                            googleGPTconsole.error(googleGPTalerts.parseFailed + ': ' + error)
-                            googleGPTconsole.info('Response: ' + event.response)
+                        } catch (err) {
+                            googleGPTconsole.error(googleGPTalerts.parseFailed + ': ' + err)
+                            googleGPTconsole.error('Response: ' + event.response)
                             googleGPTalert('suggestProxy')
                         }
                     }
@@ -520,7 +520,7 @@
                         try { // to parse txt response from proxy endpoints
                             const answer = JSON.parse(event.responseText).choices[0].message.content
                             googleGPTshow(answer) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                        } catch (error) {
+                        } catch (err) {
                             googleGPTconsole.info('Response: ' + event.responseText)
                             if (event.responseText.includes('非常抱歉，根据我们的产品规则，无法为你提供该问题的回答'))
                                 googleGPTshow(messages.alert_censored)
@@ -545,7 +545,7 @@
                                 })()
 
                             } else { // use different endpoint or suggest OpenAI
-                                googleGPTconsole.error(googleGPTalerts.parseFailed + ': ' + error)
+                                googleGPTconsole.error(googleGPTalerts.parseFailed + ': ' + err)
                                 if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
                                 else googleGPTalert('suggestOpenAI')
                             }
@@ -676,7 +676,7 @@
                         if (typeof target[prop] === 'object' && target[prop] !== null && 'message' in target[prop]) {
                             return target[prop].message
                 }}}) ; resolve(messages)
-            } catch (error) { // if 404
+            } catch (err) { // if 404
                 msgXHRtries++ ; if (msgXHRtries == 3) return // try up to 3X (original/region-stripped/EN) only
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                     msgHref.replace(/(.*)_.*(\/.*)/, '$1$2') // ...strip region before retrying
