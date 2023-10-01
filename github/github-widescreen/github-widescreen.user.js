@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.8.21.1
+// @version             2023.9.30
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -44,7 +44,7 @@
 
         // Show alert
         const aboutAlertID = alert(
-            'GitHub Widescreen v' + GM_info.script.version, '',            
+            'GitHub Widescreen v' + GM_info.script.version, '',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
                 function githubSource() { safeWindowOpen(config.gitHubURL) },
@@ -129,7 +129,7 @@
             // File Tree + Symbols Panel buttons in editor
             'button[aria-expanded="true"][data-testid], '
             // Hide File Tree button in diff views
-            + 'button[id^="hide"]:not([hidden])'))                        
+            + 'button[id^="hide"]:not([hidden])'))
         if (hideBtns.length > 0) // click if needed
             hideBtns.forEach((btn) => { btn.click() })
     }
@@ -144,9 +144,9 @@
         const modalContainer = document.createElement('div')
         modalContainer.id = Math.floor(Math.random() * 1000000) + Date.now()
         modalContainer.classList.add('chatgpt-modal') // add class to main div
-        const modal = document.createElement('div')
-        const modalTitle = document.createElement('h2')
-        const modalMessage = document.createElement('p')
+        const modal = document.createElement('div'),
+              modalTitle = document.createElement('h2'),
+              modalMessage = document.createElement('p')
 
         // Select or crate/append style
         let modalStyle
@@ -161,19 +161,22 @@
         modalStyle.innerText = (
 
             // Background styles
-            '.chatgpt-modal {' 
+            '.chatgpt-modal {'
                 + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
                 + 'background-color: rgba(67, 70, 72, 0.75) ;' // dim bg
                 + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
 
             // Alert styles
             + '.chatgpt-modal > div {'
+                + 'opacity: 0 ; transform: translateX(-2px) translateY(5px) ;'
+                + 'transition: opacity 0.1s cubic-bezier(.165,.84,.44,1), transform 0.2s cubic-bezier(.165,.84,.44,1) ;'
                 + `background-color: ${ scheme == 'dark' ? 'black' : 'white' } ;`
                 + ( width ? `width: ${ width }px` : 'max-width: 458px ') + ' ;'
                 + 'padding: 20px ; margin: 12px 23px ; border-radius: 5px ; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) }'
             + '.chatgpt-modal h2 { font-size: 2em ; margin-bottom: 9px }'
             + '.chatgpt-modal p { font-size: 1.35em }'
             + `.chatgpt-modal a { color: ${ scheme == 'dark' ? '#00cfff' : '#1e9ebb' }}`
+            + '.chatgpt-modal.animated > div { opacity: 1 ; transform: translateX(0) translateY(0) }'
 
             // Button styles
             + '.modal-buttons { display: flex ; justify-content: flex-end ; margin: 20px -5px -3px 0 }'
@@ -216,7 +219,7 @@
                     .replace(/^\w/, firstChar => firstChar.toUpperCase()) // capitalize first letter
                 button.addEventListener('click', () => { destroyAlert() ; buttonFn() })
                 modalButtons.insertBefore(button, modalButtons.firstChild) // insert button to left
-            });
+            })
         }
 
         // Create/append OK/dismiss button to buttons div
@@ -232,8 +235,8 @@
         const checkboxDiv = document.createElement('div')
         if (checkbox) { // is supplied
             checkboxDiv.classList.add('checkbox-group')
-            const checkboxFn = checkbox // assign the named function to checkboxFn
-            const checkboxInput = document.createElement('input')
+            const checkboxFn = checkbox, // assign the named function to checkboxFn
+                  checkboxInput = document.createElement('input')
             checkboxInput.type = 'checkbox'
             checkboxInput.addEventListener('change', checkboxFn)
 
@@ -252,8 +255,8 @@
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach((element) => { modal.appendChild(element); })
-        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer);
+        elements.forEach((element) => { modal.appendChild(element) })
+        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
 
         // Enqueue alert
         alertQueue = JSON.parse(localStorage.alertQueue)
@@ -266,7 +269,11 @@
             if (event.target === modalContainer) destroyAlert() })
 
         // Show alert if none active
-        modalContainer.style.display = (alertQueue.length === 1) ? '' : 'none'
+        modalContainer.style.display = 'none'
+        if (alertQueue.length === 1) {
+            modalContainer.style.display = ''
+            setTimeout(() => { modalContainer.classList.add('animated') }, 100)
+        }
 
         function destroyAlert() {
             modalContainer.remove() // remove from DOM
@@ -282,7 +289,10 @@
             // Check for pending alerts in queue
             if (alertQueue.length > 0) {
                 const nextAlert = document.getElementById(alertQueue[0])
-                setTimeout(() => { nextAlert.style.display = 'flex' }, 500 )
+                setTimeout(() => {
+                    nextAlert.style.display = ''
+                    setTimeout(() => { nextAlert.classList.add('animated') }, 100)
+                }, 500 )
             }
         }
 
@@ -303,9 +313,9 @@
     }
 
     function renderHTML(node) {
-        const reTags = /<([a-z\d]+)\b([^>]*)>([\s\S]*?)<\/\1>/g
-        const reAttributes = /(\S+)=['"]?((?:.(?!['"]?\s+(?:\S+)=|[>']))+.)['"]?/g
-        const nodeContent = node.childNodes
+        const reTags = /<([a-z\d]+)\b([^>]*)>([\s\S]*?)<\/\1>/g,
+              reAttributes = /(\S+)=['"]?((?:.(?!['"]?\s+(?:\S+)=|[>']))+.)['"]?/g,
+              nodeContent = node.childNodes
 
         // Preserve consecutive spaces + line breaks
         if (!renderHTML.preWrapSet) {
@@ -318,14 +328,14 @@
 
             // Process text node
             if (childNode.nodeType === Node.TEXT_NODE) {
-                const text = childNode.nodeValue
-                const elems = Array.from(text.matchAll(reTags))
+                const text = childNode.nodeValue,
+                      elems = Array.from(text.matchAll(reTags))
 
                 // Process 1st element to render
                 if (elems.length > 0) {
-                    const elem = elems[0]
-                    const [tagContent, tagName, tagAttributes, tagText] = elem.slice(0, 4)
-                    const tagNode = document.createElement(tagName) ; tagNode.textContent = tagText
+                    const elem = elems[0],
+                          [tagContent, tagName, tagAttributes, tagText] = elem.slice(0, 4),
+                          tagNode = document.createElement(tagName) ; tagNode.textContent = tagText
 
                     // Extract/set attributes
                     const attributes = Array.from(tagAttributes.matchAll(reAttributes))
@@ -337,8 +347,8 @@
                     const renderedNode = renderHTML(tagNode) // render child elements of newly created node
 
                     // Insert newly rendered node
-                    const beforeTextNode = document.createTextNode(text.substring(0, elem.index))
-                    const afterTextNode = document.createTextNode(text.substring(elem.index + tagContent.length))
+                    const beforeTextNode = document.createTextNode(text.substring(0, elem.index)),
+                          afterTextNode = document.createTextNode(text.substring(elem.index + tagContent.length))
 
                     // Replace text node with processed nodes
                     node.replaceChild(beforeTextNode, childNode)
