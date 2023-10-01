@@ -17,45 +17,39 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
-
-[View scripts](../chatgpt) /
+<br>[View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
-
-[View scripts](../github) /
+<br>[View scripts](../github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
-
-[Install](https://greasyfork.org/scripts/12639) /
+<br>[Install](https://greasyfork.org/scripts/12639) /
 [Readme](../hide-forum-images/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=15 style="margin-right: 1px" src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
-
-[Install](https://greasyfork.org/scripts/26311) /
+<br>[Install](https://greasyfork.org/scripts/26311) /
 [Readme](../highlight-radio-bubbles/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img style="margin-right: 2px" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
 
 > Userscripts for Amazon's Mechanical Turk.
-
-[View scripts](../mturk) /
+<br>[View scripts](../mturk) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
-
-[Install](https://greasyfork.org/en/scripts/456132) /
+<br>[Install](https://greasyfork.org/en/scripts/456132) /
 [Readme](../youtube-classic/README.md) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
