@@ -23,7 +23,7 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 ### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
-<br>[查看脚本](../github) /
+<br>[查看脚本](../../github) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
