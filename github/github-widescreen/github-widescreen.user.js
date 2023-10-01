@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.9.30
+// @version             2023.9.30.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -43,14 +43,21 @@
     GM_registerMenuCommand('💡 About GitHub Widescreen', async () => {
 
         // Show alert
+        const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
+              pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
+              pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = alert(
-            'GitHub Widescreen v' + GM_info.script.version, '',
+            'GitHub Widescreen', // title
+            `<span style="${ headingStyle }">🏷️ <i>Version</i>: </span>`
+                + `<span style="${ pStyle }">${ GM_info.script.version }</span>\n`
+            + `<span style="${ headingStyle }">📜 <i>Source code</i>:</span>\n`
+                + `<span style="${ pBrStyle }"><a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+                + config.gitHubURL + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function githubSource() { safeWindowOpen(config.gitHubURL) },
                 function leaveAReview() { safeWindowOpen(
                     config.greasyForkURL + '/feedback#post-discussion') }
-            ], '', 507) // About modal width
+            ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
         for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
@@ -168,6 +175,8 @@
 
             // Alert styles
             + '.chatgpt-modal > div {'
+                + 'font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,'
+                    + 'sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji ;'
                 + 'opacity: 0 ; transform: translateX(-2px) translateY(5px) ;'
                 + 'transition: opacity 0.1s cubic-bezier(.165,.84,.44,1), transform 0.2s cubic-bezier(.165,.84,.44,1) ;'
                 + `background-color: ${ scheme == 'dark' ? 'black' : 'white' } ;`
