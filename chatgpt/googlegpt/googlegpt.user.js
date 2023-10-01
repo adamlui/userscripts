@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.1.1
+// @version             2023.10.1.2
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -221,9 +221,10 @@
 
                         // Localize button labels if needed
                         if (!config.userLanguage.startsWith('en')) {
-                            const updateAlert = document.querySelector(`[id="${ updateAlertID }"]`)
-                            updateAlert.querySelectorAll('button')[1].textContent = messages.buttonLabel_update
-                            updateAlert.querySelectorAll('button')[0].textContent = messages.buttonLabel_dismiss
+                            const updateAlert = document.querySelector(`[id="${ updateAlertID }"]`),
+                                  updateButtons = updateAlert.querySelectorAll('button')
+                            updateButtons[1].textContent = messages.buttonLabel_update
+                            updateButtons[0].textContent = messages.buttonLabel_dismiss
                         }
 
                         return
