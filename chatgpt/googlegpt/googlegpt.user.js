@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.1.3
+// @version             2023.10.1.4
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -745,12 +745,14 @@
         + '.kudo-ai a, .kudo-ai a:visited { color: #aaa ; text-decoration: none } '
         + '.kudo-ai a:hover { color: ' + ( isDarkMode() ? 'white' : 'black' ) + ' ; text-decoration: none } '
         + '.katex-html { display: none } ' // hide unrendered math
+        + ( isDarkMode() ? '.chatgpt-modal > div { background-color: black !important ; color: white }' : '' )
         + '.chatgpt-modal h2 { font-size: 1.65rem ; margin: 0 ; padding: 0 } ' // shrink margin/padding around alert title + enlarge it
         + '.chatgpt-modal p { margin: 0 0 -9px 4px ; font-size: 1.2rem ; line-height: 1.45 } ' // position/size update alert msg
         + '.chatgpt-modal button { ' // chatgpt.alert() buttons
             + 'padding: 8px 15px !important ; cursor: pointer ; border-radius: 0 !important ; '
             + 'text-transform: uppercase ; border: 2px solid black !important } '
         + '.chatgpt-modal button:hover { color: white !important } ' // color text white on update alert button hovers
+        + ( isDarkMode() ? '.chatgpt-modal button:hover { background-color: #00cfff !important }' : '' )
     )
     document.head.appendChild(googleGPTstyle) // append style to <head>
 
