@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.9.30
+// @version             2023.9.30.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -72,7 +72,7 @@
     const repoObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                const onRepoPage = /^https?:\/\/[^/]+\/[^/]+\/[^/]+\/?$/.test(window.location.href);
+                const onRepoPage = /^https?:\/\/[^/]+\/[^/]+\/[^/]+\/?$/.test(window.location.href)
                 if (onRepoPage && !starHistoryAdded) {
                     insertStarHistory() ; starHistoryAdded = true
                 } else if (!onRepoPage && starHistoryAdded) starHistoryAdded = false
@@ -245,8 +245,8 @@
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach((element) => { modal.appendChild(element); })
-        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer);
+        elements.forEach((element) => { modal.appendChild(element) })
+        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
 
         // Enqueue alert
         alertQueue = JSON.parse(localStorage.alertQueue)
@@ -262,7 +262,7 @@
         modalContainer.style.display = 'none'
         if (alertQueue.length === 1) {
             modalContainer.style.display = ''
-            setTimeout(() => { modalContainer.classList.add('animated'); }, 100)
+            setTimeout(() => { modalContainer.classList.add('animated') }, 100)
         }
 
         function destroyAlert() {
@@ -281,7 +281,7 @@
                 const nextAlert = document.getElementById(alertQueue[0])
                 setTimeout(() => {
                     nextAlert.style.display = ''
-                    setTimeout(() => { nextAlert.classList.add('animated'); }, 100)
+                    setTimeout(() => { nextAlert.classList.add('animated') }, 100)
                 }, 500 )
             }
         }
@@ -325,7 +325,7 @@
                 if (elems.length > 0) {
                     const elem = elems[0],
                           [tagContent, tagName, tagAttributes, tagText] = elem.slice(0, 4),
-                          tagNode = document.createElement(tagName); tagNode.textContent = tagText
+                          tagNode = document.createElement(tagName) ; tagNode.textContent = tagText
 
                     // Extract/set attributes
                     const attributes = Array.from(tagAttributes.matchAll(reAttributes))
