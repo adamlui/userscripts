@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.1.2
+// @version             2023.10.1.3
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -311,16 +311,18 @@
             const chatgptJSver = /chatgpt-([\d.]+)\.min/.exec(GM_info.script.header)[1] || ''
             const aboutAlertID = alert(
                 'GoogleGPT', // title
-                ' ' + messages.alert_version + ': ' + GM_info.script.version + '\n '
-                    + messages.alert_poweredBy + ': '
-                    + '<a href="https://chatgpt.js.org" target="_blank" rel="noopener">chatgpt.js</a>'
-                    + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ),
+                '🏷️ ' + messages.alert_version + ': ' + GM_info.script.version + '\n'
+                    + '⚡ ' + messages.alert_poweredBy + ': '
+                        + '<a href="https://chatgpt.js.org" target="_blank" rel="noopener">chatgpt.js</a>'
+                        + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
+                    + '📜 ' + messages.buttonLabel_githubSrc + ':\n '
+                        + `<a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+                            + config.gitHubURL + '</a>',
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
-                    function githubSource() { safeWindowOpen(config.gitHubURL) },
                     function leaveAReview() { safeWindowOpen(
                         config.greasyForkURL + '/feedback#post-discussion') }
-                ], '', 524) // About modal width
+                ], '', 420) // About modal width
 
             // Re-format buttons to include emojis + re-case + hide 'Dismiss'
             for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
@@ -636,7 +638,7 @@
                     centerCol.insertAdjacentElement('afterend', newDiv)
                     return newDiv
                 })()
-		)
+        )
         hostContainer.prepend(googleGPTdiv)
         const query = new URL(location.href).searchParams.get('q') + ' / Answer in ' + config.replyLanguage
         convo.push(
@@ -743,13 +745,12 @@
         + '.kudo-ai a, .kudo-ai a:visited { color: #aaa ; text-decoration: none } '
         + '.kudo-ai a:hover { color: ' + ( isDarkMode() ? 'white' : 'black' ) + ' ; text-decoration: none } '
         + '.katex-html { display: none } ' // hide unrendered math
-        + '.chatgpt-modal h2 { margin: 0 ; padding: 0 } ' // shrink margin/padding around update alert title
-        + '.chatgpt-modal p { margin: -8px 0 -9px 4px ; font-size: 1.55rem } ' // position/size update alert msg
+        + '.chatgpt-modal h2 { font-size: 1.65rem ; margin: 0 ; padding: 0 } ' // shrink margin/padding around alert title + enlarge it
+        + '.chatgpt-modal p { margin: 0 0 -9px 4px ; font-size: 1.2rem ; line-height: 1.45 } ' // position/size update alert msg
         + '.chatgpt-modal button { ' // chatgpt.alert() buttons
             + 'padding: 8px 15px !important ; cursor: pointer ; border-radius: 0 !important ; '
             + 'text-transform: uppercase ; border: 2px solid black !important } '
         + '.chatgpt-modal button:hover { color: white !important } ' // color text white on update alert button hovers
-        + '.chatgpt-modal div[class*=checkbox] label { position: relative ; bottom: -0.1857rem ; left: -2px } ' // position skip update checkbox
     )
     document.head.appendChild(googleGPTstyle) // append style to <head>
 
