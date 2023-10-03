@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.1.4
+// @version             2023.10.2
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -421,14 +421,8 @@
 
     // Define ANSWER functions
 
-    async function getShowReply(convo, callback) {
-
-        // Initialize attempt properties
-        if (!getShowReply.triedEndpoints) getShowReply.triedEndpoints = []
-        if (!getShowReply.attemptCnt) getShowReply.attemptCnt = 0
-
-        // Pick API
-        let endpoint, accessKey, model
+    let endpoint, accessKey, model
+    async function pickAPI() {
         if (config.proxyAPIenabled) { // randomize proxy API
             const untriedEndpoints = proxyEndpoints.filter((entry) => {
                 return !getShowReply.triedEndpoints?.includes(entry[0]) })
@@ -442,12 +436,24 @@
             if (!accessKey) { googleGPTalert('login') ; return }
             model = 'text-davinci-002-render'
         }
+    }
+
+    function createPayload(msgs) {
+        return JSON.stringify(config.proxyAPIenabled
+            ? { messages: msgs, model: model }
+            : { action: 'next', messages: msgs, model: model,
+                parent_message_id: chatgpt.uuidv4(), max_tokens: 4000 })
+    }
+
+    async function getShowReply(convo, callback) {
+
+        // Initialize attempt properties
+        if (!getShowReply.triedEndpoints) getShowReply.triedEndpoints = []
+        if (!getShowReply.attemptCnt) getShowReply.attemptCnt = 0
 
         // Get answer from ChatGPT
-        const data = JSON.stringify(
-            config.proxyAPIenabled ? { messages: convo, model: model }
-                                   : { action: 'next', messages: convo, model: model,
-                                       parent_message_id: chatgpt.uuidv4(), max_tokens: 4000 })
+        await pickAPI()
+        const data = createPayload(convo)
         GM.xmlHttpRequest({
             method: 'POST', url: endpoint,
             headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + accessKey },
