@@ -1,7 +1,3 @@
-<div align="right">
-<h5>English | <a href="docs/hi/LICENSE.md">हिंदी</a></h5>
-</div>
-
 # MIT License
 
 Copyright (c) 2023 [KudoAI](https://kuduoai.com) & contributors
