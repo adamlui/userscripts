@@ -20,7 +20,7 @@
 ![](https://user-images.githubusercontent.com/10906554/223881135-dacad119-a10a-4f7c-9ca1-e5286691003f.png)
 <br>
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## 🚀 Installation
 
@@ -36,7 +36,7 @@
 
 </div>
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## ⚡ Dependencies
 
@@ -56,7 +56,7 @@ Autoclear ChatGPT History relies on code from the powerful <a href="https://gith
 </div>
 </h6>
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## 🌐 Compatibility
 
@@ -74,13 +74,13 @@ Autoclear ChatGPT History is compatible w/ the following browsers using [Tamperm
 
 <br>
 
-<a href="https://greasyfork.org/scripts/460805-autoclear-chatgpt-history"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/460805-autoclear-chatgpt-history"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#-installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
 <br>
-[Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) / 
+[Discuss](https://autoclearchatgpt.com/discuss) / 
 [Leave a review](https://greasyfork.org/scripts/460805-autoclear-chatgpt-history/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## 🧠 Contributors
 
@@ -98,14 +98,14 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 </div><br>
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## 🤖 More ChatGPT apps
 
 For even more epic ChatGPT apps, visit: https://github.com/adamlui/chatgpt-apps
 <br><br>
 
-<img height=8px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
+<img height=6px width="100%" src="https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/main/media/images/separators/aqua.png">
 
 ## 📜 Related scripts
 
