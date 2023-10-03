@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.2
+// @version             2023.10.2.1
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -311,11 +311,11 @@
             const chatgptJSver = /chatgpt-([\d.]+)\.min/.exec(GM_info.script.header)[1] || ''
             const aboutAlertID = alert(
                 'GoogleGPT', // title
-                '🏷️ ' + messages.alert_version + ': ' + GM_info.script.version + '\n'
-                    + '⚡ ' + messages.alert_poweredBy + ': '
+                '🏷️ ' + messages.about_version + ': ' + GM_info.script.version + '\n'
+                    + '⚡ ' + messages.about_poweredBy + ': '
                         + '<a href="https://chatgpt.js.org" target="_blank" rel="noopener">chatgpt.js</a>'
                         + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
-                    + '📜 ' + messages.buttonLabel_githubSrc + ':\n '
+                    + '📜 ' + messages.about_sourceCode + ':\n '
                         + `<a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
                             + config.gitHubURL + '</a>',
                 [ // buttons
@@ -330,8 +330,6 @@
                     button.textContent = '🚀 ' + messages.buttonLabel_updateCheck
                 else if (/review/i.test(button.textContent))
                     button.textContent = '⭐ ' + messages.buttonLabel_leaveReview
-                else if (/github/i.test(button.textContent))
-                    button.textContent = '📜 ' + messages.buttonLabel_githubSrc
                 else button.style.display = 'none' // hide Dismiss button
             }
         }))
