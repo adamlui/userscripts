@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.2.1
+// @version             2023.10.6
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -665,11 +665,6 @@
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     const convo = []
 
-    // Exit if prefix/suffix required but not present
-    if (( config.prefixEnabled && !/.*q=%2F/.test(document.location) ) || // if prefix required but not present
-        ( config.suffixEnabled && !/.*q=.*%3F(&|$)/.test(document.location) )) { // or suffix required but not present
-            return }
-
     // Define messages
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + '_locales/',
@@ -694,6 +689,11 @@
     }) ; const messages = await msgsLoaded
 
     registerMenu()
+
+    // Exit if prefix/suffix required but not present
+    if (( config.prefixEnabled && !/.*q=%2F/.test(document.location) ) || // if prefix required but not present
+        ( config.suffixEnabled && !/.*q=.*%3F(&|$)/.test(document.location) )) { // or suffix required but not present
+            return }
 
     // Init endpoints
     const openAIendpoints = {
