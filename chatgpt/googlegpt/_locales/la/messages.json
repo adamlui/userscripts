@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Retinere" },
   "buttonLabel_dismiss": { "message": "dimitto" },
   "link_viewChanges": { "message": "Vedi anche l 'accendenza" },
-  "link_shareFeedback": { "message": "Partes Feedes" },
-  "state_enabled": { "message": "Actiosus" },
-  "state_disabled": { "message": "Invaliditas" }
+  "link_shareFeedback": { "message": "Partes Feedes" }
 }

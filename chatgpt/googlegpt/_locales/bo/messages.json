@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "དཔྱད་རྩོམ །" },
   "buttonLabel_dismiss": { "message": "འདོར་བ།" },
   "link_viewChanges": { "message": "འགྱུར་བ་མཐོང་བ" },
-  "link_shareFeedback": { "message": "འདྲ་ཕབ །" },
-  "state_enabled": { "message": "སྤྱོད་སྒོ་ཕྱེས།" },
-  "state_disabled": { "message": "སྤྱོད་སྒོ་བཀག" }
+  "link_shareFeedback": { "message": "འདྲ་ཕབ །" }
 }

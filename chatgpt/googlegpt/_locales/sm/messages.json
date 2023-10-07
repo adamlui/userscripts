@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Tuu se Toe Iloiloga" },
   "buttonLabel_dismiss": { "message": "Dismiss" },
   "link_viewChanges": { "message": "Vaʻai suiga" },
-  "link_shareFeedback": { "message": "Faasoa atu Feedback" },
-  "state_enabled": { "message": "faatagaina" },
-  "state_disabled": { "message": "faaletonu" }
+  "link_shareFeedback": { "message": "Faasoa atu Feedback" }
 }

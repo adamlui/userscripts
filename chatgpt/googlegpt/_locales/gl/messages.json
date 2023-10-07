@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Deixa unha opinión" },
   "buttonLabel_dismiss": { "message": "Rexeitar" },
   "link_viewChanges": { "message": "Ver cambios" },
-  "link_shareFeedback": { "message": "Compartir a retroalimentación" },
-  "state_enabled": { "message": "activado" },
-  "state_disabled": { "message": "desactivado" }
+  "link_shareFeedback": { "message": "Compartir a retroalimentación" }
 }

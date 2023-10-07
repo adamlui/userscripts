@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Lasi revizion" },
   "buttonLabel_dismiss": { "message": "Malakcepti" },
   "link_viewChanges": { "message": "Montri ŝanĝojn" },
-  "link_shareFeedback": { "message": "@ info: whatsthis" },
-  "state_enabled": { "message": "Ebligita" },
-  "state_disabled": { "message": "(nekonata)" }
+  "link_shareFeedback": { "message": "@ info: whatsthis" }
 }

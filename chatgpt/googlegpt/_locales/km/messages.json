@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "ទុកការពិនិត្យឡើងវិញ" },
   "buttonLabel_dismiss": { "message": "បោះបង់" },
   "link_viewChanges": { "message": "មើលការផ្លាស់ប្តូរ" },
-  "link_shareFeedback": { "message": "ចែករំលែកមតិកែលម្អ" },
-  "state_enabled": { "message": "បាន​ជ្រើស" },
-  "state_disabled": { "message": "បានបិទ" }
+  "link_shareFeedback": { "message": "ចែករំលែកមតិកែលម្អ" }
 }

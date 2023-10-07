@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Deja una reseña" },
   "buttonLabel_dismiss": { "message": "Descartar" },
   "link_viewChanges": { "message": "Ver cambios" },
-  "link_shareFeedback": { "message": "Compartir comentarios" },
-  "state_enabled": { "message": "habilitado" },
-  "state_disabled": { "message": "deshabilitado" }
+  "link_shareFeedback": { "message": "Compartir comentarios" }
 }

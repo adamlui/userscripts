@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Ostavite komentar i ocenite turu." },
   "buttonLabel_dismiss": { "message": "Odbaci" },
   "link_viewChanges": { "message": "Prikaži promjene" },
-  "link_shareFeedback": { "message": "Deljenje povratnih informacija" },
-  "state_enabled": { "message": "Omoguceno" },
-  "state_disabled": { "message": "onemogućen" }
+  "link_shareFeedback": { "message": "Deljenje povratnih informacija" }
 }

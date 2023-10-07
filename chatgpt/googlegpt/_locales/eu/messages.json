@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Utzi Iritzia" },
   "buttonLabel_dismiss": { "message": "Bistatik kendu" },
   "link_viewChanges": { "message": "Ikusi aldaketak" },
-  "link_shareFeedback": { "message": "Partekatu Iritzia" },
-  "state_enabled": { "message": "gaituta" },
-  "state_disabled": { "message": "ezgaituta" }
+  "link_shareFeedback": { "message": "Partekatu Iritzia" }
 }

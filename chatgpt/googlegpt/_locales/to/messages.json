@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Tuku ha Toe Vakaiʻi" },
   "buttonLabel_dismiss": { "message": "Tukuange" },
   "link_viewChanges": { "message": "Vakai ki he ngaahi liliú" },
-  "link_shareFeedback": { "message": "Vahevahe ʻa e Fakamatala" },
-  "state_enabled": { "message": "Faka'ataa" },
-  "state_disabled": { "message": "Tapui" }
+  "link_shareFeedback": { "message": "Vahevahe ʻa e Fakamatala" }
 }

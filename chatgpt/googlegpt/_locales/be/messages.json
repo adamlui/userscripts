@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Пакінуць водгук" },
   "buttonLabel_dismiss": { "message": "Адхіліць" },
   "link_viewChanges": { "message": "Праглядзець змены" },
-  "link_shareFeedback": { "message": "Падзяліцца зваротнай сувяззю" },
-  "state_enabled": { "message": "XYZ/ альфа- канал" },
-  "state_disabled": { "message": "адключаны" }
+  "link_shareFeedback": { "message": "Падзяліцца зваротнай сувяззю" }
 }

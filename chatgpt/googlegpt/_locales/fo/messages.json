@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Skriva eina gjøgnumgongd" },
   "buttonLabel_dismiss": { "message": "Avrita" },
   "link_viewChanges": { "message": "Sí broytingar" },
-  "link_shareFeedback": { "message": "Deil afturmelding" },
-  "state_enabled": { "message": "Virkið" },
-  "state_disabled": { "message": "Óvirkið" }
+  "link_shareFeedback": { "message": "Deil afturmelding" }
 }

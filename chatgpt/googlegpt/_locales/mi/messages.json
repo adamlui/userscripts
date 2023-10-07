@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Waiho he arotake" },
   "buttonLabel_dismiss": { "message": "Te whakahawea" },
   "link_viewChanges": { "message": "Tirohia nga huringa" },
-  "link_shareFeedback": { "message": "Whakawhitiwhiti kōrero" },
-  "state_enabled": { "message": "Kua whakakāngia" },
-  "state_disabled": { "message": "Kua whakawetoa" }
+  "link_shareFeedback": { "message": "Whakawhitiwhiti kōrero" }
 }

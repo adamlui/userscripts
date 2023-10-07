@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Napísať referenciu" },
   "buttonLabel_dismiss": { "message": "Odmietnuť" },
   "link_viewChanges": { "message": "Zobraziť zmeny" },
-  "link_shareFeedback": { "message": "Zdieľajte spätnú väzbu s" },
-  "state_enabled": { "message": "povolené" },
-  "state_disabled": { "message": "nepovolené" }
+  "link_shareFeedback": { "message": "Zdieľajte spätnú väzbu s" }
 }

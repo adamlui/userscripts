@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Los Kommentaar" },
   "buttonLabel_dismiss": { "message": "Laat vaar" },
   "link_viewChanges": { "message": "Besigtig veranderinge" },
-  "link_shareFeedback": { "message": "Deel terugvoer" },
-  "state_enabled": { "message": "Blou" },
-  "state_disabled": { "message": "gedeaktiveer" }
+  "link_shareFeedback": { "message": "Deel terugvoer" }
 }

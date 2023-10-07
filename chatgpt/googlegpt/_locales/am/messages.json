@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "ግምገማ ይተው" },
   "buttonLabel_dismiss": { "message": "መደምሰሻ" },
   "link_viewChanges": { "message": "ለውጦችን ይመልከቱ" },
-  "link_shareFeedback": { "message": "ግብረመልስ ያጋሩ" },
-  "state_enabled": { "message": "አስታጥቀው" },
-  "state_disabled": { "message": "የተሰናከለ" }
+  "link_shareFeedback": { "message": "ግብረመልስ ያጋሩ" }
 }

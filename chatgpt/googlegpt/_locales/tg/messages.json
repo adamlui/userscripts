@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Leave a Review" },
   "buttonLabel_dismiss": { "message": "Рад кардан" },
   "link_viewChanges": { "message": "Tingnan ang mga pagbabago" },
-  "link_shareFeedback": { "message": "Share Feedback" },
-  "state_enabled": { "message": "enabled" },
-  "state_disabled": { "message": "disabled" }
+  "link_shareFeedback": { "message": "Share Feedback" }
 }

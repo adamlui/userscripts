@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Leave a Review None None" },
   "buttonLabel_dismiss": { "message": "Ukwirukana" },
   "link_viewChanges": { "message": "Kubona impinduka" },
-  "link_shareFeedback": { "message": "Gira ico ushikirije" },
-  "state_enabled": { "message": "uwufise ububasha kw'isanamu" },
-  "state_disabled": { "message": "ubumuga" }
+  "link_shareFeedback": { "message": "Gira ico ushikirije" }
 }

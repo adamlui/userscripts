@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "留下您的評論" },
   "buttonLabel_dismiss": { "message": "關閉" },
   "link_viewChanges": { "message": "查看變更" },
-  "link_shareFeedback": { "message": "分享反饋" },
-  "state_enabled": { "message": "啟用" },
-  "state_disabled": { "message": "禁用" }
+  "link_shareFeedback": { "message": "分享反饋" }
 }

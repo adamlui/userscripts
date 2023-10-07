@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Leave a Review" },
   "buttonLabel_dismiss": { "message": "TLOGELA" },
   "link_viewChanges": { "message": "Leba diphetogo" },
-  "link_shareFeedback": { "message": "Share Feedback" },
-  "state_enabled": { "message": "e kgontshiwe" },
-  "state_disabled": { "message": "golafetse" }
+  "link_shareFeedback": { "message": "Share Feedback" }
 }

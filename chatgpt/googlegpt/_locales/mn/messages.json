@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Сэтгэгдэл үлдээх" },
   "buttonLabel_dismiss": { "message": "Дуусах" },
   "link_viewChanges": { "message": "Өөрчлөлтүүдийг харах" },
-  "link_shareFeedback": { "message": "Санал хүсэлтийг хуваалцах" },
-  "state_enabled": { "message": "Идэвхжүүлсэн" },
-  "state_disabled": { "message": "Идэвхгүй" }
+  "link_shareFeedback": { "message": "Санал хүсэлтийг хуваалцах" }
 }

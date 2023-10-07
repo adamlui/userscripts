@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Gbu li ti mo na ndo ti mbeni ye so mo bâ" },
   "buttonLabel_dismiss": { "message": "Gbenga Akinnagbe" },
   "link_viewChanges": { "message": "Bâ achangement" },
-  "link_shareFeedback": { "message": "Share Feedback na na" },
-  "state_enabled": { "message": "enable awe" },
-  "state_disabled": { "message": "disable awe" }
+  "link_shareFeedback": { "message": "Share Feedback na na" }
 }

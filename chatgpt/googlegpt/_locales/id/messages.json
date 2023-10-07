@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Buat Ulasan" },
   "buttonLabel_dismiss": { "message": "Tutup" },
   "link_viewChanges": { "message": "Lihat perubahan" },
-  "link_shareFeedback": { "message": "Bagikan umpan balik" },
-  "state_enabled": { "message": "difungsikan" },
-  "state_disabled": { "message": "dinonaktifkan" }
+  "link_shareFeedback": { "message": "Bagikan umpan balik" }
 }

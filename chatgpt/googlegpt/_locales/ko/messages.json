@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "상품 후기를 남겨주세요" },
   "buttonLabel_dismiss": { "message": "무시하기" },
   "link_viewChanges": { "message": "변경 보기" },
-  "link_shareFeedback": { "message": "피드백 공유하기" },
-  "state_enabled": { "message": "활성화" },
-  "state_disabled": { "message": "비활성화됨" }
+  "link_shareFeedback": { "message": "피드백 공유하기" }
 }

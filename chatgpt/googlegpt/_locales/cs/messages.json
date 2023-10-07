@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Napsat hodnocení" },
   "buttonLabel_dismiss": { "message": "Zamítnout" },
   "link_viewChanges": { "message": "Zobrazit změny" },
-  "link_shareFeedback": { "message": "Podělte se o svůj názor" },
-  "state_enabled": { "message": "povoleno" },
-  "state_disabled": { "message": "vypnuto" }
+  "link_shareFeedback": { "message": "Podělte se o svůj názor" }
 }

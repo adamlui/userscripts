@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Mametraha fanamarihana" },
   "buttonLabel_dismiss": { "message": "Hiditra" },
   "link_viewChanges": { "message": "Hijery ireo fanovana" },
-  "link_shareFeedback": { "message": "Mizara Feedback" },
-  "state_enabled": { "message": "Mampandeha" },
-  "state_disabled": { "message": "Natsahatra ; Najanona" }
+  "link_shareFeedback": { "message": "Mizara Feedback" }
 }

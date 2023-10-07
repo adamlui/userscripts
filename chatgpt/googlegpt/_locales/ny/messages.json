@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Siyani ndemanga" },
   "buttonLabel_dismiss": { "message": "Mfundo zazinsinsi" },
   "link_viewChanges": { "message": "Onani zosintha" },
-  "link_shareFeedback": { "message": "Gawani Ndemanga" },
-  "state_enabled": { "message": "Utheketsa" },
-  "state_disabled": { "message": "Usatheketsa" }
+  "link_shareFeedback": { "message": "Gawani Ndemanga" }
 }

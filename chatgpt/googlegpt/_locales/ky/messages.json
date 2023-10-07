@@ -40,7 +40,5 @@
   "buttonLabel_leaveReview": { "message": "Сын-пикир калтыруу" },
   "buttonLabel_dismiss": { "message": "Иштен бошотуу" },
   "link_viewChanges": { "message": "Өзгөрүүлөрдү көрүү" },
-  "link_shareFeedback": { "message": "Пикирлерди бөлүшүү" },
-  "state_enabled": { "message": "Күйгүзүлдү" },
-  "state_disabled": { "message": "Өчүрүлгөн" }
+  "link_shareFeedback": { "message": "Пикирлерди бөлүшүү" }
 }
