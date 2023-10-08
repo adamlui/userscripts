@@ -35,9 +35,9 @@
   "alert_suggestOpenAI": { "message": "سەرچاوەی ڕاپرسی ئەپی ناچالاک بکە لە تولباردا" },
   "alert_censored": { "message": "ببورە، بەپێی یاسای فرۆشیی پارێزراوە، ئەم پرسیارەدا پاسخ ندرێت، تکایە پرسیارێکی تر بنێرە" },
   "alert_maintenance": { "message": "سیستمی هەواڵاتی AI لە چاکسازییە" },
-  "buttonLabel_update": { "message": "نوێکردنەوە" },
-  "buttonLabel_updateCheck": { "message": "پشکنینی نوێکردنەوە" },
   "buttonLabel_leaveReview": { "message": "یادنووسینی لێدان" },
+  "buttonLabel_updateCheck": { "message": "پشکنینی نوێکردنەوە" },
+  "buttonLabel_update": { "message": "نوێکردنەوە" },
   "buttonLabel_dismiss": { "message": "ردکردنەوە" },
   "link_viewChanges": { "message": "گۆرانی بینینەکان" },
   "link_shareFeedback": { "message": "پەیامی ئەزموون بگرە" }
