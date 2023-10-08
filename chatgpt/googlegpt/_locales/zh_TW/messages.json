@@ -16,7 +16,6 @@
   "alert_langUpdated": { "message": "語言已更新" },
   "alert_willReplyIn": { "message": "將在內回覆" },
   "alert_yourSysLang": { "message": "系統語言" },
-  "alert_choosePlatform": { "message": "選擇平臺" },
   "alert_updateAvail": { "message": "有可用的更新" },
   "alert_newerVer": { "message": "更新到" },
   "alert_isAvail": { "message": "可用" },

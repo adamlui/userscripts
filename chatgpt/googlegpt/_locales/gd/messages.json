@@ -16,7 +16,6 @@
   "alert_langUpdated": { "message": "Cànan air ùrachadh" },
   "alert_willReplyIn": { "message": "bidh e a 'freagairt ann an" },
   "alert_yourSysLang": { "message": "cànan an t - siostaim agad" },
-  "alert_choosePlatform": { "message": "Tagh àrd - ùrlar" },
   "alert_updateAvail": { "message": "Chan eil ùrachadh ri fhaighinn" },
   "alert_newerVer": { "message": "An update to" },
   "alert_isAvail": { "message": "tha e ri fhaotainn" },
