@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.7
+// @version             2023.10.8
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -448,11 +448,10 @@
 
         // Get answer from ChatGPT
         await pickAPI()
-        const data = createPayload(convo)
         GM.xmlHttpRequest({
             method: 'POST', url: endpoint,
             headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + accessKey },
-            responseType: responseType(), data: data, onloadstart: onLoadStart(), onload: onLoad(),
+            responseType: responseType(), data: createPayload(convo), onloadstart: onLoadStart(), onload: onLoad(),
             onerror: (err) => {
                 googleGPTconsole.error(err)
                 if (!config.proxyAPIenabled) googleGPTalert(!accessKey ? 'login' : 'suggestProxy')
