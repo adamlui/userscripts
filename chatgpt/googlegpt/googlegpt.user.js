@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.8.2
+// @version             2023.10.11
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -317,16 +317,18 @@
                             + config.gitHubURL + '</a>',
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
+                    function getSupport() { safeWindowOpen(config.supportURL) },
                     function leaveAReview() { safeWindowOpen(
-                        config.greasyForkURL + '/feedback#post-discussion') }
-                ], '', 420) // About modal width
+                        config.greasyForkURL + '/feedback#post-discussion') },
+                    function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
+                ], '', 477) // About modal width
 
             // Re-format buttons to include emojis + re-case + hide 'Dismiss'
             for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
-                if (/updates/i.test(button.textContent))
-                    button.textContent = '🚀 ' + messages.buttonLabel_updateCheck
-                else if (/review/i.test(button.textContent))
-                    button.textContent = '⭐ ' + messages.buttonLabel_leaveReview
+                if (/updates/i.test(button.textContent)) button.textContent = '🚀 ' + messages.buttonLabel_updateCheck
+                else if (/support/i.test(button.textContent)) button.textContent = '🧠 ' + messages.buttonLabel_getSupport
+                else if (/review/i.test(button.textContent)) button.textContent = '⭐ ' + messages.buttonLabel_leaveReview
+                else if (/apps/i.test(button.textContent)) button.textContent = '🤖 ' + messages.buttonLabel_moreApps
                 else button.style.display = 'none' // hide Dismiss button
             }
         }))
@@ -652,6 +654,7 @@
     const config = {
         prefix: 'googlegpt', appSymbol: '🤖', userLanguage: chatgpt.getUserLanguage(),
         gitHubURL: 'https://github.com/userscripts/googlegpt',
+        supportURL: 'https://github.com/userscripts/issues/new',
         greasyForkURL: '' }
     config.updateURL = config.greasyForkURL + '/code/GoogleGPT.meta.js'
     config.assetHostURL = 'https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/googlegpt/'
@@ -747,9 +750,11 @@
         + '.chatgpt-modal h2 { font-size: 1.65rem ; margin: 0 ; padding: 0 } ' // shrink margin/padding around alert title + enlarge it
         + '.chatgpt-modal p { margin: 0 0 -9px 4px ; font-size: 1.2rem ; line-height: 1.45 } ' // position/size update alert msg
         + '.chatgpt-modal button { ' // chatgpt.alert() buttons
-            + 'padding: 8px 15px !important ; cursor: pointer ; border-radius: 0 !important ; '
-            + 'text-transform: uppercase ; border: 2px solid black !important } '
+            + 'font-size: 0.84rem ; text-transform: uppercase ; min-width: 113px ; padding: 5px !important ;'
+            + 'cursor: pointer ; border-radius: 0 !important ; '
+            + 'border: 1px solid ' + ( isDarkMode() ? 'white' : 'black' ) + ' !important } '
         + '.chatgpt-modal button:hover { color: white !important } ' // color text white on update alert button hovers
+        + '.modal-buttons { margin: 20px -5px -3px -10px !important }'
         + ( isDarkMode() ? '.chatgpt-modal button:hover { background-color: #00cfff !important }' : '' )
     )
     document.head.appendChild(googleGPTstyle) // append style to <head>
