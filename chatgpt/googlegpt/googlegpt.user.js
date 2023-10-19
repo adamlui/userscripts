@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.11
+// @version             2023.10.19
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -585,11 +585,13 @@
         let prevLength = replyBox.value.length
 
         // Add listeners
-        form.addEventListener('keydown', enterToSubmit)
+        form.addEventListener('keydown', handleEnter)
         replyBox.addEventListener('input', autosizeBox)
 
-        function enterToSubmit(event) {
-            if (event.key === 'Enter' && event.target.nodeName === 'TEXTAREA') handleSubmit(event) }
+        function handleEnter(event) {
+            if (event.key === 'Enter' && !event.shiftKey && event.target.nodeName === 'TEXTAREA')
+                handleSubmit(event)
+        }
 
         function handleSubmit(event) {
             event.preventDefault()
@@ -606,7 +608,7 @@
 
             // Remove listeners since they're re-added
             replyBox.removeEventListener('input', autosizeBox)
-            replyBox.removeEventListener('keydown', enterToSubmit)
+            replyBox.removeEventListener('keydown', handleEnter)
 
             // Show loading status
             const replySection = googleGPTdiv.querySelector('section')
