@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.20
+// @version             2023.10.20.1
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -161,7 +161,7 @@
 // @connect             greasyfork.org
 // @connect             chat.openai.com
 // @connect             api.aigcfun.com
-// @require             https://cdn.jsdelivr.net/gh/kudoai/chatgpt.js@8e2cdd86eb71f3b19b55928c01b33ec235d26809/dist/chatgpt-2.3.10.min.js
+// @require             https://cdn.jsdelivr.net/gh/kudoai/chatgpt.js@5d59b49dfec37e7f9c49e52441d125402a5ca10c/dist/chatgpt-2.3.11.min.js
 // @require             https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js
 // @require             https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js
 // @grant               GM_getValue
@@ -755,9 +755,7 @@
             + 'font-size: 0.84rem ; text-transform: uppercase ; min-width: 113px ; padding: 5px !important ;'
             + 'cursor: pointer ; border-radius: 0 !important ; '
             + 'border: 1px solid ' + ( isDarkMode() ? 'white' : 'black' ) + ' !important } '
-        + '.chatgpt-modal button:hover { color: white !important } ' // color text white on update alert button hovers
-        + '.modal-buttons { margin: 20px -5px -3px -10px !important }'
-        + ( isDarkMode() ? '.chatgpt-modal button:hover { background-color: #00cfff !important }' : '' )
+        + '.modal-buttons { margin: 20px -5px -3px -10px !important }' // position modal buttons
     )
     document.head.appendChild(googleGPTstyle) // append style to <head>
 
