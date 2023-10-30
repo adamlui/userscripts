@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.29
+// @version             2023.10.29.1
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -321,7 +321,7 @@
                     function leaveAReview() { safeWindowOpen(
                         config.greasyForkURL + '/feedback#post-discussion') },
                     function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
-                ], '', 477) // About modal width
+                ], '', 515) // About modal width
 
             // Re-format buttons to include emojis + re-case + hide 'Dismiss'
             for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
