@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.29.1
+// @version             2023.10.29.2
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -172,6 +172,8 @@
 // @grant               GM_unregisterMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
+// @downloadURL         https://greasyfork.org/scripts/478597/code/googlegpt.user.js
+// @updateURL           https://greasyfork.org/scripts/478597/code/googlegpt.meta.js
 // @homepageURL         https://googlegpt.kudoai.com
 // @supportURL          https://googlegpt.kudoai.com/issues
 // ==/UserScript==
@@ -657,8 +659,8 @@
         prefix: 'googlegpt', appSymbol: '🤖', userLanguage: chatgpt.getUserLanguage(),
         gitHubURL: 'https://github.com/userscripts/googlegpt',
         supportURL: 'https://github.com/userscripts/issues/new',
-        greasyForkURL: '' }
-    config.updateURL = config.greasyForkURL + '/code/GoogleGPT.meta.js'
+        greasyForkURL: 'https://greasyfork.org/en/scripts/478597-googlegpt' }
+    config.updateURL = config.greasyForkURL + '/code/googlegpt.meta.js'
     config.assetHostURL = 'https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/googlegpt/'
     loadSetting('proxyAPIenabled', 'prefixEnabled', 'replyLanguage', 'fatterSidebar', 'suffixEnabled')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
