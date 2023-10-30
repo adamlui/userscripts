@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.30.1
+// @version             2023.10.30.2
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -657,18 +657,18 @@
     // Init config/convo/menu
     const config = {
         prefix: 'googlegpt', appSymbol: '🤖', userLanguage: chatgpt.getUserLanguage(),
-        gitHubURL: 'https://github.com/userscripts/googlegpt',
-        supportURL: 'https://github.com/userscripts/issues/new',
+        gitHubURL: 'https://github.com/kudoai/googlegpt',
         greasyForkURL: 'https://greasyfork.org/scripts/478597-googlegpt' }
     config.updateURL = config.greasyForkURL + '/code/googlegpt.meta.js'
-    config.assetHostURL = 'https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/googlegpt/'
-    loadSetting('proxyAPIenabled', 'prefixEnabled', 'replyLanguage', 'fatterSidebar', 'suffixEnabled')
+    config.supportURL = config.gitHubURL + '/issues/new'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'raw.githubusercontent.com') + '/main/'
+    loadSetting('proxyAPIenabled', 'prefixEnabled', 'replyLanguage', 'suffixEnabled')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     const convo = []
 
     // Define messages
     const msgsLoaded = new Promise(resolve => {
-        const msgHostDir = config.assetHostURL + '_locales/',
+        const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
         let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
         GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
