@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.10.30.2
+// @version             2023.10.30.3
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @match               *://*.google.com/search?*
@@ -738,9 +738,10 @@
             + 'padding: 15px 0 0 5px ;' // left/top-pad loading status when sending replies
             + '-webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
         + '.chatgpt-feedback { margin: 2px 0 25px }'
-        + '.balloon-tip { content: "" ; position: relative ; top: 5px ; right: 15.9em ; border: 7px solid transparent ;'
-            + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color: '
-            + ( isDarkMode() ? '#3a3a3a' : '#eaeaea' ) + ' } '
+        + '.balloon-tip { content: "" ; border: 7px solid transparent ; position: relative ; top: 5px ;'
+            + `right: ${ navigator.userAgent.includes('Firefox') ? 16.62 : 15.89 }em ;`
+            + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color:'
+            + ( isDarkMode() ? '#3a3a3a' : '#eaeaea' ) + ' }'
         + '.continue-chat > textarea {'
             + 'border: none ; border-radius: 12px 13px 12px 0 ; '
             + 'height: 1.55rem ; width: 97.6% ; max-height: 200px ;resize: none ; '
