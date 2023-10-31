@@ -60,6 +60,13 @@
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/duckduckgpt#readme) /
 [讨论](https://github.com/userscripts/discussions)
 
+> ### <img style="margin-bottom:-1px" src="https://www.google.com/s2/favicons?sz=64&domain=google.com" width=17> [GoogleGPT](../../googlegpt)
+
+> 在 Google Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)
+<br>[安装](https://greasyfork.org/scripts/478597-googlegpt) /
+[自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/googlegpt#readme) /
+[讨论](https://github.com/adamlui/userscripts/discussions)
+
 <img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**更多用户脚本**</a> /
