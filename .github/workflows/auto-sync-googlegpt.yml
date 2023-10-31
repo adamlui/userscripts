@@ -1,0 +1,75 @@
+name: Sync chatgpt/googlegpt/ to (kudoai/googlegpt/greasemonkey/ && adamlui/chatgpt-apps/googlegpt/greasemonkey/)
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'chatgpt/googlegpt/**'
+
+jobs:
+  build:
+    if: github.event.commits[0].committer.username != 'kudo-sync-bot'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout kudoai/googlegpt
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: kudoai/googlegpt
+          path: kudoai/googlegpt
+
+      - name: Checkout adamlui/chatgpt-apps
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-apps
+          path: adamlui/chatgpt-apps
+
+      - name: Sync docs to to kudoai/googlegpt/docs/ && adamlui/chatgpt-apps/googlegpt/docs/
+        run: |
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
+            ${{ github.workspace }}/kudoai/googlegpt/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/googlegpt/
+
+      - name: Sync chatgpt/googlegpt/ to kudoai/googlegpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
+            ${{ github.workspace }}/kudoai/googlegpt/greasemonkey/
+
+      - name: Sync chatgpt/googlegpt/ to adamlui/chatgpt-apps/googlegpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/googlegpt/greasemonkey/
+
+      - name: Push to kudoai/googlegpt
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: '**'
+          repository: kudoai/googlegpt
+
+      - name: Push to adamlui/chatgpt-apps
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: '--force'
+          add_options: '--all'
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
+          file_pattern: 'googlegpt/**'
+          repository: adamlui/chatgpt-apps
