@@ -61,7 +61,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img style="margin-bottom:-1px" src="https://www.google.com/s2/favicons?sz=64&domain=google.com" width=18> [GoogleGPT](../googlegpt)
+### <img src="https://www.google.com/s2/favicons?sz=64&domain=google.com" width=19> [GoogleGPT](../googlegpt)
 
 > Display ChatGPT answers in Google Search sidebar (powered by GPT-4!)
 <br>[Install](https://greasyfork.org/scripts/478597-googlegpt) /
