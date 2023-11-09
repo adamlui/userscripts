@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2023.11.8.9
+// @version             2023.11.8.8
 // @license             MIT
 // @icon                https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @compatible          chrome
@@ -873,6 +873,7 @@
     function googleGPTshow(answer) {
         while (googleGPTdiv.firstChild) // clear all children
             googleGPTdiv.removeChild(googleGPTdiv.firstChild)
+        const fillColor = isDarkMode() ? 'white' : 'black'
 
         // Create/append '🤖 GoogleGPT'
         const appNameSpan = document.createElement('span')
