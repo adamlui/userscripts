@@ -29,7 +29,7 @@ jobs:
       - name: Sync docs to to adamlui/youtube-classic/docs/
         run: |
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/youtube-classic/docs \
+            ${{ github.workspace }}/adamlui/userscripts/youtube-classic/docs \
             ${{ github.workspace }}/adamlui/youtube-classic/
 
       - name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
