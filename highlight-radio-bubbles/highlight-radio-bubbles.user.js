@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Highlight Radio Bubbles
-// @version          2023.07.21
+// @version          2023.11.12
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Makes radio bubbles bigger & more colorful when brought to focus.
@@ -12,9 +12,9 @@
 // @compatible       opera
 // @compatible       safari
 // @compatible       edge
-// @match            http*://*/*
-// @updateURL        https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.meta.js
-// @downloadURL      https://greasyfork.org/scripts/26311/code/highlight-radio-bubbles.user.js
+// @match            *://*/*
+// @downloadURL      https://update.greasyfork.org/scripts/26311.user.js
+// @updateURL        https://update.greasyfork.org/scripts/26311.meta.js
 // ==/UserScript==
 
 const styleNode = document.createElement('style')
