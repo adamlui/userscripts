@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name             Hide Forum Images
-// @version          2023.07.21
+// @version          2023.11.12
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -12,9 +12,9 @@
 // @compatible       opera
 // @compatible       safari
 // @compatible       edge
-// @match            http*://*/*
-// @updateURL        https://greasyfork.org/scripts/12639/code/hide-forum-images.meta.js
-// @downloadURL      https://greasyfork.org/scripts/12639/code/hide-forum-images.user.js
+// @match            *://*/*
+// @downloadURL      https://update.greasyfork.org/scripts/12639.user.js
+// @updateURL        https://update.greasyfork.org/scripts/12639.meta.js
 // ==/UserScript==
 
 if (document.querySelector('[src*="vbulletin"], [src*="discourse"]') || /xenforo/i.test(document.querySelector('.copyright').textContent)) {
