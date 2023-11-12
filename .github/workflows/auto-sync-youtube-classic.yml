@@ -26,11 +26,11 @@ jobs:
           repository: adamlui/youtube-classic
           path: adamlui/youtube-classic
 
-      - name: Copy README.md to adamlui/youtube-classic
+      - name: Sync docs to to adamlui/youtube-classic/docs/
         run: |
-          cp -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/youtube-classic/README.md \
-            ${{ github.workspace }}/adamlui/youtube-classic/README.md
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/youtube-classic/docs \
+            ${{ github.workspace }}/adamlui/youtube-classic/
 
       - name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
         run: |
