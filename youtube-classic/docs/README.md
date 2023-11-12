@@ -18,7 +18,7 @@
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 <h2>What it does</h2>
 <ul>
