@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.9.30.2
+// @version             2023.11.12
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -26,6 +26,8 @@
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
+// @downloadURL         https://update.greasyfork.org/scripts/473377.user.js
+// @updateURL           https://update.greasyfork.org/scripts/473377.meta.js
 // @homepageURL         https://github.com/adamlui/github-star-history
 // @supportURL          https://github.com/adamlui/github-star-history/issues
 // ==/UserScript==
@@ -40,7 +42,7 @@
         appSymbol: '⭐',
         gitHubURL: 'https://github.com/adamlui/github-star-history',
         greasyForkURL: 'https://greasyfork.org/scripts/473377-github-star-history' }
-    config.updateURL = config.greasyForkURL + '/code/github-star-history.meta.js'
+    config.updateURL = `https://update.greasyfork.org/scripts/${ config.greasyForkURL.match(/\d+/)[0] }.meta.js`
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About GitHub Star History', async () => {
