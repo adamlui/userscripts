@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name             Hide Forum Images
-// @version          2023.11.12.2
+// @version          2023.11.12.3
 // @author           Adam Lui
-// @namespace        https://github.com/adamlui
+// @namespace        https://adamlui.com
 // @description      Hides images/videos from XenForo, vBulletin & Discourse forums.
 // @license          MIT
 // @icon             https://i.imgur.com/TABwyUq.png
