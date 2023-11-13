@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name             Highlight Radio Bubbles
-// @version          2023.11.12.1
+// @version          2023.11.12.2
 // @author           Adam Lui
 // @namespace        https://github.com/adamlui
 // @description      Makes radio bubbles bigger & more colorful when brought to focus.
-// @supportURL       https://github.com/adamlui/userscripts/issues
 // @license          MIT
 // @icon             https://i.imgur.com/ribh0wE.png
 // @compatible       chrome
