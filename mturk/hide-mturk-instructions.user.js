@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         Hide MTurk Instructions
-// @version      2023.11.12
+// @version      2023.11.12.1
 // @author       Adam Lui
-// @namespace    https://elonsucks.org/@adam
+// @namespace    https://adamlui.com
 // @description  Hides instructions from HITs on MTurk
-// @supportURL   https://github.com/adamlui/userscripts/issues
 // @license      MIT
 // @icon         https://www.mturk.com/assets/images/favicon.ico
 // @compatible   chrome
@@ -15,8 +14,10 @@
 // @match        https://*.mturkcontent.com/*
 // @run-at       document-start
 // @grant        GM_addStyle
-// @downloadURL  https://update.greasyfork.org/scripts/28351.user.js
-// @updateURL    https://update.greasyfork.org/scripts/28351.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/28351/hide-mturk-instructions.user.js
+// @updateURL    https://update.greasyfork.org/scripts/28351/hide-mturk-instructions.meta.js
+// @supportURL   https://github.com/adamlui/userscripts/issues
+// @homepageURL  https://github.com/adamlui/userscripts
 // ==/UserScript==
 
 GM_addStyle('[id*="instruction"], [class*="instruction"] { display:none !important; }');
