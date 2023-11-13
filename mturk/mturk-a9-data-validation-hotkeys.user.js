@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          MTurk A9 Data Validation Hotkeys
-// @namespace     https://github.com/adamlui
-// @version       2023.11.12
+// @namespace     https://adamlui.com
+// @version       2023.11.12.1
 // @description   Hotkeys for Amazon's A9 Data Validation HITs on MTurk
 // @author        Adam Lui
 // @include       https://*.mturk.com/*
@@ -9,8 +9,10 @@
 // @require       http://code.jquery.com/jquery-latest.min.js
 // @icon          http://i.imgur.com/UIjnpzD.png
 // @requesterURL  https://www.mturk.com/mturk/searchbar?selectedSearchType=hitgroups&requesterId=A3HLF55H6JSTI0
-// @downloadURL   https://update.greasyfork.org/scripts/27685.user.js
-// @updateURL     https://update.greasyfork.org/scripts/27685.meta.js
+// @downloadURL   https://update.greasyfork.org/scripts/27685/mturk-a9-data-validation-hotkeys.user.js
+// @updateURL     https://update.greasyfork.org/scripts/27685/mturk-a9-data-validation-hotkeys.meta.js
+// @supportURL   https://github.com/adamlui/userscripts/issues
+// @homepageURL  https://github.com/adamlui/userscripts
 // ==/UserScript==
 
 /*
