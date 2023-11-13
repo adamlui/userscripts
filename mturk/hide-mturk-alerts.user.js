@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         Hide MTurk Alerts
-// @version      2023.11.12
+// @version      2023.11.12.1
 // @author       Adam Lui
-// @namespace    https://elonsucks.org/@adam
+// @namespace    https://adamlui.com
 // @description  Hides MTurk alerts.
-// @supportURL   https://github.com/adamlui/userscripts/issues
 // @license      MIT
 // @icon         https://www.mturk.com/assets/images/favicon.ico
 // @compatible   chrome
@@ -15,8 +14,10 @@
 // @match        https://worker.mturk.com/*
 // @grant        GM_addStyle
 // @require      https://cdn.jsdelivr.net/gh/jquery/jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944/dist/jquery.min.js
-// @downloadURL  https://update.greasyfork.org/scripts/458346.user.js
-// @updateURL    https://update.greasyfork.org/scripts/458346.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/458346/hide-mturk-alerts.user.js
+// @updateURL    https://update.greasyfork.org/scripts/458346/hide-mturk-alerts.meta.js
+// @homepageURL  https://github.com/adamlui/userscripts
+// @supportURL   https://github.com/adamlui/userscripts/issues
 // ==/UserScript==
 
 GM_addStyle('.mturk-alert, .title { display:none !important; }');
