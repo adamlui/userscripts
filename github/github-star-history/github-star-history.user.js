@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.12.1
+// @version             2023.11.12.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -26,8 +26,8 @@
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://update.greasyfork.org/scripts/473377.user.js
-// @updateURL           https://update.greasyfork.org/scripts/473377.meta.js
+// @downloadURL         https://update.greasyfork.org/scripts/473377/github-star-history.user.js
+// @updateURL           https://update.greasyfork.org/scripts/473377/github-star-history.meta.js
 // @homepageURL         https://github.com/adamlui/github-star-history
 // @supportURL          https://github.com/adamlui/github-star-history/issues
 // ==/UserScript==
@@ -42,7 +42,8 @@
         appSymbol: '⭐',
         gitHubURL: 'https://github.com/adamlui/github-star-history',
         greasyForkURL: 'https://greasyfork.org/scripts/473377-github-star-history' }
-    config.updateURL = `https://update.greasyfork.org/scripts/${ /\d+/.exec(config.greasyForkURL) }.meta.js`
+    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+        .replace(/(\d+)-?(.*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About GitHub Star History', async () => {
