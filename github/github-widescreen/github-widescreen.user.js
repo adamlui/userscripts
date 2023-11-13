@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.12.1
+// @version             2023.11.12.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -21,8 +21,8 @@
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://update.greasyfork.org/scripts/473439.user.js
-// @updateURL           https://update.greasyfork.org/scripts/473439.meta.js
+// @downloadURL         https://update.greasyfork.org/scripts/473439/github-widescreen.user.js
+// @updateURL           https://update.greasyfork.org/scripts/473439/github-widescreen.meta.js
 // @homepageURL         https://github.com/adamlui/github-widescreen
 // @supportURL          https://github.com/adamlui/github-widescreen/issues
 // ==/UserScript==
@@ -37,7 +37,8 @@
         appSymbol: '🖥️',
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
-    config.updateURL = `https://update.greasyfork.org/scripts/${ /\d+/.exec(config.greasyForkURL) }.meta.js`
+    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+        .replace(/(\d+)-?(.*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About GitHub Widescreen', async () => {
