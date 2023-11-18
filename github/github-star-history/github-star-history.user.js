@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.12.2
+// @version             2023.11.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -81,7 +81,7 @@
     let starHistoryAdded = false
     const repoObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+            if (mutation.type == 'childList' && mutation.addedNodes.length) {
                 const onRepoPage = /^https?:\/\/[^/]+\/[^/]+\/[^/]+\/?$/.test(window.location.href)
                 if (onRepoPage && !starHistoryAdded) {
                     insertStarHistory() ; starHistoryAdded = true
@@ -130,8 +130,8 @@
     }})}
 
     function isDarkMode() {
-        return document.documentElement.dataset.colorMode === 'dark' ||
-               document.documentElement.dataset.darkreaderScheme === 'dark'
+        return document.documentElement.dataset.colorMode == 'dark' ||
+               document.documentElement.dataset.darkreaderScheme == 'dark'
     }
 
     // Define FEEDBACK functions
@@ -303,7 +303,7 @@
             if (dismissKeys.includes(event.keyCode)) {
                 for (const alertId of alertQueue) { // look to handle only if triggering alert is active
                     const alert = document.getElementById(alertId)
-                    if (alert && alert.style.display !== 'none') { // active alert found
+                    if (alert && alert.style.display != 'none') { // active alert found
                         if (event.keyCode === 27) destroyAlert() // if esc pressed, dismiss alert & do nothing
                         else if (event.keyCode === 13) { // else if enter pressed
                             const mainButton = alert.querySelector('.modal-buttons').lastChild // look for main button
