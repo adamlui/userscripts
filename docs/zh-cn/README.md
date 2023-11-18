@@ -5,10 +5,10 @@
 # 🐵 Greasemonkey 用户脚本 &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=刚刚找到这些史诗般的用户脚本！&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
 ![](https://img.shields.io/badge/安装-70,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
-[![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&color=yellow&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
-[![](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
-[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
-[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&labelColor=464646&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&logo=github&logoColor=white&labelColor=464646&color=fcf67b&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/badge/许可证-MIT-fca87b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
+[![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
+[![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
 MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
