@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.17
+// @version             2023.11.17.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -74,8 +74,8 @@
 
     // Observe DOM for need to hide side panels
     const hideBtns = [] ; let prevURL = null
-    const sidePanelObserver = new MutationObserver( (mutations) => {
-        mutations.forEach((mutation) => {
+    const sidePanelObserver = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
             if (mutation.type == 'childList' && mutation.addedNodes.length) {
                 if (window.location.href !== prevURL) { // if loaded/naved to new page
                     if (window.location.href.includes('edit')) { // if on editor, wait for side panel load
@@ -98,10 +98,9 @@
         GM.xmlHttpRequest({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: (response) => {
+            onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
 
-                // Compare versions
-                const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+                // Compare versions                
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
@@ -139,7 +138,7 @@
             // Hide File Tree button in diff views
             + 'button[id^="hide"]:not([hidden])'))
         if (hideBtns.length > 0) // click if needed
-            hideBtns.forEach((btn) => { btn.click() })
+            hideBtns.forEach(btn => { btn.click() })
     }
 
     // Define FEEDBACK functions
@@ -221,7 +220,7 @@
         modalButtons.classList.add('modal-buttons')
         if (btns) { // are supplied
             if (!Array.isArray(btns)) btns = [btns] // convert single button to array if necessary
-            btns.forEach((buttonFn) => { // create title-cased labels + attach listeners
+            btns.forEach(buttonFn => { // create title-cased labels + attach listeners
                 const button = document.createElement('button')
                 button.textContent = buttonFn.name
                     .replace(/[_-]\w/g, match => match.slice(1).toUpperCase()) // convert snake/kebab to camel case
@@ -265,7 +264,7 @@
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach((element) => { modal.appendChild(element) })
+        elements.forEach(element => { modal.appendChild(element) })
         modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
 
         // Enqueue alert
@@ -275,7 +274,7 @@
 
         // Add listeners
         document.addEventListener('keydown', keyHandler)
-        modalContainer.addEventListener('click', (event) => {
+        modalContainer.addEventListener('click', event => {
             if (event.target === modalContainer) destroyAlert() })
 
         // Show alert if none active
