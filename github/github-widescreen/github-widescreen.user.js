@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.12.2
+// @version             2023.11.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -76,7 +76,7 @@
     const hideBtns = [] ; let prevURL = null
     const sidePanelObserver = new MutationObserver( (mutations) => {
         mutations.forEach((mutation) => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+            if (mutation.type == 'childList' && mutation.addedNodes.length) {
                 if (window.location.href !== prevURL) { // if loaded/naved to new page
                     if (window.location.href.includes('edit')) { // if on editor, wait for side panel load
                         const editorSidePanelobserver = new MutationObserver(() => {
@@ -128,8 +128,8 @@
     }})}
 
     function isDarkMode() {
-        return document.documentElement.dataset.colorMode === 'dark' ||
-               document.documentElement.dataset.darkreaderScheme === 'dark'
+        return document.documentElement.dataset.colorMode == 'dark' ||
+               document.documentElement.dataset.darkreaderScheme == 'dark'
     }
 
     function hideSidePanels() {
@@ -311,7 +311,7 @@
             if (dismissKeys.includes(event.keyCode)) {
                 for (const alertId of alertQueue) { // look to handle only if triggering alert is active
                     const alert = document.getElementById(alertId)
-                    if (alert && alert.style.display !== 'none') { // active alert found
+                    if (alert && alert.style.display != 'none') { // active alert found
                         if (event.keyCode === 27) destroyAlert() // if esc pressed, dismiss alert & do nothing
                         else if (event.keyCode === 13) { // else if enter pressed
                             const mainButton = alert.querySelector('.modal-buttons').lastChild // look for main button
