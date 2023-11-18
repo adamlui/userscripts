@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.17.1
+// @version             2023.11.17.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -256,7 +256,7 @@
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach(element => { modal.appendChild(element) })
+        elements.forEach(elem => { modal.appendChild(elem) })
         modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
 
         // Enqueue alert
