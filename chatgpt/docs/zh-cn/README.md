@@ -6,7 +6,7 @@
 利用 ChatGPT 惊人的 AI 或增强其 UX 的用户脚本。 运行这些脚本需要一个用户脚本管理器，例如 [Tampermonkey](https://www.tampermonkey.net/)。
 
 ![](https://img.shields.io/badge/安装-60,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
-[![](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
+[![](https://img.shields.io/badge/许可证-MIT-fca87b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
 [![](https://img.shields.io/badge/供电-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/kudoai/chatgpt.js)
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
