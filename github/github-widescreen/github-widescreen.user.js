@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.17.1
+// @version             2023.11.17.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -264,7 +264,7 @@
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach(element => { modal.appendChild(element) })
+        elements.forEach(elem => { modal.appendChild(elem) })
         modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
 
         // Enqueue alert
@@ -348,8 +348,8 @@
 
                     // Extract/set attributes
                     const attributes = Array.from(tagAttributes.matchAll(reAttributes))
-                    attributes.forEach(attribute => {
-                        const name = attribute[1], value = attribute[2].replace(/['"]/g, '')
+                    attributes.forEach(attr => {
+                        const name = attr[1], value = attr[2].replace(/['"]/g, '')
                         tagNode.setAttribute(name, value)
                     })
 
