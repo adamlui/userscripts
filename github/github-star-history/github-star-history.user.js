@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.17.2
+// @version             2023.11.17.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -340,8 +340,8 @@
 
                     // Extract/set attributes
                     const attributes = Array.from(tagAttributes.matchAll(reAttributes))
-                    attributes.forEach(attribute => {
-                        const name = attribute[1], value = attribute[2].replace(/['"]/g, '')
+                    attributes.forEach(attr => {
+                        const name = attr[1], value = attr[2].replace(/['"]/g, '')
                         tagNode.setAttribute(name, value)
                     })
 
