@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.17.2
+// @version             2023.11.25
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -34,21 +34,21 @@
 
     // Init CONFIG
     const config = {
-        appSymbol: '🖥️',
+        appName: 'GitHub Widescreen', appSymbol: '🖥️',
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?(.*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About GitHub Widescreen', async () => {
+    GM_registerMenuCommand('💡 About ' + config.appName, async () => {
 
         // Show alert
         const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
               pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = alert(
-            'GitHub Widescreen', // title
+            config.appName, // title
             `<span style="${ headingStyle }">🏷️ <i>Version</i>: </span>`
                 + `<span style="${ pStyle }">${ GM_info.script.version }</span>\n`
             + `<span style="${ headingStyle }">📜 <i>Source code</i>:</span>\n`
@@ -109,7 +109,7 @@
 
                         // Alert to update
                         alert('Update available! 🚀', // title
-                            'A newer version of GitHub Widescreen v' + latestVer + ' is available!  '
+                            `A newer version of ${ config.appName } v${ latestVer } is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
                                     + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
                                     + config.updateURL.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
@@ -123,7 +123,7 @@
                         return
                 }}
 
-                alert('Up to date!', `GitHub Widescreen (v${ currentVer }) is up-to-date!`)
+                alert('Up to date!', `${ config.appName } (v${ currentVer }) is up-to-date!`)
     }})}
 
     function isDarkMode() {
