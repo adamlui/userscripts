@@ -6,7 +6,7 @@
 
 ![](https://img.shields.io/badge/Installs-80,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&logo=github&logoColor=white&labelColor=464646&color=fcf67b&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
-[![](https://img.shields.io/badge/License-MIT-fcbe76.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/LICENSE)
+[![](https://img.shields.io/badge/License-MIT-fcb232.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/LICENSE)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 
