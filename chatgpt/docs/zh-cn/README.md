@@ -7,7 +7,7 @@
 
 ![](https://img.shields.io/badge/安装-70,000+-2bbbd8?logo=docusign&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/badge/许可证-MIT-fca87b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
-[![](https://img.shields.io/badge/供电-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/kudoai/chatgpt.js)
+[![](https://img.shields.io/badge/供电-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/kudoai/chatgpt.js?utm_source=userscripts&utm_content=powered_by_shield)
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
