@@ -1,6 +1,7 @@
 # <img width=28 style="margin-bottom: -2px" src="https://github.githubassets.com/favicons/favicon.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
 
 [![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE)
+[![](https://img.shields.io/codacy/grade/918850986ce14fa2b4a99f00bbbfb5cc?label=Code+Quality&logo=codacy&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://app.codacy.com/gh/adamlui/github-widescreen/commits?utm_source=github_widescreen&utm_content=github_shield)
 
 ### Auto-hides obtrusive side panels from GitHub.
 
