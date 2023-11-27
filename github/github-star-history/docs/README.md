@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/blob/main/LICENSE)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/github-star-history?label=Commits&logo=github&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/commits/main)
-[![](https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-star-history)
+[![](https://img.shields.io/codacy/grade/74a040e72092473294614799a786749c?label=Code+Quality&logo=codacy&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://app.codacy.com/gh/adamlui/github-star-history/commits?utm_source=github_star_history&utm_content=github_shield)
 [![](https://img.shields.io/badge/Mentioned_in-Awesome-cca8c4?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/awesome-scripts/awesome-userscripts#github)
 
 ### Adds star history chart to sidebar of GitHub repos.
