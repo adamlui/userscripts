@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.11.25
+// @version             2023.12.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -128,7 +128,8 @@
 
     function isDarkMode() {
         return document.documentElement.dataset.colorMode == 'dark' ||
-               document.documentElement.dataset.darkreaderScheme == 'dark'
+               document.documentElement.dataset.darkreaderScheme == 'dark' ||
+               window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
     }
 
     function hideSidePanels() {
