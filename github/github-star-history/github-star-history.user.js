@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.12.2
+// @version             2023.12.10
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -153,7 +153,7 @@
         if (!document.querySelector('#chatgpt-alert-style')) {
             modalStyle = document.createElement('style')
             modalStyle.id = 'chatgpt-alert-style'
-            document.head.appendChild(modalStyle)
+            document.head.append(modalStyle)
         } else modalStyle = document.querySelector('#chatgpt-alert-style')
 
         // Define styles
@@ -252,13 +252,13 @@
                     .replace(/\b(\w+)nt\b/gi, '$1n\'t') // insert apostrophe in 'nt' suffixes
                     .trim() // trim leading/trailing spaces
 
-            checkboxDiv.appendChild(checkboxInput) ; checkboxDiv.appendChild(checkboxLabel)
+            checkboxDiv.append(checkboxInput) ; checkboxDiv.append(checkboxLabel)
         }
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach(elem => { modal.appendChild(elem) })
-        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
+        elements.forEach(elem => { modal.append(elem) })
+        modalContainer.append(modal) ; document.body.append(modalContainer)
 
         // Enqueue alert
         alertQueue = JSON.parse(localStorage.alertQueue)
@@ -403,7 +403,7 @@
                 // Create #star-history div, add attrs/img/listener
                 const starHistoryDiv = document.createElement('div')
                 starHistoryDiv.id = 'star-history' ; starHistoryDiv.style.cursor = 'crosshair'
-                starHistoryDiv.appendChild(starHistoryImg)                
+                starHistoryDiv.append(starHistoryImg)                
                 starHistoryDiv.addEventListener('click', () => { zoomStarHistory(imgDataURL) })
 
                 // Insert div
@@ -438,7 +438,7 @@
         overlay.addEventListener('click', () => { document.body.removeChild(overlay) })
 
         // Append elements
-        overlay.appendChild(zoomedImg) ; document.body.appendChild(overlay)
+        overlay.append(zoomedImg) ; document.body.append(overlay)
     }
 
 })()
