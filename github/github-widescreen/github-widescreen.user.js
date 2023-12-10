@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2023.12.2
+// @version             2023.12.10
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -161,7 +161,7 @@
         if (!document.querySelector('#chatgpt-alert-style')) {
             modalStyle = document.createElement('style')
             modalStyle.id = 'chatgpt-alert-style'
-            document.head.appendChild(modalStyle)
+            document.head.append(modalStyle)
         } else modalStyle = document.querySelector('#chatgpt-alert-style')
 
         // Define styles
@@ -260,13 +260,13 @@
                     .replace(/\b(\w+)nt\b/gi, '$1n\'t') // insert apostrophe in 'nt' suffixes
                     .trim() // trim leading/trailing spaces
 
-            checkboxDiv.appendChild(checkboxInput) ; checkboxDiv.appendChild(checkboxLabel)
+            checkboxDiv.append(checkboxInput) ; checkboxDiv.append(checkboxLabel)
         }
 
         // Assemble/append div
         const elements = [modalTitle, modalMessage, modalButtons, checkboxDiv]
-        elements.forEach(elem => { modal.appendChild(elem) })
-        modalContainer.appendChild(modal) ; document.body.appendChild(modalContainer)
+        elements.forEach(elem => { modal.append(elem) })
+        modalContainer.append(modal) ; document.body.append(modalContainer)
 
         // Enqueue alert
         alertQueue = JSON.parse(localStorage.alertQueue)
