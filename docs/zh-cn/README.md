@@ -40,12 +40,6 @@ MTurk, ChatGPT 和其他 Greasemonkey 用户脚本. 运行这些脚本需要一�
 [自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img style="margin-right: 2px" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk 脚本](../../mturk)
-
-> 亚马逊 Mechanical Turk 的用户脚本。
-<br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/mturk) /
-[讨论](https://github.com/adamlui/userscripts/discussions)
-
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
