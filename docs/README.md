@@ -40,12 +40,6 @@ MTurk, ChatGPT and other Greasemonkey userscripts. A userscript manager such as 
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img style="margin-right: 2px" src="https://www.mturk.com/assets/images/favicon.ico"> [MTurk scripts](../mturk)
-
-> Userscripts for Amazon's Mechanical Turk.
-<br>[View scripts](https://github.com/adamlui/userscripts/tree/master/mturk) /
-[Discuss](https://github.com/adamlui/userscripts/discussions)
-
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
