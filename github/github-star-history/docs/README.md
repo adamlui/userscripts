@@ -4,7 +4,7 @@
 [![](https://img.shields.io/codacy/grade/74a040e72092473294614799a786749c?label=Code+Quality&logo=codacy&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://app.codacy.com/gh/adamlui/github-star-history/commits?utm_source=github_star_history&utm_content=github_shield)
 [![](https://img.shields.io/badge/Mentioned_in-Awesome-fc7bb7?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/awesome-scripts/awesome-userscripts#github)
 
-### Adds star history chart to sidebar of GitHub repos.
+### Adds star history chart to sidebar of GitHub repos
 
 <a href="https://greasyfork.org/scripts/473377-github-star-history"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
 <br>
