@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/License-MIT-fcde7b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE)
 [![](https://img.shields.io/codacy/grade/918850986ce14fa2b4a99f00bbbfb5cc?label=Code+Quality&logo=codacy&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://app.codacy.com/gh/adamlui/github-widescreen/commits?utm_source=github_widescreen&utm_content=github_shield)
 
-### Auto-hides obtrusive side panels from GitHub.
+### Auto-hides obtrusive side panels from GitHub
 
 <a href="https://greasyfork.org/scripts/473439-github-widescreen"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#-installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
 <br>
@@ -23,7 +23,7 @@
 
 [![](https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social "Follow @adam on Mastodon (ElonSucks.org)")](https://elonsucks.org/@adam?utm_source=github_widescreen&utm_content=github_shield)
 [![](https://img.shields.io/badge/Follow%20@adamllui-2.1k-blue?logo=x&style=social "Follow @adamllui on X")](https://x.com/intent/user?screen_name=adamllui)
-[![](https://img.shields.io/badge/Follow%20in%2fadamlui-647-blue?logo=linkedin&style=social "Follow in/adamlui on LinkedIn")](https://linkedin.com/in/adamlui)
+[![](https://img.shields.io/badge/Follow%20in%2fadamlui-701-blue?logo=linkedin&style=social "Follow in/adamlui on LinkedIn")](https://linkedin.com/in/adamlui)
 [![](https://img.shields.io/badge/Follow%20@adamlui-637-blue?logo=medium&style=social "Follow @adamlui on Medium")](https://adamlui.com?utm_source=github_widescreen&utm_content=github_shield)
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @adamluitube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 [![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
