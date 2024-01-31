@@ -7,7 +7,7 @@
     <a href="https://github.com/adamlui/userscripts/blob/master/docs/SECURITY.md">English</a>
 </h6>
 
-# 安全政策
+# 🛡️ 安全政策
 
 如果您发现漏洞，请打开一个[安全建议草案](https://github.com/adamlui/userscripts/security/advisories/new)。
 

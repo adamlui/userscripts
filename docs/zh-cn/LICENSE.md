@@ -2,7 +2,7 @@
 <h5>简体中文 | <a href="../../LICENSE.md">English</a></h5>
 </div>
 
-# MIT 许可证
+# 🏛️ MIT 许可证
 
 版权所有 (c) 2015–2023 [刘展鹏 (Adam Lui)](https://github.com/adamlui) & 贡献者
 

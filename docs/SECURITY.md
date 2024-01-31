@@ -9,7 +9,7 @@
     </h6>
 </div>
 
-# Security Policy
+# 🛡️ Security Policy
 
 If you find a vulnerability, please open a [draft security advisory](https://github.com/adamlui/userscripts/security/advisories/new).
 

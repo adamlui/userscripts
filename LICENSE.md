@@ -9,7 +9,7 @@
     </h6>
 </div>
 
-# MIT License
+# 🏛️ MIT License
 
 ***Copyright (c) 2015–2024 [Adam Lui](https://github.com/adamlui) & contributors***
 
