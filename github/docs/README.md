@@ -1,5 +1,12 @@
 <div align="right">
-<h5>English | <a href="zh-cn#readme">简体中文</a></h5>
+    <h6>
+        <picture>
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-white-icon32.svg">
+            <img height=14 src="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-icon32.svg">
+        </picture>
+        &nbsp;English |
+        <a href="zh-cn#readme">简体中文</a>
+    </h6>
 </div>
 
 # <img width=25 style="margin-bottom: -1px" src="https://github.githubassets.com/favicons/favicon.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
