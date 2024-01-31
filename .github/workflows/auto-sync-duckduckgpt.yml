@@ -2,9 +2,8 @@ name: Sync chatgpt/duckduckgpt/ to (KudoAI/duckduckgpt/greasemonkey/ && adamlui/
 
 on:
   push:
-    branches: [ master, main ]
-    paths:
-      - 'chatgpt/duckduckgpt/**'
+    branches: master
+    paths: chatgpt/duckduckgpt/**
 
 jobs:
   build:

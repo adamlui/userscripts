@@ -2,9 +2,8 @@ name: Sync chatgpt/googlegpt/ to (KudoAI/googlegpt/greasemonkey/ && adamlui/chat
 
 on:
   push:
-    branches: [ master, main ]
-    paths:
-      - 'chatgpt/googlegpt/**'
+    branches: master
+    paths: chatgpt/googlegpt/**
 
 jobs:
   build:

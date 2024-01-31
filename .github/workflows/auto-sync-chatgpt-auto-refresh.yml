@@ -2,9 +2,8 @@ name: Sync chatgpt/chatgpt-auto-refresh/ to (adamlui/chatgpt-auto-refresh/grease
 
 on:
   push:
-    branches: [ master, main ]
-    paths:
-      - 'chatgpt/chatgpt-auto-refresh/**'
+    branches: master
+    paths: chatgpt/chatgpt-auto-refresh/**
 
 jobs:
   build:
