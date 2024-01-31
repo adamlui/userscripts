@@ -1,3 +1,12 @@
+<h6>
+    <picture>
+        <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-white-icon32.svg">
+        <img height=14 src="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-icon32.svg">
+    </picture>
+    &nbsp;English |
+    <a href="https://github.com/adamlui/userscripts/blob/master/docs/zh-cn/LICENSE.md">简体中文</a>
+</h6>
+
 # MIT License
 
 Copyright (c) 2015–2024 [Adam Lui](https://github.com/adamlui) & contributors
