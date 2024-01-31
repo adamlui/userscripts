@@ -1,5 +1,12 @@
 <div align="right">
-<h5>简体中文 | <a href="../../LICENSE.md">English</a></h5>
+    <h6>
+        <picture>
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-white-icon32.svg">
+            <img height=14 src="https://raw.githubusercontent.com/KudoAI/chatgpt.js/main/media/images/icons/earth-americas-icon32.svg">
+        </picture>
+        &nbsp;简体中文 |
+        <a href="../../LICENSE.md">English</a>
+    </h6>
 </div>
 
 # 🏛️ MIT 许可证
