@@ -4,4 +4,4 @@ GitHub Star History does not collect nor store any user data. No information is 
 
 ## Updates
 
-To view revisions to this policy, visit https://github.com/adamlui/github-star-history/commits/main/greasemonkey/docs/PRIVACY.md
+To view revisions to this policy, visit https://github.com/adamlui/github-star-history/commits/main/docs/PRIVACY.md
