@@ -1,21 +1,21 @@
 // ==UserScript==
-// @name             Highlight Radio Bubbles
-// @version          2023.11.12.3
-// @author           Adam Lui
-// @namespace        https://adamlui.com
-// @description      Makes radio bubbles bigger & more colorful when brought to focus.
-// @license          MIT
-// @icon             https://i.imgur.com/ribh0wE.png
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       opera
-// @compatible       safari
-// @compatible       edge
-// @match            *://*/*
-// @downloadURL      https://update.greasyfork.org/scripts/26311/highlight-radio-bubbles.user.js
-// @updateURL        https://update.greasyfork.org/scripts/26311/highlight-radio-bubbles.meta.js
-// @homepageURL      https://github.com/adamlui/userscripts
-// @supportURL       https://github.com/adamlui/userscripts/issues
+// @name          Highlight Radio Bubbles
+// @version       2024.2.5
+// @author        Adam Lui
+// @namespace     https://adamlui.com
+// @description   Makes radio bubbles bigger & more colorful when brought to focus.
+// @license       MIT
+// @icon          https://i.imgur.com/ribh0wE.png
+// @compatible    chrome
+// @compatible    firefox
+// @compatible    opera
+// @compatible    safari
+// @compatible    edge
+// @match         *://*/*
+// @downloadURL   https://update.greasyfork.org/scripts/26311/highlight-radio-bubbles.user.js
+// @updateURL     https://update.greasyfork.org/scripts/26311/highlight-radio-bubbles.meta.js
+// @homepageURL   https://github.com/adamlui/userscripts
+// @supportURL    https://github.com/adamlui/userscripts/issues
 // ==/UserScript==
 
 const styleNode = document.createElement('style')
