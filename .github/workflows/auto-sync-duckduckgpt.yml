@@ -32,7 +32,7 @@ jobs:
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
 
-      - name: Sync docs to to KudoAI/duckduckgpt/docs/ && adamlui/chatgpt-apps/duckduckgpt/docs/
+      - name: Sync docs to KudoAI/duckduckgpt/docs/ && adamlui/chatgpt-apps/duckduckgpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \

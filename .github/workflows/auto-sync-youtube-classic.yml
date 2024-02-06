@@ -25,7 +25,7 @@ jobs:
           repository: adamlui/youtube-classic
           path: adamlui/youtube-classic
 
-      - name: Sync docs to to adamlui/youtube-classic/docs/
+      - name: Sync docs to adamlui/youtube-classic/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/youtube-classic/docs \
