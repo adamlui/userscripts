@@ -1,27 +1,27 @@
 // ==UserScript==
-// @name             YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version          2023.11.27.2
-// @author           Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
-// @namespace        https://github.com/adamlui
-// @description      Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
-// @license          MIT
-// @icon             https://media.ytclassic.com/images/icon48.png
-// @icon64           https://media.ytclassic.com/images/icon64.png
-// @compatible       chrome
-// @compatible       firefox
-// @compatible       opera
-// @compatible       safari
-// @compatible       edge
-// @match            *://*.youtube.com/*
-// @grant            GM_registerMenuCommand
-// @grant            GM_unregisterMenuCommand
-// @grant            GM_getValue
-// @grant            GM_setValue
-// @run-at           document-start
-// @downloadURL      https://update.greasyfork.org/scripts/456132/youtube-classic.user.js
-// @updateURL        https://update.greasyfork.org/scripts/456132/youtube-classic.meta.js
-// @homepageURL      https://www.ytclassic.com
-// @supportURL       https://github.com/adamlui/userscripts/issues
+// @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
+// @version       2024.2.5
+// @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
+// @namespace     https://github.com/adamlui
+// @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
+// @license       MIT
+// @icon          https://media.ytclassic.com/images/icon48.png
+// @icon64        https://media.ytclassic.com/images/icon64.png
+// @compatible    chrome
+// @compatible    firefox
+// @compatible    opera
+// @compatible    safari
+// @compatible    edge
+// @match         *://*.youtube.com/*
+// @grant         GM_registerMenuCommand
+// @grant         GM_unregisterMenuCommand
+// @grant         GM_getValue
+// @grant         GM_setValue
+// @run-at        document-start
+// @downloadURL   https://update.greasyfork.org/scripts/456132/youtube-classic.user.js
+// @updateURL     https://update.greasyfork.org/scripts/456132/youtube-classic.meta.js
+// @homepageURL   https://www.ytclassic.com
+// @supportURL    https://github.com/adamlui/userscripts/issues
 // ==/UserScript==
 
 // Define FUNCTIONS
