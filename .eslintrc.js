@@ -1,5 +1,6 @@
 module.exports = {
     'extends': ['eslint:recommended'],
+    'ignorePatterns': ['!/.github'],
     'rules': {
         'indent': 'off', 'no-unexpected-multiline': 'off', // allow whitespace anywhere
         'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }], // enforce single quotes for string literals
