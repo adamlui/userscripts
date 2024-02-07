@@ -12,6 +12,6 @@ module.exports = {
     },
     'globals': { '$': 'readonly', 'chatgpt': 'readonly', 'chrome': 'readonly', 'CryptoJS': 'readonly', 'GM_cookie': 'readonly' },
     'parserOptions': { 'ecmaVersion': 2022, 'sourceType': 'script' },
-    'overrides': [{ 'files': ['**/*.yml'], 'extends': ['plugin:yml/standard'] }],
+    'overrides': [{ 'files': ['**/*.json'], 'extends': ['plugin:json-schema-validator/recommended'] }],
     'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
 };
