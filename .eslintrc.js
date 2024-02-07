@@ -12,6 +12,9 @@ module.exports = {
     },
     'globals': { '$': 'readonly', 'chatgpt': 'readonly', 'chrome': 'readonly', 'CryptoJS': 'readonly', 'GM_cookie': 'readonly' },
     'parserOptions': { 'ecmaVersion': 2022, 'sourceType': 'script' },
-    'overrides': [{ 'files': ['**/*.json'], 'extends': ['plugin:json-schema-validator/recommended'] }],
+    'overrides': [
+        { 'files': ['**/*.json'], 'extends': ['plugin:json-schema-validator/recommended'] },
+        { 'files': ['**/*.yml'], 'extends': ['plugin:yml/standard'] }
+    ],
     'env': { 'browser': true, 'node': true, 'es6': true, 'greasemonkey': true }
 };
