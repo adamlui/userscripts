@@ -56,19 +56,19 @@ jobs:
       - name: Push to KudoAI/googlegpt
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          push_options: '--force'
-          add_options: '--all'
+          push_options: --force
+          add_options: --all
           commit_user_email: auto-sync@kudoai.com
-          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: '**'
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
+          file_pattern: "**"
           repository: KudoAI/googlegpt
 
       - name: Push to adamlui/chatgpt-apps
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          push_options: '--force'
-          add_options: '--all'
+          push_options: --force
+          add_options: --all
           commit_user_email: auto-sync@kudoai.com
-          commit_message: '${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]'
-          file_pattern: 'googlegpt/**'
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
+          file_pattern: "googlegpt/**"
           repository: adamlui/chatgpt-apps
