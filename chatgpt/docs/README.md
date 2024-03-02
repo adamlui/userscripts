@@ -13,7 +13,7 @@
 
 ![](https://img.shields.io/badge/Users-100,000+-2bbbd8?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/badge/License-MIT-fcde7b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
-[![](https://img.shields.io/badge/Powered_by-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/kudoai/chatgpt.js?utm_source=userscripts&utm_content=github_shield)
+[![](https://img.shields.io/badge/Powered_by-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/KudoAI/chatgpt.js?utm_source=userscripts&utm_content=github_shield)
 
 Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
