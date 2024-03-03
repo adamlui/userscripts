@@ -12,7 +12,7 @@
 # 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
 ![](https://img.shields.io/badge/Users-150,000+-2bbbd8?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
-[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&logo=github&logoColor=white&labelColor=464646&color=fcf67b&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
+[![](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&logo=github&logoColor=white&labelColor=464646&color=silver&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
 [![](https://img.shields.io/badge/License-MIT-fcde7b.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/LICENSE)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
 [![](https://img.shields.io/codacy/grade/b259dc1124724de49016756d7495b47d?label=Code+Quality&logo=codacy&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://app.codacy.com/gh/adamlui/userscripts/commits?utm_source=userscripts&utm_content=github_shield)
