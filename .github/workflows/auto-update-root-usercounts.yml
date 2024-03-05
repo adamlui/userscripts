@@ -20,6 +20,7 @@ jobs:
         id: get-usercounts
         run: |
           LC_NUMERIC=en_US # to insert commas
+
           declare -A scripts=(
             ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
