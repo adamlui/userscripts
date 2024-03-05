@@ -90,7 +90,7 @@ jobs:
           done
           echo -e "\nTotal users: $total_users"
 
-          # Sum/format user counts
+          # Format total
           formatted_total=$(format_total "$total_users")
           echo "Formatted total: $formatted_total"
 
