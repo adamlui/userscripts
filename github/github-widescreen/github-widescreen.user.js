@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.3.5
+// @version             2024.3.5.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -38,7 +38,7 @@
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([^\/]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + config.appName, async () => {
