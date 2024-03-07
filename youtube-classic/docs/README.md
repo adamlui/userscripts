@@ -7,7 +7,7 @@
 </h1>
 
 ![usercount](https://img.shields.io/greasyfork/dt/456132?label=Users&color=brightgreen&style=flat-square)
-[![license](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/License-MIT-red.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 [![Mentioned in Awesome Userscripts](https://awesome.re/badge-flat.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
