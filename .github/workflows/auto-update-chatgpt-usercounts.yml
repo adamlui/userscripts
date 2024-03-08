@@ -79,7 +79,7 @@ jobs:
           for tuple in "${sorted_scripts[@]}" ; do
             script_id="${tuple##*:}" script_name="${tuple%%:*}"
             gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$script_id" |
-              sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/p')
+              sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/pI')
             gf_users=$(expand_num "$gf_users")
             echo "$script_name users: $gf_users"
             total_users=$((total_users + gf_users))
@@ -97,7 +97,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           total_users=$(echo ${{ steps.get-usercounts.outputs.total_users }})
-          sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/g" $(find chatgpt/docs/ -name "README.md")
+          sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" $(find chatgpt/docs/ -name "README.md")
           if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
           else echo "Usercount shields up-to-date already" ; fi
 
