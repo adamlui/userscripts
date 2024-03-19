@@ -32,11 +32,11 @@ jobs:
           repository: adamlui/chatgpt-apps
           path: adamlui/chatgpt-apps
 
-      - name: Sync docs to kudoai/bravegpt/docs/ && adamlui/chatgpt-apps/bravegpt/docs/
+      - name: Sync docs to KudoAI/bravegpt/docs/ && adamlui/chatgpt-apps/bravegpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
-            ${{ github.workspace }}/kudoai/bravegpt/
+            ${{ github.workspace }}/KudoAI/bravegpt/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
             ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/
