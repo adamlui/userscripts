@@ -35,14 +35,14 @@
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
 [More userscripts](https://github.com/adamlui/userscripts)
 
-## 🪶 Author links
+## 🧠 Contributors
 
-[![](https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social "Follow @adam on Mastodon (ElonSucks.org)")](https://elonsucks.org/@adam?utm_source=github_widescreen&utm_content=github_shield)
-[![](https://img.shields.io/badge/Follow%20@adamllui-2.3k-blue?logo=x&style=social "Follow @adamllui on X")](https://x.com/intent/user?screen_name=adamllui)
-[![](https://img.shields.io/badge/Follow%20in%2fadamlui-1.1k-blue?logo=linkedin&style=social "Follow in/adamlui on LinkedIn")](https://linkedin.com/in/adamlui)
-[![](https://img.shields.io/badge/Follow%20@adamlui-637-blue?logo=medium&style=social "Follow @adamlui on Medium")](https://adamlui.com?utm_source=github_widescreen&utm_content=github_shield)
-[![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @adamluitube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
-[![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
+This project exists thanks to code, translations, issues & ideas from the following contributors:
+
+[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
+[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/1401086?first-contrib=2024.4.8-gm.xhr-implementation-vm-failure-report&h=50&w=50&mask=circle&maxage=7d "@jesus2099")](https://github.com/jesus2099)
+[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
+[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
 <br><br>
 
 ## 📜 Related scripts
