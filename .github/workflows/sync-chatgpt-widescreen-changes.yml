@@ -2,8 +2,8 @@ name: Sync chatgpt/chatgpt-widescreen/ to (adamlui/chatgpt-widescreen/greasemonk
 
 on:
   push:
-    branches: master
-    paths: chatgpt/chatgpt-widescreen/**
+    branches: [master]
+    paths: [chatgpt/chatgpt-widescreen/**]
 
 jobs:
   build:

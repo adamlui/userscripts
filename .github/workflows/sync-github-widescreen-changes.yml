@@ -2,8 +2,8 @@ name: Sync github/github-widescreen/ to adamlui/github-widescreen/greasemonkey/
 
 on:
   push:
-    branches: master
-    paths: github/github-widescreen/**
+    branches: [master]
+    paths: [github/github-widescreen/**]
 
 jobs:
   build:

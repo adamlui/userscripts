@@ -2,8 +2,8 @@ name: Sync chatgpt/bravegpt/ to (KudoAI/bravegpt/greasemonkey/ && adamlui/chatgp
 
 on:
   push:
-    branches: master
-    paths: chatgpt/bravegpt/**
+    branches: [master]
+    paths: [chatgpt/bravegpt/**]
 
 jobs:
   build:

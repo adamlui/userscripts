@@ -2,8 +2,8 @@ name: Sync github/github-star-history/ to adamlui/github-star-history/greasemonk
 
 on:
   push:
-    branches: master
-    paths: github/github-star-history/**
+    branches: [master]
+    paths: [github/github-star-history/**]
 
 jobs:
   build:

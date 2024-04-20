@@ -2,8 +2,8 @@ name: Sync chatgpt/chatgpt-infinity/ to (adamlui/chatgpt-infinity/greasemonkey/ 
 
 on:
   push:
-    branches: master
-    paths: chatgpt/chatgpt-infinity/**
+    branches: [master]
+    paths: [chatgpt/chatgpt-infinity/**]
 
 jobs:
   build:
