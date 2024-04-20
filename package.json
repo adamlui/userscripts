@@ -5,9 +5,9 @@
     "husky": "^9.0.11"
   },
   "scripts": {
-    "lint": "eslint . --ext js,json --cache --no-ignore",
-    "lint:all": "eslint . --ext js,json --no-ignore",
-    "lint:fix": "eslint . --ext js,json --fix --cache --no-ignore",
-    "lint:fix-all": "eslint . --ext js,json --fix --no-ignore"
+    "lint": "eslint . --cache --no-ignore",
+    "lint:all": "eslint . --no-ignore",
+    "lint:fix": "eslint . --fix --cache --no-ignore",
+    "lint:fix-all": "eslint . --fix --no-ignore"
   }
 }
