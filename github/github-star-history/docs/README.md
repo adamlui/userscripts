@@ -41,6 +41,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/1401086?first-contrib=2024.4.8-gm.xhr-implementation-vm-failure-report&h=50&w=50&mask=circle&maxage=7d "@jesus2099")](https://github.com/jesus2099)
+[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/72725910?first-contrib=2024.4.27-trailing-slash-bug-fix&h=50&w=50&mask=circle&maxage=7d "@ramikg")](https://github.com/ramikg)
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
 <br><br>
