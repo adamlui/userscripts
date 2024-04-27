@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.4.27
+// @version             2024.4.27.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -268,11 +268,11 @@
         // Add listeners
         document.addEventListener('keydown', keyHandler)
         modalContainer.addEventListener('click', event => {
-            if (event.target === modalContainer) destroyAlert() })
+            if (event.target == modalContainer) destroyAlert() })
 
         // Show alert if none active
         modalContainer.style.display = 'none'
-        if (alertQueue.length === 1) {
+        if (alertQueue.length == 1) {
             modalContainer.style.display = ''
             setTimeout(() => { modalContainer.classList.add('animated') }, 100)
         }
@@ -304,8 +304,8 @@
                 for (const alertId of alertQueue) { // look to handle only if triggering alert is active
                     const alert = document.getElementById(alertId)
                     if (alert && alert.style.display != 'none') { // active alert found
-                        if (event.keyCode === 27) destroyAlert() // if esc pressed, dismiss alert & do nothing
-                        else if (event.keyCode === 13) { // else if enter pressed
+                        if (event.keyCode == 27) destroyAlert() // if esc pressed, dismiss alert & do nothing
+                        else if (event.keyCode == 13) { // else if enter pressed
                             const mainButton = alert.querySelector('.modal-buttons').lastChild // look for main button
                             if (mainButton) { mainButton.click() ; event.preventDefault() } // click if found
                         } return
@@ -329,7 +329,7 @@
         for (const childNode of nodeContent) {
 
             // Process text node
-            if (childNode.nodeType === Node.TEXT_NODE) {
+            if (childNode.nodeType == Node.TEXT_NODE) {
                 const text = childNode.nodeValue,
                       elems = Array.from(text.matchAll(reTags))
 
@@ -359,7 +359,7 @@
                 }
 
             // Process element nodes recursively
-            } else if (childNode.nodeType === Node.ELEMENT_NODE) renderHTML(childNode)
+            } else if (childNode.nodeType == Node.ELEMENT_NODE) renderHTML(childNode)
         }
 
         return node // if assignment used
@@ -395,7 +395,7 @@
                 + `${ user }/${ repo }&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
             const response = await new Promise((resolve, reject) => GM.xmlHttpRequest({
                 method: 'GET', url: imgURL, responseType: 'blob', onload: resolve, onerror: reject}))
-            if (response.status !== 200) throw new Error('>> Failed to fetch image')
+            if (response.status != 200) throw new Error('>> Failed to fetch image')
 
             if (!document.querySelector('#star-history')) {
 
