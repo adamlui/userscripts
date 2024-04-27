@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.4.27.1
+// @version             2024.4.27.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -374,14 +374,11 @@
     }
 
     function getUserAndRepoOfCurrentPage() {
-        const githubUrlRegex = /github\.com\/(?<user>[\w-]+)\/(?<repo>[\w.-]+)\/?/
-        const currentUrl = window.location.href
-
-        const groups = githubUrlRegex.exec(currentUrl)?.groups
-        if (!groups?.user || !groups?.repo) {
-            throw new Error(`Invalid Github repository URL: ${currentUrl}`)
-        }
-
+        const reGitHubURL = /github\.com\/(?<user>[\w-]+)\/(?<repo>[\w.-]+)\/?/,
+              currentURL = window.location.href,
+              groups = reGitHubURL.exec(currentURL)?.groups
+        if (!groups?.user || !groups?.repo)
+            throw new Error(`Invalid Github repository URL: ${currentURL}`)
         return groups
     }
 
