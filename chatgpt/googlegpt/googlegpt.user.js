@@ -154,7 +154,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.4.1
+// @version             2024.5.5
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png
@@ -1100,6 +1100,7 @@
                 chatbar.value = event.target.textContent
                 chatbar.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'Enter', bubbles: true, cancelable: true }))
+                appShow.submitSrc = 'relatedQuery' // to not auto-focus chatbar in appShow()
     }}}
 
     async function getShowReply(convo, callback) {
@@ -1441,8 +1442,9 @@
         sendButton.addEventListener('mouseover', toggleTooltip)
         sendButton.addEventListener('mouseout', toggleTooltip)
 
-        // Focus chatbar if user interacted
-        if (appShow.submitted) chatTextarea.focus()
+        // Focus chatbar if user typed in prev appShow()
+        if (appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
+        appShow.submitSrc == null
 
         function handleEnter(event) {
             if (event.key == 'Enter') {
@@ -1488,9 +1490,6 @@
             // Show loading status
             replySection.classList.add('loading', 'no-user-select')
             replySection.innerText = appAlerts.waitingResponse
-
-            // Flag for chatbar auto-focus on subsequent loads
-            appShow.submitted = true
         }
 
         // Autosize chatbar function
