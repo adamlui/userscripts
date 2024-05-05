@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.5
+// @version             2024.5.5.1
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png
@@ -1173,8 +1173,8 @@
         sendButton.addEventListener('mouseout', toggleTooltip)
 
         // Focus chatbar if user typed in prev appShow()
-        if (appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
-        appShow.submitSrc == null
+        if (appShow.submitSrc && appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
+        appShow.submitSrc = 'none'
 
         function handleEnter(event) {
             if (event.key == 'Enter') {

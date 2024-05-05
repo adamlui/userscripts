@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.5
+// @version             2024.5.5.1
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png
@@ -1140,8 +1140,8 @@
         sendButton.addEventListener('mouseout', toggleTooltip)
 
         // Focus chatbar if user typed in prev appShow()
-        if (appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
-        appShow.submitSrc == null
+        if (appShow.submitSrc && appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
+        appShow.submitSrc = 'none'
 
         function handleEnter(event) {
             if (event.key == 'Enter') {
