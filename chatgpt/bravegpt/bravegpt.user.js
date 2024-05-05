@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.5.2
+// @version             2024.5.5.3
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png
@@ -850,7 +850,8 @@
                 chatbar.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'Enter', bubbles: true, cancelable: true }))
                 appShow.submitSrc = 'relatedQuery' // to not auto-focus chatbar in appShow()
-    }}}
+            }
+    }}
 
     async function getShowReply(convo, callback) {
 
@@ -1212,6 +1213,9 @@
                 })
                 relatedQueriesDiv.remove()
             } catch (err) {}
+
+            // Remove 'Send reply' tooltip from send btn clicks
+            tooltipDiv.style.opacity = 0
 
             // Clear footer
             while (appFooter.firstChild) // clear all children
