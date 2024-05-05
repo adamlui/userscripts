@@ -69,6 +69,6 @@ jobs:
           push_options: --force
           add_options: --all
           commit_user_email: auto-sync@kudoai.com
-          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts/bravegpt`]"
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts/chatgpt/bravegpt`]"
           file_pattern: "bravegpt/**"
           repository: adamlui/chatgpt-apps
