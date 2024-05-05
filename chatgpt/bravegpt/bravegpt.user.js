@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.5.1
+// @version             2024.5.5.2
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png
@@ -831,15 +831,15 @@
             })
     })}
 
-    function rqEventHandler(event) { // for attachment/removal in `getShowReply()` + `appShow().handleSubmit()`
+    function handleRQevent(event) { // for attachment/removal in `getShowReply()` + `appShow().handleSubmit()`
         if ([' ', 'Enter'].includes(event.key) || event.type == 'click') {
             event.preventDefault() // prevent scroll on space taps
 
             // Remove divs/listeners
             const relatedQueriesDiv = document.querySelector('.related-queries')
             Array.from(relatedQueriesDiv.children).forEach(relatedQueryDiv => {
-                relatedQueryDiv.removeEventListener('click', rqEventHandler)
-                relatedQueryDiv.removeEventListener('keydown', rqEventHandler)
+                relatedQueryDiv.removeEventListener('click', handleRQevent)
+                relatedQueryDiv.removeEventListener('keydown', handleRQevent)
             })
             relatedQueriesDiv.remove()
 
@@ -910,8 +910,8 @@
                         // Add fade + listeners
                         setTimeout(() => {
                             relatedQueryDiv.classList.add('active')
-                            relatedQueryDiv.addEventListener('click', rqEventHandler)
-                            relatedQueryDiv.addEventListener('keydown', rqEventHandler)
+                            relatedQueryDiv.addEventListener('click', handleRQevent)
+                            relatedQueryDiv.addEventListener('keydown', handleRQevent)
                         }, index * 100)
                     })
 
@@ -1207,8 +1207,8 @@
             try {
                 const relatedQueriesDiv = document.querySelector('.related-queries')
                 Array.from(relatedQueriesDiv.children).forEach(relatedQueryDiv => {
-                    relatedQueryDiv.removeEventListener('click', rqEventHandler)
-                    relatedQueryDiv.removeEventListener('keydown', rqEventHandler)
+                    relatedQueryDiv.removeEventListener('click', handleRQevent)
+                    relatedQueryDiv.removeEventListener('keydown', handleRQevent)
                 })
                 relatedQueriesDiv.remove()
             } catch (err) {}
