@@ -48,7 +48,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://greasyfork.org/en/scripts/456132) /
