@@ -113,7 +113,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/chatgpt-apps
 
 ## 📜 Related scripts
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon16.png"><img width=16 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon16.png"></picture> [ChatGPT Auto Refresh ↻](https://github.chatgptautorefresh.com) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://awesome.re/mentioned-badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon16.png"><img width=16 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon16.png"></picture> [ChatGPT Auto Refresh ↻](https://github.chatgptautorefresh.com) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautorefresh.com/images/badges/awesome/badge.svg"></a>
 
 > Keeps ChatGPT sessions fresh, eliminating chat time limits + network errors + Cloudflare checks.
 <br>[Install](https://github.com/adamlui/chatgpt-auto-refresh#-installation) / 
