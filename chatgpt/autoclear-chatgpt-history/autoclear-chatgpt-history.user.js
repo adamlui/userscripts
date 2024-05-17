@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.5.16.2
+// @version             2024.5.17.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png
@@ -241,7 +241,7 @@
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @run-at              document-end
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.8.0/dist/chatgpt.min.js#sha256-mE9RqF5F//SpHlpmda3FgvxI0IpoF1lVY3kI2egLh2A=
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.0/dist/chatgpt.min.js#sha256-6IpuD3NDQ4o9B9qSMzFlD+lr1j5uxUh8Urbb2em0A+A=
 // @connect             cdn.jsdelivr.net
 // @connect             greasyfork.org
 // @grant               GM_setValue
@@ -310,7 +310,7 @@
           isGPT4oUI = !!document.documentElement.className.includes(' ')
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 2023123 // datestamp of last edit for this file's `tweaksStyle`
+    const tweaksStyleUpdated = 202405171 // datestamp of last edit for this file's `tweaksStyle`
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -324,6 +324,8 @@
               + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
           + '.modal-buttons { margin-left: -13px !important }'
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
+          + '.sticky div:active, .sticky div:focus {' // post-GPT-4o UI sidebar
+              + 'transform: none !important }' // disable distracting click zoom effect
         )
     }
 
@@ -538,9 +540,10 @@
         const parentToInsertInto = document.querySelector('nav '
             + ( isGPT4oUI ? '.sticky div' // new chat div
                           : '> div:not(.invisible)' )) // upper nav div
-        const childToInsertBefore = parentToInsertInto.children[1 - ( isGPT4oUI ? 1 : 0 )]
-        if (!parentToInsertInto.contains(navToggleDiv))
-            try { parentToInsertInto.insertBefore(navToggleDiv, childToInsertBefore) } catch (err) {}
+        if (!parentToInsertInto.contains(navToggleDiv)) {
+            if (isGPT4oUI) try { parentToInsertInto.append(navToggleDiv) } catch (err) {}
+            else try { parentToInsertInto.insertBefore(navToggleDiv, parentToInsertInto.children[1]) } catch (err) {}
+        }
 
         // Tweak styles
         parentToInsertInto.style.backgroundColor = ( // hide transparency revealing chat log
