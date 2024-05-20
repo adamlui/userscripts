@@ -21,7 +21,7 @@ jobs:
         run: |
           LC_NUMERIC=en_US # to insert commas
 
-          declare -A scripts=(
+          declare -A gf_scripts=( # for Greasy Fork user counts
             ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
@@ -79,21 +79,21 @@ jobs:
             echo "$formatted_num"
           }
 
-          # Sort scripts alphabetically for more readable logging
-          sorted_scripts=()
-          for script_id in "${!scripts[@]}" ; do
-            script_name="${scripts[$script_id]}"
-            sorted_scripts+=("$script_name:$script_id")
+          # Sort gf_scripts alphabetically for more readable logging
+          sorted_gf_scripts=()
+          for gf_script_id in "${!gf_scripts[@]}" ; do
+            gf_script_name="${gf_scripts[$gf_script_id]}"
+            gf_sorted_scripts+=("$gf_script_name:$gf_script_id")
           done
-          IFS=$'\n' sorted_scripts=($(sort <<<"${sorted_scripts[*]}"))
+          IFS=$'\n' gf_sorted_scripts=($(sort <<<"${gf_sorted_scripts[*]}"))
 
           # Fetch/sum Greasy Fork user counts
-          for tuple in "${sorted_scripts[@]}" ; do
-            script_id="${tuple##*:}" script_name="${tuple%%:*}"
-            gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$script_id" |
+          for tuple in "${gf_sorted_scripts[@]}" ; do
+            gf_script_id="${tuple##*:}" gf_script_name="${tuple%%:*}"
+            gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$gf_script_id" |
               sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/Ip')
             gf_users=$(expand_num "$gf_users")
-            echo "$script_name GF users: $gf_users"
+            echo "$gf_script_name GF users: $gf_users"
             total_users=$((total_users + gf_users))
           done
           echo -e "\nTotal Greasy Fork users: $total_users\n"
