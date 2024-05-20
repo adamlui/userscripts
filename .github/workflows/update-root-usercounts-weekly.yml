@@ -93,10 +93,10 @@ jobs:
             gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$script_id" |
               sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/Ip')
             gf_users=$(expand_num "$gf_users")
-            echo "$script_name users: $gf_users"
+            echo "$script_name GF users: $gf_users"
             total_users=$((total_users + gf_users))
           done
-          echo -e "\nTotal users: $total_users\n"
+          echo -e "\nTotal Greasy Fork users: $total_users\n"
 
           # Fetch/sum jsDelivr request counts
           for repo in "${jsd_gh_repos[@]}" ; do
