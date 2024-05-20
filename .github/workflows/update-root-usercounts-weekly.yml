@@ -1,4 +1,4 @@
-name: Update aggregate usercount shields in root READMEs
+name: Update Greasy Fork users + jsDelivr requests shields root READMEs
 
 on:
   schedule:
@@ -16,8 +16,8 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Fetch/sum user counts
-        id: get-usercounts
+      - name: Fetch/sum GF user + JSD request counts
+        id: get-stats
         run: |
           LC_NUMERIC=en_US # to insert commas
 
@@ -34,6 +34,13 @@ jobs:
             ["478597"]="GoogleGPT"
             ["12639"]="Hide Forum Images"
             ["456132"]="YouTube Classic"
+          )
+
+          jsd_gh_repos=( # for jsDelivr request counts
+            "adamlui/userscripts" "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continnue"
+            "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-infinity" "adamlui/chatgpt-widescreen"
+            "adamlui/github-star-history" "adamlui/github-widescreen" "adamlui/youtube-classic"
+            "KudoAI/bravegpt" "KudoAI/duckduckgpt" "KudoAI/googlegpt"
           )
 
           expand_num() { # expand nums abbreviated w/ 'k' or 'm' suffix to integers
@@ -80,7 +87,7 @@ jobs:
           done
           IFS=$'\n' sorted_scripts=($(sort <<<"${sorted_scripts[*]}"))
 
-          # Fetch/sum user counts
+          # Fetch/sum Greasy Fork user counts
           for tuple in "${sorted_scripts[@]}" ; do
             script_id="${tuple##*:}" script_name="${tuple%%:*}"
             gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$script_id" |
@@ -89,22 +96,37 @@ jobs:
             echo "$script_name users: $gf_users"
             total_users=$((total_users + gf_users))
           done
-          echo -e "\nTotal users: $total_users"
+          echo -e "\nTotal users: $total_users\n"
 
-          # Format total
-          formatted_total=$(format_total "$total_users")
-          echo "Formatted total: $formatted_total"
+          # Fetch/sum jsDelivr request counts
+          for repo in "${jsd_gh_repos[@]}" ; do
+            repo_requests=$(curl -s "https://img.shields.io/jsdelivr/gh/hm/$repo.svg" |
+              sed -n -E 's|.*<title>jsdelivr: ([0-9,.km]+).*</title>.*|\1|Ip')
+            repo_requests=$(expand_num "$repo_requests")
+            echo "$repo GH jsDelivr hits: $repo_requests"
+            total_requests=$((total_requests + repo_requests))
+          done ; echo -e "\nTotal jsDelivr requests: $total_requests\n"
+
+          # Format totals
+          formatted_total_users=$(format_total "$total_users")
+          echo "Formatted total Greasy Fork users: $formatted_total_users"
+          formatted_total_requests=$(format_total "$total_requests")
+          echo "Formatted total monthly jsDelivr requests: $formatted_total_requests"
 
           # Store for update step next
-          echo "total_users=$formatted_total" >> $GITHUB_OUTPUT
+          echo "total_users=$formatted_total_users" >> $GITHUB_OUTPUT
+          echo "total_requests=$formatted_total_requests" >> $GITHUB_OUTPUT
 
       - name: Update README shields
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
-          total_users="${{ steps.get-usercounts.outputs.total_users }}"
+          total_users="${{ steps.get-stats.outputs.total_users }}"
+          total_requests=$(echo ${{ steps.get-stats.outputs.total_requests }})
           sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" $(find docs/ -name "README.md")
           if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
           else echo "Usercount shields up-to-date already" ; fi
+          if [ "$total_requests" != "0" ]; then
+            sed -i -E "s|(badge/jsDelivr_[^-]-)[0-9.,km+]+|\1$total_requests|Ig" $(find docs/ -name "README.md") ; fi
 
       - name: Push to adamlui/userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -113,6 +135,6 @@ jobs:
           add_options: --all
           commit_user_email: auto-sync@kudoai.com
           commit_author: kudo-sync-bot <auto-sync@kudoai.com>
-          commit_message: Updated usercount shield counters
+          commit_message: Updated stats shield counters
           file_pattern: "**/README.md"
           repository: adamlui/userscripts
