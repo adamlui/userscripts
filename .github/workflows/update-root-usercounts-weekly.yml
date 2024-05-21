@@ -102,9 +102,9 @@ jobs:
             repo_requests=$(curl -s "https://img.shields.io/jsdelivr/gh/hm/$repo.svg" |
               sed -n -E 's|.*<title>jsdelivr: ([0-9,.km]+).*</title>.*|\1|Ip')
             repo_requests=$(expand_num "$repo_requests")
-            echo "$repo GH jsDelivr hits: $repo_requests"
+            echo "$repo jsDelivr hits: $repo_requests"
             total_requests=$((total_requests + repo_requests))
-          done ; echo -e "\nTotal jsDelivr requests: $total_requests\n"
+          done ; echo -e "\nTotal monthly jsDelivr requests: $total_requests\n"
 
           # Format totals
           formatted_total_users=$(format_total "$total_users")
