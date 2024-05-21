@@ -120,7 +120,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           total_users="${{ steps.get-stats.outputs.total_users }}"
-          total_requests=$(echo ${{ steps.get-stats.outputs.total_requests }})
+          total_requests="${{ steps.get-stats.outputs.total_requests }}"
           sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" $(find docs/ -name "README.md")
           if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
           else echo "Usercount shields up-to-date already" ; fi
