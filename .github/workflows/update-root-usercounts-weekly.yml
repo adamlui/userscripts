@@ -95,8 +95,7 @@ jobs:
             gf_users=$(expand_num "$gf_users")
             echo "$gf_script_name GF users: $gf_users"
             total_users=$((total_users + gf_users))
-          done
-          echo -e "\nTotal Greasy Fork users: $total_users\n"
+          done ; echo -e "\nTotal Greasy Fork users: $total_users\n"
 
           # Fetch/sum jsDelivr request counts
           for repo in "${jsd_gh_repos[@]}" ; do
@@ -126,7 +125,7 @@ jobs:
           if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
           else echo "Usercount shields up-to-date already" ; fi
           if [ "$total_requests" != "0" ]; then
-            sed -i -E "s|(badge/jsDelivr_[^-]-)[0-9.,km+]+|\1$total_requests|Ig" $(find docs/ -name "README.md") ; fi
+            sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" $(find docs/ -name "README.md") ; fi
 
       - name: Push to adamlui/userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
