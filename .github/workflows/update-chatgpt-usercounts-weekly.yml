@@ -1,4 +1,4 @@
-name: Update aggregate usercount shields in chatgpt/ READMEs
+name: Update Greasy Fork users + jsDelivr requests shields chatgpt/ READMEs
 
 on:
   schedule:
@@ -17,10 +17,11 @@ jobs:
           path: adamlui/userscripts
 
       - name: Fetch/sum user counts
-        id: get-usercounts
+        id: get-stats
         run: |
           LC_NUMERIC=en_US # to insert commas
-          declare -A scripts=(
+
+          declare -A gf_scripts=( # for Greasy Fork user counts
             ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
@@ -29,6 +30,12 @@ jobs:
             ["461473"]="ChatGPT Widescreen Mode"
             ["459849"]="DuckDuckGPT"
             ["478597"]="GoogleGPT"
+          )
+
+          jsd_gh_repos=( # for jsDelivr request counts
+            "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continnue"
+            "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-infinity" "adamlui/chatgpt-widescreen"
+            "KudoAI/bravegpt" "KudoAI/duckduckgpt" "KudoAI/googlegpt"
           )
 
           expand_num() { # expand nums abbreviated w/ 'k' or 'm' suffix to integers
@@ -67,39 +74,82 @@ jobs:
             echo "$formatted_num"
           }
 
-          # Sort scripts alphabetically for more readable logging
-          sorted_scripts=()
-          for script_id in "${!scripts[@]}" ; do
-            script_name="${scripts[$script_id]}"
-            sorted_scripts+=("$script_name:$script_id")
+          # Sort gf_scripts alphabetically for more readable logging
+          sorted_gf_scripts=()
+          for gf_script_id in "${!gf_scripts[@]}" ; do
+            gf_script_name="${gf_scripts[$gf_script_id]}"
+            gf_sorted_scripts+=("$gf_script_name:$gf_script_id")
           done
-          IFS=$'\n' sorted_scripts=($(sort <<<"${sorted_scripts[*]}"))
+          IFS=$'\n' gf_sorted_scripts=($(sort <<<"${gf_sorted_scripts[*]}"))
 
-          # Fetch/sum user counts
-          for tuple in "${sorted_scripts[@]}" ; do
-            script_id="${tuple##*:}" script_name="${tuple%%:*}"
-            gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$script_id" |
-              sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/pI')
+          # Fetch/sum Greasy Fork user counts
+          for tuple in "${gf_sorted_scripts[@]}" ; do
+            gf_script_id="${tuple##*:}" gf_script_name="${tuple%%:*}"
+            gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$gf_script_id" |
+              sed -n 's/.*<title>installs: \([0-9.k]\+\)*<\/title>.*/\1/Ip')
             gf_users=$(expand_num "$gf_users")
-            echo "$script_name users: $gf_users"
+            echo "$gf_script_name GF users: $gf_users"
             total_users=$((total_users + gf_users))
-          done
-          echo -e "\nTotal users: $total_users"
+          done ; echo -e "\nTotal Greasy Fork users: $total_users\n"
 
-          # Format total
-          formatted_total=$(format_total "$total_users")
-          echo "Formatted total: $formatted_total"
+          # Fetch/sum jsDelivr request counts
+          for repo in "${jsd_gh_repos[@]}" ; do
+            repo_requests=$(curl -s "https://img.shields.io/jsdelivr/gh/hm/$repo.svg" |
+              sed -n -E 's|.*<title>jsdelivr: ([0-9,.km]+).*</title>.*|\1|Ip')
+            repo_requests=$(expand_num "$repo_requests")
+            echo "$repo jsDelivr hits: $repo_requests"
+            total_requests=$((total_requests + repo_requests))
+          done ; echo -e "\nTotal monthly jsDelivr requests: $total_requests\n"
+
+          # Format totals
+          formatted_total_users=$(format_total "$total_users")
+          echo "Formatted total Greasy Fork users: $formatted_total_users"
+          formatted_total_requests=$(format_total "$total_requests")
+          echo "Formatted total monthly jsDelivr requests: $formatted_total_requests"
 
           # Store for update step next
-          echo "total_users=$formatted_total" >> $GITHUB_OUTPUT
+          echo "total_users=$formatted_total_users" >> $GITHUB_OUTPUT
+          echo "total_requests=$formatted_total_requests" >> $GITHUB_OUTPUT
 
       - name: Update README shields
+        id: update-stats
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
-          total_users="${{ steps.get-usercounts.outputs.total_users }}"
-          sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" $(find chatgpt/docs/ -name "README.md")
-          if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
-          else echo "Usercount shields up-to-date already" ; fi
+          total_users="${{ steps.get-stats.outputs.total_users }}"
+          total_requests="${{ steps.get-stats.outputs.total_requests }}"
+          shields_updated=0
+
+          # Update users shields
+          if [ "$total_users" != "0" ] ; then
+            for readme in $(find chatgpt/docs/ -name "README.md") ; do
+              old_readme=$(<"$readme")
+              sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" "$readme"
+              new_readme=$(<"$readme")
+              if [ "$old_readme" != "$new_readme" ] ; then users_updated=true ; ((shields_updated++)) ; fi
+            done
+            if [ "$users_updated" = true ] ; then echo "Usercount shields updated to $total_users"
+            else echo "Usercount shields already up-to-date" ; fi
+          fi
+
+          # Update jsDelivr shields
+          if [ "$total_requests" != "0" ] ; then
+            for readme in $(find chatgpt/docs/ -name "README.md") ; do
+              old_readme=$(<"$readme")
+              sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" "$readme"
+              new_readme=$(<"$readme")
+              if [ "$old_readme" != "$new_readme" ] ; then requests_updated=true ; ((shields_updated++)) ; fi
+            done
+            if [ "$requests_updated" = true ] ; then echo "jsDelivr shields updated to $total_requests"
+            else echo "jsDelivr shields already up-to-date" ; fi
+          fi
+
+          # Define commit msg for push step next
+          commit_msg="Updated "
+          if [ "$users_updated" == "true" ] ; then commit_msg+="usercount" ; fi
+          if [ "$shields_updated" -gt 1 ] ; then commit_msg+=" + " ; fi
+          if [ "$requests_updated" == "true" ] ; then commit_msg+="jsDelivr" ; fi
+          commit_msg+=" shield" ; if [ "$shields_updated" -gt 1 ] ; then commit_msg+="s" ; fi
+          echo "commit_msg=$commit_msg" >> $GITHUB_OUTPUT
 
       - name: Push to adamlui/userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -108,6 +158,6 @@ jobs:
           add_options: --all
           commit_user_email: auto-sync@kudoai.com
           commit_author: kudo-sync-bot <auto-sync@kudoai.com>
-          commit_message: Updated ChatGPT usercount shield counters
+          commit_message: ${{ steps.update-stats.outputs.commit_msg }}
           file_pattern: "**/README.md"
           repository: adamlui/userscripts
