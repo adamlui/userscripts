@@ -117,15 +117,45 @@ jobs:
           echo "total_requests=$formatted_total_requests" >> $GITHUB_OUTPUT
 
       - name: Update README shields
+        id: update-stats
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           total_users="${{ steps.get-stats.outputs.total_users }}"
           total_requests="${{ steps.get-stats.outputs.total_requests }}"
-          sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" $(find docs/ -name "README.md")
-          if [ $? -eq 0 ] ; then echo "Usercount shields updated to $total_users"
-          else echo "Usercount shields up-to-date already" ; fi
-          if [ "$total_requests" != "0" ]; then
-            sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" $(find docs/ -name "README.md") ; fi
+
+          # Update users shields
+          if [ "$total_users" != "0" ] ; then
+            for readme in $(find docs/ -name "README.md") ; do
+              old_readme=$(<"$readme")
+              sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" "$readme"
+              new_readme=$(<"$readme")
+              if [ "$old_readme" != "$new_readme" ] ; then users_updated=true ; fi
+            done
+            if [ "$users_updated" = true ] ; then echo "Usercount shields updated to $total_users"
+            else echo "Usercount shields already up-to-date" ; fi
+          fi
+
+          # Update jsDelivr shields
+          if [ "$total_requests" != "0" ] ; then
+            for readme in $(find docs/ -name "README.md") ; do
+              old_readme=$(<"$readme")
+              sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" "$readme"
+              new_readme=$(<"$readme")
+              if [ "$old_readme" != "$new_readme" ] ; then requests_updated=true ; fi
+            done
+            if [ "$requests_updated" = true ] ; then echo "jsDelivr shields updated to $total_requests"
+            else echo "jsDelivr shields already up-to-date" ; fi
+          fi
+
+          # Define commit msg for push step next
+          if [ "$users_updated" == "true" ] && [ "$requests_updated" == "true" ] ; then
+            multi_shields_updated=true ; fi
+          commit_msg="Updated "
+          if [ "$users_updated" == "true" ] ; then commit_msg+="usercount" ; fi
+          if [ "$multi_shields_updated" == "true" ] ; then commit_msg+=" + " ; fi
+          if [ "$requests_updated" == "true" ] ; then commit_msg+="jsDelivr" ; fi
+          commit_msg+=" shield" ; if [ "$multi_shields_updated" == "true" ] ; then commit_msg+="s" ; fi
+          echo "commit_msg=$commit_msg" >> $GITHUB_OUTPUT
 
       - name: Push to adamlui/userscripts
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -134,6 +164,6 @@ jobs:
           add_options: --all
           commit_user_email: auto-sync@kudoai.com
           commit_author: kudo-sync-bot <auto-sync@kudoai.com>
-          commit_message: Updated stats shield counters
+          commit_message: ${{ steps.update-stats.outputs.commit_msg }}
           file_pattern: "**/README.md"
           repository: adamlui/userscripts
