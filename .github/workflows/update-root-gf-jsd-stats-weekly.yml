@@ -16,12 +16,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Fetch/sum GF user + JSD request counts
+      - name: Fetch/sum GF script user + JSD request counts
         id: get-stats
         run: |
           LC_NUMERIC=en_US # to insert commas
 
-          declare -A gf_scripts=( # for Greasy Fork user counts
+          declare -A gf_scripts=( # for Greasy Fork script user counts
             ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
@@ -87,7 +87,7 @@ jobs:
           done
           IFS=$'\n' gf_sorted_scripts=($(sort <<<"${gf_sorted_scripts[*]}"))
 
-          # Fetch/sum Greasy Fork user counts
+          # Fetch/sum Greasy Fork script user counts
           for tuple in "${gf_sorted_scripts[@]}" ; do
             gf_script_id="${tuple##*:}" gf_script_name="${tuple%%:*}"
             gf_users=$(curl -s "https://img.shields.io/greasyfork/dt/$gf_script_id" |
