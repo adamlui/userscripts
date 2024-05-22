@@ -16,7 +16,7 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Fetch/sum user counts
+      - name: Fetch/sum GF user + JSD request counts
         id: get-stats
         run: |
           LC_NUMERIC=en_US # to insert commas
