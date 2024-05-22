@@ -115,6 +115,7 @@ jobs:
         id: update-stats
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
+
           total_users="${{ steps.get-stats.outputs.total_users }}"
           total_requests="${{ steps.get-stats.outputs.total_requests }}"
           shields_updated=0
