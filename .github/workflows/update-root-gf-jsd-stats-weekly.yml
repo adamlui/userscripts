@@ -123,7 +123,7 @@ jobs:
 
           total_users="${{ steps.get-stats.outputs.total_users }}"
           total_requests="${{ steps.get-stats.outputs.total_requests }}"
-          shields_udpated=0
+          shields_updated=0
 
           # Update users shields
           if [ "$total_users" != "0" ] ; then
