@@ -1,4 +1,4 @@
-name: Update Greasy Fork users + jsDelivr requests shields root READMEs
+name: Update Greasy Fork users + jsDelivr requests shields in root READMEs
 
 on:
   schedule:
@@ -122,6 +122,7 @@ jobs:
           cd ${{ github.workspace }}/adamlui/userscripts
           total_users="${{ steps.get-stats.outputs.total_users }}"
           total_requests="${{ steps.get-stats.outputs.total_requests }}"
+          shields_udpated=0
 
           # Update users shields
           if [ "$total_users" != "0" ] ; then
@@ -129,7 +130,7 @@ jobs:
               old_readme=$(<"$readme")
               sed -i "s/\(badge\/[^-]*-\)[0-9.,km+]\+-/\1$total_users-/gI" "$readme"
               new_readme=$(<"$readme")
-              if [ "$old_readme" != "$new_readme" ] ; then users_updated=true ; fi
+              if [ "$old_readme" != "$new_readme" ] ; then users_updated=true ; ((shields_updated++)) ; fi
             done
             if [ "$users_updated" = true ] ; then echo "Usercount shields updated to $total_users"
             else echo "Usercount shields already up-to-date" ; fi
@@ -141,15 +142,13 @@ jobs:
               old_readme=$(<"$readme")
               sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" "$readme"
               new_readme=$(<"$readme")
-              if [ "$old_readme" != "$new_readme" ] ; then requests_updated=true ; fi
+              if [ "$old_readme" != "$new_readme" ] ; then requests_updated=true ; ((shields_updated++)) ; fi
             done
             if [ "$requests_updated" = true ] ; then echo "jsDelivr shields updated to $total_requests"
             else echo "jsDelivr shields already up-to-date" ; fi
           fi
 
           # Define commit msg for push step next
-          if [ "$users_updated" == "true" ] && [ "$requests_updated" == "true" ] ; then
-            multi_shields_updated=true ; fi
           commit_msg="Updated "
           if [ "$users_updated" == "true" ] ; then commit_msg+="usercount" ; fi
           if [ "$multi_shields_updated" == "true" ] ; then commit_msg+=" + " ; fi
