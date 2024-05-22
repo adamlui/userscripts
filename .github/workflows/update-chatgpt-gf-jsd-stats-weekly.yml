@@ -33,7 +33,7 @@ jobs:
           )
 
           jsd_gh_repos=( # for jsDelivr request counts
-            "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continnue"
+            "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continue"
             "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-infinity" "adamlui/chatgpt-widescreen"
             "KudoAI/bravegpt" "KudoAI/duckduckgpt" "KudoAI/googlegpt"
           )
