@@ -146,10 +146,10 @@ jobs:
 
           # Define commit msg for push step next
           commit_msg="Updated "
-          if [ "$users_updated" == "true" ] ; then commit_msg+="usercount" ; fi
-          if [ "$shields_updated" -gt 1 ] ; then commit_msg+="/" ; fi
-          if [ "$requests_updated" == "true" ] ; then commit_msg+="jsDelivr" ; fi
-          commit_msg+=" shield counter" ; if [ "$shields_updated" -gt 1 ] ; then commit_msg+="s" ; fi
+          [ "$users_updated" == "true" ]    && commit_msg+="usercount"
+          [ "$shields_updated" -gt 1 ]      && commit_msg+="/"
+          [ "$requests_updated" == "true" ] && commit_msg+="jsDelivr"
+          commit_msg+=" shield counter$([ "$shields_updated" -gt 1 ] && echo "s")"
           echo "commit_msg=$commit_msg" >> $GITHUB_OUTPUT
 
       - name: Push to adamlui/userscripts
