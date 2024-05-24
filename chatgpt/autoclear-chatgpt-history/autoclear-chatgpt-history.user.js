@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.5.23.5
+// @version             2024.5.23.7
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -551,15 +551,13 @@
                 (function checkGPTsLinkLoaded() {
                     const gptsLink = document.querySelector('nav a[href="/gpts"]')
                     if (gptsLink) resolve(gptsLink.parentNode.parentNode)
-                    else (checkGPTsLinkLoaded, 200)
+                    else setTimeout(checkGPTsLinkLoaded, 200)
                 })()
             }), new Promise(resolve => setTimeout(resolve(parentToInsertInto.children[1]), 2000))])    
         if (!parentToInsertInto.contains(navToggleDiv))
             parentToInsertInto.insertBefore(navToggleDiv, childToInsertBefore)
 
         // Tweak styles
-        parentToInsertInto.style.backgroundColor = ( // hide transparency revealing chat log
-            chatgpt.isDarkMode() ? '#0d0d0d' : '#f9f9f9' )
         if (!firstLink) parentToInsertInto.children[0].style.marginBottom = '5px'
         navToggleDiv.style.paddingLeft = '8px'
         document.querySelector('#acToggleFavicon').src = `${ // update navicon color in case scheme changed
