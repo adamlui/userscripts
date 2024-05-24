@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.5.23.2
+// @version             2024.5.23.4
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -258,7 +258,7 @@
 
 (async () => {
 
-    // Init config
+    // Init CONFIG
     const config = {
         appName: 'ChatGPT Auto Refresh', appSymbol: '↻', keyPrefix: 'chatGPTautoRefresh',
         gitHubURL: 'https://github.com/adamlui/chatgpt-auto-refresh',
@@ -271,7 +271,7 @@
     loadSetting('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
     if (!config.refreshInterval) saveSetting('refreshInterval', 30) // init refresh interval to 30 secs if unset
 
-    // Prevent sporadic convo resets
+    // Prevent sporadic convo RESETS
     const ogAEL = EventTarget.prototype.addEventListener
     EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
         let calledByOpenAI = false
@@ -287,7 +287,7 @@
         if (!calledByOpenAI) ogAEL.apply(this, arguments)
     }
 
-    // Define messages
+    // Define MESSAGES
     let msgs = {};
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
@@ -311,18 +311,26 @@
         }
     }) ; if (!/^en/.test(config.userLanguage)) try { msgs = await msgsLoaded; } catch (err) {}
 
-    // Init/register menu
+    // Init/register MENU
     const state = {
         symbol: ['✔️', '❌'], word: ['ON', 'OFF'],
         separator: getUserscriptManager() == 'Tampermonkey' ? ' — ' : ': ' }
     let menuIDs = [] ; registerMenu() // create browser toolbar menu
 
     // Init UI flags
-    await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 1000))])
+    await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
+    await Promise.race([ // first sidebar link loaded
+        new Promise(resolve => {
+            (function checkFirstLink() {
+                if (document.querySelector('nav a[href="/"]')) resolve(true)
+                else setTimeout(checkFirstLink, 200)
+            })()
+        }), new Promise(resolve => setTimeout(resolve, 5000))])
     const isFirefox = chatgpt.browser.isFirefox(),
-          isGPT4oUI = document.documentElement.className.includes(' ')
+          isGPT4oUI = document.documentElement.className.includes(' '),
+          firstLink = document.querySelector('nav a[href="/"]')
 
-    // Add/update tweaks style
+    // Add/update TWEAKS style
     const tweaksStyleUpdated = 202405171 // datestamp of last edit for this file's `tweaksStyle`
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
@@ -342,7 +350,7 @@
         )
     }
 
-    // Create nav toggle div, add styles
+    // Create NAV TOGGLE div, add styles
     const navToggleDiv = document.createElement('div')
     navToggleDiv.style.height = '37px'
     navToggleDiv.style.margin = '2px 0' // add v-margins
@@ -350,20 +358,16 @@
     navToggleDiv.style.cursor = 'pointer' // add finger cursor
     updateToggleHTML() // create children
 
-    // Insert sidebar toggle
-    await Promise.race([chatgpt.sidebar.isLoaded(), new Promise(resolve => setTimeout(resolve, 1000))])
-    insertToggle()
-
-    // Borrow/assign classes from sidebar div (pre-GPT-4o UI)
-    if (!isGPT4oUI) {
-        const firstLink = document.querySelector('nav a[href="/"]'),
-              firstIcon = firstLink?.querySelector('div:first-child'),
-              firstLabel = firstLink?.querySelector('div:nth-child(2)')
+    if (firstLink) { // borrow/assign CLASSES from sidebar div
+        const firstIcon = firstLink.querySelector('div:first-child'),
+              firstLabel = firstLink.querySelector('div:nth-child(2)')
         navToggleDiv.classList.add(...firstLink.classList, ...firstLabel.classList)
         navToggleDiv.querySelector('img')?.classList.add(...firstIcon.classList)
     }
 
-    // Add listener to toggle switch/label/config/menu/auto-refresh
+    insertToggle()
+
+    // Add LISTENER to toggle switch/label/config/menu/auto-refresh
     navToggleDiv.addEventListener('click', () => {
         const toggleInput = document.querySelector('#arToggleInput')
         toggleInput.checked = !toggleInput.checked
@@ -379,14 +383,14 @@
         } saveSetting('arDisabled', config.arDisabled)
     })
 
-    // Monitor node changes to update sidebar toggle visibility
+    // monitor NODE CHANGES to update sidebar toggle visibility
     const nodeObserver = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.type == 'childList' && mutation.addedNodes.length) {
                 insertToggle()
     }})}) ; nodeObserver.observe(document.documentElement, { childList: true, subtree: true })
 
-    // Activate auto-refresh on first visit if enabled
+    // Activate AUTO-REFRESH on first visit if enabled
     if (!config.arDisabled) {
         chatgpt.autoRefresh.activate(config.refreshInterval)
         if (!config.notifDisabled) notify(( msgs.menuLabel_autoRefresh || 'Auto-Refresh' ) + ': ON')
@@ -574,19 +578,27 @@
     // Define UI functions
 
     async function insertToggle() {
-        await Promise.race([chatgpt.history.isLoaded(), new Promise(resolve => setTimeout(resolve, 1000))])
 
         // Insert toggle
-        const parentToInsertInto = document.querySelector('nav '
-            + ( isGPT4oUI ? '' // nav div itself
-                          : '> div:not(.invisible)' )) // upper nav div
+        const parentToInsertInto = document.querySelector('nav ' +
+            (isGPT4oUI && !firstLink ? '' // nav div itself
+                : isGPT4oUI && firstLink ? ' div:nth-of-type(2)' // links + history div
+                : '> div:not(.invisible)')); // upper nav div
+        const childToInsertBefore = await Promise.race([
+            new Promise(resolve => {
+                (function checkGPTsLinkLoaded() {
+                    const gptsLink = document.querySelector('nav a[href="/gpts"]')
+                    if (gptsLink) resolve(gptsLink.parentNode.parentNode)
+                    else (checkGPTsLinkLoaded, 200)
+                })()
+            }), new Promise(resolve => setTimeout(resolve(parentToInsertInto.children[1]), 2000))])    
         if (!parentToInsertInto.contains(navToggleDiv))
-             parentToInsertInto.insertBefore(navToggleDiv, parentToInsertInto.children[1])
+             parentToInsertInto.insertBefore(navToggleDiv, childToInsertBefore)
 
         // Tweak styles
         parentToInsertInto.style.backgroundColor = ( // hide transparency revealing chat log
             chatgpt.isDarkMode() ? '#0d0d0d' : '#f9f9f9' )
-        if (isGPT4oUI) parentToInsertInto.children[0].style.marginBottom = '5px'
+        if (!firstLink) parentToInsertInto.children[0].style.marginBottom = '5px'
         navToggleDiv.style.paddingLeft = '8px'
         document.querySelector('#arToggleFavicon').src = `${ // update navicon color in case scheme changed
             config.assetHostURL }media/images/icons/auto-refresh/${
@@ -610,10 +622,10 @@
         const switchSpan = document.querySelector('#arSwitchSpan') || document.createElement('span')
         switchSpan.id = 'arSwitchSpan'
         const switchStyles = {
-            position: 'relative', left: `${ chatgpt.browser.isMobile() ? 211 : isGPT4oUI ? 160 : 152 }px`,
+            position: 'relative', left: `${ chatgpt.browser.isMobile() ? 211 : !firstLink ? 160 : isGPT4oUI ? 147 : 152 }px`,
             backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
-            bottom: `${ isGPT4oUI ? -0.15 : 0.05 }em`, width: '30px', height: '15px',
-            '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
+            bottom: `${ !firstLink ? -0.15 : isFirefox || !isGPT4oUI ? 0.05 : 0 }em`,
+            width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
         }
         Object.assign(switchSpan.style, switchStyles)
 
@@ -622,7 +634,7 @@
         knobSpan.id = 'arToggleKnobSpan'
         const knobWidth = 13
         const knobStyles = {
-            position: 'absolute', left: '3px', bottom: `${ isFirefox ? 0.075 : 0.055 }em`,
+            position: 'absolute', left: '3px', bottom: `${ isFirefox && !firstLink ? 0.075 : 0.055 }em`,
             width: `${ knobWidth }px`, height: `${ knobWidth }px`, content: '""', borderRadius: '28px',
             transform: toggleInput.checked ? // init opposite final pos
                 'translateX(0)' : `translateX(${ knobWidth }px) translateY(0)`,
@@ -633,9 +645,9 @@
         // Create/stylize/fill label
         const toggleLabel = document.querySelector('#arToggleLabel') || document.createElement('label')
         toggleLabel.id = 'arToggleLabel'
-        if (isGPT4oUI) { // add font size/weight since no firstLink to borrow from
+        if (!firstLink) { // add font size/weight since no firstLink to borrow from
             toggleLabel.style.fontSize = '0.875rem' ; toggleLabel.style.fontWeight = 600 }
-        toggleLabel.style.marginLeft = `-${ isGPT4oUI ? 23 : 41 }px` // left-shift to navicon
+        toggleLabel.style.marginLeft = `-${ !firstLink ? 23 : 41 }px` // left-shift to navicon
         toggleLabel.style.cursor = 'pointer' // add finger cursor on hover
         toggleLabel.style.width = `${ chatgpt.browser.isMobile() ? 201 : isGPT4oUI ? 145 : 148 }px` // to truncate overflown text
         toggleLabel.style.overflow = 'hidden' // to truncate overflown text
