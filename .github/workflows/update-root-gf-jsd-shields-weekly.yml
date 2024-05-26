@@ -1,11 +1,11 @@
-name: Update Greasy Fork users + jsDelivr requests shields in root READMEs
+name: Update usercount + jsDelivr shields in root READMEs
 
 on:
   schedule:
     - cron: "15 2 * * 0" # every Sunday 2:15a
 
 jobs:
-  update-usercount-shields:
+  update-root-usercount-jsd-shields:
     runs-on: ubuntu-latest
 
     steps:
