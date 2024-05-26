@@ -1,6 +1,6 @@
 name: Update usercount + jsDelivr shields in root READMEs
 
- on: workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   update-root-usercount-jsd-shields:
