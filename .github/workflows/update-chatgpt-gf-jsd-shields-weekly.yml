@@ -1,11 +1,11 @@
-name: Update Greasy Fork users + jsDelivr requests shields chatgpt/ READMEs
+name: Update usercount + jsDelivr shields in chatgpt/ READMEs
 
 on:
   schedule:
     - cron: "21 2 * * 0" # every Sunday 2:21a
 
 jobs:
-  update-usercount-shields:
+  update-chatgpt-usercount-jsd-shields:
     runs-on: ubuntu-latest
 
     steps:
