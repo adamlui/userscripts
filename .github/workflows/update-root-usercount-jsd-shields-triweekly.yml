@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout adamlui/userscripts
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/userscripts
@@ -166,5 +166,5 @@ jobs:
           git config --global user.name "kudo-sync-bot"
           git config --global user.email "auto-sync@kudoai.com"
           git add .
-          git commit -n -m "${{ steps.update-stats.outputs.commit_msg }}"
+          git commit -n -m "${{ steps.update-stats.outputs.commit_msg }}" || true
           git push
