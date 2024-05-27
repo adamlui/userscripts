@@ -1,4 +1,4 @@
-name: Update usercount + jsDelivr shields in chatgpt/ READMEs
+name: Update usercount/jsDelivr shields in chatgpt/ READMEs
 
 on:
   schedule:
