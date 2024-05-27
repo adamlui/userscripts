@@ -1,6 +1,8 @@
 name: Update usercount + jsDelivr shields in chatgpt/ READMEs
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: "45 1 * * 1,3,5" # every Mon/Wed/Fri @ 1:45 AM
 
 jobs:
   update-chatgpt-usercount-jsd-shields:
