@@ -17,7 +17,7 @@
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits/master)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_userscripts%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonarcloud&logoColor=white&labelColor=464646&label=Vulnerabilities&color=gold)](https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_userscripts)
-<img src="https://img.shields.io/badge/jsDelivr_Requests-500,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
+<img src="https://img.shields.io/badge/jsDelivr_Requests-550,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
 Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
