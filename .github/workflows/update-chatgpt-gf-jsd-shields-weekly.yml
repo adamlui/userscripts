@@ -154,12 +154,9 @@ jobs:
           echo "commit_msg=$commit_msg" >> $GITHUB_OUTPUT # expose as output
 
       - name: Push to adamlui/userscripts
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          push_options: --force
-          add_options: --all
-          commit_user_email: auto-sync@kudoai.com
-          commit_author: kudo-sync-bot <auto-sync@kudoai.com>
-          commit_message: ${{ steps.update-stats.outputs.commit_msg }}
-          file_pattern: "**/README.md"
-          repository: adamlui/userscripts
+        run: |
+          git config --global user.name "kudo-sync-bot"
+          git config --global user.email "auto-sync@kudoai.com"
+          git add .
+          git commit -n -m "${{ steps.update-stats.outputs.commit_msg }}"
+          git push
