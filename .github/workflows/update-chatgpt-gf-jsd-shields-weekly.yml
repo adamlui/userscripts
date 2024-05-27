@@ -155,6 +155,7 @@ jobs:
 
       - name: Push to adamlui/userscripts
         run: |
+          cd ${{ github.workspace }}/adamlui/userscripts
           git config --global user.name "kudo-sync-bot"
           git config --global user.email "auto-sync@kudoai.com"
           git add .
