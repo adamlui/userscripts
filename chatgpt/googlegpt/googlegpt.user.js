@@ -160,7 +160,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (kuphathwa yi GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.29.4
+// @version             2024.5.30.3
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -682,10 +682,6 @@
           + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
           + '.googlegpt section.loading { padding: 15px 0 14px 5px }' // left/top-pad loading status when sending replies
           + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
-              + `top: ${ isFirefox ? 0.45 : 0.219 }em ;`
-              + `right: ${ isMobile ? 10.94 : (
-                    isFirefox ? ( 14.65 - ( appLogoImg.loaded ? 0 : 2.13 ))
-                              : ( 7.25 -  ( appLogoImg.loaded ? 0 : ( hasSidebar ? 1.25 : 1.29 ))))}em ;`
               + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color:'
                   + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
           + '.continue-chat > textarea {'
@@ -988,7 +984,7 @@
             } else resolve(accessToken)
     })}
 
-    function getGPTplusKey() {
+    function generateGPTplusKey() {
         let nn = Math.floor(new Date().getTime() / 1e3)
         const fD = e => {
             let t = CryptoJS.enc.Utf8.parse(e),
@@ -1042,7 +1038,7 @@
         } else if (api.includes('gptforlove.com')) {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
-                secret: getGPTplusKey(), top_p: 1, temperature: 0.8,
+                secret: generateGPTplusKey(), top_p: 1, temperature: 0.8,
                 systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
             }
             if (ids.gptPlus.parentID) payload.options = { parentMessageId: ids.gptPlus.parentID }
@@ -1406,6 +1402,12 @@
             const balloonTipSpan = document.createElement('span')
             var answerPre = document.createElement('pre')
             balloonTipSpan.className = 'balloon-tip'
+            balloonTipSpan.style.cssText = ( // pos it
+                `top: ${ isMobile ? 0.2303 : isFirefox ? 0.45 : 0.219 }em ;`
+              + `right: ${ isMobile ? 11.2 : (
+                          isFirefox ? ( 14.65 - ( appLogoImg.loaded ? 0 : 2.13 ))
+                                    : ( 7.25 -  ( appLogoImg.loaded ? 0 : ( hasSidebar ? 1.25 : 1.29 ))))}em`
+            )
             answerPre.textContent = answer
             appDiv.append(balloonTipSpan) ; appDiv.append(answerPre)
         }
@@ -1574,7 +1576,6 @@
     appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
 
     // Define MESSAGES
-    let msgs = {}
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
@@ -1595,7 +1596,7 @@
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+    }) ; const msgs = await msgsLoaded
 
     registerMenu()
 
