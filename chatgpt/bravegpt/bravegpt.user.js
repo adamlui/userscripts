@@ -1,120 +1,120 @@
 // ==UserScript==
 // @name                BraveGPT 🤖
-// @description         Adds ChatGPT answers to Brave Search sidebar (powered by GPT-4!)
-// @description:af      Voeg ChatGPT-antwoorde by Brave Search-kantbalk by (aangedryf deur GPT-4!)
-// @description:am      የChatGPT መልስናወርቃለች እርስዎን በBrave Search የተወሰኑ ገጽታዎችን (ተግባር በGPT-4!) ይጨምሩ
-// @description:ar      يضيف إجابات ChatGPT إلى شريط البحث الجانبي في Brave (مدعوم بواسطة GPT-4!)
-// @description:az      ChatGPT cavablarını Brave Axtarış yan panelinə əlavə edir (GPT-4 ilə gücləndirilmiş!)
-// @description:be      Дадае адказы ChatGPT да бакавой баковай панэлі Brave Search (падтрымліваецца GPT-4!)
-// @description:bem     Aziya ChatGPT ndalama ku Brave Search sidebar (muma GPT-4!)
-// @description:bg      Добавя ChatGPT отговори към страничната лента на Brave Search (задвижван от GPT-4!)
-// @description:bn      Brave সার্চ সাইডবারে ChatGPT উত্তর যোগ করে (পাওয়ারডে GPT-4 দ্বারা!)
-// @description:bo      ChatGPT ལེ་བས་ཚད་བདག་སྐྱེད་དེ་བཟུམ་སྒྲིག་ནང་ Brave Search གནས་པ་བརྗོད་པ། (GPT-4བྱ་བ་བརྒྱུད་པ་!)
-// @description:bs      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretrage (pokreće GPT-4!)
-// @description:ca      Afegeix respostes de ChatGPT a la barra lateral de Brave Search (amb tecnologia GPT-4!)
-// @description:ceb     Nagdugang sa mga tubag sa ChatGPT sa sidebar sa Brave Search (gamit ang GPT-4!)
-// @description:ckb     وەرگرتنی ڕاستەوخۆیی ChatGPT بۆ پەنجەرەی لاتی لە Brave (بە پشتگیرییی GPT-4!)
-// @description:cs      Přidává odpovědi od ChatGPT do bočního panelu Brave Search (poháněno GPT-4!)
-// @description:cy      Ychwanega Atebion ChatGPT i'r bar ochr Brave Search (a gryfhawyd gan GPT-4!)
-// @description:da      Tilføjer ChatGPT-svar til Brave Search-sidelinjen (drevet af GPT-4!)
-// @description:de      Fügt ChatGPT-Antworten zur Seitenleiste der Brave-Suche hinzu (betrieben mit GPT-4!)
-// @description:dv      ChatGPT އައިކްސޭޓުގެ ޖަވާބުގެ Brave Search ސައިޓުގައި ފޯރުވާރައުގެ ޑައުން (އެކައުންއައި ވަކި GPT-4!)
-// @description:dz      ChatGPT དང་ Brave འབྱུང་ཆུང་ལེ་བས་འཐུས་པ་ལགས་སྤྱོད་སྒྲིག་པ་བརྟགས་བཞུགས། (GPT-4་གི་སྒྲིག་དང་!)
-// @description:el      Προσθέτει απαντήσεις ChatGPT στην πλαϊνή γραμμή αναζήτησης του Brave (με την υποστήριξη του GPT-4!)
-// @description:eo      Aldonas ChatGPT-respondojn al la flanka breto de Brave Serĉo (funkciigita de GPT-4!)
-// @description:es      Agrega respuestas de ChatGPT a la barra lateral de Brave Search (¡impulsado por GPT-4!)
-// @description:et      Lisab ChatGPT vastused Brave Search küljepaneelile (toetatud GPT-4 poolt!)
-// @description:eu      Gehitu ChatGPT erantzunak Brave Search aldeko alderakoan (GPT-4ren aurrerapenean oinarrituta!)
-// @description:fa      ChatGPT پاسخها را به نوار کناری جستجوی Brave اضافه میکند (قدرت گرفته شده توسط GPT-4!)
-// @description:fi      Lisää ChatGPT-vastaukset Brave-haun sivupalkkiin (käyttäen GPT-4!)
-// @description:fo      Leggur ChatGPT-svar til Brave leitarstika síðupall (drivin av GPT-4!)
-// @description:fr      Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4 !)
-// @description:fr-CA   Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4 !)
-// @description:gd      Cur Freagairtean ChatGPT ris an t-siostam-cùlaiche airson Innse Brave (le GPT-4 air!)
-// @description:gl      Engade respostas de ChatGPT á barra lateral de busca de Brave (potenciado por GPT-4!)
-// @description:gu      બ્રેવ શોધનપટનમાં ChatGPT જવાબો ઉમેરે છે (પાવર્ડપુંજ GPT-4 દ્વારા!)
-// @description:haw     Hoʻoni i nā manaʻoʻiʻo ChatGPT i loko o ka papa kālai Brave Search (i hoʻohui ʻia e GPT-4!)
-// @description:he      מוסיף תשובות של ChatGPT לסרגל הצד של חיפוש Brave (מופעל על ידי GPT-4!)
-// @description:hi      ब्रेव सर्च साइडबार में ChatGPT उत्तर जोड़ता है (GPT-4 द्वारा संचालित!)
-// @description:hr      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretraživanja (pokreće GPT-4!)
-// @description:ht      Ajoute ChatGPT repons nan sibbard Brave Search la (pouvwa pa GPT-4!)
-// @description:hu      Hozzáadja a ChatGPT válaszokat a Brave Search oldalsávjához (GPT-4 által támogatva!)
-// @description:hy      Ավելացնում է ChatGPT պատասխանները Brave Search կողմից (ուղղահայացված է GPT-4-ի միջոցով!)
-// @description:id      Menambahkan jawaban ChatGPT ke sidebar Brave Search (didukung oleh GPT-4!)
-// @description:is      Bætir við ChatGPT svari í hliðarstiku Brave leitarinnar (rekinn með GPT-4!)
-// @description:it      Aggiunge le risposte di ChatGPT alla barra laterale di Brave Search (alimentato da GPT-4!)
-// @description:ja      Brave 検索サイドバーに ChatGPT の回答を追加します（GPT-4 で動作中！）
-// @description:jv      Nambahake jawaban ChatGPT menyang sidebar Pencarian Brave (didheteni GPT-4!)
-// @description:ka      დაამატებს ChatGPT პასუხებს Brave Search გვერდის მარჯვნივ (GPT-4-ით გამოყენებული!)
-// @description:kab     Izgan-d yemdanen n teblaḍ n Brave Search (ɣef GPT-4!)
-// @description:kk      Brave іздеу жағдайындағы ChatGPT жауаптарын қосады (GPT-4-мен жұмыс істейді!)
-// @description:km      បន្ថែមចម្លើយ ChatGPT ទៅរបារចំហៀងស្វែងរកក្លាហាន (ដំណើរការដោយ GPT-4!)
-// @description:kn      ಬ್ರೇವ್ ಶೋಧನೆ ಪಟ್ಟಿಗೆ ChatGPT ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4 ಅನ್ನು ಬಳಸಿ!)
-// @description:ko      ChatGPT 답변을 Brave 검색 사이드바에 추가합니다 (GPT-4로 구동됨!)
-// @description:ku      Li ser panoya li serê lêgerîna Brave dihêle ChatGPT bersivan (bi alîkariya GPT-4!)
-// @description:ky      ChatGPT каардарларын Браве Издөө экибинын көнчыгышына кошотот (GPT-4 менен күтөлгөн!)
-// @description:la      Adiungit responsiones ChatGPT ad barra lateralem investigatiois Brave (GPT-4 motore!)
-// @description:lb      Füügt ChatGPT Äntwerten zur Brave-Sichbarsäit bäi (gedriwwen vun GPT-4!)
-// @description:lo      ຕອບສອນ ChatGPT ໄປຫາແຖບຂັ້ນຕອນຂອງການຄົ້ນຫາ Brave (ໂດຍໃຊ້ GPT-4!)
-// @description:lt      Prideda ChatGPT atsakymus į šoninę juostą paieškai Brave (varomi GPT-4!)
-// @description:lv      Pievieno ChatGPT atbildes Brave meklēšanas sānjoslai (darbināts ar GPT-4!)
-// @description:mg      Mampiditra valiny avy amin'ny ChatGPT ao amin'ny saroka Search Brave (maneho ny GPT-4!)
-// @description:mi      Tāpiri atu i ngā whakautu a ChatGPT ki te tara taha o te Rapu Wawata Brave (e whakahaerehia ana e GPT-4!)
-// @description:mk      Додава одговори од ChatGPT на страничната лента на Brave Search (поддржано од GPT-4!)
-// @description:ml      Brave സേർച്ചിന്റെ സൈഡ്ബാർലേക്ക് ChatGPT ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4-യിൽ പ്രവർത്തിക്കുന്നു!)
-// @description:mn      ChatGPT хариултуудыг Brave Хайлтын зааврын зурагт нэмнэ (GPT-4 ашиглаж!)
-// @description:ms      Menambah jawapan ChatGPT ke sidebar Carian Brave (dikuasakan oleh GPT-4!)
-// @description:mt      Iżżid Risposti ta 'ChatGPT lill-Sidebar Brave Search (pwered by GPT-4!)
-// @description:my      ChatGPT အဖြေမှာ Brave ရွေးချယ်ရေးတွင် ChatGPT အဖြေများကိုထည့်သွင်းထားသည် (GPT-4 ဖြင့်အလုပ်လုပ်ပါ!)
-// @description:ne      ChatGPT उत्तरहरूलाई ब्रेभ खोजको साइडबारमा थप्छ (GPT-4 द्वारा संचालित!)
-// @description:nl      Voegt ChatGPT-antwoorden toe aan de zijbalk van Brave Search (aangedreven door GPT-4!)
-// @description:no      Legger til ChatGPT-svar i sidenotatfeltet for Brave Search (drevet av GPT-4!)
-// @description:ny      Anayambitsa zambiri za ChatGPT kubanja lovala la Brave Search (liyenera ndi GPT-4!)
-// @description:pa      ਬਰੇਵ ਖੋਜ ਦੇ ਸਾਈਡਬਾਰ ਵਿੱਚ ChatGPT ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ (GPT-4 ਦੁਆਰਾ ਸ਼ਕਤੀਸ਼ਾਲਕ ਕੀਤਾ ਗਿਆ!)
-// @description:pap     Añadi respuèstanan di ChatGPT na bar lateral di Buskeda Brave (poderá pa GPT-4!)
-// @description:pl      Dodaje odpowiedzi ChatGPT do paska bocznego Brave Search (napędzane przez GPT-4!)
-// @description:ps      په سپینې د Brave لټونکې توګه ChatGPT جوابونه ورکړي (د GPT-4 لخوا سره!)
-// @description:pt      Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4!)
-// @description:pt-BR   Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4!)
-// @description:rn      Abugira inkomoko za ChatGPT mu gisubizo cya Brave Search (yahindutse na GPT-4!)
-// @description:ro      Adaugă răspunsuri ChatGPT în bara laterală de căutare Brave (propulsat de GPT-4!)
-// @description:ru      Добавляет ответы ChatGPT в боковую панель поиска Brave (работает на GPT-4!)
-// @description:rw      Atera amakuru ya ChatGPT mu bariro bya Brave Search (yarahindutse n'ikoranabuhanga cya GPT-4!)
-// @description:sg      Yãngã añ fããmi ChatGPT pũngu loo yaaka yi Brave tãngbala (saango wã yi GPT-4!)
-// @description:si      ඔබේ Brave සෙවුම් පිළිතුරුද ChatGPT එක් කිරීමෙන් එක්වන්න (GPT-4 විද්‍යාවලියේ සිදු වේ!)
-// @description:sk      Pridáva odpovede ChatGPT do bočnej lišty Brave Search (poháňané GPT-4!)
-// @description:sl      Dodaja odgovore ChatGPT na stransko vrstico iskanja Brave (poganja GPT-4!)
-// @description:sm      Fa'afaigofie atu ai le tali a ChatGPT i le sidebar o le Search Brave (e avea i le GPT-4!)
-// @description:sn      Anoratidza zita reChatGPT pa sidebar yeBrave Search (ine vedzere GPT-4!)
-// @description:so      Wax ka dar ChatGPT jawaabaha sidebar Brave Search (u shaqeeya GPT-4!)
-// @description:sr      Додаје одговоре ChatGPT-а на страни панел претраге Брејва (покреће ГПТ-4!)
-// @description:sv      Lägger till ChatGPT-svar i sidofältet för Brave Sökning (drivet av GPT-4!)
-// @description:sw      Inaongeza majibu ya ChatGPT kwenye upau wa pembeni wa Brave Search (inaendeshwa na GPT-4!)
-// @description:ta      பேராசை ஆய்வுக் கேட்பதற்கு ChatGPT பதில்களை Brave பக்க பக்கில் சேர்க்கிறது (GPT-4 ஆல் இயங்குகிறது!)
-// @description:te      Brave శోధనపై ChatGPT సమాధానాలను జోడిస్తుంది (GPT-4 ద్వారా పెంచబడింది!)
-// @description:tg      Шарҳи ChatGPT-ро ба сатҳи барои ҷустуҷӯи Брейв илова мекунад (тавассути GPT-4 мубодиъ будааст!)
-// @description:th      เพิ่มคำตอบของ ChatGPT ไปยังแถบข้างของการค้นหา Brave (ทำงานโดย GPT-4!)
-// @description:ti      ክልል ጸጋን ChatGPT መልእኽት ንምስርሓብ Brave ውልቀት ይጨምሩ (በቀረበ GPT-4!)
-// @description:tk      ChatGPT-nyň jogaplaryny Brave Gözleg çarpyşysyna goşýar (GPT-4-dan güýçlenýär!)
-// @description:tn      Enza mavoti ChatGPT ku sidebar yeBrave Search (ine yeduva neGPT-4!)
-// @description:to      Tānaki e fiemaʻu ai ha ngaahi ngaue fakamatala 'a e ChatGPT ki he tu'unga ni ha Brave Search (na'e neongo'i moe GPT-4!)
-// @description:tpi     Adim na pes bilong ChatGPT long tab bilong Brave Søk (wok long GPT-4!)
-// @description:tr      ChatGPT yanıtlarını Brave Arama yan çubuğuna ekler (GPT-4 tarafından desteklenir!)
-// @description:uk      Додає відповіді ChatGPT до бічної панелі пошуку Brave (працює на GPT-4!)
-// @description:ur      ChatGPT جوابات کو بریو سرچ کے سائڈبار میں شامل کرتا ہے (GPT-4 کے ذریعے!)
-// @description:uz      ChatGPT javoblarni Brave Qidiruvning yon paneliga qo'shadi (GPT-4 tomonidan ta'minlanadi!)
-// @description:vi      Thêm câu trả lời của ChatGPT vào thanh bên của Brave Search (được cung cấp bởi GPT-4!)
-// @description:xh      Enza amaxwebhu kaChatGPT e sideba yeBrave Search (enokukhuthaziswa nguGPT-4!)
-// @description:yi      צוגעבן אַנטוואָרטן פֿון ChatGPT אין די זײַטל-פֿעלד פֿון Brave זוך (געפּאַווערטעד דורך GPT-4!)
-// @description:zh      将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4 提供支持!)
-// @description:zh-CN   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4 提供支持!)
-// @description:zh-HK   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4 提供支持!)
-// @description:zh-SG   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4 提供支持!)
-// @description:zh-TW   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4 提供支持!)
-// @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4!)
+// @description         Adds ChatGPT answers to Brave Search sidebar (powered by GPT-4o!)
+// @description:af      Voeg ChatGPT-antwoorde by Brave Search-kantbalk by (aangedryf deur GPT-4o!)
+// @description:am      የChatGPT መልስናወርቃለች እርስዎን በBrave Search የተወሰኑ ገጽታዎችን (ተግባር በGPT-4o!) ይጨምሩ
+// @description:ar      يضيف إجابات ChatGPT إلى شريط البحث الجانبي في Brave (مدعوم بواسطة GPT-4o!)
+// @description:az      ChatGPT cavablarını Brave Axtarış yan panelinə əlavə edir (GPT-4o ilə gücləndirilmiş!)
+// @description:be      Дадае адказы ChatGPT да бакавой баковай панэлі Brave Search (падтрымліваецца GPT-4o!)
+// @description:bem     Aziya ChatGPT ndalama ku Brave Search sidebar (muma GPT-4o!)
+// @description:bg      Добавя ChatGPT отговори към страничната лента на Brave Search (задвижван от GPT-4o!)
+// @description:bn      Brave সার্চ সাইডবারে ChatGPT উত্তর যোগ করে (পাওয়ারডে GPT-4o দ্বারা!)
+// @description:bo      ChatGPT ལེ་བས་ཚད་བདག་སྐྱེད་དེ་བཟུམ་སྒྲིག་ནང་ Brave Search གནས་པ་བརྗོད་པ། (GPT-4oབྱ་བ་བརྒྱུད་པ་!)
+// @description:bs      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretrage (pokreće GPT-4o!)
+// @description:ca      Afegeix respostes de ChatGPT a la barra lateral de Brave Search (amb tecnologia GPT-4o!)
+// @description:ceb     Nagdugang sa mga tubag sa ChatGPT sa sidebar sa Brave Search (gamit ang GPT-4o!)
+// @description:ckb     وەرگرتنی ڕاستەوخۆیی ChatGPT بۆ پەنجەرەی لاتی لە Brave (بە پشتگیرییی GPT-4o!)
+// @description:cs      Přidává odpovědi od ChatGPT do bočního panelu Brave Search (poháněno GPT-4o!)
+// @description:cy      Ychwanega Atebion ChatGPT i'r bar ochr Brave Search (a gryfhawyd gan GPT-4o!)
+// @description:da      Tilføjer ChatGPT-svar til Brave Search-sidelinjen (drevet af GPT-4o!)
+// @description:de      Fügt ChatGPT-Antworten zur Seitenleiste der Brave-Suche hinzu (betrieben mit GPT-4o!)
+// @description:dv      ChatGPT އައިކްސޭޓުގެ ޖަވާބުގެ Brave Search ސައިޓުގައި ފޯރުވާރައުގެ ޑައުން (އެކައުންއައި ވަކި GPT-4o!)
+// @description:dz      ChatGPT དང་ Brave འབྱུང་ཆུང་ལེ་བས་འཐུས་པ་ལགས་སྤྱོད་སྒྲིག་པ་བརྟགས་བཞུགས། (GPT-4o་གི་སྒྲིག་དང་!)
+// @description:el      Προσθέτει απαντήσεις ChatGPT στην πλαϊνή γραμμή αναζήτησης του Brave (με την υποστήριξη του GPT-4o!)
+// @description:eo      Aldonas ChatGPT-respondojn al la flanka breto de Brave Serĉo (funkciigita de GPT-4o!)
+// @description:es      Agrega respuestas de ChatGPT a la barra lateral de Brave Search (¡impulsado por GPT-4o!)
+// @description:et      Lisab ChatGPT vastused Brave Search küljepaneelile (toetatud GPT-4o poolt!)
+// @description:eu      Gehitu ChatGPT erantzunak Brave Search aldeko alderakoan (GPT-4oren aurrerapenean oinarrituta!)
+// @description:fa      ChatGPT پاسخها را به نوار کناری جستجوی Brave اضافه میکند (قدرت گرفته شده توسط GPT-4o!)
+// @description:fi      Lisää ChatGPT-vastaukset Brave-haun sivupalkkiin (käyttäen GPT-4o!)
+// @description:fo      Leggur ChatGPT-svar til Brave leitarstika síðupall (drivin av GPT-4o!)
+// @description:fr      Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4o !)
+// @description:fr-CA   Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4o !)
+// @description:gd      Cur Freagairtean ChatGPT ris an t-siostam-cùlaiche airson Innse Brave (le GPT-4o air!)
+// @description:gl      Engade respostas de ChatGPT á barra lateral de busca de Brave (potenciado por GPT-4o!)
+// @description:gu      બ્રેવ શોધનપટનમાં ChatGPT જવાબો ઉમેરે છે (પાવર્ડપુંજ GPT-4o દ્વારા!)
+// @description:haw     Hoʻoni i nā manaʻoʻiʻo ChatGPT i loko o ka papa kālai Brave Search (i hoʻohui ʻia e GPT-4o!)
+// @description:he      מוסיף תשובות של ChatGPT לסרגל הצד של חיפוש Brave (מופעל על ידי GPT-4o!)
+// @description:hi      ब्रेव सर्च साइडबार में ChatGPT उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
+// @description:hr      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretraživanja (pokreće GPT-4o!)
+// @description:ht      Ajoute ChatGPT repons nan sibbard Brave Search la (pouvwa pa GPT-4o!)
+// @description:hu      Hozzáadja a ChatGPT válaszokat a Brave Search oldalsávjához (GPT-4o által támogatva!)
+// @description:hy      Ավելացնում է ChatGPT պատասխանները Brave Search կողմից (ուղղահայացված է GPT-4o-ի միջոցով!)
+// @description:id      Menambahkan jawaban ChatGPT ke sidebar Brave Search (didukung oleh GPT-4o!)
+// @description:is      Bætir við ChatGPT svari í hliðarstiku Brave leitarinnar (rekinn með GPT-4o!)
+// @description:it      Aggiunge le risposte di ChatGPT alla barra laterale di Brave Search (alimentato da GPT-4o!)
+// @description:ja      Brave 検索サイドバーに ChatGPT の回答を追加します（GPT-4o で動作中！）
+// @description:jv      Nambahake jawaban ChatGPT menyang sidebar Pencarian Brave (didheteni GPT-4o!)
+// @description:ka      დაამატებს ChatGPT პასუხებს Brave Search გვერდის მარჯვნივ (GPT-4o-ით გამოყენებული!)
+// @description:kab     Izgan-d yemdanen n teblaḍ n Brave Search (ɣef GPT-4o!)
+// @description:kk      Brave іздеу жағдайындағы ChatGPT жауаптарын қосады (GPT-4o-мен жұмыс істейді!)
+// @description:km      បន្ថែមចម្លើយ ChatGPT ទៅរបារចំហៀងស្វែងរកក្លាហាន (ដំណើរការដោយ GPT-4o!)
+// @description:kn      ಬ್ರೇವ್ ಶೋಧನೆ ಪಟ್ಟಿಗೆ ChatGPT ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ಅನ್ನು ಬಳಸಿ!)
+// @description:ko      ChatGPT 답변을 Brave 검색 사이드바에 추가합니다 (GPT-4o 로 구동됨!)
+// @description:ku      Li ser panoya li serê lêgerîna Brave dihêle ChatGPT bersivan (bi alîkariya GPT-4o!)
+// @description:ky      ChatGPT каардарларын Браве Издөө экибинын көнчыгышына кошотот (GPT-4o менен күтөлгөн!)
+// @description:la      Adiungit responsiones ChatGPT ad barra lateralem investigatiois Brave (GPT-4o motore!)
+// @description:lb      Füügt ChatGPT Äntwerten zur Brave-Sichbarsäit bäi (gedriwwen vun GPT-4o!)
+// @description:lo      ຕອບສອນ ChatGPT ໄປຫາແຖບຂັ້ນຕອນຂອງການຄົ້ນຫາ Brave (ໂດຍໃຊ້ GPT-4o!)
+// @description:lt      Prideda ChatGPT atsakymus į šoninę juostą paieškai Brave (varomi GPT-4o!)
+// @description:lv      Pievieno ChatGPT atbildes Brave meklēšanas sānjoslai (darbināts ar GPT-4o!)
+// @description:mg      Mampiditra valiny avy amin'ny ChatGPT ao amin'ny saroka Search Brave (maneho ny GPT-4o!)
+// @description:mi      Tāpiri atu i ngā whakautu a ChatGPT ki te tara taha o te Rapu Wawata Brave (e whakahaerehia ana e GPT-4o!)
+// @description:mk      Додава одговори од ChatGPT на страничната лента на Brave Search (поддржано од GPT-4o!)
+// @description:ml      Brave സേർച്ചിന്റെ സൈഡ്ബാർലേക്ക് ChatGPT ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o-യിൽ പ്രവർത്തിക്കുന്നു!)
+// @description:mn      ChatGPT хариултуудыг Brave Хайлтын зааврын зурагт нэмнэ (GPT-4o ашиглаж!)
+// @description:ms      Menambah jawapan ChatGPT ke sidebar Carian Brave (dikuasakan oleh GPT-4o!)
+// @description:mt      Iżżid Risposti ta 'ChatGPT lill-Sidebar Brave Search (pwered by GPT-4o!)
+// @description:my      ChatGPT အဖြေမှာ Brave ရွေးချယ်ရေးတွင် ChatGPT အဖြေများကိုထည့်သွင်းထားသည် (GPT-4o ဖြင့်အလုပ်လုပ်ပါ!)
+// @description:ne      ChatGPT उत्तरहरूलाई ब्रेभ खोजको साइडबारमा थप्छ (GPT-4o द्वारा संचालित!)
+// @description:nl      Voegt ChatGPT-antwoorden toe aan de zijbalk van Brave Search (aangedreven door GPT-4o!)
+// @description:no      Legger til ChatGPT-svar i sidenotatfeltet for Brave Search (drevet av GPT-4o!)
+// @description:ny      Anayambitsa zambiri za ChatGPT kubanja lovala la Brave Search (liyenera ndi GPT-4o!)
+// @description:pa      ਬਰੇਵ ਖੋਜ ਦੇ ਸਾਈਡਬਾਰ ਵਿੱਚ ChatGPT ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ (GPT-4o ਦੁਆਰਾ ਸ਼ਕਤੀਸ਼ਾਲਕ ਕੀਤਾ ਗਿਆ!)
+// @description:pap     Añadi respuèstanan di ChatGPT na bar lateral di Buskeda Brave (poderá pa GPT-4o!)
+// @description:pl      Dodaje odpowiedzi ChatGPT do paska bocznego Brave Search (napędzane przez GPT-4o!)
+// @description:ps      په سپینې د Brave لټونکې توګه ChatGPT جوابونه ورکړي (د GPT-4o لخوا سره!)
+// @description:pt      Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4o!)
+// @description:pt-BR   Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4o!)
+// @description:rn      Abugira inkomoko za ChatGPT mu gisubizo cya Brave Search (yahindutse na GPT-4o!)
+// @description:ro      Adaugă răspunsuri ChatGPT în bara laterală de căutare Brave (propulsat de GPT-4o!)
+// @description:ru      Добавляет ответы ChatGPT в боковую панель поиска Brave (работает на GPT-4o!)
+// @description:rw      Atera amakuru ya ChatGPT mu bariro bya Brave Search (yarahindutse n'ikoranabuhanga cya GPT-4o!)
+// @description:sg      Yãngã añ fããmi ChatGPT pũngu loo yaaka yi Brave tãngbala (saango wã yi GPT-4o!)
+// @description:si      ඔබේ Brave සෙවුම් පිළිතුරුද ChatGPT එක් කිරීමෙන් එක්වන්න (GPT-4o විද්‍යාවලියේ සිදු වේ!)
+// @description:sk      Pridáva odpovede ChatGPT do bočnej lišty Brave Search (poháňané GPT-4o!)
+// @description:sl      Dodaja odgovore ChatGPT na stransko vrstico iskanja Brave (poganja GPT-4o!)
+// @description:sm      Fa'afaigofie atu ai le tali a ChatGPT i le sidebar o le Search Brave (e avea i le GPT-4o!)
+// @description:sn      Anoratidza zita reChatGPT pa sidebar yeBrave Search (ine vedzere GPT-4o!)
+// @description:so      Wax ka dar ChatGPT jawaabaha sidebar Brave Search (u shaqeeya GPT-4o!)
+// @description:sr      Додаје одговоре ChatGPT-а на страни панел претраге Брејва (покреће GPT-4o!)
+// @description:sv      Lägger till ChatGPT-svar i sidofältet för Brave Sökning (drivet av GPT-4o!)
+// @description:sw      Inaongeza majibu ya ChatGPT kwenye upau wa pembeni wa Brave Search (inaendeshwa na GPT-4o!)
+// @description:ta      பேராசை ஆய்வுக் கேட்பதற்கு ChatGPT பதில்களை Brave பக்க பக்கில் சேர்க்கிறது (GPT-4o ஆல் இயங்குகிறது!)
+// @description:te      Brave శోధనపై ChatGPT సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా పెంచబడింది!)
+// @description:tg      Шарҳи ChatGPT-ро ба сатҳи барои ҷустуҷӯи Брейв илова мекунад (тавассути GPT-4o мубодиъ будааст!)
+// @description:th      เพิ่มคำตอบของ ChatGPT ไปยังแถบข้างของการค้นหา Brave (ทำงานโดย GPT-4o!)
+// @description:ti      ክልል ጸጋን ChatGPT መልእኽት ንምስርሓብ Brave ውልቀት ይጨምሩ (በቀረበ GPT-4o!)
+// @description:tk      ChatGPT-nyň jogaplaryny Brave Gözleg çarpyşysyna goşýar (GPT-4o-dan güýçlenýär!)
+// @description:tn      Enza mavoti ChatGPT ku sidebar yeBrave Search (ine yeduva neGPT-4o!)
+// @description:to      Tānaki e fiemaʻu ai ha ngaahi ngaue fakamatala 'a e ChatGPT ki he tu'unga ni ha Brave Search (na'e neongo'i moe GPT-4o!)
+// @description:tpi     Adim na pes bilong ChatGPT long tab bilong Brave Søk (wok long GPT-4o!)
+// @description:tr      ChatGPT yanıtlarını Brave Arama yan çubuğuna ekler (GPT-4o tarafından desteklenir!)
+// @description:uk      Додає відповіді ChatGPT до бічної панелі пошуку Brave (працює на GPT-4o!)
+// @description:ur      ChatGPT جوابات کو بریو سرچ کے سائڈبار میں شامل کرتا ہے (GPT-4o کے ذریعے!)
+// @description:uz      ChatGPT javoblarni Brave Qidiruvning yon paneliga qo'shadi (GPT-4o tomonidan ta'minlanadi!)
+// @description:vi      Thêm câu trả lời của ChatGPT vào thanh bên của Brave Search (được cung cấp bởi GPT-4o!)
+// @description:xh      Enza amaxwebhu kaChatGPT e sideba yeBrave Search (enokukhuthaziswa nguGPT-4o!)
+// @description:yi      צוגעבן אַנטוואָרטן פֿון ChatGPT אין די זײַטל-פֿעלד פֿון Brave זוך (געפּאַווערטעד דורך GPT-4o!)
+// @description:zh      将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
+// @description:zh-CN   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
+// @description:zh-HK   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4o 提供支持!)
+// @description:zh-SG   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
+// @description:zh-TW   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4o 提供支持!)
+// @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.29.2
+// @version             2024.5.29.5
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -786,7 +786,7 @@ setTimeout(async () => {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
                 secret: getGPTplusKey(), top_p: 1, temperature: 0.8,
-                systemMessage: 'You are ChatGPT, the version is GPT3.5, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
+                systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
             }
             if (ids.gptPlus.parentID) payload.options = { parentMessageId: ids.gptPlus.parentID }
         }
@@ -816,10 +816,10 @@ setTimeout(async () => {
                     } else if (endpoint.includes('binjie.fun')) { 
                         try {
                             const text = event.responseText, chunkSize = 1024
-                            let currentIndex = 0
-                            while (currentIndex < text.length) {
-                                const chunk = text.substring(currentIndex, currentIndex + chunkSize)
-                                currentIndex += chunkSize ; str_relatedQueries += chunk
+                            let currentIdx = 0
+                            while (currentIdx < text.length) {
+                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                currentIdx += chunkSize ; str_relatedQueries += chunk
                             }
                         } catch (err) { appError(err) ; reject(err) }
                     } else if (endpoint.includes('gptforlove.com')) {
@@ -891,7 +891,7 @@ setTimeout(async () => {
                     appDiv.append(relatedQueriesDiv)
 
                     // Fill each child div, add attributes + icon + listener
-                    relatedQueries.forEach((relatedQuery, index) => {
+                    relatedQueries.forEach((relatedQuery, idx) => {
                         const relatedQueryDiv = document.createElement('div'),
                               relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                               relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
@@ -919,7 +919,7 @@ setTimeout(async () => {
                             relatedQueryDiv.classList.add('active')
                             relatedQueryDiv.addEventListener('click', handleRQevent)
                             relatedQueryDiv.addEventListener('keydown', handleRQevent)
-                        }, index * 100)
+                        }, idx * 100)
                     })
 
                     updateTweaksStyle() // to shorten <pre> max-height
@@ -965,10 +965,10 @@ setTimeout(async () => {
                     if (event.responseText) {
                         try {
                             const text = event.responseText, chunkSize = 1024
-                            let answer = '', currentIndex = 0
-                            while (currentIndex < text.length) {
-                                const chunk = text.substring(currentIndex, currentIndex + chunkSize)
-                                currentIndex += chunkSize ; answer += chunk
+                            let answer = '', currentIdx = 0
+                            while (currentIdx < text.length) {
+                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                currentIdx += chunkSize ; answer += chunk
                             }
                             appShow(answer, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
                         } catch (err) { // use different endpoint or suggest OpenAI
