@@ -154,7 +154,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.23
+// @version             2024.5.29.2
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -367,8 +367,9 @@
 // @connect             chat.openai.com
 // @connect             api.openai.com
 // @connect             fanyi.sogou.com
-// @connect             api.aigcfun.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.2/dist/chatgpt.min.js#sha256-5K/Bxm9bvGpV6dIHShz4o0fwPmIbIJxZAcddpzGFhck=
+// @connect             api.binjie.fun
+// @connect             api11.gptforlove.com
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
 // @require             https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
 // @require             https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js#sha256-nLjaz8CGwpZsnsS6VPSi3EO3y+KzPOwaJ0PYhsf7R6c=
 // @require             https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js#sha256-jjsBF/TfS+RSwLavW48KCs+dSt4j0I1V1+MSryIHd2I=
@@ -981,39 +982,16 @@
             } else resolve(accessToken)
     })}
 
-    function getAIGCFkey() {
-        return new Promise(resolve => {
-            const publicKey = GM_getValue(config.keyPrefix + '_aigcfKey')
-            if (!publicKey) {
-                GM.xmlHttpRequest({ method: 'GET', url: 'https://api.aigcfun.com/fc/key',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Referer': 'https://aigcfun.com/',
-                        'X-Forwarded-For': ipv4.generate({ verbose: false }) },
-                    onload: response => {
-                        const newPublicKey = JSON.parse(response.responseText).data
-                        if (!newPublicKey) { appError('Failed to get AIGCFun public key') ; return }
-                        GM_setValue(config.keyPrefix + '_aigcfKey', newPublicKey)
-                        console.info('AIGCFun public key set: ' + newPublicKey)
-                        resolve(newPublicKey)
-                    },
-                    onerror: resolve('')
+    function getGPTplusKey() {
+        let nn = Math.floor(new Date().getTime() / 1e3)
+        const fD = e => {
+            let t = CryptoJS.enc.Utf8.parse(e),
+                o = CryptoJS.AES.encrypt(t, 'fjfsd我w4真3dd服iuhf了wf', {
+                    mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7
             })
-            } else resolve(publicKey)
-    })}
-
-    async function refreshAIGCFendpoint() {
-        GM_setValue(config.keyPrefix + '_aigcfKey', false) // clear GM key
-        // Determine index of AIGCF in endpoint map
-        let aigcfMapIndex = -1
-        for (let i = 0 ; i < proxyEndpoints.length ; i++) {
-            const endpoint = proxyEndpoints[i]
-            if (endpoint.some(item => item.includes('aigcfun'))) {
-                aigcfMapIndex = i ; break
-        }}
-        // Update AIGCF endpoint w/ fresh key (using fresh IP)
-        proxyEndpoints[aigcfMapIndex][0] = (
-            'https://api.aigcfun.com/api/v1/text?key=' + await getAIGCFkey())
+            return o.toString()
+        }
+        return fD(nn)
     }
 
     // Define ANSWER functions
@@ -1024,7 +1002,9 @@
             const untriedEndpoints = proxyEndpoints.filter(
                 entry => !getShowReply.triedEndpoints?.includes(entry[0]))
             const entry = untriedEndpoints[Math.floor(chatgpt.randomFloat() * untriedEndpoints.length)]
-            endpoint = entry[0] ; accessKey = entry[1] ; model = entry[2]
+            if (!entry) // no more proxy endpoints left untried
+                appAlert('suggestOpenAI')
+            else endpoint = entry[0]
         } else { // use OpenAI API
             endpoint = openAIendpoints.chat
             const timeoutPromise = new Promise((resolve, reject) =>
@@ -1033,17 +1013,34 @@
             if (!accessKey) { appAlert('login') ; return }
             model = 'gpt-3.5-turbo'
         }
+        appInfo('Endpoint used: ' + endpoint)
     }
 
     function createHeaders(api) {
-        let headers = { 'Content-Type': 'application/json' }
+        let headers = { 'Content-Type': 'application/json', 'X-Forwarded-For': ipv4.generate({ verbose: false })}
         if (api.includes('openai.com')) headers.Authorization = 'Bearer ' + accessKey
+        else if (api.includes('binjie.fun')) headers.origin = 'https://chat18.aichatos.xyz'
         return headers
     }
 
+    const ids = { gptPlus: { parentID: '' }, yqCloud: { userID: '#/chat/' + Date.now() }}
     function createPayload(api, msgs) {
-        const payload = { messages: msgs, model: model }
-        if (api.includes('openai.com')) payload.max_tokens = 4000
+        let payload = {}
+        if (api.includes('openai.com'))
+            payload = { messages: msgs, model: model, max_tokens: 4000 }
+        else if  (api.includes('binjie.fun')) {
+            payload = {
+                prompt: msgs[msgs.length - 1].content,
+                withoutContext: false, userId: ids.yqCloud.userID, network: true
+            }
+        } else if (api.includes('gptforlove.com')) {
+            payload = {
+                prompt: msgs[msgs.length - 1].content,
+                secret: getGPTplusKey(), top_p: 1, temperature: 0.8,
+                systemMessage: 'You are ChatGPT, the version is GPT3.5, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
+            }
+            if (ids.gptPlus.parentID) payload.options = { parentMessageId: ids.gptPlus.parentID }
+        }
         return JSON.stringify(payload)
     }
 
@@ -1064,13 +1061,22 @@
                 data: createPayload(endpoint, [{ role: 'user', content: rqPrompt }]),
                 onload: event => {
                     let str_relatedQueries = ''
-                    if (!config.proxyAPIenabled && event.response) {
-                        try { // to parse txt response from OpenAI API
-                            str_relatedQueries = JSON.parse(event.response).choices[0].message.content
+                    if (endpoint.includes('openai.com')) {
+                        try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
+                        catch (err) { appError(err) ; reject(err) }
+                    } else if (endpoint.includes('binjie.fun')) { 
+                        try {
+                            const text = event.responseText, chunkSize = 1024
+                            let currentIdx = 0
+                            while (currentIdx < text.length) {
+                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                currentIdx += chunkSize ; str_relatedQueries += chunk
+                            }
                         } catch (err) { appError(err) ; reject(err) }
-                    } else if (config.proxyAPIenabled && event.responseText) {
-                        try { // to parse txt response from proxy API
-                            str_relatedQueries = JSON.parse(event.responseText).choices[0].message.content
+                    } else if (endpoint.includes('gptforlove.com')) {
+                        try {
+                            let chunks = event.responseText.trim().split('\n')
+                            str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
                         } catch (err) { appError(err) ; reject(err) }
                     }
                     const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
@@ -1136,7 +1142,7 @@
                     appDiv.append(relatedQueriesDiv)
 
                     // Fill each child div, add attributes + icon + listener
-                    relatedQueries.forEach((relatedQuery, index) => {
+                    relatedQueries.forEach((relatedQuery, idx) => {
                         const relatedQueryDiv = document.createElement('div'),
                               relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                               relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
@@ -1164,7 +1170,7 @@
                             relatedQueryDiv.classList.add('active')
                             relatedQueryDiv.addEventListener('click', handleRQevent)
                             relatedQueryDiv.addEventListener('keydown', handleRQevent)
-                        }, index * 100)
+                        }, idx * 100)
                     })
 
                     updateTweaksStyle() // to shorten <pre> max-height
@@ -1180,6 +1186,10 @@
         }
 
         function onLoad() { // process text
+            const proxyRetryOrAlert = () => {
+                if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
+                else appAlert('suggestOpenAI')
+            }
             return async event => {
                 if (event.status != 200) {
                     appError('Event status: ' + event.status)
@@ -1192,37 +1202,47 @@
                         appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'checkCloudflare')
                     else if (event.status == 429) appAlert('tooManyRequests')
                     else appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy')
-                } else if (endpoint.includes('openai')) {
+                } else if (endpoint.includes('openai.com')) {
                     if (event.response) {
-                        try { // to parse txt response from OpenAI endpoint
+                        try {
                             appShow(JSON.parse(event.response).choices[0].message.content, footerContent)
                         } catch (err) {
+                            appInfo('Response: ' + event.response)
                             appError(appAlerts.parseFailed + ': ' + err)
-                            appError('Response: ' + event.response)
                             appAlert('suggestProxy')
                         }
-                    }
-                } else if (endpoint.includes('aigcf')) {
+                    } else { appInfo('Response: ' + event.responseText) ; appAlert('suggestProxy') }
+                } else if (endpoint.includes('binjie.fun')) {
                     if (event.responseText) {
-                        try { // to parse txt response from AIGCF endpoint
-                            const answer = JSON.parse(event.responseText).choices[0].message.content
+                        try {
+                            const text = event.responseText, chunkSize = 1024
+                            let answer = '', currentIdx = 0
+                            while (currentIdx < text.length) {
+                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                currentIdx += chunkSize ; answer += chunk
+                            }
                             appShow(answer, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                        } catch (err) {
+                        } catch (err) { // use different endpoint or suggest OpenAI
                             appInfo('Response: ' + event.responseText)
-                            if (event.responseText.includes('非常抱歉，根据我们的产品规则，无法为你提供该问题的回答'))
-                                appAlert(msgs.alert_censored || 'Sorry, according to our product rules, '
-                                    + 'we cannot provide you with an answer to this question, please try other questions')
-                            else if (event.responseText.includes('维护'))
-                                appAlert(( msgs.alert_maintenance || 'AI system under maintenance' ) + '. '
-                                    + ( msgs.alert_suggestOpenAI || 'Try switching off Proxy Mode in toolbar' ))
-                            else if (event.responseText.includes('finish_reason')) { // if other AIGCF error encountered
-                                await refreshAIGCFendpoint() ; getShowReply(convo, callback) // re-fetch related queries w/ fresh IP
-                            } else { // use different endpoint or suggest OpenAI
-                                appError(appAlerts.parseFailed + ': ' + err)
-                                if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
-                                else appAlert('suggestOpenAI')
-        }}}}}}
-    }
+                            appError(appAlerts.parseFailed + ': ' + err)
+                            proxyRetryOrAlert()
+                        }
+                    } else { appInfo('Response: ' + event.responseText) ; proxyRetryOrAlert() }
+                } else if (endpoint.includes('gptforlove.com')) {
+                    if (event.responseText && !event.responseText.includes('Fail')) {
+                        try {
+                            let chunks = event.responseText.trim().split('\n'),
+                                lastObj = JSON.parse(chunks[chunks.length - 1])
+                            if (lastObj.id) ids.gptPlus.parentID = lastObj.id
+                            appShow(lastObj.text, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                        } catch (err) { // use different endpoint or suggest OpenAI
+                            appInfo('Response: ' + event.responseText)
+                            appError(appAlerts.parseFailed + ': ' + err)
+                            proxyRetryOrAlert()
+                        }
+                    } else { appInfo('Response: ' + event.responseText) ; proxyRetryOrAlert() }
+                }
+    }}}
 
     function appShow(answer, footerContent) {
         while (appDiv.firstChild) // clear all children
@@ -1515,7 +1535,7 @@
 
     // Run MAIN routine
 
-    // Init config/convo/menu
+    // Init CONFIG/CONVO/MENU
     const config = {
         appName: 'GoogleGPT', appSymbol: '🤖', keyPrefix: 'googleGPT',
         appURL: 'https://www.googlegpt.io', gitHubURL: 'https://github.com/KudoAI/googlegpt',
@@ -1543,11 +1563,12 @@
           isMobile = chatgpt.browser.isMobile(),
           hasSidebar = document.querySelector('[class*="kp-"]')
 
-    // Pre-load logo
+    // Pre-load LOGO
     const appLogoImg = document.createElement('img') ; updateAppLogoSrc()
     appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
 
-    // Define messages
+    // Define MESSAGES
+    let msgs = {}
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
@@ -1568,18 +1589,20 @@
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; const msgs = await msgsLoaded
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
 
     registerMenu()
 
-    // Init endpoints
+    // Init ENDPOINTS
     const openAIendpoints = {
         auth: 'https://auth0.openai.com',
         session: 'https://chatgpt.com/api/auth/session',
         chat: 'https://api.openai.com/v1/chat/completions' }
-    const proxyEndpoints = [[ 'https://api.aigcfun.com/api/v1/text?key=' + await getAIGCFkey(), '', 'gpt-3.5-turbo' ]]
+    const proxyEndpoints = [
+        [ 'https://api.binjie.fun/api/generateStream' ],
+        [ 'https://api11.gptforlove.com/chat-process' ]]
 
-    // Init alerts
+    // Init ALERTS
     const appAlerts = {
         waitingResponse: ( msgs.alert_waitingResponse || 'Waiting for ChatGPT response' ) + '...',
         login: ( msgs.alert_login || 'Please login' ) + ' @ ',
@@ -1596,11 +1619,11 @@
             + ( msgs.alert_suggestOpenAI || 'Try switching off Proxy Mode in toolbar' )
     }
 
-    // Stylize elements
+    // STYLIZE elements
     const appStyle = document.createElement('style')
     updateAppStyle() ; document.head.append(appStyle)
 
-    // Create Google style tweaks
+    // Create Google style TWEAKS
     const tweaksStyle = document.createElement('style'),
           wsbStyles = '#center_col, #center_col div { max-width: 560px !important }' // shrink center column
                     + '.googlegpt { width: 25.65rem }' // expand GoogleGPT when in limiting Google host container
@@ -1610,7 +1633,7 @@
                     + '.googlegpt ~ * { display: none }' // hide sidebar contents
     updateTweaksStyle() ; document.head.append(tweaksStyle)
 
-    // Create/stylize tooltip div
+    // Create/stylize TOOLTIP div
     const tooltipDiv = document.createElement('div'),
           tooltipStyle = document.createElement('style')
     tooltipDiv.classList.add('button-tooltip', 'no-user-select')
@@ -1621,11 +1644,11 @@
         + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
     document.head.append(tooltipStyle)
 
-    // Create/classify GoogleGPT container
+    // Create/classify GOOGLEGPT container
     const appDiv = document.createElement('div')
     appDiv.classList.add('googlegpt', 'fade-in')
 
-    // Append to Google
+    // APPEND to Google
     const centerCol = document.querySelector('#center_col')
     const hostContainer = isMobile ? centerCol
         : document.querySelector('#rhs') // sidebar container if side snippets exist
@@ -1642,7 +1665,7 @@
     // Init footer CTA to share feedback
     let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Share feedback')
 
-    // Show standby mode or get/show answer
+    // Show STANDBY mode or get/show ANSWER
     if (config.autoGetDisabled
         || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*%3F(&|$)/.test(document.location) // suffix required but not present
