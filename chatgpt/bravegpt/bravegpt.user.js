@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.30
+// @version             2024.5.30.2
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -460,9 +460,6 @@ setTimeout(async () => {
           + `.bravegpt footer a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
           + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
           + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
-              + `top: ${( isFirefox ? 0.33 : 0.16 ) - ( appLogoImg.loaded ? 0.13 : 0 )}em ;`
-              + `right: ${ isFirefox ? ( 10.03 - ( appLogoImg.loaded ? 0 : 0.577 ))
-                                     : ( 5.01  - ( appLogoImg.loaded ? 0 : 0.262 ))}rem ;`
               + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                   + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
           + '.chatgpt-js { font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
@@ -1134,7 +1131,13 @@ setTimeout(async () => {
         } else {
             const balloonTipSpan = document.createElement('span')
             var answerPre = document.createElement('pre')
-            balloonTipSpan.className = 'balloon-tip' ; answerPre.textContent = answer
+            balloonTipSpan.className = 'balloon-tip'
+            balloonTipSpan.style.cssText = ( // pos it
+                `top: ${( isFirefox ? 0.33 : 0.16 ) - ( appLogoImg.loaded ? 0.13 : 0 )}em ;`
+              + `right: ${ isFirefox ? ( 10.03 - ( appLogoImg.loaded ? 0 : 0.577 ))
+                                     : ( 5.01  - ( appLogoImg.loaded ? 0 : 0.262 ))}rem`
+            )
+            answerPre.textContent = answer
             appDiv.append(balloonTipSpan) ; appDiv.append(answerPre)
         }
 
@@ -1291,7 +1294,6 @@ setTimeout(async () => {
     appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
 
     // Define MESSAGES
-    let msgs = {}
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
@@ -1312,7 +1314,7 @@ setTimeout(async () => {
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+    }) ; const msgs = await msgsLoaded
 
     registerMenu()
 
