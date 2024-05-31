@@ -23,7 +23,7 @@ export default [
             globals: {
                 ...globals.browser, ...globals.greasemonkey,
                 chatgpt: 'readonly', CryptoJS: 'readonly',
-                GM_cookie: 'readonly', ipv4: 'readonly'
+                GM_cookie: 'readonly', ipv4: 'readonly', marked: 'readonly'
             }
         }
     },
