@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.31.10
+// @version             2024.5.31.12
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -719,13 +719,13 @@
             const entry = untriedEndpoints[Math.floor(chatgpt.randomFloat() * untriedEndpoints.length)]
             if (!entry) // no more proxy endpoints left untried
                 appAlert('suggestOpenAI')
-            else { endpoint = entry[0], endpointMethod = entry[1].method }
+            else { endpoint = entry[0] ; endpointMethod = entry[1].method }
         } else { // use OpenAI API
             endpoint = openAIendpoints.chat
             accessKey = await Promise.race([getOpenAItoken(), new Promise(reject =>
                 setTimeout(() => reject(new Error('Timeout occurred')), 3000))])
             if (!accessKey) { appAlert('login') ; return }
-            endpointMethod = 'POST', model = 'gpt-3.5-turbo'
+            endpointMethod = 'POST' ; model = 'gpt-3.5-turbo'
         }
         appInfo('Endpoint used: ' + endpoint)
     }
