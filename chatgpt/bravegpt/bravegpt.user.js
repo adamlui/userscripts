@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.1.2
+// @version             2024.6.1.4
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -137,6 +137,7 @@
 // @connect             gptforlove.com
 // @connect             greasyfork.org
 // @connect             jsdelivr.net
+// @connect             mixerbox.com
 // @connect             onrender.com
 // @connect             openai.com
 // @connect             sogou.com
@@ -774,6 +775,7 @@ setTimeout(async () => {
             api.includes('openai.com') ? 'https://chatgpt.com'
           : api.includes('binjie.fun') ? 'https://chat18.aichatos.xyz'
           : api.includes('gptforlove.com') ? 'https://ai27.gptforlove.com'
+          : api.includes('mixerbox.com') ? 'https://chatai.mixerbox.com'
           : api.includes('onrender.com') ? 'https://e8.frechat.xyz' : ''
         )
         return headers
@@ -796,9 +798,92 @@ setTimeout(async () => {
                 systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
             }
             if (ids.gptPlus.parentID) payload.options = { parentMessageId: ids.gptPlus.parentID }
-        } else if (api.includes('onrender.com'))
+        } else if (api.includes('mixerbox.com'))
+            payload = { prompt: msgs, model: 'gpt-3.5-turbo' }
+        else if (api.includes('onrender.com'))
             payload = { messages: msgs, model: 'gemma-7b-it' }
         return JSON.stringify(payload)
+    }
+
+    function processText(resp) {
+        if (resp.status != 200) {
+            appError('Response status: ' + resp.status)
+            appError('Response text: ' + resp.responseText)
+            if (config.proxyAPIenabled && getShowReply.attemptCnt < proxyEndpoints.length)
+                retryDiffHost()
+            else if (resp.status == 401 && !config.proxyAPIenabled) {
+                GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
+            else if (resp.status == 403)
+                appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'checkCloudflare')
+            else if (resp.status == 429) appAlert('tooManyRequests')
+            else appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy')
+        } else if (endpoint.includes('openai.com')) {
+            if (resp.response) {
+                try {
+                    appShow(JSON.parse(resp.response).choices[0].message.content, footerContent)
+                } catch (err) {
+                    appInfo('Response: ' + resp.response)
+                    appError(appAlerts.parseFailed + ': ' + err)
+                    appAlert('suggestProxy')
+                }
+            } else { appInfo('Response: ' + resp.responseText) ; appAlert('suggestProxy') }
+        } else if (endpoint.includes('binjie.fun')) {
+            if (resp.responseText) {
+                try {
+                    const text = resp.responseText, chunkSize = 1024
+                    let answer = '', currentIdx = 0
+                    while (currentIdx < text.length) {
+                        const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                        currentIdx += chunkSize ; answer += chunk
+                    }
+                    appShow(answer, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                } catch (err) { // use different endpoint or suggest OpenAI
+                    appInfo('Response: ' + resp.responseText)
+                    appError(appAlerts.parseFailed + ': ' + err)
+                    proxyRetryOrAlert()
+                }
+            } else { appInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
+        } else if (endpoint.includes('gptforlove.com')) {
+            if (resp.responseText && !resp.responseText.includes('Fail')) {
+                try {
+                    let chunks = resp.responseText.trim().split('\n'),
+                        lastObj = JSON.parse(chunks[chunks.length - 1])
+                    if (lastObj.id) ids.gptPlus.parentID = lastObj.id
+                    appShow(lastObj.text, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                } catch (err) { // use different endpoint or suggest OpenAI
+                    appInfo('Response: ' + resp.responseText)
+                    appError(appAlerts.parseFailed + ': ' + err)
+                    proxyRetryOrAlert()
+                }
+            } else { appInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
+        } else if (endpoint.includes('mixerbox.com')) {
+            if (resp.responseText) {
+                try {
+                    const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
+                        .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                        .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                    appShow(extractedData.join(''), footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                } catch (err) { // use different endpoint or suggest OpenAI
+                    appInfo('Response: ' + resp.responseText)
+                    appError(appAlerts.parseFailed + ': ' + err)
+                    proxyRetryOrAlert()
+                }
+            } else { appInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
+        } else if (endpoint.includes('onrender.com')) {
+            if (resp.responseText) {
+                try {
+                    appShow(resp.responseText, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                } catch (err) { // use different endpoint or suggest OpenAI
+                    appInfo('Response: ' + resp.responseText)
+                    appError(appAlerts.parseFailed + ': ' + err)
+                    proxyRetryOrAlert()
+                }
+            } else { appInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
+        }
+        function proxyRetryOrAlert() {
+            if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
+            else appAlert('suggestOpenAI')
+        }
     }
 
     function getRelatedQueries(query) {
@@ -834,6 +919,13 @@ setTimeout(async () => {
                         try {
                             let chunks = event.responseText.trim().split('\n')
                             str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
+                        } catch (err) { appError(err) ; reject(err) }
+                    } else if (endpoint.includes('mixerbox.com')) {
+                        try {
+                            const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
+                                .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                            str_relatedQueries = extractedData.join('')
                         } catch (err) { appError(err) ; reject(err) }
                     } else if (endpoint.includes('onrender.com')) {
                         try { str_relatedQueries = event.responseText }
@@ -880,7 +972,7 @@ setTimeout(async () => {
         await pickAPI()
         GM.xmlHttpRequest({
             method: endpointMethod, url: endpoint, headers: createHeaders(endpoint),
-            responseType: 'text', data: createPayload(endpoint, convo), onload: onLoad(),
+            responseType: 'text', data: createPayload(endpoint, convo), onload: processText,
             onerror: err => {
                 appError(err)
                 if (!config.proxyAPIenabled) appAlert(!accessKey ? 'login' : 'suggestProxy')
@@ -944,75 +1036,7 @@ setTimeout(async () => {
             getShowReply.attemptCnt++
             getShowReply(convo, callback)
         }
-
-        function onLoad() { // process text
-            const proxyRetryOrAlert = () => {
-                if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
-                else appAlert('suggestOpenAI')
-            }
-            return async event => {
-                if (event.status != 200) {
-                    appError('Event status: ' + event.status)
-                    appError('Event response: ' + event.responseText)
-                    if (config.proxyAPIenabled && getShowReply.attemptCnt < proxyEndpoints.length)
-                        retryDiffHost()
-                    else if (event.status == 401 && !config.proxyAPIenabled) {
-                        GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
-                    else if (event.status == 403)
-                        appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'checkCloudflare')
-                    else if (event.status == 429) appAlert('tooManyRequests')
-                    else appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy')
-                } else if (endpoint.includes('openai.com')) {
-                    if (event.response) {
-                        try {
-                            appShow(JSON.parse(event.response).choices[0].message.content, footerContent)
-                        } catch (err) {
-                            appInfo('Response: ' + event.response)
-                            appError(appAlerts.parseFailed + ': ' + err)
-                            appAlert('suggestProxy')
-                        }
-                    } else { appInfo('Response: ' + event.responseText) ; appAlert('suggestProxy') }
-                } else if (endpoint.includes('binjie.fun')) {
-                    if (event.responseText) {
-                        try {
-                            const text = event.responseText, chunkSize = 1024
-                            let answer = '', currentIdx = 0
-                            while (currentIdx < text.length) {
-                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
-                                currentIdx += chunkSize ; answer += chunk
-                            }
-                            appShow(answer, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                        } catch (err) { // use different endpoint or suggest OpenAI
-                            appInfo('Response: ' + event.responseText)
-                            appError(appAlerts.parseFailed + ': ' + err)
-                            proxyRetryOrAlert()
-                        }
-                    } else { appInfo('Response: ' + event.responseText) ; proxyRetryOrAlert() }
-                } else if (endpoint.includes('gptforlove.com')) {
-                    if (event.responseText && !event.responseText.includes('Fail')) {
-                        try {
-                            let chunks = event.responseText.trim().split('\n'),
-                                lastObj = JSON.parse(chunks[chunks.length - 1])
-                            if (lastObj.id) ids.gptPlus.parentID = lastObj.id
-                            appShow(lastObj.text, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                        } catch (err) { // use different endpoint or suggest OpenAI
-                            appInfo('Response: ' + event.responseText)
-                            appError(appAlerts.parseFailed + ': ' + err)
-                            proxyRetryOrAlert()
-                        }
-                    } else { appInfo('Response: ' + event.responseText) ; proxyRetryOrAlert() }
-                } else if (endpoint.includes('onrender.com')) {
-                    if (event.responseText) {
-                        try {
-                            appShow(event.responseText, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                        } catch (err) { // use different endpoint or suggest OpenAI
-                            appInfo('Response: ' + event.responseText)
-                            appError(appAlerts.parseFailed + ': ' + err)
-                            proxyRetryOrAlert()
-                        }
-                    } else { appInfo('Response: ' + event.responseText) ; proxyRetryOrAlert() }
-                }
-    }}}
+    }
 
     function appShow(answer, footerContent) {
         while (appDiv.firstChild) // clear all children
@@ -1353,6 +1377,7 @@ setTimeout(async () => {
     const proxyEndpoints = [
         [ 'https://api.binjie.fun/api/generateStream', { method: 'POST', stream: true }],
         [ 'https://api11.gptforlove.com/chat-process', { method: 'POST', stream: true }],
+        [ 'https://chatai.mixerbox.com/api/chat/stream', { method: 'POST', stream: true }],
         [ 'https://demo-yj7h.onrender.com/single/chat_messages', { method: 'PUT', stream: true }]
     ]
 
