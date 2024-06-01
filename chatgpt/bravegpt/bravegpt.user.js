@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.5.31.8
+// @version             2024.6.1.2
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -691,7 +691,7 @@ setTimeout(async () => {
             buttonType == 'about' ? msgs.menuLabel_about || 'About'
           : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
           : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
-                                   + msgs.menuLabel_widerSidebar || 'Wider Sidebar' )
+                                   + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
           : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply' : '' )
 
         // Update position
@@ -756,13 +756,13 @@ setTimeout(async () => {
             const entry = untriedEndpoints[Math.floor(chatgpt.randomFloat() * untriedEndpoints.length)]
             if (!entry) // no more proxy endpoints left untried
                 appAlert('suggestOpenAI')
-            else { endpoint = entry[0], endpointMethod = entry[1].method }
+            else { endpoint = entry[0] ; endpointMethod = entry[1].method }
         } else { // use OpenAI API
             endpoint = openAIendpoints.chat
             accessKey = await Promise.race([getOpenAItoken(), new Promise(reject =>
                 setTimeout(() => reject(new Error('Timeout occurred')), 3000))])
             if (!accessKey) { appAlert('login') ; return }
-            endpointMethod = 'POST', model = 'gpt-3.5-turbo'
+            endpointMethod = 'POST' ; model = 'gpt-3.5-turbo'
         }
         appInfo('Endpoint used: ' + endpoint)
     }
@@ -836,7 +836,7 @@ setTimeout(async () => {
                             str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
                         } catch (err) { appError(err) ; reject(err) }
                     } else if (endpoint.includes('onrender.com')) {
-                        try { str_relatedQueries = event.responseText ; console.log(event)}
+                        try { str_relatedQueries = event.responseText }
                         catch (err) { appError(err) ; reject(err) }
                     }
                     const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
@@ -1004,7 +1004,6 @@ setTimeout(async () => {
                 } else if (endpoint.includes('onrender.com')) {
                     if (event.responseText) {
                         try {
-                            console.log(event)
                             appShow(event.responseText, footerContent) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
                         } catch (err) { // use different endpoint or suggest OpenAI
                             appInfo('Response: ' + event.responseText)
@@ -1320,6 +1319,7 @@ setTimeout(async () => {
     appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
 
     // Define MESSAGES
+    let msgs = {}
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
@@ -1340,7 +1340,7 @@ setTimeout(async () => {
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; const msgs = await msgsLoaded
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
 
     registerMenu()
 
