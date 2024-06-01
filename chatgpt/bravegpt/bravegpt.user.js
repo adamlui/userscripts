@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.1.6
+// @version             2024.6.1.9
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -438,7 +438,8 @@ setTimeout(async () => {
               + `color: ${ scheme == 'dark' ? 'white' : 'black' } !important }`
           + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ;'
               + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
-          + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #aaa ; stroke: #aaa' : 'fill: black ; stroke: black' }}`
+          + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #aaa ; stroke: #aaa' : 'fill: black ; stroke: black' } ;`
+              + 'transform: scale(1.185) }'
           + '.bravegpt .loading {'
               + 'margin-bottom: -55px ;' // offset vs. `.bravegpt` bottom-padding footer accomodation
               + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
@@ -679,7 +680,7 @@ setTimeout(async () => {
     function toggleTooltip(event) { // visibility
         tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for updateTooltip() y-pos calc
         updateTooltip(event.currentTarget.id.replace(/-btn$/, ''))
-        tooltipDiv.style.opacity = event.type == 'mouseover' ? 0.8 : 0
+        tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
     }
 
     function updateTooltip(buttonType) { // text & position
@@ -1082,7 +1083,7 @@ setTimeout(async () => {
             var speakSpan = document.createElement('span'),
                 speakSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
             speakSpan.id = 'speak-btn' // for toggleTooltip()
-            speakSpan.className = 'corner-btn' ; speakSpan.style.margin = '-0.04em 5px 0 0'
+            speakSpan.className = 'corner-btn' ; speakSpan.style.marginRight = '7px'
             const speakSVGattrs = [['width', 22], ['height', 22], ['viewBox', '0 0 32 32']]
             speakSVGattrs.forEach(([attr, value]) => speakSVG.setAttributeNS(null, attr, value))
             const speakSVGpaths = [
@@ -1103,7 +1104,7 @@ setTimeout(async () => {
             var wsbSpan = document.createElement('span'),
                 wsbSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
             wsbSpan.id = 'wsb-btn' // for updateWSBsvg() + toggleTooltip()
-            wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = '0.07rem 9px 0 0'
+            wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = '0.101em 11px 0 0'
             wsbSpan.append(wsbSVG) ; appDiv.append(wsbSpan) ; updateWSBsvg()
         }
 
@@ -1414,9 +1415,10 @@ setTimeout(async () => {
           tooltipStyle = document.createElement('style')
     tooltipDiv.classList.add('button-tooltip', 'no-user-select')
     tooltipStyle.innerText = '.button-tooltip {'
-        + 'background: black ; padding: 5px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
-        + 'font-size: 0.55rem ; color: white ;' // font style
+        + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
+        + 'font-size: 0.58rem ; color: white ;' // font style
         + 'position: absolute ;' // for updateTooltip() calcs
+        + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
         + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
     document.head.append(tooltipStyle)
 
