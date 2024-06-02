@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.1.10
+// @version             2024.6.2.1
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -182,12 +182,7 @@ setTimeout(async () => {
         const pamLabel = state.symbol[+!config.proxyAPIenabled] + ' '
                        + ( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' '
                        + state.separator + state.word[+!config.proxyAPIenabled]
-        menuIDs.push(GM_registerMenuCommand(pamLabel, () => {
-            saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
-            notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + state.word[+!config.proxyAPIenabled])
-            for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
-            location.reload() // re-send query using new endpoint
-        }))
+        menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
 
         // Add command to toggle auto-get mode
         const agmLabel = state.symbol[+config.autoGetDisabled] + ' '
@@ -383,18 +378,38 @@ setTimeout(async () => {
     function alert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         return chatgpt.alert(`${ config.appSymbol } ${ title }`, msg, btns, checkbox, width)}
 
-    function appAlert(msg) {
-        msg = appAlerts[msg] || msg
-        if (msg.includes('login')) deleteOpenAIcookies()
-        while (appDiv.firstChild) { appDiv.removeChild(appDiv.firstChild) }
-        const alertP = document.createElement('p') ; alertP.textContent = msg
-        alertP.className = 'no-user-select' ; alertP.style.marginBottom = '-15px'
-        if (/waiting|loading/i.test(msg)) alertP.classList.add('loading')
-        if (msg.includes('@')) { // needs login link, add it
-            alertP.append(createAnchor('https://chatgpt.com', 'chatgpt.com'),
-                ' (', msgs.alert_ifIssuePersists || 'If issue persists, try activating Proxy Mode', ')')
-        }
-        appDiv.append(alertP)
+    function appAlert(...alerts) {
+        alerts = alerts.flat() // flatten array args nested by spread operator
+        while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear appDiv content
+        const alertP = document.createElement('p')
+        alertP.className = 'no-user-select' ; alertP.style.paddingBottom = '15px'
+
+        alerts.forEach(alert => { // process each alert
+            let msg = appAlerts[alert] || alert // use string verbatim if not found in appAlerts
+            if (msg.includes('login')) deleteOpenAIcookies()
+            if (msg.match(/waiting|loading/i)) alertP.classList.add('loading')
+
+            // Hyperlink msgs.alert_switching<On|Off>
+            const foundState = ['On', 'Off'].find(state =>
+                msg.includes(alerts['alert_switching' + state] || state.toLowerCase()))
+            if (foundState) { // hyperlink switch phrase for click listener to toggleProxyMode()
+                const switchPhrase = alerts['alert_Switching' + foundState] || 'switching ' + foundState.toLowerCase()
+                msg = msg.replace(switchPhrase, `<a href="#" class="proxyToggle">${switchPhrase}</a>`)
+            }
+
+            // Create/fill/append msg span
+            const msgSpan = document.createElement('span')
+            msgSpan.innerHTML = msg ; alertP.appendChild(msgSpan)
+
+            // Insert/activate toggle/login links if necessary
+            msgSpan.querySelector('.proxyToggle') // needs click listener to toggleProxyMode(), add it
+                ?.addEventListener('click', toggleProxyMode)
+            if (msg.includes('@')) { // needs login link, add it
+                alertP.append(createAnchor('https://chatgpt.com', 'chatgpt.com'),
+                    ' (', msgs.alert_ifIssuePersists || 'If issue persists, try activating Proxy Mode', ')')
+            }
+        })
+        appDiv.appendChild(alertP)
     }
 
     function appInfo(msg) { console.info(`${ config.appSymbol } ${ config.appName } >> ${ msg }`) }
@@ -406,15 +421,6 @@ setTimeout(async () => {
         return document.documentElement.classList.contains('dark') ? true
              : document.documentElement.classList.contains('light') ? false
              : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
-    }
-
-    function toggleSidebar(mode) {
-        saveSetting(mode + 'Sidebar', !config[mode + 'Sidebar'])
-        updateTweaksStyle()
-        if (mode == 'wider' && document.querySelector('.corner-btn')) updateWSBsvg()
-        notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
-            + ' ' + state.word[+!config[mode + 'Sidebar']])
-        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
     }
 
     function updateAppLogoSrc() {
@@ -551,6 +557,25 @@ setTimeout(async () => {
         if (!wsbSpan.contains(wsbSVG)) wsbSpan.append(wsbSVG)
     }
 
+    function updateTooltip(buttonType) { // text & position
+        const cornerBtnTypes = ['about', 'speak', 'wsb'],
+              [ctrAddend, spreadFactor] = document.querySelector('.standby-btn') ? [15, 18] : [5, 28],
+              iniRoffset = spreadFactor * (buttonType == 'send' ? 1.65 : cornerBtnTypes.indexOf(buttonType) + 1) + ctrAddend
+
+        // Update text
+        tooltipDiv.innerText = (
+            buttonType == 'about' ? msgs.menuLabel_about || 'About'
+          : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
+          : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
+                                   + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
+          : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply' : '' )
+
+        // Update position
+        tooltipDiv.style.top = `${ buttonType != 'send' ? -6
+          : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 34 }px`
+        tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
+    }
+
     function updateFooterContent() {
         fetchJSON('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
             (err, advertisersData) => { if (err) return
@@ -676,31 +701,28 @@ setTimeout(async () => {
         return anchor
     }
 
-    // Define TOOLTIP functions
+    // Define TOGGLE functions
+
+    function toggleProxyMode() {
+        saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
+        notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + state.word[+!config.proxyAPIenabled])
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
+        location.reload() // re-send query using new endpoint
+    }
+
+    function toggleSidebar(mode) {
+        saveSetting(mode + 'Sidebar', !config[mode + 'Sidebar'])
+        updateTweaksStyle()
+        if (mode == 'wider' && document.querySelector('.corner-btn')) updateWSBsvg()
+        notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
+            + ' ' + state.word[+!config[mode + 'Sidebar']])
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
+    }
 
     function toggleTooltip(event) { // visibility
         tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for updateTooltip() y-pos calc
         updateTooltip(event.currentTarget.id.replace(/-btn$/, ''))
         tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
-    }
-
-    function updateTooltip(buttonType) { // text & position
-        const cornerBtnTypes = ['about', 'speak', 'wsb'],
-              [ctrAddend, spreadFactor] = document.querySelector('.standby-btn') ? [15, 18] : [5, 28],
-              iniRoffset = spreadFactor * (buttonType == 'send' ? 1.65 : cornerBtnTypes.indexOf(buttonType) + 1) + ctrAddend
-
-        // Update text
-        tooltipDiv.innerText = (
-            buttonType == 'about' ? msgs.menuLabel_about || 'About'
-          : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
-          : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
-                                   + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
-          : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply' : '' )
-
-        // Update position
-        tooltipDiv.style.top = `${ buttonType != 'send' ? -6
-          : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 34 }px`
-        tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
 
     // Define SESSION functions
@@ -758,7 +780,7 @@ setTimeout(async () => {
                 entry => !getShowReply.triedEndpoints?.includes(entry[0]))
             const entry = untriedEndpoints[Math.floor(chatgpt.randomFloat() * untriedEndpoints.length)]
             if (!entry) // no more proxy endpoints left untried
-                appAlert('suggestOpenAI')
+                appAlert('proxyNotWorking', 'suggestOpenAI')
             else { endpoint = entry[0] ; endpointMethod = entry[1].method }
         } else { // use OpenAI API
             endpoint = openAIendpoints.chat
@@ -816,9 +838,12 @@ setTimeout(async () => {
             else if (resp.status == 401 && !config.proxyAPIenabled) {
                 GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
             else if (resp.status == 403)
-                appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'checkCloudflare')
-            else if (resp.status == 429) appAlert('tooManyRequests')
-            else appAlert(config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy')
+                appAlert(config.proxyAPIenabled ? ['proxyNotWorking', 'suggestOpenAI'] : 'checkCloudflare')
+            else if (resp.status == 429)
+                appAlert('tooManyRequests')
+            else // uncommon status
+                appAlert(`${ config.proxyAPIenabled ? 'proxyN' : 'openAIn' }otWorking`,
+                         `suggest${ config.proxyAPIenabled ? 'OpenAI' : 'Proxy' }`)
         } else if (endpoint.includes('openai.com')) {
             if (resp.response) {
                 try {
@@ -826,9 +851,9 @@ setTimeout(async () => {
                 } catch (err) {
                     appInfo('Response: ' + resp.response)
                     appError(appAlerts.parseFailed + ': ' + err)
-                    appAlert('suggestProxy')
+                    appAlert('openAInotWorking, suggestProxy')
                 }
-            } else { appInfo('Response: ' + resp.responseText) ; appAlert('suggestProxy') }
+            } else { appInfo('Response: ' + resp.responseText) ; appAlert('openAInotWorking, suggestProxy') }
         } else if (endpoint.includes('binjie.fun')) {
             if (resp.responseText) {
                 try {
@@ -885,7 +910,7 @@ setTimeout(async () => {
 
         function proxyRetryOrAlert() {
             if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
-            else appAlert('suggestOpenAI')
+            else appAlert('proxyNotWorking', 'suggestOpenAI')
         }
     }
 
@@ -983,12 +1008,12 @@ setTimeout(async () => {
         GM.xmlHttpRequest({
             method: endpointMethod, url: endpoint, headers: createHeaders(endpoint),
             responseType: 'text', data: createPayload(endpoint, convo), onload: processText,
-            onerror: err => {
-                appError(err)
-                if (!config.proxyAPIenabled) appAlert(!accessKey ? 'login' : 'suggestProxy')
+            onerror: err => { appError(err)
+                if (!config.proxyAPIenabled)
+                    appAlert(!accessKey ? 'login' : ['openAInotWorking', 'suggestProxy'])
                 else { // if proxy mode
                     if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
-                    else appAlert('suggestOpenAI')
+                    else appAlert('proxyNotWorking', 'suggestOpenAI')
             }}
         })
 
@@ -1325,7 +1350,7 @@ setTimeout(async () => {
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
     config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@b57563a/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@ae440034e/'
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
     loadSetting('autoGetDisabled', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
@@ -1386,19 +1411,15 @@ setTimeout(async () => {
 
     // Init ALERTS
     const appAlerts = {
-        waitingResponse: ( msgs.alert_waitingResponse || 'Waiting for ChatGPT response' ) + '...',
-        login: ( msgs.alert_login || 'Please login' ) + ' @ ',
-        tooManyRequests: ( msgs.alert_tooManyRequests || 'ChatGPT is flooded with too many requests' ) + '. '
-            + ( config.proxyAPIenabled ? ( msgs.alert_suggestOpenAI || 'Try switching off Proxy Mode in toolbar' )
-                                       : ( msgs.alert_suggestProxy || 'Try switching on Proxy Mode in toolbar' )),
-        parseFailed: ( msgs.alert_parseFailed || 'Failed to parse response JSON' ) + '. '
-            + ( config.proxyAPIenabled ? ( msgs.alert_suggestOpenAI || 'Try switching off Proxy Mode in toolbar' )
-                                       : ( msgs.alert_suggestProxy || 'Try switching on Proxy Mode in toolbar' )),
-        checkCloudflare: ( msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' ) + ' @ ',
-        suggestProxy: ( msgs.alert_openAInotWorking || 'OpenAI API is not working' ) + '. '
-            + ( msgs.alert_suggestProxy || 'Try switching on Proxy Mode in toolbar' ),
-        suggestOpenAI: ( msgs.alert_proxyNotWorking || 'Proxy API is not working' ) + '. '
-            + ( msgs.alert_suggestOpenAI || 'Try switching off Proxy Mode in toolbar' )
+        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+        login:            `${ msgs.alert_login || 'Please login' } @ `,
+        checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
+        tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
+        parseFailed:      `${ msgs.alert_parseFailed || 'Failed to parse response JSON' }.`,
+        proxyNotWorking:  `${ msgs.mode_proxy || 'Proxy Mode' } ${ msgs.alert_notWorking || 'is not working' }.`,
+        openAInotWorking: `OpenAI API ${ msgs.alert_notWorking || 'is not working' }.`,
+        suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
+        suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
     }
 
     // STYLIZE elements
@@ -1468,4 +1489,4 @@ setTimeout(async () => {
         if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
     }
 
-}, 1000)
+}, 1500)
