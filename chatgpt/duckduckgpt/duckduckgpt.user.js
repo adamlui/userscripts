@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.2.4
+// @version             2024.6.2.8
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -204,6 +204,262 @@
 // ...and KaTeX, the fastest math typesetting library @ https://katex.org (c) 2013–2020 Khan Academy & contributors under the MIT license
 
 (async () => {
+
+    // Init CONFIG
+    const config = {
+        appName: 'DuckDuckGPT', appSymbol: '🤖', keyPrefix: 'duckDuckGPT',
+        appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
+        greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt' }
+    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+    config.supportURL = config.gitHubURL + '/issues/new'
+    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@ae440034e/'
+    config.userLanguage = chatgpt.getUserLanguage()
+    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
+    loadSetting('autoGetDisabled', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+                'rqDisabled', 'stickySidebar', 'suffixEnabled', 'widerSidebar')
+    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
+
+    // Init MENU objs
+    const menuIDs = [] // to store registered commands for removal while preserving order
+    const state = {
+        symbol: ['✔️', '❌'], word: ['ON', 'OFF'],
+        separator: getUserscriptManager() == 'Tampermonkey' ? ' — ' : ': '
+    }
+
+    // Init UI flags
+    let scheme = chatgpt.isDarkMode() ? 'dark' : 'light'
+    const isFirefox = chatgpt.browser.isFirefox(),
+          isMobile = chatgpt.browser.isMobile(),
+          isCentered = isCenteredMode()
+
+    // Pre-load LOGO
+    const appLogoImg = document.createElement('img') ; updateAppLogoSrc() 
+    appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
+
+    // Define MESSAGES
+    let msgs = {}
+    const msgsLoaded = new Promise(resolve => {
+        const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
+              msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
+        let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
+        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+        function onLoad(resp) {
+            try { // to return localized messages.json
+                const msgs = JSON.parse(resp.responseText), flatMsgs = {}
+                for (const key in msgs)  // remove need to ref nested keys
+                    if (typeof msgs[key] == 'object' && 'message' in msgs[key])
+                        flatMsgs[key] = msgs[key].message
+                resolve(flatMsgs)
+            } catch (err) { // if bad response
+                msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
+                msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
+                    msgHref.replace(/([^_]*)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
+                        : ( msgHostDir + 'en/messages.json' ) // else use default English messages
+                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+            }
+        }
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+
+    registerMenu()
+
+    // Init API props
+    const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
+    const apis = {
+        'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
+            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true },
+        'Free Chat': { expectedOrigin: 'https://e8.frechat.xyz',
+            endpoint: 'https://demo-yj7h.onrender.com/single/chat_messages', method: 'PUT', streamable: true },
+        'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
+            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true },
+        'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true },
+        'OpenAI': { expectedOrigin: 'https://chatgpt.com',
+            endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
+    }
+    const apiIDs = { gptPlus: { parentID: '' }, yqCloud: { userID: '#/chat/' + Date.now() }}
+
+    // Init ALERTS
+    const appAlerts = {
+        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+        login:            `${ msgs.alert_login || 'Please login' } @ `,
+        checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
+        tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
+        parseFailed:      `${ msgs.alert_parseFailed || 'Failed to parse response JSON' }.`,
+        proxyNotWorking:  `${ msgs.mode_proxy || 'Proxy Mode' } ${ msgs.alert_notWorking || 'is not working' }.`,
+        openAInotWorking: `OpenAI API ${ msgs.alert_notWorking || 'is not working' }.`,
+        suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
+        suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
+    }
+
+    // Stylize APP elems
+    const appStyle = document.createElement('style') ; updateAppStyle() ; document.head.append(appStyle)
+
+    // Stylize SITE elems
+    const tweaksStyle = document.createElement('style'),
+          wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
+                    + 'section[data-area="sidebar"] { max-width: 530px !important ; flex-basis: 530px !important }'
+                    + '#app-chatbar { width: 95.6% }',
+          ssbStyles = '.ddgpt { position: sticky ; top: 14px }'
+                    + '.ddgpt ~ * { display: none }' // hide sidebar contents
+                    + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
+    updateTweaksStyle() ; document.head.append(tweaksStyle)
+
+    // Stylize TOOLTIPs
+    const tooltipDiv = document.createElement('div'),
+          tooltipStyle = document.createElement('style')
+    tooltipDiv.classList.add('button-tooltip', 'no-user-select')
+    tooltipStyle.innerText = '.button-tooltip {'
+        + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
+        + 'font-size: 0.87em ; color: white ;' // font style
+        + 'position: absolute ;' // for updateTooltip() calcs
+        + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
+        + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
+    document.head.append(tooltipStyle)
+
+    // Create/classify DDGPT container
+    const appDiv = document.createElement('div') // create container div
+    appDiv.classList.add('ddgpt', 'fade-in')
+ 
+    // Create/classify/fill feedback FOOTER
+    const appFooter = document.createElement('footer')
+    appFooter.classList.add('feedback-prompt', // DDG class
+                            'fade-in') // DDGPT classes
+    let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Share feedback')
+    footerContent.className = 'js-feedback-prompt-generic' // DDG footer class
+    appFooter.append(footerContent)
+
+    // APPEND DDGPT + footer to DDG
+    const appElems = [appFooter, appDiv],
+          hostContainer = document.querySelector(isMobile || isCentered ? '[data-area*="mainline"]'
+                                                                        : '[class*="sidebar"]')
+    appElems.forEach(elem => hostContainer.prepend(elem))
+    appElems.toReversed().forEach((elem, idx) => // fade in staggered
+        setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
+
+    // REPLACE hostContainer max-width w/ min-width for better UI
+    if (!isMobile) { hostContainer.style.maxWidth = '' ; hostContainer.style.minWidth = '448px' }
+
+    // Check for active TEXT CAMPAIGNS to replace footer CTA
+    fetchJSON('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
+        (err, advertisersData) => { if (err) return
+
+            // Init vars
+            let chosenAdvertiser, adSelected
+            const re_appName = new RegExp(config.appName.toLowerCase(), 'i')
+            const currentDate = (() => { // in YYYYMMDD format
+                const today = new Date(), year = today.getFullYear(),
+                      month = String(today.getMonth() + 1).padStart(2, '0'),
+                      day = String(today.getDate()).padStart(2, '0')
+                return year + month + day
+            })()
+
+            // Select random, active advertiser
+            for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
+                if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
+
+            // Fetch a random, active creative
+            if (chosenAdvertiser) {
+                const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
+                                   + chosenAdvertiser + '/text/campaigns.json'
+                fetchJSON(campaignsURL, (err, campaignsData) => { if (err) return
+
+                    // Select random, active campaign
+                    for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
+                        const campaignIsActive = campaign.active && (!campaign.endDate || currentDate <= campaign.endDate)
+                        if (!campaignIsActive) continue // to next campaign since campaign inactive
+
+                        // Select random active group
+                        for (const [groupName, adGroup] of shuffle(applyBoosts(Object.entries(campaign.adGroups)))) {
+
+                            // Skip disqualified groups
+                            if (/^self$/i.test(groupName) && !re_appName.test(campaignName) // self-group for other apps
+                                || re_appName.test(campaignName) && !/^self$/i.test(groupName) // non-self group for this app
+                                || adGroup.active == false // group explicitly disabled
+                                || adGroup.targetBrowsers && // target browser(s) exist...
+                                    !adGroup.targetBrowsers.some( // ...but doesn't match user's
+                                        browser => new RegExp(browser, 'i').test(navigator.userAgent))
+                                || adGroup.targetLocations && ( // target locale(s) exist...
+                                    !config.userLocale || !adGroup.targetLocations.some( // ...and user locale is missing or excluded
+                                        loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
+                            ) continue // to next group
+
+                            // Filter out inactive ads, pick random active one
+                            const activeAds = adGroup.ads.filter(ad => ad.active != false)
+                            if (activeAds.length == 0) continue // to next group since no ads active
+                            const chosenAd = activeAds[Math.floor(Math.random() * activeAds.length)] // random active one
+
+                            // Build destination URL
+                            let destinationURL = chosenAd.destinationURL || adGroup.destinationURL
+                                || campaign.destinationURL || ''
+                            if (destinationURL.includes('http')) { // insert UTM tags
+                                const [baseURL, queryString] = destinationURL.split('?'),
+                                      queryParams = new URLSearchParams(queryString || '')
+                                queryParams.set('utm_source', config.appName.toLowerCase())
+                                queryParams.set('utm_content', 'app_footer_link')
+                                destinationURL = baseURL + '?' + queryParams.toString()
+                            }
+
+                            // Update footer content
+                            footerContent.setAttribute('class', '') // reset for re-fade
+                            const newFooterContent = destinationURL ? createAnchor(destinationURL)
+                                                                    : document.createElement('span')
+                            footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
+                            footerContent.classList.add('fade-in', // DDGPT fade class
+                                                        'js-feedback-prompt-generic') // DDG footer class
+                            footerContent.textContent = chosenAd.text
+                            footerContent.setAttribute('title', chosenAd.tooltip || '')
+                            setTimeout(() => footerContent.classList.add('active'), 100) // to trigger fade
+                            adSelected = true ; break
+                        }
+                        if (adSelected) break // out of campaign loop after ad selection
+            }})}
+
+            function shuffle(list) {
+                let currentIdx = list.length, tempValue, randomIdx
+                while (currentIdx != 0) { // elements remain to be shuffled
+                    randomIdx = Math.floor(Math.random() * currentIdx) ; currentIdx -= 1
+                    tempValue = list[currentIdx] ; list[currentIdx] = list[randomIdx] ; list[randomIdx] = tempValue
+                }
+                return list
+            }
+
+            function applyBoosts(list) {
+                let boostedList = [...list],
+                    boostedListLength = boostedList.length - 1 // for applying multiple boosts
+                list.forEach(([name, data]) => { // check for boosts
+                    if (data.boost) { // boost flagged entry's selection probability
+                        const boostPercent = parseInt(data.boost, 10) / 100,
+                              entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
+                                            * boostPercent - 1 // reduced to boosted entries needed
+                        for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
+                        boostedListLength += entriesNeeded // update for subsequent calculations
+                }})
+                return boostedList
+            }
+    })
+
+    // Show STANDBY mode or get/show ANSWER
+    const msgChain = [] // to store queries + answers for contextual replies
+    if (config.autoGetDisabled
+        || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
+        || config.suffixEnabled && !/.*q=.*%3F(&|$)/.test(document.location) // suffix required but not present
+    ) appShow('standby')
+    else {
+        appAlert('waitingResponse')
+        const query = `${ new URL(location.href).searchParams.get('q') } (reply in ${ config.replyLanguage })`
+        msgChain.push({ role: 'user', content: query })
+        getShowReply(msgChain)
+    }
+
+    // Observe for DDG SCHEME CHANGES to update DDGPT scheme
+    (new MutationObserver(handleSchemeChange)).observe( // class changes from DDG appearance settings
+        document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    function handleSchemeChange() {
+        const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
+        if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
+    }
 
     // Define SCRIPT functions
 
@@ -370,10 +626,10 @@
         GM.xmlHttpRequest({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: response => { const updateAlertWidth = 409
+            onload: resp => { const updateAlertWidth = 409
 
                 // Compare versions
-                const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+                const latestVer = /@version +(.*)/.exec(resp.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
@@ -643,11 +899,11 @@
     }
 
     function fetchJSON(url, callback) { // for dynamic footer
-        GM.xmlHttpRequest({ method: 'GET', url: url, onload: response => {
-            if (response.status >= 200 && response.status < 300) {
-                try { const data = JSON.parse(response.responseText) ; callback(null, data) }
+        GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
+            if (resp.status >= 200 && resp.status < 300) {
+                try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
                 catch (err) { callback(err, null) }
-            } else callback(new Error('Failed to load data: ' + response.statusText), null)
+            } else callback(new Error('Failed to load data: ' + resp.statusText), null)
     }})}
 
     // Define FACTORY functions
@@ -712,11 +968,11 @@
             const accessToken = GM_getValue(config.keyPrefix + '_openAItoken')
             consoleInfo('OpenAI access token: ' + accessToken)
             if (!accessToken) {
-                GM.xmlHttpRequest({ url: openAIendpoints.session, onload: response => {
-                    if (isBlockedbyCloudflare(response.responseText)) {
+                GM.xmlHttpRequest({ url: openAIendpoints.session, onload: resp => {
+                    if (isBlockedbyCloudflare(resp.responseText)) {
                         appAlert('checkCloudflare') ; return }
                     try {
-                        const newAccessToken = JSON.parse(response.responseText).accessToken
+                        const newAccessToken = JSON.parse(resp.responseText).accessToken
                         GM_setValue(config.keyPrefix + '_openAItoken', newAccessToken)
                         resolve(newAccessToken)
                     } catch { appAlert('login') ; return }
@@ -738,68 +994,59 @@
 
     // Define ANSWER functions
 
-    let endpoint, endpointMethod, accessKey, model
-    async function pickAPI() {
+    function pickAPI() {
+        let chosenAPI
         if (config.proxyAPIenabled) { // randomize proxy API
-            const untriedEndpoints = proxyEndpoints.filter(
-                entry => !getShowReply.triedEndpoints?.includes(entry[0]))
-            const entry = untriedEndpoints[Math.floor(chatgpt.randomFloat() * untriedEndpoints.length)]
-            if (!entry) // no more proxy endpoints left untried
-                appAlert('proxyNotWorking', 'suggestOpenAI')
-            else { endpoint = entry[0] ; endpointMethod = entry[1].method }
-        } else { // use OpenAI API
-            endpoint = openAIendpoints.chat
-            accessKey = await Promise.race([getOpenAItoken(), new Promise(reject =>
-                setTimeout(() => reject(new Error('Timeout occurred')), 3000))])
-            if (!accessKey) { appAlert('login') ; return }
-            endpointMethod = 'POST' ; model = 'gpt-3.5-turbo'
-        }
-        consoleInfo('Endpoint used: ' + endpoint)
+            const untriedAPIs = Object.keys(apis).filter( // filter out OpenAI + tried APIs
+                api => api != 'OpenAI' && !getShowReply.triedAPIs.includes(api))
+            chosenAPI = untriedAPIs[ // pick random array entry
+                Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
+            if (!chosenAPI) { consoleErr('No proxy APIs left untried') ; return null }
+        } else chosenAPI = 'OpenAI'
+
+        // Log chosen API endpoint
+        let logPrefix = 'getShowReply() » '
+        try { logPrefix = pickAPI.arguments.callee.caller.name + '() » ' } catch (err) {}
+        consoleInfo(logPrefix + 'Endpoint used: ' + apis[chosenAPI].endpoint)
+        return chosenAPI
     }
 
     function createHeaders(api) {
         let headers = { 'Content-Type': 'application/json', 'X-Forwarded-For': ipv4.generate({ verbose: false })}
-        if (api.includes('openai.com')) headers.Authorization = 'Bearer ' + accessKey
-        headers.Referer = headers.Origin = ( // preserve expected traffic src
-            api.includes('openai.com') ? 'https://chatgpt.com'
-          : api.includes('binjie.fun') ? 'https://chat18.aichatos.xyz'
-          : api.includes('gptforlove.com') ? 'https://ai27.gptforlove.com'
-          : api.includes('mixerbox.com') ? 'https://chatai.mixerbox.com'
-          : api.includes('onrender.com') ? 'https://e8.frechat.xyz' : ''
-        )
+        if (api == 'OpenAI') headers.Authorization = 'Bearer ' + config.openAIkey
+        headers.Referer = headers.Origin = apis[api].expectedOrigin || '' // prserve expected traffic src
         return headers
     }
 
-    const ids = { gptPlus: { parentID: '' }, yqCloud: { userID: '#/chat/' + Date.now() }}
     function createPayload(api, msgs) {
         let payload = {}
-        if (api.includes('openai.com'))
-            payload = { messages: msgs, model: model, max_tokens: 4000 }
-        else if  (api.includes('binjie.fun')) {
+        if (api == 'OpenAI')
+            payload = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
+        else if  (api == 'AIchatOS') {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
-                withoutContext: false, userId: ids.yqCloud.userID, network: true
+                withoutContext: false, userId: apiIDs.yqCloud.userID, network: true
             }
-        } else if (api.includes('gptforlove.com')) {
+        }  else if (api == 'Free Chat')
+            payload = { messages: msgs, model: 'gemma-7b-it' }
+        else if (api == 'GPTforLove') {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
                 secret: generateGPTplusKey(), top_p: 1, temperature: 0.8,
                 systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
             }
-            if (ids.gptPlus.parentID) payload.options = { parentMessageId: ids.gptPlus.parentID }
-        } else if (api.includes('mixerbox.com'))
+            if (apiIDs.gptPlus.parentID) payload.options = { parentMessageId: apiIDs.gptPlus.parentID }
+        } else if (api == 'MixerBox AI')
             payload = { prompt: msgs, model: 'gpt-3.5-turbo' }
-        else if (api.includes('onrender.com'))
-            payload = { messages: msgs, model: 'gemma-7b-it' }
         return JSON.stringify(payload)
     }
 
-    function processText(resp) {
+    function processText(api, resp) {
         if (resp.status != 200) {
             consoleErr('Response status: ' + resp.status)
             consoleErr('Response text: ' + resp.responseText)
-            if (config.proxyAPIenabled && getShowReply.attemptCnt < proxyEndpoints.length)
-                retryDiffHost()
+            if (config.proxyAPIenabled && getShowReply.attemptCnt < Object.keys(apis).length -1)
+                retryDiffHost(api)
             else if (resp.status == 401 && !config.proxyAPIenabled) {
                 GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
             else if (resp.status == 403)
@@ -809,7 +1056,7 @@
             else // uncommon status
                 appAlert(`${ config.proxyAPIenabled ? 'proxyN' : 'openAIn' }otWorking`,
                          `suggest${ config.proxyAPIenabled ? 'OpenAI' : 'Proxy' }`)
-        } else if (endpoint.includes('openai.com')) {
+        } else if (api == 'OpenAI') {
             if (resp.response) {
                 try {
                     appShow(JSON.parse(resp.response).choices[0].message.content)
@@ -819,8 +1066,8 @@
                     appAlert('openAInotWorking, suggestProxy')
                 }
             } else { consoleInfo('Response: ' + resp.responseText) ; appAlert('openAInotWorking, suggestProxy') }
-        } else if (endpoint.includes('binjie.fun')) {
-            if (resp.responseText) {
+        } else if (api == 'AIchatOS') {
+            if (resp.responseText && !resp.responseText.includes('很抱歉地')) {
                 try {
                     const text = resp.responseText, chunkSize = 1024
                     let answer = '', currentIdx = 0
@@ -828,85 +1075,86 @@
                         const chunk = text.substring(currentIdx, currentIdx + chunkSize)
                         currentIdx += chunkSize ; answer += chunk
                     }
-                    appShow(answer) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                    appShow(answer) ; getShowReply.triedAPIs = [] ; getShowReply.attemptCnt = 0
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed + ': ' + err)
-                    proxyRetryOrAlert()
+                    proxyRetryOrAlert(api)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
-        } else if (endpoint.includes('gptforlove.com')) {
+            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert(api) }
+        } else if (api == 'Free Chat') {
+            if (resp.responseText) {
+                try {
+                    appShow(resp.responseText) ; getShowReply.triedAPIs = [] ; getShowReply.attemptCnt = 0
+                } catch (err) { // use different endpoint or suggest OpenAI
+                    consoleInfo('Response: ' + resp.responseText)
+                    consoleErr(appAlerts.parseFailed + ': ' + err)
+                    proxyRetryOrAlert(api)
+                }
+            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert(api) }
+        } else if (api == 'GPTforLove') {
             if (resp.responseText && !resp.responseText.includes('Fail')) {
                 try {
                     let chunks = resp.responseText.trim().split('\n'),
                         lastObj = JSON.parse(chunks[chunks.length - 1])
-                    if (lastObj.id) ids.gptPlus.parentID = lastObj.id
-                    appShow(lastObj.text) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                    if (lastObj.id) apiIDs.gptPlus.parentID = lastObj.id
+                    appShow(lastObj.text) ; getShowReply.triedAPIs = [] ; getShowReply.attemptCnt = 0
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed + ': ' + err)
-                    proxyRetryOrAlert()
+                    proxyRetryOrAlert(api)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
-        } else if (endpoint.includes('mixerbox.com')) {
+            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert(api) }
+        } else if (api == 'MixerBox AI') {
             if (resp.responseText) {
                 try {
                     const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
-                    appShow(extractedData.join('')) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
+                    appShow(extractedData.join('')) ; getShowReply.triedAPIs = [] ; getShowReply.attemptCnt = 0
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed + ': ' + err)
-                    proxyRetryOrAlert()
+                    proxyRetryOrAlert(api)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
-        } else if (endpoint.includes('onrender.com')) {
-            if (resp.responseText) {
-                try {
-                    appShow(resp.responseText) ; getShowReply.triedEndpoints = [] ; getShowReply.attemptCnt = 0
-                } catch (err) { // use different endpoint or suggest OpenAI
-                    consoleInfo('Response: ' + resp.responseText)
-                    consoleErr(appAlerts.parseFailed + ': ' + err)
-                    proxyRetryOrAlert()
-                }
-            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert() }
+            } else { consoleInfo('Response: ' + resp.responseText) ; proxyRetryOrAlert(api) }
         }
 
-        function proxyRetryOrAlert() {
-            if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
+        function proxyRetryOrAlert(api) {
+            if (getShowReply.attemptCnt < Object.keys(apis).length -1) retryDiffHost(api)
             else appAlert('proxyNotWorking', 'suggestOpenAI')
         }
     }
 
-    function retryDiffHost() {
-        consoleErr(`Error calling ${ endpoint }. Trying another endpoint...`)
-        getShowReply.triedEndpoints.push(endpoint) // store current proxy to not retry
+    function retryDiffHost(triedAPI) {
+        consoleErr(`Error calling ${ apis[triedAPI].endpoint }. Trying another endpoint...`)
+        getShowReply.triedAPIs.push(triedAPI) // store triedAPI to not retry
         getShowReply.attemptCnt++
         getShowReply(msgChain)
     }
 
     function getRelatedQueries(query) {
+        const api = pickAPI()
         return new Promise((resolve, reject) => {
             const rqPrompt = 'Show a numbered list of queries related to this one:\n\n' + query
-                           + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
-                           + ' For example, if the original query asked about someone\'s wife,'
-                               + ' a good related query could involve a different relative and using their name.'
-                           + ' Another example, if the query asked about a game/movie/show,'
-                               + ' good related queries could involve pertinent characters.'
-                           + ' Another example, if the original query asked how to learn JavaScript,'
-                               + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
-                           + ' But the key is variety. Do not be repetitive.'
-                               + ' You must entice user to want to ask one of your related queries.'
+               + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
+               + ' For example, if the original query asked about someone\'s wife,'
+                   + ' a good related query could involve a different relative and using their name.'
+               + ' Another example, if the query asked about a game/movie/show,'
+                   + ' good related queries could involve pertinent characters.'
+               + ' Another example, if the original query asked how to learn JavaScript,'
+                   + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
+               + ' But the key is variety. Do not be repetitive.'
+                   + ' You must entice user to want to ask one of your related queries.'
             GM.xmlHttpRequest({
-                method: endpointMethod, url: endpoint, responseType: 'text', headers: createHeaders(endpoint),
-                data: createPayload(endpoint, [{ role: 'user', content: rqPrompt }]),
+                method: apis[api].method, url: apis[api].endpoint, responseType: 'text',
+                headers: createHeaders(api), data: createPayload(api, [{ role: 'user', content: rqPrompt }]),
                 onload: event => {
                     let str_relatedQueries = ''
-                    if (endpoint.includes('openai.com')) {
+                    if (api == 'OpenAI') {
                         try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
                         catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (endpoint.includes('binjie.fun')) { 
+                    } else if (api == 'AIchatOS' && !event.responseText?.includes('很抱歉地')) { 
                         try {
                             const text = event.responseText, chunkSize = 1024
                             let currentIdx = 0
@@ -915,21 +1163,21 @@
                                 currentIdx += chunkSize ; str_relatedQueries += chunk
                             }
                         } catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (endpoint.includes('gptforlove.com')) {
+                    } else if (api == 'Free Chat') {
+                        try { str_relatedQueries = event.responseText }
+                        catch (err) { consoleErr(err) ; reject(err) }
+                    } else if (api == 'GPTforLove') {
                         try {
                             let chunks = event.responseText.trim().split('\n')
                             str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
                         } catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (endpoint.includes('mixerbox.com')) {
+                    } else if (api == 'MixerBox AI') {
                         try {
                             const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
                             str_relatedQueries = extractedData.join('')
                         } catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (endpoint.includes('onrender.com')) {
-                        try { str_relatedQueries = event.responseText }
-                        catch (err) { consoleErr(err) ; reject(err) }
                     }
                     const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
                         .slice(0, 5) // limit to 1st 5
@@ -964,20 +1212,29 @@
 
     async function getShowReply(msgChain) {
 
-        // Initialize attempt properties
-        if (!getShowReply.triedEndpoints) getShowReply.triedEndpoints = []
-        if (!getShowReply.attemptCnt) getShowReply.attemptCnt = 0
+        // Init API attempt props
+        if (!getShowReply.triedAPIs) getShowReply.triedAPIs = []
+        if (!getShowReply.attemptCnt) getShowReply.attemptCnt = 1
+
+        // Pick API
+        const api = pickAPI()
+        if (!api) { // no more proxy APIs left untried
+            appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+
+        if (!config.proxyAPIenabled) // init OpenAI key
+            config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
 
         // Get/show answer from ChatGPT
-        await pickAPI()
         GM.xmlHttpRequest({
-            method: endpointMethod, url: endpoint, headers: createHeaders(endpoint),
-            responseType: 'text', data: createPayload(endpoint, msgChain), onload: processText,
-            onerror: err => { consoleErr(err)
+            method: apis[api].method, url: apis[api].endpoint, responseType: 'text', 
+            headers: createHeaders(api), data: createPayload(api, msgChain),
+            onload: resp => processText(api, resp),
+            onerror: err => { consoleErr(err.message)
                 if (!config.proxyAPIenabled)
-                    appAlert(!accessKey ? 'login' : ['openAInotWorking', 'suggestProxy'])
-                else { // if proxy mode
-                    if (getShowReply.attemptCnt < proxyEndpoints.length) retryDiffHost()
+                    appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
+                else { // if Proxy Mode
+                    if (getShowReply.attemptCnt < Object.keys(apis).length -1)
+                         retryDiffHost(api)
                     else appAlert('proxyNotWorking', 'suggestOpenAI')
             }}
         })
@@ -1140,11 +1397,11 @@
                 url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
                     + encodeURIComponent(securePayload),
                 method: 'GET', responseType: 'arraybuffer',
-                onload: async response => {
-                    if (response.status != 200) chatgpt.speak(answer, { voice: 2, pitch: 1, speed: 1.5 })
+                onload: async resp => {
+                    if (resp.status != 200) chatgpt.speak(answer, { voice: 2, pitch: 1, speed: 1.5 })
                     else {
                         const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-                        audioContext.decodeAudioData(response.response, buffer => {
+                        audioContext.decodeAudioData(resp.response, buffer => {
                             const audioSrc = audioContext.createBufferSource()
                             audioSrc.buffer = buffer
                             audioSrc.connect(audioContext.destination) // connect source to speakers
@@ -1306,259 +1563,6 @@
             chatTextarea.style.height = chatTextarea.scrollHeight - vOffset + 'px'
             prevLength = newLength
         }
-    }
-
-    // Run MAIN routine
-
-    // Init CONFIG/MSGCHAIN/MENU
-    const config = {
-        appName: 'DuckDuckGPT', appSymbol: '🤖', keyPrefix: 'duckDuckGPT',
-        appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
-        greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt' }
-    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
-    config.supportURL = config.gitHubURL + '/issues/new'
-    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@ae440034e/'
-    config.userLanguage = chatgpt.getUserLanguage()
-    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
-                'rqDisabled', 'stickySidebar', 'suffixEnabled', 'widerSidebar')
-    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
-    const msgChain = [], // to store queries + answers for contextual replies
-          menuIDs = [] // to store registered commands for removal while preserving order
-    const state = {
-        symbol: ['✔️', '❌'], word: ['ON', 'OFF'],
-        separator: getUserscriptManager() == 'Tampermonkey' ? ' — ' : ': ' }
-
-    // Init UI flags
-    let scheme = chatgpt.isDarkMode() ? 'dark' : 'light'
-    const isFirefox = chatgpt.browser.isFirefox(),
-          isMobile = chatgpt.browser.isMobile(),
-          isCentered = isCenteredMode()
-
-    // Pre-load LOGO
-    const appLogoImg = document.createElement('img') ; updateAppLogoSrc() 
-    appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
-
-    // Define MESSAGES
-    let msgs = {}
-    const msgsLoaded = new Promise(resolve => {
-        const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
-              msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
-        let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
-        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
-        function onLoad(resp) {
-            try { // to return localized messages.json
-                const msgs = JSON.parse(resp.responseText), flatMsgs = {}
-                for (const key in msgs)  // remove need to ref nested keys
-                    if (typeof msgs[key] == 'object' && 'message' in msgs[key])
-                        flatMsgs[key] = msgs[key].message
-                resolve(flatMsgs)
-            } catch (err) { // if bad response
-                msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
-                msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
-                    msgHref.replace(/([^_]*)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
-                        : ( msgHostDir + 'en/messages.json' ) // else use default English messages
-                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
-            }
-        }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
-
-    registerMenu()
-
-    // Init ENDPOINTS
-    const openAIendpoints = {
-        auth: 'https://auth0.openai.com',
-        session: 'https://chatgpt.com/api/auth/session',
-        chat: 'https://api.openai.com/v1/chat/completions'
-    }
-    const proxyEndpoints = [
-        [ 'https://api.binjie.fun/api/generateStream', { method: 'POST', stream: true }],
-        [ 'https://api11.gptforlove.com/chat-process', { method: 'POST', stream: true }],
-        [ 'https://chatai.mixerbox.com/api/chat/stream', { method: 'POST', stream: true }],
-        [ 'https://demo-yj7h.onrender.com/single/chat_messages', { method: 'PUT', stream: true }]
-    ]
-
-    // Init ALERTS
-    const appAlerts = {
-        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
-        login:            `${ msgs.alert_login || 'Please login' } @ `,
-        checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
-        tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
-        parseFailed:      `${ msgs.alert_parseFailed || 'Failed to parse response JSON' }.`,
-        proxyNotWorking:  `${ msgs.mode_proxy || 'Proxy Mode' } ${ msgs.alert_notWorking || 'is not working' }.`,
-        openAInotWorking: `OpenAI API ${ msgs.alert_notWorking || 'is not working' }.`,
-        suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
-        suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
-    }
-
-    // STYLIZE elements
-    const appStyle = document.createElement('style')
-    updateAppStyle() ; document.head.append(appStyle)
-
-    // Create DDG style TWEAKS
-    const tweaksStyle = document.createElement('style'),
-          wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
-                    + 'section[data-area="sidebar"] { max-width: 530px !important ; flex-basis: 530px !important }'
-                    + '#app-chatbar { width: 95.6% }',
-          ssbStyles = '.ddgpt { position: sticky ; top: 14px }'
-                    + '.ddgpt ~ * { display: none }' // hide sidebar contents
-                    + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
-    updateTweaksStyle() ; document.head.append(tweaksStyle)
-
-    // Create/stylize TOOLTIP div
-    const tooltipDiv = document.createElement('div'),
-          tooltipStyle = document.createElement('style')
-    tooltipDiv.classList.add('button-tooltip', 'no-user-select')
-    tooltipStyle.innerText = '.button-tooltip {'
-        + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
-        + 'font-size: 0.87em ; color: white ;' // font style
-        + 'position: absolute ;' // for updateTooltip() calcs
-        + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
-        + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
-    document.head.append(tooltipStyle)
-
-    // Create/classify DDGPT container
-    const appDiv = document.createElement('div') // create container div
-    appDiv.classList.add('ddgpt', 'fade-in')
- 
-    // Create/classify/fill feedback FOOTER
-    const appFooter = document.createElement('footer')
-    appFooter.classList.add('feedback-prompt', // DDG class
-                            'fade-in') // DDGPT classes
-    let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Share feedback')
-    footerContent.className = 'js-feedback-prompt-generic' // DDG footer class
-    appFooter.append(footerContent)
-
-    // APPEND DDGPT + footer to DDG
-    const appElems = [appFooter, appDiv],
-          hostContainer = document.querySelector(isMobile || isCentered ? '[data-area*="mainline"]'
-                                                                        : '[class*="sidebar"]')
-    appElems.forEach(elem => hostContainer.prepend(elem))
-    appElems.toReversed().forEach((elem, idx) => // fade in staggered
-        setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
-
-    // REPLACE hostContainer max-width w/ min-width for better UI
-    if (!isMobile) { hostContainer.style.maxWidth = '' ; hostContainer.style.minWidth = '448px' }
-
-    // Check for active TEXT CAMPAIGNS to replace footer CTA
-    fetchJSON('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
-        (err, advertisersData) => { if (err) return
-
-            // Init vars
-            let chosenAdvertiser, adSelected
-            const re_appName = new RegExp(config.appName.toLowerCase(), 'i')
-            const currentDate = (() => { // in YYYYMMDD format
-                const today = new Date(), year = today.getFullYear(),
-                      month = String(today.getMonth() + 1).padStart(2, '0'),
-                      day = String(today.getDate()).padStart(2, '0')
-                return year + month + day
-            })()
-
-            // Select random, active advertiser
-            for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
-                if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
-
-            // Fetch a random, active creative
-            if (chosenAdvertiser) {
-                const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
-                                   + chosenAdvertiser + '/text/campaigns.json'
-                fetchJSON(campaignsURL, (err, campaignsData) => { if (err) return
-
-                    // Select random, active campaign
-                    for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
-                        const campaignIsActive = campaign.active && (!campaign.endDate || currentDate <= campaign.endDate)
-                        if (!campaignIsActive) continue // to next campaign since campaign inactive
-
-                        // Select random active group
-                        for (const [groupName, adGroup] of shuffle(applyBoosts(Object.entries(campaign.adGroups)))) {
-
-                            // Skip disqualified groups
-                            if (/^self$/i.test(groupName) && !re_appName.test(campaignName) // self-group for other apps
-                                || re_appName.test(campaignName) && !/^self$/i.test(groupName) // non-self group for this app
-                                || adGroup.active == false // group explicitly disabled
-                                || adGroup.targetBrowsers && // target browser(s) exist...
-                                    !adGroup.targetBrowsers.some( // ...but doesn't match user's
-                                        browser => new RegExp(browser, 'i').test(navigator.userAgent))
-                                || adGroup.targetLocations && ( // target locale(s) exist...
-                                    !config.userLocale || !adGroup.targetLocations.some( // ...and user locale is missing or excluded
-                                        loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
-                            ) continue // to next group
-
-                            // Filter out inactive ads, pick random active one
-                            const activeAds = adGroup.ads.filter(ad => ad.active != false)
-                            if (activeAds.length == 0) continue // to next group since no ads active
-                            const chosenAd = activeAds[Math.floor(Math.random() * activeAds.length)] // random active one
-
-                            // Build destination URL
-                            let destinationURL = chosenAd.destinationURL || adGroup.destinationURL
-                                || campaign.destinationURL || ''
-                            if (destinationURL.includes('http')) { // insert UTM tags
-                                const [baseURL, queryString] = destinationURL.split('?'),
-                                      queryParams = new URLSearchParams(queryString || '')
-                                queryParams.set('utm_source', config.appName.toLowerCase())
-                                queryParams.set('utm_content', 'app_footer_link')
-                                destinationURL = baseURL + '?' + queryParams.toString()
-                            }
-
-                            // Update footer content
-                            footerContent.setAttribute('class', '') // reset for re-fade
-                            const newFooterContent = destinationURL ? createAnchor(destinationURL)
-                                                                    : document.createElement('span')
-                            footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
-                            footerContent.classList.add('fade-in', // DDGPT fade class
-                                                        'js-feedback-prompt-generic') // DDG footer class
-                            footerContent.textContent = chosenAd.text
-                            footerContent.setAttribute('title', chosenAd.tooltip || '')
-                            setTimeout(() => footerContent.classList.add('active'), 100) // to trigger fade
-                            adSelected = true ; break
-                        }
-                        if (adSelected) break // out of campaign loop after ad selection
-            }})}
-
-            function shuffle(list) {
-                let currentIdx = list.length, tempValue, randomIdx
-                while (currentIdx != 0) { // elements remain to be shuffled
-                    randomIdx = Math.floor(Math.random() * currentIdx) ; currentIdx -= 1
-                    tempValue = list[currentIdx] ; list[currentIdx] = list[randomIdx] ; list[randomIdx] = tempValue
-                }
-                return list
-            }
-
-            function applyBoosts(list) {
-                let boostedList = [...list],
-                    boostedListLength = boostedList.length - 1 // for applying multiple boosts
-                list.forEach(([name, data]) => { // check for boosts
-                    if (data.boost) { // boost flagged entry's selection probability
-                        const boostPercent = parseInt(data.boost, 10) / 100,
-                              entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
-                                            * boostPercent - 1 // reduced to boosted entries needed
-                        for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
-                        boostedListLength += entriesNeeded // update for subsequent calculations
-                }})
-                return boostedList
-            }
-    })
-
-    // Show STANDBY mode or get/show ANSWER
-    if (config.autoGetDisabled
-        || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
-        || config.suffixEnabled && !/.*q=.*%3F(&|$)/.test(document.location) // suffix required but not present
-    ) appShow('standby')
-    else {
-        appAlert('waitingResponse')
-        const query = `${ new URL(location.href).searchParams.get('q') } (reply in ${ config.replyLanguage })`
-        msgChain.push({ role: 'user', content: query })
-        getShowReply(msgChain)
-    }
-
-    // Observe for DDG SCHEME CHANGES to update DDGPT scheme
-    (new MutationObserver(handleSchemeChange)).observe( // class changes from DDG appearance settings
-        document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    function handleSchemeChange() {
-        const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
-        if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
     }
 
 })()
