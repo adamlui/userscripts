@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.4.2
+// @version             2024.6.4.8
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -176,10 +176,10 @@ setTimeout(async () => {
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
     config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@5cf9970/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@4ee92f7/'
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+    loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
                 'rqDisabled', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
@@ -231,17 +231,17 @@ setTimeout(async () => {
     const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
     const apis = {
         'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
-            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true },
+            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true, accumulatesText: false },
         'Free Chat': { expectedOrigin: 'https://e8.frechat.xyz',
-            endpoint: 'https://demo-yj7h.onrender.com/single/chat_messages', method: 'PUT', streamable: true },
+            endpoint: 'https://demo-yj7h.onrender.com/single/chat_messages', method: 'PUT', streamable: true, accumulatesText: false },
         'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
-            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true },
+            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true, accumulatesText: true },
         'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true },
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true, accumulatesText: false },
         'OpenAI': { expectedOrigin: 'https://chatgpt.com',
             endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
     }
-    const apiIDs = { gptPlus: { parentID: '' }, yqCloud: { userID: '#/chat/' + Date.now() }}
+    const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
     // Init ALERTS
     const appAlerts = {
@@ -360,6 +360,16 @@ setTimeout(async () => {
         menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
             saveSetting('autoGetDisabled', !config.autoGetDisabled)
             notify(( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' ' + state.word[+!config.autoGetDisabled])
+            for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
+        }))
+
+        // Add command to toggle auto-scroll (when streaming)
+        const assLabel = state.symbol[+config.autoScroll] + ' '
+                       + `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`
+                       + state.separator + state.word[+config.autoScroll]
+        menuIDs.push(GM_registerMenuCommand(assLabel, () => {
+            saveSetting('autoScroll', !config.autoScroll)
+            notify(( msgs.mode_autoScroll || 'Auto-Scroll' ) + ' ' + state.word[+config.autoScroll])
             for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
         }))
 
@@ -932,7 +942,7 @@ setTimeout(async () => {
             } else resolve(accessToken)
     })}
 
-    function generateGPTplusKey() {
+    function generateGPTforLoveKey() {
         let nn = Math.floor(new Date().getTime() / 1e3)
         const fD = e => {
             let t = CryptoJS.enc.Utf8.parse(e),
@@ -980,17 +990,17 @@ setTimeout(async () => {
         else if  (api == 'AIchatOS') {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
-                withoutContext: false, userId: apiIDs.yqCloud.userID, network: true
+                withoutContext: false, userId: apiIDs.aiChatOS.userID, network: true
             }
         }  else if (api == 'Free Chat')
             payload = { messages: msgs, model: 'gemma-7b-it' }
         else if (api == 'GPTforLove') {
             payload = {
                 prompt: msgs[msgs.length - 1].content,
-                secret: generateGPTplusKey(), top_p: 1, temperature: 0.8,
+                secret: generateGPTforLoveKey(), top_p: 1, temperature: 0.8,
                 systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.'
             }
-            if (apiIDs.gptPlus.parentID) payload.options = { parentMessageId: apiIDs.gptPlus.parentID }
+            if (apiIDs.gptForLove.parentID) payload.options = { parentMessageId: apiIDs.gptForLove.parentID }
         } else if (api == 'MixerBox AI')
             payload = { prompt: msgs, model: 'gpt-3.5-turbo' }
         return JSON.stringify(payload)
@@ -1053,7 +1063,7 @@ setTimeout(async () => {
                 try {
                     let chunks = resp.responseText.trim().split('\n'),
                         lastObj = JSON.parse(chunks[chunks.length - 1])
-                    if (lastObj.id) apiIDs.gptPlus.parentID = lastObj.id
+                    if (lastObj.id) apiIDs.gptForLove.parentID = lastObj.id
                     appShow(lastObj.text, footerContent) ; getShowReply.triedAPIs = [] ; getShowReply.attemptCnt = 0
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
@@ -1091,11 +1101,18 @@ setTimeout(async () => {
                     .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
                 chunk = extractedChunks.join('')
             }
-            accumulatedChunks += chunk
-            try { // to show accumulated chunks
-                if (/['"]?status['"]?:\s*['"]Fail['"]/.test(accumulatedChunks)) { // GPTforLove fail
-                     consoleErr('Response', accumulatedChunks) ; tryDiffAPI(api) }
-                else appShow(accumulatedChunks, footerContent)
+            accumulatedChunks = apis[api].accumulatesText ? chunk : accumulatedChunks + chunk
+            if (/['"]?status['"]?:\s*['"]Fail['"]/.test(accumulatedChunks)) { // GPTforLove fail
+                consoleErr('Response', accumulatedChunks) ; tryDiffAPI(api) ; return }
+            try { // to show stream text
+                let textToShow
+                if (api == 'GPTforLove') { // extract parentID + latest chunk text
+                    const jsonLines = accumulatedChunks.split('\n'),
+                          nowResult = JSON.parse(jsonLines[jsonLines.length - 1])
+                    if (nowResult.id) apiIDs.gptForLove.parentID = nowResult.id // for contextual replies
+                    textToShow = nowResult.text
+                } else textToShow = accumulatedChunks
+                appShow(textToShow, footerContent)
             } catch (err) { consoleErr('Error showing stream:', err.message) }
             return reader.read().then(processStreamText).catch(err => consoleErr('Error reading stream:', err.message))
         }
@@ -1134,7 +1151,7 @@ setTimeout(async () => {
                     if (api == 'OpenAI') {
                         try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
                         catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) { 
+                    } else if (api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) {
                         try {
                             const text = event.responseText, chunkSize = 1024
                             let currentIdx = 0
@@ -1169,7 +1186,8 @@ setTimeout(async () => {
     })}
 
     function handleRQevent(event) { // for attachment/removal in `getShowReply()` + `appShow().handleSubmit()`
-        if ([' ', 'Enter'].includes(event.key) || event.type == 'click') {
+        const keys = [' ', 'Space', 'Enter', 'Return'], keyCodes = [32, 13]    
+        if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
             event.preventDefault() // prevent scroll on space taps
 
             // Remove divs/listeners
@@ -1184,9 +1202,9 @@ setTimeout(async () => {
             const chatbar = appDiv.querySelector('textarea')
             if (chatbar) {
                 chatbar.value = event.target.textContent
+                appShow.submitSrc = 'click' // for appShow() auto-focus
                 chatbar.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'Enter', bubbles: true, cancelable: true }))
-                appShow.submitSrc = 'relatedQuery' // to not auto-focus chatbar in appShow()
             }
     }}
 
@@ -1404,6 +1422,7 @@ setTimeout(async () => {
                 appAlert('waitingResponse')
                 const query = `${ new URL(location.href).searchParams.get('q') } (reply in ${ config.replyLanguage })`
                 msgChain.push({ role: 'user', content: query })
+                appShow.submitSrc = 'click' // for appShow() auto-focus
                 getShowReply(msgChain)
             })
 
@@ -1477,12 +1496,16 @@ setTimeout(async () => {
         sendButton.addEventListener('mouseover', toggleTooltip)
         sendButton.addEventListener('mouseout', toggleTooltip)
 
-        // Focus chatbar if user typed in prev appShow()
-        if (appShow.submitSrc && appShow.submitSrc != 'relatedQuery') chatTextarea.focus()
+        // Focus chatbar conditionally
+        const proxyAPIstreaming = !config.streamingDisabled && config.proxyAPIenabled
+        if (appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top // app fully above fold
+            || !proxyAPIstreaming && appShow?.submitSrc != 'click' // user replied to non-stream
+            ||  proxyAPIstreaming && config.autoScroll // auto-scroll active for streaming APIs
+        ) chatTextarea.focus()
         appShow.submitSrc = 'none'
 
         function handleEnter(event) {
-            if (event.key == 'Enter') {
+            if (event.key == 'Enter' || event.keyCode == 13) {
                 if (event.ctrlKey) { // add newline
                     const chatTextarea = document.querySelector('#app-chatbar'),
                           caretPos = chatTextarea.selectionStart,
