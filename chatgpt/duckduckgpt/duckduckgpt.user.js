@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.4.9
+// @version             2024.6.4.11
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -214,7 +214,7 @@
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
     config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@41288f9/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@9866ed5/'
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
     loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
@@ -1254,7 +1254,8 @@
     })}
 
     function handleRQevent(event) { // for attachment/removal in `getShowReply()` + `appShow().handleSubmit()`
-        if ([' ', 'Enter'].includes(event.key) || event.type == 'click') {
+        const keys = [' ', 'Space', 'Enter', 'Return'], keyCodes = [32, 13]    
+        if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
             event.preventDefault() // prevent scroll on space taps
 
             // Remove divs/listeners
@@ -1569,14 +1570,14 @@
 
         // Focus chatbar conditionally
         const proxyAPIstreaming = !config.streamingDisabled && config.proxyAPIenabled
-        if (appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top // app is above fold
+        if (appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top // app fully above fold
             || !proxyAPIstreaming && appShow?.submitSrc != 'click' // user replied to non-stream
-            || proxyAPIstreaming && config.autoScroll // auto-scroll active for streaming APIs
+            ||  proxyAPIstreaming && config.autoScroll // auto-scroll active for streaming APIs
         ) chatTextarea.focus()
         appShow.submitSrc = 'none'
 
         function handleEnter(event) {
-            if (event.key == 'Enter') {
+            if (event.key == 'Enter' || event.keyCode == 13) {
                 if (event.ctrlKey) { // add newline
                     const chatTextarea = document.querySelector('#app-chatbar'),
                           caretPos = chatTextarea.selectionStart,
