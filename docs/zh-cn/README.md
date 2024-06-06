@@ -30,7 +30,7 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
+### <img width=17 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /
@@ -43,14 +43,14 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 [自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=15 style="margin-right: 1px" src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
+### <img width=15 src="https://i.imgur.com/ribh0wE.png" width=15> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://greasyfork.org/scripts/26311) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://greasyfork.org/en/scripts/456132) /

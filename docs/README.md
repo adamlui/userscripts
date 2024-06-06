@@ -30,7 +30,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 style="margin: 0 1px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
+### <img width=17 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
@@ -43,14 +43,14 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 [Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=15 style="margin-right: 1px" src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img width=15 src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://greasyfork.org/scripts/26311) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://greasyfork.org/en/scripts/456132) /
