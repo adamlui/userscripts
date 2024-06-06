@@ -17,7 +17,7 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
 
-### <img width=20 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/badges/awesome/mentioned-badge.svg"></a>
+### <img width=20 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 之星历史 ⭐](../../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/badges/awesome/mentioned-badge.svg"></a>
 
 > 将明星历史图表添加到 GitHub 存储库的侧边栏。
 <br>[安装](https://greasyfork.org/scripts/473377-github-star-history) /
