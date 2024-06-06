@@ -24,33 +24,33 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=19 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=18 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
+### <img width=20 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=19 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=22 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
 <br>[安装](https://greasyfork.org/scripts/12639) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=18 src="https://i.imgur.com/ribh0wE.png"> [突出单选气泡](../../highlight-radio-bubbles)
+### <img width=22 src="https://i.imgur.com/ribh0wE.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://greasyfork.org/scripts/26311) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=19> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://greasyfork.org/en/scripts/456132) /
