@@ -46,7 +46,7 @@ Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scro
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
 [Discuss](https://chatgptwidescreen.com/discuss)
 
-<img height=6px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#-github-widescreen--">Back to top ↑</a>
