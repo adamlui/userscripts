@@ -24,33 +24,33 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 
 <img height=10px width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=15 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=19 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=17 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
+### <img width=19 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=17 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=18 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://greasyfork.org/scripts/12639) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=15 src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img width=18 src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://greasyfork.org/scripts/26311) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=16> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=19> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://awesome.re/mentioned-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://greasyfork.org/en/scripts/456132) /
