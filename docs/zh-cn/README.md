@@ -30,13 +30,13 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=19 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
+### <img width=18 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=18 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=19 src="https://i.imgur.com/TABwyUq.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
 <br>[安装](https://greasyfork.org/scripts/12639) /

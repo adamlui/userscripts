@@ -30,13 +30,13 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=19 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
+### <img width=18 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=18 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=19 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://greasyfork.org/scripts/12639) /
