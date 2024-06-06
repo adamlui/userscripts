@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.6.2
+// @version             2024.6.6.4
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -274,8 +274,8 @@ setTimeout(async () => {
     // Stylize TOOLTIPs
     const tooltipDiv = document.createElement('div'),
           tooltipStyle = document.createElement('style')
-    tooltipDiv.classList.add('button-tooltip', 'no-user-select')
-    tooltipStyle.innerText = '.button-tooltip {'
+    tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
+    tooltipStyle.innerText = '.btn-tooltip {'
         + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
         + 'font-size: 0.58rem ; color: white ;' // font style
         + 'position: absolute ;' // for updateTooltip() calcs
@@ -358,7 +358,8 @@ setTimeout(async () => {
                       `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
                           + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
                           + ` (${ msgs.alert_userscriptMgrNoStream ||
-                                    'Your userscript manager does not support returning stream responses' }.)`)
+                                    'Your userscript manager does not support returning stream responses' }.)`,
+                '', '', 575) // px width
             else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 let msg = `${ msgs.mode_streaming || 'Streaming Mode' } `
                         + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
@@ -366,7 +367,8 @@ setTimeout(async () => {
                         + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
                 const switchPhrase = msgs.alert_switchingOn || 'switching on'
                 msg = msg.replace(switchPhrase, `<a href="#" class="proxyToggle">${switchPhrase}</a>`)
-                alert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg)
+                alert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
+                    msg, '', '', 575) // px width
                 document.querySelector('.proxyToggle')?.addEventListener('click', toggleProxyMode)
             } else { // functional toggle
                 saveSetting('streamingDisabled', !config.streamingDisabled)
@@ -490,7 +492,7 @@ setTimeout(async () => {
                 function auto() { updateScheme('auto') },
                 function light() { updateScheme('light') },
                 function dark() { updateScheme('dark') }
-        ])
+        ], '', 503) // px width
 
         // Center button cluster
         const schemeModal = document.getElementById(schemeAlertID)
@@ -561,17 +563,18 @@ setTimeout(async () => {
                 function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
             ], '', 577) // About modal width
 
-        // Re-format buttons to include emoji + localized label + hide Dismiss button
-        for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
-            if (/updates/i.test(button.textContent)) button.textContent = (
+        // Resize + format buttons to include emoji + localized label + hide Dismiss button
+        for (const btn of document.getElementById(aboutAlertID).querySelectorAll('button')) {
+            btn.style.height = '53px' // re-size to fit meaty text content
+            if (/updates/i.test(btn.textContent)) btn.textContent = (
                 '🚀 ' + ( msgs.buttonLabel_updateCheck || 'Check for Updates' ))
-            else if (/support/i.test(button.textContent)) button.textContent = (
+            else if (/support/i.test(btn.textContent)) btn.textContent = (
                 '🧠 ' + ( msgs.buttonLabel_getSupport || 'Get Support' ))
-            else if (/review/i.test(button.textContent)) button.textContent = (
+            else if (/review/i.test(btn.textContent)) btn.textContent = (
                 '⭐ ' + ( msgs.buttonLabel_leaveReview || 'Leave a Review' ))
-            else if (/apps/i.test(button.textContent)) button.textContent = (
+            else if (/apps/i.test(btn.textContent)) btn.textContent = (
                 '🤖 ' + ( msgs.buttonLabel_moreApps || 'More ChatGPT Apps' ))
-            else button.style.display = 'none' // hide Dismiss button
+            else btn.style.display = 'none' // hide Dismiss button
         }
     }
 
@@ -770,12 +773,14 @@ setTimeout(async () => {
               + '.bravegpt > pre li { margin: -10px 0 ; list-style: inside }' ) // reduce v-spacing, show left symbols
           + '.katex-html { display: none }' // hide unrendered math
           + '.chatgpt-modal > div { padding: 24px 20px 24px 20px !important }' // increase alert padding
-          + '.chatgpt-modal p { margin-left: 4px ; font-size: 1.115rem }' // position/size alert msg
+          + '.chatgpt-modal h2 { font-size: 32px ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + shrink it
+          + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 1.115rem }' // position/size alert msg
           + '.chatgpt-modal button {' // alert buttons
               + 'font-size: 0.72rem ; text-transform: uppercase ; min-width: 123px ; '
               + ( !isMobile ? 'padding: 5px !important ;' : '' )
-              + 'border-radius: 0 !important ; border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
-          + `.modal-buttons { margin: 20px 0px -3px ${ isMobile ? 0 : -7 }px !important }` // position alert buttons
+              + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+              + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
+          + `.modal-buttons { margin: 38px 0px 6px ${ isMobile ? 0 : -7 }px !important }` // position alert buttons
           + '.modal-close-btn { top: -7px }' // raise alert close button
           + ( scheme == 'dark' ? // darkmode alert styles
               ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
