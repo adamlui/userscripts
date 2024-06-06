@@ -29,7 +29,7 @@
   "tooltip_sendRelatedQuery": { "message": "Wyślij powiązane zapytanie" },
   "placeholder_askSomethingElse": { "message": "Coś innego" },
   "prompt_updateReplyLang": { "message": "Zaktualizuj język odpowiedzi" },
-  "alert_langUpdated": { "message": "Język został zaktualizowany." },
+  "alert_langUpdated": { "message": "Język został zaktualizowany" },
   "alert_willReplyIn": { "message": "odpowie za" },
   "alert_yourSysLang": { "message": "Język systemu" },
   "alert_choosePlatform": { "message": "Wybierz platformę" },
@@ -51,7 +51,7 @@
   "alert_notWorking": { "message": "nie działa" },
   "alert_ifIssuePersists": { "message": "Jeśli problem będzie się powtarzał," },
   "alert_try": { "message": "Spróbuj" },
-  "alert_switchingOn": { "message": "Włączanie " },
+  "alert_switchingOn": { "message": "Włączanie" },
   "alert_switchingOff": { "message": "Wyłączanie" },
   "buttonLabel_sendQueryToGPT": { "message": "Wyślij zapytanie wyszukiwania do GPT" },
   "buttonLabel_moreApps": { "message": "Więcej aplikacji ChatGPT" },
@@ -63,6 +63,6 @@
   "link_viewChanges": { "message": "Przegląd zmian" },
   "link_shareFeedback": { "message": "Podziel się swoją opinią" },
   "prefix_exit": { "message": "Wyjście" },
-  "state_on": { "message": "Wł." },
+  "state_on": { "message": "Wł" },
   "state_off": { "message": "Wył." }
 }
