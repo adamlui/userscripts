@@ -28,7 +28,7 @@
 
 ### <img src="https://media.bravegpt.com/images/icons/bravegpt/icon48.png" width=24> [BraveGPT](../../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
-> 在 Brave Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)
+> 在 Brave Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4o 驱动!)
 <br>[安装](https://greasyfork.org/scripts/462440-bravegpt) /
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt#readme) /
 [讨论](https://github.com/userscripts/discussions)
@@ -63,14 +63,14 @@
 
 ### <img src="https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png" width=23> [DuckDuckGPT](../../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
-> 在 DuckDuckGo 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)
+> 在 DuckDuckGo 侧边栏中显示 ChatGPT 答案 (由 GPT-4o 驱动!)
 <br>[安装](https://greasyfork.org/scripts/459849-duckduckgpt) /
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/duckduckgpt#readme) /
 [讨论](https://github.com/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://media.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://media.googlegpt.io/images/badges/awesome/badge.svg?latest"></a>
 
-> 在 Google Search 侧边栏中显示 ChatGPT 答案 (由 GPT-4 驱动!)
+> 在 Google Search 侧边栏中显示 ChatGPT 答案 (由 Google Gemma + GPT-4o 驱动!)
 <br>[安装](https://greasyfork.org/scripts/478597-googlegpt) /
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/googlegpt#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)

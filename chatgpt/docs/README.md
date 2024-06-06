@@ -29,7 +29,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 ### <img src="https://media.bravegpt.com/images/icons/bravegpt/icon48.png" width=24> [BraveGPT](../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt" target="_blank"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
-> Display ChatGPT answers in Brave Search sidebar (powered by GPT-4!)
+> Display ChatGPT answers in Brave Search sidebar (powered by GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/462440-bravegpt) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
@@ -64,14 +64,14 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 ### <img src="https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png" width=23> [DuckDuckGPT](../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt" target="_blank"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
-> Display ChatGPT answers in DuckDuckGo sidebar (powered by GPT-4!)
+> Display ChatGPT answers in DuckDuckGo sidebar (powered by GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/459849-duckduckgpt) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://media.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="Mentioned in Awesome" src="https://media.googlegpt.io/images/badges/awesome/badge.svg?latest"></a>
 
-> Display ChatGPT answers in Google Search sidebar (powered by GPT-4!)
+> Display ChatGPT answers in Google Search sidebar (powered by Google Gemma + GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/478597-googlegpt) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
