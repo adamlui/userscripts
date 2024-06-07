@@ -53,7 +53,7 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://media.ytclassic.com/images/badges/awesome/mentioned-badge.svg?latest"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
-<br>[安装](https://greasyfork.org/en/scripts/456132) /
+<br>[安装](https://greasyfork.org/scripts/456132) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 

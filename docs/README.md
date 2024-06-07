@@ -53,7 +53,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="Mentioned in Awesome" src="https://media.ytclassic.com/images/badges/awesome/mentioned-badge.svg?latest"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
-<br>[Install](https://greasyfork.org/en/scripts/456132) /
+<br>[Install](https://greasyfork.org/scripts/456132) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
