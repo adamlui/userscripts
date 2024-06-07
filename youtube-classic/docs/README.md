@@ -10,7 +10,7 @@
 [![license](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
 ![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
 [![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
-[![Mentioned in Awesome Userscripts](https://awesome.re/badge-flat.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
+[![Mentioned in Awesome Userscripts](https://media.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg?latest)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
