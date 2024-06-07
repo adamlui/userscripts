@@ -23,7 +23,7 @@
 
 ### Automatically continue generating ChatGPT responses when chats cut off.
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 title="Install this script" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#-installation"><img height=45 title="How to install" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
+<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 alt="Install this script" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
 <br>
 [Discuss](https://github.chatgptautocontinue.com/discussions) /
 [Review](https://greasyfork.chatgptautocontinue.com/feedback#post-discussion) /

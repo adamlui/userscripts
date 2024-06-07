@@ -18,7 +18,7 @@
 
 <h3><b>BraveGPT</b> brings the magic of ChatGPT to Brave Search (powered by GPT-4o!)</h3>
 
-<a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=45 src="https://media.bravegpt.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#installation"><img height=45 title="How to install" src="https://media.bravegpt.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
+<a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=45 alt="Install this script" src="https://media.bravegpt.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#installation"><img height=45 alt="How to install" title="How to install" src="https://media.bravegpt.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
 <br>
 [Discuss](https://github.bravegpt.com/discussions) / 
 [Review](https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion) / 
@@ -120,7 +120,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 <br>
 
-<a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=42 src="https://media.bravegpt.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#installation"><img height=42 title="How to install" src="https://media.bravegpt.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
+<a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=42 alt="Install this script" src="https://media.bravegpt.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://media.bravegpt.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
 <br>
 [Discuss](https://github.bravegpt.com/discussions) /
 [Leave a review](https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion) /

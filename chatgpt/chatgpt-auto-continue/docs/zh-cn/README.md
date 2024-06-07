@@ -23,8 +23,8 @@
 
 ### 聊天中断时自动继续生成 ChatGPT 响应。
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 title="安装这个脚本
-" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#-如何安装"><img height=45 title="如何安装" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
+<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 alt="安装这个脚本
+" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
 <br>
 [讨论](https://github.chatgptautocontinue.com/discussions) /
 [审查](https://greasyfork.chatgptautocontinue.com/feedback#post-discussion) /
