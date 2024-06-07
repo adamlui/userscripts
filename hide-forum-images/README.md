@@ -5,7 +5,7 @@
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.
 
-<a href="https://greasyfork.org/en/scripts/12639-hide-forum-images"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts" target="_blank"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/en/scripts/12639-hide-forum-images"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/en/help/installing-user-scripts"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/en/scripts/12639/feedback#post-discussion) /
@@ -14,4 +14,4 @@ Hides images/videos from XenForo, vBulletin & Discourse forums.
 #### Author links:
 
 [![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
-<a href="https://elonsucks.org/@adam" target="_blank"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
+<a href="https://elonsucks.org/@adam"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
