@@ -1,4 +1,4 @@
-# <img width=28 style="margin-bottom: -2px" src="https://github.githubassets.com/favicons/favicon.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
+# <img width=28 style="margin-bottom: -2px" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
 
 [![](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/blob/main/LICENSE.md)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-star-history)
@@ -48,7 +48,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 ## 📜 Related scripts
 
-### <img width=17 style="margin: 0 2px -1px" src="https://github.githubassets.com/favicons/favicon.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
+### <img width=17 style="margin: 0 2px -1px" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
 [Install](https://github.com/adamlui/github-widescreen#-installation) /

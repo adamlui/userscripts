@@ -30,7 +30,7 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub 脚本](../../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/github/icon32.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /

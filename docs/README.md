@@ -30,7 +30,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://github.githubassets.com/favicons/favicon.png"> [GitHub scripts](../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/github/icon32.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
