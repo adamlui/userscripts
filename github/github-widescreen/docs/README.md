@@ -6,7 +6,7 @@
 
 ### Auto-hides obtrusive side panels from GitHub
 
-<a href="https://greasyfork.org/scripts/473439-github-widescreen"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="#-installation"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473439-github-widescreen"><img height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-widescreen/discussions) /
 [Review](https://greasyfork.org/scripts/473439-github-widescreen/feedback#post-discussion) /

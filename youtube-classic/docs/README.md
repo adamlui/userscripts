@@ -14,7 +14,7 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://greasyfork.org/scripts/456132"><img height=42 src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts" target="_blank"><img height=42 title="How to install" src="https://github.com/adamlui/userscripts/raw/master/media/images/buttons/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/456132"><img height=42 src="https://media.ytclassic.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="https://greasyfork.org/help/installing-user-scripts" target="_blank"><img height=42 title="How to install" src="https://media.ytclassic.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
