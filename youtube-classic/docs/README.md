@@ -24,16 +24,16 @@
 <ul>
   <li><b>Restores dislike counter</b> so you can judge the quality of content before watching<br>
     (based on Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
-    <p><img width=400px src="https://i.imgur.com/9i6S9ki.png"></li><br>
+    <p><img width=400px src="https://media.ytclassic.com/images/screenshots/dislike-counter.png?latest"></li><br>
   <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round<br>
     (based on magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
     <p><i>&nbsp;Before:</i><br>
-      <img src="https://i.imgur.com/hMaUywR.png">
+      <img src="https://media.ytclassic.com/images/screenshots/youtube-modern-ui.png?latest">
     <p><i>&nbsp;After:</i><br>
-      <img src="https://i.imgur.com/LLc2xK3.png"></li><br>
+      <img src="https://media.ytclassic.com/images/screenshots/youtube-classic-ui.png?latest"></li><br>
   <li><b>Redirects YouTube Shorts</b> to classic player for increased usability<br>
     (based on fuim's <a href="https://greasyfork.org/scripts/439993-youtube-shorts-redirect">YouTube Shorts Redirect</a>)
-    <p><img width=400 src="https://i.imgur.com/uew2gcD.png"></li><br>
+    <p><img width=400 src="https://media.ytclassic.com/images/screenshots/shorts-redir.png?latest"></li><br>
   <li><b>Hides sneaky recommendations</b> from search for more accurate results<br>
     (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search">
       YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>
