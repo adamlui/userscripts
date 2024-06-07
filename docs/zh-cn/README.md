@@ -13,7 +13,7 @@
 
 ![](https://img.shields.io/badge/用户-150,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/github/stars/adamlui/userscripts?label=星星&logo=github&logoColor=white&labelColor=464646&color=af68ff&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
-[![](https://img.shields.io/badge/许可证-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
+[![许可证: MIT](https://img.shields.io/badge/许可证-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
 [![](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits)
 ![](https://img.shields.io/badge/%E5%85%8B%E9%9A%86-10,000+/%E6%9C%88-869da0?logo=github&logoColor=white&labelColor=464646&style=for-the-badge)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)

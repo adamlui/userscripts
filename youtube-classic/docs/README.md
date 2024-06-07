@@ -6,11 +6,11 @@
   <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
 
-![usercount](https://img.shields.io/greasyfork/dt/456132?label=Users&color=brightgreen&style=flat-square)
-[![license](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
-[![code-quality](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
-[![Mentioned in Awesome Userscripts](https://media.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg?latest)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
+![](https://img.shields.io/greasyfork/dt/456132?label=Users&color=brightgreen&style=flat-square)
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
+![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
+[![](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
+[![Mentioned in Awesome](https://media.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg?latest)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 

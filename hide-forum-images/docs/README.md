@@ -1,7 +1,7 @@
 # <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> Hide Forum Images &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/hide-forum-images&hashtags=greasemonkey,userscripts,javascript)
 
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-![support](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
+![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.
 
