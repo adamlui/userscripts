@@ -1,4 +1,4 @@
-# <img width=28 style="margin-bottom: -2px" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
 
 [![](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE.md)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/github-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-widescreen)
@@ -32,14 +32,14 @@
 
 ## 📜 Related scripts
 
-### <img width=17 style="margin: 0 2px -1px" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg" style="margin:0 0 -2px 5px"></a>
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg"></a>
 
 Adds star history chart to sidebar of GitHub repos.<br>
 [Install](https://greasyfork.org/scripts/473377) /
 [Readme](https://github.com/adamlui/github-star-history#readme) /
 [Discuss](https://github.com/adamlui/github-star-history/discussions)
 
-### <img width=17 style="margin: 0 3px -1px" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 5px;" width="auto" height="24" />
+### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 

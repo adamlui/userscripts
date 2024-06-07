@@ -3,7 +3,7 @@
     <source media="(prefers-color-scheme: dark)" srcset="https://media.ytclassic.com/images/yt-classic-dark-mode-logo.png">
     <img height=53 src="https://media.ytclassic.com/images/yt-classic-light-mode-logo.png">
   </picture>
-  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img style="margin:0 0 6px 5px;" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
+  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
 
 ![usercount](https://img.shields.io/greasyfork/dt/456132?label=Users&color=brightgreen&style=flat-square)

@@ -1,4 +1,4 @@
-# <img width=28 style="margin-bottom: -2px" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
 
 [![](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/blob/main/LICENSE.md)
 [![](https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-star-history)
@@ -48,14 +48,14 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 ## 📜 Related scripts
 
-### <img width=17 style="margin: 0 2px -1px" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
 [Install](https://github.com/adamlui/github-widescreen#-installation) /
 [Readme](https://github.com/adamlui/github-widescreen#readme) /
 [Discuss](https://github.com/adamlui/github-widescreen/discussions)
 
-### <img width=17 style="margin: 0 3px -1px" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" style="width: auto; height: 24px; margin:0 0 -4px 5px;" width="auto" height="24" />
+### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
