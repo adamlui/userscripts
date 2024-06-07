@@ -13,5 +13,5 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key.
 
 #### Author links:
 
-[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social)](https://github.com/adamlui)
-<a href="https://elonsucks.org/@adam"><img align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
+[![GitHub](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
+<a href="https://elonsucks.org/@adam"><img title="Follow @adam on ElonSucks.org" align="bottom" src="https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social"></a>
