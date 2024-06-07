@@ -9,7 +9,7 @@ Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/scripts/12639/feedback#post-discussion) /
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 #### Author links:
 

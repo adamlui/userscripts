@@ -9,7 +9,7 @@ Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Review](https://greasyfork.org/scripts/26311/feedback#post-discussion) /
-[Contact author](https://elonsucks.org/@adam)
+[Contact author](https://github.com/adamlui)
 
 #### Author links:
 
