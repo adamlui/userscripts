@@ -43,7 +43,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 [Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://i.imgur.com/ribh0wE.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://greasyfork.org/scripts/26311) /

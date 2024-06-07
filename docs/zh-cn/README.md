@@ -43,7 +43,7 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 [自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://i.imgur.com/ribh0wE.png"> [突出单选气泡](../../highlight-radio-bubbles)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://greasyfork.org/scripts/26311) /
