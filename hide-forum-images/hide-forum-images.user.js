@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name          Hide Forum Images
-// @version       2024.2.8
+// @version       2024.6.6
 // @author        Adam Lui
 // @namespace     https://adamlui.com
 // @description   Hides images/videos from XenForo, vBulletin & Discourse forums.
 // @license       MIT
-// @icon          https://i.imgur.com/TABwyUq.png
+// @icon          https://cdn.jsdelivr.net/gh/adamlui/userscripts@9d1da77/hide-forum-images/media/images/icons/private-eye/black/icon48.png
+// @icon64        https://cdn.jsdelivr.net/gh/adamlui/userscripts@9d1da77/hide-forum-images/media/images/icons/private-eye/black/icon64.png
 // @compatible    chrome
 // @compatible    firefox
 // @compatible    opera

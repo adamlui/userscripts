@@ -36,7 +36,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EuMNOTX.png"><img width=22 src="https://i.imgur.com/TABwyUq.png"></picture> [Hide Forum Images](../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://greasyfork.org/scripts/12639) /
