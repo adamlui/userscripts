@@ -159,7 +159,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-Google Search (kuphathwa yi Google Gemma + GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.8.1
+// @version             2024.6.8.3
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -889,21 +889,21 @@
                 + ` ${ msgs.mode_proxy || 'Proxy Mode' })`
 
             // Hyperlink msgs.alert_switching<On|Off>
-            const foundState = ['On', 'Off'].find(state =>
-                msg.includes(msgs['alert_switching' + state] || state.toLowerCase()))
+            const foundState = ['on', 'off'].find(state =>
+                msg.includes(msgs['alert_switching' + state.toUppercase()]) || new RegExp(`\\b${state}\\b`).test(msg))
             if (foundState) { // hyperlink switch phrase for click listener to toggleProxyMode()
-                const switchPhrase = msgs['alert_switching' + foundState] || 'switching ' + foundState.toLowerCase()
+                const switchPhrase = msgs['alert_switching' + foundState] || 'switching ' + foundState
                 msg = msg.replace(switchPhrase, `<a href="#" ${linkStyle} class="proxyToggle">${switchPhrase}</a>`)
             }
 
             // Create/fill/append msg span
             const msgSpan = document.createElement('span')
-            msgSpan.innerHTML = msg ; alertP.appendChild(msgSpan)
+            msgSpan.innerHTML = msg ; alertP.append(msgSpan)
 
             // Activate toggle link if necessary
             msgSpan.querySelector('.proxyToggle')?.addEventListener('click', toggleProxyMode)
         })
-        appDiv.appendChild(alertP)
+        appDiv.append(alertP)
     }
 
     function consoleInfo(msg) { console.info(`${ config.appSymbol } ${ config.appName } » ${ msg }`) }
