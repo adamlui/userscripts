@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.6.6
+// @version             2024.6.8.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -447,7 +447,7 @@
                     refreshMenu()
                     const minInterval = Math.max(2, config.refreshInterval - 10),
                           maxInterval = config.refreshInterval + 10
-                    alert(( msgs.alert_intUpdated || 'Interval updated' ) + '!',
+                    siteAlert(( msgs.alert_intUpdated || 'Interval updated' ) + '!',
                           ( msgs.alert_willRefresh || 'ChatGPT session will auto-refresh every ' )
                             + `${ minInterval }–${ maxInterval } ${ msgs.unit_secs || 'secs' }`
                     )
@@ -471,7 +471,7 @@
               aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
 
         // Show modal
-        const aboutAlertID = alert(
+        const aboutModalID = siteAlert(
             msgs.appName || config.appName, // title
             `<span style="${ headingStyle }"><b>🏷️ <i>${ msgs.about_version || 'Version' }</i></b>: </span>`
                 + `<span style="${ pStyle }">${ GM_info.script.version }</span>\n`
@@ -485,18 +485,18 @@
                 function checkForUpdates() { updateCheck() },
                 function getSupport() { safeWindowOpen(config.supportURL) },
                 function leaveAReview() { // show new modal
-                    const reviewAlertID = chatgpt.alert(( msgs.alert_choosePlatform || 'Choose a platform' ) + ':', '',
+                    const reviewModalID = chatgpt.alert(( msgs.alert_choosePlatform || 'Choose a platform' ) + ':', '',
                         [ function greasyFork() { safeWindowOpen(config.greasyForkURL + '/feedback#post-discussion') },
                           function futurepedia() { safeWindowOpen(
                               'https://www.futurepedia.io/tool/chatgpt-auto-refresh#chatgpt-auto-refresh-review') }])
-                    document.getElementById(reviewAlertID).querySelector('button')
+                    document.getElementById(reviewModalID).querySelector('button')
                         .style.display = 'none' }, // hide Dismiss button
                 function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
             ], '', 478 // set width
         )
 
         // Re-format buttons to include emoji + localized label + hide Dismiss button
-        for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
+        for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
             if (/updates/i.test(button.textContent)) button.textContent = (
                 '🚀 ' + ( msgs.buttonLabel_updateCheck || 'Check for Updates' ))
             else if (/support/i.test(button.textContent)) button.textContent = (
@@ -527,7 +527,7 @@
                     else if (latestSubVer > currentSubVer) { // if outdated
 
                         // Alert to update
-                        const updateAlertID = alert(( msgs.alert_updateAvail || 'Update available' ) + '! 🚀', // title
+                        const updateModalID = siteAlert(( msgs.alert_updateAvail || 'Update available' ) + '! 🚀', // title
                             ( msgs.alert_newerVer || 'An update to' ) + ' ' // msg
                                 + ( msgs.appName || config.appName ) + ' '
                                 + `(v${ latestVer }) ${ msgs.alert_isAvail || 'is available' }!  `
@@ -543,7 +543,7 @@
 
                         // Localize button labels if needed
                         if (!config.userLanguage.startsWith('en')) {
-                            const updateAlert = document.querySelector(`[id="${ updateAlertID }"]`),
+                            const updateAlert = document.querySelector(`[id="${ updateModalID }"]`),
                                   updateBtns = updateAlert.querySelectorAll('button')
                             updateBtns[1].textContent = msgs.buttonLabel_update || 'Update'
                             updateBtns[0].textContent = msgs.buttonLabel_dismiss || 'Dismiss'
@@ -552,8 +552,8 @@
                         return
                 }}
 
-                // Alert to no update, return to About alert
-                alert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
+                // Alert to no update, return to About modal
+                siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
                     `${ msgs.appName || config.appName } (v${ currentVer }) ` // msg
                         + ( msgs.alert_isUpToDate || 'is up-to-date' ) + '!',
                     '', '', updateAlertWidth
@@ -566,7 +566,7 @@
     function notify(msg, position = '', notifDuration = '', shadow = '') {
         chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow') }
 
-    function alert(title = '', msg = '', btns = '', checkbox = '', width = '') {
+    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         return chatgpt.alert(`${ config.appSymbol } ${ title }`, msg, btns, checkbox, width )}
 
     // Define UI functions
