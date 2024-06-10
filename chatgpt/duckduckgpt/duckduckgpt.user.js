@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.9.8
+// @version             2024.6.10.6
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -449,7 +449,7 @@
     })
 
     // Show STANDBY mode or get/show ANSWER
-    const msgChain = [] // to store queries + answers for contextual replies
+    let msgChain = [] // to store queries + answers for contextual replies
     if (config.autoGetDisabled
         || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location) // suffix required but not present
@@ -494,10 +494,10 @@
         menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
             if (getUserscriptManager() != 'Tampermonkey') // alert userscript manager unsupported, suggest Tampermonkey
                 siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                      `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
-                          + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
-                          + ` (${ msgs.alert_userscriptMgrNoStream ||
-                                    'Your userscript manager does not support returning stream responses' }.)`)
+                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
+                      + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
+                      + ` (${ msgs.alert_userscriptMgrNoStream ||
+                                'Your userscript manager does not support returning stream responses' }.)`)
             else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 let msg = `${ msgs.mode_streaming || 'Streaming Mode' } `
                         + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
@@ -506,12 +506,14 @@
                 const switchPhrase = msgs.alert_switchingOn || 'switching on'
                 msg = msg.replace(switchPhrase, `<a href="#" class="proxyToggle">${switchPhrase}</a>`)
                 siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg)
-                document.querySelector('.proxyToggle')?.addEventListener('click', toggleProxyMode)
+                document.querySelector('.proxyToggle')?.addEventListener('click', () => {
+                    document.querySelector('.modal-close-btn').click() ; toggleProxyMode() })
             } else { // functional toggle
                 saveSetting('streamingDisabled', !config.streamingDisabled)
                 notify(( msgs.mode_streaming || 'Streaming Mode' ) + ' ' + state.word[+!config.streamingDisabled])
                 refreshMenu()
-        }}))
+            }
+        }))
 
         // Add command to toggle auto-get mode
         const agmLabel = state.symbol[+!config.autoGetDisabled] + ' '
@@ -869,8 +871,8 @@
                   + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
           + '.continue-chat > textarea {'
               + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 13px 12px 0 ;`
-              + 'font-size: 0.92rem ; height: 1.55rem ; width: 94.6% ; max-height: 200px ; resize: none ; '
-              + 'margin: 3px 0 15px 0 ; padding: 12px 10px 4px 10px ;'
+              + 'font-size: 0.92rem ; height: 16px ; width: 94.6% ; max-height: 200px ; resize: none ; '
+              + 'margin: 3px 0 15px 0 ; padding: 13px 10px 11px 10px ;'
               + 'background: ' + ( scheme == 'dark' ? '#515151' : '#eeeeee70' ) + ' } '
           + '.related-queries {'
               + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
@@ -1296,7 +1298,7 @@
                    + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
                + ' But the key is variety. Do not be repetitive.'
                    + ' You must entice user to want to ask one of your related queries.'
-               + ' Do not show the parenthetical instructions in these queries.'
+               + ` Reply in ${config.replyLanguage}`
             GM.xmlHttpRequest({
                 method: apis[api].method, url: apis[api].endpoint, responseType: 'text',
                 headers: createHeaders(api), data: createPayload(api, [{ role: 'user', content: rqPrompt }]),
@@ -1355,7 +1357,7 @@
             // Send related query
             const chatbar = appDiv.querySelector('textarea')
             if (chatbar) {
-                chatbar.value = augmentQuery(event.target.textContent)
+                chatbar.value = event.target.textContent
                 appShow.submitSrc = 'click' // for appShow() auto-focus
                 chatbar.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'Enter', bubbles: true, cancelable: true }))
@@ -1364,9 +1366,22 @@
 
     function augmentQuery(query) {
         const augmentedQuery = query
-            + ' (if math is involved, reply using latex w/ $$ as delimiters)'
-            + ` (reply in ${ config.replyLanguage })`
+            + ' (only if this query involves math, use latex if showing math w/ $$ as delimiters)'
+            + ` (reply in ${config.replyLanguage})`
         return augmentedQuery
+    }
+
+    function stripQueryAugments(msgChain) {
+        const augmentCnt = augmentQuery.toString().match(/\+/g).length
+        return msgChain.map(msg => { // stripped chain
+            if (msg.role == 'user') {
+                let content = msg.content
+                const augments = content.match(/\s*\([^)]*\)\s*/g)
+                if (augments) for (let i = 0 ; i < augmentCnt ; i++) // strip augments
+                    content = content.replace(augments[augments.length - 1 - i], '')
+                return { ...msg, content: content.trim() }
+            } else return msg // agent's unstripped
+        })
     }
 
     async function getShowReply(msgChain) {
@@ -1383,8 +1398,8 @@
 
         if (!config.proxyAPIenabled) // init OpenAI key
             config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
-        else getShowReply.respTimer = setTimeout(() => { // try diff API after 3s of no response
-            if (config.proxyAPIenabled && !getShowReply.received) tryDiffAPI(api) }, 3000)
+        else getShowReply.respTimer = setTimeout(() => { // try diff API after 3-5s of no response
+            if (config.proxyAPIenabled && !getShowReply.received) tryDiffAPI(api) }, config.streamingDisabled ? 5000 : 3000)
 
         // Get/show answer from ChatGPT
         GM.xmlHttpRequest({
@@ -1405,7 +1420,7 @@
 
         // Get/show related queries
         if (!config.rqDisabled) {
-            const lastQuery = msgChain[msgChain.length - 1]
+            const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1]
             getRelatedQueries(lastQuery.content).then(relatedQueries => {
                 if (relatedQueries && appDiv.querySelector('textarea')) {
 
@@ -1452,10 +1467,9 @@
 
     function appShow(answer) {
 
-        if (!appDiv.querySelector('pre')) { // build answer interface
-
-            // Clear app content
-            while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild)
+        // Build answer interface up to reply section if missing
+        if (!appDiv.querySelector('pre')) {
+            while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
 
             // Create/append app title anchor
             const appTitleAnchor = createAnchor(config.appURL, (() => {
@@ -1611,7 +1625,8 @@
             }
         }
 
-        if (!appDiv.querySelector('#app-chatbar')) { // build reply section
+        // Build reply section if missing
+        if (!appDiv.querySelector('#app-chatbar')) {
 
             // Init/clear reply section content/classes
             const replySection = appDiv.querySelector('section') || document.createElement('section')
@@ -1637,7 +1652,7 @@
                       'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
             sendButton.id = 'send-btn'
             sendButton.style.right = `${ isFirefox ? 8 : 6 }px`
-            sendButton.style.bottom = `${ isFirefox ? 48 : 53 }px`
+            sendButton.style.bottom = `${ isFirefox ? 49 : 53 }px`
             for (const [attr, value] of [
                 ['viewBox', '4 2 16 16'], ['fill', 'none'], ['width', 16], ['height', 16],
                 ['stroke', 'currentColor'], ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']
@@ -1650,9 +1665,16 @@
             chatTextarea.addEventListener('input', autosizeChatbar)
             sendButton.addEventListener('mouseover', toggleTooltip)
             sendButton.addEventListener('mouseout', toggleTooltip)
+
+            // Scroll to top on mobile if user interacted
+            if (isMobile && appShow.submitSrc) {
+                document.body.scrollTop = 0 // Safari
+                document.documentElement.scrollTop = 0 // Chromium/FF/IE
+            }
         }
 
-        if (answer != 'standby') { // show answer
+        // Render/show answer if query sent
+        if (answer != 'standby') {
             const answerPre = appDiv.querySelector('pre')
             answerPre.innerHTML = marked.parse(answer) // render markdown
             hljs.highlightAll() // highlight code
@@ -1675,18 +1697,19 @@
                     ],
                     throwOnError: false
             })})
+
+            // Auto-scroll if active
+            if (!isMobile && config.proxyAPIenabled && config.autoScroll) 
+                window.scrollBy({ top: appDiv.getBoundingClientRect().bottom - window.innerHeight })
         }
 
         updateTweaksStyle() // in case sticky mode on
 
         // Focus chatbar conditionally
-        const proxyAPIstreaming = !config.streamingDisabled && config.proxyAPIenabled
         if (!isMobile && // exclude mobile devices to not auto-popup OSD keyboard
-            !document.querySelector('.standby-btn') && ( // exclude when Auto-Get off
-                appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top // app fully above fold
-            || !proxyAPIstreaming && appShow.submitSrc && appShow.submitSrc != 'click' // user replied to non-stream
-            ||  proxyAPIstreaming && config.autoScroll // auto-scroll active for streaming APIs
-        )) appDiv.querySelector('#app-chatbar').focus()
+            !document.querySelector('.standby-btn') &&  // exclude when Auto-Get off
+            ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top ) // app fully above fold
+        ) appDiv.querySelector('#app-chatbar').focus()
         appShow.submitSrc = 'none'
 
         function handleEnter(event) {
@@ -1706,10 +1729,10 @@
             event.preventDefault()
             const chatTextarea = appDiv.querySelector('#app-chatbar')
             if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-            const prevReplyTrimmed = appDiv.querySelector('pre')?.textContent.substring(0, 250 - chatTextarea.value.length) || '',
-                  yourReply = `${ chatTextarea.value } (reply in ${ config.replyLanguage })`
+            msgChain = stripQueryAugments(msgChain)
+            const prevReplyTrimmed = appDiv.querySelector('pre')?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
             msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
-            msgChain.push({ role: 'user', content: yourReply })
+            msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
             getShowReply(msgChain)
 
             // Remove re-added reply section listeners
@@ -1746,8 +1769,8 @@
             const newLength = chatTextarea.value.length
             if (newLength < prevLength) { // if deleting txt
                 chatTextarea.style.height = 'auto' // ...auto-fit height
-                if (parseInt(getComputedStyle(chatTextarea).height) < 35) { // if down to one line
-                    chatTextarea.style.height = '1.55rem' } // ...reset to original height
+                if (parseInt(getComputedStyle(chatTextarea).height) < 35) // if down to one line
+                    chatTextarea.style.height = '16px' // ...reset to original height
             }
             chatTextarea.style.height = chatTextarea.scrollHeight - vOffset + 'px'
             prevLength = newLength
