@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.10.4
+// @version             2024.6.10.6
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -354,10 +354,10 @@ setTimeout(async () => {
         menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
             if (getUserscriptManager() != 'Tampermonkey') // alert userscript manager unsupported, suggest Tampermonkey
                 siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                      `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
-                          + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
-                          + ` (${ msgs.alert_userscriptMgrNoStream ||
-                                    'Your userscript manager does not support returning stream responses' }.)`,
+                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
+                      + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
+                      + ` (${ msgs.alert_userscriptMgrNoStream ||
+                                'Your userscript manager does not support returning stream responses' }.)`,
                 '', '', 575) // px width
             else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 let msg = `${ msgs.mode_streaming || 'Streaming Mode' } `
@@ -368,7 +368,8 @@ setTimeout(async () => {
                 msg = msg.replace(switchPhrase, `<a href="#" class="proxyToggle">${switchPhrase}</a>`)
                 siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
                     msg, '', '', 575) // px width
-                document.querySelector('.proxyToggle')?.addEventListener('click', toggleProxyMode)
+                document.querySelector('.proxyToggle')?.addEventListener('click', () => {
+                    document.querySelector('.modal-close-btn').click() ; toggleProxyMode() })
             } else { // functional toggle
                 saveSetting('streamingDisabled', !config.streamingDisabled)
                 notify(( msgs.mode_streaming || 'Streaming Mode' ) + ' ' + state.word[+!config.streamingDisabled])
@@ -1638,13 +1639,10 @@ setTimeout(async () => {
         updateTweaksStyle() // in case sticky mode on
 
         // Focus chatbar conditionally
-        const proxyAPIstreaming = !config.streamingDisabled && config.proxyAPIenabled
         if (!isMobile && // exclude mobile devices to not auto-popup OSD keyboard
-            !document.querySelector('.standby-btn') && ( // exclude when Auto-Get off
-                appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top // app fully above fold
-            || !proxyAPIstreaming && appShow.submitSrc && appShow.submitSrc != 'click' // user replied to non-stream
-            ||  proxyAPIstreaming && config.autoScroll // auto-scroll active for streaming APIs
-        )) appDiv.querySelector('#app-chatbar').focus()
+            !document.querySelector('.standby-btn') &&  // exclude when Auto-Get off
+            ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top ) // app fully above fold
+        ) appDiv.querySelector('#app-chatbar').focus()
         appShow.submitSrc = 'none'
 
         function handleEnter(event) {
