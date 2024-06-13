@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.11.12
+// @version             2024.6.12.2
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -674,7 +674,7 @@
         tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
                               + ( config.stickySidebar && !isStandbyMode && answerIsLoaded ? ssbStyles : '' )
 
-        // Update <pre> max-height in Sticky Sidebar mode based on RQ visibility (for getShowReply()'s RQ show + menu RQ toggle)
+        // Update <pre> max-height in Sticky Sidebar mode based on RQ visibility (for get.answer()'s RQ show + menu RQ toggle)
         const answerPre = document.querySelector('.ddgpt > pre'),
               relatedQueries = document.querySelector('.related-queries'),
               shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 245,
@@ -892,7 +892,7 @@
                     appAlert('waitingResponse')
                     msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
                     appShow.submitSrc = 'click' // for appShow() auto-focus
-                    getShowReply(msgChain)
+                    get.answer(msgChain)
                 })
 
             // Otherwise create/append answer bubble
@@ -1020,7 +1020,7 @@
             const prevReplyTrimmed = appDiv.querySelector('pre')?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
             msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
             msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
-            getShowReply(msgChain)
+            get.answer(msgChain)
 
             // Remove re-added reply section listeners
             const replyForm = appDiv.querySelector('form')
@@ -1062,7 +1062,59 @@
         }
     }
 
-    function handleRQevent(event) { // for attachment/removal in `getShowReply()` + `appShow().handleSubmit()`
+    function showRelatedQueries(queries) {
+        if (!showRelatedQueries.greenlit) { // wait for get.answer() to finish showing answer
+            showRelatedQueries.statusChecker = setInterval(() => {
+                if (get.answer.status == 'done') {
+                    showRelatedQueries.greenlit = true
+                    showRelatedQueries(queries)
+                    clearInterval(showRelatedQueries.statusChecker)
+            }}, 500, queries)
+        } else { // show queries from latest statusChecker call
+            showRelatedQueries.greenlit = false
+            if (queries && !appDiv.querySelector('.related-queries')) {
+
+                // Create/classify/append parent div
+                const relatedQueriesDiv = document.createElement('div') ; relatedQueriesDiv.className = 'related-queries'
+                appDiv.append(relatedQueriesDiv)
+
+                // Fill each child div, add attributes + icon + listener
+                queries.forEach((query, idx) => {
+                    const relatedQueryDiv = document.createElement('div'),
+                          relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                          relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
+
+                    // Add attributes
+                    relatedQueryDiv.title = msgs.tooltip_sendRelatedQuery || 'Send related query'
+                    relatedQueryDiv.classList.add('related-query', 'fade-in', 'no-user-select')
+                    relatedQueryDiv.setAttribute('tabindex', 0)
+                    relatedQueryDiv.textContent = query
+
+                    // Create icon
+                    for (const [attr, value] of [
+                        ['viewBox', '0 0 24 24'], ['width', 18], ['height', 18], ['fill', 'currentColor']
+                    ]) relatedQuerySVG.setAttribute(attr, value)
+                    relatedQuerySVGpath.setAttribute('d',
+                        'M16 10H6.83L9 7.83l1.41-1.41L9 5l-6 6 6 6 1.41-1.41L9 14.17 6.83 12H16c1.65 0 3 1.35 3 3v4h2v-4c0-2.76-2.24-5-5-5z')
+                    relatedQuerySVG.style.transform = 'rotate(180deg)' // flip arrow upside down
+
+                    // Assemble/insert elems
+                    relatedQuerySVG.append(relatedQuerySVGpath) ; relatedQueryDiv.prepend(relatedQuerySVG)
+                    relatedQueriesDiv.append(relatedQueryDiv)
+
+                    // Add fade + listeners
+                    setTimeout(() => {
+                        relatedQueryDiv.classList.add('active')
+                        for (const event of ['click', 'keydown']) relatedQueryDiv.addEventListener(event, handleRQevent)
+                    }, idx * 100)
+                })
+
+                updateTweaksStyle() // to shorten <pre> max-height
+            }
+        }
+    }
+
+    function handleRQevent(event) { // for attachment/removal in `get.answer()` + `appShow().handleSubmit()`
         const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
         if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
             event.preventDefault() // prevent scroll on space taps
@@ -1172,34 +1224,31 @@
 
     const api = {
 
-        pick: function() {
-            let chosenAPI
-            if (config.proxyAPIenabled) { // randomize proxy API
-                const untriedAPIs = Object.keys(apis).filter(api =>
-                       api != 'OpenAI' // since Proxy Mode
-                    && !getShowReply.triedAPIs.some(entry => Object.prototype.hasOwnProperty.call(entry, api)) // exclude tried APIs
-                    && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if config.streamingDisabled
-                chosenAPI = untriedAPIs[ // pick random array entry
-                    Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
-                if (!chosenAPI) { consoleErr('No proxy APIs left untried') ; return null }
-            } else chosenAPI = 'OpenAI'
+        pick: function(caller) {
+            const logPrefix = `get.${caller.name}() » `
+            const untriedAPIs = Object.keys(apis).filter(api =>
+                   api != ( caller == get.answer ? 'OpenAI' : '' ) // exclude OpenAI for get.answer() since Proxy Mode
+                && !caller.triedAPIs.some(entry => Object.prototype.hasOwnProperty.call(entry, api)) // exclude tried APIs
+                && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if config.streamingDisabled
+            const chosenAPI = untriedAPIs[ // pick random array entry
+                Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
+            if (!chosenAPI) { consoleErr('No proxy APIs left untried') ; return null }
 
             // Log chosen API endpoint
-            let logPrefix = 'getShowReply() » '
-            try { logPrefix = api.pick.arguments.callee.caller.name + '() » ' } catch (err) {}
             consoleInfo(logPrefix + 'Endpoint used: ' + apis[chosenAPI].endpoint)
             return chosenAPI
         },
 
-        tryNew: function(triedAPI, reason = 'err') {
+        tryNew: function(caller, triedAPI, reason = 'err') {
             consoleErr(`Error using ${apis[triedAPI].endpoint} due to ${reason}`)
-            if (getShowReply.attemptCnt < Object.keys(apis).length -1) {
+            if (caller.attemptCnt < Object.keys(apis).length -1) {
                 consoleInfo('Trying another endpoint...')
-                getShowReply.triedAPIs.push({ [triedAPI]: reason }) ; getShowReply.attemptCnt++
-                getShowReply(msgChain)
+                caller.triedAPIs.push({ [triedAPI]: reason }) ; caller.attemptCnt++
+                caller(caller == get.answer ? msgChain : stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                    .then(result => { if (caller == get.relatedQueries) showRelatedQueries(result) ; else return })
             } else {
                 consoleInfo('No remaining untried endpoints')
-                appAlert('proxyNotWorking', 'suggestOpenAI')
+                if (caller == get.answer) appAlert('proxyNotWorking', 'suggestOpenAI')
             }
         },
 
@@ -1239,154 +1288,135 @@
 
     // Define GET functions
 
-    async function getShowReply(msgChain) {
+    const get = {
 
-        // Init API attempt props
-        getShowReply.status = 'waiting'
-        if (!getShowReply.triedAPIs) getShowReply.triedAPIs = []
-        if (!getShowReply.attemptCnt) getShowReply.attemptCnt = 1
+        answer: async function(msgChain) {
 
-        // Pick API
-        getShowReply.api = api.pick()
-        if (!getShowReply.api) { // no more proxy APIs left untried
-            appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+            // Init API attempt props
+            get.answer.status = 'waiting'
+            if (!get.answer.triedAPIs) get.answer.triedAPIs = []
+            if (!get.answer.attemptCnt) get.answer.attemptCnt = 1
 
-        if (!config.proxyAPIenabled) // init OpenAI key
-            config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
-        else setTimeout(() => { // try diff API after 6-9s of no response
-            if (config.proxyAPIenabled && getShowReply.status != 'done' && !getShowReply.sender)
-                api.tryNew(getShowReply.api, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
+            // Pick API
+            get.answer.api = config.proxyAPIenabled ? api.pick(get.answer) : 'OpenAI'
+            if (!get.answer.api) { // no more proxy APIs left untried
+                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
 
-        // Get/show answer from ChatGPT
-        GM.xmlHttpRequest({
-            method: apis[getShowReply.api].method, url: apis[getShowReply.api].endpoint,
-            responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
-            headers: api.createHeaders(getShowReply.api), data: api.createPayload(getShowReply.api, msgChain),
-            onload: resp => processText(getShowReply.api, resp),
-            onloadstart: resp => processStream(getShowReply.api, resp),
-            onerror: err => { consoleErr(err.message)
-                if (!config.proxyAPIenabled) appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
-                else if (getShowReply.status != 'done') api.tryNew(getShowReply.api)
-            }
-        })
+            if (!config.proxyAPIenabled) // init OpenAI key
+                config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
+            else setTimeout(() => { // try diff API after 6-9s of no response
+                if (config.proxyAPIenabled && get.answer.status != 'done' && !get.answer.sender)
+                    api.tryNew(get.answer, get.answer.api, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
 
-        // Get/show related queries
-        if (!config.rqDisabled) {
-            const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1]
-            getRelatedQueries(lastQuery.content).then(relatedQueries => {
-                if (relatedQueries && appDiv.querySelector('textarea')) {
-
-                    // Create/classify/append parent div
-                    const relatedQueriesDiv = document.createElement('div')
-                    relatedQueriesDiv.className = 'related-queries'
-                    appDiv.append(relatedQueriesDiv)
-
-                    // Fill each child div, add attributes + icon + listener
-                    relatedQueries.forEach((relatedQuery, idx) => {
-                        const relatedQueryDiv = document.createElement('div'),
-                              relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                              relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
-
-                        // Add attributes
-                        relatedQueryDiv.title = msgs.tooltip_sendRelatedQuery || 'Send related query'
-                        relatedQueryDiv.classList.add('related-query', 'fade-in', 'no-user-select')
-                        relatedQueryDiv.setAttribute('tabindex', 0)
-                        relatedQueryDiv.textContent = relatedQuery
-
-                        // Create icon
-                        for (const [attr, value] of [
-                            ['viewBox', '0 0 24 24'], ['width', 18], ['height', 18], ['fill', 'currentColor']
-                        ]) relatedQuerySVG.setAttribute(attr, value)
-                        relatedQuerySVGpath.setAttribute('d',
-                            'M16 10H6.83L9 7.83l1.41-1.41L9 5l-6 6 6 6 1.41-1.41L9 14.17 6.83 12H16c1.65 0 3 1.35 3 3v4h2v-4c0-2.76-2.24-5-5-5z')
-                        relatedQuerySVG.style.transform = 'rotate(180deg)' // flip arrow upside down
-
-                        // Assemble/insert elements
-                        relatedQuerySVG.append(relatedQuerySVGpath) ; relatedQueryDiv.prepend(relatedQuerySVG)
-                        relatedQueriesDiv.append(relatedQueryDiv)
-
-                        // Add fade + listeners
-                        setTimeout(() => {
-                            relatedQueryDiv.classList.add('active')
-                            for (const event of ['click', 'keydown']) relatedQueryDiv.addEventListener(event, handleRQevent)
-                        }, idx * 100)
-                    })
-
-                    updateTweaksStyle() // to shorten <pre> max-height
-        }})}
-    }
-
-    function fetchJSON(url, callback) { // for dynamic footer
-        GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
-            if (resp.status >= 200 && resp.status < 300) {
-                try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
-                catch (err) { callback(err, null) }
-            } else callback(new Error('Failed to load data: ' + resp.statusText), null)
-    }})}
-
-    function getRelatedQueries(query) {
-        getRelatedQueries.api = api.pick()
-        return new Promise((resolve, reject) => {
-            const rqPrompt = 'Show a numbered list of queries related to this one:\n\n' + query
-               + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
-               + ' For example, if the original query asked about someone\'s wife,'
-                   + ' a good related query could involve a different relative and using their name.'
-               + ' Another example, if the query asked about a game/movie/show,'
-                   + ' good related queries could involve pertinent characters.'
-               + ' Another example, if the original query asked how to learn JavaScript,'
-                   + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
-               + ' But the key is variety. Do not be repetitive.'
-                   + ' You must entice user to want to ask one of your related queries.'
-               + ` Reply in ${config.replyLanguage}`
+            // Get/show answer from ChatGPT
             GM.xmlHttpRequest({
-                method: apis[getRelatedQueries.api].method, url: apis[getRelatedQueries.api].endpoint,
-                responseType: 'text', headers: api.createHeaders(getRelatedQueries.api),
-                data: api.createPayload(getRelatedQueries.api, [{ role: 'user', content: rqPrompt }]),
-                onload: event => {
-                    let str_relatedQueries = ''
-                    if (getRelatedQueries.api == 'OpenAI') {
-                        try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
-                        catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (getRelatedQueries.api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) {
-                        try {
-                            const text = event.responseText, chunkSize = 1024
-                            let currentIdx = 0
-                            while (currentIdx < text.length) {
-                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
-                                currentIdx += chunkSize ; str_relatedQueries += chunk
-                            }
-                        } catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (getRelatedQueries.api == 'GPTforLove') {
-                        try {
-                            let chunks = event.responseText.trim().split('\n')
-                            str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
-                        } catch (err) { consoleErr(err) ; reject(err) }
-                    } else if (getRelatedQueries.api == 'MixerBox AI') {
-                        try {
-                            const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
-                                .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
-                            str_relatedQueries = extractedData.join('')
-                        } catch (err) { consoleErr(err) ; reject(err) }
-                    }
-                    const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
-                        .slice(0, 5) // limit to 1st 5
-                        .map(match => match.replace(/^\d+\.\s*/, '')) // strip numbering
-                    resolve(arr_relatedQueries)
-                },
-                onerror: err => { consoleErr(err) ; reject(err) }
+                method: apis[get.answer.api].method, url: apis[get.answer.api].endpoint,
+                responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
+                headers: api.createHeaders(get.answer.api), data: api.createPayload(get.answer.api, msgChain),
+                onload: resp => processText(get.answer.api, resp),
+                onloadstart: resp => processStream(get.answer.api, resp),
+                onerror: err => { consoleErr(err.message)
+                    if (!config.proxyAPIenabled) appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
+                    else if (get.answer.status != 'done') api.tryNew(get.answer, get.answer.api)
+                }
             })
-    })}
+
+            // Get/show related queries if enabled on 1st get.answer()
+            if (!config.rqDisabled && get.answer.attemptCnt == 1) {
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
+            }
+        },
+
+        json: function(url, callback) { // for dynamic footer
+            GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
+                if (resp.status >= 200 && resp.status < 300) {
+                    try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
+                    catch (err) { callback(err, null) }
+                } else callback(new Error('Failed to load data: ' + resp.statusText), null)
+            }})
+        },
+
+        relatedQueries: function(query) {
+
+            // Init API attempt props
+            get.relatedQueries.status = 'waiting'
+            if (!get.relatedQueries.triedAPIs) get.relatedQueries.triedAPIs = []
+            if (!get.relatedQueries.attemptCnt) get.relatedQueries.attemptCnt = 1
+
+            // Pick API
+            get.relatedQueries.api = api.pick(get.relatedQueries)
+            if (!get.relatedQueries.api) return // no more proxy APIs left untried
+
+            setTimeout(() => { // try diff API after 6s of no response
+                if (get.relatedQueries.status != 'done')
+                    api.tryNew(get.relatedQueries, get.relatedQueries.api, 'timeout') }, 6000)
+
+            return new Promise((resolve, reject) => {
+                const rqPrompt = 'Show a numbered list of queries related to this one:\n\n' + query
+                   + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
+                   + ' For example, if the original query asked about someone\'s wife,'
+                       + ' a good related query could involve a different relative and using their name.'
+                   + ' Another example, if the query asked about a game/movie/show,'
+                       + ' good related queries could involve pertinent characters.'
+                   + ' Another example, if the original query asked how to learn JavaScript,'
+                       + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
+                   + ' But the key is variety. Do not be repetitive.'
+                       + ' You must entice user to want to ask one of your related queries.'
+                   + ` Reply in ${config.replyLanguage}`
+                GM.xmlHttpRequest({
+                    method: apis[get.relatedQueries.api].method, url: apis[get.relatedQueries.api].endpoint,
+                    responseType: 'text', headers: api.createHeaders(get.relatedQueries.api),
+                    data: api.createPayload(get.relatedQueries.api, [{ role: 'user', content: rqPrompt }]),
+                    onload: event => {
+                        let str_relatedQueries = ''
+                        if (get.relatedQueries.api == 'OpenAI') {
+                            try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
+                            catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.relatedQueries.api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) {
+                            try {
+                                const text = event.responseText, chunkSize = 1024
+                                let currentIdx = 0
+                                while (currentIdx < text.length) {
+                                    const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                    currentIdx += chunkSize ; str_relatedQueries += chunk
+                                }
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.relatedQueries.api == 'GPTforLove') {
+                            try {
+                                let chunks = event.responseText.trim().split('\n')
+                                str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.relatedQueries.api == 'MixerBox AI') {
+                            try {
+                                const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
+                                    .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                    .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                                str_relatedQueries = extractedData.join('')
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        }
+                        const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
+                            .slice(0, 5) // limit to 1st 5
+                            .map(match => match.replace(/^\d+\.\s*/, '')) // strip numbering
+                        get.relatedQueries.status = 'done'
+                        get.relatedQueries.attemptCnt = null ; api.clearTimedOut(get.relatedQueries.triedAPIs)
+                        resolve(arr_relatedQueries)
+                    },
+                    onerror: err => { consoleErr(err) ; reject(err) }
+            })})
+        }
+    } 
 
     // Define PROCESS functions
 
     function processText(activeAPI, resp) {
-        if (!config.streamingDisabled && config.proxyAPIenabled || getShowReply.status == 'done') return
+        if (!config.streamingDisabled && config.proxyAPIenabled || get.answer.status == 'done') return
         if (resp.status != 200) {
             consoleErr('Response status', resp.status)
             consoleErr('Response text', resp.responseText)
-            if (config.proxyAPIenabled && getShowReply.status != 'done')
-                api.tryNew(activeAPI)
+            if (config.proxyAPIenabled && get.answer.status != 'done')
+                api.tryNew(get.answer, activeAPI)
             else if (resp.status == 401 && !config.proxyAPIenabled) {
                 GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
             else if (resp.status == 403)
@@ -1416,13 +1446,13 @@
                         currentIdx += chunkSize ; answer += chunk
                     }
                     appShow(answer)
-                    getShowReply.status = 'done' ; api.clearTimedOut(getShowReply.triedAPIs) ; getShowReply.attemptCnt = 0
+                    get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed, err)
-                    if (getShowReply.status != 'done') api.tryNew(activeAPI)
+                    if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; if (getShowReply.status != 'done') api.tryNew(api) }
+            } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
         } else if (activeAPI == 'GPTforLove') {
             if (resp.responseText && !resp.responseText.includes('Fail')) {
                 try {
@@ -1430,13 +1460,13 @@
                         lastObj = JSON.parse(chunks[chunks.length - 1])
                     if (lastObj.id) apiIDs.gptForLove.parentID = lastObj.id
                     appShow(lastObj.text)
-                    getShowReply.status = 'done' ; api.clearTimedOut(getShowReply.triedAPIs) ; getShowReply.attemptCnt = 0
+                    get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed, err)
-                    if (getShowReply.status != 'done') api.tryNew(api)
+                    if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; if (getShowReply.status != 'done') api.tryNew(api) }
+            } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
         } else if (activeAPI == 'MixerBox AI') {
             if (resp.responseText) {
                 try {
@@ -1444,13 +1474,13 @@
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
                     appShow(extractedData.join(''))
-                    getShowReply.status = 'done' ; api.clearTimedOut(getShowReply.triedAPIs) ; getShowReply.attemptCnt = 0
+                    get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
                 } catch (err) { // use different endpoint or suggest OpenAI
                     consoleInfo('Response: ' + resp.responseText)
                     consoleErr(appAlerts.parseFailed, err)
-                    if (getShowReply.status != 'done') api.tryNew(activeAPI)
+                    if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
                 }
-            } else { consoleInfo('Response: ' + resp.responseText) ; if (getShowReply.status != 'done') api.tryNew(activeAPI) }
+            } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
         }
     }
 
@@ -1460,8 +1490,8 @@
         reader.read().then(processStreamText).catch(err => consoleErr('Error processing stream', err.message))
         function processStreamText({ done, value }) {
             if (done) {
-                getShowReply.status = 'done' ; getShowReply.sender = null
-                api.clearTimedOut(getShowReply.triedAPIs) ; getShowReply.attemptCnt = 0
+                get.answer.status = 'done' ; get.answer.sender = null
+                api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
                 return
             }
             let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -1474,7 +1504,7 @@
             accumulatedChunks = apis[activeAPI].accumulatesText ? chunk : accumulatedChunks + chunk
             if (/['"]?status['"]?:\s*['"]Fail['"]/.test(accumulatedChunks)) { // GPTforLove fail
                 consoleErr('Response', accumulatedChunks)
-                if (getShowReply.status != 'done' && !getShowReply.sender) api.tryNew(activeAPI)
+                if (get.answer.status != 'done' && !get.answer.sender) api.tryNew(get.answer, activeAPI)
                 return
             }
             try { // to show stream text
@@ -1485,13 +1515,13 @@
                     if (nowResult.id) apiIDs.gptForLove.parentID = nowResult.id // for contextual replies
                     textToShow = nowResult.text
                 } else textToShow = accumulatedChunks
-                if (textToShow && getShowReply.status != 'done') { // text ready, app waiting or sending
-                    if (!getShowReply.sender) getShowReply.sender = activeAPI // app is waiting, become sender
-                    if (getShowReply.sender == activeAPI) appShow(textToShow)
+                if (textToShow && get.answer.status != 'done') { // text ready, app waiting or sending
+                    if (!get.answer.sender) get.answer.sender = activeAPI // app is waiting, become sender
+                    if (get.answer.sender == activeAPI) appShow(textToShow)
                 }
             } catch (err) { consoleErr('Error showing stream', err.message) }
             return reader.read().then(({ done, value }) => {
-                if (getShowReply.sender == activeAPI) // am designated sender, recurse
+                if (get.answer.sender == activeAPI) // am designated sender, recurse
                     processStreamText({ done, value })
             }).catch(err => consoleErr('Error reading stream', err.message))
         }
@@ -1656,7 +1686,7 @@
     if (!isMobile) { hostContainer.style.maxWidth = '' ; hostContainer.style.minWidth = '448px' }
 
     // Check for active TEXT CAMPAIGNS to replace footer CTA
-    fetchJSON('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
+    get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
         (err, advertisersData) => { if (err) return
 
             // Init vars
@@ -1677,7 +1707,7 @@
             if (chosenAdvertiser) {
                 const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
                                    + chosenAdvertiser + '/text/campaigns.json'
-                fetchJSON(campaignsURL, (err, campaignsData) => { if (err) return
+                get.json(campaignsURL, (err, campaignsData) => { if (err) return
 
                     // Select random, active campaign
                     for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
@@ -1763,7 +1793,7 @@
     else {
         appAlert('waitingResponse')
         msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
-        getShowReply(msgChain)
+        get.answer(msgChain)
     }
 
     // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode if auto-scheme mode
