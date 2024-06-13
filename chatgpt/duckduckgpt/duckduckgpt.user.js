@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.12.4
+// @version             2024.6.12.10
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -208,6 +208,37 @@
 
 (async () => {
 
+    // Init CONFIG
+    const config = {
+        appName: 'DuckDuckGPT', appSymbol: '🤖', keyPrefix: 'duckDuckGPT',
+        appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
+        greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt' }
+    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+    config.supportURL = config.gitHubURL + '/issues/new'
+    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@26bacad/'
+    config.userLanguage = chatgpt.getUserLanguage()
+    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
+    loadSetting('autoget', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+                'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
+    if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
+
+    // Init API props
+    const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
+    const apis = {
+        'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
+            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true, accumulatesText: false },
+        'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
+            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true, accumulatesText: true },
+        'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true, accumulatesText: false },
+        'OpenAI': { expectedOrigin: 'https://chatgpt.com',
+            endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
+    }
+    const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
+
     // Define SCRIPT functions
 
     function loadSetting(...keys) { keys.forEach(key => config[key] = GM_getValue(config.keyPrefix + '_' + key, false)) }
@@ -255,12 +286,12 @@
         }))
 
         // Add command to toggle auto-get mode
-        const agmLabel = state.symbol[+!config.autoGetDisabled] + ' '
+        const agmLabel = state.symbol[+config.autoget] + ' '
                        + ( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' '
-                       + state.separator + state.word[+!config.autoGetDisabled]
+                       + state.separator + state.word[+config.autoget]
         menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
-            saveSetting('autoGetDisabled', !config.autoGetDisabled)
-            notify(( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' ' + state.word[+!config.autoGetDisabled])
+            saveSetting('autoget', !config.autoget)
+            notify(( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' ' + state.word[+config.autoget])
             refreshMenu()
         }))
 
@@ -287,8 +318,8 @@
                 relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
             if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
                 const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
-                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
+                get.related(lastQuery).then(queries => show.related(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.related, get.related.api) })
             }
             updateTweaksStyle() // toggle <pre> max-height
             notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + state.word[+!config.rqDisabled])
@@ -674,11 +705,11 @@
         const isStandbyMode = document.querySelector('.standby-btn'),
               answerIsLoaded = document.querySelector('.corner-btn')
 
-        // Update tweaks style based on settings (for tweaks init + appShow() + toggleSidebar())
+        // Update tweaks style based on settings (for tweaks init + show.reply() + toggleSidebar())
         tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
                               + ( config.stickySidebar && !isStandbyMode && answerIsLoaded ? ssbStyles : '' )
 
-        // Update <pre> max-height in Sticky Sidebar mode based on RQ visibility (for get.answer()'s RQ show + menu RQ toggle)
+        // Update <pre> max-height in Sticky Sidebar mode based on RQ visibility (for get.reply()'s RQ show + menu RQ toggle)
         const answerPre = document.querySelector('.ddgpt > pre'),
               relatedQueries = document.querySelector('.related-queries'),
               shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 245,
@@ -754,371 +785,7 @@
         tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
     }
 
-    function appShow(answer) {
-
-        // Build answer interface up to reply section if missing
-        if (!appDiv.querySelector('pre')) {
-            while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
-
-            // Create/append app title anchor
-            const appTitleAnchor = createAnchor(config.appURL, (() => {
-                if (appLogoImg.loaded) { // size/pos/return app logo img
-                    appLogoImg.width = 181 ; appLogoImg.style.margin = '-7px 0'
-                    return appLogoImg
-                } else { // create/fill/return app name span
-                    const appNameSpan = document.createElement('span')
-                    appNameSpan.innerText = '🤖 ' + config.appName
-                    return appNameSpan
-                }
-            })())
-            appTitleAnchor.classList.add('app-name', 'no-user-select')
-            appDiv.append(appTitleAnchor)
-
-            // Create/append 'by KudoAI'
-            const kudoAIspan = document.createElement('span')
-            kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
-            const kudoAIlink = createAnchor('https://www.kudoai.com', 'KudoAI')
-            kudoAIspan.append(kudoAIlink) ; appDiv.append(kudoAIspan)
-
-            // Create/append about button
-            const aboutSpan = document.createElement('span'),
-                  aboutSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                  aboutSVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
-            aboutSpan.id = 'about-btn' // for toggleTooltip()
-            aboutSpan.className = 'corner-btn'
-            const aboutSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
-            aboutSVGattrs.forEach(([attr, value]) => aboutSVG.setAttribute(attr, value))            
-            aboutSVGpath.setAttribute('d',
-                'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z')
-            aboutSVGpath.setAttribute('stroke', 'none')
-            aboutSVG.append(aboutSVGpath) ; aboutSpan.append(aboutSVG) ; appDiv.append(aboutSpan)
-
-            // Create/append speak button
-            if (answer != 'standby') {
-                var speakSpan = document.createElement('span'),
-                    speakSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-                speakSpan.id = 'speak-btn' // for toggleTooltip()
-                speakSpan.className = 'corner-btn' ; speakSpan.style.margin = '-0.117em 8px 0 0'
-                const speakSVGattrs = [['width', 22], ['height', 22], ['viewBox', '0 0 32 32']]
-                speakSVGattrs.forEach(([attr, value]) => speakSVG.setAttributeNS(null, attr, value))
-                const speakSVGpaths = [
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
-                        d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
-                        d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
-                    createSVGpath({ stroke: 'none', fill: '',
-                        d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
-                ]
-                speakSVGpaths.forEach(path => speakSVG.append(path))
-                speakSpan.append(speakSVG) ; appDiv.append(speakSpan)
-            }
-
-            if (!isCentered && !isMobile) {
-
-                // Create/append Sticky Sidebar button
-                var ssbSpan = document.createElement('span'),
-                    ssbSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-                ssbSpan.id = 'ssb-btn' // for updateSSBsvg() + toggleTooltip()
-                ssbSpan.className = 'corner-btn' ; ssbSpan.style.margin = '0.09rem 8px 0 0'
-                ssbSpan.append(ssbSVG) ; appDiv.append(ssbSpan) ; updateSSBsvg()
-
-                // Create/append Wider Sidebar button
-                var wsbSpan = document.createElement('span'),
-                    wsbSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-                wsbSpan.id = 'wsb-btn' // for updateSSBsvg() + toggleTooltip()
-                wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = '0.05rem 12px 0 0'
-                wsbSpan.append(wsbSVG) ; appDiv.append(wsbSpan) ; updateWSBsvg()
-            }
-
-            // Add tooltips
-            if (!isMobile) appDiv.append(tooltipDiv)
-
-            // Add corner button listeners
-            aboutSVG.addEventListener('click', launchAboutModal)
-            speakSVG?.addEventListener('click', () => {
-                const dialectMap = [
-                    { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
-                    { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
-                    { code: 'cs', regex: /^(cze(ch)?|[cč]e[sš].*|cs)$/i, rate: 1.4 },
-                    { code: 'da', regex: /^dan?(ish|sk)?$/i, rate: 1.3 },
-                    { code: 'de', regex: /^(german|deu?(tsch)?)$/i, rate: 1.5 },
-                    { code: 'es', regex: /^(spa(nish)?|espa.*|es(-\w\w)?)$/i, rate: 1.5 },
-                    { code: 'fi', regex: /^(fin?(nish)?|suom.*)$/i, rate: 1.4 },
-                    { code: 'fr', regex: /^fr/i, rate: 1.2 },
-                    { code: 'hu', regex: /^(hun?(garian)?|magyar)$/i, rate: 1.5 },
-                    { code: 'it', regex: /^ita?(lian[ao]?)?$/i, rate: 1.4 },
-                    { code: 'ja', regex: /^(ja?pa?n(ese)?|日本語|ja)$/i, rate: 1.5 },
-                    { code: 'nl', regex: /^(dut(ch)?|flemish|nederlandse?|vlaamse?|nld?)$/i, rate: 1.3 },
-                    { code: 'pl', regex: /^po?l(ish|ski)?$/i, rate: 1.4 },
-                    { code: 'pt', regex: /^(por(tugu[eê]se?)?|pt(-\w\w)?)$/i, rate: 1.5 },
-                    { code: 'ru', regex: /^(rus?(sian)?|русский)$/i, rate: 1.3 },
-                    { code: 'sv', regex: /^(swe?(dish)?|sv(enska)?)$/i, rate: 1.4 },
-                    { code: 'tr', regex: /^t[uü]?r(k.*)?$/i, rate: 1.6 },
-                    { code: 'vi', regex: /^vi[eệ]?t?(namese)?$/i, rate: 1.5 },
-                    { code: 'zh-CHS', regex: /^(chi(nese)?|zh|中[国國])/i, rate: 2 }
-                ]
-                const replyDialect = dialectMap.find(entry => entry.regex.test(config.replyLanguage)) || dialectMap[0],
-                      payload = { text: appDiv.querySelector('pre').textContent, curTime: Date.now(),
-                                  spokenDialect: replyDialect.code, rate: replyDialect.rate.toString() },
-                      key = CryptoJS.enc.Utf8.parse('76350b1840ff9832eb6244ac6d444366'),
-                      iv = CryptoJS.enc.Utf8.parse(atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
-                const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
-                    iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
-                GM.xmlHttpRequest({ // audio from Sogou TTS
-                    url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
-                        + encodeURIComponent(securePayload),
-                    method: 'GET', responseType: 'arraybuffer',
-                    onload: async resp => {
-                        if (resp.status != 200) chatgpt.speak(answer, { voice: 2, pitch: 1, speed: 1.5 })
-                        else {
-                            const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-                            audioContext.decodeAudioData(resp.response, buffer => {
-                                const audioSrc = audioContext.createBufferSource()
-                                audioSrc.buffer = buffer
-                                audioSrc.connect(audioContext.destination) // connect source to speakers
-                                audioSrc.start(0) // play audio
-                    })}}
-                })
-            })
-            ssbSVG?.addEventListener('click', () => toggleSidebar('sticky'))
-            wsbSVG?.addEventListener('click', () => toggleSidebar('wider'))
-            if (!isMobile) // add hover listeners for tooltips
-                [aboutSpan, speakSpan, ssbSpan, wsbSpan].forEach(span => { if (span)
-                    ['mouseover', 'mouseout'].forEach(event => span.addEventListener(event, toggleTooltip)) })
-
-            // Show standby state if prefix/suffix mode on
-            if (answer == 'standby') {
-                const standbyBtn = document.createElement('button')
-                standbyBtn.className = 'standby-btn'
-                standbyBtn.textContent = msgs.buttonLabel_sendQueryToGPT || 'Send search query to GPT'
-                appDiv.append(standbyBtn)
-                standbyBtn.addEventListener('click', () => {
-                    appAlert('waitingResponse')
-                    msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
-                    appShow.submitSrc = 'click' // for appShow() auto-focus
-                    get.answer(msgChain)
-                })
-
-            // Otherwise create/append answer bubble
-            } else {            
-                const balloonTipSpan = document.createElement('span')
-                var answerPre = document.createElement('pre')
-                balloonTipSpan.className = 'balloon-tip'
-                balloonTipSpan.style.cssText = ( // pos it
-                    `top: ${ isFirefox ? '0.55em' : '4px' } ;`
-                  + `right: ${ isFirefox ? ( 16.87 - ( appLogoImg.loaded ? 0 : 0.36 ))
-                                         : ( 8.38  - ( appLogoImg.loaded ? 0 : 0.15 ))}em`
-                )
-                appDiv.append(balloonTipSpan) ; appDiv.append(answerPre)
-            }
-        }
-
-        // Build reply section if missing
-        if (!appDiv.querySelector('#app-chatbar')) {
-
-            // Init/clear reply section content/classes
-            const replySection = appDiv.querySelector('section') || document.createElement('section')
-            while (replySection.firstChild) replySection.removeChild(replySection.firstChild)
-            replySection.classList.remove('loading', 'no-user-select')
-
-            // Create/append section elems
-            const replyForm = document.createElement('form'),
-                  continueChatDiv = document.createElement('div'),
-                  chatTextarea = document.createElement('textarea')
-            continueChatDiv.className = 'continue-chat'
-            chatTextarea.id = 'app-chatbar' ; chatTextarea.rows = '1'
-            chatTextarea.placeholder = ( answer == 'standby' ? msgs.placeholder_askSomethingElse || 'Ask something else'
-                                                             : msgs.tooltip_sendReply || 'Send reply' ) + '...'
-            continueChatDiv.append(chatTextarea)
-            replyForm.append(continueChatDiv) ; replySection.append(replyForm)
-            appDiv.append(replySection)
-
-            // Create/append send button
-            const sendButton = document.createElement('button'),
-                  sendSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                  sendSVGpath = createSVGpath({ stroke: '', 'stroke-width': '2', linecap: 'round',
-                      'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
-            sendButton.id = 'send-btn'
-            sendButton.style.right = `${ isFirefox ? 8 : 6 }px`
-            sendButton.style.bottom = `${ isFirefox ? 49 : 53 }px`
-            for (const [attr, value] of [
-                ['viewBox', '4 2 16 16'], ['fill', 'none'], ['width', 16], ['height', 16],
-                ['stroke', 'currentColor'], ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']
-            ]) sendSVG.setAttribute(attr, value)
-            sendSVG.append(sendSVGpath) ; sendButton.append(sendSVG) ; continueChatDiv.append(sendButton)
-
-            // Add reply section listeners
-            replyForm.addEventListener('keydown', handleEnter)
-            replyForm.addEventListener('submit', handleSubmit)
-            chatTextarea.addEventListener('input', autosizeChatbar)
-            if (!isMobile) // add hover listeners for tooltips
-                ['mouseover', 'mouseout'].forEach(event => sendButton.addEventListener(event, toggleTooltip))
-
-            // Scroll to top on mobile if user interacted
-            if (isMobile && appShow.submitSrc) {
-                document.body.scrollTop = 0 // Safari
-                document.documentElement.scrollTop = 0 // Chromium/FF/IE
-            }
-        }
-
-        // Render/show answer if query sent
-        if (answer != 'standby') {
-            const answerPre = appDiv.querySelector('pre')
-            answerPre.innerHTML = marked.parse(answer) // render markdown
-            hljs.highlightAll() // highlight code
-
-            // Typeset math
-            answerPre.querySelectorAll('code').forEach(codeBlock => { // add linebreaks after semicolons
-                codeBlock.innerHTML = codeBlock.innerHTML.replace(/;\s*/g, ';<br>') })
-            const elemsToRenderMathIn = [answerPre, ...answerPre.querySelectorAll('*')]
-            elemsToRenderMathIn.forEach(elem => {
-                renderMathInElement(elem, { // typeset math
-                    delimiters: [
-                        { left: '$$', right: '$$', display: true },
-                        { left: '$', right: '$', display: false },
-                        { left: '\\(', right: '\\)', display: false },
-                        { left: '\\[', right: '\\]', display: true },
-                        { left: '\\begin{equation}', right: '\\end{equation}', display: true },
-                        { left: '\\begin{align}', right: '\\end{align}', display: true },
-                        { left: '\\begin{alignat}', right: '\\end{alignat}', display: true },
-                        { left: '\\begin{gather}', right: '\\end{gather}', display: true },
-                        { left: '\\begin{CD}', right: '\\end{CD}', display: true },
-                        { left: '\\[', right: '\\]', display: true }
-                    ],
-                    throwOnError: false
-            })})
-
-            if (config.stickySidebar) updateTweaksStyle() // to reset answerPre height
-
-            // Auto-scroll if active
-            if (config.autoScroll && !isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
-                if (config.stickySidebar) answerPre.scrollTop = answerPre.scrollHeight
-                else window.scrollBy({ top: appDiv.querySelector('#app-chatbar').getBoundingClientRect().bottom - window.innerHeight +12 })
-            }
-        }
-
-        // Focus chatbar conditionally
-        if (!isMobile // exclude mobile devices to not auto-popup OSD keyboard
-            && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top ) // app fully above fold
-        ) appDiv.querySelector('#app-chatbar').focus()
-        appShow.submitSrc = 'none'
-
-        function handleEnter(event) {
-            if (event.key == 'Enter' || event.keyCode == 13) {
-                if (event.ctrlKey) { // add newline
-                    const chatTextarea = appDiv.querySelector('#app-chatbar'),
-                          caretPos = chatTextarea.selectionStart,
-                          textBefore = chatTextarea.value.substring(0, caretPos),
-                          textAfter = chatTextarea.value.substring(caretPos)
-                    chatTextarea.value = textBefore + '\n' + textAfter // add newline
-                    chatTextarea.selectionStart = chatTextarea.selectionEnd = caretPos + 1 // preserve ibeam pos
-                    autosizeChatbar()
-                } else if (!event.shiftKey) handleSubmit(event)
-        }}
-
-        function handleSubmit(event) {
-            event.preventDefault()
-            const chatTextarea = appDiv.querySelector('#app-chatbar')
-            if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-            msgChain = stripQueryAugments(msgChain)
-            const prevReplyTrimmed = appDiv.querySelector('pre')?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
-            msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
-            msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
-            get.answer(msgChain)
-
-            // Remove re-added reply section listeners
-            const replyForm = appDiv.querySelector('form')
-            replyForm.removeEventListener('keydown', handleEnter)
-            replyForm.removeEventListener('submit', handleSubmit)
-            chatTextarea.removeEventListener('input', autosizeChatbar)
-
-            // Remove related queries
-            try {
-                const relatedQueriesDiv = document.querySelector('.related-queries')
-                Array.from(relatedQueriesDiv.children).forEach(child => {
-                    ['click', 'keydown'].forEach(event => child.removeEventListener(event, handleRQevent)) })
-                relatedQueriesDiv.remove()
-            } catch (err) {}
-
-            // Remove 'Send reply' tooltip from send btn clicks
-            if (!isMobile) tooltipDiv.style.opacity = 0
-
-            // Show loading status
-            const replySection = appDiv.querySelector('section')
-            replySection.classList.add('loading', 'no-user-select')
-            replySection.innerText = appAlerts.waitingResponse
-        }
-
-        // Autosize chatbar function
-        const chatTextarea = appDiv.querySelector('#app-chatbar'),
-              { paddingTop, paddingBottom } = getComputedStyle(chatTextarea),
-              vOffset = parseInt(paddingTop, 10) + parseInt(paddingBottom, 10)
-        let prevLength = chatTextarea.value.length
-        function autosizeChatbar() {
-            const newLength = chatTextarea.value.length
-            if (newLength < prevLength) { // if deleting txt
-                chatTextarea.style.height = 'auto' // ...auto-fit height
-                if (parseInt(getComputedStyle(chatTextarea).height, 10) < 35) // if down to one line
-                    chatTextarea.style.height = '16px' // ...reset to original height
-            }
-            chatTextarea.style.height = chatTextarea.scrollHeight - vOffset + 'px'
-            prevLength = newLength
-        }
-    }
-
-    function showRelatedQueries(queries) {
-        if (!showRelatedQueries.greenlit) { // wait for get.answer() to finish showing answer
-            showRelatedQueries.statusChecker = setInterval(() => {
-                if (get.answer.status != 'waiting') {
-                    showRelatedQueries.greenlit = true
-                    showRelatedQueries(queries)
-                    clearInterval(showRelatedQueries.statusChecker)
-            }}, 500, queries)
-        } else { // show queries from latest statusChecker call
-            showRelatedQueries.greenlit = false
-            if (queries && !appDiv.querySelector('.related-queries')) {
-
-                // Create/classify/append parent div
-                const relatedQueriesDiv = document.createElement('div') ; relatedQueriesDiv.className = 'related-queries'
-                appDiv.append(relatedQueriesDiv)
-
-                // Fill each child div, add attributes + icon + listener
-                queries.forEach((query, idx) => {
-                    const relatedQueryDiv = document.createElement('div'),
-                          relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                          relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
-
-                    // Add attributes
-                    relatedQueryDiv.title = msgs.tooltip_sendRelatedQuery || 'Send related query'
-                    relatedQueryDiv.classList.add('related-query', 'fade-in', 'no-user-select')
-                    relatedQueryDiv.setAttribute('tabindex', 0)
-                    relatedQueryDiv.textContent = query
-
-                    // Create icon
-                    for (const [attr, value] of [
-                        ['viewBox', '0 0 24 24'], ['width', 18], ['height', 18], ['fill', 'currentColor']
-                    ]) relatedQuerySVG.setAttribute(attr, value)
-                    relatedQuerySVGpath.setAttribute('d',
-                        'M16 10H6.83L9 7.83l1.41-1.41L9 5l-6 6 6 6 1.41-1.41L9 14.17 6.83 12H16c1.65 0 3 1.35 3 3v4h2v-4c0-2.76-2.24-5-5-5z')
-                    relatedQuerySVG.style.transform = 'rotate(180deg)' // flip arrow upside down
-
-                    // Assemble/insert elems
-                    relatedQuerySVG.append(relatedQuerySVGpath) ; relatedQueryDiv.prepend(relatedQuerySVG)
-                    relatedQueriesDiv.append(relatedQueryDiv)
-
-                    // Add fade + listeners
-                    setTimeout(() => {
-                        relatedQueryDiv.classList.add('active')
-                        for (const event of ['click', 'keydown']) relatedQueryDiv.addEventListener(event, handleRQevent)
-                    }, idx * 100)
-                })
-
-                updateTweaksStyle() // to shorten <pre> max-height
-            }
-        }
-    }
-
-    function handleRQevent(event) { // for attachment/removal in `get.answer()` + `appShow().handleSubmit()`
+    function handleRQevent(event) { // for attachment/removal in `get.reply()` + `show.reply().handleSubmit()`
         const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
         if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
             event.preventDefault() // prevent scroll on space taps
@@ -1133,7 +800,7 @@
             const chatbar = appDiv.querySelector('textarea')
             if (chatbar) {
                 chatbar.value = event.target.textContent
-                appShow.submitSrc = 'click' // for appShow() auto-focus
+                show.reply.submitSrc = 'click' // for show.reply() auto-focus
                 chatbar.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'Enter', bubbles: true, cancelable: true }))
             }
@@ -1231,7 +898,7 @@
         pick: function(caller) {
             const logPrefix = `get.${caller.name}() » `
             const untriedAPIs = Object.keys(apis).filter(api =>
-                   api != ( caller == get.answer ? 'OpenAI' : '' ) // exclude OpenAI for get.answer() since Proxy Mode
+                   api != ( caller == get.reply ? 'OpenAI' : '' ) // exclude OpenAI for get.reply() since Proxy Mode
                 && !caller.triedAPIs.some(entry => Object.prototype.hasOwnProperty.call(entry, api)) // exclude tried APIs
                 && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if config.streamingDisabled
             const chosenAPI = untriedAPIs[ // pick random array entry
@@ -1248,11 +915,11 @@
             if (caller.attemptCnt < Object.keys(apis).length -1) {
                 consoleInfo('Trying another endpoint...')
                 caller.triedAPIs.push({ [triedAPI]: reason }) ; caller.attemptCnt++
-                caller(caller == get.answer ? msgChain : stripQueryAugments(msgChain)[msgChain.length - 1].content)
-                    .then(result => { if (caller == get.relatedQueries) showRelatedQueries(result) ; else return })
+                caller(caller == get.reply ? msgChain : stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                    .then(result => { if (caller == get.related) show.related(result) ; else return })
             } else {
                 consoleInfo('No remaining untried endpoints')
-                if (caller == get.answer) appAlert('proxyNotWorking', 'suggestOpenAI')
+                if (caller == get.reply) appAlert('proxyNotWorking', 'suggestOpenAI')
             }
         },
 
@@ -1290,251 +957,6 @@
         }
     }
 
-    // Define GET functions
-
-    const get = {
-
-        answer: async function(msgChain) {
-
-            // Init API attempt props
-            get.answer.status = 'waiting'
-            if (!get.answer.triedAPIs) get.answer.triedAPIs = []
-            if (!get.answer.attemptCnt) get.answer.attemptCnt = 1
-
-            // Pick API
-            get.answer.api = config.proxyAPIenabled ? api.pick(get.answer) : 'OpenAI'
-            if (!get.answer.api) { // no more proxy APIs left untried
-                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
-
-            if (!config.proxyAPIenabled) // init OpenAI key
-                config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
-            else setTimeout(() => { // try diff API after 6-9s of no response
-                if (config.proxyAPIenabled && get.answer.status != 'done' && !get.answer.sender)
-                    api.tryNew(get.answer, get.answer.api, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
-
-            // Get/show answer from ChatGPT
-            GM.xmlHttpRequest({
-                method: apis[get.answer.api].method, url: apis[get.answer.api].endpoint,
-                responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
-                headers: api.createHeaders(get.answer.api), data: api.createPayload(get.answer.api, msgChain),
-                onload: resp => dataProcess.text(get.answer.api, resp),
-                onloadstart: resp => dataProcess.stream(get.answer.api, resp),
-                onerror: err => { consoleErr(err.message)
-                    if (!config.proxyAPIenabled) appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
-                    else if (get.answer.status != 'done') api.tryNew(get.answer, get.answer.api)
-                }
-            })
-
-            // Get/show related queries if enabled on 1st get.answer()
-            if (!config.rqDisabled && get.answer.attemptCnt == 1) {
-                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
-                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
-            }
-        },
-
-        json: function(url, callback) { // for dynamic footer
-            GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
-                if (resp.status >= 200 && resp.status < 300) {
-                    try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
-                    catch (err) { callback(err, null) }
-                } else callback(new Error('Failed to load data: ' + resp.statusText), null)
-            }})
-        },
-
-        relatedQueries: function(query) {
-
-            // Init API attempt props
-            get.relatedQueries.status = 'waiting'
-            if (!get.relatedQueries.triedAPIs) get.relatedQueries.triedAPIs = []
-            if (!get.relatedQueries.attemptCnt) get.relatedQueries.attemptCnt = 1
-
-            // Pick API
-            get.relatedQueries.api = api.pick(get.relatedQueries)
-            if (!get.relatedQueries.api) return // no more proxy APIs left untried
-
-            setTimeout(() => { // try diff API after 6s of no response
-                if (get.relatedQueries.status != 'done')
-                    api.tryNew(get.relatedQueries, get.relatedQueries.api, 'timeout') }, 6000)
-
-            return new Promise((resolve, reject) => {
-                const rqPrompt = 'Show a numbered list of queries related to this one:\n\n' + query
-                   + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
-                   + ' For example, if the original query asked about someone\'s wife,'
-                       + ' a good related query could involve a different relative and using their name.'
-                   + ' Another example, if the query asked about a game/movie/show,'
-                       + ' good related queries could involve pertinent characters.'
-                   + ' Another example, if the original query asked how to learn JavaScript,'
-                       + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
-                   + ' But the key is variety. Do not be repetitive.'
-                       + ' You must entice user to want to ask one of your related queries.'
-                   + ` Reply in ${config.replyLanguage}`
-                GM.xmlHttpRequest({
-                    method: apis[get.relatedQueries.api].method, url: apis[get.relatedQueries.api].endpoint,
-                    responseType: 'text', headers: api.createHeaders(get.relatedQueries.api),
-                    data: api.createPayload(get.relatedQueries.api, [{ role: 'user', content: rqPrompt }]),
-                    onload: event => {
-                        let str_relatedQueries = ''
-                        if (get.relatedQueries.api == 'OpenAI') {
-                            try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
-                            catch (err) { consoleErr(err) ; reject(err) }
-                        } else if (get.relatedQueries.api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) {
-                            try {
-                                const text = event.responseText, chunkSize = 1024
-                                let currentIdx = 0
-                                while (currentIdx < text.length) {
-                                    const chunk = text.substring(currentIdx, currentIdx + chunkSize)
-                                    currentIdx += chunkSize ; str_relatedQueries += chunk
-                                }
-                            } catch (err) { consoleErr(err) ; reject(err) }
-                        } else if (get.relatedQueries.api == 'GPTforLove') {
-                            try {
-                                let chunks = event.responseText.trim().split('\n')
-                                str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
-                            } catch (err) { consoleErr(err) ; reject(err) }
-                        } else if (get.relatedQueries.api == 'MixerBox AI') {
-                            try {
-                                const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
-                                    .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                    .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
-                                str_relatedQueries = extractedData.join('')
-                            } catch (err) { consoleErr(err) ; reject(err) }
-                        }
-                        const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
-                            .slice(0, 5) // limit to 1st 5
-                            .map(match => match.replace(/^\d+\.\s*/, '')) // strip numbering
-                        get.relatedQueries.status = 'done'
-                        get.relatedQueries.attemptCnt = null ; api.clearTimedOut(get.relatedQueries.triedAPIs)
-                        resolve(arr_relatedQueries)
-                    },
-                    onerror: err => { consoleErr(err) ; reject(err) }
-            })})
-        }
-    } 
-
-    // Define PROCESS functions
-
-    const dataProcess = {
-
-        text: function(activeAPI, resp) {
-            if (!config.streamingDisabled && config.proxyAPIenabled || get.answer.status == 'done')
-                return
-            if (resp.status != 200) {
-                consoleErr('Response status', resp.status)
-                consoleErr('Response text', resp.responseText)
-                if (config.proxyAPIenabled && get.answer.status != 'done')
-                    api.tryNew(get.answer, activeAPI)
-                else if (resp.status == 401 && !config.proxyAPIenabled) {
-                    GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
-                else if (resp.status == 403)
-                    appAlert(config.proxyAPIenabled ? ['proxyNotWorking', 'suggestOpenAI'] : 'checkCloudflare')
-                else if (resp.status == 429)
-                    appAlert(['tooManyRequests', config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy'])
-                else // uncommon status
-                    appAlert(`${ config.proxyAPIenabled ? 'proxyN' : 'openAIn' }otWorking`,
-                             `suggest${ config.proxyAPIenabled ? 'OpenAI' : 'Proxy' }`)
-            } else if (activeAPI == 'OpenAI') {
-                if (resp.response) {
-                    try {
-                        appShow(JSON.parse(resp.response).choices[0].message.content)
-                    } catch (err) {
-                        consoleInfo('Response: ' + resp.response)
-                        consoleErr(appAlerts.parseFailed, err)
-                        appAlert('openAInotWorking, suggestProxy')
-                    }
-                } else { consoleInfo('Response: ' + resp.responseText) ; appAlert('openAInotWorking, suggestProxy') }
-            } else if (activeAPI == 'AIchatOS') {
-                if (resp.responseText && !/很抱歉地|系统公告/.test(resp.responseText)) {
-                    try {
-                        const text = resp.responseText, chunkSize = 1024
-                        let answer = '', currentIdx = 0
-                        while (currentIdx < text.length) {
-                            const chunk = text.substring(currentIdx, currentIdx + chunkSize)
-                            currentIdx += chunkSize ; answer += chunk
-                        }
-                        appShow(answer)
-                        get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
-                    } catch (err) { // use different endpoint or suggest OpenAI
-                        consoleInfo('Response: ' + resp.responseText)
-                        consoleErr(appAlerts.parseFailed, err)
-                        if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
-                    }
-                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
-            } else if (activeAPI == 'GPTforLove') {
-                if (resp.responseText && !resp.responseText.includes('Fail')) {
-                    try {
-                        let chunks = resp.responseText.trim().split('\n'),
-                            lastObj = JSON.parse(chunks[chunks.length - 1])
-                        if (lastObj.id) apiIDs.gptForLove.parentID = lastObj.id
-                        appShow(lastObj.text)
-                        get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
-                    } catch (err) { // use different endpoint or suggest OpenAI
-                        consoleInfo('Response: ' + resp.responseText)
-                        consoleErr(appAlerts.parseFailed, err)
-                        if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
-                    }
-                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
-            } else if (activeAPI == 'MixerBox AI') {
-                if (resp.responseText) {
-                    try {
-                        const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
-                            .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                            .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
-                        appShow(extractedData.join(''))
-                        get.answer.status = 'done' ; api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
-                    } catch (err) { // use different endpoint or suggest OpenAI
-                        consoleInfo('Response: ' + resp.responseText)
-                        consoleErr(appAlerts.parseFailed, err)
-                        if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI)
-                    }
-                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.answer.status != 'done') api.tryNew(get.answer, activeAPI) }
-            }
-        },
-
-        stream: function(activeAPI, stream) {
-            if (config.streamingDisabled || !config.proxyAPIenabled) return
-            const reader = stream.response.getReader() ; let accumulatedChunks = ''
-            reader.read().then(processStreamText).catch(err => consoleErr('Error processing stream', err.message))
-            function processStreamText({ done, value }) {
-                if (done) {
-                    get.answer.status = 'done' ; get.answer.sender = null
-                    api.clearTimedOut(get.answer.triedAPIs) ; get.answer.attemptCnt = null
-                    return
-                }
-                let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (activeAPI == 'MixerBox AI') { // pre-process chunks
-                    const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
-                        .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                        .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
-                    chunk = extractedChunks.join('')
-                }
-                accumulatedChunks = apis[activeAPI].accumulatesText ? chunk : accumulatedChunks + chunk
-                if (/['"]?status['"]?:\s*['"]Fail['"]/.test(accumulatedChunks)) { // GPTforLove fail
-                    consoleErr('Response', accumulatedChunks)
-                    if (get.answer.status != 'done' && !get.answer.sender) api.tryNew(get.answer, activeAPI)
-                    return
-                }
-                try { // to show stream text
-                    let textToShow
-                    if (activeAPI == 'GPTforLove') { // extract parentID + latest chunk text
-                        const jsonLines = accumulatedChunks.split('\n'),
-                              nowResult = JSON.parse(jsonLines[jsonLines.length - 1])
-                        if (nowResult.id) apiIDs.gptForLove.parentID = nowResult.id // for contextual replies
-                        textToShow = nowResult.text
-                    } else textToShow = accumulatedChunks
-                    if (textToShow && get.answer.status != 'done') { // text ready, app waiting or sending
-                        if (!get.answer.sender) get.answer.sender = activeAPI // app is waiting, become sender
-                        if (get.answer.sender == activeAPI) appShow(textToShow)
-                    }
-                } catch (err) { consoleErr('Error showing stream', err.message) }
-                return reader.read().then(({ done, value }) => {
-                    if (get.answer.sender == activeAPI) // am designated sender, recurse
-                        processStreamText({ done, value })
-                }).catch(err => consoleErr('Error reading stream', err.message))
-            }
-        }
-    }
-
     // Define QUERY AUGMENT functions
 
     function augmentQuery(query) { return query + ` (reply in ${config.replyLanguage})` }
@@ -1552,24 +974,619 @@
         })
     }
 
-    // Run MAIN routine
+    // Define GET functions
 
-    // Init CONFIG
-    const config = {
-        appName: 'DuckDuckGPT', appSymbol: '🤖', keyPrefix: 'duckDuckGPT',
-        appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
-        greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt' }
-    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
-    config.supportURL = config.gitHubURL + '/issues/new'
-    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@26bacad/'
-    config.userLanguage = chatgpt.getUserLanguage()
-    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
-                'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
-    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
-    if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
+    const get = {
+
+        reply: async function(msgChain) {
+
+            // Init API attempt props
+            get.reply.status = 'waiting'
+            if (!get.reply.triedAPIs) get.reply.triedAPIs = []
+            if (!get.reply.attemptCnt) get.reply.attemptCnt = 1
+
+            // Pick API
+            get.reply.api = config.proxyAPIenabled ? api.pick(get.reply) : 'OpenAI'
+            if (!get.reply.api) { // no more proxy APIs left untried
+                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+
+            if (!config.proxyAPIenabled) // init OpenAI key
+                config.openAIkey = await Promise.race([getOpenAItoken(), new Promise(reject => setTimeout(reject, 3000))])
+            else setTimeout(() => { // try diff API after 6-9s of no response
+                if (config.proxyAPIenabled && get.reply.status != 'done' && !get.reply.sender)
+                    api.tryNew(get.reply, get.reply.api, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
+
+            // Get/show answer from ChatGPT
+            GM.xmlHttpRequest({
+                method: apis[get.reply.api].method, url: apis[get.reply.api].endpoint,
+                responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
+                headers: api.createHeaders(get.reply.api), data: api.createPayload(get.reply.api, msgChain),
+                onload: resp => dataProcess.text(get.reply.api, resp),
+                onloadstart: resp => dataProcess.stream(get.reply.api, resp),
+                onerror: err => { consoleErr(err.message)
+                    if (!config.proxyAPIenabled) appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
+                    else if (get.reply.status != 'done') api.tryNew(get.reply, get.reply.api)
+                }
+            })
+
+            // Get/show related queries if enabled on 1st get.reply()
+            if (!config.rqDisabled && get.reply.attemptCnt == 1) {
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.related(lastQuery).then(queries => show.related(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.related, get.related.api) })
+            }
+        },
+
+        json: function(url, callback) { // for dynamic footer
+            GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
+                if (resp.status >= 200 && resp.status < 300) {
+                    try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
+                    catch (err) { callback(err, null) }
+                } else callback(new Error('Failed to load data: ' + resp.statusText), null)
+            }})
+        },
+
+        related: function(query) {
+
+            // Init API attempt props
+            get.related.status = 'waiting'
+            if (!get.related.triedAPIs) get.related.triedAPIs = []
+            if (!get.related.attemptCnt) get.related.attemptCnt = 1
+
+            // Pick API
+            get.related.api = api.pick(get.related)
+            if (!get.related.api) return // no more proxy APIs left untried
+
+            setTimeout(() => { // try diff API after 6s of no response
+                if (get.related.status != 'done')
+                    api.tryNew(get.related, get.related.api, 'timeout') }, 6000)
+
+            return new Promise((resolve, reject) => {
+                const rqPrompt = 'Show a numbered list of queries related to this one:\n\n' + query
+                   + '\n\nMake sure to suggest a variety that can even greatly deviate from the original topic.'
+                   + ' For example, if the original query asked about someone\'s wife,'
+                       + ' a good related query could involve a different relative and using their name.'
+                   + ' Another example, if the query asked about a game/movie/show,'
+                       + ' good related queries could involve pertinent characters.'
+                   + ' Another example, if the original query asked how to learn JavaScript,'
+                       + ' good related queries could ask why/when/where instead, even replacing JS w/ other languages.'
+                   + ' But the key is variety. Do not be repetitive.'
+                       + ' You must entice user to want to ask one of your related queries.'
+                   + ` Reply in ${config.replyLanguage}`
+                GM.xmlHttpRequest({
+                    method: apis[get.related.api].method, url: apis[get.related.api].endpoint,
+                    responseType: 'text', headers: api.createHeaders(get.related.api),
+                    data: api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }]),
+                    onload: event => {
+                        let str_relatedQueries = ''
+                        if (get.related.api == 'OpenAI') {
+                            try { str_relatedQueries = JSON.parse(event.response).choices[0].message.content }
+                            catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.related.api == 'AIchatOS' && !/很抱歉地|系统公告/.test(event.responseText)) {
+                            try {
+                                const text = event.responseText, chunkSize = 1024
+                                let currentIdx = 0
+                                while (currentIdx < text.length) {
+                                    const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                                    currentIdx += chunkSize ; str_relatedQueries += chunk
+                                }
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.related.api == 'GPTforLove') {
+                            try {
+                                let chunks = event.responseText.trim().split('\n')
+                                str_relatedQueries = JSON.parse(chunks[chunks.length - 1]).text
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        } else if (get.related.api == 'MixerBox AI') {
+                            try {
+                                const extractedData = Array.from(event.responseText.matchAll(/data:(.*)/g), match => match[1]
+                                    .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                    .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                                str_relatedQueries = extractedData.join('')
+                            } catch (err) { consoleErr(err) ; reject(err) }
+                        }
+                        const arr_relatedQueries = (str_relatedQueries.match(/\d+\.\s*(.*?)(?=\n|$)/g) || [])
+                            .slice(0, 5) // limit to 1st 5
+                            .map(match => match.replace(/^\d+\.\s*/, '')) // strip numbering
+                        get.related.status = 'done'
+                        get.related.attemptCnt = null ; api.clearTimedOut(get.related.triedAPIs)
+                        resolve(arr_relatedQueries)
+                    },
+                    onerror: err => { consoleErr(err) ; reject(err) }
+            })})
+        }
+    } 
+
+    // Define PROCESS functions
+
+    const dataProcess = {
+
+        text: function(activeAPI, resp) {
+            if (!config.streamingDisabled && config.proxyAPIenabled || get.reply.status == 'done')
+                return
+            if (resp.status != 200) {
+                consoleErr('Response status', resp.status)
+                consoleErr('Response text', resp.responseText)
+                if (config.proxyAPIenabled && get.reply.status != 'done')
+                    api.tryNew(get.reply, activeAPI)
+                else if (resp.status == 401 && !config.proxyAPIenabled) {
+                    GM_deleteValue(config.keyPrefix + '_openAItoken') ; appAlert('login') }
+                else if (resp.status == 403)
+                    appAlert(config.proxyAPIenabled ? ['proxyNotWorking', 'suggestOpenAI'] : 'checkCloudflare')
+                else if (resp.status == 429)
+                    appAlert(['tooManyRequests', config.proxyAPIenabled ? 'suggestOpenAI' : 'suggestProxy'])
+                else // uncommon status
+                    appAlert(`${ config.proxyAPIenabled ? 'proxyN' : 'openAIn' }otWorking`,
+                             `suggest${ config.proxyAPIenabled ? 'OpenAI' : 'Proxy' }`)
+            } else if (activeAPI == 'OpenAI') {
+                if (resp.response) {
+                    try {
+                        show.reply(JSON.parse(resp.response).choices[0].message.content)
+                    } catch (err) {
+                        consoleInfo('Response: ' + resp.response)
+                        consoleErr(appAlerts.parseFailed, err)
+                        appAlert('openAInotWorking, suggestProxy')
+                    }
+                } else { consoleInfo('Response: ' + resp.responseText) ; appAlert('openAInotWorking, suggestProxy') }
+            } else if (activeAPI == 'AIchatOS') {
+                if (resp.responseText && !/很抱歉地|系统公告/.test(resp.responseText)) {
+                    try {
+                        const text = resp.responseText, chunkSize = 1024
+                        let answer = '', currentIdx = 0
+                        while (currentIdx < text.length) {
+                            const chunk = text.substring(currentIdx, currentIdx + chunkSize)
+                            currentIdx += chunkSize ; answer += chunk
+                        }
+                        show.reply(answer)
+                        get.reply.status = 'done' ; api.clearTimedOut(get.reply.triedAPIs) ; get.reply.attemptCnt = null
+                    } catch (err) { // use different endpoint or suggest OpenAI
+                        consoleInfo('Response: ' + resp.responseText)
+                        consoleErr(appAlerts.parseFailed, err)
+                        if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI)
+                    }
+                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI) }
+            } else if (activeAPI == 'GPTforLove') {
+                if (resp.responseText && !resp.responseText.includes('Fail')) {
+                    try {
+                        let chunks = resp.responseText.trim().split('\n'),
+                            lastObj = JSON.parse(chunks[chunks.length - 1])
+                        if (lastObj.id) apiIDs.gptForLove.parentID = lastObj.id
+                        show.reply(lastObj.text)
+                        get.reply.status = 'done' ; api.clearTimedOut(get.reply.triedAPIs) ; get.reply.attemptCnt = null
+                    } catch (err) { // use different endpoint or suggest OpenAI
+                        consoleInfo('Response: ' + resp.responseText)
+                        consoleErr(appAlerts.parseFailed, err)
+                        if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI)
+                    }
+                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI) }
+            } else if (activeAPI == 'MixerBox AI') {
+                if (resp.responseText) {
+                    try {
+                        const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
+                            .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                            .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                        show.reply(extractedData.join(''))
+                        get.reply.status = 'done' ; api.clearTimedOut(get.reply.triedAPIs) ; get.reply.attemptCnt = null
+                    } catch (err) { // use different endpoint or suggest OpenAI
+                        consoleInfo('Response: ' + resp.responseText)
+                        consoleErr(appAlerts.parseFailed, err)
+                        if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI)
+                    }
+                } else { consoleInfo('Response: ' + resp.responseText) ; if (get.reply.status != 'done') api.tryNew(get.reply, activeAPI) }
+            }
+        },
+
+        stream: function(activeAPI, stream) {
+            if (config.streamingDisabled || !config.proxyAPIenabled) return
+            const reader = stream.response.getReader() ; let accumulatedChunks = ''
+            reader.read().then(processStreamText).catch(err => consoleErr('Error processing stream', err.message))
+            function processStreamText({ done, value }) {
+                if (done) {
+                    get.reply.status = 'done' ; get.reply.sender = null
+                    api.clearTimedOut(get.reply.triedAPIs) ; get.reply.attemptCnt = null
+                    return
+                }
+                let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
+                if (activeAPI == 'MixerBox AI') { // pre-process chunks
+                    const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
+                        .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                        .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                    chunk = extractedChunks.join('')
+                }
+                accumulatedChunks = apis[activeAPI].accumulatesText ? chunk : accumulatedChunks + chunk
+                if (/['"]?status['"]?:\s*['"]Fail['"]/.test(accumulatedChunks)) { // GPTforLove fail
+                    consoleErr('Response', accumulatedChunks)
+                    if (get.reply.status != 'done' && !get.reply.sender) api.tryNew(get.reply, activeAPI)
+                    return
+                }
+                try { // to show stream text
+                    let textToShow
+                    if (activeAPI == 'GPTforLove') { // extract parentID + latest chunk text
+                        const jsonLines = accumulatedChunks.split('\n'),
+                              nowResult = JSON.parse(jsonLines[jsonLines.length - 1])
+                        if (nowResult.id) apiIDs.gptForLove.parentID = nowResult.id // for contextual replies
+                        textToShow = nowResult.text
+                    } else textToShow = accumulatedChunks
+                    if (textToShow && get.reply.status != 'done') { // text ready, app waiting or sending
+                        if (!get.reply.sender) get.reply.sender = activeAPI // app is waiting, become sender
+                        if (get.reply.sender == activeAPI) show.reply(textToShow)
+                    }
+                } catch (err) { consoleErr('Error showing stream', err.message) }
+                return reader.read().then(({ done, value }) => {
+                    if (get.reply.sender == activeAPI) // am designated sender, recurse
+                        processStreamText({ done, value })
+                }).catch(err => consoleErr('Error reading stream', err.message))
+            }
+        }
+    }
+
+    // Define SHOW functions
+
+    const show = {
+
+        reply: function(answer) {
+
+            // Build answer interface up to reply section if missing
+            if (!appDiv.querySelector('pre')) {
+                while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
+
+                // Create/append app title anchor
+                const appTitleAnchor = createAnchor(config.appURL, (() => {
+                    if (appLogoImg.loaded) { // size/pos/return app logo img
+                        appLogoImg.width = 181 ; appLogoImg.style.margin = '-7px 0'
+                        return appLogoImg
+                    } else { // create/fill/return app name span
+                        const appNameSpan = document.createElement('span')
+                        appNameSpan.innerText = '🤖 ' + config.appName
+                        return appNameSpan
+                    }
+                })())
+                appTitleAnchor.classList.add('app-name', 'no-user-select')
+                appDiv.append(appTitleAnchor)
+
+                // Create/append 'by KudoAI'
+                const kudoAIspan = document.createElement('span')
+                kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
+                const kudoAIlink = createAnchor('https://www.kudoai.com', 'KudoAI')
+                kudoAIspan.append(kudoAIlink) ; appDiv.append(kudoAIspan)
+
+                // Create/append about button
+                const aboutSpan = document.createElement('span'),
+                      aboutSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      aboutSVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
+                aboutSpan.id = 'about-btn' // for toggleTooltip()
+                aboutSpan.className = 'corner-btn'
+                const aboutSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
+                aboutSVGattrs.forEach(([attr, value]) => aboutSVG.setAttribute(attr, value))            
+                aboutSVGpath.setAttribute('d',
+                    'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z')
+                aboutSVGpath.setAttribute('stroke', 'none')
+                aboutSVG.append(aboutSVGpath) ; aboutSpan.append(aboutSVG) ; appDiv.append(aboutSpan)
+
+                // Create/append speak button
+                if (answer != 'standby') {
+                    var speakSpan = document.createElement('span'),
+                        speakSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+                    speakSpan.id = 'speak-btn' // for toggleTooltip()
+                    speakSpan.className = 'corner-btn' ; speakSpan.style.margin = '-0.117em 8px 0 0'
+                    const speakSVGattrs = [['width', 22], ['height', 22], ['viewBox', '0 0 32 32']]
+                    speakSVGattrs.forEach(([attr, value]) => speakSVG.setAttributeNS(null, attr, value))
+                    const speakSVGpaths = [
+                        createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                            d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
+                        createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                            d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
+                        createSVGpath({ stroke: 'none', fill: '',
+                            d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
+                    ]
+                    speakSVGpaths.forEach(path => speakSVG.append(path))
+                    speakSpan.append(speakSVG) ; appDiv.append(speakSpan)
+                }
+
+                if (!isCentered && !isMobile) {
+
+                    // Create/append Sticky Sidebar button
+                    var ssbSpan = document.createElement('span'),
+                        ssbSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+                    ssbSpan.id = 'ssb-btn' // for updateSSBsvg() + toggleTooltip()
+                    ssbSpan.className = 'corner-btn' ; ssbSpan.style.margin = '0.09rem 8px 0 0'
+                    ssbSpan.append(ssbSVG) ; appDiv.append(ssbSpan) ; updateSSBsvg()
+
+                    // Create/append Wider Sidebar button
+                    var wsbSpan = document.createElement('span'),
+                        wsbSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+                    wsbSpan.id = 'wsb-btn' // for updateSSBsvg() + toggleTooltip()
+                    wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = '0.05rem 12px 0 0'
+                    wsbSpan.append(wsbSVG) ; appDiv.append(wsbSpan) ; updateWSBsvg()
+                }
+
+                // Add tooltips
+                if (!isMobile) appDiv.append(tooltipDiv)
+
+                // Add corner button listeners
+                aboutSVG.addEventListener('click', launchAboutModal)
+                speakSVG?.addEventListener('click', () => {
+                    const dialectMap = [
+                        { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
+                        { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
+                        { code: 'cs', regex: /^(cze(ch)?|[cč]e[sš].*|cs)$/i, rate: 1.4 },
+                        { code: 'da', regex: /^dan?(ish|sk)?$/i, rate: 1.3 },
+                        { code: 'de', regex: /^(german|deu?(tsch)?)$/i, rate: 1.5 },
+                        { code: 'es', regex: /^(spa(nish)?|espa.*|es(-\w\w)?)$/i, rate: 1.5 },
+                        { code: 'fi', regex: /^(fin?(nish)?|suom.*)$/i, rate: 1.4 },
+                        { code: 'fr', regex: /^fr/i, rate: 1.2 },
+                        { code: 'hu', regex: /^(hun?(garian)?|magyar)$/i, rate: 1.5 },
+                        { code: 'it', regex: /^ita?(lian[ao]?)?$/i, rate: 1.4 },
+                        { code: 'ja', regex: /^(ja?pa?n(ese)?|日本語|ja)$/i, rate: 1.5 },
+                        { code: 'nl', regex: /^(dut(ch)?|flemish|nederlandse?|vlaamse?|nld?)$/i, rate: 1.3 },
+                        { code: 'pl', regex: /^po?l(ish|ski)?$/i, rate: 1.4 },
+                        { code: 'pt', regex: /^(por(tugu[eê]se?)?|pt(-\w\w)?)$/i, rate: 1.5 },
+                        { code: 'ru', regex: /^(rus?(sian)?|русский)$/i, rate: 1.3 },
+                        { code: 'sv', regex: /^(swe?(dish)?|sv(enska)?)$/i, rate: 1.4 },
+                        { code: 'tr', regex: /^t[uü]?r(k.*)?$/i, rate: 1.6 },
+                        { code: 'vi', regex: /^vi[eệ]?t?(namese)?$/i, rate: 1.5 },
+                        { code: 'zh-CHS', regex: /^(chi(nese)?|zh|中[国國])/i, rate: 2 }
+                    ]
+                    const replyDialect = dialectMap.find(entry => entry.regex.test(config.replyLanguage)) || dialectMap[0],
+                          payload = { text: appDiv.querySelector('pre').textContent, curTime: Date.now(),
+                                      spokenDialect: replyDialect.code, rate: replyDialect.rate.toString() },
+                          key = CryptoJS.enc.Utf8.parse('76350b1840ff9832eb6244ac6d444366'),
+                          iv = CryptoJS.enc.Utf8.parse(atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
+                    const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
+                        iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
+                    GM.xmlHttpRequest({ // audio from Sogou TTS
+                        url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
+                            + encodeURIComponent(securePayload),
+                        method: 'GET', responseType: 'arraybuffer',
+                        onload: async resp => {
+                            if (resp.status != 200) chatgpt.speak(answer, { voice: 2, pitch: 1, speed: 1.5 })
+                            else {
+                                const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+                                audioContext.decodeAudioData(resp.response, buffer => {
+                                    const audioSrc = audioContext.createBufferSource()
+                                    audioSrc.buffer = buffer
+                                    audioSrc.connect(audioContext.destination) // connect source to speakers
+                                    audioSrc.start(0) // play audio
+                        })}}
+                    })
+                })
+                ssbSVG?.addEventListener('click', () => toggleSidebar('sticky'))
+                wsbSVG?.addEventListener('click', () => toggleSidebar('wider'))
+                if (!isMobile) // add hover listeners for tooltips
+                    [aboutSpan, speakSpan, ssbSpan, wsbSpan].forEach(span => { if (span)
+                        ['mouseover', 'mouseout'].forEach(event => span.addEventListener(event, toggleTooltip)) })
+
+                // Show standby state if prefix/suffix mode on
+                if (answer == 'standby') {
+                    const standbyBtn = document.createElement('button')
+                    standbyBtn.className = 'standby-btn'
+                    standbyBtn.textContent = msgs.buttonLabel_sendQueryToGPT || 'Send search query to GPT'
+                    appDiv.append(standbyBtn)
+                    standbyBtn.addEventListener('click', () => {
+                        appAlert('waitingResponse')
+                        msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
+                        show.reply.submitSrc = 'click' // for show.reply() auto-focus
+                        get.reply(msgChain)
+                    })
+
+                // Otherwise create/append answer bubble
+                } else {            
+                    const balloonTipSpan = document.createElement('span')
+                    var answerPre = document.createElement('pre')
+                    balloonTipSpan.className = 'balloon-tip'
+                    balloonTipSpan.style.cssText = ( // pos it
+                        `top: ${ isFirefox ? '0.55em' : '4px' } ;`
+                      + `right: ${ isFirefox ? ( 16.87 - ( appLogoImg.loaded ? 0 : 0.36 ))
+                                             : ( 8.38  - ( appLogoImg.loaded ? 0 : 0.15 ))}em`
+                    )
+                    appDiv.append(balloonTipSpan) ; appDiv.append(answerPre)
+                }
+            }
+
+            // Build reply section if missing
+            if (!appDiv.querySelector('#app-chatbar')) {
+
+                // Init/clear reply section content/classes
+                const replySection = appDiv.querySelector('section') || document.createElement('section')
+                while (replySection.firstChild) replySection.removeChild(replySection.firstChild)
+                replySection.classList.remove('loading', 'no-user-select')
+
+                // Create/append section elems
+                const replyForm = document.createElement('form'),
+                      continueChatDiv = document.createElement('div'),
+                      chatTextarea = document.createElement('textarea')
+                continueChatDiv.className = 'continue-chat'
+                chatTextarea.id = 'app-chatbar' ; chatTextarea.rows = '1'
+                chatTextarea.placeholder = ( answer == 'standby' ? msgs.placeholder_askSomethingElse || 'Ask something else'
+                                                                 : msgs.tooltip_sendReply || 'Send reply' ) + '...'
+                continueChatDiv.append(chatTextarea)
+                replyForm.append(continueChatDiv) ; replySection.append(replyForm)
+                appDiv.append(replySection)
+
+                // Create/append send button
+                const sendButton = document.createElement('button'),
+                      sendSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sendSVGpath = createSVGpath({ stroke: '', 'stroke-width': '2', linecap: 'round',
+                          'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
+                sendButton.id = 'send-btn'
+                sendButton.style.right = `${ isFirefox ? 8 : 6 }px`
+                sendButton.style.bottom = `${ isFirefox ? 49 : 53 }px`
+                for (const [attr, value] of [
+                    ['viewBox', '4 2 16 16'], ['fill', 'none'], ['width', 16], ['height', 16],
+                    ['stroke', 'currentColor'], ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']
+                ]) sendSVG.setAttribute(attr, value)
+                sendSVG.append(sendSVGpath) ; sendButton.append(sendSVG) ; continueChatDiv.append(sendButton)
+
+                // Add reply section listeners
+                replyForm.addEventListener('keydown', handleEnter)
+                replyForm.addEventListener('submit', handleSubmit)
+                chatTextarea.addEventListener('input', autosizeChatbar)
+                if (!isMobile) // add hover listeners for tooltips
+                    ['mouseover', 'mouseout'].forEach(event => sendButton.addEventListener(event, toggleTooltip))
+
+                // Scroll to top on mobile if user interacted
+                if (isMobile && show.reply.submitSrc) {
+                    document.body.scrollTop = 0 // Safari
+                    document.documentElement.scrollTop = 0 // Chromium/FF/IE
+                }
+            }
+
+            // Render/show answer if query sent
+            if (answer != 'standby') {
+                const answerPre = appDiv.querySelector('pre')
+                answerPre.innerHTML = marked.parse(answer) // render markdown
+                hljs.highlightAll() // highlight code
+
+                // Typeset math
+                answerPre.querySelectorAll('code').forEach(codeBlock => { // add linebreaks after semicolons
+                    codeBlock.innerHTML = codeBlock.innerHTML.replace(/;\s*/g, ';<br>') })
+                const elemsToRenderMathIn = [answerPre, ...answerPre.querySelectorAll('*')]
+                elemsToRenderMathIn.forEach(elem => {
+                    renderMathInElement(elem, { // typeset math
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false },
+                            { left: '\\(', right: '\\)', display: false },
+                            { left: '\\[', right: '\\]', display: true },
+                            { left: '\\begin{equation}', right: '\\end{equation}', display: true },
+                            { left: '\\begin{align}', right: '\\end{align}', display: true },
+                            { left: '\\begin{alignat}', right: '\\end{alignat}', display: true },
+                            { left: '\\begin{gather}', right: '\\end{gather}', display: true },
+                            { left: '\\begin{CD}', right: '\\end{CD}', display: true },
+                            { left: '\\[', right: '\\]', display: true }
+                        ],
+                        throwOnError: false
+                })})
+
+                if (config.stickySidebar) updateTweaksStyle() // to reset answerPre height
+
+                // Auto-scroll if active
+                if (config.autoScroll && !isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
+                    if (config.stickySidebar) answerPre.scrollTop = answerPre.scrollHeight
+                    else window.scrollBy({ top: appDiv.querySelector('#app-chatbar').getBoundingClientRect().bottom - window.innerHeight +12 })
+                }
+            }
+
+            // Focus chatbar conditionally
+            if (!isMobile // exclude mobile devices to not auto-popup OSD keyboard
+                && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top ) // app fully above fold
+            ) appDiv.querySelector('#app-chatbar').focus()
+            show.reply.submitSrc = 'none'
+
+            function handleEnter(event) {
+                if (event.key == 'Enter' || event.keyCode == 13) {
+                    if (event.ctrlKey) { // add newline
+                        const chatTextarea = appDiv.querySelector('#app-chatbar'),
+                              caretPos = chatTextarea.selectionStart,
+                              textBefore = chatTextarea.value.substring(0, caretPos),
+                              textAfter = chatTextarea.value.substring(caretPos)
+                        chatTextarea.value = textBefore + '\n' + textAfter // add newline
+                        chatTextarea.selectionStart = chatTextarea.selectionEnd = caretPos + 1 // preserve ibeam pos
+                        autosizeChatbar()
+                    } else if (!event.shiftKey) handleSubmit(event)
+            }}
+
+            function handleSubmit(event) {
+                event.preventDefault()
+                const chatTextarea = appDiv.querySelector('#app-chatbar')
+                if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
+                msgChain = stripQueryAugments(msgChain)
+                const prevReplyTrimmed = appDiv.querySelector('pre')?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
+                msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
+                msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
+                get.reply(msgChain)
+
+                // Remove re-added reply section listeners
+                const replyForm = appDiv.querySelector('form')
+                replyForm.removeEventListener('keydown', handleEnter)
+                replyForm.removeEventListener('submit', handleSubmit)
+                chatTextarea.removeEventListener('input', autosizeChatbar)
+
+                // Remove related queries
+                try {
+                    const relatedQueriesDiv = document.querySelector('.related-queries')
+                    Array.from(relatedQueriesDiv.children).forEach(child => {
+                        ['click', 'keydown'].forEach(event => child.removeEventListener(event, handleRQevent)) })
+                    relatedQueriesDiv.remove()
+                } catch (err) {}
+
+                // Remove 'Send reply' tooltip from send btn clicks
+                if (!isMobile) tooltipDiv.style.opacity = 0
+
+                // Show loading status
+                const replySection = appDiv.querySelector('section')
+                replySection.classList.add('loading', 'no-user-select')
+                replySection.innerText = appAlerts.waitingResponse
+            }
+
+            // Autosize chatbar function
+            const chatTextarea = appDiv.querySelector('#app-chatbar'),
+                  { paddingTop, paddingBottom } = getComputedStyle(chatTextarea),
+                  vOffset = parseInt(paddingTop, 10) + parseInt(paddingBottom, 10)
+            let prevLength = chatTextarea.value.length
+            function autosizeChatbar() {
+                const newLength = chatTextarea.value.length
+                if (newLength < prevLength) { // if deleting txt
+                    chatTextarea.style.height = 'auto' // ...auto-fit height
+                    if (parseInt(getComputedStyle(chatTextarea).height, 10) < 35) // if down to one line
+                        chatTextarea.style.height = '16px' // ...reset to original height
+                }
+                chatTextarea.style.height = chatTextarea.scrollHeight - vOffset + 'px'
+                prevLength = newLength
+            }
+        },
+
+        related: function(queries) {
+            if (!show.related.greenlit) { // wait for get.reply() to finish showing answer
+                show.related.statusChecker = setInterval(() => {
+                    if (get.reply.status != 'waiting') {
+                        show.related.greenlit = true
+                        show.related(queries)
+                        clearInterval(show.related.statusChecker)
+                }}, 500, queries)
+            } else { // show queries from latest statusChecker call
+                show.related.greenlit = false
+                if (queries && !appDiv.querySelector('.related-queries')) {
+
+                    // Create/classify/append parent div
+                    const relatedQueriesDiv = document.createElement('div') ; relatedQueriesDiv.className = 'related-queries'
+                    appDiv.append(relatedQueriesDiv)
+
+                    // Fill each child div, add attributes + icon + listener
+                    queries.forEach((query, idx) => {
+                        const relatedQueryDiv = document.createElement('div'),
+                              relatedQuerySVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                              relatedQuerySVGpath = document.createElementNS('http://www.w3.org/2000/svg','path')
+
+                        // Add attributes
+                        relatedQueryDiv.title = msgs.tooltip_sendRelatedQuery || 'Send related query'
+                        relatedQueryDiv.classList.add('related-query', 'fade-in', 'no-user-select')
+                        relatedQueryDiv.setAttribute('tabindex', 0)
+                        relatedQueryDiv.textContent = query
+
+                        // Create icon
+                        for (const [attr, value] of [
+                            ['viewBox', '0 0 24 24'], ['width', 18], ['height', 18], ['fill', 'currentColor']
+                        ]) relatedQuerySVG.setAttribute(attr, value)
+                        relatedQuerySVGpath.setAttribute('d',
+                            'M16 10H6.83L9 7.83l1.41-1.41L9 5l-6 6 6 6 1.41-1.41L9 14.17 6.83 12H16c1.65 0 3 1.35 3 3v4h2v-4c0-2.76-2.24-5-5-5z')
+                        relatedQuerySVG.style.transform = 'rotate(180deg)' // flip arrow upside down
+
+                        // Assemble/insert elems
+                        relatedQuerySVG.append(relatedQuerySVGpath) ; relatedQueryDiv.prepend(relatedQuerySVG)
+                        relatedQueriesDiv.append(relatedQueryDiv)
+
+                        // Add fade + listeners
+                        setTimeout(() => {
+                            relatedQueryDiv.classList.add('active')
+                            for (const event of ['click', 'keydown']) relatedQueryDiv.addEventListener(event, handleRQevent)
+                        }, idx * 100)
+                    })
+
+                    updateTweaksStyle() // to shorten <pre> max-height
+        }}}
+    }
+
+    // Run MAIN routine
 
     // Init UI flags
     let scheme = config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )
@@ -1579,7 +1596,7 @@
 
     // Pre-load LOGO
     const appLogoImg = document.createElement('img') ; updateAppLogoSrc() 
-    appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in appShow() + .balloon-tip pos in updateAppStyle()
+    appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in show.reply() + .balloon-tip pos in updateAppStyle()
 
     // Define MESSAGES
     let msgs = {}
@@ -1614,20 +1631,6 @@
     }
 
     registerMenu() // create browser toolbar menu
-
-    // Init API props
-    const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
-    const apis = {
-        'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
-            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true, accumulatesText: false },
-        'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
-            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true, accumulatesText: true },
-        'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true, accumulatesText: false },
-        'OpenAI': { expectedOrigin: 'https://chatgpt.com',
-            endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
-    }
-    const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
     // Init ALERTS
     const appAlerts = {
@@ -1794,16 +1797,16 @@
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
-    if (config.autoGetDisabled
+    if (!config.autoget
         || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
-            appShow('standby')
+            show.reply('standby')
             if (!config.rqDisabled) {
                 const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
-                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
+                get.related(lastQuery).then(queries => show.related(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.related, get.related.api) })
             }
-    } else { appAlert('waitingResponse') ; get.answer(msgChain) }
+    } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
     // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode if auto-scheme mode
     (new MutationObserver(handleSchemeChange)).observe( // class changes from DDG appearance settings
