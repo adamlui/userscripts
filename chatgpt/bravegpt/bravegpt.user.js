@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.12.2
+// @version             2024.6.12.4
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -169,6 +169,37 @@
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org © 2023–2024 KudoAI & contributors under the MIT license.
 
 setTimeout(async () => {
+
+    // Init CONFIG
+    const config = {
+        appName: 'BraveGPT', appSymbol: '🤖', keyPrefix: 'braveGPT',
+        appURL: 'https://www.bravegpt.com', gitHubURL: 'https://github.com/KudoAI/bravegpt',
+        greasyForkURL: 'https://greasyfork.org/scripts/462440-bravegpt' }
+    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+    config.supportURL = config.gitHubURL + '/issues/new'
+    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@4d9a45e/'
+    config.userLanguage = chatgpt.getUserLanguage()
+    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
+    loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+                'rqDisabled', 'scheme', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
+    if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
+
+    // Init API props
+    const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
+    const apis = {
+        'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
+            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true, accumulatesText: false },
+        'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
+            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true, accumulatesText: true },
+        'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true, accumulatesText: false },
+        'OpenAI': { expectedOrigin: 'https://chatgpt.com',
+            endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
+    }
+    const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
     // Define SCRIPT functions
 
@@ -246,10 +277,14 @@ setTimeout(async () => {
                       + state.separator + state.word[+!config.rqDisabled]
         menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
             saveSetting('rqDisabled', !config.rqDisabled)
-            try { // to update visibility based on latest setting
-                const relatedQueriesDiv = document.querySelector('.related-queries')
+            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+            if (relatedQueriesDiv) // update visibility based on latest setting
                 relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
-            } catch (err) {}
+            if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
+            }
             updateTweaksStyle() // toggle <pre> max-height
             notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + state.word[+!config.rqDisabled])
             refreshMenu()
@@ -1096,7 +1131,7 @@ setTimeout(async () => {
     function showRelatedQueries(queries) {
         if (!showRelatedQueries.greenlit) { // wait for get.answer() to finish showing answer
             showRelatedQueries.statusChecker = setInterval(() => {
-                if (get.answer.status == 'done') {
+                if (get.answer.status != 'waiting') {
                     showRelatedQueries.greenlit = true
                     showRelatedQueries(queries)
                     clearInterval(showRelatedQueries.statusChecker)
@@ -1586,23 +1621,6 @@ setTimeout(async () => {
 
     // Run MAIN routine
 
-    // Init CONFIG
-    const config = {
-        appName: 'BraveGPT', appSymbol: '🤖', keyPrefix: 'braveGPT',
-        appURL: 'https://www.bravegpt.com', gitHubURL: 'https://github.com/KudoAI/bravegpt',
-        greasyForkURL: 'https://greasyfork.org/scripts/462440-bravegpt' }
-    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
-    config.supportURL = config.gitHubURL + '/issues/new'
-    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@4d9a45e/'
-    config.userLanguage = chatgpt.getUserLanguage()
-    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
-                'rqDisabled', 'scheme', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
-    if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
-    if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
-
     // Init UI flags
     let scheme = config.scheme || ( isDarkMode() ? 'dark' : 'light' )
     const isFirefox = chatgpt.browser.isFirefox(),
@@ -1645,20 +1663,6 @@ setTimeout(async () => {
     }
 
     registerMenu() // create browser toolbar menu
-
-    // Init API props
-    const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
-    const apis = {
-        'AIchatOS': { expectedOrigin: 'https://chat18.aichatos.xyz',
-            endpoint: 'https://api.binjie.fun/api/generateStream', method: 'POST', streamable: true, accumulatesText: false },
-        'GPTforLove': { expectedOrigin: 'https://ai27.gptforlove.com',
-            endpoint: 'https://api11.gptforlove.com/chat-process', method: 'POST', streamable: true, accumulatesText: true },
-        'MixerBox AI': { expectedOrigin: 'https://chatai.mixerbox.com',
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream', method: 'POST', streamable: true, accumulatesText: false },
-        'OpenAI': { expectedOrigin: 'https://chatgpt.com',
-            endpoint: 'https://api.openai.com/v1/chat/completions', method: 'POST', streamable: true }
-    }
-    const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
     // Init ALERTS
     const appAlerts = {
@@ -1721,16 +1725,17 @@ setTimeout(async () => {
     footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
 
     // Show STANDBY mode or get/show ANSWER
-    let msgChain = [] // to store queries + answers for contextual replies
+    let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
     if (config.autoGetDisabled
         || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
-        || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location) // suffix required but not present
-    ) { updateFooterContent() ; appShow('standby', footerContent) }
-    else {
-        appAlert('waitingResponse')
-        msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
-        get.answer(msgChain)
-    }
+        || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
+            appShow('standby', footerContent)
+            if (!config.rqDisabled) {
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.relatedQueries(lastQuery).then(queries => showRelatedQueries(queries))
+                    .catch(err => { consoleErr(err.message) ; api.tryNew(get.relatedQueries, get.relatedQueries.api) })
+            }
+    } else { appAlert('waitingResponse') ; get.answer(msgChain) }
 
     // Observe/listen for Brave Search + system SCHEME CHANGES to update BraveGPT scheme if auto-scheme mode
     (new MutationObserver(handleSchemeChange)).observe( // class changes from Brave Search theme settings
