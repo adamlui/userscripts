@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.12.9
+// @version             2024.6.13.1
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -169,6 +169,9 @@
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org © 2023–2024 KudoAI & contributors under the MIT license.
 
 setTimeout(async () => {
+
+    // Init browser flags
+    const isFirefox = chatgpt.browser.isFirefox(), isMobile = chatgpt.browser.isMobile()
 
     // Init CONFIG
     const config = {
@@ -563,6 +566,42 @@ setTimeout(async () => {
         return document.documentElement.classList.contains('dark') ? true
              : document.documentElement.classList.contains('light') ? false
              : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    }
+
+    function updateTitleLine() {
+        if (appDiv.querySelector('.loading')) return
+
+        const appTitleVisible = !!appDiv.querySelector('.app-name'),
+              byLineVisible = !!appDiv.querySelector('.kudoai'),
+              logoVisible = !!appDiv.querySelector('img')              
+
+        // Create/fill/classify/style/append/update title anchor
+        if (!appTitleVisible || !logoVisible) {
+            const appTitleAnchor = createAnchor(config.appURL, (() => {
+                if (appLogoImg.loaded) { // size/return app logo img
+                    appLogoImg.width = 143 ; return appLogoImg
+                } else { // create/fill/pos/return app name span
+                    const appNameSpan = document.createElement('span')
+                    appNameSpan.innerText = '🤖 ' + config.appName
+                    appNameSpan.style.marginLeft = '3px'
+                    return appNameSpan
+                }
+            })())
+            appTitleAnchor.classList.add('app-name', 'no-user-select')
+            if (!appTitleVisible) appDiv.append(appTitleAnchor)
+            else appDiv.querySelector('.app-name').replaceWith(appTitleAnchor) // for appLogoImg.onload() callback
+        }
+
+        // Create/classify/style/hyperlink/append/update 'by KudoAI'
+        if (!byLineVisible || !logoVisible) {
+            const kudoAIspan = document.createElement('span')
+            kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
+            kudoAIspan.style.cssText = appLogoImg.loaded ? 'position: relative ; bottom: 8px ; font-size: 12px' : ''
+            const kudoAIlink = createAnchor('https://www.kudoai.com', 'KudoAI')
+            kudoAIspan.append(kudoAIlink)
+            if (!byLineVisible) appDiv.append(kudoAIspan)
+            else appDiv.querySelector('.kudoai').replaceWith(kudoAIspan) // for appLogoImg.onload() callback
+        }
     }
 
     function updateAppLogoSrc() {
@@ -1268,26 +1307,8 @@ setTimeout(async () => {
             if (!appDiv.querySelector('pre')) {
                 while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
 
-                // Create/append app title anchor
-                const appTitleAnchor = createAnchor(config.appURL, (() => {
-                    if (appLogoImg.loaded) { // size/return app logo img
-                        appLogoImg.width = 143 ; return appLogoImg
-                    } else { // create/fill/pos/return app name span
-                        const appNameSpan = document.createElement('span')
-                        appNameSpan.innerText = '🤖 ' + config.appName
-                        appNameSpan.style.marginLeft = '3px'
-                        return appNameSpan
-                    }
-                })())
-                appTitleAnchor.classList.add('app-name', 'no-user-select')
-                appDiv.append(appTitleAnchor)
-
-                // Create/append 'by KudoAI'
-                const kudoAIspan = document.createElement('span')
-                kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
-                kudoAIspan.style.cssText = appLogoImg.loaded ? 'position: relative ; bottom: 8px ; font-size: 12px' : ''
-                const kudoAIlink = createAnchor('https://www.kudoai.com', 'KudoAI')
-                kudoAIspan.append(kudoAIlink) ; appDiv.append(kudoAIspan)
+                // Create/append app title anchor + byline
+                updateTitleLine()
 
                 // Create/append about button
                 const aboutSpan = document.createElement('span'),
@@ -1501,10 +1522,12 @@ setTimeout(async () => {
             }
 
             // Focus chatbar conditionally
-            if (!isMobile // exclude mobile devices to not auto-popup OSD keyboard
-                && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top ) // app fully above fold
-            ) appDiv.querySelector('#app-chatbar').focus()
-            show.reply.submitSrc = 'none'
+            if (!show.reply.chatbarFocused // do only once
+                && !isMobile // exclude mobile devices to not auto-popup OSD keyboard
+                && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )) { // app fully above fold
+                    appDiv.querySelector('#app-chatbar').focus() ; show.reply.chatbarFocused = true }
+
+            show.reply.submitSrc = 'none' // for reply section builder's mobile scroll-to-top if user interacted
 
             function handleEnter(event) {
                 if (event.key == 'Enter' || event.keyCode == 13) {
@@ -1554,6 +1577,8 @@ setTimeout(async () => {
                 const replySection = appDiv.querySelector('section')
                 replySection.classList.add('loading', 'no-user-select')
                 replySection.innerText = appAlerts.waitingResponse
+
+                show.reply.chatbarFocused = false // for auto-focus routine
             }
 
             // Autosize chatbar function
@@ -1624,14 +1649,12 @@ setTimeout(async () => {
 
     // Run MAIN routine
 
-    // Init UI flags
+    // Init scheme var
     let scheme = config.scheme || ( isDarkMode() ? 'dark' : 'light' )
-    const isFirefox = chatgpt.browser.isFirefox(),
-          isMobile = chatgpt.browser.isMobile()
 
     // Pre-load LOGO
     const appLogoImg = document.createElement('img') ; updateAppLogoSrc()
-    appLogoImg.onload = () => appLogoImg.loaded = true // for app header tweaks in show.reply() + .balloon-tip pos in updateAppStyle()
+    appLogoImg.onload = () => { appLogoImg.loaded = true ; updateTitleLine() }
 
     // Define MESSAGES
     let msgs = {}
