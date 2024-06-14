@@ -48,28 +48,6 @@
 
 <img height=6px width="100%" src="https://media.bravegpt.com/images/separators/gradient-aqua.png?latest">
 
-## ⚡ Dependencies
-
-<h6>
-<div align="center">
-
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/logos/dependencies/collage/white.png?latest">
-    <img src="https://media.bravegpt.com/images/logos/dependencies/collage/black.png?latest">
-</picture>
-
-[chatgpt.js](https://chatgpt.js.org) © 2023–2024 [KudoAI](https://kudoai.com) & contributors under the MIT license
-<br>[generate-ip](https://generate-ip.org) © 2024 [Adam Lui](https://github.com/adamlui) & contributors under the MIT license
-<br>[highlight.js](https://highlightjs.org) © 2006 [Ivan Sagalaev](https://github.com/isagalaev) under the BSD 3-Clause license
-<br>[KaTeX](https://katex.org) © 2013–2020 [Khan Academy](https://www.khanacademy.org) & other contributors under the MIT license
-<br>[Marked](https://marked.js.org) © 2018+ [MarkedJS](https://github.com/markedjs) © 2011–2018 [Christopher Jeffrey](https://github.com/chjj) under the MIT license
-<br><br>
-
-</div>
-</h6>
-
-<img height=6px width="100%" src="https://media.bravegpt.com/images/separators/gradient-aqua.png?latest">
-
 ## <img width=25px src="https://media.bravegpt.com/images/icons/platforms/tampermonkey/icon28.png?latest"> Tampermonkey Users
 
 If you are installing **Tampermonkey** (v5.2.0+) for the first time from the [Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), you must enable **Developer Mode** for userscripts to function.
@@ -101,9 +79,10 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 <br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/logos/platforms/android/head-plus-word/white/logo150x24.png?latest"><img alt="Android" width=111 src="https://media.bravegpt.com/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png?latest"></picture><br>
 
-- [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey for Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)) (recommended for Streaming Mode)
+- [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) for Firefox)
 - [Kiwi](https://kiwibrowser.com/) (using [Violentmonkey for Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
-- [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd))
+- [Waterfox](https://play.google.com/store/apps/details?id=net.waterfox.android.release) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) for Firefox)
+- [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or Violentmonkey for [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao) or [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
 
 <br>
 
@@ -147,6 +126,28 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 [![](https://img.shields.io/badge/Follow%20@adamlui-637-blue?logo=medium&style=social "Follow @adamlui on Medium")](https://adamlui.com?utm_source=bravegpt&utm_content=github_shield)
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @adamluitube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 [![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
+
+<img height=6px width="100%" src="https://media.bravegpt.com/images/separators/gradient-aqua.png?latest">
+
+## ⚡ Dependencies
+
+<h6>
+<div align="center">
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/logos/dependencies/collage/white.png?latest">
+    <img src="https://media.bravegpt.com/images/logos/dependencies/collage/black.png?latest">
+</picture>
+
+[chatgpt.js](https://chatgpt.js.org) © 2023–2024 [KudoAI](https://kudoai.com) & contributors under the MIT license
+<br>[generate-ip](https://generate-ip.org) © 2024 [Adam Lui](https://github.com/adamlui) & contributors under the MIT license
+<br>[highlight.js](https://highlightjs.org) © 2006 [Ivan Sagalaev](https://github.com/isagalaev) under the BSD 3-Clause license
+<br>[KaTeX](https://katex.org) © 2013–2020 [Khan Academy](https://www.khanacademy.org) & other contributors under the MIT license
+<br>[Marked](https://marked.js.org) © 2018+ [MarkedJS](https://github.com/markedjs) © 2011–2018 [Christopher Jeffrey](https://github.com/chjj) under the MIT license
+<br><br>
+
+</div>
+</h6>
 
 <img height=6px width="100%" src="https://media.bravegpt.com/images/separators/gradient-aqua.png?latest">
 
