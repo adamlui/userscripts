@@ -114,7 +114,7 @@
 // @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.14
+// @version             2024.6.15.2
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -183,11 +183,11 @@ setTimeout(async () => {
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
     config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@4d9a45e/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@015b171/'
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
-                'rqDisabled', 'scheme', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    loadSetting('autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'prefixEnabled', 'proxyAPIenabled',
+                'replyLanguage', 'rqDisabled', 'scheme', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if not TM
 
@@ -263,8 +263,21 @@ setTimeout(async () => {
             refreshMenu()
         }))
 
-        // Add command to toggle auto-scroll (when streaming)
         if (!isMobile) {
+
+            // Add command to toggle auto-focus chatbar
+            const afcLabel = state.symbol[+!config.autoFocusChatbarDisabled] + ' '
+                           + ( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
+                           + state.separator + state.word[+!config.autoFocusChatbarDisabled]
+            menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
+                saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
+                notify(( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
+                             + state.word[+!config.autoFocusChatbarDisabled])
+                refreshMenu()
+            }))
+
+
+            // Add command to toggle auto-scroll (when streaming)
             const assLabel = state.symbol[+config.autoScroll] + ' '
                            + `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`
                            + state.separator + state.word[+config.autoScroll]
@@ -652,6 +665,7 @@ setTimeout(async () => {
           + `#bravegpt footer a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
           + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
           + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
+              + 'float: left ; left: 7px ; margin: 36px -13px 0 0 ;' // positioning
               + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                   + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
           + '.chatgpt-js { font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
@@ -659,8 +673,8 @@ setTimeout(async () => {
           + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
           + '.continue-chat > textarea {'
               + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 15px 12px 0 ;`
-              + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ;  padding: 14px 26px 13px 10px ;'
-              + 'height: 45px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ; background:'
+              + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ;  padding: 12px 26px 12px 10px ;'
+              + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ; background:'
                   + ( scheme == 'dark' ? '#515151' : '#eeeeee70' ) + '}'
           + '.related-queries { display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -18px ;'
               + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
@@ -1425,15 +1439,10 @@ setTimeout(async () => {
 
                 // Otherwise create/append answer bubble
                 } else {
-                    const balloonTipSpan = document.createElement('span')
-                    var answerPre = document.createElement('pre')
+                    const answerPre = document.createElement('pre'),
+                          balloonTipSpan = document.createElement('span')
                     balloonTipSpan.className = 'balloon-tip'
-                    balloonTipSpan.style.cssText = ( // pos it
-                        `top: ${( isFirefox ? 0.33 : 0.16 ) - ( appLogoImg.loaded ? 0.13 : 0 )}em ;`
-                      + `right: ${ isFirefox ? ( 10.03 - ( appLogoImg.loaded ? 0 : 0.577 ))
-                                             : ( 5.01  - ( appLogoImg.loaded ? 0 : 0.262 ))}rem`
-                    )
-                    appDiv.append(balloonTipSpan) ; appDiv.append(answerPre)
+                    appDiv.append(balloonTipSpan, answerPre)
                 }
             }
 
@@ -1524,7 +1533,7 @@ setTimeout(async () => {
             }
 
             // Focus chatbar conditionally
-            if (!show.reply.chatbarFocused // do only once
+            if (!config.autoFocusChatbarDisabled && !show.reply.chatbarFocused // do only once if enabled
                 && !isMobile // exclude mobile devices to not auto-popup OSD keyboard
                 && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )) { // app fully above fold
                     appDiv.querySelector('#app-chatbar').focus() ; show.reply.chatbarFocused = true }
@@ -1591,9 +1600,9 @@ setTimeout(async () => {
                 if (newLength < prevLength) { // if deleting txt
                     chatTextarea.style.height = 'auto' // ...auto-fit height
                     if (parseInt(getComputedStyle(chatTextarea).height, 10) < 55) { // if down to one line
-                        chatTextarea.style.height = '45px' } // ...reset to original height
+                        chatTextarea.style.height = '43px' } // ...reset to original height
                 }
-                chatTextarea.style.height = `${ chatTextarea.scrollHeight > 60 ? ( chatTextarea.scrollHeight +2 ) : 45 }px`
+                chatTextarea.style.height = `${ chatTextarea.scrollHeight > 60 ? ( chatTextarea.scrollHeight +2 ) : 43 }px`
                 prevLength = newLength
             }
         },
