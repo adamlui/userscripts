@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.17.10
+// @version             2024.6.17.12
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -448,20 +448,31 @@
         schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
 
         // Re-format each button
-        for (const btn of schemeModal.querySelectorAll('button')) {
-            btn.classList = ( // emphasize active scheme
+        const buttons = schemeModal.querySelectorAll('button'),
+              schemes = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+        for (const btn of buttons) {
+            const btnScheme = btn.textContent.toLowerCase()
+
+            // Emphasize active scheme
+            btn.classList = (
                 config.scheme == btn.textContent.toLowerCase() || (btn.textContent == 'Auto' && !config.scheme)
                   ? 'primary-modal-btn' : '' )
 
             // Prepend emoji + localize labels
-            if (/light/i.test(btn.textContent)) btn.textContent = (
-                '☀️ ' + ( msgs.scheme_light   || 'Light' ))
-            else if (/dark/i.test(btn.textContent)) btn.textContent = (
-                '🌘 ' + ( msgs.scheme_dark    || 'Dark' ))
-            else if (/auto/i.test(btn.textContent)) btn.textContent = (
-                '🌗 ' + ( msgs.menuLabel_auto || 'Auto' ))
-
+            if (Object.prototype.hasOwnProperty.call(schemes, btnScheme))
+                 btn.textContent = `${schemes[btnScheme]} ${ msgs['scheme_' + btnScheme] || btnScheme.toUpperCase() }`
             else btn.style.display = 'none' // hide Dismiss button
+
+            // Clone button to replace listener to not dismiss modal on click
+            const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
+            newBtn.addEventListener('click', event => {
+                event.stopPropagation() // disable chatgpt.js dismissAlert()
+                updateScheme(btnScheme) // call corresponding scheme func
+                schemeModal.querySelectorAll('button').forEach(btn => btn.classList = '') // clear prev emphasized active scheme
+                newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
+                newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
+                setTimeout(() => { newBtn.style.pointerEvents = 'auto'; }, 100) // re-enable hover fx after 100ms to flicker emphasis
+            })
         }
 
         function updateScheme(newScheme) {
@@ -675,6 +686,9 @@
           + ( scheme == 'dark' ? '#ddgpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
           + '.app-name, .app-name:hover { font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
               + `color: ${ scheme == 'dark' ? 'white' : 'black' }}`
+          + '.kudoai { margin-left: 6px ; color: #aaa } '
+          + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
+          + '.kudoai a:hover { color: ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' ; text-decoration: none !important } '
           + '#corner-btns { float: right ; margin-top: 2px }'
           + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ;'
               + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
@@ -732,9 +746,6 @@
           + '#send-btn { border: none ; float: right ; position: relative ; background: none ;'
               + `color: ${ scheme == 'dark' ? '#aaa' : 'lightgrey' } ; cursor: pointer }`
           + `#send-btn:hover { color: ${ scheme == 'dark' ? 'white' : '#638ed4' } }`
-          + '.kudoai { margin-left: 6px ; color: #aaa } '
-          + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
-          + '.kudoai a:hover { color: ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' ; text-decoration: none } '
           + ( // rendered markdown styles
                 '#ddgpt > pre h1 { font-size: 24px } #ddgpt > pre h2 { font-size: 22px } #ddgpt > pre h3 { font-size: 20px }' // size headings
               + '#ddgpt > pre h1, #ddgpt > pre h2, #ddgpt > pre h3 { margin-bottom: -15px }' // reduce gap after headings
