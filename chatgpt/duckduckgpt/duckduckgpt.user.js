@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.16.12
+// @version             2024.6.16.14
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -674,7 +674,8 @@
               + 'transform: scale(1.185) ; transition: transform 0.05s ease }'
           + '#ddgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
           + '#ddgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
-          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: 9px auto 16px ; background-color: #ccc }'
+          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: -1px auto -8px ; padding: 10px 0 ;'
+              + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
           + '#font-size-slider-thumb { width: 10px ; height: 25px ; border-radius: 30% ; position: relative ; top: -7.65px ;'
               + `background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
               + 'cursor: grab ; cursor: -webkit-grab ; cursor: -moz-grab }'
@@ -1344,7 +1345,7 @@
                 } catch (err) { consoleErr('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
                     if (get.reply.sender == caller.api) // am designated sender, recurse
-                        setTimeout(() => { processStreamText({ done, value }) }, isEdge ? 50 : 1) // Edge delay vs. STATUS_ACCESS_VIOLATION bug
+                        setTimeout(() => { processStreamText({ done, value }) }, isEdge ? 100 : 1) // Edge delay vs. STATUS_ACCESS_VIOLATION bug
                 }).catch(err => consoleErr('Error reading stream', err.message))
             }
         }
