@@ -156,7 +156,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.16.15
+// @version             2024.6.16.17
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -891,7 +891,8 @@
               + 'transform: scale(1.185) ; transition: transform 0.05s ease }'
           + '#googlegpt .loading { padding-bottom: 15px ; color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
           + '#googlegpt.sidebar-free { margin-left: 60px ; height: fit-content }'
-          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: 15px auto ; background-color: #ccc }'
+          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: 5px auto -10px ; padding: 10px 0 ;'
+              + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
           + '#font-size-slider-thumb { width: 10px ; height: 26px ; border-radius: 30% ; position: relative ; top: -8.25px ;'
               + `background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
               + 'cursor: grab ; cursor: -webkit-grab ; cursor: -moz-grab }'
@@ -2075,7 +2076,7 @@
             } catch (err) { // if bad response
                 msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
-                    msgHref.replace(/([^_]*)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
+                    msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
