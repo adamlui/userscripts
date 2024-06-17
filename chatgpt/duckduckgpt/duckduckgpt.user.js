@@ -152,7 +152,7 @@
 // @description:zu      Faka amaphawu ase-ChatGPT kuvaliwe i-DuckDuckGo Search (okwesikhashana ngu-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.16.14
+// @version             2024.6.17.1
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -273,7 +273,7 @@
         menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
             if (getUserscriptManager() != 'Tampermonkey') // alert userscript manager unsupported, suggest Tampermonkey
                 siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.lert_isOnlyAvailFor || 'is only available for' }`
+                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
                       + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
                       + ` (${ msgs.alert_userscriptMgrNoStream ||
                                 'Your userscript manager does not support returning stream responses' }.)`)
@@ -1345,7 +1345,7 @@
                 } catch (err) { consoleErr('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
                     if (get.reply.sender == caller.api) // am designated sender, recurse
-                        setTimeout(() => { processStreamText({ done, value }) }, isEdge ? 100 : 1) // Edge delay vs. STATUS_ACCESS_VIOLATION bug
+                        setTimeout(() => { processStreamText({ done, value }) }, isEdge ? 200 : 1) // Edge delay vs. STATUS_ACCESS_VIOLATION bug
                 }).catch(err => consoleErr('Error reading stream', err.message))
             }
         }
@@ -1761,7 +1761,7 @@
             } catch (err) { // if bad response
                 msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
-                    msgHref.replace(/([^_]*)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
+                    msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
                 GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
             }
