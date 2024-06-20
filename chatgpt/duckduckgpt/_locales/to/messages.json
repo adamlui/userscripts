@@ -15,6 +15,12 @@
   "menuLabel_colorScheme": { "message": "Fokotuʻutuʻu ʻo e lanu" },
   "menuLabel_auto": { "message": "Meʻalele" },
   "menuLabel_about": { "message": "Fekauʻaki mo e" },
+  "menuLabel_highlightToAsk": { "message": "Fakaʻilongaʻi-ki he-kole" },
+  "menuLabel_fromAnySite": { "message": "mei ha faʻahinga feituʻu pe" },
+  "menuLabel_ask": { "message": "Kole" },
+  "menuLabel_hideMenu": { "message": "Fufuuʻi ʻa e menu" },
+  "menuLabel_always": { "message": "Maʻu pe" },
+  "menuLabel_forThisSite": { "message": "ki he saiti ni" },
   "about_version": { "message": "Tatau" },
   "about_poweredBy": { "message": "Fakalele ʻe he" },
   "about_sourceCode": { "message": "Maʻuʻanga fakamatala" },
@@ -69,5 +75,7 @@
   "link_shareFeedback": { "message": "Vahevahe ʻa e Fakamatala" },
   "prefix_exit": { "message": "Hū ki tu’a" },
   "state_on": { "message": "ʻI he" },
-  "state_off": { "message": "ʻOsi" }
+  "state_off": { "message": "ʻOsi" },
+  "query_hiThere": { "message": "Malo e lelei" },
+  "query_translate": { "message": "Liliu Leá" }
 }

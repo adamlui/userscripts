@@ -15,6 +15,12 @@
   "menuLabel_colorScheme": { "message": "Hêl" },
   "menuLabel_auto": { "message": "_Der barê" },
   "menuLabel_about": { "message": "دەربارە" },
+  "menuLabel_highlightToAsk": { "message": "Highlight-to-pirs" },
+  "menuLabel_fromAnySite": { "message": "ji her malperê" },
+  "menuLabel_ask": { "message": "Bipirse" },
+  "menuLabel_hideMenu": { "message": "Pêşekê Veşêre" },
+  "menuLabel_always": { "message": "هەمووکاتێ" },
+  "menuLabel_forThisSite": { "message": "ji bo vê malperê" },
   "about_version": { "message": "وەرژن" },
   "about_poweredBy": { "message": "پارێزراوە لەلایەن" },
   "about_sourceCode": { "message": "کۆدی سەرچاوە" },
@@ -69,5 +75,7 @@
   "link_shareFeedback": { "message": "پەیامی ئەزموون بگرە" },
   "prefix_exit": { "message": "دەرچوون" },
   "state_on": { "message": "Vekirî" },
-  "state_off": { "message": "Girtî" }
+  "state_off": { "message": "Girtî" },
+  "query_hiThere": { "message": "silav" },
+  "query_translate": { "message": "وەرگێڕان" }
 }

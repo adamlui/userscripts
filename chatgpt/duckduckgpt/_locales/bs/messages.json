@@ -15,6 +15,12 @@
   "menuLabel_colorScheme": { "message": "Izaberite šemu boja" },
   "menuLabel_auto": { "message": "Automobili" },
   "menuLabel_about": { "message": "O nama" },
+  "menuLabel_highlightToAsk": { "message": "Istaknite i pitajte" },
+  "menuLabel_fromAnySite": { "message": "sa bilo koje lokacije" },
+  "menuLabel_ask": { "message": "Pitao/la:" },
+  "menuLabel_hideMenu": { "message": "Sakrij meni" },
+  "menuLabel_always": { "message": "uvijek" },
+  "menuLabel_forThisSite": { "message": "za ovu stranicu" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "omogućio" },
   "about_sourceCode": { "message": "Izvorni kod" },
@@ -69,5 +75,7 @@
   "link_shareFeedback": { "message": "Podijelite povratne informacije" },
   "prefix_exit": { "message": "Izlaz" },
   "state_on": { "message": "Da" },
-  "state_off": { "message": "Ne" }
+  "state_off": { "message": "Ne" },
+  "query_hiThere": { "message": "Zdravo." },
+  "query_translate": { "message": "Prevedi" }
 }

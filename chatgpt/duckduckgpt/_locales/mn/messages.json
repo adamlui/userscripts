@@ -15,6 +15,12 @@
   "menuLabel_colorScheme": { "message": "Өнгөний схем" },
   "menuLabel_auto": { "message": "Авто" },
   "menuLabel_about": { "message": "Бидний тухай" },
+  "menuLabel_highlightToAsk": { "message": "Онцлох ажлын байр" },
+  "menuLabel_fromAnySite": { "message": "ямар ч сайтаас" },
+  "menuLabel_ask": { "message": "Асуух" },
+  "menuLabel_hideMenu": { "message": "Цэсийг нуух" },
+  "menuLabel_always": { "message": "дандаа" },
+  "menuLabel_forThisSite": { "message": "энэ сайтын хувьд" },
   "about_version": { "message": "Хувилбар" },
   "about_poweredBy": { "message": "ИЛЧЛЭГЧ" },
   "about_sourceCode": { "message": "ᠰᠣᠷᠪᠤᠯᠵᠢ ᠺᠣᠳ᠋" },
@@ -69,5 +75,7 @@
   "link_shareFeedback": { "message": "Санал хүсэлтийг хуваалцах" },
   "prefix_exit": { "message": "Гарах" },
   "state_on": { "message": "Асаах" },
-  "state_off": { "message": "Хаах" }
+  "state_off": { "message": "Хаах" },
+  "query_hiThere": { "message": "Сайн байна уу," },
+  "query_translate": { "message": "Орчуулах" }
 }

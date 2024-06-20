@@ -15,6 +15,12 @@
   "menuLabel_colorScheme": { "message": "Renk Şeması" },
   "menuLabel_auto": { "message": "Otomatik" },
   "menuLabel_about": { "message": "Hakkımızda" },
+  "menuLabel_highlightToAsk": { "message": "Sormak için vurgula" },
+  "menuLabel_fromAnySite": { "message": "herhangi bir siteden" },
+  "menuLabel_ask": { "message": "Ekle" },
+  "menuLabel_hideMenu": { "message": "Menüyü gizle" },
+  "menuLabel_always": { "message": "her zaman" },
+  "menuLabel_forThisSite": { "message": "bu site için" },
   "about_version": { "message": "Versiyon" },
   "about_poweredBy": { "message": "Destek" },
   "about_sourceCode": { "message": "Kaynak Kodu" },
@@ -69,5 +75,7 @@
   "link_shareFeedback": { "message": "Geri Bildirim Paylaş" },
   "prefix_exit": { "message": "Çık" },
   "state_on": { "message": "Açık" },
-  "state_off": { "message": "Kapalı" }
+  "state_off": { "message": "Kapalı" },
+  "query_hiThere": { "message": "Merhaba" },
+  "query_translate": { "message": "Çevir" }
 }
