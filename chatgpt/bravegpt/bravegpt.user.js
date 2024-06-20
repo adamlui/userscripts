@@ -1,120 +1,157 @@
 // ==UserScript==
 // @name                BraveGPT 🤖
-// @description         Adds ChatGPT answers to Brave Search sidebar (powered by GPT-4o!)
-// @description:af      Voeg ChatGPT-antwoorde by Brave Search-kantbalk by (aangedryf deur GPT-4o!)
-// @description:am      የChatGPT መልስናወርቃለች እርስዎን በBrave Search የተወሰኑ ገጽታዎችን (ተግባር በGPT-4o!) ይጨምሩ
-// @description:ar      يضيف إجابات ChatGPT إلى شريط البحث الجانبي في Brave (مدعوم بواسطة GPT-4o!)
-// @description:az      ChatGPT cavablarını Brave Axtarış yan panelinə əlavə edir (GPT-4o ilə gücləndirilmiş!)
-// @description:be      Дадае адказы ChatGPT да бакавой баковай панэлі Brave Search (падтрымліваецца GPT-4o!)
-// @description:bem     Aziya ChatGPT ndalama ku Brave Search sidebar (muma GPT-4o!)
-// @description:bg      Добавя ChatGPT отговори към страничната лента на Brave Search (задвижван от GPT-4o!)
-// @description:bn      Brave সার্চ সাইডবারে ChatGPT উত্তর যোগ করে (পাওয়ারডে GPT-4o দ্বারা!)
-// @description:bo      ChatGPT ལེ་བས་ཚད་བདག་སྐྱེད་དེ་བཟུམ་སྒྲིག་ནང་ Brave Search གནས་པ་བརྗོད་པ། (GPT-4oབྱ་བ་བརྒྱུད་པ་!)
-// @description:bs      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretrage (pokreće GPT-4o!)
-// @description:ca      Afegeix respostes de ChatGPT a la barra lateral de Brave Search (amb tecnologia GPT-4o!)
-// @description:ceb     Nagdugang sa mga tubag sa ChatGPT sa sidebar sa Brave Search (gamit ang GPT-4o!)
-// @description:ckb     وەرگرتنی ڕاستەوخۆیی ChatGPT بۆ پەنجەرەی لاتی لە Brave (بە پشتگیرییی GPT-4o!)
-// @description:cs      Přidává odpovědi od ChatGPT do bočního panelu Brave Search (poháněno GPT-4o!)
-// @description:cy      Ychwanega Atebion ChatGPT i'r bar ochr Brave Search (a gryfhawyd gan GPT-4o!)
-// @description:da      Tilføjer ChatGPT-svar til Brave Search-sidelinjen (drevet af GPT-4o!)
-// @description:de      Fügt ChatGPT-Antworten zur Seitenleiste der Brave-Suche hinzu (betrieben mit GPT-4o!)
-// @description:dv      ChatGPT އައިކްސޭޓުގެ ޖަވާބުގެ Brave Search ސައިޓުގައި ފޯރުވާރައުގެ ޑައުން (އެކައުންއައި ވަކި GPT-4o!)
-// @description:dz      ChatGPT དང་ Brave འབྱུང་ཆུང་ལེ་བས་འཐུས་པ་ལགས་སྤྱོད་སྒྲིག་པ་བརྟགས་བཞུགས། (GPT-4o་གི་སྒྲིག་དང་!)
-// @description:el      Προσθέτει απαντήσεις ChatGPT στην πλαϊνή γραμμή αναζήτησης του Brave (με την υποστήριξη του GPT-4o!)
-// @description:eo      Aldonas ChatGPT-respondojn al la flanka breto de Brave Serĉo (funkciigita de GPT-4o!)
-// @description:es      Agrega respuestas de ChatGPT a la barra lateral de Brave Search (¡impulsado por GPT-4o!)
-// @description:et      Lisab ChatGPT vastused Brave Search küljepaneelile (toetatud GPT-4o poolt!)
-// @description:eu      Gehitu ChatGPT erantzunak Brave Search aldeko alderakoan (GPT-4oren aurrerapenean oinarrituta!)
-// @description:fa      ChatGPT پاسخها را به نوار کناری جستجوی Brave اضافه میکند (قدرت گرفته شده توسط GPT-4o!)
-// @description:fi      Lisää ChatGPT-vastaukset Brave-haun sivupalkkiin (käyttäen GPT-4o!)
-// @description:fo      Leggur ChatGPT-svar til Brave leitarstika síðupall (drivin av GPT-4o!)
-// @description:fr      Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4o !)
-// @description:fr-CA   Ajoute les réponses de ChatGPT à la barre latérale de Brave Search (propulsé par GPT-4o !)
-// @description:gd      Cur Freagairtean ChatGPT ris an t-siostam-cùlaiche airson Innse Brave (le GPT-4o air!)
-// @description:gl      Engade respostas de ChatGPT á barra lateral de busca de Brave (potenciado por GPT-4o!)
-// @description:gu      બ્રેવ શોધનપટનમાં ChatGPT જવાબો ઉમેરે છે (પાવર્ડપુંજ GPT-4o દ્વારા!)
-// @description:haw     Hoʻoni i nā manaʻoʻiʻo ChatGPT i loko o ka papa kālai Brave Search (i hoʻohui ʻia e GPT-4o!)
-// @description:he      מוסיף תשובות של ChatGPT לסרגל הצד של חיפוש Brave (מופעל על ידי GPT-4o!)
-// @description:hi      ब्रेव सर्च साइडबार में ChatGPT उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
-// @description:hr      Dodaje odgovore ChatGPT-a na bočnu traku Brave pretraživanja (pokreće GPT-4o!)
-// @description:ht      Ajoute ChatGPT repons nan sibbard Brave Search la (pouvwa pa GPT-4o!)
-// @description:hu      Hozzáadja a ChatGPT válaszokat a Brave Search oldalsávjához (GPT-4o által támogatva!)
-// @description:hy      Ավելացնում է ChatGPT պատասխանները Brave Search կողմից (ուղղահայացված է GPT-4o-ի միջոցով!)
-// @description:id      Menambahkan jawaban ChatGPT ke sidebar Brave Search (didukung oleh GPT-4o!)
-// @description:is      Bætir við ChatGPT svari í hliðarstiku Brave leitarinnar (rekinn með GPT-4o!)
-// @description:it      Aggiunge le risposte di ChatGPT alla barra laterale di Brave Search (alimentato da GPT-4o!)
-// @description:ja      Brave 検索サイドバーに ChatGPT の回答を追加します（GPT-4o で動作中！）
-// @description:jv      Nambahake jawaban ChatGPT menyang sidebar Pencarian Brave (didheteni GPT-4o!)
-// @description:ka      დაამატებს ChatGPT პასუხებს Brave Search გვერდის მარჯვნივ (GPT-4o-ით გამოყენებული!)
-// @description:kab     Izgan-d yemdanen n teblaḍ n Brave Search (ɣef GPT-4o!)
-// @description:kk      Brave іздеу жағдайындағы ChatGPT жауаптарын қосады (GPT-4o-мен жұмыс істейді!)
-// @description:km      បន្ថែមចម្លើយ ChatGPT ទៅរបារចំហៀងស្វែងរកក្លាហាន (ដំណើរការដោយ GPT-4o!)
-// @description:kn      ಬ್ರೇವ್ ಶೋಧನೆ ಪಟ್ಟಿಗೆ ChatGPT ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ಅನ್ನು ಬಳಸಿ!)
-// @description:ko      ChatGPT 답변을 Brave 검색 사이드바에 추가합니다 (GPT-4o 로 구동됨!)
-// @description:ku      Li ser panoya li serê lêgerîna Brave dihêle ChatGPT bersivan (bi alîkariya GPT-4o!)
-// @description:ky      ChatGPT каардарларын Браве Издөө экибинын көнчыгышына кошотот (GPT-4o менен күтөлгөн!)
-// @description:la      Adiungit responsiones ChatGPT ad barra lateralem investigatiois Brave (GPT-4o motore!)
-// @description:lb      Füügt ChatGPT Äntwerten zur Brave-Sichbarsäit bäi (gedriwwen vun GPT-4o!)
-// @description:lo      ຕອບສອນ ChatGPT ໄປຫາແຖບຂັ້ນຕອນຂອງການຄົ້ນຫາ Brave (ໂດຍໃຊ້ GPT-4o!)
-// @description:lt      Prideda ChatGPT atsakymus į šoninę juostą paieškai Brave (varomi GPT-4o!)
-// @description:lv      Pievieno ChatGPT atbildes Brave meklēšanas sānjoslai (darbināts ar GPT-4o!)
-// @description:mg      Mampiditra valiny avy amin'ny ChatGPT ao amin'ny saroka Search Brave (maneho ny GPT-4o!)
-// @description:mi      Tāpiri atu i ngā whakautu a ChatGPT ki te tara taha o te Rapu Wawata Brave (e whakahaerehia ana e GPT-4o!)
-// @description:mk      Додава одговори од ChatGPT на страничната лента на Brave Search (поддржано од GPT-4o!)
-// @description:ml      Brave സേർച്ചിന്റെ സൈഡ്ബാർലേക്ക് ChatGPT ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o-യിൽ പ്രവർത്തിക്കുന്നു!)
-// @description:mn      ChatGPT хариултуудыг Brave Хайлтын зааврын зурагт нэмнэ (GPT-4o ашиглаж!)
-// @description:ms      Menambah jawapan ChatGPT ke sidebar Carian Brave (dikuasakan oleh GPT-4o!)
-// @description:mt      Iżżid Risposti ta 'ChatGPT lill-Sidebar Brave Search (pwered by GPT-4o!)
-// @description:my      ChatGPT အဖြေမှာ Brave ရွေးချယ်ရေးတွင် ChatGPT အဖြေများကိုထည့်သွင်းထားသည် (GPT-4o ဖြင့်အလုပ်လုပ်ပါ!)
-// @description:ne      ChatGPT उत्तरहरूलाई ब्रेभ खोजको साइडबारमा थप्छ (GPT-4o द्वारा संचालित!)
-// @description:nl      Voegt ChatGPT-antwoorden toe aan de zijbalk van Brave Search (aangedreven door GPT-4o!)
-// @description:no      Legger til ChatGPT-svar i sidenotatfeltet for Brave Search (drevet av GPT-4o!)
-// @description:ny      Anayambitsa zambiri za ChatGPT kubanja lovala la Brave Search (liyenera ndi GPT-4o!)
-// @description:pa      ਬਰੇਵ ਖੋਜ ਦੇ ਸਾਈਡਬਾਰ ਵਿੱਚ ChatGPT ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ (GPT-4o ਦੁਆਰਾ ਸ਼ਕਤੀਸ਼ਾਲਕ ਕੀਤਾ ਗਿਆ!)
-// @description:pap     Añadi respuèstanan di ChatGPT na bar lateral di Buskeda Brave (poderá pa GPT-4o!)
-// @description:pl      Dodaje odpowiedzi ChatGPT do paska bocznego Brave Search (napędzane przez GPT-4o!)
-// @description:ps      په سپینې د Brave لټونکې توګه ChatGPT جوابونه ورکړي (د GPT-4o لخوا سره!)
-// @description:pt      Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4o!)
-// @description:pt-BR   Adiciona respostas do ChatGPT à barra lateral de pesquisa do Brave (alimentado por GPT-4o!)
-// @description:rn      Abugira inkomoko za ChatGPT mu gisubizo cya Brave Search (yahindutse na GPT-4o!)
-// @description:ro      Adaugă răspunsuri ChatGPT în bara laterală de căutare Brave (propulsat de GPT-4o!)
-// @description:ru      Добавляет ответы ChatGPT в боковую панель поиска Brave (работает на GPT-4o!)
-// @description:rw      Atera amakuru ya ChatGPT mu bariro bya Brave Search (yarahindutse n'ikoranabuhanga cya GPT-4o!)
-// @description:sg      Yãngã añ fããmi ChatGPT pũngu loo yaaka yi Brave tãngbala (saango wã yi GPT-4o!)
-// @description:si      ඔබේ Brave සෙවුම් පිළිතුරුද ChatGPT එක් කිරීමෙන් එක්වන්න (GPT-4o විද්‍යාවලියේ සිදු වේ!)
-// @description:sk      Pridáva odpovede ChatGPT do bočnej lišty Brave Search (poháňané GPT-4o!)
-// @description:sl      Dodaja odgovore ChatGPT na stransko vrstico iskanja Brave (poganja GPT-4o!)
-// @description:sm      Fa'afaigofie atu ai le tali a ChatGPT i le sidebar o le Search Brave (e avea i le GPT-4o!)
-// @description:sn      Anoratidza zita reChatGPT pa sidebar yeBrave Search (ine vedzere GPT-4o!)
-// @description:so      Wax ka dar ChatGPT jawaabaha sidebar Brave Search (u shaqeeya GPT-4o!)
-// @description:sr      Додаје одговоре ChatGPT-а на страни панел претраге Брејва (покреће GPT-4o!)
-// @description:sv      Lägger till ChatGPT-svar i sidofältet för Brave Sökning (drivet av GPT-4o!)
-// @description:sw      Inaongeza majibu ya ChatGPT kwenye upau wa pembeni wa Brave Search (inaendeshwa na GPT-4o!)
-// @description:ta      பேராசை ஆய்வுக் கேட்பதற்கு ChatGPT பதில்களை Brave பக்க பக்கில் சேர்க்கிறது (GPT-4o ஆல் இயங்குகிறது!)
-// @description:te      Brave శోధనపై ChatGPT సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా పెంచబడింది!)
-// @description:tg      Шарҳи ChatGPT-ро ба сатҳи барои ҷустуҷӯи Брейв илова мекунад (тавассути GPT-4o мубодиъ будааст!)
-// @description:th      เพิ่มคำตอบของ ChatGPT ไปยังแถบข้างของการค้นหา Brave (ทำงานโดย GPT-4o!)
-// @description:ti      ክልል ጸጋን ChatGPT መልእኽት ንምስርሓብ Brave ውልቀት ይጨምሩ (በቀረበ GPT-4o!)
-// @description:tk      ChatGPT-nyň jogaplaryny Brave Gözleg çarpyşysyna goşýar (GPT-4o-dan güýçlenýär!)
-// @description:tn      Enza mavoti ChatGPT ku sidebar yeBrave Search (ine yeduva neGPT-4o!)
-// @description:to      Tānaki e fiemaʻu ai ha ngaahi ngaue fakamatala 'a e ChatGPT ki he tu'unga ni ha Brave Search (na'e neongo'i moe GPT-4o!)
-// @description:tpi     Adim na pes bilong ChatGPT long tab bilong Brave Søk (wok long GPT-4o!)
-// @description:tr      ChatGPT yanıtlarını Brave Arama yan çubuğuna ekler (GPT-4o tarafından desteklenir!)
-// @description:uk      Додає відповіді ChatGPT до бічної панелі пошуку Brave (працює на GPT-4o!)
-// @description:ur      ChatGPT جوابات کو بریو سرچ کے سائڈبار میں شامل کرتا ہے (GPT-4o کے ذریعے!)
-// @description:uz      ChatGPT javoblarni Brave Qidiruvning yon paneliga qo'shadi (GPT-4o tomonidan ta'minlanadi!)
-// @description:vi      Thêm câu trả lời của ChatGPT vào thanh bên của Brave Search (được cung cấp bởi GPT-4o!)
-// @description:xh      Enza amaxwebhu kaChatGPT e sideba yeBrave Search (enokukhuthaziswa nguGPT-4o!)
-// @description:yi      צוגעבן אַנטוואָרטן פֿון ChatGPT אין די זײַטל-פֿעלד פֿון Brave זוך (געפּאַווערטעד דורך GPT-4o!)
-// @description:zh      将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
-// @description:zh-CN   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
-// @description:zh-HK   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4o 提供支持!)
-// @description:zh-SG   将 ChatGPT 答案添加到 Brave Search 侧边栏 (由 GPT-4o 提供支持!)
-// @description:zh-TW   將 ChatGPT 答案添加到 Brave Search 側邊欄 (由 GPT-4o 提供支持!)
-// @description:zu      Engeza amaswazi aseChatGPT emugqa wokuqala weBrave Search (ibhulohwe nguGPT-4o!)
+// @description         Adds AI answers to Brave Search. Ask from any site. Powered by GPT-4o!
+// @description:af      Voeg KI-antwoorde by Brave Search. Vra vanaf enige webwerf. Aangedryf deur GPT-4o!
+// @description:am      የAI መልስናወርቃለች እርስዎን Brave Search ፍለጋ፣ የእያንዳንዱ ድረ-ገጽን ጥያቄ በመጠቀም ያለበት፣ GPT-4o ተከታታይ!
+// @description:ar      يضيف إجابات الذكاء الاصطناعي إلى Brave Search. اسأل من أي موقع. مدعوم بواسطة GPT-4o!
+// @description:az      Brave Search-a AI cavabları əlavə edir. Hər hansı bir səhifədən sual edin. GPT-4o ilə işləyir!
+// @description:be      Дадае адказы штучнага інтэлекту ў Brave Search. Запытвайце з любога сайта. Аб'яднана з GPT-4o!
+// @description:bem     Yamfumano AI mafundo pa Brave Search. Uliza kumayi malo awebusayiti. Eko wakuleta na GPT-4o!
+// @description:bg      Добавя AI отговори към Brave Search. Питайте от всяко сайт. Осигурено от GPT-4o!
+// @description:bn      Brave Search তে AI উত্তর যোগ করে। যেকোনো সাইট থেকে জিজ্ঞাসা করুন। GPT-4o দ্বারা চালিত!
+// @description:bo      Brave Search ནི་ AI དྲུག་བཏུས་བྱས་ཀྱི་འཕྲུལ་ཆས་གསར་ཤོག། གསང་ལས་སྙན་ཞུ་བཞག་པའི་གློ་དོན་འགྱོ་སྡེ། GPT-4o གི་བྱུང་བའི་ལས་རིགས་འཕྲིན་ལས་ཕབ།
+// @description:bs      Dodaje AI odgovore u Brave Search pretragu. Pitajte sa bilo kog sajta. Pokreće GPT-4o!
+// @description:ca      Afegeix respostes d'IA a Brave Search. Pregunta des de qualsevol lloc web. Amb la tecnologia de GPT-4o!
+// @description:ceb     Nagdugang mga tubag sa AI sa Brave Search Search. Pangutana gikan sa bisan unsang site. Gipadagan sa GPT-4o!
+// @description:cs      Přidává odpovědi AI do vyhledávání Brave Search. Zeptejte se z libovolného webu. Poháněno GPT-4o!
+// @description:cy      Ychwanegu atebion AI i Ddarganfod Brave Search. Gofynnwch o unrhyw safle. Pwerwyd gan GPT-4o!
+// @description:da      Tilføjer AI-svar til Brave Search. Spørg fra enhver side. Drevet af GPT-4o!
+// @description:de      Fügt KI-Antworten zu Brave Search hinzu. Fragen Sie von jeder Website aus. Angetrieben von GPT-4o!
+// @description:el      Προσθέτει απαντήσεις AI στο Brave Search. Κάντε ερωτήσεις από οποιαδήποτε ιστοσελίδα. Τροφοδοτείται από GPT-4o!
+// @description:en      Adds AI answers to Brave Search. Ask from any site. Powered by GPT-4o!
+// @description:eo      Aldonas AI-respondojn al Brave Search. Demandu de iu ajn retejo. Energio de GPT-4o!
+// @description:es      Agrega respuestas de IA a Brave Search. Haz preguntas desde cualquier sitio. ¡Potenciado por GPT-4o!
+// @description:et      Lisab Brave Search'le AI-vastuseid. Küsige mis tahes saidilt. Töötab GPT-4o abil!
+// @description:eu      Gaiak AI erantzunak gehitu Brave Search-ri. Nahi duzun edozein webguneetatik galdetu. GPT-4o-k gidatuta!
+// @description:fa      پاسخهای هوش مصنوعی را به Brave Search اضافه میکند. از هر سایتی بپرسید. توسط GPT-4o پشتیبانی میشود!
+// @description:fi      Lisää tekoälyn vastauksia Brave Search:hun. Kysy mistä tahansa sivulta. Toimii GPT-4o:n avulla!
+// @description:fil     Nagdudugtong ng mga sagot ng AI sa Brave Search. Magtanong mula sa anumang site. Hinihikayat ng GPT-4o!
+// @description:fj      Vakarautaka na vosa vakatotolo ni AI ki na yasa ni Brave Search. Taroga mai na yasa e dua na vanua. Vakarautaki e na GPT-4o!
+// @description:fo      Leggur AI svar til Brave Search. Spyr frá hvørjum síðu. Virkar við GPT-4o!
+// @description:fr      Ajoute des réponses IA à Brave Search. Demandez à partir de n'importe quel site. Alimenté par GPT-4o!
+// @description:fr-CA   Ajoute des réponses IA à Brave Search. Demandez à partir de n'importe quel site. Alimenté par GPT-4o!
+// @description:ga      Cuireann sé freagraí AI le Brave Search. Fiafraigh ó aon suíomh. Tá sé cumraithe ag GPT-4o!
+// @description:gd      Cuiridh e freagairtean AI ri Brave Search. Fiosrachadh bho gach làrach. Air a chumasachadh le GPT-4o!
+// @description:gl      Engade respostas de IA á barra lateral de procura de Brave Search. Pregunta desde calquera sitio. Alimentado por GPT-4o!
+// @description:gn      Oñemohẽ Guyra'ihoãi Tupãsy AI rire Brave Search Search. Pehendu mba'éichapa peteĩ ne'ẽrõ. Mboguero ko'ãiva GPT-4o!
+// @description:gu      Brave Search પર AI જવાબો ઉમેરે છે. કોઈપણ સાઇટથી પૂછો. GPT-4o પર ચાલે છે!
+// @description:ha      Zaya sauyaƙa daga AI zuwa bidiyo na bidiyon Brave Search. Tambaya daga irin yayan saitoci. Yana yin GPT-4o!
+// @description:haw     Hoʻohui aku i nā hōʻike a ka ʻikeʻike ʻana i ka papa aoʻao o ka ʻimi ʻana iā Brave Search. Kāhea mai ma nā kahua like ʻole. Hōʻoikaika ʻia e GPT-4o!
+// @description:he      מוסיף תשובות המופעלות על ידי AI לסרגל הצד של Brave Search Search. שאל מכל אתר. מופעל על ידי GPT-4o!
+// @description:hi      Brave Search पर AI उत्तर जोड़ता है। किसी भी साइट से पूछें। GPT-4o के द्वारा संचालित!
+// @description:hr      Dodaje odgovore AI na bočnoj traci pretraživanja Brave Search. Pitajte s bilo kojeg mjesta. Pokreće GPT-4o!
+// @description:ht      Ajoute repons IA nan barre laterale Rechèch Brave Search a. Mandem soti nan nenpòt kote. Difize pa GPT-4o!
+// @description:hu      AI válaszokat ad a Brave Search Keresés oldalsávjához. Kérdezzen bárhonnan. GPT-4o által hajtva!
+// @description:hy      Ավելացնում է AI պատասխաններ Brave Search Search-ի կողմից: Հարցերը կարող եք կատարել ցանկացած կայքից: Գործում է GPT-4o!
+// @description:ia      Addi responsas de AI al barra lateral de cerca de Brave Search. Interroga ex ulle sito. Functiona per GPT-4o!
+// @description:id      Menambahkan jawaban AI ke sidebar pencarian Brave Search. Tanya dari situs mana pun. Didukung oleh GPT-4o!
+// @description:ig      Tinye ndebanye AI na ohere na-atọ ọnụ ahụ na Brave Search. Weere ma ozi site n'anya. Nwere ike ina-emume GPT-4o!
+// @description:is      Bætir við AI svar við leitarstikuna Brave Search. Spyrji frá hverju síðu. Keyrir á GPT-4o!
+// @description:it      Aggiunge risposte IA alla barra laterale di ricerca di Brave Search. Chiedi da qualsiasi sito. Alimentato da GPT-4o!
+// @description:ja      Brave Searchの検索バーサイドバーにAIの回答を追加します。どのサイトからでも質問してください。GPT-4oで駆動しています！
+// @description:jv      Nambahaké jawaban AI dhisik sampingan Brave Search. Tanya saka piranti kanthi apapun. Didukung déning GPT-4o!
+// @description:ka      დაამატებს AI პასუხებს Brave Search ძებნის ზღვასთან. გთხოვთ ნებისმიერ საიტიდან. მუშაობს GPT-4o-ზე!
+// @description:kk      Brave Search іздеу тақтасына AI жауаптарын қосады. Кез келген сайттан сұрау жасаңыз. GPT-4o үшін жұмыс жасайды!
+// @description:kl      Tilersiornerit AI-svarerilluunngorniarnera Brave Search. Arlaanngaanneersorneq ataaseqarnissaanik. Aamma GPT-4o ippit!
+// @description:km      បន្ថែមចម្លើយ AI ទៅជួរស្វ័រ Brave Search។ សួរពីតំបន់មួយណាមួយ។ ប្រព្រឹត្តនៅលើ GPT-4o!
+// @description:kn      Brave Search ಗೆ AI ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ. ಯಾವುದೇ ಸೈಟ್ನಿಂದ ಕೇಳಿ. GPT-4o ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ!
+// @description:ko      Brave Search 검색 사이드 바에 AI 답변을 추가합니다. 어느 사이트에서든 질문하세요. GPT-4o로 작동됩니다!
+// @description:ku      Bersivên AI yên Brave Search Search-ê dikeve kêleka siyayê. Ji her çi malperê pirs bike. Li ser GPT-4o pêşveçûn dike!
+// @description:ky      Brave Search издөө тамчысына AI жоопторду кошотот. Кандай сымалда калсаңыз болот. GPT-4o иштебейт!
+// @description:la      Addit responsa AI ad latere explorandi Brave Search. Interroga ex quacumque pagina. Agitur per GPT-4o!
+// @description:lb      Setzt AI Äntwerten bei der Brave Search Sichleeschbaarsäit derbäi. Froe vun där Äntwerten. Gesteiert vun GPT-4o!
+// @description:lg      Ekola ebyamagero by'obuloko ku ssentebe ya sokweerabira ya Brave Search. Ekola ebyamagero ku kintu kyonna. Ekitegedde nga GPT-4o!
+// @description:ln      Kokata lisakoli ya téléchargement ya Brave Search. Soma mpe mosala oyo ekóya. Epai na GPT-4o!
+// @description:lo      ຕື່ມຄຳຕອບຈາກ AI ໃນເຄື່ອງມືການຊອກຫາຂອງ Brave Search. ບໍ່ມີເຄື່ອງທີ່ໄດ້ປະກອບ. ເຮັດໃຫ້ໂປຣໄຟຟ້າໃຊ້ເປັນ GPT-4o!
+// @description:lt      Prideda AI atsakymų į paieškos juostos šoną Brave Search. Klauskite iš bet kurios svetainės. Veikia su GPT-4o!
+// @description:lv      Pievieno atbildes no AI Brave Search meklēšanas sānjoslā. Jautājiet no jebkuras vietnes. Darbojas ar GPT-4o!
+// @description:mg      Manampy volabe AI ao amin'ny sidebar ny hetsika Brave Search. Mandefa amin'ny toerana iray. Manankarena amin'ny GPT-4o!
+// @description:mi      Tāpirihia ngā whakautu AI ki te tāpae mātaitanga Brave Search. Pātai mai i ētahi tūranga. E whakahaere ana i te GPT-4o!
+// @description:mk      Додава одговори од ИИ на страничната лента на пребарувањето Brave Search. Прашајте од било која страница. Поддржано од GPT-4o!
+// @description:ml      Brave Search-യിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു. ഏതെങ്കിലും സൈറ്റിൽ നിന്ന് ചോദിക്കുക. GPT-4o നൽകുന്നത്!
+// @description:mn      Brave Search хайлтын хажуугийн самбарт AI хариултуудыг нэмдэг. Ямар ч сайтаас асуугаарай. GPT-4o дэмжлэгтэй!
+// @description:mr      Brave Search च्या शोध साइडबारमध्ये AI उत्तरे जोडली जातात. कोणत्याही साइटवरून विचारा. GPT-4o द्वारा समर्थित!
+// @description:ms      Menambah jawapan AI ke sidebar Brave Search. Tanya dari mana-mana laman web. Dikuasakan oleh GPT-4o!
+// @description:mt      Iżżid tweġibiet AI mal-sidebar ta' Brave Search. Staqsi minn kwalunkwe sit. Mgħammar minn GPT-4o!
+// @description:my      Brave Search ရှိ AI အဖြေများကို ထည့်သွင်းသည်။ မည်သည့်ဆိုဒ်မှမေးပါ။ GPT-4o ဖြင့်အထောက်အပံ့ပြုသည်!
+// @description:na      Ongerenga mea a AI ki le tofiga o Brave Search. Fesili mai so’o se ‘upega tafa’ilagi. Fa’aola e GPT-4o!
+// @description:nb      Legger til AI-svar i Brave Search sidefeltet. Spør fra hvilken som helst side. Drevet av GPT-4o!
+// @description:nd      Ithunyelwe izimpendulo ze-AI ku-Brave Search. Buza kusuka kunoma yisiphi isiza. Iqhutshwa yi-GPT-4o!
+// @description:ne      Brave Search खोजको साइडबारमा AI उत्तरहरू थप्छ। कुनै पनि साइटबाट सोध्नुहोस्। GPT-4o द्वारा समर्थित!
+// @description:ng      Ongeza majibu ya AI kwenye menyu ya Brave Search. Uliza kutoka kwa tovuti yoyote. Inaendeshwa na GPT-4o!
+// @description:nl      Voegt AI-antwoorden toe aan de Brave Search zijbalk. Vraag vanaf elke site. Aangedreven door GPT-4o!
+// @description:nn      Legg til AI-svar i Brave Search sidefelt. Spør fra hvilken som helst side. Drevet av GPT-4o!
+// @description:no      Legger til AI-svar i Brave Search sidefelt. Spør fra hvilken som helst side. Drevet av GPT-4o!
+// @description:nso     E eketsa dikarabo tša AI go sephateng sa Brave Search. Botšiša go tšwa sebakeng se sengwe le se sengwe. E hloletšwe ke GPT-4o!
+// @description:ny      Imathandizira mayankho a AI ku sidebar ya Brave Search. Funsani kuchokera patsamba lililonse. Yothandizidwa ndi GPT-4o!
+// @description:oc      Apond las responsas AI a la barra laterala de Brave Search. Demandatz a partir de qualsevol site. Alimentat per GPT-4o!
+// @description:om      Deebii AI Brave Search irratti dabalata. Marsariitii kamirraayyuu gaafadhu. GPT-4o tiin kan hojjetu!
+// @description:or      Brave Search କୁ AI ଉତ୍ତର ଯୋଗ କରେ | ଯେକ any ଣସି ସାଇଟରୁ ପଚାର | GPT-4o ଦ୍ୱାରା ଚାଳିତ!
+// @description:pa      Brave Search ਲਈ AI ਜਵਾਬ ਜੋੜਦਾ ਹੈ। ਕਿਸੇ ਵੀ ਸਾਈਟ ਤੋਂ ਪੁੱਛੋ. GPT-4o ਦੁਆਰਾ ਸੰਚਾਲਿਤ!
+// @description:pl      Dodaje odpowiedzi AI do paska bocznego Brave Search. Zapytaj z dowolnej strony. Wspierany przez GPT-4o!
+// @description:ps      Brave Search ته د AI ځوابونه اضافه کوي. له هر سایټ څخه پوښتنه وکړئ. د GPT-4o لخوا پرمخ وړل کیږي!
+// @description:pt      Adiciona respostas AI à barra lateral do Brave Search. Pergunte de qualquer site. Alimentado por GPT-4o!
+// @description:pt-BR   Adiciona respostas AI à barra lateral do Brave Search. Pergunte de qualquer site. Alimentado por GPT-4o!
+// @description:qu      Añade respuestas de AI a la barra lateral de Brave Search. Pregunta desde cualquier sitio. Impulsado por GPT-4o!
+// @description:rm      Agiunta las respostas AI a la barra laterala da Brave Search. Dumonda da tut il link. Sustegnì da GPT-4o!
+// @description:rn      Yongeramwo inyishu za AI ku rubuga rwa Brave Search. Baza kuri site yose. Iterwa n’inkomezi na GPT-4o!
+// @description:ro      Adaugă răspunsuri AI în bara laterală Brave Search. Întreabă de pe orice site. Susținut de GPT-4o!
+// @description:ru      Добавляет ответы AI на боковую панель Brave Search. Спрашивайте с любого сайта. На базе GPT-4o!
+// @description:rw      Yongerera ibisubizo bya AI mu ruhande rwa Brave Search. Ubusabe kuri site iyo ari yo yose. Gishyigikiwe na GPT-4o!
+// @description:sa      Brave Search इत्यत्र AI उत्तराणि योजयति । कस्यापि साइट् तः पृच्छन्तु। GPT-4o द्वारा संचालित!
+// @description:sat     Brave Searchᱥ ᱵᱟᱨᱦᱟᱨᱚᱛ ᱠᱟᱹᱞᱤᱞᱟ AI ᱨᱮᱞᱟ ᱦᱚᱱᱮᱡ (GPT-4o ᱚᱛᱷᱟ ᱠᱚᱢᱵᱚᱨᱟᱺᱡ!)
+// @description:sc      Aghjunghje risposte AI à a barra laterale di Brave Search. Dumandate da qualsiasi situ. Supportatu da GPT-4o!
+// @description:sd      شامل ڪري ٿو AI جوابن کي Brave Search ڏانهن. ڪنهن به سائيٽ کان پڇو. GPT-4o پاران طاقتور!
+// @description:se      Loahpa AI-vástádusat Brave Search gaskkaside. Jearahuvvon gosage sajis. Doaimmasaš GPT-4o!
+// @description:sg      Tisa na tîsânga ya AI kuna ntsâdi ya Brave Search. Sônga kuna site y'oseî. Sa tebelî GPT-4o!
+// @description:si      Brave Search සෙවුමේ AI පිළිතුරු එකතු කරයි. කිසිඳු වෙබ් අඩවියකින් විමසන්න. GPT-4o විසින් බලගැන්වී ඇත!
+// @description:sk      Pridáva AI odpovede do bočnej lišty vyhľadávania Brave Search. Spýtajte sa z akejkoľvek stránky. Podporované GPT-4o!
+// @description:sl      Dodaja AI odgovore v stransko vrstico iskanja Brave Search. Vprašajte s katere koli strani. Podprto z GPT-4o!
+// @description:sm      Faʻaopopo tali AI i le itu saogalemu o le Brave Search. Fesili mai i soʻo se saite. Faʻatinoina e GPT-4o!
+// @description:sn      Kupindura maitiro e AI kuve kuwandisa wevhu ra Brave Search Search. Bvunza kubva pane chero saiti. Akakosha ne GPT-4o!
+// @description:so      Ku daraya jawaabaha AI ee dhinaca Brave Search. Weydii laga bilaabo goob kasta. Waxaa ku shaqeeya GPT-4o!
+// @description:sq      Shton përgjigje AI në anëbardhën e kërkimit Brave Search. Pyet nga çdo faqe. Mbështetur nga GPT-4o!
+// @description:sr      Dodaje AI odgovore u bočnu traku Brave Search. Pitajte sa bilo kog sajta. Podržano od strane GPT-4o!
+// @description:ss      Faka izimpendulo ze-AI eceleni kwe-Brave Search Search. Buza kusuka kunoma isiphi isiza. Ixhaswe yi-GPT-4o!
+// @description:st      Eketsa likarabo tsa AI ho lehlakoreng la Brave Search. Botsa ho tloha sebakeng leha e le sefe. E tsamaisoa ke GPT-4o!
+// @description:su      Nambahkeun jawaban AI ka sidebar Brave Search. Tanya ti situs mana waé. Disetir ku GPT-4o!
+// @description:sv      Lägger till AI-svar i Brave Search sidofält. Fråga från vilken sida som helst. Drivs av GPT-4o!
+// @description:sw      Inaongeza majibu ya AI kwenye upau wa kando wa Brave Search. Uliza kutoka kwa tovuti yoyote. Inaendeshwa na GPT-4o!
+// @description:ta      Brave Search க்கு AI பதில்களைச் சேர்க்கிறது. எந்த தளத்தில் இருந்தும் கேளுங்கள். GPT-4o மூலம் இயக்கப்படுகிறது!
+// @description:te      Brave Searchకి AI సమాధానాలను జోడిస్తుంది. ఏదైనా సైట్ నుండి అడగండి. GPT-4o ద్వారా ఆధారితం!
+// @description:tg      Зиёд кардани ҷавобҳои AI ба тарафи Brave Search. Аз ҳар гуна сайт пурсед. Мувофиқи GPT-4o!
+// @description:th      เพิ่มคำตอบ AI ในแถบด้านข้างของ Brave Search. ถามจากเว็บไซต์ใดก็ได้. รองรับโดย GPT-4o!
+// @description:ti      ናብ Brave Search ናይ AI መልስታት ይውስኽ። ካብ ዝኾነ መርበብ ሓበሬታ ሕተት። ብ GPT-4o ዝሰርሕ!
+// @description:tk      Brave Search-a AI jogaplary goşýar. Islendik sahypadan sorag beriň. GPT-4o bilen işleýär!
+// @description:tl      Nagdadagdag ng mga sagot na AI sa sidebar ng Brave Search. Magtanong mula sa anumang site. Pinapagana ng GPT-4o!
+// @description:tn      E kenyelelitse dikarabo tsa AI lehlakoreng la Brave Search. Botsa ho tswa saeteng efe kapa efe. E tsamaisoa ke GPT-4o!
+// @description:to      Tānaki atu ‘a e ngaahi tali AI ki he fehokotaki’anga ki tu‘a ‘o e Brave Search. Fai ha me‘a mei ha saiti pē. Ngāue‘aki ‘e he GPT-4o!
+// @description:tr      Brave Search yan çubuğuna AI yanıtları ekler. Herhangi bir siteden sorabilirsiniz. GPT-4o tarafından desteklenmektedir!
+// @description:ts      Yongeza swivutiso swa AI ehlangwini ra Brave Search. Vutisa kusuka eka sayiti yin’wana na yin’wana. Ri seketelwa hi GPT-4o!
+// @description:tt      Brave Search Эзләү читенә AI җавапларын өсти. Теләсә кайсы сайттан сорагыз. GPT-4o белән эшли!
+// @description:tw      Ɛde AI mmuae aka ho maa Brave Search mpapawsoɛ. Bisa fi beae biara. Ɛyɛ GPT-4o a ɛde tumi!
+// @description:ug      Brave Search ئىزدەشتە AI جاۋابلىرىنى قوشىدۇ. ھەر قانداق تور بەتتىن سوراڭ. GPT-4o نىڭ قوللىشى بىلەن!
+// @description:uk      Додає AI відповіді у бічну панель Brave Search. Питайте з будь-якого сайту. Підтримується GPT-4o!
+// @description:ur      Brave Search سائڈبار میں AI جوابات شامل کرتا ہے۔ کسی بھی سائٹ سے پوچھیں۔ GPT-4o کے ذریعے تقویت یافتہ!
+// @description:uz      Brave Search qidiruviga AI javoblari qo'shadi. Har qanday saytdan so'rang. GPT-4o tomonidan qo'llab-quvvatlanadi!
+// @description:ve      Vho hodza a AI kha zwa vhambadela zwa Brave Search. U nga vhudzisa kha tshiimiswa tshithihi na tshithihi. Zwi khou shuma nga GPT-4o!
+// @description:vi      Thêm câu trả lời AI vào thanh bên Brave Search. Hỏi từ bất kỳ trang web nào. Được hỗ trợ bởi GPT-4o!
+// @description:vo      Läükon datans AI ad päts binon Brave Search. Pedön sevei okik. Nüköfon dö GPT-4o!
+// @description:wa      Åjouter des réponses AI å l'cohete di Brave Search. Dimande a på onk ki site. Sopoirtê pa GPT-4o!
+// @description:wo      Duggal na AI ci wetu Brave Search. Laaj fi kan la rekk. Naataanal ko GPT-4o!
+// @description:xh      Yongeza iimpendulo ze-AI kwicala le-Brave Search. Buza kwisiza nayiphi na. Iqhutywa yi-GPT-4o!
+// @description:yi      מוסיף תשובות AI לסרגל הצד של Brave Search. שאל מכל אתר. מופעל על ידי GPT-4o!
+// @description:yo      Fikun awọn idahun AI si abala Brave Search. Beere lati ọdọ eyikeyi aaye ayelujara. Ṣe atilẹyin nipasẹ GPT-4o!
+// @description:za      Gaeng an de AI beix bouxmaenz an Brave Search. Faenh daengz mboujlaenz sim. Giekdaemz an GPT-4o fap!
+// @description:zh      为 Brave Search 添加 AI 答案。从任何网站提问。由 GPT-4o 提供支持！
+// @description:zh-CN   为 Brave Search 添加 AI 答案。从任何网站提问。由 GPT-4o 提供支持！
+// @description:zh-HK   為 Brave Search 增加人工智慧答案。從任何網站詢問。由 GPT-4o 提供支援！
+// @description:zh-SG   为 Brave Search 添加 AI 答案。从任何网站提问。由 GPT-4o 提供支持！
+// @description:zh-TW   為 Brave Search 增加人工智慧答案。從任何網站詢問。由 GPT-4o 提供支援！
+// @description:zu      Faka izimpendulo ze-AI eceleni kwe-Brave Search. Buza kusuka kunoma yisiphi isiza. Ixhaswe yi-GPT-4o!
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.19.3
+// @version             2024.6.20
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -132,7 +169,7 @@
 // @compatible          kiwi
 // @compatible          mask
 // @compatible          orion
-// @match               *://search.brave.com/search*
+// @match               *://*/*
 // @include             https://auth0.openai.com
 // @connect             binjie.fun
 // @connect             chatgpt.com
@@ -174,7 +211,8 @@ setTimeout(async () => {
     // Init BROWSER FLAGS
     const isFirefox = chatgpt.browser.isFirefox(),
           isEdge = navigator.userAgent.includes('Edg'),
-          isMobile = chatgpt.browser.isMobile()
+          isMobile = chatgpt.browser.isMobile(),
+          isBraveSERP = /^https:\/\/search\.brave\.[^/]+\/search\?/.test(document.location.href)
 
     // Init CONFIG
     const config = {
@@ -186,12 +224,13 @@ setTimeout(async () => {
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
     config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@b5c3426/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@eb5b96e/'
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'fontSize', 'prefixEnabled',
-                'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme', 'streamingDisabled',
-                'suffixEnabled', 'widerSidebar')
+    loadSetting(['autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'fontSize',
+                'prefixEnabled', 'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme',
+                'streamingDisabled', 'suffixEnabled', 'widerSidebar'])
+    loadSetting(['asktipDisabled', 'sitesToNotShowAsktip'], 'global')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) saveSetting('fontSize', 16) // init reply font size if unset
     if (isEdge || getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if Edge or not TM
@@ -253,8 +292,20 @@ setTimeout(async () => {
 
     // Define SCRIPT functions
 
-    function loadSetting(...keys) { keys.forEach(key => config[key] = GM_getValue(config.keyPrefix + '_' + key, false)) }
-    function saveSetting(key, value) { GM_setValue(config.keyPrefix + '_' + key, value) ; config[key] = value }
+    function loadSetting(keys, scope = '') {
+        keys.forEach(key => {
+            if (scope == 'global') {
+                const val = localStorage[key]
+                config[key] = val ? JSON.parse(val) : false
+            } else config[key] = GM_getValue(config.keyPrefix + '_' + key, false)
+    })}
+
+    function saveSetting(key, val, scope = '') {
+        if (scope == 'global') localStorage[key] = JSON.stringify(val)
+        else GM_setValue(config.keyPrefix + '_' + key, val)
+        config[key] = val
+    }
+
     function safeWindowOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
     function getUserscriptManager() { try { return GM_info.scriptHandler } catch (err) { return 'other' }}
 
@@ -262,167 +313,183 @@ setTimeout(async () => {
 
     function registerMenu() {
 
-        // Add command to toggle proxy API mode
-        const pamLabel = menuState.symbol[+config.proxyAPIenabled] + ' '
-                       + ( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' '
-                       + menuState.separator + menuState.word[+config.proxyAPIenabled]
-        menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
+        if (isBraveSERP) {
 
-        // Add command toggle streaming mode or alert unsupported
-        const stmState = !config.proxyAPIenabled ? false : !config.streamingDisabled // show disabled state to OpenAI users
-        const stmLabel = menuState.symbol[+stmState] + ' '
-                       + ( msgs.mode_streaming || 'Streaming Mode' ) + ' '
-                       + menuState.separator + menuState.word[+stmState]
-        menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
-            if (isEdge) { // alert Edge unsupported, link to browser bug
-                const msBugLink = 'https://answers.microsoft.com/en-us/microsoftedge/forum/all/'
-                                + 'status-access-violation-issues/1fd4a2ef-6736-441f-8421-6ed167105093'
-                siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } Edge`
-                      + ` ${ msgs.alert_untilMSfixesBug || 'until Microsoft fixes this long-standing browser rendering bug' }:`
-                      + ` <a target="_blank" rel="noopener" href="${msBugLink}">${msBugLink}</a>`)
-            } else if (getUserscriptManager() != 'Tampermonkey') // alert userscript manager unsupported, suggest Tampermonkey
-                siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
-                      + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
-                      + ` (${ msgs.alert_userscriptMgrNoStream ||
-                                'Your userscript manager does not support returning stream responses' }.)`,
-                '', '', 575) // px width
-            else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                let msg = `${ msgs.mode_streaming || 'Streaming Mode' } `
-                        + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
-                        + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
-                        + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
-                const switchPhrase = msgs.alert_switchingOn || 'switching on'
-                msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
-                siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
-                    msg, '', '', 575) // px width
-                appDiv.querySelector('[href="#"]')?.addEventListener('click', () => {
-                    document.querySelector('.modal-close-btn').click() ; toggleProxyMode() })
-            } else { // functional toggle
-                saveSetting('streamingDisabled', !config.streamingDisabled)
-                notify(( msgs.mode_streaming || 'Streaming Mode' ) + ' ' + menuState.word[+!config.streamingDisabled])
-                refreshMenu()
-            }
-        }))
+            // Add command to toggle proxy API mode
+            const pamLabel = menuState.symbol[+config.proxyAPIenabled] + ' '
+                           + ( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' '
+                           + menuState.separator + menuState.word[+config.proxyAPIenabled]
+            menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
 
-        // Add command to toggle auto-get mode
-        const agmLabel = menuState.symbol[+!config.autoGetDisabled] + ' '
-                       + ( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' '
-                       + menuState.separator + menuState.word[+!config.autoGetDisabled]
-        menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
-            saveSetting('autoGetDisabled', !config.autoGetDisabled)
-            notify(( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' ' + menuState.word[+!config.autoGetDisabled])
-            refreshMenu()
-        }))
+            // Add command toggle streaming mode or alert unsupported
+            const stmState = !config.proxyAPIenabled ? false : !config.streamingDisabled // show disabled state to OpenAI users
+            const stmLabel = menuState.symbol[+stmState] + ' '
+                           + ( msgs.mode_streaming || 'Streaming Mode' ) + ' '
+                           + menuState.separator + menuState.word[+stmState]
+            menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
+                if (isEdge) { // alert Edge unsupported, link to browser bug
+                    const msBugLink = 'https://answers.microsoft.com/en-us/microsoftedge/forum/all/'
+                                    + 'status-access-violation-issues/1fd4a2ef-6736-441f-8421-6ed167105093'
+                    siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
+                        `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } Edge`
+                          + ` ${ msgs.alert_untilMSfixesBug || 'until Microsoft fixes this long-standing browser rendering bug' }:`
+                          + ` <a target="_blank" rel="noopener" href="${msBugLink}">${msBugLink}</a>`)
+                } else if (getUserscriptManager() != 'Tampermonkey') // alert userscript manager unsupported, suggest Tampermonkey
+                    siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
+                        `${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
+                          + ' <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a>.'
+                          + ` (${ msgs.alert_userscriptMgrNoStream ||
+                                    'Your userscript manager does not support returning stream responses' }.)`,
+                    '', '', 575) // px width
+                else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
+                    let msg = `${ msgs.mode_streaming || 'Streaming Mode' } `
+                            + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
+                            + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
+                            + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
+                    const switchPhrase = msgs.alert_switchingOn || 'switching on'
+                    msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
+                    siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`,
+                        msg, '', '', 575) // px width
+                    appDiv.querySelector('[href="#"]')?.addEventListener('click', () => {
+                        document.querySelector('.modal-close-btn').click() ; toggleProxyMode() })
+                } else { // functional toggle
+                    saveSetting('streamingDisabled', !config.streamingDisabled)
+                    notify(( msgs.mode_streaming || 'Streaming Mode' ) + ' ' + menuState.word[+!config.streamingDisabled])
+                    refreshMenu()
+                }
+            }))
 
-        if (!isMobile) {
-
-            // Add command to toggle auto-focus chatbar
-            const afcLabel = menuState.symbol[+!config.autoFocusChatbarDisabled] + ' '
-                           + ( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
-                           + menuState.separator + menuState.word[+!config.autoFocusChatbarDisabled]
-            menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
-                saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
-                notify(( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
-                             + menuState.word[+!config.autoFocusChatbarDisabled])
+            // Add command to toggle auto-get mode
+            const agmLabel = menuState.symbol[+!config.autoGetDisabled] + ' '
+                           + ( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' '
+                           + menuState.separator + menuState.word[+!config.autoGetDisabled]
+            menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
+                saveSetting('autoGetDisabled', !config.autoGetDisabled)
+                notify(( msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' ) + ' ' + menuState.word[+!config.autoGetDisabled])
                 refreshMenu()
             }))
 
+            if (!isMobile) {
 
-            // Add command to toggle auto-scroll (when streaming)
-            const assLabel = menuState.symbol[+config.autoScroll] + ' '
-                           + `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`
-                           + menuState.separator + menuState.word[+config.autoScroll]
-            menuIDs.push(GM_registerMenuCommand(assLabel, () => {
-                saveSetting('autoScroll', !config.autoScroll)
-                notify(( msgs.mode_autoScroll || 'Auto-Scroll' ) + ' ' + menuState.word[+config.autoScroll])
+                // Add command to toggle auto-focus chatbar
+                const afcLabel = menuState.symbol[+!config.autoFocusChatbarDisabled] + ' '
+                               + ( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
+                               + menuState.separator + menuState.word[+!config.autoFocusChatbarDisabled]
+                menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
+                    saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
+                    notify(( msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar' ) + ' '
+                                 + menuState.word[+!config.autoFocusChatbarDisabled])
+                    refreshMenu()
+                }))
+
+
+                // Add command to toggle auto-scroll (when streaming)
+                const assLabel = menuState.symbol[+config.autoScroll] + ' '
+                               + `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`
+                               + menuState.separator + menuState.word[+config.autoScroll]
+                menuIDs.push(GM_registerMenuCommand(assLabel, () => {
+                    saveSetting('autoScroll', !config.autoScroll)
+                    notify(( msgs.mode_autoScroll || 'Auto-Scroll' ) + ' ' + menuState.word[+config.autoScroll])
+                    refreshMenu()
+                }))
+            }
+
+            // Add command to toggle showing related queries
+            const rqLabel = menuState.symbol[+!config.rqDisabled] + ' '
+                          + ( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' '
+                          + menuState.separator + menuState.word[+!config.rqDisabled]
+            menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
+                saveSetting('rqDisabled', !config.rqDisabled)
+                const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+                if (relatedQueriesDiv) // update visibility based on latest setting
+                    relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
+                if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
+                    const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                    get.related(lastQuery).then(queries => show.related(queries))
+                        .catch(err => { consoleErr(err.message)
+                            if (get.related.status != 'done') api.tryNew(get.related) })
+                }
+                updateTweaksStyle() // toggle <pre> max-height
+                notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
                 refreshMenu()
             }))
-        }
 
-        // Add command to toggle showing related queries
-        const rqLabel = menuState.symbol[+!config.rqDisabled] + ' '
-                      + ( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' '
-                      + menuState.separator + menuState.word[+!config.rqDisabled]
-        menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
-            saveSetting('rqDisabled', !config.rqDisabled)
-            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
-            if (relatedQueriesDiv) // update visibility based on latest setting
-                relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
-            if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
-                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.related(lastQuery).then(queries => show.related(queries))
-                    .catch(err => { consoleErr(err.message)
-                        if (get.related.status != 'done') api.tryNew(get.related) })
-            }
-            updateTweaksStyle() // toggle <pre> max-height
-            notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
-            refreshMenu()
-        }))
+            // Add command to toggle prefix mode
+            const pfmLabel = menuState.symbol[+config.prefixEnabled] + ' '
+                          + ( msgs.menuLabel_require || 'Require' ) + ' "/" '
+                          + ( msgs.menuLabel_beforeQuery || 'before query' ) + ' '
+                          + menuState.separator + menuState.word[+config.prefixEnabled]
+            menuIDs.push(GM_registerMenuCommand(pfmLabel, () => {
+                saveSetting('prefixEnabled', !config.prefixEnabled)
+                if (config.prefixEnabled && config.suffixEnabled) { // disable Suffix Mode if activating Prefix Mode
+                    saveSetting('suffixEnabled', !config.suffixEnabled) }
+                notify(( msgs.mode_prefix || 'Prefix Mode' ) + ' ' + menuState.word[+config.prefixEnabled])
+                refreshMenu()
+            }))
 
-        // Add command to toggle prefix mode
-        const pfmLabel = menuState.symbol[+config.prefixEnabled] + ' '
-                      + ( msgs.menuLabel_require || 'Require' ) + ' "/" '
-                      + ( msgs.menuLabel_beforeQuery || 'before query' ) + ' '
-                      + menuState.separator + menuState.word[+config.prefixEnabled]
-        menuIDs.push(GM_registerMenuCommand(pfmLabel, () => {
-            saveSetting('prefixEnabled', !config.prefixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Suffix Mode if activating Prefix Mode
-                saveSetting('suffixEnabled', !config.suffixEnabled) }
-            notify(( msgs.mode_prefix || 'Prefix Mode' ) + ' ' + menuState.word[+config.prefixEnabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle suffix mode
-        const sfmLabel = menuState.symbol[+config.suffixEnabled] + ' '
-                      + ( msgs.menuLabel_require || 'Require' ) + ' "?" '
-                      + ( msgs.menuLabel_afterQuery || 'after query' ) + ' '
-                      + menuState.separator + menuState.word[+config.suffixEnabled]
-        menuIDs.push(GM_registerMenuCommand(sfmLabel, () => {
-            saveSetting('suffixEnabled', !config.suffixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Prefix Mode if activating Suffix Mode
-                saveSetting('prefixEnabled', !config.prefixEnabled) }
-            notify(( msgs.mode_suffix || 'Suffix Mode' ) + ' ' + menuState.word[+!config.suffixEnabled])
-            refreshMenu()
-        }))
-
-        if (!isMobile) {
+            // Add command to toggle suffix mode
+            const sfmLabel = menuState.symbol[+config.suffixEnabled] + ' '
+                          + ( msgs.menuLabel_require || 'Require' ) + ' "?" '
+                          + ( msgs.menuLabel_afterQuery || 'after query' ) + ' '
+                          + menuState.separator + menuState.word[+config.suffixEnabled]
+            menuIDs.push(GM_registerMenuCommand(sfmLabel, () => {
+                saveSetting('suffixEnabled', !config.suffixEnabled)
+                if (config.prefixEnabled && config.suffixEnabled) { // disable Prefix Mode if activating Suffix Mode
+                    saveSetting('prefixEnabled', !config.prefixEnabled) }
+                notify(( msgs.mode_suffix || 'Suffix Mode' ) + ' ' + menuState.word[+!config.suffixEnabled])
+                refreshMenu()
+            }))
 
             // Add command to toggle wider sidebar
-            const wsbLabel = menuState.symbol[+config.widerSidebar] + ' '
-                           + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' )
-                           + menuState.separator + menuState.word[+config.widerSidebar]
-            menuIDs.push(GM_registerMenuCommand(wsbLabel, () => toggleSidebar('wider')))
+            if (!isMobile) {
+                const wsbLabel = menuState.symbol[+config.widerSidebar] + ' '
+                               + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' )
+                               + menuState.separator + menuState.word[+config.widerSidebar]
+                menuIDs.push(GM_registerMenuCommand(wsbLabel, () => toggleSidebar('wider')))
+            }
         }
 
-        // Add command to set reply language
-        const rlLabel = '🌐 ' + ( msgs.menuLabel_replyLanguage || 'Reply Language' )
-                      + menuState.separator + config.replyLanguage
-        menuIDs.push(GM_registerMenuCommand(rlLabel, () => {
-            while (true) {
-                let replyLanguage = prompt(
-                    ( msgs.prompt_updateReplyLang || 'Update reply language' ) + ':', config.replyLanguage)
-                if (replyLanguage == null) break // user cancelled so do nothing
-                else if (!/\d/.test(replyLanguage)) {
-                    replyLanguage = ( // auto-case for menu/alert aesthetics
-                        [2, 3].includes(replyLanguage.length) || replyLanguage.includes('-') ? replyLanguage.toUpperCase()
-                          : replyLanguage.charAt(0).toUpperCase() + replyLanguage.slice(1).toLowerCase() )
-                    saveSetting('replyLanguage', replyLanguage || config.userLanguage)
-                    siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
-                        `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
-                            + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.')
-                    refreshMenu() ; break
-        }}}))
+        // Add command to toggle highlight-to-ask
+        const htaLabel = `${menuState.symbol[+!config.asktipDisabled]} `
+                       + `${ msgs.menuLabel_highlightToAsk || 'Highlight-to-ask' } `
+                       + `(${ msgs.menuLabel_fromAnySite || 'from any site' })`
+                       + menuState.separator + menuState.word[+!config.asktipDisabled]
+        menuIDs.push(GM_registerMenuCommand(htaLabel, () => {
+            saveSetting('asktipDisabled', !config.asktipDisabled, 'global')
+            notify(`${ msgs.menuLabel_highlightToAsk || 'Highlight-to-ask' } ${menuState.word[+!config.asktipDisabled]}`)
+            refreshMenu()
+        }))
 
-        // Add command to set color scheme
-        const schemeLabel = ( config.scheme == 'light' ? '☀️' :
-                              config.scheme == 'dark'  ? '🌘' : '🌗' ) + ' '
-                          + ( msgs.menuLabel_colorScheme || 'Color Scheme' ) + menuState.separator
-                          + ( config.scheme == 'light' ? msgs.scheme_light   || 'Light' :
-                              config.scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
-                                                       : msgs.menuLabel_auto || 'Auto' )
-        menuIDs.push(GM_registerMenuCommand(schemeLabel, launchSchemeModal))
+        if (isBraveSERP) {
+
+            // Add command to set reply language
+            const rlLabel = '🌐 ' + ( msgs.menuLabel_replyLanguage || 'Reply Language' )
+                          + menuState.separator + config.replyLanguage
+            menuIDs.push(GM_registerMenuCommand(rlLabel, () => {
+                while (true) {
+                    let replyLanguage = prompt(
+                        ( msgs.prompt_updateReplyLang || 'Update reply language' ) + ':', config.replyLanguage)
+                    if (replyLanguage == null) break // user cancelled so do nothing
+                    else if (!/\d/.test(replyLanguage)) {
+                        replyLanguage = ( // auto-case for menu/alert aesthetics
+                            [2, 3].includes(replyLanguage.length) || replyLanguage.includes('-') ? replyLanguage.toUpperCase()
+                              : replyLanguage.charAt(0).toUpperCase() + replyLanguage.slice(1).toLowerCase() )
+                        saveSetting('replyLanguage', replyLanguage || config.userLanguage)
+                        siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
+                            `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
+                                + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.')
+                        refreshMenu() ; break
+            }}}))
+
+            // Add command to set color scheme
+            const schemeLabel = ( config.scheme == 'light' ? '☀️' :
+                                  config.scheme == 'dark'  ? '🌘' : '🌗' ) + ' '
+                              + ( msgs.menuLabel_colorScheme || 'Color Scheme' ) + menuState.separator
+                              + ( config.scheme == 'light' ? msgs.scheme_light   || 'Light' :
+                                  config.scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
+                                                           : msgs.menuLabel_auto || 'Auto' )
+            menuIDs.push(GM_registerMenuCommand(schemeLabel, launchSchemeModal))
+        }
 
         // Add command to launch About modal
         const aboutLabel = `💡 ${ msgs.menuLabel_about || 'About' } ${ config.appName }`
@@ -1509,7 +1576,7 @@ setTimeout(async () => {
                 aboutSpan.id = 'about-btn' // for toggleTooltip()
                 aboutSpan.className = 'corner-btn' ; aboutSpan.style.marginTop = '0.8px'
                 const aboutSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
-                aboutSVGattrs.forEach(([attr,value]) => aboutSVG.setAttribute(attr, value))            
+                aboutSVGattrs.forEach(([attr,value]) => aboutSVG.setAttribute(attr, value))
                 aboutSVGpath.setAttribute('d',
                     'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z')
                 aboutSVGpath.setAttribute('stroke', 'none')
@@ -1880,102 +1947,228 @@ setTimeout(async () => {
 
     // Run MAIN routine
 
-    // Init scheme var
-    let scheme = config.scheme || ( isDarkMode() ? 'dark' : 'light' )
+    if (isBraveSERP) { // show BRAVEGPT
 
-    // Pre-load LOGO
-    const appLogoImg = document.createElement('img') ; updateAppLogoSrc()
-    appLogoImg.onload = () => { appLogoImg.loaded = true ; updateTitleAnchor() }
+        // Init ALERTS
+        var appAlerts = {
+            waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+            login:            `${ msgs.alert_login || 'Please login' } @ `,
+            checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
+            tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
+            parseFailed:      `${ msgs.alert_parseFailed || 'Failed to parse response JSON' }.`,
+            proxyNotWorking:  `${ msgs.mode_proxy || 'Proxy Mode' } ${ msgs.alert_notWorking || 'is not working' }.`,
+            openAInotWorking: `OpenAI API ${ msgs.alert_notWorking || 'is not working' }.`,
+            suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
+            suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
+        }
 
-    // Init ALERTS
-    const appAlerts = {
-        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
-        login:            `${ msgs.alert_login || 'Please login' } @ `,
-        checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
-        tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
-        parseFailed:      `${ msgs.alert_parseFailed || 'Failed to parse response JSON' }.`,
-        proxyNotWorking:  `${ msgs.mode_proxy || 'Proxy Mode' } ${ msgs.alert_notWorking || 'is not working' }.`,
-        openAInotWorking: `OpenAI API ${ msgs.alert_notWorking || 'is not working' }.`,
-        suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
-        suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
-    }
+        // Init scheme var
+        var scheme = config.scheme || ( isDarkMode() ? 'dark' : 'light' )
 
-    // Create/ID/classify/listenerize BRAVEGPT container
-    const appDiv = document.createElement('div') ; appDiv.id = 'bravegpt'
-    appDiv.classList.add('fade-in', // BraveGPT class
-                         'snippet') // Brave class
-    appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
-        let elem = event.target
-        while (elem && !(elem.id?.includes('font-size'))) // find font size elem parent to exclude handling down event
-            elem = elem.parentNode
-        if (!elem && appDiv.querySelector('#font-size-slider-track')) fontSizeSlider.toggle('off')
-    })
+        // Pre-load LOGO
+        var appLogoImg = document.createElement('img') ; updateAppLogoSrc()
+        appLogoImg.onload = () => { appLogoImg.loaded = true ; updateTitleAnchor() }
 
-    // Stylize APP elems
-    const appStyle =  document.createElement('style') ; updateAppStyle()
-    const hljsStyle = document.createElement('style') ; hljsStyle.innerText = GM_getResourceText('hljsCSS')
-    document.head.append(appStyle, hljsStyle)
+        // Create/ID/classify/listenerize BRAVEGPT container
+        var appDiv = document.createElement('div') ; appDiv.id = 'bravegpt'
+        appDiv.classList.add('fade-in', // BraveGPT class
+                             'snippet') // Brave class
+        appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
+            let elem = event.target
+            while (elem && !(elem.id?.includes('font-size'))) // find font size elem parent to exclude handling down event
+                elem = elem.parentNode
+            if (!elem && appDiv.querySelector('#font-size-slider-track')) fontSizeSlider.toggle('off')
+        })
 
-    // Stylize SITE elems
-    const tweaksStyle = document.createElement('style'),
-          wsbStyles = 'main.main-column, aside.sidebar { max-width: 521px !important }'
-                    + '#bravegpt { width: 521px }'
-    updateTweaksStyle() ; document.head.append(tweaksStyle)
+        // Stylize APP elems
+        var appStyle =  document.createElement('style') ; updateAppStyle()
+        const hljsStyle = document.createElement('style') ; hljsStyle.innerText = GM_getResourceText('hljsCSS')
+        document.head.append(appStyle, hljsStyle)
 
-    // Create/stylize TOOLTIPs
-    if (!isMobile) {
-        var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
-        const tooltipStyle = document.createElement('style')
-        tooltipStyle.innerText = '.btn-tooltip {'
-            + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
-            + 'font-size: 0.58rem ; color: white ;' // font style
-            + 'position: absolute ;' // for updateTooltip() calcs
-            + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
-            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
-        document.head.append(tooltipStyle)
-    }
+        // Stylize SITE elems
+        var tweaksStyle = document.createElement('style'),
+              wsbStyles = 'main.main-column, aside.sidebar { max-width: 521px !important }'
+                        + '#bravegpt { width: 521px }'
+        updateTweaksStyle() ; document.head.append(tweaksStyle)
 
-    // APPEND to Brave
-    const hostContainer = document.querySelector(isMobile ? '#results' : '.sidebar')
-    setTimeout(() => {
-        hostContainer.prepend(appDiv)
-        setTimeout(() => appDiv.classList.add('active'), 100) // fade in
-    }, isMobile ? 500 : 100)
+        // Create/stylize TOOLTIPs
+        if (!isMobile) {
+            var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
+            const tooltipStyle = document.createElement('style')
+            tooltipStyle.innerText = '.btn-tooltip {'
+                + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
+                + 'font-size: 0.58rem ; color: white ;' // font style
+                + 'position: absolute ;' // for updateTooltip() calcs
+                + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
+                + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
+            document.head.append(tooltipStyle)
+        }
 
-    // Remove non-visible OVERFLOW STYLES for boundless hover fx
-    let appAncestor = hostContainer
-    while (appAncestor) {
-        if (getComputedStyle(appAncestor).overflow != 'visible') appAncestor.style.overflow = 'visible'
-        appAncestor = appAncestor.parentElement
-    }
+        // APPEND to Brave
+        const hostContainer = document.querySelector(isMobile ? '#results' : '.sidebar')
+        setTimeout(() => {
+            hostContainer.prepend(appDiv)
+            setTimeout(() => appDiv.classList.add('active'), 100) // fade in
+        }, isMobile ? 500 : 100)
 
-    // Init footer CTA to share feedback
-    let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Feedback')
-    footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
+        // Remove non-visible OVERFLOW STYLES for boundless hover fx
+        let appAncestor = hostContainer
+        while (appAncestor) {
+            if (getComputedStyle(appAncestor).overflow != 'visible') appAncestor.style.overflow = 'visible'
+            appAncestor = appAncestor.parentElement
+        }
 
-    // Show STANDBY mode or get/show ANSWER
-    let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
-    if (config.autoGetDisabled
-        || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
-        || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
-            show.reply('standby', footerContent)
-            if (!config.rqDisabled) {
-                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.related(lastQuery).then(queries => show.related(queries))
-                    .catch(err => { consoleErr(err.message)
-                        if (get.related.status != 'done') api.tryNew(get.related) })
-            }
-    } else { appAlert('waitingResponse') ; get.reply(msgChain) }
+        // Init footer CTA to share feedback
+        var footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Feedback')
+        footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
 
-    // Observe/listen for Brave Search + system SCHEME CHANGES to update BraveGPT scheme if auto-scheme mode
-    (new MutationObserver(handleSchemeChange)).observe( // class changes from Brave Search theme settings
-        document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    window.matchMedia('(prefers-color-scheme: dark)') // window.matchMedia changes from browser/system settings
-        .addEventListener('change', handleSchemeChange)
-    function handleSchemeChange() {
-        if (config.scheme) return // since light/dark hard-set
-        const newScheme = isDarkMode() ? 'dark' : 'light'
-        if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
+        // Show STANDBY mode or get/show ANSWER
+        var msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
+        if (!config.autoget && !location.href.includes('src=asktip') // Auto-Get disabled and not queried from other site
+            || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
+            || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
+                show.reply('standby', footerContent)
+                if (!config.rqDisabled) {
+                    const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                    get.related(lastQuery).then(queries => show.related(queries))
+                        .catch(err => { consoleErr(err.message)
+                            if (get.related.status != 'done') api.tryNew(get.related) })
+                }
+        } else { appAlert('waitingResponse') ; get.reply(msgChain) }
+
+        // Observe/listen for Brave Search + system SCHEME CHANGES to update BraveGPT scheme if auto-scheme mode
+        (new MutationObserver(handleSchemeChange)).observe( // class changes from Brave Search theme settings
+            document.documentElement, { attributes: true, attributeFilter: ['class'] })
+        window.matchMedia('(prefers-color-scheme: dark)') // window.matchMedia changes from browser/system settings
+            .addEventListener('change', handleSchemeChange)
+        function handleSchemeChange() {
+            if (config.scheme) return // since light/dark hard-set
+            const newScheme = isDarkMode() ? 'dark' : 'light'
+            if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
+        }
+
+    } else { // create/append/listenerize ASKTIP + elems
+
+        const asktipDisabled = () => config.asktipDisabled
+            || config.sitesToNotShowAsktip && config.sitesToNotShowAsktip.some(domain => location.href.includes(domain))
+
+        // Pre-load ICON
+        const appIconImg = document.createElement('img')
+        appIconImg.src = 'https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287'
+
+        // Init asktip
+        let asktip = document.getElementById('asktip')
+        if (!asktip) { // make/append it
+            const fontFamilies = '"Source Sans Pro", sans-serif', bgColor = '#f9f9f9',
+                  noUserSelectStyles = '-webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none ;'
+
+            // Create/ID/stylize/append asktip div
+            asktip = document.createElement('div') ; asktip.id = 'asktip'
+            asktip.style.cssText = noUserSelectStyles
+              + `font-family: ${fontFamilies} ; font-size: 17px ;`
+              + `position: absolute ; background-color: ${bgColor} ; border: 1px solid black ; border-radius: 12px ;`
+              + 'padding: 5px 2px ; box-shadow: rgba(0, 0, 0, 0.21) 0 5px 11px ; display: none ; z-index: 1000'
+            document.body.append(asktip)
+
+            // Create/stylize/listenerize/append hide tip ELEMS
+            const hideTipSpan = document.createElement('span'),
+                  hideTipSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                  hideTipSVGpath = document.createElementNS('http://www.w3.org/2000/svg','path'),
+                  hideTipSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 -960 960 960'], ['fill', 'black']]
+            hideTipSVGattrs.forEach(([attr, value]) => hideTipSVG.setAttribute(attr, value))
+            hideTipSVG.style.cssText = 'position: relative ; top: 2.85px ; margin: 0 4px 0 6px ; vertical-align: baseline'
+            hideTipSVGpath.setAttribute('d',
+                'm660.61-425.83-93.65-93.65q4.6-29.82-17.63-53.22-22.24-23.39-54.37-18.78l-89.13-89.13q14.43-6.3 34.84-10.61 20.42-4.3 39.5-4.3 82.4 0 138.87 56.48 56.48 56.47 56.48 138.87 0 17.95-3.59 37.63-3.58 19.67-11.32 36.71ZM805.17-280.7l-81.08-81.65q34.04-27.87 61.93-60.82 27.89-32.96 50.02-76.83-52.13-101.3-145.7-162.09-93.57-60.78-210.59-60.78-28.75 0-54.58 3.44-25.82 3.43-48.43 9.73l-90.35-90.34q42.87-17.87 92.44-27.59 49.57-9.72 101.17-9.72 163.3 0 292.61 92Q901.91-653.36 961.09-500q-23.44 64.87-64.65 121.37-41.22 56.5-91.27 97.93ZM790.39-20.48 624.52-184.91q-33.87 11.56-69.5 16.91T480-162.65q-163.87 0-293.78-92.28Q56.3-347.22-1.09-500q19.44-52.87 50.63-100.57 31.2-47.69 71.07-87.82L11.43-798.87l74-74 778.4 778.96-73.44 73.43ZM202.83-608.87q-26 27.7-44.09 52-18.09 24.3-34.22 56.87 50.6 102.48 144.5 162.68 93.9 60.19 210.98 60.19 9.74 0 21.96-.5 12.21-.5 27.04-3.07l-22.78-26.21q-6.31 1.43-12.78 1.93-6.46.5-13.44.5-82.47 0-138.99-56.53-56.53-56.52-56.53-138.99 0-6.41-.07-12.66-.06-6.25 1.37-13.56l-82.95-82.65Zm348.08 72.91ZM365.57-445Z')
+            hideTipSpan.style.cssText = 'padding: 3px 1px ; border-radius: 9px ; cursor: pointer'
+            hideTipSpan.onmouseover = () => { // highlight bg, show menu
+                hideTipSpan.style.background = '#bcd7dfab'
+                if (hideAsktipMenu.style.display == 'none') {
+                    hideAsktipMenu.style.display = 'grid'
+                    hideAsktipMenu.style.left = `${hideTipSpan.getBoundingClientRect().left}px`
+                    hideAsktipMenu.style.top = `${ hideTipSpan.getBoundingClientRect().bottom
+                        + ( window.pageYOffset || document.documentElement.scrollTop ) +6 }px`
+            }}
+            hideTipSpan.onmouseout = () => hideTipSpan.style.background = 'none' // unhighlight bg
+            hideTipSVG.append(hideTipSVGpath) ; hideTipSpan.append(hideTipSVG) ; asktip.append(hideTipSpan)
+
+            // Create/ID/stylize/append hide tip menu
+            const hideAsktipMenu = document.createElement('div')
+            hideAsktipMenu.id = 'hide-asktip-menu' ; hideAsktipMenu.style.display = 'none'
+            hideAsktipMenu.style.cssText = noUserSelectStyles
+              + `font-family: ${fontFamilies} ; font-size: 16px ; border: 1px solid black ; border-radius: 9px ;`
+              + `display: none ; color: rgb(27, 27, 27) ; background: ${bgColor} ; position: absolute ; padding: 3px ;`
+              + 'box-shadow: rgba(0, 0, 0, 0.21) 0 5px 11px'
+            document.body.append(hideAsktipMenu)
+
+            // Create/fill/stylize/listenerize/append hide tip menu items
+            const hideAsktipMenuItemA = document.createElement('span'),
+                  hideAsktipMenuItemB = document.createElement('span')
+            hideAsktipMenuItemA.textContent = `${ msgs.menuLabel_hideMenu || 'Hide menu' } `
+                                         + `${ msgs.menuLabel_forThisSite || 'for this site' }`
+            hideAsktipMenuItemB.textContent = `${ msgs.menuLabel_hideMenu || 'Hide menu' } `
+                                         + `${ msgs.menuLabel_always || 'always' }`;
+            [hideAsktipMenuItemA, hideAsktipMenuItemB].forEach((menuItem, idx) => {
+                menuItem.style.cssText = 'cursor: pointer ; padding: 1px 6px'
+                menuItem.onmouseover = () => menuItem.style.background = '#bcd7dfab' // highlight bg
+                menuItem.onmouseout = () => menuItem.style.background = 'none' // unhighlight bg
+                if (idx == 0) { // entry to hide menu for site
+                    menuItem.style.cssText += '; border-bottom: 1px dotted rgb(0, 0, 0)' // add separator
+                    menuItem.onclick = () => {
+                        if (!config.sitesToNotShowAsktip) config.sitesToNotShowAsktip = []
+                        config.sitesToNotShowAsktip.push(new URL(location.href).hostname)
+                        saveSetting('sitesToNotShowAsktip', config.sitesToNotShowAsktip, 'global')
+                        document.getElementById('hide-asktip-menu').style.display = 'none'
+                        document.getElementById('asktip').style.display = 'none'
+                    }
+                } else { // entry to hide menu always
+                    menuItem.onclick = () => {
+                        saveSetting('asktipDisabled', true, 'global')
+                        refreshMenu()
+                        document.getElementById('hide-asktip-menu').style.display = 'none'
+                        document.getElementById('asktip').style.display = 'none'
+                }}
+            })
+            hideAsktipMenu.append(hideAsktipMenuItemA, hideAsktipMenuItemB)
+        }
+
+        // Add inputEvents.up event to SHOW asktip
+        document.addEventListener(inputEvents.up, event => { setTimeout(() => {
+            if (asktipDisabled()) return
+            const selectedText = window.getSelection().toString().trim()
+            if (selectedText && !event.target.closest('#asktip')) {
+            
+                    // Init asktip content
+                    let asktipContentSpan = document.getElementById('bravegpt-asktip-content')
+                    if (!asktipContentSpan) { // make/append it
+                        asktipContentSpan = document.createElement('span') ; asktipContentSpan.id = 'bravegpt-asktip-content'
+                        asktipContentSpan.textContent = `${ msgs.menuLabel_ask || 'Ask' } ${config.appName}`
+                        appIconImg.style.cssText = 'width: 18px ; position: relative ; top: 3px ; margin-right: 5px ; vertical-align: baseline'
+                        asktipContentSpan.prepend(appIconImg)
+                        asktipContentSpan.style.cssText = 'padding: 3px 6px ; border-radius: 9px ;  cursor: pointer'
+                        asktipContentSpan.onmouseover = () => { // highlight bg, hide hide-tip menu
+                            asktipContentSpan.style.background = '#bcd7dfab'
+                            const hideAsktipMenu = document.getElementById('hide-asktip-menu')
+                            if (hideAsktipMenu?.style.display != 'none') hideAsktipMenu.style.display = 'none'
+                        }
+                        asktipContentSpan.onmouseout = () => asktipContentSpan.style.background = 'none' // unlight bg
+                        asktip.prepend(asktipContentSpan)
+                    }
+
+                    // Add/update click event each time to capture live selectedText
+                    asktipContentSpan.onclick = () => {
+                        safeWindowOpen(`https://search.brave.com/search?q=${encodeURIComponent(selectedText)}&src=asktip`)
+                        asktip.style.display = 'none'
+                    }
+
+                    // Show asktip
+                    asktip.style.display = 'ruby'
+                    asktip.style.left = `${ event.pageX - asktip.offsetWidth/2 }px`
+                    asktip.style.top = `${ event.pageY - asktip.offsetHeight -28 }px`
+
+            } else // hide everything
+                asktip.style.display = document.getElementById('hide-asktip-menu').style.display = 'none'
+
+        }, 1)})  // to avoid double trigger
     }
 
 }, 1500)
