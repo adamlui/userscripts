@@ -158,7 +158,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Google Search. Buza kuphi noma yikuphi usayithi. Inikwa amandla yi-Google Gemma + GPT-4o!
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.21.2
+// @version             2024.6.21.4
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -945,7 +945,6 @@
 // @grant               GM_cookie
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
-// @grant               GM_openInTab
 // @grant               GM_getResourceText
 // @grant               GM.xmlHttpRequest
 // @noframes
@@ -989,8 +988,10 @@
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) saveSetting('fontSize', isMobile ? 14 : 16.55) // init reply font size if unset
     if (isEdge || getUserscriptManager() != 'Tampermonkey') saveSetting('streamingDisabled', true) // disable streaming if Edge or not TM
-    if (isMobile && !config.notFirstRun) saveSetting('autoget', true) // reverse default auto-get disabled if mobile
-    saveSetting('notFirstRun', true)
+    if (!config.notFirstRun) {
+        if (isMobile) saveSetting('autoget', true) // reverse default auto-get disabled if mobile
+        config.greetUser = true // for after msgs load
+    } saveSetting('notFirstRun', true)
 
     // Init API props
     const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
@@ -1037,6 +1038,9 @@
             }
         }
     }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+
+    if (config.greetUser && !isGoogleSERP) // greet user on first run
+        safeWindowOpen(`https://www.google.com/search?q=${ msgs.query_hiThere || 'hi there' }&src=first-run`)
 
     // Init MENU objs
     const menuIDs = [] // to store registered cmds for removal while preserving order
@@ -1381,10 +1385,8 @@
                                     + config.updateURL.replace(/.*\/(.*)meta\.js/, '$1user.js') + '"'
                                     + `>${ msgs.link_viewChanges || 'View changes' }</a>`,
                             function update() { // button
-                                GM_openInTab(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now(),
-                                    { active: true, insert: true } // focus, make adjacent
-                                ).onclose = () => location.reload() },
-                            '', updateAlertWidth
+                                safeWindowOpen(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now())
+                            }, '', updateAlertWidth
                         )
 
                         // Localize button labels if needed
@@ -2848,7 +2850,7 @@
 
         // Show STANDBY mode or get/show ANSWER
         var msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
-        if (!config.autoget && !location.href.includes('src=asktip') // Auto-Get disabled and not queried from other site
+        if (!config.autoget && !/src=(?:first-run|asktip)/.test(location.href) // Auto-Get disabled and not queried from other site or 1st run
             || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
             || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
                 show.reply('standby', footerContent)
