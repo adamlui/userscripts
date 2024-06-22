@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Schema colori" },
   "menuLabel_auto": { "message": "Automatico" },
   "menuLabel_about": { "message": "Informazioni generali" },
-  "menuLabel_highlightToAsk": { "message": "Evidenziazione all'attività" },
-  "menuLabel_fromAnySite": { "message": "da qualsiasi sito" },
-  "menuLabel_ask": { "message": "Lettera" },
-  "menuLabel_hideMenu": { "message": "Nascondi menu" },
-  "menuLabel_always": { "message": "sempre" },
-  "menuLabel_forThisSite": { "message": "per questo sito" },
-  "menuLabel_fromAllSites": { "message": "Tutti i siti" },
   "about_version": { "message": "Versione" },
   "about_poweredBy": { "message": "Alimentato da" },
   "about_sourceCode": { "message": "Codice sorgente" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Il supporto per l'API OpenAI verrà aggiunto a breve" },
   "alert_waitingResponse": { "message": "In attesa della risposta ChatGPT" },
   "alert_login": { "message": "Effettua l'accesso" },
+  "alert_thenRefreshPage": { "message": "quindi aggiorna questa pagina" },
   "alert_tooManyRequests": { "message": "ChatGPT è invaso da troppe richieste" },
   "alert_parseFailed": { "message": "Impossibile analizzare la risposta JSON" },
   "alert_checkCloudflare": { "message": "Supera il controllo di sicurezza Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Riscontro" },
   "prefix_exit": { "message": "Esci" },
   "state_on": { "message": "On" },
-  "state_off": { "message": "Spento" },
-  "query_hiThere": { "message": "Salve" },
-  "query_translate": { "message": "Tradurre" }
+  "state_off": { "message": "Spento" }
 }

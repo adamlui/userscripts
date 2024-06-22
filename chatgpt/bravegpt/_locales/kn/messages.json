@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "ಬಣ್ಣ ಯೋಜನೆ" },
   "menuLabel_auto": { "message": "ಸ್ವಯಂ" },
   "menuLabel_about": { "message": "ಕುರಿತಾಗಿ" },
-  "menuLabel_highlightToAsk": { "message": "ಹೈಲೈಟ್-ಟು-ಆಸ್ಕ್" },
-  "menuLabel_fromAnySite": { "message": "ಯಾವುದೇ ಸೈಟ್ ‌ ನಿಂದ" },
-  "menuLabel_ask": { "message": "ಕೋರು" },
-  "menuLabel_hideMenu": { "message": "ಮೆನು ಮರೆಮಾಡಿ" },
-  "menuLabel_always": { "message": "ಎಂದಿಗೂ" },
-  "menuLabel_forThisSite": { "message": "ಈ ಸೈಟ್ ‌ ಗಾಗಿ" },
-  "menuLabel_fromAllSites": { "message": "ಎಲ್ಲಾ ಸೈಟ್ ‌ ಗಳಿಂದ" },
   "about_version": { "message": "ಆವೃತ್ತಿ" },
   "about_poweredBy": { "message": "ಸಾಮರ್ಥ್ಯ ಇವರಿಂದ" },
   "about_sourceCode": { "message": "ಮೂಲ ಕೋಡ್" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API ಗೆ ಬೆಂಬಲವನ್ನು ಶೀಘ್ರದಲ್ಲೇ ಸೇರಿಸಲಾಗುತ್ತದೆ" },
   "alert_waitingResponse": { "message": "ChatGPT ಪ್ರತಿಕ್ರಿಯೆಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ" },
   "alert_login": { "message": "ದಯವಿಟ್ಟು ಲಾಗಿನ್ ಆಗಿ" },
+  "alert_thenRefreshPage": { "message": "ನಂತರ ಈ ಪುಟವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ" },
   "alert_tooManyRequests": { "message": "ChatGPT ಹಲವಾರು ವಿನಂತಿಗಳಿಂದ ತುಂಬಿ ತುಳುಕುತ್ತಿದೆ" },
   "alert_parseFailed": { "message": "JSON ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ" },
   "alert_checkCloudflare": { "message": "ದಯವಿಟ್ಟು ಕ್ಲೌಡ್ ಫ್ಲೇರ್ ಭದ್ರತಾ ಪರಿಶೀಲನೆಯಲ್ಲಿ ಉತ್ತೀರ್ಣರಾಗಿ" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "ಪ್ರತಿಕ್ರಿಯೆ" },
   "prefix_exit": { "message": "ನಿರ್ಗಮಿಸಿ" },
   "state_on": { "message": "ರಂದು" },
-  "state_off": { "message": "ಆಫ್" },
-  "query_hiThere": { "message": "ನಮಸ್ಕಾರ," },
-  "query_translate": { "message": "ಅನುವಾದಿಸು" }
+  "state_off": { "message": "ಆಫ್" }
 }

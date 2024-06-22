@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "ކުލަ ސްކީމް" },
   "menuLabel_auto": { "message": "އޮޓޯ" },
   "menuLabel_about": { "message": "މިއާއި ބެހޭ" },
-  "menuLabel_highlightToAsk": { "message": "ހައިލައިޓް-ޓު-އަސްކް" },
-  "menuLabel_fromAnySite": { "message": "ކޮންމެ ސައިޓަކުންނެވެ" },
-  "menuLabel_ask": { "message": "އެހުން" },
-  "menuLabel_hideMenu": { "message": "ފޮރުވާ މެނޫ" },
-  "menuLabel_always": { "message": "އަބަދުވެސް" },
-  "menuLabel_forThisSite": { "message": "މި ސައިޓަށްޓަކައެވެ" },
-  "menuLabel_fromAllSites": { "message": "ހުރިހާ ސައިޓްތަކެއް" },
   "about_version": { "message": "ވާރޝަން" },
   "about_poweredBy": { "message": "ބާރުވެރި ކުރުވާފައިވަނީ" },
   "about_sourceCode": { "message": "ސޯސް ކޯޑް" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "އޯޕަންއޭއައި އެޕީއައި އަށް ސަޕޯޓް ވަރަށް އަވަހަށް އިތުރު ކުރެވޭނެ އެވެ" },
   "alert_waitingResponse": { "message": "ޗެޓްޖީޕީޓީގެ ޖަވާބަކަށް އިންތިޒާރުކުރުން" },
   "alert_login": { "message": "ލޮގިން ކޮށްލާށެވެ" },
+  "alert_thenRefreshPage": { "message": "ދެން މި ޕޭޖް ރިފްރެޝް ކުރާށެވެ" },
   "alert_tooManyRequests": { "message": "ޗެޓްޖީޕީޓީ ފުރިފައި ވަނީ މާ ގިނަ ރިކުއެސްޓްތަކަކުން" },
   "alert_parseFailed": { "message": "ޖަވާބެއް ޕާސް ނުކުރެވުނު ޖޭ.އެސް.އޯ.އެން" },
   "alert_checkCloudflare": { "message": "ކްލައުޑްފްލެއާ ސެކިއުރިޓީ ޗެކް ޕާސް ކުރޭ" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "ފީޑްބެކް" },
   "prefix_exit": { "message": "ނުކުތުން" },
   "state_on": { "message": "މަތީގައި" },
-  "state_off": { "message": "އޮފް" },
-  "query_hiThere": { "message": "އައްސަލާމް ޢަލައިކުމް" },
-  "query_translate": { "message": "ތަރުޖަމާކުރުން" }
+  "state_off": { "message": "އޮފް" }
 }

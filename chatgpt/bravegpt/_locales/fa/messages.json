@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "رنگ اسکیما" },
   "menuLabel_auto": { "message": "خودکار" },
   "menuLabel_about": { "message": "درباره" },
-  "menuLabel_highlightToAsk": { "message": "برجسته کردن برای پرسیدن" },
-  "menuLabel_fromAnySite": { "message": "از هر سایتی" },
-  "menuLabel_ask": { "message": "پرسیدن از" },
-  "menuLabel_hideMenu": { "message": "مخفی کردن منو" },
-  "menuLabel_always": { "message": "همیشه" },
-  "menuLabel_forThisSite": { "message": "برای این سایت" },
-  "menuLabel_fromAllSites": { "message": "همه سایت ها" },
   "about_version": { "message": "نسخه برنامه" },
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
   "about_sourceCode": { "message": "سورس کد" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "پشتیبانی از OpenAI API به زودی اضافه خواهد شد" },
   "alert_waitingResponse": { "message": "در انتظار پاسخ ChatGPT" },
   "alert_login": { "message": "لطفا وارد شوید" },
+  "alert_thenRefreshPage": { "message": "بارگزاری مجدد صفحه" },
   "alert_tooManyRequests": { "message": "ChatGPT مملو از درخواست های بسیار زیادی است" },
   "alert_parseFailed": { "message": "پاسخ JSON تجزیه نشد" },
   "alert_checkCloudflare": { "message": "لطفاً بررسی امنیتی Cloudflare را پاس کنید" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "بازخورد" },
   "prefix_exit": { "message": "خروج" },
   "state_on": { "message": "شما در" },
-  "state_off": { "message": "خاموش" },
-  "query_hiThere": { "message": "سلام , " },
-  "query_translate": { "message": "Translate" }
+  "state_off": { "message": "خاموش" }
 }

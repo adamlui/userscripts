@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Skema sa Kolor" },
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Mahitungod" },
-  "menuLabel_highlightToAsk": { "message": "HIGHLIGHT-TO-AK" },
-  "menuLabel_fromAnySite": { "message": "gikan sa bisan unsang site" },
-  "menuLabel_ask": { "message": "Mangayo" },
-  "menuLabel_hideMenu": { "message": "Itago ang menu" },
-  "menuLabel_always": { "message": "Same as always" },
-  "menuLabel_forThisSite": { "message": "alang niini nga site" },
-  "menuLabel_fromAllSites": { "message": "gikan sa tanan nga mga site" },
   "about_version": { "message": "Bersyon" },
   "about_poweredBy": { "message": "Gipadagan sa" },
   "about_sourceCode": { "message": "Gigikana sa kodigo" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Ang suporta alang sa OpenAI API idugang sa dili madugay" },
   "alert_waitingResponse": { "message": "Naghulat alang sa ChatGPT tubag" },
   "alert_login": { "message": "Sila login" },
+  "alert_thenRefreshPage": { "message": "dayon i-refresh kini nga panid" },
   "alert_tooManyRequests": { "message": "Ang ChatGPT gibaha sa daghang mga hangyo" },
   "alert_parseFailed": { "message": "Napakyas sa pag-parse sa tubag JSON" },
   "alert_checkCloudflare": { "message": "Palihug ipasa ang pagsusi sa seguridad sa Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Feedback" },
   "prefix_exit": { "message": "Mogawas" },
   "state_on": { "message": "Sa" },
-  "state_off": { "message": "Off" },
-  "query_hiThere": { "message": "Hai sa ma uit" },
-  "query_translate": { "message": "Paghubad" }
+  "state_off": { "message": "Off" }
 }

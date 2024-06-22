@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "रंग योजनाplasma name" },
   "menuLabel_auto": { "message": "अपने-आप" },
   "menuLabel_about": { "message": "परिचय" },
-  "menuLabel_highlightToAsk": { "message": "हाइलाइट - टू - टॉस्क" },
-  "menuLabel_fromAnySite": { "message": "किसी भी साइट से" },
-  "menuLabel_ask": { "message": "पूछें" },
-  "menuLabel_hideMenu": { "message": "मेनू छिपाएँ" },
-  "menuLabel_always": { "message": "हमेशा" },
-  "menuLabel_forThisSite": { "message": "इस साइट के लिए" },
-  "menuLabel_fromAllSites": { "message": "सभी साइटों से" },
   "about_version": { "message": "संस्करण" },
   "about_poweredBy": { "message": "...द्वारा पावरशुदा" },
   "about_sourceCode": { "message": "सोर्स कोड" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API के लिए समर्थन जल्द ही जोड़ा जाएगा" },
   "alert_waitingResponse": { "message": "ChatGPT के जवाब का इंतज़ार है" },
   "alert_login": { "message": "कृपया लॉगिन करें" },
+  "alert_thenRefreshPage": { "message": "फिर इस पेज को रीफ़्रेश करें" },
   "alert_tooManyRequests": { "message": "चैटजीपीटी में बहुत सारे अनुरोधों की भरमार है" },
   "alert_parseFailed": { "message": "प्रतिक्रिया JSON को पार्स करने में विफल" },
   "alert_checkCloudflare": { "message": "कृपया Cloudflare सुरक्षा जाँच पास करें" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "फ़ीडबैक" },
   "prefix_exit": { "message": "बाहर निकलें" },
   "state_on": { "message": "चालू" },
-  "state_off": { "message": "बंद" },
-  "query_hiThere": { "message": "Hi there" },
-  "query_translate": { "message": "अंदाजा लगाइए कि हम कौन सा गाना गा रहे हैं।" }
+  "state_off": { "message": "बंद" }
 }

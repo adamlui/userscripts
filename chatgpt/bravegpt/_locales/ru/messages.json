@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Схема цвета" },
   "menuLabel_auto": { "message": "Auto (Автоматический)" },
   "menuLabel_about": { "message": "Шифр" },
-  "menuLabel_highlightToAsk": { "message": "Выделите, чтобы задать" },
-  "menuLabel_fromAnySite": { "message": "с любого сайта" },
-  "menuLabel_ask": { "message": "Спросить" },
-  "menuLabel_hideMenu": { "message": "Скрыть меню" },
-  "menuLabel_always": { "message": "всегда" },
-  "menuLabel_forThisSite": { "message": "(для этого сайта)" },
-  "menuLabel_fromAllSites": { "message": "Все сайты" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "На базе технологии" },
   "about_sourceCode": { "message": "Исходный код" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Поддержка OpenAI API будет добавлена в ближайшее время" },
   "alert_waitingResponse": { "message": "Ожидание ответа ChatGPT" },
   "alert_login": { "message": "Пожалуйста, войдите" },
+  "alert_thenRefreshPage": { "message": "обновить эту страницу" },
   "alert_tooManyRequests": { "message": "ChatGPT переполнен слишком большим количеством запросов" },
   "alert_parseFailed": { "message": "Не удалось проанализировать ответ JSON" },
   "alert_checkCloudflare": { "message": "Пройдите проверку безопасности Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Отзыв" },
   "prefix_exit": { "message": "Выход" },
   "state_on": { "message": "Вкл" },
-  "state_off": { "message": "Выкл." },
-  "query_hiThere": { "message": "Всем привет" },
-  "query_translate": { "message": "Translate" }
+  "state_off": { "message": "Выкл." }
 }

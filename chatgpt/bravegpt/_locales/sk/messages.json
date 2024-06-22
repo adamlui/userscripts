@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Farebná schéma" },
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "O nás" },
-  "menuLabel_highlightToAsk": { "message": "Zvýrazniť-na-prácu" },
-  "menuLabel_fromAnySite": { "message": "z akéhokoľvek miesta" },
-  "menuLabel_ask": { "message": "Požiadajte " },
-  "menuLabel_hideMenu": { "message": "Zakázané" },
-  "menuLabel_always": { "message": "vždy" },
-  "menuLabel_forThisSite": { "message": "pre túto stránku" },
-  "menuLabel_fromAllSites": { "message": "zo všetkých lokalít" },
   "about_version": { "message": "Verzia" },
   "about_poweredBy": { "message": "Beží na" },
   "about_sourceCode": { "message": "Zdrojový kód" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Podpora rozhrania OpenAI API bude čoskoro pridaná" },
   "alert_waitingResponse": { "message": "Čaká sa na odpoveď ChatGPT" },
   "alert_login": { "message": "Prosím, prihláste sa" },
+  "alert_thenRefreshPage": { "message": "Späť do zoznamu autorespondera" },
   "alert_tooManyRequests": { "message": "ChatGPT je zaplavený príliš veľkým množstvom žiadostí" },
   "alert_parseFailed": { "message": "Nepodarilo sa analyzovať odpoveď JSON" },
   "alert_checkCloudflare": { "message": "Prejdite bezpečnostnou kontrolou Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Spätná väzba" },
   "prefix_exit": { "message": "Odísť" },
   "state_on": { "message": "Zapnuté" },
-  "state_off": { "message": "Vypnuté" },
-  "query_hiThere": { "message": "Dobrý deň," },
-  "query_translate": { "message": "Preložiť" }
+  "state_off": { "message": "Vypnuté" }
 }

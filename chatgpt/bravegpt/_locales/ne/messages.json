@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "रङ योजना" },
   "menuLabel_auto": { "message": "लेखक" },
   "menuLabel_about": { "message": "बारेमा" },
-  "menuLabel_highlightToAsk": { "message": "हाइलाइट - टु - कार्य" },
-  "menuLabel_fromAnySite": { "message": "कुनै पनि साइटबाट" },
-  "menuLabel_ask": { "message": "Public files of %s%.0s" },
-  "menuLabel_hideMenu": { "message": "निषेधित" },
-  "menuLabel_always": { "message": "" },
-  "menuLabel_forThisSite": { "message": "यस साइटको लागि" },
-  "menuLabel_fromAllSites": { "message": "सबै फाइलहरू" },
   "about_version": { "message": "संस्करण" },
   "about_poweredBy": { "message": "समर्थनकर्ता" },
   "about_sourceCode": { "message": "स्रोत सङ्केत" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API को लागि सहायता चाँडै थपिनेछ" },
   "alert_waitingResponse": { "message": "ChatGPT प्रतिक्रियाको लागि पर्खदै" },
   "alert_login": { "message": "कृपया लगइन गर्नुहोस्" },
+  "alert_thenRefreshPage": { "message": "त्यसपछि यो पृष्ठ रिफ्रेस गर्नुहोस्" },
   "alert_tooManyRequests": { "message": "ChatGPT धेरै अनुरोधहरूले भरिएको छ" },
   "alert_parseFailed": { "message": "प्रतिक्रिया JSON पद वर्णन गर्न असफल भयो" },
   "alert_checkCloudflare": { "message": "कृपया क्लाउडफ्लेयर सुरक्षा जाँच पास गर्नुहोस्" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "प्रतिक्रिया" },
   "prefix_exit": { "message": "निस्कने ठाउँ" },
   "state_on": { "message": "खुला" },
-  "state_off": { "message": "बन्द" },
-  "query_hiThere": { "message": "नमस्ते" },
-  "query_translate": { "message": "अनुवाद गर्नहोस्" }
+  "state_off": { "message": "बन्द" }
 }

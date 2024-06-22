@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Krāsas shēma" },
   "menuLabel_auto": { "message": "Automātiski" },
   "menuLabel_about": { "message": "Par produktu" },
-  "menuLabel_highlightToAsk": { "message": "Izcelt pēc jautājuma" },
-  "menuLabel_fromAnySite": { "message": "no jebkuras vietas" },
-  "menuLabel_ask": { "message": "DzÄst failu" },
-  "menuLabel_hideMenu": { "message": "Slēpt izvēlni" },
-  "menuLabel_always": { "message": "vienmēr" },
-  "menuLabel_forThisSite": { "message": "šai vietnei" },
-  "menuLabel_fromAllSites": { "message": "Visas vietnes" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Izstrādāts" },
   "about_sourceCode": { "message": "Pirmkods" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Drīzumā tiks pievienots OpenAI API atbalsts" },
   "alert_waitingResponse": { "message": "Gaida ChatGPT atbildi" },
   "alert_login": { "message": "Lūdzu, piesakieties" },
+  "alert_thenRefreshPage": { "message": "pēc tam atsvaidziniet šo lapu" },
   "alert_tooManyRequests": { "message": "ChatGPT ir pārpildīts ar pārāk daudziem pieprasījumiem" },
   "alert_parseFailed": { "message": "Neizdevās parsēt atbildi JSON" },
   "alert_checkCloudflare": { "message": "Lūdzu, izturiet Cloudflare drošības pārbaudi" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Atsauksme" },
   "prefix_exit": { "message": "Iziet" },
   "state_on": { "message": "Ieslēgt" },
-  "state_off": { "message": "Izslēgta" },
-  "query_hiThere": { "message": "Sveiki!" },
-  "query_translate": { "message": "Tulkot" }
+  "state_off": { "message": "Izslēgta" }
 }

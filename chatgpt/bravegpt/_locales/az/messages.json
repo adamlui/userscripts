@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Rəng sxemi" },
   "menuLabel_auto": { "message": "Automat" },
   "menuLabel_about": { "message": "Haqqında" },
-  "menuLabel_highlightToAsk": { "message": "Seçilən cəhət" },
-  "menuLabel_fromAnySite": { "message": "istənilən saytdan" },
-  "menuLabel_ask": { "message": "Soruşmag" },
-  "menuLabel_hideMenu": { "message": "Menyunu gizlət" },
-  "menuLabel_always": { "message": "həmişə" },
-  "menuLabel_forThisSite": { "message": "bu sayt üçün" },
-  "menuLabel_fromAllSites": { "message": "bütün saytlardan" },
   "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Ərsəyə gətirən" },
   "about_sourceCode": { "message": "Mənbə kodu" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API üçün dəstək qısa zamanda əlavə ediləcək" },
   "alert_waitingResponse": { "message": "ChatGPT cavabı gözlənilir" },
   "alert_login": { "message": "Giriş edin" },
+  "alert_thenRefreshPage": { "message": "sonra bu səhifəni təzələyin" },
   "alert_tooManyRequests": { "message": "ÇatGPT həddindən çox sorğu ilə daşınıb" },
   "alert_parseFailed": { "message": "JSON-a cavab yazılmadı" },
   "alert_checkCloudflare": { "message": "Cloudflare təhlükəsizlik yoxlamasından keçin" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Əlaqə saxlamaq" },
   "prefix_exit": { "message": "Çıxmaq" },
   "state_on": { "message": "" },
-  "state_off": { "message": "İŞLƏMİR" },
-  "query_hiThere": { "message": "Salam," },
-  "query_translate": { "message": "Tərcümə et" }
+  "state_off": { "message": "İŞLƏMİR" }
 }

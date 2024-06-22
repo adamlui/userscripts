@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "配色方案" },
   "menuLabel_auto": { "message": "自动" },
   "menuLabel_about": { "message": "关于" },
-  "menuLabel_highlightToAsk": { "message": "突出显示任务" },
-  "menuLabel_fromAnySite": { "message": "从任何站点" },
-  "menuLabel_ask": { "message": "询问" },
-  "menuLabel_hideMenu": { "message": "隐藏菜单" },
-  "menuLabel_always": { "message": "始终" },
-  "menuLabel_forThisSite": { "message": "本网站" },
-  "menuLabel_fromAllSites": { "message": "全部网站" },
   "about_version": { "message": "版本" },
   "about_poweredBy": { "message": "数据来源" },
   "about_sourceCode": { "message": "源代码" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "很快将添加对 OpenAI API 的支持" },
   "alert_waitingResponse": { "message": "正在等待 ChatGPT 响应" },
   "alert_login": { "message": "请登录" },
+  "alert_thenRefreshPage": { "message": "刷新此页面" },
   "alert_tooManyRequests": { "message": "ChatGPT 被太多请求淹没" },
   "alert_parseFailed": { "message": "解析响应 JSON 失败" },
   "alert_checkCloudflare": { "message": "请通过 Cloudflare 安全检查" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "反馈" },
   "prefix_exit": { "message": "退出" },
   "state_on": { "message": "开" },
-  "state_off": { "message": "关" },
-  "query_hiThere": { "message": "你好" },
-  "query_translate": { "message": "翻译" }
+  "state_off": { "message": "关" }
 }

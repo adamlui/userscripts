@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Färgschema" },
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Om" },
-  "menuLabel_highlightToAsk": { "message": "Markera-till-fråga" },
-  "menuLabel_fromAnySite": { "message": "från vilken webbplats som helst" },
-  "menuLabel_ask": { "message": "Fråga" },
-  "menuLabel_hideMenu": { "message": "Göm menyn" },
-  "menuLabel_always": { "message": "always" },
-  "menuLabel_forThisSite": { "message": "(för denna webbplats)" },
-  "menuLabel_fromAllSites": { "message": "Alla webplatser" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Drivs av" },
   "about_sourceCode": { "message": "Källkod" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Stöd för OpenAI API kommer att läggas till inom kort" },
   "alert_waitingResponse": { "message": "Väntar på ChatGPT-svar" },
   "alert_login": { "message": "Var snäll och logga in" },
+  "alert_thenRefreshPage": { "message": "Ladda sedan om denna sida" },
   "alert_tooManyRequests": { "message": "ChatGPT är översvämmad med för många förfrågningar" },
   "alert_parseFailed": { "message": "Det gick inte att tolka svaret JSON" },
   "alert_checkCloudflare": { "message": "Vänligen skicka Cloudflare säkerhetskontroll" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Feedback" },
   "prefix_exit": { "message": "Avsluta" },
   "state_on": { "message": "På" },
-  "state_off": { "message": "Av" },
-  "query_hiThere": { "message": "Hejsan" },
-  "query_translate": { "message": "Översätt" }
+  "state_off": { "message": "Av" }
 }

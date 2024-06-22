@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Fokotuʻutuʻu ʻo e lanu" },
   "menuLabel_auto": { "message": "Meʻalele" },
   "menuLabel_about": { "message": "Fekauʻaki mo e" },
-  "menuLabel_highlightToAsk": { "message": "Fakaʻilongaʻi-ki he-kole" },
-  "menuLabel_fromAnySite": { "message": "mei ha faʻahinga feituʻu pe" },
-  "menuLabel_ask": { "message": "Kole" },
-  "menuLabel_hideMenu": { "message": "Fufuuʻi ʻa e menu" },
-  "menuLabel_always": { "message": "Maʻu pe" },
-  "menuLabel_forThisSite": { "message": "ki he saiti ni" },
-  "menuLabel_fromAllSites": { "message": "mei he ngaahi saiti kotoa" },
   "about_version": { "message": "Tatau" },
   "about_poweredBy": { "message": "Fakalele ʻe he" },
   "about_sourceCode": { "message": "Maʻuʻanga fakamatala" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "ʻE tanaki atu ʻa e tokoni ki he OpenAI API ʻi ha taimi nounou pe" },
   "alert_waitingResponse": { "message": "Ko e tatali ki he tali ChatGPT" },
   "alert_login": { "message": "Kātaki ʻo login" },
+  "alert_thenRefreshPage": { "message": "hili ia pea refresh ʻa e peesi ko ʻeni" },
   "alert_tooManyRequests": { "message": "ʻOku fonu ʻa e ChatGPT ʻi ha ngaahi kole lahi" },
   "alert_parseFailed": { "message": "ʻIkai lava ke ʻanalaiso e tali ʻa e foha" },
   "alert_checkCloudflare": { "message": "Kataki ʻo paasi Cloudflare sieke maluʻi" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Fakamatala" },
   "prefix_exit": { "message": "Hū ki tu’a" },
   "state_on": { "message": "ʻI he" },
-  "state_off": { "message": "ʻOsi" },
-  "query_hiThere": { "message": "Malo e lelei" },
-  "query_translate": { "message": "Liliu Leá" }
+  "state_off": { "message": "ʻOsi" }
 }

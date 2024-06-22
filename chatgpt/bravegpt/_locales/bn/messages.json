@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "বর্ণবিন্যাস" },
   "menuLabel_auto": { "message": "স্বয়ংক্রিয়" },
   "menuLabel_about": { "message": "সম্বন্ধে" },
-  "menuLabel_highlightToAsk": { "message": "হাইলাইট-টু-টাস্ক" },
-  "menuLabel_fromAnySite": { "message": "যে কোনও সাইট থেকে" },
-  "menuLabel_ask": { "message": "জিজ্ঞেস করা" },
-  "menuLabel_hideMenu": { "message": "মেনু লুকান" },
-  "menuLabel_always": { "message": "সর্বদা" },
-  "menuLabel_forThisSite": { "message": "এই সাইটের জন্য" },
-  "menuLabel_fromAllSites": { "message": "সমস্ত সাইট থেকে" },
   "about_version": { "message": "সংস্করণ" },
   "about_poweredBy": { "message": "নিবেদন করছেন" },
   "about_sourceCode": { "message": "সোর্স কোড" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API-এর জন্য সমর্থন শীঘ্রই যোগ করা হবে" },
   "alert_waitingResponse": { "message": "ChatGPT উত্তরের জন্য অপেক্ষা করা হচ্ছে" },
   "alert_login": { "message": "দয়া করে লগইন করুন" },
+  "alert_thenRefreshPage": { "message": "তারপর এই পৃষ্ঠাটি রিফ্রেশ করুন" },
   "alert_tooManyRequests": { "message": "ChatGPT অনেক বেশি রিকোয়েস্ট নিয়ে প্লাবিত হয়েছে" },
   "alert_parseFailed": { "message": "প্রতিক্রিয়া JSON পার্স করতে ব্যর্থ হয়েছে" },
   "alert_checkCloudflare": { "message": "অনুগ্রহ করে ক্লাউডফ্লেয়ার সুরক্ষা চেক পাস করুন" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "মতামত" },
   "prefix_exit": { "message": "বের হয়ে যান" },
   "state_on": { "message": "চালু" },
-  "state_off": { "message": "বন্ধ" },
-  "query_hiThere": { "message": "হাই!" },
-  "query_translate": { "message": "অনুবাদ করুন" }
+  "state_off": { "message": "বন্ধ" }
 }

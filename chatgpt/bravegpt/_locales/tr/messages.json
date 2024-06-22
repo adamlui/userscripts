@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Renk Şeması" },
   "menuLabel_auto": { "message": "Otomatik" },
   "menuLabel_about": { "message": "Hakkımızda" },
-  "menuLabel_highlightToAsk": { "message": "Sormak için vurgula" },
-  "menuLabel_fromAnySite": { "message": "herhangi bir siteden" },
-  "menuLabel_ask": { "message": "Ekle" },
-  "menuLabel_hideMenu": { "message": "Menüyü gizle" },
-  "menuLabel_always": { "message": "her zaman" },
-  "menuLabel_forThisSite": { "message": "bu site için" },
-  "menuLabel_fromAllSites": { "message": "Tüm siteler" },
   "about_version": { "message": "Versiyon" },
   "about_poweredBy": { "message": "Destek" },
   "about_sourceCode": { "message": "Kaynak Kodu" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API desteği kısa süre içinde eklenecektir" },
   "alert_waitingResponse": { "message": "ChatGPT yanıtı bekleniyor" },
   "alert_login": { "message": "Lütfen giriş yapın" },
+  "alert_thenRefreshPage": { "message": "Ardından sayfayı yenileyin" },
   "alert_tooManyRequests": { "message": "ChatGPT çok fazla istekle dolup taşıyor" },
   "alert_parseFailed": { "message": "Yanıt JSON'u ayrıştırılamadı" },
   "alert_checkCloudflare": { "message": "Lütfen Cloudflare güvenlik kontrolünden geçin" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Geri bildirim" },
   "prefix_exit": { "message": "Çık" },
   "state_on": { "message": "Açık" },
-  "state_off": { "message": "Kapalı" },
-  "query_hiThere": { "message": "Merhaba" },
-  "query_translate": { "message": "Çevir" }
+  "state_off": { "message": "Kapalı" }
 }

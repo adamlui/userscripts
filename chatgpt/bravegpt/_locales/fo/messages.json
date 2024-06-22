@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Farva" },
   "menuLabel_auto": { "message": "Bilur" },
   "menuLabel_about": { "message": "Um" },
-  "menuLabel_highlightToAsk": { "message": "Uppheftir-til-uppgáva" },
-  "menuLabel_fromAnySite": { "message": "á einum og hvørjum staði" },
-  "menuLabel_ask": { "message": "Spyr" },
-  "menuLabel_hideMenu": { "message": "Dylja menyu" },
-  "menuLabel_always": { "message": "Altíð." },
-  "menuLabel_forThisSite": { "message": "fyri hesa heimasíðuna" },
-  "menuLabel_fromAllSites": { "message": "á hvørjum staði" },
   "about_version": { "message": "Útgáva" },
   "about_poweredBy": { "message": "Dreivin av" },
   "about_sourceCode": { "message": "Ada keldukota" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Stuðul til OpenAI API verður lagt afturat skjótt" },
   "alert_waitingResponse": { "message": "Vænta eftir svarinum frá Katalonia" },
   "alert_login": { "message": "Vinarliga innrita" },
+  "alert_thenRefreshPage": { "message": "at lata síðuna fríska" },
   "alert_tooManyRequests": { "message": "ChatGPT er ovurstórur við ov nógvum umsóknum" },
   "alert_parseFailed": { "message": "Miseydnaðist at greina svar JSON" },
   "alert_checkCloudflare": { "message": "Vinarliga passa Cloudflare-tryggisroyndina" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Viðmerkingar" },
   "prefix_exit": { "message": "Útgangur" },
   "state_on": { "message": "t" },
-  "state_off": { "message": "Av" },
-  "query_hiThere": { "message": "Heilsan er her" },
-  "query_translate": { "message": "Umsetja" }
+  "state_off": { "message": "Av" }
 }

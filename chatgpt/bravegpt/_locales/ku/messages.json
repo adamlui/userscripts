@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Hêl" },
   "menuLabel_auto": { "message": "_Der barê" },
   "menuLabel_about": { "message": "دەربارەی" },
-  "menuLabel_highlightToAsk": { "message": "Highlight-to-pirs" },
-  "menuLabel_fromAnySite": { "message": "ji her malperê" },
-  "menuLabel_ask": { "message": "Bipirse" },
-  "menuLabel_hideMenu": { "message": "Pêşekê Veşêre" },
-  "menuLabel_always": { "message": "هەمووکاتێ" },
-  "menuLabel_forThisSite": { "message": "ji bo vê malperê" },
-  "menuLabel_fromAllSites": { "message": "Hemû pel" },
   "about_version": { "message": "وەرژن" },
   "about_poweredBy": { "message": "پارێزراوە لەلایەن" },
   "about_sourceCode": { "message": "کۆدی سەرچاوە" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Piştgiriya ji bo OpenAI API dê di demek kurt de were zêdekirin" },
   "alert_waitingResponse": { "message": "چاک پەیوەندیدان بۆ وەڵامی ChatGPT" },
   "alert_login": { "message": "تکایە بچۆ ژوورەوە" },
+  "alert_thenRefreshPage": { "message": "paşê vê rûpelê nûve bikin" },
   "alert_tooManyRequests": { "message": "ChatGPT بە زۆری پارێز دەکرێتەوە بە بەشداری زۆری پارێز" },
   "alert_parseFailed": { "message": "شکستی لە پارسکردنی JSONی وەڵام" },
   "alert_checkCloudflare": { "message": "تکایە پارێزراوە لەلایەن پارێزراوەی کلاودفلارە بگۆڕە" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "پارساوی" },
   "prefix_exit": { "message": "دەرچوون" },
   "state_on": { "message": "Vekirî" },
-  "state_off": { "message": "Girtî" },
-  "query_hiThere": { "message": "silav" },
-  "query_translate": { "message": "وەرگێڕان" }
+  "state_off": { "message": "Girtî" }
 }

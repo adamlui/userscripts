@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Գունային սխեմա" },
   "menuLabel_auto": { "message": "Ավտոմեքենա" },
   "menuLabel_about": { "message": "Մանրամասն" },
-  "menuLabel_highlightToAsk": { "message": "Ընդգծել առաջադրանքը" },
-  "menuLabel_fromAnySite": { "message": "ցանկացած կայքից" },
-  "menuLabel_ask": { "message": "Հարցնել" },
-  "menuLabel_hideMenu": { "message": "Թաքցնել ընտրացանկը" },
-  "menuLabel_always": { "message": "Միշտ " },
-  "menuLabel_forThisSite": { "message": "այս կայքի համար" },
-  "menuLabel_fromAllSites": { "message": "բոլոր կայքերից" },
   "about_version": { "message": "Ստանալ պրեմիում տարբերակը" },
   "about_poweredBy": { "message": "🇦🇲" },
   "about_sourceCode": { "message": "Ծրագրային կոդ" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API - ի աջակցումը շուտով կավելացվի" },
   "alert_waitingResponse": { "message": "Սպասում է ChatGPT - ի պատասխանին" },
   "alert_login": { "message": "Խնդրումենք մւտքագրվել" },
+  "alert_thenRefreshPage": { "message": "ապա թարմացրեք այս էջը" },
   "alert_tooManyRequests": { "message": "ChatGPT - ը ողողված է չափազանց շատ հայտերով" },
   "alert_parseFailed": { "message": "Չհաջողվեց վերլուծել JSON - ի պատասխանը" },
   "alert_checkCloudflare": { "message": "Խնդրում ենք անցնել Cloudflare - ի անվտանգության ստուգում" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Отзыв" },
   "prefix_exit": { "message": "Exit" },
   "state_on": { "message": "Միացնել" },
-  "state_off": { "message": "Անջատել" },
-  "query_hiThere": { "message": "Ողջույն" },
-  "query_translate": { "message": "Ajsor ekexecium xosqis teman er <Kanj ev kojum>: Sirelis Astvac uni anhatakan kanj ev kojum amen meki het: 2.Tim.1:9.Vor prkec mez, ev surb kojumov kanjec, oj te mer gorceri hamemat, ajl ir shnorhqi hamemat: Hrom.8:30.Ev voronc vor arajyc sahmanec, nranc kanjec el, ev voronc vor kanjec nranc ardaracrec el, ev voronc vor ardaracrec, nranc paravor el arav:\n" }
+  "state_off": { "message": "Անջատել" }
 }

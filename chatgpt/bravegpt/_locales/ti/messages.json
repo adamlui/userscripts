@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "መደብ ቀለም" },
   "menuLabel_auto": { "message": "ኣውቶሞቢል" },
   "menuLabel_about": { "message": "ብዛዕባ" },
-  "menuLabel_highlightToAsk": { "message": "ልዑል ብርሃን-ን-ን-ስራዕ" },
-  "menuLabel_fromAnySite": { "message": "ካብ ዝኾነ ቦታ" },
-  "menuLabel_ask": { "message": "htet\n" },
-  "menuLabel_hideMenu": { "message": "ምናሌታት ሕባእ" },
-  "menuLabel_always": { "message": "ኹሉ ጊዜ" },
-  "menuLabel_forThisSite": { "message": "ኣብዚ ወብ ሳይት እዚ" },
-  "menuLabel_fromAllSites": { "message": "ካብ ኩሉ መርበብ ሓበሬታታት" },
   "about_version": { "message": "መበል" },
   "about_poweredBy": { "message": "ብ" },
   "about_sourceCode": { "message": "ምንጪ ኮድ" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "ደገፍ OpenAI API ኣብ ቀረባ እዋን ክውስኽ ኢዩ" },
   "alert_waitingResponse": { "message": "መልሲ ChatGPT" },
   "alert_login": { "message": "ብኽብረትካ በጃኻ መእተዊ" },
+  "alert_thenRefreshPage": { "message": "ነዚ ገጽ እዚ ኣሐድሶ" },
   "alert_tooManyRequests": { "message": "ChatGPT ብብዙሕ ጠለባት ይዕምብብብ" },
   "alert_parseFailed": { "message": "መልሲ JSON ኣይረኸበን ።" },
   "alert_checkCloudflare": { "message": "ብኽብረትካ በጃኻ ናይ Cloudflare ናይ ጸጥታ መርመራ ሕለፍ" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "ግብረ መልሲ" },
   "prefix_exit": { "message": "ውጻእ" },
   "state_on": { "message": "o" },
-  "state_off": { "message": "ዝወጽ" },
-  "query_hiThere": { "message": "ሰላም ኣብዚ" },
-  "query_translate": { "message": "ተርጉም" }
+  "state_off": { "message": "ዝወጽ" }
 }
