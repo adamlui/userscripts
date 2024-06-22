@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "کلر سکیم" },
   "menuLabel_auto": { "message": "خودکار" },
   "menuLabel_about": { "message": "متعلق" },
-  "menuLabel_highlightToAsk": { "message": "پوچھنے کے لیے ہائی لائٹ کریں" },
-  "menuLabel_fromAnySite": { "message": "کسی بھی سائٹ سے" },
-  "menuLabel_ask": { "message": "Public files of %s%.0s" },
-  "menuLabel_hideMenu": { "message": "مینو چھپائیں" },
-  "menuLabel_always": { "message": "ہمیشہ" },
-  "menuLabel_forThisSite": { "message": "اس سائٹ کے لیے" },
-  "menuLabel_fromAllSites": { "message": "تمام سائٹس سے" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "تقویت یافتہ از" },
   "about_sourceCode": { "message": "کۆسی سەرچاوە" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API کے لیے سپورٹ جلد ہی شامل کر دی جائے گی" },
   "alert_waitingResponse": { "message": "ChatGPT کے جواب کا انتظار ہے" },
   "alert_login": { "message": "براہِ مہربانی لاگ ان کریں۔" },
+  "alert_thenRefreshPage": { "message": "پھر اس صفحے کو ریفریش کریں" },
   "alert_tooManyRequests": { "message": "چیٹ جی پی ٹی بہت زیادہ درخواستوں سے بھرا ہوا ہے" },
   "alert_parseFailed": { "message": "جواب JSON کی تشریح کرنے میں ناکام" },
   "alert_checkCloudflare": { "message": "براہ کرم کلاؤڈ فلایر سیکیورٹی چیک پاس کریں" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "تاثرات شیئر کریں" },
   "prefix_exit": { "message": "خارج ہوں" },
   "state_on": { "message": "چالو کریں" },
-  "state_off": { "message": "بند کریں" },
-  "query_hiThere": { "message": "سلام،" },
-  "query_translate": { "message": "ترجمہ" }
+  "state_off": { "message": "بند کریں" }
 }

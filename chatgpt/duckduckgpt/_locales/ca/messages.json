@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Esquema de color" },
   "menuLabel_auto": { "message": "Automàtic" },
   "menuLabel_about": { "message": "Quant a" },
-  "menuLabel_highlightToAsk": { "message": "Destacat a la pregunta" },
-  "menuLabel_fromAnySite": { "message": "des de qualsevol lloc" },
-  "menuLabel_ask": { "message": "Pregunta" },
-  "menuLabel_hideMenu": { "message": "Oculta el menú" },
-  "menuLabel_always": { "message": "always" },
-  "menuLabel_forThisSite": { "message": "per a aquest lloc" },
-  "menuLabel_fromAllSites": { "message": "de tots els llocs" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
   "about_sourceCode": { "message": "Codi font" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "En breu s'afegirà el suport per a l'API d'OpenAI" },
   "alert_waitingResponse": { "message": "S'està esperant la resposta de ChatGPT" },
   "alert_login": { "message": "Iniciar sessió" },
+  "alert_thenRefreshPage": { "message": "després actualitza aquesta pàgina" },
   "alert_tooManyRequests": { "message": "El ChatGPT està ple de moltes sol·licituds" },
   "alert_parseFailed": { "message": "No s'ha pogut analitzar la resposta JSON" },
   "alert_checkCloudflare": { "message": "Passa la comprovació de seguretat de Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Compartir comentaris" },
   "prefix_exit": { "message": "Surt" },
   "state_on": { "message": "Activat" },
-  "state_off": { "message": "Desactivat" },
-  "query_hiThere": { "message": "Hola" },
-  "query_translate": { "message": "Traduir" }
+  "state_off": { "message": "Desactivat" }
 }

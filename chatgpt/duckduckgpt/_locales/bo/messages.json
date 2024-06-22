@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "གཞིས་རིམ་མཚོན་མདོག་སྡེ་ཁག" },
   "menuLabel_auto": { "message": "རང་འགུལ" },
   "menuLabel_about": { "message": "མྱུར་ཨང་སྐོར།" },
-  "menuLabel_highlightToAsk": { "message": "མདུན་ཤོག" },
-  "menuLabel_fromAnySite": { "message": "ས་གནས་གང་རུང་ནས་" },
-  "menuLabel_ask": { "message": "དྲིས་ལན །" },
-  "menuLabel_hideMenu": { "message": "ཡིག་ཆའི་ཁ་བྱང་སྦས་པ" },
-  "menuLabel_always": { "message": "རྟག་པར" },
-  "menuLabel_forThisSite": { "message": "དྲ་ངོས་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་" },
-  "menuLabel_fromAllSites": { "message": "ས་གནས་ཀུན་ནས་" },
   "about_version": { "message": "པར་གཞི།" },
   "about_poweredBy": { "message": "དྲ་ཚིག་བཟོ་མཁན།" },
   "about_sourceCode": { "message": "འབྱུང་ཁུངས །" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Open API སྒྲིག་འཇུག་བྱས་ཚད ། ཐེངས་10 ལས་ཉུང་བ ། ཐོན་རིམ་5.7.1 ནང་དུ་ཚོད་ལྟ་བྱས་ཟིན ། ཟླ 6 སྔོན་ལ་གསར་" },
   "alert_waitingResponse": { "message": "ChatGPT ལན་འདེབས་ལ་སྒུག་པ །" },
   "alert_login": { "message": "བཀའ་སློབ །" },
+  "alert_thenRefreshPage": { "message": "ཤོག་ངོས་འདི་གསར་བཅོས་གནང་།" },
   "alert_tooManyRequests": { "message": "ཅེརཊགཔཏཏ་ ཨིས་ ཕྲོངེསཊེསཊ་ ཝིདེད་ ཐུ་ མནེལྟངེ" },
   "alert_parseFailed": { "message": "JSON དེ་སྐྱེ་མ་དྲིན་པས་བྱེད་ཡོད་པས།" },
   "alert_checkCloudflare": { "message": "ཁྱེད་རང་གི་ Cloudflare དེ་མེད་པར་བྱེད་ཡོད་པས།" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "འདྲ་ཕབ །" },
   "prefix_exit": { "message": "ཐོན་ཐབས །" },
   "state_on": { "message": "སྤར་རྒྱུ" },
-  "state_off": { "message": "གསོད" },
-  "query_hiThere": { "message": "དྲ་ངོས་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་" },
-  "query_translate": { "message": "སྐད་སྒྱུར་" }
+  "state_off": { "message": "གསོད" }
 }

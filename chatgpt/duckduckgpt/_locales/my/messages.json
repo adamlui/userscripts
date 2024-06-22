@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "အရောင်အစီအစဉ်" },
   "menuLabel_auto": { "message": "အလိုအလျောက်" },
   "menuLabel_about": { "message": "အကြောင်း" },
-  "menuLabel_highlightToAsk": { "message": "အလုပ်ကို မီးမောင်းထိုးပြပါ" },
-  "menuLabel_fromAnySite": { "message": "မည်သည့်ဆိုက်မှမဆို" },
-  "menuLabel_ask": { "message": "မေးပါ" },
-  "menuLabel_hideMenu": { "message": "မီနူးကို ဝှက်ပါ" },
-  "menuLabel_always": { "message": "အမြဲတမ်း" },
-  "menuLabel_forThisSite": { "message": "ဤဆိုက်အတွက်" },
-  "menuLabel_fromAllSites": { "message": "ဆိုက်များအားလုံးမှ" },
   "about_version": { "message": "မူ -" },
   "about_poweredBy": { "message": "စွမ်းဆောင်ရည် -" },
   "about_sourceCode": { "message": "ပင္မကုဒ္" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "OpenAI API အတွက်အထောက်အပံ့ကိုမကြာမီထည့်သွင်းပါလိမ့်မည်" },
   "alert_waitingResponse": { "message": "ChatGPT တုံ့ပြန်မှုကို စောင့်ဆိုင်းနေသည်" },
   "alert_login": { "message": "ကျေးဇူးပြု ၍ အကောင့်ဝင်ပါ" },
+  "alert_thenRefreshPage": { "message": "ထို့နောက် ဤစာမျက်နှာကို လန်းဆန်းစေပါ" },
   "alert_tooManyRequests": { "message": "ChatGPT သည် တောင်းဆိုမှုများစွာဖြင့် ရေလွှမ်းနေသည်" },
   "alert_parseFailed": { "message": "တုံ့ပြန်မှု JSON ကို မအောင်မြင်ပါ" },
   "alert_checkCloudflare": { "message": "Cloudflare လုံခြုံရေးစစ်ဆေးမှုကိုအောင် ကျေးဇူးပြု" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "ဝေမျှရန် တုံ့ပြန်ချက်" },
   "prefix_exit": { "message": "ထြက္ရန္" },
   "state_on": { "message": "(ျဖစ္စဥ္)" },
-  "state_off": { "message": "ပိတ်" },
-  "query_hiThere": { "message": "မင်္ဂလာပါ" },
-  "query_translate": { "message": "ဘာသာျပန္ပါ" }
+  "state_off": { "message": "ပိတ်" }
 }

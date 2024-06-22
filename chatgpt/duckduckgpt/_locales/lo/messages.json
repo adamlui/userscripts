@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "ແຜນຜັງສີ" },
   "menuLabel_auto": { "message": "ອັດຕະໂນມັດ" },
   "menuLabel_about": { "message": "ກ່ຽວກັບ" },
-  "menuLabel_highlightToAsk": { "message": "ຈຸດເດັ່ນຫາຄຳຖາມ" },
-  "menuLabel_fromAnySite": { "message": "ຈາກທຸກບ່ອນ" },
-  "menuLabel_ask": { "message": "ຖາມ" },
-  "menuLabel_hideMenu": { "message": "ເຊື່ອງເມນູ" },
-  "menuLabel_always": { "message": "ຕະຫຼອດ " },
-  "menuLabel_forThisSite": { "message": "ສໍາລັບເວັບໄຊທ໌ນີ້" },
-  "menuLabel_fromAllSites": { "message": "ຈາກທຸກເວັບໄຊທ໌" },
   "about_version": { "message": "ຮຸ່ນ" },
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
   "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "ການສະ ຫນັບ ສະ ຫນູນ ສໍາ ລັບ OpenAI API ຈະເພີ່ມຂື້ນໃນໄວໆນີ້" },
   "alert_waitingResponse": { "message": "ລໍຖ້າການຕອບໂຕ້ຂອງ ChatGPT" },
   "alert_login": { "message": "ກະລຸນາເຂົ້າສູ່ລະບົບ" },
+  "alert_thenRefreshPage": { "message": "ອົດໃສຫນ້າ" },
   "alert_tooManyRequests": { "message": "ChatGPT ຖືກນ້ ໍາ ຖ້ວມດ້ວຍ ຄໍາ ຮ້ອງຂໍຫຼາຍເກີນໄປ" },
   "alert_parseFailed": { "message": "ການວິເຄາະຄໍາຕອບ JSON ບໍ່ສຳເລັດ" },
   "alert_checkCloudflare": { "message": "ກະລຸນາຜ່ານການກວດສອບຄວາມປອດໄພ Cloudflare" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "ແບ່ງປັນຄຳຕິຊົມ" },
   "prefix_exit": { "message": "ອອກ" },
   "state_on": { "message": "ເປີດ" },
-  "state_off": { "message": "ປິດ" },
-  "query_hiThere": { "message": "Hi ຢູ່ທີ່ນັ້ນ" },
-  "query_translate": { "message": "ແປພາສາ: " }
+  "state_off": { "message": "ປິດ" }
 }

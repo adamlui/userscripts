@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Rang sxemasi" },
   "menuLabel_auto": { "message": "Avtomatik" },
   "menuLabel_about": { "message": "Qisqacha ma'lumot" },
-  "menuLabel_highlightToAsk": { "message": "Ajratish uchun soʻrov" },
-  "menuLabel_fromAnySite": { "message": "har qanday saytdan" },
-  "menuLabel_ask": { "message": "& Soʻrash" },
-  "menuLabel_hideMenu": { "message": "Menyuni yashirish" },
-  "menuLabel_always": { "message": "_Har doim" },
-  "menuLabel_forThisSite": { "message": "ushbu sayt uchun" },
-  "menuLabel_fromAllSites": { "message": "Hamma fayllar" },
   "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Tomonidan qo'llab-quvvatlanadi" },
   "about_sourceCode": { "message": "Ochiq kod" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Tez orada OpenAI API qo'llab-quvvatlashi qo'shiladi" },
   "alert_waitingResponse": { "message": "ChatGPT javobi kutilmoqda" },
   "alert_login": { "message": "Iltimos, tizimga kiring" },
+  "alert_thenRefreshPage": { "message": "keyin ushbu sahifani yangilang" },
   "alert_tooManyRequests": { "message": "ChatGPT juda koʻp soʻrovlar bilan toʻlib ketgan" },
   "alert_parseFailed": { "message": "JSON javobini tahlil qilib bo‘lmadi" },
   "alert_checkCloudflare": { "message": "Iltimos, Cloudflare xavfsizlik tekshiruvidan o'ting" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Fikr-mulohazangizni baham ko'ring" },
   "prefix_exit": { "message": "Chiqish" },
   "state_on": { "message": "Yoniq" },
-  "state_off": { "message": "O'chirilgan" },
-  "query_hiThere": { "message": "salom" },
-  "query_translate": { "message": "Tarjimalar" }
+  "state_off": { "message": "O'chirilgan" }
 }

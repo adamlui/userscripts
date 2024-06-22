@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Kleurenschema" },
   "menuLabel_auto": { "message": "Automatisch" },
   "menuLabel_about": { "message": "Over" },
-  "menuLabel_highlightToAsk": { "message": "Highlight-to-ask" },
-  "menuLabel_fromAnySite": { "message": "vanaf elke locatie" },
-  "menuLabel_ask": { "message": "Vragen stellen" },
-  "menuLabel_hideMenu": { "message": "Menu verbergen" },
-  "menuLabel_always": { "message": "altijd" },
-  "menuLabel_forThisSite": { "message": "voor deze site" },
-  "menuLabel_fromAllSites": { "message": "Alle Sites" },
   "about_version": { "message": "Versie" },
   "about_poweredBy": { "message": "Ondersteund door" },
   "about_sourceCode": { "message": "Broncode" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Ondersteuning voor OpenAI API wordt binnenkort toegevoegd" },
   "alert_waitingResponse": { "message": "Wachten op ChatGPT-reactie" },
   "alert_login": { "message": "Klik hier om in te loggen" },
+  "alert_thenRefreshPage": { "message": "Vernieuw daarna de pagina" },
   "alert_tooManyRequests": { "message": "ChatGPT wordt overspoeld met te veel verzoeken" },
   "alert_parseFailed": { "message": "Kon antwoord JSON niet parseren" },
   "alert_checkCloudflare": { "message": "Geef de Cloudflare-beveiligingscontrole door" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Deel feedback" },
   "prefix_exit": { "message": "Exit" },
   "state_on": { "message": "Aan" },
-  "state_off": { "message": "Uit" },
-  "query_hiThere": { "message": "Goedendag" },
-  "query_translate": { "message": "Vertaal" }
+  "state_off": { "message": "Uit" }
 }

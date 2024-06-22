@@ -15,13 +15,6 @@
   "menuLabel_colorScheme": { "message": "Түс тандоо" },
   "menuLabel_auto": { "message": "Авто" },
   "menuLabel_about": { "message": "_Апплет жөнүндө" },
-  "menuLabel_highlightToAsk": { "message": "Undo-type" },
-  "menuLabel_fromAnySite": { "message": "ар кандай сайттан" },
-  "menuLabel_ask": { "message": "Сура" },
-  "menuLabel_hideMenu": { "message": "Менюду жашыруу" },
-  "menuLabel_always": { "message": "Дайыма" },
-  "menuLabel_forThisSite": { "message": "бул сайт үчүн" },
-  "menuLabel_fromAllSites": { "message": "бардык сайттардан" },
   "about_version": { "message": "Версиясы" },
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
   "about_sourceCode": { "message": "Баштапкы код" },
@@ -60,6 +53,7 @@
   "alert_openAIsupportSoon": { "message": "Жакында OpenAI API колдоосу кошулат" },
   "alert_waitingResponse": { "message": "ChatGPT жооп күтүүдө" },
   "alert_login": { "message": "Кирүү" },
+  "alert_thenRefreshPage": { "message": "андан кийин бул баракты жаңыртуу" },
   "alert_tooManyRequests": { "message": "ChatGPT өтө көп сурамдар менен толуп жатат" },
   "alert_parseFailed": { "message": "Жоопту талдоо ишке ашпады JSON" },
   "alert_checkCloudflare": { "message": "Сураныч, Cloudflare коопсуздук текшерүүдөн өтүңүз" },
@@ -79,7 +73,5 @@
   "link_shareFeedback": { "message": "Пикирлерди бөлүшүү" },
   "prefix_exit": { "message": "Чыгуу" },
   "state_on": { "message": "БАР" },
-  "state_off": { "message": "Өчүрүү" },
-  "query_hiThere": { "message": "Hi ал жерде" },
-  "query_translate": { "message": "которуу" }
+  "state_off": { "message": "Өчүрүү" }
 }
