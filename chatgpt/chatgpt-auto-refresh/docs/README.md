@@ -126,7 +126,7 @@ ChatGPT Auto Refresh relies on code from the powerful <a href="https://github.co
 
 ## 🌐 Compatibility
 
-ChatGPT Auto Refresh is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/):
+ChatGPT Auto Refresh is compatible w/ the following browsers using [ScriptCat](https://docs.scriptcat.org), [Violentmonkey](https://violentmonkey.github.io) or [Tampermonkey](https://www.tampermonkey.net):
 
 - [Google Chrome](https://www.chrome.com)
 - [Mozilla Firefox](https://www.firefox.com)
@@ -134,10 +134,10 @@ ChatGPT Auto Refresh is compatible w/ the following browsers using [Tampermonkey
 - [Opera](https://www.opera.com)
 - [Brave](https://brave.com)
 - [Vivaldi](https://vivaldi.com)
-- [Waterfox](https://www.waterfox.net/)
-- [LibreWolf](https://librewolf.net/)
-- [Ghost](https://ghostbrowser.com/)
-- [QQ](https://browser.qq.com/)
+- [Waterfox](https://www.waterfox.net)
+- [LibreWolf](https://librewolf.net)
+- [Ghost](https://ghostbrowser.com)
+- [QQ](https://browser.qq.com)
 
 <br>
 
