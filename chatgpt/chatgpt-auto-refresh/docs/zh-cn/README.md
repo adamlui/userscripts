@@ -86,9 +86,9 @@
 ## 🚀 如何安装
 
 1. 安装用户脚本管理器：
-    - Tampermonkey 为了 [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) 或 [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
+    - ScriptCat 为了 [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) 或 [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
     - Violentmonkey 为了 [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) 或 [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
-    - 或 ScriptCat 为了 [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) 或 [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
+    - 或 Tampermonkey 为了 [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) 或 [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
 2. 安装 [ChatGPT 自动刷新](https://greasyfork.chatgptautorefresh.com) (将加载上面安装的用户脚本管理器)
 
@@ -116,7 +116,7 @@
 </a>
 <br><br>
 
-ChatGPT 自動刷新依賴於強大的 <a href="https://github.com/KudoAI/chatgpt.js">chatgpt.js</a> 庫 © 2023–2024 <a href="https://www.kudoai.com">KudoAI</a> 和 MIT 許可下的貢獻者。
+ChatGPT 自動刷新 依賴於強大的 <a href="https://github.com/KudoAI/chatgpt.js">chatgpt.js</a> 庫 © 2023–2024 <a href="https://www.kudoai.com">KudoAI</a> 和 MIT 許可下的貢獻者。
 
 </div>
 </h6>
