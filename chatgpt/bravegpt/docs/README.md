@@ -34,11 +34,16 @@
 
 ## 🚀 Installation
 
-1. Install Tampermonkey ([Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)) (required for Streaming Mode) or Violentmonkey ([Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao))
+1. Install a userscript manager:
+    - ScriptCat for [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
+    - Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
+    - or Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
 
 2. Install [BraveGPT](https://greasyfork.org/scripts/462440-bravegpt) (will load in userscript manager installed above)
 
 3. Visit [search.brave.com](https://search.brave.com), type your search, engage bot!
+
+##### _*Violentmonkey does not support Streaming Mode, so is not recommended_
 
 <div align="center">
 
@@ -62,7 +67,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 ## 🌐 Compatibility
 
-**BraveGPT** is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/) (recommended for Streaming Mode) or [Violentmonkey](https://violentmonkey.github.io/).
+**BraveGPT** is compatible w/ the following browsers using [ScriptCat](https://docs.scriptcat.org), [Tampermonkey](https://www.tampermonkey.net) or [Violentmonkey](https://violentmonkey.github.io).
 
 ### 🖥️ Desktop
 
@@ -72,17 +77,17 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 - [Opera](https://www.opera.com)
 - [Brave](https://brave.com)
 - [Vivaldi](https://vivaldi.com)
-- [LibreWolf](https://librewolf.net/)
-- [Ghost](https://ghostbrowser.com/)
-- [QQ](https://browser.qq.com/)
+- [LibreWolf](https://librewolf.net)
+- [Ghost](https://ghostbrowser.com)
+- [QQ](https://browser.qq.com)
 - [Whale](https://whale.naver.com)
 
 <br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/logos/platforms/android/head-plus-word/white/logo150x24.png?latest"><img alt="Android" width=111 src="https://media.bravegpt.com/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png?latest"></picture><br>
 
 - [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) for Firefox)
-- [Kiwi](https://kiwibrowser.com/) (using [Violentmonkey for Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
+- [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) or [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) for Chrome)
 - [Waterfox](https://play.google.com/store/apps/details?id=net.waterfox.android.release) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) for Firefox)
-- [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or Violentmonkey for [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao) or [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
+- [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) for Edge ; ScriptCat for [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh) or [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) ; or Violentmonkey for [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao) or [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
 
 <br>
 
