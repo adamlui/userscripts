@@ -49,9 +49,9 @@
 ## 🚀 Installation
 
 1. Install a userscript manager:
-    - Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
+    - ScriptCat for [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
     - Violentmonkey for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
-    - or ScriptCat for [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
+    - or Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
 2. Install [ChatGPT Infinity](https://greasyfork.chatgptinfinity.com) userscript (will load in userscript manager installed above)
 
@@ -85,7 +85,7 @@ ChatGPT Infinity relies on code from the powerful [chatgpt.js](https://github.co
 
 ## 🌐 Compatibility 
 
-ChatGPT Infinity is compatible w/ the following browsers using [Tampermonkey](https://www.tampermonkey.net/):
+ChatGPT Infinity is compatible w/ the following browsers using [ScriptCat](https://docs.scriptcat.org), [Violentmonkey](https://violentmonkey.github.io) or [Tampermonkey](https://www.tampermonkey.net):
 
 ### 🖥️ Desktop
 
@@ -95,15 +95,15 @@ ChatGPT Infinity is compatible w/ the following browsers using [Tampermonkey](ht
 - [Opera](https://www.opera.com)
 - [Brave](https://brave.com)
 - [Vivaldi](https://vivaldi.com)
-- [Waterfox](https://www.waterfox.net/)
-- [LibreWolf](https://librewolf.net/)
-- [Ghost](https://ghostbrowser.com/)
-- [QQ](https://browser.qq.com/)
-- [Whale](https://whale.naver.com/)
+- [Waterfox](https://www.waterfox.net)
+- [LibreWolf](https://librewolf.net)
+- [Ghost](https://ghostbrowser.com)
+- [QQ](https://browser.qq.com)
+- [Whale](https://whale.naver.com)
 
 <br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptinfinity.com/images/logos/platforms/android/head-plus-word/white/logo150x24.png?latest"><img alt="Android" width=111 src="https://media.chatgptinfinity.com/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png?latest"></picture><br>
 
-- [Kiwi](https://kiwibrowser.com/) (also available on [Chrome Web Store](https://chrome.google.com/webstore/detail/chatgpt-infinity/amikeononomkhphopbflomhnmdijjpmb))
+- [Kiwi](https://kiwibrowser.com) (also available on [Chrome Web Store](https://chrome.google.com/webstore/detail/chatgpt-infinity/amikeononomkhphopbflomhnmdijjpmb))
 - [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/)
 
 <br>
