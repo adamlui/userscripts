@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.24.9
+// @version             2024.6.26.3
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -206,6 +206,7 @@
 // ✓ highlight.js (https://highlightjs.org) © 2006 Ivan Sagalaev under the BSD 3-Clause license
 // ✓ KaTeX (https://katex.org) © 2013–2020 Khan Academy & other contributors under the MIT license
 // ✓ Marked (https://marked.js.org) © 2018+ MarkedJS © 2011–2018 Christopher Jeffrey under the MIT license
+
 // Documentation: https://docs.bravegpt.com
 
 setTimeout(async () => {
@@ -286,20 +287,31 @@ setTimeout(async () => {
         }
     }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
 
-    // Init SETTINGS labels
-    const settingsLabels = {
-        proxyMode: { label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode' },
-        streamingMode: { label: msgs.mode_streaming || 'Streaming Mode' },
-        autoGet: { label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers' },
-        autoFocusChatbar: { label: msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar', mobile: false },
-        autoScroll: { label: `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`, mobile: false },
-        relatedQueries: { label: `${ msgs.menuLabel_show || 'Show' } ${ msgs.menuLabel_relatedQueries || 'Related Queries' }` },
-        prefixMode: { label: `${ msgs.menuLabel_require || 'Require' } "/" ${ msgs.menuLabel_beforeQuery || 'before query' }` },
-        suffixMode: { label: `${ msgs.menuLabel_require || 'Require' } "?" ${ msgs.menuLabel_afterQuery || 'after query' }` },
-        widerSidebar: { label: msgs.menuLabel_widerSidebar || 'Wider Sidebar', mobile: false },
-        replyLanguage: { label: msgs.menuLabel_replyLanguage || 'Reply Language' },
-        colorScheme: { label: msgs.menuLabel_colorScheme || 'Color Scheme' },
-        about: { label: `${ msgs.menuLabel_about || 'About' } ${config.appName}` }
+    // Init SETTINGS props
+    const settingsProps = {
+        proxyAPIenabled: { label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode', type: 'toggle' },
+        streamingDisabled: { label: msgs.mode_streaming || 'Streaming Mode', type: 'toggle' },
+        autoGetDisabled: { label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers', type: 'toggle' },
+        autoFocusChatbarDisabled: {
+            label: msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar',
+            type: 'toggle', mobile: false },
+        autoScroll: {
+            label: `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`,
+            type: 'toggle', mobile: false },
+        rqDisabled: {
+            label: `${ msgs.menuLabel_show || 'Show' } ${ msgs.menuLabel_relatedQueries || 'Related Queries' }`,
+            type: 'toggle' },
+        prefixEnabled: {
+            label: `${ msgs.menuLabel_require || 'Require' } "/" ${ msgs.menuLabel_beforeQuery || 'before query' }`,
+            type: 'toggle' },
+        suffixEnabled: {
+            label: `${ msgs.menuLabel_require || 'Require' } "?" ${ msgs.menuLabel_afterQuery || 'after query' }`,
+            type: 'toggle' },
+        widerSidebar: { label: msgs.menuLabel_widerSidebar || 'Wider Sidebar', type: 'toggle', mobile: false },
+        stickySidebar: { label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar', type: 'toggle', mobile: false },
+        replyLanguage: { label: msgs.menuLabel_replyLanguage || 'Reply Language', type: 'prompt' },
+        scheme: { label: msgs.menuLabel_colorScheme || 'Color Scheme', type: 'modal' },
+        about: { label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...`, type: 'modal' }
     }
 
     // Init MENU objs
@@ -322,35 +334,35 @@ setTimeout(async () => {
 
         // Add command to toggle proxy API mode
         const pamLabel = menuState.symbol[+config.proxyAPIenabled] + ' '
-                       + settingsLabels.proxyMode.label + ' '
+                       + settingsProps.proxyAPIenabled.label + ' '
                        + menuState.separator + menuState.word[+config.proxyAPIenabled]
         menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
 
         // Add command to toggle streaming mode or alert unsupported
         const stmState = !config.proxyAPIenabled ? false : !config.streamingDisabled // show disabled state to OpenAI users
         const stmLabel = menuState.symbol[+stmState] + ' '
-                       + settingsLabels.streamingMode.label + ' '
+                       + settingsProps.streamingDisabled.label + ' '
                        + menuState.separator + menuState.word[+stmState]
         menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
             const scriptCatLink = isFirefox ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
                                 : isEdge    ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                                             : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!/Tampermonkey|ScriptCat/.test(getUserscriptManager())) { // alert userscript manager unsupported, suggest TM/SC
-                siteAlert(`${settingsLabels.streamingMode.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsLabels.streamingMode.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
                         + ( !isEdge && !isBrave ? // suggest TM for supported browsers
                             ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${ msgs.alert_and || 'and' }`
                                 : '' )
                         + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
                         + ` (${ msgs.alert_userscriptMgrNoStream || 'Your userscript manager does not support returning stream responses' }.)`)
             } else if (getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave)) // alert TM/browser unsupported, suggest SC
-                siteAlert(`${settingsLabels.streamingMode.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsLabels.streamingMode.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
                         + `${ isChrome ? 'Chrome' : isEdge ? 'Edge' : 'Brave' } ${ msgs.alert_whenUsing || 'when using' } Tampermonkey. `
                         + `${ msgs.alert_pleaseUse || 'Please use' } <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
                             + `${ msgs.alert_instead || 'instead' }.`)
             else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                let msg = `${settingsLabels.streamingMode.label} `
+                let msg = `${settingsProps.streamingDisabled.label} `
                         + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
                         + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
                         + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
@@ -361,18 +373,18 @@ setTimeout(async () => {
                 alert.querySelector('[href="#"]').onclick = () => { alert.querySelector('.modal-close-btn').click() ; toggleProxyMode() }
             } else { // functional toggle
                 saveSetting('streamingDisabled', !config.streamingDisabled)
-                notify(settingsLabels.streamingMode.label + ' ' + menuState.word[+!config.streamingDisabled])
+                notify(settingsProps.streamingDisabled.label + ' ' + menuState.word[+!config.streamingDisabled])
                 refreshMenu()
             }
         }))
 
         // Add command to toggle auto-get mode
-        const agmLabel = menuState.symbol[+config.autoget] + ' '
-                       + settingsLabels.autoGet.label + ' '
-                       + menuState.separator + menuState.word[+config.autoget]
+        const agmLabel = menuState.symbol[+!config.autoGetDisabled] + ' '
+                       + settingsProps.autoGetDisabled.label + ' '
+                       + menuState.separator + menuState.word[+!config.autoGetDisabled]
         menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
-            saveSetting('autoget', !config.autoget)
-            notify(settingsLabels.autoGet.label + ' ' + menuState.word[+config.autoget])
+            saveSetting('autoGetDisabled', !config.autoGetDisabled)
+            notify(settingsProps.autoGetDisabled.label + ' ' + menuState.word[+!config.autoGetDisabled])
             refreshMenu()
         }))
 
@@ -380,28 +392,28 @@ setTimeout(async () => {
 
             // Add command to toggle auto-focus chatbar
             const afcLabel = menuState.symbol[+!config.autoFocusChatbarDisabled] + ' '
-                           + settingsLabels.autoFocusChatbar.label + ' '
+                           + settingsProps.autoFocusChatbarDisabled.label + ' '
                            + menuState.separator + menuState.word[+!config.autoFocusChatbarDisabled]
             menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
                 saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
-                notify(settingsLabels.autoFocusChatbar.label + ' ' + menuState.word[+!config.autoFocusChatbarDisabled])
+                notify(settingsProps.autoFocusChatbarDisabled.label + ' ' + menuState.word[+!config.autoFocusChatbarDisabled])
                 refreshMenu()
             }))
 
             // Add command to toggle auto-scroll (when streaming)
             const assLabel = menuState.symbol[+config.autoScroll] + ' '
-                           + settingsLabels.autoScroll.label
+                           + settingsProps.autoScroll.label
                            + menuState.separator + menuState.word[+config.autoScroll]
             menuIDs.push(GM_registerMenuCommand(assLabel, () => {
                 saveSetting('autoScroll', !config.autoScroll)
-                notify(settingsLabels.autoScroll.label + ' ' + menuState.word[+config.autoScroll])
+                notify(settingsProps.autoScroll.label + ' ' + menuState.word[+config.autoScroll])
                 refreshMenu()
             }))
         }
 
         // Add command to toggle showing related queries
         const rqLabel = menuState.symbol[+!config.rqDisabled] + ' '
-                      + settingsLabels.relatedQueries.label + ' '
+                      + settingsProps.rqDisabled.label + ' '
                       + menuState.separator + menuState.word[+!config.rqDisabled]
         menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
             saveSetting('rqDisabled', !config.rqDisabled)
@@ -421,7 +433,7 @@ setTimeout(async () => {
 
         // Add command to toggle prefix mode
         const pfmLabel = menuState.symbol[+config.prefixEnabled] + ' '
-                      + settingsLabels.prefixMode.label + ' '
+                      + settingsProps.prefixEnabled.label + ' '
                       + menuState.separator + menuState.word[+config.prefixEnabled]
         menuIDs.push(GM_registerMenuCommand(pfmLabel, () => {
             saveSetting('prefixEnabled', !config.prefixEnabled)
@@ -433,7 +445,7 @@ setTimeout(async () => {
 
         // Add command to toggle suffix mode
         const sfmLabel = menuState.symbol[+config.suffixEnabled] + ' '
-                      + settingsLabels.suffixMode.label + ' '
+                      + settingsProps.prefixEnabled.label + ' '
                       + menuState.separator + menuState.word[+config.suffixEnabled]
         menuIDs.push(GM_registerMenuCommand(sfmLabel, () => {
             saveSetting('suffixEnabled', !config.suffixEnabled)
@@ -446,44 +458,46 @@ setTimeout(async () => {
         // Add command to toggle wider sidebar
         if (!isMobile) {
             const wsbLabel = menuState.symbol[+config.widerSidebar] + ' '
-                           + settingsLabels.widerSidebar.label
+                           + settingsProps.widerSidebar.label
                            + menuState.separator + menuState.word[+config.widerSidebar]
             menuIDs.push(GM_registerMenuCommand(wsbLabel, () => toggleSidebar('wider')))
         }
 
         // Add command to set reply language
-        const rlLabel = '🌐 ' + settingsLabels.replyLanguage.label
+        const rlLabel = '🌐 ' + settingsProps.replyLanguage.label
                       + menuState.separator + config.replyLanguage
-        menuIDs.push(GM_registerMenuCommand(rlLabel, () => {
-            while (true) {
-                let replyLanguage = prompt(
-                    ( msgs.prompt_updateReplyLang || 'Update reply language' ) + ':', config.replyLanguage)
-                if (replyLanguage == null) break // user cancelled so do nothing
-                else if (!/\d/.test(replyLanguage)) {
-                    replyLanguage = ( // auto-case for menu/alert aesthetics
-                        [2, 3].includes(replyLanguage.length) || replyLanguage.includes('-') ? replyLanguage.toUpperCase()
-                          : replyLanguage.charAt(0).toUpperCase() + replyLanguage.slice(1).toLowerCase() )
-                    saveSetting('replyLanguage', replyLanguage || config.userLanguage)
-                    siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
-                        `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
-                            + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
-                        '', '', 330) // width
-                    refreshMenu() ; break
-        }}}))
+        menuIDs.push(GM_registerMenuCommand(rlLabel, promptReplyLang))
 
         // Add command to set color scheme
         const schemeLabel = ( config.scheme == 'light' ? '☀️' :
                               config.scheme == 'dark'  ? '🌘' : '🌗' ) + ' '
-                          + settingsLabels.colorScheme.label + menuState.separator
+                          + settingsProps.scheme.label + menuState.separator
                           + ( config.scheme == 'light' ? msgs.scheme_light   || 'Light' :
                               config.scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
                                                        : msgs.menuLabel_auto || 'Auto' )
         menuIDs.push(GM_registerMenuCommand(schemeLabel, modals.scheme.show))
 
         // Add command to launch About modal
-        const aboutLabel = `💡 ${settingsLabels.about.label}`
+        const aboutLabel = `💡 ${settingsProps.about.label}`
         menuIDs.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
     }
+
+    function promptReplyLang() {
+        while (true) {
+            let replyLanguage = prompt(
+                ( msgs.prompt_updateReplyLang || 'Update reply language' ) + ':', config.replyLanguage)
+            if (replyLanguage == null) break // user cancelled so do nothing
+            else if (!/\d/.test(replyLanguage)) {
+                replyLanguage = ( // auto-case for menu/alert aesthetics
+                    [2, 3].includes(replyLanguage.length) || replyLanguage.includes('-') ? replyLanguage.toUpperCase()
+                      : replyLanguage.charAt(0).toUpperCase() + replyLanguage.slice(1).toLowerCase() )
+                saveSetting('replyLanguage', replyLanguage || config.userLanguage)
+                siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
+                    `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
+                        + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
+                    '', '', 330) // width
+                refreshMenu() ; break
+    }}}
 
     function refreshMenu() { for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() }
 
@@ -718,8 +732,8 @@ setTimeout(async () => {
                       fontSizeSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 512 512']]
                 fontSizeSVGattrs.forEach(([attr, value]) => fontSizeSVG.setAttribute(attr, value))
                 fontSizeSVG.append(
-                    createSVGpath({ d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
-                    createSVGpath({ d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
+                    createSVGpath({ stroke: 'none', d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
+                    createSVGpath({ stroke: 'none', d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
                 )
                 return fontSizeSVG
             }
@@ -730,7 +744,7 @@ setTimeout(async () => {
                 const schemeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                       schemeSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -960 960 960']]
                 schemeSVGattrs.forEach(([attr, value]) => schemeSVG.setAttribute(attr, value))
-                schemeSVG.append(createSVGpath({ d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
+                schemeSVG.append(createSVGpath({ stroke: 'none', d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
                 return schemeSVG
             }
         },
@@ -753,25 +767,25 @@ setTimeout(async () => {
         },
 
         widescreen: {
-            wideSVGpath: createSVGpath({
+            wideSVGpath() { return createSVGpath({ stroke: 'none',
                 fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
-            }),
+            })},
 
-            tallSVGpath: createSVGpath({
+            tallSVGpath() { return createSVGpath({ stroke: 'none',
                 fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
-            }),
+            })},
 
             create() {
                 const widescreenSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                       widescreenSVGattrs = [['width', 18], ['height', 18], ['viewBox', '8 8 20 20']]
                 widescreenSVGattrs.forEach(([attr, value]) => widescreenSVG.setAttribute(attr, value))
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath'])
+                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
                 return widescreenSVG
             },
 
             update(widescreenSVG) {
                 widescreenSVG.removeChild(widescreenSVG.firstChild) // clear path
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath'])
+                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
                 return widescreenSVG
             }
         }
@@ -2016,7 +2030,7 @@ setTimeout(async () => {
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
-    if (!config.autoget && !/src=(?:first-run|asktip)/.test(location.href) // Auto-Get disabled and not queried from other site or 1st run
+    if (config.autoGetDisabled && !/src=(?:first-run|asktip)/.test(location.href) // Auto-Get disabled and not queried from other site or 1st run
         || config.prefixEnabled && !/.*q=%2F/.test(document.location) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(document.location)) { // suffix required but not present
             show.reply('standby', footerContent)

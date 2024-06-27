@@ -199,7 +199,7 @@
 // @description:zh-TW   從無所不知的 ChatGPT 生成無窮無盡的答案 (用任何語言!)
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.6.24
+// @version             2024.6.26
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -247,9 +247,9 @@
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = 'https://support.chatgptinfinity.com'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@5153489/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@609fc49/'
     config.userLanguage = chatgpt.getUserLanguage()
-    loadSetting('autoScrollDisabled', 'replyInterval', 'replyLanguage', 'replyTopic', 'toggleHidden')
+    loadSetting('autoScrollDisabled', 'autoStart', 'replyInterval', 'replyLanguage', 'replyTopic', 'toggleHidden')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.replyTopic) saveSetting('replyTopic', 'ALL') // init reply topic if unset
     if (!config.replyInterval) saveSetting('replyInterval', 7) // init refresh interval to 7 secs if unset
@@ -299,74 +299,6 @@
         return // exit script
     } else registerMenu() // create functional menu
 
-    // Init UI flags
-    await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
-    await chatgpt.sidebar.isLoaded()
-    const isFirefox = chatgpt.browser.isFirefox(),
-          isGPT4oUI = document.documentElement.className.includes(' '),
-          firstLink = chatgpt.getNewChatLink()
-
-    // Add listener to auto-disable Infinity Mode
-    if (document.hidden !== undefined) // ...if Page Visibility API supported
-        document.onvisibilitychange = () => {
-            if (config.infinityMode) {                
-                if (document.getElementById('infToggleLabel')) // ensure toggle state is accurate
-                    document.getElementById('infToggleLabel').click()
-                else infinityMode.deactivate()
-                refreshMenu()
-        }}
-
-    // Add/update TWEAKS style
-    const tweaksStyleUpdated = 202405171 // datestamp of last edit for this file's `tweaksStyle`
-    let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
-    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
-        if (!tweaksStyle) { // outright missing, create/id/attr/append it first
-            tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
-            tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
-            document.head.append(tweaksStyle)
-        }
-        tweaksStyle.innerText = (
-            '.chatgpt-modal button {'
-              + 'font-size: 0.77rem ; text-transform: uppercase ;'
-              + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
-          + '.modal-buttons { margin-left: -13px !important }'
-          + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
-          + '.sticky div:active, .sticky div:focus {' // post-GPT-4o UI sidebar button container
-              + 'transform: none !important }' // disable distracting click zoom effect
-        )
-    }
-
-    // Create NAV TOGGLE div, add styles
-    const navToggleDiv = document.createElement('div')
-    navToggleDiv.style.height = '37px'
-    navToggleDiv.style.margin = '2px 0' // add v-margins
-    navToggleDiv.style.userSelect = 'none' // prevent highlighting
-    navToggleDiv.style.cursor = 'pointer' // add finger cursor
-    updateToggleHTML() // create children
-
-    if (firstLink) { // borrow/assign CLASSES from sidebar div
-        const firstIcon = firstLink.querySelector('div:first-child'),
-              firstLabel = firstLink.querySelector('div:nth-child(2)')
-        navToggleDiv.classList.add(...firstLink.classList, ...firstLabel.classList)
-        navToggleDiv.querySelector('img')?.classList.add(...firstIcon.classList)
-    }
-
-    insertToggle()
-
-    // Add LISTENER to toggle switch/label/config/menu
-    navToggleDiv.onclick = () => {
-        const toggleInput = document.getElementById('infToggleInput')
-        toggleInput.checked = !toggleInput.checked
-        config.infinityMode = toggleInput.checked
-        updateToggleHTML() ; refreshMenu()
-        infinityMode.toggle()
-    }
-
-    // Monitor <html> to maintain SIDEBAR TOGGLE VISIBILITY on node changes
-    const nodeObserver = new MutationObserver(mutations => { mutations.forEach(mutation => {
-        if (mutation.type == 'childList' && mutation.addedNodes.length) insertToggle() })})
-    nodeObserver.observe(document.documentElement, { childList: true, subtree: true })
-
     // Define SCRIPT functions
 
     function loadSetting(...keys) { keys.forEach(key => { config[key] = GM_getValue(config.keyPrefix + '_' + key, false) })}
@@ -382,7 +314,17 @@
         const imLabel = menuState.symbol[+config.infinityMode] + ' '
                       + ( msgs.menuLabel_infinityMode || 'Infinity Mode' ) + ' ∞ '
                       + menuState.separator + menuState.word[+config.infinityMode]
-        menuIDs.push(GM_registerMenuCommand(imLabel, () => { document.getElementById('infToggleLabel').click() }))
+        menuIDs.push(GM_registerMenuCommand(imLabel, () => { document.getElementById('infinity-toggle-label').click() }))
+
+        // Add command to toggle Auto-Start
+        const astLabel = menuState.symbol[+config.autoStart] + ' '
+                       + ( msgs.menuLabel_autoStart || 'Auto-Start' )
+                       + menuState.separator + menuState.word[+config.autoStart]
+        menuIDs.push(GM_registerMenuCommand(astLabel, () => {
+            saveSetting('autoStart', !config.autoStart)
+            notify(( msgs.menuLabel_autoStart || 'Auto-Start' ) + ': '+ menuState.word[+config.autoStart])
+            refreshMenu()
+        }))
 
         // Add command to toggle visibility of toggle
         const tvLabel = menuState.symbol[+!config.toggleHidden] + ' '
@@ -395,11 +337,11 @@
             refreshMenu()
         }))
 
-        // Add command to toggle auto-scroll
-        const asLabel = menuState.symbol[+!config.autoScrollDisabled] + ' '
-                      + ( msgs.menuLabel_autoScroll || 'Auto-Scroll' )
-                      + menuState.separator + menuState.word[+!config.autoScrollDisabled]
-        menuIDs.push(GM_registerMenuCommand(asLabel, () => {
+        // Add command to toggle Auto-Scroll
+        const ascLabel = menuState.symbol[+!config.autoScrollDisabled] + ' '
+                       + ( msgs.menuLabel_autoScroll || 'Auto-Scroll' )
+                       + menuState.separator + menuState.word[+!config.autoScrollDisabled]
+        menuIDs.push(GM_registerMenuCommand(ascLabel, () => {
             saveSetting('autoScrollDisabled', !config.autoScrollDisabled)
             notify(( msgs.menuLabel_autoScroll || 'Auto-Scroll' ) + ': '+ menuState.word[+!config.autoScrollDisabled])
             refreshMenu()
@@ -446,8 +388,8 @@
                         + '!'
                 )
                 if (config.infinityMode) { // restart session using new reply topic
-                    chatgpt.stop() ; document.getElementById('infToggleLabel').click() // toggle off
-                    setTimeout(() => { document.getElementById('infToggleLabel').click() }, 500) } // toggle on
+                    chatgpt.stop() ; document.getElementById('infinity-toggle-label').click() // toggle off
+                    setTimeout(() => { document.getElementById('infinity-toggle-label').click() }, 500) } // toggle on
                 refreshMenu()
         }}))
 
@@ -610,7 +552,8 @@
         if (isGPT4oUI) navToggleDiv.style.flexGrow = 'unset' // overcome OpenAI .grow
         if (!firstLink) parentToInsertInto.children[0].style.marginBottom = '5px'
         navToggleDiv.style.paddingLeft = '8px'
-        document.getElementById('infToggleFavicon').src = `${ // update navicon color in case scheme changed
+        const navicon = document.getElementById('infinity-toggle-navicon')
+        if (navicon) navicon.src = `${ // update navicon color in case scheme changed
             config.assetHostURL }media/images/icons/infinity-symbol/${
             chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png`
     }
@@ -618,19 +561,19 @@
     function updateToggleHTML() {
 
         // Create/size/position navicon
-        const navicon = document.getElementById('infToggleFavicon') || document.createElement('img')
-        navicon.id = 'infToggleFavicon'
+        const navicon = document.getElementById('infinity-toggle-navicon') || document.createElement('img')
+        navicon.id = 'infinity-toggle-navicon'
         navicon.style.width = navicon.style.height = '1.25rem'
         navicon.style.marginLeft = isGPT4oUI ? '2px' : '4px' ; navicon.style.marginRight = '4px'
 
         // Create/ID/disable/hide/update checkbox
-        const toggleInput = document.getElementById('infToggleInput') || document.createElement('input')
-        toggleInput.id = 'infToggleInput' ; toggleInput.type = 'checkbox' ; toggleInput.disabled = true
+        const toggleInput = document.getElementById('infinity-toggle-input') || document.createElement('input')
+        toggleInput.id = 'infinity-toggle-input' ; toggleInput.type = 'checkbox' ; toggleInput.disabled = true
         toggleInput.style.display = 'none' ; toggleInput.checked = config.infinityMode
 
         // Create/ID/stylize switch
-        const switchSpan = document.getElementById('infSwitchSpan') || document.createElement('span')
-        switchSpan.id = 'infSwitchSpan'
+        const switchSpan = document.getElementById('infinity-switch-span') || document.createElement('span')
+        switchSpan.id = 'infinity-switch-span'
         const switchStyles = {
             position: 'relative', left: `${ chatgpt.browser.isMobile() ? 211 : !firstLink ? 160 : isGPT4oUI ? 147 : 152 }px`,
             backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
@@ -640,8 +583,8 @@
         Object.assign(switchSpan.style, switchStyles)
 
         // Create/stylize knob, append to switch
-        const knobSpan = document.getElementById('infToggleKnobSpan') || document.createElement('span')
-        knobSpan.id = 'infToggleKnobSpan'
+        const knobSpan = document.getElementById('infinity-toggle-knob-span') || document.createElement('span')
+        knobSpan.id = 'infinity-toggle-knob-span'
         const knobWidth = 13
         const knobStyles = {
             position: 'absolute', left: '3px', bottom: `${ isFirefox && !firstLink ? 0.075 : 0.055 }em`,
@@ -653,8 +596,8 @@
         Object.assign(knobSpan.style, knobStyles) ; switchSpan.append(knobSpan)
 
         // Create/stylize/fill label
-        const toggleLabel = document.getElementById('infToggleLabel') || document.createElement('label')
-        toggleLabel.id = 'infToggleLabel'
+        const toggleLabel = document.getElementById('infinity-toggle-label') || document.createElement('label')
+        toggleLabel.id = 'infinity-toggle-label'
         if (!firstLink) { // add font size/weight since no firstLink to borrow from
             toggleLabel.style.fontSize = '0.875rem' ; toggleLabel.style.fontWeight = 600 }
         toggleLabel.style.marginLeft = `-${ !firstLink ? 23 : 41 }px` // left-shift to navicon
@@ -671,24 +614,19 @@
         // Update visual state
         navToggleDiv.style.display = config.toggleHidden ? 'none' : 'flex'
         setTimeout(() => {
-            if (toggleInput.checked) {
-                switchSpan.style.backgroundColor = '#AD68FF'
-                switchSpan.style.boxShadow = '2px 1px 9px #D8A9FF'
-                knobSpan.style.transform = `translateX(${ knobWidth }px) translateY(0)`
-            } else {
-                switchSpan.style.backgroundColor = '#CCC'
-                switchSpan.style.boxShadow = 'none'
-                knobSpan.style.transform = 'translateX(0)'
-            }
+            switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+            switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+            knobSpan.style.transform = toggleInput.checked ? `translateX(${ knobWidth }px) translateY(0)` : 'translateX(0)'
         }, 1) // min delay to trigger transition fx
     }
 
     const infinityMode = {
 
-        activate: async () => {
+        async activate() {
             notify(( msgs.menuLabel_infinityMode || 'Infinity Mode' ) + ': ON')
             if (chatgpt.browser.isMobile() && chatgpt.sidebar.isOn()) chatgpt.sidebar.hide()
-            try { chatgpt.startNewChat() } catch (err) { return }
+            if (!new URL(document.location).pathname.startsWith('/g/')) // not on GPT page
+                try { chatgpt.startNewChat() } catch (err) { return } // start new chat
             setTimeout(() => {
                 chatgpt.send('Generate a single random question'
                     + ( config.replyLanguage ? ( ' in ' + config.replyLanguage ) : '' )
@@ -700,7 +638,7 @@
                 infinityMode.isActive = setTimeout(infinityMode.continue, parseInt(config.replyInterval, 10) * 1000)
         },
 
-        continue: async () => {
+        async continue() {
             chatgpt.send('Do it again.')
             if (!config.autoScrollDisabled) try { chatgpt.scrollToBottom() } catch(err) {}
             await chatgpt.isIdle() // before starting delay till next iteration
@@ -708,21 +646,21 @@
                 infinityMode.isActive = setTimeout(infinityMode.continue, parseInt(config.replyInterval, 10) * 1000)
         },
 
-        deactivate: () => {
+        deactivate() {
             chatgpt.stop() ; clearTimeout(infinityMode.isActive) ; infinityMode.isActive = null
-            document.getElementById('infToggleInput').checked = false // for window listener
+            document.getElementById('infinity-toggle-input').checked = false // for window listener
             notify(( msgs.menuLabel_infinityMode || 'Infinity Mode' ) + ': OFF')
             config.infinityMode = false // in case toggled by PV listener
         },
 
-        toggle: () => { config.infinityMode ? infinityMode.activate() : infinityMode.deactivate() }
+        toggle() { config.infinityMode ? infinityMode.activate() : infinityMode.deactivate() }
     }
 
     // Define INTERRUPT functions
 
     function restartInNewChat() {
-        chatgpt.stop() ; document.getElementById('infToggleLabel').click() // toggle off
-        setTimeout(() => { document.getElementById('infToggleLabel').click() }, 500) // toggle on
+        chatgpt.stop() ; document.getElementById('infinity-toggle-label').click() // toggle off
+        setTimeout(() => { document.getElementById('infinity-toggle-label').click() }, 500) // toggle on
     }
 
     async function resetInSameChat() {
@@ -730,5 +668,83 @@
         if (config.infinityMode && !infinityMode.isActive) // double-check in case de-activated before scheduled
             infinityMode.isActive = setTimeout(infinityMode.continue, parseInt(config.replyInterval, 10) * 1000)
     }
+
+    // Run MAIN routine
+
+    // Init UI flags
+    await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
+    await chatgpt.sidebar.isLoaded()
+    const isFirefox = chatgpt.browser.isFirefox(),
+          isGPT4oUI = document.documentElement.className.includes(' '),
+          firstLink = chatgpt.getNewChatLink()
+
+    // Add listener to auto-disable Infinity Mode
+    if (document.hidden !== undefined) // ...if Page Visibility API supported
+        document.onvisibilitychange = () => {
+            if (config.infinityMode) {                
+                if (document.getElementById('infinity-toggle-label')) // ensure toggle state is accurate
+                    document.getElementById('infinity-toggle-label').click()
+                else infinityMode.deactivate()
+                refreshMenu()
+        }}
+
+    // Add/update TWEAKS style
+    const tweaksStyleUpdated = 202405171 // datestamp of last edit for this file's `tweaksStyle`
+    let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
+    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
+        if (!tweaksStyle) { // outright missing, create/id/attr/append it first
+            tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
+            tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
+            document.head.append(tweaksStyle)
+        }
+        tweaksStyle.innerText = (
+            '.chatgpt-modal button {'
+              + 'font-size: 0.77rem ; text-transform: uppercase ;'
+              + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
+          + '.modal-buttons { margin-left: -13px !important }'
+          + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
+          + '.sticky div:active, .sticky div:focus {' // post-GPT-4o UI sidebar button container
+              + 'transform: none !important }' // disable distracting click zoom effect
+        )
+    }
+
+    // Create NAV TOGGLE div, add styles
+    const navToggleDiv = document.createElement('div')
+    navToggleDiv.style.height = '37px'
+    navToggleDiv.style.margin = '2px 0' // add v-margins
+    navToggleDiv.style.userSelect = 'none' // prevent highlighting
+    navToggleDiv.style.cursor = 'pointer' // add finger cursor
+    updateToggleHTML() // create children
+
+    if (firstLink) { // borrow/assign CLASSES from sidebar div
+        const firstIcon = firstLink.querySelector('div:first-child'),
+              firstLabel = firstLink.querySelector('div:nth-child(2)')
+        navToggleDiv.classList.add(...firstLink.classList, ...firstLabel.classList)
+        navToggleDiv.querySelector('img')?.classList.add(...firstIcon.classList)
+    }
+
+    insertToggle()
+
+    // Add LISTENER to toggle switch/label/config/menu
+    navToggleDiv.onclick = () => {
+        const toggleInput = document.getElementById('infinity-toggle-input')
+        toggleInput.checked = !toggleInput.checked
+        config.infinityMode = toggleInput.checked
+        updateToggleHTML() ; refreshMenu()
+        infinityMode.toggle()
+    }
+
+    // Auto-start if enabled
+    if (config.autoStart) {
+        const navToggle = document.getElementById('infinity-toggle-input')
+        if (navToggle) navToggle.parentNode.click()
+        else { // activate via infinityMode
+            infinityMode.activate() ; config.infinityMode = true ; refreshMenu()
+    }}
+
+    // Monitor <html> to maintain SIDEBAR TOGGLE VISIBILITY on node changes
+    const nodeObserver = new MutationObserver(mutations => { mutations.forEach(mutation => {
+        if (mutation.type == 'childList' && mutation.addedNodes.length) insertToggle() })})
+    nodeObserver.observe(document.documentElement, { childList: true, subtree: true })
 
 })()
