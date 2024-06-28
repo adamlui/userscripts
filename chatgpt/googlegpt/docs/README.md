@@ -114,7 +114,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 <br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/logos/platforms/android/head-plus-word/white/logo150x24.png?latest"><img alt="Android" width=111 src="https://media.googlegpt.io/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png?latest"></picture><br>
 
 - [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)* for Firefox)
-- [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) or [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)* for Chrome)
+- [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)* or [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* for Chrome)
 - [Waterfox](https://play.google.com/store/apps/details?id=net.waterfox.android.release) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)* for Firefox)
 - [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) for Edge ; ScriptCat for [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh) or [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) ; or Violentmonkey* for [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao) or [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
 
@@ -176,6 +176,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 <br>[highlight.js](https://highlightjs.org) © 2006 [Ivan Sagalaev](https://github.com/isagalaev) under the BSD 3-Clause license
 <br>[KaTeX](https://katex.org) © 2013–2020 [Khan Academy](https://www.khanacademy.org) & other contributors under the MIT license
 <br>[Marked](https://marked.js.org) © 2018+ [MarkedJS](https://github.com/markedjs) © 2011–2018 [Christopher Jeffrey](https://github.com/chjj) under the MIT license
+<br>[Sogou Translate](https://fanyi.sogou.com) © 2024 [Sogou](https://www.sogou.com)
 <br><br>
 
 </div>
