@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.29.3
+// @version             2024.6.29.5
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -502,6 +502,8 @@
     const modals = {
         about: {
             show() {
+
+                // Create/classify modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
                 const aboutModalID = siteAlert(
                     config.appName, // title
@@ -532,9 +534,11 @@
                                 reviewBtns[1].textContent.replace(/\s/g, '')) },
                         function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
                     ], '', 527) // About modal width
+                const aboutModal = document.getElementById(aboutModalID)
+                aboutModal.classList.add('ddgpt-modal')
 
                 // Resize/format buttons to include emoji + localized label + hide Dismiss button
-                for (const btn of document.getElementById(aboutModalID).querySelectorAll('button')) {
+                for (const btn of aboutModal.querySelectorAll('button')) {
                     btn.style.height = '52px' // re-size to fit meaty text content
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( msgs.buttonLabel_updateCheck || 'Check for Updates' ))
@@ -550,6 +554,8 @@
 
         scheme: {
             show() {
+
+                // Create/classify modal
                 const schemeModalID = siteAlert(`${
                     config.appName } ${( msgs.menuLabel_colorScheme || 'Color Scheme' ).toLowerCase() }:`, '',
                     [ // buttons
@@ -557,9 +563,10 @@
                         function light() { updateScheme('light') },
                         function dark() { updateScheme('dark') }
                 ])
+                const schemeModal = document.getElementById(schemeModalID)
+                schemeModal.classList.add('ddgpt-modal')
 
                 // Center button cluster
-                const schemeModal = document.getElementById(schemeModalID)
                 schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
 
                 // Re-format each button
@@ -620,7 +627,8 @@
                 // Init core elems
                 const settingsContainer = document.createElement('div') ; settingsContainer.id = 'ddgpt-settings-bg'
                 settingsContainer.classList = 'no-user-select'
-                const settingsModal = document.createElement('div') ; settingsModal.id = 'ddgpt-settings'
+                const settingsModal = document.createElement('div')
+                settingsModal.id = 'ddgpt-settings' ; settingsModal.className = 'ddgpt-modal'
                 const settingsIcon = icons.ddgpt.create()
                 settingsIcon.style.cssText = 'width: 56px ; position: relative ; top: -33px ; margin: 0 41% -12px' // size/pos icon
                 const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'ddgpt-settings-title'
@@ -1367,7 +1375,7 @@
     }
 
     function updateTooltip(buttonType) { // text & position
-        const cornerBtnTypes = ['about', 'settings', 'speak', 'ssb', 'csb', 'font-size', 'wsb']
+        const cornerBtnTypes = ['about', 'settings', 'speak', 'ssb', 'font-size', 'wsb']
                   .filter(type => appDiv.querySelector(`#${type}-btn`)) // exclude invisible ones
         const [ctrAddend, spreadFactor] = appDiv.querySelector('.standby-btn') ? [8, 28] : [6, 27.5],
               iniRoffset = spreadFactor * ( buttonType == 'send' ? 1.5
@@ -1380,7 +1388,6 @@
           : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
           : buttonType == 'ssb' ? (( config.stickySidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
                                    + ( msgs.menuLabel_stickySidebar || 'Sticky Sidebar' ))
-          : buttonType == 'csb' ? msgs.menuLabel_colorScheme || 'Color Scheme'
           : buttonType == 'font-size' ? msgs.tooltip_fontSize || 'Font size'
           : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
                                    + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
@@ -1933,13 +1940,6 @@
                     ssbSpan.append(ssbSVG) ; cornerBtnsDiv.append(ssbSpan)
                 }
 
-                // Create/append Color Scheme button
-                const csbSpan = document.createElement('span'),
-                      csbSVG = icons.scheme.create()
-                csbSpan.id = 'csb-btn' // for toggle.tooltip()
-                csbSpan.className = 'corner-btn' ; csbSpan.style.margin = '0.5px 9px 0 0'
-                csbSpan.append(csbSVG) ; cornerBtnsDiv.append(csbSpan)
-
                 // Create/append Font Size button
                 if (answer != 'standby') {
                     var fontSizeSpan = document.createElement('span'),
@@ -2010,11 +2010,10 @@
                     })
                 }
                 if (ssbSVG) ssbSVG.onclick = () => toggle.sidebar('sticky')
-                csbSVG.onclick = modals.scheme.show
                 if (fontSizeSVG) fontSizeSVG.onclick = () => fontSizeSlider.toggle()
                 if (wsbSVG) wsbSVG.onclick = () => toggle.sidebar('wider')
                 if (!isMobile) // add hover listeners for tooltips
-                    [aboutSpan, settingsSpan, speakerSpan, ssbSpan, csbSpan, fontSizeSpan, wsbSpan].forEach(span => {
+                    [aboutSpan, settingsSpan, speakerSpan, ssbSpan, fontSizeSpan, wsbSpan].forEach(span => {
                         if (span) span.onmouseover = span.onmouseout = toggle.tooltip })
 
                 // Create/append 'by KudoAI'
