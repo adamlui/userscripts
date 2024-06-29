@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.29.1
+// @version             2024.6.29.3
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -225,7 +225,7 @@
         appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
         greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt',
         minFontSize: 13, maxFontSize: 24, lineHeightRatio: 1.28,
-        latestAssetCommitHash: 'd2c76f9' } // for cached messages.json
+        latestAssetCommitHash: '485c528' } // for cached messages.json
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
@@ -1252,7 +1252,7 @@
           + '#ddgpt-settings li, #ddgpt-settings li label { cursor: pointer }' // add finger on hover
           + '#ddgpt-settings li:hover {'
               + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;' // add highlight strip
-              + `transform: scale(${ isMobile ? 1.05 : 1.16 }) }` // add zoom
+              + `${ isMobile ? '' : 'transform: scale(1.16)' }}` // add zoom
           + '#ddgpt-settings li > input { float: right }' // pos toggles
           + `#about-menu-entry span { color: ${ scheme == 'dark' ? '#28ee28' : 'green' }}`
     )}
