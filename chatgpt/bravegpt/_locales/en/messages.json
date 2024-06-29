@@ -11,7 +11,6 @@
   "menuLabel_beforeQuery": { "message": "before query" },
   "menuLabel_afterQuery": { "message": "after query" },
   "menuLabel_widerSidebar": { "message": "Wider Sidebar" },
-  "menuLabel_stickySidebar": { "message": "Sticky Sidebar" },
   "menuLabel_replyLanguage": { "message": "Reply Language" },
   "menuLabel_colorScheme": { "message": "Color Scheme" },
   "menuLabel_auto": { "message": "Auto" },
@@ -86,7 +85,7 @@
   "buttonLabel_dismiss": { "message": "Dismiss" },
   "link_viewChanges": { "message": "View changes" },
   "link_shareFeedback": { "message": "Feedback" },
-  "prefix_exit" : { "message": "Exit" },
-  "state_on" : { "message": "On" },
-  "state_off" : { "message": "Off" }
+  "prefix_exit": { "message": "Exit" },
+  "state_on": { "message": "On" },
+  "state_off": { "message": "Off" }
 }
