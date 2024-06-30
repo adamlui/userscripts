@@ -149,7 +149,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.30.9
+// @version             2024.6.30.12
 // @license             MIT
 // @icon                https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64              https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -419,7 +419,7 @@
         greasyForkURL: 'https://greasyfork.org/scripts/478597-googlegpt',
         mediaHostURL: 'https://media.googlegpt.io/',
         minFontSize: 13, maxFontSize: 24, lineHeightRatio: isMobile ? 1.357 : 1.375,
-        latestAssetCommitHash: '526af1d' } // for cached messages.json + app logo/icon
+        latestAssetCommitHash: '81b35f5' } // for cached messages.json + app logo/icon
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
@@ -2296,11 +2296,11 @@
                 while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild); // clear app content
 
                 // Fill starry BG
-                ['sm', 'med', 'lg'].forEach(size => {
+                ['sm', 'med', 'lg'].forEach((size, idx) => {
                     const starsDiv = document.createElement('div')
                     starsDiv.id = config.bgAnimationsDisabled ? 'stars-off'
                                 : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
-                    starsDiv.style.height = '1px' // so toggle.bgAnimations() doesn't change height
+                    starsDiv.style.height = `${ idx +1 }px` // so toggle.bgAnimations() doesn't change height
                     appDiv.append(starsDiv)
                 })
 
@@ -2502,7 +2502,9 @@
                 shuffleBtn.onclick = () => {
                     const randQAprompt = 'Generate a single random question on any topic then answer it.'
                                        + `${ !config.proxyAPIenabled ? 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis,'
-                                                                     + 'deserts, Sheakespeare or da Vinci.' : '' }`
+                                                                     + ' deserts, mindfulness meditation, the Fibonacci sequence,'
+                                                                     + ' Jupiter, the Great Wall of China, Sheakespeare or da Vinci.' : '' }`
+                                       + 'Try to give an answer that is 25-50 words.'
                                        + 'Do not type anything but the question and answer. Reply in markdown.'
                     chatTextarea.value = augmentQuery(randQAprompt)
                     show.reply.submitSrc = 'click' // for show.reply()'s mobile scroll-to-top if user interacted
