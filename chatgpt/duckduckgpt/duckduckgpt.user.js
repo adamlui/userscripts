@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.29.11
+// @version             2024.6.29.15
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -385,7 +385,7 @@
                 siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
                     `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
                         + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
-                    '', '', 330) // width
+                    '', '', 330) // confirmation width
                 const replyLangMenuEntry = document.getElementById('replyLanguage-menu-entry')
                 if (replyLangMenuEntry) replyLangMenuEntry.querySelector('span').textContent = replyLanguage
                 break
@@ -499,11 +499,16 @@
     // Define MODAL functions
 
     const modals = {
+        init(modal) {
+            modal.classList.add('.ddgpt-modal')
+            modal.onwheel = event => event.preventDefault() // disable wheel-scrolling
+        },
+
         about: {
             show() {
                 if (modals.settings.get()) modals.settings.hide()
 
-                // Create/classify modal
+                // Create/init modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
                 const aboutModalID = siteAlert(
                     config.appName, // title
@@ -517,25 +522,11 @@
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { safeWindowOpen(config.supportURL) },
-                        function leaveAReview() {
-                            const reviewModalID = chatgpt.alert(( msgs.alert_choosePlatform || 'Choose a platform' ) + ':', '',
-                                [ function greasyFork() { safeWindowOpen(
-                                      config.greasyForkURL + '/feedback#post-discussion') },
-                                  function productHunt() { safeWindowOpen(
-                                      'https://www.producthunt.com/products/duckduckgpt/reviews/new') },
-                                  function futurepedia() { safeWindowOpen(
-                                      'https://www.futurepedia.io/tool/duckduckgpt#tool-reviews') },
-                                  function alternativeTo() { safeWindowOpen(
-                                      'https://alternativeto.net/software/duckduckgpt/about/') }
-                                ], '', 523) // Review modal width
-                            const reviewBtns = document.getElementById(reviewModalID).querySelectorAll('button')
-                            reviewBtns[0].style.display = 'none' // hide Dismiss button
-                            reviewBtns[1].textContent = ( // remove spaces from AlternativeTo label
-                                reviewBtns[1].textContent.replace(/\s/g, '')) },
+                        function leaveAReview() { modals.feedback.show() },
                         function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
-                    ], '', 527) // About modal width
-                const aboutModal = document.getElementById(aboutModalID)
-                aboutModal.classList.add('ddgpt-modal')
+                    ], '', 527) // modal width
+                const aboutModal = document.getElementById(aboutModalID).firstChild
+                modals.init(aboutModal) // add class, disable wheel-scrolling
 
                 // Resize/format buttons to include emoji + localized label + hide Dismiss button
                 for (const btn of aboutModal.querySelectorAll('button')) {
@@ -555,7 +546,7 @@
         feedback: {
             show() {
 
-                // Create/classify modal
+                // Create/init modal
                 const feedbackModalID = siteAlert(`${
                     msgs.alert_choosePlatform || 'Choose a platform' }:`, '',
                     [ // buttons
@@ -569,9 +560,9 @@
                             'https://www.futurepedia.io/tool/duckduckgpt#duckduckgpt-review') },
                         function alternativeTo() { safeWindowOpen(
                             'https://alternativeto.net/software/duckduckgpt/about/') }
-                    ], '', 408) // width
-                const feedbackModal = document.getElementById(feedbackModalID)
-                feedbackModal.classList.add('ddgpt-modal')
+                    ], '', 408) // modal width
+                const feedbackModal = document.getElementById(feedbackModalID).firstChild
+                modals.init(feedbackModal) // add class, disable wheel-scrolling
 
                 // Re-style button cluster
                 const buttons = feedbackModal.querySelector('.modal-buttons')
@@ -591,7 +582,7 @@
         scheme: {
             show() {
 
-                // Create/classify modal
+                // Create/init modal
                 const schemeModalID = siteAlert(`${
                     config.appName } ${( msgs.menuLabel_colorScheme || 'Color Scheme' ).toLowerCase() }:`, '',
                     [ // buttons
@@ -599,8 +590,8 @@
                         function light() { updateScheme('light') },
                         function dark() { updateScheme('dark') }
                 ])
-                const schemeModal = document.getElementById(schemeModalID)
-                schemeModal.classList.add('ddgpt-modal')
+                const schemeModal = document.getElementById(schemeModalID).firstChild
+                modals.init(schemeModal) // add class, disable wheel-scrolling
 
                 // Center button cluster
                 schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
@@ -663,8 +654,8 @@
                 // Init core elems
                 const settingsContainer = document.createElement('div') ; settingsContainer.id = 'ddgpt-settings-bg'
                 settingsContainer.classList = 'no-user-select'
-                const settingsModal = document.createElement('div')
-                settingsModal.id = 'ddgpt-settings' ; settingsModal.className = 'ddgpt-modal'
+                const settingsModal = document.createElement('div') ; settingsModal.id = 'ddgpt-settings'
+                modals.init(settingsModal) // add class, disable wheel-scrolling
                 const settingsIcon = icons.ddgpt.create()
                 settingsIcon.style.cssText = 'width: 56px ; position: relative ; top: -33px ; margin: 0 41% -12px' // size/pos icon
                 const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'ddgpt-settings-title'
@@ -1001,13 +992,13 @@
             }
         },
 
-        shuffle: {
+        shuffledArrows: {
             create() {
-                const shuffleSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      shuffleSVGattrs = [['width', 21], ['height', 21], ['viewBox', '-1 -1 32 32']]
-                shuffleSVGattrs.forEach(([attr, value]) => shuffleSVG.setAttribute(attr, value))
-                shuffleSVG.append(createSVGpath({ stroke: '', d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' }))
-                return shuffleSVG
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['width', 21], ['height', 21], ['viewBox', '-1 -1 32 32']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                arrowsSVG.append(createSVGpath({ stroke: '', d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' }))
+                return arrowsSVG
             }
         },
         
@@ -1091,12 +1082,12 @@
         },
 
         widescreen: {
-            wideSVGpath() { return createSVGpath({ stroke: '',
-                fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
+            wideSVGpath() { return createSVGpath({
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
             })},
 
-            tallSVGpath() { return createSVGpath({ stroke: '',
-                fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
+            tallSVGpath() { return createSVGpath({
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
             })},
 
             create() {
@@ -2118,7 +2109,7 @@
                 const shuffleBtn = document.createElement('div')
                 shuffleBtn.id = 'shuffle-btn' ; shuffleBtn.className = 'chatbar-btn'
                 shuffleBtn.style.right = `${ isFirefox ? 10 : 8 }px`
-                const shuffleSVG = icons.shuffle.create()
+                const shuffleSVG = icons.shuffledArrows.create()
                 shuffleBtn.append(shuffleSVG) ; continueChatDiv.append(shuffleBtn)
 
                 // Add reply section listeners
