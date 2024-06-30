@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.29.5
+// @version             2024.6.29.8
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -502,6 +502,7 @@
     const modals = {
         about: {
             show() {
+                if (modals.settings.get()) modals.settings.hide()
 
                 // Create/classify modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
@@ -698,7 +699,7 @@
 
                         // Init toggle input
                         const settingToggle = document.createElement('input'),
-                              settingToggleAttrs = [['id', setting + '-toggle'], ['type', 'checkbox'], ['disabled', true]]
+                              settingToggleAttrs = [['type', 'checkbox'], ['disabled', true]]
                         settingToggleAttrs.forEach(([attr, value]) => settingToggle.setAttribute(attr, value))
                         settingToggle.checked = config[key] ^ key.includes('Disabled')
                         settingToggle.style.display = 'none' // hide checkbox
@@ -787,8 +788,10 @@
                 return settingsContainer
             },
 
+            get() { return document.getElementById('ddgpt-settings') },
+
             hide() {
-                const settingsContainer = document.getElementById('ddgpt-settings-bg')
+                const settingsContainer = modals.settings.get()?.parentNode
                 if (!settingsContainer) return
                 settingsContainer.style.animation = 'alert-zoom-fade-out 0.075s ease-out' // chatgpt.js keyframes
                 setTimeout(() => settingsContainer.remove(), 50) // delay for fade-out
@@ -797,15 +800,15 @@
             keyHandler() {
                 const dismissKeys = ['Escape', 'Esc'], dismissKeyCodes = [27]
                 if (dismissKeys.includes(event.key) || dismissKeyCodes.includes(event.keyCode)) {
-                    const settingsModal = document.getElementById('ddgpt-settings')
-                    if (settingsModal && settingsModal.style.display !== 'none'
+                    const settingsModal = modals.settings.get()
+                    if (settingsModal && settingsModal.style.display != 'none'
                         && (event.key.includes('Esc') || event.keyCode == 27))
                             modals.settings.hide()
                 }
             },
 
             show() {
-                const settingsContainer = document.getElementById('ddgpt-settings-bg') || modals.settings.createAppend()
+                const settingsContainer = modals.settings.get()?.parentNode || modals.settings.createAppend()
                 settingsContainer.style.display = ''
                 if (isMobile) { // scale 93% to viewport sides
                     const settingsModal = settingsContainer.querySelector('#ddgpt-settings'),
