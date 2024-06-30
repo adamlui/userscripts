@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.30.4
+// @version             2024.6.30.8
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -388,8 +388,8 @@
                     `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
                         + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
                     '', '', 330) // confirmation width
-                const replyLangMenuEntry = document.getElementById('replyLanguage-menu-entry')
-                if (replyLangMenuEntry) replyLangMenuEntry.querySelector('span').textContent = replyLanguage
+                if (modals.settings.get()) // update settings menu entry label
+                    document.querySelector('#replyLanguage-menu-entry span').textContent = replyLanguage
                 break
     }}}
 
@@ -630,8 +630,8 @@
                 function updateScheme(newScheme) {
                     scheme = newScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : newScheme
                     saveSetting('scheme', newScheme == 'auto' ? false : newScheme)
-                    const schemeMenuEntry = document.getElementById('scheme-menu-entry')
-                    if (schemeMenuEntry) schemeMenuEntry.querySelector('span').textContent = newScheme
+                    if (modals.settings.get()) // update Settings menu entry label
+                        document.querySelector('#scheme-menu-entry span').textContent = newScheme
                     updateAppLogoSrc() ; updateAppStyle() ; updateStars() ; schemeNotify(newScheme)
                 }
 
@@ -1154,8 +1154,7 @@
               + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
               + `background: radial-gradient(ellipse at bottom, ${ scheme == 'dark' ? '#2f3031 0%, #090a0f' : 'white 0%, white' } 100%) ;`
               + `border: ${ scheme == 'dark' ? 'none' : '1px solid #dadce0' }}`
-          + '#ddgpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) ;'
-              + `background: radial-gradient(ellipse at bottom, ${ scheme == 'dark' ? '#373f4b 0%, #090a0f' : 'white 0%, white' } 100%) }`
+          + '#ddgpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) }'
           + '#ddgpt p { margin: 0 ; ' + ( scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
           + `#ddgpt .alert-link { color: ${ scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
           + ( scheme == 'dark' ? '#ddgpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
@@ -1202,7 +1201,7 @@
               + 'font-size: 0.92rem ; height: 19px ; width: 82.6% ; max-height: 200px ; resize: none ; '
               + `position: relative ; z-index: 555 ; color: #${ scheme == 'dark' ? 'eee' : '222' } ;`
               + 'margin: 3px 0 15px 0 ; padding: 13px 57px 9px 10px ;'
-              + 'background: ' + ( scheme == 'dark' ? '#5151519e' : '#eeeeee9e' ) + ' } '
+              + `background: ${ scheme == 'dark' ? '#5151519e' : '#eeeeee9e' }}`
           + '.related-queries {'
               + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
               + `${ isFirefox ? 'top: -20px ; margin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
@@ -1488,9 +1487,10 @@
             saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
             notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
             refreshMenu()
-            const proxyToggle = document.querySelector('[id*="proxy"][id*="menu-entry"] input')
-            if (proxyToggle && proxyToggle.checked != config.proxyAPIenabled) // update visual state of Settings toggle
-                modals.settings.toggle.switch(proxyToggle)
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const proxyToggle = document.querySelector('[id*="proxy"][id*="menu-entry"] input')
+                if (proxyToggle.checked != config.proxyAPIenabled) modals.settings.toggle.switch(proxyToggle)
+            }
             if (appDiv.querySelector('#ddgpt-alert')) location.reload() // re-send query if user alerted 
         },
 
@@ -1951,13 +1951,14 @@
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
+                while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild); // clear app content
 
                 // Fill starry BG
-                const starsSm = document.createElement('div') ; starsSm.id = `${ scheme == 'dark' ? 'white' : 'black' }-stars-sm`
-                const starsMed = document.createElement('div') ; starsMed.id = `${ scheme == 'dark' ? 'white' : 'black' }-stars-med`
-                const starsLg = document.createElement('div') ; starsLg.id = `${ scheme == 'dark' ? 'white' : 'black' }-stars-lg`
-                appDiv.append(starsSm, starsMed, starsLg)
+                ['sm', 'med', 'lg'].forEach(size => {
+                    const starsDiv = document.createElement('div')
+                    starsDiv.id = `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                    appDiv.append(starsDiv)
+                })
 
                 // Create/append app title anchor
                 updateTitleAnchor()
@@ -2139,8 +2140,11 @@
                 shuffleBtn.append(shuffleSVG) ; continueChatDiv.append(shuffleBtn)
 
                 // Add reply section listeners
-                replyForm.onkeydown = handleEnter
-                replyForm.onsubmit = handleSubmit
+                replyForm.onkeydown = handleEnter ; replyForm.onsubmit = handleSubmit
+                chatTextarea.onmouseover = chatTextarea.onfocus = () => { if (scheme == 'dark')
+                    appDiv.style.background = 'radial-gradient(ellipse at bottom, #373f4b 0%, #090a0f 100%)' }
+                chatTextarea.onmouseout = chatTextarea.onblur = () => { if (scheme == 'dark' && document.activeElement != chatTextarea)
+                    appDiv.style.background = 'radial-gradient(ellipse at bottom, #2f3031 0%, #090a0f 100%)' }
                 chatTextarea.oninput = autosizeChatbar
                 shuffleBtn.onclick = () => {
                     const randQAprompt = 'Generate a single random question on any topic then answer it.'
