@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.30.8
+// @version             2024.6.30.10
 // @license             MIT
 // @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -234,8 +234,8 @@
     config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${config.latestAssetCommitHash}/`
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'fontSize', 'notFirstRun',
-                'prefixEnabled', 'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme',
+    loadSetting('autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'fontSize',
+                'notFirstRun', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme',
                 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) saveSetting('fontSize', 16.4) // init reply font size if unset
@@ -331,6 +331,9 @@
         stickySidebar: { type: 'toggle', mobile: false, centered: false,
             label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar',
             helptip: msgs.helptip_stickySidebar || 'Makes DuckDuckGPT visible in sidebar even as you scroll' },
+        bgAnimationsDisabled: { type: 'toggle',
+            label: msgs.menuLabel_bgAnimations || 'Background Animations',
+            helptip: msgs.helptip_bgAnimations || 'Show animated backgrounds in UI components' },
         replyLanguage: { type: 'prompt',
             label: msgs.menuLabel_replyLanguage || 'Reply Language',
             helptip: msgs.helptip_replyLanguage || 'Language for DuckDuckGPT to reply in' },
@@ -388,7 +391,7 @@
                     `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
                         + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
                     '', '', 330) // confirmation width
-                if (modals.settings.get()) // update settings menu entry label
+                if (modals.settings.get()) // update settings menu status label
                     document.querySelector('#replyLanguage-menu-entry span').textContent = replyLanguage
                 break
     }}}
@@ -630,7 +633,7 @@
                 function updateScheme(newScheme) {
                     scheme = newScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : newScheme
                     saveSetting('scheme', newScheme == 'auto' ? false : newScheme)
-                    if (modals.settings.get()) // update Settings menu entry label
+                    if (modals.settings.get()) // update Settings menu status label
                         document.querySelector('#scheme-menu-entry span').textContent = newScheme
                     updateAppLogoSrc() ; updateAppStyle() ; updateStars() ; schemeNotify(newScheme)
                 }
@@ -710,6 +713,9 @@
                     } else if (key == 'stickySidebar') {
                         settingIcon = icons.pin.create()
                         settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 7.5px'
+                    } else if (key.includes('bgAnimation')) {
+                        settingIcon = icons.sparkles.create()
+                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 6.5px'
                     } else if (key == 'replyLanguage') {
                         settingIcon = icons.language.create()
                         settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 9px'
@@ -768,6 +774,7 @@
                             else if (key.includes('streaming')) toggle.streaming()
                             else if (key.includes('rq')) toggle.relatedQueries()
                             else if (key.includes('Sidebar')) toggle.sidebar(key.match(/(.*?)Sidebar$/)[1])
+                            else if (key.includes('Animations')) toggle.bgAnimations()
 
                             // ...or generically toggle/notify
                             else {
@@ -776,21 +783,21 @@
                             }
                         }
 
-                    // Add config word + listeners to pop-up settings
+                    // Add config status + listeners to pop-up settings
                     } else {
-                        const configWordSpan = document.createElement('span')
-                        configWordSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: 3px ;'
+                        const configStatusSpan = document.createElement('span')
+                        configStatusSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: 3px ;'
                             + ( !key.includes('about') ? 'text-transform: uppercase !important' : '' )
                         if (key.includes('replyLang')) {
-                            configWordSpan.textContent = config.replyLanguage
+                            configStatusSpan.textContent = config.replyLanguage
                             settingItem.onclick = promptReplyLang
                         } else if (key.includes('scheme')) {
-                            configWordSpan.textContent = config.scheme || 'Auto'
+                            configStatusSpan.textContent = config.scheme || 'Auto'
                             settingItem.onclick = modals.scheme.show
                         } else if (key.includes('about')) {
-                            configWordSpan.textContent = `v${GM_info.script.version}`
+                            configStatusSpan.textContent = `v${GM_info.script.version}`
                             settingItem.onclick = modals.about.show
-                        } settingItem.append(configWordSpan)
+                        } settingItem.append(configStatusSpan)
                     }
                 })
 
@@ -1033,6 +1040,16 @@
                 return slidersSVG
             }
         },
+        
+        sparkles: {
+            create() {
+                const sparklesSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sparklesSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 0 16 16']]
+                sparklesSVGattrs.forEach(([attr, value]) => sparklesSVG.setAttribute(attr, value))
+                sparklesSVG.append(createSVGpath({ stroke: 'none', d: 'M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z' }))
+                return sparklesSVG
+            }
+        },
 
         speaker: {
             create() {
@@ -1150,7 +1167,7 @@
           + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners to show resize cursor everywhere
               + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; z-index: 9999 ; cursor: ew-resize }'
           + '#ddgpt { border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ;'
-              + 'clip-path: polygon(-1% -3%, 45% -3%, 45% -8%, 101% -8%, 101% 102%, -1% 102%) ;' // protrude above corner btns to allow tooltips
+              + 'clip-path: polygon(-1% -3%, 45% -3%, 45% -8%, 101% -8%, 101% 102%, -1% 102%) ;' // show tooltips but bound starry bg
               + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
               + `background: radial-gradient(ellipse at bottom, ${ scheme == 'dark' ? '#2f3031 0%, #090a0f' : 'white 0%, white' } 100%) ;`
               + `border: ${ scheme == 'dark' ? 'none' : '1px solid #dadce0' }}`
@@ -1483,6 +1500,15 @@
     // Define TOGGLE functions
 
     const toggle = {
+
+        bgAnimations() {
+            saveSetting('bgAnimationsDisabled', !config.bgAnimationsDisabled)
+            const starSizes = ['sm', 'med', 'lg']
+            appDiv.querySelectorAll('[id*="stars-"]').forEach((starsDiv, idx) => starsDiv.id = (
+                config.bgAnimationsDisabled ? 'stars-off' : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${starSizes[idx]}` ))
+            notify(`${settingsProps.bgAnimationsDisabled.label} ${menuState.word[+!config.bgAnimationsDisabled]}`)
+        },
+
         proxyMode() {
             saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
             notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
@@ -1956,7 +1982,9 @@
                 // Fill starry BG
                 ['sm', 'med', 'lg'].forEach(size => {
                     const starsDiv = document.createElement('div')
-                    starsDiv.id = `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                    starsDiv.id = config.bgAnimationsDisabled ? 'stars-off'
+                                : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                    starsDiv.style.height = '1px' // so toggle.bgAnimations() doesn't change height
                     appDiv.append(starsDiv)
                 })
 
