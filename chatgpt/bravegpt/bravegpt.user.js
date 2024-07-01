@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.7.1.7
+// @version             2024.7.1.12
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -612,10 +612,10 @@ setTimeout(async () => {
                     const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                     newBtn.onclick = event => {
                         event.stopPropagation() // disable chatgpt.js dismissAlert()
-                        const newScheme = btnScheme == 'auto' ? ( isDarkMode() ? 'dark' : 'light' ) : btnScheme
-                        saveSetting('scheme', newScheme == 'auto' ? false : newScheme)
-                        document.querySelector('#scheme-menu-entry span').textContent = newScheme // update Settings menu status label
-                        update.scheme(newScheme) ; schemeNotify(newScheme)
+                        const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                        saveSetting('scheme', btnScheme == 'auto' ? false : newScheme)
+                        document.querySelector('#scheme-menu-entry span').textContent = btnScheme // update Settings menu status label
+                        update.scheme(newScheme) ; schemeNotify(btnScheme)
                         schemeModal.querySelectorAll('button').forEach(btn => btn.classList = '') // clear prev emphasized active scheme
                         newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
                         newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
@@ -645,6 +645,7 @@ setTimeout(async () => {
                 const settingsContainer = document.createElement('div') ; settingsContainer.id = 'bravegpt-settings-bg'
                 settingsContainer.classList = 'no-user-select'
                 const settingsModal = document.createElement('div') ; settingsModal.id = 'bravegpt-settings'
+                fillStarryBG(settingsModal) // add stars to bg
                 modals.init(settingsModal) // add class, disable wheel-scrolling
                 const settingsIcon = icons.braveGPT.create()
                 settingsIcon.style.cssText = 'width: 59px ; position: relative ; top: -33px ; margin: 0px 41% -8px' // size/pos icon
@@ -759,8 +760,8 @@ setTimeout(async () => {
                             else if (key.includes('streaming')) toggle.streaming()
                             else if (key.includes('rq')) toggle.relatedQueries()
                             else if (key.includes('Sidebar')) toggle.sidebar(key.match(/(.*?)Sidebar$/)[1])
-                            else if (key.includes('bgAnimation')) toggle.animations.bg()
-                            else if (key.includes('fgAnimation')) toggle.animations.fg()
+                            else if (key.includes('bgAnimation')) toggle.animations('bg')
+                            else if (key.includes('fgAnimation')) toggle.animations('fg')
 
                             // ...or generically toggle/notify
                             else {
@@ -1247,6 +1248,7 @@ setTimeout(async () => {
                       + `${ scheme == 'dark' ? '#75c451 -70%, black 57%' : '#4ef900 -31%, white 33%' }) ;`
                   + `border: 1px solid ${ scheme == 'dark' ? 'white ; color: white' : '#b5b5b5 ; color: black' } ;`
                   + 'padding: 11px ; margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + 'clip-path: polygon(-28% -3%, 128% -3%, 128% 125%, -28% 125%) ;' // bound starry bg
                   + `${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
               + '#bravegpt-settings-bg.animated > div { opacity: 0.98 ; transform: translateX(0) translateY(0) }'
               + '@keyframes alert-zoom-fade-out { 0% { opacity: 1 ; transform: scale(1) }'
@@ -1373,12 +1375,14 @@ setTimeout(async () => {
             }
         },
 
-        scheme(newScheme) {
-            scheme = newScheme ; update.appLogoSrc() ; update.appStyle();
+        scheme(newScheme) { scheme = newScheme ; update.appLogoSrc() ; update.appStyle() ; update.stars() },
 
-            // Update starry bg
-            ['sm', 'med', 'lg'].forEach(size => appDiv.querySelector(
-                `[id$="stars-${size}"]`).id = `${ newScheme == 'dark' ? 'white' : 'black' }-stars-${size}`)
+        stars() {
+            ['sm', 'med', 'lg'].forEach(size =>
+                document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
+                    starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
+                    : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+            ))
         },
 
         titleAnchor() {
@@ -1448,6 +1452,15 @@ setTimeout(async () => {
              : document.documentElement.classList.contains('light') ? false
              : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
     }
+
+    function fillStarryBG(targetNode) {
+        ['sm', 'med', 'lg'].forEach((size, idx) => {
+            const starsDiv = document.createElement('div')
+            starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
+                        : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+            starsDiv.style.height = `${ idx +1 }px` // so toggle.bgAnimations() doesn't change height
+            targetNode.append(starsDiv)
+    })}
 
     const fontSizeSlider = {
         fadeInDelay: 5, // ms
@@ -1583,20 +1596,10 @@ setTimeout(async () => {
 
     const toggle = {
 
-        animations: {
-            bg() {
-                saveSetting('bgAnimationsDisabled', !config.bgAnimationsDisabled)
-                const starSizes = ['sm', 'med', 'lg']
-                appDiv.querySelectorAll('[id*="stars-"]').forEach((starsDiv, idx) => starsDiv.id = (
-                    config.bgAnimationsDisabled ? 'stars-off' : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${starSizes[idx]}` ))
-                notify(`${settingsProps.bgAnimationsDisabled.label} ${menuState.word[+!config.bgAnimationsDisabled]}`)
-            },
-
-            fg() {
-                saveSetting('fgAnimationsDisabled', !config.fgAnimationsDisabled)
-                update.appStyle()
-                notify(`${settingsProps.fgAnimationsDisabled.label} ${menuState.word[+!config.fgAnimationsDisabled]}`)
-            }
+        animations(layer) {
+            saveSetting(layer + 'AnimationsDisabled', !config[layer + 'AnimationsDisabled'])
+            update[layer == 'bg' ? 'stars' : 'appStyle']()
+            notify(`${settingsProps[layer + 'AnimationsDisabled'].label} ${menuState.word[+!config[layer + 'AnimationsDisabled']]}`)
         },
 
         proxyMode() {
@@ -2063,19 +2066,9 @@ setTimeout(async () => {
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild); // clear app content
-
-                // Fill starry BG
-                ['sm', 'med', 'lg'].forEach((size, idx) => {
-                    const starsDiv = document.createElement('div')
-                    starsDiv.id = config.bgAnimationsDisabled ? 'stars-off'
-                                : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
-                    starsDiv.style.height = `${ idx +1 }px` // so toggle.bgAnimations() doesn't change height
-                    appDiv.append(starsDiv)
-                })
-
-                // Create/append app title anchor + byline
-                update.titleAnchor()
+                while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
+                fillStarryBG(appDiv) // add stars to bg
+                update.titleAnchor() // create/append app title anchor + byline
 
                 // Create/append About button
                 const aboutSpan = document.createElement('span'),
