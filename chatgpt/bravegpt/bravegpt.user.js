@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.6.30.15
+// @version             2024.7.1
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1195,7 +1195,8 @@ setTimeout(async () => {
               + `font-size: ${config.fontSize}px ; font-family: Consolas, Menlo, Monaco, monospace ; white-space: pre-wrap ;`
               + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
               + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
-              + ( scheme == 'dark' ? 'background: #3a3a3acf ; color: #f2f2f2 } ' : ' background: #eaeaeacf ; color: #282828 }' )
+              + `${ scheme == 'dark' ? 'background: #3e3c3ccf ; color: #f2f2f2 ; border: 1px solid white'
+                                     : 'background: #eaeaeacf ; color: #282828 ; border: none' }}`
           + `#bravegpt footer { margin: ${ isFirefox ? 32 : 27 }px 0 -26px 0 ; border-top: none !important }`
           + '#bravegpt .feedback {'
               + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
@@ -1207,7 +1208,7 @@ setTimeout(async () => {
           + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
               + 'float: left ; left: 7px ; margin: 36px -13px 0 0 ;' // positioning
               + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
-                  + ( scheme == 'dark' ? '#3a3a3acf' : '#eaeaeacf' ) + '}'
+                  + ( scheme == 'dark' ? '#0000' : '#eaeaeacf' ) + '}'
           + '.chatgpt-js { font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
           + '.chatgpt-js > a { color: inherit ; top: .054rem }'
           + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
@@ -1222,14 +1223,14 @@ setTimeout(async () => {
               + `${ isFirefox ? '' : 'margin-top: -31px' }}`
           + '.related-query { margin: 4px 4px 2px 0 ; padding: 8px 13px 7px 14px ;'
               + `color: ${ scheme == 'dark' ? '#f2f2f2' : '#767676' } ;`
-              + `background: ${ scheme == 'dark' ? '#424242' : '#dadada12' } ;`
+              + `background: ${ scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' } ;`
               + `border: 1px solid ${ scheme == 'dark' ? '#777' : '#e1e1e1' } ; font-size: 0.77em ; cursor: pointer ;`
               + 'border-radius: 0 13px 12px 13px ; width: fit-content ; flex: 0 0 auto ;'
               + `box-shadow: 1px 3px ${ scheme == 'dark' ? '11px -8px lightgray' : '8px -6px rgba(169, 169, 169, 0.75)' };`
               + `${ config.fgAnimationsDisabled ? '' : 'transform: scale(1) ; transition: transform 0.1s ease !important' }}`
           + '.related-query:hover, .related-query:focus {'
               + ( config.fgAnimationsDisabled ? '' : 'transform: scale(1.025) !important ;' )
-              + `background: ${ scheme == 'dark' ? '#a2a2a270': '#e5edff ; color: #000000a8 ; border-color: #a3c9ff' }}`
+              + `background: ${ scheme == 'dark' ? '#a2a2a270': '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
           + '.related-query svg { float: left ; margin: 0.09em 6px 0 0 ;' // related query icon
               + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
           + '.fade-in { opacity: 0 ; transform: translateY(10px) ; transition: opacity 0.5s ease, transform 0.5s ease }'
