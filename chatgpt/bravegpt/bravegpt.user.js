@@ -148,7 +148,7 @@
 // @description:zu      Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author              KudoAI
 // @namespace           https://kudoai.com
-// @version             2024.7.1.22
+// @version             2024.7.1.24
 // @license             MIT
 // @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -424,6 +424,8 @@ setTimeout(async () => {
                                 safeWindowOpen(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now())
                             }, '', updateAlertWidth
                         )
+                        const updateModal = document.getElementById(updateModalID).firstChild
+                        modals.init(updateModal) // add classes/bg, disable wheel-scrolling, dim bg
 
                         // Localize button labels if needed
                         if (!config.userLanguage.startsWith('en')) {
@@ -437,9 +439,11 @@ setTimeout(async () => {
                 }}
 
                 // Alert to no update found, nav back
-                siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
+                const noUpdateModalID = siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
                     `${ config.appName } (v${ currentVer }) ${ msgs.alert_isUpToDate || 'is up-to-date' }!`, // msg
                         '', '', updateAlertWidth)
+                const noUpdateModal = document.getElementById(noUpdateModalID).firstChild
+                modals.init(noUpdateModal) // add classes/bg, disable wheel-scrolling, dim bg
                 modals.about.show()
     }})}
 
@@ -515,6 +519,7 @@ setTimeout(async () => {
             modal.classList.add('.bravegpt-modal')
             modal.parentNode.classList.add('bravegpt-modal-bg', 'no-user-select')
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
+            fillStarryBG(modal) // add stars
             setTimeout(() => { // dim bg
                 modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ scheme === 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
@@ -544,7 +549,7 @@ setTimeout(async () => {
                         function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
                     ], '', 577) // modal width
                 const aboutModal = document.getElementById(aboutModalID).firstChild
-                modals.init(aboutModal) // add classes, disable wheel-scrolling
+                modals.init(aboutModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Resize + format buttons to include emoji + localized label + hide Dismiss button
                 for (const btn of aboutModal.querySelectorAll('button')) {
@@ -581,7 +586,7 @@ setTimeout(async () => {
                             'https://alternativeto.net/software/bravegpt/about/') }
                     ], '', 456) // modal width
                 const feedbackModal = document.getElementById(feedbackModalID).firstChild
-                modals.init(feedbackModal) // add classes, disable wheel-scrolling
+                modals.init(feedbackModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Re-style button cluster
                 const buttons = feedbackModal.querySelector('.modal-buttons')
@@ -606,7 +611,7 @@ setTimeout(async () => {
                     [ function auto() {}, function light() {}, function dark() {} ], // buttons
                     '', 503) // px width
                 const schemeModal = document.getElementById(schemeModalID).firstChild
-                modals.init(schemeModal) // add classes, disable wheel-scrolling
+                modals.init(schemeModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Center button cluster
                 schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
@@ -660,8 +665,7 @@ setTimeout(async () => {
                 const settingsContainer = document.createElement('div')
                 const settingsModal = document.createElement('div') ; settingsModal.id = 'bravegpt-settings'
                 settingsContainer.append(settingsModal)
-                fillStarryBG(settingsModal) // add stars to bg
-                modals.init(settingsModal) // add classes, disable wheel-scrolling
+                modals.init(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
                 const settingsIcon = icons.braveGPT.create()
                 settingsIcon.style.cssText = 'width: 59px ; position: relative ; top: -33px ; margin: 0px 41% -8px' // size/pos icon
                 const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'bravegpt-settings-title'
@@ -1223,17 +1227,17 @@ setTimeout(async () => {
                   + '#bravegpt > pre ol { margin: -33px 0 -6px ; }' // reduce v-spacing
                   + '#bravegpt > pre li { margin: -10px 0 ; list-style: inside }' ) // reduce v-spacing, show left symbols
               + '.katex-html { display: none }' // hide unrendered math
-              + '.chatgpt-modal > div { padding: 24px 20px 24px 20px !important ;' // increase modal padding
+              + '.chatgpt-modal > div { padding: 24px 20px 14px 20px !important ;' // increase modal padding
                   + 'background-color: white !important ; color: #202124 }'
-              + '.chatgpt-modal h2 { font-size: 32px ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + shrink it
+              + '.chatgpt-modal h2 { font-size: 26px ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + shrink it
               + '.modal-close-btn { top: -7px !important ; right: -7px !important }' // re-pos modal close button
               + `.modal-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
               + `.modal-close-btn:hover { background-color: #${ scheme == 'dark' ? '666464' : 'f2f2f2' } !important }`
-              + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 1.115rem }' // pos/size modal msg
+              + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 18px }' // pos/size modal msg
               + `.chatgpt-modal a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-              + `.modal-buttons { margin: 38px 0px 6px ${ isMobile ? 0 : -7 }px !important }` // pos modal buttons
+              + `.modal-buttons { margin: 38px 0px 1px ${ isMobile ? 0 : -7 }px !important }` // pos modal buttons
               + '.chatgpt-modal button {' // alert buttons
-                  + 'font-size: 0.72rem ; text-transform: uppercase ; min-width: 123px ; '
+                  + 'font-size: 14px ; text-transform: uppercase ; min-width: 123px ; '
                   + `padding: ${ isMobile? '5px' : '4px 3px' } !important ;`
                   + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
                   + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
@@ -1248,6 +1252,7 @@ setTimeout(async () => {
             + '[class$="modal"] {' // native modals + chatgpt.alert()s
                 + 'position: absolute ;' // to be click-draggable
                 + 'opacity: 0 ;' // to fade-in
+                + 'clip-path: polygon(-28% -3%, 128% -3%, 128% 140%, -28% 140%) ;' // bound starry bg
                 + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
                 + 'transition: opacity 0.35s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                             + 'transform 0.35s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
@@ -1264,7 +1269,6 @@ setTimeout(async () => {
                       + `${ scheme == 'dark' ? '#75c451 -70%, black 57%' : '#4ef900 -31%, white 33%' }) ;`
                   + `border: 1px solid ${ scheme == 'dark' ? 'white ; color: white' : '#b5b5b5 ; color: black' } ;`
                   + 'padding: 11px ; margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
-                  + 'clip-path: polygon(-28% -3%, 128% -3%, 128% 125%, -28% 125%) ;' // bound starry bg
                   + `${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
               + '@keyframes alert-zoom-fade-out { 0% { opacity: 1 ; transform: scale(1) }'
                   + '50% { opacity: 0.25 ; transform: scale(1.05) }'
@@ -2129,7 +2133,7 @@ setTimeout(async () => {
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
-                fillStarryBG(appDiv) // add stars to bg
+                fillStarryBG(appDiv) // add stars
                 update.titleAnchor() // create/append app title anchor + byline
 
                 // Create/append About button
