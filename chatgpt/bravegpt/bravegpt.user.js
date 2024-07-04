@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.7.4
+// @version               2024.7.4.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -230,7 +230,7 @@ setTimeout(async () => {
         appURL: 'https://www.bravegpt.com', gitHubURL: 'https://github.com/KudoAI/bravegpt',
         greasyForkURL: 'https://greasyfork.org/scripts/462440-bravegpt',
         minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.313,
-        latestAssetCommitHash: '32b262c' } // for cached messages.json
+        latestAssetCommitHash: 'f30f8b3' } // for cached messages.json
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
@@ -1256,7 +1256,7 @@ setTimeout(async () => {
                   + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + '#bravegpt section.loading { padding-left: 5px ; font-size: 90% }'
-              + '#font-size-slider-track { width: 98% ; height: 10px ; margin: -8px auto -9px ; padding: 15px 0 ;'
+              + '#font-size-slider-track { width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
                   + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
               + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
                   + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ; height: calc(100% - 20px) ; cursor: pointer }'
@@ -2590,7 +2590,7 @@ setTimeout(async () => {
 
     // Init ALERTS
     const appAlerts = {
-        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+        waitingResponse:  `${ msgs.alert_waitingFor || 'Waiting for' } ${config.appName} ${ msgs.alert_response || 'response' }...`,
         login:            `${ msgs.alert_login || 'Please login' } @ `,
         checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
         tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
