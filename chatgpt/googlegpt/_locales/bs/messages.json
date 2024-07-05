@@ -39,6 +39,8 @@
   "tooltip_fontSize": { "message": "Veličina slova" },
   "tooltip_sendReply": { "message": "Pošalji odgovor" },
   "tooltip_feelingLucky": { "message": "Osjećam se sretno" },
+  "tooltip_minimize": { "message": "Minimalizovati" },
+  "tooltip_restore": { "message": "Vratiti" },
   "tooltip_close": { "message": "Zatvori" },
   "tooltip_sendRelatedQuery": { "message": "Pošaljite povezani upit" },
   "helptip_proxyAPImode": { "message": "Koristi proxy API za pristup AI bez prijave" },
