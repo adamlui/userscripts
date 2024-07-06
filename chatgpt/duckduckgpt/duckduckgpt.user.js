@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.7.5.5
+// @version                2024.7.5.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1012,6 +1012,7 @@
                     else pinMenuItems[i].style.paddingLeft = '22px' // left-pad to fit checkmark in sub-items
                     if (config.stickySidebar && i == 1 || config.anchored && i == 2 || !config.stickySidebar && !config.anchored && i == 3)
                         pinMenuItems[i].prepend(checkmarkSVG)
+
                     pinMenuItems[i].onclick = menus.pin.clickHandler
                     pinMenuUL.append(pinMenuItems[i])
                 }
@@ -1533,7 +1534,7 @@
                               + 'transform 0.35s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
               + '.ddgpt-menu {'
                   + 'font-family: "Source Sans Pro", sans-serif ; font-size: 12px ;'
-                  + `border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' } ; border-radius: 3px ;`
+                  + `border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' } ; border-radius: 5px ;`
                   + ( scheme == 'dark' ? 'background-color: black ; color: white ; fill: white'
                                        : 'background-color: #f7f7f7d6 ; color: black ; fill: black' ) + ';'
                   + 'position: absolute ; right: 82px ; z-index: 2250 ;'
@@ -1656,11 +1657,8 @@
         tweaksStyle() {
 
             // Update tweaks style based on settings (for tweaks init + show.reply() + toggle.sidebar())
-            const isStandbyMode = appDiv.querySelector('.standby-btn'),
-                  answerIsLoaded = appDiv.querySelector('.corner-btn')
             tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                                  + ( config.stickySidebar ? ssbStyles
-                                    : config.anchored ? anchorStyles : '' )
+                                  + ( config.stickySidebar ? ssbStyles : config.anchored ? anchorStyles : '' )
     
             // Update 'by KudoAI' visibility based on corner space available
             const kudoAIspan = appDiv.querySelector('.kudoai')
