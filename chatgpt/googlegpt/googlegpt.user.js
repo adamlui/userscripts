@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.7.6.12
+// @version                  2024.7.6.16
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -956,19 +956,19 @@
                     // Create/prepend icons
                     const settingIcon = icons[setting.icon].create(key.match(/bg|fg/)?.[0] ?? '')
                     settingIcon.style.cssText = 'position: relative ;' + (
-                        key.includes('proxy') ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
-                      : key.includes('streaming') ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
+                        /proxy/i.test(key) ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
+                      : /streaming/i.test(key) ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
                       : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
-                      : key.includes('autoScroll') ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
+                      : /autoscroll/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
                       : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
-                      : key.includes('prefix') ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
-                      : key.includes('suffix') ? 'top: 4px ; left: -1.5px ; margin-right: 7px'
-                      : key.includes('Sidebar') ? 'top: 4px ; left: -1.5px ; margin-right: 7.5px'
-                      : key == 'anchor' ? 'top: 3px ; left: -2.5px ; margin-right: 5.5px'
-                      : key.includes('Animation') ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
-                      : key.includes('replyLanguage') ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
-                      : key.includes('scheme') ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
-                      : key.includes('about') ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
+                      : /prefix/i.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
+                      : /suffix/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7px'
+                      : /sidebar/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7.5px'
+                      : /anchor/i.test(key) ? 'top: 3px ; left: -2.5px ; margin-right: 5.5px'
+                      : /animation/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
+                      : /replylang/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
+                      : /scheme/i.test(key) ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
+                      : /about/i.test(key) ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
                     )
                     settingItem.prepend(settingIcon)
 
@@ -1603,7 +1603,9 @@
                   + ( isMobile ? 'margin: 8px 0 8px' : 'margin-bottom: 30px' ) + ';' // add vertical margins
                   + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
                   + `background: radial-gradient(ellipse at bottom, ${ scheme == 'dark' ? '#2f3031 0%, #090a0f' : 'white 0%, white' } 100%) ;`
-                  + ( !config.fgAnimationsDisabled ? 'transition: bottom 0.1s cubic-bezier(0.4, 0, 0.2, 1) ;' : '' ) // smoothen Anchor minimize/restore
+                  + ( !config.fgAnimationsDisabled ?
+                        'transition: bottom 0.1s cubic-bezier(0.4, 0, 0.2, 1),' // smoothen Anchor minimize/restore
+                                  + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) // smoothen 1st app fade-in
                   + `border: ${ scheme == 'dark' ? 'none' : '1px solid #dadce0' }}`
               + '#googlegpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) }'
               + '#googlegpt p { margin: 0 ;' + ( scheme == 'dark' ? 'color: #ccc }' : '}' )
@@ -1667,7 +1669,7 @@
                   + `background: ${ scheme == 'dark' ? '#a2a2a270' : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
               + '.related-query svg { float: left ; margin: -0.09em 6px 0 0 ;' // related query icon
                   + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
-              + '.fade-in { opacity: 0 ; transform: translateY(10px) ; transition: opacity 0.5s ease, transform 0.5s ease }'
+              + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
               + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
               + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
               + '.chatbar-btn { z-index: 560 ;'
@@ -1684,7 +1686,7 @@
                   + '#googlegpt > pre li { margin: -10px 0 ; list-style: unset }' ) // reduce v-spacing, show left symbols
               + 'code.hljs { text-wrap: nowrap ; overflow-x: scroll }' // don't wrap highlighted code to be scrollable horizontally
               + '.katex-html { display: none }' // hide unrendered math
-              + '.chatgpt-notify { padding: 13px 13px 13px 18px !important }' // pad notifications
+              + '.chatgpt-notif { padding: 13px 13px 13px 18px !important }' // pad notifications
               + '.chatgpt-modal > div { 17px 20px 24px 20px !important ;' // increase alert padding
                   + 'background-color: white ; color: #202124 }'
               + '.chatgpt-modal h2 { font-size: 1.65rem ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + enlarge it
