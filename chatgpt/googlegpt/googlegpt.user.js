@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.7.6.10
+// @version                  2024.7.6.12
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -493,52 +493,52 @@
 
     // Init SETTINGS props
     const settingsProps = {
-        proxyAPIenabled: { type: 'toggle',
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
             label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode',
             helptip: msgs.helptip_proxyAPImode || 'Uses a Proxy API for no-login access to AI' },
-        streamingDisabled: { type: 'toggle',
+        streamingDisabled: { type: 'toggle', icon: 'signalStream',
             label: msgs.mode_streaming || 'Streaming Mode',
             helptip: msgs.helptip_streamingMode || 'Receive replies in a continuous text stream' },
-        autoGet: { type: 'toggle',
+        autoGet: { type: 'toggle', icon: 'speechBalloonLasso',
             label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers',
             helptip: msgs.helptip_autoGetAnswers || 'Auto-send queries to GoogleGPT when using search engine' },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false,
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
             label: msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar',
             helptip: msgs.helptip_autoFocusChatbar || 'Auto-focus chatbar whenever it appears' },
-        autoScroll: { type: 'toggle', mobile: false,
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
             label: `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`,
             helptip: msgs.helptip_autoScroll || 'Auto-scroll responses as they generate in Streaming Mode' },
-        rqDisabled: { type: 'toggle',
+        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
             label: `${ msgs.menuLabel_show || 'Show' } ${ msgs.menuLabel_relatedQueries || 'Related Queries' }`,
             helptip: msgs.helptip_showRelatedQueries || 'Show related queries below chatbar' },
-        prefixEnabled: { type: 'toggle',
+        prefixEnabled: { type: 'toggle', icon: 'slash',
             label: `${ msgs.menuLabel_require || 'Require' } "/" ${ msgs.menuLabel_beforeQuery || 'before query' }`,
             helptip: msgs.helptip_prefixMode || 'Require "/" before queries for answers to show' },
-        suffixEnabled: { type: 'toggle',
+        suffixEnabled: { type: 'toggle', icon: 'questionMark',
             label: `${ msgs.menuLabel_require || 'Require' } "?" ${ msgs.menuLabel_afterQuery || 'after query' }`,
             helptip: msgs.helptip_suffixMode || 'Require "?" after queries for answers to show' },
-        widerSidebar: { type: 'toggle', mobile: false,
+        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen',
             label: msgs.menuLabel_widerSidebar || 'Wider Sidebar',
             helptip: msgs.helptip_widerSidebar || 'Horizontally expand search page sidebar' },
-        stickySidebar: { type: 'toggle', mobile: false,
+        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner',
             label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar',
             helptip: msgs.helptip_stickySidebar || 'Makes GoogleGPT visible in sidebar even as you scroll' },
-        anchor: { type: 'toggle', mobile: false,
+        anchor: { type: 'toggle', mobile: false, icon: 'anchor',
             label: msgs.mode_anchor || 'Anchor Mode',
             helptip: msgs.helptip_anchorMode || 'Anchor GoogleGPT to bottom of window' },
-        bgAnimationsDisabled: { type: 'toggle',
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
             label: `${ msgs.menuLabel_background || 'Background' } ${ msgs.menuLabel_animations || 'Animations' }`,
             helptip: msgs.helptip_bgAnimations || 'Show animated backgrounds in UI components' },
-        fgAnimationsDisabled: { type: 'toggle',
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
             label: `${ msgs.menuLabel_foreground || 'Foreground' } ${ msgs.menuLabel_animations || 'Animations' }`,
             helptip: msgs.helptip_fgAnimations || 'Show foreground animations in UI components' },
-        replyLanguage: { type: 'prompt',
+        replyLanguage: { type: 'prompt', icon: 'languageChars',
             label: msgs.menuLabel_replyLanguage || 'Reply Language',
             helptip: msgs.helptip_replyLanguage || 'Language for GoogleGPT to reply in' },
-        scheme: { type: 'modal',
+        scheme: { type: 'modal', icon: 'scheme',
             label: msgs.menuLabel_colorScheme || 'Color Scheme',
             helptip: msgs.helptip_colorScheme || 'Scheme to display GoogleGPT UI components in' },
-        about: { type: 'modal',
+        about: { type: 'modal', icon: 'questionMarkCircle',
             label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...` }
     }
 
@@ -954,56 +954,22 @@
                     settingItem.append(settingLabel) ; settingsList.append(settingItem)
 
                     // Create/prepend icons
-                    let settingIcon
-                    if (key == 'proxyAPIenabled') {
-                        settingIcon = icons.sunglasses.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -0.5px ; margin-right: 9px'
-                    } else if (key == 'streamingDisabled') {
-                        settingIcon = icons.signalStream.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: 0.5px ; margin-right: 9px'
-                    } else if (key == 'autoGet') {
-                        settingIcon = icons.speechBalloonLasso.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 4.5px ; margin-right: 7px'
-                    } else if (key == 'autoFocusChatbarDisabled') {
-                        settingIcon = icons.caretsInward.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 4.5px ; margin-right: 7px'
-                    } else if (key == 'autoScroll') {
-                        settingIcon = icons.arrowsDown.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3.5px ; left: -1.5px ; margin-right: 6px'
-                    } else if (key == 'rqDisabled') {
-                        settingIcon = icons.speechBalloons.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
-                    } else if (key == 'prefixEnabled') {
-                        settingIcon = icons.slash.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 2.5px ; left: 0.5px ; margin-right: 9px'
-                    } else if (key == 'suffixEnabled') {
-                        settingIcon = icons.questionMark.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 4px ; left: -1.5px ; margin-right: 7px'
-                    } else if (key == 'widerSidebar') {
-                        settingIcon = icons.widescreen.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 4px ; left: -1.5px ; margin-right: 7.5px'
-                    } else if (key == 'stickySidebar') {
-                        settingIcon = icons.webCorner.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 7.5px'
-                    } else if (key.includes('anchor')) {
-                        settingIcon = icons.anchor.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -2.5px ; margin-right: 5.5px'
-                    } else if (key.includes('bgAnimation')) {
-                        settingIcon = icons.sparkles.create('bg')
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 6.5px'
-                    } else if (key.includes('fgAnimation')) {
-                        settingIcon = icons.sparkles.create('fg')
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 6.5px'
-                    } else if (key == 'replyLanguage') {
-                        settingIcon = icons.languageChars.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -1.5px ; margin-right: 9px'
-                    } else if (key == 'scheme') {
-                        settingIcon = icons.scheme.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 2.5px ; left: -1.5px ; margin-right: 8px'
-                    } else if (key == 'about') {
-                        settingIcon = icons.questionMarkCircle.create()
-                        settingIcon.style.cssText = 'position: relative ; top: 3px ; left: -3px ; margin-right: 5.5px'
-                    }
+                    const settingIcon = icons[setting.icon].create(key.match(/bg|fg/)?.[0] ?? '')
+                    settingIcon.style.cssText = 'position: relative ;' + (
+                        key.includes('proxy') ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
+                      : key.includes('streaming') ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
+                      : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
+                      : key.includes('autoScroll') ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
+                      : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
+                      : key.includes('prefix') ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
+                      : key.includes('suffix') ? 'top: 4px ; left: -1.5px ; margin-right: 7px'
+                      : key.includes('Sidebar') ? 'top: 4px ; left: -1.5px ; margin-right: 7.5px'
+                      : key == 'anchor' ? 'top: 3px ; left: -2.5px ; margin-right: 5.5px'
+                      : key.includes('Animation') ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
+                      : key.includes('replyLanguage') ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
+                      : key.includes('scheme') ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
+                      : key.includes('about') ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
+                    )
                     settingItem.prepend(settingIcon)
 
                     // Create/append toggles/listeners
