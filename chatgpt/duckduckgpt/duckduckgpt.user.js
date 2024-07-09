@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.7.8.5
+// @version                2024.7.8.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1631,6 +1631,15 @@
             if (chatbar) chatbar.style.width = `${ config.widerSidebar && !config.anchored ? 85.6 : 82.6 }%`
         },
 
+        rqVisibility() {
+            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+            if (relatedQueriesDiv) { // update visibility based on latest setting
+                relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
+                appFooter.style.right = ( // counteract right-offset bug from chatbar padding
+                    relatedQueriesDiv.style.display == 'flex' ? 0 : '-72px' )
+            }
+        },
+
         scheme(newScheme) {
             scheme = newScheme ; logos.ddgpt.update() ; update.appStyle() ; update.stars() ; toggle.btnGlow() ; 
             modals.settings.updateSchemeStatus()
@@ -1848,8 +1857,9 @@
         anchorMode(state = '') {
             const prevState = config.anchored // for restraining notif if no change from #pin-menu 'Sidebar' click
             if (state == 'on' || !state && !config.anchored) { // toggle on
-                if (config.stickySidebar) toggle.sidebar('sticky')
                 saveSetting('anchored', true)
+                if (config.stickySidebar) toggle.sidebar('sticky') // off
+                update.rqVisibility()
             } else saveSetting('anchored', false)
             update.tweaksStyle() ; update.chatbarWidth() // apply new state to UI
             if (modals.settings.get()) { // update visual state of Settings toggle
@@ -1942,13 +1952,8 @@
 
         relatedQueries() {
             saveSetting('rqDisabled', !config.rqDisabled)
-            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
-            if (relatedQueriesDiv) { // update visibility based on latest setting
-                relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
-                appFooter.style.right = ( // counteract right-offset bug from chatbar padding
-                    relatedQueriesDiv.style.display == 'flex' ? 0 : '-72px' )
-            }
-            if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
+            update.rqVisibility()
+            if (!config.rqDisabled && !appDiv.querySelector('.related-queries')) { // get related queries for 1st time
                 const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
                 get.related(lastQuery).then(queries => show.related(queries))
                     .catch(err => { consoleErr(err.message)
