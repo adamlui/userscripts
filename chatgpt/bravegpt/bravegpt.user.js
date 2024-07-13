@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.7.12.9
+// @version               2024.7.12.11
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1176,7 +1176,7 @@ setTimeout(async () => {
         checkmark: {
             create() {
                 const checkmarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      checkmarkSVGattrs = [['width', 10], ['height', 10], ['viewBox', '0 0 20 20']]
+                      checkmarkSVGattrs = [['id', 'checkmark-icon'], ['width', 10], ['height', 10], ['viewBox', '0 0 20 20']]
                 checkmarkSVGattrs.forEach(([attr, value]) => checkmarkSVG.setAttribute(attr, value))
                 checkmarkSVG.append(createSVGelem('path', { stroke: 'none', d: 'M0 11l2-2 5 5L18 3l2 2L7 18z' }))
                 return checkmarkSVG
@@ -1639,6 +1639,7 @@ setTimeout(async () => {
               + '.bravegpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
               + '.bravegpt-menu-item:not(.bravegpt-menu-header):hover {'
                   + 'cursor: pointer ; background: white ; color: black ; fill: black }'
+              + '#checkmark-icon { fill: #b3f96d } .bravegpt-menu-item:hover #checkmark-icon { fill: green }'
 
               // Glowing modal btns
               + ':root { --glow-color: hsl(186 100% 69%); }'
@@ -1696,7 +1697,7 @@ setTimeout(async () => {
               + '#bravegpt-settings li, #bravegpt-settings li label { cursor: pointer }' // add finger on hover
               + '#bravegpt-settings li:hover {'
                   + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;' // add highlight strip
-                  + `${ config.fgAnimationsDisabled || isMobile ? '' : 'transform: scale(1.16)' }}` // add zoom
+                  + `${ config.fgAnimationsDisabled || isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
               + '#bravegpt-settings li > input { float: right }' // pos toggles
               + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-menu-entry > span > svg { position: relative ; top: 3px ; margin-left: 4px }' // v-align/left-pad Scheme status icon
