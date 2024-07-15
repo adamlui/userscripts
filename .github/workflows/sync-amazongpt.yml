@@ -1,0 +1,74 @@
+name: Sync chatgpt/amazongpt/ to (KudoAI/amazongpt/greasemonkey/ && adamlui/chatgpt-apps/amazongpt/greasemonkey/)
+
+on:
+  push:
+    branches: [master]
+    paths: [chatgpt/amazongpt/**]
+
+jobs:
+  build:
+    if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout KudoAI/amazongpt
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: KudoAI/amazongpt
+          path: KudoAI/amazongpt
+
+      - name: Checkout adamlui/chatgpt-apps
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-apps
+          path: adamlui/chatgpt-apps
+
+      - name: Sync docs to KudoAI/amazongpt/docs/ && adamlui/chatgpt-apps/amazongpt/docs/
+        run: |
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/docs \
+            ${{ github.workspace }}/KudoAI/amazongpt/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/amazongpt/
+
+      - name: Sync chatgpt/amazongpt/ to KudoAI/amazongpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/ \
+            ${{ github.workspace }}/KudoAI/amazongpt/greasemonkey/
+
+      - name: Sync chatgpt/amazongpt/ to adamlui/chatgpt-apps/amazongpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/ \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/amazongpt/greasemonkey/
+
+      - name: Push to KudoAI/amazongpt
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          add_options: --all
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
+          file_pattern: "**"
+          repository: KudoAI/amazongpt
+
+      - name: Push to adamlui/chatgpt-apps
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          add_options: --all
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts/chatgpt/amazongpt`]"
+          file_pattern: "amazongpt/**"
+          repository: adamlui/chatgpt-apps
