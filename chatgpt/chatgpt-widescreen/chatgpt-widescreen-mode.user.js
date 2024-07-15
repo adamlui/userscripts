@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.6.24
+// @version             2024.7.6
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -246,6 +246,7 @@
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
 // @grant               GM_openInTab
+// @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
 // @downloadURL         https://update.greasyfork.org/scripts/461473/chatgpt-widescreen.user.js
@@ -266,21 +267,25 @@
     const config = {
         appName: 'ChatGPT Widescreen Mode', appSymbol: '🖥️', keyPrefix: site + 'Widescreen',
         gitHubURL: 'https://github.com/adamlui/chatgpt-widescreen',
-        greasyForkURL: 'https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode' }
+        greasyForkURL: 'https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode',
+        latestAssetCommitHash: '3645b51' } // for messages.json
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@3645b51/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${config.latestAssetCommitHash}/`
     config.userLanguage = chatgpt.getUserLanguage()
     loadSetting('autoFocusChatbarDisabled', 'fullerWindows', 'fullWindow', 'hiddenFooter', 'hiddenHeader',
                 'notifDisabled', 'ncbDisabled', 'tcbDisabled', 'widerChatbox', 'wideScreen')
+
+    // Init FETCHER
+    const xhr = getUserscriptManager() == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Define MESSAGES
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
         let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
-        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+        xhr({ method: 'GET', url: msgHref, onload: onLoad })
         function onLoad(resp) {
             try { // to return localized messages.json
                 const msgs = JSON.parse(resp.responseText), flatMsgs = {}
@@ -293,7 +298,7 @@
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                     msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
-                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+                xhr({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
     }) ; const msgs = await msgsLoaded
@@ -410,7 +415,10 @@
         menuIDs.push(GM_registerMenuCommand(amLabel, launchAboutModal))
     }
 
-    function refreshMenu() { for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() }
+    function refreshMenu() {
+        if (getUserscriptManager() == 'OrangeMonkey') return
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu()
+    }
 
     function launchAboutModal() {
 
@@ -464,7 +472,7 @@
 
         // Fetch latest meta
         const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
+        xhr({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const updateAlertWidth = 377
@@ -515,8 +523,22 @@
     // Define FEEDBACK functions
 
     function notify(msg, position = '', notifDuration = '', shadow = '') {
-        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration,
-            shadow || chatgpt.isDarkMode() ? '' : 'shadow')
+
+        // Strip state word to append colored one later
+        const foundState = menuState.word.find(word => msg.includes(word))
+        if (foundState) msg = msg.replace(foundState, '')
+
+        // Show notification
+        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow')
+        const notifs = document.querySelectorAll('.chatgpt-notif'),
+              notif = notifs[notifs.length -1]
+
+        // Append colored state word
+        if (foundState) {
+            const coloredState = document.createElement('span')
+            coloredState.style.color = foundState == menuState.word[0] ? 'rgb(239, 72, 72)' : '#5cef48'
+            coloredState.append(foundState) ; notif.append(coloredState)
+        }
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
@@ -795,10 +817,13 @@
     if (!document.getElementById('chatgpt-alert-override-style')) {
         const chatgptAlertStyle = document.createElement('style')
         chatgptAlertStyle.id = 'chatgpt-alert-override-style'
-        chatgptAlertStyle.innerText = '.chatgpt-modal button {'
-                + 'font-size: 0.77rem ; text-transform: uppercase ;'
-                + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
-            + '.modal-buttons { margin-left: -13px !important }'
+        chatgptAlertStyle.innerText = (
+            ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+          + '.chatgpt-modal button {'
+              + 'font-size: 0.77rem ; text-transform: uppercase ;'
+              + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
+          + '.modal-buttons { margin-left: -13px !important }'
+        )
         document.head.append(chatgptAlertStyle)
     }
 
@@ -843,7 +868,7 @@
     fullWindowStyle.id = 'fullWindow-mode' // for syncMode()
     fullWindowStyle.innerText = (
           sidebarSelector + '{ display: none }' // hide sidebar
-        + sidepadSelector + '{ padding-left: 0px }' ) // remove side padding
+        + sidepadSelector + '{ padding-left: 0 }' ) // remove side padding
 
     // Create/insert chatbar BUTTONS
     const buttonTypes = ['fullScreen', 'fullWindow', 'wideScreen', 'newChat'],

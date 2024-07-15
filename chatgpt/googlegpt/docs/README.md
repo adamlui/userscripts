@@ -40,21 +40,25 @@
 <div align="center"><img src="https://media.googlegpt.io/images/screenshots/desktop/javascript-arrays-query/darkmode.png?latest">
 <br><br>
 
-<h3>Customizable color scheme:</h3>
-
-<img src="https://media.googlegpt.io/images/screenshots/desktop/color-scheme-modal.png?latest">
-
 <h3>Mobile compatible:</h3>
 
-<img width=365 src="https://media.googlegpt.io/images/screenshots/mobile/hi-there-query/darkmode.png?latest">
+<img width=265 src="https://media.googlegpt.io/images/screenshots/mobile/hi-there-query/darkmode.png?latest">
+
+<h3>Customizable color scheme:</h3>
+
+<img width=400 src="https://media.googlegpt.io/images/screenshots/desktop/color-scheme-modal.gif?latest">
 
 <h3>Scalable display size:</h3>
 
-<img src="https://media.googlegpt.io/images/screenshots/desktop/font-size-slider.gif">
+<img width=388 src="https://media.googlegpt.io/images/screenshots/desktop/font-size-slider.gif">
 
 <h3>Math (KaTeX) rendering:</h3>
 
-<img width=665 src="https://media.googlegpt.io/images/screenshots/desktop/math-formulas/dark-on-dark.png?latest">
+<img width=488 src="https://media.googlegpt.io/images/screenshots/desktop/math-formulas/dark-on-dark.png?latest">
+
+<h3>Highly customizable:</h3>
+
+<img width=633 src="https://media.googlegpt.io/images/screenshots/desktop/settings-modal.gif">
 
 </div>
 
@@ -67,13 +71,14 @@
 1. Install a userscript manager:
     - ScriptCat for [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Firefox](https://addons.mozilla.org/firefox/addon/scriptcat/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh)
     - Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
-    - or Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
+    - Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
+    - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)* for Chrome
 
 2. Install [GoogleGPT](https://greasyfork.googlegpt.io) (will load in userscript manager installed above)
 
 3. Visit [google.com](https://google.com), type your search, engage bot!
 
-##### _*Violentmonkey does not support Streaming Mode, so is not recommended_
+##### _*Violentmonkey, OrangeMonkey & OrangeMonkey Pro do not support Streaming Mode, so are not recommended_
 
 <br><a href="https://github.com/sponsors/KudoAI"><img src="https://media.googlegpt.io/images/banners/sponsor/$10/banner1660x260.png?latest"></a>
 
@@ -93,7 +98,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 ## 🌐 Compatibility 
 
-**GoogleGPT** **GoogleGPT** is compatible w/ the following browsers using [ScriptCat](https://docs.scriptcat.org), [Tampermonkey](https://www.tampermonkey.net) or [Violentmonkey](https://violentmonkey.github.io)*.
+**GoogleGPT** **GoogleGPT** is compatible w/ the following browsers using [ScriptCat](https://docs.scriptcat.org), [Tampermonkey](https://www.tampermonkey.net), [Violentmonkey](https://violentmonkey.github.io)\*, [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)*.
 
 ### 🖥️ Desktop
 
@@ -113,7 +118,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 <br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/logos/platforms/android/head-plus-word/white/logo150x24.png?latest"><img alt="Android" width=111 src="https://media.googlegpt.io/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png?latest"></picture><br>
 
 - [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)* for Firefox)
-- [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) or [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)* for Chrome)
+- [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf), [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)* or [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* for Chrome)
 - [Waterfox](https://play.google.com/store/apps/details?id=net.waterfox.android.release) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)* for Firefox)
 - [Mask Browser](https://play.google.com/store/apps/details?id=net.maskbrowser.browser) (using [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) for Edge ; ScriptCat for [Edge](https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh) or [Chrome](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) ; or Violentmonkey* for [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao) or [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag))
 
@@ -121,7 +126,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 - [Orion](https://apps.apple.com/app/orion-browser-by-kagi/id1484498200)
 
-##### _*Violentmonkey does not support Streaming Mode, so is not recommended_
+##### _*Violentmonkey, OrangeMonkey & OrangeMonkey Pro do not support Streaming Mode, so are not recommended_
 
 <br>
 
@@ -219,6 +224,13 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/chatgpt-apps
 
 ## 📜 Related scripts
 
+### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black/icon48.png" width=17> [AmazonGPT](https://amazongpt.kudoai.com)
+
+> Add AI to Amazon shopping.
+<br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
+[Readme](https://amazongpt.kudoai.com/#readme) /
+[Discuss](https://amazongpt.kudoai.com/discussions)
+
 ### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptinfinity.com/images/icons/openai/white/icon16.png?latest"><img width=16 src="https://media.chatgptinfinity.com/images/icons/openai/black/icon16.png?latest"></picture> [ChatGPT Infinity ∞](https://chatgptinfinity.com) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img height=20 src="https://media.chatgptinfinity.com/images/badges/chrome-web-store/featured-by-google/badge500x91.png?latest"></a>
 
 > Generate endless answers from all-knowing ChatGPT (in any language!)
@@ -232,13 +244,6 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/chatgpt-apps
 <br>[Install](https://docs.bravegpt.com/#-installation) /
 [Readme](https://docs.bravegpt.com/#readme) /
 [Discuss](https://github.bravegpt.com/discussions)
-
-### <img src="https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?latest" width=17> [DuckDuckGPT](https://duckduckgpt.com) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light" width="112" height="24" /></a>
-
-> Bring the magic of ChatGPT to DuckDuckGo (powered by GPT-4o!)
-<br>[Install](https://docs.ddgpt.com/#-installation) /
-[Readme](https://docs.ddgpt.com/#readme) /
-[Discuss](https://github.ddgpt.com/discussions)
 
 <img height=6px width="100%" src="https://media.googlegpt.io/images/separators/gradient-aqua.png?latest">
 

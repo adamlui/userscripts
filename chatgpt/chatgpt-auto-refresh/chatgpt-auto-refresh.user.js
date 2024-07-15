@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.6.26
+// @version             2024.7.6
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -244,6 +244,7 @@
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
 // @grant               GM_openInTab
+// @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @run-at              document-start
 // @noframes
@@ -263,11 +264,13 @@
     const config = {
         appName: 'ChatGPT Auto Refresh', appSymbol: '↻', keyPrefix: 'chatGPTautoRefresh',
         gitHubURL: 'https://github.com/adamlui/chatgpt-auto-refresh',
-        greasyForkURL: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh' }
+        greasyForkURL: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh',
+        mediaHostURL: 'https://media.chatgptautorefresh.com/',
+        latestAssetCommitHash: '7da042b' } // for cached messages.json + navicon
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = 'https://support.chatgptautorefresh.com'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@7da042b/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${config.latestAssetCommitHash}/`
     config.userLanguage = chatgpt.getUserLanguage()
     loadSetting('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
     if (!config.refreshInterval) saveSetting('refreshInterval', 30) // init refresh interval to 30 secs if unset
@@ -288,13 +291,16 @@
         if (!calledByOpenAI) ogAEL.apply(this, arguments)
     }
 
+    // Init FETCHER
+    const xhr = getUserscriptManager() == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+
     // Define MESSAGES
-    let msgs = {};
+    let msgs = {}
     const msgsLoaded = new Promise(resolve => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
         let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
-        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+        xhr({ method: 'GET', url: msgHref, onload: onLoad })
         function onLoad(resp) {
             try { // to return localized messages.json
                 const msgs = JSON.parse(resp.responseText), flatMsgs = {}
@@ -307,10 +313,10 @@
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                     msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
-                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+                xhr({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded } catch (err) {}
 
     // Init MENU objs
     const menuIDs = [] // to store registered cmds for removal while preserving order
@@ -329,7 +335,7 @@
           firstLink = chatgpt.getNewChatLink()
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 202405171 // datestamp of last edit for this file's `tweaksStyle`
+    const tweaksStyleUpdated = 20240702 // datestamp of last edit for this file's `tweaksStyle`
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -338,7 +344,8 @@
             document.head.append(tweaksStyle)
         }
         tweaksStyle.innerText = (
-            '.chatgpt-modal button {'
+            ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+          + '.chatgpt-modal button {'
               + 'font-size: 0.77rem ; text-transform: uppercase ;'
               + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
           + '.modal-buttons { margin-left: -13px !important }'
@@ -460,7 +467,10 @@
         menuIDs.push(GM_registerMenuCommand(amLabel, launchAboutModal))
     }
 
-    function refreshMenu() { for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() }
+    function refreshMenu() {
+        if (getUserscriptManager() == 'OrangeMonkey') return
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu()
+    }
 
     function launchAboutModal() {
 
@@ -514,7 +524,7 @@
 
         // Fetch latest meta
         const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
+        xhr({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const updateAlertWidth = 377
@@ -565,7 +575,23 @@
     // Define FEEDBACK functions
 
     function notify(msg, position = '', notifDuration = '', shadow = '') {
-        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow') }
+
+        // Strip state word to append colored one later
+        const foundState = menuState.word.find(word => msg.includes(word))
+        if (foundState) msg = msg.replace(foundState, '')
+
+        // Show notification
+        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow')
+        const notifs = document.querySelectorAll('.chatgpt-notif'),
+              notif = notifs[notifs.length -1]
+
+        // Append colored state word
+        if (foundState) {
+            const coloredState = document.createElement('span')
+            coloredState.style.color = foundState == menuState.word[0] ? 'rgb(239, 72, 72)' : '#5cef48'
+            coloredState.append(foundState) ; notif.append(coloredState)
+        }
+    }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         return chatgpt.alert(`${ config.appSymbol } ${ title }`, msg, btns, checkbox, width )}
@@ -586,8 +612,8 @@
         if (!firstLink) parentToInsertInto.children[0].style.marginBottom = '5px'
         navToggleDiv.style.paddingLeft = '8px'
         document.getElementById('auto-refresh-toggle-navicon').src = `${ // update navicon color in case scheme changed
-            config.assetHostURL }media/images/icons/auto-refresh/${
-            chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png`
+            config.mediaHostURL}images/icons/auto-refresh/`
+          + `${ chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${config.latestAssetCommitHash}`
     }
 
     function updateToggleHTML() {

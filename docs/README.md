@@ -11,14 +11,14 @@
 
 # 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
-![](https://img.shields.io/badge/Users-150,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
+![](https://img.shields.io/badge/Users-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![GitHub stars](https://img.shields.io/github/stars/adamlui/userscripts?label=Stars&logo=github&logoColor=white&labelColor=464646&color=af68ff&style=for-the-badge)](https://github.com/adamlui/userscripts/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
 [![GitHub commits](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits)
-![](https://img.shields.io/badge/Clones-10,000+/month-869da0?logo=github&logoColor=white&labelColor=464646&style=for-the-badge)
+![](https://img.shields.io/badge/Clones-8.8K/month-869da0?logo=github&logoColor=white&labelColor=464646&style=for-the-badge)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 [![SonarCloud vulnerabilities](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_userscripts%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonarcloud&logoColor=white&labelColor=464646&label=Vulnerabilities&color=gold)](https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_userscripts)
-<img src="https://img.shields.io/badge/jsDelivr_Requests-1,200,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
+<img src="https://img.shields.io/badge/jsDelivr_Requests-1,600,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
 Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 

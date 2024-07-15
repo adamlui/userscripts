@@ -1,203 +1,212 @@
 // ==UserScript==
-// @name                DuckDuckGPT 🤖
-// @description         Adds AI answers to DuckDuckGo (powered by GPT-4o!)
-// @description:af      Voeg AI-antwoorde by DuckDuckGo (aangedryf deur GPT-4o!)
-// @description:am      የ DuckDuckGo ውስጥ AI መልቀቅን አድርግ፣ (GPT-4o በመሣሪያዎቹ ውስጥ!)
-// @description:ar      يضيف إجابات AI إلى DuckDuckGo (مدعوم بواسطة GPT-4o!)
-// @description:as      DuckDuckGo-লৈ AI উত্তৰ যোগ দিয়ে (GPT-4o দ্বাৰা পাওৱা হৈছে!)
-// @description:az      DuckDuckGo-ya AI cavablarını əlavə edir (GPT-4o tərəfindən dəstəklənir!)
-// @description:be      Дадае ІА адказы на DuckDuckGo (падтрымліваецца GPT-4o!)
-// @description:bg      Добавя ИИ отговори в DuckDuckGo (поддържан от GPT-4o!)
-// @description:bn      DuckDuckGo-ত AI উত্তর যোগ করে (GPT-4o দ্বারা প্রচালিত!)
-// @description:bs      Dodaje AI odgovore na DuckDuckGo (pokreće GPT-4o!)
-// @description:ca      Afegeix respostes d'IA a DuckDuckGo (impulsat per GPT-4o!)
-// @description:ceb     Nagdugang ug mga tubag AI ngadto sa DuckDuckGo (gipadagan sa GPT-4o!)
-// @description:co      Aggiunge risposte AI a DuckDuckGo (supportate da GPT-4o!)
-// @description:cs      Přidává AI odpovědi do DuckDuckGo (poháněno GPT-4o!)
-// @description:cy      Ychwanegu atebion AI i DuckDuckGo (a yrrir gan GPT-4o!)
-// @description:da      Tilføjer AI-svar til DuckDuckGo (drevet af GPT-4o!)
-// @description:de      Fügt AI-Antworten zu DuckDuckGo hinzu (betrieben von GPT-4o!)
-// @description:el      Προσθέτει απαντήσεις AI στο DuckDuckGo (τροφοδοτούμενο από GPT-4o!)
-// @description:en      Adds AI answers to DuckDuckGo (powered by GPT-4o!)
-// @description:eo      Aldonas AI-respondojn al DuckDuckGo (ebligita de GPT-4o!)
-// @description:es      Añade respuestas de IA a DuckDuckGo (impulsado por GPT-4o!)
-// @description:et      Lisab AI-vastused DuckDuckGo'le (juhitud GPT-4o-ga!)
-// @description:eu      Gehitu IA erantzunak DuckDuckGo-n (GPT-4o-k bultzatuta!)
-// @description:fa      پاسخهای هوشمصنوعی به DuckDuckGo اضافه میشود (توسط GPT-4o پشتیبانی میشود!)
-// @description:fi      Lisää tekoälyvastauksia DuckDuckGo:hun (ohjattu GPT-4o:lla!)
-// @description:fil     Nagdaragdag ng mga sagot ng AI sa DuckDuckGo (pinapagana ng GPT-4o!)
-// @description:fo      Bætir AI svar við DuckDuckGo (drifin af GPT-4o!)
-// @description:fr      Ajoute des réponses IA à DuckDuckGo (propulsé par GPT-4o!)
-// @description:fr-CA   Ajoute des réponses IA à DuckDuckGo (propulsé par GPT-4o!)
-// @description:fy      Foeget AI-antwurden ta oan DuckDuckGo (dreaun troch GPT-4o!)
-// @description:ga      Cuirtear freagraí AI le DuckDuckGo (dírítear ag GPT-4o!)
-// @description:gd      Cur freagairtichean AI ris an DuckDuckGo (air a thug seachad le GPT-4o!)
-// @description:gl      Engade respostas de IA a DuckDuckGo (impulsado por GPT-4o!)
-// @description:gu      DuckDuckGo માટે AI જવાબો ઉમેરે છે (GPT-4o દ્વારા પોવરેડ!)
-// @description:ha      Ƙaddara takardun AI zu DuckDuckGo (da aka fi GPT-4o!)
-// @description:haw     Hoʻohui aku i nā hoʻopiʻi AI iā DuckDuckGo (hoʻohui ʻia e GPT-4o!)
-// @description:he      מוסיף תשובות AI ל-DuckDuckGo (מופעל על ידי GPT-4o!)
-// @description:hi      DuckDuckGo में AI उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
-// @description:hmn     Ntxig AI nruab nruab rau DuckDuckGo (pab cuam GPT-4o!)
-// @description:hr      Dodaje AI odgovore na DuckDuckGo (pokreće GPT-4o!)
-// @description:ht      Ajoute repons AI nan DuckDuckGo (pòte pa GPT-4o!)
-// @description:hu      AI válaszokat ad hozzá a DuckDuckGo-hoz (GPT-4o által hajtva!)
-// @description:hy      Ավելացնում է AI պատասխաններ DuckDuckGo-ում (աջակցված է GPT-4o-ով!)
-// @description:ia      Adde responas AI a DuckDuckGo (propulsate per GPT-4o!)
-// @description:id      Menambahkan jawaban AI ke DuckDuckGo (didukung oleh GPT-4o!)
-// @description:ig      Tinye ihe ndekọ AI n'ụzọ ọgụgụ DuckDuckGo (n'efu na GPT-4o!)
-// @description:ii      DuckDuckGo ᐸᔦᒪᔪᐃᓃᑦ AI ᓇᑕᐅᒪᐃᑦᓯ (GPT-4o ᓂᑕᔪᑦᓯᐏᑦᑕᒥᔭ!)
-// @description:is      Bætir AI svar við DuckDuckGo (keyrir á GPT-4o!)
-// @description:it      Aggiunge risposte AI a DuckDuckGo (alimentato da GPT-4o!)
-// @description:iu      DuckDuckGo ᑲᑎᒪᔪᖅᑐᖅᑐᐃᓐᓇᓂᒃ AI ᑎᑎᕋᖃᕐᓯᒪᓂᖏᓐ (GPT-4o ᑐᑭᒧᑦᑖᑦ!)
-// @description:ja      DuckDuckGo に AI 回答を追加します (GPT-4o で動作！)
-// @description:jv      Nambéhi pirangga AI nganti DuckDuckGo (diduweni déning GPT-4o!)
-// @description:ka      ამატებს AI პასუხებს DuckDuckGo-ს (იმართება GPT-4o!)
-// @description:kk      DuckDuckGo-ға AI жауаптарын қосады (GPT-4o арқылы жұмыс істейді!)
-// @description:kl      DuckDuckGo-mi AI-t Kalaallit Nunaanni iluani (GPT-4o! -nip ilaanni!)
-// @description:km      បន្ថែមចម្លើយ AI ទៅ DuckDuckGo (ដំណើរការដោយ GPT-4o!)
-// @description:kn      DuckDuckGo ಗೆ AI ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ!)
-// @description:ko      DuckDuckGo에 AI 답변을 추가합니다(GPT-4o 제공!)
-// @description:ku      Bersivên AI-ê li DuckDuckGo zêde dike (ji hêla GPT-4o ve hatî hêzdar kirin!)
-// @description:ky      DuckDuckGo'го AI жоопторун кошот (GPT-4o тарабынан иштейт!)
-// @description:la      Addit AI responsa DuckDuckGo (powered per GPT-4o!)
-// @description:lb      Füügt AI Äntwerten op DuckDuckGo (ugedriwwen duerch GPT-4o!)
-// @description:lg      Yambula emisomo ey'ensobi ku DuckDuckGo (enkuuma GPT-4o!)
-// @description:ln      Ebakisi biyano ya AI na DuckDuckGo (ezali na nguya ya GPT-4o!)
-// @description:lo      ເພີ່ມຄໍາຕອບ AI ໃຫ້ກັບ DuckDuckGo (ຂັບເຄື່ອນໂດຍ GPT-4o!)
-// @description:lt      Prideda AI atsakymus į „DuckDuckGo“ (maitina GPT-4o!)
-// @description:lv      Pievieno AI atbildes DuckDuckGo (darbina GPT-4o!)
-// @description:mg      Manampy valiny AI amin'ny DuckDuckGo (nampiasain'ny GPT-4o!)
-// @description:mi      Ka taapirihia nga whakautu AI ki a DuckDuckGo (whakamahia e GPT-4o!)
-// @description:mk      Додава одговори со вештачка интелигенција на DuckDuckGo (напојувано од GPT-4o!)
-// @description:ml      DuckDuckGo-യിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o നൽകുന്നതാണ്!)
-// @description:mn      DuckDuckGo-д AI хариултуудыг нэмдэг (GPT-4o-оор ажилладаг!)
-// @description:mr      DuckDuckGo ला AI उत्तरे जोडते (GPT-4o द्वारे समर्थित!)
-// @description:ms      Menambahkan jawapan AI pada DuckDuckGo (dikuasakan oleh GPT-4o!)
-// @description:mt      Iżżid it-tweġibiet AI għal DuckDuckGo (mħaddma minn GPT-4o!)
-// @description:my      DuckDuckGo (GPT-4o ဖြင့် စွမ်းဆောင်ထားသည့်) တွင် AI အဖြေများကို ပေါင်းထည့်သည်
-// @description:na      Aeta AI teroma i DuckDuckGo (ira GPT-4o reke akea!)
-// @description:nb      Legger til AI-svar på DuckDuckGo (drevet av GPT-4o!)
-// @description:nd      Iyatholakala amaswelelo e-AI kuDuckDuckGo (kuyatholakala ngokulawula uGPT-4o!)
-// @description:ne      DuckDuckGo मा AI जवाफहरू थप्छ (GPT-4o द्वारा संचालित!)
-// @description:ng      Ondjova mbelelo dha AI moDuckDuckGo (uumbuli nguGPT-4o!)
-// @description:nl      Voegt AI-antwoorden toe aan DuckDuckGo (mogelijk gemaakt door GPT-4o!)
-// @description:nn      Legg til AI-svar på DuckDuckGo (drevet av GPT-4o!)
-// @description:no      Legger til AI-svar til DuckDuckGo (drevet av GPT-4o!)
-// @description:nso     Ya go etela ditshenyegi tsa AI mo DuckDuckGo (e dirwang ke GPT-4o!)
-// @description:ny      Imawonjezera mayankho a AI ku DuckDuckGo (yoyendetsedwa ndi GPT-4o!)
-// @description:oc      Ajusta de respòstas d'IA a DuckDuckGo (amb GPT-4o!)
-// @description:om      Deebii AI DuckDuckGo (GPT-4o'n kan hojjetu!) irratti dabalata.
-// @description:or      DuckDuckGo କୁ AI ଉତ୍ତର ଯୋଗ କରେ (GPT-4o ଦ୍ୱାରା ଚାଳିତ!)
-// @description:pa      DuckDuckGo (GPT-4o ਦੁਆਰਾ ਸੰਚਾਲਿਤ!) ਵਿੱਚ AI ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ
-// @description:pl      Dodaje odpowiedzi AI do DuckDuckGo (obsługiwane przez GPT-4o!)
-// @description:ps      DuckDuckGo ته د AI ځوابونه اضافه کوي (د GPT-4o لخوا پرمخ وړل کیږي!)
-// @description:pt      Adiciona respostas de IA ao DuckDuckGo (desenvolvido por GPT-4o!)
-// @description:pt-BR   Adiciona respostas de IA ao DuckDuckGo (desenvolvido por GPT-4o!)
-// @description:qu      DuckDuckGo (GPT-4o nisqawan kallpachasqa!) nisqaman AI kutichiykunata yapan.
-// @description:rm      Agiuntescha respostas d'IA a DuckDuckGo (propulsà da GPT-4o!)
-// @description:rn      Abafasha inyandiko z'IA ku DuckDuckGo (yashyizweho na GPT-4o!)
-// @description:ro      Adaugă răspunsuri AI la DuckDuckGo (alimentat de GPT-4o!)
-// @description:ru      Добавляет ответы ИИ в DuckDuckGo (на базе GPT-4o!)
-// @description:rw      Ongeraho ibisubizo bya AI kuri DuckDuckGo (ikoreshwa na GPT-4o!)
-// @description:sa      DuckDuckGo (GPT-4o द्वारा संचालितम्!) इत्यत्र AI उत्तराणि योजयति ।
-// @description:sat     DuckDuckGo ar AI jawab khon ojantok (GPT-4o! sebadha manju)
-// @description:sc      Agiungit rispostas de IA a DuckDuckGo (motorizadu da GPT-4o!)
-// @description:sd      شامل ڪري ٿو AI جوابن کي DuckDuckGo (GPT-4o پاران طاقتور!)
-// @description:se      Lávdegáhtii AI vástid DuckDuckGo (GPT-4o! vuosttas!)
-// @description:sg      Nâ tî-kûzâ mái vêdáara AI mbi DuckDuckGo (ngâ GPT-4o!)
-// @description:si      DuckDuckGo වෙත AI පිළිතුරු එක් කරයි (GPT-4o මගින් බලගන්වයි!)
-// @description:sk      Pridáva odpovede AI do DuckDuckGo (poháňané GPT-4o!)
-// @description:sl      Dodaja odgovore AI v DuckDuckGo (poganja GPT-4o!)
-// @description:sm      Faʻaopoopo tali AI ile DuckDuckGo (faʻamalosia e GPT-4o!)
-// @description:sn      Inowedzera mhinduro dzeAI kuDuckDuckGo (inofambiswa neGPT-4o!)
-// @description:so      Waxay ku dartay jawaabaha AI DuckDuckGo (waxaa ku shaqeeya GPT-4o!)
-// @description:sq      Shton përgjigjet e AI në DuckDuckGo (mundësuar nga GPT-4o!)
-// @description:sr      Додаје АИ одговоре у DuckDuckGo (покреће ГПТ-4о!)
-// @description:ss      Iphendvulela izindlela zezilungiselelo ku-DuckDuckGo (izenzakalo nge-GPT-4o!)
-// @description:st      E kopanetse diqoqo tsa AI ka DuckDuckGo (ka sebelisoa ke GPT-4o!)
-// @description:su      Nambahkeun jawaban AI kana DuckDuckGo (dikuatkeun ku GPT-4o!)
-// @description:sv      Lägger till AI-svar till DuckDuckGo (driven av GPT-4o!)
-// @description:sw      Inaongeza majibu ya AI kwa DuckDuckGo (inaendeshwa na GPT-4o!)
-// @description:ta      DuckDuckGo க்கு AI பதில்களைச் சேர்க்கிறது (GPT-4o மூலம் இயக்கப்படுகிறது!)
-// @description:te      DuckDuckGoకి AI సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా ఆధారితం!)
-// @description:tg      Ба DuckDuckGo ҷавобҳои AI илова мекунад (аз ҷониби GPT-4o!)
-// @description:th      เพิ่มคำตอบ AI ให้กับ DuckDuckGo (ขับเคลื่อนโดย GPT-4o!)
-// @description:ti      ናብ DuckDuckGo (ብGPT-4o ዝሰርሕ!) ናይ AI መልስታት ይውስኸሉ።
-// @description:tk      DuckDuckGo-a AI jogaplaryny goşýar (GPT-4o bilen işleýär!)
-// @description:tl      Nagdadagdag ng mga sagot ng AI sa DuckDuckGo (pinapatakbo ng GPT-4o!)
-// @description:tn      O amogela dipotso tsa AI mo DuckDuckGo (e a nang le GPT-4o!)
-// @description:to      Tambisa mabizo a AI ku DuckDuckGo (mukutenga na GPT-4o!)
-// @description:tr      DuckDuckGo'ya yapay zeka yanıtları ekler (GPT-4o tarafından desteklenmektedir!)
-// @description:ts      Ku engetela tinhlamulo ta AI eka DuckDuckGo (leyi fambiwaka hi GPT-4o!)
-// @description:tt      DuckDuckGo'ка AI җаваплары өсти (GPT-4o белән эшләнгән!)
-// @description:tw      Ɔde AI mmuae ka DuckDuckGo (a GPT-4o na ɛma ahoɔden!) ho.
-// @description:ug      DuckDuckGo ۋەبسېتكە AI جاۋابلار قوشۇدۇ (GPT-4o تەكشۈرگۈچى بىلەن!)
-// @description:uk      Додає відповіді штучного інтелекту в DuckDuckGo (на базі GPT-4o!)
-// @description:ur      DuckDuckGo میں AI جوابات شامل کرتا ہے (GPT-4o کے ذریعے تقویت یافتہ!)
-// @description:uz      DuckDuckGo-ga AI javoblarini qo'shadi (GPT-4o tomonidan quvvatlanadi!)
-// @description:vi      Thêm câu trả lời AI vào DuckDuckGo (được cung cấp bởi GPT-4o!)
-// @description:xh      Yongeza iimpendulo ze-AI kwi-DuckDuckGo (ixhaswe yi-GPT-4o!)
-// @description:yi      לייגט אַי ענטפֿערס צו DuckDuckGo (Powered דורך GPT-4o!)
-// @description:yo      Ṣe afikun awọn idahun AI si DuckDuckGo (agbara nipasẹ GPT-4o!)
-// @description:zh      为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-CN   为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-HK   為 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支援！）
-// @description:zh-SG   为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-TW   為 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支援！）
-// @description:zu      Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
-// @author              KudoAI
-// @namespace           https://kudoai.com
-// @version             2024.6.26.4
-// @license             MIT
-// @icon                https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
-// @icon64              https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
-// @compatible          chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          firefox
-// @compatible          edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          opera after allowing userscript manager access to search page results in opera://extensions
-// @compatible          brave except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          vivaldi
-// @compatible          waterfox
-// @compatible          librewolf
-// @compatible          ghost
-// @compatible          qq
-// @compatible          whale
-// @compatible          kiwi
-// @compatible          mask
-// @compatible          orion
-// @match               *://duckduckgo.com/?*
-// @include             https://auth0.openai.com
-// @connect             binjie.fun
-// @connect             chatgpt.com
-// @connect             gptforlove.com
-// @connect             greasyfork.org
-// @connect             jsdelivr.net
-// @connect             mixerbox.com
-// @connect             openai.com
-// @connect             sogou.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
-// @require             https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
-// @require             https://cdn.jsdelivr.net/npm/generate-ip@2.4.2/dist/generate-ip.min.js#sha256-PRvQIDVWK/a+aAqEFVQv7RePbRe/tX6tWQVM80rAe2M=
-// @require             https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
-// @require             https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
-// @require             https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js#sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=
-// @require             https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
-// @resource hljsCSS    https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @grant               GM_getValue
-// @grant               GM_setValue
-// @grant               GM_deleteValue
-// @grant               GM_cookie
-// @grant               GM_registerMenuCommand
-// @grant               GM_unregisterMenuCommand
-// @grant               GM_getResourceText
-// @grant               GM.xmlHttpRequest
+// @name                   DuckDuckGPT 🤖
+// @description            Adds AI answers to DuckDuckGo (powered by GPT-4o!)
+// @description:af         Voeg AI-antwoorde by DuckDuckGo (aangedryf deur GPT-4o!)
+// @description:am         የ DuckDuckGo ውስጥ AI መልቀቅን አድርግ፣ (GPT-4o በመሣሪያዎቹ ውስጥ!)
+// @description:ar         يضيف إجابات AI إلى DuckDuckGo (مدعوم بواسطة GPT-4o!)
+// @description:as         DuckDuckGo-লৈ AI উত্তৰ যোগ দিয়ে (GPT-4o দ্বাৰা পাওৱা হৈছে!)
+// @description:az         DuckDuckGo-ya AI cavablarını əlavə edir (GPT-4o tərəfindən dəstəklənir!)
+// @description:be         Дадае ІА адказы на DuckDuckGo (падтрымліваецца GPT-4o!)
+// @description:bg         Добавя ИИ отговори в DuckDuckGo (поддържан от GPT-4o!)
+// @description:bn         DuckDuckGo-ত AI উত্তর যোগ করে (GPT-4o দ্বারা প্রচালিত!)
+// @description:bs         Dodaje AI odgovore na DuckDuckGo (pokreće GPT-4o!)
+// @description:ca         Afegeix respostes d'IA a DuckDuckGo (impulsat per GPT-4o!)
+// @description:ceb        Nagdugang ug mga tubag AI ngadto sa DuckDuckGo (gipadagan sa GPT-4o!)
+// @description:co         Aggiunge risposte AI a DuckDuckGo (supportate da GPT-4o!)
+// @description:cs         Přidává AI odpovědi do DuckDuckGo (poháněno GPT-4o!)
+// @description:cy         Ychwanegu atebion AI i DuckDuckGo (a yrrir gan GPT-4o!)
+// @description:da         Tilføjer AI-svar til DuckDuckGo (drevet af GPT-4o!)
+// @description:de         Fügt AI-Antworten zu DuckDuckGo hinzu (betrieben von GPT-4o!)
+// @description:el         Προσθέτει απαντήσεις AI στο DuckDuckGo (τροφοδοτούμενο από GPT-4o!)
+// @description:en         Adds AI answers to DuckDuckGo (powered by GPT-4o!)
+// @description:eo         Aldonas AI-respondojn al DuckDuckGo (ebligita de GPT-4o!)
+// @description:es         Añade respuestas de IA a DuckDuckGo (impulsado por GPT-4o!)
+// @description:et         Lisab AI-vastused DuckDuckGo'le (juhitud GPT-4o-ga!)
+// @description:eu         Gehitu IA erantzunak DuckDuckGo-n (GPT-4o-k bultzatuta!)
+// @description:fa         پاسخهای هوشمصنوعی به DuckDuckGo اضافه میشود (توسط GPT-4o پشتیبانی میشود!)
+// @description:fi         Lisää tekoälyvastauksia DuckDuckGo:hun (ohjattu GPT-4o:lla!)
+// @description:fil        Nagdaragdag ng mga sagot ng AI sa DuckDuckGo (pinapagana ng GPT-4o!)
+// @description:fo         Bætir AI svar við DuckDuckGo (drifin af GPT-4o!)
+// @description:fr         Ajoute des réponses IA à DuckDuckGo (propulsé par GPT-4o!)
+// @description:fr-CA      Ajoute des réponses IA à DuckDuckGo (propulsé par GPT-4o!)
+// @description:fy         Foeget AI-antwurden ta oan DuckDuckGo (dreaun troch GPT-4o!)
+// @description:ga         Cuirtear freagraí AI le DuckDuckGo (dírítear ag GPT-4o!)
+// @description:gd         Cur freagairtichean AI ris an DuckDuckGo (air a thug seachad le GPT-4o!)
+// @description:gl         Engade respostas de IA a DuckDuckGo (impulsado por GPT-4o!)
+// @description:gu         DuckDuckGo માટે AI જવાબો ઉમેરે છે (GPT-4o દ્વારા પોવરેડ!)
+// @description:ha         Ƙaddara takardun AI zu DuckDuckGo (da aka fi GPT-4o!)
+// @description:haw        Hoʻohui aku i nā hoʻopiʻi AI iā DuckDuckGo (hoʻohui ʻia e GPT-4o!)
+// @description:he         מוסיף תשובות AI ל-DuckDuckGo (מופעל על ידי GPT-4o!)
+// @description:hi         DuckDuckGo में AI उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
+// @description:hmn        Ntxig AI nruab nruab rau DuckDuckGo (pab cuam GPT-4o!)
+// @description:hr         Dodaje AI odgovore na DuckDuckGo (pokreće GPT-4o!)
+// @description:ht         Ajoute repons AI nan DuckDuckGo (pòte pa GPT-4o!)
+// @description:hu         AI válaszokat ad hozzá a DuckDuckGo-hoz (GPT-4o által hajtva!)
+// @description:hy         Ավելացնում է AI պատասխաններ DuckDuckGo-ում (աջակցված է GPT-4o-ով!)
+// @description:ia         Adde responas AI a DuckDuckGo (propulsate per GPT-4o!)
+// @description:id         Menambahkan jawaban AI ke DuckDuckGo (didukung oleh GPT-4o!)
+// @description:ig         Tinye ihe ndekọ AI n'ụzọ ọgụgụ DuckDuckGo (n'efu na GPT-4o!)
+// @description:ii         DuckDuckGo ᐸᔦᒪᔪᐃᓃᑦ AI ᓇᑕᐅᒪᐃᑦᓯ (GPT-4o ᓂᑕᔪᑦᓯᐏᑦᑕᒥᔭ!)
+// @description:is         Bætir AI svar við DuckDuckGo (keyrir á GPT-4o!)
+// @description:it         Aggiunge risposte AI a DuckDuckGo (alimentato da GPT-4o!)
+// @description:iu         DuckDuckGo ᑲᑎᒪᔪᖅᑐᖅᑐᐃᓐᓇᓂᒃ AI ᑎᑎᕋᖃᕐᓯᒪᓂᖏᓐ (GPT-4o ᑐᑭᒧᑦᑖᑦ!)
+// @description:ja         DuckDuckGo に AI 回答を追加します (GPT-4o で動作！)
+// @description:jv         Nambéhi pirangga AI nganti DuckDuckGo (diduweni déning GPT-4o!)
+// @description:ka         ამატებს AI პასუხებს DuckDuckGo-ს (იმართება GPT-4o!)
+// @description:kk         DuckDuckGo-ға AI жауаптарын қосады (GPT-4o арқылы жұмыс істейді!)
+// @description:kl         DuckDuckGo-mi AI-t Kalaallit Nunaanni iluani (GPT-4o! -nip ilaanni!)
+// @description:km         បន្ថែមចម្លើយ AI ទៅ DuckDuckGo (ដំណើរការដោយ GPT-4o!)
+// @description:kn         DuckDuckGo ಗೆ AI ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ!)
+// @description:ko         DuckDuckGo에 AI 답변을 추가합니다(GPT-4o 제공!)
+// @description:ku         Bersivên AI-ê li DuckDuckGo zêde dike (ji hêla GPT-4o ve hatî hêzdar kirin!)
+// @description:ky         DuckDuckGo'го AI жоопторун кошот (GPT-4o тарабынан иштейт!)
+// @description:la         Addit AI responsa DuckDuckGo (powered per GPT-4o!)
+// @description:lb         Füügt AI Äntwerten op DuckDuckGo (ugedriwwen duerch GPT-4o!)
+// @description:lg         Yambula emisomo ey'ensobi ku DuckDuckGo (enkuuma GPT-4o!)
+// @description:ln         Ebakisi biyano ya AI na DuckDuckGo (ezali na nguya ya GPT-4o!)
+// @description:lo         ເພີ່ມຄໍາຕອບ AI ໃຫ້ກັບ DuckDuckGo (ຂັບເຄື່ອນໂດຍ GPT-4o!)
+// @description:lt         Prideda AI atsakymus į „DuckDuckGo“ (maitina GPT-4o!)
+// @description:lv         Pievieno AI atbildes DuckDuckGo (darbina GPT-4o!)
+// @description:mg         Manampy valiny AI amin'ny DuckDuckGo (nampiasain'ny GPT-4o!)
+// @description:mi         Ka taapirihia nga whakautu AI ki a DuckDuckGo (whakamahia e GPT-4o!)
+// @description:mk         Додава одговори со вештачка интелигенција на DuckDuckGo (напојувано од GPT-4o!)
+// @description:ml         DuckDuckGo-യിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o നൽകുന്നതാണ്!)
+// @description:mn         DuckDuckGo-д AI хариултуудыг нэмдэг (GPT-4o-оор ажилладаг!)
+// @description:mr         DuckDuckGo ला AI उत्तरे जोडते (GPT-4o द्वारे समर्थित!)
+// @description:ms         Menambahkan jawapan AI pada DuckDuckGo (dikuasakan oleh GPT-4o!)
+// @description:mt         Iżżid it-tweġibiet AI għal DuckDuckGo (mħaddma minn GPT-4o!)
+// @description:my         DuckDuckGo (GPT-4o ဖြင့် စွမ်းဆောင်ထားသည့်) တွင် AI အဖြေများကို ပေါင်းထည့်သည်
+// @description:na         Aeta AI teroma i DuckDuckGo (ira GPT-4o reke akea!)
+// @description:nb         Legger til AI-svar på DuckDuckGo (drevet av GPT-4o!)
+// @description:nd         Iyatholakala amaswelelo e-AI kuDuckDuckGo (kuyatholakala ngokulawula uGPT-4o!)
+// @description:ne         DuckDuckGo मा AI जवाफहरू थप्छ (GPT-4o द्वारा संचालित!)
+// @description:ng         Ondjova mbelelo dha AI moDuckDuckGo (uumbuli nguGPT-4o!)
+// @description:nl         Voegt AI-antwoorden toe aan DuckDuckGo (mogelijk gemaakt door GPT-4o!)
+// @description:nn         Legg til AI-svar på DuckDuckGo (drevet av GPT-4o!)
+// @description:no         Legger til AI-svar til DuckDuckGo (drevet av GPT-4o!)
+// @description:nso        Ya go etela ditshenyegi tsa AI mo DuckDuckGo (e dirwang ke GPT-4o!)
+// @description:ny         Imawonjezera mayankho a AI ku DuckDuckGo (yoyendetsedwa ndi GPT-4o!)
+// @description:oc         Ajusta de respòstas d'IA a DuckDuckGo (amb GPT-4o!)
+// @description:om         Deebii AI DuckDuckGo (GPT-4o'n kan hojjetu!) irratti dabalata.
+// @description:or         DuckDuckGo କୁ AI ଉତ୍ତର ଯୋଗ କରେ (GPT-4o ଦ୍ୱାରା ଚାଳିତ!)
+// @description:pa         DuckDuckGo (GPT-4o ਦੁਆਰਾ ਸੰਚਾਲਿਤ!) ਵਿੱਚ AI ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ
+// @description:pl         Dodaje odpowiedzi AI do DuckDuckGo (obsługiwane przez GPT-4o!)
+// @description:ps         DuckDuckGo ته د AI ځوابونه اضافه کوي (د GPT-4o لخوا پرمخ وړل کیږي!)
+// @description:pt         Adiciona respostas de IA ao DuckDuckGo (desenvolvido por GPT-4o!)
+// @description:pt-BR      Adiciona respostas de IA ao DuckDuckGo (desenvolvido por GPT-4o!)
+// @description:qu         DuckDuckGo (GPT-4o nisqawan kallpachasqa!) nisqaman AI kutichiykunata yapan.
+// @description:rm         Agiuntescha respostas d'IA a DuckDuckGo (propulsà da GPT-4o!)
+// @description:rn         Abafasha inyandiko z'IA ku DuckDuckGo (yashyizweho na GPT-4o!)
+// @description:ro         Adaugă răspunsuri AI la DuckDuckGo (alimentat de GPT-4o!)
+// @description:ru         Добавляет ответы ИИ в DuckDuckGo (на базе GPT-4o!)
+// @description:rw         Ongeraho ibisubizo bya AI kuri DuckDuckGo (ikoreshwa na GPT-4o!)
+// @description:sa         DuckDuckGo (GPT-4o द्वारा संचालितम्!) इत्यत्र AI उत्तराणि योजयति ।
+// @description:sat        DuckDuckGo ar AI jawab khon ojantok (GPT-4o! sebadha manju)
+// @description:sc         Agiungit rispostas de IA a DuckDuckGo (motorizadu da GPT-4o!)
+// @description:sd         شامل ڪري ٿو AI جوابن کي DuckDuckGo (GPT-4o پاران طاقتور!)
+// @description:se         Lávdegáhtii AI vástid DuckDuckGo (GPT-4o! vuosttas!)
+// @description:sg         Nâ tî-kûzâ mái vêdáara AI mbi DuckDuckGo (ngâ GPT-4o!)
+// @description:si         DuckDuckGo වෙත AI පිළිතුරු එක් කරයි (GPT-4o මගින් බලගන්වයි!)
+// @description:sk         Pridáva odpovede AI do DuckDuckGo (poháňané GPT-4o!)
+// @description:sl         Dodaja odgovore AI v DuckDuckGo (poganja GPT-4o!)
+// @description:sm         Faʻaopoopo tali AI ile DuckDuckGo (faʻamalosia e GPT-4o!)
+// @description:sn         Inowedzera mhinduro dzeAI kuDuckDuckGo (inofambiswa neGPT-4o!)
+// @description:so         Waxay ku dartay jawaabaha AI DuckDuckGo (waxaa ku shaqeeya GPT-4o!)
+// @description:sq         Shton përgjigjet e AI në DuckDuckGo (mundësuar nga GPT-4o!)
+// @description:sr         Додаје АИ одговоре у DuckDuckGo (покреће ГПТ-4о!)
+// @description:ss         Iphendvulela izindlela zezilungiselelo ku-DuckDuckGo (izenzakalo nge-GPT-4o!)
+// @description:st         E kopanetse diqoqo tsa AI ka DuckDuckGo (ka sebelisoa ke GPT-4o!)
+// @description:su         Nambahkeun jawaban AI kana DuckDuckGo (dikuatkeun ku GPT-4o!)
+// @description:sv         Lägger till AI-svar till DuckDuckGo (driven av GPT-4o!)
+// @description:sw         Inaongeza majibu ya AI kwa DuckDuckGo (inaendeshwa na GPT-4o!)
+// @description:ta         DuckDuckGo க்கு AI பதில்களைச் சேர்க்கிறது (GPT-4o மூலம் இயக்கப்படுகிறது!)
+// @description:te         DuckDuckGoకి AI సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా ఆధారితం!)
+// @description:tg         Ба DuckDuckGo ҷавобҳои AI илова мекунад (аз ҷониби GPT-4o!)
+// @description:th         เพิ่มคำตอบ AI ให้กับ DuckDuckGo (ขับเคลื่อนโดย GPT-4o!)
+// @description:ti         ናብ DuckDuckGo (ብGPT-4o ዝሰርሕ!) ናይ AI መልስታት ይውስኸሉ።
+// @description:tk         DuckDuckGo-a AI jogaplaryny goşýar (GPT-4o bilen işleýär!)
+// @description:tl         Nagdadagdag ng mga sagot ng AI sa DuckDuckGo (pinapatakbo ng GPT-4o!)
+// @description:tn         O amogela dipotso tsa AI mo DuckDuckGo (e a nang le GPT-4o!)
+// @description:to         Tambisa mabizo a AI ku DuckDuckGo (mukutenga na GPT-4o!)
+// @description:tr         DuckDuckGo'ya yapay zeka yanıtları ekler (GPT-4o tarafından desteklenmektedir!)
+// @description:ts         Ku engetela tinhlamulo ta AI eka DuckDuckGo (leyi fambiwaka hi GPT-4o!)
+// @description:tt         DuckDuckGo'ка AI җаваплары өсти (GPT-4o белән эшләнгән!)
+// @description:tw         Ɔde AI mmuae ka DuckDuckGo (a GPT-4o na ɛma ahoɔden!) ho.
+// @description:ug         DuckDuckGo ۋەبسېتكە AI جاۋابلار قوشۇدۇ (GPT-4o تەكشۈرگۈچى بىلەن!)
+// @description:uk         Додає відповіді штучного інтелекту в DuckDuckGo (на базі GPT-4o!)
+// @description:ur         DuckDuckGo میں AI جوابات شامل کرتا ہے (GPT-4o کے ذریعے تقویت یافتہ!)
+// @description:uz         DuckDuckGo-ga AI javoblarini qo'shadi (GPT-4o tomonidan quvvatlanadi!)
+// @description:vi         Thêm câu trả lời AI vào DuckDuckGo (được cung cấp bởi GPT-4o!)
+// @description:xh         Yongeza iimpendulo ze-AI kwi-DuckDuckGo (ixhaswe yi-GPT-4o!)
+// @description:yi         לייגט אַי ענטפֿערס צו DuckDuckGo (Powered דורך GPT-4o!)
+// @description:yo         Ṣe afikun awọn idahun AI si DuckDuckGo (agbara nipasẹ GPT-4o!)
+// @description:zh         为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-CN      为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-HK      為 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支援！）
+// @description:zh-SG      为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-TW      為 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支援！）
+// @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
+// @author                 KudoAI
+// @namespace              https://kudoai.com
+// @version                2024.7.14.3
+// @license                MIT
+// @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
+// @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
+// @antifeature            ads A very tiny text ad displays below DuckDuckGPT chatbar (only in Sidebar mode). This motivates me to spend otherwise unpaid time upgrading script w/ new features & APIs.
+// @antifeature            referral-link
+// @compatible             chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             firefox
+// @compatible             edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             opera after allowing userscript manager access to search page results in opera://extensions
+// @compatible             brave except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             vivaldi
+// @compatible             waterfox
+// @compatible             librewolf
+// @compatible             ghost
+// @compatible             qq
+// @compatible             whale
+// @compatible             kiwi
+// @compatible             mask
+// @compatible             orion
+// @match                  *://duckduckgo.com/?*
+// @include                https://auth0.openai.com
+// @connect                binjie.fun
+// @connect                chatgpt.com
+// @connect                gptforlove.com
+// @connect                greasyfork.org
+// @connect                jsdelivr.net
+// @connect                mixerbox.com
+// @connect                openai.com
+// @connect                sogou.com
+// @connect                webraft.in
+// @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
+// @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
+// @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.2/dist/generate-ip.min.js#sha256-PRvQIDVWK/a+aAqEFVQv7RePbRe/tX6tWQVM80rAe2M=
+// @require                https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
+// @require                https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
+// @require                https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js#sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=
+// @require                https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
+// @resource ddgptIcon     https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@9cb2fec/media/images/icons/duckduckgpt/icon64.png.b64#sha256-k7hl9PAq+HAKG2vS9wlKmu3EEvdE3k2Z2KR/SRkk6D4=
+// @resource ddgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/lightmode/logo697x122.png.b64#sha256-7O4AxPinoZ6h36KHuJVa4vwfTEOYTwT+lKiDbf/jjkg=
+// @resource ddgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/darkmode/logo697x122.png.b64#sha256-lSd4M3RPT4+SjjBk8PKGFoyM9p3rZHgxt0NgoKqQkiM=
+// @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
+// @resource bsbgCSS       https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@54f7f2c/styles/css/black-rising-stars.min.css#sha256-bXbVZUD7ciKqK0wU/BLQzh08JwkoNExHHqXITugd/3o=
+// @resource wsbgCSS       https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@54f7f2c/styles/css/white-rising-stars.min.css#sha256-ya9newifevSPO1Q4AzMf42yAF6TE+iZHrDbVj0HyuEM=
+// @grant                  GM_getValue
+// @grant                  GM_setValue
+// @grant                  GM_deleteValue
+// @grant                  GM_cookie
+// @grant                  GM_registerMenuCommand
+// @grant                  GM_unregisterMenuCommand
+// @grant                  GM_getResourceText
+// @grant                  GM_xmlhttpRequest
+// @grant                  GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/459849/duckduckgpt.user.js
-// @updateURL           https://update.greasyfork.org/scripts/459849/duckduckgpt.meta.js
-// @homepageURL         https://www.duckduckgpt.com
-// @supportURL          https://support.duckduckgpt.com
-// @contributionURL     https://github.com/sponsors/KudoAI
+// @downloadURL            https://update.greasyfork.org/scripts/459849/duckduckgpt.user.js
+// @updateURL              https://update.greasyfork.org/scripts/459849/duckduckgpt.meta.js
+// @homepageURL            https://www.duckduckgpt.com
+// @supportURL             https://support.duckduckgpt.com
+// @contributionURL        https://github.com/sponsors/KudoAI
 // ==/UserScript==
 
 // Dependencies:
@@ -216,24 +225,25 @@
           isFirefox = chatgpt.browser.isFirefox(),
           isEdge = !!JSON.stringify(navigator.userAgentData?.brands)?.includes('Edge'),
           isBrave = !!JSON.stringify(navigator.userAgentData?.brands)?.includes('Brave'),
-          isMobile = chatgpt.browser.isMobile()
+          isMobile = chatgpt.browser.isMobile(),
+          isPortrait = isMobile && (window.innerWidth < window.innerHeight)
 
     // Init CONFIG
     const config = {
         appName: 'DuckDuckGPT', appSymbol: '🤖', keyPrefix: 'duckDuckGPT',
         appURL: 'https://www.duckduckgpt.com', gitHubURL: 'https://github.com/KudoAI/duckduckgpt',
         greasyForkURL: 'https://greasyfork.org/scripts/459849-duckduckgpt',
-        minFontSize: 13, maxFontSize: 24, lineHeightRatio: 1.28 }
+        minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28,
+        latestAssetCommitHash: '71a963b' } // for cached messages.json
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
-    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@81d37e5/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${config.latestAssetCommitHash}/`
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'fontSize', 'notFirstRun',
-                'prefixEnabled', 'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme',
-                'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    loadSetting('anchored', 'autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
+                'fgAnimationsDisabled', 'fontSize', 'minimized', 'notFirstRun', 'prefixEnabled', 'proxyAPIenabled',
+                'replyLanguage', 'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) saveSetting('fontSize', 16.4) // init reply font size if unset
     if ( // disable streaming in unspported envs
@@ -246,6 +256,9 @@
     // Init UI VARS
     let scheme = config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )
     const isCentered = isCenteredMode()
+
+    // Init FETCHER
+    const xhr = getUserscriptManager() == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
           
     // Init API props
     const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
@@ -261,7 +274,10 @@
             method: 'POST', streamable: true, accumulatesText: false },
         'OpenAI': {
             endpoint: 'https://api.openai.com/v1/chat/completions', expectedOrigin: 'https://chatgpt.com',
-            method: 'POST', streamable: true }
+            method: 'POST', streamable: true },
+        'Webraft': {
+            endpoint: 'https://api.webraft.in/freeapi/chat/completions', key: 'wr-gqPB118cE91zRSM3ZJGMle',
+            method: 'POST', streamable: false, models: ['gpt-4'] }
     }
     const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
@@ -275,7 +291,7 @@
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
         let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
-        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+        xhr({ method: 'GET', url: msgHref, onload: onLoad })
         function onLoad(resp) {
             try { // to return localized messages.json
                 const msgs = JSON.parse(resp.responseText), flatMsgs = {}
@@ -288,36 +304,60 @@
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                     msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
-                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+                xhr({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded } catch (err) {}
 
     // Init SETTINGS props
     const settingsProps = {
-        proxyAPIenabled: { label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode', type: 'toggle' },
-        streamingDisabled: { label: msgs.mode_streaming || 'Streaming Mode', type: 'toggle' },
-        autoGet: { label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers', type: 'toggle' },
-        autoFocusChatbarDisabled: {
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+            label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode',
+            helptip: msgs.helptip_proxyAPImode || 'Uses a Proxy API for no-login access to AI' },
+        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+            label: msgs.mode_streaming || 'Streaming Mode',
+            helptip: msgs.helptip_streamingMode || 'Receive replies in a continuous text stream' },
+        autoGet: { type: 'toggle', icon: 'speechBalloonLasso',
+            label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers',
+            helptip: msgs.helptip_autoGetAnswers || 'Auto-send queries to DuckDuckGPT when using search engine' },
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
             label: msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar',
-            type: 'toggle', mobile: false },
-        autoScroll: {
+            helptip: msgs.helptip_autoFocusChatbar || 'Auto-focus chatbar whenever it appears' },
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
             label: `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`,
-            type: 'toggle', mobile: false },
-        rqDisabled: {
+            helptip: msgs.helptip_autoScroll || 'Auto-scroll responses as they generate in Streaming Mode' },
+        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
             label: `${ msgs.menuLabel_show || 'Show' } ${ msgs.menuLabel_relatedQueries || 'Related Queries' }`,
-            type: 'toggle' },
-        prefixEnabled: {
+            helptip: msgs.helptip_showRelatedQueries || 'Show related queries below chatbar' },
+        prefixEnabled: { type: 'toggle', icon: 'slash',
             label: `${ msgs.menuLabel_require || 'Require' } "/" ${ msgs.menuLabel_beforeQuery || 'before query' }`,
-            type: 'toggle' },
-        suffixEnabled: {
+            helptip: msgs.helptip_prefixMode || 'Require "/" before queries for answers to show' },
+        suffixEnabled: { type: 'toggle', icon: 'questionMark',
             label: `${ msgs.menuLabel_require || 'Require' } "?" ${ msgs.menuLabel_afterQuery || 'after query' }`,
-            type: 'toggle' },
-        widerSidebar: { label: msgs.menuLabel_widerSidebar || 'Wider Sidebar', type: 'toggle', mobile: false, centered: false },
-        stickySidebar: { label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar', type: 'toggle', mobile: false, centered: false },
-        replyLanguage: { label: msgs.menuLabel_replyLanguage || 'Reply Language', type: 'prompt' },
-        scheme: { label: msgs.menuLabel_colorScheme || 'Color Scheme', type: 'modal' },
-        about: { label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...`, type: 'modal' }
+            helptip: msgs.helptip_suffixMode || 'Require "?" after queries for answers to show' },
+        widerSidebar: { type: 'toggle', mobile: false, centered: false, icon: 'widescreen',
+            label: msgs.menuLabel_widerSidebar || 'Wider Sidebar',
+            helptip: msgs.helptip_widerSidebar || 'Horizontally expand search page sidebar' },
+        stickySidebar: { type: 'toggle', mobile: false, centered: false, icon: 'webCorner',
+            label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar',
+            helptip: msgs.helptip_stickySidebar || 'Makes DuckDuckGPT visible in sidebar even as you scroll' },
+        anchored: { type: 'toggle', mobile: false, centered: false, icon: 'anchor',
+            label: msgs.mode_anchor || 'Anchor Mode',
+            helptip: msgs.helptip_anchorMode || 'Anchor DuckDuckGPT to bottom of window' },
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${ msgs.menuLabel_background || 'Background' } ${ msgs.menuLabel_animations || 'Animations' }`,
+            helptip: msgs.helptip_bgAnimations || 'Show animated backgrounds in UI components' },
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${ msgs.menuLabel_foreground || 'Foreground' } ${ msgs.menuLabel_animations || 'Animations' }`,
+            helptip: msgs.helptip_fgAnimations || 'Show foreground animations in UI components' },
+        replyLanguage: { type: 'prompt', icon: 'languageChars',
+            label: msgs.menuLabel_replyLanguage || 'Reply Language',
+            helptip: msgs.helptip_replyLanguage || 'Language for DuckDuckGPT to reply in' },
+        scheme: { type: 'modal', icon: 'scheme',
+            label: msgs.menuLabel_colorScheme || 'Color Scheme',
+            helptip: msgs.helptip_colorScheme || 'Scheme to display DuckDuckGPT UI components in' },
+        about: { type: 'modal', icon: 'questionMarkCircle',
+            label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...` }
     }
 
     // Init MENU objs
@@ -339,160 +379,18 @@
     function registerMenu() {
 
         // Add command to toggle proxy API mode
-        const pamLabel = menuState.symbol[+config.proxyAPIenabled] + ' '
+        const pmLabel  = menuState.symbol[+config.proxyAPIenabled] + ' '
                        + settingsProps.proxyAPIenabled.label + ' '
                        + menuState.separator + menuState.word[+config.proxyAPIenabled]
-        menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
-
-        // Add command to toggle streaming mode or alert unsupported
-        const stmState = !config.proxyAPIenabled ? false : !config.streamingDisabled // show disabled state to OpenAI users
-        const stmLabel = menuState.symbol[+stmState] + ' '
-                       + settingsProps.streamingDisabled.label + ' '
-                       + menuState.separator + menuState.word[+stmState]
-        menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
-            const scriptCatLink = isFirefox ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
-                                : isEdge    ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
-                                            : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
-            if (!/Tampermonkey|ScriptCat/.test(getUserscriptManager())) { // alert userscript manager unsupported, suggest TM/SC
-                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
-                        + ( !isEdge && !isBrave ? // suggest TM for supported browsers
-                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${ msgs.alert_and || 'and' }`
-                                : '' )
-                        + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
-                        + ` (${ msgs.alert_userscriptMgrNoStream || 'Your userscript manager does not support returning stream responses' }.)`)
-            } else if (getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave)) // alert TM/browser unsupported, suggest SC
-                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
-                        + `${ isChrome ? 'Chrome' : isEdge ? 'Edge' : 'Brave' } ${ msgs.alert_whenUsing || 'when using' } Tampermonkey. `
-                        + `${ msgs.alert_pleaseUse || 'Please use' } <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
-                            + `${ msgs.alert_instead || 'instead' }.`)
-            else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                let msg = `${settingsProps.streamingDisabled.label} `
-                        + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
-                        + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
-                        + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
-                const switchPhrase = msgs.alert_switchingOn || 'switching on'
-                msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
-                const alertID = siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg),
-                      alert = document.getElementById(alertID)
-                alert.querySelector('[href="#"]').onclick = () => { alert.querySelector('.modal-close-btn').click() ; toggleProxyMode() }
-            } else { // functional toggle
-                saveSetting('streamingDisabled', !config.streamingDisabled)
-                notify(settingsProps.streamingDisabled.label + ' ' + menuState.word[+!config.streamingDisabled])
-                refreshMenu()
-            }
-        }))
-
-        // Add command to toggle auto-get mode
-        const agmLabel = menuState.symbol[+config.autoGet] + ' '
-                       + settingsProps.autoGet.label + ' '
-                       + menuState.separator + menuState.word[+config.autoGet]
-        menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
-            saveSetting('autoGet', !config.autoGet)
-            notify(settingsProps.autoGet.label + ' ' + menuState.word[+config.autoGet])
-            refreshMenu()
-        }))
-
-        if (!isMobile) {
-
-            // Add command to toggle auto-focus chatbar
-            const afcLabel = menuState.symbol[+!config.autoFocusChatbarDisabled] + ' '
-                           + settingsProps.autoFocusChatbarDisabled.label + ' '
-                           + menuState.separator + menuState.word[+!config.autoFocusChatbarDisabled]
-            menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
-                saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
-                notify(settingsProps.autoFocusChatbarDisabled.label + ' ' + menuState.word[+!config.autoFocusChatbarDisabled])
-                refreshMenu()
-            }))
-
-            // Add command to toggle auto-scroll (when streaming)
-            const assLabel = menuState.symbol[+config.autoScroll] + ' '
-                           + settingsProps.autoScroll.label
-                           + menuState.separator + menuState.word[+config.autoScroll]
-            menuIDs.push(GM_registerMenuCommand(assLabel, () => {
-                saveSetting('autoScroll', !config.autoScroll)
-                notify(settingsProps.autoScroll.label + ' ' + menuState.word[+config.autoScroll])
-                refreshMenu()
-            }))
-        }
-
-        // Add command to toggle showing related queries
-        const rqLabel = menuState.symbol[+!config.rqDisabled] + ' '
-                      + settingsProps.rqDisabled.label + ' '
-                      + menuState.separator + menuState.word[+!config.rqDisabled]
-        menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
-            saveSetting('rqDisabled', !config.rqDisabled)
-            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
-            if (relatedQueriesDiv) // update visibility based on latest setting
-                relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
-            if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
-                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.related(lastQuery).then(queries => show.related(queries))
-                    .catch(err => { consoleErr(err.message)
-                        if (get.related.status != 'done') api.tryNew(get.related) })
-            }
-            updateTweaksStyle() // toggle <pre> max-height
-            notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle prefix mode
-        const pfmLabel = menuState.symbol[+config.prefixEnabled] + ' '
-                      + settingsProps.prefixEnabled.label + ' '
-                      + menuState.separator + menuState.word[+config.prefixEnabled]
-        menuIDs.push(GM_registerMenuCommand(pfmLabel, () => {
-            saveSetting('prefixEnabled', !config.prefixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Suffix Mode if activating Prefix Mode
-                saveSetting('suffixEnabled', !config.suffixEnabled) }
-            notify(( msgs.mode_prefix || 'Prefix Mode' ) + ' ' + menuState.word[+config.prefixEnabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle suffix mode
-        const sfmLabel = menuState.symbol[+config.suffixEnabled] + ' '
-                      + settingsProps.suffixEnabled.label + ' '
-                      + menuState.separator + menuState.word[+config.suffixEnabled]
-        menuIDs.push(GM_registerMenuCommand(sfmLabel, () => {
-            saveSetting('suffixEnabled', !config.suffixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Prefix Mode if activating Suffix Mode
-                saveSetting('prefixEnabled', !config.prefixEnabled) }
-            notify(( msgs.mode_suffix || 'Suffix Mode' ) + ' ' + menuState.word[+config.suffixEnabled])
-            refreshMenu()
-        }))
-
-        if (!isCentered && !isMobile) {
-
-            // Add command to toggle wider sidebar
-            const wsbLabel = menuState.symbol[+config.widerSidebar] + ' '
-                           + settingsProps.widerSidebar.label
-                           + menuState.separator + menuState.word[+config.widerSidebar]
-            menuIDs.push(GM_registerMenuCommand(wsbLabel, () => toggleSidebar('wider')))
-
-            // Add command to toggle sticky sidebar
-            const ssbLabel = menuState.symbol[+config.stickySidebar] + ' '
-                           + settingsProps.stickySidebar.label
-                           + menuState.separator + menuState.word[+config.stickySidebar]
-            menuIDs.push(GM_registerMenuCommand(ssbLabel, () => toggleSidebar('sticky')))
-        }
-
-        // Add command to set reply language
-        const rlLabel = '🌐 ' + settingsProps.replyLanguage.label
-                      + menuState.separator + config.replyLanguage
-        menuIDs.push(GM_registerMenuCommand(rlLabel, promptReplyLang))
-
-        // Add command to set color scheme
-        const schemeLabel = ( config.scheme == 'light' ? '☀️' :
-                              config.scheme == 'dark'  ? '🌘' : '🌗' ) + ' '
-                          + settingsProps.scheme.label + menuState.separator
-                          + ( config.scheme == 'light' ? msgs.scheme_light   || 'Light' :
-                              config.scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
-                                                       : msgs.menuLabel_auto || 'Auto' )
-        menuIDs.push(GM_registerMenuCommand(schemeLabel, modals.scheme.show))
+        menuIDs.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode))
 
         // Add command to launch About modal
         const aboutLabel = `💡 ${settingsProps.about.label}`
         menuIDs.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+
+        // Add command to launch Settings modal
+        const settingsLabel = `⚙️ ${ msgs.menuLabel_settings || 'Settings' }`
+        menuIDs.push(GM_registerMenuCommand(settingsLabel, modals.settings.show))
     }
 
     function promptReplyLang() {
@@ -508,17 +406,22 @@
                 siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
                     `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
                         + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
-                    '', '', 330) // width
-                refreshMenu() ; break
+                    '', '', 330) // confirmation width
+                if (modals.settings.get()) // update settings menu status label
+                    document.querySelector('#replyLanguage-menu-entry span').textContent = replyLanguage
+                break
     }}}
 
-    function refreshMenu() { for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() }
+    function refreshMenu() {
+        if (getUserscriptManager() == 'OrangeMonkey') return
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu()
+    }
 
     function updateCheck() {
 
         // Fetch latest meta
         const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
+        xhr({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: resp => { const updateAlertWidth = 409
@@ -543,6 +446,7 @@
                                 safeWindowOpen(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now())
                             }, '', updateAlertWidth
                         )
+                        const updateModal = document.getElementById(updateModalID).firstChild
 
                         // Localize button labels if needed
                         if (!config.userLanguage.startsWith('en')) {
@@ -552,21 +456,55 @@
                             updateBtns[0].textContent = msgs.buttonLabel_dismiss || 'Dismiss'
                         }
 
+                        modals.init(updateModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
+
                         return
                 }}
 
                 // Alert to no update found, nav back
-                siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
+                const noUpdateModalID = siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
                     `${ config.appName } (v${ currentVer }) ${ msgs.alert_isUpToDate || 'is up-to-date' }!`, // msg
                         '', '', updateAlertWidth)
+                const noUpdateModal = document.getElementById(noUpdateModalID).firstChild
+                modals.init(noUpdateModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
                 modals.about.show()
     }})}
 
     // Define FEEDBACK functions
 
-    function notify(msg, position = '', notifDuration = '', shadow = '') {
-        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration,
-            shadow || scheme == 'dark' ? '' : 'shadow' )
+    function notify(msg, position = '', notifDuration = '', shadow = 'shadow') {
+
+        // Strip state word to append styled one later
+        const foundState = menuState.word.find(word => msg.includes(word))
+        if (foundState) msg = msg.replace(foundState, '')
+
+        // Show notification
+        chatgpt.notify(msg, position, notifDuration, shadow)
+        const notifs = document.querySelectorAll('.chatgpt-notif'),
+              notif = notifs[notifs.length -1]
+
+        // Prepend app icon
+        const notifIcon = icons.ddgpt.create()
+        notifIcon.style.cssText = 'width: 31px ; position: relative ; top: 5.8px ; margin-right: 8px'
+        notif.prepend(notifIcon)
+
+        // Append mode icon
+        const mode = Object.keys(settingsProps).find(key => settingsProps[key].label.includes(msg.trim()))
+        if (mode && !/(?:pre|suf)fix/.test(mode)) {
+            const modeIcon = icons[settingsProps[mode].icon].create()
+            modeIcon.style.cssText = 'width: 28px ; height: 28px ; position: relative ; top: 3.5px ; margin-left: 11px ;'
+                                   + ( /autoget|focus|scroll/i.test(mode) ? 'top: -3px' : '' ) // raise some icons
+                                   + ( /animation/i.test(mode) ? 'width: 25px ; height: 25px' : '' ) // shrink sparkles icon
+            notif.append(modeIcon)
+        }
+
+        // Append styled state word
+        if (foundState) {
+            const styledState = document.createElement('span')
+            styledState.style.cssText = `font-weight: bold ; color: ${
+                foundState == menuState.word[0] ? 'rgb(239, 72, 72)' : '#5cef48' }`
+            styledState.append(foundState) ; notif.insertBefore(styledState, notif.children[2])
+        }
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
@@ -596,7 +534,7 @@
             // Hyperlink msgs.alert_switching<On|Off>
             const foundState = ['On', 'Off'].find(state =>
                 msg.includes(msgs['alert_switching' + state]) || new RegExp(`\\b${state}\\b`, 'i').test(msg))
-            if (foundState) { // hyperlink switch phrase for click listener to toggleProxyMode()
+            if (foundState) { // hyperlink switch phrase for click listener to toggle.proxyMode()
                 const switchPhrase = msgs['alert_switching' + foundState] || 'switching ' + foundState.toLowerCase()
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
             }
@@ -606,7 +544,7 @@
             msgSpan.innerHTML = msg ; alertP.append(msgSpan)
 
             // Activate toggle link if necessary
-            msgSpan.querySelector('[href="#"]')?.addEventListener('click', toggleProxyMode)
+            msgSpan.querySelector('[href="#"]')?.addEventListener('click', toggle.proxyMode)
         })
         appDiv.append(alertP)
     }
@@ -617,42 +555,104 @@
     // Define MODAL functions
 
     const modals = {
+
+        clickHandler(event) { // to dismiss modals
+            if (event.target == event.currentTarget || event.target instanceof SVGPathElement)
+                modals.hide(document.querySelector('[class$="-modal"]'))
+        },
+
+        dragHandlers: {
+            mousedown(event) { // find modal, attach listeners, init XY offsets
+                if (getComputedStyle(event.target).cursor == 'pointer') return // don't activate drag when clicking on interactive elems
+                modals.dragHandlers.draggableElem = event.target.closest('[class$="-modal"]')
+                event.preventDefault(); // prevent sub-elems like icons being draggable
+                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
+                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
+                modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
+                modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
+            },
+    
+            mousemove(event) { // drag modal
+                if (modals.dragHandlers.draggableElem) {
+                    const newX = event.clientX - modals.dragHandlers.offsetX,
+                          newY = event.clientY - modals.dragHandlers.offsetY
+                    modals.dragHandlers.draggableElem.style.left = `${newX}px`
+                    modals.dragHandlers.draggableElem.style.top = `${newY}px`
+                }
+            },
+    
+            mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
+                ['mousemove', 'mouseup'].forEach(event => document.removeEventListener(event, modals.dragHandlers[event]))
+                modals.dragHandlers.draggableElem = null
+            }
+        },
+
+        hide(modal) {
+            const modalContainer = modal?.parentNode
+            if (!modalContainer) return
+            modalContainer.style.animation = 'alert-zoom-fade-out .135s ease-out'
+            setTimeout(() => modalContainer.remove(), 105) // delay for fade-out
+        },
+
+        init(modal) {
+
+            // Add classes
+            modal.classList.add('.ddgpt-modal')
+            modal.parentNode.classList.add('ddgpt-modal-bg', 'no-user-select')
+
+            // Add listeners
+            modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
+            modal.onmousedown = modals.dragHandlers.mousedown
+            fillStarryBG(modal) // add stars
+            setTimeout(() => { // dim bg
+                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ scheme === 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.classList.add('animated')
+            }, 100) // delay for transition fx
+
+            // Glowup btns
+            if (scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+        },
+
+        keyHandler() { // to dismiss modals
+            if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
+                const modal = document.querySelector('[class$="-modal"]')
+                if (modal) modals.hide(modal)
+            }
+        },
+
         about: {
             show() {
+                const settingsModal = modals.settings.get()
+                if (settingsModal) modals.hide(settingsModal)
+
+                // Create/init modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
-                const aboutModalID = siteAlert(
-                    config.appName, // title
+                const aboutModalID = chatgpt.alert('',
                     '🏷️ ' + ( msgs.about_version || 'Version' ) + ': ' + GM_info.script.version + '\n'
                         + '⚡ ' + ( msgs.about_poweredBy || 'Powered by' ) + ': '
                             + '<a href="https://chatgpt.js.org" target="_blank" rel="noopener">chatgpt.js</a>'
                             + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
-                        + '📜 ' + ( msgs.about_sourceCode || 'Source code' ) + ':\n '
-                            + `<a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+                        + '📜 ' + ( msgs.about_sourceCode || 'Source code' )
+                            + `: <a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
                                 + config.gitHubURL + '</a>',
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { safeWindowOpen(config.supportURL) },
-                        function leaveAReview() {
-                            const reviewModalID = chatgpt.alert(( msgs.alert_choosePlatform || 'Choose a platform' ) + ':', '',
-                                [ function greasyFork() { safeWindowOpen(
-                                      config.greasyForkURL + '/feedback#post-discussion') },
-                                  function productHunt() { safeWindowOpen(
-                                      'https://www.producthunt.com/products/duckduckgpt/reviews/new') },
-                                  function futurepedia() { safeWindowOpen(
-                                      'https://www.futurepedia.io/tool/duckduckgpt#duckduckgpt-review') },
-                                  function alternativeTo() { safeWindowOpen(
-                                      'https://alternativeto.net/software/duckduckgpt/about/') }
-                                ], '', 523) // Review modal width
-                            const reviewBtns = document.getElementById(reviewModalID).querySelectorAll('button')
-                            reviewBtns[0].style.display = 'none' // hide Dismiss button
-                            reviewBtns[1].textContent = ( // remove spaces from AlternativeTo label
-                                reviewBtns[1].textContent.replace(/\s/g, '')) },
+                        function leaveAReview() { modals.feedback.show() },
                         function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
-                    ], '', 527) // About modal width
+                    ], '', 577) // modal width
+                const aboutModal = document.getElementById(aboutModalID).firstChild
+
+                // Add logo
+                const aboutHeaderLogo = logos.ddgpt.create() ; aboutHeaderLogo.width = 420
+                aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: -21px ${ isMobile ? 'auto' : '13.5%' } 1px`
+                aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
 
                 // Resize/format buttons to include emoji + localized label + hide Dismiss button
-                for (const btn of document.getElementById(aboutModalID).querySelectorAll('button')) {
-                    btn.style.height = '52px' // re-size to fit meaty text content
+                aboutModal.querySelectorAll('button').forEach(btn => {
+                    btn.style.cssText = 'height: 52px ; min-width: 136px'
+
+                    // Emojize/localize label
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( msgs.buttonLabel_updateCheck || 'Check for Updates' ))
                     else if (/support/i.test(btn.textContent)) btn.textContent = (
@@ -662,21 +662,61 @@
                     else if (/apps/i.test(btn.textContent)) btn.textContent = (
                         '🤖 ' + ( msgs.buttonLabel_moreApps || 'More ChatGPT Apps' ))
                     else btn.style.display = 'none' // hide Dismiss button
-            }}
+                })
+
+                modals.init(aboutModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
+            }
+        },
+
+        feedback: {
+            show() {
+
+                // Create/init modal
+                const feedbackModalID = siteAlert(`${
+                    msgs.alert_choosePlatform || 'Choose a platform' }:`, '',
+                    [ // buttons
+                        function greasyFork() { safeWindowOpen(
+                            config.greasyForkURL + '/feedback#post-discussion') },
+                        function github() { safeWindowOpen(
+                            config.gitHubURL + '/discussions/new/choose') },
+                        function productHunt() { safeWindowOpen(
+                            'https://www.producthunt.com/products/duckduckgpt/reviews/new') },
+                        function futurepedia() { safeWindowOpen(
+                            'https://www.futurepedia.io/tool/duckduckgpt#duckduckgpt-review') },
+                        function alternativeTo() { safeWindowOpen(
+                            'https://alternativeto.net/software/duckduckgpt/about/') }
+                    ], '', 408) // modal width
+                const feedbackModal = document.getElementById(feedbackModalID).firstChild
+
+                // Re-style button cluster
+                const btnsDiv = feedbackModal.querySelector('.modal-buttons')
+                btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
+                                       + ' margin-top: 14px !important' // close gap between title/btns
+
+                // Format button labels + add v-padding
+                const btns = btnsDiv.querySelectorAll('button'), lastIdx = btns.length -1
+                btns.forEach((btn, idx) => {
+                    if (idx == 0) btn.style.display = 'none' // hide Dismiss button
+                    else if (btn.textContent == 'Github') btn.textContent = 'GitHub'
+                    else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
+                    if (idx == lastIdx) btn.classList.remove('primary-modal-btn') // de-emphasize last link
+                    btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
+                })
+
+                modals.init(feedbackModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
+            }
         },
 
         scheme: {
             show() {
+
+                // Create/init modal
                 const schemeModalID = siteAlert(`${
                     config.appName } ${( msgs.menuLabel_colorScheme || 'Color Scheme' ).toLowerCase() }:`, '',
-                    [ // buttons
-                        function auto() { updateScheme('auto') },
-                        function light() { updateScheme('light') },
-                        function dark() { updateScheme('dark') }
-                ])
+                    [ function auto() {}, function light() {}, function dark() {} ]) // buttons
+                const schemeModal = document.getElementById(schemeModalID).firstChild
 
                 // Center button cluster
-                const schemeModal = document.getElementById(schemeModalID)
                 schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
 
                 // Re-format each button
@@ -700,26 +740,339 @@
                     const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                     newBtn.onclick = event => {
                         event.stopPropagation() // disable chatgpt.js dismissAlert()
-                        updateScheme(btnScheme) // call corresponding scheme func
+                        const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                        saveSetting('scheme', btnScheme == 'auto' ? false : newScheme)
                         schemeModal.querySelectorAll('button').forEach(btn => btn.classList = '') // clear prev emphasized active scheme
                         newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
                         newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
                         setTimeout(() => { newBtn.style.pointerEvents = 'auto'; }, 100) // re-enable hover fx after 100ms to flicker emphasis
+                        update.scheme(newScheme) ; schemeNotify(btnScheme)
                     }
                 }
 
-                function updateScheme(newScheme) {
-                    scheme = newScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : newScheme
-                    saveSetting('scheme', newScheme == 'auto' ? false : newScheme)
-                    updateAppLogoSrc() ; updateAppStyle() ; schemeNotify(newScheme) ; refreshMenu()
-                }
+                modals.init(schemeModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
 
                 function schemeNotify(scheme) {
+
+                    // Show notification
                     notify(` ${ msgs.menuLabel_colorScheme || 'Color Scheme' }: `
                            + ( scheme == 'light' ? msgs.scheme_light   || 'Light' :
                                scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
-                                                 : msgs.menuLabel_auto || 'Auto' ).toUpperCase()
-                )}
+                                                 : msgs.menuLabel_auto || 'Auto' ).toUpperCase() )
+                    const notifs = document.querySelectorAll('.chatgpt-notif'),
+                          notif = notifs[notifs.length -1]
+
+                    // Append scheme icon
+                    const schemeIcon = icons[scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCycle'].create()
+                    schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ; top: 3px ; margin-left: 6px'
+                    notif.append(schemeIcon)
+                }
+            }
+        },
+
+        settings: {
+
+            createAppend() {
+
+                // Init master elems
+                const settingsContainer = document.createElement('div'),
+                      settingsModal = document.createElement('div') ; settingsModal.id = 'ddgpt-settings'
+                      settingsContainer.append(settingsModal)
+                modals.init(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
+
+                // Init settings keys
+                const settingsKeys = Object.keys(settingsProps).filter(key => !(isMobile && settingsProps[key].mobile == false)
+                                                                           && !(isCentered && settingsProps[key].centered == false))
+                // Init logo
+                const settingsIcon = icons.ddgpt.create()
+                settingsIcon.style.cssText = 'width: 56px ; position: relative ; top: -33px ;'
+                                           + `margin: 0 ${ isPortrait ? 43 : 46.3 }% -12px`
+                // Init title
+                const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'ddgpt-settings-title'
+                const settingsTitleH4 = document.createElement('h4') ; settingsTitleH4.textContent = msgs.menuLabel_settings || 'Settings'
+                const settingsTitleIcon = icons.sliders.create()
+                settingsTitleIcon.style.cssText = 'width: 21px ; height: 21px ; margin-right: 3px ; position: relative ; top: 2.5px ; right: 3px'
+                settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
+
+                // Init settings lists
+                const settingsLists = [], middleGap = 30, // px
+                      settingsListContainer = document.createElement('div'),
+                      settingsListCnt = ( isMobile && ( isPortrait || settingsKeys.length < 8 )) ? 1 : 2,
+                      settingItemCap = Math.floor(settingsKeys.length /2)
+                for (let i = 0 ; i < settingsListCnt ; i++) settingsLists.push(document.createElement('ul'))
+                if (settingsListCnt > 1) { // style multi-list landscape mode
+                    settingsListContainer.style.cssText = ( // make/pad flexbox, add middle gap
+                        `display: flex ; padding: 11px 12px 13px ; gap: ${ middleGap /2 }px` )
+                    settingsLists[0].style.cssText = ( // add vertical separator
+                        `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${ scheme == 'dark' ? 'white' : 'black '}` )
+                }
+
+                // Create/append setting icons/labels/toggles
+                settingsKeys.forEach((key, idx) => {
+                    const setting = settingsProps[key]
+
+                    // Create/append item/label elems
+                    const settingItem = document.createElement('li') ; settingItem.id = key + '-menu-entry'
+                    settingItem.title = setting.helptip || '' // for hover assistance
+                    const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
+                    settingItem.append(settingLabel) ; (settingsLists[isPortrait ? 0 : +!(idx < settingItemCap)]).append(settingItem)
+
+                    // Create/prepend icons
+                    const settingIcon = icons[setting.icon].create(key.match(/bg|fg/)?.[0] ?? '')
+                    settingIcon.style.cssText = 'position: relative ;' + (
+                        /proxy/i.test(key) ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
+                      : /streaming/i.test(key) ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
+                      : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
+                      : /autoscroll/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
+                      : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
+                      : /prefix/i.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
+                      : /suffix/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7px'
+                      : /sidebar/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7.5px'
+                      : /anchor/i.test(key) ? 'top: 3px ; left: -2.5px ; margin-right: 5.5px'
+                      : /animation/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
+                      : /replylang/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
+                      : /scheme/i.test(key) ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
+                      : /about/i.test(key) ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
+                    )
+                    settingItem.prepend(settingIcon)
+
+                    // Create/append toggles/listeners
+                    if (setting.type == 'toggle') {
+
+                        // Init toggle input
+                        const settingToggle = document.createElement('input'),
+                              settingToggleAttrs = [['type', 'checkbox'], ['disabled', true]]
+                        settingToggleAttrs.forEach(([attr, value]) => settingToggle.setAttribute(attr, value))
+                        settingToggle.checked = config[key] ^ key.includes('Disabled')
+                        settingToggle.style.display = 'none' // hide checkbox
+
+                        // Create/stylize switch
+                        const switchSpan = document.createElement('span')
+                        const switchStyles = {
+                            position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
+                            backgroundColor: settingToggle.checked ? '#ccc' : '#AD68FF', // init opposite  final color
+                            width: '26px', height: '13px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
+                        }
+                        Object.assign(switchSpan.style, switchStyles)
+
+                        // Create/stylize knob
+                        const knobSpan = document.createElement('span')
+                        const knobWidth = 11
+                        const knobStyles = {
+                            position: 'absolute', left: '1px', bottom: '1px',
+                            width: `${ knobWidth }px`, height: `${ knobWidth }px`, content: '""', borderRadius: '28px',
+                            transform: settingToggle.checked ? // init opposite final pos
+                                'translateX(0)' : 'translateX(14px) translateY(0)',
+                            backgroundColor: 'white',  '-webkit-transition': '0.2s', transition: '0.2s'
+                        }
+                        Object.assign(knobSpan.style, knobStyles)
+
+                        // Append elems
+                        switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
+
+                        // Update visual state w/ animation
+                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), idx *25 -25)
+
+                        // Add click listener
+                        settingItem.onclick = () => {
+                            modals.settings.toggle.switch(settingToggle) // visually switch toggle
+
+                            // Call specialized toggle funcs
+                            const manualGetMatch = /(?:suf|pre)fix/.exec(key)
+                            if (key.includes('proxy')) toggle.proxyMode()
+                            else if (key.includes('streaming')) toggle.streaming()
+                            else if (/autoget/i.test(key)) toggle.autoGet()
+                            else if (key.includes('rq')) toggle.relatedQueries()
+                            else if (manualGetMatch) toggle.manualGet(manualGetMatch[0])
+                            else if (key.includes('Sidebar')) toggle.sidebar(key.match(/(.*?)Sidebar$/)[1])
+                            else if (key.includes('anchor')) toggle.anchorMode()
+                            else if (key.includes('bgAnimation')) toggle.animations('bg')
+                            else if (key.includes('fgAnimation')) toggle.animations('fg')
+
+                            // ...or generically toggle/notify
+                            else {
+                                saveSetting(key, !config[key]) // update config
+                                notify(`${settingsProps[key].label} ${menuState.word[+key.includes('Disabled') ^ +config[key]]}`)
+                            }
+                        }
+
+                    // Add config status + listeners to pop-up settings
+                    } else {
+                        const configStatusSpan = document.createElement('span')
+                        configStatusSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: 3px ;'
+                            + ( !key.includes('about') ? 'text-transform: uppercase !important' : '' )
+                        if (key.includes('replyLang')) {
+                            configStatusSpan.textContent = config.replyLanguage
+                            settingItem.onclick = promptReplyLang
+                        } else if (key.includes('scheme')) {
+                            modals.settings.updateSchemeStatus(configStatusSpan)
+                            settingItem.onclick = modals.scheme.show
+                        } else if (key.includes('about')) {
+                            const innerDiv = document.createElement('div'),
+                                  textGap = '&emsp;&emsp;&emsp;&emsp;&emsp;'
+                            modals.settings.aboutContent = {}
+                            modals.settings.aboutContent.short = `v${ GM_info.script.version}`
+                            modals.settings.aboutContent.long = `Version: <span class="about-em">v${ GM_info.script.version + textGap }</span>`
+                                + `${ msgs.about_poweredBy || 'Powered by' } <span class="about-em">chatgpt.js</span>${textGap}`
+                            for (let i = 0; i < 7; i++) modals.settings.aboutContent.long += modals.settings.aboutContent.long // make it long af
+                            innerDiv.innerHTML = modals.settings.aboutContent[config.fgAnimationsDisabled ? 'short' : 'long']
+                            innerDiv.style.float = config.fgAnimationsDisabled ? 'right' : ''
+                            configStatusSpan.append(innerDiv) ; settingItem.onclick = modals.about.show
+                        } settingItem.append(configStatusSpan)
+                    }
+                })
+                settingsListContainer.append(...settingsLists)
+
+                // Create close button
+                const closeBtn = document.createElement('div') ; closeBtn.id = 'ddgpt-settings-close-btn'
+                closeBtn.title = msgs.tooltip_close || 'Close'
+                const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+                const closeSVGattrs = [['height', '8px'], ['viewBox', '0 0 14 14'], 'fill', 'none']
+                closeSVGattrs.forEach(([attr, val]) => closeSVG.setAttribute(attr, val))
+                const closeSVGpath = createSVGelem('path', {
+                    d: 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z' })
+                closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG)
+
+                // Assemble/append elems
+                settingsModal.append(settingsIcon, settingsTitleDiv, closeBtn, settingsListContainer)
+                document.body.append(settingsContainer)
+
+                // Add listeners to dismiss modal
+                const dismissElems = [settingsContainer, closeBtn, closeSVG]
+                dismissElems.forEach(elem => elem.onclick = modals.clickHandler)
+
+                return settingsContainer
+            },
+
+            get() { return document.getElementById('ddgpt-settings') },
+
+            show() {
+                const settingsContainer = modals.settings.get()?.parentNode || modals.settings.createAppend()
+                settingsContainer.style.display = '' // show modal
+                if (isMobile) { // scale 93% to viewport sides
+                    const settingsModal = settingsContainer.querySelector('#ddgpt-settings'),
+                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                    settingsModal.style.transform = `scale(${scaleRatio})`
+                }
+            },
+
+            toggle: {
+                switch(settingToggle) {
+                    settingToggle.checked = !settingToggle.checked    
+                    modals.settings.toggle.updateStyles(settingToggle)        
+                },
+
+                updateStyles(settingToggle) { // for .toggle.show() + staggered switch animations in .createAppend()
+                    const switchSpan = settingToggle.parentNode.querySelector('span'),
+                          knobSpan = switchSpan.querySelector('span')
+                    setTimeout(() => {
+                        switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
+                        switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                        knobSpan.style.transform = settingToggle.checked ? 'translateX(14px) translateY(0)' : 'translateX(0)'
+                    }, 1) // min delay to trigger transition fx
+                }
+            },
+
+            updateSchemeStatus(schemeStatusSpan = null) {
+                schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-menu-entry span')
+                if (schemeStatusSpan) {
+                    while (schemeStatusSpan.firstChild) schemeStatusSpan.removeChild(schemeStatusSpan.firstChild) // clear old status
+                    schemeStatusSpan.append(...( // status txt + icon
+                        config.scheme == 'dark' ? [document.createTextNode(msgs.scheme_dark || 'Dark'), icons.moon.create()]
+                      : config.scheme == 'light' ? [document.createTextNode(msgs.scheme_light || 'Light'), icons.sun.create()]
+                      : [document.createTextNode(msgs.menuLabel_auto || 'Auto'), icons.arrowsCycle.create()] ))
+                    schemeStatusSpan.style.cssText += `; margin-top: ${ !config.scheme ? 3 : 0 }px !important`
+                }
+            }
+        }
+    }
+
+    // Define MENU functions
+
+    const menus = {
+        fadeInDelay: 5, // ms
+
+        show(menu) {
+            menu.style.display = ''
+            setTimeout(() => menu.classList.add('active'), menus.fadeInDelay)
+        },
+
+        pin: {
+            clickHandler() {
+                const pinMenu = event.target.closest('#pin-menu'),
+                      itemLabel = event.target.textContent,
+                      prevOffsetTop = appDiv.offsetTop
+
+                // Switch mode
+                if ([msgs.menuLabel_top, 'Top'].includes(itemLabel)) toggle.sidebar('sticky')
+                else if ([msgs.menuLabel_sidebar, 'Sidebar'].includes(itemLabel)) {
+                    toggle.sidebar('sticky', 'off') ; toggle.anchorMode('off') }
+                else if ([msgs.menuLabel_bottom, 'Bottom'].includes(itemLabel)) toggle.anchorMode()
+
+                // Close/update menu
+                if (appDiv.offsetTop != prevOffsetTop) pinMenu.remove() // since app moved
+                else menus.pin.update(pinMenu) // since menu stayed in place
+            },
+
+            createAppend() {
+                const pinMenu = document.createElement('div') ; pinMenu.id = 'pin-menu'
+                pinMenu.classList.add('ddgpt-menu', 'btn-tooltip', 'fade-in-less', 'no-user-select')
+                menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
+                return pinMenu
+            },
+
+            update(pinMenu) {
+                while (pinMenu.firstChild) pinMenu.removeChild(pinMenu.firstChild) // clear content
+
+                // Init core elems
+                const pinMenuUL = document.querySelector('#pin-menu ul') || document.createElement('ul'),
+                      pinMenuItems = []
+                const pinMenulabels = [
+                    `${ msgs.tooltip_pinTo || 'Pin to' }...`, msgs.menuLabel_top || 'Top',
+                    msgs.menuLabel_sidebar || 'Sidebar', msgs.menuLabel_bottom || 'Bottom' ]
+                const pinMenuIcons = [icons.webCorner.create(), icons.sidebar.create(), icons.anchor.create(), icons.checkmark.create()]
+
+                // Style icons
+                pinMenuIcons.forEach(icon => icon.style.cssText = (
+                    'width: 12px ; height: 12px ; position: relative ; top: 1px ; right: 5px ; margin-left: 5px'))
+                pinMenuIcons[0].style.width = pinMenuIcons[0].style.height = '11px' // shrink corner web icon
+                pinMenuIcons[3].style.cssText = 'position: relative ; float: right ; margin-right: -16px ; top: 4px' // re-style checkmarks
+
+                // Fill menu UL
+                for (let i = 0 ; i < 4 ; i++) {
+                    pinMenuItems.push(document.createElement('li'))
+                    pinMenuItems[i].textContent = pinMenulabels[i]
+                    pinMenuItems[i].className = 'ddgpt-menu-item'
+                    if (i == 0) { // format header item
+                        pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
+                        pinMenuItems[i].classList.add('ddgpt-menu-header') // to not apply hover fx from appStyle
+                        pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
+                    } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
+                    pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
+                    pinMenuItems[i].prepend(i > 0 ? pinMenuIcons[i -1] : '') // prepend left icon
+                    if (i == 1 && config.stickySidebar // 'Top' item + Sticky mode on
+                     || i == 2 && !config.stickySidebar && !config.anchored // 'Sidebar' item + no mode on
+                     || i == 3 && config.anchored) // 'Bottom' item + Anchor mode on
+                            pinMenuItems[i].append(pinMenuIcons[pinMenuIcons.length -1]) // append right checkmark
+                    pinMenuItems[i].onclick = menus.pin.clickHandler
+                    pinMenuUL.append(pinMenuItems[i])
+                }
+                pinMenu.append(pinMenuUL)
+
+                // Add listeners to make visibility stick when mousing from pinSVG
+                pinMenu.onmouseover = menus.pin.toggle
+                pinMenu.onmouseout = pinMenu.remove // instead of toggle so re-mouseover doesn't show ghost
+            },
+
+            toggle() { // visibility
+                const pinMenu = document.getElementById('pin-menu') || menus.pin.createAppend()
+                if (!menus.pin.topPos)
+                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 53 : -85
+                if (!menus.pin.rightPos)
+                     menus.pin.rightPos = appDiv.getBoundingClientRect().right - event.clientX - pinMenu.offsetWidth/2
+                pinMenu.style.top = `${menus.pin.topPos}px` ; pinMenu.style.right = `${menus.pin.rightPos}px`
+                pinMenu.style.opacity = (
+                    event.type == 'mouseover' ? 1 : event.type == 'mouseout' ? 0 : +!parseInt(pinMenu.style.opacity, 10) )
             }
         }
     }
@@ -727,15 +1080,136 @@
     // Define ICON functions
 
     const icons = {
-        about: {
+
+        anchor: {
             create() {
-                const aboutSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      aboutSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
-                aboutSVGattrs.forEach(([attr, value]) => aboutSVG.setAttribute(attr, value))
-                aboutSVG.append(createSVGpath({ stroke: 'none',
-                    d: 'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z' }
+                const anchorSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      anchorSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 24 24']]
+                anchorSVGattrs.forEach(([attr, value]) => anchorSVG.setAttribute(attr, value))
+                anchorSVG.append(createSVGelem('path', { stroke: 'none',
+                    d: 'M12,2 C13.6568542,2 15,3.34314575 15,5 C15,6.30588222 14.1656226,7.41688515 13.0009007,7.82897577 L13.0008722,19.9379974 C15.8984799,19.5763478 18.3147266,17.665053 19.3940412,15.0596838 L19.417,15 L17,15 C15.9853611,15 15.6358608,13.6848035 16.4495309,13.1641077 L16.5527864,13.1055728 L20.5527864,11.1055728 C21.2176875,10.7731223 22,11.256618 22,12 C22,17.5228475 17.5228475,22 12,22 C6.4771525,22 2,17.5228475 2,12 C2,11.2957433 2.70213089,10.8247365 3.34138467,11.0597803 L3.4472136,11.1055728 L7.4472136,13.1055728 C8.35473419,13.5593331 8.07916306,14.8919819 7.11853213,14.9938221 L7,15 L4.582,15 L4.60595876,15.0596838 C5.68539551,17.6653477 8.10206662,19.5767802 11.0001109,19.9381201 L11.0000889,7.82932572 C9.8348501,7.41751442 9,6.30625206 9,5 C9,3.34314575 10.3431458,2 12,2 Z M12,4 C11.4477153,4 11,4.44771525 11,5 C11,5.55228475 11.4477153,6 12,6 C12.5522847,6 13,5.55228475 13,5 C13,4.44771525 12.5522847,4 12,4 Z' }
                 ))
-                return aboutSVG
+                return anchorSVG
+            }
+        },
+
+        arrowsCycle: {
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['id', 'arrows-cycle'], ['width', 13], ['height', 13], ['viewBox', '197 -924 573 891']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                arrowsSVG.append(createSVGelem('path', { stroke: 'none', d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' }))
+                return arrowsSVG
+            }
+        },
+
+        arrowsDiagonal: {
+            inwardSVGpath() { return createSVGelem('path', { stroke: 'none',
+                d: 'M5 1h2v6H1V5h2.59L0 1.41 1.41 0 5 3.59zm7.41 10H15V9H9v6h2v-2.59L14.59 16 16 14.59z'
+            })},
+
+            outwardSVGpath() { return createSVGelem('path', { stroke: 'none',
+                d: 'M8 6.59L6.59 8 3 4.41V7H1V1h6v2H4.41zM13 9v2.59L9.41 8 8 9.41 11.59 13H9v2h6V9z'
+            })},
+
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['id', 'arrows-diagonal-icon'], ['width', 16], ['height', 16], ['viewBox', '0 0 16 16']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                icons.arrowsDiagonal.update(arrowsSVG)
+                return arrowsSVG
+            },
+
+            update(...targetIcons) {
+                targetIcons = targetIcons.flat() // flatten array args nested by spread operator
+                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
+                targetIcons.forEach(icon => {
+                    icon.firstChild?.remove() // clear prev paths
+                    icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                })
+            }
+        },
+
+        arrowsDown: {
+            create() {
+                const arrowsDownSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsDownSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 24 24']]
+                arrowsDownSVGattrs.forEach(([attr, value]) => arrowsDownSVG.setAttribute(attr, value))
+                arrowsDownSVG.append(
+                    createSVGelem('path', { stroke: 'none', d: 'M18,13H6a1,1,0,0,1,0-2H18a1,1,0,0,1,0,2Z' }),
+                    createSVGelem('path', { stroke: 'none', d: 'M14.71,18.29a1,1,0,0,1,0,1.42l-2,2a1,1,0,0,1-1.42,0l-2-2a1,1,0,0,1,1.42-1.42l.29.3V16a1,1,0,0,1,2,0v2.59l.29-.3A1,1,0,0,1,14.71,18.29ZM11.29,8.71a1,1,0,0,0,1.42,0l2-2a1,1,0,1,0-1.42-1.42l-.29.3V3a1,1,0,0,0-2,0V5.59l-.29-.3A1,1,0,0,0,9.29,6.71Z' })
+                )
+                return arrowsDownSVG
+            }
+        },
+
+        arrowsTwistedRight: {
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['width', 21], ['height', 21], ['viewBox', '-1 -1 32 32']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                arrowsSVG.append(createSVGelem('path', { stroke: '', d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' }))
+                return arrowsSVG
+            }
+        },
+
+        arrowUp: {
+            create() {
+                const arrowUpSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowUpSVGattrs = [['width', 16], ['height', 16], ['viewBox', '4 2 16 16'],
+                                         ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']]
+                arrowUpSVGattrs.forEach(([attr, value]) => arrowUpSVG.setAttribute(attr, value))
+                arrowUpSVG.append(createSVGelem('path', { stroke: '', fill: 'none', 'stroke-width': '2', linecap: 'round', 'stroke-linejoin': 'round',
+                    d: 'M7 11L12 6L17 11M12 18V7' }))
+                return arrowUpSVG
+            }
+        },
+
+        caretsInward: {
+            create() {
+                const caretsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      caretsSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 24 24']]
+                caretsSVGattrs.forEach(([attr, value]) => caretsSVG.setAttribute(attr, value))
+                caretsSVG.append(createSVGelem('path', { stroke: '', d: 'M11.29,9.71a1,1,0,0,0,1.42,0l5-5a1,1,0,1,0-1.42-1.42L12,7.59,7.71,3.29A1,1,0,0,0,6.29,4.71Zm1.42,4.58a1,1,0,0,0-1.42,0l-5,5a1,1,0,0,0,1.42,1.42L12,16.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z' }))
+                return caretsSVG
+            }
+        },
+
+        checkmark: {
+            create() {
+                const checkmarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      checkmarkSVGattrs = [['id', 'checkmark-icon'], ['width', 10], ['height', 10], ['viewBox', '0 0 20 20']]
+                checkmarkSVGattrs.forEach(([attr, value]) => checkmarkSVG.setAttribute(attr, value))
+                checkmarkSVG.append(createSVGelem('path', { stroke: 'none', d: 'M0 11l2-2 5 5L18 3l2 2L7 18z' }))
+                return checkmarkSVG
+            }
+        },
+
+        chevronDown: {
+            create() {
+                const chevronSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      chevronSVGattrs = [['width', 20], ['height', 20], ['viewBox', '0 0 16 16']]
+                chevronSVGattrs.forEach(([attr, value]) => chevronSVG.setAttribute(attr, value))
+                chevronSVG.append(createSVGelem('path', { stroke: 'none', d: 'M1 5l7 4.61L15 5v2.39L8 12 1 7.39z' }))
+                return chevronSVG                
+            }
+        },
+
+        chevronUp: {
+            create() {
+                const chevronSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      chevronSVGattrs = [['width', 20], ['height', 20], ['viewBox', '0 0 16 16']]
+                chevronSVGattrs.forEach(([attr, value]) => chevronSVG.setAttribute(attr, value))
+                chevronSVG.append(createSVGelem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' }))
+                return chevronSVG                
+            }
+        },
+
+        ddgpt: {
+            create() {
+                const ddgptIcon = document.createElement('img')
+                ddgptIcon.src = GM_getResourceText('ddgptIcon')
+                return ddgptIcon
             }
         },
 
@@ -745,34 +1219,63 @@
                       fontSizeSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 512 512']]
                 fontSizeSVGattrs.forEach(([attr, value]) => fontSizeSVG.setAttribute(attr, value))
                 fontSizeSVG.append(
-                    createSVGpath({ stroke: 'none', d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
-                    createSVGpath({ stroke: 'none', d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
+                    createSVGelem('path', { stroke: 'none', d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
+                    createSVGelem('path', { stroke: 'none', d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
                 )
                 return fontSizeSVG
             }
         },
 
+        languageChars: {
+            create() {
+                const languageCharsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      languageCharsSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -960 960 960']]
+                languageCharsSVGattrs.forEach(([attr, value]) => languageCharsSVG.setAttribute(attr, value))
+                languageCharsSVG.append(createSVGelem('path', { stroke: 'none', d: 'm459-48 188-526h125L960-48H847l-35-100H603L568-48H459ZM130-169l-75-75 196-196q-42-45-78-101t-55-105h117q17 32 40.5 67.5T325-514q35-37 70-93t64-119H0v-106h290v-80h106v80h290v106H572q-23 74-70 152T399-438l82 85-39 111-118-121-194 194Zm508-79h139l-69-197-70 197Z' })                )
+                return languageCharsSVG                
+            }
+        },
+
+        moon: {
+            create() {
+                const moonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      moonSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 24 24']]
+                moonSVGattrs.forEach(([attr, value]) => moonSVG.setAttribute(attr, value))
+                moonSVG.append(createSVGelem('path', { fill: 'none', stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+                    d: 'M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z' }))
+                return moonSVG
+            }
+        },
+
         pin: {
-            filledSVGpath() { return createSVGpath({ stroke: 'none',
-                d: 'M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z'
-            })},
-
-            hollowSVGpath() { return createSVGpath({ stroke: 'none',
-                d: 'M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146zm.122 2.112v-.002.002zm0-.002v.002a.5.5 0 0 1-.122.51L6.293 6.878a.5.5 0 0 1-.511.12H5.78l-.014-.004a4.507 4.507 0 0 0-.288-.076 4.922 4.922 0 0 0-.765-.116c-.422-.028-.836.008-1.175.15l5.51 5.509c.141-.34.177-.753.149-1.175a4.924 4.924 0 0 0-.192-1.054l-.004-.013v-.001a.5.5 0 0 1 .12-.512l3.536-3.535a.5.5 0 0 1 .532-.115l.096.022c.087.017.208.034.344.034.114 0 .23-.011.343-.04L9.927 2.028c-.029.113-.04.23-.04.343a1.779 1.779 0 0 0 .062.46z'
-            })},
-
             create() {
                 const pinSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      pinSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 16 16']]
+                      pinSVGattrs = [['id', 'pin-icon'], ['width', 17], ['height', 17], ['viewBox', '0 0 16 16']]
                 pinSVGattrs.forEach(([attr, value]) => pinSVG.setAttribute(attr, value))
-                pinSVG.append(icons.pin[config.stickySidebar ? 'filledSVGpath' : 'hollowSVGpath']())
+                pinSVG.append(createSVGelem('path', { stroke: '', d: 'M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z' }))
                 return pinSVG
-            },
+            }
+        },
+        
+        questionMark: {
+            create() {
+                const questionMarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      questionMarkSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 -960 960 960']]
+                questionMarkSVGattrs.forEach(([attr, value]) => questionMarkSVG.setAttribute(attr, value))
+                questionMarkSVG.append(createSVGelem('path', { stroke: 'none', d: 'M428-383q0-71 16-111t63-74q47-35 58.5-55.5T577-683q0-35-25-57.5T488-763q-26 0-61 18t-50 70l-114-47q27-82 90.5-122.5T488-885q93 0 151.5 59.5T698-682q0 55-17 95t-70 83q-37 29-48.5 55T550-383H428Zm60 265q-41 0-69.5-28.5T390-216q0-41 28.5-69.5T488-314q41 0 69.5 28.5T586-216q0 41-28.5 69.5T488-118Z' }))
+                return questionMarkSVG
+            }
+        },
 
-            update(pinSVG) {
-                pinSVG.removeChild(pinSVG.firstChild) // clear path
-                pinSVG.append(icons.pin[config.stickySidebar ? 'filledSVGpath' : 'hollowSVGpath']())
-                return pinSVG
+        questionMarkCircle: {
+            create() {
+                const questionMarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      questionMarkSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
+                questionMarkSVGattrs.forEach(([attr, value]) => questionMarkSVG.setAttribute(attr, value))
+                questionMarkSVG.append(createSVGelem('path', { stroke: 'none',
+                    d: 'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z' }
+                ))
+                return questionMarkSVG
             }
         },
         
@@ -781,8 +1284,90 @@
                 const schemeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                       schemeSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -960 960 960']]
                 schemeSVGattrs.forEach(([attr, value]) => schemeSVG.setAttribute(attr, value))
-                schemeSVG.append(createSVGpath({ stroke: 'none', d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
+                schemeSVG.append(createSVGelem('path', { stroke: 'none', d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
                 return schemeSVG
+            }
+        },
+        
+        sidebar: {
+            create() {
+                const sidebarSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sidebarSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -975 900 1000']]
+                sidebarSVGattrs.forEach(([attr, value]) => sidebarSVG.setAttribute(attr, value))
+                sidebarSVG.append(createSVGelem('path', { stroke: 'none', d: 'M800-160q33 0 56.5-23.5T880-240v-480q0-33-23.5-56.5T800-800H160q-33 0-56.5 23.5T80-720v480q0 33 23.5 56.5T160-160h640Zm-240-80H160v-480h400v480Zm80 0v-480H800v480H640Zm160 0v-480 480Zm-160 0h-80 80Zm0-480h-80 80Z' }))
+                return sidebarSVG
+            }
+        },
+        
+        signalStream: {
+            create() {
+                const signalStreamSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      signalStreamSVGattrs = [['width', 16], ['height', 16], ['viewBox', '0 0 32 32']]
+                signalStreamSVGattrs.forEach(([attr, value]) => signalStreamSVG.setAttribute(attr, value))
+                signalStreamSVG.append(createSVGelem('path', { stroke: '', 'stroke-width': 0.5, d: 'M16 11.75c-2.347 0-4.25 1.903-4.25 4.25s1.903 4.25 4.25 4.25c2.347 0 4.25-1.903 4.25-4.25v0c-0.003-2.346-1.904-4.247-4.25-4.25h-0zM16 17.75c-0.966 0-1.75-0.784-1.75-1.75s0.784-1.75 1.75-1.75c0.966 0 1.75 0.784 1.75 1.75v0c-0.001 0.966-0.784 1.749-1.75 1.75h-0zM3.25 16c0.211-3.416 1.61-6.471 3.784-8.789l-0.007 0.008c0.223-0.226 0.361-0.536 0.361-0.879 0-0.69-0.56-1.25-1.25-1.25-0.344 0-0.655 0.139-0.881 0.363l0-0c-2.629 2.757-4.31 6.438-4.506 10.509l-0.001 0.038c0.198 4.109 1.879 7.79 4.514 10.553l-0.006-0.006c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-2.173-2.307-3.573-5.363-3.774-8.743l-0.002-0.038zM9.363 16c0.149-2.342 1.109-4.436 2.6-6.026l-0.005 0.005c0.224-0.226 0.363-0.537 0.363-0.88 0-0.69-0.56-1.25-1.25-1.25-0.345 0-0.657 0.139-0.883 0.365l0-0c-1.94 2.035-3.179 4.753-3.323 7.759l-0.001 0.028c0.145 3.032 1.384 5.75 3.329 7.79l-0.005-0.005c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-1.49-1.581-2.451-3.676-2.591-5.993l-0.001-0.027zM26.744 5.453c-0.226-0.227-0.54-0.368-0.886-0.368-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.139 0.657 0.365 0.883l-0-0c2.168 2.31 3.567 5.365 3.775 8.741l0.002 0.040c-0.21 3.417-1.609 6.471-3.784 8.789l0.007-0.008c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c2.628-2.757 4.308-6.439 4.504-10.509l0.001-0.038c-0.198-4.108-1.878-7.79-4.512-10.553l0.006 0.007zM21.811 8.214c-0.226-0.224-0.537-0.363-0.881-0.363-0.69 0-1.25 0.56-1.25 1.25 0 0.343 0.138 0.653 0.361 0.879l-0-0c1.486 1.585 2.447 3.678 2.594 5.992l0.001 0.028c-0.151 2.343-1.111 4.436-2.601 6.027l0.005-0.005c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c1.939-2.036 3.178-4.754 3.323-7.759l0.001-0.028c-0.145-3.033-1.385-5.751-3.331-7.791l0.005 0.005z' }))
+                return signalStreamSVG
+            }
+        },
+        
+        slash: {
+            create() {
+                const slashSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      slashSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 0 15 15']]
+                slashSVGattrs.forEach(([attr, value]) => slashSVG.setAttribute(attr, value))
+                slashSVG.append(createSVGelem('path', { stroke: '', d: 'M4.10876 14L9.46582 1H10.8178L5.46074 14H4.10876Z' }))
+                return slashSVG
+            }
+        },
+
+        sliders: {
+            create() {
+                const slidersSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      slidersSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 25 25']]
+                slidersSVGattrs.forEach(([attr, value]) => slidersSVG.setAttribute(attr, value))
+
+                // Top track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 5.5, x2: 12, y2: 5.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 18, cy: 5.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 21, y1: 5.5, x2: 23, y2: 5.5 }))
+
+                // Middle track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 12.5, x2: 4, y2: 12.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 8, cy: 12.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 14, y1: 12.5, x2: 23, y2: 12.5 }))
+
+                // Bottom track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 19.5, x2: 8, y2: 19.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 14.5, cy: 19.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 17, y1: 19.5, x2: 23, y2: 19.5 }))
+
+                return slidersSVG
+            }
+        },
+
+        sparkles: {
+            create(style) { // style = ( 'fg' ? filled front sparkle : 'bg' ? filled rear sparkles )
+                const sparklesSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sparklesSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 0 512 512']]
+                sparklesSVGattrs.forEach(([attr, value]) => sparklesSVG.setAttribute(attr, value))
+                sparklesSVG.append(createSVGelem('path', { // large front sparkle
+                    fill: style == 'bg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
+                    d: 'M259.92,262.91,216.4,149.77a9,9,0,0,0-16.8,0L156.08,262.91a9,9,0,0,1-5.17,5.17L37.77,311.6a9,9,0,0,0,0,16.8l113.14,43.52a9,9,0,0,1,5.17,5.17L199.6,490.23a9,9,0,0,0,16.8,0l43.52-113.14a9,9,0,0,1,5.17-5.17L378.23,328.4a9,9,0,0,0,0-16.8L265.09,268.08A9,9,0,0,1,259.92,262.91Z' }))
+                sparklesSVG.append(createSVGelem('polygon', { // small(est) rear-left sparkle
+                    fill: style == 'fg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 24,
+                    points: '108 68 88 16 68 68 16 88 68 108 88 160 108 108 160 88 108 68' }))
+                sparklesSVG.append(createSVGelem('polygon', { // small rear-right sparkle
+                    fill: style == 'fg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
+                    points: '426.67 117.33 400 48 373.33 117.33 304 144 373.33 170.67 400 240 426.67 170.67 496 144 426.67 117.33' }))
+                return sparklesSVG
             }
         },
 
@@ -792,39 +1377,429 @@
                       speakerSVGattrs = [['width', 22], ['height', 22], ['viewBox', '0 0 32 32']]
                 speakerSVGattrs.forEach(([attr, value]) => speakerSVG.setAttribute(attr, value))
                 speakerSVG.append(
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                    createSVGelem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
                         d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                    createSVGelem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
                         d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
-                    createSVGpath({ stroke: 'none', fill: '',
+                    createSVGelem('path', { stroke: 'none', fill: '',
                         d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
                 )
                 return speakerSVG
             }
         },
 
+        speechBalloonLasso: {
+            create() {
+                const speechBalloonLassoSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      speechBalloonLassoSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 -960 960 960']]
+                speechBalloonLassoSVGattrs.forEach(([attr, value]) => speechBalloonLassoSVG.setAttribute(attr, value))
+                speechBalloonLassoSVG.append(createSVGelem('path', { stroke: 'none', d: 'M323-41v-247h-10q-105 0-172.5-67T73-528q0-105 74-179t179-74h36l-44-44 69-69 162 162-162 162-69-69 44-44h-36q-64 0-109.5 45.5T171-528q0 64 45.5 109.5T326-373h95v96l96-96h117q64 0 109.5-45.5T789-528q0-64-45.5-109.5T634-683h10v-98h-10q105 0 179 74t74 179q0 105-74 179t-179 74h-77L323-41Z' }))
+                return speechBalloonLassoSVG
+            }
+        },
+
+        speechBalloons: {
+            create() {
+                const speechBalloonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      speechBalloonSVGattrs = [['width', 16], ['height', 16], ['viewBox', '0 -960 960 960']]
+                speechBalloonSVGattrs.forEach(([attr, value]) => speechBalloonSVG.setAttribute(attr, value))
+                speechBalloonSVG.append(createSVGelem('path', { stroke: 'none', d: 'M350-212q-32.55 0-55.27-22.73Q272-257.45 272-290v-64h492v-342h63.67q33.33 0 55.83 22.72Q906-650.55 906-618v576L736-212H350ZM54-256v-582.4q0-32.38 22.72-54.99Q99.45-916 132-916h482q32.55 0 55.28 22.72Q692-870.55 692-838v334q0 32.55-22.72 55.27Q646.55-426 614-426H224L54-256Zm540-268v-294H152v294h442Zm-442 0v-294 294Z' }))
+                return speechBalloonSVG
+            }
+        },
+
+        sun: {
+            create() {
+                const sunSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sunSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 -960 960 960']]
+                sunSVGattrs.forEach(([attr, value]) => sunSVG.setAttribute(attr, value))
+                sunSVG.append(createSVGelem('path', { stroke: 'none', d: 'M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z' }))
+                return sunSVG
+            }
+        },
+
+        sunglasses: {
+            create() {
+                const sunglassesSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sunglassesSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 512 512']]
+                sunglassesSVGattrs.forEach(([attr, value]) => sunglassesSVG.setAttribute(attr, value))
+                sunglassesSVG.append(createSVGelem('path', { stroke: 'none', d: 'M507.44,185.327c-4.029-5.124-10.185-8.112-16.704-8.112c0,0-48.021,0-156.827,0h-65.774H243.87h-65.774c-108.806,0-156.827,0-156.827,0c-6.519,0-12.675,2.988-16.714,8.112c-4.028,5.125-5.486,11.815-3.965,18.152c0,0,12.421,56.269,19.927,82.534c7.506,26.265,26.265,48.772,86.29,48.772s59.827,0,74.828,0c21.258,0,46.256-19.99,55.028-45.023c4.97-14.16,12.756-32.738,19.338-47.876c6.582,15.138,14.368,33.716,19.338,47.876c8.773,25.033,33.77,45.023,55.028,45.023c15.001,0,14.803,0,74.828,0s78.784-22.507,86.29-48.772c7.496-26.264,19.918-82.534,19.918-82.534C512.935,197.142,511.478,190.452,507.44,185.327z M90.339,278.734C45.314,263.732,40.318,198.7,40.318,198.7s22.507,0,55.028,0L90.339,278.734z M340.464,278.734c-45.015-15.001-50.022-80.034-50.022-80.034s22.508,0,55.029,0L340.464,278.734z' }))
+                return sunglassesSVG
+            }
+        },
+
+        webCorner: {
+            create() {
+                const webSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      webSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 0 32 32']]
+                webSVGattrs.forEach(([attr, value]) => webSVG.setAttribute(attr, value))
+                webSVG.append(createSVGelem('path', { stroke: 'none', d: 'M29.9,2.6c-0.1-0.2-0.3-0.4-0.5-0.5C29.3,2,29.1,2,29,2H3C2.4,2,2,2.4,2,3s0.4,1,1,1h2c5,0,9,4,9,9c0,1.9-0.6,3.8-1.8,5.4l-4.9,4.9c-0.4,0.4-0.4,1,0,1.4C7.5,24.9,7.7,25,8,25s0.5-0.1,0.7-0.3l4.9-4.9c1.6-1.2,3.4-1.8,5.4-1.8c5,0,9,4,9,9v2    c0,0.6,0.4,1,1,1s1-0.4,1-1V3C30,2.9,30,2.7,29.9,2.6zM26.6,4l-4.8,4.8c0-1.9-0.8-3.5-2-4.8H26.6z M11.3,4H15c2.7,0,4.8,2.2,4.8,4.8c0,1-0.3,2-0.9,2.9l-3,3C16,14.2,16,13.6,16,13C16,9.3,14.1,6,11.3,4z M19,16c-0.6,0-1.2,0-1.7,0.1l3-3c0.8-0.6,1.8-0.9,2.9-0.9c2.7,0,4.8,2.2,4.8,4.8v3.7C26,17.9,22.7,16,19,16z M23.2,10.2L28,5.4v6.8C26.8,11,25.1,10.2,23.2,10.2z' }))
+                return webSVG
+            }
+        },
+
         widescreen: {
-            wideSVGpath() { return createSVGpath({ stroke: 'none',
-                fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
+            wideSVGpath() { return createSVGelem('path', {
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
             })},
 
-            tallSVGpath() { return createSVGpath({ stroke: 'none',
-                fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
+            tallSVGpath() { return createSVGelem('path', {
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
             })},
 
             create() {
                 const widescreenSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      widescreenSVGattrs = [['width', 18], ['height', 18], ['viewBox', '8 8 20 20']]
+                      widescreenSVGattrs = [['id', 'widescreen-icon'], ['width', 18], ['height', 18], ['viewBox', '8 8 20 20']]
                 widescreenSVGattrs.forEach(([attr, value]) => widescreenSVG.setAttribute(attr, value))
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
+                icons.widescreen.update(widescreenSVG)
                 return widescreenSVG
             },
 
-            update(widescreenSVG) {
-                widescreenSVG.removeChild(widescreenSVG.firstChild) // clear path
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
-                return widescreenSVG
+            update(...targetIcons) {
+                targetIcons = targetIcons.flat() // flatten array args nested by spread operator
+                if (targetIcons.length == 0)
+                    targetIcons = document.querySelectorAll('#widescreen-icon:not(.chatgpt-notif *)')
+                targetIcons.forEach(icon => {
+                    icon.firstChild?.remove() // clear prev paths
+                    icon.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
+                })
             }
+        }
+    }
+
+    // Define LOGO functions
+
+    const logos = {
+        ddgpt: {
+
+            create() {
+                const ddgptLogo = document.createElement('img') ; ddgptLogo.id = 'ddgpt-logo'
+                logos.ddgpt.update(ddgptLogo)
+                return ddgptLogo
+            },
+
+            update(...targetLogos) {
+                targetLogos = targetLogos.flat() // flatten array args nested by spread operator
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#ddgpt-logo')
+                targetLogos.forEach(logo => logo.src = GM_getResourceText(`ddgpt${ scheme == 'dark' ? 'DS' : 'LS' }logo`))
+            }
+        }
+    }
+
+    // Define UPDATE functions
+
+    const update = {
+
+        appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 61 - appDiv.offsetHeight : -7 }px` },
+
+        appStyle() {
+            appStyle.innerText = (
+                '.no-user-select { -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
+              + '#ddgpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
+              + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners to show resize cursor everywhere
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; z-index: 9999 ; cursor: ew-resize }'
+              + '#ddgpt { border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ; z-index: 5555 ;'
+                  + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
+                  + `background-image: linear-gradient(180deg, ${
+                        scheme == 'dark' ? '#99a8a6 -70%, black 57%'
+                                         : `${ config.bgAnimationsDisabled ? 'white' : '#b6ebff' } -64%, white 33%` }) ;`
+                  + ( !config.fgAnimationsDisabled ?
+                        'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor vertical minimize/restore
+                                  + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor horizontal expand/shrink
+                                  + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) // smoothen 1st app fade-in
+                  + `border: ${ scheme == 'dark' ? 'none' : '1px solid #dadce0' }}`
+              + '#ddgpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) }'
+              + '#ddgpt p { margin: 0 ; ' + ( scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
+              + `#ddgpt .alert-link { color: ${ scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+              + ( scheme == 'dark' ? '#ddgpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
+              + '.app-name, .app-name:hover { font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
+                  + `color: ${ scheme == 'dark' ? 'white' : 'black' }}`
+              + '.kudoai { margin-left: 6px ; color: #aaa } '
+              + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
+              + `.kudoai a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' }}`
+              + '#corner-btns { float: right ; margin-top: 2px }'
+              + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ; transition: transform 0.15s ease ;'
+                  + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
+              + ( config.bgAnimationsDisabled ? '' : ( '#ddgpt-logo, .corner-btn svg, .standby-btn'
+                  + `{ filter: drop-shadow(${ scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
+              + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9' : 'fill: black ; stroke: black' } ;`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transform: scale(1.285)' }}`
+              + '#ddgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+              + '#ddgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
+              + '#font-size-slider-track { width: 98% ; height: 7px ; margin: -6px auto -13px ; padding: 15px 0 ;'
+                  + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
+              + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
+                  + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ; height: calc(100% - 20px) ; cursor: pointer }'
+              + '#font-size-slider-thumb { width: 10px ; height: 25px ; border-radius: 30% ; position: relative ; top: -7.65px ;'
+                  + `transition: transform 0.05s ease ; background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                  + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0px ; cursor: ew-resize }'
+              + ( config.fgAnimationsDisabled ? '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
+              + '.standby-btn { width: 100% ; margin: 9px 0 9px ; padding: 11px 0 ; cursor: pointer ;'
+                  + 'border-radius: 4px ; border: 1px solid #888 ;'
+                  + 'transition: transform 0.15s ease !important }'
+              + '.standby-btn:hover { border-radius: 4px ;'
+                  + `${ scheme == 'dark' ? 'background: white ; color: black' : 'background: black ; color: white' };`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transform: scale(1.045)' }}`
+              + '#ddgpt > pre {'
+                  + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
+                  + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
+                  + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ; border-radius: 10px ; overflow: auto ;'
+                  + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
+                        'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' )
+                  + `${ scheme == 'dark' ? 'background: #2b3a40cf ; color: #f2f2f2 ; border: 1px solid white'
+                                         : 'background: #eaeaeacf ; color: #202124 ; border: none' }}`
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + '#ddgpt section.loading { padding-left: 5px }' // left-pad loading status when sending replies
+              + '#ddgpt + footer { margin: 2px 0 25px ; position: relative }'
+              + `#ddgpt + footer * { color: ${ scheme == 'dark' ? '#ccc' : '#666' } !important }`
+              + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
+                  + 'float: left ; left: 9px ; margin: 34px -14px 0 0 ;' // positioning
+                  + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color: '
+                      + ( scheme == 'dark' ? '##0000' : '#eaeaeacf' ) + '}'
+              + '#app-chatbar {'
+                  + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 13px 12px 0 ;`
+                  + 'font-size: 0.92rem ; height: 19px ; width: 82.6% ; max-height: 200px ; resize: none ; '
+                  + `position: relative ; z-index: 555 ; color: #${ scheme == 'dark' ? 'eee' : '222' } ;`
+                  + 'margin: 3px 0 15px 0 ; padding: 13px 57px 9px 10px ;'
+                  + `background: ${ scheme == 'dark' ? '#5151519e' : '#eeeeee9e' }}`
+              + '.related-queries {'
+                  + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
+                  + `${ isFirefox ? 'top: -20px ; margin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
+              + '.related-query {'
+                  + `margin: 4px 4px ${ scheme == 'dark' ? 7 : 2 }px 0 ; padding: 4px 10px 5px 10px ;`
+                  + `color: ${ scheme == 'dark' ? '#f2f2f2' : '#767676' } ;`
+                  + `background: ${ scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' } ;`
+                  + `border: 1px solid ${ scheme == 'dark' ? '#777' : '#e1e1e1' } ; font-size: 0.88em ; cursor: pointer ;`
+                  + 'border-radius: 0 13px 12px 13px ; width: fit-content ; flex: 0 0 auto ;'
+                  + `box-shadow: 1px 3px ${ scheme == 'dark' ? '11px -8px lightgray' : '8px -6px rgba(169, 169, 169, 0.75)' };`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
+              + '.related-query:hover, .related-query:focus {'
+                  + ( config.fgAnimationsDisabled ? '' : 'transform: scale(1.055) !important ;' )
+                  + `background: ${ scheme == 'dark' ? '#a2a2a270': '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
+              + '.related-query svg { position: relative ; top: 4px ; margin-right: 6px ;' // related query icon
+                  + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
+              + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
+              + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
+              + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
+              + '.chatbar-btn { z-index: 560 ;'
+                  + `border: none ; float: right ; position: relative ; bottom: ${ isFirefox ? 50 : 55 }px ; background: none ; cursor: pointer ;`
+                  + `${ scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa' : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
+              + '.chatbar-btn:hover {'
+                  + `${ scheme == 'dark' ? 'color: #white ; fill: #white ; stroke: #white' : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
+              + ( // rendered markdown styles
+                    '#ddgpt > pre h1 { font-size: 24px } #ddgpt > pre h2 { font-size: 22px } #ddgpt > pre h3 { font-size: 20px }' // size headings
+                  + '#ddgpt > pre h1, #ddgpt > pre h2, #ddgpt > pre h3 { margin-bottom: -15px }' // reduce gap after headings
+                  + '#ddgpt > pre ol { margin: -30px 0 -21px }' // reduce v-padding
+                  + '#ddgpt > pre ol > li { margin: -10px 0 0 1.6em ; list-style: decimal }' // reduce v-padding, show number markers
+                  + '#ddgpt > pre ol > li::marker { font-size: 0.9em }' // shrink number markers
+                  + '#ddgpt > pre ul { margin: -28px 0 -21px }' // reduce v-padding
+                  + '#ddgpt > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }' ) // reduce v-padding, show bullets
+              + '.katex-html { display: none } ' // hide unrendered math
+              + '.chatgpt-notif { fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }'
+              + '.notif-close-btn { display: none !important }' // hide notif close btn
+              + '.chatgpt-modal > div { padding: 20px 25px 24px 25px !important ;' // increase alert padding
+                  + 'background-color: white !important ; color: black }'
+              + '.chatgpt-modal h2 { margin: 0 ; padding: 0 ; font-weight: bold }' // shrink margin/padding around alert titles, force bold
+              + '.modal-close-btn { top: px !important ; right: -11px !important }' // re-pos modal close button
+              + `.modal-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
+              + `.modal-close-btn:hover { background-color: #${ scheme == 'dark' ? '666464' : 'f2f2f2' } !important }`
+              + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 1.55rem }' // pos/size modal msg
+              + `.chatgpt-modal a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + `.modal-buttons { margin: 24px -5px -3px ${ isMobile ? -5 : -15 }px !important }` // pos modal buttons
+              + '.chatgpt-modal button {' // modal buttons
+                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
+                  + `padding: ${ isMobile? '7px' : '4px 10px' } !important ;`
+                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+                  + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
+                  + `${ scheme == 'dark' ? 'background: none ; color: white' : '' }}`
+              + '.primary-modal-btn { background: black !important ; color: white !important }'
+              + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
+              + ( scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
+                      + 'background-color: black !important ; color: white }'
+                  + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
+                  + '.chatgpt-modal a { color: #00cfff !important }'
+                  + '.chatgpt-modal button:hover { background-color: #00cfff !important ; color: black !important }' ) : '' )
+              + '[class*="-modal-bg"] {'
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
+                  + 'transition: background-color .15s ease ;' // speed to show bg dim
+                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
+              + '[class*="-modal-bg"].animated > div { z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
+              + '[class$="-modal"] {' // native modals + chatgpt.alert()s
+                  + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
+                  + 'opacity: 0 ;' // to fade-in
+                  + `background-image: linear-gradient(180deg, ${ scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
+                  + `border: 1px solid ${ scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                  + `color: ${ scheme == 'dark' ? 'white' : 'black' } ;`
+                  + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
+                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
+                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
+              + ( !config.fgAnimationsDisabled ? ( '[class$="-modal"] button { transition: transform 0.15s ease }' 
+                                                 + '[class$="-modal"] button:hover { transform: scale(1.085) }' ) : '' )
+              + '.ddgpt-menu { position: absolute ; z-index: 2250 ;'
+                  + 'padding: 3.5px 5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
+              + '.ddgpt-menu ul { margin: 0 ; padding: 0 ; list-style: none }'
+              + '.ddgpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
+              + '.ddgpt-menu-item:not(.ddgpt-menu-header):hover {'
+                  + 'cursor: pointer ; background: white ; color: black ; fill: black }'
+              + '#checkmark-icon { fill: #b3f96d } .ddgpt-menu-item:hover #checkmark-icon { fill: green }'
+
+              // Glowing modal btns
+              + ':root { --glow-color: hsl(186 100% 69%); }'
+              + '.glowing-btn { perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
+                  + '-webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) ;' 
+                  + 'box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) ;' 
+                  + '-moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) }' 
+              + '.glowing-txt { animation: text-flicker 3s linear infinite ;'
+                  + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
+              + '.faulty-letter { opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
+              + '.glowing-btn::before { content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
+                  + 'opacity: 0.7 ; filter: blur(1em) ; transform: translateY(120%) rotateX(95deg) scale(1, 0.35) ;'
+                  + 'background: var(--glow-color) ; pointer-events: none }'
+              + '.glowing-btn::after { content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
+                  + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
+                  + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
+              + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover .glowing-txt { animation: none }'
+              + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
+              + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
+              + '.glowing-btn:hover:after { opacity: 1 }'
+              + '@keyframes faulty-flicker { 0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
+                  + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 } 87% { opacity: 1 }}'
+              + '@keyframes text-flicker { 0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
+                  + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 } 70% { opacity: 0.7 }'
+                  + '72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
+              + '@keyframes border-flicker { 0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
+
+              // Settings modal
+              + '#ddgpt-settings {'
+                  + `min-width: ${ isPortrait ? 288 : 688 }px ; max-width: 75vw ; word-wrap: break-word ;`
+                  + 'padding: 9px 5px 1px ; margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + `${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
+              + '@keyframes alert-zoom-fade-out { 0% { opacity: 1 }'
+                  + '50% { opacity: 0.25 ; transform: scale(1.05) }'
+                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
+              + '#ddgpt-settings-title { font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 3px -3px 0 }'
+              + `#ddgpt-settings-title h4 { font-size: ${ isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -39px }`
+              + '#ddgpt-settings-close-btn {'
+                  + 'cursor: pointer ; width: 20px ; height: 20px ; border-radius: 17px ; float: right ;'
+                  + 'position: absolute ; top: 10px ; right: 13px }'
+              + `#ddgpt-settings-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + '#ddgpt-settings-close-btn svg { margin: 6.5px }' // center SVG for hover underlay
+              + `#ddgpt-settings-close-btn:hover { background-color: #f2f2f2${ scheme == 'dark' ? '00' : '' }}`
+              + '#ddgpt-settings ul { list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
+                  + `width: ${ isPortrait ? 100 : 50 }% }` // set width based on column cnt
+              + '#ddgpt-settings li { height: 25px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
+                  + `padding: 4px 10px ; border-bottom: 1px dotted ${ scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
+                  + 'border-radius: 3px }' // make highlight strips slightly rounded
+              + '#ddgpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
+              + '#ddgpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
+              + '#ddgpt-settings li, #ddgpt-settings li label { cursor: pointer }' // add finger on hover
+              + '#ddgpt-settings li:hover {'
+                  + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;' // add highlight strip
+                  + `${ config.fgAnimationsDisabled || isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
+              + '#ddgpt-settings li > input { float: right }' // pos toggles
+              + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
+              + '#scheme-menu-entry > span > svg { position: relative ; top: 3px ; margin-left: 4px }' // v-align/left-pad Scheme status icon
+              + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
+              + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+              + `#about-menu-entry span { color: ${ scheme == 'dark' ? '#28ee28' : 'green' }}`
+              + '#about-menu-entry > span { width: 92px ; overflow: hidden ;' // outer About status span
+                  + `${ config.fgAnimationsDisabled ? '' : 'mask-image: linear-gradient(to right, transparent, black 20%, black 89%, transparent)' }}`
+              + '#about-menu-entry > span > div { text-wrap: nowrap ;'
+                  + `${ config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
+              + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
+              + `.about-em { color: ${ scheme == 'dark' ? 'white' : 'green' } !important }`
+            )
+        },
+
+        chatbarWidth() {
+            const chatbar = appDiv.querySelector('#app-chatbar')
+            if (chatbar) chatbar.style.width = `${
+                config.widerSidebar && !config.anchored ? 85.6 : config.expanded ? 86.9 : 82.6 }%`
+        },
+
+        rqVisibility() {
+            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+            if (relatedQueriesDiv) { // update visibility based on latest setting
+                relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
+                appFooter.style.right = ( // counteract right-offset bug from chatbar padding
+                    relatedQueriesDiv.style.display == 'flex' ? 0 : '-72px' )
+            }
+        },
+
+        scheme(newScheme) {
+            scheme = newScheme ; logos.ddgpt.update() ; update.appStyle() ; update.stars() ; toggle.btnGlow() ; 
+            modals.settings.updateSchemeStatus()
+        },
+
+        stars() {
+            ['sm', 'med', 'lg'].forEach(size =>
+                document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
+                    starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
+                    : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+            ))
+        },
+
+        tooltip(buttonType) { // text & position
+            const cornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows']
+                      .filter(type => { // exclude invisible ones                                                
+                          const btn = appDiv.querySelector(`#${type}-btn`)
+                          return btn && getComputedStyle(btn).display != 'none' })
+            const [ctrAddend, spreadFactor] = appDiv.querySelector('.standby-btn') ? [6, 29] : [8, 29],
+                  iniRoffset = spreadFactor * ( buttonType == 'send' ? 1.48
+                                              : buttonType == 'shuffle' ? 2.48
+                                              : cornerBtnTypes.indexOf(buttonType) +1 ) + ctrAddend
+            // Update text
+            tooltipDiv.innerText = (
+                buttonType == 'chevron' ? msgs[`tooltip_${ config.minimized ? 'restore' : 'minimize' }`]
+                                                      || ( config.minimized ? 'Restore' : 'Minimize' )
+              : buttonType == 'about' ? msgs.menuLabel_about || 'About'
+              : buttonType == 'settings' ? msgs.menuLabel_settings || 'Settings'
+              : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
+              : buttonType == 'font-size' ? msgs.tooltip_fontSize || 'Font size'
+              : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
+                                       + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
+              : buttonType == 'arrows' ? ( config.expanded ? `${ msgs.tooltip_shrink || 'Shrink' }`
+                                                           : `${ msgs.tooltip_expand || 'Expand' }` )
+              : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply'
+              : buttonType == 'shuffle' ? msgs.tooltip_askRandQuestion || 'Ask random question' : '' )
+    
+            // Update position
+            tooltipDiv.style.top = `${ !/send|shuffle/.test(buttonType) ? -15
+              : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 36 }px`
+            tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
+        },
+    
+        tweaksStyle() {
+
+            // Update tweaks style based on settings
+            tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
+                                  + ( config.stickySidebar ? ssbStyles
+                                    : config.anchored ? ( anchorStyles + ( config.expanded ? expandedStyles : '' )) : '' )
+    
+            // Update 'by KudoAI' visibility based on corner space available
+            const kudoAIspan = appDiv.querySelector('.kudoai')
+            if (kudoAIspan) {
+                const visibleBtnCnt = [...appDiv.querySelectorAll('.corner-btn')]
+                    .filter(btn => getComputedStyle(btn).display != 'none').length
+                kudoAIspan.style.display = visibleBtnCnt <= (
+                    config.anchored && config.expanded ? 10
+                 : !config.anchored && config.widerSidebar ? 7 : 4 ) ? '' : 'none'
+            }
+
+            // Update <pre> max-height for various mode toggles
+            const answerPre = appDiv.querySelector('pre'),
+                  relatedQueries = appDiv.querySelector('.related-queries'),
+                  shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 245,
+                  longerPreHeight = window.innerHeight - 255
+            if (answerPre) answerPre.style.maxHeight = (
+                config.stickySidebar ? ( relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
+              : config.anchored ? `${ longerPreHeight - ( config.expanded ? 115 : 365 ) }px` : 'none'
+            )
         }
     }
 
@@ -832,170 +1807,18 @@
 
     function isCenteredMode() { return document.documentElement.classList.toString().includes('center') }
 
-    function updateTitleAnchor() {
-        if (appDiv.querySelector('.loading, #ddgpt-alert')) return // only update reply UI
-
-        const appTitleVisible = !!appDiv.querySelector('.app-name'),
-              logoVisible = !!appDiv.querySelector('img')
-
-        // Create/fill/classify/style/append/update title anchor
-        if (!appTitleVisible || !logoVisible) {
-            const appTitleAnchor = createAnchor(config.appURL, (() => {
-                if (appLogoImg.loaded) { // size/pos/return app logo img
-                    appLogoImg.width = 181 ; appLogoImg.style.margin = '-7px 0'
-                    return appLogoImg
-                } else { // create/fill/return app name span
-                    const appNameSpan = document.createElement('span')
-                    appNameSpan.innerText = '🤖 ' + config.appName
-                    return appNameSpan
-                }
-            })())
-            appTitleAnchor.classList.add('app-name', 'no-user-select')
-            if (!appTitleVisible) appDiv.append(appTitleAnchor)
-            else appDiv.querySelector('.app-name').replaceWith(appTitleAnchor) // for appLogoImg.onload() callback
-        }
-    }
-
-    function updateAppLogoSrc() {
-        appLogoImg.onerror = () => appLogoImg.style.display = 'none'
-        appLogoImg.src = 'data:image/png;base64,'
-            + ( scheme == 'light' ? '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'
-                                  : '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' )
-    }
-
-    function updateAppStyle() {
-        appStyle.innerText = (
-            '.no-user-select { -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
-          + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners to show grabbing cursor everywhere
-              + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; z-index: 9999 ; cursor: grabbing }'
-          + '#ddgpt { border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ;'
-              + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
-              + `${ scheme == 'dark' ? 'border: none ; background: #282828' : 'border: 1px solid #dadce0 ; background: #fff' }}`
-          + '#ddgpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) }'
-          + '#ddgpt p { margin: 0 ; ' + ( scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
-          + `#ddgpt .alert-link { color: ${ scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
-          + ( scheme == 'dark' ? '#ddgpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
-          + '.app-name, .app-name:hover { font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
-              + `color: ${ scheme == 'dark' ? 'white' : 'black' }}`
-          + '.kudoai { margin-left: 6px ; color: #aaa } '
-          + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
-          + `.kudoai a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' }}`
-          + '#corner-btns { float: right ; margin-top: 2px }'
-          + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ;'
-              + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
-          + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #aaa ; stroke: #aaa' : 'fill: black ; stroke: black' } ;`
-              + 'transform: scale(1.185) ; transition: transform 0.05s ease }'
-          + '#ddgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-          + '#ddgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
-          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: -6px auto -13px ; padding: 15px 0 ;'
-              + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
-          + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
-              + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ; height: calc(100% - 20px) ; cursor: pointer }'
-          + '#font-size-slider-thumb { width: 10px ; height: 25px ; border-radius: 30% ; position: relative ; top: -7.65px ;'
-              + `background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-              + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0px ; cursor: grab ; cursor: -webkit-grab ; cursor: -moz-grab }'
-          + '#font-size-slider-thumb:active { cursor: grabbing ; cursor: -webkit-grabbing ; cursor: -moz-grabbing }'
-          + '.standby-btn { width: 100% ; margin: 9px 0 9px ; padding: 11px 0 ; cursor: pointer ;'
-              + 'border-radius: 4px ; border: 1px solid #888 ;'
-              + 'transform: scale(1) ; transition: transform 0.1s ease !important }'
-          + '.standby-btn:hover { border-radius: 4px ; transform: scale(1.025) ;'
-              + `${ scheme == 'dark' ? 'background: white ; color: black' : 'background: black ; color: white' }}`
-          + '#ddgpt > pre {'
-              + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
-              + `line-height: ${ config.fontSize * config.lineHeightRatio }px ;`
-              + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ; border-radius: 10px ; overflow: auto ;'
-              + ( scheme == 'dark' ? 'background: #3a3a3a ; color: #f2f2f2' : '' ) + '}'
-          + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-          + '#ddgpt section.loading { padding-left: 5px }' // left-pad loading status when sending replies
-          + '#ddgpt + footer { margin: 2px 0 25px }'
-          + `#ddgpt + footer * { color: ${ scheme == 'dark' ? '#ccc' : '#666' } !important }`
-          + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
-              + 'float: left ; left: 9px ; margin: 34px -14px 0 0 ;' // positioning
-              + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color: '
-                  + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
-          + '#app-chatbar {'
-              + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 13px 12px 0 ;`
-              + 'font-size: 0.92rem ; height: 19px ; width: 94.6% ; max-height: 200px ; resize: none ; '
-              + `color: #${ scheme == 'dark' ? 'eee' : '222' } ;`
-              + 'margin: 3px 0 15px 0 ; padding: 13px 10px 9px 10px ;'
-              + 'background: ' + ( scheme == 'dark' ? '#515151' : '#eeeeee70' ) + ' } '
-          + '.related-queries {'
-              + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
-              + `${ isFirefox ? 'top: -20px ; margin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
-          + '.related-query {'
-              + `margin: 4px 4px ${ scheme == 'dark' ? 7 : 2 }px 0 ; padding: 4px 10px 5px 10px ;`
-              + `color: ${ scheme == 'dark' ? '#f2f2f2' : '#767676' } ;`
-              + `background: ${ scheme == 'dark' ? '#424242' : '#dadada12' } ;`
-              + `border: 1px solid ${ scheme == 'dark' ? '#777' : '#e1e1e1' } ; font-size: 0.88em ; cursor: pointer ;`
-              + 'border-radius: 0 13px 12px 13px ; width: fit-content ; flex: 0 0 auto ;'
-              + `box-shadow: 1px 3px ${ scheme == 'dark' ? '11px -8px lightgray' : '8px -6px rgba(169, 169, 169, 0.75)' };`
-              + 'transform: scale(1) ; transition: transform 0.1s ease !important }'
-          + '.related-query:hover, .related-query:focus { transform: scale(1.025) !important ;'
-              + `background: ${ scheme == 'dark' ? '#a2a2a270': '#e5edff ; color: #000000a8 ; border-color: #a3c9ff' }}`
-          + '.related-query svg { position: relative ; top: 4px ; margin-right: 6px ;' // related query icon
-              + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
-          + '.fade-in { opacity: 0 ; transform: translateY(10px) ; transition: opacity 0.5s ease, transform 0.5s ease }'
-          + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
-          + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
-          + '#send-btn { border: none ; float: right ; position: relative ; background: none ;'
-              + `color: ${ scheme == 'dark' ? '#aaa' : 'lightgrey' } ; cursor: pointer }`
-          + `#send-btn:hover { color: ${ scheme == 'dark' ? 'white' : '#638ed4' } }`
-          + ( // rendered markdown styles
-                '#ddgpt > pre h1 { font-size: 24px } #ddgpt > pre h2 { font-size: 22px } #ddgpt > pre h3 { font-size: 20px }' // size headings
-              + '#ddgpt > pre h1, #ddgpt > pre h2, #ddgpt > pre h3 { margin-bottom: -15px }' // reduce gap after headings
-              + '#ddgpt > pre ol { margin: -30px 0 -21px }' // reduce v-padding
-              + '#ddgpt > pre ol > li { margin: -10px 0 0 1.6em ; list-style: decimal }' // reduce v-padding, show number markers
-              + '#ddgpt > pre ol > li::marker { font-size: 0.9em }' // shrink number markers
-              + '#ddgpt > pre ul { margin: -28px 0 -21px }' // reduce v-padding
-              + '#ddgpt > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }' ) // reduce v-padding, show bullets
-          + '.katex-html { display: none } ' // hide unrendered math
-          + '.chatgpt-notif { padding: 11px 15px 6px 12px !important }' // pad site notifications
-          + '.chatgpt-modal > div { padding: 20px 25px 24px 25px !important ;' // increase alert padding
-              + 'background-color: white !important ; color: black }'
-          + '.chatgpt-modal h2 { margin: 0 ; padding: 0 ; font-weight: bold }' // shrink margin/padding around alert titles, force bold
-          + '.modal-close-btn { top: -4px !important ; right: -11px !important }' // re-pos modal close button
-          + `.modal-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
-          + `.modal-close-btn:hover { background-color: #${ scheme == 'dark' ? '666464' : 'f2f2f2' } !important }`
-          + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 1.55rem }' // pos/size modal msg
-          + `.chatgpt-modal a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-          + `.modal-buttons { margin: 24px -5px -3px ${ isMobile ? -5 : -15 }px !important }` // pos modal buttons
-          + '.chatgpt-modal button {' // modal buttons
-              + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
-              + `padding: ${ isMobile? '7px' : '4px 10px' } !important ;`
-              + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-              + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
-              + ( scheme == 'dark' ? 'background: none ; color: white' : '') + '}'
-          + '.primary-modal-btn { background: black !important ; color: white !important }'
-          + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
-          + ( scheme == 'dark' ? // additional darkmode alert styles
-              ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
-                  + 'background-color: black !important ; color: white }'
-              + '.primary-modal-btn { background: white !important ; color: black !important }'
-              + '.chatgpt-modal button:hover { background-color: #00cfff !important ; color: black !important }' ) : '' )
-          + '#ddgpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
-        )
-    }
-
-    function updateTweaksStyle() {
-
-        // Update tweaks style based on settings (for tweaks init + show.reply() + toggleSidebar())
-        const isStandbyMode = appDiv.querySelector('.standby-btn'),
-              answerIsLoaded = appDiv.querySelector('.corner-btn')
-        tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                              + ( config.stickySidebar && !isStandbyMode && answerIsLoaded ? ssbStyles : '' )
-
-        // Update 'by KudoAI' visibility based on corner space available
-        const kudoAIspan = appDiv.querySelector('.kudoai')
-        if (kudoAIspan) kudoAIspan.style.display = (
-            appDiv.querySelectorAll('.corner-btn').length < ( isMobile ? 3 : !config.widerSidebar ? 6 : 8 )) ? '' : 'none'
-
-        // Update <pre> max-height in Sticky Sidebar mode based on RQ visibility (for get.reply()'s RQ show + menu RQ toggle)
-        const answerPre = appDiv.querySelector('pre'),
-              relatedQueries = appDiv.querySelector('.related-queries'),
-              shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 245,
-              longerPreHeight = window.innerHeight - 255
-        if (answerPre) answerPre.style.maxHeight = !config.stickySidebar ? 'none' : (
-            relatedQueries?.offsetHeight > 0 ? `${ shorterPreHeight }px` : `${ longerPreHeight }px` )
+    function fillStarryBG(targetNode) {
+        const starsDivsContainer = document.createElement('div')
+        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+                                         + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
+                                         + 'z-index: -1'; // allow interactive elems to be clicked
+        ['sm', 'med', 'lg'].forEach(starSize => {
+            const starsDiv = document.createElement('div')
+            starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
+                : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+            starsDivsContainer.append(starsDiv)
+        })
+        targetNode.prepend(starsDivsContainer)
     }
 
     const fontSizeSlider = {
@@ -1006,7 +1829,7 @@
 
             // Create/append slider elems
             fontSizeSlider.cursorOverlay = document.createElement('div')
-            fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for grabbing cursor
+            fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for resize cursor
             const slider = document.createElement('div') ; slider.id = 'font-size-slider-track'
             slider.className = 'fade-in-less' ; slider.style.display = 'none'
             const sliderThumb = document.createElement('div') ; sliderThumb.id = 'font-size-slider-thumb'
@@ -1023,6 +1846,7 @@
             // Add event listeners for dragging thumb
             let isDragging = false, startX, startLeft
             sliderThumb.addEventListener(inputEvents.down, event => {
+                event.preventDefault() // prevent text selection
                 isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft     
                 document.body.appendChild(fontSizeSlider.cursorOverlay)
             })
@@ -1042,6 +1866,7 @@
 
             // Add event listener for seek/dragging by inputEvents.down on track
             slider.addEventListener(inputEvents.down, event => {
+                event.preventDefault() // prevent text selection
                 const clientX = event.clientX || event.touches?.[0]?.clientX
                 moveThumb(clientX - slider.getBoundingClientRect().left - sliderThumb.offsetWidth / 2)
                 isDragging = true ; startX = clientX ; startLeft = sliderThumb.offsetLeft // manually init dragging
@@ -1085,29 +1910,6 @@
         }
     }
 
-    function updateTooltip(buttonType) { // text & position
-        const cornerBtnTypes = ['about', 'speak', 'ssb', 'csb', 'font-size', 'wsb'],
-              [ctrAddend, spreadFactor] = appDiv.querySelector('.standby-btn') ? [20, 15] : [6, 27.5],
-              iniRoffset = spreadFactor * (buttonType == 'send' ? 1.5 : cornerBtnTypes.indexOf(buttonType) + 1) + ctrAddend
-
-        // Update text
-        tooltipDiv.innerText = (
-            buttonType == 'about' ? msgs.menuLabel_about || 'About'
-          : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
-          : buttonType == 'ssb' ? (( config.stickySidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
-                                   + ( msgs.menuLabel_stickySidebar || 'Sticky Sidebar' ))
-          : buttonType == 'csb' ? msgs.menuLabel_colorScheme || 'Color Scheme'
-          : buttonType == 'font-size' ? msgs.tooltip_fontSize || 'Font size'
-          : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
-                                   + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
-          : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply' : '' )
-
-        // Update position
-        tooltipDiv.style.top = `${ buttonType != 'send' ? -15
-          : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 36 }px`
-        tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
-    }
-
     function handleRQevent(event) { // for attachment/removal in `get.reply()` + `show.reply().handleSubmit()`
         const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
         if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
@@ -1126,45 +1928,214 @@
 
     // Define FACTORY functions
 
-    function createSVGpath(attrs) {
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-        for (const attr in attrs) path.setAttributeNS(null, attr, attrs[attr])
-        return path
-    }
-
-    function createAnchor(linkHref, displayContent) {
+    function createAnchor(linkHref, displayContent, attrs = {}) {
         const anchor = document.createElement('a'),
-              anchorAttrs = [['href', linkHref], ['target', '_blank'], ['rel', 'noopener']]
-        anchorAttrs.forEach(([attr, value]) => anchor.setAttribute(attr, value))
+              defaultAttrs = { href: linkHref, target: '_blank', rel: 'noopener' },
+              finalAttrs = { ...defaultAttrs, ...attrs }
+        Object.entries(finalAttrs).forEach(([attr, value]) => anchor.setAttribute(attr, value))
         if (displayContent) anchor.append(displayContent)
         return anchor
     }
 
+    function createStyle(content) {
+        const style = document.createElement('style')
+        if (content) style.innerText = content
+        return style
+    }
+
+    function createSVGelem(type, attrs) {
+        const elem = document.createElementNS('http://www.w3.org/2000/svg', type)
+        for (const attr in attrs) elem.setAttributeNS(null, attr, attrs[attr])
+        return elem
+    }
+
     // Define TOGGLE functions
 
-    function toggleProxyMode() {
-        saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
-        notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
-        refreshMenu()
-        if (appDiv.querySelector('#ddgpt-alert')) location.reload() // re-send query if user alerted
-    }
+    const toggle = {
 
-    function toggleSidebar(mode) {
-        saveSetting(mode + 'Sidebar', !config[mode + 'Sidebar'])
-        updateTweaksStyle()
-        const wsbSVG = appDiv.querySelector('#wsb-btn svg'),
-              ssbSVG = appDiv.querySelector('#ssb-btn svg')
-        if (mode == 'wider' && wsbSVG) icons.widescreen.update(wsbSVG)
-        else if (mode == 'sticky' && ssbSVG) icons.pin.update(ssbSVG)
-        notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
-            + ' ' + menuState.word[+config[mode + 'Sidebar']])
-        refreshMenu()
-    }
+        anchorMode(state = '') {
+            const prevState = config.anchored // for restraining notif if no change from #pin-menu 'Sidebar' click
+            if (state == 'on' || !state && !config.anchored) { // toggle on
+                saveSetting('anchored', true)
+                if (config.stickySidebar) toggle.sidebar('sticky') // off
+            } else {
+                saveSetting('anchored', false)
+                if (config.expanded) toggle.expandedMode('off')
+            }
+            update.tweaksStyle() ; update.chatbarWidth() ; update.rqVisibility() // apply new state to UI
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const anchorToggle = document.querySelector('[id*="anchor"][id*="menu-entry"] input')
+                if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
+            }
+            if (prevState != config.anchored) {
+                menus.pin.topPos = menus.pin.rightPos = null
+                notify(( msgs.mode_anchor || 'Anchor Mode' ) + ' ' + menuState.word[+config.anchored])
+            }
+        },
 
-    function toggleTooltip(event) { // visibility
-        tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for updateTooltip() y-pos calc
-        updateTooltip(event.currentTarget.id.replace(/-btn$/, ''))
-        tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
+        animations(layer) {
+            saveSetting(layer + 'AnimationsDisabled', !config[layer + 'AnimationsDisabled'])
+            update.appStyle() ; if (layer == 'bg') update.stars()
+            if (layer == 'fg' && modals.settings.get()) {
+
+                // Toggle ticker-scroll of About status label
+                const aboutStatusLabel = document.querySelector('#about-menu-entry > span > div')
+                aboutStatusLabel.innerHTML = modals.settings.aboutContent[config.fgAnimationsDisabled ? 'short' : 'long']
+                aboutStatusLabel.style.float = config.fgAnimationsDisabled ? 'right' : ''
+
+                // Toggle button glow
+                if (scheme == 'dark') toggle.btnGlow()
+            }
+            notify(`${settingsProps[layer + 'AnimationsDisabled'].label} ${menuState.word[+!config[layer + 'AnimationsDisabled']]}`)
+        },
+
+        autoGet() {
+            saveSetting('autoGet', !config.autoGet)
+            if (appDiv.querySelector('.standby-btn')) show.reply.standbyBtnClickHandler()
+            if (config.autoGet) // disable Prefix/Suffix mode if enabled
+                ['prefix', 'suffix'].forEach(manualMode => {
+                    if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
+            notify(`${settingsProps.autoGet.label} ${menuState.word[+config.autoGet]}`)
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const autoGetToggle = document.querySelector('[id*="autoGet"][id*="menu-entry"] input')
+                if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
+            }
+        },
+
+        btnGlow(state = '') {
+            const removeCondition = state == 'off' || scheme != 'dark' || config.fgAnimationsDisabled
+            document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
+                setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
+                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers                
+                let btnTextSpan = btn.querySelector('span')
+                if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
+                    btnTextSpan = document.createElement('span')
+                    btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
+                    btn.append(btnTextSpan)
+                }
+                btnTextSpan.classList[removeCondition ? 'remove' : 'add']('glowing-txt')
+            })
+        },
+
+        expandedMode(state = '') {
+            saveSetting('expanded', state == 'on' || !state && !config.expanded)
+            if (config.minimized) toggle.minimized('off') // since user wants to see stuff
+            update.tweaksStyle() ; update.chatbarWidth() // apply new state to UI
+            icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
+        },
+
+        manualGet(mode) { // Prefix/Suffix modes
+            const modeKey = mode + 'Enabled'
+            saveSetting(modeKey, !config[modeKey])
+            if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
+            notify(`${settingsProps[modeKey].label} ${menuState.word[+config[modeKey]]}`)
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const modeToggle = document.querySelector(`[id*="${modeKey}"][id*="menu-entry"] input`)
+                if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
+            }
+        },
+
+        minimized(state = '') {
+            saveSetting('minimized', state == 'on' || !state && !config.minimized)
+            const chevronBtn = appDiv.querySelector('#chevron-btn')
+            if (chevronBtn) { // update icon
+                const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
+                chevronSVG.onclick = () => toggle.minimized()
+                chevronBtn.removeChild(chevronBtn.firstChild) ; chevronBtn.append(chevronSVG)
+            }
+            update.appBottomPos() // toggle visual minimization
+            if (!isMobile) tooltipDiv.style.opacity = 0 // remove lingering tooltip
+        },
+
+        proxyMode() {
+            saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
+            notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
+            refreshMenu()
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const proxyToggle = document.querySelector('[id*="proxy"][id*="menu-entry"] input')
+                if (proxyToggle.checked != config.proxyAPIenabled) modals.settings.toggle.switch(proxyToggle)
+            }
+            if (appDiv.querySelector('#ddgpt-alert')) location.reload() // re-send query if user alerted 
+        },
+
+        relatedQueries() {
+            saveSetting('rqDisabled', !config.rqDisabled)
+            update.rqVisibility()
+            if (!config.rqDisabled && !appDiv.querySelector('.related-queries')) { // get related queries for 1st time
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.related(lastQuery).then(queries => show.related(queries))
+                    .catch(err => { consoleErr(err.message)
+                        if (get.related.status != 'done') api.tryNew(get.related) })
+            }
+            update.tweaksStyle() // toggle <pre> max-height
+            notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
+        },
+
+        sidebar(mode, state = '') {
+            const prevStickyState = config.stickySidebar // for restraining notif if no change from #pin-menu Nothing-click
+            if (state == 'on' || !state && !config[mode + 'Sidebar']) { // toggle on
+                if (mode == 'sticky' && config.anchored) toggle.anchorMode()
+                saveSetting(mode + 'Sidebar', true)
+            } else saveSetting(mode + 'Sidebar', false)
+            update.tweaksStyle() ; update.chatbarWidth() // apply new state to UI
+            if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const stickySidebarToggle = document.querySelector('[id*="sticky"][id*="menu-entry"] input')
+                if (stickySidebarToggle.checked != config.stickySidebar) modals.settings.toggle.switch(stickySidebarToggle)
+            }
+            if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
+            notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
+                + ' ' + menuState.word[+config[mode + 'Sidebar']])
+        },
+
+        streaming() {
+            const streamingToggle = document.querySelector('[id*="streaming"][id*="menu-entry"] input'),
+                  scriptCatLink = isFirefox ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
+                                : isEdge    ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
+                                            : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
+            if (!/Tampermonkey|ScriptCat/.test(getUserscriptManager())) { // alert userscript manager unsupported, suggest TM/SC
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
+                        + ( !isEdge && !isBrave ? // suggest TM for supported browsers
+                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${ msgs.alert_and || 'and' }`
+                                : '' )
+                        + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
+                        + ` (${ msgs.alert_userscriptMgrNoStream || 'Your userscript manager does not support returning stream responses' }.)`
+                )
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else if (getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave)) { // alert TM/browser unsupported, suggest SC
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
+                        + `${ isChrome ? 'Chrome' : isEdge ? 'Edge' : 'Brave' } ${ msgs.alert_whenUsing || 'when using' } Tampermonkey. `
+                        + `${ msgs.alert_pleaseUse || 'Please use' } <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
+                            + `${ msgs.alert_instead || 'instead' }.`
+                )
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
+                let msg = `${settingsProps.streamingDisabled.label} `
+                        + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
+                        + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
+                        + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
+                const switchPhrase = msgs.alert_switchingOn || 'switching on'
+                msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
+                const alertID = siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg),
+                      alert = document.getElementById(alertID)
+                alert.querySelector('[href="#"]').onclick = () => { alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else { // functional toggle
+                saveSetting('streamingDisabled', !config.streamingDisabled)
+                notify(settingsProps.streamingDisabled.label + ' ' + menuState.word[+!config.streamingDisabled])
+            }
+        },
+
+        tooltip(event) { // visibility
+            tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for update.tooltip() y-pos calc
+            update.tooltip(event.currentTarget.id.replace(/-btn$/, ''))
+            tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
+        }
     }
 
     // Define SESSION functions
@@ -1190,14 +2161,14 @@
             const accessToken = GM_getValue(config.keyPrefix + '_openAItoken')
             consoleInfo('OpenAI access token: ' + accessToken)
             if (!accessToken) {
-                GM.xmlHttpRequest({ url: openAIendpoints.session, onload: resp => {
+                xhr({ url: openAIendpoints.session, onload: resp => {
                     if (isBlockedbyCloudflare(resp.responseText)) {
                         appAlert('checkCloudflare') ; return }
                     try {
                         const newAccessToken = JSON.parse(resp.responseText).accessToken
                         GM_setValue(config.keyPrefix + '_openAItoken', newAccessToken)
                         resolve(newAccessToken)
-                    } catch { appAlert('login') ; return }
+                    } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
                 }})
             } else resolve(accessToken)
     })}
@@ -1223,7 +2194,7 @@
             const untriedAPIs = Object.keys(apis).filter(api =>
                    api != ( caller == get.reply ? 'OpenAI' : '' ) // exclude OpenAI for get.reply() since Proxy Mode
                 && !caller.triedAPIs.some(entry => Object.prototype.hasOwnProperty.call(entry, api)) // exclude tried APIs
-                && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if config.streamingDisabled
+                && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if !config.streamingDisabled
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { consoleErr('No proxy APIs left untried') ; return null }
@@ -1255,6 +2226,7 @@
             const ip = ipv4.generate({ verbose: false })
             let headers = { 'Content-Type': 'application/json', 'X-Forwarded-For': ip, 'X-Real-IP': ip }
             if (api == 'OpenAI') headers.Authorization = 'Bearer ' + config.openAIkey
+            else if (api == 'Webraft') headers.Authorization = 'Bearer ' + apis.Webraft.key
             headers.Referer = headers.Origin = apis[api].expectedOrigin || '' // preserve expected traffic src
             return headers
         },
@@ -1277,6 +2249,11 @@
                 if (apiIDs.gptForLove.parentID) payload.options = { parentMessageId: apiIDs.gptForLove.parentID }
             } else if (api == 'MixerBox AI')
                 payload = { prompt: msgs, model: 'gpt-3.5-turbo' }
+            else if (api == 'Webraft')
+                payload = {
+                    model: apis.Webraft.models[Math.floor(chatgpt.randomFloat() * apis.Webraft.models.length)],
+                    messages: msgs, temperature: 0.7
+                }
             return JSON.stringify(payload)
         }
     }
@@ -1321,7 +2298,7 @@
                     api.tryNew(get.reply, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
 
             // Get/show answer from ChatGPT
-            GM.xmlHttpRequest({
+            xhr({
                 method: apis[get.reply.api].method, url: apis[get.reply.api].endpoint,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
                 headers: api.createHeaders(get.reply.api), data: api.createPayload(get.reply.api, msgChain),
@@ -1343,7 +2320,7 @@
         },
 
         json(url, callback) { // for dynamic footer
-            GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
+            xhr({ method: 'GET', url: url, onload: resp => {
                 if (resp.status >= 200 && resp.status < 300) {
                     try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
                     catch (err) { callback(err, null) }
@@ -1381,7 +2358,7 @@
                    + ' But the key is variety. Do not be repetitive.'
                        + ' You must entice user to want to ask one of your related queries.'
                    + ` Reply in ${config.replyLanguage}`
-                GM.xmlHttpRequest({
+                xhr({
                     method: apis[get.related.api].method, url: apis[get.related.api].endpoint,
                     responseType: 'text', headers: api.createHeaders(get.related.api),
                     data: api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }]),
@@ -1403,7 +2380,7 @@
                     return
                 if (resp.status != 200) {
                     consoleErr(logPrefix + 'Response status', resp.status)
-                    consoleErr(logPrefix + 'Response', resp)
+                    consoleErr(logPrefix + 'Response', JSON.stringify(resp))
                     if (caller == get.reply && caller.api == 'OpenAI')
                         appAlert(resp.status == 401 ? 'login'
                                : resp.status == 403 ? 'checkCloudflare'
@@ -1478,6 +2455,18 @@
                             if (caller.status != 'done') api.tryNew(caller)
                         }
                     } else if (caller.status != 'done') api.tryNew(caller)
+                } else if (caller.api == 'Webraft') {
+                    if (resp.responseText) {
+                        try { // to show response or return related queries
+                            respText = JSON.parse(resp.response).choices[0].message.content
+                            caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
+                            if (caller == get.reply) show.reply(respText) ; else resolve(arrayify(respText))
+                        } catch (err) { // try diff API
+                            consoleInfo(logPrefix + 'Response text: ' + resp.responseText)
+                            consoleErr(logPrefix + appAlerts.parseFailed, err)
+                            if (caller.status != 'done') api.tryNew(caller)
+                        }
+                    } else if (caller.status != 'done') api.tryNew(caller)
                 }
 
                 function arrayify(strList) { // for get.related() calls
@@ -1538,75 +2527,99 @@
 
         reply(answer) {
 
-            // Hide font size slider if visibile
+            // Hide font size slider if visible
             if (appDiv.querySelector('#font-size-slider-track')) fontSizeSlider.toggle('off')
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
+                fillStarryBG(appDiv) // add stars
 
-                // Create/append app title anchor
-                updateTitleAnchor()
+                // Create/append title
+                const appHeaderLogo = logos.ddgpt.create()
+                appHeaderLogo.width = 181 ; appHeaderLogo.style.margin = '-7px 0'
+                const appTitleAnchor = createAnchor(config.appURL, appHeaderLogo)
+                appTitleAnchor.classList.add('app-name', 'no-user-select')
+                appDiv.append(appTitleAnchor)
 
                 // Create/append corner buttons div
                 const cornerBtnsDiv = document.createElement('div') ; cornerBtnsDiv.id = 'corner-btns'
                 appDiv.append(cornerBtnsDiv)
 
+                // Create/append Chevron button
+                if (!isCentered && !isMobile) {
+                    var chevronSpan = document.createElement('span'),
+                        chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
+                    chevronSpan.id = 'chevron-btn' // for toggle.tooltip()
+                    chevronSpan.className = 'corner-btn' ; chevronSpan.style.margin = '-1.5px 1px 0 11px'
+                    chevronSpan.style.display = 'none' // to activate from anchorStyles only
+                    chevronSpan.append(chevronSVG) ; cornerBtnsDiv.append(chevronSpan)
+                }
+
                 // Create/append About button
                 const aboutSpan = document.createElement('span'),
-                      aboutSVG = icons.about.create()
-                aboutSpan.id = 'about-btn' // for toggleTooltip()
+                      aboutSVG = icons.questionMarkCircle.create()
+                aboutSpan.id = 'about-btn' // for toggle.tooltip()
                 aboutSpan.className = 'corner-btn'
                 aboutSpan.append(aboutSVG) ; cornerBtnsDiv.append(aboutSpan)
+
+                // Create/append Settings button
+                const settingsSpan = document.createElement('span'),
+                      settingsSVG = icons.sliders.create()
+                settingsSpan.id = 'settings-btn' // for toggle.tooltip()
+                settingsSpan.className = 'corner-btn' ; settingsSpan.style.margin = '0 10.5px 0 0.5px'
+                settingsSpan.append(settingsSVG) ; cornerBtnsDiv.append(settingsSpan)
 
                 // Create/append Speak button
                 if (answer != 'standby') {
                     var speakerSpan = document.createElement('span'),
                         speakerSVG = icons.speaker.create()
-                    speakerSpan.id = 'speak-btn' // for toggleTooltip()
+                    speakerSpan.id = 'speak-btn' // for toggle.tooltip()
                     speakerSpan.className = 'corner-btn' ; speakerSpan.style.margin = '-2px 8px 0 0'
                     speakerSpan.append(speakerSVG) ; cornerBtnsDiv.append(speakerSpan)
                 }
-
-                // Create/append Sticky Sidebar button
-                if (!isCentered && !isMobile) {
-                    var ssbSpan = document.createElement('span'),
-                        ssbSVG = icons.pin.create()
-                    ssbSpan.id = 'ssb-btn' // for toggleSidebar() + toggleTooltip()
-                    ssbSpan.className = 'corner-btn' ; ssbSpan.style.marginRight = '8px'
-                    ssbSpan.append(ssbSVG) ; cornerBtnsDiv.append(ssbSpan)
-                }
-
-                // Create/append Color Scheme button
-                const csbSpan = document.createElement('span'),
-                      csbSVG = icons.scheme.create()
-                csbSpan.id = 'csb-btn' // for toggleTooltip()
-                csbSpan.className = 'corner-btn' ; csbSpan.style.margin = '-0.2px 9px 0 0'
-                csbSpan.append(csbSVG) ; cornerBtnsDiv.append(csbSpan)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
                     var fontSizeSpan = document.createElement('span'),
                         fontSizeSVG = icons.fontSize.create()
-                    fontSizeSpan.id = 'font-size-btn' // for toggleTooltip()
-                    fontSizeSpan.className = 'corner-btn' ; fontSizeSpan.style.margin = '0 10px 0 2px'
+                    fontSizeSpan.id = 'font-size-btn' // for toggle.tooltip()
+                    fontSizeSpan.className = 'corner-btn' ; fontSizeSpan.style.marginRight = '10px'
                     fontSizeSpan.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeSpan)
                 }
 
+                // Create/append Pin button
+                if (!isCentered && !isMobile) {
+                    var pinSpan = document.createElement('span'),
+                        pinSVG = icons.pin.create()
+                    pinSpan.id = 'pin-btn' // for toggle.sidebar() + toggle.tooltip()
+                    pinSpan.className = 'corner-btn' ; pinSpan.style.margin = '1px 9px 0 0'
+                    pinSpan.append(pinSVG) ; cornerBtnsDiv.append(pinSpan)
+
                 // Create/append Wider Sidebar button
-                if (!isCentered && !isMobile) {   
                     var wsbSpan = document.createElement('span'),
                         wsbSVG = icons.widescreen.create()
-                    wsbSpan.id = 'wsb-btn' // for toggleSidebar() + toggleTooltip()
-                    wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = `${ isFirefox ? 0 : -1 }px 12.5px 0 0`
+                    wsbSpan.id = 'wsb-btn' // for toggle.sidebar() + toggle.tooltip()
+                    wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = `${ isFirefox ? 0.5 : 0 }px 13.5px 0 0`
                     wsbSpan.append(wsbSVG) ; cornerBtnsDiv.append(wsbSpan)
+
+                // Create/append Expand/Shrink button
+                    var arrowsSpan = document.createElement('span'),
+                        arrowsSVG = icons.arrowsDiagonal.create()
+                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions are often horizontal-only
+                    arrowsSpan.id = 'arrows-btn' // for toggle.tooltip()
+                    arrowsSpan.className = 'corner-btn' ; arrowsSpan.style.margin = '0.5px 12px 0 0'
+                    arrowsSpan.style.display = 'none' // to activate from anchorStyles only
+                    arrowsSpan.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsSpan)
                 }
 
                 // Add tooltips
                 if (!isMobile) appDiv.append(tooltipDiv)
 
                 // Add corner button listeners
+                if (chevronSVG) chevronSVG.onclick = () => toggle.minimized()
                 aboutSVG.onclick = modals.about.show
+                settingsSVG.onclick = modals.settings.show
                 if (speakerSVG) speakerSVG.onclick = () => {
                     const dialectMap = [
                         { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
@@ -1636,7 +2649,7 @@
                           iv = CryptoJS.enc.Utf8.parse(atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
                     const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
                         iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
-                    GM.xmlHttpRequest({ // audio from Sogou TTS
+                    xhr({ // audio from Sogou TTS
                         url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
                             + encodeURIComponent(securePayload),
                         method: 'GET', responseType: 'arraybuffer',
@@ -1652,33 +2665,35 @@
                         })}}
                     })
                 }
-                if (ssbSVG) ssbSVG.onclick = () => toggleSidebar('sticky')
-                csbSVG.onclick = modals.scheme.show
+                if (pinSVG) pinSVG.onclick = pinSVG.onmouseover = pinSVG.onmouseout = menus.pin.toggle
                 if (fontSizeSVG) fontSizeSVG.onclick = () => fontSizeSlider.toggle()
-                if (wsbSVG) wsbSVG.onclick = () => toggleSidebar('wider')
+                if (wsbSVG) wsbSVG.onclick = () => toggle.sidebar('wider')
+                if (arrowsSVG) arrowsSVG.onclick = () => toggle.expandedMode()
                 if (!isMobile) // add hover listeners for tooltips
-                    [aboutSpan, speakerSpan, ssbSpan, csbSpan, fontSizeSpan, wsbSpan].forEach(span => {
-                        if (span) span.onmouseover = span.onmouseout = toggleTooltip })
+                    [aboutSpan, settingsSpan, chevronSpan, speakerSpan, fontSizeSpan, wsbSpan, arrowsSpan].forEach(span => {
+                        if (span) span.onmouseover = span.onmouseout = toggle.tooltip })
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
                 kudoAIspan.append(createAnchor('https://www.kudoai.com', 'KudoAI'))
                 appDiv.querySelector('.app-name').insertAdjacentElement('afterend', kudoAIspan)
-                updateTweaksStyle() // show/hide based on corner space available
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
                     const standbyBtn = document.createElement('button')
                     standbyBtn.className = 'standby-btn'
-                    standbyBtn.textContent = msgs.buttonLabel_sendQueryToGPT || 'Send search query to GPT'
+                    standbyBtn.textContent = msgs.buttonLabel_sendQueryToApp || `Send search query to ${config.appName}`
                     appDiv.append(standbyBtn)
-                    standbyBtn.onclick = () => {
+                    show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
+                        appFooter.style.right = 0 // reset counteract right-offset bug from chatbar padding
                         msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
                         show.reply.submitSrc = 'click' ; show.reply.chatbarFocused = false
+                        menus.pin.topPos = menus.pin.rightPos = null
                         get.reply(msgChain)
                     }
+                    standbyBtn.onclick = show.reply.standbyBtnClickHandler
 
                 // Otherwise create/append answer bubble
                 } else {
@@ -1687,6 +2702,8 @@
                     balloonTipSpan.className = 'balloon-tip'
                     appDiv.append(balloonTipSpan, answerPre)
                 }
+
+                update.tweaksStyle() // show/hide 'by KudoAI', update pre-height based on mode
             }
 
             // Build reply section if missing
@@ -1707,28 +2724,42 @@
                                                                  : msgs.tooltip_sendReply || 'Send reply' ) + '...'
                 continueChatDiv.append(chatTextarea)
                 replyForm.append(continueChatDiv) ; replySection.append(replyForm)
+                appFooter.style.right = '-72px' // counteract right-offset bug from chatbar padding
                 appDiv.append(replySection)
 
                 // Create/append send button
-                const sendButton = document.createElement('button'),
-                      sendSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      sendSVGpath = createSVGpath({ stroke: '', 'stroke-width': '2', linecap: 'round',
-                          'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
-                sendButton.id = 'send-btn'
-                sendButton.style.right = `${ isFirefox ? 8 : 6 }px`
-                sendButton.style.bottom = `${ isFirefox ? 49 : 53 }px`
-                for (const [attr, value] of [
-                    ['viewBox', '4 2 16 16'], ['fill', 'none'], ['width', 16], ['height', 16],
-                    ['stroke', 'currentColor'], ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']
-                ]) sendSVG.setAttribute(attr, value)
-                sendSVG.append(sendSVGpath) ; sendButton.append(sendSVG) ; continueChatDiv.append(sendButton)
+                const sendBtn = document.createElement('button'),
+                      sendSVG = icons.arrowUp.create()
+                sendBtn.id = 'send-btn' ; sendBtn.className = 'chatbar-btn'
+                sendBtn.style.right = `${ isFirefox ? 8 : 7 }px`
+                sendBtn.append(sendSVG) ; continueChatDiv.append(sendBtn)
+
+                // Create/append shuffle button
+                const shuffleBtn = document.createElement('div')
+                shuffleBtn.id = 'shuffle-btn' ; shuffleBtn.className = 'chatbar-btn'
+                shuffleBtn.style.right = `${ isFirefox ? 11.5 : 9.5 }px`
+                const shuffleSVG = icons.arrowsTwistedRight.create()
+                shuffleBtn.append(shuffleSVG) ; continueChatDiv.append(shuffleBtn)
 
                 // Add reply section listeners
-                replyForm.onkeydown = handleEnter
-                replyForm.onsubmit = handleSubmit
+                replyForm.onkeydown = handleEnter ; replyForm.onsubmit = handleSubmit
                 chatTextarea.oninput = autosizeChatbar
-                if (!isMobile) // add hover listeners for tooltips
-                    sendButton.onmouseover = sendButton.onmouseout = toggleTooltip
+                shuffleBtn.onclick = () => {
+                    const randQAprompt = 'Generate a single random question on any topic then answer it.'
+                                       + `${ !config.proxyAPIenabled ? 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis,'
+                                                                     + ' deserts, mindfulness meditation, the Fibonacci sequence,'
+                                                                     + ' Jupiter, the Great Wall of China, Sheakespeare or da Vinci.' : '' }`
+                                       + 'Try to give an answer that is 25-50 words.'
+                                       + 'Do not type anything but the question and answer. Reply in markdown.'
+                    chatTextarea.value = augmentQuery(randQAprompt)
+                    show.reply.submitSrc = 'click' // for show.reply()'s mobile scroll-to-top if user interacted
+                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown', {
+                        key: 'Enter', bubbles: true, cancelable: true }))
+                }
+                if (!isMobile) { // add hover listeners for tooltips
+                    sendBtn.onmouseover = sendBtn.onmouseout = toggle.tooltip
+                    shuffleBtn.onmouseover = shuffleBtn.onmouseout = toggle.tooltip
+                }
 
                 // Scroll to top on mobile if user interacted
                 if (isMobile && show.reply.submitSrc) {
@@ -1764,7 +2795,7 @@
                         throwOnError: false
                 })})
 
-                if (config.stickySidebar) updateTweaksStyle() // to reset answerPre height
+                if (config.stickySidebar) update.tweaksStyle() // to reset answerPre height
 
                 // Auto-scroll if active
                 if (config.autoScroll && !isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
@@ -1778,6 +2809,10 @@
                 && !isMobile // exclude mobile devices to not auto-popup OSD keyboard
                 && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )) { // app fully above fold
                     appDiv.querySelector('#app-chatbar').focus() ; show.reply.chatbarFocused = true }
+
+            // Update styles
+            if (config.anchored) update.appBottomPos() // restore minimized/restored state if anchored
+            update.chatbarWidth()
 
             show.reply.submitSrc = 'none' // for reply section builder's mobile scroll-to-top if user interacted
 
@@ -1891,7 +2926,8 @@
                         }, idx * 100)
                     })
 
-                    updateTweaksStyle() // to shorten <pre> max-height
+                    update.tweaksStyle() // to shorten <pre> max-height
+                    appFooter.style.right = 0 // reset show.reply()'s counteract right-offset bug from chatbar padding
         }}}
     }
 
@@ -1901,7 +2937,7 @@
 
     // Init ALERTS
     const appAlerts = {
-        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+        waitingResponse:  `${ msgs.alert_waitingFor || 'Waiting for' } ${config.appName} ${ msgs.alert_response || 'response' }...`,
         login:            `${ msgs.alert_login || 'Please login' } @ `,
         checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
         tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
@@ -1911,10 +2947,6 @@
         suggestProxy:     `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }`,
         suggestOpenAI:    `${ msgs.alert_try || 'Try' } ${ msgs.alert_switchingOff || 'switching off' } ${ msgs.mode_proxy || 'Proxy Mode' }`
     }
-
-    // Pre-load LOGO
-    const appLogoImg = document.createElement('img') ; updateAppLogoSrc() 
-    appLogoImg.onload = () => { appLogoImg.loaded = true ; updateTitleAnchor() }
 
     // Create/ID/classify/listenerize DDGPT container
     const appDiv = document.createElement('div') ; appDiv.id = 'ddgpt' ; appDiv.classList.add('fade-in')
@@ -1926,39 +2958,42 @@
     })
 
     // Stylize APP elems
-    const appStyle =  document.createElement('style') ; updateAppStyle()
-    const hljsStyle = document.createElement('style') ; hljsStyle.innerText = GM_getResourceText('hljsCSS')
-    document.head.append(appStyle, hljsStyle)
+    const appStyle = createStyle() ; update.appStyle() ; document.head.append(appStyle);
+    ['hljs', 'wsbg', 'bsbg'].forEach(cssType => // code highlighting, white stars, black stars
+        document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = document.createElement('style'),
+    const tweaksStyle = createStyle(),
           wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
-                    + 'section[data-area="sidebar"] { max-width: 530px !important ; flex-basis: 530px !important }'
-                    + '#app-chatbar { width: 95.6% }',
+                    + 'section[data-area="sidebar"] { max-width: 530px !important ; flex-basis: 530px !important }',
           ssbStyles = '#ddgpt { position: sticky ; top: 14px }'
                     + '#ddgpt ~ * { display: none }' // hide sidebar contents
-                    + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
-    updateTweaksStyle() ; document.head.append(tweaksStyle)
+                    + 'body, div.site-wrapper { overflow: clip }', // replace `overflow: hidden` to allow stickiness
+          anchorStyles = '#ddgpt { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }'
+                       + '[class*="feedback"], .related-queries, #wsb-btn  { display: none }'
+                       + '#chevron-btn, #arrows-btn { display: block !important }',
+          expandedStyles = '#ddgpt { width: 528px }'
+    update.tweaksStyle() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
     if (!isMobile) {
         var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
-        const tooltipStyle = document.createElement('style')
-        tooltipStyle.innerText = '.btn-tooltip {'
+        document.head.append(createStyle('.btn-tooltip {'
             + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
-            + 'font-size: 0.87em ; color: white ;' // font style
-            + 'position: absolute ;' // for updateTooltip() calcs
+            + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
+            + 'position: absolute ;' // for update.tooltip() calcs
             + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
-            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
-        document.head.append(tooltipStyle)
+            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
+        ))
     }
  
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
     appFooter.classList.add('fade-in', // DDGPT class
                             'feedback-prompt') // DDG class
-    let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Share feedback')
+    let footerContent = createAnchor('#', msgs.link_shareFeedback || 'Share feedback', { target: '_self' })
     footerContent.className = 'js-feedback-prompt-generic' // DDG footer class
+    footerContent.onclick = modals.feedback.show
     appFooter.append(footerContent)
 
     // APPEND DDGPT + footer to DDG
@@ -2071,6 +3106,12 @@
             }
     })
 
+    // REFERRALIZE links to support author
+    setTimeout(() => document.querySelectorAll('a[href^="https://www.amazon."]').forEach(anchor => {
+        const url = new URL(anchor.href) ; url.searchParams.set('tag', 'kudo-ai-20')
+        anchor.href = url.toString()
+    }), 1500)
+
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
     if (!config.autoGet && !/src=(?:first-run|asktip)/.test(location.href) // Auto-Get disabled and not queried from other site or 1st run
@@ -2085,13 +3126,16 @@
             }
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
-    // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode if auto-scheme mode
+    // Add key listener to DISMISS modals
+    document.onkeydown = modals.keyHandler;
+
+    // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode
     (new MutationObserver(handleSchemeChange)).observe( // class changes from DDG appearance settings
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
     function handleSchemeChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
-        if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
+        if (newScheme != scheme) update.scheme(newScheme)
     }
 
 })()

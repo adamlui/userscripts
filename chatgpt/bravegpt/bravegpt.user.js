@@ -1,203 +1,212 @@
 // ==UserScript==
-// @name                BraveGPT 🤖
-// @description         Adds AI answers to Brave Search (powered by GPT-4o!)
-// @description:af      Voeg AI-antwoorde by Brave Search (aangedryf deur GPT-4o!)
-// @description:am      የ Brave Search ውስጥ AI መልቀቅን አድርግ፣ (GPT-4o በመሣሪያዎቹ ውስጥ!)
-// @description:ar      يضيف إجابات AI إلى Brave Search (مدعوم بواسطة GPT-4o!)
-// @description:as      Brave Search-লৈ AI উত্তৰ যোগ দিয়ে (GPT-4o দ্বাৰা পাওৱা হৈছে!)
-// @description:az      Brave Search-ya AI cavablarını əlavə edir (GPT-4o tərəfindən dəstəklənir!)
-// @description:be      Дадае ІА адказы на Brave Search (падтрымліваецца GPT-4o!)
-// @description:bg      Добавя ИИ отговори в Brave Search (поддържан от GPT-4o!)
-// @description:bn      Brave Search-ত AI উত্তর যোগ করে (GPT-4o দ্বারা প্রচালিত!)
-// @description:bs      Dodaje AI odgovore na Brave Search (pokreće GPT-4o!)
-// @description:ca      Afegeix respostes d'IA a Brave Search (impulsat per GPT-4o!)
-// @description:ceb     Nagdugang ug mga tubag AI ngadto sa Brave Search (gipadagan sa GPT-4o!)
-// @description:co      Aggiunge risposte AI a Brave Search (supportate da GPT-4o!)
-// @description:cs      Přidává AI odpovědi do Brave Search (poháněno GPT-4o!)
-// @description:cy      Ychwanegu atebion AI i Brave Search (a yrrir gan GPT-4o!)
-// @description:da      Tilføjer AI-svar til Brave Search (drevet af GPT-4o!)
-// @description:de      Fügt AI-Antworten zu Brave Search hinzu (betrieben von GPT-4o!)
-// @description:el      Προσθέτει απαντήσεις AI στο Brave Search (τροφοδοτούμενο από GPT-4o!)
-// @description:en      Adds AI answers to Brave Search (powered by GPT-4o!)
-// @description:eo      Aldonas AI-respondojn al Brave Search (ebligita de GPT-4o!)
-// @description:es      Añade respuestas de IA a Brave Search (impulsado por GPT-4o!)
-// @description:et      Lisab AI-vastused Brave Search'le (juhitud GPT-4o-ga!)
-// @description:eu      Gehitu IA erantzunak Brave Search-n (GPT-4o-k bultzatuta!)
-// @description:fa      پاسخهای هوشمصنوعی به Brave Search اضافه میشود (توسط GPT-4o پشتیبانی میشود!)
-// @description:fi      Lisää tekoälyvastauksia Brave Search:hun (ohjattu GPT-4o:lla!)
-// @description:fil     Nagdaragdag ng mga sagot ng AI sa Brave Search (pinapagana ng GPT-4o!)
-// @description:fo      Bætir AI svar við Brave Search (drifin af GPT-4o!)
-// @description:fr      Ajoute des réponses IA à Brave Search (propulsé par GPT-4o!)
-// @description:fr-CA   Ajoute des réponses IA à Brave Search (propulsé par GPT-4o!)
-// @description:fy      Foeget AI-antwurden ta oan Brave Search (dreaun troch GPT-4o!)
-// @description:ga      Cuirtear freagraí AI le Brave Search (dírítear ag GPT-4o!)
-// @description:gd      Cur freagairtichean AI ris an Brave Search (air a thug seachad le GPT-4o!)
-// @description:gl      Engade respostas de IA a Brave Search (impulsado por GPT-4o!)
-// @description:gu      Brave Search માટે AI જવાબો ઉમેરે છે (GPT-4o દ્વારા પોવરેડ!)
-// @description:ha      Ƙaddara takardun AI zu Brave Search (da aka fi GPT-4o!)
-// @description:haw     Hoʻohui aku i nā hoʻopiʻi AI iā Brave Search (hoʻohui ʻia e GPT-4o!)
-// @description:he      מוסיף תשובות AI ל-Brave Search (מופעל על ידי GPT-4o!)
-// @description:hi      Brave Search में AI उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
-// @description:hmn     Ntxig AI nruab nruab rau Brave Search (pab cuam GPT-4o!)
-// @description:hr      Dodaje AI odgovore na Brave Search (pokreće GPT-4o!)
-// @description:ht      Ajoute repons AI nan Brave Search (pòte pa GPT-4o!)
-// @description:hu      AI válaszokat ad hozzá a Brave Search-hoz (GPT-4o által hajtva!)
-// @description:hy      Ավելացնում է AI պատասխաններ Brave Search-ում (աջակցված է GPT-4o-ով!)
-// @description:ia      Adde responas AI a Brave Search (propulsate per GPT-4o!)
-// @description:id      Menambahkan jawaban AI ke Brave Search (didukung oleh GPT-4o!)
-// @description:ig      Tinye ihe ndekọ AI n'ụzọ ọgụgụ Brave Search (n'efu na GPT-4o!)
-// @description:ii      Brave Search ᐸᔦᒪᔪᐃᓃᑦ AI ᓇᑕᐅᒪᐃᑦᓯ (GPT-4o ᓂᑕᔪᑦᓯᐏᑦᑕᒥᔭ!)
-// @description:is      Bætir AI svar við Brave Search (keyrir á GPT-4o!)
-// @description:it      Aggiunge risposte AI a Brave Search (alimentato da GPT-4o!)
-// @description:iu      Brave Search ᑲᑎᒪᔪᖅᑐᖅᑐᐃᓐᓇᓂᒃ AI ᑎᑎᕋᖃᕐᓯᒪᓂᖏᓐ (GPT-4o ᑐᑭᒧᑦᑖᑦ!)
-// @description:ja      Brave Search に AI 回答を追加します (GPT-4o で動作！)
-// @description:jv      Nambéhi pirangga AI nganti Brave Search (diduweni déning GPT-4o!)
-// @description:ka      ამატებს AI პასუხებს Brave Search-ს (იმართება GPT-4o!)
-// @description:kk      Brave Search-ға AI жауаптарын қосады (GPT-4o арқылы жұмыс істейді!)
-// @description:kl      Brave Search-mi AI-t Kalaallit Nunaanni iluani (GPT-4o! -nip ilaanni!)
-// @description:km      បន្ថែមចម្លើយ AI ទៅ Brave Search (ដំណើរការដោយ GPT-4o!)
-// @description:kn      Brave Search ಗೆ AI ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ!)
-// @description:ko      Brave Search에 AI 답변을 추가합니다(GPT-4o 제공!)
-// @description:ku      Bersivên AI-ê li Brave Search zêde dike (ji hêla GPT-4o ve hatî hêzdar kirin!)
-// @description:ky      Brave Search'го AI жоопторун кошот (GPT-4o тарабынан иштейт!)
-// @description:la      Addit AI responsa Brave Search (powered per GPT-4o!)
-// @description:lb      Füügt AI Äntwerten op Brave Search (ugedriwwen duerch GPT-4o!)
-// @description:lg      Yambula emisomo ey'ensobi ku Brave Search (enkuuma GPT-4o!)
-// @description:ln      Ebakisi biyano ya AI na Brave Search (ezali na nguya ya GPT-4o!)
-// @description:lo      ເພີ່ມຄໍາຕອບ AI ໃຫ້ກັບ Brave Search (ຂັບເຄື່ອນໂດຍ GPT-4o!)
-// @description:lt      Prideda AI atsakymus į „Brave Search“ (maitina GPT-4o!)
-// @description:lv      Pievieno AI atbildes Brave Search (darbina GPT-4o!)
-// @description:mg      Manampy valiny AI amin'ny Brave Search (nampiasain'ny GPT-4o!)
-// @description:mi      Ka taapirihia nga whakautu AI ki a Brave Search (whakamahia e GPT-4o!)
-// @description:mk      Додава одговори со вештачка интелигенција на Brave Search (напојувано од GPT-4o!)
-// @description:ml      Brave Search-യിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o നൽകുന്നതാണ്!)
-// @description:mn      Brave Search-д AI хариултуудыг нэмдэг (GPT-4o-оор ажилладаг!)
-// @description:mr      Brave Search ला AI उत्तरे जोडते (GPT-4o द्वारे समर्थित!)
-// @description:ms      Menambahkan jawapan AI pada Brave Search (dikuasakan oleh GPT-4o!)
-// @description:mt      Iżżid it-tweġibiet AI għal Brave Search (mħaddma minn GPT-4o!)
-// @description:my      Brave Search (GPT-4o ဖြင့် စွမ်းဆောင်ထားသည့်) တွင် AI အဖြေများကို ပေါင်းထည့်သည်
-// @description:na      Aeta AI teroma i Brave Search (ira GPT-4o reke akea!)
-// @description:nb      Legger til AI-svar på Brave Search (drevet av GPT-4o!)
-// @description:nd      Iyatholakala amaswelelo e-AI kuBrave Search (kuyatholakala ngokulawula uGPT-4o!)
-// @description:ne      Brave Search मा AI जवाफहरू थप्छ (GPT-4o द्वारा संचालित!)
-// @description:ng      Ondjova mbelelo dha AI moBrave Search (uumbuli nguGPT-4o!)
-// @description:nl      Voegt AI-antwoorden toe aan Brave Search (mogelijk gemaakt door GPT-4o!)
-// @description:nn      Legg til AI-svar på Brave Search (drevet av GPT-4o!)
-// @description:no      Legger til AI-svar til Brave Search (drevet av GPT-4o!)
-// @description:nso     Ya go etela ditshenyegi tsa AI mo Brave Search (e dirwang ke GPT-4o!)
-// @description:ny      Imawonjezera mayankho a AI ku Brave Search (yoyendetsedwa ndi GPT-4o!)
-// @description:oc      Ajusta de respòstas d'IA a Brave Search (amb GPT-4o!)
-// @description:om      Deebii AI Brave Search (GPT-4o'n kan hojjetu!) irratti dabalata.
-// @description:or      Brave Search କୁ AI ଉତ୍ତର ଯୋଗ କରେ (GPT-4o ଦ୍ୱାରା ଚାଳିତ!)
-// @description:pa      Brave Search (GPT-4o ਦੁਆਰਾ ਸੰਚਾਲਿਤ!) ਵਿੱਚ AI ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ
-// @description:pl      Dodaje odpowiedzi AI do Brave Search (obsługiwane przez GPT-4o!)
-// @description:ps      Brave Search ته د AI ځوابونه اضافه کوي (د GPT-4o لخوا پرمخ وړل کیږي!)
-// @description:pt      Adiciona respostas de IA ao Brave Search (desenvolvido por GPT-4o!)
-// @description:pt-BR   Adiciona respostas de IA ao Brave Search (desenvolvido por GPT-4o!)
-// @description:qu      Brave Search (GPT-4o nisqawan kallpachasqa!) nisqaman AI kutichiykunata yapan.
-// @description:rm      Agiuntescha respostas d'IA a Brave Search (propulsà da GPT-4o!)
-// @description:rn      Abafasha inyandiko z'IA ku Brave Search (yashyizweho na GPT-4o!)
-// @description:ro      Adaugă răspunsuri AI la Brave Search (alimentat de GPT-4o!)
-// @description:ru      Добавляет ответы ИИ в Brave Search (на базе GPT-4o!)
-// @description:rw      Ongeraho ibisubizo bya AI kuri Brave Search (ikoreshwa na GPT-4o!)
-// @description:sa      Brave Search (GPT-4o द्वारा संचालितम्!) इत्यत्र AI उत्तराणि योजयति ।
-// @description:sat     Brave Search ar AI jawab khon ojantok (GPT-4o! sebadha manju)
-// @description:sc      Agiungit rispostas de IA a Brave Search (motorizadu da GPT-4o!)
-// @description:sd      شامل ڪري ٿو AI جوابن کي Brave Search (GPT-4o پاران طاقتور!)
-// @description:se      Lávdegáhtii AI vástid Brave Search (GPT-4o! vuosttas!)
-// @description:sg      Nâ tî-kûzâ mái vêdáara AI mbi Brave Search (ngâ GPT-4o!)
-// @description:si      Brave Search වෙත AI පිළිතුරු එක් කරයි (GPT-4o මගින් බලගන්වයි!)
-// @description:sk      Pridáva odpovede AI do Brave Search (poháňané GPT-4o!)
-// @description:sl      Dodaja odgovore AI v Brave Search (poganja GPT-4o!)
-// @description:sm      Faʻaopoopo tali AI ile Brave Search (faʻamalosia e GPT-4o!)
-// @description:sn      Inowedzera mhinduro dzeAI kuBrave Search (inofambiswa neGPT-4o!)
-// @description:so      Waxay ku dartay jawaabaha AI Brave Search (waxaa ku shaqeeya GPT-4o!)
-// @description:sq      Shton përgjigjet e AI në Brave Search (mundësuar nga GPT-4o!)
-// @description:sr      Додаје АИ одговоре у Brave Search (покреће ГПТ-4о!)
-// @description:ss      Iphendvulela izindlela zezilungiselelo ku-Brave Search (izenzakalo nge-GPT-4o!)
-// @description:st      E kopanetse diqoqo tsa AI ka Brave Search (ka sebelisoa ke GPT-4o!)
-// @description:su      Nambahkeun jawaban AI kana Brave Search (dikuatkeun ku GPT-4o!)
-// @description:sv      Lägger till AI-svar till Brave Search (driven av GPT-4o!)
-// @description:sw      Inaongeza majibu ya AI kwa Brave Search (inaendeshwa na GPT-4o!)
-// @description:ta      Brave Search க்கு AI பதில்களைச் சேர்க்கிறது (GPT-4o மூலம் இயக்கப்படுகிறது!)
-// @description:te      Brave Searchకి AI సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా ఆధారితం!)
-// @description:tg      Ба Brave Search ҷавобҳои AI илова мекунад (аз ҷониби GPT-4o!)
-// @description:th      เพิ่มคำตอบ AI ให้กับ Brave Search (ขับเคลื่อนโดย GPT-4o!)
-// @description:ti      ናብ Brave Search (ብGPT-4o ዝሰርሕ!) ናይ AI መልስታት ይውስኸሉ።
-// @description:tk      Brave Search-a AI jogaplaryny goşýar (GPT-4o bilen işleýär!)
-// @description:tl      Nagdadagdag ng mga sagot ng AI sa Brave Search (pinapatakbo ng GPT-4o!)
-// @description:tn      O amogela dipotso tsa AI mo Brave Search (e a nang le GPT-4o!)
-// @description:to      Tambisa mabizo a AI ku Brave Search (mukutenga na GPT-4o!)
-// @description:tr      Brave Search'ya yapay zeka yanıtları ekler (GPT-4o tarafından desteklenmektedir!)
-// @description:ts      Ku engetela tinhlamulo ta AI eka Brave Search (leyi fambiwaka hi GPT-4o!)
-// @description:tt      Brave Search'ка AI җаваплары өсти (GPT-4o белән эшләнгән!)
-// @description:tw      Ɔde AI mmuae ka Brave Search (a GPT-4o na ɛma ahoɔden!) ho.
-// @description:ug      Brave Search ۋەبسېتكە AI جاۋابلار قوشۇدۇ (GPT-4o تەكشۈرگۈچى بىلەن!)
-// @description:uk      Додає відповіді штучного інтелекту в Brave Search (на базі GPT-4o!)
-// @description:ur      Brave Search میں AI جوابات شامل کرتا ہے (GPT-4o کے ذریعے تقویت یافتہ!)
-// @description:uz      Brave Search-ga AI javoblarini qo'shadi (GPT-4o tomonidan quvvatlanadi!)
-// @description:vi      Thêm câu trả lời AI vào Brave Search (được cung cấp bởi GPT-4o!)
-// @description:xh      Yongeza iimpendulo ze-AI kwi-Brave Search (ixhaswe yi-GPT-4o!)
-// @description:yi      לייגט אַי ענטפֿערס צו Brave Search (Powered דורך GPT-4o!)
-// @description:yo      Ṣe afikun awọn idahun AI si Brave Search (agbara nipasẹ GPT-4o!)
-// @description:zh      为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-CN   为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-HK   為 Brave Search 添加 AI 答案（由 GPT-4o 提供支援！）
-// @description:zh-SG   为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
-// @description:zh-TW   為 Brave Search 添加 AI 答案（由 GPT-4o 提供支援！）
-// @description:zu      Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
-// @author              KudoAI
-// @namespace           https://kudoai.com
-// @version             2024.6.26.3
-// @license             MIT
-// @icon                https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
-// @icon64              https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
-// @compatible          chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          firefox
-// @compatible          edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          opera after allowing userscript manager access to search page results in opera://extensions
-// @compatible          brave except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible          vivaldi
-// @compatible          waterfox
-// @compatible          librewolf
-// @compatible          ghost
-// @compatible          qq
-// @compatible          whale
-// @compatible          kiwi
-// @compatible          mask
-// @compatible          orion
-// @match               *://search.brave.com/search*
-// @include             https://auth0.openai.com
-// @connect             binjie.fun
-// @connect             chatgpt.com
-// @connect             gptforlove.com
-// @connect             greasyfork.org
-// @connect             jsdelivr.net
-// @connect             mixerbox.com
-// @connect             openai.com
-// @connect             sogou.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
-// @require             https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
-// @require             https://cdn.jsdelivr.net/npm/generate-ip@2.4.2/dist/generate-ip.min.js#sha256-PRvQIDVWK/a+aAqEFVQv7RePbRe/tX6tWQVM80rAe2M=
-// @require             https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
-// @require             https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
-// @require             https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js#sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=
-// @require             https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
-// @resource hljsCSS    https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @grant               GM_getValue
-// @grant               GM_setValue
-// @grant               GM_deleteValue
-// @grant               GM_cookie
-// @grant               GM_registerMenuCommand
-// @grant               GM_unregisterMenuCommand
-// @grant               GM_getResourceText
-// @grant               GM.xmlHttpRequest
+// @name                  BraveGPT 🤖
+// @description           Adds AI answers to Brave Search (powered by GPT-4o!)
+// @description:af        Voeg AI-antwoorde by Brave Search (aangedryf deur GPT-4o!)
+// @description:am        የ Brave Search ውስጥ AI መልቀቅን አድርግ፣ (GPT-4o በመሣሪያዎቹ ውስጥ!)
+// @description:ar        يضيف إجابات AI إلى Brave Search (مدعوم بواسطة GPT-4o!)
+// @description:as        Brave Search-লৈ AI উত্তৰ যোগ দিয়ে (GPT-4o দ্বাৰা পাওৱা হৈছে!)
+// @description:az        Brave Search-ya AI cavablarını əlavə edir (GPT-4o tərəfindən dəstəklənir!)
+// @description:be        Дадае ІА адказы на Brave Search (падтрымліваецца GPT-4o!)
+// @description:bg        Добавя ИИ отговори в Brave Search (поддържан от GPT-4o!)
+// @description:bn        Brave Search-ত AI উত্তর যোগ করে (GPT-4o দ্বারা প্রচালিত!)
+// @description:bs        Dodaje AI odgovore na Brave Search (pokreće GPT-4o!)
+// @description:ca        Afegeix respostes d'IA a Brave Search (impulsat per GPT-4o!)
+// @description:ceb       Nagdugang ug mga tubag AI ngadto sa Brave Search (gipadagan sa GPT-4o!)
+// @description:co        Aggiunge risposte AI a Brave Search (supportate da GPT-4o!)
+// @description:cs        Přidává AI odpovědi do Brave Search (poháněno GPT-4o!)
+// @description:cy        Ychwanegu atebion AI i Brave Search (a yrrir gan GPT-4o!)
+// @description:da        Tilføjer AI-svar til Brave Search (drevet af GPT-4o!)
+// @description:de        Fügt AI-Antworten zu Brave Search hinzu (betrieben von GPT-4o!)
+// @description:el        Προσθέτει απαντήσεις AI στο Brave Search (τροφοδοτούμενο από GPT-4o!)
+// @description:en        Adds AI answers to Brave Search (powered by GPT-4o!)
+// @description:eo        Aldonas AI-respondojn al Brave Search (ebligita de GPT-4o!)
+// @description:es        Añade respuestas de IA a Brave Search (impulsado por GPT-4o!)
+// @description:et        Lisab AI-vastused Brave Search'le (juhitud GPT-4o-ga!)
+// @description:eu        Gehitu IA erantzunak Brave Search-n (GPT-4o-k bultzatuta!)
+// @description:fa        پاسخهای هوشمصنوعی به Brave Search اضافه میشود (توسط GPT-4o پشتیبانی میشود!)
+// @description:fi        Lisää tekoälyvastauksia Brave Search:hun (ohjattu GPT-4o:lla!)
+// @description:fil       Nagdaragdag ng mga sagot ng AI sa Brave Search (pinapagana ng GPT-4o!)
+// @description:fo        Bætir AI svar við Brave Search (drifin af GPT-4o!)
+// @description:fr        Ajoute des réponses IA à Brave Search (propulsé par GPT-4o!)
+// @description:fr-CA     Ajoute des réponses IA à Brave Search (propulsé par GPT-4o!)
+// @description:fy        Foeget AI-antwurden ta oan Brave Search (dreaun troch GPT-4o!)
+// @description:ga        Cuirtear freagraí AI le Brave Search (dírítear ag GPT-4o!)
+// @description:gd        Cur freagairtichean AI ris an Brave Search (air a thug seachad le GPT-4o!)
+// @description:gl        Engade respostas de IA a Brave Search (impulsado por GPT-4o!)
+// @description:gu        Brave Search માટે AI જવાબો ઉમેરે છે (GPT-4o દ્વારા પોવરેડ!)
+// @description:ha        Ƙaddara takardun AI zu Brave Search (da aka fi GPT-4o!)
+// @description:haw       Hoʻohui aku i nā hoʻopiʻi AI iā Brave Search (hoʻohui ʻia e GPT-4o!)
+// @description:he        מוסיף תשובות AI ל-Brave Search (מופעל על ידי GPT-4o!)
+// @description:hi        Brave Search में AI उत्तर जोड़ता है (GPT-4o द्वारा संचालित!)
+// @description:hmn       Ntxig AI nruab nruab rau Brave Search (pab cuam GPT-4o!)
+// @description:hr        Dodaje AI odgovore na Brave Search (pokreće GPT-4o!)
+// @description:ht        Ajoute repons AI nan Brave Search (pòte pa GPT-4o!)
+// @description:hu        AI válaszokat ad hozzá a Brave Search-hoz (GPT-4o által hajtva!)
+// @description:hy        Ավելացնում է AI պատասխաններ Brave Search-ում (աջակցված է GPT-4o-ով!)
+// @description:ia        Adde responas AI a Brave Search (propulsate per GPT-4o!)
+// @description:id        Menambahkan jawaban AI ke Brave Search (didukung oleh GPT-4o!)
+// @description:ig        Tinye ihe ndekọ AI n'ụzọ ọgụgụ Brave Search (n'efu na GPT-4o!)
+// @description:ii        Brave Search ᐸᔦᒪᔪᐃᓃᑦ AI ᓇᑕᐅᒪᐃᑦᓯ (GPT-4o ᓂᑕᔪᑦᓯᐏᑦᑕᒥᔭ!)
+// @description:is        Bætir AI svar við Brave Search (keyrir á GPT-4o!)
+// @description:it        Aggiunge risposte AI a Brave Search (alimentato da GPT-4o!)
+// @description:iu        Brave Search ᑲᑎᒪᔪᖅᑐᖅᑐᐃᓐᓇᓂᒃ AI ᑎᑎᕋᖃᕐᓯᒪᓂᖏᓐ (GPT-4o ᑐᑭᒧᑦᑖᑦ!)
+// @description:ja        Brave Search に AI 回答を追加します (GPT-4o で動作！)
+// @description:jv        Nambéhi pirangga AI nganti Brave Search (diduweni déning GPT-4o!)
+// @description:ka        ამატებს AI პასუხებს Brave Search-ს (იმართება GPT-4o!)
+// @description:kk        Brave Search-ға AI жауаптарын қосады (GPT-4o арқылы жұмыс істейді!)
+// @description:kl        Brave Search-mi AI-t Kalaallit Nunaanni iluani (GPT-4o! -nip ilaanni!)
+// @description:km        បន្ថែមចម្លើយ AI ទៅ Brave Search (ដំណើរការដោយ GPT-4o!)
+// @description:kn        Brave Search ಗೆ AI ಉತ್ತರಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ (GPT-4o ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ!)
+// @description:ko        Brave Search에 AI 답변을 추가합니다(GPT-4o 제공!)
+// @description:ku        Bersivên AI-ê li Brave Search zêde dike (ji hêla GPT-4o ve hatî hêzdar kirin!)
+// @description:ky        Brave Search'го AI жоопторун кошот (GPT-4o тарабынан иштейт!)
+// @description:la        Addit AI responsa Brave Search (powered per GPT-4o!)
+// @description:lb        Füügt AI Äntwerten op Brave Search (ugedriwwen duerch GPT-4o!)
+// @description:lg        Yambula emisomo ey'ensobi ku Brave Search (enkuuma GPT-4o!)
+// @description:ln        Ebakisi biyano ya AI na Brave Search (ezali na nguya ya GPT-4o!)
+// @description:lo        ເພີ່ມຄໍາຕອບ AI ໃຫ້ກັບ Brave Search (ຂັບເຄື່ອນໂດຍ GPT-4o!)
+// @description:lt        Prideda AI atsakymus į „Brave Search“ (maitina GPT-4o!)
+// @description:lv        Pievieno AI atbildes Brave Search (darbina GPT-4o!)
+// @description:mg        Manampy valiny AI amin'ny Brave Search (nampiasain'ny GPT-4o!)
+// @description:mi        Ka taapirihia nga whakautu AI ki a Brave Search (whakamahia e GPT-4o!)
+// @description:mk        Додава одговори со вештачка интелигенција на Brave Search (напојувано од GPT-4o!)
+// @description:ml        Brave Search-യിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു (GPT-4o നൽകുന്നതാണ്!)
+// @description:mn        Brave Search-д AI хариултуудыг нэмдэг (GPT-4o-оор ажилладаг!)
+// @description:mr        Brave Search ला AI उत्तरे जोडते (GPT-4o द्वारे समर्थित!)
+// @description:ms        Menambahkan jawapan AI pada Brave Search (dikuasakan oleh GPT-4o!)
+// @description:mt        Iżżid it-tweġibiet AI għal Brave Search (mħaddma minn GPT-4o!)
+// @description:my        Brave Search (GPT-4o ဖြင့် စွမ်းဆောင်ထားသည့်) တွင် AI အဖြေများကို ပေါင်းထည့်သည်
+// @description:na        Aeta AI teroma i Brave Search (ira GPT-4o reke akea!)
+// @description:nb        Legger til AI-svar på Brave Search (drevet av GPT-4o!)
+// @description:nd        Iyatholakala amaswelelo e-AI kuBrave Search (kuyatholakala ngokulawula uGPT-4o!)
+// @description:ne        Brave Search मा AI जवाफहरू थप्छ (GPT-4o द्वारा संचालित!)
+// @description:ng        Ondjova mbelelo dha AI moBrave Search (uumbuli nguGPT-4o!)
+// @description:nl        Voegt AI-antwoorden toe aan Brave Search (mogelijk gemaakt door GPT-4o!)
+// @description:nn        Legg til AI-svar på Brave Search (drevet av GPT-4o!)
+// @description:no        Legger til AI-svar til Brave Search (drevet av GPT-4o!)
+// @description:nso       Ya go etela ditshenyegi tsa AI mo Brave Search (e dirwang ke GPT-4o!)
+// @description:ny        Imawonjezera mayankho a AI ku Brave Search (yoyendetsedwa ndi GPT-4o!)
+// @description:oc        Ajusta de respòstas d'IA a Brave Search (amb GPT-4o!)
+// @description:om        Deebii AI Brave Search (GPT-4o'n kan hojjetu!) irratti dabalata.
+// @description:or        Brave Search କୁ AI ଉତ୍ତର ଯୋଗ କରେ (GPT-4o ଦ୍ୱାରା ଚାଳିତ!)
+// @description:pa        Brave Search (GPT-4o ਦੁਆਰਾ ਸੰਚਾਲਿਤ!) ਵਿੱਚ AI ਜਵਾਬ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ
+// @description:pl        Dodaje odpowiedzi AI do Brave Search (obsługiwane przez GPT-4o!)
+// @description:ps        Brave Search ته د AI ځوابونه اضافه کوي (د GPT-4o لخوا پرمخ وړل کیږي!)
+// @description:pt        Adiciona respostas de IA ao Brave Search (desenvolvido por GPT-4o!)
+// @description:pt-BR     Adiciona respostas de IA ao Brave Search (desenvolvido por GPT-4o!)
+// @description:qu        Brave Search (GPT-4o nisqawan kallpachasqa!) nisqaman AI kutichiykunata yapan.
+// @description:rm        Agiuntescha respostas d'IA a Brave Search (propulsà da GPT-4o!)
+// @description:rn        Abafasha inyandiko z'IA ku Brave Search (yashyizweho na GPT-4o!)
+// @description:ro        Adaugă răspunsuri AI la Brave Search (alimentat de GPT-4o!)
+// @description:ru        Добавляет ответы ИИ в Brave Search (на базе GPT-4o!)
+// @description:rw        Ongeraho ibisubizo bya AI kuri Brave Search (ikoreshwa na GPT-4o!)
+// @description:sa        Brave Search (GPT-4o द्वारा संचालितम्!) इत्यत्र AI उत्तराणि योजयति ।
+// @description:sat       Brave Search ar AI jawab khon ojantok (GPT-4o! sebadha manju)
+// @description:sc        Agiungit rispostas de IA a Brave Search (motorizadu da GPT-4o!)
+// @description:sd        شامل ڪري ٿو AI جوابن کي Brave Search (GPT-4o پاران طاقتور!)
+// @description:se        Lávdegáhtii AI vástid Brave Search (GPT-4o! vuosttas!)
+// @description:sg        Nâ tî-kûzâ mái vêdáara AI mbi Brave Search (ngâ GPT-4o!)
+// @description:si        Brave Search වෙත AI පිළිතුරු එක් කරයි (GPT-4o මගින් බලගන්වයි!)
+// @description:sk        Pridáva odpovede AI do Brave Search (poháňané GPT-4o!)
+// @description:sl        Dodaja odgovore AI v Brave Search (poganja GPT-4o!)
+// @description:sm        Faʻaopoopo tali AI ile Brave Search (faʻamalosia e GPT-4o!)
+// @description:sn        Inowedzera mhinduro dzeAI kuBrave Search (inofambiswa neGPT-4o!)
+// @description:so        Waxay ku dartay jawaabaha AI Brave Search (waxaa ku shaqeeya GPT-4o!)
+// @description:sq        Shton përgjigjet e AI në Brave Search (mundësuar nga GPT-4o!)
+// @description:sr        Додаје АИ одговоре у Brave Search (покреће ГПТ-4о!)
+// @description:ss        Iphendvulela izindlela zezilungiselelo ku-Brave Search (izenzakalo nge-GPT-4o!)
+// @description:st        E kopanetse diqoqo tsa AI ka Brave Search (ka sebelisoa ke GPT-4o!)
+// @description:su        Nambahkeun jawaban AI kana Brave Search (dikuatkeun ku GPT-4o!)
+// @description:sv        Lägger till AI-svar till Brave Search (driven av GPT-4o!)
+// @description:sw        Inaongeza majibu ya AI kwa Brave Search (inaendeshwa na GPT-4o!)
+// @description:ta        Brave Search க்கு AI பதில்களைச் சேர்க்கிறது (GPT-4o மூலம் இயக்கப்படுகிறது!)
+// @description:te        Brave Searchకి AI సమాధానాలను జోడిస్తుంది (GPT-4o ద్వారా ఆధారితం!)
+// @description:tg        Ба Brave Search ҷавобҳои AI илова мекунад (аз ҷониби GPT-4o!)
+// @description:th        เพิ่มคำตอบ AI ให้กับ Brave Search (ขับเคลื่อนโดย GPT-4o!)
+// @description:ti        ናብ Brave Search (ብGPT-4o ዝሰርሕ!) ናይ AI መልስታት ይውስኸሉ።
+// @description:tk        Brave Search-a AI jogaplaryny goşýar (GPT-4o bilen işleýär!)
+// @description:tl        Nagdadagdag ng mga sagot ng AI sa Brave Search (pinapatakbo ng GPT-4o!)
+// @description:tn        O amogela dipotso tsa AI mo Brave Search (e a nang le GPT-4o!)
+// @description:to        Tambisa mabizo a AI ku Brave Search (mukutenga na GPT-4o!)
+// @description:tr        Brave Search'ya yapay zeka yanıtları ekler (GPT-4o tarafından desteklenmektedir!)
+// @description:ts        Ku engetela tinhlamulo ta AI eka Brave Search (leyi fambiwaka hi GPT-4o!)
+// @description:tt        Brave Search'ка AI җаваплары өсти (GPT-4o белән эшләнгән!)
+// @description:tw        Ɔde AI mmuae ka Brave Search (a GPT-4o na ɛma ahoɔden!) ho.
+// @description:ug        Brave Search ۋەبسېتكە AI جاۋابلار قوشۇدۇ (GPT-4o تەكشۈرگۈچى بىلەن!)
+// @description:uk        Додає відповіді штучного інтелекту в Brave Search (на базі GPT-4o!)
+// @description:ur        Brave Search میں AI جوابات شامل کرتا ہے (GPT-4o کے ذریعے تقویت یافتہ!)
+// @description:uz        Brave Search-ga AI javoblarini qo'shadi (GPT-4o tomonidan quvvatlanadi!)
+// @description:vi        Thêm câu trả lời AI vào Brave Search (được cung cấp bởi GPT-4o!)
+// @description:xh        Yongeza iimpendulo ze-AI kwi-Brave Search (ixhaswe yi-GPT-4o!)
+// @description:yi        לייגט אַי ענטפֿערס צו Brave Search (Powered דורך GPT-4o!)
+// @description:yo        Ṣe afikun awọn idahun AI si Brave Search (agbara nipasẹ GPT-4o!)
+// @description:zh        为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-CN     为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-HK     為 Brave Search 添加 AI 答案（由 GPT-4o 提供支援！）
+// @description:zh-SG     为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
+// @description:zh-TW     為 Brave Search 添加 AI 答案（由 GPT-4o 提供支援！）
+// @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
+// @author                KudoAI
+// @namespace             https://kudoai.com
+// @version               2024.7.14.2
+// @license               MIT
+// @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
+// @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
+// @antifeature           ads A very tiny text ad displays below BraveGPT chatbar. This motivates me to spend otherwise unpaid time upgrading script w/ new features & APIs.
+// @antifeature           referral-link
+// @compatible            chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible            firefox
+// @compatible            edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible            opera after allowing userscript manager access to search page results in opera://extensions
+// @compatible            brave except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible            vivaldi
+// @compatible            waterfox
+// @compatible            librewolf
+// @compatible            ghost
+// @compatible            qq
+// @compatible            whale
+// @compatible            kiwi
+// @compatible            mask
+// @compatible            orion
+// @match                 *://search.brave.com/search*
+// @include               https://auth0.openai.com
+// @connect               binjie.fun
+// @connect               chatgpt.com
+// @connect               gptforlove.com
+// @connect               greasyfork.org
+// @connect               jsdelivr.net
+// @connect               mixerbox.com
+// @connect               openai.com
+// @connect               sogou.com
+// @connect               webraft.in
+// @require               https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
+// @require               https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
+// @require               https://cdn.jsdelivr.net/npm/generate-ip@2.4.2/dist/generate-ip.min.js#sha256-PRvQIDVWK/a+aAqEFVQv7RePbRe/tX6tWQVM80rAe2M=
+// @require               https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
+// @require               https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
+// @require               https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js#sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=
+// @require               https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
+// @resource bgptIcon     https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@ad5606e/media/images/icons/bravegpt/icon64.png.b64#sha256-Abqr6XIwT+g72ig2haUUkniR89b5UlxL28cAI6BVT/c=
+// @resource bgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/lightmode/logo730x155.png.b64#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
+// @resource bgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/darkmode/logo730x155.png.b64#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
+// @resource hljsCSS      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
+// @resource bsbgCSS      https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@d7fd458/styles/css/black-rising-stars.min.css#sha256-bXbVZUD7ciKqK0wU/BLQzh08JwkoNExHHqXITugd/3o=
+// @resource wsbgCSS      https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@d7fd458/styles/css/white-rising-stars.min.css#sha256-ya9newifevSPO1Q4AzMf42yAF6TE+iZHrDbVj0HyuEM=
+// @grant                 GM_getValue
+// @grant                 GM_setValue
+// @grant                 GM_deleteValue
+// @grant                 GM_cookie
+// @grant                 GM_registerMenuCommand
+// @grant                 GM_unregisterMenuCommand
+// @grant                 GM_getResourceText
+// @grant                 GM_xmlhttpRequest
+// @grant                 GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/462440/bravegpt.user.js
-// @updateURL           https://update.greasyfork.org/scripts/462440/bravegpt.meta.js
-// @homepageURL         https://www.bravegpt.com
-// @supportURL          https://support.bravegpt.com
-// @contributionURL     https://github.com/sponsors/KudoAI
+// @downloadURL           https://update.greasyfork.org/scripts/462440/bravegpt.user.js
+// @updateURL             https://update.greasyfork.org/scripts/462440/bravegpt.meta.js
+// @homepageURL           https://www.bravegpt.com
+// @supportURL            https://support.bravegpt.com
+// @contributionURL       https://github.com/sponsors/KudoAI
 // ==/UserScript==
 
 // Dependencies:
@@ -216,30 +225,34 @@ setTimeout(async () => {
           isFirefox = chatgpt.browser.isFirefox(),
           isEdge = !!JSON.stringify(navigator.userAgentData?.brands)?.includes('Edge'),
           isBrave = !!JSON.stringify(navigator.userAgentData?.brands)?.includes('Brave'),
-          isMobile = chatgpt.browser.isMobile()
+          isMobile = chatgpt.browser.isMobile(),
+          isPortrait = isMobile && (window.innerWidth < window.innerHeight)
 
     // Init CONFIG
     const config = {
         appName: 'BraveGPT', appSymbol: '🤖', keyPrefix: 'braveGPT',
         appURL: 'https://www.bravegpt.com', gitHubURL: 'https://github.com/KudoAI/bravegpt',
         greasyForkURL: 'https://greasyfork.org/scripts/462440-bravegpt',
-        minFontSize: 13, maxFontSize: 24, lineHeightRatio: 1.313 }
+        minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.313,
+        latestAssetCommitHash: '9b96180' } // for cached messages.json
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
     config.supportURL = config.gitHubURL + '/issues/new'
-    config.feedbackURL = config.gitHubURL + '/discussions/new/choose'
-    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + '@2bdba5a/'
+    config.assetHostURL = config.gitHubURL.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${config.latestAssetCommitHash}/`
     config.userLanguage = chatgpt.getUserLanguage()
     config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
-    loadSetting('autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'fontSize',
-                'prefixEnabled', 'proxyAPIenabled', 'replyLanguage', 'rqDisabled', 'scheme',
-                'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    loadSetting('anchored', 'autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
+                'fgAnimationsDisabled', 'fontSize', 'minimized', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+                'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) saveSetting('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) saveSetting('fontSize', 16) // init reply font size if unset
     if ( // disable streaming in unspported envs
         !/Tampermonkey|ScriptCat/.test(getUserscriptManager()) // unsupported userscript manager
         || getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave) // TM in browser that triggers STATUS_ACCESS_VIOLATION
     ) saveSetting('streamingDisabled', true)
+
+    // Init FETCHER
+    const xhr = getUserscriptManager() == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init API props
     const openAIendpoints = { auth: 'https://auth0.openai.com', session: 'https://chatgpt.com/api/auth/session' }
@@ -255,7 +268,10 @@ setTimeout(async () => {
             method: 'POST', streamable: true, accumulatesText: false },
         'OpenAI': {
             endpoint: 'https://api.openai.com/v1/chat/completions', expectedOrigin: 'https://chatgpt.com',
-            method: 'POST', streamable: true }
+            method: 'POST', streamable: true },
+        'Webraft': {
+            endpoint: 'https://api.webraft.in/freeapi/chat/completions', key: 'wr-gqPB118cE91zRSM3ZJGMle',
+            method: 'POST', streamable: false, models: ['gpt-4'] }
     }
     const apiIDs = { gptForLove: { parentID: '' }, aiChatOS: { userID: '#/chat/' + Date.now() }}
 
@@ -269,7 +285,7 @@ setTimeout(async () => {
         const msgHostDir = config.assetHostURL + 'greasemonkey/_locales/',
               msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
         let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
-        GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+        xhr({ method: 'GET', url: msgHref, onload: onLoad })
         function onLoad(resp) {
             try { // to return localized messages.json
                 const msgs = JSON.parse(resp.responseText), flatMsgs = {}
@@ -282,36 +298,60 @@ setTimeout(async () => {
                 msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                     msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                         : ( msgHostDir + 'en/messages.json' ) // else use default English messages
-                GM.xmlHttpRequest({ method: 'GET', url: msgHref, onload: onLoad })
+                xhr({ method: 'GET', url: msgHref, onload: onLoad })
             }
         }
-    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded; } catch (err) {}
+    }) ; if (!config.userLanguage.startsWith('en')) try { msgs = await msgsLoaded } catch (err) {}
 
     // Init SETTINGS props
     const settingsProps = {
-        proxyAPIenabled: { label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode', type: 'toggle' },
-        streamingDisabled: { label: msgs.mode_streaming || 'Streaming Mode', type: 'toggle' },
-        autoGetDisabled: { label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers', type: 'toggle' },
-        autoFocusChatbarDisabled: {
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+            label: msgs.menuLabel_proxyAPImode || 'Proxy API Mode',
+            helptip: msgs.helptip_proxyAPImode || 'Uses a Proxy API for no-login access to AI' },
+        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+            label: msgs.mode_streaming || 'Streaming Mode',
+            helptip: msgs.helptip_streamingMode || 'Receive replies in a continuous text stream' },
+        autoGetDisabled: { type: 'toggle', icon: 'speechBalloonLasso',
+            label: msgs.menuLabel_autoGetAnswers || 'Auto-Get Answers',
+            helptip: msgs.helptip_autoGetAnswers || 'Auto-send queries to BraveGPT when using search engine' },
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
             label: msgs.menuLabel_autoFocusChatbar || 'Auto-Focus Chatbar',
-            type: 'toggle', mobile: false },
-        autoScroll: {
+            helptip: msgs.helptip_autoFocusChatbar || 'Auto-focus chatbar whenever it appears' },
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
             label: `${ msgs.mode_autoScroll || 'Auto-Scroll' } (${ msgs.menuLabel_whenStreaming || 'when streaming' })`,
-            type: 'toggle', mobile: false },
-        rqDisabled: {
+            helptip: msgs.helptip_autoScroll || 'Auto-scroll responses as they generate in Streaming Mode' },
+        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
             label: `${ msgs.menuLabel_show || 'Show' } ${ msgs.menuLabel_relatedQueries || 'Related Queries' }`,
-            type: 'toggle' },
-        prefixEnabled: {
+            helptip: msgs.helptip_showRelatedQueries || 'Show related queries below chatbar' },
+        prefixEnabled: { type: 'toggle', icon: 'slash',
             label: `${ msgs.menuLabel_require || 'Require' } "/" ${ msgs.menuLabel_beforeQuery || 'before query' }`,
-            type: 'toggle' },
-        suffixEnabled: {
+            helptip: msgs.helptip_prefixMode || 'Require "/" before queries for answers to show' },
+        suffixEnabled: { type: 'toggle', icon: 'questionMark',
             label: `${ msgs.menuLabel_require || 'Require' } "?" ${ msgs.menuLabel_afterQuery || 'after query' }`,
-            type: 'toggle' },
-        widerSidebar: { label: msgs.menuLabel_widerSidebar || 'Wider Sidebar', type: 'toggle', mobile: false },
-        stickySidebar: { label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar', type: 'toggle', mobile: false },
-        replyLanguage: { label: msgs.menuLabel_replyLanguage || 'Reply Language', type: 'prompt' },
-        scheme: { label: msgs.menuLabel_colorScheme || 'Color Scheme', type: 'modal' },
-        about: { label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...`, type: 'modal' }
+            helptip: msgs.helptip_suffixMode || 'Require "?" after queries for answers to show' },
+        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen',
+            label: msgs.menuLabel_widerSidebar || 'Wider Sidebar',
+            helptip: msgs.helptip_widerSidebar || 'Horizontally expand search page sidebar' },
+        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner',
+            label: msgs.menuLabel_stickySidebar || 'Sticky Sidebar',
+            helptip: msgs.helptip_stickySidebar || 'Makes BraveGPT visible in sidebar even as you scroll' },
+        anchored: { type: 'toggle', mobile: false, icon: 'anchor',
+            label: msgs.mode_anchor || 'Anchor Mode',
+            helptip: msgs.helptip_anchorMode || 'Anchor BraveGPT to bottom of window' },
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${ msgs.menuLabel_background || 'Background' } ${ msgs.menuLabel_animations || 'Animations' }`,
+            helptip: msgs.helptip_bgAnimations || 'Show animated backgrounds in UI components' },
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${ msgs.menuLabel_foreground || 'Foreground' } ${ msgs.menuLabel_animations || 'Animations' }`,
+            helptip: msgs.helptip_fgAnimations || 'Show foreground animations in UI components' },
+        replyLanguage: { type: 'prompt', icon: 'languageChars',
+            label: msgs.menuLabel_replyLanguage || 'Reply Language',
+            helptip: msgs.helptip_replyLanguage || 'Language for BraveGPT to reply in' },
+        scheme: { type: 'modal', icon: 'scheme',
+            label: msgs.menuLabel_colorScheme || 'Color Scheme',
+            helptip: msgs.helptip_colorScheme || 'Scheme to display BraveGPT UI components in' },
+        about: { type: 'modal', icon: 'questionMarkCircle',
+            label: `${ msgs.menuLabel_about || 'About' } ${config.appName}...` }
     }
 
     // Init MENU objs
@@ -333,153 +373,18 @@ setTimeout(async () => {
     function registerMenu() {
 
         // Add command to toggle proxy API mode
-        const pamLabel = menuState.symbol[+config.proxyAPIenabled] + ' '
+        const pmLabel  = menuState.symbol[+config.proxyAPIenabled] + ' '
                        + settingsProps.proxyAPIenabled.label + ' '
                        + menuState.separator + menuState.word[+config.proxyAPIenabled]
-        menuIDs.push(GM_registerMenuCommand(pamLabel, toggleProxyMode))
-
-        // Add command to toggle streaming mode or alert unsupported
-        const stmState = !config.proxyAPIenabled ? false : !config.streamingDisabled // show disabled state to OpenAI users
-        const stmLabel = menuState.symbol[+stmState] + ' '
-                       + settingsProps.streamingDisabled.label + ' '
-                       + menuState.separator + menuState.word[+stmState]
-        menuIDs.push(GM_registerMenuCommand(stmLabel, () => {
-            const scriptCatLink = isFirefox ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
-                                : isEdge    ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
-                                            : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
-            if (!/Tampermonkey|ScriptCat/.test(getUserscriptManager())) { // alert userscript manager unsupported, suggest TM/SC
-                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
-                        + ( !isEdge && !isBrave ? // suggest TM for supported browsers
-                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${ msgs.alert_and || 'and' }`
-                                : '' )
-                        + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
-                        + ` (${ msgs.alert_userscriptMgrNoStream || 'Your userscript manager does not support returning stream responses' }.)`)
-            } else if (getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave)) // alert TM/browser unsupported, suggest SC
-                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
-                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
-                        + `${ isChrome ? 'Chrome' : isEdge ? 'Edge' : 'Brave' } ${ msgs.alert_whenUsing || 'when using' } Tampermonkey. `
-                        + `${ msgs.alert_pleaseUse || 'Please use' } <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
-                            + `${ msgs.alert_instead || 'instead' }.`)
-            else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                let msg = `${settingsProps.streamingDisabled.label} `
-                        + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
-                        + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
-                        + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
-                const switchPhrase = msgs.alert_switchingOn || 'switching on'
-                msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
-                const alertID = siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg),
-                      alert = document.getElementById(alertID)
-                alert.querySelector('[href="#"]').onclick = () => { alert.querySelector('.modal-close-btn').click() ; toggleProxyMode() }
-            } else { // functional toggle
-                saveSetting('streamingDisabled', !config.streamingDisabled)
-                notify(settingsProps.streamingDisabled.label + ' ' + menuState.word[+!config.streamingDisabled])
-                refreshMenu()
-            }
-        }))
-
-        // Add command to toggle auto-get mode
-        const agmLabel = menuState.symbol[+!config.autoGetDisabled] + ' '
-                       + settingsProps.autoGetDisabled.label + ' '
-                       + menuState.separator + menuState.word[+!config.autoGetDisabled]
-        menuIDs.push(GM_registerMenuCommand(agmLabel, () => {
-            saveSetting('autoGetDisabled', !config.autoGetDisabled)
-            notify(settingsProps.autoGetDisabled.label + ' ' + menuState.word[+!config.autoGetDisabled])
-            refreshMenu()
-        }))
-
-        if (!isMobile) {
-
-            // Add command to toggle auto-focus chatbar
-            const afcLabel = menuState.symbol[+!config.autoFocusChatbarDisabled] + ' '
-                           + settingsProps.autoFocusChatbarDisabled.label + ' '
-                           + menuState.separator + menuState.word[+!config.autoFocusChatbarDisabled]
-            menuIDs.push(GM_registerMenuCommand(afcLabel, () => {
-                saveSetting('autoFocusChatbarDisabled', !config.autoFocusChatbarDisabled)
-                notify(settingsProps.autoFocusChatbarDisabled.label + ' ' + menuState.word[+!config.autoFocusChatbarDisabled])
-                refreshMenu()
-            }))
-
-            // Add command to toggle auto-scroll (when streaming)
-            const assLabel = menuState.symbol[+config.autoScroll] + ' '
-                           + settingsProps.autoScroll.label
-                           + menuState.separator + menuState.word[+config.autoScroll]
-            menuIDs.push(GM_registerMenuCommand(assLabel, () => {
-                saveSetting('autoScroll', !config.autoScroll)
-                notify(settingsProps.autoScroll.label + ' ' + menuState.word[+config.autoScroll])
-                refreshMenu()
-            }))
-        }
-
-        // Add command to toggle showing related queries
-        const rqLabel = menuState.symbol[+!config.rqDisabled] + ' '
-                      + settingsProps.rqDisabled.label + ' '
-                      + menuState.separator + menuState.word[+!config.rqDisabled]
-        menuIDs.push(GM_registerMenuCommand(rqLabel, () => {
-            saveSetting('rqDisabled', !config.rqDisabled)
-            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
-            if (relatedQueriesDiv) // update visibility based on latest setting
-                relatedQueriesDiv.style.display = config.rqDisabled ? 'none' : 'flex'
-            if (!config.rqDisabled && !relatedQueriesDiv) { // get related queries for 1st time
-                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
-                get.related(lastQuery).then(queries => show.related(queries))
-                    .catch(err => { consoleErr(err.message)
-                        if (get.related.status != 'done') api.tryNew(get.related) })
-            }
-            updateTweaksStyle() // toggle <pre> max-height
-            notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle prefix mode
-        const pfmLabel = menuState.symbol[+config.prefixEnabled] + ' '
-                      + settingsProps.prefixEnabled.label + ' '
-                      + menuState.separator + menuState.word[+config.prefixEnabled]
-        menuIDs.push(GM_registerMenuCommand(pfmLabel, () => {
-            saveSetting('prefixEnabled', !config.prefixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Suffix Mode if activating Prefix Mode
-                saveSetting('suffixEnabled', !config.suffixEnabled) }
-            notify(( msgs.mode_prefix || 'Prefix Mode' ) + ' ' + menuState.word[+config.prefixEnabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle suffix mode
-        const sfmLabel = menuState.symbol[+config.suffixEnabled] + ' '
-                      + settingsProps.prefixEnabled.label + ' '
-                      + menuState.separator + menuState.word[+config.suffixEnabled]
-        menuIDs.push(GM_registerMenuCommand(sfmLabel, () => {
-            saveSetting('suffixEnabled', !config.suffixEnabled)
-            if (config.prefixEnabled && config.suffixEnabled) { // disable Prefix Mode if activating Suffix Mode
-                saveSetting('prefixEnabled', !config.prefixEnabled) }
-            notify(( msgs.mode_suffix || 'Suffix Mode' ) + ' ' + menuState.word[+config.suffixEnabled])
-            refreshMenu()
-        }))
-
-        // Add command to toggle wider sidebar
-        if (!isMobile) {
-            const wsbLabel = menuState.symbol[+config.widerSidebar] + ' '
-                           + settingsProps.widerSidebar.label
-                           + menuState.separator + menuState.word[+config.widerSidebar]
-            menuIDs.push(GM_registerMenuCommand(wsbLabel, () => toggleSidebar('wider')))
-        }
-
-        // Add command to set reply language
-        const rlLabel = '🌐 ' + settingsProps.replyLanguage.label
-                      + menuState.separator + config.replyLanguage
-        menuIDs.push(GM_registerMenuCommand(rlLabel, promptReplyLang))
-
-        // Add command to set color scheme
-        const schemeLabel = ( config.scheme == 'light' ? '☀️' :
-                              config.scheme == 'dark'  ? '🌘' : '🌗' ) + ' '
-                          + settingsProps.scheme.label + menuState.separator
-                          + ( config.scheme == 'light' ? msgs.scheme_light   || 'Light' :
-                              config.scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
-                                                       : msgs.menuLabel_auto || 'Auto' )
-        menuIDs.push(GM_registerMenuCommand(schemeLabel, modals.scheme.show))
+        menuIDs.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode))
 
         // Add command to launch About modal
         const aboutLabel = `💡 ${settingsProps.about.label}`
         menuIDs.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+
+        // Add command to launch Settings modal
+        const settingsLabel = `⚙️ ${ msgs.menuLabel_settings || 'Settings' }`
+        menuIDs.push(GM_registerMenuCommand(settingsLabel, modals.settings.show))
     }
 
     function promptReplyLang() {
@@ -495,17 +400,22 @@ setTimeout(async () => {
                 siteAlert(( msgs.alert_langUpdated || 'Language updated' ) + '!', // title
                     `${ config.appName } ${ msgs.alert_willReplyIn || 'will reply in' } `
                         + ( replyLanguage || msgs.alert_yourSysLang || 'your system language' ) + '.',
-                    '', '', 330) // width
-                refreshMenu() ; break
+                    '', '', 447) // confirmation width
+                if (modals.settings.get()) // update settings menu status label
+                    document.querySelector('#replyLanguage-menu-entry span').textContent = replyLanguage
+                break
     }}}
 
-    function refreshMenu() { for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() }
+    function refreshMenu() {
+        if (getUserscriptManager() == 'OrangeMonkey') return
+        for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu()
+    }
 
     function updateCheck() {
 
         // Fetch latest meta
         const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
+        xhr({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: resp => { const updateAlertWidth = 489
@@ -530,6 +440,7 @@ setTimeout(async () => {
                                 safeWindowOpen(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now())
                             }, '', updateAlertWidth
                         )
+                        const updateModal = document.getElementById(updateModalID).firstChild
 
                         // Localize button labels if needed
                         if (!config.userLanguage.startsWith('en')) {
@@ -539,24 +450,58 @@ setTimeout(async () => {
                             updateBtns[0].textContent = msgs.buttonLabel_dismiss || 'Dismiss'
                         }
 
+                        modals.init(updateModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
+
                         return
                 }}
 
                 // Alert to no update found, nav back
-                siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
+                const noUpdateModalID = siteAlert(( msgs.alert_upToDate || 'Up-to-date' ) + '!', // title
                     `${ config.appName } (v${ currentVer }) ${ msgs.alert_isUpToDate || 'is up-to-date' }!`, // msg
                         '', '', updateAlertWidth)
+                const noUpdateModal = document.getElementById(noUpdateModalID).firstChild
+                modals.init(noUpdateModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
                 modals.about.show()
     }})}
 
     // Define FEEDBACK functions
 
-    function notify(msg, position = '', notifDuration = '', shadow = '') {
-        chatgpt.notify(`${ config.appSymbol } ${ msg }`, position, notifDuration,
-            shadow || scheme == 'dark' ? '' : 'shadow' )
+    function notify(msg, position = '', notifDuration = '', shadow = 'shadow') {
+
+        // Strip state word to append styled one later
+        const foundState = menuState.word.find(word => msg.includes(word))
+        if (foundState) msg = msg.replace(foundState, '')
+
+        // Show notification
+        chatgpt.notify(msg, position, notifDuration, shadow)
+        const notifs = document.querySelectorAll('.chatgpt-notif'),
+              notif = notifs[notifs.length -1]
+
+        // Prepend app icon
+        const notifIcon = icons.braveGPT.create()
+        notifIcon.style.cssText = 'width: 32px ; position: relative ; top: 6px ; margin-right: 6px'
+        notif.prepend(notifIcon)
+
+        // Append mode icon
+        const mode = Object.keys(settingsProps).find(key => settingsProps[key].label.includes(msg.trim()))
+        if (mode && !/(?:pre|suf)fix/.test(mode)) {
+            const modeIcon = icons[settingsProps[mode].icon].create()
+            modeIcon.style.cssText = 'width: 28px ; height: 28px ; position: relative ; top: 3px ; margin-left: 11px ;'
+                                   + ( /autoget|focus|scroll/i.test(mode) ? 'top: 0.5px' : '' ) // raise some icons
+                                   + ( /animation/i.test(mode) ? 'width: 25px ; height: 25px' : '' ) // shrink sparkles icon
+            notif.append(modeIcon)
+        }
+
+        // Append styled state word
+        if (foundState) {
+            const styledState = document.createElement('span')
+            styledState.style.cssText = `font-weight: bold ; color: ${
+                foundState == menuState.word[0] ? 'rgb(239, 72, 72)' : '#5cef48' }`
+            styledState.append(foundState) ; notif.insertBefore(styledState, notif.children[2])
+        }
     }
 
-    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
+    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = 474) {
         return chatgpt.alert(`${ config.appSymbol } ${ title }`, msg, btns, checkbox, width)}
 
     function appAlert(...alerts) {
@@ -583,7 +528,7 @@ setTimeout(async () => {
             // Hyperlink msgs.alert_switching<On|Off>
             const foundState = ['On', 'Off'].find(state =>
                 msg.includes(msgs['alert_switching' + state]) || new RegExp(`\\b${state}\\b`, 'i').test(msg))
-            if (foundState) { // hyperlink switch phrase for click listener to toggleProxyMode()
+            if (foundState) { // hyperlink switch phrase for click listener to toggle.proxyMode()
                 const switchPhrase = msgs['alert_switching' + foundState] || 'switching ' + foundState.toLowerCase()
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
             }
@@ -593,7 +538,7 @@ setTimeout(async () => {
             msgSpan.innerHTML = msg ; alertP.append(msgSpan)
 
             // Activate toggle link if necessary
-            msgSpan.querySelector('[href="#"]')?.addEventListener('click', toggleProxyMode)
+            msgSpan.querySelector('[href="#"]')?.addEventListener('click', toggle.proxyMode)
         })
         appDiv.append(alertP)
     }
@@ -604,42 +549,104 @@ setTimeout(async () => {
     // Define MODAL functions
 
     const modals = {
+
+        clickHandler(event) { // to dismiss modals
+            if (event.target == event.currentTarget || event.target instanceof SVGPathElement)
+                modals.hide(document.querySelector('[class$="-modal"]'))
+        },
+
+        dragHandlers: {
+            mousedown(event) { // find modal, attach listeners, init XY offsets
+                if (getComputedStyle(event.target).cursor == 'pointer') return // don't activate drag when clicking on interactive elems
+                modals.dragHandlers.draggableElem = event.target.closest('[class$="-modal"]')
+                event.preventDefault(); // prevent sub-elems like icons being draggable
+                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
+                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
+                modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
+                modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
+            },
+
+            mousemove(event) { // drag modal
+                if (modals.dragHandlers.draggableElem) {
+                    const newX = event.clientX - modals.dragHandlers.offsetX,
+                          newY = event.clientY - modals.dragHandlers.offsetY
+                    modals.dragHandlers.draggableElem.style.left = `${newX}px`
+                    modals.dragHandlers.draggableElem.style.top = `${newY}px`
+                }
+            },
+
+            mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
+                ['mousemove', 'mouseup'].forEach(event => document.removeEventListener(event, modals.dragHandlers[event]))
+                modals.dragHandlers.draggableElem = null
+            }
+        },
+
+        hide(modal) {
+            const modalContainer = modal?.parentNode
+            if (!modalContainer) return
+            modalContainer.style.animation = 'alert-zoom-fade-out .135s ease-out'
+            setTimeout(() => modalContainer.remove(), 105) // delay for fade-out
+        },
+
+        init(modal) {
+
+            // Add classes
+            modal.classList.add('.bravegpt-modal')
+            modal.parentNode.classList.add('bravegpt-modal-bg', 'no-user-select')
+
+            // Add listeners
+            modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
+            modal.onmousedown = modals.dragHandlers.mousedown
+            fillStarryBG(modal) // add stars
+            setTimeout(() => { // dim bg
+                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ scheme === 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.classList.add('animated')
+            }, 100) // delay for transition fx
+
+            // Glowup btns
+            if (scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+        },
+
+        keyHandler() { // to dismiss modals
+            if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
+                const modal = document.querySelector('[class$="-modal"]')
+                if (modal) modals.hide(modal)
+            }
+        },
+
         about: {
             show() {
+                const settingsModal = modals.settings.get()
+                if (settingsModal) modals.hide(settingsModal)
+
+                // Create/init modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
-                const aboutModalID = siteAlert(
-                    config.appName, // title
+                const aboutModalID = chatgpt.alert('',
                     '🏷️ ' + ( msgs.about_version || 'Version' ) + ': ' + GM_info.script.version + '\n'
                         + '⚡ ' + ( msgs.about_poweredBy || 'Powered by' ) + ': '
                             + '<a href="https://chatgpt.js.org" target="_blank" rel="noopener">chatgpt.js</a>'
                             + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
-                        + '📜 ' + ( msgs.about_sourceCode || 'Source code' ) + ':\n '
-                            + `<a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+                        + '📜 ' + ( msgs.about_sourceCode || 'Source code' )
+                            + `: <a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
                                 + config.gitHubURL + '</a>',
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { safeWindowOpen(config.supportURL) },
-                        function leaveAReview() {
-                            const reviewModalID = chatgpt.alert(( msgs.alert_choosePlatform || 'Choose a platform' ) + ':', '',
-                                [ function greasyFork() { safeWindowOpen(
-                                      config.greasyForkURL + '/feedback#post-discussion') },
-                                  function productHunt() { safeWindowOpen(
-                                      'https://www.producthunt.com/products/bravegpt/reviews/new') },
-                                  function futurepedia() { safeWindowOpen(
-                                      'https://www.futurepedia.io/tool/bravegpt#bravegpt-review') },
-                                  function alternativeTo() { safeWindowOpen(
-                                      'https://alternativeto.net/software/bravegpt/about/') }],
-                                '', 571) // Review modal width
-                            const reviewBtns = document.getElementById(reviewModalID).querySelectorAll('button')
-                            reviewBtns[0].style.display = 'none' // hide dismiss button
-                            reviewBtns[1].textContent = ( // remove spaces from AlternativeTo label
-                                reviewBtns[1].textContent.replace(/\s/g, '')) },
+                        function leaveAReview() { modals.feedback.show() },
                         function moreChatGPTapps() { safeWindowOpen('https://github.com/adamlui/chatgpt-apps') }
-                    ], '', 577) // About modal width
+                    ], '', 617) // modal width
+                const aboutModal = document.getElementById(aboutModalID).firstChild
 
-                // Resize + format buttons to include emoji + localized label + hide Dismiss button
-                for (const btn of document.getElementById(aboutModalID).querySelectorAll('button')) {
-                    btn.style.height = '53px' // re-size to fit meaty text content
+                // Add logo
+                const aboutHeaderLogo = logos.braveGPT.create() ; aboutHeaderLogo.width = 375
+                aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: -19px ${ isMobile ? 'auto' : '16%' } 0`
+                aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
+
+                // Resize/format buttons to include emoji + localized label + hide Dismiss button
+                aboutModal.querySelectorAll('button').forEach(btn => {
+                    btn.style.cssText = 'height: 53px ; min-width: 136px'
+
+                    // Emojize/localize label
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( msgs.buttonLabel_updateCheck || 'Check for Updates' ))
                     else if (/support/i.test(btn.textContent)) btn.textContent = (
@@ -649,21 +656,61 @@ setTimeout(async () => {
                     else if (/apps/i.test(btn.textContent)) btn.textContent = (
                         '🤖 ' + ( msgs.buttonLabel_moreApps || 'More ChatGPT Apps' ))
                     else btn.style.display = 'none' // hide Dismiss button
-            }}
+                })
+
+                modals.init(aboutModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
+            }
+        },
+
+        feedback: {
+            show() {
+
+                // Create/init modal
+                const feedbackModalID = siteAlert(`${
+                    msgs.alert_choosePlatform || 'Choose a platform' }:`, '',
+                    [ // buttons
+                        function greasyFork() { safeWindowOpen(
+                            config.greasyForkURL + '/feedback#post-discussion') },
+                        function github() { safeWindowOpen(
+                            config.gitHubURL + '/discussions/new/choose') },
+                        function productHunt() { safeWindowOpen(
+                            'https://www.producthunt.com/products/bravegpt/reviews/new') },
+                        function futurepedia() { safeWindowOpen(
+                            'https://www.futurepedia.io/tool/bravegpt#tool-reviews') },
+                        function alternativeTo() { safeWindowOpen(
+                            'https://alternativeto.net/software/bravegpt/about/') }
+                    ], '', 456) // modal width
+                const feedbackModal = document.getElementById(feedbackModalID).firstChild
+
+                // Re-style button cluster
+                const btnsDiv = feedbackModal.querySelector('.modal-buttons')
+                btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
+
+                // Format button labels + add v-padding
+                const btns = btnsDiv.querySelectorAll('button'), lastIdx = btns.length -1
+                btns.forEach((btn, idx) => {
+                    if (idx == 0) btn.style.display = 'none' // hide Dismiss button
+                    else if (btn.textContent == 'Github') btn.textContent = 'GitHub'
+                    else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
+                    if (idx == lastIdx) btn.classList.remove('primary-modal-btn') // de-emphasize last link
+                    btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
+                })
+
+                modals.init(feedbackModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btn
+            }
         },
 
         scheme: {
             show() {
+
+                // Create/init modal
                 const schemeModalID = siteAlert(`${
                     config.appName } ${( msgs.menuLabel_colorScheme || 'Color Scheme' ).toLowerCase() }:`, '',
-                    [ // buttons
-                        function auto() { updateScheme('auto') },
-                        function light() { updateScheme('light') },
-                        function dark() { updateScheme('dark') }
-                ], '', 503) // px width
+                    [ function auto() {}, function light() {}, function dark() {} ], // buttons
+                    '', 503) // px width
+                const schemeModal = document.getElementById(schemeModalID).firstChild
 
                 // Center button cluster
-                const schemeModal = document.getElementById(schemeModalID)
                 schemeModal.querySelector('.modal-buttons').style.justifyContent = 'center'
 
                 // Re-format each button
@@ -687,26 +734,339 @@ setTimeout(async () => {
                     const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                     newBtn.onclick = event => {
                         event.stopPropagation() // disable chatgpt.js dismissAlert()
-                        updateScheme(btnScheme) // call corresponding scheme func
+                        const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                        saveSetting('scheme', btnScheme == 'auto' ? false : newScheme)
                         schemeModal.querySelectorAll('button').forEach(btn => btn.classList = '') // clear prev emphasized active scheme
                         newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
                         newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
                         setTimeout(() => { newBtn.style.pointerEvents = 'auto'; }, 100) // re-enable hover fx after 100ms to flicker emphasis
+                        update.scheme(newScheme) ; schemeNotify(btnScheme)
                     }
                 }
 
-                function updateScheme(newScheme) {
-                    scheme = newScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : newScheme
-                    saveSetting('scheme', newScheme == 'auto' ? false : newScheme)
-                    updateAppLogoSrc() ; updateAppStyle() ; schemeNotify(newScheme) ; refreshMenu()
-                }
+                modals.init(schemeModal) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
 
                 function schemeNotify(scheme) {
+
+                    // Show notification
                     notify(` ${ msgs.menuLabel_colorScheme || 'Color Scheme' }: `
                            + ( scheme == 'light' ? msgs.scheme_light   || 'Light' :
                                scheme == 'dark'  ? msgs.scheme_dark    || 'Dark'
-                                                 : msgs.menuLabel_auto || 'Auto' ).toUpperCase()
-                )}
+                                                 : msgs.menuLabel_auto || 'Auto' ).toUpperCase() )
+                    const notifs = document.querySelectorAll('.chatgpt-notif'),
+                          notif = notifs[notifs.length -1]
+
+                    // Append scheme icon
+                    const schemeIcon = icons[scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCycle'].create()
+                    schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ; top: 3px ; margin-left: 6px'
+                    notif.append(schemeIcon)
+                }
+            }
+        },
+
+        settings: {
+
+            createAppend() {
+
+                // Init master elems
+                const settingsContainer = document.createElement('div'),
+                      settingsModal = document.createElement('div') ; settingsModal.id = 'bravegpt-settings'
+                      settingsContainer.append(settingsModal)
+                modals.init(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
+
+                // Init settings keys
+                const settingsKeys = Object.keys(settingsProps).filter(key => !(isMobile && settingsProps[key].mobile == false))
+
+                // Init logo
+                const settingsIcon = icons.braveGPT.create()
+                settingsIcon.style.cssText = `width: ${ isPortrait ? 59 : 62 }px ; position: relative ; top: -33px ;`
+                                           + `margin: 0 ${ isPortrait ? 41.2 : 45 }% -8px`
+                // Init title
+                const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'bravegpt-settings-title'
+                const settingsTitleH4 = document.createElement('h4') ; settingsTitleH4.textContent = msgs.menuLabel_settings || 'Settings'
+                const settingsTitleIcon = icons.sliders.create()
+                settingsTitleIcon.style.cssText = 'width: 21px ; height: 21px ; margin-right: -4px ; position: relative ; top: 2px ; right: 10px'
+                settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
+
+                // Init settings lists
+                const settingsLists = [], middleGap = 30, // px
+                      settingsListContainer = document.createElement('div'),
+                      settingsListCnt = ( isMobile && ( isPortrait || settingsKeys.length < 8 )) ? 1 : 2,
+                      settingItemCap = Math.floor(settingsKeys.length /2)
+                for (let i = 0 ; i < settingsListCnt ; i++) settingsLists.push(document.createElement('ul'))
+                if (settingsListCnt > 1) { // style multi-list landscape mode
+                    settingsListContainer.style.cssText = ( // make/pad flexbox, add middle gap
+                        `display: flex ; padding: 11px 12px 13px ; gap: ${ middleGap /2 }px` )
+                    settingsLists[0].style.cssText = ( // add vertical separator
+                        `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${ scheme == 'dark' ? 'white' : 'black '}` )
+                }
+
+                // Create/append setting icons/labels/toggles
+                settingsKeys.forEach((key, idx) => {
+                    const setting = settingsProps[key]
+
+                    // Create/append item/label elems
+                    const settingItem = document.createElement('li') ; settingItem.id = key + '-menu-entry'
+                    settingItem.title = setting.helptip || '' // for hover assistance
+                    const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
+                    settingItem.append(settingLabel) ; (settingsLists[isPortrait ? 0 : +!(idx < settingItemCap)]).append(settingItem)
+
+                    // Create/prepend icons
+                    const settingIcon = icons[setting.icon].create(key.match(/bg|fg/)?.[0] ?? '')
+                    settingIcon.style.cssText = 'position: relative ;' + (
+                        /proxy/i.test(key) ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
+                      : /streaming/i.test(key) ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
+                      : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
+                      : /autoscroll/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
+                      : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
+                      : /prefix/i.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
+                      : /suffix/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7px'
+                      : /sidebar/i.test(key) ? 'top: 4px ; left: -1.5px ; margin-right: 7.5px'
+                      : /anchor/i.test(key) ? 'top: 3px ; left: -2.5px ; margin-right: 5.5px'
+                      : /animation/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
+                      : /replylang/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
+                      : /scheme/i.test(key) ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
+                      : /about/i.test(key) ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
+                    )
+                    settingItem.prepend(settingIcon)
+
+                    // Create/append toggles/listeners
+                    if (setting.type == 'toggle') {
+
+                        // Init toggle input
+                        const settingToggle = document.createElement('input'),
+                              settingToggleAttrs = [['type', 'checkbox'], ['disabled', true]]
+                        settingToggleAttrs.forEach(([attr, value]) => settingToggle.setAttribute(attr, value))
+                        settingToggle.checked = config[key] ^ key.includes('Disabled')
+                        settingToggle.style.display = 'none' // hide checkbox
+
+                        // Create/stylize switch
+                        const switchSpan = document.createElement('span')
+                        const switchStyles = {
+                            position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
+                            backgroundColor: settingToggle.checked ? '#ccc' : '#AD68FF', // init opposite  final color
+                            width: '26px', height: '13px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
+                        }
+                        Object.assign(switchSpan.style, switchStyles)
+
+                        // Create/stylize knob
+                        const knobSpan = document.createElement('span')
+                        const knobWidth = 11
+                        const knobStyles = {
+                            position: 'absolute', left: '1px', bottom: '1px',
+                            width: `${ knobWidth }px`, height: `${ knobWidth }px`, content: '""', borderRadius: '28px',
+                            transform: settingToggle.checked ? // init opposite final pos
+                                'translateX(0)' : 'translateX(14px) translateY(0)',
+                            backgroundColor: 'white',  '-webkit-transition': '0.2s', transition: '0.2s'
+                        }
+                        Object.assign(knobSpan.style, knobStyles)
+
+                        // Append elems
+                        switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
+
+                        // Update visual state w/ animation
+                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), idx *25 -25)
+
+                        // Add click listener
+                        settingItem.onclick = () => {
+                            modals.settings.toggle.switch(settingToggle) // visually switch toggle
+
+                            // Call specialized toggle funcs
+                            const manualGetMatch = /(?:suf|pre)fix/.exec(key)
+                            if (key.includes('proxy')) toggle.proxyMode()
+                            else if (key.includes('streaming')) toggle.streaming()
+                            else if (/autoget/i.test(key)) toggle.autoGet()
+                            else if (key.includes('rq')) toggle.relatedQueries()
+                            else if (manualGetMatch) toggle.manualGet(manualGetMatch[0])
+                            else if (key.includes('Sidebar')) toggle.sidebar(key.match(/(.*?)Sidebar$/)[1])
+                            else if (key.includes('anchor')) toggle.anchorMode()
+                            else if (key.includes('bgAnimation')) toggle.animations('bg')
+                            else if (key.includes('fgAnimation')) toggle.animations('fg')
+
+                            // ...or generically toggle/notify
+                            else {
+                                saveSetting(key, !config[key]) // update config
+                                notify(`${settingsProps[key].label} ${menuState.word[+key.includes('Disabled') ^ +config[key]]}`)
+                            }
+                        }
+
+                    // Add config status + listeners to pop-up settings
+                    } else {
+                        const configStatusSpan = document.createElement('span')
+                        configStatusSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: 3px ;'
+                            + ( !key.includes('about') ? 'text-transform: uppercase !important' : '' )
+                        if (key.includes('replyLang')) {
+                            configStatusSpan.textContent = config.replyLanguage
+                            settingItem.onclick = promptReplyLang
+                        } else if (key.includes('scheme')) {
+                            modals.settings.updateSchemeStatus(configStatusSpan)
+                            settingItem.onclick = modals.scheme.show
+                        } else if (key.includes('about')) {
+                            const innerDiv = document.createElement('div'),
+                                  textGap = '&emsp;&emsp;&emsp;&emsp;&emsp;'
+                            modals.settings.aboutContent = {}
+                            modals.settings.aboutContent.short = `v${ GM_info.script.version}`
+                            modals.settings.aboutContent.long = `Version: <span class="about-em">v${ GM_info.script.version + textGap }</span>`
+                                + `${ msgs.about_poweredBy || 'Powered by' } <span class="about-em">chatgpt.js</span>${textGap}`
+                            for (let i = 0; i < 7; i++) modals.settings.aboutContent.long += modals.settings.aboutContent.long // make it long af
+                            innerDiv.innerHTML = modals.settings.aboutContent[config.fgAnimationsDisabled ? 'short' : 'long']
+                            innerDiv.style.float = config.fgAnimationsDisabled ? 'right' : ''
+                            configStatusSpan.append(innerDiv) ; settingItem.onclick = modals.about.show
+                        } settingItem.append(configStatusSpan)
+                    }
+                })
+                settingsListContainer.append(...settingsLists)
+
+                // Create close button
+                const closeBtn = document.createElement('div') ; closeBtn.id = 'bravegpt-settings-close-btn'
+                closeBtn.title = msgs.tooltip_close || 'Close'
+                const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+                const closeSVGattrs = [['height', '8px'], ['viewBox', '0 0 14 14'], 'fill', 'none']
+                closeSVGattrs.forEach(([attr, val]) => closeSVG.setAttribute(attr, val))
+                const closeSVGpath = createSVGelem('path', {
+                    d: 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z' })
+                closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG)
+
+                // Assemble/append elems
+                settingsModal.append(settingsIcon, settingsTitleDiv, closeBtn, settingsListContainer)
+                document.body.append(settingsContainer)
+
+                // Add listeners to dismiss modal
+                const dismissElems = [settingsContainer, closeBtn, closeSVG]
+                dismissElems.forEach(elem => elem.onclick = modals.clickHandler)
+
+                return settingsContainer
+            },
+
+            get() { return document.getElementById('bravegpt-settings') },
+
+            show() {
+                const settingsContainer = modals.settings.get()?.parentNode || modals.settings.createAppend()
+                settingsContainer.style.display = '' // show modal
+                if (isMobile) { // scale 93% to viewport sides
+                    const settingsModal = settingsContainer.querySelector('#bravegpt-settings'),
+                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                    settingsModal.style.transform = `scale(${scaleRatio})`
+                }
+            },
+
+            toggle: {
+                switch(settingToggle) {
+                    settingToggle.checked = !settingToggle.checked    
+                    modals.settings.toggle.updateStyles(settingToggle)        
+                },
+
+                updateStyles(settingToggle) { // for .toggle.show() + staggered switch animations in .createAppend()
+                    const switchSpan = settingToggle.parentNode.querySelector('span'),
+                          knobSpan = switchSpan.querySelector('span')
+                    setTimeout(() => {
+                        switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
+                        switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                        knobSpan.style.transform = settingToggle.checked ? 'translateX(14px) translateY(0)' : 'translateX(0)'
+                    }, 1) // min delay to trigger transition fx
+                }
+            },
+
+            updateSchemeStatus(schemeStatusSpan = null) {
+                schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-menu-entry span')
+                if (schemeStatusSpan) {
+                    while (schemeStatusSpan.firstChild) schemeStatusSpan.removeChild(schemeStatusSpan.firstChild) // clear old status
+                    schemeStatusSpan.append(...( // status txt + icon
+                        config.scheme == 'dark' ? [document.createTextNode(msgs.scheme_dark || 'Dark'), icons.moon.create()]
+                      : config.scheme == 'light' ? [document.createTextNode(msgs.scheme_light || 'Light'), icons.sun.create()]
+                      : [document.createTextNode(msgs.menuLabel_auto || 'Auto'), icons.arrowsCycle.create()] ))
+                    schemeStatusSpan.style.cssText += `; margin-top: ${ !config.scheme ? 3 : 0 }px !important`
+                }
+            }
+        }
+    }
+
+    // Define MENU functions
+
+    const menus = {
+        fadeInDelay: 5, // ms
+
+        show(menu) {
+            menu.style.display = ''
+            setTimeout(() => menu.classList.add('active'), menus.fadeInDelay)
+        },
+
+        pin: {
+            clickHandler() {
+                const pinMenu = event.target.closest('#pin-menu'),
+                      itemLabel = event.target.textContent,
+                      prevOffsetTop = appDiv.offsetTop
+
+                // Switch mode
+                if ([msgs.menuLabel_top, 'Top'].includes(itemLabel)) toggle.sidebar('sticky')
+                else if ([msgs.menuLabel_sidebar, 'Sidebar'].includes(itemLabel)) {
+                    toggle.sidebar('sticky', 'off') ; toggle.anchorMode('off') }
+                else if ([msgs.menuLabel_bottom, 'Bottom'].includes(itemLabel)) toggle.anchorMode()
+
+                // Close/update menu
+                if (appDiv.offsetTop != prevOffsetTop) pinMenu.remove() // since app moved
+                else menus.pin.update(pinMenu) // since menu stayed in place
+            },
+
+            createAppend() {
+                const pinMenu = document.createElement('div') ; pinMenu.id = 'pin-menu'
+                pinMenu.classList.add('bravegpt-menu', 'btn-tooltip', 'fade-in-less', 'no-user-select')
+                menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
+                return pinMenu
+            },
+
+            update(pinMenu) {
+                while (pinMenu.firstChild) pinMenu.removeChild(pinMenu.firstChild) // clear content
+
+                // Init core elems
+                const pinMenuUL = document.querySelector('#pin-menu ul') || document.createElement('ul'),
+                      pinMenuItems = []
+                const pinMenulabels = [
+                    `${ msgs.tooltip_pinTo || 'Pin to' }...`, msgs.menuLabel_top || 'Top',
+                    msgs.menuLabel_sidebar || 'Sidebar', msgs.menuLabel_bottom || 'Bottom' ]
+                const pinMenuIcons = [icons.webCorner.create(), icons.sidebar.create(), icons.anchor.create(), icons.checkmark.create()]
+
+                // Style icons
+                pinMenuIcons.forEach(icon => icon.style.cssText = (
+                    'width: 12px ; height: 12px ; position: relative ; top: 1px ; right: 5px ; margin-left: 5px'))
+                pinMenuIcons[0].style.width = pinMenuIcons[0].style.height = '11px' // shrink corner web icon
+                pinMenuIcons[3].style.cssText = 'position: relative ; float: right ; margin-right: -16px ; top: 4px' // re-style checkmarks
+
+                // Fill menu UL
+                for (let i = 0 ; i < 4 ; i++) {
+                    pinMenuItems.push(document.createElement('li'))
+                    pinMenuItems[i].textContent = pinMenulabels[i]
+                    pinMenuItems[i].className = 'bravegpt-menu-item'
+                    if (i == 0) { // format header item
+                        pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
+                        pinMenuItems[i].classList.add('bravegpt-menu-header') // to not apply hover fx from appStyle
+                        pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
+                    } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
+                    pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
+                    pinMenuItems[i].prepend(i > 0 ? pinMenuIcons[i -1] : '') // prepend left icon
+                    if (i == 1 && config.stickySidebar // 'Top' item + Sticky mode on
+                     || i == 2 && !config.stickySidebar && !config.anchored // 'Sidebar' item + no mode on
+                     || i == 3 && config.anchored) // 'Bottom' item + Anchor mode on
+                            pinMenuItems[i].append(pinMenuIcons[pinMenuIcons.length -1]) // append right checkmark
+                    pinMenuItems[i].onclick = menus.pin.clickHandler
+                    pinMenuUL.append(pinMenuItems[i])
+                }
+                pinMenu.append(pinMenuUL)
+
+                // Add listeners to make visibility stick when mousing from pinSVG
+                pinMenu.onmouseover = menus.pin.toggle
+                pinMenu.onmouseout = pinMenu.remove // instead of toggle so re-mouseover doesn't show ghost
+            },
+
+            toggle() { // visibility
+                const pinMenu = document.getElementById('pin-menu') || menus.pin.createAppend()
+                if (!menus.pin.topPos)
+                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -73
+                if (!menus.pin.rightPos)
+                     menus.pin.rightPos = appDiv.getBoundingClientRect().right - event.clientX - pinMenu.offsetWidth/2
+                pinMenu.style.top = `${menus.pin.topPos}px` ; pinMenu.style.right = `${menus.pin.rightPos}px`
+                pinMenu.style.opacity = (
+                    event.type == 'mouseover' ? 1 : event.type == 'mouseout' ? 0 : +!parseInt(pinMenu.style.opacity, 10) )
             }
         }
     }
@@ -714,15 +1074,136 @@ setTimeout(async () => {
     // Define ICON functions
 
     const icons = {
-        about: {
+
+        anchor: {
             create() {
-                const aboutSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      aboutSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
-                aboutSVGattrs.forEach(([attr, value]) => aboutSVG.setAttribute(attr, value))
-                aboutSVG.append(createSVGpath({ stroke: 'none',
-                    d: 'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z' }
+                const anchorSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      anchorSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 24 24']]
+                anchorSVGattrs.forEach(([attr, value]) => anchorSVG.setAttribute(attr, value))
+                anchorSVG.append(createSVGelem('path', { stroke: 'none',
+                    d: 'M12,2 C13.6568542,2 15,3.34314575 15,5 C15,6.30588222 14.1656226,7.41688515 13.0009007,7.82897577 L13.0008722,19.9379974 C15.8984799,19.5763478 18.3147266,17.665053 19.3940412,15.0596838 L19.417,15 L17,15 C15.9853611,15 15.6358608,13.6848035 16.4495309,13.1641077 L16.5527864,13.1055728 L20.5527864,11.1055728 C21.2176875,10.7731223 22,11.256618 22,12 C22,17.5228475 17.5228475,22 12,22 C6.4771525,22 2,17.5228475 2,12 C2,11.2957433 2.70213089,10.8247365 3.34138467,11.0597803 L3.4472136,11.1055728 L7.4472136,13.1055728 C8.35473419,13.5593331 8.07916306,14.8919819 7.11853213,14.9938221 L7,15 L4.582,15 L4.60595876,15.0596838 C5.68539551,17.6653477 8.10206662,19.5767802 11.0001109,19.9381201 L11.0000889,7.82932572 C9.8348501,7.41751442 9,6.30625206 9,5 C9,3.34314575 10.3431458,2 12,2 Z M12,4 C11.4477153,4 11,4.44771525 11,5 C11,5.55228475 11.4477153,6 12,6 C12.5522847,6 13,5.55228475 13,5 C13,4.44771525 12.5522847,4 12,4 Z' }
                 ))
-                return aboutSVG
+                return anchorSVG
+            }
+        },
+
+        arrowsCycle: {
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['id', 'arrows-cycle'], ['width', 13], ['height', 13], ['viewBox', '197 -924 573 891']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                arrowsSVG.append(createSVGelem('path', { stroke: 'none', d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' }))
+                return arrowsSVG
+            }
+        },
+
+        arrowsDiagonal: {
+            inwardSVGpath() { return createSVGelem('path', { stroke: 'none',
+                d: 'M5 1h2v6H1V5h2.59L0 1.41 1.41 0 5 3.59zm7.41 10H15V9H9v6h2v-2.59L14.59 16 16 14.59z'
+            })},
+
+            outwardSVGpath() { return createSVGelem('path', { stroke: 'none',
+                d: 'M8 6.59L6.59 8 3 4.41V7H1V1h6v2H4.41zM13 9v2.59L9.41 8 8 9.41 11.59 13H9v2h6V9z'
+            })},
+
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['id', 'arrows-diagonal-icon'], ['width', 16], ['height', 16], ['viewBox', '0 0 16 16']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                icons.arrowsDiagonal.update(arrowsSVG)
+                return arrowsSVG
+            },
+
+            update(...targetIcons) {
+                targetIcons = targetIcons.flat() // flatten array args nested by spread operator
+                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
+                targetIcons.forEach(icon => {
+                    icon.firstChild?.remove() // clear prev paths
+                    icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                })
+            }
+        },
+
+        arrowsDown: {
+            create() {
+                const arrowsDownSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsDownSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 24 24']]
+                arrowsDownSVGattrs.forEach(([attr, value]) => arrowsDownSVG.setAttribute(attr, value))
+                arrowsDownSVG.append(
+                    createSVGelem('path', { stroke: 'none', d: 'M18,13H6a1,1,0,0,1,0-2H18a1,1,0,0,1,0,2Z' }),
+                    createSVGelem('path', { stroke: 'none', d: 'M14.71,18.29a1,1,0,0,1,0,1.42l-2,2a1,1,0,0,1-1.42,0l-2-2a1,1,0,0,1,1.42-1.42l.29.3V16a1,1,0,0,1,2,0v2.59l.29-.3A1,1,0,0,1,14.71,18.29ZM11.29,8.71a1,1,0,0,0,1.42,0l2-2a1,1,0,1,0-1.42-1.42l-.29.3V3a1,1,0,0,0-2,0V5.59l-.29-.3A1,1,0,0,0,9.29,6.71Z' })
+                )
+                return arrowsDownSVG
+            }
+        },
+
+        arrowsTwistedRight: {
+            create() {
+                const arrowsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowsSVGattrs = [['width', 21], ['height', 21], ['viewBox', '-1 -1 32 32']]
+                arrowsSVGattrs.forEach(([attr, value]) => arrowsSVG.setAttribute(attr, value))
+                arrowsSVG.append(createSVGelem('path', { stroke: '', d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' }))
+                return arrowsSVG
+            }
+        },
+
+        arrowUp: {
+            create() {
+                const arrowUpSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      arrowUpSVGattrs = [['width', 16], ['height', 16], ['viewBox', '4 2 16 16'],
+                                         ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']]
+                arrowUpSVGattrs.forEach(([attr, value]) => arrowUpSVG.setAttribute(attr, value))
+                arrowUpSVG.append(createSVGelem('path', { stroke: '', fill: 'none', 'stroke-width': '2', linecap: 'round', 'stroke-linejoin': 'round',
+                    d: 'M7 11L12 6L17 11M12 18V7' }))
+                return arrowUpSVG
+            }
+        },
+
+        braveGPT: {
+            create() {
+                const braveGPTicon = document.createElement('img')
+                braveGPTicon.src = GM_getResourceText('bgptIcon')
+                return braveGPTicon
+            }
+        },
+
+        caretsInward: {
+            create() {
+                const caretsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      caretsSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 24 24']]
+                caretsSVGattrs.forEach(([attr, value]) => caretsSVG.setAttribute(attr, value))
+                caretsSVG.append(createSVGelem('path', { stroke: '', d: 'M11.29,9.71a1,1,0,0,0,1.42,0l5-5a1,1,0,1,0-1.42-1.42L12,7.59,7.71,3.29A1,1,0,0,0,6.29,4.71Zm1.42,4.58a1,1,0,0,0-1.42,0l-5,5a1,1,0,0,0,1.42,1.42L12,16.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z' }))
+                return caretsSVG
+            }
+        },
+
+        checkmark: {
+            create() {
+                const checkmarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      checkmarkSVGattrs = [['id', 'checkmark-icon'], ['width', 10], ['height', 10], ['viewBox', '0 0 20 20']]
+                checkmarkSVGattrs.forEach(([attr, value]) => checkmarkSVG.setAttribute(attr, value))
+                checkmarkSVG.append(createSVGelem('path', { stroke: 'none', d: 'M0 11l2-2 5 5L18 3l2 2L7 18z' }))
+                return checkmarkSVG
+            }
+        },
+
+        chevronDown: {
+            create() {
+                const chevronSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      chevronSVGattrs = [['width', 20], ['height', 20], ['viewBox', '0 0 16 16']]
+                chevronSVGattrs.forEach(([attr, value]) => chevronSVG.setAttribute(attr, value))
+                chevronSVG.append(createSVGelem('path', { stroke: 'none', d: 'M1 5l7 4.61L15 5v2.39L8 12 1 7.39z' }))
+                return chevronSVG                
+            }
+        },
+
+        chevronUp: {
+            create() {
+                const chevronSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      chevronSVGattrs = [['width', 20], ['height', 20], ['viewBox', '0 0 16 16']]
+                chevronSVGattrs.forEach(([attr, value]) => chevronSVG.setAttribute(attr, value))
+                chevronSVG.append(createSVGelem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' }))
+                return chevronSVG                
             }
         },
 
@@ -732,10 +1213,63 @@ setTimeout(async () => {
                       fontSizeSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 512 512']]
                 fontSizeSVGattrs.forEach(([attr, value]) => fontSizeSVG.setAttribute(attr, value))
                 fontSizeSVG.append(
-                    createSVGpath({ stroke: 'none', d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
-                    createSVGpath({ stroke: 'none', d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
+                    createSVGelem('path', { stroke: 'none', d: 'M234.997 448.199h-55.373a6.734 6.734 0 0 1-6.556-5.194l-11.435-48.682a6.734 6.734 0 0 0-6.556-5.194H86.063a6.734 6.734 0 0 0-6.556 5.194l-11.435 48.682a6.734 6.734 0 0 1-6.556 5.194H7.74c-4.519 0-7.755-4.363-6.445-8.687l79.173-261.269a6.734 6.734 0 0 1 6.445-4.781h69.29c2.97 0 5.59 1.946 6.447 4.79l78.795 261.269c1.303 4.322-1.933 8.678-6.448 8.678zm-88.044-114.93l-19.983-84.371c-1.639-6.921-11.493-6.905-13.111.02l-19.705 84.371c-.987 4.224 2.22 8.266 6.558 8.266H140.4c4.346 0 7.555-4.056 6.553-8.286z' }),
+                    createSVGelem('path', { stroke: 'none', d: 'M502.572 448.199h-77.475a9.423 9.423 0 0 1-9.173-7.268l-16-68.114a9.423 9.423 0 0 0-9.173-7.268H294.19a9.423 9.423 0 0 0-9.173 7.268l-16 68.114a9.423 9.423 0 0 1-9.173 7.268h-75.241c-6.322 0-10.851-6.104-9.017-12.155L286.362 70.491a9.422 9.422 0 0 1 9.017-6.69h96.947a9.422 9.422 0 0 1 9.021 6.702l110.245 365.554c1.825 6.047-2.703 12.142-9.02 12.142zM379.385 287.395l-27.959-118.047c-2.293-9.683-16.081-9.661-18.344.029l-27.57 118.047c-1.38 5.91 3.106 11.565 9.175 11.565h55.529c6.082-.001 10.571-5.676 9.169-11.594z' })
                 )
                 return fontSizeSVG
+            }
+        },
+
+        languageChars: {
+            create() {
+                const languageCharsSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      languageCharsSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -960 960 960']]
+                languageCharsSVGattrs.forEach(([attr, value]) => languageCharsSVG.setAttribute(attr, value))
+                languageCharsSVG.append(createSVGelem('path', { stroke: 'none', d: 'm459-48 188-526h125L960-48H847l-35-100H603L568-48H459ZM130-169l-75-75 196-196q-42-45-78-101t-55-105h117q17 32 40.5 67.5T325-514q35-37 70-93t64-119H0v-106h290v-80h106v80h290v106H572q-23 74-70 152T399-438l82 85-39 111-118-121-194 194Zm508-79h139l-69-197-70 197Z' })                )
+                return languageCharsSVG                
+            }
+        },
+
+        moon: {
+            create() {
+                const moonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      moonSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 24 24']]
+                moonSVGattrs.forEach(([attr, value]) => moonSVG.setAttribute(attr, value))
+                moonSVG.append(createSVGelem('path', { fill: 'none', stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+                    d: 'M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z' }))
+                return moonSVG
+            }
+        },
+
+        pin: {
+            create() {
+                const pinSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      pinSVGattrs = [['id', 'pin-icon'], ['width', 17], ['height', 17], ['viewBox', '0 0 16 16']]
+                pinSVGattrs.forEach(([attr, value]) => pinSVG.setAttribute(attr, value))
+                pinSVG.append(createSVGelem('path', { stroke: '', d: 'M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z' }))
+                return pinSVG
+            }
+        },
+
+        questionMark: {
+            create() {
+                const questionMarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      questionMarkSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 -960 960 960']]
+                questionMarkSVGattrs.forEach(([attr, value]) => questionMarkSVG.setAttribute(attr, value))
+                questionMarkSVG.append(createSVGelem('path', { stroke: 'none', d: 'M428-383q0-71 16-111t63-74q47-35 58.5-55.5T577-683q0-35-25-57.5T488-763q-26 0-61 18t-50 70l-114-47q27-82 90.5-122.5T488-885q93 0 151.5 59.5T698-682q0 55-17 95t-70 83q-37 29-48.5 55T550-383H428Zm60 265q-41 0-69.5-28.5T390-216q0-41 28.5-69.5T488-314q41 0 69.5 28.5T586-216q0 41-28.5 69.5T488-118Z' }))
+                return questionMarkSVG
+            }
+        },
+
+        questionMarkCircle: {
+            create() {
+                const questionMarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      questionMarkSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 56.693 56.693']]
+                questionMarkSVGattrs.forEach(([attr, value]) => questionMarkSVG.setAttribute(attr, value))
+                questionMarkSVG.append(createSVGelem('path', { stroke: 'none',
+                    d: 'M28.765,4.774c-13.562,0-24.594,11.031-24.594,24.594c0,13.561,11.031,24.594,24.594,24.594  c13.561,0,24.594-11.033,24.594-24.594C53.358,15.805,42.325,4.774,28.765,4.774z M31.765,42.913c0,0.699-0.302,1.334-0.896,1.885  c-0.587,0.545-1.373,0.82-2.337,0.82c-0.993,0-1.812-0.273-2.431-0.814c-0.634-0.551-0.954-1.188-0.954-1.891v-1.209  c0-0.703,0.322-1.34,0.954-1.891c0.619-0.539,1.438-0.812,2.431-0.812c0.964,0,1.75,0.277,2.337,0.82  c0.594,0.551,0.896,1.186,0.896,1.883V42.913z M38.427,24.799c-0.389,0.762-0.886,1.432-1.478,1.994  c-0.581,0.549-1.215,1.044-1.887,1.473c-0.643,0.408-1.248,0.852-1.798,1.315c-0.539,0.455-0.99,0.963-1.343,1.512  c-0.336,0.523-0.507,1.178-0.507,1.943v0.76c0,0.504-0.247,1.031-0.735,1.572c-0.494,0.545-1.155,0.838-1.961,0.871l-0.167,0.004  c-0.818,0-1.484-0.234-1.98-0.699c-0.532-0.496-0.801-1.055-0.801-1.658c0-1.41,0.196-2.611,0.584-3.572  c0.385-0.953,0.86-1.78,1.416-2.459c0.554-0.678,1.178-1.27,1.854-1.762c0.646-0.467,1.242-0.93,1.773-1.371  c0.513-0.428,0.954-0.885,1.312-1.354c0.328-0.435,0.489-0.962,0.489-1.608c0-1.066-0.289-1.83-0.887-2.334  c-0.604-0.512-1.442-0.771-2.487-0.771c-0.696,0-1.294,0.043-1.776,0.129c-0.471,0.083-0.905,0.223-1.294,0.417  c-0.384,0.19-0.745,0.456-1.075,0.786c-0.346,0.346-0.71,0.783-1.084,1.301c-0.336,0.473-0.835,0.83-1.48,1.062  c-0.662,0.239-1.397,0.175-2.164-0.192c-0.689-0.344-1.11-0.793-1.254-1.338c-0.135-0.5-0.135-1.025-0.002-1.557  c0.098-0.453,0.369-1.012,0.83-1.695c0.451-0.67,1.094-1.321,1.912-1.938c0.814-0.614,1.847-1.151,3.064-1.593  c1.227-0.443,2.695-0.668,4.367-0.668c1.648,0,3.078,0.249,4.248,0.742c1.176,0.496,2.137,1.157,2.854,1.967  c0.715,0.809,1.242,1.738,1.568,2.762c0.322,1.014,0.486,2.072,0.486,3.146C39.024,23.075,38.823,24.024,38.427,24.799z' }
+                ))
+                return questionMarkSVG
             }
         },
         
@@ -744,8 +1278,90 @@ setTimeout(async () => {
                 const schemeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
                       schemeSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -960 960 960']]
                 schemeSVGattrs.forEach(([attr, value]) => schemeSVG.setAttribute(attr, value))
-                schemeSVG.append(createSVGpath({ stroke: 'none', d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
+                schemeSVG.append(createSVGelem('path', { stroke: 'none', d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' }))
                 return schemeSVG
+            }
+        },
+        
+        sidebar: {
+            create() {
+                const sidebarSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sidebarSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 -975 900 1000']]
+                sidebarSVGattrs.forEach(([attr, value]) => sidebarSVG.setAttribute(attr, value))
+                sidebarSVG.append(createSVGelem('path', { stroke: 'none', d: 'M800-160q33 0 56.5-23.5T880-240v-480q0-33-23.5-56.5T800-800H160q-33 0-56.5 23.5T80-720v480q0 33 23.5 56.5T160-160h640Zm-240-80H160v-480h400v480Zm80 0v-480H800v480H640Zm160 0v-480 480Zm-160 0h-80 80Zm0-480h-80 80Z' }))
+                return sidebarSVG
+            }
+        },
+        
+        signalStream: {
+            create() {
+                const signalStreamSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      signalStreamSVGattrs = [['width', 16], ['height', 16], ['viewBox', '0 0 32 32']]
+                signalStreamSVGattrs.forEach(([attr, value]) => signalStreamSVG.setAttribute(attr, value))
+                signalStreamSVG.append(createSVGelem('path', { stroke: '', 'stroke-width': 0.5, d: 'M16 11.75c-2.347 0-4.25 1.903-4.25 4.25s1.903 4.25 4.25 4.25c2.347 0 4.25-1.903 4.25-4.25v0c-0.003-2.346-1.904-4.247-4.25-4.25h-0zM16 17.75c-0.966 0-1.75-0.784-1.75-1.75s0.784-1.75 1.75-1.75c0.966 0 1.75 0.784 1.75 1.75v0c-0.001 0.966-0.784 1.749-1.75 1.75h-0zM3.25 16c0.211-3.416 1.61-6.471 3.784-8.789l-0.007 0.008c0.223-0.226 0.361-0.536 0.361-0.879 0-0.69-0.56-1.25-1.25-1.25-0.344 0-0.655 0.139-0.881 0.363l0-0c-2.629 2.757-4.31 6.438-4.506 10.509l-0.001 0.038c0.198 4.109 1.879 7.79 4.514 10.553l-0.006-0.006c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-2.173-2.307-3.573-5.363-3.774-8.743l-0.002-0.038zM9.363 16c0.149-2.342 1.109-4.436 2.6-6.026l-0.005 0.005c0.224-0.226 0.363-0.537 0.363-0.88 0-0.69-0.56-1.25-1.25-1.25-0.345 0-0.657 0.139-0.883 0.365l0-0c-1.94 2.035-3.179 4.753-3.323 7.759l-0.001 0.028c0.145 3.032 1.384 5.75 3.329 7.79l-0.005-0.005c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-1.49-1.581-2.451-3.676-2.591-5.993l-0.001-0.027zM26.744 5.453c-0.226-0.227-0.54-0.368-0.886-0.368-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.139 0.657 0.365 0.883l-0-0c2.168 2.31 3.567 5.365 3.775 8.741l0.002 0.040c-0.21 3.417-1.609 6.471-3.784 8.789l0.007-0.008c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c2.628-2.757 4.308-6.439 4.504-10.509l0.001-0.038c-0.198-4.108-1.878-7.79-4.512-10.553l0.006 0.007zM21.811 8.214c-0.226-0.224-0.537-0.363-0.881-0.363-0.69 0-1.25 0.56-1.25 1.25 0 0.343 0.138 0.653 0.361 0.879l-0-0c1.486 1.585 2.447 3.678 2.594 5.992l0.001 0.028c-0.151 2.343-1.111 4.436-2.601 6.027l0.005-0.005c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c1.939-2.036 3.178-4.754 3.323-7.759l0.001-0.028c-0.145-3.033-1.385-5.751-3.331-7.791l0.005 0.005z' }))
+                return signalStreamSVG
+            }
+        },
+        
+        slash: {
+            create() {
+                const slashSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      slashSVGattrs = [['width', 15], ['height', 15], ['viewBox', '0 0 15 15']]
+                slashSVGattrs.forEach(([attr, value]) => slashSVG.setAttribute(attr, value))
+                slashSVG.append(createSVGelem('path', { stroke: '', d: 'M4.10876 14L9.46582 1H10.8178L5.46074 14H4.10876Z' }))
+                return slashSVG
+            }
+        },
+
+        sliders: {
+            create() {
+                const slidersSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      slidersSVGattrs = [['width', 19], ['height', 19], ['viewBox', '0 0 25 25']]
+                slidersSVGattrs.forEach(([attr, value]) => slidersSVG.setAttribute(attr, value))
+
+                // Top track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 5.5, x2: 12, y2: 5.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 18, cy: 5.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 21, y1: 5.5, x2: 23, y2: 5.5 }))
+
+                // Middle track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 12.5, x2: 4, y2: 12.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 8, cy: 12.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 14, y1: 12.5, x2: 23, y2: 12.5 }))
+
+                // Bottom track
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 2, y1: 19.5, x2: 8, y2: 19.5 }))
+                slidersSVG.append(createSVGelem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
+                    cx: 14.5, cy: 19.5, r: 3 }))
+                slidersSVG.append(createSVGelem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
+                    x1: 17, y1: 19.5, x2: 23, y2: 19.5 }))
+
+                return slidersSVG
+            }
+        },
+
+        sparkles: {
+            create(style) { // style = ( 'fg' ? filled front sparkle : 'bg' ? filled rear sparkles )
+                const sparklesSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sparklesSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 0 512 512']]
+                sparklesSVGattrs.forEach(([attr, value]) => sparklesSVG.setAttribute(attr, value))
+                sparklesSVG.append(createSVGelem('path', { // large front sparkle
+                    fill: style == 'bg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
+                    d: 'M259.92,262.91,216.4,149.77a9,9,0,0,0-16.8,0L156.08,262.91a9,9,0,0,1-5.17,5.17L37.77,311.6a9,9,0,0,0,0,16.8l113.14,43.52a9,9,0,0,1,5.17,5.17L199.6,490.23a9,9,0,0,0,16.8,0l43.52-113.14a9,9,0,0,1,5.17-5.17L378.23,328.4a9,9,0,0,0,0-16.8L265.09,268.08A9,9,0,0,1,259.92,262.91Z' }))
+                sparklesSVG.append(createSVGelem('polygon', { // small(est) rear-left sparkle
+                    fill: style == 'fg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 24,
+                    points: '108 68 88 16 68 68 16 88 68 108 88 160 108 108 160 88 108 68' }))
+                sparklesSVG.append(createSVGelem('polygon', { // small rear-right sparkle
+                    fill: style == 'fg' ? 'none' : '', stroke: '', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
+                    points: '426.67 117.33 400 48 373.33 117.33 304 144 373.33 170.67 400 240 426.67 170.67 496 144 426.67 117.33' }))
+                return sparklesSVG
             }
         },
 
@@ -755,39 +1371,529 @@ setTimeout(async () => {
                       speakerSVGattrs = [['width', 22], ['height', 22], ['viewBox', '0 0 32 32']]
                 speakerSVGattrs.forEach(([attr, value]) => speakerSVG.setAttribute(attr, value))
                 speakerSVG.append(
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                    createSVGelem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
                         d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
-                    createSVGpath({ stroke: '', 'stroke-width': '2px', fill: 'none',
+                    createSVGelem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
                         d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
-                    createSVGpath({ stroke: 'none', fill: '',
+                    createSVGelem('path', { stroke: 'none', fill: '',
                         d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
                 )
                 return speakerSVG
             }
         },
 
+        speechBalloonLasso: {
+            create() {
+                const speechBalloonLassoSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      speechBalloonLassoSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 -960 960 960']]
+                speechBalloonLassoSVGattrs.forEach(([attr, value]) => speechBalloonLassoSVG.setAttribute(attr, value))
+                speechBalloonLassoSVG.append(createSVGelem('path', { stroke: 'none', d: 'M323-41v-247h-10q-105 0-172.5-67T73-528q0-105 74-179t179-74h36l-44-44 69-69 162 162-162 162-69-69 44-44h-36q-64 0-109.5 45.5T171-528q0 64 45.5 109.5T326-373h95v96l96-96h117q64 0 109.5-45.5T789-528q0-64-45.5-109.5T634-683h10v-98h-10q105 0 179 74t74 179q0 105-74 179t-179 74h-77L323-41Z' }))
+                return speechBalloonLassoSVG
+            }
+        },
+
+        speechBalloons: {
+            create() {
+                const speechBalloonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      speechBalloonSVGattrs = [['width', 16], ['height', 16], ['viewBox', '0 -960 960 960']]
+                speechBalloonSVGattrs.forEach(([attr, value]) => speechBalloonSVG.setAttribute(attr, value))
+                speechBalloonSVG.append(createSVGelem('path', { stroke: 'none', d: 'M350-212q-32.55 0-55.27-22.73Q272-257.45 272-290v-64h492v-342h63.67q33.33 0 55.83 22.72Q906-650.55 906-618v576L736-212H350ZM54-256v-582.4q0-32.38 22.72-54.99Q99.45-916 132-916h482q32.55 0 55.28 22.72Q692-870.55 692-838v334q0 32.55-22.72 55.27Q646.55-426 614-426H224L54-256Zm540-268v-294H152v294h442Zm-442 0v-294 294Z' }))
+                return speechBalloonSVG
+            }
+        },
+
+        sun: {
+            create() {
+                const sunSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sunSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 -960 960 960']]
+                sunSVGattrs.forEach(([attr, value]) => sunSVG.setAttribute(attr, value))
+                sunSVG.append(createSVGelem('path', { stroke: 'none', d: 'M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z' }))
+                return sunSVG
+            }
+        },
+
+        sunglasses: {
+            create() {
+                const sunglassesSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      sunglassesSVGattrs = [['width', 17], ['height', 17], ['viewBox', '0 0 512 512']]
+                sunglassesSVGattrs.forEach(([attr, value]) => sunglassesSVG.setAttribute(attr, value))
+                sunglassesSVG.append(createSVGelem('path', { stroke: 'none', d: 'M507.44,185.327c-4.029-5.124-10.185-8.112-16.704-8.112c0,0-48.021,0-156.827,0h-65.774H243.87h-65.774c-108.806,0-156.827,0-156.827,0c-6.519,0-12.675,2.988-16.714,8.112c-4.028,5.125-5.486,11.815-3.965,18.152c0,0,12.421,56.269,19.927,82.534c7.506,26.265,26.265,48.772,86.29,48.772s59.827,0,74.828,0c21.258,0,46.256-19.99,55.028-45.023c4.97-14.16,12.756-32.738,19.338-47.876c6.582,15.138,14.368,33.716,19.338,47.876c8.773,25.033,33.77,45.023,55.028,45.023c15.001,0,14.803,0,74.828,0s78.784-22.507,86.29-48.772c7.496-26.264,19.918-82.534,19.918-82.534C512.935,197.142,511.478,190.452,507.44,185.327z M90.339,278.734C45.314,263.732,40.318,198.7,40.318,198.7s22.507,0,55.028,0L90.339,278.734z M340.464,278.734c-45.015-15.001-50.022-80.034-50.022-80.034s22.508,0,55.029,0L340.464,278.734z' }))
+                return sunglassesSVG
+            }
+        },
+
+        webCorner: {
+            create() {
+                const webSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+                      webSVGattrs = [['width', 18], ['height', 18], ['viewBox', '0 0 32 32']]
+                webSVGattrs.forEach(([attr, value]) => webSVG.setAttribute(attr, value))
+                webSVG.append(createSVGelem('path', { stroke: 'none', d: 'M29.9,2.6c-0.1-0.2-0.3-0.4-0.5-0.5C29.3,2,29.1,2,29,2H3C2.4,2,2,2.4,2,3s0.4,1,1,1h2c5,0,9,4,9,9c0,1.9-0.6,3.8-1.8,5.4l-4.9,4.9c-0.4,0.4-0.4,1,0,1.4C7.5,24.9,7.7,25,8,25s0.5-0.1,0.7-0.3l4.9-4.9c1.6-1.2,3.4-1.8,5.4-1.8c5,0,9,4,9,9v2    c0,0.6,0.4,1,1,1s1-0.4,1-1V3C30,2.9,30,2.7,29.9,2.6zM26.6,4l-4.8,4.8c0-1.9-0.8-3.5-2-4.8H26.6z M11.3,4H15c2.7,0,4.8,2.2,4.8,4.8c0,1-0.3,2-0.9,2.9l-3,3C16,14.2,16,13.6,16,13C16,9.3,14.1,6,11.3,4z M19,16c-0.6,0-1.2,0-1.7,0.1l3-3c0.8-0.6,1.8-0.9,2.9-0.9c2.7,0,4.8,2.2,4.8,4.8v3.7C26,17.9,22.7,16,19,16z M23.2,10.2L28,5.4v6.8C26.8,11,25.1,10.2,23.2,10.2z' }))
+                return webSVG
+            }
+        },
+
         widescreen: {
-            wideSVGpath() { return createSVGpath({ stroke: 'none',
-                fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
+            wideSVGpath() { return createSVGelem('path', {
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
             })},
 
-            tallSVGpath() { return createSVGpath({ stroke: 'none',
-                fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
+            tallSVGpath() { return createSVGelem('path', {
+                stroke: '', fill: '', 'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
             })},
 
             create() {
                 const widescreenSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      widescreenSVGattrs = [['width', 18], ['height', 18], ['viewBox', '8 8 20 20']]
+                      widescreenSVGattrs = [['id', 'widescreen-icon'], ['width', 18], ['height', 18], ['viewBox', '8 8 20 20']]
                 widescreenSVGattrs.forEach(([attr, value]) => widescreenSVG.setAttribute(attr, value))
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
+                icons.widescreen.update(widescreenSVG)
                 return widescreenSVG
             },
 
-            update(widescreenSVG) {
-                widescreenSVG.removeChild(widescreenSVG.firstChild) // clear path
-                widescreenSVG.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
-                return widescreenSVG
+            update(...targetIcons) {
+                targetIcons = targetIcons.flat() // flatten array args nested by spread operator
+                if (targetIcons.length == 0)
+                    targetIcons = document.querySelectorAll('#widescreen-icon:not(.chatgpt-notif *)')
+                targetIcons.forEach(icon => {
+                    icon.firstChild?.remove() // clear prev paths
+                    icon.append(icons.widescreen[config.widerSidebar ? 'wideSVGpath' : 'tallSVGpath']())
+                })
             }
+        }
+    }
+
+    // Define LOGO functions
+
+    const logos = {
+        braveGPT: {
+
+            create() {
+                const braveGPTlogo = document.createElement('img') ; braveGPTlogo.id = 'bravegpt-logo'
+                logos.braveGPT.update(braveGPTlogo)
+                return braveGPTlogo
+            },
+
+            update(...targetLogos) {
+                targetLogos = targetLogos.flat() // flatten array args nested by spread operator
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#bravegpt-logo')
+                targetLogos.forEach(logo => logo.src = GM_getResourceText(`bgpt${ scheme == 'dark' ? 'DS' : 'LS' }logo`))
+            }
+        }
+    }
+
+    // Define UPDATE functions
+
+    const update = {
+
+        appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 56 - appDiv.offsetHeight : -32 }px` },
+
+        appStyle() {
+            appStyle.innerText = (
+                '.no-user-select { -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
+              + ( // stylize scrollbars in Chromium/Safari
+                    '#bravegpt *::-webkit-scrollbar { width: 7px }'
+                  + '#bravegpt *::-webkit-scrollbar-thumb { background: #cdcdcd }'
+                  + '#bravegpt *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }'
+                  + '#bravegpt *::-webkit-scrollbar-track { background: none }' )
+              + '#bravegpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
+              + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners to show resize cursor everywhere
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; z-index: 9999 ; cursor: ew-resize }'
+              + `#bravegpt { word-wrap: break-word ; white-space: pre-wrap ; margin-bottom: ${ isMobile ? -29 : 20}px ;`
+                  + 'z-index: 5555 ; padding: 24px 23px 45px 23px ;'
+                  + `background-image: linear-gradient(180deg, ${
+                        scheme == 'dark' ? '#99a8a6 -70%, black 57%'
+                                         : `${ config.bgAnimationsDisabled ? 'white' : '#b6ebff' } -64%, white 33%` }) ;`
+                  + ( !config.fgAnimationsDisabled ?
+                        'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor vertical minimize/restore
+                                  + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor horizontal expand/shrink
+                                  + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) // smoothen 1st app fade-in
+                  + `border: ${ scheme == 'dark' ? 'none' : '1px solid var(--color-divider-subtle)' } ; border-radius: 18px }`
+              + '#bravegpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) }'
+              + `#bravegpt p { margin: 0 ${ scheme == 'dark' ? '; color: #ccc' : '' }}`
+              + `#bravegpt .alert-link { color: ${ scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+              + ( scheme == 'dark' ? '#bravegpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
+              + '.app-name { font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
+                  + `color: ${ scheme == 'dark' ? 'white' : 'black' } !important }`
+              + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
+              + '.kudoai a { color: #aaa ; text-decoration: none !important }'
+              + `.kudoai a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' }}`
+              + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ; transition: transform 0.15s ease ;'
+                  + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
+              + ( config.bgAnimationsDisabled ? '' : ( '#bravegpt-logo, .corner-btn svg, .standby-btn'
+                  + `{ filter: drop-shadow(${ scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
+              + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9' : 'fill: black ; stroke: black' } ;`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transform: scale(1.285)' }}`
+              + '#bravegpt .loading {'
+                  + 'margin-bottom: -55px ;' // offset vs. #bravegpt bottom-padding footer accomodation
+                  + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + '#bravegpt section.loading { padding-left: 5px ; font-size: 90% }'
+              + '#font-size-slider-track { width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
+                  + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
+              + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
+                  + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ; height: calc(100% - 20px) ; cursor: pointer }'
+              + '#font-size-slider-thumb { width: 10px ; height: 27px ; border-radius: 30% ; position: relative ; top: -9px ;'
+                  + `transition: transform 0.05s ease ; background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                  + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0px ; cursor: ew-resize }'
+              + ( config.fgAnimationsDisabled ? '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
+              + '.standby-btn { width: 100% ; padding: 13px 0 ; cursor: pointer ; margin: 14px 0 20px ;'
+                  + `color: ${ scheme == 'dark' ? 'white' : 'black' } ;`
+                  + `border-radius: 4px ; border: 1px solid ${ scheme == 'dark' ? '#fff' : '#000' } ;`
+                  + 'transition: transform 0.15s ease }'
+              + '.standby-btn:hover { border-radius: 4px ;'
+                  + `${ scheme == 'dark' ? 'background: white ; color: black' : 'background: black ; color: white' };`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transform: scale(1.045)' }}`
+              + '#bravegpt > pre {'
+                  + `font-size: ${config.fontSize}px ; font-family: Consolas, Menlo, Monaco, monospace ; white-space: pre-wrap ;`
+                  + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
+                  + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
+                  + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
+                        'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' )
+                  + `${ scheme == 'dark' ? 'background: #2b3a40cf ; color: #f2f2f2 ; border: 1px solid white'
+                                         : 'background: #eaeaeacf ; color: #282828 ; border: none' }}`
+              + `#bravegpt footer { margin: ${ isFirefox ? 32 : 27 }px 18px -26px 0 ; border-top: none !important }`
+              + '#bravegpt .feedback {'
+                  + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
+                  + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
+              + '#bravegpt .feedback .icon {'
+                  + ' fill: currentColor ; color: currentColor ; --size: 12px ; position: relative ; top: 0.19em ; right: 2px }'
+              + `#bravegpt footer a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
+                  + 'float: left ; left: 7px ; margin: 36px -13px 0 0 ;' // positioning
+                  + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
+                      + ( scheme == 'dark' ? '#0000' : '#eaeaeacf' ) + '}'
+              + '.chatgpt-js { font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
+              + '.chatgpt-js > a { color: inherit ; top: .054rem }'
+              + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
+              + '#app-chatbar {'
+                  + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 15px 12px 0 ;`
+                  + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ;  padding: 12px 51px 12px 10px ;'
+                  + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ;'
+                  + `background: ${ scheme == 'dark' ? '#5151519e' : '#eeeeee9e' };`
+                  + `position: relative ; z-index: 555 ; color: ${ scheme == 'dark' ? '#eee' : '#222' }}`
+              + '.related-queries { display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -18px ;'
+                  + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
+                  + `${ isFirefox ? '' : 'margin-top: -31px' }}`
+              + '.related-query { margin: 4px 4px 2px 0 ; padding: 8px 13px 7px 14px ;'
+                  + `color: ${ scheme == 'dark' ? '#f2f2f2' : '#767676' } ;`
+                  + `background: ${ scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' } ;`
+                  + `border: 1px solid ${ scheme == 'dark' ? '#777' : '#e1e1e1' } ; font-size: 0.77em ; cursor: pointer ;`
+                  + 'border-radius: 0 13px 12px 13px ; width: fit-content ; flex: 0 0 auto ;'
+                  + `box-shadow: 1px 3px ${ scheme == 'dark' ? '11px -8px lightgray' : '8px -6px rgba(169, 169, 169, 0.75)' };`
+                  + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
+              + '.related-query:hover, .related-query:focus {'
+                  + ( config.fgAnimationsDisabled ? '' : 'transform: scale(1.055) !important ;' )
+                  + `background: ${ scheme == 'dark' ? '#a2a2a270': '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
+              + '.related-query svg { float: left ; margin: 0.09em 6px 0 0 ;' // related query icon
+                  + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
+              + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
+              + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
+              + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
+              + '.chatbar-btn { z-index: 560 ;'
+                  + `border: none ; float: right ; position: relative ; bottom: ${ isFirefox ? 28 : 32 }px ; background: none ; cursor: pointer ;`
+                  + `${ scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa' : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
+              + '.chatbar-btn:hover {'
+                  + `${ scheme == 'dark' ? 'color: #white ; fill: #white ; stroke: #white' : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
+              + ( // markdown styles
+                    '#bravegpt > pre h1 { font-size: 1.25em } #bravegpt > pre h2 { font-size: 1.1em }' // size headings
+                  + '#bravegpt > pre ul { margin: -10px 0 -6px ; }' // reduce v-spacing
+                  + '#bravegpt > pre ol { margin: -33px 0 -6px ; }' // reduce v-spacing
+                  + '#bravegpt > pre li { margin: -10px 0 ; list-style: inside }' ) // reduce v-spacing, show left symbols
+              + '.katex-html { display: none }' // hide unrendered math
+              + '.chatgpt-notif { fill: white ; stroke: white ; font-size: 25px !important ; padding: 6.5px 14px 8.5px 11.5px !important }'
+              + '.notif-close-btn { display: none !important }' // hide notif close btn
+              + '.chatgpt-modal > div { padding: 24px 20px 14px 20px !important ;' // increase modal padding
+                  + 'background-color: white !important ; color: #202124 }'
+              + '.chatgpt-modal h2 { font-size: 26px ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + shrink it
+              + '.modal-close-btn { top: -7px !important ; right: -7px !important }' // re-pos modal close button
+              + `.modal-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
+              + `.modal-close-btn:hover { background-color: #${ scheme == 'dark' ? '666464' : 'f2f2f2' } !important }`
+              + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 18px }' // pos/size modal msg
+              + `.chatgpt-modal a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + `.modal-buttons { margin: 38px 0 1px ${ isMobile ? 0 : -7 }px !important }` // pos modal buttons
+              + '.chatgpt-modal button {' // alert buttons
+                  + 'font-size: 14px ; text-transform: uppercase ; min-width: 123px ; '
+                  + `padding: ${ isMobile? '5px' : '4px 3px' } !important ;`
+                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+                  + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
+              + '.primary-modal-btn { background: black !important ; color: white !important }'
+              + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
+              + ( scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
+                      + 'background-color: black !important ; color: white }'
+                  + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
+                  + '.chatgpt-modal a { color: #00cfff !important }'
+                  + '.chatgpt-modal button:hover { background-color: #00cfff !important ; color: black !important }' ) : '' )
+              + '[class*="-modal-bg"] {'
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
+                  + 'transition: background-color .15s ease ;' // speed to show bg dim
+                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
+              + '[class*="-modal-bg"].animated > div { z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
+              + '[class$="-modal"] {' // native modals + chatgpt.alert()s
+                  + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
+                  + 'opacity: 0 ;' // to fade-in
+                  + `background-image: linear-gradient(180deg, ${ scheme == 'dark' ? '#99a8a6 -70%, black 57%' : '#b6ebff -64%, white 33%' }) ;`
+                  + `border: 1px solid ${ scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                  + `color: ${ scheme == 'dark' ? 'white' : 'black' } ;`
+                  + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
+                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
+                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
+              + ( !config.fgAnimationsDisabled ? ( '[class$="-modal"] button { transition: transform 0.15s ease }' 
+                                                 + '[class$="-modal"] button:hover { transform: scale(1.085) }' ) : '' )
+              + '.bravegpt-menu { position: absolute ; z-index: 2250 ;'
+                  + 'padding: 3.5px 5px 4.5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
+              + '.bravegpt-menu ul { margin: 0 ; padding: 0 ; list-style: none }'
+              + '.bravegpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
+              + '.bravegpt-menu-item:not(.bravegpt-menu-header):hover {'
+                  + 'cursor: pointer ; background: white ; color: black ; fill: black }'
+              + '#checkmark-icon { fill: #b3f96d } .bravegpt-menu-item:hover #checkmark-icon { fill: green }'
+
+              // Glowing modal btns
+              + ':root { --glow-color: hsl(186 100% 69%); }'
+              + '.glowing-btn { perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
+                  + '-webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) ;' 
+                  + 'box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) ;' 
+                  + '-moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color) }' 
+              + '.glowing-txt { animation: text-flicker 3s linear infinite ;'
+                  + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
+              + '.faulty-letter { opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
+              + '.glowing-btn::before { content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
+                  + 'opacity: 0.7 ; filter: blur(1em) ; transform: translateY(120%) rotateX(95deg) scale(1, 0.35) ;'
+                  + 'background: var(--glow-color) ; pointer-events: none }'
+              + '.glowing-btn::after { content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
+                  + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
+                  + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
+              + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover .glowing-txt { animation: none }'
+              + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
+              + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
+              + '.glowing-btn:hover:after { opacity: 1 }'
+              + '@keyframes faulty-flicker { 0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
+                  + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 } 87% { opacity: 1 }}'
+              + '@keyframes text-flicker { 0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
+                  + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 } 70% { opacity: 0.7 }'
+                  + '72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
+              + '@keyframes border-flicker { 0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
+
+              // Settings modal
+              + '#bravegpt-settings { font-family: var(--brand-font) ;'
+                  + `min-width: ${ isPortrait ? 288 : 758 }px ; max-width: 75vw ; word-wrap: break-word ;`
+                  + 'padding: 11px 8px 3px ; margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + `${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
+              + '@keyframes alert-zoom-fade-out { 0% { opacity: 1 }'
+                  + '50% { opacity: 0.25 ; transform: scale(1.05) }'
+                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
+              + `#bravegpt-settings-title { font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 ${ isMobile ? -31 : -6 }px -3px 0 }`
+              + `#bravegpt-settings-title h4 { font-size: ${ isPortrait ? 26 : 30 }px ; font-weight: bold ; margin: -31px 17px 7px 0 }`
+              + '#bravegpt-settings-close-btn {'
+                  + 'cursor: pointer ; width: 20px ; height: 20px ; border-radius: 17px ; float: right ;'
+                  + 'position: absolute ; top: 10px ; right: 13px }'
+              + `#bravegpt-settings-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + '#bravegpt-settings-close-btn svg { margin: 6.5px }' // center SVG for hover underlay
+              + `#bravegpt-settings-close-btn:hover { background-color: #f2f2f2${ scheme == 'dark' ? '00' : '' }}`
+              + '#bravegpt-settings ul { list-style: none ; padding: 0 ; margin: 0 ;' // hide bullets, override Brave ul margins
+                  + `width: ${ isPortrait ? 100 : 50 }% }` // set width based on column cnt
+              + '#bravegpt-settings li { height: 37px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
+                  + `padding: 7px 10px ; border-bottom: 1px dotted ${ scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
+                  + 'border-radius: 3px }' // make highlight strips slightly rounded
+              + '#bravegpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
+              + '#bravegpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
+              + '#bravegpt-settings li, #bravegpt-settings li label { cursor: pointer }' // add finger on hover
+              + '#bravegpt-settings li:hover {'
+                  + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;' // add highlight strip
+                  + `${ config.fgAnimationsDisabled || isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
+              + '#bravegpt-settings li > input { float: right }' // pos toggles
+              + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
+              + '#scheme-menu-entry > span > svg { position: relative ; top: 3px ; margin-left: 4px }' // v-align/left-pad Scheme status icon
+              + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
+              + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+              + `#about-menu-entry span { color: ${ scheme == 'dark' ? '#28ee28' : 'green' }}`
+              + '#about-menu-entry > span { width: 92px ; overflow: hidden ;' // outer About status span
+                  + `${ config.fgAnimationsDisabled ? '' : 'mask-image: linear-gradient(to right, transparent, black 20%, black 89%, transparent)' }}`
+              + '#about-menu-entry > span > div { text-wrap: nowrap ;'
+                  + `${ config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
+              + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
+              + `.about-em { color: ${ scheme == 'dark' ? 'white' : 'green' } !important }`
+            )
+        },
+
+        footerContent() {
+            get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
+                (err, advertisersData) => { if (err) return
+
+                    // Init vars
+                    let chosenAdvertiser, adSelected
+                    const re_appName = new RegExp(config.appName.toLowerCase(), 'i')
+                    const currentDate = (() => { // in YYYYMMDD format
+                        const today = new Date(), year = today.getFullYear(),
+                              month = String(today.getMonth() + 1).padStart(2, '0'),
+                              day = String(today.getDate()).padStart(2, '0')
+                        return year + month + day
+                    })()
+
+                    // Select random, active advertiser
+                    for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
+                        if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
+
+                    // Fetch a random, active creative
+                    if (chosenAdvertiser) {
+                        const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
+                                           + chosenAdvertiser + '/text/campaigns.json'
+                        get.json(campaignsURL, (err, campaignsData) => { if (err) return
+
+                            // Select random, active campaign
+                            for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
+                                const campaignIsActive = campaign.active && (!campaign.endDate || currentDate <= campaign.endDate)
+                                if (!campaignIsActive) continue // to next campaign since campaign inactive
+
+                                // Select random active group
+                                for (const [groupName, adGroup] of shuffle(applyBoosts(Object.entries(campaign.adGroups)))) {
+
+                                    // Skip disqualified groups
+                                    if (/^self$/i.test(groupName) && !re_appName.test(campaignName) // self-group for other apps
+                                        || re_appName.test(campaignName) && !/^self$/i.test(groupName) // non-self group for this app
+                                        || adGroup.active == false // group explicitly disabled
+                                        || adGroup.targetBrowsers && // target browser(s) exist...
+                                            !adGroup.targetBrowsers.some( // ...but doesn't match user's
+                                                browser => new RegExp(browser, 'i').test(navigator.userAgent))
+                                        || adGroup.targetLocations && ( // target locale(s) exist...
+                                            !config.userLocale || !adGroup.targetLocations.some( // ...but user locale is missing or excluded
+                                                loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
+                                    ) continue // to next group
+
+                                    // Filter out inactive ads, pick random active one
+                                    const activeAds = adGroup.ads.filter(ad => ad.active != false)
+                                    if (activeAds.length == 0) continue // to next group since no ads active
+                                    const chosenAd = activeAds[Math.floor(chatgpt.randomFloat() * activeAds.length)] // random active one
+
+                                    // Build destination URL
+                                    let destinationURL = chosenAd.destinationURL || adGroup.destinationURL
+                                        || campaign.destinationURL || ''
+                                    if (destinationURL.includes('http')) { // insert UTM tags
+                                        const [baseURL, queryString] = destinationURL.split('?'),
+                                              queryParams = new URLSearchParams(queryString || '')
+                                        queryParams.set('utm_source', config.appName.toLowerCase())
+                                        queryParams.set('utm_content', 'app_footer_link')
+                                        destinationURL = baseURL + '?' + queryParams.toString()
+                                    }
+
+                                    // Update footer content
+                                    const newFooterContent = destinationURL ? createAnchor(destinationURL)
+                                                                            : document.createElement('span')
+                                    footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
+                                    footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
+                                    footerContent.textContent = chosenAd.text.length < 49 ? chosenAd.text
+                                                              : chosenAd.text.slice(0, 49) + '...'
+                                    footerContent.setAttribute('title', chosenAd.tooltip ||
+                                        footerContent.textContent.includes('...') ? chosenAd.text : '')
+                                    adSelected = true ; break
+                                }
+                                if (adSelected) break // out of campaign loop after ad selection
+            }})}})
+
+            function shuffle(list) {
+                let currentIdx = list.length, tempValue, randomIdx
+                while (currentIdx != 0) { // elements remain to be shuffled
+                    randomIdx = Math.floor(chatgpt.randomFloat() * currentIdx) ; currentIdx -= 1
+                    tempValue = list[currentIdx] ; list[currentIdx] = list[randomIdx] ; list[randomIdx] = tempValue
+                }
+                return list
+            }
+
+            function applyBoosts(list) {
+                let boostedList = [...list],
+                    boostedListLength = boostedList.length - 1 // for applying multiple boosts
+                list.forEach(([name, data]) => { // check for boosts
+                    if (data.boost) { // boost flagged entry's selection probability
+                        const boostPercent = parseInt(data.boost, 10) / 100,
+                              entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
+                                            * boostPercent - 1 // reduced to boosted entries needed
+                        for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
+                        boostedListLength += entriesNeeded // update for subsequent calculations
+                }})
+                return boostedList
+            }
+        },
+
+        rqVisibility() {
+            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+            if (relatedQueriesDiv) // update visibility based on latest setting
+                relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
+        },
+
+        scheme(newScheme) {
+            scheme = newScheme ; logos.braveGPT.update() ; update.appStyle() ; update.stars() ; toggle.btnGlow() ; 
+            modals.settings.updateSchemeStatus()
+        },
+
+        stars() {
+            ['sm', 'med', 'lg'].forEach(size =>
+                document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
+                    starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
+                    : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+            ))
+        },
+
+        tooltip(buttonType) { // text & position
+            const cornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows']
+                      .filter(type => { // exclude invisible ones                                                
+                          const btn = appDiv.querySelector(`#${type}-btn`)
+                          return btn && getComputedStyle(btn).display != 'none' })
+            const [ctrAddend, spreadFactor] = appDiv.querySelector('.standby-btn') ? [9, 25] : [5, 28],
+                  iniRoffset = spreadFactor * ( buttonType == 'send' ? 1.35
+                                              : buttonType == 'shuffle' ? 2.35
+                                              : cornerBtnTypes.indexOf(buttonType) +1 ) + ctrAddend
+            // Update text
+            tooltipDiv.innerText = (
+                buttonType == 'chevron' ? msgs[`tooltip_${ config.minimized ? 'restore' : 'minimize' }`]
+                                                      || ( config.minimized ? 'Restore' : 'Minimize' )
+              : buttonType == 'about' ? msgs.menuLabel_about || 'About'
+              : buttonType == 'settings' ? msgs.menuLabel_settings || 'Settings'
+              : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
+              : buttonType == 'font-size' ? msgs.tooltip_fontSize || 'Font size'
+              : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
+                                       + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
+              : buttonType == 'arrows' ? ( config.expanded ? `${ msgs.tooltip_shrink || 'Shrink' }`
+                                                           : `${ msgs.tooltip_expand || 'Expand' }` )
+              : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply'
+              : buttonType == 'shuffle' ? msgs.tooltip_askRandQuestion || 'Ask random question' : '' )
+
+            // Update position
+            tooltipDiv.style.top = `${ !/send|shuffle/.test(buttonType) ? -6
+              : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 34 }px`
+            tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
+        },
+
+        tweaksStyle() {
+
+            // Update tweaks style based on settings
+            tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
+                                  + ( config.stickySidebar ? ssbStyles
+                                    : config.anchored ? ( anchorStyles + ( config.expanded ? expandedStyles : '' )) : '' )
+
+            // Update 'by KudoAI' visibility based on corner space available
+            const kudoAIspan = appDiv.querySelector('.kudoai')
+            if (kudoAIspan) {
+                const visibleBtnCnt = [...appDiv.querySelectorAll('.corner-btn')]
+                    .filter(btn => getComputedStyle(btn).display != 'none').length
+                kudoAIspan.style.display = visibleBtnCnt <= (
+                    config.anchored && config.expanded ? 10
+                 : !config.anchored && config.widerSidebar ? 9
+                 :  config.anchored && !config.expanded ? 6 : 4 ) ? '' : 'none'
+            }
+
+            // Update <pre> max-height for various mode toggles
+            const answerPre = appDiv.querySelector('pre'),
+                  relatedQueries = appDiv.querySelector('.related-queries'),
+                  shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
+                  longerPreHeight = window.innerHeight - 278
+            if (answerPre) answerPre.style.maxHeight = (
+                config.stickySidebar ? ( relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
+              : config.anchored ? `${ longerPreHeight - ( config.expanded ? 115 : 365 ) }px` : 'none'
+            )
         }
     }
 
@@ -799,171 +1905,18 @@ setTimeout(async () => {
              : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
     }
 
-    function updateTitleAnchor() {
-        if (appDiv.querySelector('.loading, #bravegpt-alert')) return // only update reply UI
-
-        const appTitleVisible = !!appDiv.querySelector('.app-name'),
-              logoVisible = !!appDiv.querySelector('img')              
-
-        // Create/fill/classify/style/append/update title anchor
-        if (!appTitleVisible || !logoVisible) {
-            const appTitleAnchor = createAnchor(config.appURL, (() => {
-                if (appLogoImg.loaded) { // size/return app logo img
-                    appLogoImg.width = 143 ; return appLogoImg
-                } else { // create/fill/pos/return app name span
-                    const appNameSpan = document.createElement('span')
-                    appNameSpan.innerText = '🤖 ' + config.appName
-                    appNameSpan.style.marginLeft = '3px'
-                    return appNameSpan
-                }
-            })())
-            appTitleAnchor.classList.add('app-name', 'no-user-select')
-            if (!appTitleVisible) appDiv.append(appTitleAnchor)
-            else appDiv.querySelector('.app-name').replaceWith(appTitleAnchor) // for appLogoImg.onload() callback
-        }
-    }
-
-    function updateAppLogoSrc() {
-        appLogoImg.onerror = () => appLogoImg.style.display = 'none'
-        appLogoImg.src = 'data:image/png;base64,'
-            + ( scheme == 'light' ? 'iVBORw0KGgoAAAANSUhEUgAAAPoAAAA1CAYAAABoUvZcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAMGGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyMy0wMy0yMFQyMzowNzowOC0wNzowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjQtMDQtMTJUMDQ6MDE6MTctMDc6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDQtMTJUMDQ6MDE6MTctMDc6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ZTgxNTM4MTQtOWQ0NC1hZDQ1LWEyYzYtMDY3YjIxMjlkMDc1IiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6ZDUwZDFiZTItMzY3NC1kNTRiLWJkNDQtZGE2ZGE0MjE2ZjFkIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MjdiY2U5OTUtOTdmYS0wODQ4LTg4MjktNmRmMWEwY2MwMDg1IiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSI3MjAwMDAvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjcyMDAwMC8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMiIgZXhpZjpDb2xvclNwYWNlPSIxIiBleGlmOlBpeGVsWERpbWVuc2lvbj0iNzMwIiBleGlmOlBpeGVsWURpbWVuc2lvbj0iMTU1Ij4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSInZ3B0JyIgcGhvdG9zaG9wOkxheWVyVGV4dD0iZ3B0Ii8+IDwvcmRmOkJhZz4gPC9waG90b3Nob3A6VGV4dExheWVycz4gPHBob3Rvc2hvcDpEb2N1bWVudEFuY2VzdG9ycz4gPHJkZjpCYWc+IDxyZGY6bGk+YWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjgyNTg1NWVhLThmZjYtNjk0OC04ODZmLWIxMmZmZDBjMGJlMTwvcmRmOmxpPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOkRvY3VtZW50QW5jZXN0b3JzPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjI3YmNlOTk1LTk3ZmEtMDg0OC04ODI5LTZkZjFhMGNjMDA4NSIgc3RFdnQ6d2hlbj0iMjAyMy0wMy0yMFQyMzowNzowOC0wNzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGltYWdlL3BuZyB0byBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo5YzQwMzgzYy03Mzg4LWNlNDgtYTE4MC1kZTVjNGU0YTA0ZmEiIHN0RXZ0OndoZW49IjIwMjMtMDMtMjFUMTk6NDI6MjEtMDc6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmNlOTczNzJkLTdlZTgtZTg0NC1iODdjLTc1ODc3MzcxMzdkZCIgc3RFdnQ6d2hlbj0iMjAyNC0wNC0xMlQwNDowMToxNy0wNzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJkZXJpdmVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJjb252ZXJ0ZWQgZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL3BuZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZTgxNTM4MTQtOWQ0NC1h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'
-                                  : 'iVBORw0KGgoAAAANSUhEUgAAAPoAAAA1CAYAAABoUvZcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAMDGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyMy0wMy0yMFQyMzowNzowOC0wNzowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjQtMDQtMTJUMDQ6MDItMDc6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDQtMTJUMDQ6MDItMDc6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjdmZjk2MmQtZTkyMi00YTQzLTgyMzYtMDYyY2Q5YWQyYjhiIiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YmNjZTNmODEtMjI4Yy0xNjRmLWExMjAtMjRlMjg1ODk2ZGUxIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MjdiY2U5OTUtOTdmYS0wODQ4LTg4MjktNmRmMWEwY2MwMDg1IiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSI3MjAwMDAvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjcyMDAwMC8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMiIgZXhpZjpDb2xvclNwYWNlPSIxIiBleGlmOlBpeGVsWERpbWVuc2lvbj0iNzMwIiBleGlmOlBpeGVsWURpbWVuc2lvbj0iMTU1Ij4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSInZ3B0JyIgcGhvdG9zaG9wOkxheWVyVGV4dD0iZ3B0Ii8+IDwvcmRmOkJhZz4gPC9waG90b3Nob3A6VGV4dExheWVycz4gPHBob3Rvc2hvcDpEb2N1bWVudEFuY2VzdG9ycz4gPHJkZjpCYWc+IDxyZGY6bGk+YWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjgyNTg1NWVhLThmZjYtNjk0OC04ODZmLWIxMmZmZDBjMGJlMTwvcmRmOmxpPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOkRvY3VtZW50QW5jZXN0b3JzPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjI3YmNlOTk1LTk3ZmEtMDg0OC04ODI5LTZkZjFhMGNjMDA4NSIgc3RFdnQ6d2hlbj0iMjAyMy0wMy0yMFQyMzowNzowOC0wNzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGltYWdlL3BuZyB0byBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo5YzQwMzgzYy03Mzg4LWNlNDgtYTE4MC1kZTVjNGU0YTA0ZmEiIHN0RXZ0OndoZW49IjIwMjMtMDMtMjFUMTk6NDI6MjEtMDc6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmU1OWQ5NzU4LTk1ZjEtZGE0Ni05YmFiLTM2YjM1YWE0YzhiNiIgc3RFdnQ6d2hlbj0iMjAyNC0wNC0xMlQwNDowMi0wNzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJkZXJpdmVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJjb252ZXJ0ZWQgZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL3BuZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MjdmZjk2MmQtZTkyMi00YTQzLTgyMzYtMDYyY2Q5YWQyYjhiIiBzdEV2dDp3aGVuPSIyMDI0LTA0LTEyVDA0OjAyLTA3OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDplNTlkOTc1OC05NWYxLWRhNDYtOWJhYi0zNmIzNWFhNGM4YjYiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo4MjU4NTVlYS04ZmY2LTY5NDgtODg2Zi1iMTJmZmQwYzBiZTEiIHN0UmVmOm9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyN2JjZTk5NS05N2ZhLTA4NDgtODgyOS02ZGYxYTBjYzAwODUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz44PCuPAAAckElEQVR4nO2de3wU1b3AvzO72d1ssuQBJAHJAgmIgAo2FKwCHxUxaGmtRdGo1V57K9Yqt/VRaHvb3rZaofaq1Hqt6W2vD0os9N4qSDUl1gsUQV4CooIkIWwMjxiSJe/NPub+cWaSze7M7G526a26389nPpucOY+Z3fn9zu/8zu+ckZT7gQbAAkgSdBWBkgmSDwISEIIsP1glIBPkEHT0nUdbxmZClgIInkFRiD5COmlaOjkofQfps81GGXMGiwwNx2BYEEb0gT8EgQxQJJB7QUYgA5OADQpp0qSJH2vsLAEI5YKSAcHToMg5dDg2EpQKkINCaONCUQ9VeSCfj4UN+L1z6Q3A4kXQeAA+2AtO2byqNGnSJERsiQr1QsANoQnQ0wEt8iv0WUqwmPWqeuck9dDOWUAOzkE6vpqOZvjJD+GK2XAy8ZtIkyaNOTqCHi6MiL8tsjDdfZlVBByzkUNhefUwSlfCzqltyBm3IPOwfjmjetKkSZMIBqa7DIpcAspwZHsj/qaT9NpX0uu6CTlMCRh26ppAxzGWliyQ5f8elSuO8d7blQxnHDASOAF8GP+tpEmTxghpsDMO6BpdQZ/rUYLSOQQtoEg90N5EKDAOyWlFCcbpcItICymATjoKSAoc6e0m19LESHk8vpAVBQiFDqOE7sFKDQppZ1yaNENkcI+u8AD25kextQASBG3gy8qkO3cCIQksvkGZo9A6cX8Agn6QLWCxDD4X2dMrCCVQ4nASCk2kJyAUhcgzCdiEwk3AH1Jyx2nSfAoRgi5kbynwKJYA/Wk2Hzg7IMcLTVlwrB0cVsjKBptdTMchibx9vdB8GrqAfAs4MqCtE1oVGAbkO8FqG+jJg33Q1QftQAAYaQFLCIJK9NA8yIvI+JB46e/wnaRJ84nDihUI8nWsrAIGOlvtUwZ6eqHQCXNuhsbjcPR9+OgkdAegByGYI2xw2eVw2TUwcy7kjYQTH8LfauCvL8Oe/dDaLWbW7EAmUJANsy6E7FxYvwlsQXAi8oSjAEH+hMRVWNh0dr+SNGk+eUjKN7iGk2zUdctJgB9oAn60Cq5ZKtJPeaCxAQ4fgMajMLwArlgIpVONW9q7Hd7YCB3tUHIuTJ4G7lIoHC3Of/9b8LNVMF7NrykazdLXrPnJTKVaeS+5206T5tOFlVa8hmEzEuABbr2jX8i9Xi/HTrbh7VIIFE3G5p5Gfn4+40eNx2nSkP+CGTS4RtDc3Exvby9yZwBX43HckpWCggJ4+Al45wBseAMmIMx5GHDgy0CAHk5wJoH7Wwx8HegLS7MBvwVeTKCeNGk+1kjKdYCFV5FYMOiMBSHkF06Fpw/g9wfZuXMnhw4dwufzIcsykiShKAqhUIisrCymTZvG9OnToxqpq6tj165dtLa2IkkSsiz3l7NarYwdO5ZLL72U7J4zMPN8OOGFMUAwrJIQkMl/YOWbHIzb6/4o8IBO+r8bpKdJ84nEShYQ4ln6WNDvBJOANoQTbfkL+Hx+XnnlFZqamsjNzSUzK4sgorOVJQlZUfD19LB582ZaWlq48sor+xvYvXs327dvJzMzk5zcXBRZJsRAJx0KBKitreXkyZMsXLiQ4b/+LVy9CDoR4/Vwn0Emz+JK6P5aE0xP8zFDkj59QVUVnvI7gbyI5HVril+rNypjxQn0MG5Q0FoQIejffxzGXkTNxo2cOFbHCMmHv72HDlnGJ4UISRIZrpHYbdnYnU5G2O28++67OJ1OLrnkEg4dOsT27dvJyclBttvpkWV87V78Z1qRJQm7JGMPBsgLhuhQQlRXV7No0SLsy++FR56EEgYE3Qp0MY5OdqX2a0uT5mPHDcCVEWl7ABNB7wL83NQv5DLCZL9qPqGFSzly+DANDQ3k5bjoe3MDZ059SLOrlJZiN36Xg+wP32Zkr48RGcPIHjud3Lx83n33XdxuN3v37sXpdCI1N9H5/n5aejtpdmTTkTkce1c3wxsbKTh9lJzJ5+G6+kZaW1vZu3cvsx76BfIbm2DnIeGcCyJM9wA342Bd6r+3NGk+2VgJcTEhpvcLeidQKMGSX9LQ0EB9fT1WqxUlO5euhffxoTXEe04LdYVFtGfnU9BQz9S3XmfS9q1k/O9LOL/6YzoDVrZu3YrX6yW3tYnux57io4mTODx7NofmzuXkuediD/UxqamJqX0BrIEQlt5esrKyOHbsGIWFhZQ8/AR8fgH0Ahlo1kY5AUYhwmPTpEkTJ1ZC3Nj/nwKcAf75WzDmPFp27sTr9eJwOAgAHQ4HjaNHc9Dtxp2Xx+3Aq+POZZ/TTt5Hx8nvacIekrDb7TQ2NuJyuVBCMr0jXJw6dwKHL5/DqfJruDUjg9PAxvETyaqtZXhTE1k+Hzabja6uLlpaWii5ohxu+xL89mVwowbakEmA64En//5fVZo0H1+sKJT2/6cFs0yeA4DP56Ovrw9ZlvHLMr1WK22ZmbRkZfEr4AvAdOCWKTNoH7ke//BClLwCLD09dHd3k5OTQ6h4HP5hDjrGFtB88Wwuy8hghdrcZ5xOPsrOptdiISTLIEkEAgF8PjXUdsZsqHyJfu+dAljCrjf15APnqN/CacQgJmhaYmjkIQYlHqAljvyFwCjEXEiLWu7jGvCfDYxWP4NAM2kL7axjReJNJL4AiPG5D6jfAzOvw2q1YrVaCQQCoCjIoRC2YBB7MMhOoAzYCThDChkOG7LNiaROm9lsNhRFgcwsZJuNjOEjcSDWzxxGLDtvDwYp9PuxKAqSGhprsViwWtWJ/YN7xGe4Y1VmWwruO3x5bibwDeA6YCoD3kw/0Ai8Dfwe+FOMOh8DJiIGGyAGHEHENN5RNW0x8DXgs2o7ZjH8U4GvAleo9WrzDT71urYCvwL2qukTgZ8zEOYEQmG1AbcDc4EfMXjGwQ50A0sg7viEXODXiDkRbfGDrKY/DPxVp8xkoAK4HBElUcDAb9Cp3s8eYB2wPs7rMKXCU17GgNOqTCdLjXpUVrmr28LKrIjMWOWunq9T/wqdetdVuasrw/JcGXYNJRF527RrCC9jcj/h7endz4qbGxe06aQvX1P82h4rhAmOhPi5XngYzp9HXt4oXC4Xp06dwu5w4OrrY3R7OxNaWqgcOZLf2+34enqYcuoUIz/Yjz1nJLIk4fP5KCoqEoExgD0nh5H791ByzWneychgnsuFEgoxsrkZt9dLVl8fcihEIBDA4XCQl5cHa5+DyirRvw5cXwCZHbG+lDjoUj+/DDyOGBxEkoH4cUqARer3dA+wz6DO24DhOulL1M8/qvWE00c0doTALjVox44QlgnAPwG/AB5E3NOXDMrcDtQilIYeGxDKLB6uhbDh3mC+HvH/KOAnwD+b1JeNUASTgVsRfcePgT/HeT2DqPCUlwDPEO2VjuRK9VhW4SlfWeWuXolQvrHKaZTp5K1Rr0FTGGZ15SGUwA0VnvJlwPIqd7WZo1mvvcjzRu0g42cHCsf7k7MR8esPzsMtnaa4uJje3l6sioLL52NsWxsXHT/OZ48eZVxdHZ+rq+OC7dUU7q3DUTgRJRhEkiTKysrIzMzE7/PhLJ5A4dZ9TNm7i88dO8ak+nqm19Yyq7ERd1sbLp9PzJ51dTFq1CjctW/DTV8diIkHddKe3QjtnywehJD/N/pCrseliN79epM6I/EiYvzWEC3kEB3VPx7Yj7GQ6/EAIsrPCnykc/40kAUcB8NFQYsTaM/o/p9j8PROOfAu5kKux0xgI0Pww6jzy7uJX1hBCMKKCk/5bqLnphNmiNdQAqyt8JQ/k2z7Rshk48fCm/0jviBiRNip4Fx+NRcWOSgoKKDd68URCFDQ2cmk5mZmejzMaWjgM40NlPzpKXJ7TpCRM4K21lbGjx/PtGnTmDp1Kme8XixFReSePMn431VyUVMTsxsamOXxcF5zMwWdnWQGg/R2dWGz2bgo0I7zhpuFgI9EiIlmuofY0h8aO3QUYDlCyIfCOsRDHA/twFqE2RqLPOAtxNLcRLkRqGbAZI/Epn4+a3B+AcKWi0UOcJXBuf8K+/sK4DWSE5x7gNXxZlYF7Jkk2ixTyyfDDUnWcefZEnYrNiDEVgJcPyhgZgxwrAPLA/OY99BfWP/GTtpbW8nJy8MWDJLX00NIkrC8tRHr7jqYPIzWQAaFowq57LLLAJg5cyZer5f3t58mN7uH3M07yC57nWDZLCTAGgphURS6Ozrw+/2UlxSRX3GD6OfGMDjeXQGGsQVH0vcsATOSrOMVYCyEWUL6uDG3GDLC/l6PUG1D5TyTc5oa34hw5o2IOG8Dvgg8H6ONaxlQGuHUA5vVv0cBr8ao50OEEhyG+KWNuAXYDjxlVplqKhsJSBuwEjEW3hNWRhs/3xmWN9kePdJ8rkF0DOvC/AAliN5eL+gFhLC3Vbmrl4cnhvsJKjzlm3TKzl9T/FqN0YVZ6QMU3tRZAy4e5boTjPjZl7nuodfZsmMvTU1NSJKYQpMkicDmP9Pd50eSMzlvyhTmzp2L3W7vr+aqq64iJ9PBgWcfp6+5E/srG5AnTUVRFHr8fvx+P8OHD2dOySjGfHkheINi9BndN3VhY5fuY5Y8zyIeziaECTwJ4Qj7nEF+K/A7iFgfkDjaXd4AzDbJ1wi8gPATnAEcCGfdXYixbbwEEGb+PTrnFhNb0L9skP5C2N/Poa8MQFg3TyFM226EQ+8ixNj+doMyq9T6202uy0jIKxFj3ygnVZW7ugaoqfCUV6rljca4Q6FNbTfKyVblrq5Xr6tStUJWEK1gllV4yteFK6ZksZIPKOzmFPX4KRnkjw4C44D9R8h7ZBFffHwbR4820tDQQIfaC9tmzyJ3wyuUtn/IOZ4NcFCBcRdAXiGc9EDtQWZtqGJiQycfAKfnz6HH5cJisZCVlcWYMWOYODybjDmz4HiXvpC3AtPZxQM005OqWwfEuPpaoh1smxE/xo+AfzMoW46YXYwsa8R2xAO7H3FHNqBOPfdzk3JrEZ76zoj01xFC8xuEUy5eVqMv6PMR04tG6wBcGJvtmqDPUevR49vAExFp3QjltQ14A/2hhUW93p/pVaoKi56QVla5q5fopA+iyl29p8JTPh/YZFDPUFisKpJYbVdWeMrr1bYjWUZivhNTrGi6TvTqkVMAwoweD2zZhfTTRZT8cD0lJWHZrr8e/mk9PHQrfPtJGPMkFNvAngNNrfBuEHyQP6uYi3+zDi6YFd3ApdPhyMnBy1PDcQEfsZVK9XpSc/vtwCWIXtyIHyN6z+UG528lPkFfaVLHfIQ61aMGYw83CFV8B2J8fV0c1wHCD3CYaF+ADaH0/iuqhODzDLhGw3mTAYX1TYOyzxMt5JE8B5yP/qrCO9Ty3Trn9Mzfeoy/7yiq3NVtFZ7yJQhLI1mWxyPkYW3XVHjKlxM9rXdDhac8T88aGQoyPWgzv5tNd1c+B9i2CU7qxDZc+EVY8xE8cpv4v7YPGj+CD4LC37vqu7DDoyPkwLZd8OY7g8fkkYjZ3i3sgBQuaVmKuZBrfBfRC+thZm5r7ML8oVtokN5L/CrtViCRB8JoKk1vZkDDyGx/Vv3MRMyTRxIE7o/vsvge0ZYLQKlB3SCGPZFUJiogqpmcinUUMefEEyijd29DQkZG82obz08rQAcwbRoUjdLPY7XDN5+D5/8MYzPERM/MInhzHyzVtboE08+HC4vMwzUU2rCymxyE+yZ5jiF6kHh5xCB9IoMdanr8Jsb5aQbpLxC/8HYjNtOIlzUG6fPRd0g5gat10n0MCEcpIhAmkvcQDkArQmUbHVbEoE1vmhIgqpe4uXGB0RTWUAU27p7YqPxQemC1jF7bSU/3aYjF4WKbpoPA+7q5xJ5tMMfMilSZcTX8YLXQ70+/BpOMnmOVrCz4wiKhSIzahp1IeGM3HjevJ5h/KwNRYOHkI7zMZrwT43ykB1zjL7EuKoJEHtI64G866Tb0g24WICIsIlkP/b/LOIO23AhhP4R4vsyOIwxsJhZJsUF6FKrDaygMtZxGMopCr2zKHIQyFoS7wwpIbNONoPYjHukpc+Kr9ehB8fPXHowv/+fmikcsfM5cQ7yqbQt+9Xzy8+ggInET4Qwi8EQPPQEIx2tyzgGG765riFFvJInGi79gkK6nzY1M+vDxvJHCykHMDJQihNjo0KL99PwAYOzJ/ySTwh7dCmHHlqRrXPtzWPFToRiW3ArVa+MoJA186CkaJ1txIUQqlljFh1FgiRESQh2mGhnj998lqtL0wmnNWIu+lTKPwULrQN+PcBIRFKNxtt+M2XyW6/9EI/cHo4gdZnboOuRsiEmXXTHWG/z2W/CDZcIBl6XWuehGeP4x83KvvSQe08hNKsU1ncTGHjKg/0ie0QnmH4F+HDsQc8LPzMXZg/H88DkG6UYYWQZGeIGXddKtDDbfr0LfM7KawWrZa9BOG2LByjuIkNhEj/cRi4K2xrohDTUoZSikOmAmEfT8Dcn6DPqR+81hPxDkCEYe5lxg9U/hyM7oc4374YFp8Mgq0UdIMuTb1Vc8AbffD1+5Ek7o+FnWr4Wn1+g/1jLQx06a6eYUQqenRq/HOQbp5zL031PXSXLvf1Uwdrh9NsG6TPbaNsTIIRnu7Tcy25+N+L/BIJ8HEYl4IWL6LNFjCsKk/5/Iik0iwRKJM09FuaTKV3jKjRbTpGRqDcLH6APj9L/pms/aYpfvzYN3VIvtyFvwaDlcPx1WH4BSCe6+EVZvg1fb4Q+vwt1XCT25+nWYOBbur4C6Q6L8//wObrtR+HQdDO4fJIQvOZfNXIDwb2tH8kxHmKjx8qBBeh2xe/RYHDZITyQIBhJfPALC9D6lkz6PgTHxF3TOv43obcM5gv7cyfkYW0PxErn4Jxw9D/uyRBtQrYBkp7Py1ACeRDEqk8IeXRv3ZiMMNCebdb9WbbHLmU647/OwZBh8/RL4xV9Eb7/yLljbDN95EaZcDBk2uGQBPFUN+2ph6SJhOTz2Isy6AD7jgpu+JnrtQqK3d/AjlM9CtrIYYUxqR2p4DjGtE4tHEb2KHm+m4Dr01m+D8FYbTetFcivG4bpmhNCfU5fV+orRN2f1pvI6QNfHY0EsVY2HOxAhrw+FHauAu03K6AlDibp+OxH0QlGHwgo19j4u1Lx6iqkmidmDKCKdcWDnLSSDXVUCiK8iOwS1HZAXgh9+Bf5wHG5/GnIMHK/uUlj1R3jvEHztGlHRoU4oUuvTczsFgUw8jGYfDgbG/VlJ3W845yCmmApN8vwM8/3f415dZcLL6DvFQATa6IWrhnMZsWPUzTAqewv6kW5BoMqgzK8N0u8mdm85H6FAlgLfDzuWYhLPr8aT6wnEMnWdtykVnvI8dcVYqoJT8oBn4hF2Nc8m9BXMygTbNW1PHtRTfgm4GQ8j2KsbnwTCvM5APJo3/St883nIjTWVrFIyCf5zI3zlFmHwWjA2yhxAiB18Dz9fBe4NO1LHDIQJ+iDwGYTwn4foWd5CRMUZsYfU9OjtiJ1ijHgS0etOj0ifjAjRfQNzh18s9qPvl7kDfSW3HuN4+D8jNo7QYy2i1yzSOXcbgz344fQQO5zVKKZ9RYWnfFOFp1xXiMPWjg/F3DajDNhU4SlfpucYrPCUl6jKxWgNfGWMMFq9sfudNzcuMBR2SQnf4kB7XJp5DB/fNp1Q6gFyMuHeF2CWWeRkBM//Cn5wr1AURjOmoHnc70HSWaJYH/d2ad/FYDGEAT0xriqcMga2cUL9+yKdfFMwCkQawIlwWsUay+5DjKmLMI6oi+Q0wpnlNclzH+LtNfGwELHc1YhSxG42RnQA/4sIP85CKFuzFXgVmLw+S3uBg9p7m5nrmvdfw8j5FSV4Ve7qKEVqsFRUt7zariac2q5FRuwB5ptF2IWtvY+H+WuKX6uRqYf+o049/Lxh+D42DRfQ3ANLr4cXvhVfk3dfD7ffKzzxZm9c0V4m4WArmYjePfxIDgXjHileIV/GYCFPlm6MY8nDmY5YNacn5H0M3UtbRXybTZ4i9lrzOszvxYVw8N0FfAVzIX+cON+Rp24FZdbza55t7YhkD4mby5FUoh+3rm0Dpbd3XOQ1mAo5mA5XDJFxQtQhswUlxmuLAoigmCLgiVXw/TnQa2DvHz8Kl0yEp/9bLF7JwTwcRATO7CPIgUERcamJjJMQD0SizhqNRzFfVjpUtiDGxUPhCEJ4umJlNOAEYoeaWKzG3AOu8SfEQDCZGYlHEZZG3KjCPp/EQ1kr1XLJrv9uU5fGLidxpbu8yl09I4FY+cUkcL2y7vICB2ewsCHmTxpC9LATgOq/wS1j4ei+wXm2vQJlE2B7rdBlGZg/KpJ63spLKYi1MnLdORFm/eMJ1KXtlvodg/P5BumxbKNw1iAeuKOxMoaxDbHgYyv6u7VkEd8YPh6HXiILgV4GLkBsPJkITYhZBKPv2ZQqd3VNlbu6FPFbmQlCG6qAV7mrl6RqOah6DSsRQ5jlmCudeoQVUaqWSaSNPVXu6hmI+1wXox2sukInHov/QDLc9WMAzcyeCBxphRsugl+9BBdfC394HO64T5wvJb4d0kV97WTwm5hKITanEOvofGFXamcgnPU+hHNpGca7xXgQ+8s9ibkAHkaoPS0UVXM19hqW0KcGMa7/NqKHNwqEeQfxoGqOPD3/AMTfq76E+K6MtrPaTuwFOpHUIbaoupzB2z1H0o4YCr2E8LwbuYLjRjVvK9VglEgnVVsqd28xaF/bwmql6pCLNNnrUzF9tqb4NaPhwiAkxejxlgEv/04+9+EiHlNbCPKHgJIJ5xbDllqQQuLx9xFfv+IDiriHUp4ynHRaH7czzooYd0e+H72H6DsqRQhVPuLuexEP6l7ii413IIRbq1dGfCuakhkqFyI2idCi/DsRSuVARD47YgWZxIBKtSCu/SjxqcxCxP1HfjdWxC9rtMYwESap7djUa/Iilg0bLRoyJZVvU1X3kYva7SUBZ9zyRHvmZFGU+B4tq6GBJPq8+1lLKbVciwtzQdUEfTjg7YEdHwj3h4L+viDhSAysXFN4AgtPkU0q4toDRD+cRupDc0UOlUR77ng5QLRQ6+HDOMouXk6hHymXSg6T/HWeLfQcZWe15/97YTXct0Ojhi/Rw9O4uCtmbQoDr3UqQDx68Tz+Wl8jsxyJlSikcklqmk84au8ayeIhjLuNvPEfe2I7igKAk28wjNfx8ntkbLo9u1FvH8uyErvXNPN5ruU4O9JvP08zBPTGwCswDqSJImz750hSFm/+/0lsv7ai5rLxR6ycgwh20M8X/rfZ0EHzrPcBEmuwMZocdmAlWedbmk8nes6oOys85c+ozjhT1FBUvY0T6mO8JuljQ2xB14QyBMi0IHM5Cv+imw/iczsFAQc+ClmEwi2cnTeWpvn0UIlBWCiw2yQUtSxGKGrcFsE/OonM8YbzSyQ2oLAesQxxACnsMBJ6hb/i5DoKaE/vG5ImWdTtmrW92SMFtgRhxq+o8JTDwJg71qKThLZt/kcnmZCUo8hcgJWf0ItwukXWFt7LK/1pS5CYR4j2hDd0SpPGAHVefD6xI9LKiC3kS/7e02Rnm+RizxSglx9RzDSGUx+17YCMMMq7ESvRrIxBGtK+12nSxEQV9lKGHrNeA8yI533lHzeGaroP0A24OEAZpWzh59TyIBbonyLzAXP4F1r4Je8hgk/TpDlLqFNqyys85SsRY3RtQYmRU64e9WWICZrqetNuKQujTTXJCzqI2KtMYBTf4Tgv0sV/AhfRSjWf5S4uoYH1JL73apo0QyQsBBXo35etLCLPkMfgkW87/Ufn/wB3rk5bSrUsfQAAAABJRU5ErkJggg==' )
-    }
-
-    function updateAppStyle() {
-        appStyle.innerText = (
-            '.no-user-select { -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none }'
-          + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners to show grabbing cursor everywhere
-              + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; z-index: 9999 ; cursor: grabbing }'
-          + '#bravegpt {'
-              + `word-wrap: break-word ; white-space: pre-wrap ; margin-bottom: ${ isMobile ? -29 : 20}px ;`
-              + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
-              + 'padding: 24px 23px 45px 23px ; background:'
-                  + ( scheme == 'dark' ? ( isMobile ? 'var(--search-gray-800)' : '#282828' ) : 'white' ) + '}'
-          + '#bravegpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) }'
-          + '#bravegpt p { margin: 0 }'
-          + `#bravegpt .alert-link { color: ${ scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
-          + ( scheme == 'dark' ? '#bravegpt a { text-decoration: underline }' : '' ) // underline dark-mode links in alerts
-          + '.app-name { font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
-              + `color: ${ scheme == 'dark' ? 'white' : 'black' } !important }`
-          + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
-          + '.kudoai a { color: #aaa ; text-decoration: none !important }'
-          + `.kudoai a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' }}`
-          + '.corner-btn { float: right ; cursor: pointer ; position: relative ; top: 4px ;'
-              + ( scheme == 'dark' ? 'fill: white ; stroke: white;' : 'fill: #adadad ; stroke: #adadad' ) + '}'
-          + `.corner-btn:hover { ${ scheme == 'dark' ? 'fill: #aaa ; stroke: #aaa' : 'fill: black ; stroke: black' } ;`
-              + 'transform: scale(1.185) ; transition: transform 0.05s ease }'
-          + '#bravegpt .loading {'
-              + 'margin-bottom: -55px ;' // offset vs. #bravegpt bottom-padding footer accomodation
-              + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-          + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-          + '#bravegpt section.loading { padding-left: 5px ; font-size: 90% }'
-          + '#font-size-slider-track { width: 98% ; height: 10px ; margin: -8px auto -9px ; padding: 15px 0 ;'
-              + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ; -webkit-background-clip: content-box }'
-          + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
-              + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ; height: calc(100% - 20px) ; cursor: pointer }'
-          + '#font-size-slider-thumb { width: 10px ; height: 27px ; border-radius: 30% ; position: relative ; top: -9px ;'
-              + `background-color: ${ scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-              + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0px ; cursor: grab ; cursor: -webkit-grab ; cursor: -moz-grab }'
-          + '#font-size-slider-thumb:active { cursor: grabbing ; cursor: -webkit-grabbing ; cursor: -moz-grabbing }'
-          + '.standby-btn { width: 100% ; padding: 13px 0 ; cursor: pointer ; margin: 14px 0 20px ;'
-              + `color: ${ scheme == 'dark' ? 'white' : 'black' } ;`
-              + `border-radius: 4px ; border: 1px solid ${ scheme == 'dark' ? '#fff' : '#000' } ;`
-              + 'transform: scale(1) ; transition: transform 0.1s ease }'
-          + '.standby-btn:hover { border-radius: 4px ; transform: scale(1.025) ;'
-              + `${ scheme == 'dark' ? 'background: white ; color: black' : 'background: black ; color: white' }}`
-          + '#bravegpt > pre {'
-              + `font-size: ${config.fontSize}px ; font-family: Consolas, Menlo, Monaco, monospace ; white-space: pre-wrap ;`
-              + `line-height: ${ config.fontSize * config.lineHeightRatio }px ;`
-              + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
-              + ( scheme == 'dark' ? 'background: #3a3a3a ; color: #f2f2f2 } ' : ' background: #eaeaea ; color: #282828 }' )
-          + `#bravegpt footer { margin: ${ isFirefox ? 32 : 27 }px 0 -26px 0 ; border-top: none !important }`
-          + '#bravegpt .feedback {'
-              + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
-              + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
-          + '#bravegpt .feedback .icon {'
-              + ' fill: currentColor ; color: currentColor ; --size: 12px ; position: relative ; top: 0.19em ; right: 2px }'
-          + `#bravegpt footer a:hover { color: ${ scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
-          + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-          + '.balloon-tip { content: "" ; position: relative ; border: 7px solid transparent ;'
-              + 'float: left ; left: 7px ; margin: 36px -13px 0 0 ;' // positioning
-              + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
-                  + ( scheme == 'dark' ? '#3a3a3a' : '#eaeaea' ) + '}'
-          + '.chatgpt-js { font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
-          + '.chatgpt-js > a { color: inherit ; top: .054rem }'
-          + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
-          + '#app-chatbar {'
-              + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 15px 12px 0 ;`
-              + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ;  padding: 12px 26px 12px 10px ;'
-              + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ;'
-              + `background: ${ scheme == 'dark' ? '#515151' : '#eeeeee70' } ;`
-              + `color: ${ scheme == 'dark' ? '#eee' : '#222' }}`
-          + '.related-queries { display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -18px ;'
-              + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
-              + `${ isFirefox ? '' : 'margin-top: -31px' }}`
-          + '.related-query { margin: 4px 4px 2px 0 ; padding: 8px 13px 7px 14px ;'
-              + `color: ${ scheme == 'dark' ? '#f2f2f2' : '#767676' } ;`
-              + `background: ${ scheme == 'dark' ? '#424242' : '#dadada12' } ;`
-              + `border: 1px solid ${ scheme == 'dark' ? '#777' : '#e1e1e1' } ; font-size: 0.77em ; cursor: pointer ;`
-              + 'border-radius: 0 13px 12px 13px ; width: fit-content ; flex: 0 0 auto ;'
-              + `box-shadow: 1px 3px ${ scheme == 'dark' ? '11px -8px lightgray' : '8px -6px rgba(169, 169, 169, 0.75)' };`
-              + 'transform: scale(1) ; transition: transform 0.1s ease !important }'
-          + '.related-query:hover, .related-query:focus { transform: scale(1.025) !important ;'
-              + `background: ${ scheme == 'dark' ? '#a2a2a270': '#e5edff ; color: #000000a8 ; border-color: #a3c9ff' }}`
-          + '.related-query svg { float: left ; margin: 0.09em 6px 0 0 ;' // related query icon
-              + `color: ${ scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
-          + '.fade-in { opacity: 0 ; transform: translateY(10px) ; transition: opacity 0.5s ease, transform 0.5s ease }'
-          + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
-          + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
-          + '#send-btn { border: none ; float: right ; position: relative ; background: none ; margin: 29px 4px 0 0 ;'
-              + `color: ${ scheme == 'dark' ? '#aaa' : 'lightgrey' } ; cursor: pointer }`
-          + `#send-btn:hover { color: ${ scheme == 'dark' ? 'white' : '#638ed4' } }`
-          + ( // markdown styles
-                '#bravegpt > pre h1 { font-size: 1.25em } #bravegpt > pre h2 { font-size: 1.1em }' // size headings
-              + '#bravegpt > pre ul { margin: -10px 0 -6px ; }' // reduce v-spacing
-              + '#bravegpt > pre ol { margin: -33px 0 -6px ; }' // reduce v-spacing
-              + '#bravegpt > pre li { margin: -10px 0 ; list-style: inside }' ) // reduce v-spacing, show left symbols
-          + '.katex-html { display: none }' // hide unrendered math
-          + '.chatgpt-modal > div { padding: 24px 20px 24px 20px !important ;' // increase modal padding
-              + 'background-color: white !important ; color: #202124 }'
-          + '.chatgpt-modal h2 { font-size: 32px ; margin: 0 ; padding: 0 }' // shrink margin/padding around alert title + shrink it
-          + '.modal-close-btn { top: -7px !important ; right: -7px !important }' // re-pos modal close button
-          + `.modal-close-btn path {${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
-          + `.modal-close-btn:hover { background-color: #${ scheme == 'dark' ? '666464' : 'f2f2f2' } !important }`
-          + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 1.115rem }' // pos/size modal msg
-          + `.chatgpt-modal a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-          + `.modal-buttons { margin: 38px 0px 6px ${ isMobile ? 0 : -7 }px !important }` // pos modal buttons
-          + '.chatgpt-modal button {' // alert buttons
-              + 'font-size: 0.72rem ; text-transform: uppercase ; min-width: 123px ; '
-              + `padding: ${ isMobile? '5px' : '4px 3px' } !important ;`
-              + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-              + 'border: 1px solid ' + ( scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
-          + '.primary-modal-btn { background: black !important ; color: white !important }'
-          + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important ;'
-              + `box-shadow: ${ scheme == 'dark' ? '2px 1px 54px #00cfff' : '2px 1px 30px #9cdaff' } !important }`
-          + ( scheme == 'dark' ? // additional darkmode modal styles
-              ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
-                  + 'background-color: black !important ; color: white }'
-              + '.primary-modal-btn { background: white !important ; color: black !important }'
-              + '.chatgpt-modal button:hover { background-color: #00cfff !important ; color: black !important }' ) : '' )
-          + ( // stylize scrollbars in Chromium/Safari
-                '#bravegpt *::-webkit-scrollbar { width: 7px }'
-              + '#bravegpt *::-webkit-scrollbar-thumb { background: #cdcdcd }'
-              + '#bravegpt *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }'
-              + '#bravegpt *::-webkit-scrollbar-track { background: none }' )
-          + '#bravegpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
-        )
-    }
-
-    function updateTweaksStyle() {
-
-        // Update tweaks style based on settings (for tweaks init + show.reply() + toggleSidebar())
-        tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-
-        // Update 'by KudoAI' visibility based on corner space available
-        const kudoAIspan = appDiv.querySelector('.kudoai')
-        if (kudoAIspan) kudoAIspan.style.display = (
-            appDiv.querySelectorAll('.corner-btn').length < ( config.widerSidebar ? 10 : 5 )) ? '' : 'none'
+    function fillStarryBG(targetNode) {
+        const starsDivsContainer = document.createElement('div')
+        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+                                         + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
+                                         + 'z-index: -1'; // allow interactive elems to be clicked
+        ['sm', 'med', 'lg'].forEach(starSize => {
+            const starsDiv = document.createElement('div')
+            starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
+                : `${ scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+            starsDivsContainer.append(starsDiv)
+        })
+        targetNode.prepend(starsDivsContainer)
     }
 
     const fontSizeSlider = {
@@ -974,7 +1927,7 @@ setTimeout(async () => {
 
             // Create/append slider elems
             fontSizeSlider.cursorOverlay = document.createElement('div')
-            fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for grabbing cursor
+            fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for resize cursor
             const slider = document.createElement('div') ; slider.id = 'font-size-slider-track'
             slider.className = 'fade-in-less' ; slider.style.display = 'none'
             const sliderThumb = document.createElement('div') ; sliderThumb.id = 'font-size-slider-thumb'
@@ -991,6 +1944,7 @@ setTimeout(async () => {
             // Add event listeners for dragging thumb
             let isDragging = false, startX, startLeft
             sliderThumb.addEventListener(inputEvents.down, event => {
+                event.preventDefault() // prevent text selection
                 isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft     
                 document.body.appendChild(fontSizeSlider.cursorOverlay)
             })
@@ -1010,6 +1964,7 @@ setTimeout(async () => {
 
             // Add event listener for seek/dragging by inputEvents.down on track
             slider.addEventListener(inputEvents.down, event => {
+                event.preventDefault() // prevent text selection
                 const clientX = event.clientX || event.touches?.[0]?.clientX
                 moveThumb(clientX - slider.getBoundingClientRect().left - sliderThumb.offsetWidth / 2)
                 isDragging = true ; startX = clientX ; startLeft = sliderThumb.offsetLeft // manually init dragging
@@ -1053,125 +2008,6 @@ setTimeout(async () => {
         }
     }
 
-    function updateTooltip(buttonType) { // text & position
-        const cornerBtnTypes = ['about', 'speak', 'csb', 'font-size', 'wsb'],
-              [ctrAddend, spreadFactor] = appDiv.querySelector('.standby-btn') ? [15, 18] : [5, 28],
-              iniRoffset = spreadFactor * (buttonType == 'send' ? 1.65 : cornerBtnTypes.indexOf(buttonType) + 1) + ctrAddend
-
-        // Update text
-        tooltipDiv.innerText = (
-            buttonType == 'about' ? msgs.menuLabel_about || 'About'
-          : buttonType == 'speak' ? msgs.tooltip_playAnswer || 'Play answer'
-          : buttonType == 'csb' ? msgs.menuLabel_colorScheme || 'Color Scheme'
-          : buttonType == 'font-size' ? msgs.tooltip_fontSize || 'Font size'
-          : buttonType == 'wsb' ? (( config.widerSidebar ? `${ msgs.prefix_exit || 'Exit' } ` :  '' )
-                                   + ( msgs.menuLabel_widerSidebar || 'Wider Sidebar' ))
-          : buttonType == 'send' ? msgs.tooltip_sendReply || 'Send reply' : '' )
-
-        // Update position
-        tooltipDiv.style.top = `${ buttonType != 'send' ? -6
-          : tooltipDiv.eventYpos - appDiv.getBoundingClientRect().top - 34 }px`
-        tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width / 2 }px`
-    }
-
-    function updateFooterContent() {
-        get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
-            (err, advertisersData) => { if (err) return
-
-                // Init vars
-                let chosenAdvertiser, adSelected
-                const re_appName = new RegExp(config.appName.toLowerCase(), 'i')
-                const currentDate = (() => { // in YYYYMMDD format
-                    const today = new Date(), year = today.getFullYear(),
-                          month = String(today.getMonth() + 1).padStart(2, '0'),
-                          day = String(today.getDate()).padStart(2, '0')
-                    return year + month + day
-                })()
-
-                // Select random, active advertiser
-                for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
-                    if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
-
-                // Fetch a random, active creative
-                if (chosenAdvertiser) {
-                    const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
-                                       + chosenAdvertiser + '/text/campaigns.json'
-                    get.json(campaignsURL, (err, campaignsData) => { if (err) return
-
-                        // Select random, active campaign
-                        for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
-                            const campaignIsActive = campaign.active && (!campaign.endDate || currentDate <= campaign.endDate)
-                            if (!campaignIsActive) continue // to next campaign since campaign inactive
-
-                            // Select random active group
-                            for (const [groupName, adGroup] of shuffle(applyBoosts(Object.entries(campaign.adGroups)))) {
-
-                                // Skip disqualified groups
-                                if (/^self$/i.test(groupName) && !re_appName.test(campaignName) // self-group for other apps
-                                    || re_appName.test(campaignName) && !/^self$/i.test(groupName) // non-self group for this app
-                                    || adGroup.active == false // group explicitly disabled
-                                    || adGroup.targetBrowsers && // target browser(s) exist...
-                                        !adGroup.targetBrowsers.some( // ...but doesn't match user's
-                                            browser => new RegExp(browser, 'i').test(navigator.userAgent))
-                                    || adGroup.targetLocations && ( // target locale(s) exist...
-                                        !config.userLocale || !adGroup.targetLocations.some( // ...but user locale is missing or excluded
-                                            loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
-                                ) continue // to next group
-
-                                // Filter out inactive ads, pick random active one
-                                const activeAds = adGroup.ads.filter(ad => ad.active != false)
-                                if (activeAds.length == 0) continue // to next group since no ads active
-                                const chosenAd = activeAds[Math.floor(chatgpt.randomFloat() * activeAds.length)] // random active one
-
-                                // Build destination URL
-                                let destinationURL = chosenAd.destinationURL || adGroup.destinationURL
-                                    || campaign.destinationURL || ''
-                                if (destinationURL.includes('http')) { // insert UTM tags
-                                    const [baseURL, queryString] = destinationURL.split('?'),
-                                          queryParams = new URLSearchParams(queryString || '')
-                                    queryParams.set('utm_source', config.appName.toLowerCase())
-                                    queryParams.set('utm_content', 'app_footer_link')
-                                    destinationURL = baseURL + '?' + queryParams.toString()
-                                }
-
-                                // Update footer content
-                                const newFooterContent = destinationURL ? createAnchor(destinationURL)
-                                                                        : document.createElement('span')
-                                footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
-                                footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
-                                footerContent.textContent = chosenAd.text.length < 49 ? chosenAd.text
-                                                          : chosenAd.text.slice(0, 49) + '...'
-                                footerContent.setAttribute('title', chosenAd.tooltip ||
-                                    footerContent.textContent.includes('...') ? chosenAd.text : '')
-                                adSelected = true ; break
-                            }
-                            if (adSelected) break // out of campaign loop after ad selection
-        }})}})
-
-        function shuffle(list) {
-            let currentIdx = list.length, tempValue, randomIdx
-            while (currentIdx != 0) { // elements remain to be shuffled
-                randomIdx = Math.floor(chatgpt.randomFloat() * currentIdx) ; currentIdx -= 1
-                tempValue = list[currentIdx] ; list[currentIdx] = list[randomIdx] ; list[randomIdx] = tempValue
-            }
-            return list
-        }
-
-        function applyBoosts(list) {
-            let boostedList = [...list],
-                boostedListLength = boostedList.length - 1 // for applying multiple boosts
-            list.forEach(([name, data]) => { // check for boosts
-                if (data.boost) { // boost flagged entry's selection probability
-                    const boostPercent = parseInt(data.boost, 10) / 100,
-                          entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
-                                        * boostPercent - 1 // reduced to boosted entries needed
-                    for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
-                    boostedListLength += entriesNeeded // update for subsequent calculations
-            }})
-            return boostedList
-        }
-    }
-
     function handleRQevent(event) { // for attachment/removal in `get.reply()` + `show.reply().handleSubmit()`
         const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
         if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
@@ -1190,46 +2026,214 @@ setTimeout(async () => {
 
     // Define FACTORY functions
 
-    function createSVGpath(attrs) {
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-        for (const attr in attrs) path.setAttributeNS(null, attr, attrs[attr])
-        return path
+    function createAnchor(linkHref, displayContent, attrs = {}) {
+        const anchor = document.createElement('a'),
+              defaultAttrs = { href: linkHref, target: '_blank', rel: 'noopener' },
+              finalAttrs = { ...defaultAttrs, ...attrs }
+        Object.entries(finalAttrs).forEach(([attr, value]) => anchor.setAttribute(attr, value))
+        if (displayContent) anchor.append(displayContent)
+        return anchor
     }
 
-    function createAnchor(linkHref, displayContent) {
-        const anchor = document.createElement('a'),
-              anchorAttrs = [['href', linkHref], ['target', '_blank'], ['rel', 'noopener']]
-        anchorAttrs.forEach(([attr, value]) => anchor.setAttribute(attr, value))
-        if (displayContent) {
-            if (typeof displayContent == 'string') anchor.textContent = displayContent
-            else if (displayContent instanceof HTMLElement) anchor.append(displayContent)
-        }
-        return anchor
+    function createStyle(content) {
+        const style = document.createElement('style')
+        if (content) style.innerText = content
+        return style
+    }
+
+    function createSVGelem(type, attrs) {
+        const elem = document.createElementNS('http://www.w3.org/2000/svg', type)
+        for (const attr in attrs) elem.setAttributeNS(null, attr, attrs[attr])
+        return elem
     }
 
     // Define TOGGLE functions
 
-    function toggleProxyMode() {
-        saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
-        notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
-        refreshMenu()
-        if (appDiv.querySelector('#bravegpt-alert')) location.reload() // re-send query if user alerted
-    }
+    const toggle = {
 
-    function toggleSidebar(mode) {
-        saveSetting(mode + 'Sidebar', !config[mode + 'Sidebar'])
-        updateTweaksStyle()
-        const wsbSVG = appDiv.querySelector('#wsb-btn svg')
-        if (mode == 'wider' && wsbSVG) icons.widescreen.update(wsbSVG)
-        notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
-            + ' ' + menuState.word[+config[mode + 'Sidebar']])
-        refreshMenu()
-    }
+        anchorMode(state = '') {
+            const prevState = config.anchored // for restraining notif if no change from #pin-menu 'Sidebar' click
+            if (state == 'on' || !state && !config.anchored) { // toggle on
+                saveSetting('anchored', true)
+                if (config.stickySidebar) toggle.sidebar('sticky') // off
+            } else {
+                saveSetting('anchored', false)
+                if (config.expanded) toggle.expandedMode('off')
+            }
+            update.tweaksStyle() ; update.rqVisibility() // apply new state to UI
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const anchorToggle = document.querySelector('[id*="anchor"][id*="menu-entry"] input')
+                if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
+            }
+            if (prevState != config.anchored) {
+                menus.pin.topPos = menus.pin.rightPos = null
+                notify(( msgs.mode_anchor || 'Anchor Mode' ) + ' ' + menuState.word[+config.anchored])
+            }
+        },
 
-    function toggleTooltip(event) { // visibility
-        tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for updateTooltip() y-pos calc
-        updateTooltip(event.currentTarget.id.replace(/-btn$/, ''))
-        tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
+        animations(layer) {
+            saveSetting(layer + 'AnimationsDisabled', !config[layer + 'AnimationsDisabled'])
+            update.appStyle() ; if (layer == 'bg') update.stars()
+            if (layer == 'fg' && modals.settings.get()) {
+
+                // Toggle ticker-scroll of About status label
+                const aboutStatusLabel = document.querySelector('#about-menu-entry > span > div')
+                aboutStatusLabel.innerHTML = modals.settings.aboutContent[config.fgAnimationsDisabled ? 'short' : 'long']
+                aboutStatusLabel.style.float = config.fgAnimationsDisabled ? 'right' : ''
+
+                // Toggle button glow
+                if (scheme == 'dark') toggle.btnGlow()
+            }
+            notify(`${settingsProps[layer + 'AnimationsDisabled'].label} ${menuState.word[+!config[layer + 'AnimationsDisabled']]}`)
+        },
+
+        autoGet() {
+            saveSetting('autoGetDisabled', !config.autoGetDisabled)
+            if (appDiv.querySelector('.standby-btn')) show.reply.standbyBtnClickHandler()
+            if (!config.autoGetDisabled) // disable Prefix/Suffix mode if enabled
+                ['prefix', 'suffix'].forEach(manualMode => {
+                    if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
+            notify(`${settingsProps.autoGetDisabled.label} ${menuState.word[+!config.autoGetDisabled]}`)
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const autoGetToggle = document.querySelector('[id*="autoGet"][id*="menu-entry"] input')
+                if (autoGetToggle.checked == config.autoGetDisabled) modals.settings.toggle.switch(autoGetToggle)
+            }
+        },
+
+        btnGlow(state = '') {
+            const removeCondition = state == 'off' || scheme != 'dark' || config.fgAnimationsDisabled
+            document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
+                setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
+                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers                
+                let btnTextSpan = btn.querySelector('span')
+                if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
+                    btnTextSpan = document.createElement('span')
+                    btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
+                    btn.append(btnTextSpan)
+                }
+                btnTextSpan.classList[removeCondition ? 'remove' : 'add']('glowing-txt')
+            })
+        },
+
+        expandedMode(state = '') {
+            saveSetting('expanded', state == 'on' || !state && !config.expanded)
+            if (config.minimized) toggle.minimized('off') // since user wants to see stuff
+            update.tweaksStyle() // apply new state to UI
+            icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
+        },
+
+        manualGet(mode) { // Prefix/Suffix modes
+            const modeKey = mode + 'Enabled'
+            saveSetting(modeKey, !config[modeKey])
+            if (config[modeKey] && !config.autoGetDisabled) toggle.autoGet() // disable Auto-Get mode if enabled
+            notify(`${settingsProps[modeKey].label} ${menuState.word[+config[modeKey]]}`)
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const modeToggle = document.querySelector(`[id*="${modeKey}"][id*="menu-entry"] input`)
+                if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
+            }
+        },
+
+        minimized(state = '') {
+            saveSetting('minimized', state == 'on' || !state && !config.minimized)
+            const chevronBtn = appDiv.querySelector('#chevron-btn')
+            if (chevronBtn) { // update icon
+                const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
+                chevronSVG.onclick = () => toggle.minimized()
+                chevronBtn.removeChild(chevronBtn.firstChild) ; chevronBtn.append(chevronSVG)
+            }
+            update.appBottomPos() // toggle visual minimization
+            if (!isMobile) tooltipDiv.style.opacity = 0 // remove lingering tooltip
+        },
+
+        proxyMode() {
+            saveSetting('proxyAPIenabled', !config.proxyAPIenabled)
+            notify(( msgs.menuLabel_proxyAPImode || 'Proxy API Mode' ) + ' ' + menuState.word[+config.proxyAPIenabled])
+            refreshMenu()
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const proxyToggle = document.querySelector('[id*="proxy"][id*="menu-entry"] input')
+                if (proxyToggle.checked != config.proxyAPIenabled) modals.settings.toggle.switch(proxyToggle)
+            }
+            if (appDiv.querySelector('bravegpt-alert')) location.reload() // re-send query if user alerted 
+        },
+
+        relatedQueries() {
+            saveSetting('rqDisabled', !config.rqDisabled)
+            update.rqVisibility()
+            if (!config.rqDisabled && !appDiv.querySelector('.related-queries')) { // get related queries for 1st time
+                const lastQuery = stripQueryAugments(msgChain)[msgChain.length - 1].content
+                get.related(lastQuery).then(queries => show.related(queries))
+                    .catch(err => { consoleErr(err.message)
+                        if (get.related.status != 'done') api.tryNew(get.related) })
+            }
+            update.tweaksStyle() // toggle <pre> max-height
+            notify(( msgs.menuLabel_relatedQueries || 'Related Queries' ) + ' ' + menuState.word[+!config.rqDisabled])
+        },
+
+        sidebar(mode, state = '') {
+            const prevStickyState = config.stickySidebar // for restraining notif if no change from #pin-menu Nothing-click
+            if (state == 'on' || !state && !config[mode + 'Sidebar']) { // toggle on
+                if (mode == 'sticky' && config.anchored) toggle.anchorMode()
+                saveSetting(mode + 'Sidebar', true)
+            } else saveSetting(mode + 'Sidebar', false)
+            update.tweaksStyle() // apply new state to UI
+            if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
+            if (modals.settings.get()) { // update visual state of Settings toggle
+                const stickySidebarToggle = document.querySelector('[id*="sticky"][id*="menu-entry"] input')
+                if (stickySidebarToggle.checked != config.stickySidebar) modals.settings.toggle.switch(stickySidebarToggle)
+            }
+            if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
+            notify(( msgs[`menuLabel_${ mode }Sidebar`] || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' )
+                + ' ' + menuState.word[+config[mode + 'Sidebar']])
+        },
+
+        streaming() {
+            const streamingToggle = document.querySelector('[id*="streaming"][id*="menu-entry"] input'),
+                  scriptCatLink = isFirefox ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
+                                : isEdge    ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
+                                            : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
+            if (!/Tampermonkey|ScriptCat/.test(getUserscriptManager())) { // alert userscript manager unsupported, suggest TM/SC
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isOnlyAvailFor || 'is only available for' }`
+                        + ( !isEdge && !isBrave ? // suggest TM for supported browsers
+                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${ msgs.alert_and || 'and' }`
+                                : '' )
+                        + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
+                        + ` (${ msgs.alert_userscriptMgrNoStream || 'Your userscript manager does not support returning stream responses' }.)`
+                )
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else if (getUserscriptManager() == 'Tampermonkey' && (isChrome || isEdge || isBrave)) { // alert TM/browser unsupported, suggest SC
+                siteAlert(`${settingsProps.streamingDisabled.label} ${ msgs.alert_unavailable || 'unavailable' }`,
+                    `${settingsProps.streamingDisabled.label} ${ msgs.alert_isUnsupportedIn || 'is unsupported in' } `
+                        + `${ isChrome ? 'Chrome' : isEdge ? 'Edge' : 'Brave' } ${ msgs.alert_whenUsing || 'when using' } Tampermonkey. `
+                        + `${ msgs.alert_pleaseUse || 'Please use' } <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
+                            + `${ msgs.alert_instead || 'instead' }.`
+                )
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
+                let msg = `${settingsProps.streamingDisabled.label} `
+                        + `${ msgs.alert_isCurrentlyOnlyAvailBy || 'is currently only available by' } `
+                        + `${ msgs.alert_switchingOn || 'switching on' } ${ msgs.mode_proxy || 'Proxy Mode' }. `
+                        + `(${ msgs.alert_openAIsupportSoon || 'Support for OpenAI API will be added shortly' }!)`
+                const switchPhrase = msgs.alert_switchingOn || 'switching on'
+                msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
+                const alertID = siteAlert(`${ msgs.mode_streaming || 'Streaming Mode' } ${ msgs.alert_unavailable || 'unavailable' }`, msg),
+                      alert = document.getElementById(alertID)
+                alert.querySelector('[href="#"]').onclick = () => { alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
+                if (streamingToggle && streamingToggle.checked == config.streamingDisabled) // revert Settings auto-toggle
+                    modals.settings.toggle.switch(streamingToggle)
+            } else { // functional toggle
+                saveSetting('streamingDisabled', !config.streamingDisabled)
+                notify(settingsProps.streamingDisabled.label + ' ' + menuState.word[+!config.streamingDisabled])
+            }
+        },
+
+        tooltip(event) { // visibility
+            tooltipDiv.eventYpos = event.currentTarget.getBoundingClientRect().top // for update.tooltip() y-pos calc
+            update.tooltip(event.currentTarget.id.replace(/-btn$/, ''))
+            tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
+        }
     }
 
     // Define SESSION functions
@@ -1255,14 +2259,14 @@ setTimeout(async () => {
             const accessToken = GM_getValue(config.keyPrefix + '_openAItoken')
             consoleInfo('OpenAI access token: ' + accessToken)
             if (!accessToken) {
-                GM.xmlHttpRequest({ url: openAIendpoints.session, onload: resp => {
+                xhr({ url: openAIendpoints.session, onload: resp => {
                     if (isBlockedbyCloudflare(resp.responseText)) {
                         appAlert('checkCloudflare') ; return }
                     try {
                         const newAccessToken = JSON.parse(resp.responseText).accessToken
                         GM_setValue(config.keyPrefix + '_openAItoken', newAccessToken)
                         resolve(newAccessToken)
-                    } catch { appAlert('login') ; return }
+                    } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
                 }})
             } else resolve(accessToken)
     })}
@@ -1288,7 +2292,7 @@ setTimeout(async () => {
             const untriedAPIs = Object.keys(apis).filter(api =>
                    api != ( caller == get.reply ? 'OpenAI' : '' ) // exclude OpenAI for get.reply() since Proxy Mode
                 && !caller.triedAPIs.some(entry => Object.prototype.hasOwnProperty.call(entry, api)) // exclude tried APIs
-                && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if config.streamingDisabled
+                && (config.streamingDisabled || apis[api].streamable)) // exclude unstreamable APIs if !config.streamingDisabled
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { consoleErr('No proxy APIs left untried') ; return null }
@@ -1320,6 +2324,7 @@ setTimeout(async () => {
             const ip = ipv4.generate({ verbose: false })
             let headers = { 'Content-Type': 'application/json', 'X-Forwarded-For': ip, 'X-Real-IP': ip }
             if (api == 'OpenAI') headers.Authorization = 'Bearer ' + config.openAIkey
+            else if (api == 'Webraft') headers.Authorization = 'Bearer ' + apis.Webraft.key
             headers.Referer = headers.Origin = apis[api].expectedOrigin || '' // preserve expected traffic src
             return headers
         },
@@ -1342,6 +2347,11 @@ setTimeout(async () => {
                 if (apiIDs.gptForLove.parentID) payload.options = { parentMessageId: apiIDs.gptForLove.parentID }
             } else if (api == 'MixerBox AI')
                 payload = { prompt: msgs, model: 'gpt-3.5-turbo' }
+            else if (api == 'Webraft')
+                payload = {
+                    model: apis.Webraft.models[Math.floor(chatgpt.randomFloat() * apis.Webraft.models.length)],
+                    messages: msgs, temperature: 0.7
+                }
             return JSON.stringify(payload)
         }
     }
@@ -1386,7 +2396,7 @@ setTimeout(async () => {
                     api.tryNew(get.reply, 'timeout') }, config.streamingDisabled ? 9000 : 6000)
 
             // Get/show answer from ChatGPT
-            GM.xmlHttpRequest({
+            xhr({
                 method: apis[get.reply.api].method, url: apis[get.reply.api].endpoint,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
                 headers: api.createHeaders(get.reply.api), data: api.createPayload(get.reply.api, msgChain),
@@ -1406,11 +2416,11 @@ setTimeout(async () => {
                         if (get.related.status != 'done') api.tryNew(get.related) })
             }
 
-            updateFooterContent()
+            update.footerContent()
         },
 
         json(url, callback) { // for dynamic footer
-            GM.xmlHttpRequest({ method: 'GET', url: url, onload: resp => {
+            xhr({ method: 'GET', url: url, onload: resp => {
                 if (resp.status >= 200 && resp.status < 300) {
                     try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
                     catch (err) { callback(err, null) }
@@ -1448,7 +2458,7 @@ setTimeout(async () => {
                    + ' But the key is variety. Do not be repetitive.'
                        + ' You must entice user to want to ask one of your related queries.'
                    + ` Reply in ${config.replyLanguage}`
-                GM.xmlHttpRequest({
+                xhr({
                     method: apis[get.related.api].method, url: apis[get.related.api].endpoint,
                     responseType: 'text', headers: api.createHeaders(get.related.api),
                     data: api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }]),
@@ -1470,7 +2480,7 @@ setTimeout(async () => {
                     return
                 if (resp.status != 200) {
                     consoleErr(logPrefix + 'Response status', resp.status)
-                    consoleErr(logPrefix + 'Response', resp)
+                    consoleErr(logPrefix + 'Response', JSON.stringify(resp))
                     if (caller == get.reply && caller.api == 'OpenAI')
                         appAlert(resp.status == 401 ? 'login'
                                : resp.status == 403 ? 'checkCloudflare'
@@ -1545,6 +2555,18 @@ setTimeout(async () => {
                             if (caller.status != 'done') api.tryNew(caller)
                         }
                     } else if (caller.status != 'done') api.tryNew(caller)
+                } else if (caller.api == 'Webraft') {
+                    if (resp.responseText) {
+                        try { // to show response or return related queries
+                            respText = JSON.parse(resp.response).choices[0].message.content
+                            caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
+                            if (caller == get.reply) show.reply(respText) ; else resolve(arrayify(respText))
+                        } catch (err) { // try diff API
+                            consoleInfo(logPrefix + 'Response text: ' + resp.responseText)
+                            consoleErr(logPrefix + appAlerts.parseFailed, err)
+                            if (caller.status != 'done') api.tryNew(caller)
+                        }
+                    } else if (caller.status != 'done') api.tryNew(caller)
                 }
 
                 function arrayify(strList) { // for get.related() calls
@@ -1605,62 +2627,94 @@ setTimeout(async () => {
 
         reply(answer) {
 
-            // Hide font size slider if visibile
+            // Hide font size slider if visible
             if (appDiv.querySelector('#font-size-slider-track')) fontSizeSlider.toggle('off')
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 while (appDiv.firstChild) appDiv.removeChild(appDiv.firstChild) // clear app content
+                fillStarryBG(appDiv) // add stars      
 
-                // Create/append app title anchor + byline
-                updateTitleAnchor()
+                // Create/append title
+                const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 143
+                const appTitleAnchor = createAnchor(config.appURL, appHeaderLogo)
+                appTitleAnchor.classList.add('app-name', 'no-user-select')
+                appDiv.append(appTitleAnchor)
+
+                // Create/append Chevron button
+                if (!isMobile) {
+                    var chevronSpan = document.createElement('span'),
+                        chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
+                    chevronSpan.id = 'chevron-btn' // for toggle.tooltip()
+                    chevronSpan.className = 'corner-btn' ; chevronSpan.style.margin = '0.5px 1px 0 11px'
+                    chevronSpan.style.display = 'none' // to activate from anchorStyles only
+                    chevronSpan.append(chevronSVG) ; appDiv.append(chevronSpan)
+                }
 
                 // Create/append About button
                 const aboutSpan = document.createElement('span'),
-                      aboutSVG = icons.about.create()
-                aboutSpan.id = 'about-btn' // for toggleTooltip()
+                      aboutSVG = icons.questionMarkCircle.create()
+                aboutSpan.id = 'about-btn' // for toggle.tooltip()
                 aboutSpan.className = 'corner-btn' ; aboutSpan.style.marginTop = '0.8px'
                 aboutSpan.append(aboutSVG) ; appDiv.append(aboutSpan)
+
+                // Create/append Settings button
+                const settingsSpan = document.createElement('span'),
+                      settingsSVG = icons.sliders.create()
+                settingsSpan.id = 'settings-btn' // for toggle.tooltip()
+                settingsSpan.className = 'corner-btn' ; settingsSpan.style.margin = '2px 9px 0 1px'
+                settingsSpan.append(settingsSVG) ; appDiv.append(settingsSpan)
 
                 // Create/append Speak button
                 if (answer != 'standby') {
                     var speakerSpan = document.createElement('span'),
                         speakerSVG = icons.speaker.create()
-                    speakerSpan.id = 'speak-btn' // for toggleTooltip()
+                    speakerSpan.id = 'speak-btn' // for toggle.tooltip()
                     speakerSpan.className = 'corner-btn' ; speakerSpan.style.marginRight = '7px'
                     speakerSpan.append(speakerSVG) ; appDiv.append(speakerSpan)
                 }
-
-                // Create/append Color Scheme button
-                const csbSpan = document.createElement('span'),
-                      csbSVG = icons.scheme.create()
-                csbSpan.id = 'csb-btn' // for toggleTooltip()
-                csbSpan.className = 'corner-btn' ; csbSpan.style.margin = '-0.2px 9px 0 0'
-                csbSpan.append(csbSVG) ; appDiv.append(csbSpan)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
                     var fontSizeSpan = document.createElement('span'),
                         fontSizeSVG = icons.fontSize.create()
-                    fontSizeSpan.id = 'font-size-btn' // for toggleTooltip()
+                    fontSizeSpan.id = 'font-size-btn' // for toggle.tooltip()
                     fontSizeSpan.className = 'corner-btn' ; fontSizeSpan.style.margin = '1px 10px 0 2px'
                     fontSizeSpan.append(fontSizeSVG) ; appDiv.append(fontSizeSpan)
                 }
 
-                // Create/append Wider Sidebar button
-                if (!isMobile) {                    
+                // Create/append Pin button
+                if (!isMobile) {
+                    var pinSpan = document.createElement('span'),
+                        pinSVG = icons.pin.create()
+                    pinSpan.id = 'pin-btn' // for toggle.sidebar() + toggle.tooltip()
+                    pinSpan.className = 'corner-btn' ; pinSpan.style.margin = '1px 9px 0 0'
+                    pinSpan.append(pinSVG) ; appDiv.append(pinSpan)
+
+                // Create/append Wider Sidebar button         
                     var wsbSpan = document.createElement('span'),
                         wsbSVG = icons.widescreen.create()
-                    wsbSpan.id = 'wsb-btn' // for toggleSidebar() + toggleTooltip()
+                    wsbSpan.id = 'wsb-btn' // for toggle.sidebar() + toggle.tooltip()
                     wsbSpan.className = 'corner-btn' ; wsbSpan.style.margin = '0.151em 11px 0 0'
                     wsbSpan.append(wsbSVG) ; appDiv.append(wsbSpan)
+
+                // Create/append Expand/Shrink button
+                    var arrowsSpan = document.createElement('span'),
+                        arrowsSVG = icons.arrowsDiagonal.create()
+                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions are often horizontal-only
+                    arrowsSpan.id = 'arrows-btn' // for toggle.tooltip()
+                    arrowsSpan.className = 'corner-btn' ; arrowsSpan.style.margin = '0.5px 12px 0 0'
+                    arrowsSpan.style.display = 'none' // to activate from anchorStyles only
+                    arrowsSpan.append(arrowsSVG) ; appDiv.append(arrowsSpan)
                 }
 
                 // Add tooltips
                 if (!isMobile) appDiv.append(tooltipDiv)
 
                 // Add corner button listeners
+                if (chevronSVG) chevronSVG.onclick = () => toggle.minimized()
                 aboutSVG.onclick = modals.about.show
+                settingsSVG.onclick = modals.settings.show
                 if (speakerSVG) speakerSVG.onclick = () => {
                     const dialectMap = [
                         { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
@@ -1690,7 +2744,7 @@ setTimeout(async () => {
                           iv = CryptoJS.enc.Utf8.parse(atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
                     const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
                         iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
-                    GM.xmlHttpRequest({ // audio from Sogou TTS
+                    xhr({ // audio from Sogou TTS
                         url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
                             + encodeURIComponent(securePayload),
                         method: 'GET', responseType: 'arraybuffer',
@@ -1706,12 +2760,13 @@ setTimeout(async () => {
                         })}}
                     })
                 }
-                csbSVG.onclick = modals.scheme.show
+                if (pinSVG) pinSVG.onclick = pinSVG.onmouseover = pinSVG.onmouseout = menus.pin.toggle
                 if (fontSizeSVG) fontSizeSVG.onclick = () => fontSizeSlider.toggle()
-                if (wsbSVG) wsbSVG.onclick = () => toggleSidebar('wider')
+                if (wsbSVG) wsbSVG.onclick = () => toggle.sidebar('wider')
+                if (arrowsSVG) arrowsSVG.onclick = () => toggle.expandedMode()
                 if (!isMobile) // add hover listeners for tooltips
-                    [aboutSpan, speakerSpan, csbSpan, fontSizeSpan, wsbSpan].forEach(span => {
-                        if (span) span.onmouseover = span.onmouseout = toggleTooltip })
+                    [aboutSpan, settingsSpan, chevronSpan, speakerSpan, fontSizeSpan, wsbSpan, arrowsSpan].forEach(span => {
+                        if (span) span.onmouseover = span.onmouseout = toggle.tooltip })
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
@@ -1719,20 +2774,21 @@ setTimeout(async () => {
                 kudoAIspan.style.cssText = 'position: relative ; bottom: 8px ; font-size: 12px'
                 kudoAIspan.append(createAnchor('https://www.kudoai.com', 'KudoAI'))
                 appDiv.querySelector('.app-name').insertAdjacentElement('afterend', kudoAIspan)
-                updateTweaksStyle() // show/hide based on corner space available
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
                     const standbyBtn = document.createElement('button')
                     standbyBtn.className = 'standby-btn'
-                    standbyBtn.textContent = msgs.buttonLabel_sendQueryToGPT || 'Send search query to GPT'
+                    standbyBtn.textContent = msgs.buttonLabel_sendQueryToApp || `Send search query to ${config.appName}`
                     appDiv.append(standbyBtn)
-                    standbyBtn.onclick = () => {
+                    show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
                         msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
                         show.reply.submitSrc = 'click' ; show.reply.chatbarFocused = false
+                        menus.pin.topPos = menus.pin.rightPos = null
                         get.reply(msgChain)
                     }
+                    standbyBtn.onclick = show.reply.standbyBtnClickHandler
 
                 // Otherwise create/append answer bubble
                 } else {
@@ -1741,6 +2797,8 @@ setTimeout(async () => {
                     balloonTipSpan.className = 'balloon-tip'
                     appDiv.append(balloonTipSpan, answerPre)
                 }
+
+                update.tweaksStyle() // show/hide 'by KudoAI', update pre-height based on mode
             }
 
             // Build reply section if missing
@@ -1764,17 +2822,18 @@ setTimeout(async () => {
                 appDiv.insertBefore(replySection, appDiv.querySelector('footer'))
 
                 // Create/append send button
-                const sendButton = document.createElement('button'),
-                      sendSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-                      sendSVGpath = createSVGpath({ stroke: '', 'stroke-width': '2', linecap: 'round',
-                          'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
-                sendButton.id = 'send-btn'
-                sendButton.style.right = '10px' ; sendButton.style.bottom = `${ isFirefox ? 56 : 60 }px`
-                for (const [attr, value] of [
-                    ['viewBox', '4 2 16 16'], ['fill', 'none'], ['height', 16], ['width', 16],
-                    ['stroke', 'currentColor'], ['stroke-width', '2'], ['stroke-linecap', 'round'], ['stroke-linejoin', 'round']
-                ]) sendSVG.setAttribute(attr, value)
-                sendSVG.append(sendSVGpath) ; sendButton.append(sendSVG) ; continueChatDiv.append(sendButton)
+                const sendBtn = document.createElement('button'),
+                      sendSVG = icons.arrowUp.create()
+                sendBtn.id = 'send-btn' ; sendBtn.className = 'chatbar-btn'
+                sendBtn.style.right = '12px'
+                sendBtn.append(sendSVG) ; continueChatDiv.append(sendBtn)
+
+                // Create/append shuffle button
+                const shuffleBtn = document.createElement('div')
+                shuffleBtn.id = 'shuffle-btn' ; shuffleBtn.className = 'chatbar-btn'
+                shuffleBtn.style.right = '20px'
+                const shuffleSVG = icons.arrowsTwistedRight.create()
+                shuffleBtn.append(shuffleSVG) ; continueChatDiv.append(shuffleBtn)
 
                 // Init/fill/append footer
                 const appFooter = appDiv.querySelector('footer') || document.createElement('footer')
@@ -1782,11 +2841,24 @@ setTimeout(async () => {
                 if (!appDiv.querySelector('footer')) appDiv.append(appFooter)
 
                 // Add reply section listeners
-                replyForm.onkeydown = handleEnter
-                replyForm.onsubmit = handleSubmit
+                replyForm.onkeydown = handleEnter ; replyForm.onsubmit = handleSubmit
                 chatTextarea.oninput = autosizeChatbar
-                if (!isMobile) // add hover listeners for tooltips
-                    sendButton.onmouseover = sendButton.onmouseout = toggleTooltip
+                shuffleBtn.onclick = () => {
+                    const randQAprompt = 'Generate a single random question on any topic then answer it.'
+                                       + `${ !config.proxyAPIenabled ? 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis,'
+                                                                     + ' deserts, mindfulness meditation, the Fibonacci sequence,'
+                                                                     + ' Jupiter, the Great Wall of China, Sheakespeare or da Vinci.' : '' }`
+                                       + 'Try to give an answer that is 25-50 words.'
+                                       + 'Do not type anything but the question and answer. Reply in markdown.'
+                    chatTextarea.value = augmentQuery(randQAprompt)
+                    show.reply.submitSrc = 'click' // for show.reply()'s mobile scroll-to-top if user interacted
+                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown', {
+                        key: 'Enter', bubbles: true, cancelable: true }))
+                }
+                if (!isMobile) { // add hover listeners for tooltips
+                    sendBtn.onmouseover = sendBtn.onmouseout = toggle.tooltip
+                    shuffleBtn.onmouseover = shuffleBtn.onmouseout = toggle.tooltip
+                }
 
                 // Scroll to top on mobile if user interacted
                 if (isMobile && show.reply.submitSrc) {
@@ -1822,11 +2894,11 @@ setTimeout(async () => {
                         throwOnError: false
                 })})
 
+                if (config.stickySidebar) update.tweaksStyle() // to reset answerPre height
+
                 // Auto-scroll if active
-                if (config.autoScroll && !isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
-                    if (config.stickySidebar) answerPre.scrollTop = answerPre.scrollHeight
-                    else window.scrollBy({ top: appDiv.querySelector('footer').getBoundingClientRect().bottom - window.innerHeight + 13 })
-                }
+                if (config.autoScroll && !isMobile && config.proxyAPIenabled && !config.streamingDisabled)
+                    window.scrollBy({ top: appDiv.querySelector('footer').getBoundingClientRect().bottom - window.innerHeight + 13 })
             }
 
             // Focus chatbar conditionally
@@ -1834,6 +2906,9 @@ setTimeout(async () => {
                 && !isMobile // exclude mobile devices to not auto-popup OSD keyboard
                 && ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )) { // app fully above fold
                     appDiv.querySelector('#app-chatbar').focus() ; show.reply.chatbarFocused = true }
+
+            // Restore minimized/restored state if anchored
+            if (config.anchored) update.appBottomPos()
 
             show.reply.submitSrc = 'none' // for reply section builder's mobile scroll-to-top if user interacted
 
@@ -1947,7 +3022,7 @@ setTimeout(async () => {
                         }, idx * 100)
                     })
 
-                    updateTweaksStyle() // to shorten <pre> max-height
+                    update.tweaksStyle() // to shorten <pre> max-height
         }}}
     }
 
@@ -1957,7 +3032,7 @@ setTimeout(async () => {
 
     // Init ALERTS
     const appAlerts = {
-        waitingResponse:  `${ msgs.alert_waitingResponse || 'Waiting for ChatGPT response' }...`,
+        waitingResponse:  `${ msgs.alert_waitingFor || 'Waiting for' } ${config.appName} ${ msgs.alert_response || 'response' }...`,
         login:            `${ msgs.alert_login || 'Please login' } @ `,
         checkCloudflare:  `${ msgs.alert_checkCloudflare || 'Please pass Cloudflare security check' } @ `,
         tooManyRequests:  `${ msgs.alert_tooManyRequests || 'API is flooded with too many requests' }.`,
@@ -1971,10 +3046,6 @@ setTimeout(async () => {
     // Init scheme var
     let scheme = config.scheme || ( isDarkMode() ? 'dark' : 'light' )
 
-    // Pre-load LOGO
-    const appLogoImg = document.createElement('img') ; updateAppLogoSrc()
-    appLogoImg.onload = () => { appLogoImg.loaded = true ; updateTitleAnchor() }
-
     // Create/ID/classify/listenerize BRAVEGPT container
     const appDiv = document.createElement('div') ; appDiv.id = 'bravegpt'
     appDiv.classList.add('fade-in', // BraveGPT class
@@ -1987,27 +3058,32 @@ setTimeout(async () => {
     })
 
     // Stylize APP elems
-    const appStyle =  document.createElement('style') ; updateAppStyle()
-    const hljsStyle = document.createElement('style') ; hljsStyle.innerText = GM_getResourceText('hljsCSS')
-    document.head.append(appStyle, hljsStyle)
+    const appStyle = createStyle() ; update.appStyle() ; document.head.append(appStyle);
+    ['hljs', 'wsbg', 'bsbg'].forEach(cssType => // code highlighting, white stars, black stars
+        document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = document.createElement('style'),
+    const tweaksStyle = createStyle(),
           wsbStyles = 'main.main-column, aside.sidebar { max-width: 521px !important }'
-                    + '#bravegpt { width: 521px }'
-    updateTweaksStyle() ; document.head.append(tweaksStyle)
+                    + '#bravegpt { width: 521px }',
+          ssbStyles = '#bravegpt { position: sticky ; top: 83px }'
+                    + '#bravegpt ~ * { display: none }', // hide sidebar contents
+          anchorStyles = '#bravegpt { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }'
+                       + '[class*="feedback"], .related-queries, #wsb-btn  { display: none }'
+                       + '#chevron-btn, #arrows-btn { display: block !important }',
+          expandedStyles = '#bravegpt { width: 538px }'
+    update.tweaksStyle() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
     if (!isMobile) {
         var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
-        const tooltipStyle = document.createElement('style')
-        tooltipStyle.innerText = '.btn-tooltip {'
+        document.head.append(createStyle('.btn-tooltip {'
             + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
-            + 'font-size: 0.58rem ; color: white ;' // font style
-            + 'position: absolute ;' // for updateTooltip() calcs
+            + 'font-size: 0.58rem ; color: white ; fill: white ; stroke: white ;' // font/icon style
+            + 'position: absolute ;' // for update.tooltip() calcs
             + 'box-shadow: 3px 5px 16px 0px rgb(0 0 0 / 21%) ;' // drop shadow
-            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 9999 }' // visibility
-        document.head.append(tooltipStyle)
+            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
+        ))
     }
 
     // APPEND to Brave
@@ -2025,8 +3101,15 @@ setTimeout(async () => {
     }
 
     // Init footer CTA to share feedback
-    let footerContent = createAnchor(config.feedbackURL, msgs.link_shareFeedback || 'Feedback')
+    let footerContent = createAnchor('#', msgs.link_shareFeedback || 'Share feedback', { target: '_self' })
     footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
+    footerContent.onclick = modals.feedback.show
+
+    // REFERRALIZE links to support author
+    setTimeout(() => document.querySelectorAll('a[href^="https://www.amazon."]').forEach(anchor => {
+        const url = new URL(anchor.href) ; url.searchParams.set('tag', 'kudo-ai-20')
+        anchor.href = url.toString()
+    }), 1500)
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
@@ -2042,6 +3125,9 @@ setTimeout(async () => {
             }
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
+    // Add key listener to DISMISS modals
+    document.onkeydown = modals.keyHandler;
+
     // Observe/listen for Brave Search + system SCHEME CHANGES to update BraveGPT scheme if auto-scheme mode
     (new MutationObserver(handleSchemeChange)).observe( // class changes from Brave Search theme settings
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
@@ -2050,7 +3136,7 @@ setTimeout(async () => {
     function handleSchemeChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = isDarkMode() ? 'dark' : 'light'
-        if (newScheme != scheme) { scheme = newScheme ; updateAppLogoSrc() ; updateAppStyle() }
+        if (newScheme != scheme) update.scheme(newScheme)
     }
 
 }, 1500)
