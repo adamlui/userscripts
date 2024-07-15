@@ -19,6 +19,13 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
 
+### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black/icon48.png" width=21> [AmazonGPT](../amazongpt)
+
+> 将 AI 添加到 Amazon 购物.
+<br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
+[Readme](https://github.com/adamlui/chatgpt-apps/tree/main/amazongpt#readme) /
+[Discuss](https://github.com/adamlui/chatgpt-apps/discussions)
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提到" src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg?latest"></a>
 
 > 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私。

@@ -20,6 +20,13 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
 
+### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black/icon48.png" width=21> [AmazonGPT](../amazongpt)
+
+> Add AI to Amazon shopping.
+<br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
+[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt#readme) /
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [Autoclear ChatGPT History](../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="Mentioned in Awesome" src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg?latest"></a>
 
 > Auto-clear your ChatGPT query history for maximum privacy.
