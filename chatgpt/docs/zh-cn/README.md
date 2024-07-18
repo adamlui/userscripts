@@ -68,7 +68,7 @@
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-infinity/docs/zh-cn#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/chatgpt-userscripts/main/media/icons/openai-favicon64.png"></picture> [ChatGPT 宽屏模式 🖥️](../../chatgpt-widescreen) <img alt="在 Product Hunt 上被评为本周 UX 产品第 2 名" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
+### <img width=21 src="https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT 宽屏模式 🖥️](../../chatgpt-widescreen) <img alt="在 Product Hunt 上被评为本周 UX 产品第 2 名" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
 
 > 向 ChatGPT 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动。
 <br>[安装](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) /
