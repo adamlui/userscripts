@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.7.17.7
+// @version             2024.7.17.8
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon48.png?9f1ed3c
 // @icon64              https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon64.png?9f1ed3c
