@@ -69,7 +69,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=21 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon16.png"> [ChatGPT Widescreen Mode](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
+### <img width=21 src="https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
 
 > Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) /
