@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.7.18.1
+// @version                2024.7.19.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -42,7 +42,7 @@
 // @connect                openai.com
 // @connect                sogou.com
 // @connect                webraft.in
-// @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@2.9.3/dist/chatgpt.min.js#sha256-EDN+mCc+0Y4YVzJEoNikd4/rAIaJDLAdb+erWvupXTM=
+// @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.0.1/dist/chatgpt.min.js#sha256-jCJMPu044aK37jtC2wMMKnNgHbXJ5Pm9ZdIqDERob7k=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.2/dist/generate-ip.min.js#sha256-PRvQIDVWK/a+aAqEFVQv7RePbRe/tX6tWQVM80rAe2M=
 // @require                https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
@@ -1200,7 +1200,7 @@
                       + ( scheme == 'dark' ? '##0000' : '#eaeaeacf' ) + '}'
               + '#app-chatbar {'
                   + `border: solid 1px ${ scheme == 'dark' ? '#aaa' : '#638ed4' } ; border-radius: 12px 13px 12px 0 ;`
-                  + 'font-size: 0.92rem ; height: 46px ; width: 100% ; max-height: 200px ; resize: none ; '
+                  + 'font-size: 14.5px ; height: 46px ; width: 100% ; max-height: 200px ; resize: none ; '
                   + `position: relative ; z-index: 555 ; color: #${ scheme == 'dark' ? 'eee' : '222' } ;`
                   + 'margin: 3px 0 15px 0 ; padding: 13px 57px 9px 10px ;'
                   + `background: ${ scheme == 'dark' ? '#5151519e' : '#eeeeee9e' }}`
