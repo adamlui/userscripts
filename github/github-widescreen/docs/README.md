@@ -32,7 +32,7 @@
 
 ## 📜 Related scripts
 
-### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://awesome.re/mentioned-badge.svg"></a>
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen@latest/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/badges/awesome/badge.svg"></a>
 
 Adds star history chart to sidebar of GitHub repos.<br>
 [Install](https://greasyfork.org/scripts/473377) /
