@@ -48,18 +48,18 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Talk 📣](../chatgpt-auto-talk)
-
-> Auto-play ChatGPT responses.
-<br>[Install](https://greasyfork.org/scripts/500940-chatgpt-auto-talk) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk#readme) /
-[Discuss](https://github.com/adamlui/userscripts/discussions)
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto Refresh ↻](../chatgpt-auto-refresh) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautorefresh.com/images/badges/awesome/badge.svg?latest"></a>
 
 > Keeps ChatGPT sessions fresh, eliminating chat time limits + network errors + Cloudflare checks.
 <br>[Install](https://greasyfork.org/scripts/462422-chatgpt-auto-refresh) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh#readme) /
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Talk 📣](../chatgpt-auto-talk)
+
+> Auto-play ChatGPT responses.
+<br>[Install](https://greasyfork.org/scripts/500940-chatgpt-auto-talk) /
+[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptinfinity.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptinfinity.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT Infinity ∞](../chatgpt-infinity) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="Featured by Google" height=20 src="https://media.chatgptinfinity.com/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
