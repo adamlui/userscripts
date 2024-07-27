@@ -48,7 +48,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@eb7f285/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@eb7f285/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Talk 📣](../chatgpt-auto-talk)
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Talk 📣](../chatgpt-auto-talk)
 
 > Auto-play ChatGPT responses.
 <br>[Install](https://greasyfork.org/scripts/500940-chatgpt-auto-talk) /
