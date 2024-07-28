@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://media.ytclassic.com/images/logos/youtube-classic/darkmode.png?latest">
-    <img height=53 src="https://media.ytclassic.com/images/logos/youtube-classic/lightmode.png?latest">
+    <source media="(prefers-color-scheme: dark)" srcset="https://media.ytclassic.com/images/logos/youtube-classic/darkmode.png">
+    <img height=53 src="https://media.ytclassic.com/images/logos/youtube-classic/lightmode.png">
   </picture>
   <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
@@ -10,11 +10,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
 ![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
-[![Mentioned in Awesome](https://media.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg?latest)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
+[![Mentioned in Awesome](https://media.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://greasyfork.org/scripts/456132"><img alt="Install this script" height=42 src="https://media.ytclassic.com/images/buttons/greasy-fork/install-button.svg?latest"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="How to install" title="How to install" src="https://media.ytclassic.com/images/buttons/greasy-fork/help-button.svg?latest"></a>
+<a href="https://greasyfork.org/scripts/456132"><img alt="Install this script" height=42 src="https://media.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="How to install" title="How to install" src="https://media.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
@@ -24,16 +24,16 @@
 <ul>
   <li><b>Restores dislike counter</b> so you can judge the quality of content before watching<br>
     (based on Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
-    <p><img width=400px src="https://media.ytclassic.com/images/screenshots/dislike-counter.png?latest"></li><br>
+    <p><img width=400px src="https://media.ytclassic.com/images/screenshots/dislike-counter.png"></li><br>
   <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round<br>
     (based on magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
     <p><i>&nbsp;Before:</i><br>
-      <img src="https://media.ytclassic.com/images/screenshots/youtube-modern-ui.png?latest">
+      <img src="https://media.ytclassic.com/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;After:</i><br>
-      <img src="https://media.ytclassic.com/images/screenshots/youtube-classic-ui.png?latest"></li><br>
+      <img src="https://media.ytclassic.com/images/screenshots/youtube-classic-ui.png"></li><br>
   <li><b>Redirects YouTube Shorts</b> to classic player for increased usability<br>
     (based on fuim's <a href="https://greasyfork.org/scripts/439993-youtube-shorts-redirect">YouTube Shorts Redirect</a>)
-    <p><img width=400 src="https://media.ytclassic.com/images/screenshots/shorts-redir.png?latest"></li><br>
+    <p><img width=400 src="https://media.ytclassic.com/images/screenshots/shorts-redir.png"></li><br>
   <li><b>Hides sneaky recommendations</b> from search for more accurate results<br>
     (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search">
       YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>

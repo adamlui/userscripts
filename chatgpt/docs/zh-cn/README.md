@@ -26,7 +26,7 @@
 [Readme](https://github.com/adamlui/chatgpt-apps/tree/main/amazongpt#readme) /
 [Discuss](https://github.com/adamlui/chatgpt-apps/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg?latest"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg"></a>
 
 > 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私。
 <br>[安装](https://greasyfork.org/scripts/460805-auto-clear-chatgpt-history) /
@@ -40,14 +40,14 @@
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/bravegpt#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautocontinue.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动继续 ⏩](../../chatgpt-auto-continue) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautocontinue.com/images/badges/awesome/badge.svg?latest"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautocontinue.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动继续 ⏩](../../chatgpt-auto-continue) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautocontinue.com/images/badges/awesome/badge.svg"></a>
 
 > 自动继续生成多个 ChatGPT 响应。
 <br>[安装](https://greasyfork.org/scripts/466789-chatgpt-auto-continue) /
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/chatgpt-auto-continue/docs/zh-cn#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动刷新 ↻](../../chatgpt-auto-refresh) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautorefresh.com/images/badges/awesome/badge.svg?latest"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动刷新 ↻](../../chatgpt-auto-refresh) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautorefresh.com/images/badges/awesome/badge.svg"></a>
 
 > 保持 ChatGPT 会话新鲜，消除聊天时间限制 + 网络错误 + Cloudflare 检查。
 <br>[安装](https://greasyfork.org/scripts/462422-chatgpt-auto-refresh) /
@@ -82,7 +82,7 @@
 [自述文件](https://github.com/adamlui/userscripts/blob/master/chatgpt/duckduckgpt#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://media.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://media.googlegpt.io/images/badges/awesome/badge.svg?latest"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://media.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://media.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
 > 为 Google Search 添加 AI 答案（由 Google Gemma + GPT-4o 提供支持！）
 <br>[安装](https://greasyfork.org/scripts/478597-googlegpt) /
