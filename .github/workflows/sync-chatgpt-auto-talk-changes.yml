@@ -1,0 +1,74 @@
+name: Sync chatgpt/chatgpt-auto-talk/ to (adamlui/chatgpt-auto-talk/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/)
+
+on:
+  push:
+    branches: [master]
+    paths: [chatgpt/chatgpt-auto-talk/**]
+
+jobs:
+  build:
+    if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout adamlui/userscripts
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/userscripts
+          path: adamlui/userscripts
+
+      - name: Checkout adamlui/chatgpt-auto-talk
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-auto-talk
+          path: adamlui/chatgpt-auto-talk
+
+      - name: Checkout adamlui/chatgpt-apps
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
+          repository: adamlui/chatgpt-apps
+          path: adamlui/chatgpt-apps
+
+      - name: Sync docs to adamlui/chatgpt-auto-talk/docs/ && adamlui/chatgpt-apps/chatgpt-auto-talk/docs/
+        run: |
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-auto-talk/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/docs \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-talk/
+
+      - name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/chatgpt-auto-talk/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/ \
+            ${{ github.workspace }}/adamlui/chatgpt-auto-talk/greasemonkey/
+
+      - name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/ \
+            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/
+
+      - name: Push to adamlui/chatgpt-auto-talk
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          add_options: --all
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
+          file_pattern: "**"
+          repository: adamlui/chatgpt-auto-talk
+
+      - name: Push to adamlui/chatgpt-apps
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          add_options: --all
+          commit_user_email: auto-sync@kudoai.com
+          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts/chatgpt/chatgpt-auto-talk`]"
+          file_pattern: "chatgpt-auto-talk/**"
+          repository: adamlui/chatgpt-apps
