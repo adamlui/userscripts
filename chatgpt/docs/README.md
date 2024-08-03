@@ -20,7 +20,7 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
 
-### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../amazongpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://amazongpt.kudoai.com/assets/images/badges/awesome/badge.svg"></a>
+### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../amazongpt) &nbsp;<a href="https://devpost.com/software/amazongpt"><img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/badge.png"></a>
 
 > Add AI to Amazon shopping.
 <br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
