@@ -37,12 +37,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/github/github-widescreen/ \
             ${{ github.workspace }}/adamlui/github-widescreen/greasemonkey/
 
-      - name: Push to adamlui/github-widescreen
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          push_options: --force
-          add_options: --all
-          commit_user_email: auto-sync@kudoai.com
-          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
-          file_pattern: "**"
-          repository: adamlui/github-widescreen
+      - name: Push changes to adamlui/github-widescreen
+        run: |
+          cd ${{ github.workspace }}/adamlui/github-widescreen
+          git config --global user.name "kudo-sync-bot"
+          git config --global user.email "auto-sync@kudoai.com"
+          git add .
+          git commit -n -m "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]" || true
+          git push

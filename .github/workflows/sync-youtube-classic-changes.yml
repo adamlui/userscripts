@@ -37,12 +37,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/youtube-classic/ \
             ${{ github.workspace }}/adamlui/youtube-classic/greasemonkey/
 
-      - name: Push to adamlui/youtube-classic
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          push_options: --force
-          add_options: --all
-          commit_user_email: auto-sync@kudoai.com
-          commit_message: "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]"
-          file_pattern: "**"
-          repository: adamlui/youtube-classic
+      - name: Push changes to adamlui/youtube-classic
+        run: |
+          cd ${{ github.workspace }}/adamlui/youtube-classic
+          git config --global user.name "kudo-sync-bot"
+          git config --global user.email "auto-sync@kudoai.com"
+          git add .
+          git commit -n -m "${{ github.event.head_commit.message }} ↞ [auto-sync from `adamlui/userscripts`]" || true
+          git push
