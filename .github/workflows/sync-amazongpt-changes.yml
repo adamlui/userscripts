@@ -9,6 +9,12 @@ jobs:
   build:
     if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
     runs-on: ubuntu-latest
+    env:
+      GIT_AUTHOR_NAME: ${{ github.event.commits[0].author.name }}
+      GIT_AUTHOR_EMAIL: ${{ github.event.commits[0].author.email }}
+      GIT_COMMITTER_NAME: kudo-sync-bot
+      GIT_COMMITTER_EMAIL: auto-sync@kudoai.com
+
     steps:
 
       - name: Checkout adamlui/userscripts
@@ -62,8 +68,6 @@ jobs:
       - name: Push changes to KudoAI/amazongpt
         run: |
           cd ${{ github.workspace }}/KudoAI/amazongpt
-          git config --global user.name "kudo-sync-bot"
-          git config --global user.email "auto-sync@kudoai.com"
           git add .
           git commit -n -m "ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
@@ -71,8 +75,6 @@ jobs:
       - name: Push changes to adamlui/chatgpt-apps
         run: |
           cd ${{ github.workspace }}/adamlui/chatgpt-apps
-          git config --global user.name "kudo-sync-bot"
-          git config --global user.email "auto-sync@kudoai.com"
           git add .
           git commit -n -m "ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/amazongpt\`]" || true
           git push
