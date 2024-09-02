@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.4.27.6
+// @version             2024.9.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -78,14 +78,13 @@
     })
 
     // Observe DOM for need to insert star history
-    let starHistoryAdded = false;
-    (new MutationObserver(mutations => mutations.forEach(mutation => {
+    let starHistoryAdded = false, prevURL = location.href
+    new MutationObserver(mutations => mutations.forEach(mutation => {
         if (mutation.type == 'childList' && mutation.addedNodes.length) {
             const onRepoPage = /^https?:\/\/[^/]+\/[^/]+\/[^/]+\/?$/.test(window.location.href)
-            if (onRepoPage && !starHistoryAdded) {
-                insertStarHistory() ; starHistoryAdded = true
-            } else if (!onRepoPage && starHistoryAdded) starHistoryAdded = false
-    }}))).observe(document.documentElement, { childList: true, subtree: true })
+            if (location.href != prevURL) { prevURL = location.href ; starHistoryAdded = false }
+            if (onRepoPage && !starHistoryAdded) { insertStarHistory() ; starHistoryAdded = true }
+    }})).observe(document.documentElement, { childList: true, subtree: true })
 
     // Define SCRIPT functions
 
