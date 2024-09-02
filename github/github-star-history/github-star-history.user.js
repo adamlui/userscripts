@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.9.2.1
+// @version             2024.9.2.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -81,7 +81,7 @@
     let starHistoryAdded = false, prevURL = location.href
     new MutationObserver(mutations => mutations.forEach(mutation => {
         if (mutation.type == 'childList' && mutation.addedNodes.length) {
-            const onRepoPage = /^https?:\/(?:\/[^/]+){3}(?:\/tree\/[^/]+)?\/?$/.test(window.location.href)
+            const onRepoPage = /^https?:\/(?:\/[^/]+){3}(?:\/tree\/[^/]+)?\/?$/.test(location.href)
             if (location.href != prevURL) { prevURL = location.href ; starHistoryAdded = false }
             if (onRepoPage && !starHistoryAdded) { insertStarHistory() ; starHistoryAdded = true }
     }})).observe(document.documentElement, { childList: true, subtree: true })
@@ -371,7 +371,7 @@
 
     function getUserAndRepoOfCurrentPage() {
         const reGitHubURL = /github\.com\/(?<user>[\w-]+)\/(?<repo>[\w.-]+)\/?/,
-              currentURL = window.location.href,
+              currentURL = location.href,
               groups = reGitHubURL.exec(currentURL)?.groups
         if (!groups?.user || !groups?.repo)
             throw new Error(`Invalid Github repository URL: ${currentURL}`)

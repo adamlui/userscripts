@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.3.5.1
+// @version             2024.9.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -77,14 +77,14 @@
     const sidePanelObserver = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.type == 'childList' && mutation.addedNodes.length) {
-                if (window.location.href !== prevURL) { // if loaded/naved to new page
-                    if (window.location.href.includes('edit')) { // if on editor, wait for side panel load
+                if (location.href !== prevURL) { // if loaded/naved to new page
+                    if (location.href.includes('edit')) { // if on editor, wait for side panel load
                         const editorSidePanelobserver = new MutationObserver(() => {
                             if (document.querySelector('[data-testid="editor-side-panel"]')) {
                                 editorSidePanelobserver.disconnect() ; hideSidePanels()
                         }}) ; editorSidePanelobserver.observe(document.body, { childList: true, subtree: true })
                     } else hideSidePanels()
-                    prevURL = window.location.href
+                    prevURL = location.href
     }}})}) ; sidePanelObserver.observe(document.documentElement, { childList: true, subtree: true })
 
     // Define SCRIPT functions
