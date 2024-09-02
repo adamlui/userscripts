@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.2.5
+// @version       2024.9.2
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -54,15 +54,15 @@ registerMenu()
 
 // Redirect Shorts
 if (config.disableShorts) {
-    var oldHref = document.location.href;
+    var oldHref = location.href;
     if (unsafeWindow.location.href.match(/shorts\/.+/))
         unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
     unsafeWindow.onload = () => {
         var bodyList = document.querySelector('body')
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function() {
-                if (oldHref != document.location.href) {
-                    oldHref = document.location.href
+                if (oldHref != location.href) {
+                    oldHref = location.href
                     if (unsafeWindow.location.href.match(/shorts\/.+/))
                         unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
         }})})
