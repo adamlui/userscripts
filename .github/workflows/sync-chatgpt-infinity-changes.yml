@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-infinity/ to (adamlui/chatgpt-infinity/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/), then /greasemonkey/_locales/ to adamlui/chatgpt-apps/chatgpt-infinity/(chrome|edge|firefox|opera)/extension/_locales/
+name: Sync chatgpt/chatgpt-infinity/ to adamlui/<chatgpt-infinity|chatgpt-apps/chatgpt-infinity>/greasemonkey/
 
 on:
   push:
@@ -49,15 +49,6 @@ jobs:
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
             ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
-
-      - name: Sync /greasemonkey/_locales/ to adamlui/chatgpt-apps/chatgpt-infinity/(chrome|edge|firefox|opera)/extension/_locales/
-        run: |
-          for browser in chrome edge firefox opera
-          do
-            rsync -avhr --delete \
-              "${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/_locales/" \
-              "${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/$browser/extension/_locales/"
-          done
 
       - name: Escape backticks in commit msg
         env:
