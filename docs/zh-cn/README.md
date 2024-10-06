@@ -25,34 +25,34 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
-<br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
+<br>[查看脚本](../../chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
-<br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /
+<br>[查看脚本](../../github) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
 <br>[安装](https://greasyfork.org/scripts/12639) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
+[自述文件](../../hide-forum-images/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://greasyfork.org/scripts/26311) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
+[自述文件](../../highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://media.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://greasyfork.org/scripts/456132) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
+[自述文件](../../youtube-classic/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">

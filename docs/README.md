@@ -25,34 +25,34 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](../chatgpt)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
-<br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
+<br>[View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
-<br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
+<br>[View scripts](../github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://greasyfork.org/scripts/12639) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
+[Readme](../hide-forum-images/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://greasyfork.org/scripts/26311) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles#readme) /
+[Readme](../highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://media.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://greasyfork.org/scripts/456132) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
+[Readme](../youtube-classic/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">

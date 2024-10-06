@@ -21,14 +21,14 @@
 
 > 将明星历史图表添加到 GitHub 存储库的侧边栏。
 <br>[安装](https://greasyfork.org/scripts/473377-github-star-history) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/github/github-star-history#readme) /
+[自述文件](../../github-star-history/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/icons/github/icon32.png"> [GitHub 宽银幕 🖥️](../../github-widescreen)
 
 > 自动隐藏 GitHub 上引人注目的侧面板。
 <br>[安装](https://greasyfork.org/scripts/473439-github-widescreen) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen#readme) /
+[自述文件](../../github-widescreen/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">

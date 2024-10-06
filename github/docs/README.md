@@ -21,14 +21,14 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 
 > Adds star history chart to sidebar of GitHub repos.
 <br>[Install](https://greasyfork.org/scripts/473377-github-star-history) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/github/github-star-history#readme) /
+[Readme](../github-star-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](../github-widescreen)
 
 > Auto-hides obtrusive side panels on GitHub.
 <br>[Install](https://greasyfork.org/scripts/473439-github-widescreen) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen#readme) /
+[Readme](../github-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">

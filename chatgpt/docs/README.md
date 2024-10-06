@@ -24,70 +24,70 @@ Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A user
 
 > Add AI to Amazon shopping.
 <br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt#readme) /
+[Readme](../amazongpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> [Autoclear ChatGPT History](../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg"></a>
 
 > Auto-clear your ChatGPT query history for maximum privacy.
 <br>[Install](https://greasyfork.org/scripts/460805-auto-clear-chatgpt-history) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history#readme) /
+[Readme](../autoclear-chatgpt-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://media.bravegpt.com/images/icons/bravegpt/icon48.png" width=24> [BraveGPT](../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
 > Adds AI answers to Brave Search (powered by GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/462440-bravegpt) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt#readme) /
+[Readme](../bravegpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautocontinue.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Continue ⏩](../chatgpt-auto-continue) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautocontinue.com/images/badges/awesome/badge.svg"></a>
 
 > Automatically continue generating multiple ChatGPT responses.
 <br>[Install](https://greasyfork.org/scripts/466789-chatgpt-auto-continue) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue#readme) /
+[Readme](../chatgpt-auto-continue/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto Refresh ↻](../chatgpt-auto-refresh) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://media.chatgptautorefresh.com/images/badges/awesome/badge.svg"></a>
 
 > Keeps ChatGPT sessions fresh, eliminating chat time limits + network errors + Cloudflare checks.
 <br>[Install](https://greasyfork.org/scripts/462422-chatgpt-auto-refresh) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh#readme) /
+[Readme](../chatgpt-auto-refresh/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Auto-Talk 📣](../chatgpt-auto-talk) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/badges/awesome/badge.svg"></a>
 
 > Auto-play ChatGPT responses.
 <br>[Install](https://greasyfork.org/scripts/500940-chatgpt-auto-talk) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk#readme) /
+[Readme](../chatgpt-auto-talk/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.chatgptinfinity.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.chatgptinfinity.com/images/icons/openai/black/icon32.png"></picture> [ChatGPT Infinity ∞](../chatgpt-infinity) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="Featured by Google" height=20 src="https://media.chatgptinfinity.com/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > Generate endless answers from all-knowing ChatGPT (in any language!)
 <br>[Install](https://greasyfork.org/scripts/465051-chatgpt-infinity) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity#readme) /
+[Readme](../chatgpt-infinity/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=21 src="https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
 
 > Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen#readme) /
+[Readme](../chatgpt-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png" width=23> [DuckDuckGPT](../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
 > Adds AI answers to DuckDuckGo (powered by GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/459849-duckduckgpt) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt#readme) /
+[Readme](../duckduckgpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://media.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://media.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
 > Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)
 <br>[Install](https://greasyfork.org/scripts/478597-googlegpt) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt#readme) /
+[Readme](../googlegpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
