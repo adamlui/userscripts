@@ -11,12 +11,14 @@
 
 # 🤖 ChatGPT userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23ChatGPT%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/chatgpt&hashtags=greasemonkey,userscript,javascript,ai)
 
+### Userscripts that utilize the astounding AI of ChatGPT or enhances its UX.
+
 ![](https://img.shields.io/badge/Users-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
 [![Powered by chatgpt.js](https://img.shields.io/badge/Powered_by-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/KudoAI/chatgpt.js?utm_source=userscripts&utm_content=github_shield)
 <img src="https://img.shields.io/badge/jsDelivr_Requests-1,500,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
-Userscripts that utilize the astounding AI of ChatGPT or enhances its UX. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
+A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
