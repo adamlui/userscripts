@@ -19,7 +19,7 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
-### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../amazongpt) &nbsp;<a href="https://devpost.com/software/amazongpt"><img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/badge.png"></a>
+### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../amazongpt) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/badge.png">
 
 > 将 AI 添加到 Amazon 购物.
 <br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
