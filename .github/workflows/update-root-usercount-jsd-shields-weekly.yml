@@ -21,9 +21,11 @@ jobs:
         run: |
           declare -A gf_scripts=( # for Greasy Fork script user counts
             ["460805"]="Autoclear ChatGPT History"
+            ["500663"]="AmazonGPT"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
             ["462422"]="ChatGPT Auto Refresh"
+            ["500940"]="ChatGPT Auto-Talk"
             ["465051"]="ChatGPT Infinity"
             ["461473"]="ChatGPT Widescreen Mode"
             ["459849"]="DuckDuckGPT"
