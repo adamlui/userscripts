@@ -1,8 +1,8 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
         <a href="https://github.com/adamlui/userscripts/blob/master/docs/zh-cn#readme">简体中文</a>
@@ -20,7 +20,7 @@
 
 Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT scripts](../chatgpt)
 
@@ -28,20 +28,20 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/github/icon32.png"> [GitHub scripts](../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://greasyfork.org/scripts/12639) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://greasyfork.org/scripts/26311) /
@@ -55,7 +55,7 @@ Greasemonkey userscripts. A userscript manager such as [Tampermonkey](https://ww
 [Readme](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> /
 <a href="#english--简体中文">Back to top ↑</a>

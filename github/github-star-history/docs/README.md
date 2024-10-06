@@ -1,4 +1,4 @@
-# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-star-history/blob/main/LICENSE.md)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-star-history)
@@ -7,7 +7,7 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
@@ -29,7 +29,7 @@
 
 <br>
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
@@ -49,7 +49,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 ## 📜 Related scripts
 
-### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@latest/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
 [Install](https://github.com/adamlui/github-widescreen#-installation) /
@@ -63,7 +63,7 @@ Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scro
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
 [Discuss](https://chatgptevo.com/widescreen/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#-github-star-history--">Back to top ↑</a>

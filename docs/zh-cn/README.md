@@ -1,8 +1,8 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;简体中文 |
         <a href="../../#readme">English</a>
@@ -20,7 +20,7 @@
 
 Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
@@ -28,20 +28,20 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/icons/github/icon32.png"> [GitHub 脚本](../../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> [GitHub 脚本](../../github)
 
 > 增强 GitHub 体验的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
 <br>[安装](https://greasyfork.org/scripts/12639) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://greasyfork.org/scripts/26311) /
@@ -55,7 +55,7 @@ Greasemonkey 用户脚本. 运行这些脚本需要一个用户脚本管理器,�
 [自述文件](https://github.com/adamlui/userscripts/tree/master/youtube-classic#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@latest/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> /
 <a href="#简体中文--english">回到顶部 ↑</a>
