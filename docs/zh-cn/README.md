@@ -11,7 +11,7 @@
 
 # 🐵 Greasemonkey 用户脚本 &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=刚刚找到这些史诗般的用户脚本！&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
-![](https://img.shields.io/badge/用户-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
+![](https://img.shields.io/badge/用户-200,000+-af68ff?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![许可证: MIT](https://img.shields.io/badge/许可证-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
 [![GitHub 提交](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=提交&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits)
 [![CodeFactor 等级](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)

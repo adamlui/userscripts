@@ -11,7 +11,7 @@
 
 # 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
 
-![](https://img.shields.io/badge/Users-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
+![](https://img.shields.io/badge/Users-200,000+-af68ff?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/LICENSE.md)
 [![GitHub commits](https://img.shields.io/github/commit-activity/m/adamlui/userscripts?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge)](https://github.com/adamlui/userscripts/commits)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
