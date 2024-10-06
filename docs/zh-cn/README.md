@@ -22,7 +22,7 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/RduASbD.png"><img width=21 src="https://raw.githubusercontent.com/adamlui/userscripts/master/chatgpt/media/icons/openai-favicon64.png"></picture> [ChatGPT 脚本](../../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt) /
