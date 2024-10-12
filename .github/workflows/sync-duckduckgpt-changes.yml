@@ -1,4 +1,4 @@
-name: Sync chatgpt/duckduckgpt/ to (KudoAI/duckduckgpt/greasemonkey/ && adamlui/chatgpt-apps/duckduckgpt/greasemonkey/)
+name: Sync chatgpt/duckduckgpt/ to (KudoAI/duckduckgpt/greasemonkey/ && adamlui/ai-apps/duckduckgpt/greasemonkey/)
 
 on:
   push:
@@ -29,21 +29,21 @@ jobs:
           repository: KudoAI/duckduckgpt
           path: KudoAI/duckduckgpt
 
-      - name: Checkout adamlui/chatgpt-apps
+      - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-apps
-          path: adamlui/chatgpt-apps
+          repository: adamlui/ai-apps
+          path: adamlui/ai-apps
 
-      - name: Sync docs to KudoAI/duckduckgpt/docs/ && adamlui/chatgpt-apps/duckduckgpt/docs/
+      - name: Sync docs to KudoAI/duckduckgpt/docs/ && adamlui/ai-apps/duckduckgpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
             ${{ github.workspace }}/KudoAI/duckduckgpt/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/duckduckgpt/
+            ${{ github.workspace }}/adamlui/ai-apps/duckduckgpt/
 
       - name: Sync chatgpt/duckduckgpt/ to KudoAI/duckduckgpt/greasemonkey/
         run: |
@@ -51,11 +51,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ \
             ${{ github.workspace }}/KudoAI/duckduckgpt/greasemonkey/
 
-      - name: Sync chatgpt/duckduckgpt/ to adamlui/chatgpt-apps/duckduckgpt/greasemonkey/
+      - name: Sync chatgpt/duckduckgpt/ to adamlui/ai-apps/duckduckgpt/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/duckduckgpt/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-apps/duckduckgpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,9 +72,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
 
-      - name: Push changes to adamlui/chatgpt-apps
+      - name: Push changes to adamlui/ai-apps
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-apps
+          cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/duckduckgpt\`]" || true
           git push

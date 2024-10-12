@@ -1,4 +1,4 @@
-name: Sync chatgpt/bravegpt/ to (KudoAI/bravegpt/greasemonkey/ && adamlui/chatgpt-apps/bravegpt/greasemonkey/)
+name: Sync chatgpt/bravegpt/ to (KudoAI/bravegpt/greasemonkey/ && adamlui/ai-apps/bravegpt/greasemonkey/)
 
 on:
   push:
@@ -29,21 +29,21 @@ jobs:
           repository: KudoAI/bravegpt
           path: KudoAI/bravegpt
 
-      - name: Checkout adamlui/chatgpt-apps
+      - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-apps
-          path: adamlui/chatgpt-apps
+          repository: adamlui/ai-apps
+          path: adamlui/ai-apps
 
-      - name: Sync docs to KudoAI/bravegpt/docs/ && adamlui/chatgpt-apps/bravegpt/docs/
+      - name: Sync docs to KudoAI/bravegpt/docs/ && adamlui/ai-apps/bravegpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
             ${{ github.workspace }}/KudoAI/bravegpt/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/
+            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/
 
       - name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/
         run: |
@@ -51,11 +51,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
             ${{ github.workspace }}/KudoAI/bravegpt/greasemonkey/
 
-      - name: Sync chatgpt/bravegpt/ to adamlui/chatgpt-apps/bravegpt/greasemonkey/
+      - name: Sync chatgpt/bravegpt/ to adamlui/ai-apps/bravegpt/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/bravegpt/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,9 +72,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
 
-      - name: Push changes to adamlui/chatgpt-apps
+      - name: Push changes to adamlui/ai-apps
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-apps
+          cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/bravegpt\`]" || true
           git push

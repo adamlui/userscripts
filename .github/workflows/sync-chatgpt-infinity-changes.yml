@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-infinity/ to adamlui/<chatgpt-infinity|chatgpt-apps/chatgpt-infinity>/greasemonkey/
+name: Sync chatgpt/chatgpt-infinity/ to adamlui/<chatgpt-infinity|ai-apps/chatgpt-infinity>/greasemonkey/
 
 on:
   push:
@@ -29,12 +29,12 @@ jobs:
           repository: adamlui/chatgpt-infinity
           path: adamlui/chatgpt-infinity
 
-      - name: Checkout adamlui/chatgpt-apps
+      - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-apps
-          path: adamlui/chatgpt-apps
+          repository: adamlui/ai-apps
+          path: adamlui/ai-apps
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
         run: |
@@ -42,11 +42,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
             ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
+      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/ai-apps/chatgpt-infinity/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-infinity/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-infinity/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -63,9 +63,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
 
-      - name: Push changes to adamlui/chatgpt-apps
+      - name: Push changes to adamlui/ai-apps
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-apps
+          cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/chatgpt-infinity\`]" || true
           git push

@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-auto-talk/ to (adamlui/chatgpt-auto-talk/greasemonkey/ && adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/)
+name: Sync chatgpt/chatgpt-auto-talk/ to (adamlui/chatgpt-auto-talk/greasemonkey/ && adamlui/ai-apps/chatgpt-auto-talk/greasemonkey/)
 
 on:
   push:
@@ -29,21 +29,21 @@ jobs:
           repository: adamlui/chatgpt-auto-talk
           path: adamlui/chatgpt-auto-talk
 
-      - name: Checkout adamlui/chatgpt-apps
+      - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-apps
-          path: adamlui/chatgpt-apps
+          repository: adamlui/ai-apps
+          path: adamlui/ai-apps
 
-      - name: Sync docs to adamlui/chatgpt-auto-talk/docs/ && adamlui/chatgpt-apps/chatgpt-auto-talk/docs/
+      - name: Sync docs to adamlui/chatgpt-auto-talk/docs/ && adamlui/ai-apps/chatgpt-auto-talk/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/docs \
             ${{ github.workspace }}/adamlui/chatgpt-auto-talk/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-talk/
+            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-talk/
 
       - name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/chatgpt-auto-talk/greasemonkey/
         run: |
@@ -51,11 +51,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/ \
             ${{ github.workspace }}/adamlui/chatgpt-auto-talk/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/
+      - name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/ai-apps/chatgpt-auto-talk/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/ \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/chatgpt-auto-talk/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-talk/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,9 +72,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
 
-      - name: Push changes to adamlui/chatgpt-apps
+      - name: Push changes to adamlui/ai-apps
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-apps
+          cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/chatgpt-auto-talk\`]" || true
           git push

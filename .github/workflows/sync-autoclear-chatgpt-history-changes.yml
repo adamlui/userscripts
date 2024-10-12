@@ -1,4 +1,4 @@
-name: Sync chatgpt/autoclear-chatgpt-history/ to (adamlui/autoclear-chatgpt-history/greasemonkey/ && adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/)
+name: Sync chatgpt/autoclear-chatgpt-history/ to (adamlui/autoclear-chatgpt-history/greasemonkey/ && adamlui/ai-apps/autoclear-chatgpt-history/greasemonkey/)
 
 on:
   push:
@@ -29,21 +29,21 @@ jobs:
           repository: adamlui/autoclear-chatgpt-history
           path: adamlui/autoclear-chatgpt-history
 
-      - name: Checkout adamlui/chatgpt-apps
+      - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-apps
-          path: adamlui/chatgpt-apps
+          repository: adamlui/ai-apps
+          path: adamlui/ai-apps
 
-      - name: Sync docs to adamlui/autoclear-chatgpt-history/docs/ && adamlui/chatgpt-apps/autoclear-chatgpt-history/docs/
+      - name: Sync docs to adamlui/autoclear-chatgpt-history/docs/ && adamlui/ai-apps/autoclear-chatgpt-history/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs \
             ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/
+            ${{ github.workspace }}/adamlui/ai-apps/autoclear-chatgpt-history/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/
         run: |
@@ -51,11 +51,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
             ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
 
-      - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/
+      - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/ai-apps/autoclear-chatgpt-history/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
-            ${{ github.workspace }}/adamlui/chatgpt-apps/autoclear-chatgpt-history/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-apps/autoclear-chatgpt-history/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,9 +72,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts\`]" || true
           git push
 
-      - name: Push changes to adamlui/chatgpt-apps
+      - name: Push changes to adamlui/ai-apps
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-apps
+          cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from \`adamlui/userscripts/chatgpt/autoclear-chatgpt-history\`]" || true
           git push
