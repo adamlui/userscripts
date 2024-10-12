@@ -27,7 +27,7 @@
 > 将 AI 添加到 Amazon 购物.
 <br>[Install](https://greasyfork.org/scripts/500663-amazongpt) /
 [自述文件](../../amazongpt/#readme) /
-[讨论](https://github.com/adamlui/chatgpt-apps/discussions)
+[讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=21 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://media.autoclearchatgpt.com/images/badges/awesome/badge.svg"></a>
 
