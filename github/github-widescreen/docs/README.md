@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 # <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE.md)
@@ -49,4 +51,4 @@ Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scro
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
-<a href="#-github-widescreen--">Back to top ↑</a>
+<a href="#top">Back to top ↑</a>
