@@ -18,7 +18,7 @@ export default [
             'no-unused-vars': ['error', { 'caughtErrors': 'none' }] // allow unused named args in catch blocks
         },
         languageOptions: {
-            ecmaVersion: 2022, sourceType: 'script',
+            ecmaVersion: 'latest', sourceType: 'script',
             globals: {
                 ...globals.browser, ...globals.greasemonkey,
                 chatgpt: 'readonly', CryptoJS: 'readonly', dom: 'readonly', GM_cookie: 'readonly', hljs: 'readonly',
