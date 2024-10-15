@@ -168,7 +168,12 @@ jobs:
           commit_msg+=" shield counters in root READMEs"
           echo "commit_msg=$commit_msg" >> $GITHUB_OUTPUT # expose as output
 
+          # Set Updated flag to check in subseuqent steps
+          if [ "$users_updated" = true ] || [ "requests_updated" = true ] ; then
+            echo "shields_updated=true" >> $GITHUB_ENV ; fi
+
       - name: Config committer
+        if: env.shields_updated == 'true'
         run: |
           gpg --batch --import <(echo "${{ secrets.GPG_PRIVATE_KEY }}")
           git config --global commit.gpgsign true
@@ -177,6 +182,7 @@ jobs:
           git config --global user.signingkey  "${{ secrets.GPG_PRIVATE_ID }}"
 
       - name: Push changes to adamlui/userscripts
+        if: env.shields_updated == 'true'
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           git add .
