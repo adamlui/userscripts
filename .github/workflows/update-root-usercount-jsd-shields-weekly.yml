@@ -40,11 +40,11 @@ jobs:
           )
 
           jsd_gh_repos=( # for jsDelivr request counts
-            "adamlui/userscripts" "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continue"
-            "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-auto-talk" "adamlui/chatgpt-infinity"
-            "adamlui/chatgpt-widescreen" "adamlui/github-star-history" "adamlui/github-widescreen"
-            "adamlui/youtube-classic" "KudoAI/amazongpt" "KudoAI/bravegpt" "KudoAI/duckduckgpt"
-            "KudoAI/googlegpt"
+            "KudoAI/amazongpt" "adamlui/autoclear-chatgpt-history" "KudoAI/bravegpt"
+            "adamlui/chatgpt-auto-continue" "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-auto-talk"
+            "adamlui/chatgpt-infinity" "adamlui/chatgpt-widescreen" "KudoAI/duckduckgpt
+            "adamlui/github-star-history" "adamlui/github-widescreen" "KudoAI/googlegpt"
+            "adamlui/userscripts" "adamlui/youtube-classic"   
           )
 
           expand_num() { # expand nums abbreviated w/ 'k' or 'm' suffix to integers
