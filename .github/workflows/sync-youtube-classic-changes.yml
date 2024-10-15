@@ -1,4 +1,4 @@
-  Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
+name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
 
 on:
   push:
