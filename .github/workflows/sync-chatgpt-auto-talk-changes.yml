@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-auto-talk/ to (adamlui/chatgpt-auto-talk/greasemonkey/ && adamlui/ai-apps/chatgpt-auto-talk/greasemonkey/)
+name: Sync chatgpt/chatgpt-auto-talk/ to adamlui/chatgpt-auto-talk/greasemonkey/ & adamlui/ai-apps/chatgpt-auto-talk/greasemonkey/
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs to adamlui/chatgpt-auto-talk/docs/ && adamlui/ai-apps/chatgpt-auto-talk/docs/
+      - name: Sync docs/ to adamlui/chatgpt-auto-talk/docs/ && adamlui/ai-apps/chatgpt-auto-talk/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-talk/docs \

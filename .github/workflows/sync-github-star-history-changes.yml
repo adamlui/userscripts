@@ -28,7 +28,7 @@ jobs:
           repository: adamlui/github-star-history
           path: adamlui/github-star-history
 
-      - name: Sync github/github-star-history/docs/** to adamlui/github-star-history/docs/**
+      - name: Sync github/github-star-history/docs/ to adamlui/github-star-history/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/github/github-star-history/docs \

@@ -28,7 +28,7 @@ jobs:
           repository: adamlui/github-widescreen
           path: adamlui/github-widescreen
 
-      - name: Sync github/github-widescreen/docs/** to adamlui/github-widescreen/docs/**
+      - name: Sync github/github-widescreen/docs/ to adamlui/github-widescreen/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/github/github-widescreen/docs \

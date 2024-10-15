@@ -1,4 +1,4 @@
-name: Sync chatgpt/autoclear-chatgpt-history/ to (adamlui/autoclear-chatgpt-history/greasemonkey/ && adamlui/ai-apps/autoclear-chatgpt-history/greasemonkey/)
+name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/ & adamlui/ai-apps/autoclear-chatgpt-history/greasemonkey/
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs to adamlui/autoclear-chatgpt-history/docs/ && adamlui/ai-apps/autoclear-chatgpt-history/docs/
+      - name: Sync docs/ to adamlui/autoclear-chatgpt-history/docs/ && adamlui/ai-apps/autoclear-chatgpt-history/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/docs \

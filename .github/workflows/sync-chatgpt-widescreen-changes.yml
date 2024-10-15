@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-widescreen/ to adamlui/<chatgpt-widescreen|ai-apps/chatgpt-widescreen>/greasemonkey/
+name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/ & adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
 
 on:
   push:

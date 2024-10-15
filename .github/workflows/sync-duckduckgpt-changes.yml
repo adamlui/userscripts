@@ -1,4 +1,4 @@
-name: Sync chatgpt/duckduckgpt/ to (KudoAI/duckduckgpt/greasemonkey/ && adamlui/ai-apps/duckduckgpt/greasemonkey/)
+name: Sync chatgpt/duckduckgpt/ to KudoAI/duckduckgpt/greasemonkey/ & adamlui/ai-apps/duckduckgpt/greasemonkey/
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs to KudoAI/duckduckgpt/docs/ && adamlui/ai-apps/duckduckgpt/docs/
+      - name: Sync docs/ to KudoAI/duckduckgpt/docs/ & adamlui/ai-apps/duckduckgpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
