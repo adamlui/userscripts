@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.4
+// @version             2024.10.17.5
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -53,7 +53,7 @@
         gitHubURL: 'https://github.com/adamlui/github-star-history',
         greasyForkURL: 'https://greasyfork.org/scripts/473377-github-star-history' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + config.appName, async () => {
@@ -64,10 +64,10 @@
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = alert(
             config.appName, // title
-            `<span style="${ headingStyle }">🏷️ <i>Version</i>: </span>`
-                + `<span style="${ pStyle }">${ GM_info.script.version }</span>\n`
-            + `<span style="${ headingStyle }">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${ pBrStyle }"><a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+            `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
+                + `<span style="${pStyle}">${ GM_info.script.version }</span>\n`
+            + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
+                + `<span style="${pBrStyle}"><a href="${config.gitHubURL}" target="_blank" rel="nopener">`
                 + config.gitHubURL + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
@@ -118,7 +118,7 @@
 
                         // Alert to update
                         alert('Update available! 🚀', // title
-                            `A newer version of ${ config.appName } v${ latestVer } is available!  `
+                            `A newer version of ${config.appName} v${latestVer} is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
                                     + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
                                     + config.updateURL.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
@@ -132,7 +132,7 @@
                         return
                 }}
 
-                alert('Up to date!', `${ config.appName } (v${ currentVer }) is up-to-date!`)
+                alert('Up to date!', `${config.appName} (v${currentVer}) is up-to-date!`)
     }})}
 
     function isDarkMode() {
@@ -179,7 +179,7 @@
                 + 'opacity: 0 ; transform: translateX(-2px) translateY(5px) ;'
                 + 'transition: opacity 0.1s cubic-bezier(.165,.84,.44,1), transform 0.2s cubic-bezier(.165,.84,.44,1) ;'
                 + `background-color: ${ ui.scheme == 'dark' ? 'black' : 'white' } ;`
-                + ( width ? `width: ${ width }px` : 'max-width: 458px ') + ' ;'
+                + ( width ? `width: ${width}px` : 'max-width: 458px ') + ' ;'
                 + 'padding: 20px ; margin: 12px 23px ; border-radius: 5px ; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) }'
             + '.chatgpt-modal h2 { font-size: 2em ; margin-bottom: 9px }'
             + '.chatgpt-modal p { font-size: 1.35em }'
@@ -394,7 +394,7 @@
 
             // Fetch image as blob
             const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
-                + `${ user }/${ repo }&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
+                + `${user}/${repo}&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
             const response = await new Promise((resolve, reject) => xhr({
                 method: 'GET', url: imgURL, responseType: 'blob', onload: resolve, onerror: reject}))
             if (response.status != 200) throw new Error('>> Failed to fetch image')
@@ -446,7 +446,7 @@
 
         // Add listeners
         zoomedImg.addEventListener('click', () => { // view on star-history.com
-            window.open(`https://star-history.com/#${ user }/${ repo }&Date`, '_blank') })
+            window.open(`https://star-history.com/#${user}/${repo}&Date`, '_blank') })
         overlay.addEventListener('click', () => { document.body.removeChild(overlay) })
 
         // Append elements
