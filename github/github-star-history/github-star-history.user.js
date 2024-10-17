@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.8
+// @version             2024.10.17.9
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -444,7 +444,7 @@
 
         // Add listeners
         zoomedImg.onclick = () => // view on star-history.com
-            safeWinOpen(`https://star-history.com/#${user}/${repo}&Date`, '_blank')
+            safeWinOpen(`https://star-history.com/#${user}/${repo}&Date`)
         overlay.onclick = () => document.body.removeChild(overlay)
 
         // Append elements
