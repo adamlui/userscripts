@@ -13,11 +13,11 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.9.2
+// @version             2024.10.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
-// @connect             greasyfork.org
+// @connect             update.greasyfork.org
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
