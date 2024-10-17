@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.12
+// @version             2024.10.17.13
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -23,6 +23,7 @@
 // @match               *://github.com/*
 // @connect             api.star-history.com
 // @connect             greasyfork.org
+// @connect             jsdelivr.net
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM_xmlhttpRequest
@@ -48,13 +49,12 @@
     const ui = { scheme: isDarkMode() ? 'dark' : 'light' }
 
     // Init APP info
-    const app = {
-        name: 'GitHub Star History', symbol: '⭐',
-        urls: {
-            gitHub: 'https://github.com/adamlui/github-star-history',
-            greasyFork: 'https://greasyfork.org/scripts/473377-github-star-history'
-        }
-    }
+    const app = { latestAssetCommitHash: '8405505' },
+          assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestAssetCommitHash}`
+    Object.assign(app, await new Promise(resolve => xhr({
+        method: 'GET', url: `${assetHostURL}/app.json`,
+        onload: resp => resolve(JSON.parse(resp.responseText))
+    })))
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
