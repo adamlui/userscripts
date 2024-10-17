@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.5
+// @version             2024.10.17.6
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -225,7 +225,7 @@
                     .replace(/[_-]\w/g, match => match.slice(1).toUpperCase()) // convert snake/kebab to camel case
                     .replace(/([A-Z])/g, ' $1') // insert spaces
                     .replace(/^\w/, firstChar => firstChar.toUpperCase()) // capitalize first letter
-                button.addEventListener('click', () => { destroyAlert() ; buttonFn() })
+                button.onclick = () => { destroyAlert() ; buttonFn() }
                 modalButtons.insertBefore(button, modalButtons.firstChild) // insert button to left
             })
         }
@@ -233,7 +233,7 @@
         // Create/append OK/dismiss button to buttons div
         const dismissBtn = document.createElement('button')
         dismissBtn.textContent = btns ? 'Dismiss' : 'OK'
-        dismissBtn.addEventListener('click', destroyAlert)
+        dismissBtn.onclick = destroyAlert
         modalButtons.insertBefore(dismissBtn, modalButtons.firstChild)
 
         // Highlight primary button
@@ -246,12 +246,12 @@
             const checkboxFn = checkbox, // assign the named function to checkboxFn
                   checkboxInput = document.createElement('input')
             checkboxInput.type = 'checkbox'
-            checkboxInput.addEventListener('change', checkboxFn)
+            checkboxInput.onchange = checkboxFn
 
             // Create/show label
             const checkboxLabel = document.createElement('label')
-            checkboxLabel.addEventListener('click', function() {
-                checkboxInput.checked = !checkboxInput.checked ; checkboxFn() })
+            checkboxLabel.onclick = () => {
+                checkboxInput.checked = !checkboxInput.checked ; checkboxFn() }
             checkboxLabel.textContent = checkboxFn.name.charAt(0).toUpperCase() // capitalize first char
                 + checkboxFn.name.slice(1) // format remaining chars
                     .replace(/([A-Z])/g, (match, letter) => ' ' + letter.toLowerCase()) // insert spaces, convert to lowercase
@@ -273,8 +273,7 @@
 
         // Add listeners
         document.addEventListener('keydown', keyHandler)
-        modalContainer.addEventListener('click', event => {
-            if (event.target == modalContainer) destroyAlert() })
+        modalContainer.onclick = event => { if (event.target == modalContainer) destroyAlert() }
 
         // Show alert if none active
         modalContainer.style.display = 'none'
@@ -417,7 +416,7 @@
                 const starHistoryDiv = document.createElement('div')
                 starHistoryDiv.id = 'star-history' ; starHistoryDiv.style.cursor = 'crosshair'
                 starHistoryDiv.append(starHistoryImg)                
-                starHistoryDiv.addEventListener('click', () => { zoomStarHistory(imgDataURL) })
+                starHistoryDiv.onclick = () => zoomStarHistory(imgDataURL)
 
                 // Insert div
                 const aboutSection = document.querySelector('[class$="sidebar"] > div > div')
@@ -445,9 +444,9 @@
         zoomedImg.style.cursor = 'pointer'
 
         // Add listeners
-        zoomedImg.addEventListener('click', () => { // view on star-history.com
-            window.open(`https://star-history.com/#${user}/${repo}&Date`, '_blank') })
-        overlay.addEventListener('click', () => { document.body.removeChild(overlay) })
+        zoomedImg.onclick = () => // view on star-history.com
+            window.open(`https://star-history.com/#${user}/${repo}&Date`, '_blank')
+        overlay.onclick = () => document.body.removeChild(overlay)
 
         // Append elements
         overlay.append(zoomedImg) ; document.body.append(overlay)
