@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.2
+// @version             2024.10.17.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -36,6 +36,9 @@
 
     // Init alert QUEUE
     var alertQueue = [] ; localStorage.alertQueue = JSON.stringify(alertQueue)
+
+    // Init UI props
+    const ui = { scheme: isDarkMode() ? 'dark' : 'light' }
 
     // Init CONFIG
     const config = {
@@ -154,7 +157,6 @@
         } else modalStyle = document.querySelector('#chatgpt-alert-style')
 
         // Define styles
-        const scheme = isDarkMode() ? 'dark' : 'light'
         modalStyle.innerText = (
 
             // Background styles
@@ -169,34 +171,34 @@
                     + 'sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji ;'
                 + 'opacity: 0 ; transform: translateX(-2px) translateY(5px) ;'
                 + 'transition: opacity 0.1s cubic-bezier(.165,.84,.44,1), transform 0.2s cubic-bezier(.165,.84,.44,1) ;'
-                + `background-color: ${ scheme == 'dark' ? 'black' : 'white' } ;`
+                + `background-color: ${ ui.scheme == 'dark' ? 'black' : 'white' } ;`
                 + ( width ? `width: ${ width }px` : 'max-width: 458px ') + ' ;'
                 + 'padding: 20px ; margin: 12px 23px ; border-radius: 5px ; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) }'
             + '.chatgpt-modal h2 { font-size: 2em ; margin-bottom: 9px }'
             + '.chatgpt-modal p { font-size: 1.35em }'
-            + `.chatgpt-modal a { color: ${ scheme == 'dark' ? '#00cfff' : '#1e9ebb' }}`
+            + `.chatgpt-modal a { color: ${ ui.scheme == 'dark' ? '#00cfff' : '#1e9ebb' }}`
             + '.chatgpt-modal.animated > div { opacity: 1 ; transform: translateX(0) translateY(0) }'
 
             // Button styles
             + '.modal-buttons { display: flex ; justify-content: flex-end ; margin: 20px -5px -3px 0 }'
             + '.chatgpt-modal button {'
                 + 'margin-left: 10px ; padding: 4px 12px ; border-radius: 6px ;'
-                + `border: 1px solid ${ scheme == 'dark' ? 'white' : '#979797' }}`
+                + `border: 1px solid ${ ui.scheme == 'dark' ? 'white' : '#979797' }}`
             + '.primary-modal-btn {'
-                + `border: 1px solid ${ scheme == 'dark' ? 'white' : '#979797' } ;`
-                + `background: ${ scheme == 'dark' ? 'white' : 'black' } ;`
-                + `color: ${ scheme == 'dark' ? 'black' : 'white' }}`
+                + `border: 1px solid ${ ui.scheme == 'dark' ? 'white' : '#979797' } ;`
+                + `background: ${ ui.scheme == 'dark' ? 'white' : 'black' } ;`
+                + `color: ${ ui.scheme == 'dark' ? 'black' : 'white' }}`
             + '.chatgpt-modal button:hover { background-color: #42B4BF ; border-color: #42B4BF ; color: black }'
 
             /* Checkbox styles */
             + '.chatgpt-modal .checkbox-group { display: flex ; margin-top: -18px }'
             + '.chatgpt-modal .checkbox-group label {'
                 + 'font-size: .7rem ; margin: -.04rem 0 0px .3rem ;'
-                + `color: ${ scheme == 'dark' ? '#e1e1e1' : '#1e1e1e' }}`
+                + `color: ${ ui.scheme == 'dark' ? '#e1e1e1' : '#1e1e1e' }}`
             + '.chatgpt-modal input[type="checkbox"] { transform: scale(0.7) ;'
-                + `border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' }}`
+                + `border: 1px solid ${ ui.scheme == 'dark' ? 'white' : 'black' }}`
             + '.chatgpt-modal input[type="checkbox"]:checked {'
-                + `border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' } ;`
+                + `border: 1px solid ${ ui.scheme == 'dark' ? 'white' : 'black' } ;`
                 + 'background-color: black ; position: inherit }'
             + '.chatgpt-modal input[type="checkbox"]:focus { outline: none ; box-shadow: none }'
         )
