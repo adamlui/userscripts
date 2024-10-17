@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.3
+// @version             2024.10.17.4
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -25,6 +25,7 @@
 // @connect             greasyfork.org
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
+// @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @downloadURL         https://update.greasyfork.org/scripts/473377/github-star-history.user.js
 // @updateURL           https://update.greasyfork.org/scripts/473377/github-star-history.meta.js
@@ -33,6 +34,12 @@
 // ==/UserScript==
 
 (async () => {
+
+    // Init ENV vars
+    const env = {
+        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+    }
+    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init alert QUEUE
     var alertQueue = [] ; localStorage.alertQueue = JSON.stringify(alertQueue)
@@ -97,7 +104,7 @@
 
         // Fetch latest meta
         const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
+        xhr({
             method: 'GET', url: config.updateURL + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
@@ -388,7 +395,7 @@
             // Fetch image as blob
             const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
                 + `${ user }/${ repo }&type=Date` + ( isDarkMode() ? '&theme=dark' : '' ))
-            const response = await new Promise((resolve, reject) => GM.xmlHttpRequest({
+            const response = await new Promise((resolve, reject) => xhr({
                 method: 'GET', url: imgURL, responseType: 'blob', onload: resolve, onerror: reject}))
             if (response.status != 200) throw new Error('>> Failed to fetch image')
 
