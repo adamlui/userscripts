@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.9
+// @version             2024.10.17.10
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -47,31 +47,34 @@
     // Init UI props
     const ui = { scheme: isDarkMode() ? 'dark' : 'light' }
 
-    // Init CONFIG
-    const config = {
-        appName: 'GitHub Star History', appSymbol: '⭐',
-        gitHubURL: 'https://github.com/adamlui/github-star-history',
-        greasyForkURL: 'https://greasyfork.org/scripts/473377-github-star-history' }
-    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ !name ? 'script' : name }.meta.js`)
+    // Init APP info
+    const app = {
+        name: 'GitHub Star History', symbol: '⭐',
+        urls: {
+            gitHub: 'https://github.com/adamlui/github-star-history',
+            greasyFork: 'https://greasyfork.org/scripts/473377-github-star-history'
+        }
+    }
+    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
+        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About ' + config.appName, async () => {
+    GM_registerMenuCommand('💡 About ' + app.name, async () => {
 
         // Show alert
         const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
               pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = alert(
-            config.appName, // title
+            app.name, // title
             `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
                 + `<span style="${pStyle}">${ GM_info.script.version }</span>\n`
             + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${pBrStyle}"><a href="${config.gitHubURL}" target="_blank" rel="nopener">`
-                + config.gitHubURL + '</a></span>',
+                + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWinOpen(config.greasyForkURL + '/feedback#post-discussion') }
+                function leaveAReview() { safeWinOpen(app.urls.greasyFork + '/feedback#post-discussion') }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
@@ -104,7 +107,7 @@
         // Fetch latest meta
         const currentVer = GM_info.script.version
         xhr({
-            method: 'GET', url: config.updateURL + '?t=' + Date.now(),
+            method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
 
@@ -117,13 +120,13 @@
 
                         // Alert to update
                         alert('Update available! 🚀', // title
-                            `A newer version of ${config.appName} v${latestVer} is available!  `
+                            `A newer version of ${app.name} v${latestVer} is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
-                                    + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
-                                    + config.updateURL.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
+                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
+                                    + app.urls.update.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
                                     + '>View changes</a>',
                             function update() { // button
-                                GM_openInTab(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now(),
+                                GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
                                 ).onclose = () => location.reload() },
                             '', 383 // width
@@ -131,7 +134,7 @@
                         return
                 }}
 
-                alert('Up to date!', `${config.appName} (v${currentVer}) is up-to-date!`)
+                alert('Up to date!', `${app.name} (v${currentVer}) is up-to-date!`)
     }})}
 
     function isDarkMode() {
@@ -210,7 +213,7 @@
         )
 
         // Insert text into elements
-        modalTitle.innerText = config.appSymbol + ' ' + title || ''
+        modalTitle.innerText = app.symbol + ' ' + title || ''
         modalMessage.innerText = msg || '' ; renderHTML(modalMessage)
 
         // Create/append buttons (if provided) to buttons div
