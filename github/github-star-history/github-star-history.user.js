@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.10
+// @version             2024.10.17.12
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -57,46 +57,6 @@
     }
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About ' + app.name, async () => {
-
-        // Show alert
-        const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
-              pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
-              pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
-        const aboutAlertID = alert(
-            app.name, // title
-            `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
-                + `<span style="${pStyle}">${ GM_info.script.version }</span>\n`
-            + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                + app.urls.gitHub + '</a></span>',
-            [ // buttons
-                function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWinOpen(app.urls.greasyFork + '/feedback#post-discussion') }
-            ])
-
-        // Re-format buttons to include emojis + re-case + hide 'Dismiss'
-        for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
-            if (/updates/i.test(button.textContent))
-                button.textContent = '🚀 Check for Updates'
-            else if (/review/i.test(button.textContent))
-                button.textContent = '⭐ Leave a Review'
-            else if (/github/i.test(button.textContent))
-                button.textContent = '📜 GitHub Source'
-            else button.style.display = 'none' // hide Dismiss button
-        }
-    })
-
-    // Observe DOM for need to insert star history
-    let starHistoryAdded = false, prevURL = location.href
-    new MutationObserver(mutations => mutations.forEach(mutation => {
-        if (mutation.type == 'childList' && mutation.addedNodes.length) {
-            const onRepoPage = !!document.querySelector('meta[name="route-pattern"][content*="/:repository"]')
-            if (location.href != prevURL) { prevURL = location.href ; starHistoryAdded = false }
-            if (onRepoPage && !starHistoryAdded) { insertStarHistory() ; starHistoryAdded = true }
-    }})).observe(document.documentElement, { childList: true, subtree: true })
 
     // Define SCRIPT functions
 
@@ -453,5 +413,47 @@
         // Append elements
         overlay.append(zoomedImg) ; document.body.append(overlay)
     }
+
+    // Run MAIN routine
+
+    // Register ABOUT menu command
+    GM_registerMenuCommand('💡 About ' + app.name, async () => {
+
+        // Show alert
+        const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
+              pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
+              pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
+        const aboutAlertID = alert(
+            app.name, // title
+            `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
+                + `<span style="${pStyle}">${ GM_info.script.version }</span>\n`
+            + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
+                + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                + app.urls.gitHub + '</a></span>',
+            [ // buttons
+                function checkForUpdates() { updateCheck() },
+                function leaveAReview() { safeWinOpen(app.urls.greasyFork + '/feedback#post-discussion') }
+            ])
+
+        // Re-format buttons to include emojis + re-case + hide 'Dismiss'
+        for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
+            if (/updates/i.test(button.textContent))
+                button.textContent = '🚀 Check for Updates'
+            else if (/review/i.test(button.textContent))
+                button.textContent = '⭐ Leave a Review'
+            else if (/github/i.test(button.textContent))
+                button.textContent = '📜 GitHub Source'
+            else button.style.display = 'none' // hide Dismiss button
+        }
+    })
+
+    // Observe DOM for need to insert star history
+    let starHistoryAdded = false, prevURL = location.href
+    new MutationObserver(mutations => mutations.forEach(mutation => {
+        if (mutation.type == 'childList' && mutation.addedNodes.length) {
+            const onRepoPage = !!document.querySelector('meta[name="route-pattern"][content*="/:repository"]')
+            if (location.href != prevURL) { prevURL = location.href ; starHistoryAdded = false }
+            if (onRepoPage && !starHistoryAdded) { insertStarHistory() ; starHistoryAdded = true }
+    }})).observe(document.documentElement, { childList: true, subtree: true })
 
 })()
