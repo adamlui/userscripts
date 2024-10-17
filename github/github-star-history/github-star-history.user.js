@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.6
+// @version             2024.10.17.7
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -71,8 +71,7 @@
                 + config.gitHubURL + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWindowOpen(
-                    config.greasyForkURL + '/feedback#post-discussion') }
+                function leaveAReview() { safeWinOpen(config.greasyForkURL + '/feedback#post-discussion') }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
@@ -98,7 +97,7 @@
 
     // Define SCRIPT functions
 
-    function safeWindowOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+    function safeWinOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
 
     function updateCheck() {
 
