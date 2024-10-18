@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.16
+// @version             2024.10.17.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -67,38 +67,38 @@
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: response => {
-                const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+            onload: response => { const updateAlertWidth = 377
 
-                // Compare versions                
-                for (let i = 0; i < 4; i++) { // loop thru subver's
+                // Compare versions
+                const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                        latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
+                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
                     else if (latestSubVer > currentSubVer) { // if outdated
 
                         // Alert to update
-                        chatgpt.alert('Update available! 🚀', // title
-                            `A newer version of ${app.name} v${latestVer} is available!  `
-                            + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
-                            + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                            + app.urls.update.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
-                            + '>View changes</a>',
+                        chatgpt.alert('🚀 Update available!', // title
+                            `A newer version of ${app.name} `
+                                + `(v${latestVer}) is available!  `
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
+                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
+                                    + app.urls.update.replace(/.*\/(.*)meta\.js/, '$1user.js') + '"'
+                                    + '> View changes</a>',
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
                                 ).onclose = () => location.reload()
                             },
-                            '', 383 // width
+                            '', updateAlertWidth // width
                         )
-                        return
-                    }
-                }
 
-                chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up-to-date!`)
-            }
-        })
-    }
+                        return
+                }}
+
+                // Alert to no update
+                chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up to date!`)
+    }})}
 
     function isDarkMode() {
         return document.documentElement.dataset.colorMode == 'dark'
