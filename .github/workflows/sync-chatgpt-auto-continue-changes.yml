@@ -35,15 +35,6 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs/ to adamlui/chatgpt-auto-continue/docs/ && adamlui/ai-apps/chatgpt-auto-continue/docs/
-        run: |
-          cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-auto-continue/
-          cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/docs \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-continue/
-
       - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/
         run: |
           rsync -avhr --delete \
