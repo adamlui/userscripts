@@ -14,7 +14,7 @@
 
 # <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT 自动刷新 ↻
 
-<a href="https://gf.chatgptautocontinue.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/462422?label=%E7%94%A8%E6%88%B7&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
+<a href="https://gm.chatgptautocontinue.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/462422?label=%E7%94%A8%E6%88%B7&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="LICENSE.md"><img height=31 alt="[许可证: MIT]" src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/chatgpt-auto-refresh"><img height=31 alt="[CodeFactor 等级]" src="https://img.shields.io/codefactor/grade/github/adamlui/chatgpt-auto-refresh?label=%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
 <a href="https://github.com/KudoAI/chatgpt.js?utm_source=chatgpt_auto_refresh&utm_content=github_shield"><img height=31 alt="[由 chatgpt.js 提供支持]" src="https://img.shields.io/badge/%E4%BE%9B%E7%94%B5-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge"></a>
@@ -24,10 +24,10 @@
 
 ### 通过后台请求保持 ChatGPT 会话新鲜，以消除网络错误 + Cloudflare 检查。
 
-<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[审查](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
+[审查](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
 [联系作者](https://github.com/adamlui)
 
 #
@@ -91,7 +91,7 @@
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf) 或 [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland) 为了 Chrome
     - 或 Tampermonkey 为了 [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) 或 [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
-2. 安装 [ChatGPT 自动刷新](https://gf.chatgptautorefresh.com) 用户脚本（将在上面安装的管理器中加载）
+2. 安装 [ChatGPT 自动刷新](https://gm.chatgptautorefresh.com) 用户脚本（将在上面安装的管理器中加载）
 
 3. 正常访问 [chatgpt.com](https://chatgpt.com)，会话将定期自动刷新 (在后台)!
 
@@ -140,10 +140,10 @@ ChatGPT 自动刷新 与使用 [ScriptCat](https://docs.scriptcat.org)、[Violen
 
 <br>
 
-<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[发表评论](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
+[发表评论](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
 [更多 ChatGPT 用户脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
