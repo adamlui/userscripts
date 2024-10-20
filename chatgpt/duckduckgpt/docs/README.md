@@ -7,7 +7,7 @@
   </picture>
 </h1>
 
-<a href="https://gf.ddgpt.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/459849?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
+<a href="https://gm.ddgpt.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/459849?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="../LICENSE.md"><img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge">
 <a href="https://github.com/KudoAI/duckduckgpt/commits"><img height=31 alt="[GitHub commits]" src="https://img.shields.io/github/commit-activity/m/KudoAI/duckduckgpt?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge">
 <a href="https://www.codefactor.io/repository/github/kudoai/duckduckgpt"><img height=31 alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/kudoai/duckduckgpt?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge">
@@ -19,7 +19,7 @@
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to DDG (powered by GPT-4o!)</h3>
 
-<a href="https://gf.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
@@ -118,7 +118,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 <br>
 
-<a href="https://gf.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Leave a review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
