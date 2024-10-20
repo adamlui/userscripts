@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.10.17.3
+// @version               2024.10.19
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3715,7 +3715,7 @@
     saveAppDiv() // to fight Brave mutations
 
     // Add key listener to DISMISS modals
-    document.onkeydown = modals.keyHandler
+    document.addEventListener('keydown', modals.keyHandler)
 
     // Observe/listen for Brave Search + system SCHEME CHANGES to update BraveGPT scheme if auto-scheme mode
     new MutationObserver(handleSchemeChange).observe( // class changes from Brave Search theme settings
