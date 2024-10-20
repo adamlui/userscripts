@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.20.1
+// @version             2024.10.20.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -621,7 +621,7 @@
             }
         },
 
-        safeWinOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+        safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
     }
     
     // Define CHATBAR functions
