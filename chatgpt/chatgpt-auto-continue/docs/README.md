@@ -11,7 +11,7 @@
     </h6>
 </div>
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img src="https://media.chatgptautocontinue.com/images//tiles/marquee/tile1400x560.png"></a>
+<a href="https://gf.chatgptautocontinue.com"><img src="https://media.chatgptautocontinue.com/images//tiles/marquee/tile1400x560.png"></a>
 
 <div align="center">
 
@@ -25,10 +25,10 @@
 
 <br>
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 alt="Install this script" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautocontinue.com"><img height=45 alt="Install this script" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
-[Review](https://greasyfork.chatgptautocontinue.com/feedback#post-discussion) /
+[Review](https://gf.chatgptautocontinue.com/feedback#post-discussion) /
 [Contact author](https://github.com/adamlui)
 
 </div>
@@ -53,7 +53,7 @@
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf) or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland) for Chrome
     - or Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
-2. Install [ChatGPT Auto-Continue](https://greasyfork.chatgptautocontinue.com) userscript (will load in manager installed above)
+2. Install [ChatGPT Auto-Continue](https://gf.chatgptautocontinue.com) userscript (will load in manager installed above)
 
 3. Visit [chatgpt.com](https://chatgpt.com) as normal, and multi-reply conversations will automatically continue generating when cut-off!
 <br><br>
@@ -83,7 +83,7 @@ ChatGPT Auto-Continue relies on code from the powerful [chatgpt.js](https://gith
 
 <div align="center">
 
-<a href="https://greasyfork.chatgptinfinity.com"><img height=45 alt="Install this script" src="https://media.chatgptinfinity.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" height=45 src="https://media.chatgptinfinity.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptinfinity.com"><img height=45 alt="Install this script" src="https://media.chatgptinfinity.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" height=45 src="https://media.chatgptinfinity.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-infinity/discussions) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)

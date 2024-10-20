@@ -11,7 +11,7 @@
     </h6>
 </div>
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img src="https://media.chatgptautocontinue.com/images//tiles/marquee/tile1400x560.png"></a>
+<a href="https://gf.chatgptautocontinue.com"><img src="https://media.chatgptautocontinue.com/images//tiles/marquee/tile1400x560.png"></a>
 
 <div align="center">
 
@@ -25,10 +25,10 @@
 
 <br>
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg?54af935"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg?54af935"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
-[审查](https://greasyfork.chatgptautocontinue.com/feedback#post-discussion) /
+[审查](https://gf.chatgptautocontinue.com/feedback#post-discussion) /
 [联系作者](https://github.com/adamlui)
 
 </div>
@@ -53,7 +53,7 @@
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf) 或 [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland) 为了 Chrome
     - 或 Tampermonkey 为了 [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) 或 [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
-2. 安装 [ChatGPT 自动继续](https://greasyfork.chatgptautocontinue.com) 用户脚本（将在上面安装的管理器中加载）
+2. 安装 [ChatGPT 自动继续](https://gf.chatgptautocontinue.com) 用户脚本（将在上面安装的管理器中加载）
 
 3. 正常访问 [chatgpt.com](https://chatgpt.com)，多条回复对话中断时会自动继续生成!
 <br><br>
@@ -82,7 +82,7 @@ ChatGPT 自动继续 依赖于功能强大的 [chatgpt.js](https://github.com/Ku
 
 <div align="center">
 
-<a href="https://greasyfork.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img alt="如何安装" title="如何安装" height=45 src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img alt="如何安装" title="如何安装" height=45 src="https://media.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-continue/discussions) / 
 [更多 ChatGPT 用户脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt)
