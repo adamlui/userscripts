@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.10.17.3
+// @version                2024.10.19
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3694,7 +3694,7 @@
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
     // Add key listener to DISMISS modals
-    document.onkeydown = modals.keyHandler
+    document.addEventListener('keydown', modals.keyHandler)
 
     // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode
     new MutationObserver(handleSchemeChange).observe( // class changes from DDG appearance settings
