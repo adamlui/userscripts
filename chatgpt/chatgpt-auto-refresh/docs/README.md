@@ -23,10 +23,10 @@
 
 ### Keeps ChatGPT sessions fresh via background requests to eliminate network errors + Cloudflare checks.
 
-<a href="https://greasyfork.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[Review](https://greasyfork.chatgptautorefresh.com/feedback#post-discussion) /
+[Review](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
 [Contact author](https://github.com/adamlui)
 
 #
@@ -90,7 +90,7 @@
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf) or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland) for Chrome
     - or Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
-2. Install [ChatGPT Auto Refresh](https://greasyfork.chatgptautorefresh.com) userscript (will load in manager installed above)
+2. Install [ChatGPT Auto Refresh](https://gf.chatgptautorefresh.com) userscript (will load in manager installed above)
 
 3. Visit [chatgpt.com](https://chatgpt.com) as normal, and sessions will auto-refresh at a regular interval!
 
@@ -140,10 +140,10 @@ ChatGPT Auto Refresh is compatible w/ the following browsers using [ScriptCat](h
 
 <br>
 
-<a href="https://greasyfork.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[Leave a review](https://greasyfork.chatgptautorefresh.com/feedback#post-discussion) /
+[Leave a review](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">

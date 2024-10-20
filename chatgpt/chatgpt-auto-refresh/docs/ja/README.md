@@ -13,7 +13,7 @@
 
 # <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT 自動更新 ↻
 
-<a href="https://greasyfork.chatgptautorefresh.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/badge/ユーザー-10,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+<a href="https://gf.chatgptautorefresh.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/badge/ユーザー-10,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/chatgpt-auto-refresh/stargazers"><img height=31 alt="[GitHub スター]" src="https://img.shields.io/github/stars/adamlui/chatgpt-auto-refresh?label=%E5%87%BA%E6%BC%94%E8%80%85&color=af68ff&logo=github&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="../LICENSE.md"><img height=31 alt="[ライセンス: MIT]" src="https://img.shields.io/badge/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/chatgpt-auto-refresh/commits"><img height=31 alt="[GitHub コミット]" src="https://img.shields.io/github/commit-activity/m/adamlui/chatgpt-auto-refresh?label=%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge"></a>
@@ -25,10 +25,10 @@
 
 ### 背景リクエストを介して ChatGPT セッションを最新の状態に保ち、ネットワーク エラーと Cloudflare チェックを排除します。
 
-<a href="https://greasyfork.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[レビュー](https://greasyfork.chatgptautorefresh.com/feedback#post-discussion) /
+[レビュー](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
 [作者に連絡する](https://github.com/adamlui)
 
 #
@@ -92,7 +92,7 @@
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf) または [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland) for Chrome
     - または Tampermonkey for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) または [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 
-2. [ChatGPT 自動更新](https://greasyfork.chatgptautorefresh.com) をインストールします (上記でインストールしたユーザースクリプト マネージャーに読み込まれます)
+2. [ChatGPT 自動更新](https://gf.chatgptautorefresh.com) をインストールします (上記でインストールしたユーザースクリプト マネージャーに読み込まれます)
 
 3. 通常どおり [chatgpt.com](https://chatgpt.com) にアクセスすると、セッションが定期的に自動更新されます!
 
@@ -142,10 +142,10 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 
 <br>
 
-<a href="https://greasyfork.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[レビューを残す](https://greasyfork.chatgptautorefresh.com/feedback#post-discussion) /
+[レビューを残す](https://gf.chatgptautorefresh.com/feedback#post-discussion) /
 [その他の ChatGPT ユーザースクリプト](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
