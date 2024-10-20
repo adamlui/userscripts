@@ -21,7 +21,7 @@ jobs:
 
       - name: Fetch/sum GF script user + JSD request counts
         run: |
-          declare -A gf_scripts=( # for Greasy Fork script user counts
+          declare -A GF_SCRIPTS=( # for Greasy Fork script user counts
             ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
@@ -32,7 +32,7 @@ jobs:
             ["478597"]="GoogleGPT"
           )
 
-          jsd_gh_repos=( # for jsDelivr request counts
+          JSD_GH_REPOS=( # for jsDelivr request counts
             "adamlui/autoclear-chatgpt-history" "adamlui/chatgpt-auto-continue"
             "adamlui/chatgpt-auto-refresh" "adamlui/chatgpt-infinity" "adamlui/chatgpt-widescreen"
             "KudoAI/bravegpt" "KudoAI/duckduckgpt" "KudoAI/googlegpt"
@@ -74,10 +74,10 @@ jobs:
             echo "$formatted_num"
           }
 
-          # Sort gf_scripts alphabetically for more readable logging
+          # Sort GF_SCRIPTS alphabetically for more readable logging
           sorted_gf_scripts=()
-          for gf_script_id in "${!gf_scripts[@]}" ; do
-            gf_script_name="${gf_scripts[$gf_script_id]}"
+          for gf_script_id in "${!GF_SCRIPTS[@]}" ; do
+            gf_script_name="${GF_SCRIPTS[$gf_script_id]}"
             gf_sorted_scripts+=("$gf_script_name:$gf_script_id")
           done
           IFS=$'\n' gf_sorted_scripts=($(sort <<<"${gf_sorted_scripts[*]}"))
@@ -93,7 +93,7 @@ jobs:
           done ; echo -e "\n-----\nTotal Greasy Fork users: $total_users\n-----\n"
 
           # Fetch/sum jsDelivr request counts
-          for repo in "${jsd_gh_repos[@]}" ; do
+          for repo in "${JSD_GH_REPOS[@]}" ; do
             repo_requests=$(curl -s "https://img.shields.io/jsdelivr/gh/hm/$repo.svg" |
               sed -n -E 's|.*<title>jsdelivr: ([0-9,.km]+).*</title>.*|\1|Ip')
             repo_requests=$(expand_num "$repo_requests")
@@ -108,39 +108,39 @@ jobs:
           echo "Formatted total monthly jsDelivr requests: $formatted_total_requests"
 
           # Expose totals for update step next
-          echo "total_users=$formatted_total_users" >> $GITHUB_ENV
-          echo "total_requests=$formatted_total_requests" >> $GITHUB_ENV
+          echo "TOTAL_USERS=$formatted_total_users" >> $GITHUB_ENV
+          echo "TOTAL_REQUESTS=$formatted_total_requests" >> $GITHUB_ENV
 
       - name: Update README shields
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
 
-          total_users="${{ env.total_users }}"
-          total_requests="${{ env.total_requests }}"
+          TOTAL_USERS="${{ env.TOTAL_USERS }}"
+          TOTAL_REQUESTS="${{ env.TOTAL_REQUESTS }}"
 
           # Update usercount shields
-          if [ "$total_users" == "0" ] ; then echo "Error getting total usercount"
+          if [ "$TOTAL_USERS" == "0" ] ; then echo "Error getting total usercount"
           else
             for readme in $(find chatgpt/docs/ -name "README.md") ; do
               old_readme=$(<"$readme")
-              sed -i -E "s|(badge/[^-]+-)[0-9.,km+]+([^?]+\?logo=weightsandbiases)|\1$total_users\2|gI" "$readme"
+              sed -i -E "s|(badge/[^-]+-)[0-9.,km+]+([^?]+\?logo=weightsandbiases)|\1$TOTAL_USERS\2|gI" "$readme"
               new_readme=$(<"$readme")
               if [ "$old_readme" != "$new_readme" ] ; then users_updated=true ; fi
             done
-            if [ "$users_updated" = true ] ; then echo "Usercount shields updated to $total_users"
+            if [ "$users_updated" = true ] ; then echo "Usercount shields updated to $TOTAL_USERS"
             else echo "Usercount shields already up-to-date" ; fi
           fi
 
           # Update jsDelivr shields
-          if [ "$total_requests" == "0" ] ; then echo "Error getting total jsDelivr requests"
+          if [ "$TOTAL_REQUESTS" == "0" ] ; then echo "Error getting total jsDelivr requests"
           else
             for readme in $(find chatgpt/docs/ -name "README.md") ; do
               old_readme=$(<"$readme")
-              sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$total_requests|Ig" "$readme"
+              sed -i -E "s|(badge/jsDelivr_[^-]+-)[0-9.,km+]+|\1$TOTAL_REQUESTS|Ig" "$readme"
               new_readme=$(<"$readme")
               if [ "$old_readme" != "$new_readme" ] ; then requests_updated=true ; fi
             done
-            if [ "$requests_updated" = true ] ; then echo "jsDelivr shields updated to $total_requests"
+            if [ "$requests_updated" = true ] ; then echo "jsDelivr shields updated to $TOTAL_REQUESTS"
             else echo "jsDelivr shields already up-to-date" ; fi
           fi
 
@@ -152,14 +152,14 @@ jobs:
           [ "$multi_shield_types_updated" = true ] && commit_msg+="/"
           [ "$requests_updated" = true           ] && commit_msg+="jsDelivr"
           commit_msg+=" shield counters in chatgpt/ READMEs"
-          echo "commit_msg=$commit_msg" >> $GITHUB_ENV # expose as env var
+          echo "COMMIT_MSG=$commit_msg" >> $GITHUB_ENV # expose as env var
 
           # Set Updated flag to check in subseuqent steps
           if [ "$users_updated" = true ] || [ "requests_updated" = true ] ; then
-            echo "shields_updated=true" >> $GITHUB_ENV ; fi
+            echo "SHIELDS_UPDATED=true" >> $GITHUB_ENV ; fi
 
       - name: Config committer
-        if: env.shields_updated == 'true'
+        if: env.SHIELDS_UPDATED == 'true'
         run: |
           gpg --batch --import <(echo "${{ secrets.GPG_PRIVATE_KEY }}")
           git config --global commit.gpgsign true
@@ -168,9 +168,9 @@ jobs:
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
       - name: Push changes to adamlui/userscripts
-        if: env.shields_updated == 'true'
+        if: env.SHIELDS_UPDATED == 'true'
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           git add .
-          git commit -n -m "${{ env.commit_msg }}" || true
+          git commit -n -m "${{ env.COMMIT_MSG }}" || true
           git push
