@@ -22,8 +22,8 @@ jobs:
       - name: Fetch/sum GF script user + JSD request counts
         run: |
           declare -A GF_SCRIPTS=( # for Greasy Fork script user counts
-            ["460805"]="Autoclear ChatGPT History"
             ["500663"]="AmazonGPT"
+            ["460805"]="Autoclear ChatGPT History"
             ["462440"]="BraveGPT"
             ["466789"]="ChatGPT Auto-Continue"
             ["462422"]="ChatGPT Auto Refresh"
