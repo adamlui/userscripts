@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.10.19.2
+// @version                2024.10.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -107,7 +107,7 @@
             relatedApps: 'https://github.com/adamlui/ai-web-extensions',
             review: { greasyFork: 'https://greasyfork.org/scripts/500663-amazongpt/feedback#post-discussion' }
         },
-        latestAssetCommitHash: '8def87a' // for cached messages.json
+        latestAssetCommitHash: '9cd5890' // for cached messages.json
     }
     app.urls.support = app.urls.gitHub + '/issues/new'
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
