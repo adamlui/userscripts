@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17.1
+// @version             2024.10.20
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -252,7 +252,7 @@
           xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
-    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: 'e4d1d02' },
+    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: '7bd0a9a' },
           assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestAssetCommitHash}`
     Object.assign(app, await new Promise(resolve => xhr({
         method: 'GET', url: `${assetHostURL}/app.json`,
