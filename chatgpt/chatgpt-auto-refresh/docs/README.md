@@ -11,7 +11,7 @@
     </h6>
 </div>
 
-# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT Auto Refresh ↻ &nbsp;<a href="https://twitter.com/intent/tweet?text=Tired%20of%20constant%20interruptions%20on%20ChatGPT%3F%20Auto-refresh%20your%20sessions%20w%2F%20this%20plug-in%21%20&url=https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh&hashtags=greasemonkey,openai,chatgpt"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
+# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT Auto Refresh ↻
 
 <a href="https://gf.chatgptautorefresh.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/462422?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="../LICENSE.md"><img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
