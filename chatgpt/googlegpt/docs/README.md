@@ -25,10 +25,10 @@
 
 <h3>🤖 Bring the magic of AI to Google Search (powered by Google Gemma + GPT-4o!)</h3>
 
-<a href="https://greasyfork.googlegpt.io"><img height=50 alt="Install this script" src="https://media.googlegpt.io/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="How to install" title="How to install" src="https://media.googlegpt.io/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.googlegpt.io"><img height=50 alt="Install this script" src="https://media.googlegpt.io/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="How to install" title="How to install" src="https://media.googlegpt.io/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/googlegpt/discussions) / 
-[Review](https://greasyfork.googlegpt.io/feedback#post-discussion) / 
+[Review](https://gf.googlegpt.io/feedback#post-discussion) / 
 [Contact author](https://github.com/adamlui)
     
 </div>
@@ -74,7 +74,7 @@
     - Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)* for Chrome
 
-2. Install [GoogleGPT](https://greasyfork.googlegpt.io) userscript (will load in manager installed above)
+2. Install [GoogleGPT](https://gf.googlegpt.io) userscript (will load in manager installed above)
 
 3. Visit [google.com](https://google.com), type your search, engage bot!
 
@@ -161,10 +161,10 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 <br>
 
-<a href="https://greasyfork.googlegpt.io"><img height=48 alt="Install this script" src="https://media.googlegpt.io/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=48 alt="How to install" title="How to install" src="https://media.googlegpt.io/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gf.googlegpt.io"><img height=48 alt="Install this script" src="https://media.googlegpt.io/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=48 alt="How to install" title="How to install" src="https://media.googlegpt.io/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/googlegpt/discussions) /
-[Leave a review](https://greasyfork.googlegpt.io/feedback#post-discussion) /
+[Leave a review](https://gf.googlegpt.io/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <br>
