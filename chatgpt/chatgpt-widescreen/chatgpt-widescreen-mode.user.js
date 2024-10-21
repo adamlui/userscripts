@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.20.2
+// @version             2024.10.20.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -707,11 +707,12 @@
 
         create() {
             const validBtnTypes = btns.types.filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
-            const bOffset = env.site == 'poe' ? -1.5 : -13, rOffset = env.site == 'poe' ? -6 : -4
+            const bOffset = env.site == 'poe' ? -1.5 : env.site == 'perplexity' ? -13 : -8.85,
+                  rOffset = env.site == 'poe' ? -6   : env.site == 'perplexity' ? -4  : -0.25
             validBtnTypes.forEach(async (btnType, idx) => {
                 btns[btnType] = document.createElement('div')
                 btns[btnType].id = btnType + '-btn' // for toggle.tooltip()
-                btns[btnType].style.cssText = 'position: relative ; top: 0 ;'
+                btns[btnType].style.cssText = `position: relative ; top: ${ env.site == 'chatgpt' ? -3.25 : 0 }px ;`
                                             + `right: ${ rOffset + idx * bOffset }px` // position left of prev button
                 btns[btnType].style.cursor = 'pointer' // add finger cursor
                 if (env.site == 'poe') btns[btnType].style.position = 'relative' // override static pos
