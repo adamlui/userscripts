@@ -2,8 +2,9 @@
 
 # <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> Autoclear ChatGPT History
 
-<a href="https://gm.autoclearchatgpt.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/460805?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
+<a href="https://gm.autoclearchatgpt.com"><img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/460805?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=af68ff&style=for-the-badge"></a>
 <a href="../LICENSE.md"><img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+<a href="https://gm.autoclearchatgpt.com/versions"><img height=32 alt="[Versions]" src="https://img.shields.io/greasyfork/v/460805?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/autoclear-chatgpt-history/commits"><img height=31 alt="[GitHub commits]" src="https://img.shields.io/github/commit-activity/m/adamlui/autoclear-chatgpt-history?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/autoclear-chatgpt-history"><img height=31 alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/autoclear-chatgpt-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
 <a href="https://github.com/KudoAI/chatgpt.js?utm_source=autoclear_chatgpt_history&utm_content=github_shield"><img height=31 alt="[Powered by chatgpt.js]" src="https://img.shields.io/badge/Powered_by-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge"></a>
