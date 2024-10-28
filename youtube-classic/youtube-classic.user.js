@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.28.4
+// @version       2024.10.28.5
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1989,11 +1989,14 @@
         }, 1000);
     }
 
-    // Remove ads from homepage
-    if (location.pathname == '/')
+    // Remove homepage ads/rich sections
+    if (location.pathname == '/') {
         new MutationObserver(() => {
-            const adSlot = document.querySelector('ytd-ad-slot-renderer')
-            if (adSlot) adSlot.closest('ytd-rich-section-renderer').remove()
+            const adSlot = document.querySelector('ytd-ad-slot-renderer'),
+                  richSection = document.querySelector('ytd-rich-section-renderer')
+            if (adSlot) adSlot.closest('[rendered-from-rich-grid]')?.remove()
+            else if (richSection) richSection.remove()
         }).observe(document.documentElement, { childList: true, subtree: true })
+    }
 
 })()
