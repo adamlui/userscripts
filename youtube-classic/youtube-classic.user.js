@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.29.5
+// @version       2024.10.30
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1982,13 +1982,18 @@
     }
 
     // Remove homepage ads/rich sections
-    if (location.pathname == '/') {
-        new MutationObserver(() => {
+    let locationPath = location.pathname
+    const adObsConfig = { childList: true, subtree: true }
+    const adObserver = new MutationObserver(() => {
+        if (location.pathname != locationPath) { // page changed, re-observe
+            locationPath = location.pathname ; adObserver.disconnect()
+            adObserver.observe(document.documentElement, adObsConfig)
+        } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer'),
                   richSection = document.querySelector('ytd-rich-section-renderer')
-            if (adSlot) adSlot.closest('[rendered-from-rich-grid]')?.remove()
-            else if (richSection) richSection.remove()
-        }).observe(document.documentElement, { childList: true, subtree: true })
-    }
+            adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
+        }
+    })
+    adObserver.observe(document.documentElement, adObsConfig)
 
 })()
