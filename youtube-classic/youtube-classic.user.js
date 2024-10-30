@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.30.2
+// @version       2024.10.30.3
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -227,7 +227,7 @@
     function $(q) { return document.querySelector(q) }
 
     // Re-add 'Explore' tab in sidebar (it also replaces the 'Shorts' tab)
-    function elemIsLoaded(selector) {
+    function waitForElem(selector) {
         return new Promise(resolve => {
             if (document.querySelector(selector)) resolve(true)
             else new MutationObserver((_, obs) => {
@@ -260,8 +260,8 @@
         document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
     }
 
-    elemIsLoaded('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
-    elemIsLoaded('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
+    waitForElem('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
+    waitForElem('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
 
     // Fix YouTube dislikes
     addEventListener('yt-page-data-updated', function() {
@@ -1460,7 +1460,7 @@
       opacity: 1 !important;
     }`
 
-    elemIsLoaded('head').then(() => document.head.append(fixesStyle));
+    waitForElem('head').then(() => document.head.append(fixesStyle));
 
     (() => {
         const css = [
@@ -1982,13 +1982,13 @@
     const adObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // page changed, re-observe
             locationPath = location.pathname ; adObserver.disconnect()
-            elemIsLoaded('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+            waitForElem('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
         } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer'),
                   richSection = document.querySelector('ytd-rich-section-renderer')
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    elemIsLoaded('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+    waitForElem('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
 
 })()
