@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.28.5
+// @version       2024.10.29
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1385,9 +1385,6 @@
       line-height: 1.4em !important;
       font-weight: 500 !important;
     }
-    
-    /* Remove Shorts, Trending, Podcasts and Shopping in the guide menus + Other elements to be fixed, modified and removed */
-    .ytd-rich-section-renderer { display: none !important }
     
     #endpoint.yt-simple-endpoint.ytd-mini-guide-entry-renderer.style-scope[title="Shorts"] {
       display: none !important;
