@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.30.1
+// @version       2024.10.30.2
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -227,17 +227,12 @@
     function $(q) { return document.querySelector(q) }
 
     // Re-add 'Explore' tab in sidebar (it also replaces the 'Shorts' tab)
-    function waitForElm(selector) {
+    function elemIsLoaded(selector) {
         return new Promise(resolve => {
-            if (document.querySelector(selector))
-                return resolve(document.querySelector(selector))
-            const observer = new MutationObserver(() => {
-                if (document.querySelector(selector)) {
-                    resolve(document.querySelector(selector))
-                    observer.disconnect()
-                }
-            })
-            observer.observe(document.documentElement, { childList: true, subtree: true })
+            if (document.querySelector(selector)) resolve(true)
+            else new MutationObserver((_, obs) => {
+                if (document.querySelector(selector)) { resolve(true) ; obs.disconnect() }
+            }).observe(document.documentElement, { childList: true, subtree: true })
         })
     }
 
@@ -265,8 +260,8 @@
         document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
     }
 
-    waitForElm('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
-    waitForElm('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
+    elemIsLoaded('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
+    elemIsLoaded('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
 
     // Fix YouTube dislikes
     addEventListener('yt-page-data-updated', function() {
@@ -1465,7 +1460,7 @@
       opacity: 1 !important;
     }`
 
-    waitForElm('head').then(() => document.head.append(fixesStyle));
+    elemIsLoaded('head').then(() => document.head.append(fixesStyle));
 
     (() => {
         const css = [
@@ -1987,13 +1982,13 @@
     const adObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // page changed, re-observe
             locationPath = location.pathname ; adObserver.disconnect()
-            waitForElm('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+            elemIsLoaded('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
         } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer'),
                   richSection = document.querySelector('ytd-rich-section-renderer')
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    waitForElm('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+    elemIsLoaded('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
 
 })()
