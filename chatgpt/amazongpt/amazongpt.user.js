@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.10.31
+// @version                2024.10.31.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -553,7 +553,7 @@
 
     function appAlert(...alerts) {
         alerts = alerts.flat() // flatten array args nested by spread operator
-        while (appDiv.firstChild) appDiv.firstChild.remove() // clear appDiv content
+        appDiv.textContent = ''
         const alertP = document.createElement('p')
         alertP.id = 'amzgpt-alert' ; alertP.className = 'no-user-select'
 
@@ -1125,7 +1125,7 @@
             updateSchemeStatus(schemeStatusSpan = null) {
                 schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-menu-entry span')
                 if (schemeStatusSpan) {
-                    while (schemeStatusSpan.firstChild) schemeStatusSpan.firstChild.remove() // clear old status
+                    schemeStatusSpan.textContent = ''
                     schemeStatusSpan.append(...( // status txt + icon
                         config.scheme == 'dark' ? [document.createTextNode(app.msgs.scheme_dark), icons.moon.create()]
                       : config.scheme == 'light' ? [document.createTextNode(app.msgs.scheme_light), icons.sun.create()]
@@ -2659,7 +2659,7 @@
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                while (appDiv.firstChild) appDiv.firstChild.remove() // clear app content
+                appDiv.textContent = ''
                 fillStarryBG(appDiv) // add stars
 
                 // Create/append title
@@ -2747,8 +2747,7 @@
 
                 // Init/clear reply section content/classes
                 const replySection = appDiv.querySelector('section') || document.createElement('section')
-                while (replySection.firstChild) replySection.firstChild.remove()
-                replySection.classList.remove('loading', 'no-user-select')
+                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
 
                 // Create/append section elems
                 const replyForm = document.createElement('form'),
