@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.10.27
+// @version                2024.10.31
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2829,7 +2829,13 @@
 
     log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
 
-    if (document.querySelector('form[action*="Captcha"], a > img[src*="/error"]')) return log.debug('Exited from Captcha/404 page')
+    // Exit on specific pages
+    if (location.pathname == '/message-us')
+        return log.debug('Exited from support bot')
+    else if (document.querySelector('form[action*="Captcha"]'))
+        return log.debug('Exited from Captcha page')
+    else if (document.querySelector('a > img[src*="/error"]'))
+        return log.debug('Exited from 404 page')
 
     // Create/ID/classify/listenerize amzgpt container
     const appDiv = document.createElement('div') ; appDiv.id = 'amzgpt'
