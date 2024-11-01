@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.1
+// @version             2024.11.1.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1104,7 +1104,6 @@
     // Monitor NODE CHANGES to maintain button visibility + update colors
     let isTempChat = false, canvasWasOpen = chatgpt.canvasIsOpen()
     const nodeObserver = new MutationObserver(([mutation]) => {
-        if (config.extensionDisabled) return
         if (/chatgpt|openai/.test(env.site)) {
             if (!canvasWasOpen && chatgpt.canvasIsOpen()) {
                 btns.remove() ; chatbar.tweak() ; canvasWasOpen = true
