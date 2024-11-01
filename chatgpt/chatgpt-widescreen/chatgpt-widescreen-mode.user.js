@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.1.1
+// @version             2024.11.1.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -641,7 +641,7 @@
                 const inputArea = chatbarDiv.querySelector(sites[env.site].selectors.input)
                 if (inputArea) {
                     if (chatgpt.canvasIsOpen()) inputArea.parentNode.style.width = '100%'
-                    else { // narrow it to not clash w/ buttons
+                    else if (!env.tallChatbar) { // narrow it to not clash w/ buttons
                         const widths = { chatbar: chatbarDiv.getBoundingClientRect().width }
                         const visibleBtnTypes = [...btns.types, 'send'].filter(type =>
                             !(type == 'fullWindow' && !sites[env.site].hasSidebar)
