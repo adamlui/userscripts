@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.10.27
+// @version                  2024.10.31
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -918,7 +918,7 @@
 
     function appAlert(...alerts) {
         alerts = alerts.flat() // flatten array args nested by spread operator
-        while (appDiv.firstChild) appDiv.firstChild.remove() // clear appDiv content
+        appDiv.textContent = ''
         const alertP = document.createElement('p')
         alertP.id = 'googlegpt-alert' ; alertP.className = 'no-user-select'
         if (!alerts.includes('waitingResponse')) alertP.style.marginBottom = '16px' // counteract #googlegpt p margins
@@ -1500,7 +1500,7 @@
             updateSchemeStatus(schemeStatusSpan = null) {
                 schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-menu-entry span')
                 if (schemeStatusSpan) {
-                    while (schemeStatusSpan.firstChild) schemeStatusSpan.firstChild.remove() // clear old status
+                    schemeStatusSpan.textContent = ''
                     schemeStatusSpan.append(...( // status txt + icon
                         config.scheme == 'dark' ? [document.createTextNode(app.msgs.scheme_dark), icons.moon.create()]
                       : config.scheme == 'light' ? [document.createTextNode(app.msgs.scheme_light), icons.sun.create()]
@@ -1546,7 +1546,7 @@
             },
 
             update(pinMenu) {
-                while (pinMenu.firstChild) pinMenu.firstChild.remove() // clear content
+                pinMenu.textContent = ''
 
                 // Init core elems
                 const pinMenuUL = document.querySelector('#pin-menu ul') || document.createElement('ul'),
@@ -2660,7 +2660,7 @@
                     appDiv.querySelector('.related-queries')?.remove() // remove related queries
                     if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // hide 'Send reply' tooltip post-send btn click
                     const appFooter = appDiv.querySelector('footer')
-                    while (appFooter.firstChild) appFooter.firstChild.remove()
+                    appFooter.textContent = ''
 
                     // Show loading status
                     const replySection = appDiv.querySelector('section')
@@ -3563,7 +3563,7 @@
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                while (appDiv.firstChild) appDiv.firstChild.remove() // clear app content
+                appDiv.textContent = ''
                 fillStarryBG(appDiv) // add stars
 
                 // Create/append title
@@ -3697,8 +3697,7 @@
 
                 // Init/clear reply section content/classes
                 const replySection = appDiv.querySelector('section') || document.createElement('section')
-                while (replySection.firstChild) replySection.firstChild.remove()
-                replySection.classList.remove('loading', 'no-user-select')
+                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
 
                 // Create/append section elems
                 const replyForm = document.createElement('form'),
