@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.1
+// @version             2024.11.8.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -805,6 +805,8 @@
               : mode == 'fullWindow' ? [btns.fullWindow, btns.svgElems.fullWin, btns.svgElems.fullWin]
               : mode == 'wideScreen' ? [btns.wideScreen, btns.svgElems.wideScreen.on, btns.svgElems.wideScreen.off]
                                      : [btns.newChat, btns.svgElems.newChat, btns.svgElems.newChat])
+            if (!btn) return
+
             // Set SVG attributes
             const btnSVG = btn?.querySelector('svg') || dom.create.svgElem('svg', { height: 18 })
             if (mode == 'fullWindow') { // stylize full-window button
