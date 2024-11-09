@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.3
+// @version             2024.11.8.4
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -522,10 +522,10 @@
 
                 // Show alert
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1],
-                    headingStyle = 'font-size: 1.15rem',
-                    pStyle = 'position: relative ; left: 3px',
-                    pBrStyle = 'position: relative ; left: 4px ',
-                    aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
+                      headingStyle = 'font-size: 1.15rem',
+                      pStyle = 'position: relative ; left: 3px',
+                      pBrStyle = 'position: relative ; left: 4px ',
+                      aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
                 const aboutModalID = siteAlert(
                     app.msgs.appName, // title
                     `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
