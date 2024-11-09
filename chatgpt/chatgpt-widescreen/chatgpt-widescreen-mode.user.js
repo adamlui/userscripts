@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.5
+// @version             2024.11.8.6
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -748,7 +748,7 @@
         },
 
         insert() {
-            if (btns.status?.startsWith('insert') || document.getElementById('#wideScreen-btn')) return
+            if (btns.status?.startsWith('insert') || document.getElementById('wideScreen-btn')) return
             btns.status = 'inserting' ; if (!btns.wideScreen) btns.create()
             
             // Init elems
