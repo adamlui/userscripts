@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.10
+// @version             2024.11.8.11
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1055,14 +1055,14 @@
     ))
 
     // Create/apply general style TWEAKS
-    const tweaksStyle = dom.create.style(),
-          tcbStyle = ( // heighten chatbox
+    const tweaksStyle = dom.create.style()
+    const tcbStyle = ( // heighten chatbox
               /chatgpt|openai/.test(env.site) ? `div[class*="prose"]:has(${sites[env.site].selectors.input})`
                                               : sites[env.site].selectors.input )
-                  + '{ max-height: 68vh }',
-          hhStyle = sites[env.site].selectors.header + '{ display: none !important }' // hide header
-                  + ( /chatgpt|openai/.test(env.site) ? 'main { padding-top: 12px }' : '' ), // increase top-padding
-          hfStyle = sites[env.site].selectors.footer + '{ visibility: hidden ;' // hide footer text
+                   + '{ max-height: 68vh }'
+    const hhStyle = sites[env.site].selectors.header + '{ display: none !important }' // hide header
+                  + ( /chatgpt|openai/.test(env.site) ? 'main { padding-top: 12px }' : '' ) // increase top-padding
+    const hfStyle = sites[env.site].selectors.footer + '{ visibility: hidden ;' // hide footer text
                                                      + '  height: 3px ; overflow: clip }' // reduce height
 
     update.style.tweaks() ; document.head.append(tweaksStyle)
