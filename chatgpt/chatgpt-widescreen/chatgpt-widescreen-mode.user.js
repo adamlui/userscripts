@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.2
+// @version             2024.11.8.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1014,7 +1014,7 @@
     } else menu.register() // create functional menu
 
     // Init UI props
-    if (/openai|chatgpt/.test(env.site)) {
+    if (/chatgpt|openai/.test(env.site)) {
         sites[env.site].hasSidebar = await Promise.race([
             dom.elemIsLoaded(sites[env.site].selectors.btns.sidebarToggle), // true if sidebar toggle loads
             dom.elemIsLoaded(sites[env.site].selectors.btns.login).then(() => false), // false if login button loads
@@ -1063,7 +1063,7 @@
     // Create/apply general style TWEAKS
     const tweaksStyle = dom.create.style(),
           tcbStyle = ( // heighten chatbox
-              /openai|chatgpt/.test(env.site) ? `div[class*="prose"]:has(${sites[env.site].selectors.input})`
+              /chatgpt|openai/.test(env.site) ? `div[class*="prose"]:has(${sites[env.site].selectors.input})`
                                               : sites[env.site].selectors.input )
                   + '{ max-height: 68vh }',
           hhStyle = sites[env.site].selectors.header + '{ display: none !important }' // hide header
