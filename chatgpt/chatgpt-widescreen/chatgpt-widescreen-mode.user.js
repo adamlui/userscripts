@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.8.6
+// @version             2024.11.8.7
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -755,7 +755,7 @@
             const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
             const btnTypesToInsert = btns.types.slice().reverse() // to left-to-right for insertion order
                 .filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
-            const parentToInsertInto = /chatgpt|openai/.test(env.site) ? chatbarDiv.nextSibling || chatbarDiv
+            const parentToInsertInto = /chatgpt|openai/.test(env.site) ? chatbarDiv.nextElementSibling || chatbarDiv
                                      : env.site == 'perplexity' ? chatbarDiv.lastChild // Pro spam toggle parent
                                      : chatbarDiv
             const elemToInsertBefore = /chatgpt|openai/.test(env.site) ? parentToInsertInto.lastChild
