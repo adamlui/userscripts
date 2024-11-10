@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.25
+// @version             2024.11.9
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -38,13 +38,8 @@
 (async () => {
 
     // Init ENV vars
-    const env = {
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' } })()
-    }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
-
-    // Init alert QUEUE
-    var alertQueue = []; localStorage.alertQueue = JSON.stringify(alertQueue)
+    const env = { scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' } })() },
+          xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
     const app = { latestAssetCommitHash: '8405505' },
@@ -165,6 +160,7 @@
 
         } catch (err) { console.error('>> Error loading star history chart:', err) }
     }
+
     function insertBtn(imgDataURL) {
         const el = document.querySelector('#responsive-meta-container .d-flex.gap-2.mt-n3.mb-3.flex-wrap')
         if (!el) return
@@ -192,6 +188,7 @@ class="btn btn-sm tooltipped tooltipped-s">
         const button = document.getElementById('zoomStarHistory')
         button.addEventListener('click', () => zoomStarHistory(imgDataURL))
     }
+
     function zoomStarHistory(imgURL) {
         const { user, repo } = getUserAndRepoOfCurrentPage()
 
