@@ -4,7 +4,6 @@ import json from 'eslint-plugin-json'
 
 export default [
     js.configs.recommended,
-    { ignores: ['*public/*'] },
     {
         rules: {
             'indent': 'off', 'no-unexpected-multiline': 'off', 'key-spacing': 'off', // allow whitespace anywhere
