@@ -16,15 +16,15 @@
       "url": "https://ko-fi.com/adamlui"
     }
   ],
-  "devDependencies": {
-    "eslint": "^9.14.0",
-    "eslint-plugin-json": "^4.0.1",
-    "husky": "^9.1.6"
-  },
   "scripts": {
     "lint": "eslint . --cache",
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
     "lint:fix-all": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^9.14.0",
+    "eslint-plugin-json": "^4.0.1",
+    "husky": "^9.1.6"
   }
 }
