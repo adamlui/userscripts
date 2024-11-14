@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.12
+// @version             2024.11.13
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1116,7 +1116,7 @@
     nodeObserver.observe(document.querySelector(env.site == 'poe' ? 'head' : 'body'), { attributes: true, subtree: true })
 
     // Monitor SIDEBAR to update full-window setting
-    if (sites[env.site].selectors.btns.sidebarToggle && !!sites[env.site].hasSidebar) {
+    if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
         const sidebarObserver = new MutationObserver(async () => {
             await new Promise(resolve => setTimeout(resolve, env.site == 'perplexity' ? 500 : 0))
             if ((config.fullWindow ^ isFullWin()) && !config.modeSynced) sync.mode('fullWindow')
