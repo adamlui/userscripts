@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.14
+// @version                2024.11.14.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -113,7 +113,7 @@
     app.urls.support = app.urls.gitHub + '/issues/new'
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Init ENV info
     const env = { browser: {}, scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() };
@@ -148,11 +148,11 @@
 
         regEx: {
             greenVals: { caseInsensitive: /\b(?:true|\d+)\b|success\W?/i, caseSensitive: /\bON\b/ },
-            redVals: { caseInsensitive: /\b(?:false)\b|error\W?/i, caseSensitive: /\BOFF\b/ },
-            purpVals: /[ '"]\w+['"]?: /i },
+            redVals: { caseInsensitive: /\bfalse\b|error\W?/i, caseSensitive: /\BOFF\b/ },
+            purpVals: /[ '"]\w+['"]?: / },
 
         prettifyObj(obj) { return JSON.stringify(obj)
-            .replace(/([{,](?=")|(?:"):)/g, '$1 ') // append spaces to { and "
+            .replace(/([{,](?=")|":)/g, '$1 ') // append spaces to { and "
             .replace(/((?<!})})/g, ' $1') // prepend spaces to }
             .replace(/"/g, '\'') // replace " w/ '
         },
@@ -2503,7 +2503,7 @@
                 if (caller.api == 'MixerBox AI') { // pre-process chunks
                     const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                        .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                        .filter(match => !/message_(?:start|end)|done/.test(match))
                     chunk = extractedChunks.join('')
                 }
                 accumulatedChunks = apis[caller.api].accumulatesText ? chunk : accumulatedChunks + chunk
@@ -2586,7 +2586,7 @@
                         try { // to show response
                             const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                .filter(match => !/(?:message_(?:start|end)|done)/.test(match))
+                                .filter(match => !/message_(?:start|end)|done/.test(match))
                             respText = extractedData.join('') ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     }
