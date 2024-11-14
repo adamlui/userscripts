@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.20.1
+// @version             2024.11.14
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -532,11 +532,11 @@
 
         // Append styled state word
         if (foundState) {
-            const styledState = document.createElement('span')
-            styledState.style.cssText = `color: ${
+            const styledStateSpan = document.createElement('span')
+            styledStateSpan.style.cssText = `color: ${
                 foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
                                                 : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
-            styledState.append(foundState) ; notif.append(styledState)
+            styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
 
