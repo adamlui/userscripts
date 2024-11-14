@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.10.17
+// @version             2024.11.14
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -38,7 +38,7 @@
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + config.appName, async () => {
@@ -112,7 +112,7 @@
                             `A newer version of ${ config.appName } v${ latestVer } is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
                                     + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
-                                    + config.updateURL.replace(/.*\/(.*)meta\.js/, '$1user.js') + '" '
+                                    + config.updateURL.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '" '
                                     + '>View changes</a>',
                             function update() { // button
                                 GM_openInTab(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now(),
@@ -324,7 +324,7 @@
 
     function renderHTML(node) {
         const reTags = /<([a-z\d]+)\b([^>]*)>([\s\S]*?)<\/\1>/g,
-              reAttributes = /(\S+)=['"]?((?:.(?!['"]?\s+(?:\S+)=|[>']))+.)['"]?/g,
+              reAttributes = /(\S+)=['"]?((?:.(?!['"]?\s+\S+=|[>']))+.)['"]?/g, // eslint-disable-line
               nodeContent = node.childNodes
 
         // Preserve consecutive spaces + line breaks

@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.9
+// @version             2024.11.14
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -49,7 +49,7 @@
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${name || 'script'}.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${name || 'script'}.meta.js`)
 
     // Define SCRIPT functions
 
@@ -78,7 +78,7 @@
                                 + `(v${latestVer}) is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
                                     + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/.*\/(.*)meta\.js/, '$1user.js') + '"'
+                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '"'
                                     + '> View changes</a>',
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
