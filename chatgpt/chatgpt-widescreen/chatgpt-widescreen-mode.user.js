@@ -222,7 +222,7 @@
 // @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14
+// @version             2024.11.14.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -278,7 +278,7 @@
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-zA-Z-]*)$/, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     
     // Init SITE props
     const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
