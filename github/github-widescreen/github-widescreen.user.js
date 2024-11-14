@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14.1
+// @version             2024.11.14.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -36,7 +36,7 @@
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${ id }/${ !name ? 'script' : name }.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + config.appName, async () => {
@@ -47,10 +47,10 @@
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = chatgpt.alert(
             config.appName, // title
-            `<span style="${ headingStyle }">🏷️ <i>Version</i>: </span>`
-                + `<span style="${ pStyle }">${ GM_info.script.version }</span>\n`
-            + `<span style="${ headingStyle }">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${ pBrStyle }"><a href="${ config.gitHubURL }" target="_blank" rel="nopener">`
+            `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
+                + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
+            + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
+                + `<span style="${pBrStyle}"><a href="${config.gitHubURL}" target="_blank" rel="nopener">`
                 + config.gitHubURL + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
@@ -107,7 +107,7 @@
 
                         // Alert to update
                         chatgpt.alert('Update available! 🚀', // title
-                            `A newer version of ${ config.appName } v${ latestVer } is available!  `
+                            `A newer version of ${config.appName} v${latestVer} is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
                                     + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
                                     + config.updateURL.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '" '
@@ -121,7 +121,7 @@
                         return
                 }}
 
-                chatgpt.alert('Up to date!', `${ config.appName } (v${ currentVer }) is up-to-date!`)
+                chatgpt.alert('Up to date!', `${config.appName} (v${currentVer}) is up-to-date!`)
     }})}
 
     function isDarkMode() {
