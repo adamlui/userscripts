@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14.2
+// @version             2024.11.14.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -123,12 +123,6 @@
 
                 chatgpt.alert('Up to date!', `${config.appName} (v${currentVer}) is up-to-date!`)
     }})}
-
-    function isDarkMode() {
-        return document.documentElement.dataset.colorMode == 'dark' ||
-               document.documentElement.dataset.darkreaderScheme == 'dark' ||
-               window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
-    }
 
     function hideSidePanels() {
         hideBtns.push(...document.querySelectorAll(
