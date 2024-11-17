@@ -104,125 +104,125 @@
 // @name:zh-SG          ChatGPT 宽屏模式 🖥️
 // @name:zh-TW          ChatGPT 寬螢幕模 🖥️
 // @name:zu             ChatGPT Isimo sokudlalwa emkhumbini 🖥️
-// @description         Adds Widescreen + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling
-// @description:af      Voeg Widescreen + Volledige skermmodusse by ChatGPT vir verbeterde kyk + verminderde skrol
-// @description:am      የራስ መጠን በ ChatGPT ውስጥ የተከፈተውን ወደ ትንቢት ማድረግ + ድምፅ እንዲታትና
-// @description:ar      إضافة وضعي الشاشة العريضة + الشاشة الكاملة إلى ChatGPT لتحسين العرض + تقليل التمرير
-// @description:az      ChatGPT üçün Geniş Ekran + Tam Ekran rejimləri əlavə etmək, görüntünü yaxşılaşdırmaq + səlahətən keçirməni azaltmaq
-// @description:be      Дадае рэжымы шырокага экрана + поўнага экрана да ChatGPT для паляпшэнага прагляду + змяншэння скролінгу
-// @description:bem     Ena Mode ya Widescreen + ya Fullscreen ku ChatGPT pa kuongeza kulandila + ukukonda scrolling
-// @description:bg      Добавя режими на Широк екран + Пълен екран към ChatGPT за подобрено гледане + намалено плъзгане
-// @description:bn      এক্স এগ্রিসিভ দেখার জন্য ChatGPT-এ ওয়াইডস্ক্রিন + ফুলস্ক্রিন মোড যুক্ত করে + স্ক্রলিং হ্রাস করে
-// @description:bo      བཅའ་དྲུག་རྒྱུས་པ་+ བདེ་ཆེན་རྒྱུས་པ་འདི་ChatGPT་ནང་ལས་བསྒྲགས་བཞག་བའི་ལྷག་པ་ཞིག་ཁམས་པའི་བརྟག་ཞིབ་བཅོ་སྒྲིག་འདུག
-// @description:bs      Dodaje Widescreen + Fullscreen režime ChatGPT-u za poboljšani prikaz + smanjenje klizanja
-// @description:ca      Afegeix els modes de pantalla ampla + pantalla completa a ChatGPT per a una visualització millorada + reducció de desplaçament
-// @description:ceb     Gidugang ang Mga Modo sa Widescreen + Fullscreen sa ChatGPT alang sa labaw nga pagtan-aw + paggamot sa pag-scroll
-// @description:ckb     Mode Widescreen + Mode Fullscreen bo ChatGPT zêde bike ji bo nêzîkbûna başkirinê + kam kirina birevandinê
-// @description:cs      Přidává režimy Widescreen + Fullscreen do ChatGPT pro zlepšené zobrazení + snížení posouvání
-// @description:cy      Ychwanega dulliau Sgrin Llydan + Sgrin Lawn i ChatGPT ar gyfer gwylio well + lleihau sgrolio
-// @description:da      Tilføjer Widescreen + Fuldscreen-tilstande til ChatGPT for forbedret visning + reduceret rulning
-// @description:de      Fügt Widescreen + Vollbildmodus zu ChatGPT für verbesserte Ansicht + reduziertes Scrollen hinzu
-// @description:dv      ChatGPT ބޮޓޮބޭސީ + ފަންވައިދާ މޯޑިއުލްއަޤް ހެދުމަށް ކަނޑުގެންނަވަން + ރުސަބް ބެންކުރުމަށްވެއްޖެ
-// @description:dz      ChatGPT སྒྲུབ་ཐབས་ + མིང་དཔྱད་ཆེས་དང་པ་ཡོངས་ཀྱི་ལྷག་པ་ཁྱབ་ལ་ཉོ་གར་བཞག་པ་དང་བདེན་པས་ཆེད་པ་དང་ཚིག་རྐྱང་ལ་མགོ་ནི་
-// @description:el      Προσθέτει λειτουργίες Widescreen + Fullscreen στο ChatGPT για βελτιωμένη προβολή + μείωση της κύλισης
-// @description:eo      Aldonas larĝekranajn + plenekranajn reĝimojn al ChatGPT por plibonigita vidado + malpliigo de ŝovado
-// @description:es      Agrega modos de pantalla panorámica + pantalla completa a ChatGPT para una visualización mejorada + desplazamiento reducido
-// @description:et      Lisab ChatGPT-le Widescreen + Täisekraani režiimid parema vaatamise ja vähenenud kerimisega
-// @description:eu      Gehitu Widescreen + Pantaila oso moduak ChatGPT-ra ikusmen hobetu + mugimendua gutxituz
-// @description:fa      اضافه کردن حالت های واید اسکرین + تمام صفحه به ChatGPT برای مشاهده بهتر + کاهش اسکرول
-// @description:fi      Lisää Widescreen + Koko näytön tilat ChatGPT:hen paremman katselun + vähentyneen vierityksen ansiosta
-// @description:fo      Leggur til Widescreen + Fullscreen hamrar á ChatGPT fyri bætta sýning + minnka skúvsetan
-// @description:fr      Ajoute les modes écran large + plein écran à ChatGPT pour une meilleure visualisation + un défilement réduit
-// @description:fr-CA   Ajoute les modes écran large + plein écran à ChatGPT pour une meilleure visualisation + un défilement réduit
-// @description:gd      Cuir gnèithean Leudachaidh + Faidhlichean sàbhaladh sgrùdair gu ChatGPT airson sealladh air àrdachadh + sgroladh lag
-// @description:gl      Engade os modos de pantalla panorámica + pantalla completa a ChatGPT para unha visualización mellorada + desprazamento reducido
-// @description:gu      એન્હાનો જોડાણ કરો વાઈડસ્ક્રીન + ફુલસ્ક્રીન મોડ તેમજ ChatGPT માટે સુધારેલ જોઈન્ટ પ્રદર્શન + કમેલી સ્ક્રોલિંગ માટે
-// @description:haw     Kālele i nā Ao Waiwai + Ao Piha i loko o ChatGPT no ka ho'ohana'ana ikaika + ka'u hā'ule 'ana
-// @description:he      מוסיף מצבי מסך מורחב + מסך מלא ל־ChatGPT לשיפור תצוגה + הפחתת גלילה
-// @description:hi      बढ़िया दृश्य + कम स्क्रोलिंग के लिए ChatGPT में वाइडस्क्रीन + फुलस्क्रीन मोड जोड़ता है
-// @description:hr      Dodaje Widescreen + Fullscreen načine na ChatGPT za poboljšani prikaz + smanjenje klizanja
-// @description:ht      Ajoute modes Widescreen + Fullscreen nan ChatGPT pou amelyore gade + redui defileman
-// @description:hu      Hozzáadja a Widescreen + Teljes képernyő módokat a ChatGPT-hoz jobb megtekintés + görgetés csökkentése érdekében
-// @description:hy      Ավելացնում է Widescreen + Fullscreen ռեժիմները ChatGPT-ում բարելավված դիտումի համար + սահմանափակումը
-// @description:id      Menambahkan mode Widescreen + Layar Penuh ke ChatGPT untuk penampilan yang lebih baik + pengurangan pengguliran
-// @description:is      Bætir við Widescreen + Fullskjárshamra í ChatGPT til að bæta sýn + draga úr skruni
-// @description:it      Aggiunge le modalità Widescreen + Schermo intero a ChatGPT per una visualizzazione migliorata + riduzione dello scorrimento
-// @description:ja      ChatGPTの表示を向上するために、ワイドスクリーン+フルスクリーンモードを追加します
-// @description:jv      Nambahi Modus Widescreen + Fullscreen menyang ChatGPT kanggo tampilan sing ditingkatake + ngecilake scrolling
-// @description:ka      დაამატებს Widescreen + Fullscreen რეჟიმებს ChatGPT-ში გაუმჯობესებული ნახვა + გამოკლებული გადადების მიზნით
-// @description:kk      ChatGPT-ге Widescreen + Fullscreen режимдерін қосу арқылы көрініс үздіктемелеу + скроллауды кеміту
-// @description:km      បន្ថែមរបៀប Widescreen + Fullscreen ទៅក្នុង ChatGPT សម្រាប់ការមើលឡើងប្រហែលជាក្រុមហ៊ុន + ការរងចាំខ្លួនឯងប៉ុណ្ណោះ
-// @description:kn      ಅಭ್ಯಾಸಕ್ರಮದ ದೃಷ್ಟಿಗೆ ಅನುಗುಣವಾಗಿ Widescreen + Fullscreen ಮೋಡ್ಗಳನ್ನು ChatGPTಗೆ ಸೇರಿಸುತ್ತದೆ
-// @description:ko      ChatGPT에 와이드스크린 + 전체화면 모드를 추가하여 개선된 화면 표시 + 스크롤 감소
-// @description:ku      Dihênîne modên Widescreen + Fullscreenê bo ChatGPTê ji bo pêşînkirina nîşandina + kêmkirina kayanînê
-// @description:ky      ChatGPT-го Widescreen + Fullscreen режимдору кошо аркылуу жакшы көрүнүштү + скроллоо жоготуу
-// @description:la      TV + Fullscreen modos addit ChatGPT ad augendam viewing + reducta scrolling
-// @description:lb      Füügt Widescreen + Fullscreen Modi dem ChatGPT bäi fir verbessert Visioun + reduzéiert Scrollen
-// @description:lo      ເພີ່ມຮູບແບບ Widescreen + Fullscreen ໃຫ້ໄດ້ຮຽນ ChatGPT ສຳເລັດຂອງການສະແດງອ້າງວ່າງ + ການປະເມີດໃຫ້ນ້ໍາຂາຍຫນ້າ
-// @description:lt      Prideda Widescreen + Fullscreen režimus į ChatGPT, siekiant pagerinti peržiūrą ir sumažinti slinkimą
-// @description:lv      Pievieno Widescreen + Fullscreen režīmus ChatGPT, lai uzlabotu skatīšanos + samazinātu ritināšanu
-// @description:mg      Mametraka ny fomba Widescreen + Fullscreen amin'ny ChatGPT mba handresy ny fandefasana + famindrampoana ny firotsahana
-// @description:mi      Ka whakarite ana i ngā āhuatanga Widescreen + Fullscreen ki te ChatGPT mō te whakaatu whakapai ake + te whakaiti i te whakararuraru
-// @description:mk      Додава режими на Widescreen + Fullscreen во ChatGPT за подобрување на приказот + намалување на скролирањето
-// @description:ml      വായ്ഡ്സ്ക്രീൻ + പൂർണ്ണസ്ക്രീൻ മോഡുകൾ ചേർക്കുന്നു ChatGPT-യിൽ മിക്കവാറും കാഴ്ചപ്പാട് + കുറവ് തിരിക്കൽ ചെയ്യുന്നതിന്
-// @description:mn      Widescreen + Fullscreen горимуудыг ChatGPT рүү нэмэх нь дэлгэцэнд хувцаслан + гүйлгээний эвдрэлдээ хянахыг оруулна
-// @description:mr      व्हाइडस्क्रीन + फुलस्क्रीन मोड्स चे ChatGPTमध्ये जोडले जातात व पाहणी वाढविण्यासाठी स्क्रोलिंग कमी करतात
-// @description:ms      Menambah mod Widescreen + Layar Penuh ke ChatGPT untuk tampilan yang lebih baik + pengurangan penatalan
-// @description:mt      Jiddoqq modes Widescreen + Fullscreen għal ChatGPT għall-viżwalizzazzjoni miġġielda + qasam it-telf
-// @description:my      ပိုမိုကောင်းမွန်သောကြည့်ရှုရန်အတွက် ChatGPT တွင် Widescreen + မျက်နှာပြင်အပြည့်မုဒ်များကို ထည့်သွင်းထားသည်။
-// @description:ne      सुधारिएको दृश्य + कम स्क्रोलिंगका लागि वाइडस्क्रिन + फुलस्क्रिन मोडहरूलाई ChatGPTमा थप्दछ
-// @description:nl      Voegt Widescreen + Fullscreen modi toe aan ChatGPT voor verbeterde weergave + verminderd scrollen
-// @description:no      Legger til Widescreen + Fullskjerm-moduser i ChatGPT for forbedret visning + redusert rulling
-// @description:ny      Ndiwonetsa zolengedwa + Zomwe zosowa ndi ChatGPT kwa kudzaza kuona + kuchotsa kupinda
-// @description:pa      ਚਾਟਜੀਪੀਟੀ ਵਿੱਚ Widescreen + Fullscreen ਮੋਡਾਂ ਸ਼ਾਮਿਲ ਕਰਦਾ ਹੈ ਜਿਹਨਾਂ ਨਾਲ ਵੇਖਾਉਣ ਵਧੀਆ ਹੋ ਜਾਂਦਾ ਹੈ + ਘੂਮਣ ਦੀ ਘਟ-ਪੁਟ ਹੋ ਜਾਂਦੀ ਹੈ
-// @description:pl      Dodaje tryby Widescreen + Fullscreen do ChatGPT dla lepszej widoczności + zmniejszonego przewijania
-// @description:ps      ځانګړې + ټولې پرده په ChatGPT کې اضافه کړي لپاره لاسرسی ترلاسه کړي + کوښښول په کمته
-// @description:pt      Adiciona modos Widescreen + Tela cheia ao ChatGPT para visualização aprimorada + rolagem reduzida
-// @description:pt-BR   Adiciona modos Widescreen + Tela cheia ao ChatGPT para visualização aprimorada + rolagem reduzida
-// @description:ro      Adaugă modurile Widescreen + Ecran complet la ChatGPT pentru vizualizare îmbunătățită + defilare redusă
-// @description:ru      Добавляет режимы Widescreen + Fullscreen в ChatGPT для улучшенного просмотра + сокращенной прокрутки
-// @description:rw      Ongeraho Mugari Mugari + Byuzuye Mugaragaza kuri ChatGPT kugirango ubone kureba neza + kugabanya umuzingo
-// @description:sg      Ajoute les modes écran large + plein écran à ChatGPT pour une meilleure visualisation + un défilement réduit
-// @description:si      ChatGPT සඳහා Widescreen + Fullscreen ප්‍රදර්ශනයක් එක් කරයි තවත් පෙන්වන්නේ දැන් සිතූවාසිකාරක්ෂක විසින් සහ කෙසේදැයි ඇති අගයන් හුස්ම ක්‍රියාවලියකි
-// @description:sk      Pridáva Widescreen + Fullscreen režimy do ChatGPT pre vylepšené zobrazenie + zníženie posúvania
-// @description:sl      Dodaja Widescreen + Fullscreen načine v ChatGPT za izboljšan prikaz + zmanjšano premikanje
-// @description:sm      Faamauina Widescreen + Fullscreen faavae i le ChatGPT mo le faailoga faapea le mafaufau + le auina faavaivai
-// @description:sn      Ongorora Mutaundi wa Widescreen + Fullscreen muChatGPT kutora dzokubvumidzwa + kusha kusweropfuura
-// @description:so      Wax ka beddelaa Hababka Widescreen + Fullscreen ee ChatGPT si aad u fiirsato + si aad u yaraato garaabinta
-// @description:sq      Shton modalitete Widescreen + Fullscreen në ChatGPT për pamje të përmirësuar + ulje të skrollimit
-// @description:sr      Додаје Widescreen + Fullscreen режиме у ЧатГПТ за унапређен приказ + смањено листање
-// @description:st      E ngolisitsoe mokhabo Widescreen + Fullscreen ho ChatGPT bakeng sa mofuta ona le ho fokotsa liphalantere
-// @description:sv      Lägger till Widescreen + Fullscreen-lägen i ChatGPT för förbättrad visning + minskad scrollning
-// @description:sw      Inaongeza modes Widescreen + Fullscreen kwenye ChatGPT kwa kuimarisha kuonyesha + kupunguza kusokota
-// @description:ta      மேலதிரும் பார்வை + சுழற்சியை மோதித்து சாட்ஜிபிடியில் Widescreen + Fullscreen முறைகளைச் சேர்க்கிறது
-// @description:te      Widescreen + Fullscreen మోడ్లను ChatGPTకి చేర్చుకోవడంతో చంపుకునే వీక్షణ కనిపించడానికి స్క్రోల్ తక్కువగా మార్చండి
-// @description:tg      Маводиҳои Widescreen + Fullscreen-ро ба ChatGPT илова мекунад, барои кӯҳнашудаи намоиш + кам кардани скроллаш
-// @description:th      เพิ่มโหมดจอแบบ Widescreen + Fullscreen ใน ChatGPT สำหรับการดูที่ดีขึ้น + การเลื่อนลดลง
-// @description:ti      ንዝለዓለ ምርኣይ + ምጉዳል ምዝዋር ኣብ ChatGPT Widescreen + Fullscreen modes ይውስኽ
-// @description:tk      Giňeldilen görmek + peseltmek üçin ChatGPT-ä giň ekran + Doly ekran reesimlerini goşýar
-// @description:tl      Nagdaragdag ng mga mode ng Widescreen + Fullscreen sa ChatGPT para sa pinabuting pagtingin + pinaikling pag-scroll
-// @description:tn      Inowedzera Widescreen + Fullscreen modes kuChatGPT yekuwedzera kutarisa + kuderedzwa kupuruzira
-// @description:to      Hoʻohui i ka Widescreen + Fullscreen modes i ChatGPT no ka hoʻonui ʻia ʻana o ka nānā ʻana + hoʻemi i ka ʻōwili ʻana
-// @description:tr      Geliştirilmiş görüntüleme + azaltılmış kaydırma için ChatGPT'ye Widescreen + Fullscreen modları ekler
-// @description:tt      ChatGPT-га Widescreen + Fullscreen рәжимләрен өстәәдегезгә, күрүләштеңләри үткәргә + скроллауны буянтартарга
-// @description:ug      ChatGPTغا Widescreen + Fullscreen كۆرۈنمە پەسەند قىلىش+يىتىپ ئاجرا قىلىش مۆچىيى
-// @description:uk      Додає режими Widescreen + Fullscreen до ChatGPT для поліпшеного перегляду + зменшення прокрутки
-// @description:ur      ترقی یافتہ دیکھائی کے لئے ChatGPT میں وائڈ اسکرین + پوری اسکرین موڈز شامل کرتا ہے
-// @description:uz      ChatGPT-ga Widescreen + Fullscreen rejimlarini qo'shadi, ko'rishni yaxshilash + aylantirishni kamaytirish uchun
-// @description:vi      Thêm chế độ Widescreen + Fullscreen vào ChatGPT để cải thiện hiển thị + giảm cuộn trang
-// @description:wo      Bëgg na ñiis-ñiis Widescreen + Fullscreen ci ChatGPT buñ leen waxtu dib lu jàmm + ñaari jëm
-// @description:xh      Enza izimvo Widescreen + Fullscreen kwakuhlanganiselelwa kwiChatGPT ukuze kube khona okukhulu + kokucima kwesithombe
-// @description:yi      מוסיף Widescreen + Fullscreen מאָדעס צו ChatGPT פֿאַר ימפּרוווד וויוינג + רידוסט סקראָללינג
-// @description:yo      Fi àwọn ohun ọrọ Widescreen + Fullscreen si ChatGPT fun iwọle aiyewo + iwọle ififunwọle
-// @description:zh      向 ChatGPT 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-CN   向 ChatGPT 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-HK   向 ChatGPT 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
-// @description:zh-SG   向 ChatGPT 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-TW   向 ChatGPT 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
-// @description:zu      Engeza izinhlobo zezimodi ze-Widescreen + Fullscreen ku-ChatGPT ukuze kube nokubonakala + ukuncitsha ukusukela
+// @description         Adds Widescreen + Fullscreen modes to chatgpt.com + perplexity.ai + poe.com for enhanced viewing + reduced scrolling
+// @description:af      Voeg Widescreen + Volledige skermmodusse by chatgpt.com + perplexity.ai + poe.com vir verbeterde kyk + verminderde skrol
+// @description:am      የራስ መጠን በ chatgpt.com + perplexity.ai + poe.com ውስጥ የተከፈተውን ወደ ትንቢት ማድረግ + ድምፅ እንዲታትና
+// @description:ar      إضافة وضعي الشاشة العريضة + الشاشة الكاملة إلى chatgpt.com + perplexity.ai + poe.com لتحسين العرض + تقليل التمرير
+// @description:az      chatgpt.com + perplexity.ai + poe.com üçün Geniş Ekran + Tam Ekran rejimləri əlavə etmək, görüntünü yaxşılaşdırmaq + səlahətən keçirməni azaltmaq
+// @description:be      Дадае рэжымы шырокага экрана + поўнага экрана да chatgpt.com + perplexity.ai + poe.com для паляпшэнага прагляду + змяншэння скролінгу
+// @description:bem     Ena Mode ya Widescreen + ya Fullscreen ku chatgpt.com + perplexity.ai + poe.com pa kuongeza kulandila + ukukonda scrolling
+// @description:bg      Добавя режими на Широк екран + Пълен екран към chatgpt.com + perplexity.ai + poe.com за подобрено гледане + намалено плъзгане
+// @description:bn      এক্স এগ্রিসিভ দেখার জন্য chatgpt.com + perplexity.ai + poe.com-এ ওয়াইডস্ক্রিন + ফুলস্ক্রিন মোড যুক্ত করে + স্ক্রলিং হ্রাস করে
+// @description:bo      བཅའ་དྲུག་རྒྱུས་པ་+ བདེ་ཆེན་རྒྱུས་པ་འདི་chatgpt.com + perplexity.ai + poe.com་ནང་ལས་བསྒྲགས་བཞག་བའི་ལྷག་པ་ཞིག་ཁམས་པའི་བརྟག་ཞིབ་བཅོ་སྒྲིག་འདུག
+// @description:bs      Dodaje Widescreen + Fullscreen režime chatgpt.com + perplexity.ai + poe.com-u za poboljšani prikaz + smanjenje klizanja
+// @description:ca      Afegeix els modes de pantalla ampla + pantalla completa a chatgpt.com + perplexity.ai + poe.com per a una visualització millorada + reducció de desplaçament
+// @description:ceb     Gidugang ang Mga Modo sa Widescreen + Fullscreen sa chatgpt.com + perplexity.ai + poe.com alang sa labaw nga pagtan-aw + paggamot sa pag-scroll
+// @description:ckb     Mode Widescreen + Mode Fullscreen bo chatgpt.com + perplexity.ai + poe.com zêde bike ji bo nêzîkbûna başkirinê + kam kirina birevandinê
+// @description:cs      Přidává režimy Widescreen + Fullscreen do chatgpt.com + perplexity.ai + poe.com pro zlepšené zobrazení + snížení posouvání
+// @description:cy      Ychwanega dulliau Sgrin Llydan + Sgrin Lawn i chatgpt.com + perplexity.ai + poe.com ar gyfer gwylio well + lleihau sgrolio
+// @description:da      Tilføjer Widescreen + Fuldscreen-tilstande til chatgpt.com + perplexity.ai + poe.com for forbedret visning + reduceret rulning
+// @description:de      Fügt Widescreen + Vollbildmodus zu chatgpt.com + perplexity.ai + poe.com für verbesserte Ansicht + reduziertes Scrollen hinzu
+// @description:dv      chatgpt.com + perplexity.ai + poe.com ބޮޓޮބޭސީ + ފަންވައިދާ މޯޑިއުލްއަޤް ހެދުމަށް ކަނޑުގެންނަވަން + ރުސަބް ބެންކުރުމަށްވެއްޖެ
+// @description:dz      chatgpt.com + perplexity.ai + poe.com སྒྲུབ་ཐབས་ + མིང་དཔྱད་ཆེས་དང་པ་ཡོངས་ཀྱི་ལྷག་པ་ཁྱབ་ལ་ཉོ་གར་བཞག་པ་དང་བདེན་པས་ཆེད་པ་དང་ཚིག་རྐྱང་ལ་མགོ་ནི་
+// @description:el      Προσθέτει λειτουργίες Widescreen + Fullscreen στο chatgpt.com + perplexity.ai + poe.com για βελτιωμένη προβολή + μείωση της κύλισης
+// @description:eo      Aldonas larĝekranajn + plenekranajn reĝimojn al chatgpt.com + perplexity.ai + poe.com por plibonigita vidado + malpliigo de ŝovado
+// @description:es      Agrega modos de pantalla panorámica + pantalla completa a chatgpt.com + perplexity.ai + poe.com para una visualización mejorada + desplazamiento reducido
+// @description:et      Lisab chatgpt.com + perplexity.ai + poe.com-le Widescreen + Täisekraani režiimid parema vaatamise ja vähenenud kerimisega
+// @description:eu      Gehitu Widescreen + Pantaila oso moduak chatgpt.com + perplexity.ai + poe.com-ra ikusmen hobetu + mugimendua gutxituz
+// @description:fa      اضافه کردن حالت های واید اسکرین + تمام صفحه به chatgpt.com + perplexity.ai + poe.com برای مشاهده بهتر + کاهش اسکرول
+// @description:fi      Lisää Widescreen + Koko näytön tilat chatgpt.com + perplexity.ai + poe.com:hen paremman katselun + vähentyneen vierityksen ansiosta
+// @description:fo      Leggur til Widescreen + Fullscreen hamrar á chatgpt.com + perplexity.ai + poe.com fyri bætta sýning + minnka skúvsetan
+// @description:fr      Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
+// @description:fr-CA   Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
+// @description:gd      Cuir gnèithean Leudachaidh + Faidhlichean sàbhaladh sgrùdair gu chatgpt.com + perplexity.ai + poe.com airson sealladh air àrdachadh + sgroladh lag
+// @description:gl      Engade os modos de pantalla panorámica + pantalla completa a chatgpt.com + perplexity.ai + poe.com para unha visualización mellorada + desprazamento reducido
+// @description:gu      એન્હાનો જોડાણ કરો વાઈડસ્ક્રીન + ફુલસ્ક્રીન મોડ તેમજ chatgpt.com + perplexity.ai + poe.com માટે સુધારેલ જોઈન્ટ પ્રદર્શન + કમેલી સ્ક્રોલિંગ માટે
+// @description:haw     Kālele i nā Ao Waiwai + Ao Piha i loko o chatgpt.com + perplexity.ai + poe.com no ka ho'ohana'ana ikaika + ka'u hā'ule 'ana
+// @description:he      מוסיף מצבי מסך מורחב + מסך מלא ל־chatgpt.com + perplexity.ai + poe.com לשיפור תצוגה + הפחתת גלילה
+// @description:hi      बढ़िया दृश्य + कम स्क्रोलिंग के लिए chatgpt.com + perplexity.ai + poe.com में वाइडस्क्रीन + फुलस्क्रीन मोड जोड़ता है
+// @description:hr      Dodaje Widescreen + Fullscreen načine na chatgpt.com + perplexity.ai + poe.com za poboljšani prikaz + smanjenje klizanja
+// @description:ht      Ajoute modes Widescreen + Fullscreen nan chatgpt.com + perplexity.ai + poe.com pou amelyore gade + redui defileman
+// @description:hu      Hozzáadja a Widescreen + Teljes képernyő módokat a chatgpt.com + perplexity.ai + poe.com-hoz jobb megtekintés + görgetés csökkentése érdekében
+// @description:hy      Ավելացնում է Widescreen + Fullscreen ռեժիմները chatgpt.com + perplexity.ai + poe.com-ում բարելավված դիտումի համար + սահմանափակումը
+// @description:id      Menambahkan mode Widescreen + Layar Penuh ke chatgpt.com + perplexity.ai + poe.com untuk penampilan yang lebih baik + pengurangan pengguliran
+// @description:is      Bætir við Widescreen + Fullskjárshamra í chatgpt.com + perplexity.ai + poe.com til að bæta sýn + draga úr skruni
+// @description:it      Aggiunge le modalità Widescreen + Schermo intero a chatgpt.com + perplexity.ai + poe.com per una visualizzazione migliorata + riduzione dello scorrimento
+// @description:ja      chatgpt.com + perplexity.ai + poe.comの表示を向上するために、ワイドスクリーン+フルスクリーンモードを追加します
+// @description:jv      Nambahi Modus Widescreen + Fullscreen menyang chatgpt.com + perplexity.ai + poe.com kanggo tampilan sing ditingkatake + ngecilake scrolling
+// @description:ka      დაამატებს Widescreen + Fullscreen რეჟიმებს chatgpt.com + perplexity.ai + poe.com-ში გაუმჯობესებული ნახვა + გამოკლებული გადადების მიზნით
+// @description:kk      chatgpt.com + perplexity.ai + poe.com-ге Widescreen + Fullscreen режимдерін қосу арқылы көрініс үздіктемелеу + скроллауды кеміту
+// @description:km      បន្ថែមរបៀប Widescreen + Fullscreen ទៅក្នុង chatgpt.com + perplexity.ai + poe.com សម្រាប់ការមើលឡើងប្រហែលជាក្រុមហ៊ុន + ការរងចាំខ្លួនឯងប៉ុណ្ណោះ
+// @description:kn      ಅಭ್ಯಾಸಕ್ರಮದ ದೃಷ್ಟಿಗೆ ಅನುಗುಣವಾಗಿ Widescreen + Fullscreen ಮೋಡ್ಗಳನ್ನು chatgpt.com + perplexity.ai + poe.comಗೆ ಸೇರಿಸುತ್ತದೆ
+// @description:ko      chatgpt.com + perplexity.ai + poe.com에 와이드스크린 + 전체화면 모드를 추가하여 개선된 화면 표시 + 스크롤 감소
+// @description:ku      Dihênîne modên Widescreen + Fullscreenê bo chatgpt.com + perplexity.ai + poe.comê ji bo pêşînkirina nîşandina + kêmkirina kayanînê
+// @description:ky      chatgpt.com + perplexity.ai + poe.com-го Widescreen + Fullscreen режимдору кошо аркылуу жакшы көрүнүштү + скроллоо жоготуу
+// @description:la      TV + Fullscreen modos addit chatgpt.com + perplexity.ai + poe.com ad augendam viewing + reducta scrolling
+// @description:lb      Füügt Widescreen + Fullscreen Modi dem chatgpt.com + perplexity.ai + poe.com bäi fir verbessert Visioun + reduzéiert Scrollen
+// @description:lo      ເພີ່ມຮູບແບບ Widescreen + Fullscreen ໃຫ້ໄດ້ຮຽນ chatgpt.com + perplexity.ai + poe.com ສຳເລັດຂອງການສະແດງອ້າງວ່າງ + ການປະເມີດໃຫ້ນ້ໍາຂາຍຫນ້າ
+// @description:lt      Prideda Widescreen + Fullscreen režimus į chatgpt.com + perplexity.ai + poe.com, siekiant pagerinti peržiūrą ir sumažinti slinkimą
+// @description:lv      Pievieno Widescreen + Fullscreen režīmus chatgpt.com + perplexity.ai + poe.com, lai uzlabotu skatīšanos + samazinātu ritināšanu
+// @description:mg      Mametraka ny fomba Widescreen + Fullscreen amin'ny chatgpt.com + perplexity.ai + poe.com mba handresy ny fandefasana + famindrampoana ny firotsahana
+// @description:mi      Ka whakarite ana i ngā āhuatanga Widescreen + Fullscreen ki te chatgpt.com + perplexity.ai + poe.com mō te whakaatu whakapai ake + te whakaiti i te whakararuraru
+// @description:mk      Додава режими на Widescreen + Fullscreen во chatgpt.com + perplexity.ai + poe.com за подобрување на приказот + намалување на скролирањето
+// @description:ml      വായ്ഡ്സ്ക്രീൻ + പൂർണ്ണസ്ക്രീൻ മോഡുകൾ ചേർക്കുന്നു chatgpt.com + perplexity.ai + poe.com-യിൽ മിക്കവാറും കാഴ്ചപ്പാട് + കുറവ് തിരിക്കൽ ചെയ്യുന്നതിന്
+// @description:mn      Widescreen + Fullscreen горимуудыг chatgpt.com + perplexity.ai + poe.com рүү нэмэх нь дэлгэцэнд хувцаслан + гүйлгээний эвдрэлдээ хянахыг оруулна
+// @description:mr      व्हाइडस्क्रीन + फुलस्क्रीन मोड्स चे chatgpt.com + perplexity.ai + poe.comमध्ये जोडले जातात व पाहणी वाढविण्यासाठी स्क्रोलिंग कमी करतात
+// @description:ms      Menambah mod Widescreen + Layar Penuh ke chatgpt.com + perplexity.ai + poe.com untuk tampilan yang lebih baik + pengurangan penatalan
+// @description:mt      Jiddoqq modes Widescreen + Fullscreen għal chatgpt.com + perplexity.ai + poe.com għall-viżwalizzazzjoni miġġielda + qasam it-telf
+// @description:my      ပိုမိုကောင်းမွန်သောကြည့်ရှုရန်အတွက် chatgpt.com + perplexity.ai + poe.com တွင် Widescreen + မျက်နှာပြင်အပြည့်မုဒ်များကို ထည့်သွင်းထားသည်။
+// @description:ne      सुधारिएको दृश्य + कम स्क्रोलिंगका लागि वाइडस्क्रिन + फुलस्क्रिन मोडहरूलाई chatgpt.com + perplexity.ai + poe.comमा थप्दछ
+// @description:nl      Voegt Widescreen + Fullscreen modi toe aan chatgpt.com + perplexity.ai + poe.com voor verbeterde weergave + verminderd scrollen
+// @description:no      Legger til Widescreen + Fullskjerm-moduser i chatgpt.com + perplexity.ai + poe.com for forbedret visning + redusert rulling
+// @description:ny      Ndiwonetsa zolengedwa + Zomwe zosowa ndi chatgpt.com + perplexity.ai + poe.com kwa kudzaza kuona + kuchotsa kupinda
+// @description:pa      ਵਿਸਤ੍ਰਿਤ ਦੇਖਣ ਲਈ chatgpt.com + perplexity.ai + poe.com ਵਿੱਚ ਵਾਈਡਸਕ੍ਰੀਨ + ਫੁੱਲਸਕ੍ਰੀਨ ਮੋਡ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ + ਘਟੀ ਹੋਈ ਸਕ੍ਰੌਲਿੰਗ
+// @description:pl      Dodaje tryby Widescreen + Fullscreen do chatgpt.com + perplexity.ai + poe.com dla lepszej widoczności + zmniejszonego przewijania
+// @description:ps      ځانګړې + ټولې پرده په chatgpt.com + perplexity.ai + poe.com کې اضافه کړي لپاره لاسرسی ترلاسه کړي + کوښښول په کمته
+// @description:pt      Adiciona modos Widescreen + Tela cheia ao chatgpt.com + perplexity.ai + poe.com para visualização aprimorada + rolagem reduzida
+// @description:pt-BR   Adiciona modos Widescreen + Tela cheia ao chatgpt.com + perplexity.ai + poe.com para visualização aprimorada + rolagem reduzida
+// @description:ro      Adaugă modurile Widescreen + Ecran complet la chatgpt.com + perplexity.ai + poe.com pentru vizualizare îmbunătățită + defilare redusă
+// @description:ru      Добавляет режимы Widescreen + Fullscreen в chatgpt.com + perplexity.ai + poe.com для улучшенного просмотра + сокращенной прокрутки
+// @description:rw      Ongeraho Mugari Mugari + Byuzuye Mugaragaza kuri chatgpt.com + perplexity.ai + poe.com kugirango ubone kureba neza + kugabanya umuzingo
+// @description:sg      Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
+// @description:si      chatgpt.com + perplexity.ai + poe.com සඳහා Widescreen + Fullscreen ප්‍රදර්ශනයක් එක් කරයි තවත් පෙන්වන්නේ දැන් සිතූවාසිකාරක්ෂක විසින් සහ කෙසේදැයි ඇති අගයන් හුස්ම ක්‍රියාවලියකි
+// @description:sk      Pridáva Widescreen + Fullscreen režimy do chatgpt.com + perplexity.ai + poe.com pre vylepšené zobrazenie + zníženie posúvania
+// @description:sl      Dodaja Widescreen + Fullscreen načine v chatgpt.com + perplexity.ai + poe.com za izboljšan prikaz + zmanjšano premikanje
+// @description:sm      Faamauina Widescreen + Fullscreen faavae i le chatgpt.com + perplexity.ai + poe.com mo le faailoga faapea le mafaufau + le auina faavaivai
+// @description:sn      Ongorora Mutaundi wa Widescreen + Fullscreen muchatgpt.com + perplexity.ai + poe.com kutora dzokubvumidzwa + kusha kusweropfuura
+// @description:so      Wax ka beddelaa Hababka Widescreen + Fullscreen ee chatgpt.com + perplexity.ai + poe.com si aad u fiirsato + si aad u yaraato garaabinta
+// @description:sq      Shton modalitete Widescreen + Fullscreen në chatgpt.com + perplexity.ai + poe.com për pamje të përmirësuar + ulje të skrollimit
+// @description:sr      Додаје режиме широког екрана + целог екрана на chatgpt.com + perplexity.ai + poe.com за побољшано гледање + смањено померање
+// @description:st      E ngolisitsoe mokhabo Widescreen + Fullscreen ho chatgpt.com + perplexity.ai + poe.com bakeng sa mofuta ona le ho fokotsa liphalantere
+// @description:sv      Lägger till Widescreen + Fullscreen-lägen i chatgpt.com + perplexity.ai + poe.com för förbättrad visning + minskad scrollning
+// @description:sw      Inaongeza modes Widescreen + Fullscreen kwenye chatgpt.com + perplexity.ai + poe.com kwa kuimarisha kuonyesha + kupunguza kusokota
+// @description:ta      chatgpt.com + perplexity.ai + poe.com க்கு அகலத்திரை + முழுத்திரை முறைகளைச் சேர்க்கிறது + மேம்படுத்தப்பட்ட பார்வைக்கு + குறைக்கப்பட்ட ஸ்க்ரோலிங்
+// @description:te      Widescreen + Fullscreen మోడ్లను chatgpt.com + perplexity.ai + poe.comకి చేర్చుకోవడంతో చంపుకునే వీక్షణ కనిపించడానికి స్క్రోల్ తక్కువగా మార్చండి
+// @description:tg      Маводиҳои Widescreen + Fullscreen-ро ба chatgpt.com + perplexity.ai + poe.com илова мекунад, барои кӯҳнашудаи намоиш + кам кардани скроллаш
+// @description:th      เพิ่มโหมดจอแบบ Widescreen + Fullscreen ใน chatgpt.com + perplexity.ai + poe.com สำหรับการดูที่ดีขึ้น + การเลื่อนลดลง
+// @description:ti      ንዝለዓለ ምርኣይ + ምጉዳል ምዝዋር ኣብ chatgpt.com + perplexity.ai + poe.com Widescreen + Fullscreen modes ይውስኽ
+// @description:tk      Giňeldilen görmek + peseltmek üçin chatgpt.com + perplexity.ai + poe.com-ä giň ekran + Doly ekran reesimlerini goşýar
+// @description:tl      Nagdaragdag ng mga mode ng Widescreen + Fullscreen sa chatgpt.com + perplexity.ai + poe.com para sa pinabuting pagtingin + pinaikling pag-scroll
+// @description:tn      Inowedzera Widescreen + Fullscreen modes kuchatgpt.com + perplexity.ai + poe.com yekuwedzera kutarisa + kuderedzwa kupuruzira
+// @description:to      Hoʻohui i ka Widescreen + Fullscreen modes i chatgpt.com + perplexity.ai + poe.com no ka hoʻonui ʻia ʻana o ka nānā ʻana + hoʻemi i ka ʻōwili ʻana
+// @description:tr      Geliştirilmiş görüntüleme + azaltılmış kaydırma için chatgpt.com + perplexity.ai + poe.com'ye Widescreen + Fullscreen modları ekler
+// @description:tt      chatgpt.com + perplexity.ai + poe.com-га Widescreen + Fullscreen рәжимләрен өстәәдегезгә, күрүләштеңләри үткәргә + скроллауны буянтартарга
+// @description:ug      chatgpt.com + perplexity.ai + poe.comغا Widescreen + Fullscreen كۆرۈنمە پەسەند قىلىش+يىتىپ ئاجرا قىلىش مۆچىيى
+// @description:uk      Додає режими Widescreen + Fullscreen до chatgpt.com + perplexity.ai + poe.com для поліпшеного перегляду + зменшення прокрутки
+// @description:ur      ترقی یافتہ دیکھائی کے لئے chatgpt.com + perplexity.ai + poe.com میں وائڈ اسکرین + پوری اسکرین موڈز شامل کرتا ہے
+// @description:uz      chatgpt.com + perplexity.ai + poe.com-ga Widescreen + Fullscreen rejimlarini qo'shadi, ko'rishni yaxshilash + aylantirishni kamaytirish uchun
+// @description:vi      Thêm chế độ Widescreen + Fullscreen vào chatgpt.com + perplexity.ai + poe.com để cải thiện hiển thị + giảm cuộn trang
+// @description:wo      Bëgg na ñiis-ñiis Widescreen + Fullscreen ci chatgpt.com + perplexity.ai + poe.com buñ leen waxtu dib lu jàmm + ñaari jëm
+// @description:xh      Enza izimvo Widescreen + Fullscreen kwakuhlanganiselelwa kwichatgpt.com + perplexity.ai + poe.com ukuze kube khona okukhulu + kokucima kwesithombe
+// @description:yi      מוסיף Widescreen + Fullscreen מאָדעס צו chatgpt.com + perplexity.ai + poe.com פֿאַר ימפּרוווד וויוינג + רידוסט סקראָללינג
+// @description:yo      Fi àwọn ohun ọrọ Widescreen + Fullscreen si chatgpt.com + perplexity.ai + poe.com fun iwọle aiyewo + iwọle ififunwọle
+// @description:zh      向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
+// @description:zh-CN   向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
+// @description:zh-HK   向 chatgpt.com + perplexity.ai + poe.com 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
+// @description:zh-SG   向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
+// @description:zh-TW   向 chatgpt.com + perplexity.ai + poe.com 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
+// @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14.2
+// @version             2024.11.17
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
