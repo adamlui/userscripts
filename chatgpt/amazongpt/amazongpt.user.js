@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.15
+// @version                2024.11.17
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -178,7 +178,7 @@
             // Combine args into finalMsg, color chars
             let finalMsg = logType == 'error' && args.length == 1 ? 'ERROR: ' : ''
             args.forEach((arg, idx) => {
-                finalMsg += idx > 0 ? (idx === 1 ? ': ' : ' ') : '' // separate multi-args
+                finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
                     const matched = (
                         Object.values(log.regEx.greenVals).some(val => {
@@ -2521,7 +2521,7 @@
                         if (failMatch) {
                             log.debug('Response text', textToShow)
                             log.error('Fail flag detected', `'${failMatch[0]}'`)
-                            if (caller.status !== 'done' && !caller.sender) api.tryNew(caller)
+                            if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                             return
                         } else if (caller.status != 'done') { // app waiting or sending
                             if (!caller.sender) caller.sender = caller.api // app is waiting, become sender
