@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14.2
+// @version             2024.11.17
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -304,7 +304,7 @@
     const ogAEL = EventTarget.prototype.addEventListener
     EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
         let calledByOpenAI = false
-        if (type == 'focus' && this === unsafeWindow || type == 'visibilitychange') {
+        if (type == 'focus' && this == unsafeWindow || type == 'visibilitychange') {
             const callStack = new Error().stack + '\n',
                   aelCaller = /-extension:\/\/.*\n(.+)/.exec(callStack)?.[1]
             calledByOpenAI = !aelCaller?.includes('-extension://')
@@ -436,7 +436,7 @@
                 while (true) {
                     const refreshInterval = prompt(
                         `${app.msgs.prompt_updateInt}:`, config.refreshInterval)
-                    if (refreshInterval === null) break // user cancelled so do nothing
+                    if (refreshInterval == null) break // user cancelled so do nothing
                     else if (!isNaN(parseInt(refreshInterval, 10)) && parseInt(refreshInterval, 10) > 0) { // valid int set
                         settings.save('refreshInterval', parseInt(refreshInterval, 10))
                         if (chatgpt.autoRefresh.isActive) { // reset running auto-refresh
