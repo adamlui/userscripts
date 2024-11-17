@@ -73,7 +73,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 ### <img width=21 src="https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg">
 
-> Adds Widescreen + Full-Window modes to ChatGPT for enhanced viewing + reduced scrolling.
+> Adds Widescreen + Full-Window modes to chatgpt.com + perplexity.ai + poe.com for enhanced viewing + reduced scrolling.
 <br>[Install](https://greasyfork.org/scripts/461473-chatgpt-widescreen-mode) /
 [Readme](../chatgpt-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
