@@ -60,5 +60,5 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/youtube-classic
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from adamlui/userscripts]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts]" || true
           git push
