@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "dəyişdirilir" },
   "alert_switchingOff": { "message": "söndürülür" },
   "notif_copiedToClipboard": { "message": "Mübadilə buferinə kopyal" },
-  "btnLabel_moreApps": { "message": "Daha çox ChatGPT Proqramları" },
+  "btnLabel_moreAIextensions": { "message": "Daha çox AI Uzantısı" },
   "btnLabel_leaveReview": { "message": "Rəy bildirin" },
   "btnLabel_rateUs": { "message": "Bizi qiymətləndirin" },
   "btnLabel_getSupport": { "message": "Dəstək Əldə Edin" },

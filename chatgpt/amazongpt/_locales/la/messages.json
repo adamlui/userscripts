@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "sine salutatione" },
   "alert_switchingOff": { "message": "commutilio" },
   "notif_copiedToClipboard": { "message": "Clipboard" },
-  "btnLabel_moreApps": { "message": "More ChatGPT Apps" },
+  "btnLabel_moreAIextensions": { "message": "Extensionsum AI" },
   "btnLabel_leaveReview": { "message": "REVISORUM EXAMINATIS" },
   "btnLabel_rateUs": { "message": "Próximo Us" },
   "btnLabel_getSupport": { "message": "Supportum" },

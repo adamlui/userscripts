@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "ဖွင့်နေသည်" },
   "alert_switchingOff": { "message": "ခလုတ်ပိတ်ခြင်း" },
   "notif_copiedToClipboard": { "message": "ကလစ်ဘုတ်သို့ကူးယူပြီး" },
-  "btnLabel_moreApps": { "message": "နောက်ထပ် ChatGPT Apps ကပ" },
+  "btnLabel_moreAIextensions": { "message": "ပိုများသော AI Extensions" },
   "btnLabel_leaveReview": { "message": "ပြန်လည်သုံးသပ်မှုကိုစွန့်ခွာပါ" },
   "btnLabel_rateUs": { "message": "ကြှနျုပျတို့ကို Rate" },
   "btnLabel_getSupport": { "message": "ပံ့ပိုးမှုရယူပါ။ " },

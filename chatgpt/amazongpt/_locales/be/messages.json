@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "уключэнне" },
   "alert_switchingOff": { "message": "выключэнне" },
   "notif_copiedToClipboard": { "message": "Тэкст скапіраваны ў буфер абмену" },
-  "btnLabel_moreApps": { "message": "Іншыя праграмы ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Больш пашырэнняў штучнага інтэлекту" },
   "btnLabel_leaveReview": { "message": "Пакінуць водгук" },
   "btnLabel_rateUs": { "message": "Ацаніць нас" },
   "btnLabel_getSupport": { "message": "Атрымаць падтрымку" },

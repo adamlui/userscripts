@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Uključivanje" },
   "alert_switchingOff": { "message": "Isključivanje" },
   "notif_copiedToClipboard": { "message": "Kopirano u clipboard" },
-  "btnLabel_moreApps": { "message": "Još ChatGPT aplikacija" },
+  "btnLabel_moreAIextensions": { "message": "Još proširenja za veštačku inteligenciju" },
   "btnLabel_leaveReview": { "message": "Ostavi recenziju" },
   "btnLabel_rateUs": { "message": "OCENITE NAS" },
   "btnLabel_getSupport": { "message": "Plaćena Podrška " },

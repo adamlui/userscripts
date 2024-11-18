@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Włączanie " },
   "alert_switchingOff": { "message": "Wyłączanie" },
   "notif_copiedToClipboard": { "message": "Skopiowano do schowka" },
-  "btnLabel_moreApps": { "message": "Więcej aplikacji ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Więcej rozszerzeń AI" },
   "btnLabel_leaveReview": { "message": "Zostaw opinię" },
   "btnLabel_rateUs": { "message": "Wystaw nam ocenę" },
   "btnLabel_getSupport": { "message": "Uzyskać wsparcie" },

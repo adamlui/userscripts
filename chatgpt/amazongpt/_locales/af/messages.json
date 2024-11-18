@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "skakelaar aan" },
   "alert_switchingOff": { "message": "afskakel" },
   "notif_copiedToClipboard": { "message": "Knyp gekopiëerde aan knipbord" },
-  "btnLabel_moreApps": { "message": "Meer ChatGPT-programme" },
+  "btnLabel_moreAIextensions": { "message": "Meer AI-uitbreidings" },
   "btnLabel_leaveReview": { "message": "Los Kommentaar" },
   "btnLabel_rateUs": { "message": "Gradeer ons" },
   "btnLabel_getSupport": { "message": "Kry Ondersteuning" },

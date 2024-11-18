@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "asebded ɣef" },
   "alert_switchingOff": { "message": "asebded n tneqqiḍt" },
   "notif_copiedToClipboard": { "message": "Aḍris yettwanɣel ɣef afus" },
-  "btnLabel_moreApps": { "message": "Ugar n iseqdacen ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Ugar n iwenniten n AI" },
   "btnLabel_leaveReview": { "message": "Aneggaru yeǧǧa-d" },
   "btnLabel_rateUs": { "message": "Rmed-aɣ" },
   "btnLabel_getSupport": { "message": "Awi tallalt" },

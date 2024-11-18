@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "བསྒྱུར་རྩོམ །" },
   "alert_switchingOff": { "message": "ཕྱིར་འབུད་པ །" },
   "notif_copiedToClipboard": { "message": "ཨང་ཚབ་བཤུས་ཟིན" },
-  "btnLabel_moreApps": { "message": "འདྲ་ཕབ །" },
+  "btnLabel_moreAIextensions": { "message": "ཕྱོགས་སྟོན ། གཙོ་ངོས ། \"རྩོམ་རིག\"" },
   "btnLabel_leaveReview": { "message": "བསྐྱར་ཞིབ་སྤར་བ" },
   "btnLabel_rateUs": { "message": "རིན་ཆེན །" },
   "btnLabel_getSupport": { "message": "རོགས་རམ་ཐོབ་པ" },

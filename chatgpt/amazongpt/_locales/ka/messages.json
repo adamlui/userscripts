@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "ჩართვა" },
   "alert_switchingOff": { "message": "გამორთვა" },
   "notif_copiedToClipboard": { "message": "დაკოპირდა გაცვლის ბაფერში" },
-  "btnLabel_moreApps": { "message": "Სხვა ChatGPT აპები" },
+  "btnLabel_moreAIextensions": { "message": "Სხვა AI გაფართოებები" },
   "btnLabel_leaveReview": { "message": "შეფასების დატოვება" },
   "btnLabel_rateUs": { "message": "Შეფასება" },
   "btnLabel_getSupport": { "message": "მხარდაჭერის მიღება" },

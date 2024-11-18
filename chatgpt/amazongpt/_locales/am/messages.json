@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "ላይ መቀየር" },
   "alert_switchingOff": { "message": "ማጥፋት" },
   "notif_copiedToClipboard": { "message": "ወደ ክሊፕቦርድ ይቀዳጃል" },
-  "btnLabel_moreApps": { "message": "ተጨማሪ ChatGPT መተግበሪያዎች" },
+  "btnLabel_moreAIextensions": { "message": "ተጨማሪ የ AI ቅጥያዎች" },
   "btnLabel_leaveReview": { "message": "ግምገማ ይተው" },
   "btnLabel_rateUs": { "message": "ደረጃ ይስጡን" },
   "btnLabel_getSupport": { "message": "ድጋፍ ያግኙ" },

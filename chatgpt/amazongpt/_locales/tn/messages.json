@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "go tshuba" },
   "alert_switchingOff": { "message": "go tima" },
   "notif_copiedToClipboard": { "message": "E kopolotswe go clipboard" },
-  "btnLabel_moreApps": { "message": "Di-app tse Dintsi tsa ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Di-AI Extensions tse Dintsi" },
   "btnLabel_leaveReview": { "message": "Leave Review" },
   "btnLabel_rateUs": { "message": "Maemo a Rona" },
   "btnLabel_getSupport": { "message": "Bona Kemonokeng" },

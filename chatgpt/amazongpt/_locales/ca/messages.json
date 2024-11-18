@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "activant" },
   "alert_switchingOff": { "message": "desactivar" },
   "notif_copiedToClipboard": { "message": "S'ha copiat al porta-retalls" },
-  "btnLabel_moreApps": { "message": "Més aplicacions de ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Més extensions d'IA" },
   "btnLabel_leaveReview": { "message": "Deixar valoració" },
   "btnLabel_rateUs": { "message": "Puntua'ns" },
   "btnLabel_getSupport": { "message": "Obteniu suport" },

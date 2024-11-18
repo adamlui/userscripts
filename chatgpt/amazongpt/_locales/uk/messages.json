@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Увімкнення" },
   "alert_switchingOff": { "message": "Вимкнення" },
   "notif_copiedToClipboard": { "message": "скопійовано" },
-  "btnLabel_moreApps": { "message": "Більше додатків ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Більше розширень AI" },
   "btnLabel_leaveReview": { "message": "Залишити відгук" },
   "btnLabel_rateUs": { "message": "Оцініть нас" },
   "btnLabel_getSupport": { "message": "Отримати підтримку" },

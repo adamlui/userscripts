@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Påslagning" },
   "alert_switchingOff": { "message": "Så här stänger man av" },
   "notif_copiedToClipboard": { "message": "Kopierat till urklipp" },
-  "btnLabel_moreApps": { "message": "Fler ChatGPT-appar" },
+  "btnLabel_moreAIextensions": { "message": "Fler AI-tillägg" },
   "btnLabel_leaveReview": { "message": "Lämna recension" },
   "btnLabel_rateUs": { "message": "betygsätt oss" },
   "btnLabel_getSupport": { "message": "Få support" },

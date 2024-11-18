@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Kif tixgħel" },
   "alert_switchingOff": { "message": "Kif titfi" },
   "notif_copiedToClipboard": { "message": "Kopjati lill-clipboard" },
-  "btnLabel_moreApps": { "message": "Iktar Apps taċ-ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Iktar Estensjonijiet tal-IA" },
   "btnLabel_leaveReview": { "message": "Ħalli r-Review" },
   "btnLabel_rateUs": { "message": "Rata us" },
   "btnLabel_getSupport": { "message": "Ikseb l-Għajnuna" },

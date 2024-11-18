@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "ምቕያር" },
   "alert_switchingOff": { "message": "ምጥፋእ" },
   "notif_copiedToClipboard": { "message": "ናብ ክሊፕቦርድ እተቐርጸ" },
-  "btnLabel_moreApps": { "message": "ዝያዳ ናይ ChatGPT መተግበሪታት" },
+  "btnLabel_moreAIextensions": { "message": "ዝያዳ ናይ AI ምስፍሕፋሕ" },
   "btnLabel_leaveReview": { "message": "ግምገማ ሓዲግካ" },
   "btnLabel_rateUs": { "message": "ተመዝገብና" },
   "btnLabel_getSupport": { "message": "ደገፍ ርኸቡ" },

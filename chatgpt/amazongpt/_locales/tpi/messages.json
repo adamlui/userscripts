@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "wok bilong senisim" },
   "alert_switchingOff": { "message": "kisim bek" },
   "notif_copiedToClipboard": { "message": "Kopiim long Clipboard" },
-  "btnLabel_moreApps": { "message": "Ol app bilong ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "+ long extensions" },
   "btnLabel_leaveReview": { "message": "Lusim toksave" },
   "btnLabel_rateUs": { "message": "Toksave long mipela" },
   "btnLabel_getSupport": { "message": "Kisim helpim" },

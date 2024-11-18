@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "PORNIREA" },
   "alert_switchingOff": { "message": "DECONECTAREA" },
   "notif_copiedToClipboard": { "message": "Copiat în clipboard" },
-  "btnLabel_moreApps": { "message": "Mai multe aplicații ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Mai multe extensii AI" },
   "btnLabel_leaveReview": { "message": "Lasă o recenzie" },
   "btnLabel_rateUs": { "message": "Evaluați-ne" },
   "btnLabel_getSupport": { "message": "Primește asistență" },

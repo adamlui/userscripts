@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "асаах" },
   "alert_switchingOff": { "message": "унтраах" },
   "notif_copiedToClipboard": { "message": "Түр санах ой руу хуулсан" },
-  "btnLabel_moreApps": { "message": "Илүү их чатGPT аппууд" },
+  "btnLabel_moreAIextensions": { "message": "Илүү AI Өргөтгөлүүд" },
   "btnLabel_leaveReview": { "message": "Сэтгэгдэл үлдээх" },
   "btnLabel_rateUs": { "message": "Биднийг үнэлэх" },
   "btnLabel_getSupport": { "message": "Тусламж авах" },

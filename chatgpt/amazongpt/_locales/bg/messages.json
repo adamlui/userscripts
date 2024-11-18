@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "включване" },
   "alert_switchingOff": { "message": "Изключване" },
   "notif_copiedToClipboard": { "message": "Копирани в клипборда" },
-  "btnLabel_moreApps": { "message": "Още приложения за ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Още разширения с изкуствен интелект" },
   "btnLabel_leaveReview": { "message": "Оставете рецензия" },
   "btnLabel_rateUs": { "message": "Оценете ни" },
   "btnLabel_getSupport": { "message": "Вземи поддръжка" },

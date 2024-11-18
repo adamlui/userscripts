@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "að kveikja á" },
   "alert_switchingOff": { "message": "slökkt" },
   "notif_copiedToClipboard": { "message": "Slóð afrituð á klemmuspjaldið" },
-  "btnLabel_moreApps": { "message": "Fleiri ChatGPT öpp" },
+  "btnLabel_moreAIextensions": { "message": "Fleiri gervigreindarviðbætur" },
   "btnLabel_leaveReview": { "message": "Skildu eftir umsögn" },
   "btnLabel_rateUs": { "message": "Gefðu okkur einkunn" },
   "btnLabel_getSupport": { "message": "Fá stuðning" },

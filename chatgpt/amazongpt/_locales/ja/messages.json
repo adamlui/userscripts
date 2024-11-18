@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "スイッチを入れる" },
   "alert_switchingOff": { "message": "スイッチをオフにする" },
   "notif_copiedToClipboard": { "message": "クリップボードにコピー" },
-  "btnLabel_moreApps": { "message": "その他のChatGPTアプリ" },
+  "btnLabel_moreAIextensions": { "message": "その他のAI拡張機能" },
   "btnLabel_leaveReview": { "message": "レビューを残す" },
   "btnLabel_rateUs": { "message": "評価してください" },
   "btnLabel_getSupport": { "message": "サポートを受ける" },

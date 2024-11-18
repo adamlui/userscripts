@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "Sisse lülitamine" },
   "alert_switchingOff": { "message": "Välja lülitamine" },
   "notif_copiedToClipboard": { "message": "Kopeeritud lõikelauale" },
-  "btnLabel_moreApps": { "message": "Veel ChatGPT rakendusi" },
+  "btnLabel_moreAIextensions": { "message": "Veel tehisintellekti laiendusi" },
   "btnLabel_leaveReview": { "message": "Jäta tagasiside" },
   "btnLabel_rateUs": { "message": "Hinda meid" },
   "btnLabel_getSupport": { "message": "Saage tuge" },

@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "سوئچ آن کرنا" },
   "alert_switchingOff": { "message": "سوئچ آف کرنا" },
   "notif_copiedToClipboard": { "message": "کلپ بورڈ پر کاپی" },
-  "btnLabel_moreApps": { "message": "مزید چیٹ جی پی ٹی ایپس" },
+  "btnLabel_moreAIextensions": { "message": "مزید AI ایکسٹینشنز" },
   "btnLabel_leaveReview": { "message": "جائزہ دیں" },
   "btnLabel_rateUs": { "message": "ہمیں درجہ دیں!" },
   "btnLabel_getSupport": { "message": "سپورٹ حاصل کریں" },

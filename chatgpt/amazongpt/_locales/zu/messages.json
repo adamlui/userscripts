@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "ukuvula" },
   "alert_switchingOff": { "message": "ukuvala" },
   "notif_copiedToClipboard": { "message": "Ikopishiwe ebhodini lokunamathisela" },
-  "btnLabel_moreApps": { "message": "Ama-app engeziwe e-ChatGPT" },
+  "btnLabel_moreAIextensions": { "message": "Izandiso Ezengeziwe ze-AI" },
   "btnLabel_leaveReview": { "message": "Shiya Okushiwo Abanye" },
   "btnLabel_rateUs": { "message": "Silinganise" },
   "btnLabel_getSupport": { "message": "Thola Usizo" },

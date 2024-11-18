@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "سویچ کول" },
   "alert_switchingOff": { "message": "بندول، بندول" },
   "notif_copiedToClipboard": { "message": "د ټوټې دړې ته کاپي شوی" },
-  "btnLabel_moreApps": { "message": "نور چیټ جی پی ټي ایپونه" },
+  "btnLabel_moreAIextensions": { "message": "د AI نور تمدیدونه" },
   "btnLabel_leaveReview": { "message": "د رخصتۍ بیاکتنه" },
   "btnLabel_rateUs": { "message": "موږ ته رتبه راکړئ" },
   "btnLabel_getSupport": { "message": "مرسته ترلاسه کړئ" },

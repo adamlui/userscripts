@@ -75,7 +75,7 @@
   "alert_switchingOn": { "message": "kuwasha" },
   "alert_switchingOff": { "message": "kuzima" },
   "notif_copiedToClipboard": { "message": "Msimbo umenakiliwa kwenye ubao klipu" },
-  "btnLabel_moreApps": { "message": "Programu Zaidi za GumzoGPT" },
+  "btnLabel_moreAIextensions": { "message": "Viendelezi zaidi vya AI" },
   "btnLabel_leaveReview": { "message": "Acha Tathmini" },
   "btnLabel_rateUs": { "message": "Tupe kadirio" },
   "btnLabel_getSupport": { "message": "Pata Usaidizi" },
