@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18
+// @version             2024.11.18.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -269,7 +269,7 @@
             review: { greasyFork: 'https://greasyfork.org/en/scripts/500940-chatgpt-auto-talk/feedback#post-discussion' },
             support: 'https://support.chatgptautotalk.com'
         },
-        latestAssetCommitHash: '1104341' // for cached messages.json + navicon
+        latestAssetCommitHash: '4697735' // for cached messages.json + navicon
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
