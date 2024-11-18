@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18.1
+// @version             2024.11.18.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -892,7 +892,7 @@
                               : env.site == 'poe' ? 45 : 13 ) +25,
                   spreadFactor = env.site == 'perplexity' ? 26.85 : env.site == 'poe' ? 34 : 30.55,
                   iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
-                             + ( env.tallChatbar ? -3 : 0 ) // nudge right
+                             + ( env.tallChatbar ? -3 : 4 )
             tooltipDiv.innerText = app.msgs['tooltip_' + btnType + (
                 !/full|wide/i.test(btnType) ? '' : (config[btnType] ? 'OFF' : 'ON'))]
             tooltipDiv.style.right = `${ // x-pos
