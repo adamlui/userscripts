@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.17
+// @version             2024.11.18
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -351,7 +351,7 @@
         alert_author: 'author',
         alert_pressF11: 'Press F11 to exit full screen',
         alert_f11reason: 'F11 was used to enter full screen, and due to browser security reasons, the same key must be used to exit it',
-        btnLabel_moreApps: 'More ChatGPT Apps',
+        btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
         btnLabel_updateCheck: 'Check for Updates',
@@ -554,7 +554,7 @@
                     else if (/rate/i.test(btn.textContent)) btn.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
                     else if (/apps/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreApps ))
+                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else btn.style.display = 'none' // hide Dismiss button
                 }
             }
