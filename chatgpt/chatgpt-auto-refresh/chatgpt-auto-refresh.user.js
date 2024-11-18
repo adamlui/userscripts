@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.17
+// @version             2024.11.18
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -351,7 +351,7 @@
         alert_tyForSupport: 'Thank you for your support',
         alert_author: 'author',
         alert_isUpToDate: 'is up-to-date',
-        btnLabel_moreApps: 'More ChatGPT Apps',
+        btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
         btnLabel_updateCheck: 'Check for Updates',
@@ -585,7 +585,7 @@
                     else if (/rate/i.test(button.textContent)) button.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
                     else if (/apps/i.test(button.textContent)) button.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreApps ))
+                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else button.style.display = 'none' // hide Dismiss button
                 }
             }
