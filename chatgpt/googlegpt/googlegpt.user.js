@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.17
+// @version                  2024.11.18
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -682,7 +682,7 @@
         alert_switchingOff: 'switching off',
         notif_copiedToClipboard: 'Copied to clipboard',
         btnLabel_sendQueryToApp: 'Send search query to GoogleGPT',
-        btnLabel_moreApps: 'More ChatGPT Apps',
+        btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
         btnLabel_updateCheck: 'Check for Updates',
@@ -1135,7 +1135,7 @@
                     else if (/rate/i.test(btn.textContent)) btn.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
                     else if (/apps/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreApps ))
+                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else btn.style.display = 'none' // hide Dismiss button
                 })
 
