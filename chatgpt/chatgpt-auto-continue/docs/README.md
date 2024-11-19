@@ -116,7 +116,7 @@ This project exists thanks to code, testing, issues, translations & ideas from t
 
 <br>
 
-a href="https://github.com/adamlui/chatgpt-auto-continue/stargazers">
+<a href="https://github.com/adamlui/chatgpt-auto-continue/stargazers">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=adamlui/chatgpt-auto-continue&type=Timeline&theme=dark" />
         <img width=665 src="https://api.star-history.com/svg?repos=adamlui/chatgpt-auto-continue&type=Timeline" />
