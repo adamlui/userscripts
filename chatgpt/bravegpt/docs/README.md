@@ -201,7 +201,7 @@ This app exists thanks to code, translations, issues & ideas from the following 
 
 <br>
 
-a href="https://github.com/KudoAI/bravegpt/stargazers">
+<a href="https://github.com/KudoAI/bravegpt/stargazers">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=KudoAI/bravegpt&type=Timeline&theme=dark" />
         <img width=665 src="https://api.star-history.com/svg?repos=KudoAI/bravegpt&type=Timeline" />
