@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18.1
+// @version             2024.11.19
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -590,11 +590,12 @@
 
     const navToggle = {
         insert() {
+            if (document.getElementById('autoclear-toggle-navicon')) return
 
             // Insert toggle
-            const toggleParent = document.querySelector('nav')
-            if (!toggleParent.contains(navToggleDiv))
-                 toggleParent.insertBefore(navToggleDiv, toggleParent.children[1])
+            const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
+            if (!sidebar) return
+            sidebar.insertBefore(navToggleDiv, sidebar.children[1])
     
             // Tweak styles
             const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
@@ -627,7 +628,7 @@
                 const switchSpan = document.getElementById('autoclear-switch-span') || document.createElement('span')
                 switchSpan.id = 'autoclear-switch-span'
                 const switchStyles = {
-                    position: 'relative', left: `${ env.browser.isMobile ? 211 : !ui.firstLink ? 160 : 154 }px`,
+                    position: 'relative', left: `${ env.browser.isMobile ? 169 : !ui.firstLink ? 160 : 154 }px`,
                     backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
                     bottom: `${ !ui.firstLink ? -0.15 : env.browser.isFF ? 0.05 : 0 }em`,
                     width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
