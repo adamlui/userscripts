@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.18.1
+// @version                2024.11.19
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2848,7 +2848,6 @@
 
         createHeaders(api) {
             const ip = ipv4.generate({ verbose: false })
-            console.log(ip)
             const headers = {
                 'Accept-Encoding': 'gzip, deflate, br, zstd',
                 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'DNT': '1',
