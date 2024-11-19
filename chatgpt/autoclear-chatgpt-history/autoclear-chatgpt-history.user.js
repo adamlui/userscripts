@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.19.1
+// @version             2024.11.19.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -382,7 +382,7 @@
                           + menu.state.separator + menu.state.words[+!config.toggleHidden]
             menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
                 settings.save('toggleHidden', !config.toggleHidden)
-                sidebarToggleDiv.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
+                sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
                 notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
                 menu.refresh()
             }))
@@ -589,19 +589,51 @@
     // Define UI functions
 
     const sidebarToggle = {
+
+        create() {
+            sidebarToggle.div = document.createElement('div')
+            sidebarToggle.update() // create children
+
+            // Stylize/classify
+            sidebarToggle.div.style.height = '37px'
+            sidebarToggle.div.style.margin = '2px 0' // add v-margins
+            sidebarToggle.div.style.userSelect = 'none' // prevent highlighting
+            sidebarToggle.div.style.cursor = 'pointer' // add finger cursor
+            if (ui.firstLink) { // borrow/assign classes from sidebar elems
+                const firstIcon = ui.firstLink.querySelector('div:first-child'),
+                      firstLabel = ui.firstLink.querySelector('div:nth-child(2)')
+                sidebarToggle.div.classList.add(...ui.firstLink.classList, ...(firstLabel?.classList || []))
+                sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
+            }
+
+            // Add click listener
+            sidebarToggle.div.onclick = () => {
+                const toggleInput = document.getElementById('autoclear-toggle-input')
+                toggleInput.checked = !toggleInput.checked ; config.autoclear = toggleInput.checked
+                sidebarToggle.update() ; menu.refresh()
+                if (config.autoclear) {
+                    setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
+                    notify(`${app.msgs.mode_autoClear}: ${menu.state.words[1]}`)
+                } else if (!config.autoclear)
+                    notify(`${app.msgs.mode_autoClear}: ${menu.state.words[0]}`)
+                settings.save('autoclear', config.autoclear)
+            }
+        },
+
         insert() {
             if (document.getElementById('autoclear-toggle-navicon')) return
+            if (!sidebarToggle.div) sidebarToggle.create()
 
             // Insert toggle
             const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
             if (!sidebar) return
-            sidebar.insertBefore(sidebarToggleDiv, sidebar.children[1])
+            sidebar.insertBefore(sidebarToggle.div, sidebar.children[1])
     
             // Tweak styles
             const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
                   navicon = document.getElementById('autoclear-toggle-navicon')
-            sidebarToggleDiv.style.flexGrow = 'unset' // overcome OpenAI .grow
-            sidebarToggleDiv.style.paddingLeft = '8px'
+            sidebarToggle.div.style.flexGrow = 'unset' // overcome OpenAI .grow
+            sidebarToggle.div.style.paddingLeft = '8px'
             if (knobSpan) knobSpan.style.boxShadow = (
                 'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
             if (navicon) navicon.src = `${ // update navicon color in case scheme changed
@@ -610,7 +642,7 @@
         },
 
         update() {
-            if (config.toggleHidden) sidebarToggleDiv.style.display = 'none'
+            if (config.toggleHidden) sidebarToggle.div.style.display = 'none'
             else {
 
                 // Create/size/position navicon
@@ -661,10 +693,10 @@
                                     + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
                                                             : ( app.msgs.state_disabled ))
                 // Append elements
-                for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggleDiv.append(elem)
+                for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
         
                 // Update visual state
-                sidebarToggleDiv.style.display = 'flex'
+                sidebarToggle.div.style.display = 'flex'
                 setTimeout(() => {
                     switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
                     switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
@@ -723,35 +755,7 @@
         )
     }
 
-    // Create NAV TOGGLE div, add styles
-    const sidebarToggleDiv = document.createElement('div')
-    sidebarToggleDiv.style.height = '37px'
-    sidebarToggleDiv.style.margin = '2px 0' // add v-margins
-    sidebarToggleDiv.style.userSelect = 'none' // prevent highlighting
-    sidebarToggleDiv.style.cursor = 'pointer' // add finger cursor
-    sidebarToggle.update() // create children
-
-    if (ui.firstLink) { // borrow/assign CLASSES from sidebar div
-        const firstIcon = ui.firstLink.querySelector('div:first-child'),
-            firstLabel = ui.firstLink.querySelector('div:nth-child(2)')
-        sidebarToggleDiv.classList.add(...ui.firstLink.classList, ...(firstLabel?.classList || []))
-        sidebarToggleDiv.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
-    }
-
     sidebarToggle.insert()
-
-    // Add LISTENER to toggle switch/label/config/menu + auto-clear
-    sidebarToggleDiv.onclick = () => {
-        const toggleInput = document.getElementById('autoclear-toggle-input')
-        toggleInput.checked = !toggleInput.checked ; config.autoclear = toggleInput.checked
-        sidebarToggle.update() ; menu.refresh()
-        if (config.autoclear) {
-            setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
-            notify(`${app.msgs.mode_autoClear}: ${menu.state.words[1]}`)
-        } else if (!config.autoclear)
-            notify(`${app.msgs.mode_autoClear}: ${menu.state.words[0]}`)
-        settings.save('autoclear', config.autoclear)
-    }
 
     // AUTO-CLEAR on first visit if enabled
     if (config.autoclear) setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
