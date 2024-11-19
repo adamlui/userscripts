@@ -113,7 +113,7 @@ ChatGPT 自动继续 依赖于功能强大的 [chatgpt.js](https://github.com/Ku
 
 <br>
 
-<a href="https://star-history.com/#adamlui/chatgpt-auto-continue">
+a href="https://github.com/adamlui/chatgpt-auto-continue/stargazers">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=adamlui/chatgpt-auto-continue&type=Timeline&theme=dark" />
         <img width=665 src="https://api.star-history.com/svg?repos=adamlui/chatgpt-auto-continue&type=Timeline" />
