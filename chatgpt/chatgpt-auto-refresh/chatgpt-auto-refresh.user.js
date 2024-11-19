@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18.1
+// @version             2024.11.19
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -643,11 +643,12 @@
 
     const navToggle = {
         insert() {
+            if (document.getElementById('auto-refresh-toggle-navicon')) return
 
             // Insert toggle
-            const toggleParent = document.querySelector('nav')
-            if (!toggleParent.contains(navToggleDiv))
-                 toggleParent.insertBefore(navToggleDiv, toggleParent.children[1])
+            const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
+            if (!sidebar) return
+            sidebar.insertBefore(navToggleDiv, sidebar.children[1])
     
             // Tweak styles
             const knobSpan = document.getElementById('auto-refresh-toggle-knob-span'),
@@ -680,7 +681,7 @@
                 const switchSpan = document.getElementById('auto-refresh-switch-span') || document.createElement('span')
                 switchSpan.id = 'auto-refresh-switch-span'
                 const switchStyles = {
-                    position: 'relative', left: `${ env.browser.isMobile ? 211 : !ui.firstLink ? 160 : 154 }px`,
+                    position: 'relative', left: `${ env.browser.isMobile ? 169 : !ui.firstLink ? 160 : 154 }px`,
                     backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
                     bottom: `${ !ui.firstLink ? -0.15 : env.browser.isFF ? 0.05 : 0 }em`,
                     width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
