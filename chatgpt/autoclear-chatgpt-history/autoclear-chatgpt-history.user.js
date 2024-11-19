@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.19
+// @version             2024.11.19.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -382,7 +382,7 @@
                           + menu.state.separator + menu.state.words[+!config.toggleHidden]
             menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
                 settings.save('toggleHidden', !config.toggleHidden)
-                navToggleDiv.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
+                sidebarToggleDiv.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
                 notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
                 menu.refresh()
             }))
@@ -588,20 +588,20 @@
 
     // Define UI functions
 
-    const navToggle = {
+    const sidebarToggle = {
         insert() {
             if (document.getElementById('autoclear-toggle-navicon')) return
 
             // Insert toggle
             const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
             if (!sidebar) return
-            sidebar.insertBefore(navToggleDiv, sidebar.children[1])
+            sidebar.insertBefore(sidebarToggleDiv, sidebar.children[1])
     
             // Tweak styles
             const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
                   navicon = document.getElementById('autoclear-toggle-navicon')
-            navToggleDiv.style.flexGrow = 'unset' // overcome OpenAI .grow
-            navToggleDiv.style.paddingLeft = '8px'
+            sidebarToggleDiv.style.flexGrow = 'unset' // overcome OpenAI .grow
+            sidebarToggleDiv.style.paddingLeft = '8px'
             if (knobSpan) knobSpan.style.boxShadow = (
                 'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
             if (navicon) navicon.src = `${ // update navicon color in case scheme changed
@@ -610,7 +610,7 @@
         },
 
         update() {
-            if (config.toggleHidden) navToggleDiv.style.display = 'none'
+            if (config.toggleHidden) sidebarToggleDiv.style.display = 'none'
             else {
 
                 // Create/size/position navicon
@@ -661,10 +661,10 @@
                                     + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
                                                             : ( app.msgs.state_disabled ))
                 // Append elements
-                for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) navToggleDiv.append(elem)
+                for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggleDiv.append(elem)
         
                 // Update visual state
-                navToggleDiv.style.display = 'flex'
+                sidebarToggleDiv.style.display = 'flex'
                 setTimeout(() => {
                     switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
                     switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
@@ -724,27 +724,27 @@
     }
 
     // Create NAV TOGGLE div, add styles
-    const navToggleDiv = document.createElement('div')
-    navToggleDiv.style.height = '37px'
-    navToggleDiv.style.margin = '2px 0' // add v-margins
-    navToggleDiv.style.userSelect = 'none' // prevent highlighting
-    navToggleDiv.style.cursor = 'pointer' // add finger cursor
-    navToggle.update() // create children
+    const sidebarToggleDiv = document.createElement('div')
+    sidebarToggleDiv.style.height = '37px'
+    sidebarToggleDiv.style.margin = '2px 0' // add v-margins
+    sidebarToggleDiv.style.userSelect = 'none' // prevent highlighting
+    sidebarToggleDiv.style.cursor = 'pointer' // add finger cursor
+    sidebarToggle.update() // create children
 
     if (ui.firstLink) { // borrow/assign CLASSES from sidebar div
         const firstIcon = ui.firstLink.querySelector('div:first-child'),
             firstLabel = ui.firstLink.querySelector('div:nth-child(2)')
-        navToggleDiv.classList.add(...ui.firstLink.classList, ...(firstLabel?.classList || []))
-        navToggleDiv.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
+        sidebarToggleDiv.classList.add(...ui.firstLink.classList, ...(firstLabel?.classList || []))
+        sidebarToggleDiv.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
     }
 
-    navToggle.insert()
+    sidebarToggle.insert()
 
     // Add LISTENER to toggle switch/label/config/menu + auto-clear
-    navToggleDiv.onclick = () => {
+    sidebarToggleDiv.onclick = () => {
         const toggleInput = document.getElementById('autoclear-toggle-input')
         toggleInput.checked = !toggleInput.checked ; config.autoclear = toggleInput.checked
-        navToggle.update() ; menu.refresh()
+        sidebarToggle.update() ; menu.refresh()
         if (config.autoclear) {
             setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
             notify(`${app.msgs.mode_autoClear}: ${menu.state.words[1]}`)
@@ -759,14 +759,14 @@
     // Monitor <html> to maintain NAV TOGGLE VISIBILITY on node changes
     new MutationObserver(mutations => mutations.forEach(mutation => {
         if (mutation.type == 'childList' && mutation.addedNodes.length && !config.toggleHidden)
-            navToggle.insert()
+            sidebarToggle.insert()
     })).observe(document.documentElement, { childList: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.querySelector('[sidebar-click-zoom-observed]')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
             if (target.closest('[class*="sidebar"]') // include sidebar divs
-                && !target.id.endsWith('-knob-span') // exclude our navToggle
+                && !target.id.endsWith('-knob-span') // exclude our sidebarToggle
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
         })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})      
