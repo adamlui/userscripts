@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.19.2
+// @version             2024.11.20
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -270,12 +270,13 @@
     const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
-    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: '0a192f6' },
-    assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
-    Object.assign(app, await new Promise(resolve => xhr({
-        method: 'GET', url: `${assetHostURL}/app.json`,
+    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: '0a192f6', urls: {} }
+    app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
+    const appData = await new Promise(resolve => xhr({
+        method: 'GET', url: `${app.urls.assetHost}/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
-    })))
+    }))
+    Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
@@ -334,7 +335,7 @@
     }
     if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = assetHostURL + '/greasemonkey/_locales/',
+            const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
