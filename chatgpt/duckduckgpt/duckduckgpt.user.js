@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.20.4
+// @version                2024.11.20.5
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2368,13 +2368,13 @@
             // Add chatbar autosizer
             const chatTextarea = appDiv.querySelector('#app-chatbar'),
                   { paddingTop, paddingBottom } = getComputedStyle(chatTextarea),
-                  vOffset = parseInt(paddingTop, 10) + parseInt(paddingBottom, 10)
+                  vOffset = parseInt(paddingTop) + parseInt(paddingBottom)
             let prevLength = chatTextarea.value.length
             listenerize.replySection.chatbarAutoSizer = () => {
                 const newLength = chatTextarea.value.length
                 if (newLength < prevLength) { // if deleting txt
                     chatTextarea.style.height = 'auto' // ...auto-fit height
-                    if (parseInt(getComputedStyle(chatTextarea).height, 10) < 35) // if down to one line
+                    if (parseInt(getComputedStyle(chatTextarea).height) < 35) // if down to one line
                         chatTextarea.style.height = '19px' // ...reset to original height
                 }
                 chatTextarea.style.height = chatTextarea.scrollHeight - vOffset + 'px'
@@ -3677,7 +3677,7 @@
                     boostedListLength = boostedList.length - 1 // for applying multiple boosts
                 list.forEach(([name, data]) => { // check for boosts
                     if (data.boost) { // boost flagged entry's selection probability
-                        const boostPercent = parseInt(data.boost, 10) / 100,
+                        const boostPercent = parseInt(data.boost) / 100,
                               entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
                                             * boostPercent - 1 // reduced to boosted entries needed
                         for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
