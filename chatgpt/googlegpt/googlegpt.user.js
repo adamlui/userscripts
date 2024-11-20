@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.20.2
+// @version                  2024.11.20.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -432,7 +432,13 @@
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Init ENV info
-    const env = { browser: {}, scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() };
+    const env = {
+        browser: {},
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
+    };
     ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
@@ -516,8 +522,8 @@
     // Init COMPATIBILITY flags
     log.debug('Initializing compatibility flags...')
     const streamingSupported = {
-        browser: !(env.scriptManager == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
-        scriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager) }
+        browser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
+        scriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
     log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
 
     // Init CONFIG
@@ -579,7 +585,7 @@
 
     // Init app MESSAGES
     log.debug('Initializing app messages...')
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
     app.msgs = {
         appDesc: 'Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)',
         menuLabel_autoGetAnswers: 'Auto-Get Answers',
@@ -794,7 +800,7 @@
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
@@ -804,7 +810,10 @@
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
                           + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
-            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode))
+            const pmRegisterOptions = ( // add menu tooltip in TM 5.0+
+                env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
+                    { title: settings.controls.proxyAPIenabled.helptip } : undefined )
+            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode, pmRegisterOptions))
 
             // Add About entry
             const aboutLabel = `💡 ${settings.controls.about.label}`
@@ -818,7 +827,7 @@
         refresh() {
             log.caller = 'menu.refresh()'
             log.debug('Refreshing toolbar menu...')
-            if (env.scriptManager == 'OrangeMonkey') { log.debug('OrangeMonkey userscript manager unsupported.') ; return }
+            if (env.scriptManager.name == 'OrangeMonkey') { log.debug('OrangeMonkey userscript manager unsupported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
             log.debug('Success! Menu refreshed')
         }
@@ -3015,7 +3024,7 @@
                                 : env.browser.isEdge ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                                                      : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.scriptManager) { // alert userscript manager unsupported, suggest TM/SC
-                log.debug(`Streaming Mode unsupported in ${env.scriptManager}`)
+                log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
                 const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
                         + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
@@ -3097,7 +3106,7 @@
             log.caller = 'session.deleteOpenAIcookies()'
             log.debug('Deleting OpenAI cookies...')
             GM_deleteValue(app.configKeyPrefix + '_openAItoken')
-            if (env.scriptManager != 'Tampermonkey') return
+            if (env.scriptManager.name != 'Tampermonkey') return
             GM_cookie.list({ url: apis.OpenAI.endpoints.auth }, (cookies, error) => {
                 if (!error) { for (const cookie of cookies) {
                     GM_cookie.delete({ url: apis.OpenAI.endpoints.auth, name: cookie.name })
