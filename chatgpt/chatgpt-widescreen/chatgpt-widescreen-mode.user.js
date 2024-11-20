@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18.2
+// @version             2024.11.20
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -271,18 +271,19 @@
     const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
-    const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: 'd8eacf6' },
-          assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
-    Object.assign(app, await new Promise(resolve => xhr({
-        method: 'GET', url: `${assetHostURL}/data/app.json`,
+    const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: 'd8eacf6', urls: {} }
+    app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
+    const appData = await new Promise(resolve => xhr({
+        method: 'GET', url: `${app.urls.assetHost}/data/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
-    })))
+    }))
+    Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     
     // Init SITE props
     const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: `${assetHostURL}/data/sites.json`,
+        method: 'GET', url: `${app.urls.assetHost}/data/sites.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
@@ -363,7 +364,7 @@
     }
     if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = assetHostURL + '/chrome/extension/_locales/',
+            const msgHostDir = app.urls.assetHost + '/chrome/extension/_locales/',
                   msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
