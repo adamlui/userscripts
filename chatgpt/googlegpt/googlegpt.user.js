@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.20.3
+// @version                  2024.11.20.4
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -522,8 +522,8 @@
     // Init COMPATIBILITY flags
     log.debug('Initializing compatibility flags...')
     const streamingSupported = {
-        browser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
-        scriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
+        byBrowser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
+        byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
     log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
 
     // Init CONFIG
@@ -538,7 +538,7 @@
                   'replyLanguage', 'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
     if (!config.replyLanguage) settings.save('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', env.browser.isMobile ? 14 : 16.55) // init reply font size if unset
-    if (!streamingSupported.browser || !streamingSupported.scriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
+    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
     if (!config.notFirstRun && env.browser.isMobile) settings.save('autoGet', true) // reverse default auto-get disabled if mobile
     settings.save('notFirstRun', true)
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
@@ -1396,7 +1396,7 @@
                         // Add click listener
                         settingItem.onclick = () => {
                             if (!(key == 'streamingDisabled' // visually switch toggle if not Streaminng...
-                                && (!streamingSupported.browser || !streamingSupported.scriptManager // ...in unsupported env...
+                                && (!streamingSupported.byBrowser || !streamingSupported.byScriptManager // ...in unsupported env...
                                 || !config.proxyAPIenabled) // ...or in OpenAI mode
                             )) modals.settings.toggle.switch(settingToggle)
 
@@ -3023,7 +3023,7 @@
             const scriptCatLink = env.browser.isFF   ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
                                 : env.browser.isEdge ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                                                      : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
-            if (!streamingSupported.scriptManager) { // alert userscript manager unsupported, suggest TM/SC
+            if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
                 const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -3035,7 +3035,7 @@
                 )
                 const suggestAlert = document.getElementById(suggestAlertID).firstChild
                 modals.init(suggestAlert) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
-            } else if (!streamingSupported.browser) { // alert TM/browser unsupported, suggest SC
+            } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
                 log.debug('Streaming Mode unsupported in browser')
                 const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
