@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20.2
+// @version             2024.11.20.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -265,10 +265,13 @@
     // Init ENV vars 
     const env = {
         browser: { isFF: chatgpt.browser.isFirefox() },
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        },
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1]
     }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
     const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: 'd8eacf6', urls: {} }
@@ -390,20 +393,34 @@
 
     // Init SETTINGS controls
     Object.assign(settings, { controls: {
-        fullerWindows: { type: 'toggle', label: app.msgs.menuLabel_fullerWins},
-        tcbDisabled: { type: 'toggle', label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️' },
-        widerChatbox: { type: 'toggle', label: app.msgs.menuLabel_widerChatbox, symbol: '↔️' },
-        ncbDisabled: { type: 'toggle', label: app.msgs.menuLabel_newChatBtn },
-        hiddenHeader: { type: 'toggle', label: app.msgs.menuLabel_hiddenHeader },
-        hiddenFooter: { type: 'toggle', label: app.msgs.menuLabel_hiddenFooter },
-        notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }
+        fullerWindows: { type: 'toggle',
+            label: app.msgs.menuLabel_fullerWins,
+            helptip: app.msgs.helptip_fullerWins },
+        tcbDisabled: { type: 'toggle',
+            label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️',
+            helptip: app.msgs.helptip_tallerChatbox },
+        widerChatbox: { type: 'toggle',
+            label: app.msgs.menuLabel_widerChatbox, symbol: '↔️',
+            helptip: app.msgs.helptip_widerChatbox },
+        ncbDisabled: { type: 'toggle',
+            label: app.msgs.menuLabel_newChatBtn,
+            helptip: app.msgs.helptip_newChatBtn },
+        hiddenHeader: { type: 'toggle',
+            label: app.msgs.menuLabel_hiddenHeader,
+            helptip: app.msgs.helptip_hiddenHeader },
+        hiddenFooter: { type: 'toggle',
+            label: app.msgs.menuLabel_hiddenFooter,
+            helptip: app.msgs.helptip_hiddenFooter },
+        notifDisabled: { type: 'toggle',
+            label: app.msgs.menuLabel_modeNotifs,
+            helptip: app.msgs.helptip_modeNotifs }
     }})
 
     // Define MENU functions
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
@@ -412,13 +429,16 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 if (sites[env.site].availFeatures.includes(key)) {
-                    const settingIsEnabled = config[key] ^ key.includes('Disabled'),
-                          menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                    const settingIsEnabled = config[key] ^ key.includes('Disabled')
+                    const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
                                     + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                    const registerOptions = ( // add menu tooltip in TM 5.0+
+                        env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
+                            { title: settings.controls[key].helptip } : undefined )
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                         settings.save(key, !config[key]) ; sync.configToUI()
                         notify(`${settings.controls[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
-                    }))
+                    }, registerOptions))
                 }
             })
 
@@ -432,7 +452,7 @@
         },
 
         refresh() {
-            if (env.scriptManager == 'OrangeMonkey') return
+            if (env.scriptManager.name == 'OrangeMonkey') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
