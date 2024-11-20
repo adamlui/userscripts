@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20
+// @version             2024.11.20.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -339,7 +339,7 @@
     }
 
     // Init SETTINGS props
-    Object.assign(app, { settings: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }}})
+    Object.assign(settings, { props: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }}})
 
     // Define MENU functions
 
@@ -352,13 +352,13 @@
         register() {
 
             // Add toggles
-            Object.keys(app.settings).forEach(key => {
+            Object.keys(settings.props).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key),
-                      menuLabel = `${ app.settings[key].symbol || menu.state.symbols[+settingIsEnabled] } `
-                                + app.settings[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                      menuLabel = `${ settings.props[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                + settings.props[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI()
-                    notify(`${app.settings[key].label}: ${menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
+                    notify(`${settings.props[key].label}: ${menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
                 }))
             })
     
