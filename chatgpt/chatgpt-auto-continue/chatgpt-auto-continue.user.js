@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.18.1
+// @version             2024.11.20
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -252,12 +252,13 @@
           xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
-    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: 'cb67cff' },
-          assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestAssetCommitHash}`
-    Object.assign(app, await new Promise(resolve => xhr({
-        method: 'GET', url: `${assetHostURL}/app.json`,
+    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: 'cb67cff', urls: {} }
+    app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestAssetCommitHash}`
+    const appData = await new Promise(resolve => xhr({
+        method: 'GET', url: `${app.urls.assetHost}/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
-    })))
+    }))
+    Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
@@ -313,7 +314,7 @@
     }
     if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = assetHostURL + '/chromium/extension/_locales/',
+            const msgHostDir = app.urls.assetHost + '/chromium/extension/_locales/',
                   msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
