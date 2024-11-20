@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20
+// @version             2024.11.20.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -389,7 +389,7 @@
     }
 
     // Init SETTINGS props
-    Object.assign(app, { settings: {
+    Object.assign(settings, { props: {
         fullerWindows: { type: 'toggle', label: app.msgs.menuLabel_fullerWins},
         tcbDisabled: { type: 'toggle', label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️' },
         widerChatbox: { type: 'toggle', label: app.msgs.menuLabel_widerChatbox, symbol: '↔️' },
@@ -410,14 +410,14 @@
         register() {
 
             // Add toggles
-            Object.keys(app.settings).forEach(key => {
+            Object.keys(settings.props).forEach(key => {
                 if (sites[env.site].availFeatures.includes(key)) {
                     const settingIsEnabled = config[key] ^ key.includes('Disabled'),
-                          menuLabel = `${ app.settings[key].symbol || menu.state.symbols[+settingIsEnabled] } `
-                                    + app.settings[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                          menuLabel = `${ settings.props[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                    + settings.props[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                         settings.save(key, !config[key]) ; sync.configToUI()
-                        notify(`${app.settings[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                        notify(`${settings.props[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }))
                 }
             })
