@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.20.3
+// @version                2024.11.20.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -206,8 +206,8 @@
     // Init COMPATIBILITY flags
     log.debug('Initializing compatibility flags...')
     const streamingSupported = {
-        browser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
-        scriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
+        byBrowser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
+        byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
     log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
 
     // Init CONFIG
@@ -218,7 +218,7 @@
                   'fontSize', 'minimized', 'proxyAPIenabled', 'replyLanguage', 'scheme', 'streamingDisabled')
     if (!config.replyLanguage) settings.save('replyLanguage', config.userLanguage) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
-    if (!streamingSupported.browser || !streamingSupported.scriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
+    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
@@ -1026,7 +1026,7 @@
                         // Add click listener
                         settingItem.onclick = () => {
                             if (!(key == 'streamingDisabled' // visually switch toggle if not Streaminng...
-                                && (!streamingSupported.browser || !streamingSupported.scriptManager // ...in unsupported env...
+                                && (!streamingSupported.byBrowser || !streamingSupported.byScriptManager // ...in unsupported env...
                                 || !config.proxyAPIenabled) // ...or in OpenAI mode
                             )) modals.settings.toggle.switch(settingToggle)
 
@@ -2194,7 +2194,7 @@
             const scriptCatLink = env.browser.isFF   ? 'https://addons.mozilla.org/firefox/addon/scriptcat/'
                                 : env.browser.isEdge ? 'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                                                      : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
-            if (!streamingSupported.scriptManager) { // alert userscript manager unsupported, suggest TM/SC
+            if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
                 const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -2206,7 +2206,7 @@
                 )
                 const suggestAlert = document.getElementById(suggestAlertID).firstChild
                 modals.init(suggestAlert) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
-            } else if (!streamingSupported.browser) { // alert TM/browser unsupported, suggest SC
+            } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
                 log.debug('Streaming Mode unsupported in browser')
                 const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
