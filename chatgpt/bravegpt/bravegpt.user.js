@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.20.1
+// @version               2024.11.20.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -528,9 +528,9 @@
     }
     log.debug(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
 
-    // Init SETTINGS props
+    // Init SETTINGS controls
     log.debug('Initializing settings properties...')
-    Object.assign(settings, { props: {
+    Object.assign(settings, { controls: {
         proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
             label: app.msgs.menuLabel_proxyAPImode,
             helptip: app.msgs.helptip_proxyAPImode },
@@ -582,7 +582,7 @@
         about: { type: 'modal', icon: 'questionMarkCircle',
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
-    log.debug(`Success! settings.props = ${log.prettifyObj(settings.props)}`)
+    log.debug(`Success! settings.controls = ${log.prettifyObj(settings.controls)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
@@ -609,12 +609,12 @@
 
             // Add Proxy API Mode toggle
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
-                          + settings.props.proxyAPIenabled.label + ' '
+                          + settings.controls.proxyAPIenabled.label + ' '
                           + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
             menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode))
 
             // Add About entry
-            const aboutLabel = `💡 ${settings.props.about.label}`
+            const aboutLabel = `💡 ${settings.controls.about.label}`
             menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
 
             // Add Settings entry
@@ -781,9 +781,9 @@
 
         // Append notif type icon
         const iconStyles = 'width: 28px ; height: 28px ; position: relative ; top: 3px ; margin-left: 11px ;',
-              mode = Object.keys(settings.props).find(key => settings.props[key].label.includes(msg.trim()))
+              mode = Object.keys(settings.controls).find(key => settings.controls[key].label.includes(msg.trim()))
         if (mode && !/(?:pre|suf)fix/.test(mode)) {
-            const modeIcon = icons[settings.props[mode].icon].create()
+            const modeIcon = icons[settings.controls[mode].icon].create()
             modeIcon.style.cssText = iconStyles
                                    + ( /autoget|debug|focus|scroll/i.test(mode) ? 'top: 0.5px' : '' ) // raise some icons
                                    + ( /animation|debug/i.test(mode) ? 'width: 23px ; height: 23px' : '' ) // shrink some icon
@@ -1100,7 +1100,7 @@
 
                 // Init settings keys
                 log.debug('Initializing settings keys...')
-                const settingsKeys = Object.keys(settings.props).filter(key => !(env.browser.isMobile && settings.props[key].mobile == false))
+                const settingsKeys = Object.keys(settings.controls).filter(key => !(env.browser.isMobile && settings.controls[key].mobile == false))
                 log.debug(`Success! settingsKeys = ${log.prettifyObj(settingsKeys)}`)
 
                 // Init logo
@@ -1133,7 +1133,7 @@
 
                 // Create/append setting icons/labels/toggles
                 settingsKeys.forEach((key, idx) => {
-                    const setting = settings.props[key]
+                    const setting = settings.controls[key]
 
                     // Create/append item/label elems
                     const settingItem = document.createElement('li') ; settingItem.id = key + '-menu-entry'
@@ -1220,7 +1220,7 @@
                                 log.caller = 'settings.createAppend()'
                                 log.debug(`Toggling ${settingItem.textContent} ${ key.includes('Disabled') ^ config[key] ? 'OFF' : 'ON' }...`)
                                 settings.save(key, !config[key]) // update config
-                                notify(`${settings.props[key].label} ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                                notify(`${settings.controls[key].label} ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                                 log[key.includes('debug') ? 'info' : 'debug'](`Success! config.${key} = ${config[key]}`)
                             }
                         }
@@ -2665,7 +2665,7 @@
             }
             log.caller = `toggle.animations('${layer}')`
             log.debug(`Success! ${layer.toUpperCase()} animations toggled ${ config[configKey] ? 'OFF' : 'ON' }`)
-            notify(`${settings.props[layer + 'AnimationsDisabled'].label} ${menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
+            notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
         },
 
         autoGet() {
@@ -2676,7 +2676,7 @@
             if (!config.autoGetDisabled) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(manualMode => {
                     if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
-            notify(`${settings.props.autoGetDisabled.label} ${menu.state.words[+!config.autoGetDisabled]}`)
+            notify(`${settings.controls.autoGetDisabled.label} ${menu.state.words[+!config.autoGetDisabled]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const autoGetToggle = document.querySelector('[id*="autoGet"][id*="menu-entry"] input')
                 if (autoGetToggle.checked == config.autoGetDisabled) modals.settings.toggle.switch(autoGetToggle)
@@ -2719,7 +2719,7 @@
             log.debug(`Toggling ${log.toTitleCase(mode)} Mode ${ config[modeKey] ? 'OFF' : 'ON' }...`)
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey] && !config.autoGetDisabled) toggle.autoGet() // disable Auto-Get mode if enabled
-            notify(`${settings.props[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
+            notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*="${modeKey}"][id*="menu-entry"] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
@@ -2814,8 +2814,8 @@
                                                      : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.scriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 log.debug(`Streaming Mode unsupported in ${env.scriptManager}`)
-                const suggestAlertID = siteAlert(`${settings.props.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
-                    `${settings.props.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
+                const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
+                    `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
                         + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
                             ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${app.msgs.alert_and}`
                                 : '' )
@@ -2826,8 +2826,8 @@
                 modals.init(suggestAlert) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
             } else if (!streamingSupported.browser) { // alert TM/browser unsupported, suggest SC
                 log.debug('Streaming Mode unsupported in browser')
-                const suggestAlertID = siteAlert(`${settings.props.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
-                    `${settings.props.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
+                const suggestAlertID = siteAlert(`${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
+                    `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
                         + `${ env.browser.isChrome ? 'Chrome' : env.browser.isEdge ? 'Edge' : 'Brave' } ${app.msgs.alert_whenUsing} Tampermonkey. `
                         + `${app.msgs.alert_pleaseUse} <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a> `
                             + `${app.msgs.alert_instead}.`
@@ -2836,7 +2836,7 @@
                 modals.init(suggestAlert) // add classes/stars, disable wheel-scrolling, dim bg, glowup btns
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 log.debug('Streaming Mode unsupported in OpenAI mode')
-                let msg = `${settings.props.streamingDisabled.label} `
+                let msg = `${settings.controls.streamingDisabled.label} `
                         + `${app.msgs.alert_isCurrentlyOnlyAvailBy} `
                         + `${app.msgs.alert_switchingOn} ${app.msgs.mode_proxy}. `
                         + `(${app.msgs.alert_openAIsupportSoon}!)`
@@ -2849,7 +2849,7 @@
             } else { // functional toggle
                 log.debug(`Toggling Streaming Mode ${ config.streamingDisabled ? 'ON' : 'OFF' }`)
                 settings.save('streamingDisabled', !config.streamingDisabled)
-                notify(`${settings.props.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
+                notify(`${settings.controls.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
                 log.debug(`Success! config.streamingDisabled = ${config.streamingDisabled}`)
             }
         },
