@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.18.1
+// @version                2024.11.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -992,23 +992,21 @@
 
                         // Create/stylize switch
                         const switchSpan = document.createElement('span')
-                        const switchStyles = {
+                        Object.assign(switchSpan.style, {
                             position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
                             backgroundColor: settingToggle.checked ? '#ccc' : '#AD68FF', // init opposite  final color
                             width: '26px', height: '13px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
-                        }
-                        Object.assign(switchSpan.style, switchStyles)
+                        })
 
                         // Create/stylize knob
                         const knobSpan = document.createElement('span')
-                        const knobStyles = {
+                        Object.assign(knobSpan.style, {
                             position: 'absolute', left: '1px', bottom: '1px',
                             width: '11px', height: '11px', content: '""', borderRadius: '28px',
                             transform: settingToggle.checked ? // init opposite final pos
                                 'translateX(0)' : 'translateX(14px) translateY(0)',
                             backgroundColor: 'white',  '-webkit-transition': '0.2s', transition: '0.2s'
-                        }
-                        Object.assign(knobSpan.style, knobStyles)
+                        })
 
                         // Append elems
                         switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
