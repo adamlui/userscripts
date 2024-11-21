@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20
+// @version             2024.11.21
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -590,11 +590,10 @@
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
-                const toggleInput = document.getElementById('auto-talk-toggle-input')
-                toggleInput.checked = !toggleInput.checked ; config.autoTalkDisabled = !toggleInput.checked
-                sidebarToggle.update() ; menu.refresh()
+                const toggleInput = sidebarToggle.div.querySelector('input')
+                toggleInput.checked = !toggleInput.checked ; settings.save('autoTalkDisabled', !toggleInput.checked)
+                sidebarToggle.update() ; menu.refresh() // update visual elements
                 notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
-                settings.save('autoTalkDisabled', config.autoTalkDisabled)
             }
         },
 
@@ -666,8 +665,8 @@
                 toggleLabel.style.overflow = 'hidden' // to truncate overflown text
                 toggleLabel.style.textOverflow = 'ellipsis' // to truncate overflown text
                 toggleLabel.innerText = ( app.msgs.mode_autoTalk ) + ' '
-                                    + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                            : ( app.msgs.state_disabled ))
+                                      + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
+                                                              : ( app.msgs.state_disabled ))
                 // Append elements
                 for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
         
