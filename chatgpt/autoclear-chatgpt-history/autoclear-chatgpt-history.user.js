@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20.1
+// @version             2024.11.21
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -609,15 +609,11 @@
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
-                const toggleInput = document.getElementById('autoclear-toggle-input')
-                toggleInput.checked = !toggleInput.checked ; config.autoclear = toggleInput.checked
-                sidebarToggle.update() ; menu.refresh()
-                if (config.autoclear) {
-                    setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
-                    notify(`${app.msgs.mode_autoClear}: ${menu.state.words[1]}`)
-                } else if (!config.autoclear)
-                    notify(`${app.msgs.mode_autoClear}: ${menu.state.words[0]}`)
-                settings.save('autoclear', config.autoclear)
+                const toggleInput = sidebarToggle.div.querySelector('input')
+                toggleInput.checked = !toggleInput.checked ; settings.save('autoclear', toggleInput.checked)
+                sidebarToggle.update() ; menu.refresh() // update visual elements
+                if (config.autoclear) setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
+                notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }
         },
 
@@ -689,8 +685,8 @@
                 toggleLabel.style.overflow = 'hidden' // to truncate overflown text
                 toggleLabel.style.textOverflow = 'ellipsis' // to truncate overflown text
                 toggleLabel.innerText = ( app.msgs.mode_autoClear ) + ' '
-                                    + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                            : ( app.msgs.state_disabled ))
+                                      + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
+                                                              : ( app.msgs.state_disabled ))
                 // Append elements
                 for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
         
