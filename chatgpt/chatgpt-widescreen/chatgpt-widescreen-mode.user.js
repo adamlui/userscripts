@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.2
+// @version             2024.11.21.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -262,7 +262,7 @@
 
 (async () => {
 
-    // Init ENV vars 
+    // Init ENV vars
     const env = {
         browser: { isFF: chatgpt.browser.isFirefox() },
         scriptManager: {
@@ -283,7 +283,7 @@
     Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-    
+
     // Init SITE props
     const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/data/sites.json`,
@@ -644,9 +644,9 @@
 
         safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
     }
-    
+
     // Define CHATBAR functions
-    
+
     const chatbar = {
 
         get() {
@@ -771,7 +771,7 @@
         insert() {
             if (btns.status?.startsWith('insert') || document.getElementById('wideScreen-btn')) return
             btns.status = 'inserting' ; if (!btns.wideScreen) btns.create()
-            
+
             // Init elems
             const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
             const btnTypesToInsert = btns.types.slice().reverse() // to left-to-right for insertion order
@@ -813,7 +813,7 @@
 
         updateSVG(mode, state = '') {
             if (!btns.wideScreen) btns.create()
-    
+
             // Pick appropriate button/elements
             const [btn, ONelems, OFFelems] = (
                 mode == 'fullScreen' ? [btns.fullScreen, btns.svgElems.fullScreen.on, btns.svgElems.fullScreen.off]
@@ -836,12 +836,12 @@
             btnSVG.style.pointerEvents = 'none' // prevent triggering tooltips twice
             if (/chatgpt|openai/.test(env.site)) // override button resizing
                 btnSVG.style.height = btnSVG.style.width = '1.3rem'
-    
+
             // Update SVG elements
             btnSVG.textContent = ''
             const svgElems = config[mode] || state.toLowerCase() == 'on' ? ONelems : OFFelems
             svgElems.forEach(elem => btnSVG.append(elem))
-    
+
             // Update SVG
             if (!btn.contains(btnSVG)) btn.append(btnSVG)
         }
@@ -946,7 +946,7 @@
                     else { document.head.append(fullWinStyle) ; sync.mode('fullWindow') }
                 } else if (mode == 'fullScreen') document.documentElement.requestFullscreen()
             }
-        
+
             function deactivateMode(mode) {
                 if (mode == 'wideScreen') {
                     wideScreenStyle.remove() ; sync.mode('wideScreen')
@@ -964,7 +964,7 @@
         tooltip(event) {
             update.tooltip(event.currentTarget.id.replace(/-btn$/, ''))
             tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
-        }   
+        }
     }
 
     // Define SYNC functions
