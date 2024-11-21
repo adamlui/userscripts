@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.10
+// @version             2024.11.21.11
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -768,7 +768,7 @@
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
         if (!config.toggleHidden && !document.getElementById('autoclear-toggle-navicon') && sidebarToggle.status != 'inserting') {
-            sidebarToggle.status = 'missing' ; sidebarToggle.insert() }       
+            sidebarToggle.status = 'missing' ; sidebarToggle.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
