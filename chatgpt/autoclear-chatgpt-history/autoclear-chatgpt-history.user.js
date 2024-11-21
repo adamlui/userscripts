@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.7
+// @version             2024.11.21.8
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -703,6 +703,11 @@
         }
     }
 
+    function syncConfigToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
+        menu.refresh() // prefixes/suffixes
+    }
+
     function hideHistory() { // from DOM since chatgpt.clearChats() works back-end only (front-end updates on refresh)
         new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
             document.querySelectorAll('nav ol').forEach(ol => {
@@ -720,13 +725,6 @@
     }
 
     function clearChatsAndGoHome() { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
-
-    // Define SYNC function
-
-    function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
-        menu.refresh() // prefixes/suffixes
-    }
 
     // Run MAIN routine
 
