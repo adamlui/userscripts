@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.14.3
+// @version             2024.11.21
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -98,7 +98,7 @@
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
 
-                // Compare versions                
+                // Compare versions
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
