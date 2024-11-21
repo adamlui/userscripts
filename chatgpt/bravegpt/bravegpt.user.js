@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.20.5
+// @version               2024.11.21
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1560,15 +1560,15 @@
             create() {
                 const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M1 5l7 4.61L15 5v2.39L8 12 1 7.39z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
         chevronUp: {
             create() {
-                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }), 
+                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
@@ -1637,7 +1637,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         scheme: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 -960 960 960' })
@@ -1646,7 +1646,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         sidebar: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 -975 900 1000' })
@@ -1655,7 +1655,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         signalStream: {
             create() {
                 const svg = create.svgElem('svg', { width: 16, height: 16, viewBox: '0 0 32 32' })
@@ -1664,7 +1664,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         slash: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 0 15 15' }),
@@ -1945,7 +1945,7 @@
             const firstP = appDiv.querySelector('pre p')
             if (!firstP) return
             const prefixNeeded = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
-                  prefixExists = firstP.textContent.startsWith('>> ')                            
+                  prefixExists = firstP.textContent.startsWith('>> ')
             if (prefixNeeded && !prefixExists) firstP.prepend('>> ')
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
         },
@@ -2172,7 +2172,7 @@
                       + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                                   + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                        '[class$="-modal"] button { transition: transform 0.15s ease }' 
+                        '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
                   + '.bravegpt-menu {'
                       + 'position: absolute ; z-index: 2250 ;'
@@ -2187,9 +2187,9 @@
                   + ':root { --glow-color: hsl(186 100% 69%); }'
                   + '.glowing-btn {'
                       + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
-                      + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;' 
-                      + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;' 
-                      + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }' 
+                      + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                      + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                      + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }'
                   + '.glowing-txt {'
                       + 'animation: text-flicker 3s linear infinite ;'
                       + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
@@ -2422,7 +2422,7 @@
                             Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 200)
                     }, 170)
                 }
-            })            
+            })
         },
 
         replySection() {
@@ -2547,7 +2547,7 @@
             sliderThumb.addEventListener(inputEvents.down, event => {
                 if (event.button != 0) return // prevent non-left-click drag
                 event.preventDefault() // prevent text selection
-                isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft     
+                isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft
                 document.body.appendChild(fontSizeSlider.cursorOverlay)
             })
             document.addEventListener(inputEvents.move, event => {
@@ -2580,10 +2580,10 @@
                 const sliderWidth = slider.offsetWidth - sliderThumb.offsetWidth
                 if (newLeft < 0) newLeft = 0
                 if (newLeft > sliderWidth) newLeft = sliderWidth
-    
+
                 // Move thumb
                 sliderThumb.style.left = newLeft + 'px'
-    
+
                 // Adjust font size based on thumb position
                 const answerPre = appDiv.querySelector('pre'),
                       fontSizePercent = newLeft / sliderWidth,
@@ -2699,7 +2699,7 @@
             const removeCondition = state == 'off' || ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
-                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers                
+                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
                     btnTextSpan = document.createElement('span')
@@ -2954,7 +2954,7 @@
                     log.caller = 'session.isBlockedByCF'
                     log.debug('Blocked by CloudFlare')
                     return true
-                }             
+                }
             } catch (err) { return false }
         }
     }
@@ -3369,7 +3369,7 @@
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 appDiv.textContent = ''
-                fillStarryBG(appDiv) // add stars      
+                fillStarryBG(appDiv) // add stars
 
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 143
@@ -3433,7 +3433,7 @@
                     pinBtn.className = 'corner-btn' ; pinBtn.style.margin = '1px 9px 0 0'
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
-                // Create/append Wider Sidebar button         
+                // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
                     wsbBtn.id = 'wsb-btn' // for toggle.sidebar() + toggle.tooltip()
@@ -3626,7 +3626,7 @@
                     setTimeout(() => {
                         relatedQueryDiv.classList.add('active')
                         relatedQueryDiv.onclick = relatedQueryDiv.onkeydown = event => {
-                            const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
+                            const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]
                             if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
                                 event.preventDefault() // prevent scroll on space taps
                                 const relatedQuery = event.target.textContent, chatbar = appDiv.querySelector('textarea')
@@ -3700,7 +3700,7 @@
         }).observe(document.body, { childList: true, subtree: true })
     })
     appDivContainer.prepend(appDiv) ; visibilizeOverflow()
-    setTimeout(() => appDiv.classList.add('active'), 100) // fade in    
+    setTimeout(() => appDiv.classList.add('active'), 100) // fade in
 
     // Init footer CTA to share feedback
     let footerContent = create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
@@ -3742,7 +3742,7 @@
     // Observe DOM for need to re-insert BraveGPT
     new MutationObserver((_, obs) => {
         if (!document.getElementById('bravegpt')) { restoreAppDiv() ; obs.disconnect() }
-    }).observe(document.body, { subtree: true, childList: true })   
+    }).observe(document.body, { subtree: true, childList: true })
     function saveAppDiv() { if (restoreAppDiv.restored) return ; saveAppDiv.html = appDiv.innerHTML }
     function restoreAppDiv() {
         log.caller = 'restoreAppDiv()'
