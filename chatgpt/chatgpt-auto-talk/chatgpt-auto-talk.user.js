@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21
+// @version             2024.11.21.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -372,7 +372,10 @@
             const atLabel = menu.state.symbols[+!config.autoTalkDisabled] + ' '
                           + ( app.msgs.mode_autoTalk )
                           + menu.state.separator + menu.state.words[+!config.autoTalkDisabled]
-            menu.ids.push(GM_registerMenuCommand(atLabel, () => document.getElementById('auto-talk-toggle-label').click()))
+            menu.ids.push(GM_registerMenuCommand(atLabel, () => {
+                settings.save('autoTalkDisabled', !config.autoTalkDisabled) ; syncStorageToUI()
+                notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
+            }))
 
             // Add Toggle Visibility toggle
             const tvLabel = menu.state.symbols[+!config.toggleHidden] + ' '
@@ -591,8 +594,8 @@
             // Add click listener
             sidebarToggle.div.onclick = () => {
                 const toggleInput = sidebarToggle.div.querySelector('input')
-                toggleInput.checked = !toggleInput.checked ; settings.save('autoTalkDisabled', !toggleInput.checked)
-                sidebarToggle.update() ; menu.refresh() // update visual elements
+                toggleInput.checked = !toggleInput.checked
+                settings.save('autoTalkDisabled', !toggleInput.checked) ; syncStorageToUI()
                 notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
             }
         },
@@ -679,6 +682,13 @@
                 }, 1) // min delay to trigger transition fx
             }
         }
+    }
+
+    // Define SYNC function
+
+    function syncStorageToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
+        menu.refresh() // symbols/suffixes
     }
 
     // Run MAIN routine
