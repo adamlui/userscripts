@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.1
+// @version             2024.11.21.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1134,7 +1134,7 @@
                     btns.updateColor() ; isTempChat = chatbarIsBlack }
         }
     })
-    nodeObserver.observe(document.querySelector(env.site == 'poe' ? 'head' : 'body'), { attributes: true, subtree: true })
+    nodeObserver.observe(document[env.site == 'poe' ? 'head' : 'body'], { attributes: true, subtree: true })
 
     // Monitor SIDEBAR to update full-window setting
     if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
