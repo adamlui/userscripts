@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20.3
+// @version             2024.11.21
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -436,7 +436,7 @@
                         env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
                             { title: settings.controls[key].helptip } : undefined )
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                        settings.save(key, !config[key]) ; sync.configToUI()
+                        settings.save(key, !config[key]) ; sync.storageToUI()
                         notify(`${settings.controls[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }, registerOptions))
                 }
@@ -971,14 +971,6 @@
 
     const sync = {
 
-        configToUI() { // from toolbar menu toggles
-            sync.fullerWin() // sync FW
-            update.style.tweaks() // sync TCB/NCB/HH/HF
-            update.style.chatbar() // sync WCB
-            chatbar.tweak() // update chatgpt.com chatbar inner width + apply poe.com btn alignment (once)
-            menu.refresh() // to update state symbol/suffix
-        },
-
         fullerWin() {
             if (config.fullWindow && config.fullerWindows && !config.wideScreen) { // activate fuller windows
                 document.head.append(wideScreenStyle) ; btns.updateSVG('wideScreen', 'on')
@@ -1000,6 +992,14 @@
                                      && config.widerChatbox ? 111 : 0) // delay if toggled to/from active WCB to avoid inaccurate width
             notify(`${app.msgs[`mode_${mode}`]} ${app.msgs[`state_${ state ? 'on' : 'off' }`].toUpperCase()}`)
             config.modeSynced = true ; setTimeout(() => config.modeSynced = false, 100) // prevent repetition
+        },
+
+        storageToUI() { // from toolbar menu toggles
+            sync.fullerWin() // sync FW
+            update.style.tweaks() // sync TCB/NCB/HH/HF
+            update.style.chatbar() // sync WCB
+            chatbar.tweak() // update chatgpt.com chatbar inner width + apply poe.com btn alignment (once)
+            menu.refresh() // to update state symbol/suffix
         }
     }
 
