@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.5
+// @version             2024.11.21.6
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -761,7 +761,7 @@
     })).observe(document.documentElement, { childList: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
-    if (!document.querySelector('[sidebar-click-zoom-observed]')) {
+    if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
             if (target.closest('[class*="sidebar"]') // include sidebar divs
                 && !target.id.endsWith('-knob-span') // exclude our sidebarToggle
