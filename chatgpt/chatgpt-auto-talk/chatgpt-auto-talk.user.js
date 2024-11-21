@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.4
+// @version             2024.11.21.5
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -573,6 +573,11 @@
 
     // Define UI functions
 
+    function syncConfigToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.autoTalkDisabled
+        menu.refresh() // prefixes/suffixes
+    }
+
     const sidebarToggle = {
 
         create() {
@@ -682,13 +687,6 @@
                 }, 1) // min delay to trigger transition fx
             }
         }
-    }
-
-    // Define SYNC function
-
-    function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.autoTalkDisabled
-        menu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
