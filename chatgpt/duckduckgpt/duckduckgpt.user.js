@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.20.5
+// @version                2024.11.21
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -878,7 +878,7 @@
                 modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left + ( targetModalIsSettings ? 0 : 21 )
                 modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top + ( targetModalIsSettings ? 0 : 12 )
             },
-    
+
             mousemove(event) { // drag modal
                 if (modals.dragHandlers.draggableElem) {
                     const newX = event.clientX - modals.dragHandlers.offsetX,
@@ -887,7 +887,7 @@
                     modals.dragHandlers.draggableElem.style.top = `${newY}px`
                 }
             },
-    
+
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
                 log.caller = 'modals.dragHandlers.mouseup()'
                 modals.dragHandlers.draggableElem.style.cursor = 'inherit'
@@ -1559,15 +1559,15 @@
             create() {
                 const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M1 5l7 4.61L15 5v2.39L8 12 1 7.39z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
         chevronUp: {
             create() {
-                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }), 
+                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
@@ -1626,7 +1626,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         questionMark: {
             create() {
                 const svg = create.svgElem('svg', { width: 18, height: 18, viewBox: '0 -960 960 960' })
@@ -1644,7 +1644,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         scheme: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 -960 960 960' })
@@ -1653,7 +1653,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         sidebar: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 -975 900 1000' })
@@ -1662,7 +1662,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         signalStream: {
             create() {
                 const svg = create.svgElem('svg', { width: 16, height: 16, viewBox: '0 0 32 32' })
@@ -1671,7 +1671,7 @@
                 svg.append(svgPath) ; return svg
             }
         },
-        
+
         slash: {
             create() {
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 0 15 15' }),
@@ -1860,7 +1860,7 @@
             const firstP = appDiv.querySelector('pre p')
             if (!firstP) return
             const prefixNeeded = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
-                  prefixExists = firstP.textContent.startsWith('>> ')                            
+                  prefixExists = firstP.textContent.startsWith('>> ')
             if (prefixNeeded && !prefixExists) firstP.prepend('>> ')
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
         },
@@ -2076,7 +2076,7 @@
                       + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                                   + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                        '[class$="-modal"] button { transition: transform 0.15s ease }' 
+                        '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
                   + '.ddgpt-menu {'
                       + 'position: absolute ; z-index: 2250 ;'
@@ -2091,9 +2091,9 @@
                   + ':root { --glow-color: hsl(186 100% 69%); }'
                   + '.glowing-btn {'
                       + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
-                      + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;' 
-                      + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;' 
-                      + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }' 
+                      + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                      + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                      + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }'
                   + '.glowing-txt {'
                       + 'animation: text-flicker 3s linear infinite ;'
                       + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
@@ -2188,7 +2188,7 @@
                 tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
                                       + ( config.stickySidebar ? ssbStyles
                                         : config.anchored ? ( anchorStyles + ( config.expanded ? expandedStyles : '' )) : '' )
-        
+
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
                 if (kudoAIspan) {
@@ -2434,7 +2434,7 @@
             sliderThumb.addEventListener(inputEvents.down, event => {
                 if (event.button != 0) return // prevent non-left-click drag
                 event.preventDefault() // prevent text selection
-                isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft     
+                isDragging = true ; startX = event.clientX ; startLeft = sliderThumb.offsetLeft
                 document.body.appendChild(fontSizeSlider.cursorOverlay)
             })
             document.addEventListener(inputEvents.move, event => {
@@ -2467,10 +2467,10 @@
                 const sliderWidth = slider.offsetWidth - sliderThumb.offsetWidth
                 if (newLeft < 0) newLeft = 0
                 if (newLeft > sliderWidth) newLeft = sliderWidth
-    
+
                 // Move thumb
                 sliderThumb.style.left = newLeft + 'px'
-    
+
                 // Adjust font size based on thumb position
                 const answerPre = appDiv.querySelector('pre'),
                       fontSizePercent = newLeft / sliderWidth,
@@ -2585,7 +2585,7 @@
             const removeCondition = state == 'off' || ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
-                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers                
+                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
                     btnTextSpan = document.createElement('span')
@@ -2769,7 +2769,7 @@
                       : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
-    
+
             // Update position
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
@@ -2839,7 +2839,7 @@
                     log.caller = 'session.isBlockedByCF'
                     log.debug('Blocked by CloudFlare')
                     return true
-                }             
+                }
             } catch (err) { return false }
         }
     }
@@ -3502,7 +3502,7 @@
                     setTimeout(() => {
                         relatedQueryDiv.classList.add('active')
                         relatedQueryDiv.onclick = relatedQueryDiv.onkeydown = event => {
-                            const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]    
+                            const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]
                             if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
                                 event.preventDefault() // prevent scroll on space taps
                                 const relatedQuery = event.target.textContent, chatbar = appDiv.querySelector('textarea')
@@ -3560,7 +3560,7 @@
             + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
         ))
     }
- 
+
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
     appFooter.classList.add('fade-in', // DDGPT class
@@ -3717,4 +3717,3 @@
     }
 
 })()
- 
