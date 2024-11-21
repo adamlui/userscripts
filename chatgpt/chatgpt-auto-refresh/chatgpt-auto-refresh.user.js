@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.20
+// @version             2024.11.21
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -661,16 +661,16 @@
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
-                const toggleInput = document.getElementById('auto-refresh-toggle-input')
-                toggleInput.checked = !toggleInput.checked ; config.arDisabled = !toggleInput.checked
-                sidebarToggle.update() ; menu.refresh()
+                const toggleInput = sidebarToggle.div.querySelector('input')
+                toggleInput.checked = !toggleInput.checked ; settings.save('arDisabled', !toggleInput.checked)
+                sidebarToggle.update() ; menu.refresh() // update visual elements
                 if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
                     chatgpt.autoRefresh.activate(config.refreshInterval)
                     notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
                 } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
                     chatgpt.autoRefresh.deactivate()
                     notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
-                } settings.save('arDisabled', config.arDisabled)
+                }
             }
         },
 
@@ -742,8 +742,8 @@
                 toggleLabel.style.overflow = 'hidden' // to truncate overflown text
                 toggleLabel.style.textOverflow = 'ellipsis' // to truncate overflown text
                 toggleLabel.innerText = ( app.msgs.menuLabel_autoRefresh ) + ' '
-                                    + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                            : ( app.msgs.state_disabled ))
+                                      + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
+                                                              : ( app.msgs.state_disabled ))
                 // Append elements
                 for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
         
