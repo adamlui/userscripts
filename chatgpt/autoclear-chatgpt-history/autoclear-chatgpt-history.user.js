@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.4
+// @version             2024.11.21.5
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -614,7 +614,7 @@
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
                 settings.save('autoclear', toggleInput.checked) ; syncConfigToUI()
-                if (config.autoclear) setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
+                if (config.autoclear) { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
                 notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }
         },
@@ -764,7 +764,7 @@
     sidebarToggle.insert()
 
     // AUTO-CLEAR on first visit if enabled
-    if (config.autoclear) setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
+    if (config.autoclear) { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
 
     // Monitor <html> to maintain NAV TOGGLE VISIBILITY on node changes
     new MutationObserver(mutations => mutations.forEach(mutation => {
