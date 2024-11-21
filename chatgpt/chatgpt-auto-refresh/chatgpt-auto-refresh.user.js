@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.4
+// @version             2024.11.21.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -406,13 +406,7 @@
                           + menu.state.separator + menu.state.words[+!config.arDisabled]
             menu.ids.push(GM_registerMenuCommand(arLabel, () => {
                 settings.save('arDisabled', !config.arDisabled) ; syncConfigToUI()
-                if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
-                    chatgpt.autoRefresh.activate(config.refreshInterval)
-                    notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
-                } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
-                    chatgpt.autoRefresh.deactivate()
-                    notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
-                }
+                toggleAutoRefresh()
             }))
 
             // Add Toggle Visibility toggle
@@ -671,13 +665,7 @@
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
                 settings.save('arDisabled', !toggleInput.checked) ; syncConfigToUI()
-                if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
-                    chatgpt.autoRefresh.activate(config.refreshInterval)
-                    notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
-                } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
-                    chatgpt.autoRefresh.deactivate()
-                    notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
-                }
+                toggleAutoRefresh()
             }
         },
 
@@ -762,6 +750,18 @@
                     knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
                 }, 1) // min delay to trigger transition fx
             }
+        }
+    }
+
+    // Define AUTO-REFRESH function
+
+    function toggleAutoRefresh() {
+        if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
+            chatgpt.autoRefresh.activate(config.refreshInterval)
+            notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
+        } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
+            chatgpt.autoRefresh.deactivate()
+            notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
         }
     }
 
