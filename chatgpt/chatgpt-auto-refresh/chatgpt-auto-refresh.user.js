@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.5
+// @version             2024.11.21.6
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -642,6 +642,11 @@
 
     // Define UI functions
 
+    function syncConfigToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.arDisabled
+        menu.refresh() // prefixes/suffixes
+    }
+
     const sidebarToggle = {
 
         create() {
@@ -763,13 +768,6 @@
             chatgpt.autoRefresh.deactivate()
             notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
         }
-    }
-
-    // Define SYNC function
-
-    function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.arDisabled
-        menu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
