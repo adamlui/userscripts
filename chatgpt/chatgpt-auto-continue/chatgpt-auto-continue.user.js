@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21
+// @version             2024.11.21.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -357,7 +357,7 @@
                       menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !config[key]) ; syncStorageToUI()
+                    settings.save(key, !config[key]) ; syncConfigToUI()
                     notify(`${settings.controls[key].label}: ${menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
                 }))
             })
@@ -548,7 +548,7 @@
 
     // Define SYNC function
 
-    function syncStorageToUI() { menu.refresh() /* symbols/suffixes */ }
+    function syncConfigToUI() { menu.refresh() /* symbols/suffixes */ }
 
     // Run MAIN routine
 
