@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.2
+// @version             2024.11.21.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -405,7 +405,7 @@
                           + ( app.msgs.menuLabel_autoRefresh ) + ' ↻ '
                           + menu.state.separator + menu.state.words[+!config.arDisabled]
             menu.ids.push(GM_registerMenuCommand(arLabel, () => {
-                settings.save('arDisabled', !config.arDisabled) ; syncStorageToUI()
+                settings.save('arDisabled', !config.arDisabled) ; syncConfigToUI()
                 if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
                     chatgpt.autoRefresh.activate(config.refreshInterval)
                     notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
@@ -670,7 +670,7 @@
             sidebarToggle.div.onclick = () => {
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
-                settings.save('arDisabled', !toggleInput.checked) ; syncStorageToUI()
+                settings.save('arDisabled', !toggleInput.checked) ; syncConfigToUI()
                 if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
                     chatgpt.autoRefresh.activate(config.refreshInterval)
                     notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
@@ -767,7 +767,7 @@
 
     // Define SYNC function
 
-    function syncStorageToUI() {
+    function syncConfigToUI() {
         sidebarToggle.update() // based on config.toggleHidden + config.arDisabled
         menu.refresh() // prefixes/suffixes
     }
