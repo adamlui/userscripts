@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.7
+// @version             2024.11.21.8
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -756,7 +756,7 @@
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
         if (!config.toggleHidden && !document.getElementById('auto-talk-toggle-navicon') && sidebarToggle.status != 'inserting') {
-            sidebarToggle.status = 'missing' ; sidebarToggle.insert() }       
+            sidebarToggle.status = 'missing' ; sidebarToggle.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
