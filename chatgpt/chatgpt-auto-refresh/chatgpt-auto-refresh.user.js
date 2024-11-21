@@ -125,8 +125,8 @@
 // @description:cy      *YN DIOGEL* cael gwared â 10 munud ailosod sgwrs + *gwallau rhwydwaith parhaus* + gwiriadau Cloudflare o ChatGPT.
 // @description:da      *SIKKERT* fjern 10-minutters chat-nulstillinger + *konstante netværksfejl* og Cloudflare-tjek fra ChatGPT.
 // @description:de      *SICHER* entfernen Sie 10-Minuten-Chat-Zurücksetzungen + *kontinuierliche Netzwerkfehler* und Cloudflare-Überprüfungen aus ChatGPT.
-// @description:dv      ChatGPT އިން ދޮގު ނަތީޖާ ގެ ގޮތުން ދިމާވާ މިނެޓުގެ އަޑުގަދަވުމުގެ ވަގުތު އަލުން ސެޓްކުރުން 10 ގެ އަދަދު އަނބުރާ ގެނެސްދިނުމާއެކު + *ތެރޭގައި ހުރި ނެޓްވޯކް މައްސަލަތަކާއި* ކްލައުޑްފްލެއަރގެ ޗެކްތައް ދޫކުރުން ބޭނުންވެއެވެ.  
-// @description:dz      *དགའ་བསྐྱིད་བཞུགས་བརྡ* མི་ཉུང་སྐར་མ་གི་ཟའ་གྲགས་རིམ་ལེབ་འགྱུར་བསྡད་མེད་པ། *ངོས་འཛིན་ཡོད་པ་* Cloudflare་བཤད་པ་བཟོ་བའི་ཕྱིར་ ChatGPT ནས་ཕྱི་ལོག །  
+// @description:dv      ChatGPT އިން ދޮގު ނަތީޖާ ގެ ގޮތުން ދިމާވާ މިނެޓުގެ އަޑުގަދަވުމުގެ ވަގުތު އަލުން ސެޓްކުރުން 10 ގެ އަދަދު އަނބުރާ ގެނެސްދިނުމާއެކު + *ތެރޭގައި ހުރި ނެޓްވޯކް މައްސަލަތަކާއި* ކްލައުޑްފްލެއަރގެ ޗެކްތައް ދޫކުރުން ބޭނުންވެއެވެ.
+// @description:dz      *དགའ་བསྐྱིད་བཞུགས་བརྡ* མི་ཉུང་སྐར་མ་གི་ཟའ་གྲགས་རིམ་ལེབ་འགྱུར་བསྡད་མེད་པ། *ངོས་འཛིན་ཡོད་པ་* Cloudflare་བཤད་པ་བཟོ་བའི་ཕྱིར་ ChatGPT ནས་ཕྱི་ལོག །
 // @description:el      *ΜΕ ΑΣΦΑΛΕΙΑ* εξαλείψτε τις επαναφορές συνομιλίας 10 λεπτών + *συνεχείς σφάλματα δικτύου* και ελέγχους Cloudflare από το ChatGPT.
 // @description:eo      *SEKURE* forigu 10-minutajn babiletajajn rekomencigojn + *konstantajn reto-erarojn* kaj Cloudflare-kontrolojn de ChatGPT.
 // @description:es      *SEGURO* elimine los reinicios de chat de 10 minutos + *errores de red constantes* y verificaciones de Cloudflare de ChatGPT.
@@ -136,7 +136,7 @@
 // @description:fi      *TURVALLISESTI* poista ChatGPT:stä 10 minuutin keskustelun nollaukset + *jatkuvat verkkovirheet* ja Cloudflare-tarkistukset.
 // @description:fo      *TRYGT* strika 10 minuttir endursetan av samrøðum + *staðug netbrek* og Cloudflare-royndir frá ChatGPT.
 // @description:fr      *EN TOUTE SÉCURITÉ* éliminez les réinitialisations de chat de 10 minutes + *les erreurs réseau constantes* et les vérifications Cloudflare de ChatGPT.
-// @description:fr-CA   *EN TOUTE SÉCURITÉ* éliminez les réinitialisations de chat de 10 minutes + *les erreurs réseau constantes* et les vérifications Cloudflare de ChatGPT. 
+// @description:fr-CA   *EN TOUTE SÉCURITÉ* éliminez les réinitialisations de chat de 10 minutes + *les erreurs réseau constantes* et les vérifications Cloudflare de ChatGPT.
 // @description:gd      *GU SÀBHALTE* thoir air falbh ath-shuidheachadh còmhraidh 10 mionaid + *mearachdan lìonraidh leantainneach* agus sgrùdaidhean Cloudflare à ChatGPT.
 // @description:gl      *SEGURAMENTE* elimine os reinicios de conversa de 10 minutos + *erros de rede constantes* e verificacións de Cloudflare de ChatGPT.
 // @description:gu      ChatGPT માંથી ૧૦ મિનિટના ચૅટ રીસેટ, *સ્થાયી નેટવર્ક ભૂલો* અને ક્લાઉડફ્લેર તપાસો *સુરક્ષિતપણે* દૂર કરો.
@@ -147,7 +147,7 @@
 // @description:ht      *AN SEKIRITE,* elimine resè chat 10 minit yo, *erè sou rezo ki konstan* epitou tchèk Cloudflare nan ChatGPT.
 // @description:hu      *BIZTONSÁGOSAN* távolítsa el a 10 perces csevegések visszaállításait, a *folyamatos hálózati hibákat* és a Cloudflare ellenőrzéseket a ChatGPT-ből.
 // @description:hy      *ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ ՀԱՍԿԱՑՈՒՄԸ`* հեռացնել 10 րոպեանոց չատի վերագործարկումները, *մշտական ցանցային սխալները* եւ Cloudflare ստուգումները ChatGPT-ից:
-// @description:id      *AMAN* menghapus batas obrolan 10 menit, *kesalahan jaringan yang konstan*, dan pemeriksaan Cloudflare dari ChatGPT. 
+// @description:id      *AMAN* menghapus batas obrolan 10 menit, *kesalahan jaringan yang konstan*, dan pemeriksaan Cloudflare dari ChatGPT.
 // @description:is      *ÖRUGGLEGA* fjarlægðu endurstillingu spjalls í 10 mínútur, *sífelldum netvillum* og Cloudflare prófanir úr ChatGPT.
 // @description:it      *IN SICUREZZA* eliminare i reset della chat di 10 minuti, *gli errori di rete costanti* e i controlli Cloudflare da ChatGPT.
 // @description:ja      ChatGPTから10分のチャットのリセット、*定常的なネットワークのエラー*、Cloudflareのチェックを*安全に*削除してください。
@@ -184,19 +184,19 @@
 // @description:pt      *COM SEGURANÇA* elimine resets de chat de 10 minutos, *erros de rede constantes* e verificações do Cloudflare do ChatGPT.
 // @description:pt-BR   *COM SEGURANÇA* elimine as redefinições de chat de 10 minutos, *erros frequentes de rede* e checagens do do Cloudflare do ChatGPT.
 // @description:rn      *MU BUNYAMINE* gukuraho ingaruka zo gusegurira imyumvire icumi, amakosa akomeye yo mu murongo w'ubucuruzi no kugenzura amabuye ya Cloudflare ukufuma mu ChatGPT.
-// @description:ro      *ÎN SIGURANȚĂ* eliminați reinițializările de chat de 10 minute, erorile constante de rețea și verificările Cloudflare din ChatGPT.  
+// @description:ro      *ÎN SIGURANȚĂ* eliminați reinițializările de chat de 10 minute, erorile constante de rețea și verificările Cloudflare din ChatGPT.
 // @description:ru      *БЕЗОПАСНО* устраните 10-минутные сбросы чата, постоянные сетевые ошибки и проверки Cloudflare из ChatGPT.
 // @description:rw      *MU BUNYAMINE* ikuraho iseswa ry’iminota 10, amakosa akomeje kw’itumanaho mu rwego rw’ibikorwaremezo n’igenzura rya Cloudflare mu ChatGPT.
 // @description:sg      *NI ÌTỌJU* ṣe ìyọ̀sọ́wọ́jú ọrọ̀'lọ̀wọ́ mẹ́rinlelogun, awọn ṣiṣe ilana aláilóbájẹ́ + awọn adánilọ́jọ́ Cloudflare láti inú ChatGPT.
 // @description:si      *ආරක්ෂිතව* 10 මිනිත්තු චැට් යළි සැකසීම්, ස්ථිර ජාල දෝෂ සහ Cloudflare පරීක්ෂණ ChatGPT වෙතින් ඉවත් කරන්න.
 // @description:sk      *BEZPEČNE* odstráňte 10-minútové opätovné nastavenia četu, neustále sieťové chyby a kontroly Cloudflare z ChatGPT.
-// @description:sl      *VARNO* odstranite 10-minutna ponastavljanja klepetov, nenehne napake v omrežju in preverjanja cloudfare iz ChatGPT. 
+// @description:sl      *VARNO* odstranite 10-minutna ponastavljanja klepetov, nenehne napake v omrežju in preverjanja cloudfare iz ChatGPT.
 // @description:sm      *MA FA'AMANUIAGA* ia eseese fa'amalosi e tusi tulaga tautua ta'aloga e 10 minute + tala esemanuuga + nisi'i Cloudflare mai ChatGPT.
 // @description:sn      *KANA KUTAMBA WAKAWANDA* dzimba kupindura zvakare maonero echirongwa che10min + zvivi zvisingakoni nekupera + ruzivo rweCloudflare uye kubvisa zviri muChatGPT.
 // @description:so      *SI AMMAAN* ka saar 10 daqiiqo dib u habayn xidhiidh + xatooyin xaaladaha ah + baaritaan Cloudflare ka mid ah ChatGPT.
 // @description:sr      *BEZBEDNO* eliminišite 10-minutna resetovanja ćaska, konstantne mrežne greške i Cloudflare provere iz ChatGPT-a.
 // @description:sv      *SÄKERT* eliminera 10-minuters återställningar av chattar, konstanta nätverksfel och Cloudflare-kontroller från ChatGPT.
-// @description:sw      *KWA USALAMA* ondoa marejesho ya mazungumzo ya dakika 10, hitilafu endelevu za mtandao na ukaguzi wa Cloudflare kutoka ChatGPT.  
+// @description:sw      *KWA USALAMA* ondoa marejesho ya mazungumzo ya dakika 10, hitilafu endelevu za mtandao na ukaguzi wa Cloudflare kutoka ChatGPT.
 // @description:ta      *பாதுகாப்பாக* 10 நிமிட உரையாடல் மறுதொடக்கங்கள், தொடர்ச்சியான வலையமைப்பு பிழைகள், மேகக்கம்பெனி சோதனைகளை ChatGPT இருந்து அகற்றுங்கள்.
 // @description:te      *సురక్షితంగా* 10 నిమిషాల చాట్ రీసెట్లు, నిరంతర నెట్వర్క్ లోపాలు, క్లౌడ్ఫ్లేర్ తనిఖీలను ChatGPT నుండి తీసివేయండి.
 // @description:tg      *БО ҲИФЗИ АМНИЯТ* 10-дақиқагии бозсозии чат, хатогиҳои доимии шабака ва санҷиши Cloudflare-ро аз ChatGPT ҳазф намоед.
@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.9
+// @version             2024.11.21.10
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -557,7 +557,7 @@
                       pStyle = 'position: relative ; left: 3px',
                       pBrStyle = 'position: relative ; left: 4px ',
                       aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
-        
+
                 // Show modal
                 const aboutModalID = siteAlert(
                     app.msgs.appName, // title
@@ -576,7 +576,7 @@
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 478 // set width
                 )
-        
+
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
                 for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
                     if (/updates/i.test(button.textContent)) button.textContent = (
@@ -682,7 +682,7 @@
             const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
             if (!sidebar) return
             sidebar.insertBefore(sidebarToggle.div, sidebar.children[1])
-    
+
             // Tweak styles
             const knobSpan = document.getElementById('auto-refresh-toggle-knob-span'),
                   navicon = document.getElementById('auto-refresh-toggle-navicon')
@@ -705,12 +705,12 @@
             navicon.id = 'auto-refresh-toggle-navicon'
             navicon.style.width = navicon.style.height = '1.25rem'
             navicon.style.marginLeft = '2px' ; navicon.style.marginRight = '4px'
-    
+
             // Create/ID/disable/hide/update checkbox
             const toggleInput = document.getElementById('auto-refresh-toggle-input') || document.createElement('input')
             toggleInput.id = 'auto-refresh-toggle-input' ; toggleInput.type = 'checkbox' ; toggleInput.disabled = true
             toggleInput.style.display = 'none' ; toggleInput.checked = !config.arDisabled
-    
+
             // Create/ID/stylize switch
             const switchSpan = document.getElementById('auto-refresh-switch-span') || document.createElement('span')
             switchSpan.id = 'auto-refresh-switch-span'
@@ -720,7 +720,7 @@
                 bottom: `${ !ui.firstLink ? -0.15 : env.browser.isFF ? 0.05 : 0 }em`,
                 width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
             })
-    
+
             // Create/stylize knob, append to switch
             const knobSpan = document.getElementById('auto-refresh-toggle-knob-span') || document.createElement('span')
             knobSpan.id = 'auto-refresh-toggle-knob-span'
@@ -731,7 +731,7 @@
                     'translateX(0)' : 'translateX(13px) translateY(0)',
                 backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
             }) ; switchSpan.append(knobSpan)
-    
+
             // Create/stylize/fill label
             const toggleLabel = document.getElementById('auto-refresh-toggle-label') || document.createElement('label')
             toggleLabel.id = 'auto-refresh-toggle-label'
@@ -747,7 +747,7 @@
                                                             : ( app.msgs.state_disabled ))
             // Append elements
             for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
-    
+
             // Update visual state
             setTimeout(() => {
                 switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
