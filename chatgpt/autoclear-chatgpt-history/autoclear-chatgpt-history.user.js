@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.6
+// @version             2024.11.21.7
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -375,7 +375,7 @@
                           + menu.state.separator + menu.state.words[+config.autoclear]
             menu.ids.push(GM_registerMenuCommand(acLabel, () => {
                 settings.save('autoclear', !config.autoclear) ; syncConfigToUI()
-                chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat()
+                clearChatsAndGoHome()
                 notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }))
 
@@ -614,7 +614,7 @@
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
                 settings.save('autoclear', toggleInput.checked) ; syncConfigToUI()
-                if (config.autoclear) { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
+                if (config.autoclear) clearChatsAndGoHome()
                 notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }
         },
@@ -719,6 +719,8 @@
         })
     }
 
+    function clearChatsAndGoHome() { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
+
     // Define SYNC function
 
     function syncConfigToUI() {
@@ -764,7 +766,7 @@
     sidebarToggle.insert()
 
     // AUTO-CLEAR on first visit if enabled
-    if (config.autoclear) { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
+    if (config.autoclear) clearChatsAndGoHome()
 
     // Monitor <html> to maintain NAV TOGGLE VISIBILITY on node changes
     new MutationObserver(mutations => mutations.forEach(mutation => {
