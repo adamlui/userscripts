@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.11
+// @version             2024.11.21.12
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -627,7 +627,7 @@
             const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
             if (!sidebar) return
             sidebar.insertBefore(sidebarToggle.div, sidebar.children[1])
-    
+
             // Tweak styles
             const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
                   navicon = document.getElementById('autoclear-toggle-navicon')
@@ -650,12 +650,12 @@
             navicon.id = 'autoclear-toggle-navicon'
             navicon.style.width = navicon.style.height = '1.25rem'
             navicon.style.marginLeft = '2px' ; navicon.style.marginRight = '4px'
-    
+
             // Create/ID/disable/hide/update checkbox
             const toggleInput = document.getElementById('autoclear-toggle-input') || document.createElement('input')
             toggleInput.id = 'autoclear-toggle-input' ; toggleInput.type = 'checkbox' ; toggleInput.disabled = true
             toggleInput.style.display = 'none' ; toggleInput.checked = config.autoclear
-    
+
             // Create/ID/stylize switch
             const switchSpan = document.getElementById('autoclear-switch-span') || document.createElement('span')
             switchSpan.id = 'autoclear-switch-span'
@@ -665,7 +665,7 @@
                 bottom: `${ !ui.firstLink ? -0.15 : env.browser.isFF ? 0.05 : 0 }em`,
                 width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
             })
-    
+
             // Create/ID/stylize knob, append to switch
             const knobSpan = document.getElementById('autoclear-toggle-knob-span') || document.createElement('span')
             knobSpan.id = 'autoclear-toggle-knob-span'
@@ -676,7 +676,7 @@
                     'translateX(0)' : 'translateX(13px) translateY(0)',
                 backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
             }) ; switchSpan.append(knobSpan)
-    
+
             // Create/ID/stylize/fill label
             const toggleLabel = document.getElementById('autoclear-toggle-label') || document.createElement('label')
             toggleLabel.id = 'autoclear-toggle-label'
@@ -692,7 +692,7 @@
                                                             : ( app.msgs.state_disabled ))
             // Append elements
             for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
-    
+
             // Update visual state
             setTimeout(() => {
                 switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
