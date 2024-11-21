@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21
+// @version             2024.11.21.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -405,7 +405,14 @@
                           + ( app.msgs.menuLabel_autoRefresh ) + ' ↻ '
                           + menu.state.separator + menu.state.words[+!config.arDisabled]
             menu.ids.push(GM_registerMenuCommand(arLabel, () => {
-                document.getElementById('auto-refresh-switch-span').click()
+                settings.save('arDisabled', !config.arDisabled) ; syncStorageToUI()
+                if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
+                    chatgpt.autoRefresh.activate(config.refreshInterval)
+                    notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
+                } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
+                    chatgpt.autoRefresh.deactivate()
+                    notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
+                }
             }))
 
             // Add Toggle Visibility toggle
@@ -662,8 +669,8 @@
             // Add click listener
             sidebarToggle.div.onclick = () => {
                 const toggleInput = sidebarToggle.div.querySelector('input')
-                toggleInput.checked = !toggleInput.checked ; settings.save('arDisabled', !toggleInput.checked)
-                sidebarToggle.update() ; menu.refresh() // update visual elements
+                toggleInput.checked = !toggleInput.checked
+                settings.save('arDisabled', !toggleInput.checked) ; syncStorageToUI()
                 if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
                     chatgpt.autoRefresh.activate(config.refreshInterval)
                     notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
@@ -756,6 +763,13 @@
                 }, 1) // min delay to trigger transition fx
             }
         }
+    }
+
+    // Define SYNC function
+
+    function syncStorageToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
+        menu.refresh() // symbols/suffixes
     }
 
     // Run MAIN routine
