@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.2
+// @version             2024.11.21.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -374,7 +374,7 @@
                           + ( app.msgs.menuLabel_autoClear )
                           + menu.state.separator + menu.state.words[+config.autoclear]
             menu.ids.push(GM_registerMenuCommand(acLabel, () => {
-                settings.save('autoclear', !config.autoclear) ; syncStorageToUI()
+                settings.save('autoclear', !config.autoclear) ; syncConfigToUI()
                 chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat()
                 notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }))
@@ -613,7 +613,7 @@
             sidebarToggle.div.onclick = () => {
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
-                settings.save('autoclear', toggleInput.checked) ; syncStorageToUI()
+                settings.save('autoclear', toggleInput.checked) ; syncConfigToUI()
                 if (config.autoclear) setTimeout(() => { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }, 250)
                 notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
             }
@@ -719,7 +719,7 @@
 
     // Define SYNC function
 
-    function syncStorageToUI() {
+    function syncConfigToUI() {
         sidebarToggle.update() // based on config.toggleHidden + config.autoclear
         menu.refresh() // prefixes/suffixes
     }
