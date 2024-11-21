@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.20.5
+// @version                2024.11.21
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1265,15 +1265,15 @@
             create() {
                 const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M1 5l7 4.61L15 5v2.39L8 12 1 7.39z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
         chevronUp: {
             create() {
-                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }), 
+                const svg = create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = create.svgElem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' })
-                svg.append(svgPath) ; return svg         
+                svg.append(svgPath) ; return svg
             }
         },
 
@@ -1482,7 +1482,7 @@
             const firstP = appDiv.querySelector('pre p')
             if (!firstP) return
             const prefixNeeded = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
-                  prefixExists = firstP.textContent.startsWith('>> ')                            
+                  prefixExists = firstP.textContent.startsWith('>> ')
             if (prefixNeeded && !prefixExists) firstP.prepend('>> ')
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
         },
@@ -1664,7 +1664,7 @@
                       + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                                   + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                        '[class$="-modal"] button { transition: transform 0.15s ease }' 
+                        '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
                   + '.amzgpt-menu {'
                       + 'position: absolute ; z-index: 2250 ;'
@@ -1893,7 +1893,7 @@
                             Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 200)
                     }, 170)
                 }
-            })            
+            })
         },
 
         replySection() {
@@ -2124,7 +2124,7 @@
             const removeCondition = state == 'off' || ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
-                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers                
+                    (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
                     btnTextSpan = document.createElement('span')
@@ -2325,7 +2325,7 @@
                     log.caller = 'session.isBlockedByCF'
                     log.debug('Blocked by CloudFlare')
                     return true
-                }             
+                }
             } catch (err) { return false }
         }
     }
@@ -2718,7 +2718,7 @@
 
                 if (!env.browser.isMobile) {
 
-                // Create/append Expand/Shrink button    
+                // Create/append Expand/Shrink button
                     var arrowsBtn = document.createElement('btn'),
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions are often horizontal-only
