@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.8
+// @version             2024.11.21.9
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -359,7 +359,7 @@
     }
 
     // Define MENU functions
-    
+
     const menu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
@@ -507,7 +507,7 @@
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 478 // set width
                 )
-        
+
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
                 for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
                     if (/updates/i.test(button.textContent)) button.textContent = (
@@ -613,7 +613,7 @@
             const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
             if (!sidebar) return
             sidebar.insertBefore(sidebarToggle.div, sidebar.children[1])
-    
+
             // Tweak styles
             const knobSpan = document.getElementById('auto-talk-toggle-knob-span'),
                   navicon = document.getElementById('auto-talk-toggle-navicon')
@@ -636,12 +636,12 @@
             navicon.id = 'auto-talk-toggle-navicon'
             navicon.style.width = navicon.style.height = '1.25rem'
             navicon.style.marginLeft = '2px' ; navicon.style.marginRight = '4px'
-    
+
             // Create/ID/disable/hide/update checkbox
             const toggleInput = document.getElementById('auto-talk-toggle-input') || document.createElement('input')
             toggleInput.id = 'auto-talk-toggle-input' ; toggleInput.type = 'checkbox' ; toggleInput.disabled = true
             toggleInput.style.display = 'none' ; toggleInput.checked = !config.autoTalkDisabled
-    
+
             // Create/ID/stylize switch
             const switchSpan = document.getElementById('atSwitchSpan') || document.createElement('span')
             switchSpan.id = 'atSwitchSpan'
@@ -651,7 +651,7 @@
                 bottom: `${ !ui.firstLink ? -0.15 : env.browser.isFF ? 0.05 : 0 }em`,
                 width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
             })
-    
+
             // Create/ID/stylize knob, append to switch
             const knobSpan = document.getElementById('auto-talk-toggle-knob-span') || document.createElement('span')
             knobSpan.id = 'auto-talk-toggle-knob-span'
@@ -662,7 +662,7 @@
                     'translateX(0)' : 'translateX(13px) translateY(0)',
                 backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
             }) ; switchSpan.append(knobSpan)
-    
+
             // Create/ID/stylize/fill label
             const toggleLabel = document.getElementById('auto-talk-toggle-label') || document.createElement('label')
             toggleLabel.id = 'auto-talk-toggle-label'
@@ -678,7 +678,7 @@
                                                             : ( app.msgs.state_disabled ))
             // Append elements
             for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
-    
+
             // Update visual state
             setTimeout(() => {
                 switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
