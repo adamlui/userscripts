@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.3
+// @version             2024.11.21.4
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -361,7 +361,7 @@
                     notify(`${settings.controls[key].label}: ${menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
                 }))
             })
-    
+
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
             menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
@@ -481,7 +481,7 @@
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 478 // set width
                 )
-        
+
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
                 for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
                     button.style.cssText = 'cursor: pointer !important' // since tweaks won't load on auto-disable
