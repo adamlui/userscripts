@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.10.30.5
+// @version       2024.11.21
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -212,7 +212,7 @@
         classicLogo.style.marginLeft = '5px' ; classicLogo.height = 65
         classicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
             ? 'https://i.imgur.com/brCETJj.png' // Dark mode
-            : 'https://i.imgur.com/rHLcxEs.png' // Light mode    
+            : 'https://i.imgur.com/rHLcxEs.png' // Light mode
         ytLogo.textContent = '' ; ytLogo.append(classicLogo)
         YTP.stop()
         for (var i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]) }
@@ -1475,7 +1475,7 @@
     })()
 
     Object.defineProperties(document, { 'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'}, 'webkitVisibilityState': {value: 'visible'} });
-    
+
     setInterval(function(){
         document.dispatchEvent( new KeyboardEvent( 'keyup', { bubbles: true, cancelable: true, keyCode: 143, which: 143 } ) );
     }, 60000)
@@ -1621,7 +1621,7 @@
                 }
                 cLog('unexpected mutation observer event: ' + mutation.target + mutation.type);
         })})
-    }   
+    }
 
     function checkForUserAvatarButton() {
         if (isMobile) { return; }
