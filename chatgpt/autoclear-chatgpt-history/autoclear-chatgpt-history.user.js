@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.12
+// @version             2024.11.22
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -707,23 +707,26 @@
         menu.refresh() // prefixes/suffixes
     }
 
-    function hideHistory() { // from DOM since chatgpt.clearChats() works back-end only (front-end updates on refresh)
+    function clearChatsAndGoHome() {
+        chatgpt.clearChats('api')
+
+        // Hide history from DOM since chatgpt.clearChats() works back-end only (front-end updates UI on refresh)
         new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
             document.querySelectorAll('nav ol').forEach(ol => {
                 ol.previousElementSibling.style.display = 'none' // hide temporal heading
                 ol.querySelectorAll('li').forEach(li => li.style.display = 'none') // hide chat entry
             })
-            if (!hideHistory.observer) { // monitor <nav> to restore temporal headings on new chats
-                hideHistory.observer = new MutationObserver(mutations => mutations.forEach(mutation => {
+            if (!clearChatsAndGoHome.observer) { // monitor <nav> to restore temporal headings on new chats
+                clearChatsAndGoHome.observer = new MutationObserver(mutations => mutations.forEach(mutation => {
                     if (mutation.type == 'childList') mutation.addedNodes.forEach(addedNode => {
                         if (addedNode.tagName == 'LI') addedNode.closest('ol').previousElementSibling.style.display = 'inherit'
                 })}))
-                hideHistory.observer.observe(document.querySelector('nav'), { childList: true, subtree: true })
+                clearChatsAndGoHome.observer.observe(document.querySelector('nav'), { childList: true, subtree: true })
             }
         })
-    }
 
-    function clearChatsAndGoHome() { chatgpt.clearChats('api') ; hideHistory() ; chatgpt.startNewChat() }
+        chatgpt.startNewChat() // return home from potential ghost chat
+    }
 
     // Run MAIN routine
 
