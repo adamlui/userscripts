@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.5
+// @version             2024.11.22.6
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -689,9 +689,8 @@
                 width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
                 overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
             })
-            toggleLabel.innerText = ( app.msgs.mode_autoClear ) + ' '
-                                  + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                          : ( app.msgs.state_disabled ))
+            toggleLabel.innerText = `${app.msgs.mode_autoClear} ${
+                                       toggleInput.checked ? app.msgs.state_enabled : app.msgs.state_disabled }`
             // Append elements
             sidebarToggle.div.append(navicon, toggleInput, switchSpan, toggleLabel)
 
