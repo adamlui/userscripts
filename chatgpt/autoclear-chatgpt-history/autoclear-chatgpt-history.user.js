@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.2
+// @version             2024.11.22.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -710,13 +710,13 @@
     function clearChatsAndGoHome() {
         chatgpt.clearChats('api')
 
-        // Hide history from DOM since chatgpt.clearChats() works back-end only (front-end updates UI on refresh)
+        // Hide history from DOM since chatgpt.clearChats() works back-end only (front-end refreshes on reload otherwise)
         new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
             document.querySelectorAll('nav ol').forEach(ol => {
                 ol.previousElementSibling.style.display = 'none' // hide temporal heading
                 ol.querySelectorAll('li').forEach(li => li.style.display = 'none') // hide chat entry
             })
-            if (!clearChatsAndGoHome.historyObserver) { // monitor <nav> to restore temporal headings on new chats
+            if (!clearChatsAndGoHome.historyObserver) { // monitor sidebar to restore temporal headings on new chats
                 clearChatsAndGoHome.historyObserver = new MutationObserver(mutations => mutations.forEach(mutation => {
                     if (mutation.type == 'childList') mutation.addedNodes.forEach(addedNode => {
                         if (addedNode.tagName == 'LI') addedNode.closest('ol').previousElementSibling.style.display = 'inherit'
