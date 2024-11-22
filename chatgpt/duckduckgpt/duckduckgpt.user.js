@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.21
+// @version                2024.11.22
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -813,7 +813,7 @@
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `font-weight: bold ; color: ${
                 foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -883,8 +883,7 @@
                 if (modals.dragHandlers.draggableElem) {
                     const newX = event.clientX - modals.dragHandlers.offsetX,
                           newY = event.clientY - modals.dragHandlers.offsetY
-                    modals.dragHandlers.draggableElem.style.left = `${newX}px`
-                    modals.dragHandlers.draggableElem.style.top = `${newY}px`
+                    Object.assign(modals.dragHandlers.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
                 }
             },
 
@@ -3586,7 +3585,7 @@
         setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
 
     // REPLACE appDivContainer max-width w/ min-width for better UI
-    if (!env.browser.isMobile) { appDivContainer.style.maxWidth = '' ; appDivContainer.style.minWidth = '448px' }
+    if (!env.browser.isMobile) Object.assign(appDivContainer.style, { maxWidth: '', minWidth: '448px' })
 
     // Check for active TEXT CAMPAIGNS to replace footer CTA
     get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
