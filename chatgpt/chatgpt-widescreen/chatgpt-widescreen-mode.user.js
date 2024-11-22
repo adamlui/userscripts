@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22
+// @version             2024.11.22.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -741,7 +741,7 @@
                 })
                 if (env.tallChatbar) btns[btnType].style.bottom = '8.85px'
                 else btns[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
-                if (/chatgpt|perplexity/.test(env.site)) { // assign classes + tweak styles
+                if (/chatgpt|openai|perplexity/.test(env.site)) { // assign classes + tweak styles
                     const sendBtn = await new Promise(resolve => {
                         const sendBtn = document.querySelector(sites[env.site].selectors.btns.send)
                         if (sendBtn) resolve(sendBtn)
