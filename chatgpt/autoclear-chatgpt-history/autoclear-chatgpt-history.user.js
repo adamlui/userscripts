@@ -295,7 +295,7 @@
         appName: app.name,
         appAuthor: app.author.name,
         appDesc: 'Auto-clears chat history when visiting chatgpt.com',
-        menuLabel_autoClear: 'Autoclear Chats',
+        menuLabel_autoclear: 'Autoclear Chats',
         menuLabel_toggleVis: 'Toggle Visibility',
         menuLabel_modeNotifs: 'Mode Notifications',
         menuLabel_about: 'About',
@@ -303,7 +303,7 @@
         about_version: 'Version',
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
-        mode_autoClear: 'Auto-Clear',
+        mode_autoclear: 'Auto-Clear',
         alert_choosePlatform: 'Choose a platform',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -371,12 +371,12 @@
 
             // Add Autoclear Chats toggle
             const acLabel = menu.state.symbols[+config.autoclear] + ' '
-                          + ( app.msgs.menuLabel_autoClear )
+                          + ( app.msgs.menuLabel_autoclear )
                           + menu.state.separator + menu.state.words[+config.autoclear]
             menu.ids.push(GM_registerMenuCommand(acLabel, () => {
                 settings.save('autoclear', !config.autoclear) ; syncConfigToUI()
                 clearChatsAndGoHome()
-                notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
+                notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
             }))
 
             // Add Toggle Visibility toggle
@@ -617,7 +617,7 @@
                 toggleInput.checked = !toggleInput.checked
                 settings.save('autoclear', toggleInput.checked) ; syncConfigToUI()
                 if (config.autoclear) clearChatsAndGoHome()
-                notify(`${app.msgs.mode_autoClear}: ${menu.state.words[+config.autoclear]}`)
+                notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
             }
         },
 
@@ -689,7 +689,7 @@
                 width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
                 overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
             })
-            toggleLabel.innerText = `${app.msgs.mode_autoClear} ${
+            toggleLabel.innerText = `${app.msgs.mode_autoclear} ${
                                        toggleInput.checked ? app.msgs.state_enabled : app.msgs.state_disabled }`
             // Append elements
             sidebarToggle.div.append(navicon, toggleInput, switchSpan, toggleLabel)
