@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.1
+// @version             2024.11.22.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -670,9 +670,8 @@
                 width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
                 overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
             })
-            toggleLabel.innerText = ( app.msgs.mode_autoTalk ) + ' '
-                                  + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                          : ( app.msgs.state_disabled ))
+            toggleLabel.innerText = `${app.msgs.mode_autoTalk} ${
+                                       toggleInput.checked ? app.msgs.state_enabled : app.msgs.state_disabled }`
             // Append elements
             sidebarToggle.div.append(navicon, toggleInput, switchSpan, toggleLabel)
 
