@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.1
+// @version             2024.11.22.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -436,7 +436,7 @@
                         env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
                             { title: settings.controls[key].helptip } : undefined )
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                        settings.save(key, !config[key]) ; sync.storageToUI()
+                        settings.save(key, !config[key]) ; sync.configToUI()
                         notify(`${settings.controls[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }, registerOptions))
                 }
@@ -994,7 +994,7 @@
             config.modeSynced = true ; setTimeout(() => config.modeSynced = false, 100) // prevent repetition
         },
 
-        storageToUI() { // from toolbar menu toggles
+        configToUI() { // from toolbar menu toggles
             sync.fullerWin() // sync FW
             update.style.tweaks() // sync TCB/NCB/HH/HF
             update.style.chatbar() // sync WCB
