@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22
+// @version             2024.11.22.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -591,6 +591,11 @@
 
     // Define UI functions
 
+    function syncConfigToUI() {
+        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
+        menu.refresh() // prefixes/suffixes
+    }
+
     const sidebarToggle = {
 
         create() {
@@ -700,11 +705,6 @@
                 knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
             }, 1) // min delay to trigger transition fx
         }
-    }
-
-    function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.autoclear
-        menu.refresh() // prefixes/suffixes
     }
 
     function clearChatsAndGoHome() {
