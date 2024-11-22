@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22
+// @version             2024.11.22.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -743,7 +743,7 @@
                                   + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
                                                           : ( app.msgs.state_disabled ))
             // Append elements
-            for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
+            sidebarToggle.div.append(navicon, toggleInput, switchSpan, toggleLabel)
 
             // Update visual state
             setTimeout(() => {
