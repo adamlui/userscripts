@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.8
+// @version             2024.11.22.9
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -262,15 +262,18 @@
 
 (async () => {
 
-    // Init ENV vars
+    // Init ENV info
     const env = {
-        browser: { isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+        browser: {},
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
     }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
-    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: 'd2f7e01', urls: {} }
+    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: '0f70c99', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/app.json`,
@@ -304,6 +307,9 @@
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
         mode_autoclear: 'Auto-Clear',
+        helptip_autoclear: 'Auto-clear chat history when visiting chatgpt.com',
+        helptip_toggleVis: 'Show Auto-Clear toggle in sidebar',
+        helptip_modeNotifs: 'Show notifications when toggling modes/settings',
         alert_choosePlatform: 'Choose a platform',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -363,42 +369,50 @@
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
+                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add Autoclear Chats toggle
             const acLabel = menu.state.symbols[+config.autoclear] + ' '
                           + ( app.msgs.menuLabel_autoclear )
                           + menu.state.separator + menu.state.words[+config.autoclear]
+            const acRegisterOptions = ( // add menu tooltip in TM 5.0+
+                tooltipsSupported ? { title: app.msgs.helptip_autoclear } : undefined )
             menu.ids.push(GM_registerMenuCommand(acLabel, () => {
                 settings.save('autoclear', !config.autoclear) ; syncConfigToUI()
                 clearChatsAndGoHome()
                 notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
-            }))
+            }, acRegisterOptions))
 
             // Add Toggle Visibility toggle
             const tvLabel = menu.state.symbols[+!config.toggleHidden] + ' '
                           + ( app.msgs.menuLabel_toggleVis )
                           + menu.state.separator + menu.state.words[+!config.toggleHidden]
+            const tvRegisterOptions = ( // add menu tooltip in TM 5.0+
+                tooltipsSupported ? { title: app.msgs.helptip_toggleVis } : undefined )
             menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
                 settings.save('toggleHidden', !config.toggleHidden)
                 sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
                 notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
                 menu.refresh()
-            }))
+            }, tvRegisterOptions))
 
             // Add Mode Notiications toggle
             const mnLabel = menu.state.symbols[+!config.notifDisabled] + ' '
                           + ( app.msgs.menuLabel_modeNotifs )
                           + menu.state.separator + menu.state.words[+!config.notifDisabled]
+            const mnRegisterOptions = ( // add menu tooltip in TM 5.0+
+                tooltipsSupported ? { title: app.msgs.helptip_modeNotifs } : undefined )
             menu.ids.push(GM_registerMenuCommand(mnLabel, () => {
                 settings.save('notifDisabled', !config.notifDisabled)
                 notify(`${app.msgs.menuLabel_modeNotifs}: ${menu.state.words[+!config.notifDisabled]}`)
                 menu.refresh()
-            }))
+            }, mnRegisterOptions))
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
@@ -410,7 +424,7 @@
         },
 
         refresh() {
-            if (env.scriptManager == 'OrangeMonkey') return
+            if (env.scriptManager.name == 'OrangeMonkey') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
