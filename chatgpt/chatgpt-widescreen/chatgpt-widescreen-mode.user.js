@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.3
+// @version             2024.11.22
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -524,7 +524,7 @@
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
                 foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -735,12 +735,12 @@
             validBtnTypes.forEach(async (btnType, idx) => {
                 btns[btnType] = document.createElement('div')
                 btns[btnType].id = btnType + '-btn' // for toggle.tooltip()
-                btns[btnType].style.position = env.tallChatbar ? 'absolute' : 'relative'
+                Object.assign(btns[btnType].style, {
+                    position: env.tallChatbar ? 'absolute' : 'relative', cursor: 'pointer',
+                    right: `${ rOffset + idx * bOffset }px` // position left of prev button
+                })
                 if (env.tallChatbar) btns[btnType].style.bottom = '8.85px'
                 else btns[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
-                btns[btnType].style.right = `${ rOffset + idx * bOffset }px` // position left of prev button
-                btns[btnType].style.cursor = 'pointer' // add finger cursor
-                if (env.site == 'poe') btns[btnType].style.position = 'relative' // override static pos
                 if (/chatgpt|perplexity/.test(env.site)) { // assign classes + tweak styles
                     const sendBtn = await new Promise(resolve => {
                         const sendBtn = document.querySelector(sites[env.site].selectors.btns.send)
@@ -751,8 +751,8 @@
                         }).observe(document.body, { childList: true, subtree: true })
                     })
                     btns[btnType].setAttribute('class', sendBtn.classList.toString() || '')
-                    btns[btnType].style.backgroundColor = 'transparent' // remove dark mode overlay
-                    btns[btnType].style.borderColor = 'transparent' // remove dark mode overlay
+                    Object.assign(btns[btnType].style, { // remove dark mode overlay
+                        backgroundColor: 'transparent', borderColor: 'transparent' })
                 } else if (env.site == 'poe') // lift buttons slightly
                     btns[btnType].style.marginBottom = ( btnType == 'newChat' ? '0.45' : '0.2' ) + 'rem'
 
@@ -807,8 +807,8 @@
               : 'currentColor' )
 
             if (btns.wideScreen?.style.fill != btns.color)
-                btns.types.forEach(btnType => {
-                    if (btns[btnType]) btns[btnType].style.fill = btns[btnType].style.stroke = btns.color })
+                btns.types.forEach(type => {
+                    if (btns[type]) btns[type].style.fill = btns[type].style.stroke = btns.color })
         },
 
         updateSVG(mode, state = '') {
