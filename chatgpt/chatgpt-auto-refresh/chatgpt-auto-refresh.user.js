@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.21.10
+// @version             2024.11.22
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -536,7 +536,7 @@
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
                 foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -654,10 +654,7 @@
             sidebarToggle.update() // create children
 
             // Stylize/classify
-            sidebarToggle.div.style.height = '37px'
-            sidebarToggle.div.style.margin = '2px 0' // add v-margins
-            sidebarToggle.div.style.userSelect = 'none' // prevent highlighting
-            sidebarToggle.div.style.cursor = 'pointer' // add finger cursor
+            sidebarToggle.div.style.cssText = 'height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
             if (ui.firstLink) { // borrow/assign classes from sidebar elems
                 const firstIcon = ui.firstLink.querySelector('div:first-child'),
                       firstLabel = ui.firstLink.querySelector('div:nth-child(2)')
@@ -703,8 +700,7 @@
             // Create/size/position navicon
             const navicon = document.getElementById('auto-refresh-toggle-navicon') || document.createElement('img')
             navicon.id = 'auto-refresh-toggle-navicon'
-            navicon.style.width = navicon.style.height = '1.25rem'
-            navicon.style.marginLeft = '2px' ; navicon.style.marginRight = '4px'
+            navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
             // Create/ID/disable/hide/update checkbox
             const toggleInput = document.getElementById('auto-refresh-toggle-input') || document.createElement('input')
@@ -735,16 +731,17 @@
             // Create/stylize/fill label
             const toggleLabel = document.getElementById('auto-refresh-toggle-label') || document.createElement('label')
             toggleLabel.id = 'auto-refresh-toggle-label'
-            if (!ui.firstLink) { // add font size/weight since no ui.firstLink to borrow from
-                toggleLabel.style.fontSize = '0.875rem' ; toggleLabel.style.fontWeight = 600 }
-            toggleLabel.style.marginLeft = `-${ !ui.firstLink ? 23 : 41 }px` // left-shift to navicon
-            toggleLabel.style.cursor = 'pointer' // add finger cursor on hover
-            toggleLabel.style.width = `${ env.browser.isMobile ? 201 : 148 }px` // to truncate overflown text
-            toggleLabel.style.overflow = 'hidden' // to truncate overflown text
-            toggleLabel.style.textOverflow = 'ellipsis' // to truncate overflown text
+            if (!ui.firstLink) // add font size/weight since no ui.firstLink to borrow from
+                toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
+            Object.assign(toggleLabel.style, {
+                marginLeft: `-${ !ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
+                cursor: 'pointer', // add finger cursor on hover
+                width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
+                overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
+            })
             toggleLabel.innerText = ( app.msgs.menuLabel_autoRefresh ) + ' '
-                                    + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
-                                                            : ( app.msgs.state_disabled ))
+                                  + ( toggleInput.checked ? ( app.msgs.state_enabled  || 'enabled' )
+                                                          : ( app.msgs.state_disabled ))
             // Append elements
             for (const elem of [navicon, toggleInput, switchSpan, toggleLabel]) sidebarToggle.div.append(elem)
 
