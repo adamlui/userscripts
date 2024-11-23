@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Em i gat bikpela strong" },
   "about_sourceCode": { "message": "Kod bilong as" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Toktok bilong yu yet i stap long sait bilong ol samting" },
   "alert_updateAvail": { "message": "Ol nupela samting i stap" },
   "alert_newerVer": { "message": "Ol nupela tok" },
   "alert_isAvail": { "message": "em i stap" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
   "about_sourceCode": { "message": "Баштапкы код" },
   "mode_autoTalk": { "message": "Авто-сүйлөшүү" },
+  "helptip_toggleVis": { "message": "Dialogs-action" },
   "alert_updateAvail": { "message": "Баяндалмасы табылган жок" },
   "alert_newerVer": { "message": "Жаңыртуу" },
   "alert_isAvail": { "message": "жеткиликтүү" },

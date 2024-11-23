@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Offerto da" },
   "about_sourceCode": { "message": "Codice sorgente" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Mostra l'interruttore Auto-Talk nella barra laterale" },
   "alert_updateAvail": { "message": "Aggiornamento disponibile" },
   "alert_newerVer": { "message": "Invia aggiornamento a" },
   "alert_isAvail": { "message": "è disponibile" },

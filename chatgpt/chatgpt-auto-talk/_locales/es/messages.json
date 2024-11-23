@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Con la tecnología de" },
   "about_sourceCode": { "message": "Código fuente" },
   "mode_autoTalk": { "message": "Diálogo automático" },
+  "helptip_toggleVis": { "message": "Mostrar alternancia de diálogo automático en la barra lateral" },
   "alert_updateAvail": { "message": "Actualización disponible" },
   "alert_newerVer": { "message": "Una actualización a" },
   "alert_isAvail": { "message": "está disponible" },

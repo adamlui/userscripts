@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Izstrādāts" },
   "about_sourceCode": { "message": "Avots" },
   "mode_autoTalk": { "message": "Automātiskā saruna" },
+  "helptip_toggleVis": { "message": "Rādīt automātiskās sarunas pārslēgšanu sānjoslā" },
   "alert_updateAvail": { "message": "Pieejams jauninājums" },
   "alert_newerVer": { "message": "Atjauninājums uz" },
   "alert_isAvail": { "message": "ir pieejams" },

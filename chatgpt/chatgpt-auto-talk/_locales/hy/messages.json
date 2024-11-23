@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "🇦🇲" },
   "about_sourceCode": { "message": "Ծրագրային կոդ" },
   "mode_autoTalk": { "message": "Ավտոմատ զրույց" },
+  "helptip_toggleVis": { "message": "Ցույց տալ ավտոմատ զրույցի կոճակը կողային վահանակում" },
   "alert_updateAvail": { "message": "Թարմացումը հասանելի է" },
   "alert_newerVer": { "message": "Թարմացում" },
   "alert_isAvail": { "message": "ազատ է" },

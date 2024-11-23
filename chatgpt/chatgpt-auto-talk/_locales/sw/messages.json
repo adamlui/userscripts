@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Imewezeshwa na" },
   "about_sourceCode": { "message": "Msimbo wa chanzo" },
   "mode_autoTalk": { "message": "Mazungumzo ya Kiotomatiki" },
+  "helptip_toggleVis": { "message": "Onyesha swichi ya Mazungumzo ya Kiotomatiki kwenye upau wa pembeni" },
   "alert_updateAvail": { "message": "Sasisho lipo" },
   "alert_newerVer": { "message": "Sasisho kwa" },
   "alert_isAvail": { "message": "inapatikana" },

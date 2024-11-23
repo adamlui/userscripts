@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Güýçli" },
   "about_sourceCode": { "message": "Çykgyt kodu" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Sidebarda Auto-Talk toggle görkez" },
   "alert_updateAvail": { "message": "Täzeleşdir" },
   "alert_newerVer": { "message": "Täzeleşdirmek" },
   "alert_isAvail": { "message": "häzir bar" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Obsługiwane przez" },
   "about_sourceCode": { "message": "Kod źródłowy" },
   "mode_autoTalk": { "message": "Automatyczna rozmowa" },
+  "helptip_toggleVis": { "message": "Pokaż przełącznik automatycznej rozmowy na pasku bocznym" },
   "alert_updateAvail": { "message": "Dostępna jest aktualizacja" },
   "alert_newerVer": { "message": "Aktualizuj" },
   "alert_isAvail": { "message": "jest dostępna" },

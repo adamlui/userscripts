@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Réaliser par" },
   "about_sourceCode": { "message": "Code source" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Afficher la bascule de conversation automatique dans la barre latérale" },
   "alert_updateAvail": { "message": "mise à jour disponible" },
   "alert_newerVer": { "message": "Une mise à jour de" },
   "alert_isAvail": { "message": "est disponible" },

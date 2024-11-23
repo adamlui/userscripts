@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Сайтты жасаған" },
   "about_sourceCode": { "message": "Бастапқы код" },
   "mode_autoTalk": { "message": "Автоматты сөйлесу" },
+  "helptip_toggleVis": { "message": "Бүйірлік тақтада Auto-Talk (Автоматты сөйлеу) ауыстыруын көрсету" },
   "alert_updateAvail": { "message": "Қолжетімді жаңарту" },
   "alert_newerVer": { "message": "Жаңарту" },
   "alert_isAvail": { "message": "қол жетімді" },

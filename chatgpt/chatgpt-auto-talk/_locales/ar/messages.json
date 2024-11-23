@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "مُقدم من" },
   "about_sourceCode": { "message": "شيفرة مصدرية" },
   "mode_autoTalk": { "message": "التحدث التلقائي" },
+  "helptip_toggleVis": { "message": "عرض تبديل التحدث التلقائي في الشريط الجانبي" },
   "alert_updateAvail": { "message": "تحديث متوفر" },
   "alert_newerVer": { "message": "تحديث لـ" },
   "alert_isAvail": { "message": "متوفر" },

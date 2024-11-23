@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "تقویت یافتہ از" },
   "about_sourceCode": { "message": "کۆسی سەرچاوە" },
   "mode_autoTalk": { "message": "آٹو ٹاک" },
+  "helptip_toggleVis": { "message": "سائڈبار میں آٹو ٹاک ٹوگل دکھائیں" },
   "alert_updateAvail": { "message": "اپڈیٹ دستیاب ہے" },
   "alert_newerVer": { "message": "پر ایک اپ ڈیٹ" },
   "alert_isAvail": { "message": "دستیاب ہے" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "技術提供" },
   "about_sourceCode": { "message": "原始碼" },
   "mode_autoTalk": { "message": "自動對話" },
+  "helptip_toggleVis": { "message": "在側邊欄中顯示自動對話切換" },
   "alert_updateAvail": { "message": "有可用更新" },
   "alert_newerVer": { "message": "最新消息" },
   "alert_isAvail": { "message": "可用" },

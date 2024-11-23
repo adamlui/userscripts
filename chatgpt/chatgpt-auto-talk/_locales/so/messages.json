@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Waxa fudaydiyay" },
   "about_sourceCode": { "message": "Koodhka isha" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Show Auto-Talk toggle in sidebar" },
   "alert_updateAvail": { "message": "Cusboonaysiinta App La heli karo" },
   "alert_newerVer": { "message": "Cusbooneysiin ku socota" },
   "alert_isAvail": { "message": "waa la heli karaa" },

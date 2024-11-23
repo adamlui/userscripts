@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ਦੁਆਰਾ ਸੰਚਾਲਿਤ" },
   "about_sourceCode": { "message": "ਸਰੋਤ ਕੋਡ@ info: whatsthis" },
   "mode_autoTalk": { "message": "ਆਟੋ- ਗੱਲ-ਬਾਤ" },
+  "helptip_toggleVis": { "message": "ਬਾਹੀ ਵਿੱਚ ਆਟੋ-ਬੋਲੀ ਟੌਗਲ ਵੇਖੋ" },
   "alert_updateAvail": { "message": "ਕੋਈ ਵੇਰਵਾ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ" },
   "alert_newerVer": { "message": "ਨੂੰ ਇੱਕ ਅੱਪਡੇਟ" },
   "alert_isAvail": { "message": "ਉਪਲੱਬਧ ਹੈ" },

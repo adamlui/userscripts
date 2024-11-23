@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Hoʻāmana ʻia e" },
   "about_sourceCode": { "message": "Hoʻopā'ālua" },
   "mode_autoTalk": { "message": "Kamaʻilio ʻOkoʻa" },
+  "helptip_toggleVis": { "message": "E hōʻike i ka hoʻololi ʻokoʻa kamaʻilio ma ka ʻaoʻao ʻaoʻao" },
   "alert_updateAvail": { "message": "Loaʻa ka hōʻano hou" },
   "alert_newerVer": { "message": "He mea hou i" },
   "alert_isAvail": { "message": "loaʻa" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Овозможено од" },
   "about_sourceCode": { "message": "@ info: whatsthis" },
   "mode_autoTalk": { "message": "Автоматски разговор" },
+  "helptip_toggleVis": { "message": "Прикажи копче за автоматско зборување во страничната лента" },
   "alert_updateAvail": { "message": "Достапно е ажурирање" },
   "alert_newerVer": { "message": "Ажурирање на" },
   "alert_isAvail": { "message": "е достапен" },

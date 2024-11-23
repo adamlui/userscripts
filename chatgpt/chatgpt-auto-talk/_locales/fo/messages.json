@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by SFX" },
   "about_sourceCode": { "message": "Ada keldukota" },
   "mode_autoTalk": { "message": "Sjálvstýrisrøða" },
+  "helptip_toggleVis": { "message": "Sýni sjálvstýrissamband í síðubar" },
   "alert_updateAvail": { "message": "Dagføring er klár" },
   "alert_newerVer": { "message": "Núverandi tíðindi" },
   "alert_isAvail": { "message": "tað er tøkt" },

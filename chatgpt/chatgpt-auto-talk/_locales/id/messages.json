@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Didukung oleh " },
   "about_sourceCode": { "message": "Kode sumber" },
   "mode_autoTalk": { "message": "Auto - Talk" },
+  "helptip_toggleVis": { "message": "Tampilkan toggle Bicara Otomatis di bilah sisi" },
   "alert_updateAvail": { "message": "Pembaruan tersedia" },
   "alert_newerVer": { "message": "Pembaruan untuk" },
   "alert_isAvail": { "message": "Install package not available" },

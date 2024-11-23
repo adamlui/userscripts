@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Με την υποστήριξη" },
   "about_sourceCode": { "message": "Source code" },
   "mode_autoTalk": { "message": "Αυτόματη συνομιλία" },
+  "helptip_toggleVis": { "message": "Εμφάνιση εναλλαγής αυτόματης ομιλίας στην πλαϊνή γραμμή" },
   "alert_updateAvail": { "message": "Υπάρχει διαθέσιμη ενημέρωση" },
   "alert_newerVer": { "message": "Ενημέρωση" },
   "alert_isAvail": { "message": "Μη διαθέσιμο" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Lähtekood" },
   "mode_autoTalk": { "message": "Automaatne rääkimine" },
+  "helptip_toggleVis": { "message": "Näita külgribal automaatse rääkimise lülitit" },
   "alert_updateAvail": { "message": "Saadaval on uuendus" },
   "alert_newerVer": { "message": "Uuendus versioonile" },
   "alert_isAvail": { "message": "on saadaval" },

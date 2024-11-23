@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "funkciigita de" },
   "about_sourceCode": { "message": "Fontkodo" },
   "mode_autoTalk": { "message": "Aŭtomata babilado" },
+  "helptip_toggleVis": { "message": "Montri aŭtomatan babiladon en flankobreto" },
   "alert_updateAvail": { "message": "Neniu priskribo disponebla" },
   "alert_newerVer": { "message": "Ĝisdatigo al" },
   "alert_isAvail": { "message": "estas disponebla" },

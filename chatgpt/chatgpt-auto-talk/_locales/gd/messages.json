@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Bun-tùs a' chod" },
   "mode_autoTalk": { "message": "A 'bruidhinn gu fèin - obrachail" },
+  "helptip_toggleVis": { "message": "Seall toglaig gu fèin - obrachail sa bhàr - taoibh" },
   "alert_updateAvail": { "message": "Chan eil ùrachadh ri fhaighinn" },
   "alert_newerVer": { "message": "An update to" },
   "alert_isAvail": { "message": "tha e ri fhaotainn" },

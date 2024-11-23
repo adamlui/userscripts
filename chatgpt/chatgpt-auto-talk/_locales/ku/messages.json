@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "پشتگیریکراو لە لایەن" },
   "about_sourceCode": { "message": "Koda çavkanî" },
   "mode_autoTalk": { "message": "Auto-Takk" },
+  "helptip_toggleVis": { "message": "Veguheztina Oto-Axaftina li kêlekê nîşan bide" },
   "alert_updateAvail": { "message": "نوێکردنەوە بەردەستە" },
   "alert_newerVer": { "message": "Nûvekirinek ji bo" },
   "alert_isAvail": { "message": "heye" },

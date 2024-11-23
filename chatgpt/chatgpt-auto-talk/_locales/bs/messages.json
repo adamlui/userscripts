@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "omogućio" },
   "about_sourceCode": { "message": "Izvorni kod" },
   "mode_autoTalk": { "message": "Automatski razgovor" },
+  "helptip_toggleVis": { "message": "Prikaži opciju automatskog razgovora u bočnoj traci" },
   "alert_updateAvail": { "message": "Ažuriranje dostupno" },
   "alert_newerVer": { "message": "Ažuriranje za" },
   "alert_isAvail": { "message": "je dostupno" },

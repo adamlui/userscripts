@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Aangedryf deur" },
   "about_sourceCode": { "message": "Oorsprong Kode" },
   "mode_autoTalk": { "message": "Outo- Praat" },
+  "helptip_toggleVis": { "message": "Vertoon Outo-Talk skakel in sybalk" },
   "alert_updateAvail": { "message": "Opdatering beskikbaar" },
   "alert_newerVer": { "message": "'n Opdatering na" },
   "alert_isAvail": { "message": "is beskikbaar" },

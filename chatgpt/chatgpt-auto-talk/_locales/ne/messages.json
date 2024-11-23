@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "समर्थनकर्ता " },
   "about_sourceCode": { "message": "स्रोत सङ्केत" },
   "mode_autoTalk": { "message": "अटो - टक" },
+  "helptip_toggleVis": { "message": "साइडबारमा अटो - टक टगल देखाउनुहोस्" },
   "alert_updateAvail": { "message": "कुनै अपडेट उपलब्ध छैन।" },
   "alert_newerVer": { "message": "यसमा अद्यावधिक गर्नुहोस्" },
   "alert_isAvail": { "message": "<x id=\"1\"/>\"<x id=\"2\"/>\" उपलब्ध<x id=\"3\"/> छ" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Potenciá por" },
   "about_sourceCode": { "message": "Kódigo di fuente" },
   "mode_autoTalk": { "message": "Papiamentu outomátiko" },
+  "helptip_toggleVis": { "message": "Show Auto-Talk Toggle Into Sidebar Traduccion" },
   "alert_updateAvail": { "message": "Actualizacion Disponible" },
   "alert_newerVer": { "message": "Un update pa" },
   "alert_isAvail": { "message": "ta disponibel" },

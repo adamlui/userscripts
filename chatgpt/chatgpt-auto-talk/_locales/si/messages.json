@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Source code" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "පැති තීරුවේ ස්වයංක් ‍ රීය සංවාද ටොගලය පෙන්වන්න" },
   "alert_updateAvail": { "message": "Update available" },
   "alert_newerVer": { "message": "An update to" },
   "alert_isAvail": { "message": "is available" },

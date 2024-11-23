@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Fakalele ʻe he" },
   "about_sourceCode": { "message": "Maʻuʻanga fakamatala" },
   "mode_autoTalk": { "message": "Talanoa ki he meʻalele" },
+  "helptip_toggleVis": { "message": "Fakaʻasi ʻa e talanoa ki he meʻalele ʻi he tafaʻaki" },
   "alert_updateAvail": { "message": "ʻOku lava ke maʻu e fakamatala fakamuimuitaha" },
   "alert_newerVer": { "message": "Ko ha fakamatala fakamuimuitaha ki he" },
   "alert_isAvail": { "message": "ʻoku lava ke maʻu" },

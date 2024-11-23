@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Lähdekoodi" },
   "mode_autoTalk": { "message": "Automaattinen puhuminen" },
+  "helptip_toggleVis": { "message": "Näytä automaattinen puhuminen sivupalkissa" },
   "alert_updateAvail": { "message": "Päivitys saatavilla" },
   "alert_newerVer": { "message": "Päivitä" },
   "alert_isAvail": { "message": "on käytettävissä" },

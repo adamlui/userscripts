@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Wedi'i gynnal gan" },
   "about_sourceCode": { "message": "Cod ffynhonnell" },
   "mode_autoTalk": { "message": "Awto - siarad" },
+  "helptip_toggleVis": { "message": "Dangos togl Awto - Siarad yn y bar ochr" },
   "alert_updateAvail": { "message": "Diweddariad ar gael" },
   "alert_newerVer": { "message": "Diweddariad i" },
   "alert_isAvail": { "message": "ar gael" },

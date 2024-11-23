@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Drevet af" },
   "about_sourceCode": { "message": "Kildekode" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Vis Auto-Talk-skift i sidebjælken" },
   "alert_updateAvail": { "message": "Der er en tilgængelig opdatering" },
   "alert_newerVer": { "message": "En opdatering til" },
   "alert_isAvail": { "message": "er tilgængelig" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Te mana o te mana" },
   "about_sourceCode": { "message": "Waehere puna" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Whakaatu Auto-Talk toggle i te taha" },
   "alert_updateAvail": { "message": "Ngā whakahoutanga e wātea ana" },
   "alert_newerVer": { "message": "He whakahoutanga" },
   "alert_isAvail": { "message": "kei te wātea ahau" },

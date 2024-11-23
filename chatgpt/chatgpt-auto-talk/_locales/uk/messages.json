@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Працює на" },
   "about_sourceCode": { "message": "Джерельний код" },
   "mode_autoTalk": { "message": "Авторозмова" },
+  "helptip_toggleVis": { "message": "Показати перемикач автообговорення на бічній панелі" },
   "alert_updateAvail": { "message": "Доступне оновлення" },
   "alert_newerVer": { "message": "Оновлення для" },
   "alert_isAvail": { "message": "не доступно" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "kòd sous/ code source / le code source mis à jour/code en langage source" },
   "mode_autoTalk": { "message": "Oto-Pale" },
+  "helptip_toggleVis": { "message": "Montre Oto-Pale aktive nan ankadre" },
   "alert_updateAvail": { "message": "Mizajou ki disponib" },
   "alert_newerVer": { "message": "Yon aktyalizasyon pou" },
   "alert_isAvail": { "message": "ki disponib/à votre disposition/sont disponibles" },

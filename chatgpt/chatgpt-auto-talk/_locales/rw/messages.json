@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Ku" },
   "about_sourceCode": { "message": "C Inkomoko ITEGEKONGENGA" },
   "mode_autoTalk": { "message": "Kuganira mu buryo bwikora" },
+  "helptip_toggleVis": { "message": "Mukomatanya in Umurongo wo ku mpande" },
   "alert_updateAvail": { "message": "Bihari" },
   "alert_newerVer": { "message": "Kuri" },
   "alert_isAvail": { "message": "bihari" },

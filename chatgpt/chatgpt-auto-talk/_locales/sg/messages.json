@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "A yeke sara kua na ni" },
   "about_sourceCode": { "message": "Source code ti" },
   "mode_autoTalk": { "message": "Auto Tale ti" },
+  "helptip_toggleVis": { "message": "Show Auto-talk toggle na sidebar" },
   "alert_updateAvail": { "message": "Nduru tënë so ayeke dä" },
   "alert_newerVer": { "message": "Mbeni ye so a sara na yâ ti fini dunia" },
   "alert_isAvail": { "message": "yeke available" },

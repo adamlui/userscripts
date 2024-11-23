@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Kiszolgálja" },
   "about_sourceCode": { "message": "Forráskód" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Automatikus beszédváltás megjelenítése az oldalsávban" },
   "alert_updateAvail": { "message": "Frissítés érhető el" },
   "alert_newerVer": { "message": "Frissítés" },
   "alert_isAvail": { "message": "elérhető" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Drevet av" },
   "about_sourceCode": { "message": "Kildekode" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Vis Auto-Talk-bryteren i sidefeltet" },
   "alert_updateAvail": { "message": "Oppdatering tilgjengelig" },
   "alert_newerVer": { "message": "En oppdatering til" },
   "alert_isAvail": { "message": "tilgjengelig" },

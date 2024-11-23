@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ޕަވަރޑް ބައި" },
   "about_sourceCode": { "message": "ސޯސް ކޯޑް" },
   "mode_autoTalk": { "message": "އޮޓޯ ޓޯކް" },
+  "helptip_toggleVis": { "message": "ސައިޑްބާރ ގައި އޮޓޯ-ޓޯކް ޓޮގްލް ދައްކާށެވެ" },
   "alert_updateAvail": { "message": "އަޕްޑޭޓް ލިބެން ހުރެއެވެ" },
   "alert_newerVer": { "message": "އަށް އަޕްޑޭޓެއް" },
   "alert_isAvail": { "message": "ލިބެން ހުރެއެވެ" },

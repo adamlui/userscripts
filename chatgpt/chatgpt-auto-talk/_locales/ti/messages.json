@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ብ" },
   "about_sourceCode": { "message": "ምንጪ ኮድ" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "ኣብ ጎኒ ባር ናይ ኣውቶ ታክ ቶግሌ ኣርኢ" },
   "alert_updateAvail": { "message": "ዝዘመነ" },
   "alert_newerVer": { "message": "ዝዘመነ" },
   "alert_isAvail": { "message": "ተዳልዩ ኣሎ" },

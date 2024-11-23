@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Ixhaswa ngu" },
   "about_sourceCode": { "message": "Ikhowudi engumthombo" },
   "mode_autoTalk": { "message": "Ukuncokola ngokuzenzekelayo" },
+  "helptip_toggleVis": { "message": "Bonisa i-auto-Talk toggle kwibar esecaleni" },
   "alert_updateAvail": { "message": "Uhlaziyo luyafumaneka" },
   "alert_newerVer": { "message": "Inkcazelo ehlaziyiweyo kwi" },
   "alert_isAvail": { "message": "iyafumaneka" },

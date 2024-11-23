@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "원본 코드" },
   "mode_autoTalk": { "message": "자동 대화" },
+  "helptip_toggleVis": { "message": "사이드바에 자동 대화 토글 표시" },
   "alert_updateAvail": { "message": "업데이트 사용 가능" },
   "alert_newerVer": { "message": "다음으로 업데이트" },
   "alert_isAvail": { "message": "사용가능" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "สนับสนุนโดย" },
   "about_sourceCode": { "message": "รหัสต้นฉบับ" },
   "mode_autoTalk": { "message": "พูดอัตโนมัติ" },
+  "helptip_toggleVis": { "message": "แสดงการสลับการพูดคุยอัตโนมัติในแถบด้านข้าง" },
   "alert_updateAvail": { "message": "มีอัพเดตให้ใช้งาน" },
   "alert_newerVer": { "message": "อัพเดทเป็น" },
   "alert_isAvail": { "message": "มี   ให้ใช้งานแล้ว" },

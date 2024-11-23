@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "የተጎለበተው በ" },
   "about_sourceCode": { "message": "የምንጭ ኮድ" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "የጎን አሞሌ ውስጥ ራስ-ታርክ toggle አሳይ" },
   "alert_updateAvail": { "message": "ዝመና ይገኛል" },
   "alert_newerVer": { "message": "አንድ ዝማኔ ወደ" },
   "alert_isAvail": { "message": "ይገኛል" },

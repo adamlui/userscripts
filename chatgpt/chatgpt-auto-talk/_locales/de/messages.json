@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Unterstützt von" },
   "about_sourceCode": { "message": "Quellcode" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Auto-Talk-Schalter in der Seitenleiste anzeigen" },
   "alert_updateAvail": { "message": "Update verfügbar" },
   "alert_newerVer": { "message": "Ein Update zu" },
   "alert_isAvail": { "message": "ist verfügbar" },

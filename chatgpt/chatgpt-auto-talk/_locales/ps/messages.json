@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "طراحی شده توسط" },
   "about_sourceCode": { "message": "سرچينه كوډه" },
   "mode_autoTalk": { "message": "خپلکاره خبرې کول" },
+  "helptip_toggleVis": { "message": "په اړخپټه کې د اتوماتیک خبرو ټګل وښایاست" },
   "alert_updateAvail": { "message": "اوسمهالیزې شته" },
   "alert_newerVer": { "message": "ته تازه معلومات" },
   "alert_isAvail": { "message": "شتون لري" },

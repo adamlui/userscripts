@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Imħaddem minn" },
   "about_sourceCode": { "message": "Kodiċi tas-sors" },
   "mode_autoTalk": { "message": "Taħdit Awtomatiku" },
+  "helptip_toggleVis": { "message": "Uri l-bidla fit-Taħdit Awtomatiku fil-ġenb" },
   "alert_updateAvail": { "message": "Aġġornament ġdid disponibbli" },
   "alert_newerVer": { "message": "Aġġornament għal" },
   "alert_isAvail": { "message": "huwa disponibbli" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Malosiaga e ala i" },
   "about_sourceCode": { "message": "Punaoa code" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Faaali atu Auto-Talk toggle i sidebar" },
   "alert_updateAvail": { "message": "Faʻafouga o loʻo avanoa" },
   "alert_newerVer": { "message": "Faʻafouga" },
   "alert_isAvail": { "message": "o loo maua" },

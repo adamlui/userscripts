@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ИЛЧЛЭГЧ" },
   "about_sourceCode": { "message": "ᠰᠣᠷᠪᠤᠯᠵᠢ ᠺᠣᠳ᠋ " },
   "mode_autoTalk": { "message": "Автоматаар яриа хийх" },
+  "helptip_toggleVis": { "message": "Автоматаар аялахыг хажуу цэс рүү зөөх" },
   "alert_updateAvail": { "message": "Шинэчлэх (update) боломжтой" },
   "alert_newerVer": { "message": "Шинэчлэлт" },
   "alert_isAvail": { "message": "авах боломжтой" },

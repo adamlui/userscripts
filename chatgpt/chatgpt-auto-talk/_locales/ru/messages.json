@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "На базе технологии" },
   "about_sourceCode": { "message": "Исходный код" },
   "mode_autoTalk": { "message": "Авторазговор" },
+  "helptip_toggleVis": { "message": "Показать переключатель Auto-Talk на боковой панели" },
   "alert_updateAvail": { "message": "Доступны обновления" },
   "alert_newerVer": { "message": "Обновление для" },
   "alert_isAvail": { "message": "доступно" },

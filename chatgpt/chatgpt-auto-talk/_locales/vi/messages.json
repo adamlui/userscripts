@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Cung cấp bởi " },
   "about_sourceCode": { "message": "Mã nguồn" },
   "mode_autoTalk": { "message": "Tự động nói chuyện" },
+  "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động nói chuyện trong thanh bên" },
   "alert_updateAvail": { "message": "Cập nhật có sẵn" },
   "alert_newerVer": { "message": "bản cập nhật" },
   "alert_isAvail": { "message": "is available" },

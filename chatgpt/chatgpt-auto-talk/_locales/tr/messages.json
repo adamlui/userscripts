@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Destek" },
   "about_sourceCode": { "message": "Kaynak Kodu" },
   "mode_autoTalk": { "message": "Otomatik Konuşma" },
+  "helptip_toggleVis": { "message": "Kenar çubuğunda Otomatik Konuşma geçişini göster" },
   "alert_updateAvail": { "message": "Güncelleme uygun" },
   "alert_newerVer": { "message": "Güncelleme tarih" },
   "alert_isAvail": { "message": "geçerli" },

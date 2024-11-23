@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
   "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
   "mode_autoTalk": { "message": "ການເວົ້າແບບອັດຕະໂນມັດ" },
+  "helptip_toggleVis": { "message": "ສະແດງອັດຕະໂນມັດການເວົ້າ toggle ໃນແຖບຂ້າງ" },
   "alert_updateAvail": { "message": "ອັບເດດທີ່ມີຢູ່" },
   "alert_newerVer": { "message": "ການອັບເດດ" },
   "alert_isAvail": { "message": "ມີ" },

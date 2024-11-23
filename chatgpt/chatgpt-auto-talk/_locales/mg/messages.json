@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Ampandehanin'i" },
   "about_sourceCode": { "message": "Kaody niaingana" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Asehoy ny tolotry ny Auto-Talk eo amin'ny tsipiky ny sisiny" },
   "alert_updateAvail": { "message": "Ny fanavaozana azo alaina" },
   "alert_newerVer": { "message": "Vaovao farany ho" },
   "alert_isAvail": { "message": "tsy mety ampiasaina" },

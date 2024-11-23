@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "ద్వారా ఆధారితం" },
   "about_sourceCode": { "message": "@ info: whatsthis" },
   "mode_autoTalk": { "message": "ఆటో-టాక్" },
+  "helptip_toggleVis": { "message": "సైడ్ ‌ బార్ ‌ లో ఆటో-టాక్ టోగుల్ ‌ ను చూపించండి" },
   "alert_updateAvail": { "message": "ఎటువంటి నవీకరణ అందుబాటులోలేదు" },
   "alert_newerVer": { "message": "కు అప్ ‌ డేట్" },
   "alert_isAvail": { "message": "అందుబాటులో ఉంది" },

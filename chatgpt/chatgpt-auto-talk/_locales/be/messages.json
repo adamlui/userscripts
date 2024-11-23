@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Пры падтрымцы" },
   "about_sourceCode": { "message": "Зыходнікі" },
   "mode_autoTalk": { "message": "Аўтаматычная размова" },
+  "helptip_toggleVis": { "message": "Паказваць перамыкач аўтаматычнай прамовы ў бакавой панэлі" },
   "alert_updateAvail": { "message": "Ёсць абнаўленне" },
   "alert_newerVer": { "message": "Абнаўленне да" },
   "alert_isAvail": { "message": "даступны" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "技术支持方" },
   "about_sourceCode": { "message": "源代码" },
   "mode_autoTalk": { "message": "自动通话" },
+  "helptip_toggleVis": { "message": "在侧边栏中显示自动通话切换" },
   "alert_updateAvail": { "message": "有最新版本" },
   "alert_newerVer": { "message": "脚本有新版本" },
   "alert_isAvail": { "message": "是最后更新" },

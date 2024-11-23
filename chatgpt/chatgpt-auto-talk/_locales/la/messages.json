@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Codex Originis" },
   "mode_autoTalk": { "message": "Tabula autorum" },
+  "helptip_toggleVis": { "message": "Show Auto - Talk toggle in sidebar" },
   "alert_updateAvail": { "message": "Updateis available" },
   "alert_newerVer": { "message": "Omnia ad" },
   "alert_isAvail": { "message": "est disponibus" },

@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Įgalino Proneta" },
   "about_sourceCode": { "message": "Pradinis kodas" },
   "mode_autoTalk": { "message": "Automatinis kalbėjimas" },
+  "helptip_toggleVis": { "message": "Rodyti automatinio kalbėjimo perjungimą šoninėje juostoje" },
   "alert_updateAvail": { "message": "Yra naujinys" },
   "alert_newerVer": { "message": "Atnaujinta į" },
   "alert_isAvail": { "message": "yra prieinama" },

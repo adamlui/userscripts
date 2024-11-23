@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Mothandizidwa ndi" },
   "about_sourceCode": { "message": "Gwero kachidindo" },
   "mode_autoTalk": { "message": "ZOKHUDZA" },
+  "helptip_toggleVis": { "message": "Onetsani Auto-Talk toggle mu sidebar" },
   "alert_updateAvail": { "message": "Sinthani likupezeka" },
   "alert_newerVer": { "message": "An pomwe kuti" },
   "alert_isAvail": { "message": "likupezeka" },

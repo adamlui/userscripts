@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "פּאַוערד דורך" },
   "about_sourceCode": { "message": "מקור קאָד" },
   "mode_autoTalk": { "message": "אַוטאָ-רעדן" },
+  "helptip_toggleVis": { "message": "ווייַזן אַוטאָ-רעדן טאַגאַל אין סיידבאַר" },
   "alert_updateAvail": { "message": "דערהייַנטיקן בנימצא" },
   "alert_newerVer": { "message": "אַ דערהייַנטיקן צו" },
   "alert_isAvail": { "message": "איז בנימצא" },

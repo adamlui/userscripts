@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
   "about_sourceCode": { "message": "سورس کد" },
   "mode_autoTalk": { "message": "صحبت خودکار" },
+  "helptip_toggleVis": { "message": "نمایش تغییر حالت Auto-Talk در نوار کناری" },
   "alert_updateAvail": { "message": "آپدیت موجود است" },
   "alert_newerVer": { "message": "بروز رسانی" },
   "alert_isAvail": { "message": "موجوده" },

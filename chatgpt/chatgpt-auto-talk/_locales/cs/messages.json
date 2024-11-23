@@ -9,6 +9,7 @@
   "about_poweredBy": { "message": "Běží na" },
   "about_sourceCode": { "message": "Zdrojový kód" },
   "mode_autoTalk": { "message": "Auto-Talk" },
+  "helptip_toggleVis": { "message": "Zobrazit přepínač Auto-Talk v postranním panelu" },
   "alert_updateAvail": { "message": "Aktualizace k dispozici" },
   "alert_newerVer": { "message": "Aktualizace na" },
   "alert_isAvail": { "message": "je k dispozici" },
