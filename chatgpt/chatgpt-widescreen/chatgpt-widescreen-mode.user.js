@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.4
+// @version             2024.11.22.5
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -262,7 +262,7 @@
 
 (async () => {
 
-    // Init ENV vars
+    // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage(), isFF: chatgpt.browser.isFirefox() },
         scriptManager: {
@@ -273,7 +273,7 @@
     }
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
-    // Init APP info
+    // Init APP data
     const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: 'd8eacf6', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
@@ -284,7 +284,7 @@
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
-    // Init SITE props
+    // Init SITE profiles
     const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/data/sites.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
