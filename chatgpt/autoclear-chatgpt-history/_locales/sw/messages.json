@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Imewezeshwa na" },
   "about_sourceCode": { "message": "Msimbo wa chanzo" },
   "mode_autoclear": { "message": "Zima Kiotomatiki" },
-  "helptip_autoclear": { "message": "Futa historia ya gumzo kiotomatiki unapotembelea chatgpt.com" },
   "helptip_clearNow": { "message": "Futa historia ya gumzo sasa" },
   "helptip_toggleVis": { "message": "Onyesha swichi ya Zima Kiotomatiki kwenye upau wa pembeni" },
   "helptip_modeNotifs": { "message": "Onyesha arifa wakati wa kugeuza modi/mipangilio" },

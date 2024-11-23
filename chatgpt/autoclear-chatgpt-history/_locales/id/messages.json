@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Didukung oleh" },
   "about_sourceCode": { "message": "Kode sumber" },
   "mode_autoclear": { "message": "Bersihkan Otomatis" },
-  "helptip_autoclear": { "message": "Bersihkan riwayat obrolan secara otomatis saat mengunjungi chatgpt.com" },
   "helptip_clearNow": { "message": "Hapus riwayat obrolan sekarang" },
   "helptip_toggleVis": { "message": "Tampilkan Auto - Clear toggle di bilah sisi" },
   "helptip_modeNotifs": { "message": "Tampilkan pemberitahuan saat mengaktifkan mode/pengaturan" },

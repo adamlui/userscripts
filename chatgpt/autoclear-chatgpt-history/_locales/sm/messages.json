@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Malosiaga e ala i" },
   "about_sourceCode": { "message": "Punaoa code" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Auto-clear talatalanoaga talaʻaga pe a asiasi i chatgpt.com" },
   "helptip_clearNow": { "message": "Talafaasolopito o le talatalanoaga manino i le taimi nei" },
   "helptip_toggleVis": { "message": "Faaali atu Auto-Clear toggle i sidebar" },
   "helptip_modeNotifs": { "message": "Faaali atu faasilasilaga pe a toggling auala/faatulagaga" },

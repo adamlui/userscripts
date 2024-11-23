@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Teknologia" },
   "about_sourceCode": { "message": "Iturburu kode" },
   "mode_autoclear": { "message": "Automatikoki garbitu" },
-  "helptip_autoclear": { "message": "Garbitu txat historia automatikoki chatgpt.com bisitatzean" },
   "helptip_clearNow": { "message": "Garbitu txat-historia orain" },
   "helptip_toggleVis": { "message": "Erakutsi Garbitu automatikoko etengailua alboko barran" },
   "helptip_modeNotifs": { "message": "Erakutsi jakinarazpenak moduak/ezarpenak aldatzean" },

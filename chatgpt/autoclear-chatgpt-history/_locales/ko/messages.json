@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "원본 코드" },
   "mode_autoclear": { "message": "자동 삭제 모드" },
-  "helptip_autoclear": { "message": "Chatgpt.com 방문 시 채팅 기록 자동 삭제" },
   "helptip_clearNow": { "message": "채팅 기록 삭제" },
   "helptip_toggleVis": { "message": "사이드바에 자동 지우기 토글 표시" },
   "helptip_modeNotifs": { "message": "모드/설정을 전환할 때 알림 표시" },

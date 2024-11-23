@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Operat de" },
   "about_sourceCode": { "message": "Codul sursă" },
   "mode_autoclear": { "message": "Curățare automată" },
-  "helptip_autoclear": { "message": "Ștergeți automat istoricul conversațiilor atunci când vizitați chatgpt.com" },
   "helptip_clearNow": { "message": "Ștergeți acum istoricul conversațiilor prin chat" },
   "helptip_toggleVis": { "message": "Afișare comutare Ștergere automată în bara laterală" },
   "helptip_modeNotifs": { "message": "Afișați notificările la comutarea modurilor/setărilor" },

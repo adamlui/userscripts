@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Alimentato da" },
   "about_sourceCode": { "message": "Codice sorgente" },
   "mode_autoclear": { "message": "Cancellazione automatica" },
-  "helptip_autoclear": { "message": "Cancella automaticamente la cronologia chat quando visiti chatgpt.com" },
   "helptip_clearNow": { "message": "Cancella ora la cronologia chat" },
   "helptip_toggleVis": { "message": "Mostra attivazione/disattivazione automatica nella barra laterale" },
   "helptip_modeNotifs": { "message": "Mostra notifiche quando si attivano modalità/impostazioni" },

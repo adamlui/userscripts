@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Працює на" },
   "about_sourceCode": { "message": "Джерельний код" },
   "mode_autoclear": { "message": "Автоматичне очищення" },
-  "helptip_autoclear": { "message": "Автоматичне очищення історії чату під час відвідування chatgpt.com" },
   "helptip_clearNow": { "message": "Очистити історію чату зараз" },
   "helptip_toggleVis": { "message": "Показати перемикач автоматичного очищення на бічній панелі" },
   "helptip_modeNotifs": { "message": "Показувати сповіщення при перемиканні режимів/налаштувань" },

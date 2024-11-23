@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Desenvolupat per" },
   "about_sourceCode": { "message": "Codi font" },
   "mode_autoclear": { "message": "Esborra automàticament" },
-  "helptip_autoclear": { "message": "Esborra automàticament l'historial del xat quan visitis chatgpt.com" },
   "helptip_clearNow": { "message": "Esborra l'historial del xat ara" },
   "helptip_toggleVis": { "message": "Mostra el commutador de neteja automàtica a la barra lateral" },
   "helptip_modeNotifs": { "message": "Mostra les notificacions quan es canvien els modes o la configuració" },

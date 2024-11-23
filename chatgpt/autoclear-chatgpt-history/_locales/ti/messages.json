@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ብ" },
   "about_sourceCode": { "message": "ምንጪ ኮድ" },
   "mode_autoclear": { "message": "ኣውቶ-ትምህርቲ" },
-  "helptip_autoclear": { "message": "Chatgpt.com ክትበጽሕ ከለኻ ናይ ኣውቶ-ክሪፕት ቻት ታሪኽ" },
   "helptip_clearNow": { "message": "ንጹህ ታሪኽ ቻት ሕጂ" },
   "helptip_toggleVis": { "message": "ኣብ ጎኒ ባር ናይ ኣውቶ-ትምህርቲ መትረብ ኣርኢ" },
   "helptip_modeNotifs": { "message": "ኣብ እዋን ምትሕልላፍ ኣገባባት/ኣቀማምጣታት ኣፍልጦታት ኣርኢ" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Obsługiwane przez" },
   "about_sourceCode": { "message": "Kod źródłowy" },
   "mode_autoclear": { "message": "Automatyczne czyszczenie" },
-  "helptip_autoclear": { "message": "Automatycznie wyczyść historię czatu podczas odwiedzania chatgpt.com" },
   "helptip_clearNow": { "message": "Wyczyść historię czatu" },
   "helptip_toggleVis": { "message": "Pokaż przełącznik automatycznego czyszczenia na pasku bocznym" },
   "helptip_modeNotifs": { "message": "Pokaż powiadomienia podczas przełączania trybów/ustawień" },

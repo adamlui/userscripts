@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Ixhaswa ngu" },
   "about_sourceCode": { "message": "Ikhowudi engumthombo" },
   "mode_autoclear": { "message": "Zikhuphe Ngokuzenzekelayo" },
-  "helptip_autoclear": { "message": "Cacisa ngokuzenzekelayo imbali yencoko xa undwendwela i-chatgpt.com" },
   "helptip_clearNow": { "message": "Susa ingxelo yencoko ngoku" },
   "helptip_toggleVis": { "message": "Bonisa i-auto-Clear toggle kwibar esecaleni" },
   "helptip_modeNotifs": { "message": "Bonisa imiyalezo xa kuguqulwa iindlela/iisetingi" },

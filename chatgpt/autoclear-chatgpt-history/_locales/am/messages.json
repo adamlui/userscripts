@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "የተጎለበተው በ" },
   "about_sourceCode": { "message": "የምንጭ ኮድ" },
   "mode_autoclear": { "message": "ራስ-ግልጽ" },
-  "helptip_autoclear": { "message": "Chatgpt.com ን ሲጎበኙ ራስ-ሰር-ንጹህ የውይይት ታሪክ" },
   "helptip_clearNow": { "message": "ግልጽ የውይይት ታሪክ አሁን" },
   "helptip_toggleVis": { "message": "የጎን አሞሌ ውስጥ ራስ-ሰር-ንባብ toggle አሳይ" },
   "helptip_modeNotifs": { "message": "ሁነቶችን/ቅንብሮችን በሚገፉበት ጊዜ ማሳወቂያዎችን ያሳዩ" },

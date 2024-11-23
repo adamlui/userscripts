@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "དབང་ཤུགས་ཀྱི་ཐོག་ལས་" },
   "about_sourceCode": { "message": "ཐོན་ཁུངས་ཀོཌ་" },
   "mode_autoclear": { "message": "རང་བཞིན་གྱི་མིང་" },
-  "helptip_autoclear": { "message": "ཁྱོད་ཀྱིས་ chatgpt.com ལུ་འགྱོ་བའི་སྐབས་ རང་བཞིན་གྱི་གཏམ་གླེང་གི་ལོ་རྒྱུས་གསལ་སྒྲགས་འབད་" },
   "helptip_clearNow": { "message": "Chatroulette གི་ལོ་རྒྱུས་འདི་ ད་ལྟོ་གསལ་སྒྲགས་འབད་" },
   "helptip_toggleVis": { "message": "ཟུར་ཟུར་ལུ་ རང་བཞིན་གྱི་སློབ་སྦྱོང་ལྡེ་མིག་ཅིག་སྟོན་" },
   "helptip_modeNotifs": { "message": "གོ་རིམ་/སྒྲིག་གཞི་ཚུ་སེལ་འཐུ་འབད་བའི་སྐབས་བརྡ་སྟོན་ཚུ་སྟོན་འབད།" },

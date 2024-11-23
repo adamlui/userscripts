@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Lähtekood" },
   "mode_autoclear": { "message": "Automaatne tühjendamine" },
-  "helptip_autoclear": { "message": "Vestluse ajaloo automaatne kustutamine saidi chatgpt.com külastamisel" },
   "helptip_clearNow": { "message": "Tühjenda kohe vestluse ajalugu" },
   "helptip_toggleVis": { "message": "Kuva külgribal lüliti Auto-Clear" },
   "helptip_modeNotifs": { "message": "Kuva teated režiimide/seadete vahetamisel" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Codex Originis" },
   "mode_autoclear": { "message": "Carpe" },
-  "helptip_autoclear": { "message": "Datum chate autorus quando chatgpt.com" },
   "helptip_clearNow": { "message": "REGISTRARETUM TECHNETUM" },
   "helptip_toggleVis": { "message": "Apparto Auto-Clear toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Notificationes quod toggling modes/settings" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by SFX" },
   "about_sourceCode": { "message": "Ada keldukota" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Auto-clear chat søga, tá ið tú vitjar chatgpt.com" },
   "helptip_clearNow": { "message": "Rætta samrøðuhistoria nú" },
   "helptip_toggleVis": { "message": "Vís automatisk-klárar skifting í síðubarn" },
   "helptip_modeNotifs": { "message": "Vís boð, tá ið tú skiftir stillingar/stillingar" },

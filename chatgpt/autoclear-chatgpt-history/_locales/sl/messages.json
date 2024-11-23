@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Poganja" },
   "about_sourceCode": { "message": "Kliknite tukaj za prenos izvorne kode" },
   "mode_autoclear": { "message": "Samodejno čiščenje" },
-  "helptip_autoclear": { "message": "Samodejno izbriši zgodovino klepeta, ko obiščeš chatgpt.com" },
   "helptip_clearNow": { "message": "Izbriši zgodovino iskanja" },
   "helptip_toggleVis": { "message": "Prikaži preklop samodejnega čiščenja v stranski vrstici" },
   "helptip_modeNotifs": { "message": "Prikaži obvestila pri preklopu načinov/nastavitev" },

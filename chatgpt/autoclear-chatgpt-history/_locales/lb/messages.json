@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Bereetgestallt vun" },
   "about_sourceCode": { "message": "Quellcode" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Auto-clean chat geschicht beim besuch chatgpt.com" },
   "helptip_clearNow": { "message": "Chatgeschicht elo läschen" },
   "helptip_toggleVis": { "message": "Auto-Clear wiesselen an der Säitbar uweisen" },
   "helptip_modeNotifs": { "message": "Notifikatiounen uweisen wann Dir Modi/Astellunge wiesselt" },

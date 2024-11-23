@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Beží na" },
   "about_sourceCode": { "message": "Zdrojový kód" },
   "mode_autoclear": { "message": "Automatické vymazanie" },
-  "helptip_autoclear": { "message": "Automatické vymazanie histórie chatu pri návšteve chatgpt.com" },
   "helptip_clearNow": { "message": "Vymazať históriu chatu teraz" },
   "helptip_toggleVis": { "message": "Zobraziť prepínač Automatické vymazanie v bočnom paneli" },
   "helptip_modeNotifs": { "message": "Zobraziť upozornenia pri prepínaní režimov/nastavení" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Drevet af" },
   "about_sourceCode": { "message": "Kildekode" },
   "mode_autoclear": { "message": "Ryd automatisk" },
-  "helptip_autoclear": { "message": "Automatisk ryd chathistorik, når du besøger chatgpt.com" },
   "helptip_clearNow": { "message": "Ryd chathistorik nu" },
   "helptip_toggleVis": { "message": "Vis automatisk slukning i sidebjælken" },
   "helptip_modeNotifs": { "message": "Vis meddelelser, når du skifter tilstande/indstillinger" },

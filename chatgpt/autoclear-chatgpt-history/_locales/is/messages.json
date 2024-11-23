@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Knúið af" },
   "about_sourceCode": { "message": "Frumkóði" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Sjálfvirk hreinsun spjallferils þegar farið er inn á chatgpt.com" },
   "helptip_clearNow": { "message": "Hreinsa spjallferil núna" },
   "helptip_toggleVis": { "message": "Sýna sjálfvirkan tæringarhnapp í hliðarstiku" },
   "helptip_modeNotifs": { "message": "Sýna tilkynningar þegar skipt er um ham/stillingar" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Alimentado por" },
   "about_sourceCode": { "message": "Código-fonte" },
   "mode_autoclear": { "message": "Limpeza Automática" },
-  "helptip_autoclear": { "message": "Limpe automaticamente o histórico de conversas ao visitar chatgpt.com" },
   "helptip_clearNow": { "message": "Limpar o histórico das mensagens." },
   "helptip_toggleVis": { "message": "Mostrar alternância de limpeza automática na barra lateral" },
   "helptip_modeNotifs": { "message": "Mostrar notificações ao alternar modos/configurações" },

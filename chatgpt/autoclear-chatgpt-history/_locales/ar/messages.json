@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "يستخدم" },
   "about_sourceCode": { "message": "شيفرة مصدرية" },
   "mode_autoclear": { "message": "مسح آلي" },
-  "helptip_autoclear": { "message": "المسح التلقائي لسجل الدردشة عند زيارة chatgpt.com" },
   "helptip_clearNow": { "message": "امسح سجل الدردشة الآن" },
   "helptip_toggleVis": { "message": "عرض تبديل المسح التلقائي في الشريط الجانبي" },
   "helptip_modeNotifs": { "message": "عرض الإشعارات عند تبديل الأوضاع/الإعدادات" },

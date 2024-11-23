@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "...द्वारा पावरशुदा" },
   "about_sourceCode": { "message": "सोर्स कोड" },
   "mode_autoclear": { "message": "ऑटो - क्लियर" },
-  "helptip_autoclear": { "message": "Chatgpt.com पर जाते समय चैट हिस्ट्री अपने आप साफ़ करें" },
   "helptip_clearNow": { "message": "चैट का इतिहास अभी साफ़ करें" },
   "helptip_toggleVis": { "message": "साइडबार में ऑटो - क्लियर टॉगल दिखाएँ" },
   "helptip_modeNotifs": { "message": "मोड/सेटिंग टॉगल करते समय नोटिफ़िकेशन दिखाएँ" },

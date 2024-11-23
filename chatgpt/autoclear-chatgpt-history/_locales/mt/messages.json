@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Imħaddem minn" },
   "about_sourceCode": { "message": "Kodiċi tas-sors" },
   "mode_autoclear": { "message": "Neħħi l-Awtomatikament" },
-  "helptip_autoclear": { "message": "Ħassar awtomatikament l-istorja taċ-chat meta żżur chatgpt.com" },
   "helptip_clearNow": { "message": "Neħħi l-istorja taċ-chat issa" },
   "helptip_toggleVis": { "message": "Uri l-bidla awtomatika fil-gidebar" },
   "helptip_modeNotifs": { "message": "Uri n-notifiki meta tibdel il-modi/settings" },

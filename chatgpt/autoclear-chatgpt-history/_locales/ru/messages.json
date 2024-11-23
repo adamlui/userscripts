@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "На базе технологии" },
   "about_sourceCode": { "message": "Исходный код" },
   "mode_autoclear": { "message": "Автоматическая очистка" },
-  "helptip_autoclear": { "message": "Автоматическая очистка истории чата при посещении chatgpt.com" },
   "helptip_clearNow": { "message": "Удалить историю чата" },
   "helptip_toggleVis": { "message": "Показать переключатель Auto-Clear на боковой панели" },
   "helptip_modeNotifs": { "message": "Показывать уведомления при переключении режимов/настроек" },

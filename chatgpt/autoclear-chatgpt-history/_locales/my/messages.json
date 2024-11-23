@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "မှပံ့ပိုးသည်" },
   "about_sourceCode": { "message": "ပင္မကုဒ္" },
   "mode_autoclear": { "message": "အလိုအလျောက်ရှင်းလင်းခြင်း" },
-  "helptip_autoclear": { "message": "Chatgpt.com လာရောက်လည်ပတ်သောအခါအလိုအလျောက်ရှင်းရှင်းလင်းလင်းချက်တင်သမိုင်း" },
   "helptip_clearNow": { "message": "စကားပြောရာဇဝင်ကို ယခု ရှင်းလင်းပါ" },
   "helptip_toggleVis": { "message": "ဘေးဘားတွင် အလိုအလျောက် ပြသပါ" },
   "helptip_modeNotifs": { "message": "မုဒ်များ/ဆက်တင်များကို ပြောင်းလဲချိန်တွင် အသိပေးချက်များကို ပြသပါ" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "E tsamaisiwa ke" },
   "about_sourceCode": { "message": "Source code" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Hisitori ya motlotlo e e tlhaloganyesegang sentle fa o etetse chatgpt.com" },
   "helptip_clearNow": { "message": "Hisitori ya motlotlo e e tlhaloganyesegang sentle jaanong jaana" },
   "helptip_toggleVis": { "message": "SHOW Auto-Clear toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Bontsha dikitsiso fa o toggling modes/settings" },

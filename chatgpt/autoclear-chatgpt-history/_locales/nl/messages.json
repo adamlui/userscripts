@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Ondersteund door" },
   "about_sourceCode": { "message": "Broncode" },
   "mode_autoclear": { "message": "Auto-opruiming" },
-  "helptip_autoclear": { "message": "Chatgeschiedenis automatisch wissen bij een bezoek aan chatgpt.com" },
   "helptip_clearNow": { "message": "Chatgeschiedenis nu wissen" },
   "helptip_toggleVis": { "message": "Schakelen automatisch wissen in zijbalk weergeven" },
   "helptip_modeNotifs": { "message": "Meldingen weergeven bij schakelen tussen modi/instellingen" },

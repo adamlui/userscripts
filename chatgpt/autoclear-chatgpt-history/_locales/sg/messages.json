@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "A yeke sara kua na ni" },
   "about_sourceCode": { "message": "Source code ti" },
   "mode_autoclear": { "message": "Auto brochure" },
-  "helptip_autoclear": { "message": "Auto-clear chat history na ngoi so mo yeke gue na chatgpt.com" },
   "helptip_clearNow": { "message": "L 'histoire de la chanson ayeke polele fadeso" },
   "helptip_toggleVis": { "message": "Show Auto-Clear Toggle na sidebar" },
   "helptip_modeNotifs": { "message": "Fa awango na ngoi so mo yeke toggling mode/settings" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Mothandizidwa ndi" },
   "about_sourceCode": { "message": "Gwero kachidindo" },
   "mode_autoclear": { "message": "Auto-Clear" },
-  "helptip_autoclear": { "message": "Auto momveka bwino macheza mbiri pamene kuyendera chatgpt.com" },
   "helptip_clearNow": { "message": "Mbiri yowoneka bwino ya macheza tsopano" },
   "helptip_toggleVis": { "message": "Onetsani Auto-Clear toggle mu sidebar" },
   "helptip_modeNotifs": { "message": "Onetsani zidziwitso pamene toggling modes/zoikamo" },

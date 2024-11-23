@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ਦੁਆਰਾ ਸੰਚਾਲਿਤ" },
   "about_sourceCode": { "message": "ਸੂਤਰ ਸੰਕੇਤਾਵਲੀ" },
   "mode_autoclear": { "message": "ਆਟੋ - ਸਾਫ਼" },
-  "helptip_autoclear": { "message": "ਆਟੋ ਸਾਫ ਚੈਟ ਇਤਿਹਾਸ ਜਦ ਦਾ ਦੌਰਾ chatgpt. com" },
   "helptip_clearNow": { "message": "ਹੁਣ ਚੈਟ ਦਾ ਇਤਿਹਾਸ ਸਾਫ਼ ਕਰੋ" },
   "helptip_toggleVis": { "message": "ਬਾਹੀ ਵਿੱਚ ਆਟੋ- ਕਲੀਅਰ ਟੌਗਲ ਵੇਖੋ" },
   "helptip_modeNotifs": { "message": "ਜਦੋਂ ਟੌਗਲਿੰਗ ਮੋਡ/ਸੈਟਿੰਗ ਹੋਵੇ ਤਾਂ ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੇਖੋ" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Cung cấp bởi" },
   "about_sourceCode": { "message": "Mã nguồn" },
   "mode_autoclear": { "message": "Tự động xóa" },
-  "helptip_autoclear": { "message": "Tự động xóa lịch sử trò chuyện khi truy cập chatgpt.com" },
   "helptip_clearNow": { "message": "Xóa lịch sử trò chuyện ngay bây giờ" },
   "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động xóa trong thanh bên" },
   "helptip_modeNotifs": { "message": "Hiển thị thông báo khi chuyển đổi chế độ/cài đặt" },

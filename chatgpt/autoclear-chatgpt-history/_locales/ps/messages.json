@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "طراحی شده توسط" },
   "about_sourceCode": { "message": "سرچينه كوډه" },
   "mode_autoclear": { "message": "اتومات لارموندنه" },
-  "helptip_autoclear": { "message": "کله چې له chatgpt.com څخه لیدنه وکړئ نو په اتومات ډول د خبرو اترو تاریخچه" },
   "helptip_clearNow": { "message": "اوس د خبرو مخینه پاکه کړئ" },
   "helptip_toggleVis": { "message": "په اړخپټه کې د اتومات - پلنوالي څرنګتياونج ښکاره کړئ" },
   "helptip_modeNotifs": { "message": "خبرتیاوې وښایاست کله چې د حالتونو/ترتیباتو ته اشاره وکړئ" },

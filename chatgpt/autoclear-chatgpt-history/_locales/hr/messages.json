@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Pokreće" },
   "about_sourceCode": { "message": "Izvorni kod" },
   "mode_autoclear": { "message": "automatsko �i��enje" },
-  "helptip_autoclear": { "message": "Automatsko brisanje povijesti razgovora prilikom posjete chatgpt.com" },
   "helptip_clearNow": { "message": "Odmah izbriši povijest razgovora" },
   "helptip_toggleVis": { "message": "Prikaži prekidač automatskog čišćenja u bočnoj traci" },
   "helptip_modeNotifs": { "message": "Prikaži obavijesti prilikom prebacivanja načina/postavki" },

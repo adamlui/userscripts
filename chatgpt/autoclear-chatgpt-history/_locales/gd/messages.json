@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Bun-tùs a' chod" },
   "mode_autoclear": { "message": "Glan gu fèin - obrachail" },
-  "helptip_autoclear": { "message": "Eachdraidh cabadaich fèin - shoilleir nuair a thadhlas tu air chatgpt.com" },
   "helptip_clearNow": { "message": "Falamhaich eachdraidh a 'chabadaich a - nis" },
   "helptip_toggleVis": { "message": "Seall toglaig gu fèin - obrachail sa bhàr - taoibh" },
   "helptip_modeNotifs": { "message": "Seall brathan nuair a thogras tu modhan/roghainnean" },

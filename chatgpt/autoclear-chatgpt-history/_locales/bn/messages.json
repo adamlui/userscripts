@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "নিবেদন করছেন" },
   "about_sourceCode": { "message": "সোর্স কোড" },
   "mode_autoclear": { "message": "অটো- ক্লিয়ার" },
-  "helptip_autoclear": { "message": "Chatgpt.com ভিজিট করার সময় অটো ক্লিয়ার চ্যাটের ইতিহাস" },
   "helptip_clearNow": { "message": "এখনই চ্যাটের ইতিহাস সাফ করুন" },
   "helptip_toggleVis": { "message": "সাইডবারে অটো-ক্লিয়ার টগল দেখান" },
   "helptip_modeNotifs": { "message": "মোড/সেটিংস টগল করার সময় বিজ্ঞপ্তিগুলি দেখান" },

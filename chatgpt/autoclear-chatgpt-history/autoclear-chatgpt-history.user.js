@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23
+// @version             2024.11.23.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -296,7 +296,6 @@
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
         mode_autoclear: 'Auto-Clear',
-        helptip_autoclear: 'Auto-clear chat history when visiting chatgpt.com',
         helptip_clearNow: 'Clear chat history now',
         helptip_toggleVis: 'Show Auto-Clear toggle in sidebar',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
@@ -365,7 +364,7 @@
         controls: { // displays top-to-bottom in toolbar menu
             autoclear: { type: 'toggle',
                 label: app.msgs.menuLabel_autoclear,
-                helptip: app.msgs.helptip_autoclear },
+                helptip: app.msgs.appDesc },
             clearNow: { type: 'action', symbol: '🧹',
                 label: app.msgs.menuLabel_clearNow,
                 helptip: app.msgs.helptip_clearNow },

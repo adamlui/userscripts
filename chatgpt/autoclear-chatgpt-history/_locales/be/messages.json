@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Пры падтрымцы" },
   "about_sourceCode": { "message": "Зыходнікі" },
   "mode_autoclear": { "message": "Аўтаачыстка" },
-  "helptip_autoclear": { "message": "Аўтаматычная ачыстка гісторыі чата пры наведванні chatgpt.com" },
   "helptip_clearNow": { "message": "Ачысціць гісторыю чата зараз" },
   "helptip_toggleVis": { "message": "Паказваць аўтаматычную ачыстку перамыкача ў бакавой панэлі" },
   "helptip_modeNotifs": { "message": "Паказваць апавяшчэнні пры пераключэнні рэжымаў/налад" },

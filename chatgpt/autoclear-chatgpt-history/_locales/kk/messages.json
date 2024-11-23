@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Сайтты жасаған" },
   "about_sourceCode": { "message": "Бастапқы код" },
   "mode_autoclear": { "message": "Автоматты тазалау" },
-  "helptip_autoclear": { "message": "Chatgpt.com сайтына кірген кезде чат тарихын автоматты түрде өшіру" },
   "helptip_clearNow": { "message": "Қазір сөйлесу тарихын тазалау" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада автоматты түрде тазалау ауыстырғышын көрсету" },
   "helptip_modeNotifs": { "message": "Режимдерді/параметрлерді ауыстыру кезінде хабарландыруларды көрсету" },

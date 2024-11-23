@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Wedi'i gynnal gan" },
   "about_sourceCode": { "message": "Cod ffynhonnell" },
   "mode_autoclear": { "message": "Clirio 'n Awtomatig" },
-  "helptip_autoclear": { "message": "Hanes sgwrsio auto - glir wrth ymweld â chatgpt.com" },
   "helptip_clearNow": { "message": "Clirio'r hanes sgwrsio nawr" },
   "helptip_toggleVis": { "message": "Dangos togl Auto - Cegin yn y bar ochr" },
   "helptip_modeNotifs": { "message": "Dangos hysbysiadau wrth toglo moddau/gosodiadau" },

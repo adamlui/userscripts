@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Destek" },
   "about_sourceCode": { "message": "Kaynak Kodu" },
   "mode_autoclear": { "message": "Otomatik Temizle" },
-  "helptip_autoclear": { "message": "Chatgpt.com'u ziyaret ederken sohbet geçmişini otomatik olarak temizle" },
   "helptip_clearNow": { "message": "Sohbet geçmişini şimdi temizle" },
   "helptip_toggleVis": { "message": "Kenar çubuğunda Otomatik Temizle geçişini göster" },
   "helptip_modeNotifs": { "message": "Modlar/ayarlar arasında geçiş yaparken bildirimleri göster" },

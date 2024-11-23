@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "აგებულია KDE-ზე" },
   "about_sourceCode": { "message": "საწყისი კოდი" },
   "mode_autoclear": { "message": "Ავტომატური გასუფთავება" },
-  "helptip_autoclear": { "message": "Ავტომატურად სუფთა ჩატის ისტორია chatgpt.com-ზე სტუმრობისას" },
   "helptip_clearNow": { "message": "Ჩატის ისტორიის ახლავე წაშლა" },
   "helptip_toggleVis": { "message": "Გვერდითა ზოლში ავტომატურად გასუფთავებული გადამრთველის ჩვენება" },
   "helptip_modeNotifs": { "message": "Გაფრთხილებების ჩვენება რეჟიმების/პარამეტრების გადართვისას" },

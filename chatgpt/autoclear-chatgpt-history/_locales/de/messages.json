@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Unterstützt von" },
   "about_sourceCode": { "message": "Quellcode" },
   "mode_autoclear": { "message": "Automatisch löschen" },
-  "helptip_autoclear": { "message": "Chatverlauf beim Besuch von chatgpt.com automatisch löschen" },
   "helptip_clearNow": { "message": "Chat-Verlauf jetzt löschen" },
   "helptip_toggleVis": { "message": "Auto-Clear-Schalter in der Seitenleiste anzeigen" },
   "helptip_modeNotifs": { "message": "Benachrichtigungen anzeigen, wenn Modi/Einstellungen umgeschaltet werden" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ИЛЧЛЭГЧ" },
   "about_sourceCode": { "message": "Эх код" },
   "mode_autoclear": { "message": "Авто Авто" },
-  "helptip_autoclear": { "message": "Chatgpt.com-д зочлоход автоматаар цэвэрлэх чатын түүх" },
   "helptip_clearNow": { "message": "Чатын түүхийг одоо арилгах" },
   "helptip_toggleVis": { "message": "Хажуугийн цонхонд авто машины шилжилтийг харуулах" },
   "helptip_modeNotifs": { "message": "Модель/тохиргоонуудыг өөрчлөх үед мэдэгдлүүдийг харуулах" },

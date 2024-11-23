@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Drivs av" },
   "about_sourceCode": { "message": "Källkod" },
   "mode_autoclear": { "message": "Automatisk rensning" },
-  "helptip_autoclear": { "message": "Automatisk rensning av chatthistorik när du besöker chatgpt.com" },
   "helptip_clearNow": { "message": "Rensa chatthistoriken nu" },
   "helptip_toggleVis": { "message": "Visa Auto-Clear växling i sidofältet" },
   "helptip_modeNotifs": { "message": "Visa aviseringar när du växlar lägen/inställningar" },

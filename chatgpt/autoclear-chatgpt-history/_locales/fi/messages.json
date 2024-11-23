@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Lähdekoodi" },
   "mode_autoclear": { "message": "Automaattinen tyhjennys" },
-  "helptip_autoclear": { "message": "Tyhjennä chat-historia automaattisesti, kun vierailet chatgpt.com-sivustolla" },
   "helptip_clearNow": { "message": "Tyhjennä chat-historia nyt" },
   "helptip_toggleVis": { "message": "Näytä Automaattinen tyhjennys -kytkin sivupalkissa" },
   "helptip_modeNotifs": { "message": "Näytä ilmoitukset, kun vaihdat tiloja/asetuksia" },

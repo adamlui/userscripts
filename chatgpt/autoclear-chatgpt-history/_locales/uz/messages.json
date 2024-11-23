@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Tomonidan qo'llab-quvvatlanadi" },
   "about_sourceCode": { "message": "Ochiq kod" },
   "mode_autoclear": { "message": "Avtomatik tozalash" },
-  "helptip_autoclear": { "message": "Chatgpt.com saytiga tashrif buyurganingizda chat tarixini avtomatik tozalash" },
   "helptip_clearNow": { "message": "Chat tarixini hozir tozalang" },
   "helptip_toggleVis": { "message": "Yon panelda Avtomatik tozalashni ko'rsatish" },
   "helptip_modeNotifs": { "message": "Rejimlar/sozlamalarni almashtirishda bildirishnomalarni ko'rsatish" },

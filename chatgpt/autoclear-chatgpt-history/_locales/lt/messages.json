@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Įgalino Proneta" },
   "about_sourceCode": { "message": "Pradinis kodas" },
   "mode_autoclear": { "message": "Automatinis valymas" },
-  "helptip_autoclear": { "message": "Automatiškai išvalyti pokalbių istoriją apsilankius chatgpt.com" },
   "helptip_clearNow": { "message": "Išvalyti pokalbių istoriją dabar" },
   "helptip_toggleVis": { "message": "Rodyti automatinio išvalymo perjungimą šoninėje juostoje" },
   "helptip_modeNotifs": { "message": "Rodyti pranešimus, kai perjungiami režimai/nustatymai" },

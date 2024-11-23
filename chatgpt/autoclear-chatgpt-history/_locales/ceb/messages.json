@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Gipadagan sa" },
   "about_sourceCode": { "message": "Gigikana sa kodigo" },
   "mode_autoclear": { "message": "Autoplay Loop" },
-  "helptip_autoclear": { "message": "Auto-clear chat kasaysayan sa diha nga ang pagbisita sa chatgpt.com" },
   "helptip_clearNow": { "message": "Tin-aw nga chat kasaysayan karon" },
   "helptip_toggleVis": { "message": "Ipakita ang Auto-Clear toggle sa sidebar" },
   "helptip_modeNotifs": { "message": "Ipakita ang mga pahibalo kung ang mga mode/setting sa pag-toggle" },

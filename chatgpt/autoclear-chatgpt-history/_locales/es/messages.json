@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Desarrollado por" },
   "about_sourceCode": { "message": "Código fuente" },
   "mode_autoclear": { "message": "Borrar automáticamente" },
-  "helptip_autoclear": { "message": "Borrar automáticamente el historial de chat al visitar chatgpt.com" },
   "helptip_clearNow": { "message": "Borrar historial de chat" },
   "helptip_toggleVis": { "message": "Mostrar botón de borrado automático en la barra lateral" },
   "helptip_modeNotifs": { "message": "Mostrar notificaciones al alternar modos/configuraciones" },

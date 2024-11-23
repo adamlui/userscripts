@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "funkciigita de" },
   "about_sourceCode": { "message": "Fontkodo" },
   "mode_autoclear": { "message": "Aŭtomate purigi" },
-  "helptip_autoclear": { "message": "Aŭtomate purigi la historion de babilejo kiam vi vizitas chatgpt.com" },
   "helptip_clearNow": { "message": "Forviŝi babilhistorion nun" },
   "helptip_toggleVis": { "message": "Montri aŭtomate malplenan ŝnurstangeton en flankobreto" },
   "helptip_modeNotifs": { "message": "Montri sciigojn kiam ŝanĝi reĝimojn/agordojn" },

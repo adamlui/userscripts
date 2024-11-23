@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Kiszolgálja" },
   "about_sourceCode": { "message": "Forráskód" },
   "mode_autoclear": { "message": "Automatikus törlés" },
-  "helptip_autoclear": { "message": "Csevegési előzmények automatikus törlése a chatgpt.com webhelyen" },
   "helptip_clearNow": { "message": "Csevegési előzmények törlése most" },
   "helptip_toggleVis": { "message": "Automatikus törlés kapcsoló megjelenítése az oldalsávban" },
   "helptip_modeNotifs": { "message": "Értesítések megjelenítése üzemmódok/beállítások közötti váltáskor" },

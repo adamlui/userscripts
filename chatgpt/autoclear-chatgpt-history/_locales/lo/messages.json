@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
   "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
   "mode_autoclear": { "message": "ອັດຕະໂນມັດ-ການຮຽນຮູ້" },
-  "helptip_autoclear": { "message": "ປະຫວັດການສົນທະນາທີ່ຊັດເຈນໂດຍອັດຕະໂນມັດເມື່ອເຂົ້າເບິ່ງ chatgpt.com" },
   "helptip_clearNow": { "message": "ລ້າງປະຫວັດການສົນທະນາຕອນນີ້" },
   "helptip_toggleVis": { "message": "ສະແດງອັດຕະໂນມັດ-Clear toggle ໃນແຖບຂ້າງ" },
   "helptip_modeNotifs": { "message": "ສະແດງການແຈ້ງເຕືອນເມື່ອປິດການໃຊ້ງານໂໝດ/ການຕັ້ງຄ່າ" },
