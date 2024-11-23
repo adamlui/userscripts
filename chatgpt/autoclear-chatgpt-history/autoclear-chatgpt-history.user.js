@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.19
+// @version             2024.11.22.20
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -708,7 +708,7 @@
     }
 
     function clearChatsAndGoHome() {
-        chatgpt.clearChats('api')
+        chatgpt.clearChats()
 
         // Hide history from DOM since chatgpt.clearChats() works back-end only (front-end refreshes on reload otherwise)
         new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
