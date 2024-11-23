@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23.2
+// @version             2024.11.23.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -362,18 +362,10 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            autoclear: { type: 'toggle',
-                label: app.msgs.menuLabel_autoclear,
-                helptip: app.msgs.appDesc },
-            clearNow: { type: 'action', symbol: '🧹',
-                label: app.msgs.menuLabel_clearNow,
-                helptip: app.msgs.helptip_clearNow },
-            toggleHidden: { type: 'toggle',
-                label: app.msgs.menuLabel_toggleVis,
-                helptip: app.msgs.helptip_toggleVis },
-            notifDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_modeNotifs,
-                helptip: app.msgs.helptip_modeNotifs }
+            autoclear: { type: 'toggle', label: app.msgs.menuLabel_autoclear, helptip: app.msgs.appDesc },
+            clearNow: { type: 'action', symbol: '🧹', label: app.msgs.menuLabel_clearNow, helptip: app.msgs.helptip_clearNow },
+            toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis },
+            notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs }
         },
 
         load(...keys) {
