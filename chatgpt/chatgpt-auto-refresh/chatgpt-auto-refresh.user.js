@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23
+// @version             2024.11.23.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -375,18 +375,10 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            arDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_autoRefresh,
-                helptip: app.msgs.helptip_autoRefresh },
-            toggleHidden: { type: 'toggle',
-                label: app.msgs.menuLabel_toggleVis,
-                helptip: app.msgs.helptip_toggleVis },
-            notifDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_modeNotifs,
-                helptip: app.msgs.helptip_modeNotifs },
-            refreshInterval: { type: 'prompt', symbol: '⌚',
-                label: app.msgs.menuLabel_refreshInt,
-                helptip: app.msgs.helptip_refreshInt }
+            arDisabled: { type: 'toggle', label: app.msgs.menuLabel_autoRefresh, helptip: app.msgs.helptip_autoRefresh },
+            toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis },
+            notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs },
+            refreshInterval: { type: 'prompt', symbol: '⌚',label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
         load(...keys) {
