@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.24
+// @version             2024.11.22.25
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -273,7 +273,7 @@
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
-    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: '0f70c99', urls: {} }
+    const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: 'e037794', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/app.json`,
@@ -287,6 +287,7 @@
         appAuthor: app.author.name,
         appDesc: 'Auto-clears chat history when visiting chatgpt.com',
         menuLabel_autoclear: 'Autoclear Chats',
+        menuLabel_clearNow: 'Clear Chats Now',
         menuLabel_toggleVis: 'Toggle Visibility',
         menuLabel_modeNotifs: 'Mode Notifications',
         menuLabel_about: 'About',
@@ -296,8 +297,10 @@
         about_sourceCode: 'Source code',
         mode_autoclear: 'Auto-Clear',
         helptip_autoclear: 'Auto-clear chat history when visiting chatgpt.com',
+        helptip_clearNow: 'Clear chat history now',
         helptip_toggleVis: 'Show Auto-Clear toggle in sidebar',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
+        notif_chatsCleared: 'Chat history cleared',
         alert_choosePlatform: 'Choose a platform',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -363,6 +366,9 @@
             autoclear: { type: 'toggle',
                 label: app.msgs.menuLabel_autoclear,
                 helptip: app.msgs.helptip_autoclear },
+            clearNow: { type: 'action', symbol: '🧹',
+                label: app.msgs.menuLabel_clearNow,
+                helptip: app.msgs.helptip_clearNow },
             toggleHidden: { type: 'toggle',
                 label: app.msgs.menuLabel_toggleVis,
                 helptip: app.msgs.helptip_toggleVis },
@@ -393,14 +399,17 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
-                                + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } ${settings.controls[key].label}`
+                                + `${ settings.controls[key].type == 'toggle' ? menu.state.separator + menu.state.words[+settingIsEnabled] : '' }`
                 const registerOptions = ( // add menu tooltip in TM 5.0+
                     env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
                         { title: settings.controls[key].helptip } : undefined )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
-                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                    if (settings.controls[key].type == 'toggle') {
+                        settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
+                        notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                    } else { // Clear Now action
+                        clearChatsAndGoHome() ; notify(app.msgs.notif_chatsCleared, 'bottom-right') }
                 }, registerOptions))
             })
 
