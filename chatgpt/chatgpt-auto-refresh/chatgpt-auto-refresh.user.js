@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.10
+// @version             2024.11.22.11
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -373,22 +373,6 @@
         save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
     } ; settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
     if (!config.refreshInterval) settings.save('refreshInterval', 30) // init refresh interval to 30 secs if unset
-
-    // Prevent sporadic convo RESETS
-    const ogAEL = EventTarget.prototype.addEventListener
-    EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
-        let calledByOpenAI = false
-        if (type == 'focus' && this == unsafeWindow || type == 'visibilitychange') {
-            const callStack = new Error().stack + '\n',
-                  aelCaller = /-extension:\/\/.*\n(.+)/.exec(callStack)?.[1]
-            calledByOpenAI = !aelCaller?.includes('-extension://')
-            if (calledByOpenAI && type == 'visibilitychange') {
-                ogAEL.call(this, type, function(event) {
-                    if (document.visibilityState != 'visible') listener.call(this, event)
-                }, optionsOrUseCapture)
-        }}
-        if (!calledByOpenAI) ogAEL.apply(this, arguments)
-    }
 
     // Define MENU functions
 
@@ -801,6 +785,22 @@
     }
 
     sidebarToggle.insert()
+
+    // Prevent sporadic convo RESETS
+    const ogAEL = EventTarget.prototype.addEventListener
+    EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
+        let calledByOpenAI = false
+        if (type == 'focus' && this == unsafeWindow || type == 'visibilitychange') {
+            const callStack = new Error().stack + '\n',
+                  aelCaller = /-extension:\/\/.*\n(.+)/.exec(callStack)?.[1]
+            calledByOpenAI = !aelCaller?.includes('-extension://')
+            if (calledByOpenAI && type == 'visibilitychange') {
+                ogAEL.call(this, type, function(event) {
+                    if (document.visibilityState != 'visible') listener.call(this, event)
+                }, optionsOrUseCapture)
+        }}
+        if (!calledByOpenAI) ogAEL.apply(this, arguments)
+    }
 
     // Activate AUTO-REFRESH on first visit if enabled
     if (!config.arDisabled) {
