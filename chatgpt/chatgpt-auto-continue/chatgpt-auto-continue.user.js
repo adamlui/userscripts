@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23
+// @version             2024.11.23.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -438,6 +438,7 @@
     // Define FEEDBACK functions
 
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
+        if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
 
         // Strip state word to append colored one later
         const foundState = menu.state.words.find(word => msg.includes(word))
@@ -614,6 +615,6 @@
     })()
 
     // NOTIFY of status on load
-    if (!config.notifDisabled) notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
+    notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
 
 })()
