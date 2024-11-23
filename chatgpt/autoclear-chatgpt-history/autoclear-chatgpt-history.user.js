@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.13
+// @version             2024.11.22.14
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -282,17 +282,6 @@
     Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init CONFIG
-    const config = {}, settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('autoclear', 'buttonHidden', 'notifDisabled', 'toggleHidden')
-
-    // Init app MESSAGES
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,
@@ -338,7 +327,9 @@
         state_on: 'on',
         state_off: 'off'
     }
-    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
+
+    // LOCALIZE app.msgs for non-English users
+    if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
@@ -363,6 +354,15 @@
         })
         Object.assign(app.msgs, localizedMsgs)
     }
+
+    // Init CONFIG
+    const config = {}, settings = {
+        load(...keys) {
+            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
+            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
+        },
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    } ; settings.load('autoclear', 'buttonHidden', 'notifDisabled', 'toggleHidden')
 
     // Define MENU functions
 
