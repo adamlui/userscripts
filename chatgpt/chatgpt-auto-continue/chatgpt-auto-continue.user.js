@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22
+// @version             2024.11.22.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -248,8 +248,11 @@
 (async () => {
 
     // Init ENV vars
-    const env = { scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() },
-          xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const env = {
+        browser: { language: chatgpt.getUserLanguage() },
+        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+    }
+    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP info
     const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: 'cb67cff', urls: {} }
@@ -263,8 +266,7 @@
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Init CONFIG
-    const config = { userLanguage: chatgpt.getUserLanguage() }
-    const settings = {
+    const config = {}, settings = {
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
@@ -312,10 +314,10 @@
         state_on: 'on',
         state_off: 'off'
     }
-    if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
+    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/chromium/extension/_locales/',
-                  msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
+                  msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
             function handleMsgs(resp) {
@@ -327,7 +329,7 @@
                     resolve(flatMsgs)
                 } catch (err) { // if bad response
                     msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
-                    msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
+                    msgHref = env.browser.language.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                         msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                             : ( msgHostDir + 'en/messages.json' ) // else use default English messages
                     fetchMsgs()
@@ -408,7 +410,7 @@
                         )
 
                         // Localize button labels if needed
-                        if (!config.userLanguage.startsWith('en')) {
+                        if (!env.browser.language.startsWith('en')) {
                             const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
                                   updateBtns = updateAlert.querySelectorAll('button')
                             updateBtns[1].textContent = app.msgs.btnLabel_update
