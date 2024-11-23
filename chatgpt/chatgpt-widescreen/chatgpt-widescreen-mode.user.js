@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.6
+// @version             2024.11.22.7
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -381,8 +381,9 @@
     })))
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
-    // Init CONFIG
-    const config = {}, settings = {
+    // Init SETTINGS
+    const config = {}
+    const settings = {
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
