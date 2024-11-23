@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.4
+// @version                2024.11.22.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -127,148 +127,6 @@
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init DEBUG mode
-    const config = {}, settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('debugMode')
-
-    // Define LOG props/functions
-    const log = {
-
-        styles: {
-            prefix: {
-                base: `color: white ; padding: 2px 3px 2px 5px ; border-radius: 2px ; ${ env.browser.isFF ? 'font-size: 13px ;' : '' }`,
-                info: 'background: linear-gradient(344deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 39%, rgba(30,29,43,0.6026611328125) 93%)',
-                working: 'background: linear-gradient(342deg, rgba(255,128,0,1) 0%, rgba(255,128,0,0.9612045501794468) 57%, rgba(255,128,0,0.7539216370141807) 93%)' ,
-                success: 'background: linear-gradient(344deg, rgba(0,107,41,1) 0%, rgba(3,147,58,1) 39%, rgba(24,126,42,0.7735294801514356) 93%)',
-                warning: 'background: linear-gradient(344deg, rgba(255,0,0,1) 0%, rgba(232,41,41,0.9079832616640406) 57%, rgba(222,49,49,0.6530813008797269) 93%)',
-                caller: 'color: blue'
-            },
-
-            msg: { working: 'color: #ff8000', warning: 'color: red' }
-        },
-
-        regEx: {
-            greenVals: { caseInsensitive: /\b(?:true|\d+)\b|success\W?/i, caseSensitive: /\bON\b/ },
-            redVals: { caseInsensitive: /\bfalse\b|error\W?/i, caseSensitive: /\BOFF\b/ },
-            purpVals: /[ '"]\w+['"]?: / },
-
-        prettifyObj(obj) { return JSON.stringify(obj)
-            .replace(/([{,](?=")|":)/g, '$1 ') // append spaces to { and "
-            .replace(/((?<!\})\})/g, ' $1') // prepend spaces to }
-            .replace(/"/g, '\'') // replace " w/ '
-        },
-
-        toTitleCase(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
-
-    } ; ['info', 'error', 'debug'].forEach(logType =>
-        log[logType] = function() {
-            if (logType == 'debug' && !config.debugMode) return
-
-            const args = Array.from(arguments).map(arg => typeof arg == 'object' ? JSON.stringify(arg) : arg),
-                  msgType = args.some(arg => /\.{3}$/.test(arg)) ? 'working'
-                          : args.some(arg => /\bsuccess\b|!$/i.test(arg)) ? 'success'
-                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning' : 'info',
-                  prefixStyle = log.styles.prefix.base + log.styles.prefix[msgType],
-                  baseMsgStyle = log.styles.msg[msgType], msgStyles = []
-
-            // Combine regex
-            const allPatterns = Object.values(log.regEx).flatMap(val =>
-                val instanceof RegExp ? [val] : Object.values(val).filter(val => val instanceof RegExp))
-            const combinedPattern = new RegExp(allPatterns.map(pattern => pattern.source).join('|'), 'g')
-
-            // Combine args into finalMsg, color chars
-            let finalMsg = logType == 'error' && args.length == 1 ? 'ERROR: ' : ''
-            args.forEach((arg, idx) => {
-                finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
-                finalMsg += arg?.toString().replace(combinedPattern, match => {
-                    const matched = (
-                        Object.values(log.regEx.greenVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: green', baseMsgStyle) ; return true }})
-                     || Object.values(log.regEx.redVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: red', baseMsgStyle) ;  return true }}))
-                    if (!matched && log.regEx.purpVals.test(match)) { msgStyles.push('color: #dd29f4', baseMsgStyle) }
-                    return `%c${match}%c`
-                })
-            })
-
-            console[logType == 'error' ? logType : 'info'](
-                `${app.symbol} %c${app.name}%c ${ log.caller ? `${log.caller} » ` : '' }%c${finalMsg}`,
-                prefixStyle, log.styles.prefix.caller, baseMsgStyle, ...msgStyles
-            )
-        }
-    )
-
-    // Init COMPATIBILITY flags
-    log.debug('Initializing compatibility flags...')
-    const streamingSupported = {
-        byBrowser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
-        byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
-    log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
-
-    // Init CONFIG
-    log.debug('Initializing config...')
-    Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
-    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
-    settings.load('autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded', 'fgAnimationsDisabled',
-                  'fontSize', 'minimized', 'proxyAPIenabled', 'replyLanguage', 'scheme', 'streamingDisabled')
-    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
-    if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
-    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
-    log.debug(`Success! config = ${log.prettifyObj(config)}`)
-
-    // Init UI props
-    log.debug('Initializing UI properties...')
-    const ui = { app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' ) }}
-    log.debug(`Success! ui = '${log.prettifyObj(ui)}`)
-
-    // Init API props
-    log.debug('Initializing API properties...')
-    const apis = {
-        'AIchatOS': {
-            endpoint: 'https://api.binjie.fun/api/generateStream',
-            expectedOrigin: {
-                url: 'https://chat18.aichatos68.com',
-                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site' }},
-            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
-            userID: '#/chat/' + Date.now() },
-        'GPTforLove': {
-            endpoint: 'https://api11.gptforlove.com/chat-process',
-            expectedOrigin: {
-                url: 'https://ai27.gptforlove.com',
-                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site' }},
-            method: 'POST', streamable: true, accumulatesText: true, failFlags: ['[\'"]?status[\'"]?:\\s*[\'"]Fail[\'"]'] },
-        'MixerBox AI': {
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
-            expectedOrigin: {
-                url: 'https://chatai.mixerbox.com',
-                headers: { 'Accept': '*/*', 'Alt-Used': 'chatai.mixerbox.com', 'Sec-Fetch-Site': 'same-origin' }},
-            method: 'POST', streamable: true, accumulatesText: false },
-        'OpenAI': {
-            endpoints: {
-                auth: 'https://auth0.openai.com',
-                completions: 'https://api.openai.com/v1/chat/completions',
-                session: 'https://chatgpt.com/api/auth/session' },
-            expectedOrigin: {
-                url: 'https://chatgpt.com',
-                headers: { 'Accept': '*/*', 'Priority': 'u=4', 'Sec-Fetch-Site': 'same-site' }},
-            method: 'POST', streamable: true }
-    }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
-
-    // Init INPUT EVENTS
-    log.debug('Initializing input events...')
-    const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
-          inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
-
-    // Init app MESSAGES
-    log.debug('Initializing app messages...')
     app.msgs = {
         appDesc: 'Adds AI to Amazon shopping',
         menuLabel_proxyAPImode: 'Proxy API Mode',
@@ -356,7 +214,87 @@
         state_on: 'On',
         state_off: 'Off'
     }
-    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
+
+    // Init DEBUG mode
+    const config = {}
+    const settings = {
+        load(...keys) {
+            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
+            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
+        },
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    } ; settings.load('debugMode')
+
+    // Define LOG props/functions
+    const log = {
+
+        styles: {
+            prefix: {
+                base: `color: white ; padding: 2px 3px 2px 5px ; border-radius: 2px ; ${ env.browser.isFF ? 'font-size: 13px ;' : '' }`,
+                info: 'background: linear-gradient(344deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 39%, rgba(30,29,43,0.6026611328125) 93%)',
+                working: 'background: linear-gradient(342deg, rgba(255,128,0,1) 0%, rgba(255,128,0,0.9612045501794468) 57%, rgba(255,128,0,0.7539216370141807) 93%)' ,
+                success: 'background: linear-gradient(344deg, rgba(0,107,41,1) 0%, rgba(3,147,58,1) 39%, rgba(24,126,42,0.7735294801514356) 93%)',
+                warning: 'background: linear-gradient(344deg, rgba(255,0,0,1) 0%, rgba(232,41,41,0.9079832616640406) 57%, rgba(222,49,49,0.6530813008797269) 93%)',
+                caller: 'color: blue'
+            },
+
+            msg: { working: 'color: #ff8000', warning: 'color: red' }
+        },
+
+        regEx: {
+            greenVals: { caseInsensitive: /\b(?:true|\d+)\b|success\W?/i, caseSensitive: /\bON\b/ },
+            redVals: { caseInsensitive: /\bfalse\b|error\W?/i, caseSensitive: /\BOFF\b/ },
+            purpVals: /[ '"]\w+['"]?: / },
+
+        prettifyObj(obj) { return JSON.stringify(obj)
+            .replace(/([{,](?=")|":)/g, '$1 ') // append spaces to { and "
+            .replace(/((?<!\})\})/g, ' $1') // prepend spaces to }
+            .replace(/"/g, '\'') // replace " w/ '
+        },
+
+        toTitleCase(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
+
+    } ; ['info', 'error', 'debug'].forEach(logType =>
+        log[logType] = function() {
+            if (logType == 'debug' && !config.debugMode) return
+
+            const args = Array.from(arguments).map(arg => typeof arg == 'object' ? JSON.stringify(arg) : arg),
+                  msgType = args.some(arg => /\.{3}$/.test(arg)) ? 'working'
+                          : args.some(arg => /\bsuccess\b|!$/i.test(arg)) ? 'success'
+                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning' : 'info',
+                  prefixStyle = log.styles.prefix.base + log.styles.prefix[msgType],
+                  baseMsgStyle = log.styles.msg[msgType], msgStyles = []
+
+            // Combine regex
+            const allPatterns = Object.values(log.regEx).flatMap(val =>
+                val instanceof RegExp ? [val] : Object.values(val).filter(val => val instanceof RegExp))
+            const combinedPattern = new RegExp(allPatterns.map(pattern => pattern.source).join('|'), 'g')
+
+            // Combine args into finalMsg, color chars
+            let finalMsg = logType == 'error' && args.length == 1 ? 'ERROR: ' : ''
+            args.forEach((arg, idx) => {
+                finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
+                finalMsg += arg?.toString().replace(combinedPattern, match => {
+                    const matched = (
+                        Object.values(log.regEx.greenVals).some(val => {
+                            if (val.test(match)) { msgStyles.push('color: green', baseMsgStyle) ; return true }})
+                     || Object.values(log.regEx.redVals).some(val => {
+                            if (val.test(match)) { msgStyles.push('color: red', baseMsgStyle) ;  return true }}))
+                    if (!matched && log.regEx.purpVals.test(match)) { msgStyles.push('color: #dd29f4', baseMsgStyle) }
+                    return `%c${match}%c`
+                })
+            })
+
+            console[logType == 'error' ? logType : 'info'](
+                `${app.symbol} %c${app.name}%c ${ log.caller ? `${log.caller} » ` : '' }%c${finalMsg}`,
+                prefixStyle, log.styles.prefix.caller, baseMsgStyle, ...msgStyles
+            )
+        }
+    )
+
+    // LOCALIZE app.msgs for non-English users
+    if (!env.browser.language.startsWith('en')) {
+        log.debug('Localizing app messages...')
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
@@ -380,8 +318,71 @@
             fetchMsgs()
         })
         Object.assign(app.msgs, localizedMsgs)
+        log.debug(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
     }
-    log.debug(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
+
+    // Init COMPATIBILITY flags
+    log.debug('Initializing compatibility flags...')
+    const streamingSupported = {
+        byBrowser: !(env.scriptManager.name == 'Tampermonkey' && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
+        byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
+    log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
+
+    // Init SETTINGS
+    log.debug('Initializing settings...')
+    Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
+    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
+    settings.load('autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded', 'fgAnimationsDisabled',
+                  'fontSize', 'minimized', 'proxyAPIenabled', 'replyLanguage', 'scheme', 'streamingDisabled')
+    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
+    if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
+    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
+    log.debug(`Success! config = ${log.prettifyObj(config)}`)
+
+    // Init UI props
+    log.debug('Initializing UI properties...')
+    const ui = { app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' ) }}
+    log.debug(`Success! ui = '${log.prettifyObj(ui)}`)
+
+    // Init API props
+    log.debug('Initializing API properties...')
+    const apis = {
+        'AIchatOS': {
+            endpoint: 'https://api.binjie.fun/api/generateStream',
+            expectedOrigin: {
+                url: 'https://chat18.aichatos68.com',
+                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site' }},
+            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
+            userID: '#/chat/' + Date.now() },
+        'GPTforLove': {
+            endpoint: 'https://api11.gptforlove.com/chat-process',
+            expectedOrigin: {
+                url: 'https://ai27.gptforlove.com',
+                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site' }},
+            method: 'POST', streamable: true, accumulatesText: true, failFlags: ['[\'"]?status[\'"]?:\\s*[\'"]Fail[\'"]'] },
+        'MixerBox AI': {
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
+            expectedOrigin: {
+                url: 'https://chatai.mixerbox.com',
+                headers: { 'Accept': '*/*', 'Alt-Used': 'chatai.mixerbox.com', 'Sec-Fetch-Site': 'same-origin' }},
+            method: 'POST', streamable: true, accumulatesText: false },
+        'OpenAI': {
+            endpoints: {
+                auth: 'https://auth0.openai.com',
+                completions: 'https://api.openai.com/v1/chat/completions',
+                session: 'https://chatgpt.com/api/auth/session' },
+            expectedOrigin: {
+                url: 'https://chatgpt.com',
+                headers: { 'Accept': '*/*', 'Priority': 'u=4', 'Sec-Fetch-Site': 'same-site' }},
+            method: 'POST', streamable: true }
+    }
+    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
+
+    // Init INPUT EVENTS
+    log.debug('Initializing input events...')
+    const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
+          inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
+    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init SETTINGS controls
     log.debug('Initializing settings properties...')
