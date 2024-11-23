@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.2
+// @version             2024.11.22.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -264,7 +264,7 @@
 
     // Init ENV vars
     const env = {
-        browser: { isFF: chatgpt.browser.isFirefox() },
+        browser: { language: chatgpt.getUserLanguage(), isFF: chatgpt.browser.isFirefox() },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -292,8 +292,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init CONFIG
-    const config = { userLanguage: chatgpt.getUserLanguage() }
-    const settings = {
+    const config = {}, settings = {
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
@@ -365,10 +364,10 @@
         state_on: 'on',
         state_off: 'off'
     }
-    if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
+    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/chrome/extension/_locales/',
-                  msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
+                  msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
             function handleMsgs(resp) {
@@ -380,7 +379,7 @@
                     resolve(flatMsgs)
                 } catch (err) { // if bad response
                     msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
-                    msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
+                    msgHref = env.browser.language.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                         msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                             : ( msgHostDir + 'en/messages.json' ) // else use default English messages
                     fetchMsgs()
@@ -488,7 +487,7 @@
                         )
 
                         // Localize button labels if needed
-                        if (!config.userLanguage.startsWith('en')) {
+                        if (!env.browser.language.startsWith('en')) {
                             const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
                                   updateBtns = updateAlert.querySelectorAll('button')
                             updateBtns[1].textContent = app.msgs.btnLabel_update
