@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.23
+// @version             2024.11.22.24
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -400,7 +400,7 @@
                         { title: settings.controls[key].helptip } : undefined )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
-                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hdden/i.test(key))]}`)
+                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                 }, registerOptions))
             })
 
