@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.6
+// @version             2024.11.23
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -250,12 +250,15 @@
     // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage() },
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
     }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
-    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: 'cb67cff', urls: {} }
+    const app = { configKeyPrefix: 'chatGPTautoContinue', latestAssetCommitHash: '09ff834', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/app.json`,
@@ -276,6 +279,7 @@
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
         mode_autoContinue: 'Auto-Continue',
+        helptip_modeNotifs: 'Show notifications when toggling modes/settings',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
         alert_isAvail: 'is available',
@@ -334,7 +338,7 @@
     // Init SETTINGS
     const config = {}
     const settings = {
-        controls: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }},
+        controls: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs }},
 
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
@@ -349,11 +353,12 @@
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
@@ -363,20 +368,20 @@
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI()
                     notify(`${settings.controls[key].label}: ${menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
-                }))
+                }, tooltipsSupported ? { title: settings.controls[key].helptip } : undefined))
             })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show))
+            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show, tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
-            if (env.scriptManager == 'OrangeMonkey') return
+            if (env.scriptManager.name == 'OrangeMonkey') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
