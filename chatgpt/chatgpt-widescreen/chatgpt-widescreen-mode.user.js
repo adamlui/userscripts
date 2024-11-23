@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.8
+// @version             2024.11.23
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -427,6 +427,7 @@
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
@@ -434,23 +435,20 @@
                     const settingIsEnabled = config[key] ^ key.includes('Disabled')
                     const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
                                     + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
-                    const registerOptions = ( // add menu tooltip in TM 5.0+
-                        env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
-                            { title: settings.controls[key].helptip } : undefined )
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                         settings.save(key, !config[key]) ; sync.configToUI()
                         notify(`${settings.controls[key].label}: ${menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
-                    }, registerOptions))
+                    }, tooltipsSupported ? { title: settings.controls[key].helptip } : undefined))
                 }
             })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show))
+            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show, tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
