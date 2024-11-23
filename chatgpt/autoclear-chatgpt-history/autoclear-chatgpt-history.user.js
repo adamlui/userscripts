@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.16
+// @version             2024.11.22.17
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -358,12 +358,27 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+
+        controls: { // top-to-bottom in toolbar menu
+            autoclear: { type: 'toggle',
+                label: app.msgs.menuLabel_autoclear,
+                helptip: app.msgs.helptip_autoclear },
+            toggleHidden: { type: 'toggle',
+                label: app.msgs.menuLabel_toggleVis,
+                helptip: app.msgs.helptip_toggleVis },
+            notifDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_modeNotifs,
+                helptip: app.msgs.helptip_modeNotifs }
+        },
+
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
+
         save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('autoclear', 'notifDisabled', 'toggleHidden')
+    }
+    settings.load('autoclear', 'notifDisabled', 'toggleHidden')
 
     // Define MENU functions
 
@@ -374,45 +389,20 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
-                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
-            // Add Autoclear Chats toggle
-            const acLabel = menu.state.symbols[+config.autoclear] + ' '
-                          + ( app.msgs.menuLabel_autoclear )
-                          + menu.state.separator + menu.state.words[+config.autoclear]
-            const acRegisterOptions = ( // add menu tooltip in TM 5.0+
-                tooltipsSupported ? { title: app.msgs.helptip_autoclear } : undefined )
-            menu.ids.push(GM_registerMenuCommand(acLabel, () => {
-                settings.save('autoclear', !config.autoclear) ; syncConfigToUI()
-                clearChatsAndGoHome()
-                notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
-            }, acRegisterOptions))
-
-            // Add Toggle Visibility toggle
-            const tvLabel = menu.state.symbols[+!config.toggleHidden] + ' '
-                          + ( app.msgs.menuLabel_toggleVis )
-                          + menu.state.separator + menu.state.words[+!config.toggleHidden]
-            const tvRegisterOptions = ( // add menu tooltip in TM 5.0+
-                tooltipsSupported ? { title: app.msgs.helptip_toggleVis } : undefined )
-            menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
-                settings.save('toggleHidden', !config.toggleHidden)
-                sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
-                notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
-                menu.refresh()
-            }, tvRegisterOptions))
-
-            // Add Mode Notiications toggle
-            const mnLabel = menu.state.symbols[+!config.notifDisabled] + ' '
-                          + ( app.msgs.menuLabel_modeNotifs )
-                          + menu.state.separator + menu.state.words[+!config.notifDisabled]
-            const mnRegisterOptions = ( // add menu tooltip in TM 5.0+
-                tooltipsSupported ? { title: app.msgs.helptip_modeNotifs } : undefined )
-            menu.ids.push(GM_registerMenuCommand(mnLabel, () => {
-                settings.save('notifDisabled', !config.notifDisabled)
-                notify(`${app.msgs.menuLabel_modeNotifs}: ${menu.state.words[+!config.notifDisabled]}`)
-                menu.refresh()
-            }, mnRegisterOptions))
+            // Add toggles
+            Object.keys(settings.controls).forEach(key => {
+                const settingIsEnabled = config[key] ^ /Disabled|Hidden/.test(key)
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                const registerOptions = ( // add menu tooltip in TM 5.0+
+                    env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
+                        { title: settings.controls[key].helptip } : undefined )
+                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                    settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
+                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /Disabled|Hidden/.test(key))]}`)
+                }, registerOptions))
+            })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
@@ -605,7 +595,9 @@
 
     // Define UI functions
 
-    function syncConfigToUI() {
+    function syncConfigToUI(options) {
+        if (options?.reason == 'autoclear' && config.autoclear) clearChatsAndGoHome()
+        else if (options?.reason == 'toggleHidden') sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex'
         sidebarToggle.update() // based on config.toggleHidden + config.autoclear
         menu.refresh() // prefixes/suffixes
     }
