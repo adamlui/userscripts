@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.22.6
+// @version               2024.11.22.7
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -485,58 +485,6 @@
 
     // Init SETTINGS
     log.debug('Initializing settings...')
-    Object.assign(config, { userLanguage: chatgpt.getUserLanguage(), minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.313 })
-    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
-    settings.load('anchored', 'autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
-                  'fgAnimationsDisabled', 'fontSize', 'minimized', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
-                  'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
-    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
-    if (!config.fontSize) settings.save('fontSize', 16) // init reply font size if unset
-    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
-    log.debug(`Success! config = ${log.prettifyObj(config)}`)
-
-    // Init API props
-    log.debug('Initializing API properties...')
-    const apis = {
-        'AIchatOS': {
-            endpoint: 'https://api.binjie.fun/api/generateStream',
-            expectedOrigin: {
-                url: 'https://chat18.aichatos68.com',
-                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site' }},
-            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
-            userID: '#/chat/' + Date.now() },
-        'GPTforLove': {
-            endpoint: 'https://api11.gptforlove.com/chat-process',
-            expectedOrigin: {
-                url: 'https://ai27.gptforlove.com',
-                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site' }},
-            method: 'POST', streamable: true, accumulatesText: true, failFlags: ['[\'"]?status[\'"]?:\\s*[\'"]Fail[\'"]'] },
-        'MixerBox AI': {
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
-            expectedOrigin: {
-                url: 'https://chatai.mixerbox.com',
-                headers: { 'Accept': '*/*', 'Alt-Used': 'chatai.mixerbox.com', 'Sec-Fetch-Site': 'same-origin' }},
-            method: 'POST', streamable: true, accumulatesText: false },
-        'OpenAI': {
-            endpoints: {
-                auth: 'https://auth0.openai.com',
-                completions: 'https://api.openai.com/v1/chat/completions',
-                session: 'https://chatgpt.com/api/auth/session' },
-            expectedOrigin: {
-                url: 'https://chatgpt.com',
-                headers: { 'Accept': '*/*', 'Priority': 'u=4', 'Sec-Fetch-Site': 'same-site' }},
-            method: 'POST', streamable: true }
-    }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
-
-    // Init INPUT EVENTS
-    log.debug('Initializing input events...')
-    const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
-          inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
-
-    // Init SETTINGS controls
-    log.debug('Initializing settings properties...')
     Object.assign(settings, { controls: {
         proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
             label: app.msgs.menuLabel_proxyAPImode,
@@ -589,7 +537,55 @@
         about: { type: 'modal', icon: 'questionMarkCircle',
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
-    log.debug(`Success! settings.controls = ${log.prettifyObj(settings.controls)}`)
+    Object.assign(config, { userLanguage: chatgpt.getUserLanguage(), minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.313 })
+    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
+    settings.load('anchored', 'autoGetDisabled', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
+                  'fgAnimationsDisabled', 'fontSize', 'minimized', 'prefixEnabled', 'proxyAPIenabled', 'replyLanguage',
+                  'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
+    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
+    if (!config.fontSize) settings.save('fontSize', 16) // init reply font size if unset
+    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
+    log.debug(`Success! config = ${log.prettifyObj(config)}`)
+
+    // Init API props
+    log.debug('Initializing API properties...')
+    const apis = {
+        'AIchatOS': {
+            endpoint: 'https://api.binjie.fun/api/generateStream',
+            expectedOrigin: {
+                url: 'https://chat18.aichatos68.com',
+                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site' }},
+            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
+            userID: '#/chat/' + Date.now() },
+        'GPTforLove': {
+            endpoint: 'https://api11.gptforlove.com/chat-process',
+            expectedOrigin: {
+                url: 'https://ai27.gptforlove.com',
+                headers: { 'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site' }},
+            method: 'POST', streamable: true, accumulatesText: true, failFlags: ['[\'"]?status[\'"]?:\\s*[\'"]Fail[\'"]'] },
+        'MixerBox AI': {
+            endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
+            expectedOrigin: {
+                url: 'https://chatai.mixerbox.com',
+                headers: { 'Accept': '*/*', 'Alt-Used': 'chatai.mixerbox.com', 'Sec-Fetch-Site': 'same-origin' }},
+            method: 'POST', streamable: true, accumulatesText: false },
+        'OpenAI': {
+            endpoints: {
+                auth: 'https://auth0.openai.com',
+                completions: 'https://api.openai.com/v1/chat/completions',
+                session: 'https://chatgpt.com/api/auth/session' },
+            expectedOrigin: {
+                url: 'https://chatgpt.com',
+                headers: { 'Accept': '*/*', 'Priority': 'u=4', 'Sec-Fetch-Site': 'same-site' }},
+            method: 'POST', streamable: true }
+    }
+    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
+
+    // Init INPUT EVENTS
+    log.debug('Initializing input events...')
+    const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
+          inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
+    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
