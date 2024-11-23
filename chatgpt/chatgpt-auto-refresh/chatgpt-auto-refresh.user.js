@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.15
+// @version             2024.11.23
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -262,9 +262,12 @@
     // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
     }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
     const app = {
@@ -284,7 +287,7 @@
             review: { greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion' },
             support: 'https://support.chatgptautorefresh.com'
         },
-        latestAssetCommitHash: '3298f5e' // for cached messages.json + navicon
+        latestAssetCommitHash: 'f5a2f5a' // for cached messages.json + navicon
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -303,6 +306,10 @@
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
         prompt_updateInt: 'Update refresh interval (in secs)',
+        helptip_autoRefresh: 'Auto-refresh ChatGPT sessions',
+        helptip_toggleVis: 'Show Auto-Refresh toggle in sidebar',
+        helptip_modeNotifs: 'Show notifications when toggling modes/settings',
+        helptip_refreshInt: 'Average delay between refreshes (in seconds)',
         alert_intUpdated: 'Interval updated',
         alert_willRefresh: 'ChatGPT session will auto-refresh every',
         alert_choosePlatform: 'Choose a platform',
@@ -369,13 +376,17 @@
 
         controls: { // displays top-to-bottom in toolbar menu
             arDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_autoRefresh },
+                label: app.msgs.menuLabel_autoRefresh,
+                helptip: app.msgs.helptip_autoRefresh },
             toggleHidden: { type: 'toggle',
-                label: app.msgs.menuLabel_toggleVis },
+                label: app.msgs.menuLabel_toggleVis,
+                helptip: app.msgs.helptip_toggleVis },
             notifDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_modeNotifs },
+                label: app.msgs.menuLabel_modeNotifs,
+                helptip: app.msgs.helptip_modeNotifs },
             refreshInterval: { type: 'prompt', symbol: '⌚',
-                label: app.msgs.menuLabel_refreshInt }
+                label: app.msgs.menuLabel_refreshInt,
+                helptip: app.msgs.helptip_refreshInt }
         },
 
         load(...keys) {
@@ -392,11 +403,12 @@
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Init prompt setting status labels
             settings.controls.refreshInterval.status = `${config.refreshInterval}s`
@@ -431,20 +443,20 @@
                         }}
                     }
                     syncConfigToUI({ reason: key })
-                }))
+                }, tooltipsSupported ? { title: settings.controls[key].helptip } : undefined))
             })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show))
+            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show, tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
-            if (env.scriptManager == 'OrangeMonkey') return
+            if (env.scriptManager.name == 'OrangeMonkey') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
