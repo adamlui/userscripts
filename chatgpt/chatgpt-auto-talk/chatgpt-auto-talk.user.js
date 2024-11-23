@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.10
+// @version             2024.11.22.11
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -351,12 +351,22 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+
+        controls: { // displays top-to-bottom in toolbar menu
+            autoTalkDisabled: { type: 'toggle',
+                label: app.msgs.mode_autoTalk },
+            toggleHidden: { type: 'toggle',
+                label: app.msgs.menuLabel_toggleVis }
+        },
+
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
+
         save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('autoTalkDisabled', 'toggleHidden')
+    }
+    settings.load('autoTalkDisabled', 'toggleHidden')
 
     // Define MENU functions
 
@@ -368,25 +378,19 @@
 
         register() {
 
-            // Add Auto-Talk toggle
-            const atLabel = menu.state.symbols[+!config.autoTalkDisabled] + ' '
-                          + ( app.msgs.mode_autoTalk )
-                          + menu.state.separator + menu.state.words[+!config.autoTalkDisabled]
-            menu.ids.push(GM_registerMenuCommand(atLabel, () => {
-                settings.save('autoTalkDisabled', !config.autoTalkDisabled) ; syncConfigToUI()
-                notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
-            }))
-
-            // Add Toggle Visibility toggle
-            const tvLabel = menu.state.symbols[+!config.toggleHidden] + ' '
-                          + ( app.msgs.menuLabel_toggleVis )
-                          + menu.state.separator + menu.state.words[+!config.toggleHidden]
-            menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
-                settings.save('toggleHidden', !config.toggleHidden)
-                sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
-                notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
-                menu.refresh()
-            }))
+            // Add toggles
+            Object.keys(settings.controls).forEach(key => {
+                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
+                const registerOptions = ( // add menu tooltip in TM 5.0+
+                    env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
+                        { title: settings.controls[key].helptip } : undefined )
+                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                    settings.save(key, !config[key]) ; syncConfigToUI()
+                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                }, registerOptions))
+            })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
@@ -574,7 +578,7 @@
     // Define UI functions
 
     function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.autoTalkDisabled
+        sidebarToggle.update() // based on config.autoTalkDisabled + config.toggleHidden
         menu.refresh() // prefixes/suffixes
     }
 
