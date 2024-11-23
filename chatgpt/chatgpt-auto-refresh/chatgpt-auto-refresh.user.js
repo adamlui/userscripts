@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.14
+// @version             2024.11.22.15
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -799,7 +799,7 @@
     // Activate AUTO-REFRESH on first visit if enabled
     if (!config.arDisabled) {
         chatgpt.autoRefresh.activate(config.refreshInterval)
-        notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
+        notify(`${app.msgs.menuLabel_autoRefresh}: ${app.msgs.state_on}`)
     }
 
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
