@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.22.3
+// @version                  2024.11.22.4
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -423,6 +423,7 @@
     ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
     const app = {
@@ -585,7 +586,6 @@
 
     // Init app MESSAGES
     log.debug('Initializing app messages...')
-    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
     app.msgs = {
         appDesc: 'Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)',
         menuLabel_autoGetAnswers: 'Auto-Get Answers',
