@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.12
+// @version             2024.11.22.13
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -366,12 +366,26 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+
+        controls: { // displays top-to-bottom in toolbar menu
+            arDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_autoRefresh },
+            toggleHidden: { type: 'toggle',
+                label: app.msgs.menuLabel_toggleVis },
+            notifDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_modeNotifs },
+            refreshInterval: { type: 'prompt', symbol: '⌚',
+                label: app.msgs.menuLabel_refreshInt }
+        },
+
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
+
         save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
+    }
+    settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
     if (!config.refreshInterval) settings.save('refreshInterval', 30) // init refresh interval to 30 secs if unset
 
     // Define MENU functions
@@ -384,59 +398,43 @@
 
         register() {
 
-            // Add Auto-Refresh toggle
-            const arLabel = menu.state.symbols[+!config.arDisabled] + ' '
-                          + ( app.msgs.menuLabel_autoRefresh ) + ' ↻ '
-                          + menu.state.separator + menu.state.words[+!config.arDisabled]
-            menu.ids.push(GM_registerMenuCommand(arLabel, () => {
-                settings.save('arDisabled', !config.arDisabled) ; syncConfigToUI()
-                toggleAutoRefresh()
-            }))
+            // Init prompt setting status labels
+            settings.controls.refreshInterval.status = `${config.refreshInterval}s`
 
-            // Add Toggle Visibility toggle
-            const tvLabel = menu.state.symbols[+!config.toggleHidden] + ' '
-                          + ( app.msgs.menuLabel_toggleVis )
-                          + menu.state.separator + menu.state.words[+!config.toggleHidden]
-            menu.ids.push(GM_registerMenuCommand(tvLabel, () => {
-                settings.save('toggleHidden', !config.toggleHidden)
-                sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex' // toggle visibility
-                notify(`${app.msgs.menuLabel_toggleVis}: ${menu.state.words[+!config.toggleHidden]}`)
-                menu.refresh()
-            }))
-
-            // Add Mode Notifications toggle
-            const mnLabel = menu.state.symbols[+!config.notifDisabled] + ' '
-                          + ( app.msgs.menuLabel_modeNotifs )
-                          + menu.state.separator + menu.state.words[+!config.notifDisabled]
-            menu.ids.push(GM_registerMenuCommand(mnLabel, () => {
-                settings.save('notifDisabled', !config.notifDisabled)
-                notify(`${app.msgs.menuLabel_modeNotifs}: ${menu.state.words[+!config.notifDisabled]}`)
-                menu.refresh()
-            }))
-
-            // Add Refresh Interval entry
-            const riLabel = '⌚ ' + ( app.msgs.menuLabel_refreshInt ) + ' '
-                          + menu.state.separator + config.refreshInterval + 's'
-            menu.ids.push(GM_registerMenuCommand(riLabel, () => {
-                while (true) {
-                    const refreshInterval = prompt(
-                        `${app.msgs.prompt_updateInt}:`, config.refreshInterval)
-                    if (refreshInterval == null) break // user cancelled so do nothing
-                    else if (!isNaN(parseInt(refreshInterval, 10)) && parseInt(refreshInterval, 10) > 0) { // valid int set
-                        settings.save('refreshInterval', parseInt(refreshInterval, 10))
-                        if (chatgpt.autoRefresh.isActive) { // reset running auto-refresh
-                            chatgpt.autoRefresh.deactivate()
-                            chatgpt.autoRefresh.activate(refreshInterval)
-                        }
-                        menu.refresh()
-                        const minInterval = Math.max(2, config.refreshInterval - 10),
-                            maxInterval = config.refreshInterval + 10
-                        siteAlert(( app.msgs.alert_intUpdated ) + '!',
-                            ( app.msgs.alert_willRefresh )
-                                + `${minInterval}–${maxInterval} ${app.msgs.unit_secs}`
-                        )
-                        break
-            }}}))
+            // Add toggles
+            Object.keys(settings.controls).forEach(key => {
+                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } ${settings.controls[key].label}`
+                                +   ( settings.controls[key].type == 'toggle' ? ( menu.state.separator + menu.state.words[+settingIsEnabled] )
+                                                                              : `— ${settings.controls[key].status}` )
+                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                    if (settings.controls[key].type == 'toggle') {
+                        settings.save(key, !config[key])
+                        notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                    } else { // Refresh Interval prompt
+                        while (true) {
+                            const refreshInterval = prompt(
+                                `${app.msgs.prompt_updateInt}:`, config.refreshInterval)
+                            if (refreshInterval == null) break // user cancelled so do nothing
+                            else if (!isNaN(parseInt(refreshInterval, 10)) && parseInt(refreshInterval, 10) > 0) { // valid int set
+                                settings.save('refreshInterval', parseInt(refreshInterval, 10))
+                                if (chatgpt.autoRefresh.isActive) { // reset running auto-refresh
+                                    chatgpt.autoRefresh.deactivate()
+                                    chatgpt.autoRefresh.activate(refreshInterval)
+                                }
+                                menu.refresh()
+                                const minInterval = Math.max(2, config.refreshInterval - 10),
+                                    maxInterval = config.refreshInterval + 10
+                                siteAlert(( app.msgs.alert_intUpdated ) + '!',
+                                    ( app.msgs.alert_willRefresh )
+                                        + `${minInterval}–${maxInterval} ${app.msgs.unit_secs}`
+                                )
+                                break
+                        }}
+                    }
+                    syncConfigToUI({ reason: key })
+                }))
+            })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
@@ -626,8 +624,9 @@
 
     // Define UI functions
 
-    function syncConfigToUI() {
-        sidebarToggle.update() // based on config.toggleHidden + config.arDisabled
+    function syncConfigToUI(options) {
+        if (options?.reason == 'arDisabled') toggleAutoRefresh()
+        if (/arDisabled|toggleHidden/.test(options?.reason)) sidebarToggle.update()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -650,8 +649,8 @@
             sidebarToggle.div.onclick = () => {
                 const toggleInput = sidebarToggle.div.querySelector('input')
                 toggleInput.checked = !toggleInput.checked
-                settings.save('arDisabled', !toggleInput.checked) ; syncConfigToUI()
-                toggleAutoRefresh()
+                settings.save('arDisabled', !toggleInput.checked) ; syncConfigToUI({ reason: 'arDisabled' })
+                notify(`${app.msgs.menuLabel_autoRefresh}: ${menu.state.words[+!config.arDisabled]}`)
             }
         },
 
@@ -740,13 +739,10 @@
     // Define AUTO-REFRESH function
 
     function toggleAutoRefresh() {
-        if (!config.arDisabled && !chatgpt.autoRefresh.isActive) {
+        if (!config.arDisabled && !chatgpt.autoRefresh.isActive)
             chatgpt.autoRefresh.activate(config.refreshInterval)
-            notify(`${app.msgs.menuLabel_autoRefresh}: ON`)
-        } else if (config.arDisabled && chatgpt.autoRefresh.isActive) {
+        else if (config.arDisabled && chatgpt.autoRefresh.isActive)
             chatgpt.autoRefresh.deactivate()
-            notify(`${app.msgs.menuLabel_autoRefresh}: OFF`)
-        }
     }
 
     // Run MAIN routine
