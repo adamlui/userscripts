@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.5
+// @version             2024.11.22.6
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -334,15 +334,16 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+        controls: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }},
+
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('notifDisabled')
 
-    // Init SETTINGS controls
-    Object.assign(settings, { controls: { notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs }}})
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    }
+    settings.load('notifDisabled')
 
     // Define MENU functions
 
