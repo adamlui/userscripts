@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22
+// @version                2024.11.22.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -117,7 +117,7 @@
 
     // Init ENV info
     const env = {
-        browser: {},
+        browser: { language: chatgpt.getUserLanguage() },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -212,11 +212,11 @@
 
     // Init CONFIG
     log.debug('Initializing config...')
-    Object.assign(config, { userLanguage: chatgpt.getUserLanguage(), minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
-    config.userLocale = config.userLanguage.includes('-') ? config.userLanguage.split('-')[1].toLowerCase() : ''
+    Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
+    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     settings.load('autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded', 'fgAnimationsDisabled',
                   'fontSize', 'minimized', 'proxyAPIenabled', 'replyLanguage', 'scheme', 'streamingDisabled')
-    if (!config.replyLanguage) settings.save('replyLanguage', config.userLanguage) // init reply language if unset
+    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
     if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager) settings.save('streamingDisabled', true) // disable Streaming in unspported env
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
@@ -356,10 +356,10 @@
         state_on: 'On',
         state_off: 'Off'
     }
-    if (!config.userLanguage.startsWith('en')) { // localize msgs for non-English users
+    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
-                  msgLocaleDir = ( config.userLanguage ? config.userLanguage.replace('-', '_') : 'en' ) + '/'
+                  msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
             function handleMsgs(resp) {
@@ -371,7 +371,7 @@
                     resolve(flatMsgs)
                 } catch (err) { // if bad response
                     msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
-                    msgHref = config.userLanguage.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
+                    msgHref = env.browser.language.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                         msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                             : ( msgHostDir + 'en/messages.json' ) // else use default English messages
                     fetchMsgs()
@@ -509,7 +509,7 @@
                         const updateModal = document.getElementById(updateModalID).firstChild
 
                         // Localize button labels if needed
-                        if (!config.userLanguage.startsWith('en')) {
+                        if (!env.browser.language.startsWith('en')) {
                             log.debug('Localizing button labels in non-English alert...')
                             const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
                                   updateBtns = updateAlert.querySelectorAll('button')
@@ -837,7 +837,7 @@
                                 [2, 3].includes(replyLanguage.length) || replyLanguage.includes('-') ? replyLanguage.toUpperCase()
                                   : replyLanguage.charAt(0).toUpperCase() + replyLanguage.slice(1).toLowerCase() )
                             log.debug('Saving reply language...')
-                            settings.save('replyLanguage', replyLanguage || config.userLanguage)
+                            settings.save('replyLanguage', replyLanguage || env.browser.language)
                             log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
                             const langUpdatedAlertID = siteAlert(( app.msgs.alert_langUpdated ) + '!', // title
                                 `${app.name} ${app.msgs.alert_willReplyIn} `
