@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.8
+// @version             2024.11.22.9
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -289,34 +289,6 @@
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init CONFIG
-    const config = {}, settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
-    if (!config.refreshInterval) settings.save('refreshInterval', 30) // init refresh interval to 30 secs if unset
-
-    // Prevent sporadic convo RESETS
-    const ogAEL = EventTarget.prototype.addEventListener
-    EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
-        let calledByOpenAI = false
-        if (type == 'focus' && this == unsafeWindow || type == 'visibilitychange') {
-            const callStack = new Error().stack + '\n',
-                  aelCaller = /-extension:\/\/.*\n(.+)/.exec(callStack)?.[1]
-            calledByOpenAI = !aelCaller?.includes('-extension://')
-            if (calledByOpenAI && type == 'visibilitychange') {
-                ogAEL.call(this, type, function(event) {
-                    if (document.visibilityState != 'visible') listener.call(this, event)
-                }, optionsOrUseCapture)
-        }}
-        if (!calledByOpenAI) ogAEL.apply(this, arguments)
-    }
-
-    // Init app MESSAGES
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,
@@ -363,7 +335,9 @@
         state_on: 'on',
         state_off: 'off'
     }
-    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
+
+    // LOCALIZE app.msgs for non-English users
+    if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
@@ -387,6 +361,32 @@
             fetchMsgs()
         })
         Object.assign(app.msgs, localizedMsgs)
+    }
+
+    // Init CONFIG
+    const config = {}, settings = {
+        load(...keys) {
+            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
+            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
+        },
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    } ; settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
+    if (!config.refreshInterval) settings.save('refreshInterval', 30) // init refresh interval to 30 secs if unset
+
+    // Prevent sporadic convo RESETS
+    const ogAEL = EventTarget.prototype.addEventListener
+    EventTarget.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
+        let calledByOpenAI = false
+        if (type == 'focus' && this == unsafeWindow || type == 'visibilitychange') {
+            const callStack = new Error().stack + '\n',
+                  aelCaller = /-extension:\/\/.*\n(.+)/.exec(callStack)?.[1]
+            calledByOpenAI = !aelCaller?.includes('-extension://')
+            if (calledByOpenAI && type == 'visibilitychange') {
+                ogAEL.call(this, type, function(event) {
+                    if (document.visibilityState != 'visible') listener.call(this, event)
+                }, optionsOrUseCapture)
+        }}
+        if (!calledByOpenAI) ogAEL.apply(this, arguments)
     }
 
     // Define MENU functions
