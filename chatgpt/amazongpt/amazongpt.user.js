@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.2
+// @version                2024.11.22.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -96,6 +96,18 @@
 
 (async () => {
 
+    // Init ENV context
+    const env = {
+        browser: { language: chatgpt.getUserLanguage() },
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
+    };
+    ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
+        env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
+    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+
     // Init APP data
     const app = {
         name: 'AmazonGPT', symbol: '🤖', configKeyPrefix: 'amazonGPT',
@@ -114,18 +126,6 @@
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init ENV context
-    const env = {
-        browser: { language: chatgpt.getUserLanguage() },
-        scriptManager: {
-            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
-            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
-        }
-    };
-    ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
-        env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
 
     // Init DEBUG mode
     const config = {}, settings = {
