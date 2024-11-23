@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.5
+// @version             2024.11.22.6
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -283,24 +283,6 @@
     Object.assign(app, { ...appData, urls: { ...app.urls, ...appData.urls }})
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init SITE profiles
-    const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: `${app.urls.assetHost}/data/sites.json`,
-        onload: resp => resolve(JSON.parse(resp.responseText))
-    })))
-    sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
-
-    // Init CONFIG
-    const config = {}, settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load(sites[env.site].availFeatures)
-
-    // Init app MESSAGES
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,
@@ -364,7 +346,9 @@
         state_on: 'on',
         state_off: 'off'
     }
-    if (!env.browser.language.startsWith('en')) { // localize msgs for non-English users
+
+    // LOCALIZE app.msgs for non-English users
+    if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.assetHost + '/chrome/extension/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
@@ -389,6 +373,22 @@
         })
         Object.assign(app.msgs, localizedMsgs)
     }
+
+    // Init SITE profiles
+    const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
+        method: 'GET', url: `${app.urls.assetHost}/data/sites.json`,
+        onload: resp => resolve(JSON.parse(resp.responseText))
+    })))
+    sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
+
+    // Init CONFIG
+    const config = {}, settings = {
+        load(...keys) {
+            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
+            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
+        },
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    } ; settings.load(sites[env.site].availFeatures)
 
     // Init SETTINGS controls
     Object.assign(settings, { controls: {
