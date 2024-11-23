@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.12
+// @version             2024.11.22.13
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -262,7 +262,7 @@
 
 (async () => {
 
-    // Init ENV info
+    // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage() },
         scriptManager: {
@@ -272,7 +272,7 @@
     }
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
-    // Init APP info
+    // Init APP data
     const app = { configKeyPrefix: 'autoclearChatGPThistory', latestAssetCommitHash: '0f70c99', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
