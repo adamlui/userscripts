@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.22.6
+// @version                  2024.11.22.7
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -673,6 +673,58 @@
 
     // Init SETTINGS
     log.debug('Initializing settings...')
+    Object.assign(settings, { controls: {
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+            label: app.msgs.menuLabel_proxyAPImode,
+            helptip: app.msgs.helptip_proxyAPImode },
+        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+            label: app.msgs.mode_streaming,
+            helptip: app.msgs.helptip_streamingMode },
+        autoGet: { type: 'toggle', icon: 'speechBalloonLasso',
+            label: app.msgs.menuLabel_autoGetAnswers,
+            helptip: app.msgs.helptip_autoGetAnswers },
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
+            label: app.msgs.menuLabel_autoFocusChatbar,
+            helptip: app.msgs.helptip_autoFocusChatbar },
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
+            label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
+            helptip: app.msgs.helptip_autoScroll },
+        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
+            label: `${app.msgs.menuLabel_show} ${app.msgs.menuLabel_relatedQueries}`,
+            helptip: app.msgs.helptip_showRelatedQueries },
+        prefixEnabled: { type: 'toggle', icon: 'slash',
+            label: `${app.msgs.menuLabel_require} "/" ${app.msgs.menuLabel_beforeQuery}`,
+            helptip: app.msgs.helptip_prefixMode },
+        suffixEnabled: { type: 'toggle', icon: 'questionMark',
+            label: `${app.msgs.menuLabel_require} "?" ${app.msgs.menuLabel_afterQuery}`,
+            helptip: app.msgs.helptip_suffixMode },
+        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen',
+            label: app.msgs.menuLabel_widerSidebar,
+            helptip: app.msgs.helptip_widerSidebar },
+        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner',
+            label: app.msgs.menuLabel_stickySidebar,
+            helptip: app.msgs.helptip_stickySidebar },
+        anchored: { type: 'toggle', mobile: false, icon: 'anchor',
+            label: app.msgs.mode_anchor,
+            helptip: app.msgs.helptip_anchorMode },
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
+            helptip: app.msgs.helptip_bgAnimations },
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
+            helptip: app.msgs.helptip_fgAnimations },
+        replyLanguage: { type: 'prompt', icon: 'languageChars',
+            label: app.msgs.menuLabel_replyLanguage,
+            helptip: app.msgs.helptip_replyLanguage },
+        scheme: { type: 'modal', icon: 'scheme',
+            label: app.msgs.menuLabel_colorScheme,
+            helptip: app.msgs.helptip_colorScheme },
+        debugMode: { type: 'toggle', icon: 'bug',
+            label: app.msgs.mode_debug,
+            helptip: app.msgs.helptip_debugMode },
+        about: { type: 'modal', icon: 'questionMarkCircle',
+            label: `${app.msgs.menuLabel_about} ${app.name}...` }
+    }})
     Object.assign(config, {
         userLanguage: chatgpt.getUserLanguage(),
         userLocale: location.hostname.endsWith('.com') ? 'us' : location.hostname.split('.').pop(),
@@ -727,62 +779,6 @@
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
     log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
-
-    // Init SETTINGS controls
-    log.debug('Initializing settings properties...')
-    Object.assign(settings, { controls: {
-        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
-            label: app.msgs.menuLabel_proxyAPImode,
-            helptip: app.msgs.helptip_proxyAPImode },
-        streamingDisabled: { type: 'toggle', icon: 'signalStream',
-            label: app.msgs.mode_streaming,
-            helptip: app.msgs.helptip_streamingMode },
-        autoGet: { type: 'toggle', icon: 'speechBalloonLasso',
-            label: app.msgs.menuLabel_autoGetAnswers,
-            helptip: app.msgs.helptip_autoGetAnswers },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
-            label: app.msgs.menuLabel_autoFocusChatbar,
-            helptip: app.msgs.helptip_autoFocusChatbar },
-        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
-            label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
-            helptip: app.msgs.helptip_autoScroll },
-        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
-            label: `${app.msgs.menuLabel_show} ${app.msgs.menuLabel_relatedQueries}`,
-            helptip: app.msgs.helptip_showRelatedQueries },
-        prefixEnabled: { type: 'toggle', icon: 'slash',
-            label: `${app.msgs.menuLabel_require} "/" ${app.msgs.menuLabel_beforeQuery}`,
-            helptip: app.msgs.helptip_prefixMode },
-        suffixEnabled: { type: 'toggle', icon: 'questionMark',
-            label: `${app.msgs.menuLabel_require} "?" ${app.msgs.menuLabel_afterQuery}`,
-            helptip: app.msgs.helptip_suffixMode },
-        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen',
-            label: app.msgs.menuLabel_widerSidebar,
-            helptip: app.msgs.helptip_widerSidebar },
-        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner',
-            label: app.msgs.menuLabel_stickySidebar,
-            helptip: app.msgs.helptip_stickySidebar },
-        anchored: { type: 'toggle', mobile: false, icon: 'anchor',
-            label: app.msgs.mode_anchor,
-            helptip: app.msgs.helptip_anchorMode },
-        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
-            label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
-            helptip: app.msgs.helptip_bgAnimations },
-        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
-            label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
-            helptip: app.msgs.helptip_fgAnimations },
-        replyLanguage: { type: 'prompt', icon: 'languageChars',
-            label: app.msgs.menuLabel_replyLanguage,
-            helptip: app.msgs.helptip_replyLanguage },
-        scheme: { type: 'modal', icon: 'scheme',
-            label: app.msgs.menuLabel_colorScheme,
-            helptip: app.msgs.helptip_colorScheme },
-        debugMode: { type: 'toggle', icon: 'bug',
-            label: app.msgs.mode_debug,
-            helptip: app.msgs.helptip_debugMode },
-        about: { type: 'modal', icon: 'questionMarkCircle',
-            label: `${app.msgs.menuLabel_about} ${app.name}...` }
-    }})
-    log.debug(`Success! settings.controls = ${log.prettifyObj(settings.controls)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
