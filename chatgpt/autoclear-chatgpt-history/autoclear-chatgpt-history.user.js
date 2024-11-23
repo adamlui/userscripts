@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.21
+// @version             2024.11.22.22
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -392,7 +392,7 @@
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
-                const settingIsEnabled = config[key] ^ /Disabled|Hidden/.test(key)
+                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
                 const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label + menu.state.separator + menu.state.words[+settingIsEnabled]
                 const registerOptions = ( // add menu tooltip in TM 5.0+
@@ -400,7 +400,7 @@
                         { title: settings.controls[key].helptip } : undefined )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
-                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /Disabled|Hidden/.test(key))]}`)
+                    notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hdden/i.test(key))]}`)
                 }, registerOptions))
             })
 
