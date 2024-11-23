@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.4
+// @version             2024.11.22.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -475,10 +475,10 @@
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: response => { const updateAlertWidth = 377
+            onload: resp => { const updateAlertWidth = 377
 
                 // Compare versions
-                const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+                const latestVer = /@version +(.*)/.exec(resp.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
