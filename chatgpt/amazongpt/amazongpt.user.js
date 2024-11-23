@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.3
+// @version                2024.11.22.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -107,6 +107,7 @@
     ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
     const app = {
@@ -268,7 +269,6 @@
 
     // Init app MESSAGES
     log.debug('Initializing app messages...')
-    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
     app.msgs = {
         appDesc: 'Adds AI to Amazon shopping',
         menuLabel_proxyAPImode: 'Proxy API Mode',
