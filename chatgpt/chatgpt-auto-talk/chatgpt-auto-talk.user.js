@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.7
+// @version             2024.11.22.8
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -257,6 +257,7 @@
         browser: { language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
         scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
     }
+    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
     const app = {
@@ -291,7 +292,6 @@
     } ; settings.load('autoTalkDisabled', 'toggleHidden')
 
     // Init app MESSAGES
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,
