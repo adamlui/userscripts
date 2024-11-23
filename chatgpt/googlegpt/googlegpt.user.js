@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.22.5
+// @version                  2024.11.22.6
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -559,7 +559,8 @@
     }
 
     // Init DEBUG mode
-    const config = {}, settings = {
+    const config = {}
+    const settings = {
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
@@ -670,8 +671,8 @@
         byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
     log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
 
-    // Init CONFIG
-    log.debug('Initializing config...')
+    // Init SETTINGS
+    log.debug('Initializing settings...')
     Object.assign(config, {
         userLanguage: chatgpt.getUserLanguage(),
         userLocale: location.hostname.endsWith('.com') ? 'us' : location.hostname.split('.').pop(),
