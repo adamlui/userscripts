@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.6
+// @version                2024.11.22.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -330,6 +330,37 @@
 
     // Init SETTINGS
     log.debug('Initializing settings...')
+    Object.assign(settings, { controls: {
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+            label: app.msgs.menuLabel_proxyAPImode,
+            helptip: app.msgs.helptip_proxyAPImode },
+        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+            label: app.msgs.mode_streaming,
+            helptip: app.msgs.helptip_streamingMode },
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
+            label: app.msgs.menuLabel_autoFocusChatbar,
+            helptip: app.msgs.helptip_autoFocusChatbar },
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
+            label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
+            helptip: app.msgs.helptip_autoScroll },
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
+            helptip: app.msgs.helptip_bgAnimations },
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+            label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
+            helptip: app.msgs.helptip_fgAnimations },
+        replyLanguage: { type: 'prompt', icon: 'languageChars',
+            label: app.msgs.menuLabel_replyLanguage,
+            helptip: app.msgs.helptip_replyLanguage },
+        scheme: { type: 'modal', icon: 'scheme',
+            label: app.msgs.menuLabel_colorScheme,
+            helptip: app.msgs.helptip_colorScheme },
+        debugMode: { type: 'toggle', icon: 'bug',
+            label: app.msgs.mode_debug,
+            helptip: app.msgs.helptip_debugMode },
+        about: { type: 'modal', icon: 'questionMarkCircle',
+            label: `${app.msgs.menuLabel_about} ${app.name}...` }
+    }})
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
     config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     settings.load('autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded', 'fgAnimationsDisabled',
@@ -383,41 +414,6 @@
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
     log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
-
-    // Init SETTINGS controls
-    log.debug('Initializing settings properties...')
-    Object.assign(settings, { controls: {
-        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
-            label: app.msgs.menuLabel_proxyAPImode,
-            helptip: app.msgs.helptip_proxyAPImode },
-        streamingDisabled: { type: 'toggle', icon: 'signalStream',
-            label: app.msgs.mode_streaming,
-            helptip: app.msgs.helptip_streamingMode },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
-            label: app.msgs.menuLabel_autoFocusChatbar,
-            helptip: app.msgs.helptip_autoFocusChatbar },
-        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
-            label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
-            helptip: app.msgs.helptip_autoScroll },
-        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
-            label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
-            helptip: app.msgs.helptip_bgAnimations },
-        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
-            label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
-            helptip: app.msgs.helptip_fgAnimations },
-        replyLanguage: { type: 'prompt', icon: 'languageChars',
-            label: app.msgs.menuLabel_replyLanguage,
-            helptip: app.msgs.helptip_replyLanguage },
-        scheme: { type: 'modal', icon: 'scheme',
-            label: app.msgs.menuLabel_colorScheme,
-            helptip: app.msgs.helptip_colorScheme },
-        debugMode: { type: 'toggle', icon: 'bug',
-            label: app.msgs.mode_debug,
-            helptip: app.msgs.helptip_debugMode },
-        about: { type: 'modal', icon: 'questionMarkCircle',
-            label: `${app.msgs.menuLabel_about} ${app.name}...` }
-    }})
-    log.debug(`Success! settings.controls = ${log.prettifyObj(settings.controls)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
