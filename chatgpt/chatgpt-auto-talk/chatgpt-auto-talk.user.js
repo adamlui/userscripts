@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.5
+// @version             2024.11.22.6
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -252,7 +252,7 @@
 
 (async () => {
 
-    // Init APP info
+    // Init APP data
     const app = {
         name: 'ChatGPT Auto-Talk', symbol: '📣', configKeyPrefix: 'chatGPTautoTalk',
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
@@ -275,7 +275,7 @@
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
-    // Init ENV info
+    // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
         scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
