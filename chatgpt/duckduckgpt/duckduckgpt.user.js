@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.8
+// @version                2024.11.22.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -231,6 +231,7 @@
     ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
@@ -538,7 +539,6 @@
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
-    config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     settings.load('anchored', 'autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
                   'fgAnimationsDisabled', 'fontSize', 'minimized', 'notFirstRun', 'prefixEnabled', 'proxyAPIenabled',
                   'replyLanguage', 'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
@@ -3624,8 +3624,8 @@
                                     !adGroup.targetBrowsers.some( // ...but doesn't match user's
                                         browser => new RegExp(browser, 'i').test(navigator.userAgent))
                                 || adGroup.targetLocations && ( // target locale(s) exist...
-                                    !config.userLocale || !adGroup.targetLocations.some( // ...and user locale is missing or excluded
-                                        loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
+                                    !env.userLocale || !adGroup.targetLocations.some( // ...and user locale is missing or excluded
+                                        loc => loc.includes(env.userLocale) || env.userLocale.includes(loc)))
                             ) continue // to next group
 
                             // Filter out inactive ads, pick random active one
