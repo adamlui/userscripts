@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.22.8
+// @version                  2024.11.22.9
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -423,6 +423,7 @@
     ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.userLocale = location.hostname.endsWith('.com') ? 'us' : location.hostname.split('.').pop()
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
@@ -725,10 +726,7 @@
         about: { type: 'modal', icon: 'questionMarkCircle',
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
-    Object.assign(config, {
-        userLocale: location.hostname.endsWith('.com') ? 'us' : location.hostname.split('.').pop(),
-        minFontSize: 11, maxFontSize: 24, lineHeightRatio: env.browser.isMobile ? 1.357 : 1.375
-    })
+    Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: env.browser.isMobile ? 1.357 : 1.375 })
     settings.load('anchored', 'autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
                   'fgAnimationsDisabled', 'fontSize', 'minimized', 'notFirstRun', 'prefixEnabled', 'proxyAPIenabled',
                   'replyLanguage', 'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar')
@@ -2085,8 +2083,8 @@
                                             !adGroup.targetBrowsers.some( // ...but doesn't match user's
                                                 browser => new RegExp(browser, 'i').test(navigator.userAgent))
                                         || adGroup.targetLocations && ( // target locale(s) exist...
-                                            !config.userLocale || !adGroup.targetLocations.some( // ...but user locale is missing or excluded
-                                                loc => loc.includes(config.userLocale) || config.userLocale.includes(loc)))
+                                            !env.userLocale || !adGroup.targetLocations.some( // ...but user locale is missing or excluded
+                                                loc => loc.includes(env.userLocale) || env.userLocale.includes(loc)))
                                     ) continue // to next group
 
                                     // Filter out inactive ads, pick random active one
