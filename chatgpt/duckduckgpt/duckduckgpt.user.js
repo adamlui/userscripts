@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.9
+// @version                2024.11.23
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -619,23 +619,22 @@
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add Proxy API Mode toggle
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
                           + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
-            const pmRegisterOptions = ( // add menu tooltip in TM 5.0+
-                env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5 ?
-                    { title: settings.controls.proxyAPIenabled.helptip } : undefined )
-            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode, pmRegisterOptions))
+            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
+                tooltipsSupported ? { title: settings.controls.proxyAPIenabled.helptip } : undefined))
 
             // Add About entry
             const aboutLabel = `💡 ${settings.controls.about.label}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Settings entry
             const settingsLabel = `⚙️ ${app.msgs.menuLabel_settings}`
-            menu.ids.push(GM_registerMenuCommand(settingsLabel, modals.settings.show))
+            menu.ids.push(GM_registerMenuCommand(settingsLabel, modals.settings.show, tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
