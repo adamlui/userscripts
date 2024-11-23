@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.2
+// @version                2024.11.22.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -220,6 +220,18 @@
 
 (async () => {
 
+    // Init ENV context
+    const env = {
+        browser: { language: chatgpt.getUserLanguage() },
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
+    };
+    ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
+        env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
+    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+
     // Init APP data
     const app = {
         name: 'DuckDuckGPT', symbol: '🐤', configKeyPrefix: 'duckDuckGPT',
@@ -242,18 +254,6 @@
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
-
-    // Init ENV context
-    const env = {
-        browser: { language: chatgpt.getUserLanguage() },
-        scriptManager: {
-            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
-            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
-        }
-    };
-    ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
-        env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
 
     // Init DEBUG mode
     const config = {}, settings = {
