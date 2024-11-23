@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.7
+// @version             2024.11.22.8
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -384,37 +384,39 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+
+        controls: {
+            fullerWindows: { type: 'toggle',
+                label: app.msgs.menuLabel_fullerWins,
+                helptip: app.msgs.helptip_fullerWins },
+            tcbDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️',
+                helptip: app.msgs.helptip_tallerChatbox },
+            widerChatbox: { type: 'toggle',
+                label: app.msgs.menuLabel_widerChatbox, symbol: '↔️',
+                helptip: app.msgs.helptip_widerChatbox },
+            ncbDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_newChatBtn,
+                helptip: app.msgs.helptip_newChatBtn },
+            hiddenHeader: { type: 'toggle',
+                label: app.msgs.menuLabel_hiddenHeader,
+                helptip: app.msgs.helptip_hiddenHeader },
+            hiddenFooter: { type: 'toggle',
+                label: app.msgs.menuLabel_hiddenFooter,
+                helptip: app.msgs.helptip_hiddenFooter },
+            notifDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_modeNotifs,
+                helptip: app.msgs.helptip_modeNotifs }
+        },
+
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
-    } ; settings.load(sites[env.site].availFeatures)
 
-    // Init SETTINGS controls
-    Object.assign(settings, { controls: {
-        fullerWindows: { type: 'toggle',
-            label: app.msgs.menuLabel_fullerWins,
-            helptip: app.msgs.helptip_fullerWins },
-        tcbDisabled: { type: 'toggle',
-            label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️',
-            helptip: app.msgs.helptip_tallerChatbox },
-        widerChatbox: { type: 'toggle',
-            label: app.msgs.menuLabel_widerChatbox, symbol: '↔️',
-            helptip: app.msgs.helptip_widerChatbox },
-        ncbDisabled: { type: 'toggle',
-            label: app.msgs.menuLabel_newChatBtn,
-            helptip: app.msgs.helptip_newChatBtn },
-        hiddenHeader: { type: 'toggle',
-            label: app.msgs.menuLabel_hiddenHeader,
-            helptip: app.msgs.helptip_hiddenHeader },
-        hiddenFooter: { type: 'toggle',
-            label: app.msgs.menuLabel_hiddenFooter,
-            helptip: app.msgs.helptip_hiddenFooter },
-        notifDisabled: { type: 'toggle',
-            label: app.msgs.menuLabel_modeNotifs,
-            helptip: app.msgs.helptip_modeNotifs }
-    }})
+        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+    }
+    settings.load(sites[env.site].availFeatures)
 
     // Define MENU functions
 
