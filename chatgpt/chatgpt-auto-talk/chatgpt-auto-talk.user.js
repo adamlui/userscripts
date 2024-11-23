@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.22.12
+// @version             2024.11.23
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -255,9 +255,12 @@
     // Init ENV context
     const env = {
         browser: { language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
-        scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})()
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        }
     }
-    const xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
     const app = {
@@ -276,7 +279,7 @@
             review: { greasyFork: 'https://greasyfork.org/en/scripts/500940-chatgpt-auto-talk/feedback#post-discussion' },
             support: 'https://support.chatgptautotalk.com'
         },
-        latestAssetCommitHash: '4697735' // for cached messages.json + navicon
+        latestAssetCommitHash: '49f4fd9' // for cached messages.json + navicon
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -292,6 +295,7 @@
         about_poweredBy: 'Powered by',
         about_sourceCode: 'Source code',
         mode_autoTalk: 'Auto-Talk',
+        helptip_toggleVis: 'Show Auto-Talk toggle in sidebar',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
         alert_isAvail: 'is available',
@@ -353,10 +357,8 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            autoTalkDisabled: { type: 'toggle',
-                label: app.msgs.mode_autoTalk },
-            toggleHidden: { type: 'toggle',
-                label: app.msgs.menuLabel_toggleVis }
+            autoTalkDisabled: { type: 'toggle', label: app.msgs.mode_autoTalk, helptip: app.msgs.appDesc },
+            toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis }
         },
 
         load(...keys) {
@@ -372,11 +374,12 @@
 
     const menu = {
         ids: [], state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager == 'Tampermonkey' ? ' — ' : ': ',
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
         register() {
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
@@ -386,20 +389,20 @@
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI()
                     notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
-                }))
+                }, tooltipsSupported ? { title: settings.controls[key].helptip } : undefined))
             })
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show))
+            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show, tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
-            if (env.scriptManager == 'OrangeMonkey') return
+            if (env.scriptManager.name == 'OrangeMonkey') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
