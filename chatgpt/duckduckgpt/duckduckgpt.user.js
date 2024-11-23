@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.22.5
+// @version                2024.11.22.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -371,7 +371,8 @@
     }
 
     // Init DEBUG mode
-    const config = {}, settings = {
+    const config = {}
+    const settings = {
         load(...keys) {
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
@@ -482,8 +483,8 @@
         byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name) }
     log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
 
-    // Init CONFIG
-    log.debug('Initializing config...')
+    // Init SETTINGS
+    log.debug('Initializing settings...')
     Object.assign(config, { userLanguage: chatgpt.getUserLanguage(), minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
     config.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     settings.load('anchored', 'autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
