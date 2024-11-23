@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.22.7
+// @version                  2024.11.22.8
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -726,7 +726,6 @@
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
     Object.assign(config, {
-        userLanguage: chatgpt.getUserLanguage(),
         userLocale: location.hostname.endsWith('.com') ? 'us' : location.hostname.split('.').pop(),
         minFontSize: 11, maxFontSize: 24, lineHeightRatio: env.browser.isMobile ? 1.357 : 1.375
     })
