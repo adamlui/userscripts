@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.24
+// @version               2024.11.24.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1985,10 +1985,8 @@
                                                                             : document.createElement('span')
                                     footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
                                     footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
-                                    footerContent.textContent = chosenAd.text.length < 49 ? chosenAd.text
-                                                              : chosenAd.text.slice(0, 49) + '...'
-                                    footerContent.setAttribute('title', chosenAd.tooltip ||
-                                        footerContent.textContent.includes('...') ? chosenAd.text : '')
+                                    footerContent.textContent = chosenAd.text
+                                    footerContent.setAttribute('title', chosenAd.tooltip || '')
                                     adSelected = true ; break
                                 }
                                 if (adSelected) break // out of campaign loop after ad selection
@@ -2174,7 +2172,8 @@
                   + '#bravegpt > pre a, #bravegpt > pre a:visited { color: #4495d4 }'
                   + `#bravegpt pre a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '#bravegpt footer {'
-                      + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ; border-top: none !important }`
+                      + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
+                      + 'padding-bottom: 12px ; border-top: none !important }'
                   + '#bravegpt .feedback {'
                       + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
                       + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
