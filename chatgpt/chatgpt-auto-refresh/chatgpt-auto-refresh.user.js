@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23.2
+// @version             2024.11.23.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -255,13 +255,16 @@
 // ==/UserScript==
 
 // Documentation: https://docs.chatgptautorefresh.com
-// NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org © 2023–2024 KudoAI & contributors under the MIT license.
+// NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org
+//  © 2023–2024 KudoAI & contributors under the MIT license.
 
 (async () => {
 
     // Init ENV context
     const env = {
-        browser: { language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox() },
+        browser: {
+            language: chatgpt.getUserLanguage(), isMobile: chatgpt.browser.isMobile(), isFF: chatgpt.browser.isFirefox()
+        },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -284,7 +287,9 @@
             greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh',
             mediaHost: 'https://media.chatgptautorefresh.com',
             relatedApps: 'https://github.com/adamlui/ai-web-extensions',
-            review: { greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion' },
+            review: {
+                greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
+            },
             support: 'https://support.chatgptautorefresh.com'
         },
         latestAssetCommitHash: 'f5a2f5a' // for cached messages.json + navicon
@@ -358,7 +363,7 @@
                             flatMsgs[key] = msgs[key].message
                     resolve(flatMsgs)
                 } catch (err) { // if bad response
-                    msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try up to 3X (original/region-stripped/EN) only
+                    msgXHRtries++ ; if (msgXHRtries == 3) return resolve({}) // try original/region-stripped/EN only
                     msgHref = env.browser.language.includes('-') && msgXHRtries == 1 ? // if regional lang on 1st try...
                         msgHref.replace(/([^_]+_[^_]+)_[^/]*(\/.*)/, '$1$2') // ...strip region before retrying
                             : ( msgHostDir + 'en/messages.json' ) // else use default English messages
@@ -375,10 +380,14 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            arDisabled: { type: 'toggle', label: app.msgs.menuLabel_autoRefresh, helptip: app.msgs.helptip_autoRefresh },
-            toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis },
-            notifDisabled: { type: 'toggle', label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs },
-            refreshInterval: { type: 'prompt', symbol: '⌚',label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
+            arDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_autoRefresh, helptip: app.msgs.helptip_autoRefresh },
+            toggleHidden: { type: 'toggle',
+                label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis },
+            notifDisabled: { type: 'toggle',
+                label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs },
+            refreshInterval: { type: 'prompt', symbol: '⌚',
+                label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
         load(...keys) {
@@ -400,27 +409,30 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey' && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-
+            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
+                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
             // Init prompt setting status labels
             settings.controls.refreshInterval.status = `${config.refreshInterval}s`
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } ${settings.controls[key].label}`
-                                +   ( settings.controls[key].type == 'toggle' ? ( menu.state.separator + menu.state.words[+settingIsEnabled] )
-                                                                              : `— ${settings.controls[key].status}` )
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                + settings.controls[key].label
+                                + ( settings.controls[key].type == 'toggle' ? menu.state.separator
+                                                                            + menu.state.words[+settingIsEnabled]
+                                                                            : `— ${settings.controls[key].status}` )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (settings.controls[key].type == 'toggle') {
                         settings.save(key, !config[key])
-                        notify(`${settings.controls[key].label}: ${menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                        notify(`${settings.controls[key].label}: ${
+                            menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                     } else { // Refresh Interval prompt
                         while (true) {
                             const refreshInterval = prompt(
                                 `${app.msgs.prompt_updateInt}:`, config.refreshInterval)
                             if (refreshInterval == null) break // user cancelled so do nothing
-                            else if (!isNaN(parseInt(refreshInterval, 10)) && parseInt(refreshInterval, 10) > 0) { // valid int set
+                            else if (!isNaN(parseInt(refreshInterval, 10)) && parseInt(refreshInterval, 10) > 0) {
                                 settings.save('refreshInterval', parseInt(refreshInterval, 10))
                                 if (chatgpt.autoRefresh.isActive) { // reset running auto-refresh
                                     chatgpt.autoRefresh.deactivate()
@@ -440,11 +452,13 @@
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show, tooltipsSupported ? { title: ' ' } : undefined))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show,
+                tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show, tooltipsSupported ? { title: ' ' } : undefined))
+            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.about.show,
+                tooltipsSupported ? { title: ' ' } : undefined))
         },
 
         refresh() {
@@ -548,11 +562,12 @@
                     `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
                         + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
                     + `<span style="${headingStyle}"><b>⚡ <i>${app.msgs.about_poweredBy}</i></b>: </span>`
-                        + `<span style="${pStyle}"><a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
-                        + 'chatgpt.js</a>' + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '</span>\n'
+                        + `<span style="${pStyle}">`
+                            + `<a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
+                                + 'chatgpt.js</a>' + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '</span>\n'
                     + `<span style="${headingStyle}"><b>📜 <i>${app.msgs.about_sourceCode}</i></b>:</span>\n`
                         + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                        + app.urls.gitHub + '</a></span>',
+                            + app.urls.gitHub + '</a></span>',
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
@@ -586,13 +601,17 @@
                     `💖 ${app.msgs.alert_showYourSupport}`, // title
                         `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
                       + `<p>${app.msgs.alert_despiteAffliction} `
-                          + `<a target="_blank" rel="noopener" href="${modals.donate.longCOVIDwikiLink}">${app.msgs.alert_longCOVID}</a> `
+                          + `<a target="_blank" rel="noopener" href="${modals.donate.longCOVIDwikiLink}">`
+                              + `${app.msgs.alert_longCOVID}</a> `
                           + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
-                      + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, ${app.msgs.alert_directlySupports}.</p>`
+                      + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
+                          + `${app.msgs.alert_directlySupports}.</p>`
                       + `<p>${app.msgs.alert_tyForSupport}!</p>`
-                      + `<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/${ chatgpt.isDarkMode() ? 'white' : 'black' }.png"`
-                          + ' style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
-                      + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
+                      + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
+                          + `${ chatgpt.isDarkMode() ? 'white' : 'black' }.png" `
+                          + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
+                      + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
+                          + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
                     [ // buttons
                         function paypal() { modals.safeWinOpen(app.urls.donate.payPal) },
                         function githubSponsors() { modals.safeWinOpen(app.urls.donate.gitHub) },
@@ -611,7 +630,8 @@
                 btns.forEach((btn, idx) => {
                     if (idx == 0) btn.style.display = 'none' // hide Dismiss button
                     else {
-                        btn.style.cssText = 'padding: 8px 6px !important ; margin-top: -14px ; width: 107px ; line-height: 14px'
+                        btn.style.cssText = 'padding: 8px 6px !important ; margin-top: -14px ;'
+                                          + ' width: 107px ; line-height: 14px'
                         if (idx == btns.length -1) // de-emphasize right-most button
                             btn.classList.remove('primary-modal-btn')
                         else if (/rate/i.test(btn.textContent)) // localize 'Rate Us' label
@@ -657,7 +677,8 @@
         },
 
         insert() {
-            if (sidebarToggle.status?.startsWith('insert') || document.getElementById('auto-refresh-toggle-navicon')) return
+            if (sidebarToggle.status?.startsWith('insert') || document.getElementById('auto-refresh-toggle-navicon'))
+                return
             sidebarToggle.status = 'inserting' ; if (!sidebarToggle.div) sidebarToggle.create()
 
             // Insert toggle
@@ -759,7 +780,7 @@
     // Add/update TWEAKS style
     const tweaksStyleUpdated = 20241002 // datestamp of last edit for this file's `tweaksStyle`
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
-    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) { // if missing or outdated
+    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
             tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
             tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
@@ -769,14 +790,17 @@
             ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
           + '.chatgpt-modal button {'
               + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
-              + `border: 2px dashed ${ chatgpt.isDarkMode() ? 'white' : 'black' } !important ; border-radius: 0 !important ;` // thiccen/square/dash borders
+              + `border: 2px dashed ${ chatgpt.isDarkMode() ? 'white' : 'black' } !important ;` // dash borders
+              + 'border-radius: 0 !important ;' // square borders
               + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
               + 'cursor: pointer !important ;' // add finger cursor
               + 'padding: 5px !important ; min-width: 102px }' // resize
           + '.chatgpt-modal button:hover {' // add zoom, re-scheme
               + 'transform: scale(1.055) ;'
-              + ( chatgpt.isDarkMode() ? 'background-color: #2cff00 !important ; box-shadow: 2px 1px 54px #38ff00 !important ; color: black !important'
-                                       : 'background-color: #c7ff006b !important ; box-shadow: 2px 1px 30px #97ff006b !important' ) + '}'
+              + ( chatgpt.isDarkMode() ? ( 'background-color: #2cff00 !important ; color: black !important ;'
+                                             + 'box-shadow: 2px 1px 54px #38ff00 !important ;' )
+                                       : ( 'background-color: #c7ff006b !important ;'
+                                             + 'box-shadow: 2px 1px 30px #97ff006b !important' )) + '}'
           + '.modal-buttons { margin-left: -13px !important }'
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
         )
@@ -808,8 +832,9 @@
 
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
-        if (!config.toggleHidden && !document.getElementById('auto-refresh-toggle-navicon') && sidebarToggle.status != 'inserting') {
-            sidebarToggle.status = 'missing' ; sidebarToggle.insert() }
+        if (!config.toggleHidden && !document.getElementById('auto-refresh-toggle-navicon')
+            && sidebarToggle.status != 'inserting') {
+                sidebarToggle.status = 'missing' ; sidebarToggle.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
