@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.23.1
+// @version               2024.11.24
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2101,7 +2101,7 @@
                   + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
                   + '.kudoai a { color: #aaa ; text-decoration: none !important }'
                   + `.kudoai a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-                  + '#corner-btns { float: right }'
+                  + '#corner-btns { position: relative ; bottom: 3px ; float: right }'
                   + '.corner-btn {'
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                       + `${ ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
@@ -3542,7 +3542,7 @@
                 fillStarryBG(appDiv) // add stars
 
                 // Create/append title
-                const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 143
+                const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
                 const appTitleAnchor = create.anchor(app.urls.app, appHeaderLogo)
                 appTitleAnchor.classList.add('app-name', 'no-user-select')
                 appDiv.append(appTitleAnchor)
