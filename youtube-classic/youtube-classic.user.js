@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version       2024.11.21
+// @version       2024.11.24
 // @author        Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace     https://github.com/adamlui
 // @description   Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -376,11 +376,10 @@
             var viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti';
             var viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular';
             replies.viewReplies.buttonRenderer.text = {
-                runs: [
-                    {
-                        text: (replyCount > 1) ? getString(viewMultiString, hl, replyCount, creatorName) : getString(viewSingleString, hl, creatorName)
-                    }
-                ]
+                runs: [{
+                    text: (replyCount > 1) ? getString(viewMultiString, hl, replyCount, creatorName)
+                                           : getString(viewSingleString, hl, creatorName)
+                }]
             }
             replies.hideReplies.buttonRenderer.text = {
                 runs: [{ text: (replyCount > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
