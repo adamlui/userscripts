@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23.2
+// @version             2024.11.24
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -362,7 +362,7 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            autoTalkDisabled: { type: 'toggle', label: app.msgs.mode_autoTalk, helptip: app.msgs.appDesc },
+            autoTalkDisabled: { type: 'toggle', label: app.msgs.mode_autoTalk },
             toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis }
         },
 
