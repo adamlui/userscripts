@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Réaliser par" },
   "about_sourceCode": { "message": "Code source" },
   "prompt_updateInt": { "message": "Mettre à jour l'intervalle d'actualisation (en secondes)" },
-  "helptip_autoRefresh": { "message": "Actualisation automatique des sessions ChatGPT" },
   "helptip_toggleVis": { "message": "Afficher la bascule d'actualisation automatique dans la barre latérale" },
   "helptip_modeNotifs": { "message": "Afficher les notifications lors du basculement des modes/paramètres" },
   "helptip_refreshInt": { "message": "Délai moyen entre les rafraîchissements (en secondes)" },

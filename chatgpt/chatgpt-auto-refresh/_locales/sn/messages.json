@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Inoratidzwa na" },
   "about_sourceCode": { "message": "Source code" },
   "prompt_updateInt": { "message": "Kuchengetedza kupinda kwemaitiro (mumasekondi)" },
-  "helptip_autoRefresh": { "message": "Auto-kuzorodza ChatGPT zvikamu" },
   "helptip_toggleVis": { "message": "Ratidza Auto-Refresh toggle mu sidebar" },
   "helptip_modeNotifs": { "message": "Ratidza zviziviso kana toggling modes/marongero" },
   "helptip_refreshInt": { "message": "Avhareji kunonoka pakati refreshes (mumasekonzi)" },

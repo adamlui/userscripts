@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Didukung oleh" },
   "about_sourceCode": { "message": "Kode sumber" },
   "prompt_updateInt": { "message": "Perbarui interval penyegaran (dalam hitungan detik)" },
-  "helptip_autoRefresh": { "message": "Segarkan otomatis sesi ChatGPT" },
   "helptip_toggleVis": { "message": "Tampilkan Auto - Refresh toggle di bilah sisi" },
   "helptip_modeNotifs": { "message": "Tampilkan pemberitahuan saat mengaktifkan mode/pengaturan" },
   "helptip_refreshInt": { "message": "Penundaan rata - rata antara penyegaran (dalam detik)" },

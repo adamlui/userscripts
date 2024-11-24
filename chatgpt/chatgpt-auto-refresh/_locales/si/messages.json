@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "විසින් බල ගැන්වී ඇත" },
   "about_sourceCode": { "message": "මූලාශ්‍ර කේතය" },
   "prompt_updateInt": { "message": "නැවුම් කිරීමේ පරතරය යාවත්කාලීන කරන්න (තත්පර වලින්)" },
-  "helptip_autoRefresh": { "message": "ස්වයංක් ‍ රීයව නැවුම් චැට්GPT සැසි" },
   "helptip_toggleVis": { "message": "පැති තීරුවේ ස්වයංක් ‍ රීය- නැවුම් කිරීමේ ටොගල් පෙන්වන්න" },
   "helptip_modeNotifs": { "message": "ප් ‍ රකාර/සැකසුම් ටොගල් කිරීමේදී දැනුම්දීම් පෙන්වන්න" },
   "helptip_refreshInt": { "message": "ප් ‍ රබෝධ අතර සාමාන් ‍ ය ප් ‍ රමාදය (තත්පර වලින්)" },

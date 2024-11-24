@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "აგებულია KDE-ზე" },
   "about_sourceCode": { "message": "საწყისი კოდი" },
   "prompt_updateInt": { "message": "განახლების ინტერვალის განახლება (წამებში)" },
-  "helptip_autoRefresh": { "message": "Ავტომატური განახლება ChatGPT-ს სესიებზე" },
   "helptip_toggleVis": { "message": "Გვერდითა ზოლში ავტომატური შეცვლის გადართვის ჩვენება" },
   "helptip_modeNotifs": { "message": "Გაფრთხილებების ჩვენება რეჟიმების/პარამეტრების გადართვისას" },
   "helptip_refreshInt": { "message": "Განახლებებს შორის საშუალო დაყოვნება (წამებში)" },

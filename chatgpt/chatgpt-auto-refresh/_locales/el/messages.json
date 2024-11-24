@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Με την υποστήριξη" },
   "about_sourceCode": { "message": "Source code" },
   "prompt_updateInt": { "message": "Ενημερώστε το διάστημα ανανέωσης (σε δευτερόλεπτα)" },
-  "helptip_autoRefresh": { "message": "Αυτόματη ανανέωση συνεδριών ChatGPT" },
   "helptip_toggleVis": { "message": "Εμφάνιση εναλλαγής αυτόματης ανανέωσης στην πλαϊνή γραμμή" },
   "helptip_modeNotifs": { "message": "Εμφάνιση ειδοποιήσεων κατά την εναλλαγή λειτουργιών/ρυθμίσεων" },
   "helptip_refreshInt": { "message": "Μέση καθυστέρηση μεταξύ ανανεώσεων (σε δευτερόλεπτα)" },

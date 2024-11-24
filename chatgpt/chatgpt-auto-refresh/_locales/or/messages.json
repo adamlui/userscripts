@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ଦ୍ୱାରା ଚାଳିତ" },
   "about_sourceCode": { "message": "ଉତ୍ସ କୋଡ" },
   "prompt_updateInt": { "message": "ସତେଜ ବ୍ୟବଧାନ ଅଦ୍ୟତନ କରନ୍ତୁ (ସେକେଣ୍ଡରେ)" },
-  "helptip_autoRefresh": { "message": "ସ୍ୱୟଂ-ରିଫ୍ରେସ ଚାଟGPT ଅଧିବେଶନଗୁଡ଼ିକ" },
   "helptip_toggleVis": { "message": "ପାର୍ଶ୍ବ ପଟିରେ ସ୍ୱୟଂଚାଳିତ ପୁନଃସ୍ଥାପନ ଟୋଗଲକୁ ଦର୍ଶାନ୍ତୁ" },
   "helptip_modeNotifs": { "message": "ଧାରା/ବିନ୍ୟାସଗୁଡ଼ିକୁ ଟୋଗଲ କରିବା ସମୟରେ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ଦର୍ଶାନ୍ତୁ" },
   "helptip_refreshInt": { "message": "ସତେଜ ମଧ୍ଯରେ ହାରାହାରି ବିଳମ୍ବ (ସେକେଣ୍ଡରେ)" },

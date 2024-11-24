@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Malosiaga e ala i" },
   "about_sourceCode": { "message": "Punaoa code" },
   "prompt_updateInt": { "message": "Faʻafouina taimi faʻafouina (i SECS)" },
-  "helptip_autoRefresh": { "message": "Taʻavale toe faʻafouina ChatGPT sauniga" },
   "helptip_toggleVis": { "message": "Faaali atu Auto-Refresh toggle i sidebar" },
   "helptip_modeNotifs": { "message": "Faaali atu faasilasilaga pe a toggling auala/faatulagaga" },
   "helptip_refreshInt": { "message": "O le averesi o le tuai i le va o refreshes (i sekone)" },

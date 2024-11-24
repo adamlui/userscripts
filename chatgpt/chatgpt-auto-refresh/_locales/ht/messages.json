@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Patrone pa" },
   "about_sourceCode": { "message": "Kòd sous" },
   "prompt_updateInt": { "message": "Mete ajou entèval rafrechisman (an segonn)" },
-  "helptip_autoRefresh": { "message": "Sesyon ChatGPT renouvle oto" },
   "helptip_toggleVis": { "message": "Montre toggle Auto-Refresh nan ankadre" },
   "helptip_modeNotifs": { "message": "Montre notifikasyon lè toggling mòd/anviwònman" },
   "helptip_refreshInt": { "message": "Mwayèn reta ant rafrechisman (nan segonn)" },

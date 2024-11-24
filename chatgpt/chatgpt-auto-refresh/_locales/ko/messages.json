@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "제공" },
   "about_sourceCode": { "message": "원본 코드" },
   "prompt_updateInt": { "message": "새로고침 간격을 업데이트하세요 (초 단위)" },
-  "helptip_autoRefresh": { "message": "ChatGPT 세션 자동 새로 고침" },
   "helptip_toggleVis": { "message": "사이드바에 자동 새로 고침 토글 표시" },
   "helptip_modeNotifs": { "message": "모드/설정을 전환할 때 알림 표시" },
   "helptip_refreshInt": { "message": "새로 고침 사이의 평균 지연 (초)" },

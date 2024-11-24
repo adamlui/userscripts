@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Пры падтрымцы" },
   "about_sourceCode": { "message": "Зыходнікі" },
   "prompt_updateInt": { "message": "Абнавіць інтэрвал абнаўлення (у сек)" },
-  "helptip_autoRefresh": { "message": "Аўтаматычнае абнаўленне сеансаў чатаGPT" },
   "helptip_toggleVis": { "message": "Паказваць перамыкач аўтазагрузкі ў бакавой панэлі" },
   "helptip_modeNotifs": { "message": "Паказваць апавяшчэнні пры пераключэнні рэжымаў/налад" },
   "helptip_refreshInt": { "message": "Сярэдняя затрымка паміж абнаўленнямі (у секундах)" },

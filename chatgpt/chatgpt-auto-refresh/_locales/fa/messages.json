@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
   "about_sourceCode": { "message": "سورس کد" },
   "prompt_updateInt": { "message": "فاصله بازخوانی به‌روزرسانی (در ثانیه)" },
-  "helptip_autoRefresh": { "message": "بازخوانی خودکار جلسات ChatGPT" },
   "helptip_toggleVis": { "message": "نمایش ضامن بازخوانی خودکار در نوار کناری" },
   "helptip_modeNotifs": { "message": "نمایش اعلان‌ها هنگام تغییر حالت‌ها/تنظیمات" },
   "helptip_refreshInt": { "message": "میانگین تأخیر بین تازه‌سازی (بر حسب ثانیه)" },

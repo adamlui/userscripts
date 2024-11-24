@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "E tsamaisiwa ke" },
   "about_sourceCode": { "message": "Tshwanelo ya Boitshwaro" },
   "prompt_updateInt": { "message": "Bakaya setlhare sa boitlhotlho (mefuta)" },
-  "helptip_autoRefresh": { "message": "Dithulaganyo tsa ChatGPT tse di ntšhwafaditsweng ka go itirisa" },
   "helptip_toggleVis": { "message": "SHOW Auto-Refresh toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Bontsha dikitsiso fa o toggling modes/settings" },
   "helptip_refreshInt": { "message": "Palogare ya go diega magareng ga tse di lapolosang (mo metsotswaneng)" },

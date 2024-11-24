@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Lähdekoodi" },
   "prompt_updateInt": { "message": "Päivitä päivitysväli (sekunneissa)" },
-  "helptip_autoRefresh": { "message": "Päivitä ChatGPT-istunnot automaattisesti" },
   "helptip_toggleVis": { "message": "Näytä Automaattinen päivitys -kytkin sivupalkissa" },
   "helptip_modeNotifs": { "message": "Näytä ilmoitukset, kun vaihdat tiloja/asetuksia" },
   "helptip_refreshInt": { "message": "Keskimääräinen viive päivitysten välillä (sekunteina)" },

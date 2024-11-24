@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered b'daqs" },
   "about_sourceCode": { "message": "Kodiċi Sors" },
   "prompt_updateInt": { "message": "Aġġorna l-interval ta' rifreżar (fi sekondi)" },
-  "helptip_autoRefresh": { "message": "Ġedded awtomatikament is-sessjonijiet taċ-ChatGPT" },
   "helptip_toggleVis": { "message": "Uri l-bidla Awtomatika Refresh fil-ġenb" },
   "helptip_modeNotifs": { "message": "Uri n-notifiki meta tibdel il-modi/settings" },
   "helptip_refreshInt": { "message": "Dewmien medju bejn aġġornamenti (f' sekondi)" },

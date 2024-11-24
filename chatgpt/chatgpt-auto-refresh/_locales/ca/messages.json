@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Desenvolupat per" },
   "about_sourceCode": { "message": "Codi font" },
   "prompt_updateInt": { "message": "Actualitza l'interval d'actualització (en segons)" },
-  "helptip_autoRefresh": { "message": "Actualitza automàticament les sessions de ChatGPT" },
   "helptip_toggleVis": { "message": "Mostra el commutador d'actualització automàtica a la barra lateral" },
   "helptip_modeNotifs": { "message": "Mostra les notificacions quan es canvien els modes o la configuració" },
   "helptip_refreshInt": { "message": "Retard mitjà entre actualitzacions (en segons)" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Овозможено од" },
   "about_sourceCode": { "message": "Изворен код" },
   "prompt_updateInt": { "message": "Ажурирајте го интервалот за освежување (во секунди)" },
-  "helptip_autoRefresh": { "message": "Автоматско освежување на сесиите за ChatGPT" },
   "helptip_toggleVis": { "message": "Прикажи автоматско освежување во страничната лента" },
   "helptip_modeNotifs": { "message": "Прикажи известувања кога се префрлаат режимите/подесувањата" },
   "helptip_refreshInt": { "message": "Просечно доцнење помеѓу освежувањата (во секунди)" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "নিবেদন করছেন" },
   "about_sourceCode": { "message": "সোর্স কোড" },
   "prompt_updateInt": { "message": "রিফ্রেশ ইন্টারভাল আপডেট করুন (সেকেন্ডে)" },
-  "helptip_autoRefresh": { "message": "অটো রিফ্রেশ চ্যাটGPT সেশন" },
   "helptip_toggleVis": { "message": "সাইডবারে অটো রিফ্রেশ টগল দেখান" },
   "helptip_modeNotifs": { "message": "মোড/সেটিংস টগল করার সময় বিজ্ঞপ্তিগুলি দেখান" },
   "helptip_refreshInt": { "message": "রিফ্রেশের মধ্যে গড় বিলম্ব (সেকেন্ডে)" },

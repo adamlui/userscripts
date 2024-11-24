@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Destek" },
   "about_sourceCode": { "message": "Kaynak Kodu" },
   "prompt_updateInt": { "message": "Yenileme aralığını güncelle (saniye cinsinden)" },
-  "helptip_autoRefresh": { "message": "ChatGPT oturumlarını otomatik olarak yenile" },
   "helptip_toggleVis": { "message": "Kenar çubuğunda Otomatik Yenile geçişini göster" },
   "helptip_modeNotifs": { "message": "Modlar/ayarlar arasında geçiş yaparken bildirimleri göster" },
   "helptip_refreshInt": { "message": "Yenilemeler arasındaki ortalama gecikme (saniye olarak)" },

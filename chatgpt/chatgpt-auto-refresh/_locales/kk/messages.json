@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Сайтты жасаған" },
   "about_sourceCode": { "message": "Бастапқы код" },
   "prompt_updateInt": { "message": "Жаңарту аралығы (секундтарда)" },
-  "helptip_autoRefresh": { "message": "ChatGPT сеанстарын автоматты түрде жаңарту" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада Автоматты түрде қалпына келтіру қосқышын көрсету" },
   "helptip_modeNotifs": { "message": "Режимдерді/параметрлерді ауыстыру кезінде хабарландыруларды көрсету" },
   "helptip_refreshInt": { "message": "Жаңартулар арасындағы орташа кідіріс (секунд ішінде)" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Drevet av" },
   "about_sourceCode": { "message": "Kildekode" },
   "prompt_updateInt": { "message": "Oppdater oppdateringsintervallet (i sekunder)" },
-  "helptip_autoRefresh": { "message": "Automatisk oppdatering av ChatGPT-økter" },
   "helptip_toggleVis": { "message": "Vis bryteren for automatisk oppdatering i sidefeltet" },
   "helptip_modeNotifs": { "message": "Vis varsler når du bytter moduser/innstillinger" },
   "helptip_refreshInt": { "message": "Gjennomsnittlig forsinkelse mellom oppdateringer (i sekunder)" },

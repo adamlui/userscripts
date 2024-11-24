@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
   "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
   "prompt_updateInt": { "message": "ອັບເດດໄລຍະເວລາໂຫຼດຂໍ້ມູນຄືນໃໝ່ (ເປັນວິນາທີ)" },
-  "helptip_autoRefresh": { "message": "ອັບໂຫຼດຊ່ວງສົນທະນາGPT ໂດຍອັດຕະໂນມັດ" },
   "helptip_toggleVis": { "message": "ສະແດງ Auto-Refresh toggle ໃນແຖບດ້ານຂ້າງ" },
   "helptip_modeNotifs": { "message": "ສະແດງການແຈ້ງເຕືອນເມື່ອປິດການໃຊ້ງານໂໝດ/ການຕັ້ງຄ່າ" },
   "helptip_refreshInt": { "message": "ສະເລ່ຍການຊັກຊ້າລະຫວ່າງ refreshes (ໃນວິນາທີ)" },

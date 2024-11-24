@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Knúið af" },
   "about_sourceCode": { "message": "Frumkóði" },
   "prompt_updateInt": { "message": "Uppfæra endurhleðslutímabil (í sekúndum)" },
-  "helptip_autoRefresh": { "message": "Endurhlaða sjálfkrafa lotur ChatGPT" },
   "helptip_toggleVis": { "message": "Sýna sjálfvirka enduruppfærslu víxlhnapps í hliðarstiku" },
   "helptip_modeNotifs": { "message": "Sýna tilkynningar þegar skipt er um ham/stillingar" },
   "helptip_refreshInt": { "message": "Meðaltöf milli endurhlaða (í sekúndum)" },

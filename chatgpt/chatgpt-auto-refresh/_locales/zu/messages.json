@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Ixhaswa yi-" },
   "about_sourceCode": { "message": "Ikhodi yomthombo" },
   "prompt_updateInt": { "message": "Buyekeza isikhawu sokuvuselela (ngemizuzwana)" },
-  "helptip_autoRefresh": { "message": "Vuselela kabusha amaseshini e-ChatGPT ngokuzenzakalelayo" },
   "helptip_toggleVis": { "message": "Bonisa Ukuguqula kabusha okuzenzakalelayo kubha eseceleni" },
   "helptip_modeNotifs": { "message": "Bonisa izaziso lapho kuguqulwa izindlela/amasethingi" },
   "helptip_refreshInt": { "message": "Isilinganiso sokulibaziseka phakathi nokuvuselelwa (ngemizuzwana)" },

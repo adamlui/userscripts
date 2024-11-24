@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "На базе технологии" },
   "about_sourceCode": { "message": "Исходный код" },
   "prompt_updateInt": { "message": "Обновить интервал обновления (в секундах)" },
-  "helptip_autoRefresh": { "message": "Автоматическое обновление сеансов ChatGPT" },
   "helptip_toggleVis": { "message": "Показать переключатель автообновления на боковой панели" },
   "helptip_modeNotifs": { "message": "Показывать уведомления при переключении режимов/настроек" },
   "helptip_refreshInt": { "message": "Средняя задержка между обновлениями (в секундах)" },

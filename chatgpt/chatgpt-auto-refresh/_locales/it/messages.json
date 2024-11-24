@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Alimentato da" },
   "about_sourceCode": { "message": "Codice sorgente" },
   "prompt_updateInt": { "message": "Aggiorna l'intervallo di aggiornamento (in secondi)" },
-  "helptip_autoRefresh": { "message": "Aggiorna automaticamente le sessioni ChatGPT" },
   "helptip_toggleVis": { "message": "Mostra l'opzione di aggiornamento automatico nella barra laterale" },
   "helptip_modeNotifs": { "message": "Mostra notifiche quando si attivano modalità/impostazioni" },
   "helptip_refreshInt": { "message": "Ritardo medio tra gli aggiornamenti (in secondi)" },

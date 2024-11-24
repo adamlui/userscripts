@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Працює на" },
   "about_sourceCode": { "message": "Джерельний код" },
   "prompt_updateInt": { "message": "Оновити інтервал оновлення (в секундах)" },
-  "helptip_autoRefresh": { "message": "Автоматичне оновлення сеансів ChatGPT" },
   "helptip_toggleVis": { "message": "Показати перемикач автоматичного оновлення на бічній панелі" },
   "helptip_modeNotifs": { "message": "Показувати сповіщення при перемиканні режимів/налаштувань" },
   "helptip_refreshInt": { "message": "Середня затримка між оновленнями (у секундах)" },

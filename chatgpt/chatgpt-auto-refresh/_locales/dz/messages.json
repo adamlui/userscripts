@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "དབང་ཤུགས་ཀྱི་ཐོག་ལས་" },
   "about_sourceCode": { "message": "ཐོན་ཁུངས་ཀོཌ་" },
   "prompt_updateInt": { "message": "དུས་མཐུན་བཟོ་ཡོད། (_S)" },
-  "helptip_autoRefresh": { "message": "རང་མགོ་རང་འདྲོངས་ ChatGPT དུས་ཚོད།" },
   "helptip_toggleVis": { "message": "ཟུར་ཟུར་ལུ་ རང་སྲོག་གི་གྱོང་གུད་ Toggle སྟོན་" },
   "helptip_modeNotifs": { "message": "གོ་རིམ་/སྒྲིག་གཞི་ཚུ་སེལ་འཐུ་འབད་བའི་སྐབས་བརྡ་སྟོན་ཚུ་སྟོན་འབད།" },
   "helptip_refreshInt": { "message": "དུས་ཡུན་ཚད་འཇལ་ཐངས་ (དུས་ཡུན་ཚད་འཇལ་ཐངས་)" },

@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Darbināts ar" },
   "about_sourceCode": { "message": "Pirmkods" },
   "prompt_updateInt": { "message": "Atjaunināt atjaunināšanas intervālu (sekundēs)" },
-  "helptip_autoRefresh": { "message": "Automātiski atsvaidzināt tērzēšanasGPT sesijas" },
   "helptip_toggleVis": { "message": "Rādīt automātiskās atsvaidzināšanas pārslēgu sānjoslā" },
   "helptip_modeNotifs": { "message": "Rādīt paziņojumus, pārslēdzot režīmus/iestatījumus" },
   "helptip_refreshInt": { "message": "Vidējā aizkave starp atsvaidzinājumiem (sekundēs)" },

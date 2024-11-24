@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "Source code" },
   "prompt_updateInt": { "message": "Update refresh interval (in secs)" },
-  "helptip_autoRefresh": { "message": "Auto-refresh ChatGPT sessions" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Show notifications when toggling modes/settings" },
   "helptip_refreshInt": { "message": "Average delay between refreshes (in seconds)" },

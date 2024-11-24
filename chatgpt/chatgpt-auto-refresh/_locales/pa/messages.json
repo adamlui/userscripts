@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ਦੁਆਰਾ ਸੰਚਾਲਿਤ" },
   "about_sourceCode": { "message": "ਸੂਤਰ ਸੰਕੇਤਾਵਲੀ" },
   "prompt_updateInt": { "message": "ਰੀਫਰੈਸ਼ ਅੰਤਰਾਲ ਅੱਪਡੇਟ ਕਰੋ (ਸਕਿੰਟਾਂ ਵਿੱਚ)" },
-  "helptip_autoRefresh": { "message": "GPT ਸੈਸ਼ਨ ਆਟੋ-ਰਿਫਰੈਸ਼ ਕਰੋ" },
   "helptip_toggleVis": { "message": "ਬਾਹੀ ਵਿੱਚ ਆਟੋ-ਰਿਫਰੈਸ਼ ਟੌਗਲ ਵੇਖੋ" },
   "helptip_modeNotifs": { "message": "ਜਦੋਂ ਟੌਗਲਿੰਗ ਮੋਡ/ਸੈਟਿੰਗ ਹੋਵੇ ਤਾਂ ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੇਖੋ" },
   "helptip_refreshInt": { "message": "ਰਿਫਰੈਸ਼ ਦੇ ਵਿਚਕਾਰ ਔਸਤ ਦੇਰੀ (ਸਕਿੰਟਾਂ ਵਿੱਚ)" },

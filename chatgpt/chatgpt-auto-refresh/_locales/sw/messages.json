@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Imewezeshwa na" },
   "about_sourceCode": { "message": "Msimbo wa chanzo" },
   "prompt_updateInt": { "message": "Sasisha muda wa upya (kwa sekunde)" },
-  "helptip_autoRefresh": { "message": "Fungua upya kiotomatiki vipindi vya ChatGPT" },
   "helptip_toggleVis": { "message": "Onyesha swichi ya Kugeuza Kiotomatiki kwenye upau wa pembeni" },
   "helptip_modeNotifs": { "message": "Onyesha arifa wakati wa kugeuza modi/mipangilio" },
   "helptip_refreshInt": { "message": "Wastani wa ucheleweshaji kati ya viburudisho (kwa sekunde)" },

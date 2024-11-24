@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "کی طرف سے چلایا جاتا ہے" },
   "about_sourceCode": { "message": "سورس کوڈ" },
   "prompt_updateInt": { "message": "ریفریش انٹروال کو اپ ڈیٹ کریں (سیکنڈز میں)" },
-  "helptip_autoRefresh": { "message": "خودکار ریفریش چیٹ جی پی ٹی سیشنز" },
   "helptip_toggleVis": { "message": "سائڈبار میں آٹو ریفریش ٹوگل دکھائیں" },
   "helptip_modeNotifs": { "message": "ٹوگلنگ کے طریقوں/ترتیبات کے دوران اطلاعات دکھائیں" },
   "helptip_refreshInt": { "message": "ریفریشز کے درمیان اوسط تاخیر (سیکنڈ میں)" },

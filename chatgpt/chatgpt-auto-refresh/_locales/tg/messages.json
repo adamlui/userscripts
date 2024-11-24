@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Нерӯмандшуда аз тарафи" },
   "about_sourceCode": { "message": "Рамзи манбаъ" },
   "prompt_updateInt": { "message": "Фосилаи навсозӣ (дар сонияҳо)" },
-  "helptip_autoRefresh": { "message": "Сессияҳои худкори навсозии ChatGPT" },
   "helptip_toggleVis": { "message": "Намоиши тугмаи навсозии худкор дар панели канорӣ" },
   "helptip_modeNotifs": { "message": "Намоиши огоҳиҳо ҳангоми гузаштан аз режимҳо/танзимотҳо" },
   "helptip_refreshInt": { "message": "Таъхири миёна байни навсозиҳо (дар сонияҳо)" },

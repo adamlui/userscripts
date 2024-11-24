@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "يستخدم" },
   "about_sourceCode": { "message": "شيفرة مصدرية" },
   "prompt_updateInt": { "message": "تحديث فاصل التحديث (بالثواني)" },
-  "helptip_autoRefresh": { "message": "التحديث التلقائي لجلسات ChatGPT" },
   "helptip_toggleVis": { "message": "عرض تبديل التحديث التلقائي في الشريط الجانبي" },
   "helptip_modeNotifs": { "message": "عرض الإشعارات عند تبديل الأوضاع/الإعدادات" },
   "helptip_refreshInt": { "message": "متوسط التأخير بين التحديثات (بالثواني)" },

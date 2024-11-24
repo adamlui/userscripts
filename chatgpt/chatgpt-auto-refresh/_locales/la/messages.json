@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Motum per" },
   "about_sourceCode": { "message": "Codex Originis" },
   "prompt_updateInt": { "message": "Intervalum Renovationis (in secundis)" },
-  "helptip_autoRefresh": { "message": "Autocatus refresh ChatGPT sessions" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Notificationes quod toggling modes/settings" },
   "helptip_refreshInt": { "message": "Average delay inter refreshes (in seconds)" },

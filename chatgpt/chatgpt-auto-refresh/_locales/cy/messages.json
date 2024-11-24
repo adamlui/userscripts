@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Wedi'i gynnal gan" },
   "about_sourceCode": { "message": "Cod ffynhonnell" },
   "prompt_updateInt": { "message": "Cyfnod adnewyddu diweddaru (mewn eiliadau)" },
-  "helptip_autoRefresh": { "message": "Adnewyddu sesiynau ChatGPT yn awtomatig" },
   "helptip_toggleVis": { "message": "Dangos togl Awtomatig - Adnewyddu yn y bar ochr" },
   "helptip_modeNotifs": { "message": "Dangos hysbysiadau wrth toglo moddau/gosodiadau" },
   "helptip_refreshInt": { "message": "Saib cyfartalog rhwng adnewyddu (mewn eiliadau)" },

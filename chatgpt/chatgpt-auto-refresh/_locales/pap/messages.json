@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Potenshá pa" },
   "about_sourceCode": { "message": "Kòdigu di Fuente" },
   "prompt_updateInt": { "message": "Aktualisá intervalo di refresko (den segedonan)" },
-  "helptip_autoRefresh": { "message": "Sessione Di Recupero Auto" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh Toggle At Sea Turbo" },
   "helptip_modeNotifs": { "message": "Ver Informe Ampliado de Modalidad E Instalacion Sl" },
   "helptip_refreshInt": { "message": "Averahe di retraso entre refreskadó (den algun sekònde)" },

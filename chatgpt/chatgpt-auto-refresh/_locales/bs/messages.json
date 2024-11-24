@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "omogućio" },
   "about_sourceCode": { "message": "Izvorni kod" },
   "prompt_updateInt": { "message": "Ažuriraj interval osvježavanja (u sekundama)" },
-  "helptip_autoRefresh": { "message": "Automatsko osvježavanje ChatGPT sesija" },
   "helptip_toggleVis": { "message": "Prikaži automatsko osvježavanje u bočnoj traci" },
   "helptip_modeNotifs": { "message": "Prikaži obavještenja prilikom prebacivanja režima/postavki" },
   "helptip_refreshInt": { "message": "Prosječno kašnjenje između osvježavanja (u sekundama)" },

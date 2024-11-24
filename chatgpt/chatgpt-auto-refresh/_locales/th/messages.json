@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "สนับสนุนโดย" },
   "about_sourceCode": { "message": "รหัสต้นฉบับ" },
   "prompt_updateInt": { "message": "อัปเดตช่วงรีเฟรช (ในวินาที)" },
-  "helptip_autoRefresh": { "message": "รีเฟรชเซสชั่น ChatGPT อัตโนมัติ" },
   "helptip_toggleVis": { "message": "แสดงการรีเฟรชอัตโนมัติในแถบด้านข้าง" },
   "helptip_modeNotifs": { "message": "แสดงการแจ้งเตือนเมื่อสลับโหมด/การตั้งค่า" },
   "helptip_refreshInt": { "message": "ความล่าช้าเฉลี่ยระหว่างการรีเฟรช (เป็นวินาที)" },

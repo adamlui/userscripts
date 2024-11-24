@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Unterstützt von" },
   "about_sourceCode": { "message": "Quellcode" },
   "prompt_updateInt": { "message": "Aktualisieren Sie das Aktualisierungsintervall (in Sekunden)" },
-  "helptip_autoRefresh": { "message": "ChatGPT-Sitzungen automatisch aktualisieren" },
   "helptip_toggleVis": { "message": "Automatische Aktualisierung in der Seitenleiste anzeigen" },
   "helptip_modeNotifs": { "message": "Benachrichtigungen anzeigen, wenn Modi/Einstellungen umgeschaltet werden" },
   "helptip_refreshInt": { "message": "Durchschnittliche Verzögerung zwischen den Aktualisierungen (in Sekunden)" },

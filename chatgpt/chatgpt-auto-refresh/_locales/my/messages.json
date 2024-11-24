@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "မှပံ့ပိုးသည်" },
   "about_sourceCode": { "message": "ပင္မကုဒ္" },
   "prompt_updateInt": { "message": "ပြန်လည်စတင်ချိန်ကာလ (စက္ကန့်အတွင်း) အပ်ဒိတ်လုပ်ပါ" },
-  "helptip_autoRefresh": { "message": "Auto-Refresh ChatGPT ဆက်ရှင်များ" },
   "helptip_toggleVis": { "message": "ဘေးဘားတွင် အလိုအလျောက်ပြန်လည်ပြုပြင်မွမ်းမံခြင်း ပြောင်းရွှေ့မှုကို ပြပါ" },
   "helptip_modeNotifs": { "message": "မုဒ်များ/ဆက်တင်များကို ပြောင်းလဲချိန်တွင် အသိပေးချက်များကို ပြသပါ" },
   "helptip_refreshInt": { "message": "လတ်ဆတ်မှုကြား ပျမ်းမျှနှောင့်နှေးမှု (စက္ကန့်အတွင်း)" },

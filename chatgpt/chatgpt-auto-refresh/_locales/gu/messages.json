@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "દ્વારા સંચાલિત" },
   "about_sourceCode": { "message": "સ્ત્રોત કોડ" },
   "prompt_updateInt": { "message": "રિફ્રેશ અંતરાળ અપડેટ કરો (સેકન્ડમાં)" },
-  "helptip_autoRefresh": { "message": "ChatGPT સત્રો આપમેળે રીફ્રેશ કરો" },
   "helptip_toggleVis": { "message": "સાઇડબારમાં આપોઆપ-રિફ્રેશ ટૉગલ બતાવો" },
   "helptip_modeNotifs": { "message": "જ્યારે ટૉગલિંગ મોડ્સ/સેટિંગ્સ હોય ત્યારે સૂચનાઓ બતાવો" },
   "helptip_refreshInt": { "message": "રીફ્રેશ વચ્ચે સરેરાશ વિલંબ (સેકંડમાં)" },

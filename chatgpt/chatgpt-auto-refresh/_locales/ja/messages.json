@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by" },
   "about_sourceCode": { "message": "ソースコード" },
   "prompt_updateInt": { "message": "更新間隔を更新してください（秒単位）" },
-  "helptip_autoRefresh": { "message": "チャットGPTセッションの自動更新" },
   "helptip_toggleVis": { "message": "サイドバーに自動更新トグルを表示する" },
   "helptip_modeNotifs": { "message": "モード/設定の切り替え時に通知を表示する" },
   "helptip_refreshInt": { "message": "リフレッシュ間の平均遅延（秒単位）" },

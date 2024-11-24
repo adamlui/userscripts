@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ద్వారా ఆధారితం" },
   "about_sourceCode": { "message": "సోర్స్ కోడ్" },
   "prompt_updateInt": { "message": "రిఫ్రెష్ విరామం అప్ ‌ డేట్ చేయండి (సెకన్లలో)" },
-  "helptip_autoRefresh": { "message": "ఆటో-రిఫ్రెష్ చాట్ GPT సెషన్ ‌ లు" },
   "helptip_toggleVis": { "message": "సైడ్ ‌ బార్ ‌ లో ఆటో-రిఫ్రెష్ టోగుల్ ‌ ను చూపించండి" },
   "helptip_modeNotifs": { "message": "మోడ్ ‌ లు/సెట్టింగ్ ‌ లను టోగుల్ చేసేటప్పుడు నోటిఫికేషన్ ‌ లను చూపించండి" },
   "helptip_refreshInt": { "message": "రిఫ్రెష్ ‌ ల మధ్య సగటు ఆలస్యం (సెకన్లలో)" },

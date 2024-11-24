@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "ڕاگرتن لە لای" },
   "about_sourceCode": { "message": "کۆدی سەرچاوە" },
   "prompt_updateInt": { "message": "هەنگاوی نوێکردنەوە بگۆڕە (لە چرکەکان)" },
-  "helptip_autoRefresh": { "message": "Danişînên ChatGPT-ê bixweber nûve bikin" },
   "helptip_toggleVis": { "message": "Veguheztina Xweser-Nûvekirinê li darika kêlekê nîşan bide" },
   "helptip_modeNotifs": { "message": "Dema ku modên / mîhengan biguherînin, agahdariyan nîşan bidin" },
   "helptip_refreshInt": { "message": "Derengiya navîn di navbera nûvekirinan de (di çirkeyan de)" },

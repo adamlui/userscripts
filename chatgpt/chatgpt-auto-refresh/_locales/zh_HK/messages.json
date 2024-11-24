@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "技術支持" },
   "about_sourceCode": { "message": "原始碼" },
   "prompt_updateInt": { "message": "更新重新整理間隔（以秒為單位）" },
-  "helptip_autoRefresh": { "message": "自動重新整理 ChatGPT 工作階段" },
   "helptip_toggleVis": { "message": "在側邊欄中顯示自動刷新切換" },
   "helptip_modeNotifs": { "message": "切換模式/設定時顯示通知" },
   "helptip_refreshInt": { "message": "刷新之間的平均延遲（以秒為單位）" },

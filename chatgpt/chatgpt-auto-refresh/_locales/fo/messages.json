@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Powered by SFX" },
   "about_sourceCode": { "message": "Ada keldukota" },
   "prompt_updateInt": { "message": "Endurvinna tíðarskeið (í sekum)" },
-  "helptip_autoRefresh": { "message": "Auto-refresh ChatGPT sesjónir" },
   "helptip_toggleVis": { "message": "Sýni sjálvvirkandi endurnýtslu skifting í síðubarn" },
   "helptip_modeNotifs": { "message": "Vís boð, tá ið tú skiftir stillingar/stillingar" },
   "helptip_refreshInt": { "message": "Miðlaða seinastøða millum frískingar (í sekundum)" },

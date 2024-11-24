@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Được hỗ trợ bởi" },
   "about_sourceCode": { "message": "Mã nguồn" },
   "prompt_updateInt": { "message": "Cập nhật khoảng thời gian làm mới (tính bằng giây)" },
-  "helptip_autoRefresh": { "message": "Tự động làm mới các phiên ChatGPT" },
   "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động làm mới trong thanh bên" },
   "helptip_modeNotifs": { "message": "Hiển thị thông báo khi chuyển đổi chế độ/cài đặt" },
   "helptip_refreshInt": { "message": "Độ trễ trung bình giữa các lần làm mới (tính bằng giây)" },

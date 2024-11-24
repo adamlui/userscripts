@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Ondersteund door" },
   "about_sourceCode": { "message": "Broncode" },
   "prompt_updateInt": { "message": "Verversingsinterval bijwerken (in seconden)" },
-  "helptip_autoRefresh": { "message": "ChatGPT-sessies automatisch vernieuwen" },
   "helptip_toggleVis": { "message": "Schakelaar Automatisch vernieuwen weergeven in zijbalk" },
   "helptip_modeNotifs": { "message": "Meldingen weergeven bij schakelen tussen modi/instellingen" },
   "helptip_refreshInt": { "message": "Gemiddelde vertraging tussen vernieuwingen (in seconden)" },

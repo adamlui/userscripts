@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "Propulsé par" },
   "about_sourceCode": { "message": "Code Source" },
   "prompt_updateInt": { "message": "Mettre à jour l'intervalle de rafraîchissement (en secondes)" },
-  "helptip_autoRefresh": { "message": "Auto-refresh ChatGPT session Anglais" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh Toggle na sidebar" },
   "helptip_modeNotifs": { "message": "Fa awango na ngoi so mo yeke toggling mode/settings" },
   "helptip_refreshInt": { "message": "A yeke kanga lege na azo ti kiri na fini (na yâ ti ambeni sekonde)" },

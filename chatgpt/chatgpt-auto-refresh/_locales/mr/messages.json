@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "द्वारा समर्थित" },
   "about_sourceCode": { "message": "स्रोत कोड" },
   "prompt_updateInt": { "message": "रिफ्रेश अंतराल अपडेट करा (सेकंडमध्ये)" },
-  "helptip_autoRefresh": { "message": "ऑटो - रीफ्रेश चॅटजीपीटी सत्रे" },
   "helptip_toggleVis": { "message": "बाजूच्या पट्टीमध्ये स्वयं - रीफ्रेश टॉगल दर्शवा" },
   "helptip_modeNotifs": { "message": "मोड/सेटिंग्ज टॉगल करतेवेळी सूचना दर्शवा" },
   "helptip_refreshInt": { "message": "रीफ्रेश दरम्यान सरासरी विलंब (सेकंदात)" },

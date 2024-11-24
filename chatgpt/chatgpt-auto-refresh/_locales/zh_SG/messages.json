@@ -12,7 +12,6 @@
   "about_poweredBy": { "message": "技术支持方" },
   "about_sourceCode": { "message": "源代码" },
   "prompt_updateInt": { "message": "更新刷新间隔（以秒为单位）" },
-  "helptip_autoRefresh": { "message": "自动刷新 ChatGPT 会话" },
   "helptip_toggleVis": { "message": "在侧边栏中显示自动刷新切换" },
   "helptip_modeNotifs": { "message": "切换模式/设置时显示通知" },
   "helptip_refreshInt": { "message": "刷新之间的平均延迟（以秒为单位）" },
