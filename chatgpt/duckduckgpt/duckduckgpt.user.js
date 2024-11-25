@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.23.1
+// @version                2024.11.25
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -646,6 +646,7 @@
         register() {
             const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
                                    && parseInt(env.scriptManager.version.split('.')[0]) >= 5
+
             // Add Proxy API Mode toggle
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
