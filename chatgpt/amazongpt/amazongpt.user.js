@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.23.1
+// @version                2024.11.25
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -461,6 +461,7 @@
         register() {
             const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
                                    && parseInt(env.scriptManager.version.split('.')[0]) >= 5
+
             // Add Proxy API Mode toggle
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
