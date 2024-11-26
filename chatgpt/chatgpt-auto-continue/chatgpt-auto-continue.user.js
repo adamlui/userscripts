@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.4
+// @version             2024.11.25.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -499,11 +499,16 @@
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
-                    ], '', 478 // set width
+                    ], '', 546 // set width
                 )
+                const aboutModal = document.getElementById(aboutModalID)
+
+                // Re-style text
+                aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
+                aboutModal.querySelector('p').style.cssText = 'text-align: center'
 
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
-                for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
+                for (const button of aboutModal.querySelectorAll('button')) {
                     button.style.cssText = 'cursor: pointer !important' // since tweaks won't load on auto-disable
                     if (/updates/i.test(button.textContent)) button.textContent = (
                         '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
@@ -601,7 +606,7 @@
     } else menu.register() // create functional menu
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 1732589298415 // datestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1732590959269 // timestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
