@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.2
+// @version             2024.11.25.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -518,7 +518,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                        function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 546 // set width
                 )
                 const aboutModal = document.getElementById(aboutModalID)
@@ -535,7 +535,7 @@
                         '🧠 ' + ( app.msgs.btnLabel_getSupport ))
                     else if (/rate/i.test(button.textContent)) button.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/apps/i.test(button.textContent)) button.textContent = (
+                    else if (/extensions/i.test(button.textContent)) button.textContent = (
                         '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else button.style.display = 'none' // hide Dismiss button
                 }
