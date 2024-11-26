@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.8
+// @version             2024.11.25.9
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -243,10 +243,13 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@47779d6fbebaf40fd58e58f99df44ce2c8dd5956/chrome/extension/lib/dom.js#sha256-0bhycl7Nr7KvGksQRDWBMgooDl4os2GXpjKlHT2t+TY=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
+// @resource bsbgCSS    https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@1191df1/assets/styles/css/black-rising-stars.min.css#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
+// @resource wsbgCSS    https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@1191df1/assets/styles/css/white-rising-stars.min.css#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
+// @grant               GM_getResourceText
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
@@ -483,7 +486,7 @@
                     else if (latestSubVer > currentSubVer) { // if outdated
 
                         // Alert to update
-                        const updateModalID = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.msgs.appName} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
@@ -497,8 +500,7 @@
 
                         // Localize button labels if needed
                         if (!env.browser.language.startsWith('en')) {
-                            const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
-                                  updateBtns = updateAlert.querySelectorAll('button')
+                            const updateBtns = updateModal.querySelectorAll('button')
                             updateBtns[1].textContent = app.msgs.btnLabel_update
                             updateBtns[0].textContent = app.msgs.btnLabel_dismiss
                         }
@@ -506,7 +508,7 @@
                         return
                 }}
 
-                // Alert to no update found, nav back
+                // Alert to no update, return to About modal
                 siteAlert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.msgs.appName} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', updateAlertWidth
@@ -538,12 +540,51 @@
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        return chatgpt.alert(title, msg, btns, checkbox, width )}
+        const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
+              alert = document.getElementById(alertID).firstChild
+        modals.init(alert) // add class + starry BG + drag handlers
+        return alert
+    }
 
     // Define MODAL functions
 
     const modals = {
         stack: [],
+
+        init(modal) {
+            modal.classList.add('chatgpt-widescreen-modal')
+            modal.onmousedown = modals.dragHandlers.mousedown
+            fillStarryBG(modal) // add stars
+        },
+
+        dragHandlers: {
+            mousedown(event) { // find modal, attach listeners, init XY offsets
+                if (event.button != 0) return // prevent non-left-click drag
+                if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
+                modals.dragHandlers.draggableElem = event.currentTarget
+                modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
+                event.preventDefault(); // prevent sub-elems like icons being draggable
+                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
+                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
+                modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
+                modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
+            },
+
+            mousemove(event) { // drag modal
+                if (modals.dragHandlers.draggableElem) {
+                    const newX = event.clientX - modals.dragHandlers.offsetX,
+                          newY = event.clientY - modals.dragHandlers.offsetY
+                    Object.assign(modals.dragHandlers.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
+                }
+            },
+
+            mouseup() { // remove listeners, reset modals.dragHandlers.draggableElem
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
+                ['mousemove', 'mouseup'].forEach(event =>
+                    document.removeEventListener(event, modals.dragHandlers[event]))
+                modals.dragHandlers.draggableElem = null
+            }
+        },
 
         about: {
             show() {
@@ -555,7 +596,7 @@
                       pStyle = 'position: relative ; left: 3px',
                       pBrStyle = 'position: relative ; left: 4px ',
                       aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
-                const aboutModalID = siteAlert(
+                const aboutModal = siteAlert(
                     app.msgs.appName, // title
                     `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
                         + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
@@ -569,11 +610,10 @@
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
-                        function rateUs() { modals.feedback.show() },
+                        function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
                         function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 546 // set width
                 )
-                const aboutModal = document.getElementById(aboutModalID)
 
                 // Re-style text
                 aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
@@ -602,7 +642,7 @@
                 modals.stack.unshift('donate') ; modals.stack = [...new Set(modals.stack)] // track for nav
 
                 // Show alert
-                const donateModalID = siteAlert(
+                const donateModal = siteAlert(
                     `💖 ${app.msgs.alert_showYourSupport}`, // title
                         `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
                       + `<p>${app.msgs.alert_despiteAffliction} `
@@ -626,7 +666,6 @@
                 )
 
                 // Format text
-                const donateModal = document.getElementById(donateModalID)
                 donateModal.querySelectorAll('p').forEach(p => // v-pad text, shrink line height
                     p.style.cssText = 'padding: 8px 0 ; line-height: 20px')
 
@@ -648,14 +687,13 @@
 
         feedback: {
             show() {
-                const reviewModalID = chatgpt.alert(
+                const reviewModal = chatgpt.alert(
                     `${app.msgs.alert_choosePlatform}:`, '', // title
                     [ // buttons
                         function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) },
                         function productHunt() { modals.safeWinOpen(app.urls.review.productHunt) }
                     ]
                 )
-                const reviewModal = document.getElementById(reviewModalID)
                 reviewModal.querySelector('button').style.display = 'none' // hide Dismiss button
                 reviewModal.addEventListener('DOMNodeRemoved', () => modals[modals.stack[0]]?.show() ) // nav back
             }
@@ -888,7 +926,7 @@
             tweaks() {
                 tweaksStyle.innerText = (
                     '.chatgpt-notif, [class*="-modal"] { font-family: system-ui !important }'
-                  + `[class*="-modal"] { color: ${ chatgpt.isDarkMode() ? 'white' : 'black' }}`
+                  + '[class$="-modal"] { z-index: 13456 ; position: absolute }' // to be click-draggable
                   + '[class*="modal-close-btn"] svg { height: 10px }'
                   + '[class*="-modal"] h2 { font-size: 24px ; font-weight: 600 }'
                   + '[class*="-modal"] p { font-size: 16px }'
@@ -1031,6 +1069,25 @@
 
     // Define UI functions
 
+    function createStyle(content) {
+        const style = document.createElement('style')
+        if (content) style.innerText = content
+        return style
+    }
+
+    function fillStarryBG(targetNode) {
+        const starsDivsContainer = document.createElement('div')
+        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
+          + 'z-index: -1'; // allow interactive elems to be clicked
+        ['sm', 'med', 'lg'].forEach(starSize => {
+            const starsDiv = document.createElement('div')
+            starsDiv.id = `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}`
+            starsDivsContainer.append(starsDiv)
+        })
+        targetNode.prepend(starsDivsContainer)
+    }
+
     function isFullWin() {
         return env.site == 'poe' ? !!document.getElementById('fullWindow-mode')
             : !sites[env.site].hasSidebar // false if sidebar non-existent
@@ -1113,7 +1170,11 @@
     const hfStyle = sites[env.site].selectors.footer + '{ visibility: hidden ;' // hide footer text
                                                      + '  height: 3px ; overflow: clip }' // reduce height
 
-    update.style.tweaks() ; document.head.append(tweaksStyle)
+    update.style.tweaks() ; document.head.append(tweaksStyle);
+
+    // Add STARS styles
+    ['wsbg', 'bsbg'].forEach(cssType => // white stars, black stars
+        document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     // Create WIDESCREEN style
     const wideScreenStyle = dom.create.style()
