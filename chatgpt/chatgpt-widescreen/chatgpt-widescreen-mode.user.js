@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.26
+// @version             2024.11.26.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -240,7 +240,7 @@
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@47779d6fbebaf40fd58e58f99df44ce2c8dd5956/chrome/extension/lib/dom.js#sha256-0bhycl7Nr7KvGksQRDWBMgooDl4os2GXpjKlHT2t+TY=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@587e2ec40653f023e32f243ba2fb28fae3adacda/chrome/extension/lib/dom.js#sha256-KzqDxxNYcQjwncpIZbdt2DyEaKD61rtInlWbyyeZ8Do=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@1191df1/assets/styles/css/black-rising-stars.min.css#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
@@ -554,7 +554,7 @@
         init(modal) {
             modal.classList.add('chatgpt-widescreen-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
-            fillStarryBG(modal) // add stars
+            dom.fillStarryBG(modal)
         },
 
         dragHandlers: {
@@ -1068,19 +1068,6 @@
     }
 
     // Define UI functions
-
-    function fillStarryBG(targetNode) {
-        const starsDivsContainer = document.createElement('div')
-        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
-          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-          + 'z-index: -1'; // allow interactive elems to be clicked
-        ['sm', 'med', 'lg'].forEach(starSize => {
-            const starsDiv = document.createElement('div')
-            starsDiv.id = `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}`
-            starsDivsContainer.append(starsDiv)
-        })
-        targetNode.prepend(starsDivsContainer)
-    }
 
     function isFullWin() {
         return env.site == 'poe' ? !!document.getElementById('fullWindow-mode')
