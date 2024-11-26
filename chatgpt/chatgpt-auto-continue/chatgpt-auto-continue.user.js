@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.7
+// @version             2024.11.25.8
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -228,10 +228,13 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
+// @resource bsbgCSS    https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@b3cd8bc/assets/styles/css/black-rising-stars.min.css#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
+// @resource wsbgCSS    https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@b3cd8bc/assets/styles/css/white-rising-stars.min.css#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
+// @grant               GM_getResourceText
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
@@ -413,7 +416,7 @@
                     else if (latestSubVer > currentSubVer) { // if outdated
 
                         // Alert to update
-                        const updateModalID = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.msgs.appName} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
@@ -427,8 +430,7 @@
 
                         // Localize button labels if needed
                         if (!env.browser.language.startsWith('en')) {
-                            const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
-                                  updateBtns = updateAlert.querySelectorAll('button')
+                            const updateBtns = updateModal.querySelectorAll('button')
                             updateBtns[1].textContent = app.msgs.btnLabel_update
                             updateBtns[0].textContent = app.msgs.btnLabel_dismiss
                         }
@@ -468,11 +470,50 @@
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        return chatgpt.alert(title, msg, btns, checkbox, width )}
+        const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
+              alert = document.getElementById(alertID).firstChild
+        modals.init(alert) // add class + starry BG + drag handlers
+        return alert
+    }
 
     // Define MODAL functions
 
     const modals = {
+
+        init(modal) {
+            modal.classList.add('chatgpt-auto-continue-modal')
+            modal.onmousedown = modals.dragHandlers.mousedown
+            fillStarryBG(modal) // add stars
+        },
+
+        dragHandlers: {
+            mousedown(event) { // find modal, attach listeners, init XY offsets
+                if (event.button != 0) return // prevent non-left-click drag
+                if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
+                modals.dragHandlers.draggableElem = event.currentTarget
+                modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
+                event.preventDefault(); // prevent sub-elems like icons being draggable
+                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
+                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
+                modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
+                modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
+            },
+
+            mousemove(event) { // drag modal
+                if (modals.dragHandlers.draggableElem) {
+                    const newX = event.clientX - modals.dragHandlers.offsetX,
+                          newY = event.clientY - modals.dragHandlers.offsetY
+                    Object.assign(modals.dragHandlers.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
+                }
+            },
+
+            mouseup() { // remove listeners, reset modals.dragHandlers.draggableElem
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
+                ['mousemove', 'mouseup'].forEach(event =>
+                    document.removeEventListener(event, modals.dragHandlers[event]))
+                modals.dragHandlers.draggableElem = null
+            }
+        },
 
         about: {
             show() {
@@ -483,7 +524,7 @@
                       pStyle = 'position: relative ; left: 3px',
                       pBrStyle = 'position: relative ; left: 4px ',
                       aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
-                const aboutModalID = siteAlert(
+                const aboutModal = siteAlert(
                     app.msgs.appName, // title
                     `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
                         + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
@@ -501,7 +542,6 @@
                         function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 546 // set width
                 )
-                const aboutModal = document.getElementById(aboutModalID)
 
                 // Re-style text
                 aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
@@ -529,7 +569,7 @@
             show() {
 
                 // Show alert
-                const donateModalID = siteAlert(
+                const donateModal = siteAlert(
                     `💖 ${app.msgs.alert_showYourSupport}`, // title
                         `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
                       + `<p>${app.msgs.alert_despiteAffliction} `
@@ -553,7 +593,6 @@
                 )
 
                 // Format text
-                const donateModal = document.getElementById(donateModalID)
                 donateModal.querySelectorAll('p').forEach(p => // v-pad text, shrink line height
                     p.style.cssText = 'padding: 8px 0 ; line-height: 20px')
 
@@ -578,6 +617,27 @@
 
     // Define UI functions
 
+    function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
+
+    function createStyle(content) {
+        const style = document.createElement('style')
+        if (content) style.innerText = content
+        return style
+    }
+
+    function fillStarryBG(targetNode) {
+        const starsDivsContainer = document.createElement('div')
+        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
+          + 'z-index: -1'; // allow interactive elems to be clicked
+        ['sm', 'med', 'lg'].forEach(starSize => {
+            const starsDiv = document.createElement('div')
+            starsDiv.id = `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}`
+            starsDivsContainer.append(starsDiv)
+        })
+        targetNode.prepend(starsDivsContainer)
+    }
+
     function checkContinueBtn() {
         const continueBtn = chatgpt.getContinueBtn()
         if (continueBtn) {
@@ -587,8 +647,6 @@
             setTimeout(checkContinueBtn, 5000)
         } else setTimeout(checkContinueBtn, 500)
     }
-
-    function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
 
@@ -606,7 +664,7 @@
     } else menu.register() // create functional menu
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 1732590959269 // timestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1732600036095 // timestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -615,7 +673,8 @@
             document.head.append(tweaksStyle)
         }
         tweaksStyle.innerText = (
-            ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+            '[class$="-modal"] { z-index: 13456 ; position: absolute }' // to be click-draggable
+          + ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
           + '.chatgpt-modal button {'
               + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
               + 'border-radius: 0 !important ;' // square borders
@@ -627,7 +686,11 @@
               + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
         )
-    }
+    };
+
+    // Add STARS styles
+    ['wsbg', 'bsbg'].forEach(cssType => // white stars, black stars
+        document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     // Observe DOM for need to continue generating response
     checkContinueBtn()
