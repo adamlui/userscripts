@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.1
+// @version             2024.11.25.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -886,8 +886,7 @@
                   + '[class*="-modal"] p { font-size: 16px }'
                   + '[class*="-modal"] button {'
                       + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
-                      + `border: 2px dashed ${ chatgpt.isDarkMode() ? 'white' : 'black' } !important ;` // dash borders
-                  + 'border-radius: 0 !important ;' // square borders
+                      + 'border-radius: 0 !important ;' // square borders
                       + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
                       + 'cursor: pointer !important ;' // add finger cursor
                       + 'padding: 5px !important ; min-width: 102px }' // resize
@@ -1080,7 +1079,6 @@
         chatgptAlertStyle.id = 'chatgpt-alert-override-style'
         chatgptAlertStyle.innerText = (
             ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
-          + '.modal-buttons { margin-left: -13px !important }'
         )
         document.head.append(chatgptAlertStyle)
     }
