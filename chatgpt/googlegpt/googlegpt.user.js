@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.25.2
+// @version                  2024.11.25.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -911,9 +911,9 @@
                 log.debug('No update found.')
                 const noUpdateModalID = siteAlert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.name} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
-                    '', '', updateAlertWidth)
-                const noUpdateModal = document.getElementById(noUpdateModalID).firstChild
-                modals.init(noUpdateModal)
+                    '', '', updateAlertWidth
+                )
+                modals.init(document.getElementById(noUpdateModalID).firstChild)
                 modals.about.show()
     }})}
 
