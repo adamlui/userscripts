@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.25
+// @version                2024.11.25.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -962,7 +962,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.feedback.show({ sites: 'review' }) },
-                        function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 577) // modal width
                 const aboutModal = document.getElementById(aboutModalID).firstChild
 
@@ -989,7 +989,7 @@
                         '🧠 ' + ( app.msgs.btnLabel_getSupport ))
                     else if (/rate/i.test(btn.textContent)) btn.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/apps/i.test(btn.textContent)) btn.textContent = (
+                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
                         '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else btn.style.display = 'none' // hide Dismiss button
                 })
