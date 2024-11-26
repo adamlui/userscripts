@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.25.1
+// @version                  2024.11.25.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -435,7 +435,7 @@
             gitHub: 'https://github.com/KudoAI/googlegpt',
             greasyFork: 'https://greasyfork.org/scripts/478597-googlegpt',
             publisher: 'https://www.kudoai.com',
-            relatedApps: 'https://github.com/adamlui/ai-web-extensions',
+            relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: { greasyFork: 'https://greasyfork.org/scripts/478597-googlegpt/feedback#post-discussion' },
             support: 'https://support.googlegpt.io'
         },
@@ -1138,7 +1138,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 585) // modal width
                 const aboutModal = document.getElementById(aboutModalID).firstChild
 
