@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.3
+// @version             2024.11.25.4
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -286,7 +286,7 @@
             gitHub: 'https://github.com/adamlui/chatgpt-auto-refresh',
             greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh',
             mediaHost: 'https://media.chatgptautorefresh.com',
-            relatedApps: 'https://github.com/adamlui/ai-web-extensions',
+            relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
             },
@@ -572,7 +572,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 546 // set width
                 )
                 const aboutModal = document.getElementById(aboutModalID)
