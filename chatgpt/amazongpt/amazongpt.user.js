@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.25
+// @version                2024.11.25.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -776,7 +776,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.feedback.show({ sites: 'review' }) },
-                        function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
                     ], '', 656) // modal width
                 const aboutModal = document.getElementById(aboutModalID).firstChild
 
@@ -803,7 +803,7 @@
                         '🧠 ' + ( app.msgs.btnLabel_getSupport ))
                     else if (/rate/i.test(btn.textContent)) btn.textContent = (
                         '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/apps/i.test(btn.textContent)) btn.textContent = (
+                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
                         '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
                     else btn.style.display = 'none' // hide Dismiss button
                 })
