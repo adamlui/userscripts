@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.26.1
+// @version             2024.11.26.2
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -462,7 +462,7 @@
 
         // Append styled state word
         if (foundState) {
-            const styledStateSpan = document.createElement('span')
+            const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = `color: ${
                 foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
                                                   : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
@@ -621,13 +621,13 @@
     function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
 
     function fillStarryBG(targetNode) {
-        const starsDivsContainer = document.createElement('div')
+        const starsDivsContainer = dom.create.elem('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
           + 'z-index: -1'; // allow interactive elems to be clicked
         ['sm', 'med', 'lg'].forEach(starSize => {
-            const starsDiv = document.createElement('div')
-            starsDiv.id = `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}`
+            const starsDiv = dom.create.elem('div', {
+                id: `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}` })
             starsDivsContainer.append(starsDiv)
         })
         targetNode.prepend(starsDivsContainer)
@@ -663,8 +663,7 @@
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
-            tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
-            tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
+            tweaksStyle = dom.create.elem('style', { id: 'tweaks-style', 'last-updated': tweaksStyleUpdated.toString() })
             document.head.append(tweaksStyle)
         }
         tweaksStyle.innerText = (
