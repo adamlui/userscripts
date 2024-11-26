@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.3
+// @version             2024.11.25.4
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -568,11 +568,16 @@
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.feedback.show() },
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
-                    ], '', 478 // set width
+                    ], '', 546 // set width
                 )
+                const aboutModal = document.getElementById(aboutModalID)
+
+                // Re-style text
+                aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
+                aboutModal.querySelector('p').style.cssText = 'text-align: center'
 
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
-                for (const btn of document.getElementById(aboutModalID).querySelectorAll('button')) {
+                for (const btn of aboutModal.querySelectorAll('button')) {
                     btn.style.cssText = 'cursor: pointer !important' // since tweaks won't load on auto-disable
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
@@ -893,6 +898,7 @@
                   + '.chatgpt-modal button:hover {' // add zoom, re-scheme
                       + 'transform: scale(1.055) ; color: black !important ;'
                       + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
+                  + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
                   + ( /chatgpt|openai/.test(env.site) ? (
                           ( '[id$="-btn"]:hover { opacity: 80% !important }' ) // dim chatbar btns on hover
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
