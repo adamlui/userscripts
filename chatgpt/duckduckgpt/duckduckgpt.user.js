@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.25.3
+// @version                2024.11.26
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -189,8 +189,8 @@
 // @resource ddgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/lightmode/logo697x122.png.b64#sha256-7O4AxPinoZ6h36KHuJVa4vwfTEOYTwT+lKiDbf/jjkg=
 // @resource ddgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/darkmode/logo697x122.png.b64#sha256-lSd4M3RPT4+SjjBk8PKGFoyM9p3rZHgxt0NgoKqQkiM=
 // @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource bsbgCSS       https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@54f7f2c/styles/css/black-rising-stars.min.css#sha256-bXbVZUD7ciKqK0wU/BLQzh08JwkoNExHHqXITugd/3o=
-// @resource wsbgCSS       https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@54f7f2c/styles/css/white-rising-stars.min.css#sha256-ya9newifevSPO1Q4AzMf42yAF6TE+iZHrDbVj0HyuEM=
+// @resource bsbgCSS       https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
+// @resource wsbgCSS       https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=50f457d#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
 // @grant                  GM_getValue
 // @grant                  GM_setValue
 // @grant                  GM_deleteValue
