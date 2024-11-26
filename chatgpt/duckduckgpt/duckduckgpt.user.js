@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.26
+// @version                2024.11.26.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -700,7 +700,7 @@
 
                         // Alert to update
                         log.debug(`Update v${latestVer} found!`)
-                        const updateModalID = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.name} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" '
@@ -713,29 +713,24 @@
                                 ).onclose = () => location.reload()
                             }, '', updateAlertWidth
                         )
-                        const updateModal = document.getElementById(updateModalID).firstChild
 
                         // Localize button labels if needed
                         if (!env.browser.language.startsWith('en')) {
                             log.debug('Localizing button labels in non-English alert...')
-                            const updateAlert = document.querySelector(`[id="${updateModalID}"]`),
-                                  updateBtns = updateAlert.querySelectorAll('button')
+                            const updateBtns = updateModal.querySelectorAll('button')
                             updateBtns[1].textContent = app.msgs.btnLabel_update
                             updateBtns[0].textContent = app.msgs.btnLabel_dismiss
                         }
-
-                        modals.init(updateModal)
 
                         return
                 }}
 
                 // Alert to no update found, nav back
                 log.debug('No update found.')
-                const noUpdateModalID = siteAlert(`${app.msgs.alert_upToDate}!`, // title
+                siteAlert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.name} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', updateAlertWidth
                 )
-                modals.init(document.getElementById(noUpdateModalID).firstChild)
                 modals.about.show()
     }})}
 
@@ -844,7 +839,11 @@
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        return chatgpt.alert(title, msg, btns, checkbox, width )}
+        const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
+              alert = document.getElementById(alertID).firstChild
+        modals.init(alert) // add classes + starry BG + listeners + btn glow
+        return alert
+    }
 
     // Define MODAL functions
 
@@ -859,6 +858,8 @@
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
             modal.onmousedown = modals.dragHandlers.mousedown
+
+            // Hack BG
             fillStarryBG(modal) // add stars
             setTimeout(() => { // dim bg
                 modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
@@ -950,7 +951,7 @@
 
                 // Create/init modal
                 const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
-                const aboutModalID = chatgpt.alert('',
+                const aboutModal = siteAlert('',
                     `🏷️ ${app.msgs.about_version}: <span class="about-em">${GM_info.script.version}</span>\n`
                         + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                             + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
@@ -964,7 +965,6 @@
                         function rateUs() { modals.feedback.show({ sites: 'review' }) },
                         function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 577) // modal width
-                const aboutModal = document.getElementById(aboutModalID).firstChild
 
                 // Add logo
                 const aboutHeaderLogo = logos.ddgpt.create() ; aboutHeaderLogo.width = 420
@@ -994,7 +994,6 @@
                     else btn.style.display = 'none' // hide Dismiss button
                 })
 
-                modals.init(aboutModal)
                 log.debug('Success! About Modal shown')
             }
         },
@@ -1014,9 +1013,7 @@
                     function github() { modals.safeWinOpen(app.urls.gitHub + '/discussions/new/choose') })
 
                 // Create/init modal
-                const feedbackModalID = siteAlert(`${
-                    app.msgs.alert_choosePlatform }:`, '', btns, '', 408)
-                const feedbackModal = document.getElementById(feedbackModalID).firstChild
+                const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
 
                 // Center CTA
                 feedbackModal.querySelector('h2').style.justifySelf = 'center'
@@ -1036,7 +1033,6 @@
                     btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
                 })
 
-                modals.init(feedbackModal)
                 log.debug('Success! Feedback modal shown')
             }
         },
@@ -1055,12 +1051,10 @@
                             log.debug('Saving reply language...')
                             settings.save('replyLanguage', replyLang || env.browser.language)
                             log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
-                            const langUpdatedAlertID = siteAlert(( app.msgs.alert_langUpdated ) + '!', // title
+                            siteAlert(( app.msgs.alert_langUpdated ) + '!', // title
                                 `${app.name} ${app.msgs.alert_willReplyIn} `
                                     + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
                                 '', '', 330) // confirmation width
-                            const langUpdatedAlert = document.getElementById(langUpdatedAlertID).firstChild
-                            modals.init(langUpdatedAlert)
                             if (modals.settings.get()) // update settings menu status label
                                 document.querySelector('#replyLanguage-menu-entry span').textContent = replyLang
                             break
@@ -1073,10 +1067,10 @@
                 log.debug('Showing Scheme modal...')
 
                 // Create/init modal
-                const schemeModalID = siteAlert(`${
+                const schemeModal = siteAlert(`${
                     app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
-                    [ function auto() {}, function light() {}, function dark() {} ]) // buttons
-                const schemeModal = document.getElementById(schemeModalID).firstChild
+                    [ function auto() {}, function light() {}, function dark() {} ] // buttons
+                )
 
                 // Center title/button cluster
                 schemeModal.querySelector('h2').style.justifySelf = 'center'
@@ -1117,7 +1111,6 @@
                     }
                 }
 
-                modals.init(schemeModal)
                 log.debug('Success! Scheme modal shown')
 
                 function schemeNotify(scheme) {
@@ -2840,7 +2833,7 @@
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
-                const suggestAlertID = siteAlert(
+                siteAlert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
                         + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
@@ -2849,11 +2842,9 @@
                         + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
-                const suggestAlert = document.getElementById(suggestAlertID).firstChild
-                modals.init(suggestAlert)
             } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
                 log.debug('Streaming Mode unsupported in browser')
-                const suggestAlertID = siteAlert(
+                siteAlert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
                         + `${ env.browser.isChrome ? 'Chrome' : env.browser.isEdge ? 'Edge' : 'Brave' } ${
@@ -2861,8 +2852,6 @@
                         + `${app.msgs.alert_pleaseUse} <a target="_blank" rel="noopener" href="${
                             scriptCatLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
                 )
-                const suggestAlert = document.getElementById(suggestAlertID).firstChild
-                modals.init(suggestAlert)
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 log.debug('Streaming Mode unsupported in OpenAI mode')
                 let msg = `${settings.controls.streamingDisabled.label} `
@@ -2871,9 +2860,7 @@
                         + `(${app.msgs.alert_openAIsupportSoon}!)`
                 const switchPhrase = app.msgs.alert_switchingOn
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
-                const alertID = siteAlert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg),
-                      alert = document.getElementById(alertID).firstChild
-                modals.init(alert)
+                const alert = siteAlert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg)
                 alert.querySelector('[href="#"]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
