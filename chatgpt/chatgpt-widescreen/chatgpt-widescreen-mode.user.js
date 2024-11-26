@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.9
+// @version             2024.11.26
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1069,12 +1069,6 @@
 
     // Define UI functions
 
-    function createStyle(content) {
-        const style = document.createElement('style')
-        if (content) style.innerText = content
-        return style
-    }
-
     function fillStarryBG(targetNode) {
         const starsDivsContainer = document.createElement('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
@@ -1174,7 +1168,7 @@
 
     // Add STARS styles
     ['wsbg', 'bsbg'].forEach(cssType => // white stars, black stars
-        document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
+        document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create WIDESCREEN style
     const wideScreenStyle = dom.create.style()
