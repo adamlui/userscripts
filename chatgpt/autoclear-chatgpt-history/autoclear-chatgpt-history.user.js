@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.26.2
+// @version             2024.11.26.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -683,17 +683,17 @@
         create() {
             sidebarToggle.div = document.createElement('div')
 
-            // Create/size/position navicon
+            // Create/ID/size/position navicon
             const navicon = document.createElement('img') ; navicon.id = 'autoclear-toggle-navicon'
             navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
-            // Create/ID/disable/hide/update checkbox
+            // Create/disable/hide checkbox
             const toggleInput = document.createElement('input')
-            Object.assign(toggleInput, { id: 'autoclear-toggle-input', type: 'checkbox', disabled: true })
+            Object.assign(toggleInput, { type: 'checkbox', disabled: true })
             toggleInput.style.display = 'none'
 
-            // Create/ID/stylize switch
-            const switchSpan = document.createElement('span') ; switchSpan.id = 'autoclear-switch-span'
+            // Create/stylize switch
+            const switchSpan = document.createElement('span')
             Object.assign(switchSpan.style, {
                 position: 'relative', left: `${ env.browser.isMobile ? 169 : !ui.firstLink ? 160 : 154 }px`,
                 backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
@@ -712,7 +712,7 @@
             }) ; switchSpan.append(knobSpan)
 
             // Create/stylize/fill label
-            const toggleLabel = document.createElement('label') ; toggleLabel.id = 'autoclear-toggle-label'
+            const toggleLabel = document.createElement('label')
             if (!ui.firstLink) // add font size/weight since no ui.firstLink to borrow from
                 toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
             Object.assign(toggleLabel.style, {
