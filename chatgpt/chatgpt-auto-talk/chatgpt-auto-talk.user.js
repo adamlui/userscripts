@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25
+// @version             2024.11.25.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -714,9 +714,9 @@
     const ui = { firstLink: chatgpt.getNewChatLink() }
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 20241125 // datestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1732589521145 // datestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
-    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) {
+    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
             tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
             tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
@@ -733,7 +733,6 @@
           + '.chatgpt-modal button:hover {' // add zoom, re-scheme
               + 'transform: scale(1.055) ; color: black !important ;'
               + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
-          + '.modal-buttons { margin-left: -13px !important }'
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
         )
     }
@@ -747,7 +746,6 @@
           + '.chatgpt-modal button {'
               + 'font-size: 0.77rem ; text-transform: uppercase ;'
               + 'border-radius: 0 !important ; padding: 5px !important ; min-width: 102px }'
-          + '.modal-buttons { margin-left: -13px !important }'
         )
         document.head.append(chatgptAlertStyle)
     }
