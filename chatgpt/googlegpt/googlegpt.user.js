@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.26.1
+// @version                  2024.11.26.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1072,10 +1072,8 @@
             mousedown(event) { // find modal, attach listeners, init XY offsets
                 if (event.button != 0) return // prevent non-left-click drag
                 if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
-                log.caller = 'modals.dragHandlers.mousedown()'
                 modals.dragHandlers.draggableElem = event.currentTarget
                 modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
-                log.debug(`Mouse down on div#${modals.dragHandlers.draggableElem?.id}`)
                 event.preventDefault(); // prevent sub-elems like icons being draggable
                 ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
                 const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
@@ -1092,9 +1090,7 @@
             },
 
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                log.caller = 'modals.dragHandlers.mouseup()'
                 modals.dragHandlers.draggableElem.style.cursor = 'inherit'
-                log.debug(`Mouse up on div#${modals.dragHandlers.draggableElem?.id}`);
                 ['mousemove', 'mouseup'].forEach(event =>
                     document.removeEventListener(event, modals.dragHandlers[event]))
                 modals.dragHandlers.draggableElem = null
