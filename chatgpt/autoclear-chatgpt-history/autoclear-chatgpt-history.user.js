@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.1
+// @version             2024.11.25.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -535,11 +535,16 @@
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
                         function moreChatGPTapps() { modals.safeWinOpen(app.urls.relatedApps) }
-                    ], '', 478 // set width
+                    ], '', 546 // set width
                 )
+                const aboutModal = document.getElementById(aboutModalID)
+
+                // Re-style text
+                aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
+                aboutModal.querySelector('p').style.cssText = 'text-align: center'
 
                 // Re-format buttons to include emoji + localized label + hide Dismiss button
-                for (const button of document.getElementById(aboutModalID).querySelectorAll('button')) {
+                for (const button of aboutModal.querySelectorAll('button')) {
                     if (/updates/i.test(button.textContent)) button.textContent = (
                         '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
                     else if (/support/i.test(button.textContent)) button.textContent = (
@@ -755,9 +760,9 @@
     const ui = { firstLink: chatgpt.getNewChatLink() }
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 20241125 // datestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1732590959269 // timestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
-    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) {
+    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
             tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
             tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
@@ -774,6 +779,7 @@
           + '.chatgpt-modal button:hover {' // add zoom, re-scheme
               + 'transform: scale(1.055) ; color: black !important ;'
               + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
+          + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
         )
     }
