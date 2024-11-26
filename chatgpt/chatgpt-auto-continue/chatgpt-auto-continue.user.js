@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.25.2
+// @version             2024.11.25.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -573,6 +573,16 @@
 
     // Define UI functions
 
+    function checkContinueBtn() {
+        const continueBtn = chatgpt.getContinueBtn()
+        if (continueBtn) {
+            continueBtn.click()
+            notify(app.msgs.notif_chatAutoContinued, 'bottom-right')
+            try { chatgpt.scrollToBottom() } catch(err) {}
+            setTimeout(checkContinueBtn, 5000)
+        } else setTimeout(checkContinueBtn, 500)
+    }
+
     function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
@@ -617,15 +627,7 @@
     }
 
     // Observe DOM for need to continue generating response
-    (function checkContinueBtn() {
-        const continueBtn = chatgpt.getContinueBtn()
-        if (continueBtn) {
-            continueBtn.click()
-            notify(app.msgs.notif_chatAutoContinued, 'bottom-right')
-            try { chatgpt.scrollToBottom() } catch(err) {}
-            setTimeout(checkContinueBtn, 5000)
-        } else setTimeout(checkContinueBtn, 500)
-    })()
+    checkContinueBtn()
 
     // NOTIFY of status on load
     notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
