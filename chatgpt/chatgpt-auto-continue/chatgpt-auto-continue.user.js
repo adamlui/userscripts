@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.23.3
+// @version             2024.11.25
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -591,7 +591,7 @@
     } else menu.register() // create functional menu
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 20241002 // datestamp of last edit for this file's `tweaksStyle`
+    const tweaksStyleUpdated = 20241125 // datestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated'), 10) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -609,11 +609,8 @@
               + 'cursor: pointer !important ;' // add finger cursor
               + 'padding: 5px !important ; min-width: 102px }' // resize
           + '.chatgpt-modal button:hover {' // add zoom, re-scheme
-              + 'transform: scale(1.055) ;'
-              + ( chatgpt.isDarkMode() ? ( 'background-color: #2cff00 !important ; color: black !important ;'
-                                             + 'box-shadow: 2px 1px 54px #38ff00 !important ;' )
-                                       : ( 'background-color: #c7ff006b !important ;'
-                                             + 'box-shadow: 2px 1px 30px #97ff006b !important' )) + '}'
+              + 'transform: scale(1.055) ; color: black !important ;'
+              + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
           + '.modal-buttons { margin-left: -13px !important }'
           + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
           + '.sticky div:active, .sticky div:focus {' // post-GPT-4o UI sidebar button container
