@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.25.1
+// @version               2024.11.25.22
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -243,7 +243,7 @@
             gitHub: 'https://github.com/KudoAI/bravegpt',
             greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt',
             publisher: 'https://www.kudoai.com',
-            relatedApps: 'https://github.com/adamlui/ai-web-extensions',
+            relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 alternativeTo: 'https://alternativeto.net/software/bravegpt/about/',
                 greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion',
@@ -950,7 +950,7 @@
                         function checkForUpdates() { updateCheck() },
                         function getSupport() { modals.safeWinOpen(app.urls.support) },
                         function rateUs() { modals.feedback.show({ sites: 'review' }) },
-                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedApps) }
+                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
                     ], '', 617) // modal width
                 const aboutModal = document.getElementById(aboutModalID).firstChild
 
