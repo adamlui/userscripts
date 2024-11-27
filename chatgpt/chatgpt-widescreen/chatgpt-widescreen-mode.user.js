@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.26.4
+// @version             2024.11.27
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -421,7 +421,7 @@
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
 
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     }
     settings.load(sites[env.site].availFeatures)
 
