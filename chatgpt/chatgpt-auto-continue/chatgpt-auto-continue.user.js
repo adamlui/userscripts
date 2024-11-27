@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.26.5
+// @version             2024.11.27
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -354,7 +354,7 @@
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
 
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     }
     settings.load('notifDisabled')
 
