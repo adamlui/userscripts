@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27
+// @version             2024.11.27.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -241,6 +241,7 @@
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@587e2ec40653f023e32f243ba2fb28fae3adacda/chrome/extension/lib/dom.js#sha256-KzqDxxNYcQjwncpIZbdt2DyEaKD61rtInlWbyyeZ8Do=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@deb1525627f224cc909f686f2c8473bf33893a4e/chrome/extension/lib/settings.js#sha256-V1ZfEbeo6ljQtf0Kpfg8kGkXouEjeaeDk0ogwWFDY/Y=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
@@ -389,40 +390,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init SETTINGS
-    const config = {}
-    const settings = {
-
-        controls: {
-            fullerWindows: { type: 'toggle',
-                label: app.msgs.menuLabel_fullerWins,
-                helptip: app.msgs.helptip_fullerWins },
-            tcbDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_tallerChatbox, symbol: '↕️',
-                helptip: app.msgs.helptip_tallerChatbox },
-            widerChatbox: { type: 'toggle',
-                label: app.msgs.menuLabel_widerChatbox, symbol: '↔️',
-                helptip: app.msgs.helptip_widerChatbox },
-            ncbDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_newChatBtn,
-                helptip: app.msgs.helptip_newChatBtn },
-            hiddenHeader: { type: 'toggle',
-                label: app.msgs.menuLabel_hiddenHeader,
-                helptip: app.msgs.helptip_hiddenHeader },
-            hiddenFooter: { type: 'toggle',
-                label: app.msgs.menuLabel_hiddenFooter,
-                helptip: app.msgs.helptip_hiddenFooter },
-            notifDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_modeNotifs,
-                helptip: app.msgs.helptip_modeNotifs }
-        },
-
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-
-        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
-    }
+    settings.appProps = app // for msgs + configKeyPrefix refs
     settings.load(sites[env.site].availFeatures)
 
     // Define MENU functions
