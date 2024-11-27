@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.26.2
+// @version                2024.11.27
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -378,7 +378,7 @@
             if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
             keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
         },
-        save(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
+        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     } ; settings.load('debugMode')
 
     // Define LOG props/functions
