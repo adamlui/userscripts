@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27
+// @version             2024.11.27.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -227,6 +227,7 @@
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@f141eb2bf448ffd7b177f510739f9aba65cee54e/chromium/extension/lib/dom.js#sha256-HHK8UA7p8eNm57JbaUIYf9S2RrP9MssohY26fdH+4Ws=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@71a47b8fcf738283e1ac32ed901bd70aad6df36f/chromium/extension/lib/settings.js#sha256-8F7A/G4wyCH4Xkuk6yFM6AK/oMbl+55jLeExE64W/h4=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
@@ -341,22 +342,8 @@
     }
 
     // Init SETTINGS
-    const config = {}
-    const settings = {
-
-        controls: {
-            notifDisabled: { type: 'toggle',
-                label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs }
-        },
-
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
-
-        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
-    }
-    settings.load('notifDisabled')
+    settings.appProps = app // for msgs + configKeyPrefix refs
+    settings.load(Object.keys(settings.controls))
 
     // Define MENU functions
 
