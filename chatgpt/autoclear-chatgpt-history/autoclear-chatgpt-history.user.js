@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27
+// @version             2024.11.27.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -405,7 +405,7 @@
                                                                             + menu.state.words[+settingIsEnabled] : '' )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (settings.controls[key].type == 'toggle') {
-                        settings.save(key, !config[key]) ; syncConfigToUI({ reason: key })
+                        settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                         notify(`${settings.controls[key].label}: ${
                             menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                     } else // Clear Now action
@@ -654,8 +654,8 @@
     // Define UI functions
 
     function syncConfigToUI(options) {
-        if (options?.reason == 'autoclear' && config.autoclear) clearChatsAndGoHome()
-        if (/autoclear|toggleHidden/.test(options?.reason)) sidebarToggle.update()
+        if (options?.updatedKey == 'autoclear' && config.autoclear) clearChatsAndGoHome()
+        if (/autoclear|toggleHidden/.test(options?.updatedKey)) sidebarToggle.update()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -738,7 +738,7 @@
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
-                settings.save('autoclear', !toggleInput.checked) ; syncConfigToUI({ reason: 'autoclear' })
+                settings.save('autoclear', !toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
                 notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
             }
         },
