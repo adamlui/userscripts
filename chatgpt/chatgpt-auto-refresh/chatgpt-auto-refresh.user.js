@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27
+// @version             2024.11.27.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -449,7 +449,7 @@
                                 break
                         }}
                     }
-                    syncConfigToUI({ reason: key })
+                    syncConfigToUI({ updatedKey: key })
                 }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
             })
 
@@ -691,8 +691,8 @@
     // Define UI functions
 
     function syncConfigToUI(options) {
-        if (options?.reason == 'arDisabled') toggleAutoRefresh()
-        if (/arDisabled|toggleHidden/.test(options?.reason)) sidebarToggle.update()
+        if (options?.updatedKey == 'arDisabled') toggleAutoRefresh()
+        if (/arDisabled|toggleHidden/.test(options?.updatedKey)) sidebarToggle.update()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -775,7 +775,7 @@
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
-                settings.save('arDisabled', toggleInput.checked) ; syncConfigToUI({ reason: 'arDisabled' })
+                settings.save('arDisabled', toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
                 notify(`${app.msgs.menuLabel_autoRefresh}: ${menu.state.words[+!config.arDisabled]}`)
             }
         },
