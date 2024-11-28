@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27.1
+// @version             2024.11.27.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -823,6 +823,7 @@
         remove() {
             if (!chatbar.get() || !document.getElementById('wideScreen-btn')) return
             btns.types.forEach(type => btns[type]?.remove()) ; tooltipDiv?.remove()
+            btns.status = 'missing' // ensure next btns.insert() doesn't return early
         },
 
         updateColor() {
