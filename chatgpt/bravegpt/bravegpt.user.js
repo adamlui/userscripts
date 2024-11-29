@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.27
+// @version               2024.11.29
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -902,7 +902,7 @@
             },
 
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit'
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
                 ['mousemove', 'mouseup'].forEach(event =>
                     document.removeEventListener(event, modals.dragHandlers[event]))
                 modals.dragHandlers.draggableElem = null
