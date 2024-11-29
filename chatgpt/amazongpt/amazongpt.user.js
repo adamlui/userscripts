@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.29.1
+// @version                2024.11.29.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -658,7 +658,7 @@
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
               alert = document.getElementById(alertID).firstChild
-        modals.init(alert) // add classes + starry BG + listeners + btn glow
+        modals.setup(alert) // add classes + starry BG + listeners + btn glow
         return alert
     }
 
@@ -666,7 +666,7 @@
 
     const modals = {
 
-        init(modal) {
+        setup(modal) {
 
             // Add classes
             modal.classList.add('amzgpt-modal')
@@ -951,7 +951,7 @@
                 const settingsContainer = document.createElement('div'),
                       settingsModal = document.createElement('div') ; settingsModal.id = 'amzgpt-settings'
                       settingsContainer.append(settingsModal)
-                modals.init(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
+                modals.setup(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Init settings keys
                 log.debug('Initializing settings keys...')
