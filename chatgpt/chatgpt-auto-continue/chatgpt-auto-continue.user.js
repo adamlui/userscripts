@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29
+// @version             2024.11.29.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -356,8 +356,14 @@
         register() {
             const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
                                    && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-            // Add toggles
-            Object.keys(settings.controls).forEach(key => {
+
+            // Show "Disabled (extension installed)"
+            if (env.extensionInstalled)
+                GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`, modals.about.show,
+                    tooltipsSupported ? { title: ' ' } : undefined)
+
+            // ...or add settings toggles
+            else Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
                 const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
@@ -375,9 +381,11 @@
                 tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
-            const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.about.show,
-                tooltipsSupported ? { title: ' ' } : undefined))
+            if (!env.extensionInstalled) {
+                const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
+                menu.ids.push(GM_registerMenuCommand(donateLabel, modals.about.show,
+                    tooltipsSupported ? { title: ' ' } : undefined))
+            }
         },
 
         refresh() {
@@ -632,7 +640,6 @@
 
     // Run MAIN routine
 
-    // Create browser TOOLBAR MENU or DISABLE SCRIPT if extension installed
     env.extensionInstalled = await Promise.race([
         new Promise(resolve => {
             (function checkExtensionInstalled() {
@@ -640,10 +647,8 @@
                 else setTimeout(checkExtensionInstalled, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
-    if (env.extensionInstalled) { // disable script/menu
-        GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`, modals.about.show)
-        return // exit script
-    } else menu.register() // create functional menu
+
+    menu.register() ; if (env.extensionInstalled) return
 
     // Add/update TWEAKS style
     const tweaksStyleUpdated = 1732627011377 // timestamp of last edit for this file's tweaksStyle
