@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.29
+// @version                2024.11.29.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -562,11 +562,11 @@
 
     // Init UI props
     log.debug('Initializing UI properties...')
-    const ui = {
+    env.ui = {
         app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )},
         site: { isCentered: !!document.documentElement.classList.toString().includes('center') }
     }
-    log.debug(`Success! ui = '${log.prettifyObj(ui)}`)
+    log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
     // Init API props
     log.debug('Initializing API properties...')
@@ -862,12 +862,12 @@
             // Hack BG
             fillStarryBG(modal) // add stars
             setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
             }, 100) // delay for transition fx
 
             // Glowup btns
-            if (ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+            if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
         },
 
         hide(modal) {
@@ -1120,7 +1120,7 @@
                     // Append scheme icon
                     const notifs = document.querySelectorAll('.chatgpt-notif')
                     const notif = notifs[notifs.length -1]
-                    const schemeIcon = icons[ui.app.scheme == 'light' ? 'sun'
+                    const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
                                                    : scheme == 'dark' ? 'moon'
                                                                       : 'arrowsCycle'].create()
                     schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
@@ -1145,7 +1145,7 @@
                 log.debug('Initializing settings keys...')
                 const settingsKeys = Object.keys(settings.controls).filter(key =>
                       !(env.browser.isMobile && settings.controls[key].mobile == false)
-                   && !(ui.site.isCentered && settings.controls[key].centered == false))
+                   && !(env.ui.site.isCentered && settings.controls[key].centered == false))
                 log.debug(`Success! settingsKeys = ${log.prettifyObj(settingsKeys)}`)
 
                 // Init logo
@@ -1175,7 +1175,7 @@
                         `display: flex ; padding: 11px 0 13px ; gap: ${ middleGap /2 }px` )
                     settingsLists[0].style.cssText = ( // add vertical separator
                         `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${
-                            ui.app.scheme == 'dark' ? 'white' : 'black '}` )
+                            env.ui.app.scheme == 'dark' ? 'white' : 'black '}` )
                 }
                 log.debug(`Success! settingsListCnt = ${settingsListCnt}`)
 
@@ -1900,7 +1900,7 @@
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
                 if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#ddgpt-logo')
                 targetLogos.forEach(logo =>
-                    logo.src = GM_getResourceText(`ddgpt${ ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
+                    logo.src = GM_getResourceText(`ddgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
         }
     }
@@ -1920,7 +1920,7 @@
         replyPrefix() {
             const firstP = appDiv.querySelector('pre p')
             if (!firstP) return
-            const prefixNeeded = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
+            const prefixNeeded = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
                   prefixExists = firstP.textContent.startsWith('>> ')
             if (prefixNeeded && !prefixExists) firstP.prepend('>> ')
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
@@ -1936,7 +1936,7 @@
         scheme(newScheme) {
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
-            ui.app.scheme = newScheme ; logos.ddgpt.update() ; update.style.app()
+            env.ui.app.scheme = newScheme ; logos.ddgpt.update() ; update.style.app()
             update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
@@ -1945,13 +1945,13 @@
             ['sm', 'med', 'lg'].forEach(size =>
                 document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
                     starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
-                    : `${ ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
             ))
         },
 
         style: {
             app() {
-                const isStarryDM = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
+                const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
@@ -1974,42 +1974,42 @@
                       + 'z-index: 9999 ; cursor: ew-resize }'
                   + '#ddgpt {'
                       + 'z-index: 5555 ; padding: 17px 26px 16px ; flex-basis: 0 ;'
-                      + `border: ${ ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
+                      + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
                       + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
                           + 'box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
                       + ( config.bgAnimationsDisabled ? // classic flat bg
-                            `background: var(--app-bg-color-${ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${ui.app.scheme}-scheme) ;`
+                            `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
+                          + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                       : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
-                              ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
+                              env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                       : '#b6ebff -163px, white 65px' }) ;` )
                       + ( !config.fgAnimationsDisabled ?
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
                   + '#ddgpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
-                  + '#ddgpt p { margin: 0 ; ' + ( ui.app.scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
-                  + `#ddgpt .alert-link { color: ${ ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+                  + '#ddgpt p { margin: 0 ; ' + ( env.ui.app.scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
+                  + `#ddgpt .alert-link { color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
                   + '.app-name, .app-name:hover {'
                       + 'font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
                   + '.kudoai { margin-left: 6px ; color: #aaa } '
                   + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
-                  + `.kudoai a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+                  + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
                   + '#corner-btns { float: right ; margin-top: 2px }'
                   + '.corner-btn {'
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
-                      + `${ ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                     : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
                                   + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from btn-zoom-fade-out ends
                   + '.corner-btn:hover {'
-                      + `${ ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9' : 'fill: black ; stroke: black' } ;`
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9' : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
                   + '.corner-btn:active {'
-                      + `${ ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999' : 'fill: #638ed4 ; stroke: #638ed4' } }`
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999' : 'fill: #638ed4 ; stroke: #638ed4' } }`
                   + ( config.bgAnimationsDisabled ? '' : ( '#ddgpt-logo, .corner-btn svg, .standby-btn'
-                      + `{ filter: drop-shadow(${ ui.app.scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
+                      + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
                   + '#ddgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
                   + '#ddgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
                   + '#font-size-slider-track {'
@@ -2026,7 +2026,7 @@
                   + '#font-size-slider-thumb {'
                       + 'z-index: 2 ; width: 10px ; height: 25px ; border-radius: 30% ; position: relative ;'
                       + 'top: -7.65px ; transition: transform 0.05s ease ;'
-                      + `background-color: ${ ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                      + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
                       + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                         '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
@@ -2036,7 +2036,7 @@
                       + `color: ${ isStarryDM ? 'white' : 'black' } ; transition: transform 0.15s ease ;`
                       + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
                   + '.standby-btn:hover {'
-                      + `${ ui.app.scheme == 'dark' ? 'background: white ; color: black'
+                      + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
                                                     : 'background: black ; color: white' };`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
@@ -2045,41 +2045,41 @@
                       + 'float: left ; left: 9px ; margin: 34px -14px 0 0 ;' // positioning
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                           + `${ // hide reply tip for terminal aesthetic
-                                isStarryDM ? '#0000' : `var(--pre-bg-color-${ui.app.scheme}-scheme)` }}`
+                                isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
                   + '#ddgpt pre { background-color: inherit }' // override DDG's unattractive thicc light border
                   + '#ddgpt > pre {'
                       + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
                       + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
                       + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ; border-radius: 10px ; overflow: auto ;'
                       + ( config.bgAnimationsDisabled ? // classic opaque bg
-                            `background: var(--pre-bg-color-${ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${ui.app.scheme}-scheme)`
-                      : `${ ui.app.scheme == 'dark' ? // slightly tranluscent bg
+                            `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
+                          + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
+                      : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
                             'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                                 : 'background: var(--pre-bg-color-light-scheme) ;'
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
                       + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
                   + '#ddgpt > pre a, #ddgpt > pre a:visited { color: #4495d4 }'
-                  + `#ddgpt pre a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+                  + `#ddgpt pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + '#ddgpt section.loading { padding-left: 5px }' // left-pad loading status when sending replies
                   + '#ddgpt + footer { margin: 2px 0 25px ; position: relative }'
-                  + `#ddgpt + footer * { color: ${ ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
+                  + `#ddgpt + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
-                        ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
+                        env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + 'code #copy-btn { position: relative ; top: -6px ; right: -9px }'
                   + 'code #copy-btn > svg { height: 13px ; width: 13px ; fill: white }'
                   + '#app-chatbar {'
-                      + `border: solid 1px ${ ui.app.scheme == 'dark' ?
+                      + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
                             ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
                       + 'border-radius: 12px 13px 12px 0 ; margin: 3px 0 15px 0 ; padding: 13px 57px 9px 10px ;'
                       + 'font-size: 0.92rem ; height: 19px ; width: 82.6% ; max-height: 200px ; resize: none ; '
-                      + `position: relative ; z-index: 555 ; color: #${ ui.app.scheme == 'dark' ? 'eee' : '222' } ;`
-                      + `background: ${ ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
+                      + `position: relative ; z-index: 555 ; color: #${ env.ui.app.scheme == 'dark' ? 'eee' : '222' } ;`
+                      + `background: ${ env.ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
                                                                 : '#eeeeee9e' } ;`
-                      + `${ ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
+                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
                   + '.related-queries {'
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
                       + `${ env.browser.isFF ? 'top: -20px ; margin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
@@ -2087,36 +2087,36 @@
                       + 'font-size: 0.88em ; cursor: pointer ;'
                       + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to .related-queries
                       + 'margin: 4px 4px 8px 0 ; padding: 4px 10px 5px 10px ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
+                      + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
                                                            : '#767676' } ;`
                       + `background: ${
-                             config.bgAnimationsDisabled ? ( ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
-                                                         : ( ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
-                      + `border: 1px solid ${ ui.app.scheme == 'dark' ? (
+                             config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
+                                                         : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
+                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? (
                             config.bgAnimationsDisabled ? '#5f5f5f' : '#777' ) : '#e1e1e1' } ;`
                       + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
-                      + `box-shadow: 1px 4px ${ ui.app.scheme == 'dark' ?
+                      + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
                             `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
                                 : '8px -6px rgba(169, 169, 169, 0.75)' };`
                       + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
                   + '.related-query:hover, .related-query:focus {'
                       + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scale(1.055) !important ;' )
-                      + `background: ${ ui.app.scheme == 'dark' ? '#a2a2a270'
+                      + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
                             : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
                   + '.related-query svg {' // related query icon
                       + 'position: relative ; top: 4px ; margin-right: 6px ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
                   + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
                   + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
                   + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
                   + '.chatbar-btn {'
                       + 'z-index: 560 ; border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
                       + `bottom: ${ env.browser.isFF ? 50 : 55 }px ;`
-                      + `${ ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
+                      + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
                                                     : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
                   + '.chatbar-btn:hover {'
-                      + `${ ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
+                      + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // rendered markdown styles
                         '#ddgpt > pre h1 { font-size: 24px } #ddgpt > pre h2 { font-size: 22px } #ddgpt > pre h3 { font-size: 20px }' // size headings
@@ -2133,18 +2133,18 @@
                       + 'padding: 20px 25px 24px 25px !important ;' // increase alert padding
                       + 'background-color: white !important ; color: black }'
                   + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 1.55rem }' // pos/size modal msg
-                  + `.chatgpt-modal a { color: #${ ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+                  + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
                   + '.modal-buttons'
                       + `{ margin: 24px -5px -3px ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
                   + '.chatgpt-modal button {' // modal buttons
                       + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
                       + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
                       + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-                      + 'border: 1px solid ' + ( ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
-                      + `${ ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
+                      + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
+                      + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
                   + '.primary-modal-btn { background: black !important ; color: white !important }'
                   + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
-                  + ( ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
                       ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
                           + 'background-color: black !important ; color: white }'
                       + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
@@ -2161,9 +2161,9 @@
                       + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
                       + 'opacity: 0 ;' // to fade-in
                       + `background-image: linear-gradient(180deg, ${
-                           ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
-                      + `border: 1px solid ${ ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
-                      + `color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                           env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
+                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                       + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
                       + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                                   + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
@@ -2221,9 +2221,9 @@
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                       + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-                  + `[class*="modal-close-btn"] path {${ ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
+                  + `[class*="modal-close-btn"] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
                                                                                  : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-                  + ( ui.app.scheme == 'dark' ?  // invert dark mode hover paths
+                  + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
                         '[class*="modal-close-btn"]:hover path { stroke: black ; fill: black }' : '' )
                   + '[class*="modal-close-btn"]:hover { background-color: #f2f2f2 }' // hover underlay
                   + '[class*="modal-close-btn"] svg { margin: 11.5px }' // center SVG for hover underlay
@@ -2237,7 +2237,7 @@
                   + '#ddgpt-settings {'
                       + `min-width: ${ env.browser.isPortrait ? 288 : 698 }px ; max-width: 75vw ;`
                       + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
-                      + `${ ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
+                      + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
                   + '#ddgpt-settings-title { font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 3px -3px 0 }'
                   + '#ddgpt-settings-title h4 {'
                       + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -39px }`
@@ -2245,16 +2245,16 @@
                       + 'list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
                       + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
                   + '#ddgpt-settings li {'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for text
-                      + `fill: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
-                      + `stroke: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for text
+                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
+                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
                       + 'height: 25px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
-                      + `padding: 4px 10px ; border-bottom: 1px dotted ${ ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
+                      + `padding: 4px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
                       + 'border-radius: 3px }' // make highlight strips slightly rounded
                   + '#ddgpt-settings li.active {'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
-                      + `fill: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
-                      + `stroke: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
+                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
+                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
                   + '#ddgpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
                   + '#ddgpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
                   + '#ddgpt-settings li, #ddgpt-settings li label { cursor: pointer }' // add finger on hover
@@ -2268,7 +2268,7 @@
                       + 'position: relative ; top: 3px ; margin-left: 4px }'
                   + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
                   + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
-                  + `#about-menu-entry span { color: ${ ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
+                  + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
                   + '#about-menu-entry > span {' // outer About status span
                       + `width: ${ env.browser.isPortrait ? '15vw' : '92px' } ; height: 20px ; overflow: hidden ;`
                       + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
@@ -2280,7 +2280,7 @@
                       + `text-wrap: nowrap ; ${
                             config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
                   + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
-                  + `.about-em { color: ${ ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
+                  + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
                 )
             },
 
@@ -2326,7 +2326,7 @@
         ['sm', 'med', 'lg'].forEach(starSize => {
             const starsDiv = document.createElement('div')
             starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
-                : `${ ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+                : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
             starsDivsContainer.append(starsDiv)
         })
         targetNode.prepend(starsDivsContainer)
@@ -2670,7 +2670,7 @@
                 aboutStatusLabel.style.float = config.fgAnimationsDisabled ? 'right' : ''
 
                 // Toggle button glow
-                if (ui.app.scheme == 'dark') toggle.btnGlow()
+                if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
             log.caller = `toggle.animations('${layer}')`
             log.debug(`Success! ${layer.toUpperCase()} animations toggled ${ config[configKey] ? 'OFF' : 'ON' }`)
@@ -2696,7 +2696,7 @@
         },
 
         btnGlow(state = '') {
-            const removeCondition = state == 'off' || ui.app.scheme != 'dark' || config.fgAnimationsDisabled
+            const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
@@ -3401,7 +3401,7 @@
                 appDiv.append(cornerBtnsDiv)
 
                 // Create/append Chevron button
-                if (!ui.site.isCentered && !env.browser.isMobile) {
+                if (!env.ui.site.isCentered && !env.browser.isMobile) {
                     var chevronBtn = document.createElement('btn'),
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.id = 'chevron-btn' // for toggle.tooltip()
@@ -3443,7 +3443,7 @@
                 }
 
                 // Create/append Pin button
-                if (!ui.site.isCentered && !env.browser.isMobile) {
+                if (!env.ui.site.isCentered && !env.browser.isMobile) {
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
                     pinBtn.id = 'pin-btn' // for toggle.sidebar() + toggle.tooltip()
@@ -3712,7 +3712,7 @@
 
     // APPEND DDGPT + footer to DDG
     const appElems = [appFooter, appDiv],
-          appDivContainerSelector = env.browser.isMobile || ui.site.isCentered ? '[data-area*="mainline"]' : '[class*="sidebar"]'
+          appDivContainerSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*="mainline"]' : '[class*="sidebar"]'
     const appDivContainer = await new Promise(resolve => {
         const container = document.querySelector(appDivContainerSelector)
         if (container) resolve(container)
@@ -3860,7 +3860,7 @@
     function handleSchemeChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
-        if (newScheme != ui.app.scheme) update.scheme(newScheme)
+        if (newScheme != env.ui.app.scheme) update.scheme(newScheme)
     }
 
 })()
