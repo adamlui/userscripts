@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29
+// @version             2024.11.29.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -492,7 +492,7 @@
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
               alert = document.getElementById(alertID).firstChild
-        modals.init(alert) // add class + starry BG + drag handlers
+        modals.setup(alert) // add class + starry BG + drag handlers
         return alert
     }
 
@@ -500,7 +500,7 @@
 
     const modals = {
 
-        init(modal) {
+        setup(modal) {
             modal.classList.add('chatgpt-auto-talk-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
             fillStarryBG(modal) // add stars
