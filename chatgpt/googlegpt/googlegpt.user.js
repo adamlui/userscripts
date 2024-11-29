@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.27
+// @version                  2024.11.29
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1090,7 +1090,7 @@
             },
 
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit'
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
                 ['mousemove', 'mouseup'].forEach(event =>
                     document.removeEventListener(event, modals.dragHandlers[event]))
                 modals.dragHandlers.draggableElem = null
