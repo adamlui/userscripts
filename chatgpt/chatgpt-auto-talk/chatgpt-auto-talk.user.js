@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.27
+// @version             2024.11.29
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -677,9 +677,9 @@
             // Create/stylize switch
             const switchSpan = document.createElement('span')
             Object.assign(switchSpan.style, {
-                position: 'relative', left: `${ env.browser.isMobile ? 169 : !ui.firstLink ? 160 : 154 }px`,
+                position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
                 backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
-                bottom: `${ !ui.firstLink ? -0.15 : 0 }em`,
+                bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`,
                 width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
             })
 
@@ -695,10 +695,10 @@
 
             // Create/stylize/fill label
             const toggleLabel = document.createElement('label')
-            if (!ui.firstLink) // add font size/weight since no ui.firstLink to borrow from
+            if (!env.ui.firstLink) // add font size/weight since no env.ui.firstLink to borrow from
                 toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
             Object.assign(toggleLabel.style, {
-                marginLeft: `-${ !ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
+                marginLeft: `-${ !env.ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
                 cursor: 'pointer', // add finger cursor on hover
                 width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
                 overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
@@ -709,10 +709,10 @@
 
             // Stylize/classify
             sidebarToggle.div.style.cssText += 'height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
-            if (ui.firstLink) { // borrow/assign classes from sidebar elems
-                const firstIcon = ui.firstLink.querySelector('div:first-child'),
-                      firstLabel = ui.firstLink.querySelector('div:nth-child(2)')
-                sidebarToggle.div.classList.add(...ui.firstLink.classList, ...(firstLabel?.classList || []))
+            if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
+                const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
+                      firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
+                sidebarToggle.div.classList.add(...env.ui.firstLink.classList, ...(firstLabel?.classList || []))
                 sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
             }
 
@@ -772,7 +772,7 @@
     // Init BROWSER/UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
     await chatgpt.sidebar.isLoaded()
-    const ui = { firstLink: chatgpt.getNewChatLink() }
+    env.ui = { firstLink: chatgpt.getNewChatLink() }
 
     // Add/update TWEAKS style
     const tweaksStyleUpdated = 1732600036095 // timestamp of last edit for this file's tweaksStyle
