@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.29.1
+// @version                2024.11.29.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -841,7 +841,7 @@
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
               alert = document.getElementById(alertID).firstChild
-        modals.init(alert) // add classes + starry BG + listeners + btn glow
+        modals.setup(alert) // add classes + starry BG + listeners + btn glow
         return alert
     }
 
@@ -849,7 +849,7 @@
 
     const modals = {
 
-        init(modal) {
+        setup(modal) {
 
             // Add classes
             modal.classList.add('ddgpt-modal')
@@ -1139,7 +1139,7 @@
                 const settingsContainer = document.createElement('div'),
                       settingsModal = document.createElement('div') ; settingsModal.id = 'ddgpt-settings'
                       settingsContainer.append(settingsModal)
-                modals.init(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
+                modals.setup(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Init settings keys
                 log.debug('Initializing settings keys...')
