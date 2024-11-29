@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.1
+// @version             2024.11.29.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -518,7 +518,7 @@
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
               alert = document.getElementById(alertID).firstChild
-        modals.init(alert) // add class + starry BG + drag handlers
+        modals.setup(alert) // add class + starry BG + drag handlers
         return alert
     }
 
@@ -527,7 +527,7 @@
     const modals = {
         stack: [],
 
-        init(modal) {
+        setup(modal) {
             modal.classList.add('chatgpt-widescreen-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
             dom.fillStarryBG(modal)
