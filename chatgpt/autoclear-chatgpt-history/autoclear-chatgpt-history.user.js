@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29
+// @version             2024.11.29.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -504,7 +504,7 @@
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
         const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
               alert = document.getElementById(alertID).firstChild
-        modals.init(alert) // add class + starry BG + drag handlers
+        modals.setup(alert) // add class + starry BG + drag handlers
         return alert
     }
 
@@ -513,7 +513,7 @@
     const modals = {
         stack: [],
 
-        init(modal) {
+        setup(modal) {
             modal.classList.add('autoclear-chatgpt-history-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
             fillStarryBG(modal) // add stars
