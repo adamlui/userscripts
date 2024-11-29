@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.27
+// @version                2024.11.29
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -914,7 +914,7 @@
             },
 
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit'
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
                 ['mousemove', 'mouseup'].forEach(event =>
                     document.removeEventListener(event, modals.dragHandlers[event]))
                 modals.dragHandlers.draggableElem = null
