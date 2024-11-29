@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.1
+// @version             2024.11.29.2
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -684,16 +684,5 @@
 
     // NOTIFY of status on load
     notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
-
-    // Disable distracting SIDEBAR CLICK-ZOOM effect
-    if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
-        new MutationObserver(mutations => mutations.forEach(({ target }) => {
-            if (target.closest('[class*="sidebar"]') // include sidebar divs
-                && !target.id.endsWith('-knob-span') // exclude our sidebarToggle
-                && target.style.transform != 'none' // click-zoom occurred
-            ) target.style.transform = 'none'
-        })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})
-        document.documentElement.setAttribute('sidebar-click-zoom-observed', true)
-    }
 
 })()
