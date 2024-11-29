@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.11.29
+// @version               2024.11.29.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -853,12 +853,12 @@
             // Hack BG
             fillStarryBG(modal) // add stars
             setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
             }, 100) // delay for transition fx
 
             // Glowup btns
-            if (ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+            if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
         },
 
         hide(modal) {
@@ -1109,7 +1109,7 @@
                     // Append scheme icon
                     const notifs = document.querySelectorAll('.chatgpt-notif')
                     const notif = notifs[notifs.length -1]
-                    const schemeIcon = icons[ui.app.scheme == 'light' ? 'sun'
+                    const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
                                                    : scheme == 'dark' ? 'moon'
                                                                       : 'arrowsCycle'].create()
                     schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
@@ -1165,7 +1165,7 @@
                         `display: flex ; padding: 11px 0 13px ; gap: ${ middleGap /2 }px` )
                     settingsLists[0].style.cssText = ( // add vertical separator
                         `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${
-                            ui.app.scheme == 'dark' ? 'white' : 'black '}` )
+                            env.ui.app.scheme == 'dark' ? 'white' : 'black '}` )
                 }
                 log.debug(`Success! settingsListCnt = ${settingsListCnt}`)
 
@@ -1892,7 +1892,7 @@
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
                 if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#bravegpt-logo')
                 targetLogos.forEach(logo =>
-                    logo.src = GM_getResourceText(`bgpt${ ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
+                    logo.src = GM_getResourceText(`bgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
         }
     }
@@ -2009,7 +2009,7 @@
         replyPrefix() {
             const firstP = appDiv.querySelector('pre p')
             if (!firstP) return
-            const prefixNeeded = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
+            const prefixNeeded = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled,
                   prefixExists = firstP.textContent.startsWith('>> ')
             if (prefixNeeded && !prefixExists) firstP.prepend('>> ')
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
@@ -2024,7 +2024,7 @@
         scheme(newScheme) {
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
-            ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.style.app()
+            env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.style.app()
             update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
@@ -2033,13 +2033,13 @@
             ['sm', 'med', 'lg'].forEach(size =>
                 document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
                     starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
-                    : `${ ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
             ))
         },
 
         style: {
             app() {
-                const isStarryDM = ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
+                const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
@@ -2070,41 +2070,41 @@
                       + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
                       + `margin: ${ env.browser.isMobile ? '0 8px 16px' : '0 0 20px' } ; padding: 24px 23px 45px 23px ;`
                       + ( config.bgAnimationsDisabled ? // classic flat bg
-                            `background: var(--app-bg-color-${ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${ui.app.scheme}-scheme) ;`
+                            `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
+                          + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                       : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
-                            ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px' : '#b6ebff -163px, white 65px' }) ;`
-                      + ( ui.app.scheme == 'dark' ? 'border: none ;' : '' ))
+                            env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px' : '#b6ebff -163px, white 65px' }) ;`
+                      + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' ))
                       + ( !config.fgAnimationsDisabled ?
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
                   + '#bravegpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
-                  + `#bravegpt p { margin: 0 ${ ui.app.scheme == 'dark' ? '; color: #ccc' : '' }}`
+                  + `#bravegpt p { margin: 0 ${ env.ui.app.scheme == 'dark' ? '; color: #ccc' : '' }}`
                   + '#bravegpt .alert-link {'
-                    + `color: ${ ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+                    + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
                   + '.app-name {'
                       + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
                   + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
                   + '.kudoai a { color: #aaa ; text-decoration: none !important }'
-                  + `.kudoai a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+                  + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
                   + '#corner-btns { position: relative ; bottom: 3px ; float: right }'
                   + '.corner-btn {'
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
-                      + `${ ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                     : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
                           + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
                                 // ...btn-zoom-fade-out ends
                   + '.corner-btn:hover'
-                      + `{ ${ ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                      + `{ ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                       : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-                  + `.corner-btn:active { ${ ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
+                  + `.corner-btn:active { ${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                                      : 'fill: #638ed4 ; stroke: #638ed4' } }`
                   + ( config.bgAnimationsDisabled ? '' : ( '#bravegpt-logo, .corner-btn svg, .standby-btn'
-                      + `{ filter: drop-shadow(${ ui.app.scheme == 'dark' ? '#7171714d 10px'
+                      + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                           : '#aaaaaa21 7px' } 7px 3px) }` ))
                   + '#bravegpt .loading {'
                       + 'margin-bottom: -55px ;' // offset vs. #bravegpt bottom-padding footer accomodation
@@ -2125,7 +2125,7 @@
                   + '#font-size-slider-thumb {'
                       + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ; top: -9px ;'
                       + `transition: transform 0.05s ease ; background-color: ${
-                            ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                            env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
                       + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                         '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
@@ -2135,7 +2135,7 @@
                       + `color: ${ isStarryDM ? 'white' : 'black' } ; transition: transform 0.15s ease ;`
                       + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
                   + '.standby-btn:hover {'
-                      + `${ ui.app.scheme == 'dark' ? 'background: white ; color: black'
+                      + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
                                                     : 'background: black ; color: white' };`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
@@ -2144,23 +2144,23 @@
                       + 'float: left ; left: 7px ; margin: 36px -13px 0 0 ;' // positioning
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                           + `${ // hide reply tip for terminal aesthetic
-                                isStarryDM ? '#0000' : `var(--pre-bg-color-${ui.app.scheme}-scheme)` }}`
+                                isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
                   + '#bravegpt > pre {'
                       + `font-size: ${config.fontSize}px ; white-space: pre-wrap ;`
                       + 'font-family: Consolas, Menlo, Monaco, monospace ;'
                       + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
                       + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
                       + ( config.bgAnimationsDisabled ? // classic opaque bg
-                            `background: var(--pre-bg-color-${ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${ui.app.scheme}-scheme)`
-                      : `${ ui.app.scheme == 'dark' ? // slightly tranluscent bg
+                            `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
+                          + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
+                      : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
                             'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                                 : 'background: var(--pre-bg-color-light-scheme) ;'
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
                       + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
                   + '#bravegpt > pre a, #bravegpt > pre a:visited { color: #4495d4 }'
-                  + `#bravegpt pre a:hover { color: ${ ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+                  + `#bravegpt pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '#bravegpt footer {'
                       + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
                       + 'padding-bottom: 12px ; border-top: none !important }'
@@ -2171,7 +2171,7 @@
                       + 'fill: currentColor ; color: currentColor ; --size: 12px ;'
                       + 'position: relative ; top: 0.19em ; right: 2px }'
                   + '#bravegpt footer a:hover {'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + '.chatgpt-js {'
                       + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
@@ -2179,18 +2179,18 @@
                   + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
                   + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
-                        ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
+                        env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + 'code #copy-btn { position: relative ; top: -6px ; right: -9px }'
                   + 'code #copy-btn > svg { height: 13px ; width: 13px ; fill: white }'
                   + '#app-chatbar {'
-                      + `border: solid 1px ${ ui.app.scheme == 'dark' ?
+                      + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
                             ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
                       + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ; padding: 12px 51px 12px 10px ;'
-                      + `position: relative ; z-index: 555 ; color: ${ ui.app.scheme == 'dark' ? '#eee' : '#222' } ;`
+                      + `position: relative ; z-index: 555 ; color: ${ env.ui.app.scheme == 'dark' ? '#eee' : '#222' } ;`
                       + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ;'
-                      + `background: ${ ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
+                      + `background: ${ env.ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
                                                                 : '#eeeeee9e' } ;`
-                      + `${ ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
+                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
                   + '.related-queries {'
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -28px ;'
                       + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
@@ -2199,26 +2199,26 @@
                       + 'font-size: 0.77em ; cursor: pointer ;'
                       + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to .related-queries
                       + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
+                      + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
                                                            : '#767676' } ;`
                       + `background: ${
-                             config.bgAnimationsDisabled ? ( ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
-                                                         : ( ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
-                      + `border: 1px solid ${ ui.app.scheme == 'dark' ? (
+                             config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
+                                                         : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
+                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? (
                             config.bgAnimationsDisabled ? '#5f5f5f' : '#777' ) : '#e1e1e1' } ;`
                       + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
-                      + `box-shadow: 1px 4px ${ ui.app.scheme == 'dark' ?
+                      + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
                             `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
                                 : '8px -6px rgba(169, 169, 169, 0.75)' };`
                       + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
                   + '.related-query:hover, .related-query:focus {'
                       + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scale(1.055) !important ;' )
-                      + `background: ${ ui.app.scheme == 'dark' ? '#a2a2a270'
+                      + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
                             : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
                   + '.related-query svg {' // related query icon
                       + 'float: left ; margin: 0.09em 6px 0 0 ;'
-                      + `color: ${ ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
                   + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
                   + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
                   + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
@@ -2226,10 +2226,10 @@
                       + 'z-index: 560 ;'
                       + 'border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
                       + `bottom: ${ env.browser.isFF ? 28 : 32 }px ; `
-                      + `${ ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
+                      + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
                                                     : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
                   + '.chatbar-btn:hover {'
-                      + `${ ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
+                      + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // markdown styles
                         '#bravegpt > pre h1 { font-size: 1.25em } #bravegpt > pre h2 { font-size: 1.1em }'
@@ -2246,17 +2246,17 @@
                       + 'padding: 24px 20px 14px 20px !important ;' // increase modal padding
                       + 'background-color: white !important ; color: #202124 }'
                   + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 18px }' // pos/size modal msg
-                  + `.chatgpt-modal a { color: #${ ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+                  + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
                   + '.modal-buttons {'
                       + `margin: 38px 0 1px ${ env.browser.isMobile ? 0 : -7 }px !important ; width: 100% }`
                   + '.chatgpt-modal button {' // alert buttons
                       + 'font-size: 14px ; text-transform: uppercase ; min-width: 123px ; '
                       + `padding: ${ env.browser.isMobile ? '5px' : '4px 3px' } !important ;`
                       + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-                      + 'border: 1px solid ' + ( ui.app.scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
+                      + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
                   + '.primary-modal-btn { background: black !important ; color: white !important }'
                   + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
-                  + ( ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
                       ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
                           + 'background-color: black !important ; color: white }'
                       + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
@@ -2273,9 +2273,9 @@
                       + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
                       + 'opacity: 0 ;' // to fade-in
                       + `background-image: linear-gradient(180deg, ${
-                           ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
-                      + `border: 1px solid ${ ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
-                      + `color: ${ ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                           env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
+                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                       + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
                       + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                                   + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
@@ -2333,9 +2333,9 @@
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                       + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-                  + `[class*="modal-close-btn"] path {${ ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
+                  + `[class*="modal-close-btn"] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
                                                                                  : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-                  + ( ui.app.scheme == 'dark' ?  // invert dark mode hover paths
+                  + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
                         '[class*="modal-close-btn"]:hover path { stroke: black ; fill: black }' : '' )
                   + '[class*="modal-close-btn"]:hover { background-color: #f2f2f2 }' // hover underlay
                   + '[class*="modal-close-btn"] svg { margin: 11.5px }' // center SVG for hover underlay
@@ -2351,7 +2351,7 @@
                       + 'font-family: var(--brand-font) ;'
                       + `min-width: ${ env.browser.isPortrait ? 288 : 758 }px ; max-width: 75vw ; margin: 12px 23px ;`
                       + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
-                      + `${ ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
+                      + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
                   + '#bravegpt-settings-title {'
                       + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
                       + `margin: 0 ${ env.browser.isMobile ? -31 : -6 }px -3px 0 }`
@@ -2362,16 +2362,16 @@
                       + 'list-style: none ; padding: 0 ; margin: 0 ;' // hide bullets, override Brave ul margins
                       + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
                   + '#bravegpt-settings li {'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                      + `fill: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                      + `stroke: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
                       + 'height: 37px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
-                      + `padding: 7px 10px ; border-bottom: 1px dotted ${ ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                      + `padding: 7px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                       + 'border-radius: 3px }' // make highlight strips slightly rounded
                   + '#bravegpt-settings li.active {'
-                      + `color: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
-                      + `fill: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
-                      + `stroke: ${ ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
+                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
+                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
                   + '#bravegpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
                   + '#bravegpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
                   + '#bravegpt-settings li, #bravegpt-settings li label { cursor: pointer }' // add finger on hover
@@ -2385,7 +2385,7 @@
                       + 'position: relative ; top: 3px ; margin-left: 4px }'
                   + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
                   + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
-                  + `#about-menu-entry span { color: ${ ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
+                  + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
                   + '#about-menu-entry > span {' // outer About status span
                       + `width: ${ env.browser.isPortrait ? '15vw' : '92px' } ; height: 20px ; overflow: hidden ;`
                       + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
@@ -2397,7 +2397,7 @@
                       + `text-wrap: nowrap ; ${
                             config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
                   + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
-                  + `.about-em { color: ${ ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
+                  + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
                 )
             },
 
@@ -2449,7 +2449,7 @@
         ['sm', 'med', 'lg'].forEach(starSize => {
             const starsDiv = document.createElement('div')
             starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
-                : `${ ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+                : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
             starsDivsContainer.append(starsDiv)
         })
         targetNode.prepend(starsDivsContainer)
@@ -2803,7 +2803,7 @@
                 aboutStatusLabel.style.float = config.fgAnimationsDisabled ? 'right' : ''
 
                 // Toggle button glow
-                if (ui.app.scheme == 'dark') toggle.btnGlow()
+                if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
             log.caller = `toggle.animations('${layer}')`
             log.debug(`Success! ${layer.toUpperCase()} animations toggled ${ config[configKey] ? 'OFF' : 'ON' }`)
@@ -2830,7 +2830,7 @@
 
         btnGlow(state = '') {
             log.caller = `toggle.btnGlow(${ state ? `'${state}'` : '' })`
-            const removeCondition = state == 'off' || ui.app.scheme != 'dark' || config.fgAnimationsDisabled
+            const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
@@ -3814,8 +3814,8 @@
 
     // Init UI props
     log.debug('Initializing UI properties...')
-    const ui = { app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )}}
-    log.debug(`Success! ui = '${log.prettifyObj(ui)}`)
+    env.ui = { app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )}}
+    log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
     // Create/ID/classify/listenerize BRAVEGPT container
     let appDiv = document.createElement('div') ; appDiv.id = 'bravegpt'
@@ -3901,7 +3901,7 @@
     function handleSchemeChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = isDarkMode() ? 'dark' : 'light'
-        if (newScheme != ui.app.scheme) update.scheme(newScheme)
+        if (newScheme != env.ui.app.scheme) update.scheme(newScheme)
     }
 
     // Observe DOM for need to re-insert BraveGPT
