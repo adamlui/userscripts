@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.27
+// @version                2024.11.29
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -728,7 +728,7 @@
             },
 
             mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit'
+                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
                 ['mousemove', 'mouseup'].forEach(event =>
                     document.removeEventListener(event, modals.dragHandlers[event]))
                 modals.dragHandlers.draggableElem = null
