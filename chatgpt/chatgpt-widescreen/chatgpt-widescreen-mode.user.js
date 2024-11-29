@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29
+// @version             2024.11.29.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -404,8 +404,14 @@
         register() {
             const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
                                    && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-            // Add toggles
-            Object.keys(settings.controls).forEach(key => {
+
+            // Show "Disabled (extension installed)"
+            if (env.extensionInstalled)
+                GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`, modals.about.show,
+                    tooltipsSupported ? { title: ' ' } : undefined)
+
+            // ...or add settings toggles
+            else Object.keys(settings.controls).forEach(key => {
                 if (sites[env.site].availFeatures.includes(key)) {
                     const settingIsEnabled = config[key] ^ key.includes('Disabled')
                     const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
@@ -425,9 +431,11 @@
                 tooltipsSupported ? { title: ' ' } : undefined))
 
             // Add Donate entry
-            const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.about.show,
-                tooltipsSupported ? { title: ' ' } : undefined))
+            if (!env.extensionInstalled) {
+                const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
+                menu.ids.push(GM_registerMenuCommand(donateLabel, modals.about.show,
+                    tooltipsSupported ? { title: ' ' } : undefined))
+            }
         },
 
         refresh() {
@@ -1054,10 +1062,8 @@
                 else setTimeout(checkExtensionInstalled, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
-    if (env.extensionInstalled) { // disable script/menu
-        GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`, modals.about.show)
-        return // exit script
-    } else menu.register() // create functional menu
+
+    menu.register() ; if (env.extensionInstalled) return
 
     // Init UI props
     if (/chatgpt|openai/.test(env.site)) {
