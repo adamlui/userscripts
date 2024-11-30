@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.5
+// @version             2024.11.29.6
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1058,7 +1058,7 @@
     env.extensionInstalled = await Promise.race([
         new Promise(resolve => {
             (function checkExtensionInstalled() {
-                if (document.head.hasAttribute('chatgpt-widescreen-extension-installed')) resolve(true)
+                if (document.documentElement.hasAttribute('chatgpt-widescreen-extension-installed')) resolve(true)
                 else setTimeout(checkExtensionInstalled, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
