@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.3
+// @version             2024.11.29.4
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -803,7 +803,7 @@
         })
 
         chatgpt.startNewChat() // return home from potential ghost chat
-        notify(app.msgs.notif_chatsCleared, 'bottom-right')
+        notify(app.msgs.notif_chatsCleared, 'bottom-right', 2.5)
     }
 
     // Run MAIN routine
