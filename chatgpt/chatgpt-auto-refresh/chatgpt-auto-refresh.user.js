@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.2
+// @version             2024.11.29.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -900,14 +900,14 @@
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
-    if (!document.head.hasAttribute('sidebar-click-zoom-observed')) {
+    if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
             if (target.closest('[class*="sidebar"]') // include sidebar divs
                 && !target.id.endsWith('-knob-span') // exclude our sidebarToggle
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
         })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})
-        document.head.setAttribute('sidebar-click-zoom-observed', true)
+        document.documentElement.setAttribute('sidebar-click-zoom-observed', true)
     }
 
 })()
