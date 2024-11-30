@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.4
+// @version             2024.11.29.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -643,7 +643,7 @@
     env.extensionInstalled = await Promise.race([
         new Promise(resolve => {
             (function checkExtensionInstalled() {
-                if (document.documentElement.hasAttribute('chatgpt-auto-continue-extension-installed')) resolve(true)
+                if (document.head.hasAttribute('chatgpt-auto-continue-extension-installed')) resolve(true)
                 else setTimeout(checkExtensionInstalled, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
