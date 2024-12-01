@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.11.29.2
+// @version                2024.12.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -236,7 +236,8 @@
 
     // Init APP data
     const app = {
-        name: 'DuckDuckGPT', symbol: '🐤', configKeyPrefix: 'duckDuckGPT',
+        name: 'DuckDuckGPT', version: GM_info.script.version, symbol: '🐤', configKeyPrefix: 'duckDuckGPT',
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
         urls: {
             app: 'https://www.duckduckgpt.com',
             chatgptJS: 'https://chatgpt.js.org',
@@ -946,12 +947,11 @@
                 log.debug('Showing About modal...')
 
                 // Create/init modal
-                const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
                 const aboutModal = siteAlert('',
-                    `🏷️ ${app.msgs.about_version}: <span class="about-em">${GM_info.script.version}</span>\n`
+                    `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
                         + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                             + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
-                            + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
+                                + ` v${app.chatgptJSver}\n`
                         + '📜 ' + ( app.msgs.about_sourceCode )
                             + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                                 + app.urls.gitHub + '</a>',
