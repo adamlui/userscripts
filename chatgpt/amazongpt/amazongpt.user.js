@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1
+// @version                2024.12.1.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -816,7 +816,7 @@
                 // Init buttons
                 let btns = [
                     function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) }]
-                if (options.sites == 'feedback') btns.push(
+                if (options?.sites == 'feedback') btns.push(
                     function github() { modals.safeWinOpen(app.urls.gitHub + '/discussions/new/choose') })
 
                 // Create/init modal
