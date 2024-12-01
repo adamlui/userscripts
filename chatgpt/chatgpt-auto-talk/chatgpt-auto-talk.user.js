@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1
+// @version             2024.12.1.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -270,7 +270,8 @@
 
     // Init APP data
     const app = {
-        name: 'ChatGPT Auto-Talk', symbol: '📣', configKeyPrefix: 'chatGPTautoTalk',
+        name: 'ChatGPT Auto-Talk', version: GM_info.script.version, symbol: '📣', configKeyPrefix: 'chatGPTautoTalk',
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             chatgptJS: 'https://chatgpt.js.org',
@@ -538,20 +539,21 @@
         about: {
             show() {
 
-                // Show alert
-                const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1],
-                      headingStyle = 'font-size: 1.15rem',
+                // Init styles
+                const headingStyle = 'font-size: 1.15rem',
                       pStyle = 'position: relative ; left: 3px',
                       pBrStyle = 'position: relative ; left: 4px ',
                       aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
+
+                // Show modal
                 const aboutModal = siteAlert(
                     `${app.symbol} ${app.msgs.appName}`, // title
                     `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
-                        + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
+                        + `<span style="${pStyle}">${app.version}</span>\n`
                     + `<span style="${headingStyle}"><b>⚡ <i>${app.msgs.about_poweredBy}</i></b>: </span>`
                         + `<span style="${pStyle}">`
                             + `<a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
-                                + 'chatgpt.js</a>' + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '</span>\n'
+                                + `chatgpt.js</a> v${app.chatgptJSver}</span>\n`
                     + `<span style="${headingStyle}"><b>📜 <i>${app.msgs.about_sourceCode}</i></b>:</span>\n`
                         + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a></span>',
