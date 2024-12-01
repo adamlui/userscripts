@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.6
+// @version             2024.12.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -241,7 +241,7 @@
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@a7cfdd46d52c6abfeeb9261e460dc6d0b8a96ddc/chrome/extension/lib/dom.js#sha256-T/Ej3VBPlBjGRzNCICvmzVnlSlQy07DuzWoA5icyMsc=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@a7cfdd46d52c6abfeeb9261e460dc6d0b8a96ddc/chrome/extension/lib/settings.js#sha256-Ph7tIQuYUg8CrMG5eOm7cfgkILMwI/XazVSqy0rLOQA=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@716da215680f3ba1ae241a891550637d6b7de6b9/chrome/extension/lib/settings.js#sha256-fmKzPTk/vbfNsBNHUxbOXjQxVbhIJ2s/gixPyLbRJIo=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
@@ -390,7 +390,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init SETTINGS
-    settings.appProps = app // for msgs + configKeyPrefix refs
+    settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
     settings.load(sites[env.site].availFeatures)
 
     // Define MENU functions
