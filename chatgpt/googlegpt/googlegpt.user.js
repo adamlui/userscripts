@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.11.29.2
+// @version                  2024.12.1
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -428,7 +428,8 @@
 
     // Init APP data
     const app = {
-        name: 'GoogleGPT', symbol: '🤖', configKeyPrefix: 'googleGPT',
+        name: 'GoogleGPT', version: GM_info.script.version, symbol: '🤖', configKeyPrefix: 'googleGPT',
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
         urls: {
             app: 'https://www.googlegpt.io',
             chatgptJS: 'https://chatgpt.js.org',
@@ -1122,12 +1123,11 @@
                 log.debug('Showing About modal...')
 
                 // Create/init modal
-                const chatgptJSver = (/chatgpt-([\d.]+)\.min/.exec(GM_info.script.header) || [null, ''])[1]
                 const aboutModal = siteAlert('',
-                    `🏷️ ${app.msgs.about_version}: <span class="about-em">${GM_info.script.version}</span>\n`
+                    `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
                         + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                             + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
-                            + ( chatgptJSver ? ( ' v' + chatgptJSver ) : '' ) + '\n'
+                                + ` v${app.chatgptJSver}\n`
                         + '📜 ' + ( app.msgs.about_sourceCode )
                             + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                                 + app.urls.gitHub + '</a>',
