@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.11.29.3
+// @version             2024.12.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -678,7 +678,7 @@
             const switchSpan = document.createElement('span')
             Object.assign(switchSpan.style, {
                 position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
-                backgroundColor: toggleInput.checked ? '#ccc' : '#AD68FF', // init opposite  final color
+                backgroundColor: !config.autoTalkDisabled ? '#ccc' : '#AD68FF', // init opposite  final color
                 bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`,
                 width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
             })
@@ -688,7 +688,7 @@
             Object.assign(knobSpan.style, {
                 position: 'absolute', left: '3px', bottom: '1.25px',
                 width: '12px', height: '12px', content: '""', borderRadius: '28px',
-                transform: toggleInput.checked ? // init opposite final pos
+                transform: !config.autoTalkDisabled ? // init opposite final pos
                     'translateX(0)' : 'translateX(13px) translateY(0)',
                 backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
             }) ; switchSpan.append(knobSpan)
