@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1
+// @version             2024.12.1.1
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -282,7 +282,7 @@
     const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
 
     // Init APP data
-    const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: 'd8eacf6', urls: {} }
+    const app = { configKeyPrefix: `${env.site} Widescreen`, latestAssetCommitHash: '861a313', urls: {} }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const appData = await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.assetHost}/data/app.json`,
