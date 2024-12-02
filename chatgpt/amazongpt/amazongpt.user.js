@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.5
+// @version                2024.12.1.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -824,10 +824,8 @@
                 log.debug('Showing Feedback modal...')
 
                 // Init buttons
-                let btns = [
-                    function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) }]
-                if (options?.sites == 'feedback') btns.push(
-                    function github() { modals.safeWinOpen(app.urls.gitHub + '/discussions/new/choose') })
+                let btns = [ function greasyFork() {} ]
+                if (options?.sites == 'feedback') btns.push(function github(){})
 
                 // Create/init modal
                 const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
@@ -839,14 +837,20 @@
                 const btnsDiv = feedbackModal.querySelector('.modal-buttons')
                 btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
                                        + 'margin-top: -2px !important' // close gap between title/btns
-
-                // Format button labels + add v-padding
+                // Hack buttons
                 btns = btnsDiv.querySelectorAll('button')
                 btns.forEach((btn, idx) => {
                     if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                    else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
                     if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                     btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
+
+                    // Replace buttons w/ clones that don't dismissAlert()
+                    const btnClone = btn.cloneNode(true)
+                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.onclick = () => modals.safeWinOpen(
+                        btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
+                                                         : `${app.urls.gitHub}/discussions/new/choose`
+                    )
                 })
 
                 log.debug('Success! Feedback modal shown')
