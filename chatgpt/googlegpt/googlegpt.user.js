@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.1.1
+// @version                  2024.12.1.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1262,8 +1262,7 @@
 
                     // Clone button to replace listener to not dismiss modal on click
                     const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
-                    newBtn.onclick = event => {
-                        event.stopPropagation() // disable chatgpt.js dismissAlert()
+                    newBtn.onclick = () => {
                         const newScheme = btnScheme == 'auto' ? ( isDarkMode() ? 'dark' : 'light' ) : btnScheme
                         settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                         schemeModal.querySelectorAll('button').forEach(btn =>
