@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.10
+// @version             2024.12.1.11
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -694,13 +694,22 @@
             show() {
                 const feedbackModal = siteAlert(
                     `${app.msgs.alert_choosePlatform}:`, '', // title
-                    [ // buttons
-                        function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                        function productHunt() { modals.safeWinOpen(app.urls.review.productHunt) }
-                    ]
+                    [ function greasyFork(){}, function productHunt(){} ] // buttons
                 )
-                feedbackModal.querySelector('button').style.display = 'none' // hide Dismiss button
-                feedbackModal.addEventListener('DOMNodeRemoved', () => modals[modals.stack[0]]?.show() ) // nav back
+
+                // Hack buttons
+                feedbackModal.querySelectorAll('button').forEach((btn, idx) => {
+                    if (idx == 0) btn.style.display = 'none' // hide Dismiss button
+
+                    // Replace buttons w/ clones that don't dismissAlert()
+                    const btnClone = btn.cloneNode(true)
+                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.onclick = () => modals.safeWinOpen(app.urls.review[
+                        btn.textContent == 'Greasy Fork' ? 'greasyFork' : 'productHunt' ])
+                })
+
+                // Nav back
+                feedbackModal.addEventListener('DOMNodeRemoved', () => modals[modals.stack[0]]?.show() )
             }
         },
 
