@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.5
+// @version                2024.12.1.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1010,13 +1010,8 @@
                 log.debug('Showing Feedback modal...')
 
                 // Init buttons
-                let btns = [
-                    function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                    function productHunt() { modals.safeWinOpen(app.urls.review.productHunt) },
-                    function alternativeTo() { modals.safeWinOpen(app.urls.review.alternativeTo) }
-                ]
-                if (options?.sites == 'feedback') btns.splice(1, 0,
-                    function github() { modals.safeWinOpen(app.urls.gitHub + '/discussions/new/choose') })
+                let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeTo() {} ]
+                if (options?.sites == 'feedback') btns.splice(1, 0, function github(){})
 
                 // Create/init modal
                 const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
@@ -1028,14 +1023,23 @@
                 const btnsDiv = feedbackModal.querySelector('.modal-buttons')
                 btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
                                        + 'margin-top: -2px !important' // close gap between title/btns
-
-                // Format button labels + add v-padding
+                // Hack buttons
                 btns = btnsDiv.querySelectorAll('button')
                 btns.forEach((btn, idx) => {
                     if (idx == 0) btn.style.display = 'none' // hide Dismiss button
                     else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
                     if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                     btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
+
+                    // Replace buttons w/ clones that don't dismissAlert()
+                    const btnClone = btn.cloneNode(true)
+                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.onclick = () => modals.safeWinOpen(
+                        btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
+                      : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
+                      : btn.textContent == 'AlternativeTo' ? app.urls.review.alternativeTo
+                      : `${app.urls.gitHub}/discussions/new/choose`
+                    )
                 })
 
                 log.debug('Success! Feedback modal shown')
