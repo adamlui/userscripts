@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.7
+// @version             2024.12.1.8
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -612,14 +612,14 @@
                     }
 
                     // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent)) btn.textContent = (
-                        '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
-                    else if (/support/i.test(btn.textContent)) btn.textContent = (
-                        '🧠 ' + ( app.msgs.btnLabel_getSupport ))
-                    else if (/rate/i.test(btn.textContent)) btn.textContent = (
-                        '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
+                    if (/updates/i.test(btn.textContent))
+                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    else if (/support/i.test(btn.textContent))
+                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                    else if (/rate/i.test(btn.textContent))
+                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                    else if (/extensions/i.test(btn.textContent))
+                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
 
                     // Hide Dismiss button
                     else btn.style.display = 'none' // hide Dismiss button
