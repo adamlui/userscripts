@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.2
+// @version                2024.12.1.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -771,9 +771,9 @@
                                 + app.urls.gitHub + '</a>',
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
-                        function getSupport() { modals.safeWinOpen(app.urls.support) },
+                        function getSupport(){},
                         function rateUs() { modals.feedback.show({ sites: 'review' }) },
-                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
+                        function moreAIextensions(){}
                     ], '', 656) // modal width
 
                 // Add logo
@@ -788,11 +788,19 @@
                     'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
                   + `margin: ${ env.browser.isPortrait ? '6px 0 -16px' : '3px 0 -6px' }` )
 
-                // Resize/format buttons to include emoji + localized label + hide Dismiss button
+                // Hack buttons
                 aboutModal.querySelectorAll('button').forEach(btn => {
                     btn.style.cssText = 'height: 52px ; min-width: 136px'
 
-                    // Emojize/localize label
+                    // Replace link buttons w/ clones that don't dismissAlert()
+                    if (/support|extensions/i.test(btn.textContent)) {
+                        const btnClone = btn.cloneNode(true)
+                        btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                        btn.onclick = () => modals.safeWinOpen(app.urls[
+                            btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support' : 'relatedExtensions' ])
+                    }
+
+                    // Prepend emoji + localize labels
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
                     else if (/support/i.test(btn.textContent)) btn.textContent = (
