@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.4
+// @version             2024.12.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -779,6 +779,7 @@
         },
 
         update() {
+            if (!this.div) return // since toggle never created = sidebar missing
             const toggleLabel = sidebarToggle.div.querySelector('label'),
                   toggleInput = sidebarToggle.div.querySelector('input'),
                   switchSpan = sidebarToggle.div.querySelector('span'),
