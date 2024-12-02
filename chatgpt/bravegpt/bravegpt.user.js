@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.1.3
+// @version               2024.12.1.4
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -975,15 +975,17 @@
                     }
 
                     // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent)) btn.textContent = (
-                        '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
-                    else if (/support/i.test(btn.textContent)) btn.textContent = (
-                        '🧠 ' + ( app.msgs.btnLabel_getSupport ))
-                    else if (/rate/i.test(btn.textContent)) btn.textContent = (
-                        '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
-                    else btn.style.display = 'none' // hide Dismiss button
+                    if (/updates/i.test(btn.textContent))
+                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    else if (/support/i.test(btn.textContent))
+                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                    else if (/rate/i.test(btn.textContent))
+                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                    else if (/extensions/i.test(btn.textContent))
+                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
+
+                    // Hide Dismiss button
+                    else btn.style.display = 'none'
                 })
 
                 log.debug('Success! About Modal shown')
