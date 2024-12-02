@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.8
+// @version                2024.12.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1010,7 +1010,7 @@
                 log.debug('Showing Feedback modal...')
 
                 // Init buttons
-                let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeTo() {} ]
+                let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeto() {} ]
                 if (options?.sites != 'review') btns.splice(1, 0, function github(){})
 
                 // Create/init modal
@@ -1027,7 +1027,6 @@
                 btns = btnsDiv.querySelectorAll('button')
                 btns.forEach((btn, idx) => {
                     if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                    else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
                     if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                     btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
 
@@ -1037,7 +1036,7 @@
                     btn.onclick = () => modals.safeWinOpen(
                         btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
                       : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
-                      : btn.textContent == 'AlternativeTo' ? app.urls.review.alternativeTo
+                      : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
                       : `${app.urls.gitHub}/discussions/new/choose`
                     )
                 })
