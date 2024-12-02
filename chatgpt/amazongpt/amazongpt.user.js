@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.4
+// @version                2024.12.1.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -844,7 +844,6 @@
                 btns = btnsDiv.querySelectorAll('button')
                 btns.forEach((btn, idx) => {
                     if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                    else if (btn.textContent == 'Github') btn.textContent = 'GitHub'
                     else if (btn.textContent == 'Alternative To') btn.textContent = 'AlternativeTo'
                     if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                     btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
