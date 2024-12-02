@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.7
+// @version                2024.12.1.8
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1011,7 +1011,7 @@
 
                 // Init buttons
                 let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeTo() {} ]
-                if (options?.sites == 'feedback') btns.splice(1, 0, function github(){})
+                if (options?.sites != 'review') btns.splice(1, 0, function github(){})
 
                 // Create/init modal
                 const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
