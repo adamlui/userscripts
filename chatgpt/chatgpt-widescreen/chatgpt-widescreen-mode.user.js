@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.8
+// @version             2024.12.1.9
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -692,7 +692,7 @@
 
         feedback: {
             show() {
-                const reviewModal = chatgpt.alert(
+                const reviewModal = siteAlert(
                     `${app.msgs.alert_choosePlatform}:`, '', // title
                     [ // buttons
                         function greasyFork() { modals.safeWinOpen(app.urls.review.greasyFork) },
