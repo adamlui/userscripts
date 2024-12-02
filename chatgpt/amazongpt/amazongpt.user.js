@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.3
+// @version                2024.12.1.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -801,15 +801,17 @@
                     }
 
                     // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent)) btn.textContent = (
-                        '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
-                    else if (/support/i.test(btn.textContent)) btn.textContent = (
-                        '🧠 ' + ( app.msgs.btnLabel_getSupport ))
-                    else if (/rate/i.test(btn.textContent)) btn.textContent = (
-                        '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
-                    else btn.style.display = 'none' // hide Dismiss button
+                    if (/updates/i.test(btn.textContent))
+                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    else if (/support/i.test(btn.textContent))
+                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                    else if (/rate/i.test(btn.textContent))
+                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                    else if (/extensions/i.test(btn.textContent))
+                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
+
+                    // Hide Dismiss button
+                    else btn.style.display = 'none'
                 })
 
                 log.debug('Success! About Modal shown')
