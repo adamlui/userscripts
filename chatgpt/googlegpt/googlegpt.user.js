@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.1.2
+// @version                  2024.12.1.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1133,26 +1133,37 @@
                                 + app.urls.gitHub + '</a>',
                     [ // buttons
                         function checkForUpdates() { updateCheck() },
-                        function getSupport() { modals.safeWinOpen(app.urls.support) },
-                        function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) },
-                        function moreAIextensions() { modals.safeWinOpen(app.urls.relatedExtensions) }
+                        function getSupport(){},
+                        function rateUs(){},
+                        function moreAIextensions(){}
                     ], '', 585) // modal width
 
                 // Add logo
                 const aboutHeaderLogo = logos.googleGPT.create() ; aboutHeaderLogo.width = 405
-                aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 15px ${ env.browser.isMobile ? 'auto' : '14.5%' } -1px`
+                aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 15px ${
+                    env.browser.isMobile ? 'auto' : '14.5%' } -1px`
                 aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
 
                 // Center text
                 aboutModal.querySelector('h2').remove() // remove empty title h2
                 aboutModal.querySelector('p').style.cssText = 'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
                                                             + `margin: ${ env.browser.isPortrait ? '21px 0 -20px' : '15px 0 -19px' }`
-
-                // Resize/format buttons to include emoji + localized label + hide Dismiss button
+                // Hack buttons
                 aboutModal.querySelectorAll('button').forEach(btn => {
                     btn.style.cssText = 'height: 50px ; min-width: 136px'
 
-                    // Emojize/localize label
+                    // Replace link buttons w/ clones that don't dismissAlert()
+                    if (/support|rate|extensions/i.test(btn.textContent)) {
+                        const btnClone = btn.cloneNode(true)
+                        btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                        btn.onclick = () => modals.safeWinOpen(
+                            btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
+                          : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
+                          : app.urls.relatedExtensions
+                        )
+                    }
+
+                    // Prepend emoji + localize labels
                     if (/updates/i.test(btn.textContent)) btn.textContent = (
                         '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
                     else if (/support/i.test(btn.textContent)) btn.textContent = (
