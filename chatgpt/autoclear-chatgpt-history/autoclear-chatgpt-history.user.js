@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.4
+// @version             2024.12.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -416,14 +416,14 @@
 
             // Add About entry
             const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show,
-                tooltipsSupported ? { title: ' ' } : undefined))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, () => modals.open('about'),
+                tooltipsSupported ? { title: ' ' } : undefined ))
 
             // Add Donate entry
             const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, modals.donate.show,
-                tooltipsSupported ? { title: ' ' } : undefined))
-        },
+            menu.ids.push(GM_registerMenuCommand(donateLabel, () => modals.open('donate'),
+                tooltipsSupported ? { title: ' ' } : undefined ))
+    },
 
         refresh() {
             if (env.scriptManager.name == 'OrangeMonkey') return
@@ -476,7 +476,7 @@
                     `${app.msgs.appName} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', updateAlertWidth
                 )
-                modals.about.show()
+                modals.open('about')
     }})}
 
     // Define FEEDBACK functions
@@ -503,21 +503,39 @@
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
-              alert = document.getElementById(alertID).firstChild
-        modals.setup(alert) // add class + starry BG + drag handlers
-        return alert
+        const alertID = chatgpt.alert(title, msg, btns, checkbox, width)
+        return document.getElementById(alertID).firstChild
     }
 
     // Define MODAL functions
 
     const modals = {
-        stack: [],
+        stack: [], // of types of undismissed modals
 
-        setup(modal) {
+        open(modalType) {
+            this.stack.unshift(modalType) // add to stack
+            const modal = modals[modalType]() // show modal
             modal.classList.add('autoclear-chatgpt-history-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
-            fillStarryBG(modal) // add stars
+            fillStarryBG(modal) // fill BG w/ rising stars
+            this.observeRemoval(modal, modalType) // to maintain stack for proper nav
+        },
+
+        observeRemoval(modal, type) { // to maintain stack for proper nav
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (modals.stack[0] == type) { // new modal not launched, implement nav back logic
+                        modals.stack.shift() // remove this modal type from stack
+                        const nextModalType = modals.stack[0]
+                        if (nextModalType) { // queue exists, open next modal
+                            modals.stack.shift() // remove next modal type from stack since re-added on next open
+                            modals.open(nextModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
         },
 
         dragHandlers: {
@@ -549,131 +567,128 @@
             }
         },
 
-        about: {
-            show() {
-                modals.stack.unshift('about') ; modals.stack = [...new Set(modals.stack)] // track for nav
+        about() {
 
-                // Init data/styles
-                const headingStyle = 'font-size: 1.15rem',
-                      pStyle = 'position: relative ; left: 3px',
-                      pBrStyle = 'position: relative ; left: 4px ',
-                      aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
+            // Init styles
+            const headingStyle = 'font-size: 1.15rem',
+                  pStyle = 'position: relative ; left: 3px',
+                  pBrStyle = 'position: relative ; left: 4px ',
+                  aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
 
-                // Show alert
-                const aboutModal = siteAlert(
-                    `${app.symbol} ${app.msgs.appName}`, // title
-                    `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
-                        + `<span style="${pStyle}">${app.version}</span>\n`
-                    + `<span style="${headingStyle}"><b>⚡ <i>${app.msgs.about_poweredBy}</i></b>: </span>`
-                        + `<span style="${pStyle}">`
-                            + `<a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
-                                + `chatgpt.js</a> v${app.chatgptJSver}</span>\n`
-                    + `<span style="${headingStyle}"><b>📜 <i>${app.msgs.about_sourceCode}</i></b>:</span>\n`
-                        + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                            + app.urls.gitHub + '</a></span>',
-                    [ // buttons
-                        function checkForUpdates() { updateCheck() },
-                        function getSupport(){},
-                        function rateUs(){},
-                        function moreAIextensions(){}
-                    ], '', 546 // set width
-                )
+            // Show modal
+            const aboutModal = siteAlert(
+                `${app.symbol} ${app.msgs.appName}`, // title
+                `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
+                    + `<span style="${pStyle}">${app.version}</span>\n`
+                + `<span style="${headingStyle}"><b>⚡ <i>${app.msgs.about_poweredBy}</i></b>: </span>`
+                    + `<span style="${pStyle}">`
+                        + `<a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
+                            + `chatgpt.js</a> v${app.chatgptJSver}</span>\n`
+                + `<span style="${headingStyle}"><b>📜 <i>${app.msgs.about_sourceCode}</i></b>:</span>\n`
+                    + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                        + app.urls.gitHub + '</a></span>',
+                [ // buttons
+                    function checkForUpdates() { updateCheck() },
+                    function getSupport(){},
+                    function rateUs() {},
+                    function moreAIextensions(){}
+                ], '', 546 // set width
+            )
 
-                // Format text
-                aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
-                aboutModal.querySelector('p').style.cssText = 'text-align: center'
+            // Format text
+            aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
+            aboutModal.querySelector('p').style.cssText = 'text-align: center'
 
-                // Hack buttons
-                aboutModal.querySelectorAll('button').forEach(btn => {
+            // Hack buttons
+            aboutModal.querySelectorAll('button').forEach(btn => {
 
-                    // Replace link buttons w/ clones that don't dismissAlert()
-                    if (/support|rate|extensions/i.test(btn.textContent)) {
-                        const btnClone = btn.cloneNode(true)
-                        btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                        btn.onclick = () => modals.safeWinOpen(
-                            btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
-                          : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
-                          : app.urls.relatedExtensions
-                        )
-                    }
+                // Replace link buttons w/ clones that don't dismissAlert()
+                if (/support|rate|extensions/i.test(btn.textContent)) {
+                    const btnClone = btn.cloneNode(true)
+                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.onclick = () => modals.safeWinOpen(
+                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
+                      : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
+                      : app.urls.relatedExtensions
+                    )
+                }
 
-                    // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent))
-                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
-                    else if (/support/i.test(btn.textContent))
-                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
-                    else if (/rate/i.test(btn.textContent))
-                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
-                    else if (/extensions/i.test(btn.textContent))
-                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
+                // Prepend emoji + localize labels
+                if (/updates/i.test(btn.textContent))
+                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                else if (/support/i.test(btn.textContent))
+                    btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                else if (/rate/i.test(btn.textContent))
+                    btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                else if (/extensions/i.test(btn.textContent))
+                    btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
 
-                    // Hide Dismiss button
-                    else btn.style.display = 'none' // hide Dismiss button
-                })
-            }
+                // Hide Dismiss button
+                else btn.style.display = 'none' // hide Dismiss button
+            })
+
+            return aboutModal
         },
 
-        donate: {
-            longCOVIDwikiLink: 'https://en.wikipedia.org/wiki/Long_COVID',
+        donate() {
 
-            show() {
-                modals.stack.unshift('donate') ; modals.stack = [...new Set(modals.stack)] // track for nav
+            // Show modal
+            const donateModal = siteAlert(
+                `💖 ${app.msgs.alert_showYourSupport}`, // title
+                    `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
+                  + `<p>${app.msgs.alert_despiteAffliction} `
+                      + '<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Long_COVID">'
+                          + `${app.msgs.alert_longCOVID}</a> `
+                      + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
+                  + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
+                      + `${app.msgs.alert_directlySupports}.</p>`
+                  + `<p>${app.msgs.alert_tyForSupport}!</p>`
+                  + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
+                      + `${ chatgpt.isDarkMode() ? 'white' : 'black' }.png" `
+                      + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
+                  + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
+                      + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
+                [ // buttons
+                    function paypal(){},
+                    function githubSponsors(){},
+                    function cashApp(){},
+                    function rateUs(){}
+                ], '', 478 // set width
+            )
 
-                // Show alert
-                const donateModal = siteAlert(
-                    `💖 ${app.msgs.alert_showYourSupport}`, // title
-                        `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
-                      + `<p>${app.msgs.alert_despiteAffliction} `
-                          + `<a target="_blank" rel="noopener" href="${modals.donate.longCOVIDwikiLink}">`
-                              + `${app.msgs.alert_longCOVID}</a> `
-                          + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
-                      + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
-                          + `${app.msgs.alert_directlySupports}.</p>`
-                      + `<p>${app.msgs.alert_tyForSupport}!</p>`
-                      + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
-                          + `${ chatgpt.isDarkMode() ? 'white' : 'black' }.png" `
-                          + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
-                      + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
-                          + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
-                    [ // buttons
-                        function paypal(){},
-                        function githubSponsors(){},
-                        function cashApp(){},
-                        function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) }
-                    ], '', 478 // set width
-                )
+            // Format text
+            donateModal.querySelectorAll('p').forEach(p => // v-pad text, shrink line height
+                p.style.cssText = 'padding: 8px 0 ; line-height: 20px')
 
-                // Format text
-                donateModal.querySelectorAll('p').forEach(p => // v-pad text, shrink line height
-                    p.style.cssText = 'padding: 8px 0 ; line-height: 20px')
+            // Hack buttons
+            const btns = donateModal.querySelectorAll('button')
+            btns.forEach((btn, idx) => {
 
-                // Hack buttons
-                const btns = donateModal.querySelectorAll('button')
-                btns.forEach((btn, idx) => {
+                // Replace link buttons w/ clones that don't dismissAlert()
+                if (!/dismiss/i.test(btn.textContent)) {
+                    const btnClone = btn.cloneNode(true)
+                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.onclick = () => modals.safeWinOpen(
+                        btnClone.textContent == 'Cash App' ? app.urls.donate.cashApp
+                      : btnClone.textContent == 'GitHub' ? app.urls.donate.gitHub
+                      : btnClone.textContent == 'Paypal' ? app.urls.donate.payPal
+                      : app.urls.review.greasyFork
+                    )
+                }
 
-                    // Replace link buttons w/ clones that don't dismissAlert()
-                    if (!/dismiss|rate/i.test(btn.textContent)) {
-                        const btnClone = btn.cloneNode(true)
-                        btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                        btn.onclick = () => modals.safeWinOpen(app.urls.donate[
-                            btnClone.textContent == 'Cash App' ? 'cashApp'
-                          : btnClone.textContent == 'GitHub' ? 'gitHub'
-                          : 'payPal'
-                        ])
-                    }
+                // Format buttons
+                if (idx == 0) btn.style.display = 'none' // hide Dismiss button
+                else {
+                    btn.style.cssText = 'padding: 8px 6px !important ; margin-top: -14px ;'
+                                      + ' width: 107px ; line-height: 14px'
+                    if (idx == btns.length -1) // de-emphasize right-most button
+                        btn.classList.remove('primary-modal-btn')
+                    else if (/rate/i.test(btn.textContent)) // localize 'Rate Us' label
+                        btn.textContent = app.msgs.btnLabel_rateUs
+                }
+            })
 
-                    // Format buttons
-                    if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                    else {
-                        btn.style.cssText = 'padding: 8px 6px !important ; margin-top: -14px ;'
-                                          + ' width: 107px ; line-height: 14px'
-                        if (idx == btns.length -1) // de-emphasize right-most button
-                            btn.classList.remove('primary-modal-btn')
-                        else if (/rate/i.test(btn.textContent)) // localize 'Rate Us' label
-                            btn.textContent = app.msgs.btnLabel_rateUs
-                    }
-                })
-            }
+            return donateModal
         },
 
         safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
