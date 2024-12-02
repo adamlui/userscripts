@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.4
+// @version             2024.12.2
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -832,6 +832,7 @@
         },
 
         update() {
+            if (!this.div) return // since toggle never created = sidebar missing
             const toggleLabel = sidebarToggle.div.querySelector('label'),
                   toggleInput = sidebarToggle.div.querySelector('input'),
                   switchSpan = sidebarToggle.div.querySelector('span'),
