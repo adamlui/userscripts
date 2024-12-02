@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.1.4
+// @version             2024.12.1.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -561,14 +561,14 @@
                     }
 
                     // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent)) btn.textContent = (
-                        '🚀 ' + ( app.msgs.btnLabel_updateCheck ))
-                    else if (/support/i.test(btn.textContent)) btn.textContent = (
-                        '🧠 ' + ( app.msgs.btnLabel_getSupport ))
-                    else if (/rate/i.test(btn.textContent)) btn.textContent = (
-                        '⭐ ' + ( app.msgs.btnLabel_rateUs ))
-                    else if (/extensions/i.test(btn.textContent)) btn.textContent = (
-                        '🤖 ' + ( app.msgs.btnLabel_moreAIextensions ))
+                    if (/updates/i.test(btn.textContent))
+                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    else if (/support/i.test(btn.textContent))
+                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                    else if (/rate/i.test(btn.textContent))
+                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                    else if (/extensions/i.test(btn.textContent))
+                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
 
                     // Hide Dismiss button
                     else btn.style.display = 'none' // hide Dismiss button
