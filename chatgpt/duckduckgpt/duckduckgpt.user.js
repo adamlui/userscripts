@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.1.6
+// @version                2024.12.1.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -248,7 +248,7 @@
             review: {
                 alternativeTo: 'https://alternativeto.net/software/duckduckgpt/about/',
                 greasyFork: 'https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion',
-                productHunt: 'https://www.producthunt.com/products/bravegpt/reviews/new'
+                productHunt: 'https://www.producthunt.com/products/duckduckgpt/reviews/new'
             },
             support: 'https://support.ddgpt.com'
         },
