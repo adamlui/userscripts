@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.3.1
+// @version                2024.12.3.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -67,8 +67,8 @@
 // @resource amzgptLSlogo  https://amazongpt.kudoai.com/assets/images/logos/amazongpt/black-gold/logo509x74.png.b64?v=1ac5561#sha256-wSW1EtGtscP0ZcUweFBqKfswt3NzEjbKxn5COYyihVA=
 // @resource amzgptDSlogo  https://amazongpt.kudoai.com/assets/images/logos/amazongpt/white-teal/logo509x74.png.b64?v=1ac5561#sha256-EWstwtlU8+gXSM98gpr6OR3OZ63ttHVNp/NQ7IMzFDA=
 // @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource bsbgCSS       https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=ef1de9f#sha256-b3Z9TxmkA546+cyFer2r44hbE1fCSJC42g/Rkgn8Mmk=
-// @resource wsbgCSS       https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=ef1de9f#sha256-wjoSV4u00KViTF9ostLD6AmsgqFimyVzm0dcfwIDBco=
+// @resource bsbgCSS       https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
+// @resource wsbgCSS       https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
 // @grant                  GM_getValue
 // @grant                  GM_setValue
 // @grant                  GM_deleteValue
