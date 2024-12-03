@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.4
+// @version             2024.12.3.5
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -474,7 +474,7 @@
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
                                     + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '"'
+                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/, '$1user.js') + '"'
                                     + `> ${app.msgs.link_viewChanges}</a>`,
                             function update() { // button
                                 modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
