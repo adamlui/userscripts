@@ -219,14 +219,15 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3
+// @version             2024.12.3.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@3d08514b7a48e1a38159ca92b83ea00b354ace1e/chromium/extension/lib/dom.js#sha256-35p+5PMwdNkE+eTB+9cx+jlsCVj5xLmZ8wAuIOH0gdw=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@bc5fe07971f5f90c8bfde8a85e2a6c97aedebd1d/chromium/extension/components/modals.js#sha256-VzLo2OWitwq4r5KDjulL/Ua5DFgrWShQJ1Yc2Cbo68M=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@bc5fe07971f5f90c8bfde8a85e2a6c97aedebd1d/chromium/extension/lib/dom.js#sha256-+GFiSXl3RrudaIQTco8xO2J49vNGL6Roow5ix9SfYGQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@ed6faf9415fa0235831e23f71455361857fdd26d/chromium/extension/lib/settings.js#sha256-9zyWZ/tokwZjY1ePTYP1YJqxSLKV+p0Q9gqnszTTbZs=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
@@ -341,6 +342,9 @@
         })
         Object.assign(app.msgs, localizedMsgs)
     }
+
+    // Init MODALS dependencies
+    modals.import({ app, siteAlert, updateCheck })
 
     // Init SETTINGS
     settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -471,210 +475,9 @@
         return document.getElementById(alertID).firstChild
     }
 
-    // Define MODAL functions
-
-    const modals = {
-        stack: [], // of types of undismissed modals
-
-        open(modalType) {
-            this.stack.unshift(modalType) // add to stack
-            const modal = modals[modalType]() // show modal
-            modal.classList.add('chatgpt-auto-continue-modal')
-            modal.onmousedown = modals.dragHandlers.mousedown
-            fillStarryBG(modal) // fill BG w/ rising stars
-            this.observeRemoval(modal, modalType) // to maintain stack for proper nav
-        },
-
-        observeRemoval(modal, modalType) { // to maintain stack for proper nav
-            const modalBG = modal.parentNode
-            new MutationObserver(([mutation], obs) => {
-                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0] == modalType) { // new modal not launched, implement nav back logic
-                        modals.stack.shift() // remove this modal type from stack
-                        const prevModalType = modals.stack[0]
-                        if (prevModalType) { // open it
-                            modals.stack.shift() // remove type from stack since re-added on open
-                            modals.open(prevModalType)
-                        }
-                    }
-                    obs.disconnect()
-                }})
-            }).observe(modalBG.parentNode, { childList: true, subtree: true })
-        },
-
-        dragHandlers: {
-            mousedown(event) { // find modal, attach listeners, init XY offsets
-                if (event.button != 0) return // prevent non-left-click drag
-                if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
-                modals.dragHandlers.draggableElem = event.currentTarget
-                modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
-                event.preventDefault(); // prevent sub-elems like icons being draggable
-                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
-                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
-                modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
-                modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
-            },
-
-            mousemove(event) { // drag modal
-                if (modals.dragHandlers.draggableElem) {
-                    const newX = event.clientX - modals.dragHandlers.offsetX,
-                          newY = event.clientY - modals.dragHandlers.offsetY
-                    Object.assign(modals.dragHandlers.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
-                }
-            },
-
-            mouseup() { // remove listeners, reset modals.dragHandlers.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
-                ['mousemove', 'mouseup'].forEach(event =>
-                    document.removeEventListener(event, modals.dragHandlers[event]))
-                modals.dragHandlers.draggableElem = null
-            }
-        },
-
-        about() {
-
-            // Init styles
-            const headingStyle = 'font-size: 1.15rem',
-                  pStyle = 'position: relative ; left: 3px',
-                  pBrStyle = 'position: relative ; left: 4px ',
-                  aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
-
-            // Show modal
-            const aboutModal = siteAlert(
-                `${app.symbol} ${app.msgs.appName}`, // title
-                `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
-                    + `<span style="${pStyle}">${app.version}</span>\n`
-                + `<span style="${headingStyle}"><b>⚡ <i>${app.msgs.about_poweredBy}</i></b>: </span>`
-                    + `<span style="${pStyle}">`
-                        + `<a style="${aStyle}" href="${app.urls.chatgptJS}" target="_blank" rel="noopener">`
-                            + `chatgpt.js</a> v${app.chatgptJSver}</span>\n`
-                + `<span style="${headingStyle}"><b>📜 <i>${app.msgs.about_sourceCode}</i></b>:</span>\n`
-                    + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                        + app.urls.gitHub + '</a></span>',
-                [ // buttons
-                    function checkForUpdates() { updateCheck() },
-                    function getSupport(){},
-                    function rateUs(){},
-                    function moreAIextensions(){}
-                ], '', 546 // set width
-            )
-
-            // Format text
-            aboutModal.querySelector('h2').style.cssText = 'text-align: center ; font-size: 37px ; padding: 9px'
-            aboutModal.querySelector('p').style.cssText = 'text-align: center'
-
-            // Hack buttons
-            aboutModal.querySelectorAll('button').forEach(btn => {
-                btn.style.cssText = 'cursor: pointer !important' // since tweaks won't load on script auto-disable
-
-                // Replace link buttons w/ clones that don't dismissAlert()
-                if (/support|rate|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
-                      : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
-                      : app.urls.relatedExtensions
-                    )
-                }
-
-                // Prepend emoji + localize labels
-                if (/updates/i.test(btn.textContent))
-                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
-                else if (/support/i.test(btn.textContent))
-                    btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
-                else if (/rate/i.test(btn.textContent))
-                    btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
-                else if (/extensions/i.test(btn.textContent))
-                    btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
-
-                // Hide Dismiss button
-                else btn.style.display = 'none' // hide Dismiss button
-            })
-
-            return aboutModal
-        },
-
-        donate() {
-
-            // Show modal
-            const donateModal = siteAlert(
-                `💖 ${app.msgs.alert_showYourSupport}`, // title
-                    `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
-                  + `<p>${app.msgs.alert_despiteAffliction} `
-                      + '<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Long_COVID">'
-                          + `${app.msgs.alert_longCOVID}</a> `
-                      + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
-                  + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
-                      + `${app.msgs.alert_directlySupports}.</p>`
-                  + `<p>${app.msgs.alert_tyForSupport}!</p>`
-                  + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
-                      + `${ chatgpt.isDarkMode() ? 'white' : 'black' }.png" `
-                      + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
-                  + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
-                      + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
-                [ // buttons
-                    function paypal(){},
-                    function githubSponsors(){},
-                    function cashApp(){},
-                    function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) }
-                ], '', 478 // set width
-            )
-
-            // Format text
-            donateModal.querySelectorAll('p').forEach(p => // v-pad text, shrink line height
-                p.style.cssText = 'padding: 8px 0 ; line-height: 20px')
-
-            // Hack buttons
-            const btns = donateModal.querySelectorAll('button')
-            btns.forEach((btn, idx) => {
-
-                // Replace link buttons w/ clones that don't dismissAlert()
-                if (!/dismiss|rate/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent == 'Cash App' ? app.urls.donate.cashApp
-                      : btn.textContent == 'Github Sponsors' ? app.urls.donate.gitHub
-                      : btn.textContent == 'Paypal' ? app.urls.donate.payPal
-                      : app.urls.review.greasyFork
-                    )
-                }
-
-                // Format buttons
-                if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                else {
-                    btn.style.cssText = 'padding: 8px 6px !important ; margin-top: -14px ;'
-                                      + ' width: 107px ; line-height: 14px'
-                    if (idx == btns.length -1) // de-emphasize right-most button
-                        btn.classList.remove('primary-modal-btn')
-                    else if (/rate/i.test(btn.textContent)) // localize 'Rate Us' label
-                        btn.textContent = app.msgs.btnLabel_rateUs
-                }
-            })
-
-            return donateModal
-        },
-
-        safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
-    }
-
     // Define UI functions
 
     function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
-
-    function fillStarryBG(targetNode) {
-        const starsDivsContainer = dom.create.elem('div')
-        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
-          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-          + 'z-index: -1'; // allow interactive elems to be clicked
-        ['sm', 'med', 'lg'].forEach(starSize => {
-            const starsDiv = dom.create.elem('div', {
-                id: `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}` })
-            starsDivsContainer.append(starsDiv)
-        })
-        targetNode.prepend(starsDivsContainer)
-    }
 
     function checkContinueBtn() {
         const continueBtn = chatgpt.getContinueBtn()
