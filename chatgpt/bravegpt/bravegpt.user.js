@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.2
+// @version               2024.12.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -535,7 +535,7 @@
         fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
             label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
             helptip: app.msgs.helptip_fgAnimations },
-        replyLanguage: { type: 'prompt', icon: 'languageChars',
+        replyLang: { type: 'prompt', icon: 'languageChars',
             label: app.msgs.menuLabel_replyLanguage,
             helptip: app.msgs.helptip_replyLanguage },
         scheme: { type: 'modal', icon: 'scheme',
@@ -647,12 +647,12 @@
 
             // Add About entry
             const aboutLabel = `💡 ${settings.controls.about.label}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, modals.about.show,
-                tooltipsSupported ? { title: ' ' } : undefined))
+            menu.ids.push(GM_registerMenuCommand(aboutLabel, () => modals.open('about'),
+                tooltipsSupported ? { title: ' ' } : undefined ))
 
             // Add Settings entry
             const settingsLabel = `⚙️ ${app.msgs.menuLabel_settings}`
-            menu.ids.push(GM_registerMenuCommand(settingsLabel, modals.settings.show,
+            menu.ids.push(GM_registerMenuCommand(settingsLabel, () => modals.open('settings'),
                 tooltipsSupported ? { title: ' ' } : undefined))
         },
 
@@ -716,13 +716,13 @@
                         return
                 }}
 
-                // Alert to no update found, nav back
+                // Alert to no update, return to About modal
                 log.debug('No update found.')
                 siteAlert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.name} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', updateAlertWidth
                 )
-                modals.about.show()
+                modals.open('about')
     }})}
 
     // Define FACTORY functions
@@ -831,17 +831,20 @@
     }
 
     function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        const alertID = chatgpt.alert(title, msg, btns, checkbox, width ),
-              alert = document.getElementById(alertID).firstChild
-        modals.setup(alert) // add classes + starry BG + listeners + btn glow
-        return alert
+        const alertID = chatgpt.alert(title, msg, btns, checkbox, width)
+        return document.getElementById(alertID).firstChild
     }
 
     // Define MODAL functions
 
     const modals = {
+        stack: [], // of types of undismissed modals
 
-        setup(modal) {
+        open(modalType) {
+
+            // Show/track modal
+            const modal = (modals[modalType].show || modals[modalType])() // show modal
+            if (settings.controls[modalType]?.type != 'prompt') this.stack.unshift(modalType) // add to stack
 
             // Add classes
             modal.classList.add('bravegpt-modal')
@@ -854,12 +857,15 @@
             // Hack BG
             fillStarryBG(modal) // add stars
             setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${ env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${
+                    env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
             }, 100) // delay for transition fx
 
             // Glowup btns
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+
+            this.observeRemoval(modal, modalType) // to maintain stack for proper nav
         },
 
         hide(modal) {
@@ -870,6 +876,25 @@
             modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
             setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
                 }, 105) // delay for fade-out
+        },
+
+        observeRemoval(modal, modalType) { // to maintain stack for proper nav
+            log.caller = 'modals.observeRemoval()'
+            log.debug(`Observing ${log.toTitleCase(modalType)} modal...`)
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (modals.stack[0] == modalType) { // new modal not launched, implement nav back logic
+                        modals.stack.shift() // remove this modal type from stack
+                        const prevModalType = modals.stack[0]
+                        if (prevModalType) { // open it
+                            modals.stack.shift() // remove type from stack since re-added on open
+                            modals.open(prevModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
         },
 
         clickHandler(event) { // to dismiss modals
@@ -919,215 +944,206 @@
             }
         },
 
-        safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
+        about() {
+            log.caller = 'modals.about()'
+            log.debug('Showing About modal...')
 
-        about: {
-            show() {
-                log.caller = 'modals.about.show()'
+            // Show modal
+            const aboutModal = siteAlert('',
+                `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
+                    + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
+                        + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
+                            + ` v${app.chatgptJSver}\n`
+                    + '📜 ' + ( app.msgs.about_sourceCode )
+                        + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                            + app.urls.gitHub + '</a>',
+                [ // buttons
+                    function checkForUpdates() { updateCheck() },
+                    function getSupport(){},
+                    function rateUs() { modals.open('feedback') },
+                    function moreAIextensions(){}
+                ], '', 617 // modal width
+            )
 
-                // Hide Settings modal if visible
-                const settingsModal = modals.settings.get()
-                if (settingsModal) {
-                    log.debug('Hiding visible Settings modal...')
-                    modals.hide(settingsModal) ; log.caller = 'modals.about.show()'
-                }
+            // Add logo
+            const aboutHeaderLogo = logos.braveGPT.create() ; aboutHeaderLogo.width = 375
+            aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 1px ${
+                env.browser.isMobile ? 'auto' : '16%' } 0`
+            aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
 
-                log.debug('Showing About modal...')
+            // Center text
+            aboutModal.querySelector('h2').remove() // remove empty title h2
+            aboutModal.querySelector('p')
+                .style.cssText = 'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
+                               + `margin: ${ env.browser.isPortrait ? '15px 0 -21px' : '9px 0 -12px' }`
 
-                // Create/init modal
-                const aboutModal = siteAlert('',
-                    `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
-                        + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
-                            + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
-                                + ` v${app.chatgptJSver}\n`
-                        + '📜 ' + ( app.msgs.about_sourceCode )
-                            + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                                + app.urls.gitHub + '</a>',
-                    [ // buttons
-                        function checkForUpdates() { updateCheck() },
-                        function getSupport(){},
-                        function rateUs() { modals.feedback.show({ sites: 'review' }) },
-                        function moreAIextensions(){}
-                    ], '', 617) // modal width
+            // Hack buttons
+            aboutModal.querySelectorAll('button').forEach(btn => {
+                btn.style.cssText = 'height: 53px ; min-width: 136px'
 
-                // Add logo
-                const aboutHeaderLogo = logos.braveGPT.create() ; aboutHeaderLogo.width = 375
-                aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 1px ${
-                    env.browser.isMobile ? 'auto' : '16%' } 0`
-                aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
-
-                // Center text
-                aboutModal.querySelector('h2').remove() // remove empty title h2
-                aboutModal.querySelector('p')
-                    .style.cssText = 'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
-                                   + `margin: ${ env.browser.isPortrait ? '15px 0 -21px' : '9px 0 -12px' }`
-
-                // Hack buttons
-                aboutModal.querySelectorAll('button').forEach(btn => {
-                    btn.style.cssText = 'height: 53px ; min-width: 136px'
-
-                    // Replace link buttons w/ clones that don't dismissAlert()
-                    if (/support|extensions/i.test(btn.textContent)) {
-                        const btnClone = btn.cloneNode(true)
-                        btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                        btn.onclick = () => modals.safeWinOpen(app.urls[
-                            btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support' : 'relatedExtensions' ])
-                    }
-
-                    // Prepend emoji + localize labels
-                    if (/updates/i.test(btn.textContent))
-                        btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
-                    else if (/support/i.test(btn.textContent))
-                        btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
-                    else if (/rate/i.test(btn.textContent))
-                        btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
-                    else if (/extensions/i.test(btn.textContent))
-                        btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
-
-                    // Hide Dismiss button
-                    else btn.style.display = 'none'
-                })
-
-                log.debug('Success! About Modal shown')
-            }
-        },
-
-        feedback: {
-            show(options) {
-                log.caller = `modals.feedback.show(${ options ? `'${options}'` : '' })`
-                log.debug('Showing Feedback modal...')
-
-                // Init buttons
-                let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeto() {} ]
-                if (options?.sites != 'review') btns.splice(1, 0, function github(){})
-
-                // Create/init modal
-                const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 456)
-
-                // Center CTA
-                feedbackModal.querySelector('h2').style.justifySelf = 'center'
-
-                // Re-style button cluster
-                const btnsDiv = feedbackModal.querySelector('.modal-buttons')
-                btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
-                                       + 'margin: 18px 0 6px !important' // close gap between title/btns
-                // Hack buttons
-                btns = btnsDiv.querySelectorAll('button')
-                btns.forEach((btn, idx) => {
-                    if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                    if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
-                    btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
-
-                    // Replace buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismissAlert()
+                if (/support|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
-                      : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
-                      : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
-                      : `${app.urls.gitHub}/discussions/new/choose`
-                    )
-                })
+                    btn.onclick = () => modals.safeWinOpen(app.urls[
+                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support' : 'relatedExtensions' ])
+                }
 
-                log.debug('Success! Feedback modal shown')
-            }
+                // Prepend emoji + localize labels
+                if (/updates/i.test(btn.textContent))
+                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                else if (/support/i.test(btn.textContent))
+                    btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
+                else if (/rate/i.test(btn.textContent))
+                    btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                else if (/extensions/i.test(btn.textContent))
+                    btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
+
+                // Hide Dismiss button
+                else btn.style.display = 'none'
+            })
+
+            log.debug('Success! About Modal shown')
+
+            return aboutModal
         },
 
-        replyLang: {
-            show() {
-                log.caller = 'modals.replyLang.show()'
-                    while (true) {
-                        let replyLang = prompt(
-                            ( app.msgs.prompt_updateReplyLang ) + ':', config.replyLanguage)
-                        if (replyLang == null) break // user cancelled so do nothing
-                            else if (!/\d/.test(replyLang)) {
-                                replyLang = ( // auto-case for menu/alert aesthetics
-                                    replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
-                                        : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
-                            log.debug('Saving reply language...')
-                            settings.save('replyLanguage', replyLang || env.browser.language)
-                            log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
-                            siteAlert(( app.msgs.alert_langUpdated ) + '!', // title
-                                `${app.name} ${app.msgs.alert_willReplyIn} `
-                                    + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
-                                '', '', 447) // confirmation width
-                            if (modals.settings.get()) // update settings menu status label
-                                document.querySelector('#replyLanguage-menu-entry span').textContent = replyLang
-                            break
-            }}}
-        },
+        feedback() {
+            log.caller = 'modals.feedback()'
+            log.debug('Showing Feedback modal...')
 
-        scheme: {
-            show() {
-                log.caller = 'modals.scheme.show()'
-                log.debug('Showing Scheme modal...')
+            // Init buttons
+            let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeto() {} ]
+            if (modals.stack[1] != 'about') btns.push(function github(){})
 
-                // Create/init modal
-                const schemeModal = siteAlert(`${
-                    app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
-                    [ function auto() {}, function light() {}, function dark() {} ], // buttons
-                    '', 503 // px width
+            // Show modal
+            const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 456)
+
+            // Center CTA
+            feedbackModal.querySelector('h2').style.justifySelf = 'center'
+
+            // Re-style button cluster
+            const btnsDiv = feedbackModal.querySelector('.modal-buttons')
+            btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
+                                   + 'margin: 18px 0 6px !important' // close gap between title/btns
+            // Hack buttons
+            btns = btnsDiv.querySelectorAll('button')
+            btns.forEach((btn, idx) => {
+                if (idx == 0) btn.style.display = 'none' // hide Dismiss button
+                if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
+                btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
+
+                // Replace buttons w/ clones that don't dismissAlert()
+                const btnClone = btn.cloneNode(true)
+                btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                btn.onclick = () => modals.safeWinOpen(
+                    btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
+                  : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
+                  : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
+                  : `${app.urls.gitHub}/discussions/new/choose`
                 )
+            })
 
-                // Center title/button cluster
-                schemeModal.querySelector('h2').style.justifySelf = 'center'
-                schemeModal.querySelector('.modal-buttons')
-                    .style.cssText = 'justify-content: center ; margin: 18px 0 14px !important'
+            log.debug('Success! Feedback modal shown')
 
-                // Re-format each button
-                const buttons = schemeModal.querySelectorAll('button'),
-                      schemes = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
-                for (const btn of buttons) {
-                    const btnScheme = btn.textContent.toLowerCase()
+            return feedbackModal
+        },
 
-                    // Emphasize active scheme
-                    btn.classList = (
-                        config.scheme == btn.textContent.toLowerCase() || (btn.textContent == 'Auto' && !config.scheme)
-                          ? 'primary-modal-btn' : '' )
-
-                    // Prepend emoji + localize labels
-                    if (Object.prototype.hasOwnProperty.call(schemes, btnScheme))
-                        btn.textContent = `${schemes[btnScheme]} ${ // emoji
-                            app.msgs['scheme_' + btnScheme] || app.msgs['menuLabel_' + btnScheme]
-                                || btnScheme.toUpperCase() }`
-                    else btn.style.display = 'none' // hide Dismiss button
-
-                    // Clone button to replace listener to not dismiss modal on click
-                    const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
-                    newBtn.onclick = () => {
-                        const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
-                        settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
-                        schemeModal.querySelectorAll('button').forEach(btn =>
-                            btn.classList = '') // clear prev emphasized active scheme
-                        newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
-                        newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
-                        setTimeout(() => { newBtn.style.pointerEvents = 'auto' }, // re-enable hover fx
-                            100) // ...after 100ms to flicker emphasis
-                        update.scheme(newScheme) ; schemeNotify(btnScheme)
-                    }
-                }
-
-                log.debug('Success! Scheme modal shown')
-
-                function schemeNotify(scheme) {
-
-                    // Show notification
-                    notify(`${app.msgs.menuLabel_colorScheme}:`
-                          + ( scheme == 'light' ? app.msgs.scheme_light || 'Light'
-                            : scheme == 'dark'  ? app.msgs.scheme_dark  || 'Dark'
-                                                : app.msgs.menuLabel_auto ).toUpperCase() )
-
-                    // Append scheme icon
-                    const notifs = document.querySelectorAll('.chatgpt-notif')
-                    const notif = notifs[notifs.length -1]
-                    const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
-                                                   : scheme == 'dark' ? 'moon'
-                                                                      : 'arrowsCycle'].create()
-                    schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
-                                             + 'top: 3px ; margin-left: 6px'
-                    notif.append(schemeIcon)
+        replyLang() {
+            log.caller = 'modals.replyLang()'
+            while (true) {
+                let replyLang = prompt(
+                    ( app.msgs.prompt_updateReplyLang ) + ':', config.replyLanguage)
+                if (replyLang == null) break // user cancelled so do nothing
+                else if (!/\d/.test(replyLang)) {
+                    replyLang = ( // auto-case for menu/alert aesthetics
+                        replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
+                            : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
+                    log.debug('Saving reply language...')
+                    settings.save('replyLanguage', replyLang || env.browser.language)
+                    log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
+                    siteAlert(`${app.msgs.alert_langUpdated}!`, // title
+                        `${app.name} ${app.msgs.alert_willReplyIn} `
+                            + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
+                        '', '', 447) // confirmation width
+                    if (modals.settings.get()) // update settings menu status label
+                        document.querySelector('#replyLanguage-menu-entry span').textContent = replyLang
+                    break
                 }
             }
+        },
+
+        scheme() {
+            log.caller = 'modals.scheme()'
+            log.debug('Showing Scheme modal...')
+
+            // Show modal
+            const schemeModal = siteAlert(`${
+                app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
+                [ function auto() {}, function light() {}, function dark() {} ], // buttons
+                '', 503 // px width
+            )
+
+            // Center title/button cluster
+            schemeModal.querySelector('h2').style.justifySelf = 'center'
+            schemeModal.querySelector('.modal-buttons')
+                .style.cssText = 'justify-content: center ; margin: 18px 0 14px !important'
+
+            // Re-format each button
+            const buttons = schemeModal.querySelectorAll('button'),
+                  schemes = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+            for (const btn of buttons) {
+                const btnScheme = btn.textContent.toLowerCase()
+
+                // Emphasize active scheme
+                btn.classList = (
+                    config.scheme == btn.textContent.toLowerCase() || (btn.textContent == 'Auto' && !config.scheme)
+                      ? 'primary-modal-btn' : '' )
+
+                // Prepend emoji + localize labels
+                if (Object.prototype.hasOwnProperty.call(schemes, btnScheme))
+                    btn.textContent = `${schemes[btnScheme]} ${ // emoji
+                        app.msgs['scheme_' + btnScheme] || app.msgs['menuLabel_' + btnScheme]
+                            || btnScheme.toUpperCase() }`
+                else btn.style.display = 'none' // hide Dismiss button
+
+                // Clone button to replace listener to not dismiss modal on click
+                const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
+                newBtn.onclick = () => {
+                    const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                    settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
+                    schemeModal.querySelectorAll('button').forEach(btn =>
+                        btn.classList = '') // clear prev emphasized active scheme
+                    newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
+                    newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
+                    setTimeout(() => { newBtn.style.pointerEvents = 'auto' }, // re-enable hover fx
+                        100) // ...after 100ms to flicker emphasis
+                    update.scheme(newScheme) ; schemeNotify(btnScheme)
+                }
+            }
+
+            log.debug('Success! Scheme modal shown')
+
+            function schemeNotify(scheme) {
+
+                // Show notification
+                notify(`${app.msgs.menuLabel_colorScheme}:`
+                      + ( scheme == 'light' ? app.msgs.scheme_light || 'Light'
+                        : scheme == 'dark'  ? app.msgs.scheme_dark  || 'Dark'
+                                            : app.msgs.menuLabel_auto ).toUpperCase() )
+
+                // Append scheme icon
+                const notifs = document.querySelectorAll('.chatgpt-notif')
+                const notif = notifs[notifs.length -1]
+                const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
+                                               : scheme == 'dark' ? 'moon'
+                                                                  : 'arrowsCycle'].create()
+                schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
+                                         + 'top: 3px ; margin-left: 6px'
+                notif.append(schemeIcon)
+            }
+
+            return schemeModal
         },
 
         settings: {
@@ -1139,7 +1155,6 @@
                 const settingsContainer = document.createElement('div'),
                       settingsModal = document.createElement('div') ; settingsModal.id = 'bravegpt-settings'
                       settingsContainer.append(settingsModal)
-                modals.setup(settingsModal) // add classes/stars, disable wheel-scrolling, dim bg
 
                 // Init settings keys
                 log.debug('Initializing settings keys...')
@@ -1287,10 +1302,10 @@
                             + ( !key.includes('about') ? 'text-transform: uppercase !important' : '' )
                         if (key.includes('replyLang')) {
                             configStatusSpan.textContent = config.replyLanguage
-                            settingItem.onclick = modals.replyLang.show
+                            settingItem.onclick = () => modals.open('replyLang')
                         } else if (key.includes('scheme')) {
                             modals.settings.updateSchemeStatus(configStatusSpan)
-                            settingItem.onclick = modals.scheme.show
+                            settingItem.onclick = () => modals.open('scheme')
                         } else if (key.includes('about')) {
                             const innerDiv = document.createElement('div'),
                                   textGap = '&emsp;&emsp;&emsp;&emsp;&emsp;'
@@ -1305,7 +1320,7 @@
                             innerDiv.innerHTML = modals.settings.aboutContent[
                                 config.fgAnimationsDisabled ? 'short' : 'long']
                             innerDiv.style.float = config.fgAnimationsDisabled ? 'right' : ''
-                            configStatusSpan.append(innerDiv) ; settingItem.onclick = modals.about.show
+                            configStatusSpan.append(innerDiv) ; settingItem.onclick = () => modals.open('about')
                         } settingItem.append(configStatusSpan)
                     }
                 })
@@ -1344,6 +1359,7 @@
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
                 log.debug('Success! Settings modal shown')
+                return settingsContainer.firstChild
             },
 
             toggle: {
@@ -1469,7 +1485,9 @@
                 if (event.type == 'mouseover') pinMenu.style.opacity = 1
                 else menus.pin.hideTimeout = setTimeout(() => pinMenu.remove(), 55) // delay to cover gap
             }
-        }
+        },
+
+        safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
     }
 
     // Define ICON functions
@@ -2493,8 +2511,8 @@
                         fontSizeSlider.toggle('off')
                     toggle.minimized()
                 }
-                else if (btn.id == 'about-btn') btn.onclick = modals.about.show
-                else if (btn.id == 'settings-btn') btn.onclick = modals.settings.show
+                else if (btn.id == 'about-btn') btn.onclick = () => modals.open('about')
+                else if (btn.id == 'settings-btn') btn.onclick = () => modals.open('settings')
                 else if (btn.id == 'speak-btn') btn.onclick = () => {
                     const wholeAnswer = appDiv.querySelector('pre').textContent
                     const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5 }
@@ -3878,7 +3896,7 @@
     // Init footer CTA to share feedback
     let footerContent = create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
     footerContent.classList.add('feedback', 'svelte-8js1iq') // Brave classes
-    footerContent.onclick = () => modals.feedback.show({ sites: 'feedback' })
+    footerContent.onclick = () => modals.open('feedback')
 
     // REFERRALIZE links to support author
     setTimeout(() => document.querySelectorAll('a[href^="https://www.amazon."]').forEach(anchor => {
