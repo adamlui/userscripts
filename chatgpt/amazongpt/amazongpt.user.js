@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.3.3
+// @version                2024.12.3.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -521,7 +521,7 @@
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" '
                                     + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '"'
+                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/, '$1user.js') + '"'
                                     + `>${app.msgs.link_viewChanges}</a>`,
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
