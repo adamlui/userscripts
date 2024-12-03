@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2
+// @version             2024.12.2.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -693,8 +693,8 @@
                         const btnClone = btn.cloneNode(true)
                         btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                         btn.onclick = () => modals.safeWinOpen(app.urls.donate[
-                            btnClone.textContent == 'Cash App' ? 'cashApp'
-                          : btnClone.textContent == 'GitHub' ? 'gitHub'
+                            btn.textContent == 'Cash App' ? 'cashApp'
+                          : btn.textContent == 'GitHub' ? 'gitHub'
                           : 'payPal'
                         ])
                     }
