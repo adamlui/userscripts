@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3
+// @version             2024.12.3.1
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -239,8 +239,8 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
-// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
-// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=50f457d#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
+// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=ef1de9f#sha256-b3Z9TxmkA546+cyFer2r44hbE1fCSJC42g/Rkgn8Mmk=
+// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=ef1de9f#sha256-wjoSV4u00KViTF9ostLD6AmsgqFimyVzm0dcfwIDBco=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
