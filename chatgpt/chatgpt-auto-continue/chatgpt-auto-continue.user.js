@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.1
+// @version             2024.12.3.2
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -231,8 +231,8 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@ed6faf9415fa0235831e23f71455361857fdd26d/chromium/extension/lib/settings.js#sha256-9zyWZ/tokwZjY1ePTYP1YJqxSLKV+p0Q9gqnszTTbZs=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
-// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
-// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=50f457d#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
+// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=ef1de9f#sha256-b3Z9TxmkA546+cyFer2r44hbE1fCSJC42g/Rkgn8Mmk=
+// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=ef1de9f#sha256-wjoSV4u00KViTF9ostLD6AmsgqFimyVzm0dcfwIDBco=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
