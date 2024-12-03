@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2.2
+// @version             2024.12.2.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -527,10 +527,10 @@
                 mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
                     if (modals.stack[0] == type) { // new modal not launched, implement nav back logic
                         modals.stack.shift() // remove this modal type from stack
-                        const nextModalType = modals.stack[0]
-                        if (nextModalType) { // queue exists, open next modal
-                            modals.stack.shift() // remove next modal type from stack since re-added on next open
-                            modals.open(nextModalType)
+                        const prevModalType = modals.stack[0]
+                        if (prevModalType) { // open it
+                            modals.stack.shift() // remove type from stack since re-added on open
+                            modals.open(prevModalType)
                         }
                     }
                     obs.disconnect()
