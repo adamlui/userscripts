@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.3.2
+// @version                2024.12.3.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -994,7 +994,7 @@
             aboutModal.querySelectorAll('button').forEach(btn => {
                 btn.style.cssText = 'height: 52px ; min-width: 136px'
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
@@ -1046,7 +1046,7 @@
                 if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                 btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
 
-                // Replace buttons w/ clones that don't dismissAlert()
+                // Replace buttons w/ clones that don't dismiss modal
                 const btnClone = btn.cloneNode(true)
                 btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                 btn.onclick = () => modals.safeWinOpen(
