@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.2
+// @version             2024.12.3.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -590,7 +590,7 @@
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|rate|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
@@ -652,7 +652,7 @@
             const btns = donateModal.querySelectorAll('button')
             btns.forEach((btn, idx) => {
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss|rate/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
