@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.2
+// @version             2024.12.3.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -506,7 +506,8 @@
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
-            tweaksStyle = dom.create.elem('style', { id: 'tweaks-style', 'last-updated': tweaksStyleUpdated.toString() })
+            tweaksStyle = dom.create.elem('style', {
+                id: 'tweaks-style', 'last-updated': tweaksStyleUpdated.toString() })
             document.head.append(tweaksStyle)
         }
         tweaksStyle.innerText = (
