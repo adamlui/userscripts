@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2
+// @version             2024.12.2.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -641,8 +641,8 @@
                         const btnClone = btn.cloneNode(true)
                         btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                         btn.onclick = () => modals.safeWinOpen(app.urls.donate[
-                            btnClone.textContent == 'Cash App' ? 'cashApp'
-                          : btnClone.textContent == 'GitHub' ? 'gitHub'
+                            btn.textContent == 'Cash App' ? 'cashApp'
+                          : btn.textContent == 'GitHub' ? 'gitHub'
                           : 'payPal'
                         ])
                     }
