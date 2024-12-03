@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2.1
+// @version             2024.12.2.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -683,8 +683,8 @@
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
-                        btnClone.textContent == 'Cash App' ? 'cashApp'
-                      : btnClone.textContent == 'GitHub' ? 'gitHub'
+                        btn.textContent == 'Cash App' ? 'cashApp'
+                      : btn.textContent == 'GitHub' ? 'gitHub'
                       : 'payPal'
                     ])
                 }
