@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.1
+// @version             2024.12.3.2
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -1014,7 +1014,7 @@
             } else if (canvasWasOpen && !chatgpt.canvasIsOpen()) {
                 btns.insert() ; chatbar.tweak() ; canvasWasOpen = false }
         }
-        if (!document.getElementById('wideScreen-btn') && btns.status != 'inserting') {
+        if (!document.getElementById('wideScreen-btn') && chatbar.get() && btns.status != 'inserting') {
             btns.status = 'missing' ; btns.insert() }
         if (/chatgpt|openai/.test(env.site)) { // Update button colors on ChatGPT scheme or temp chat toggle
             const chatbarIsBlack = !!document.querySelector('div[class*="bg-black"]:not([id$="-btn"])')
