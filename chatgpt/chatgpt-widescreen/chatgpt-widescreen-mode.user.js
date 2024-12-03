@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.2
+// @version             2024.12.3.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -245,8 +245,8 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@716da215680f3ba1ae241a891550637d6b7de6b9/chrome/extension/lib/settings.js#sha256-fmKzPTk/vbfNsBNHUxbOXjQxVbhIJ2s/gixPyLbRJIo=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
-// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=50f457d#sha256-RIkvVcaRwwWHMluYKcYeIr1txKkGItLXvdhFo673ST8=
-// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=50f457d#sha256-/cdMEDsWGfHzDc5rkoD2UGCHtiZme+z9fjkSgV2Z7No=
+// @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=ef1de9f#sha256-b3Z9TxmkA546+cyFer2r44hbE1fCSJC42g/Rkgn8Mmk=
+// @resource wsbgCSS    https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=ef1de9f#sha256-wjoSV4u00KViTF9ostLD6AmsgqFimyVzm0dcfwIDBco=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
