@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2.4
+// @version             2024.12.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -670,7 +670,7 @@
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                     btn.onclick = () => modals.safeWinOpen(
                         btn.textContent == 'Cash App' ? app.urls.donate.cashApp
-                      : btn.textContent == 'GitHub' ? app.urls.donate.gitHub
+                      : btn.textContent == 'Github Sponsors' ? app.urls.donate.gitHub
                       : btn.textContent == 'Paypal' ? app.urls.donate.payPal
                       : app.urls.review.greasyFork
                     )
