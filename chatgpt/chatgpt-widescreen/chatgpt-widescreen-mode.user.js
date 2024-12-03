@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.2.3
+// @version             2024.12.2.4
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -537,11 +537,11 @@
             this.observeRemoval(modal, modalType) // to maintain stack for proper nav
         },
 
-        observeRemoval(modal, type) { // to maintain stack for proper nav
+        observeRemoval(modal, modalType) { // to maintain stack for proper nav
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
                 mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0] == type) { // new modal not launched, implement nav back logic
+                    if (modals.stack[0] == modalType) { // new modal not launched, implement nav back logic
                         modals.stack.shift() // remove this modal type from stack
                         const prevModalType = modals.stack[0]
                         if (prevModalType) { // open it
