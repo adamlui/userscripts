@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.2
+// @version             2024.12.3.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -602,7 +602,7 @@
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|rate|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
@@ -664,7 +664,7 @@
             const btns = donateModal.querySelectorAll('button')
             btns.forEach((btn, idx) => {
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
