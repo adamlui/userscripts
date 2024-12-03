@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.3.2
+// @version                2024.12.3.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -807,7 +807,7 @@
             aboutModal.querySelectorAll('button').forEach(btn => {
                 btn.style.cssText = 'height: 52px ; min-width: 136px'
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
@@ -859,7 +859,7 @@
                 if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                 btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
 
-                // Replace buttons w/ clones that don't dismissAlert()
+                // Replace buttons w/ clones that don't dismiss modal
                 const btnClone = btn.cloneNode(true)
                 btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                 btn.onclick = () => modals.safeWinOpen(
