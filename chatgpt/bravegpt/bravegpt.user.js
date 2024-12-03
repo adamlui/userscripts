@@ -981,7 +981,7 @@
             aboutModal.querySelectorAll('button').forEach(btn => {
                 btn.style.cssText = 'height: 53px ; min-width: 136px'
 
-                // Replace link buttons w/ clones that don't dismissAlert()
+                // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
@@ -1033,7 +1033,7 @@
                 if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
                 btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
 
-                // Replace buttons w/ clones that don't dismissAlert()
+                // Replace buttons w/ clones that don't dismiss modal
                 const btnClone = btn.cloneNode(true)
                 btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                 btn.onclick = () => modals.safeWinOpen(
