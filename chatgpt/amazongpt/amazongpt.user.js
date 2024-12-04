@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.3.4
+// @version                2024.12.3.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -519,10 +519,10 @@
                         const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.name} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" '
-                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/, '$1user.js') + '"'
-                                    + `>${app.msgs.link_viewChanges}</a>`,
+                                + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" href="'
+                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
+                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                                + `">${app.msgs.link_viewChanges}</a>`,
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
