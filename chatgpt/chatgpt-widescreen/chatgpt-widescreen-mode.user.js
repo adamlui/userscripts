@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.2
+// @version             2024.12.4.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -600,8 +600,8 @@
                 if (env.tallChatbar) btns[btnType].style.bottom = '8.85px'
                 else btns[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
                 if (/chatgpt|openai|perplexity/.test(env.site)) { // assign classes + tweak styles
-                    const rightBtnSelector = `${sites[env.site].selectors.btns.send}, ${
-                                                sites[env.site].selectors.btns.voice}`
+                    const btnSelectors = sites[env.site].selectors.btns
+                    const rightBtnSelector = `${btnSelectors.send}, ${btnSelectors.voice}`
                     const rightBtn = await new Promise(resolve => {
                         const rightBtn = document.querySelector(rightBtnSelector)
                         if (rightBtn) resolve(rightBtn)
