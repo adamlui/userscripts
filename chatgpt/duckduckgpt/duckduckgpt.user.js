@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.1
+// @version                2024.12.4.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -832,7 +832,7 @@
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
-            modal.onmousedown = modals.dragHandlers.mousedown
+            modal.onmousedown = modals.handlers.drag.mousedown
 
             // Hack BG
             fillStarryBG(modal) // add stars
@@ -875,56 +875,60 @@
                     obs.disconnect()
                 }})
             }).observe(modalBG.parentNode, { childList: true, subtree: true })
-            console.log(this.stack)
         },
 
-        clickHandler(event) { // to dismiss modals
-            log.caller = 'modals.clickHandler()'
-            if (event.target == event.currentTarget || event.target instanceof SVGPathElement) {
-                const targetModal = document.querySelector('[class$="-modal"]')
-                log.debug(`Dismiss element of div#${targetModal?.id} clicked`)
-                modals.hide(targetModal)
-            }
-        },
+        handlers: {
 
-        dragHandlers: {
-            mousedown(event) { // find modal, attach listeners, init XY offsets
-                if (event.button != 0) return // prevent non-left-click drag
-                if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
-                modals.dragHandlers.draggableElem = event.currentTarget
-                modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
-                event.preventDefault(); // prevent sub-elems like icons being draggable
-                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
-                const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect(),
-                      targetModalIsSettings = event.currentTarget.closest('[id*="-settings"]')
-                modals.dragHandlers.offsetX = (
-                    event.clientX - draggableElemRect.left + ( targetModalIsSettings ? 0 : 21 ))
-                modals.dragHandlers.offsetY = (
-                    event.clientY - draggableElemRect.top + ( targetModalIsSettings ? 0 : 12 ))
-            },
-
-            mousemove(event) { // drag modal
-                if (modals.dragHandlers.draggableElem) {
-                    const newX = event.clientX - modals.dragHandlers.offsetX,
-                          newY = event.clientY - modals.dragHandlers.offsetY
-                    Object.assign(modals.dragHandlers.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
+            click(event) { // to dismiss non-chatgpt.alert() modals
+                log.caller = 'modals.handlers.click()'
+                if (event.target == event.currentTarget || event.target instanceof SVGPathElement) {
+                    const targetModal = document.querySelector('[class$="-modal"]')
+                    log.debug(`Dismiss element of div#${targetModal?.id} clicked`)
+                    modals.hide(targetModal)
                 }
             },
 
-            mouseup() { // remove listeners, reset modals.dragHandlerss.draggableElem
-                modals.dragHandlers.draggableElem.style.cursor = 'inherit';
-                ['mousemove', 'mouseup'].forEach(event =>
-                    document.removeEventListener(event, modals.dragHandlers[event]))
-                modals.dragHandlers.draggableElem = null
-            }
-        },
+            drag: {
 
-        keyHandler(event) { // to dismiss modals
-            log.caller = 'modals.keyHandler()'
-            if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
-                log.debug('Escape pressed')
-                const modal = document.querySelector('[class$="-modal"]')
-                if (modal) modals.hide(modal)
+                mousedown(event) { // find modal, attach listeners, init XY offsets
+                    if (event.button != 0) return // prevent non-left-click drag
+                    if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
+                    modals.handlers.drag.draggableElem = event.currentTarget
+                    modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
+                    event.preventDefault(); // prevent sub-elems like icons being draggable
+                    ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.handlers.drag[event]))
+                    const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect(),
+                          targetModalIsSettings = event.currentTarget.closest('[id*="-settings"]')
+                    modals.handlers.drag.offsetX = (
+                        event.clientX - draggableElemRect.left + ( targetModalIsSettings ? 0 : 21 ))
+                    modals.handlers.drag.offsetY = (
+                        event.clientY - draggableElemRect.top + ( targetModalIsSettings ? 0 : 12 ))
+                },
+
+                mousemove(event) { // drag modal
+                    if (modals.handlers.drag.draggableElem) {
+                        const newX = event.clientX - modals.handlers.drag.offsetX,
+                              newY = event.clientY - modals.handlers.drag.offsetY
+                        Object.assign(modals.handlers.drag.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
+                    }
+                },
+
+                mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
+                    modals.handlers.drag.draggableElem.style.cursor = 'inherit';
+                    ['mousemove', 'mouseup'].forEach(event =>
+                        document.removeEventListener(event, modals.handlers.drag[event]))
+                    modals.handlers.drag.draggableElem = null
+                }
+
+            },
+
+            key() { // to dismiss non-chatgpt.alert() modals
+                log.caller = 'modals.handlers.key()'
+                if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
+                    log.debug('Escape pressed')
+                    const modal = document.querySelector('[class$="-modal"]')
+                    if (modal) modals.hide(modal)
+                }
             }
         },
 
@@ -1320,7 +1324,7 @@
 
                 // Add listeners to dismiss modal
                 const dismissElems = [settingsContainer, closeBtn, closeSVG]
-                dismissElems.forEach(elem => elem.onclick = modals.clickHandler)
+                dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
 
                 return settingsContainer
             },
@@ -3891,7 +3895,7 @@
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
     // Add key listener to DISMISS modals
-    document.addEventListener('keydown', modals.keyHandler)
+    document.addEventListener('keydown', modals.handlers.key)
 
     // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode
     new MutationObserver(handleSchemeChange).observe( // class changes from DDG appearance settings
