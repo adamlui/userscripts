@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.4
+// @version               2024.12.4.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -197,7 +197,7 @@
 // @grant                 GM_cookie
 // @grant                 GM_registerMenuCommand
 // @grant                 GM_unregisterMenuCommand
-// @grant                  GM_openInTab
+// @grant                 GM_openInTab
 // @grant                 GM_getResourceText
 // @grant                 GM_xmlhttpRequest
 // @grant                 GM.xmlHttpRequest
@@ -668,62 +668,31 @@
 
     function updateCheck() {
         log.caller = 'updateCheck()'
-        const currentVer = GM_info.script.version
-        log.debug(`currentVer = ${currentVer}`)
+        log.debug(`currentVer = ${app.version}`)
 
         // Fetch latest meta
-        log.debug('Fetching latest userscript meta...')
+        log.debug('Fetching latest userscript metadata...')
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: resp => {
                 log.debug('Success! Response received')
-                const updateAlertWidth = 489
 
-                // Compare versions
+                // Compare versions, alert if update found
                 log.debug('Comparing versions...')
-                const latestVer = /@version +(.*)/.exec(resp.responseText)[1]
+                app.latestVer = /@version +(.*)/.exec(resp.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
+                    const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
-                    else if (latestSubVer > currentSubVer) { // if outdated
+                    else if (latestSubVer > currentSubVer) // if outdated
+                        return modals.open('update', 'available')
+                }
 
-                        // Alert to update
-                        log.debug(`Update v${latestVer} found!`)
-                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
-                            `${app.msgs.alert_newerVer} ${app.name} `
-                                + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" href="'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
-                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
-                                + `">${app.msgs.link_viewChanges}</a>`,
-                            function update() { // button
-                                GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
-                                    { active: true, insert: true } // focus, make adjacent
-                                ).onclose = () => location.reload()
-                            }, '', updateAlertWidth
-                        )
-
-                        // Localize button labels if needed
-                        if (!env.browser.language.startsWith('en')) {
-                            log.debug('Localizing button labels in non-English alert...')
-                            const updateBtns = updateModal.querySelectorAll('button')
-                            updateBtns[1].textContent = app.msgs.btnLabel_update
-                            updateBtns[0].textContent = app.msgs.btnLabel_dismiss
-                        }
-
-                        return
-                }}
-
-                // Alert to no update, return to About modal
-                log.debug('No update found.')
-                siteAlert(`${app.msgs.alert_upToDate}!`, // title
-                    `${app.name} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
-                    '', '', updateAlertWidth
-                )
-                modals.open('about')
-    }})}
+                // Alert to no update found, nav back to About
+                modals.open('update', 'unavailable')
+        }})
+    }
 
     // Define FACTORY functions
 
@@ -840,11 +809,13 @@
     const modals = {
         stack: [], // of types of undismissed modals
 
-        open(modalType) {
+        open(modalType, modalSubType) {
 
             // Show/track modal
-            const modal = (modals[modalType].show || modals[modalType])() // show modal
-            if (settings.controls[modalType]?.type != 'prompt') this.stack.unshift(modalType) // add to stack
+            const modal = modalSubType ? modals[modalType][modalSubType]()
+                        : (modals[modalType].show || modals[modalType])()
+            if (settings.controls[modalType]?.type != 'prompt') // add to stack
+                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
 
             // Add classes
             modal.classList.add('bravegpt-modal')
@@ -865,7 +836,7 @@
             // Glowup btns
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
 
-            this.observeRemoval(modal, modalType) // to maintain stack for proper nav
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
         hide(modal) {
@@ -878,14 +849,14 @@
                 }, 105) // delay for fade-out
         },
 
-        observeRemoval(modal, modalType) { // to maintain stack for proper nav
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
             log.caller = 'modals.observeRemoval()'
             log.debug(`Observing ${log.toTitleCase(modalType)} modal...`)
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
                 mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0] == modalType) { // new modal not launched, implement nav back logic
-                        modals.stack.shift() // remove this modal type from stack
+                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        modals.stack.shift() // remove this modal type from stack 1st
                         const prevModalType = modals.stack[0]
                         if (prevModalType) { // open it
                             modals.stack.shift() // remove type from stack since re-added on open
@@ -1392,6 +1363,44 @@
                       : [document.createTextNode(app.msgs.menuLabel_auto), icons.arrowsCycle.create()] ))
                     schemeStatusSpan.style.cssText += `; margin-top: ${ !config.scheme ? 3 : 0 }px !important`
                 }
+            }
+        },
+
+        update: {
+            width: 489,
+
+            available() {
+
+                // Show modal
+                const updateAvailModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                    `${app.msgs.alert_newerVer} ${app.msgs.appName} `
+                        + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
+                        + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" href="'
+                            + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
+                                `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                        + `">${app.msgs.link_viewChanges}</a>`,
+                    function update() { // button
+                        GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
+                            { active: true, insert: true } // focus, make adjacent
+                        ).onclose = () => location.reload()
+                    }, '', modals.update.width
+                )
+
+                // Localize button labels if needed
+                if (!env.browser.language.startsWith('en')) {
+                    const updateBtns = updateAvailModal.querySelectorAll('button')
+                    updateBtns[1].textContent = app.msgs.btnLabel_update
+                    updateBtns[0].textContent = app.msgs.btnLabel_dismiss
+                }
+
+                return updateAvailModal
+            },
+
+            unavailable() {
+                return siteAlert(`${app.msgs.alert_upToDate}!`, // title
+                    `${app.name} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
+                    '', '', modals.update.width
+                )
             }
         },
 
