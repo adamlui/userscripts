@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.6
+// @version             2024.12.4
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -240,7 +240,7 @@
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@26047acfd9fdffbae30c7c96ff999d7041fd6fd8/chrome/extension/components/modals.js#sha256-e6d1sZ4594zJKKjyvTzyyICj/UkPIQBKVkNRiFqP4tI=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@37f7199e96344c460dd3967c63d281052a51d303/chrome/extension/components/modals.js#sha256-fOOTaGng53lwwJ1PbKENZC/yB49ouM9PtEuZzCy/8d8=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@a7cfdd46d52c6abfeeb9261e460dc6d0b8a96ddc/chrome/extension/lib/dom.js#sha256-T/Ej3VBPlBjGRzNCICvmzVnlSlQy07DuzWoA5icyMsc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@716da215680f3ba1ae241a891550637d6b7de6b9/chrome/extension/lib/settings.js#sha256-fmKzPTk/vbfNsBNHUxbOXjQxVbhIJ2s/gixPyLbRJIo=
 // @connect             cdn.jsdelivr.net
@@ -394,7 +394,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init MODALS dependencies
-    modals.import({ app, siteAlert, updateCheck })
+    modals.import({ app, browserLang: env.browser.language, siteAlert, updateCheck })
 
     // Init SETTINGS
     settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -452,52 +452,25 @@
     }
 
     function updateCheck() {
-
-        // Fetch latest meta
-        const currentVer = GM_info.script.version
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: resp => { const updateAlertWidth = 377
+            onload: resp => {
 
-                // Compare versions
-                const latestVer = /@version +(.*)/.exec(resp.responseText)[1]
+                // Compare versions, alert if update found
+                app.latestVer = /@version +(.*)/.exec(resp.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
+                    const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
-                    else if (latestSubVer > currentSubVer) { // if outdated
+                    else if (latestSubVer > currentSubVer) // if outdated
+                        return modals.open('update', 'available')
+                }
 
-                        // Alert to update
-                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
-                            `${app.msgs.alert_newerVer} ${app.msgs.appName} `
-                                + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
-                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
-                                + `">${app.msgs.link_viewChanges}</a>`,
-                            function update() { // button
-                                modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
-                            }, '', updateAlertWidth
-                        )
-
-                        // Localize button labels if needed
-                        if (!env.browser.language.startsWith('en')) {
-                            const updateBtns = updateModal.querySelectorAll('button')
-                            updateBtns[1].textContent = app.msgs.btnLabel_update
-                            updateBtns[0].textContent = app.msgs.btnLabel_dismiss
-                        }
-
-                        return
-                }}
-
-                // Alert to no update, return to About modal
-                siteAlert(`${app.msgs.alert_upToDate}!`, // title
-                    `${app.msgs.appName} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
-                    '', '', updateAlertWidth
-                )
-                modals.open('about')
-    }})}
+                // Alert to no update found, nav back to About
+                modals.open('update', 'unavailable')
+        }})
+    }
 
     // Define FEEDBACK functions
 
