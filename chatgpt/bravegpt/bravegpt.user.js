@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.3.3
+// @version               2024.12.3.4
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -694,10 +694,10 @@
                         const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.name} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" '
-                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/, '$1user.js') + '"'
-                                    + `>${app.msgs.link_viewChanges}</a>`,
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" href="'
+                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
+                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                                + `">${app.msgs.link_viewChanges}</a>`,
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
