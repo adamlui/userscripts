@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.6
+// @version             2024.12.4
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -421,52 +421,25 @@
     }
 
     function updateCheck() {
-
-        // Fetch latest meta
-        const currentVer = GM_info.script.version
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: resp => { const updateAlertWidth = 377
+            onload: resp => {
 
-                // Compare versions
-                const latestVer = /@version +(.*)/.exec(resp.responseText)[1]
+                // Compare versions, alert if update found
+                app.latestVer = /@version +(.*)/.exec(resp.responseText)[1]
                 for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
+                    const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
-                    else if (latestSubVer > currentSubVer) { // if outdated
+                    else if (latestSubVer > currentSubVer) // if outdated
+                        return modals.open('update', 'available')
+                }
 
-                        // Alert to update
-                        const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
-                            `${app.msgs.alert_newerVer} ${app.msgs.appName} `
-                                + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
-                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
-                                + `">${app.msgs.link_viewChanges}</a>`,
-                            function update() { // button
-                                modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
-                            }, '', updateAlertWidth
-                        )
-
-                        // Localize button labels if needed
-                        if (!env.browser.language.startsWith('en')) {
-                            const updateBtns = updateModal.querySelectorAll('button')
-                            updateBtns[1].textContent = app.msgs.btnLabel_update
-                            updateBtns[0].textContent = app.msgs.btnLabel_dismiss
-                        }
-
-                        return
-                }}
-
-                // Alert to no update, return to About modal
-                siteAlert(`${app.msgs.alert_upToDate}!`, // title
-                    `${app.msgs.appName} (v${currentVer}) ${app.msgs.alert_isUpToDate}!`, // msg
-                    '', '', updateAlertWidth
-                )
-                modals.open('about')
-    }})}
+                // Alert to no update found, nav back to About
+                modals.open('update', 'unavailable')
+        }})
+    }
 
     // Define FEEDBACK functions
 
@@ -500,21 +473,21 @@
     const modals = {
         stack: [], // of types of undismissed modals
 
-        open(modalType) {
-            this.stack.unshift(modalType) // add to stack
-            const modal = modals[modalType]() // show modal
-            modal.classList.add('chatgpt-auto-talk-modal')
+        open(modalType, modalSubType) {
+            const modal = modalSubType ? modals[modalType][modalSubType]() : modals[modalType]() // show modal
+            this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
+            modal.classList.add('autoclear-chatgpt-history-modal')
             modal.onmousedown = modals.dragHandlers.mousedown
             fillStarryBG(modal) // fill BG w/ rising stars
-            this.observeRemoval(modal, modalType) // to maintain stack for proper nav
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
-        observeRemoval(modal, modalType) { // to maintain stack for proper nav
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
                 mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0] == modalType) { // new modal not launched, implement nav back logic
-                        modals.stack.shift() // remove this modal type from stack
+                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        modals.stack.shift() // remove this modal type from stack 1st
                         const prevModalType = modals.stack[0]
                         if (prevModalType) { // open it
                             modals.stack.shift() // remove type from stack since re-added on open
@@ -677,6 +650,42 @@
             })
 
             return donateModal
+        },
+
+        update: {
+            width: 377,
+
+            available() {
+
+                // Show modal
+                const updateAvailModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                    `${app.msgs.alert_newerVer} ${app.msgs.appName} `
+                        + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
+                        + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
+                            + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
+                                `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                        + `">${app.msgs.link_viewChanges}</a>`,
+                    function update() { // button
+                        modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
+                    }, '', modals.update.width
+                )
+
+                // Localize button labels if needed
+                if (!env.browser.language.startsWith('en')) {
+                    const updateBtns = updateAvailModal.querySelectorAll('button')
+                    updateBtns[1].textContent = app.msgs.btnLabel_update
+                    updateBtns[0].textContent = app.msgs.btnLabel_dismiss
+                }
+
+                return updateAvailModal
+            },
+
+            unavailable() {
+                return siteAlert(`${app.msgs.alert_upToDate}!`, // title
+                    `${app.msgs.appName} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
+                    '', '', modals.update.width
+                )
+            }
         },
 
         safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
