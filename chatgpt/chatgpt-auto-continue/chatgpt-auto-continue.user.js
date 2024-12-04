@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.5
+// @version             2024.12.3.6
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -420,10 +420,10 @@
                         const updateModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                             `${app.msgs.alert_newerVer} ${app.msgs.appName} `
                                 + `(v${latestVer}) ${app.msgs.alert_isAvail}!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
-                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/, '$1user.js') + '"'
-                                    + `> ${app.msgs.link_viewChanges}</a>`,
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
+                                    + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
+                                        `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                                + `">${app.msgs.link_viewChanges}</a>`,
                             function update() { // button
                                 modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
                             }, '', updateAlertWidth
