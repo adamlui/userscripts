@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.3.5
+// @version             2024.12.3.6
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -695,7 +695,7 @@
         return style
     }
 
-    function fillStarryBG(targetNode) {
+    function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/css/<black|white>-rising-stars.min.css
         const starsDivsContainer = document.createElement('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
