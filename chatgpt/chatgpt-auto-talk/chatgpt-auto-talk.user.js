@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.1
+// @version             2024.12.4.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -271,7 +271,7 @@
     // Init APP data
     const app = {
         name: 'ChatGPT Auto-Talk', version: GM_info.script.version, symbol: '📣', configKeyPrefix: 'chatGPTautoTalk',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             chatgptJS: 'https://chatgpt.js.org',
