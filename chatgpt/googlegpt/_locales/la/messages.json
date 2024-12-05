@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "REVISORUM EXAMINATIS" },
   "btnLabel_rateUs": { "message": "Próximo Us" },
   "btnLabel_getSupport": { "message": "Accipe Sustentationem" },
-  "btnLabel_updateCheck": { "message": "Revidere Renovationes" },
+  "btnLabel_checkForUpdates": { "message": "Revidere Renovationes" },
   "btnLabel_update": { "message": "Renovatio" },
   "btnLabel_dismiss": { "message": "Amove" },
   "link_viewChanges": { "message": "Vide mutationes" },

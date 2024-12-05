@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "جائزہ دیں" },
   "btnLabel_rateUs": { "message": "ہمیں درجہ دیں!" },
   "btnLabel_getSupport": { "message": "سپورٹ حاصل کریں" },
-  "btnLabel_updateCheck": { "message": "اپ ڈیٹس کی پڑتال کریں" },
+  "btnLabel_checkForUpdates": { "message": "اپ ڈیٹس کی پڑتال کریں" },
   "btnLabel_update": { "message": "اپ ڈیٹ" },
   "btnLabel_dismiss": { "message": "برخاست" },
   "link_viewChanges": { "message": "تبدیلیاں دیکھیں" },

@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.4.8
+// @version                  2024.12.5
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -550,7 +550,7 @@
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
-        btnLabel_updateCheck: 'Check for Updates',
+        btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         link_viewChanges: 'View changes',
@@ -1156,7 +1156,7 @@
 
                 // Prepend emoji + localize labels
                 if (/updates/i.test(btn.textContent))
-                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    btn.textContent = `🚀 ${app.msgs.btnLabel_checkForUpdates}`
                 else if (/support/i.test(btn.textContent))
                     btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
                 else if (/rate/i.test(btn.textContent))

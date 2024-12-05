@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Kusiya Review" },
   "btnLabel_rateUs": { "message": "Kuwerengetsa Ife" },
   "btnLabel_getSupport": { "message": "Pezani Thandizo" },
-  "btnLabel_updateCheck": { "message": "Fufuzani Zosintha" },
+  "btnLabel_checkForUpdates": { "message": "Fufuzani Zosintha" },
   "btnLabel_update": { "message": "Sinthani" },
   "btnLabel_dismiss": { "message": "Mfundo zazinsinsi" },
   "link_viewChanges": { "message": "Onani zosintha" },
