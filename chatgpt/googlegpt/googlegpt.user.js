@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.4.4
+// @version                  2024.12.4.5
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -429,7 +429,7 @@
     // Init APP data
     const app = {
         name: 'GoogleGPT', version: GM_info.script.version, symbol: '🤖', configKeyPrefix: 'googleGPT',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: {
             app: 'https://www.googlegpt.io',
             chatgptJS: 'https://chatgpt.js.org',
