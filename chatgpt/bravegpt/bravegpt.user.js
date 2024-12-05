@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.4.27
+// @version               2024.12.4.28
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -666,7 +666,7 @@
         }
     }
 
-    function checkForUpdates() {
+    function checkForUpdates() { // eslint-disable-line
         log.caller = 'checkForUpdates()'
         log.debug(`currentVer = ${app.version}`)
 
