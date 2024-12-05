@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.5
+// @version                2024.12.4.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -669,8 +669,8 @@
         refresh() {
             log.caller = 'menu.refresh()'
             log.debug('Refreshing toolbar menu...')
-            if (env.scriptManager.name == 'OrangeMonkey') {
-                log.debug('OrangeMonkey userscript manager unsupported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined') {
+                log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
             log.debug('Success! Menu refreshed')
         }
