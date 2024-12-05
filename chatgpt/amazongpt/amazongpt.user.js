@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.5
+// @version                2024.12.4.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -484,8 +484,8 @@
         refresh() {
             log.caller = 'menu.refresh()'
             log.debug('Refreshing toolbar menu...')
-            if (env.scriptManager.name == 'OrangeMonkey') {
-                log.debug('OrangeMonkey userscript manager unsupported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined') {
+                log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
             log.debug('Success! Menu refreshed')
         }
