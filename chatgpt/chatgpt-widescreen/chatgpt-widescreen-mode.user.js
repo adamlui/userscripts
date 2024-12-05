@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.4
+// @version             2024.12.4.5
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -280,7 +280,7 @@
         },
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1]
     }
-    const xhr = env.scriptManager.name == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
     const app = {
