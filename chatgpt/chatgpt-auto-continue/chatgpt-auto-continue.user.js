@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.4
+// @version             2024.12.4.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -344,7 +344,7 @@
     }
 
     // Init MODALS dependencies
-    modals.import({ app, browserLang: env.browser.language, siteAlert, updateCheck })
+    modals.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
 
     // Init SETTINGS
     settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -399,7 +399,7 @@
         }
     }
 
-    function updateCheck() {
+    function checkForUpdates() {
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
