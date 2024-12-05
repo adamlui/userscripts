@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.2
+// @version                2024.12.4.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -736,7 +736,7 @@
 
             },
 
-            key() { // to dismiss non-chatgpt.alert() modals
+            key(event) { // to dismiss non-chatgpt.alert() modals
                 log.caller = 'modals.handlers.key()'
                 if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
                     log.debug('Escape pressed')
