@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Biyai ang Review" },
   "btnLabel_rateUs": { "message": "I-rate Kanato" },
   "btnLabel_getSupport": { "message": "Kuhaa ang Suporta" },
-  "btnLabel_updateCheck": { "message": "Susiha ang mga Update" },
+  "btnLabel_checkForUpdates": { "message": "Susiha ang mga Update" },
   "btnLabel_update": { "message": "Pag-update" },
   "btnLabel_dismiss": { "message": "Papas" },
   "link_viewChanges": { "message": "Tan-awa ang mga kausaban" },

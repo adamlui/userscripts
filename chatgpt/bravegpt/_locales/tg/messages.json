@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Баромадан аз тафсир" },
   "btnLabel_rateUs": { "message": "Баҳои мо" },
   "btnLabel_getSupport": { "message": "Гирифтани Дастгирӣ" },
-  "btnLabel_updateCheck": { "message": "Навсозиро тафтиш кунед" },
+  "btnLabel_checkForUpdates": { "message": "Навсозиро тафтиш кунед" },
   "btnLabel_update": { "message": "Навсозӣ кардан" },
   "btnLabel_dismiss": { "message": "Рад кардан" },
   "link_viewChanges": { "message": "Тағиротро дидан" },

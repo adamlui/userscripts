@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Fandaozana ny famerenana" },
   "btnLabel_rateUs": { "message": "Omeo isa izahay" },
   "btnLabel_getSupport": { "message": "Mahazoa Fanohanana" },
-  "btnLabel_updateCheck": { "message": "Hamarino ny fanavaozana" },
+  "btnLabel_checkForUpdates": { "message": "Hamarino ny fanavaozana" },
   "btnLabel_update": { "message": "Havaozy" },
   "btnLabel_dismiss": { "message": "Alao" },
   "link_viewChanges": { "message": "Jereo ny fanovana" },

@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Lusim toksave" },
   "btnLabel_rateUs": { "message": "Toksave long mipela" },
   "btnLabel_getSupport": { "message": "Kisim helpim" },
-  "btnLabel_updateCheck": { "message": "Lukim ol eleksen" },
+  "btnLabel_checkForUpdates": { "message": "Lukim ol eleksen" },
   "btnLabel_update": { "message": "Yusim" },
   "btnLabel_dismiss": { "message": "Lusim" },
   "link_viewChanges": { "message": "Lukim ol senis" },

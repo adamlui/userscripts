@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Bihêle Review" },
   "btnLabel_rateUs": { "message": "Me binirxînin" },
   "btnLabel_getSupport": { "message": "پشتگیری بگرە" },
-  "btnLabel_updateCheck": { "message": "پشکنینی نوێکردنەوەکان" },
+  "btnLabel_checkForUpdates": { "message": "پشکنینی نوێکردنەوەکان" },
   "btnLabel_update": { "message": "نوێ بکەرەوە" },
   "btnLabel_dismiss": { "message": "پارێزگا بکە" },
   "link_viewChanges": { "message": "گۆڕانکاریەکان بینەرە" },
