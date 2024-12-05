@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.2
+// @version             2024.12.5.3
 // @license             MIT
 // @compatible          chrome
 // @compatible          firefox
@@ -240,9 +240,9 @@
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c4fe4893756b6bb209cdac71d61a7e026e203ff5/chrome/extension/components/modals.js#sha256-EzJofEQPLpnedPX4sIW7TftiZDea6U4/9hrH4g+JA3U=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@0f3d44259c5aae4f1f285154f708c37f15424cf0/chrome/extension/components/modals.js#sha256-61nSJIsF8tHCeNIdhGagTi8MfU18O4WyauYspXSwFik=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@dfc031d9f4160c847829188b0b5b53ffc7f63970/chrome/extension/lib/dom.js#sha256-78Sl2iVpwThKJ5+zif7VwNehwMWU36I4mDflaksSdqg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@716da215680f3ba1ae241a891550637d6b7de6b9/chrome/extension/lib/settings.js#sha256-fmKzPTk/vbfNsBNHUxbOXjQxVbhIJ2s/gixPyLbRJIo=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@0f3d44259c5aae4f1f285154f708c37f15424cf0/chrome/extension/lib/settings.js#sha256-qC+G0W2SaWABZdqicUp4ItbPBRpjjkunuOrfHEMTMYQ=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
@@ -394,10 +394,10 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init MODALS dependencies
-    modals.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
+    modals.dependencies.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
 
     // Init SETTINGS
-    settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
+    settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
     settings.load(sites[env.site].availFeatures)
 
     // Define MENU functions
