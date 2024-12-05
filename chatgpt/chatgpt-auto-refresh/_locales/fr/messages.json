@@ -39,7 +39,7 @@
   "btnLabel_leaveReview": { "message": "Laissez Review" },
   "btnLabel_rateUs": { "message": "Évaluez-nous" },
   "btnLabel_getSupport": { "message": "Obtenir de l’aide" },
-  "btnLabel_updateCheck": { "message": "Vérifier les Mises à jour" },
+  "btnLabel_checkForUpdates": { "message": "Vérifier les Mises à jour" },
   "btnLabel_update": { "message": "Mise à jour" },
   "btnLabel_dismiss": { "message": "Ignorer" },
   "link_viewChanges": { "message": "Afficher les modifications" },

@@ -39,7 +39,7 @@
   "btnLabel_leaveReview": { "message": "ግምገማ ይተው" },
   "btnLabel_rateUs": { "message": "ደረጃ ይስጡን" },
   "btnLabel_getSupport": { "message": "ድጋፍ ያግኙ" },
-  "btnLabel_updateCheck": { "message": "ዝማኔዎችን ይመልከቱ" },
+  "btnLabel_checkForUpdates": { "message": "ዝማኔዎችን ይመልከቱ" },
   "btnLabel_update": { "message": "አዘምን" },
   "btnLabel_dismiss": { "message": "መደምሰሻ" },
   "link_viewChanges": { "message": "ለውጦችን ይመልከቱ" },

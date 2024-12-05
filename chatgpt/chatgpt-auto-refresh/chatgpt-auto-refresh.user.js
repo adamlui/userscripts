@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.5
+// @version             2024.12.5
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -340,7 +340,7 @@
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
-        btnLabel_updateCheck: 'Check for Updates',
+        btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         link_viewChanges: 'View changes',
@@ -628,7 +628,7 @@
 
                 // Prepend emoji + localize labels
                 if (/updates/i.test(btn.textContent))
-                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    btn.textContent = `🚀 ${app.msgs.btnLabel_checkForUpdates}`
                 else if (/support/i.test(btn.textContent))
                     btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
                 else if (/rate/i.test(btn.textContent))

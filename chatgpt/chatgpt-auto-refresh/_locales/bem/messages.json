@@ -39,7 +39,7 @@
   "btnLabel_leaveReview": { "message": "Lekeni ukupituluka" },
   "btnLabel_rateUs": { "message": "Rate Twine" },
   "btnLabel_getSupport": { "message": "Peeleniko bambi Peeleni" },
-  "btnLabel_updateCheck": { "message": "Check Kuli Kuli Updates" },
+  "btnLabel_checkForUpdates": { "message": "Check Kuli Kuli Updates" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Ukufumishiwapo" },
   "link_viewChanges": { "message": "Moneni ifyo ifintu fyayaluka" },
