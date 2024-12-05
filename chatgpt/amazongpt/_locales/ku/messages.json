@@ -79,7 +79,7 @@
   "btnLabel_leaveReview": { "message": "Bihêle Review" },
   "btnLabel_rateUs": { "message": "Me binirxînin" },
   "btnLabel_getSupport": { "message": "Piştgiriyê bistînin" },
-  "btnLabel_updateCheck": { "message": "Ji bo Nûvekirinan kontrol bikin" },
+  "btnLabel_checkForUpdates": { "message": "Ji bo Nûvekirinan kontrol bikin" },
   "btnLabel_update": { "message": "Rojane Bike" },
   "btnLabel_dismiss": { "message": "دەردەکات، دەرکردن، ڕێ پێنەدان، دەر کردن، رەدکردنەوەی گازندە(دادخوازی)\n[مافناسی]: دەر کردن، رەد کردنەوەی گازندە (دادخوازی)" },
   "link_viewChanges": { "message": "Guhertinan bibînin" },

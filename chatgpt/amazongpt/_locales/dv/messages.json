@@ -79,7 +79,7 @@
   "btnLabel_leaveReview": { "message": "ރިވިއު ދޫކޮށްލާށެވެ" },
   "btnLabel_rateUs": { "message": "ރޭޓް އަސް" },
   "btnLabel_getSupport": { "message": "ސަޕޯޓް ހޯދުން" },
-  "btnLabel_updateCheck": { "message": "އަޕްޑޭޓްސް ހުރިތޯ ބަލާށެވެ" },
+  "btnLabel_checkForUpdates": { "message": "އަޕްޑޭޓްސް ހުރިތޯ ބަލާށެވެ" },
   "btnLabel_update": { "message": "އަޕްޑޭޓް" },
   "btnLabel_dismiss": { "message": "ދުރުކޮށްލުން" },
   "link_viewChanges": { "message": "ބަދަލުތައް ބަލާށެވެ" },

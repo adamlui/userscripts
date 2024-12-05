@@ -79,7 +79,7 @@
   "btnLabel_leaveReview": { "message": "Seretmek" },
   "btnLabel_rateUs": { "message": "Bize habar beriň" },
   "btnLabel_getSupport": { "message": "Ýolbaşçylyk maslahaty" },
-  "btnLabel_updateCheck": { "message": "Täzeleşmeler üçin barlaň" },
+  "btnLabel_checkForUpdates": { "message": "Täzeleşmeler üçin barlaň" },
   "btnLabel_update": { "message": "Täzele" },
   "btnLabel_dismiss": { "message": "Çykyş" },
   "link_viewChanges": { "message": "Özgertmeleri Gör" },

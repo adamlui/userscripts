@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.8
+// @version                2024.12.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -208,7 +208,7 @@
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
-        btnLabel_updateCheck: 'Check for Updates',
+        btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         link_viewChanges: 'View changes',
@@ -793,7 +793,7 @@
 
                 // Prepend emoji + localize labels
                 if (/updates/i.test(btn.textContent))
-                    btn.textContent = `🚀 ${app.msgs.btnLabel_updateCheck}`
+                    btn.textContent = `🚀 ${app.msgs.btnLabel_checkForUpdates}`
                 else if (/support/i.test(btn.textContent))
                     btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
                 else if (/rate/i.test(btn.textContent))
