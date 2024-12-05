@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.4
+// @version             2024.12.5.5
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,9 +242,9 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@0f3d44259c5aae4f1f285154f708c37f15424cf0/chrome/extension/components/modals.js#sha256-61nSJIsF8tHCeNIdhGagTi8MfU18O4WyauYspXSwFik=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@e8e5abeaf1edf0a6d4d1210473b97e9b613fad69/chrome/extension/components/modals.js#sha256-ptE1ZKKArrt9EZLRyT9NFG8tana5YPdyNqKgXuS8ZZs=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@dfc031d9f4160c847829188b0b5b53ffc7f63970/chrome/extension/lib/dom.js#sha256-78Sl2iVpwThKJ5+zif7VwNehwMWU36I4mDflaksSdqg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@0f3d44259c5aae4f1f285154f708c37f15424cf0/chrome/extension/lib/settings.js#sha256-qC+G0W2SaWABZdqicUp4ItbPBRpjjkunuOrfHEMTMYQ=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@e8e5abeaf1edf0a6d4d1210473b97e9b613fad69/chrome/extension/lib/settings.js#sha256-RPI49qE4FK9jMQ50AW0PkqTp25sT60HhFzn5rjt4TQ4=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
 // @grant               GM_setValue
