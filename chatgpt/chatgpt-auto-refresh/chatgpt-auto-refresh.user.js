@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.1
+// @version             2024.12.4.2
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
@@ -278,7 +278,7 @@
     // Init APP data
     const app = {
         name: 'ChatGPT Auto Refresh', version: GM_info.script.version, symbol: '↻',
-        configKeyPrefix: 'chatGPTautoRefresh', chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
+        configKeyPrefix: 'chatGPTautoRefresh', chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             chatgptJS: 'https://chatgpt.js.org',
