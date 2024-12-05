@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.4.22
+// @version               2024.12.4.23
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -910,7 +910,7 @@
 
             },
 
-            key() { // to dismiss non-chatgpt.alert() modals
+            key(event) { // to dismiss non-chatgpt.alert() modals
                 log.caller = 'modals.handlers.key()'
                 if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
                     log.debug('Escape pressed')
