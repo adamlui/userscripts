@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.4.2
+// @version                  2024.12.4.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1098,7 +1098,7 @@
 
             },
 
-            key() { // to dismiss non-chatgpt.alert() modals
+            key(event) { // to dismiss non-chatgpt.alert() modals
                 log.caller = 'modals.handlers.key()'
                 if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
                     log.debug('Escape pressed')
