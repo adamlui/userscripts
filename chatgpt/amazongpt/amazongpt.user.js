@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.4
+// @version                2024.12.4.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -112,7 +112,7 @@
     // Init APP data
     const app = {
         name: 'AmazonGPT', version: GM_info.script.version, symbol: '🤖', configKeyPrefix: 'amazonGPT',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.script.header)[1],
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: {
             app: 'https://amazongpt.kudoai.com',
             chatgptJS: 'https://chatgpt.js.org',
