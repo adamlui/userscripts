@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.4.1
+// @version             2024.12.4.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -426,7 +426,7 @@
     },
 
         refresh() {
-            if (env.scriptManager.name == 'OrangeMonkey') return
+            if (typeof GM_unregisterMenuCommand == 'undefined') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
