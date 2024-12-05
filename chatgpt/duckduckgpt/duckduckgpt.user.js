@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.4.6
+// @version                2024.12.4.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -676,8 +676,8 @@
         }
     }
 
-    function updateCheck() {
-        log.caller = 'updateCheck()'
+    function checkForUpdates() {
+        log.caller = 'checkForUpdates()'
         log.debug(`currentVer = ${app.version}`)
 
         // Fetch latest meta
@@ -946,7 +946,7 @@
                         + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons
-                    function checkForUpdates() { updateCheck() },
+                    function checkForUpdates() { checkForUpdates() },
                     function getSupport(){},
                     function rateUs() { modals.open('feedback') },
                     function moreAIextensions(){}
