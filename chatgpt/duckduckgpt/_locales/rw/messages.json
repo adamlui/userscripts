@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Isubiramo" },
   "btnLabel_rateUs": { "message": "Gupima" },
   "btnLabel_getSupport": { "message": "Gufashwa" },
-  "btnLabel_updateCheck": { "message": "Reba niba hari ihinduka" },
+  "btnLabel_checkForUpdates": { "message": "Reba niba hari ihinduka" },
   "btnLabel_update": { "message": "Hindura" },
   "btnLabel_dismiss": { "message": "Guhakana" },
   "link_viewChanges": { "message": "Reba impinduka" },

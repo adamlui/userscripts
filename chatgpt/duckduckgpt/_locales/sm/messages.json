@@ -104,7 +104,7 @@
   "btnLabel_leaveReview": { "message": "Tuua Iloiloga" },
   "btnLabel_rateUs": { "message": "Faatusatusaina i Tatou" },
   "btnLabel_getSupport": { "message": "Maua Lagolago" },
-  "btnLabel_updateCheck": { "message": "Siaki mo Faʻafouga" },
+  "btnLabel_checkForUpdates": { "message": "Siaki mo Faʻafouga" },
   "btnLabel_update": { "message": "Fa'afouga" },
   "btnLabel_dismiss": { "message": "Dismiss" },
   "link_viewChanges": { "message": "Vaʻai suiga" },
