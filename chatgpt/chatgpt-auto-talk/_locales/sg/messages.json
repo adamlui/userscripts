@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "A kiri a bâ ni" },
   "btnLabel_rateUs": { "message": "Rate E ti" },
   "btnLabel_getSupport": { "message": "Gi ti wara mungo maboko" },
-  "btnLabel_updateCheck": { "message": "Gbu li ti mo na ndo ti aye so asi laso" },
+  "btnLabel_checkForUpdates": { "message": "Gbu li ti mo na ndo ti aye so asi laso" },
   "btnLabel_update": { "message": "Nduru tënëModifier" },
   "btnLabel_dismiss": { "message": "Dismiss" },
   "link_viewChanges": { "message": "View changes" },

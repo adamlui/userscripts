@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "Leave Review" },
   "btnLabel_rateUs": { "message": "Maemo a Rona" },
   "btnLabel_getSupport": { "message": "Bona Kemonokeng" },
-  "btnLabel_updateCheck": { "message": "Tlhatlhoba Diphetogo" },
+  "btnLabel_checkForUpdates": { "message": "Tlhatlhoba Diphetogo" },
   "btnLabel_update": { "message": "Ntshwafatso" },
   "btnLabel_dismiss": { "message": "TLOGELA" },
   "link_viewChanges": { "message": "Leba diphetogo" },

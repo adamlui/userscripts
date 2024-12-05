@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "REVISORUM EXAMINATIS" },
   "btnLabel_rateUs": { "message": "Próximo Us" },
   "btnLabel_getSupport": { "message": "Supportum" },
-  "btnLabel_updateCheck": { "message": "Check for Updates" },
+  "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "opus" },
   "btnLabel_dismiss": { "message": "dimitto" },
   "link_viewChanges": { "message": "Mutare" },

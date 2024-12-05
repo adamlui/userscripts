@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "Dib u eegista Ka tag" },
   "btnLabel_rateUs": { "message": "Nagu Qiimee" },
   "btnLabel_getSupport": { "message": "Hel Tageero" },
-  "btnLabel_updateCheck": { "message": "Hubi Cusbooneysiinta" },
+  "btnLabel_checkForUpdates": { "message": "Hubi Cusbooneysiinta" },
   "btnLabel_update": { "message": "Cusboonaysiinta" },
   "btnLabel_dismiss": { "message": "Iska tuur" },
   "link_viewChanges": { "message": "Eeg isbeddellada" },

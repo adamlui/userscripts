@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "Kite Revizyon" },
   "btnLabel_rateUs": { "message": "Evalye nou" },
   "btnLabel_getSupport": { "message": "Jwenn Sipò" },
-  "btnLabel_updateCheck": { "message": "Tcheke pou Mizajou" },
+  "btnLabel_checkForUpdates": { "message": "Tcheke pou Mizajou" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "ranvwaye /rejte/revoke /abandone/elimine/rejeter /renvoyer/révoquer/éliminer/abandonner/annuler" },
   "link_viewChanges": { "message": "Gade chanjman yo" },

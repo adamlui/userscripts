@@ -31,7 +31,7 @@
   "btnLabel_leaveReview": { "message": "د رخصتۍ بیاکتنه" },
   "btnLabel_rateUs": { "message": "موږ ته رتبه راکړئ" },
   "btnLabel_getSupport": { "message": "مرسته ترلاسه کړئ" },
-  "btnLabel_updateCheck": { "message": "د تازه معلوماتو لپاره وګورئ" },
+  "btnLabel_checkForUpdates": { "message": "د تازه معلوماتو لپاره وګورئ" },
   "btnLabel_update": { "message": "تازه کړئ" },
   "btnLabel_dismiss": { "message": "رد کردن" },
   "link_viewChanges": { "message": "بدلونونه وګورئ" },
