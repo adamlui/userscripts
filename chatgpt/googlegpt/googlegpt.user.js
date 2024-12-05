@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.5.1
+// @version                  2024.12.5.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -381,8 +381,8 @@
 // @resource ggptLSlogo      https://cdn.jsdelivr.net/gh/KudoAI/googlegpt@612b976/media/images/logos/googlegpt/flat/black-green/logo480x64.png.b64#sha256-fzSZhLVQQolCLWYr/h29NWfR1Yl4glHv1TcsveYYv+U=
 // @resource ggptDSlogo      https://cdn.jsdelivr.net/gh/KudoAI/googlegpt@612b976/media/images/logos/googlegpt/flat/white-green/logo480x64.png.b64#sha256-3qRdGKhF3pojDqVVh/5kODIg7QvYbbLf4zFkEh5xoGc=
 // @resource hljsCSS         https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource bsbgCSS         https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
-// @resource wsbgCSS         https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
+// @resource brsCSS          https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
+// @resource wrsCSS          https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
 // @grant                    GM_getValue
 // @grant                    GM_setValue
 // @grant                    GM_deleteValue
@@ -4075,7 +4075,7 @@
 
     // Stylize APP elems
     const appStyle = create.style() ; update.style.app() ; document.head.append(appStyle);
-    ['hljs', 'wsbg', 'bsbg'].forEach(cssType => // code highlighting, white stars, black stars
+    ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
