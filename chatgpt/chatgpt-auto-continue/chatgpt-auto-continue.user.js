@@ -219,16 +219,16 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.2
+// @version             2024.12.5.3
 // @license             MIT
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@2cf156dc26852bd4cd452280e32933923335dcb7/chromium/extension/components/modals.js#sha256-cWVTgFgdU95I3fgs7MDeJO8up86wLsd7FJuivVQVRgs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@e6b2f75ed1c0bafc2b6ab15a0e17192a912c991f/chromium/extension/components/modals.js#sha256-VSATOP3/zaAp3n2q/ABeMmQD1oHakSxR20C1mAmUjp0=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@9f11ee36c2604ee47ebd0be5c352b5266b23fcfe/chromium/extension/lib/dom.js#sha256-RV5ZNK9lGH9IC1sPNNflDj+fOuC97le/ac6rrezdNos=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@ed6faf9415fa0235831e23f71455361857fdd26d/chromium/extension/lib/settings.js#sha256-9zyWZ/tokwZjY1ePTYP1YJqxSLKV+p0Q9gqnszTTbZs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@e6b2f75ed1c0bafc2b6ab15a0e17192a912c991f/chromium/extension/lib/settings.js#sha256-WyyvsrlZPreYylr0HDANC+Cj02g4QGUA7lYSWLvXmnQ=
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @resource bsbgCSS    https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
@@ -344,10 +344,10 @@
     }
 
     // Init MODALS dependencies
-    modals.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
+    modals.dependencies.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
 
     // Init SETTINGS
-    settings.import({ app }) // for app.msgs + app.configKeyPrefix refs
+    settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
     settings.load(Object.keys(settings.controls))
 
     // Define MENU functions
