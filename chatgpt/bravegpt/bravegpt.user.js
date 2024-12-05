@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.4.25
+// @version               2024.12.4.26
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -659,8 +659,8 @@
         refresh() {
             log.caller = 'menu.refresh()'
             log.debug('Refreshing toolbar menu...')
-            if (env.scriptManager.name == 'OrangeMonkey') {
-                log.debug('OrangeMonkey userscript manager unsupported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined') {
+                log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
             log.debug('Success! Menu refreshed')
         }
