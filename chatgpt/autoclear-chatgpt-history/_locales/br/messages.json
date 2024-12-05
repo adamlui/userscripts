@@ -38,7 +38,7 @@
   "btnLabel_leaveReview": { "message": "Leuskel" },
   "btnLabel_rateUs": { "message": "Feur" },
   "btnLabel_getSupport": { "message": "QShortcut" },
-  "btnLabel_updateCheck": { "message": "Klask chabistroù _nevez" },
+  "btnLabel_checkForUpdates": { "message": "Klask chabistroù _nevez" },
   "btnLabel_update": { "message": "Hizivaat" },
   "btnLabel_dismiss": { "message": "Disteurel" },
   "link_viewChanges": { "message": "Kemmoù" },

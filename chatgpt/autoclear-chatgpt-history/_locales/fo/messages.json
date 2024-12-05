@@ -38,7 +38,7 @@
   "btnLabel_leaveReview": { "message": "Loyvi endurskoðan" },
   "btnLabel_rateUs": { "message": "Rætta okkum" },
   "btnLabel_getSupport": { "message": "Fá stuðul" },
-  "btnLabel_updateCheck": { "message": "Gev gætur eftir dagføringum" },
+  "btnLabel_checkForUpdates": { "message": "Gev gætur eftir dagføringum" },
   "btnLabel_update": { "message": "Dagfør" },
   "btnLabel_dismiss": { "message": "Avrita" },
   "link_viewChanges": { "message": "Sí broytingar" },

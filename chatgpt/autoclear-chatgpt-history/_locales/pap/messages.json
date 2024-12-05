@@ -38,7 +38,7 @@
   "btnLabel_leaveReview": { "message": "Laga revision" },
   "btnLabel_rateUs": { "message": "Rate Nos" },
   "btnLabel_getSupport": { "message": "Recibí Apoyo" },
-  "btnLabel_updateCheck": { "message": "Verificá las actualizaciones" },
+  "btnLabel_checkForUpdates": { "message": "Verificá las actualizaciones" },
   "btnLabel_update": { "message": "Aktualidat" },
   "btnLabel_dismiss": { "message": "Disimulashon" },
   "link_viewChanges": { "message": "Bista riba kambionan" },
