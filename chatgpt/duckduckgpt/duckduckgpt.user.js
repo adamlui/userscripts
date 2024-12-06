@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6.1
+// @version                2024.12.6.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -808,24 +808,20 @@
         }
     }
 
-    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        const alertID = chatgpt.alert(title, msg, btns, checkbox, width)
-        return document.getElementById(alertID).firstChild
-    }
-
     // Define MODAL functions
 
     const modals = {
         stack: [], // of types of undismissed modals
         class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
 
-        open(modalType, modalSubType) {
+        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
+            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
+                  alert = document.getElementById(alertID).firstChild
+            this.init(alert) // add classes/listeners/hack bg/glowup btns
+            return alert
+        },
 
-            // Show/track modal
-            const modal = modalSubType ? modals[modalType][modalSubType]()
-                        : (modals[modalType].show || modals[modalType])()
-            if (settings.controls[modalType]?.type != 'prompt') // add to stack
-                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+        init(modal) {
 
             // Add classes
             modal.classList.add(this.class)
@@ -836,7 +832,7 @@
             modal.onmousedown = modals.handlers.drag.mousedown
 
             // Hack BG
-            fillStarryBG(modal) // add stars
+            fillStarryBG(modal)
             setTimeout(() => { // dim bg
                 modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${
                     env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
@@ -845,7 +841,14 @@
 
             // Glowup btns
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+        },
 
+        open(modalType, modalSubType) { // custom ones
+            const modal = modalSubType ? modals[modalType][modalSubType]()
+                        : (modals[modalType].show || modals[modalType])()
+            if (settings.controls[modalType]?.type != 'prompt') // add to stack
+                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+            this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
@@ -939,7 +942,7 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const aboutModal = siteAlert('',
+            const aboutModal = this.alert('',
                 `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
                     + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
@@ -1007,7 +1010,7 @@
             if (modals.stack[1] != 'about') btns.push(function github(){})
 
             // Show modal
-            const feedbackModal = siteAlert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
+            const feedbackModal = this.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
 
             // Center CTA
             feedbackModal.querySelector('h2').style.justifySelf = 'center'
@@ -1052,7 +1055,7 @@
                     log.debug('Saving reply language...')
                     settings.save('replyLanguage', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
-                    siteAlert(`${app.msgs.alert_langUpdated}!`, // title
+                    modals.alert(`${app.msgs.alert_langUpdated}!`, // title
                         `${app.name} ${app.msgs.alert_willReplyIn} `
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
                         '', '', 330) // confirmation width
@@ -1068,7 +1071,7 @@
             log.debug('Showing Scheme modal...')
 
             // Show modal
-            const schemeModal = siteAlert(`${
+            const schemeModal = this.alert(`${
                 app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
                 [ function auto() {}, function light() {}, function dark() {} ] // buttons
             )
@@ -1388,7 +1391,7 @@
             available() {
 
                 // Show modal
-                const updateAvailModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                     `${app.msgs.alert_newerVer} ${app.msgs.appName} `
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" href="'
@@ -1413,7 +1416,7 @@
             },
 
             unavailable() {
-                return siteAlert(`${app.msgs.alert_upToDate}!`, // title
+                return modals.alert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.name} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', modals.update.width
                 )
@@ -2874,7 +2877,7 @@
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
-                siteAlert(
+                modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
                         + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
@@ -2885,7 +2888,7 @@
                 )
             } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
                 log.debug('Streaming Mode unsupported in browser')
-                siteAlert(
+                modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
                         + `${ env.browser.isChrome ? 'Chrome' : env.browser.isEdge ? 'Edge' : 'Brave' } ${
@@ -2901,7 +2904,7 @@
                         + `(${app.msgs.alert_openAIsupportSoon}!)`
                 const switchPhrase = app.msgs.alert_switchingOn
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
-                const alert = siteAlert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg)
+                const alert = modals.alert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg)
                 alert.querySelector('[href="#"]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
