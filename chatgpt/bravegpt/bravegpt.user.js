@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.6.6
+// @version               2024.12.6.7
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -837,8 +837,10 @@
         open(modalType, modalSubType) { // custom ones
             const modal = modalSubType ? modals[modalType][modalSubType]()
                         : (modals[modalType].show || modals[modalType])()
-            if (settings.controls[modalType]?.type != 'prompt') // add to stack
+            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
+            }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
