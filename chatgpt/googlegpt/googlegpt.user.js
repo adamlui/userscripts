@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.5.2
+// @version                  2024.12.6
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -996,6 +996,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
+        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
 
         open(modalType, modalSubType) {
 
@@ -1006,8 +1007,8 @@
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
 
             // Add classes
-            modal.classList.add('googlegpt-modal')
-            modal.parentNode.classList.add('googlegpt-modal-bg', 'no-user-select')
+            modal.classList.add(this.class)
+            modal.parentNode.classList.add(`${this.class}-bg`, 'no-user-select')
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
@@ -2555,7 +2556,7 @@
                       + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
                   // chatgpt.alert() + GoogleGPT modals
-                  + '.googlegpt-modal { display: grid ; place-items: center }' // for centered icon/logo
+                  + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                       + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
