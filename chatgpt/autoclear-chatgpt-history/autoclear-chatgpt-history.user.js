@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.2
+// @version             2024.12.6
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -484,12 +484,13 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
+        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
 
         open(modalType, modalSubType) {
-            const modal = modalSubType ? modals[modalType][modalSubType]() : modals[modalType]() // show modal
+            const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
-            modal.classList.add('autoclear-chatgpt-history-modal')
-            modal.onmousedown = modals.dragHandlers.mousedown
+            modal.classList.add(this.class)
+            modal.onmousedown = this.dragHandlers.mousedown
             fillStarryBG(modal) // fill BG w/ rising stars
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
