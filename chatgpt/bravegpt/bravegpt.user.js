@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.5.2
+// @version               2024.12.6
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -808,6 +808,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
+        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
 
         open(modalType, modalSubType) {
 
@@ -818,8 +819,8 @@
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
 
             // Add classes
-            modal.classList.add('bravegpt-modal')
-            modal.parentNode.classList.add('bravegpt-modal-bg', 'no-user-select')
+            modal.classList.add(this.class)
+            modal.parentNode.classList.add(`${this.class}-bg`, 'no-user-select')
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
@@ -2372,7 +2373,7 @@
                       + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
                   // chatgpt.alert() + BraveGPT modals
-                  + '.bravegpt-modal { display: grid ; place-items: center }' // for centered icon/logo
+                  + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                       + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
