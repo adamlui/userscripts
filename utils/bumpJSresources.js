@@ -58,7 +58,7 @@
             Buffer.from(await (await fetchData(url)).arrayBuffer()), { algorithms: [algorithm] }).toString()
     }
 
-    function bumpVersion(userJSfilePath) {
+    function bumpUserJSver(userJSfilePath) {
         const date = new Date(),
               today = `${date.getFullYear()}.${date.getMonth() +1}.${date.getDate()}`, // YYYY.M.D format
               re_version = /(@version\s+)([\d.]+)/
@@ -128,7 +128,7 @@
         }
         if (fileUpdated) {
             console.log('\nBumping userscript version...')
-            bumpVersion(userJSfilePath) ; filesUpdatedCnt++
+            bumpUserJSver(userJSfilePath) ; filesUpdatedCnt++
         }
     }
 
