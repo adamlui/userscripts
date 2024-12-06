@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6.4
+// @version                2024.12.6.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -491,8 +491,8 @@
         }
     }
 
-    function checkForUpdates() { // eslint-disable-line
-        log.caller = 'checkForUpdates()'
+    function updateCheck() {
+        log.caller = 'updateCheck()'
         log.debug(`currentVer = ${app.version}`)
 
         // Fetch latest meta
@@ -766,7 +766,7 @@
                         + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons
-                    function checkForUpdates() { checkForUpdates() },
+                    function checkForUpdates() { updateCheck() },
                     function getSupport(){},
                     function rateUs() { modals.open('feedback') },
                     function moreAIextensions(){}
