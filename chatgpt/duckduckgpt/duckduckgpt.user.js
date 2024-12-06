@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6.5
+// @version                2024.12.6.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1061,7 +1061,7 @@
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
                         '', '', 330) // confirmation width
                     if (modals.settings.get()) // update settings menu status label
-                        document.querySelector('#replyLanguage-menu-entry span').textContent = replyLang
+                        document.querySelector('#replyLang-menu-entry span').textContent = replyLang
                     break
                 }
             }
