@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6.2
+// @version                2024.12.6.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -680,7 +680,8 @@
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
-            log.caller = 'modals.observeRemoval()' ; const formattedModalType = log.toTitleCase(modalType)
+            log.caller = 'modals.observeRemoval()'
+            const formattedModalType = log.toTitleCase(`${modalType}${ modalSubType ? ' ' + modalSubType : '' }`)
             log.debug(`Observing ${formattedModalType} modal...`)
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
