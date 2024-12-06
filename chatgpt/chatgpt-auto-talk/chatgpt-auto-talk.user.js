@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6.2
+// @version             2024.12.6.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -420,7 +420,7 @@
         }
     }
 
-    function checkForUpdates() { // eslint-disable-line
+    function updateCheck() {
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
@@ -556,7 +556,7 @@
                     + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a></span>',
                 [ // buttons
-                    function checkForUpdates() { checkForUpdates() },
+                    function checkForUpdates() { updateCheck() },
                     function getSupport(){},
                     function rateUs() {},
                     function moreAIextensions(){}
