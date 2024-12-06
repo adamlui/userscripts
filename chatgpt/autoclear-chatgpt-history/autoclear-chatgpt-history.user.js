@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6.1
+// @version             2024.12.6.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -556,7 +556,7 @@
                   aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
 
             // Show modal
-            const aboutModal = this.alert(
+            const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
                     + `<span style="${pStyle}">${app.version}</span>\n`
@@ -613,7 +613,7 @@
         donate() {
 
             // Show modal
-            const donateModal = this.alert(
+            const donateModal = modals.alert(
                 `💖 ${app.msgs.alert_showYourSupport}`, // title
                     `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
                   + `<p>${app.msgs.alert_despiteAffliction} `
