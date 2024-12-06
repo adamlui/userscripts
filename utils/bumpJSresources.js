@@ -28,7 +28,7 @@
         const userJSfiles = []
         fs.readdirSync(dir).forEach(async file => {
             const filePath = path.resolve(dir, file) // get absolute path
-            if (fs.statSync(filePath).isDirectory()) // recusrively search subdirs
+            if (fs.statSync(filePath).isDirectory()) // recursively search subdirs
                 userJSfiles.push(...await findUserJS(filePath))
             else if (file.endsWith('.user.js')) {
                 console.log(filePath) ; userJSfiles.push(filePath) }
