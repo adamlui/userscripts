@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6
+// @version             2024.12.6.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -463,23 +463,29 @@
         }
     }
 
-    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        const alertID = chatgpt.alert(title, msg, btns, checkbox, width)
-        return document.getElementById(alertID).firstChild
-    }
-
     // Define MODAL functions
 
     const modals = {
         stack: [], // of types of undismissed modals
         class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
 
+        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
+            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
+                  alert = document.getElementById(alertID).firstChild
+            this.init(alert) // add class/listener/starry bg
+            return alert
+        },
+
+        init(modal) {
+            modal.classList.add(this.class)
+            modal.onmousedown = this.dragHandlers.mousedown
+            fillStarryBG(modal)
+        },
+
         open(modalType, modalSubType) {
             const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
-            modal.classList.add(this.class)
-            modal.onmousedown = this.dragHandlers.mousedown
-            fillStarryBG(modal) // fill BG w/ rising stars
+            this.init(modal) // add class/listener/starry bg
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
@@ -538,7 +544,7 @@
                   aStyle = 'color: ' + ( chatgpt.isDarkMode() ? '#c67afb' : '#8325c4' ) // purple
 
             // Show modal
-            const aboutModal = siteAlert(
+            const aboutModal = this.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${headingStyle}"><b>🏷️ <i>${app.msgs.about_version}</i></b>: </span>`
                     + `<span style="${pStyle}">${app.version}</span>\n`
@@ -595,7 +601,7 @@
         donate() {
 
             // Show modal
-            const donateModal = siteAlert(
+            const donateModal = this.alert(
                 `💖 ${app.msgs.alert_showYourSupport}`, // title
                     `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
                   + `<p>${app.msgs.alert_despiteAffliction} `
@@ -659,7 +665,7 @@
             available() {
 
                 // Show modal
-                const updateAvailModal = siteAlert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
                     `${app.msgs.alert_newerVer} ${app.msgs.appName} `
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
@@ -682,7 +688,7 @@
             },
 
             unavailable() {
-                return siteAlert(`${app.msgs.alert_upToDate}!`, // title
+                return modals.alert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.msgs.appName} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', modals.update.width
                 )
