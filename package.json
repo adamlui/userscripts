@@ -22,7 +22,8 @@
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
     "lint:fix-all": "eslint . --fix",
-    "bump:js": "node utils/bumpJSresources"
+    "bump:js": "node utils/bumpJSresources",
+    "bump:js-dev": "node utils/bumpJSresources --dev"
   },
   "devDependencies": {
     "@eslint/json": "^0.8.0",
