@@ -109,19 +109,19 @@
 
         // Process each resource in the userscript
         const re_commitHash = /@([^/]+)/ ; let fileUpdated = false
-        for (const resourceURL of jsrURLmap[userJSfilePath]) {
-            const resourceName = resourceURL.match(/\w+\/\w+\.js(?=#|$)/)[0] // dir/filename.js for logs
+        for (const url of jsrURLmap[userJSfilePath]) {
+            const resourceName = url.match(/\w+\/\w+\.js(?=#|$)/)[0] // dir/filename.js for logs
 
             // Update hashes
-            if ((resourceURL.match(re_commitHash) || [])[1] != latestCommitHash) {
+            if ((url.match(re_commitHash) || [])[1] != latestCommitHash) {
                 console.log(`Updating commit hash for ${resourceName}...`)
-                let updatedResourceURL = resourceURL.replace(re_commitHash, `@${latestCommitHash}`)
+                let updatedURL = url.replace(re_commitHash, `@${latestCommitHash}`)
                 console.log(`Updating SRI hash for ${resourceName}...`)
-                updatedResourceURL = updatedResourceURL.replace(/#sha.+/, `#${await getSRIhash(updatedResourceURL)}`)
+                updatedURL = updatedURL.replace(/#sha.+/, `#${await getSRIhash(updatedURL)}`)
 
                 // Write updated URL to userscript
                 let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
-                userJScontent = userJScontent.replace(resourceURL, updatedResourceURL)
+                userJScontent = userJScontent.replace(url, updatedURL)
                 fs.writeFileSync(userJSfilePath, userJScontent, 'utf-8')
                 jsrUpdatedCnt++ ; fileUpdated = true
             }
