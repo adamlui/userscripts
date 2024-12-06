@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.6
+// @version             2024.12.5.7
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -394,7 +394,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init MODALS dependencies
-    modals.dependencies.import({ app, browserLang: env.browser.language, siteAlert, checkForUpdates })
+    modals.dependencies.import({ app, browserLang: env.browser.language, siteAlert, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -451,7 +451,7 @@
         }
     }
 
-    function checkForUpdates() {
+    function updateCheck() {
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
