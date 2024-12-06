@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6
+// @version                2024.12.6.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -860,8 +860,8 @@
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
-            log.caller = 'modals.observeRemoval()'
-            log.debug(`Observing ${log.toTitleCase(modalType)} modal...`)
+            log.caller = 'modals.observeRemoval()' ; const formattedModalType = log.toTitleCase(modalType)
+            log.debug(`Observing ${formattedModalType} modal...`)
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
                 mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
@@ -876,6 +876,7 @@
                     obs.disconnect()
                 }})
             }).observe(modalBG.parentNode, { childList: true, subtree: true })
+            log.debug(`Success! Removal observer attached to ${formattedModalType} modal`)
         },
 
         handlers: {
