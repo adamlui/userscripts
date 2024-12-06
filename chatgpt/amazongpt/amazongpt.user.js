@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.6.3
+// @version                2024.12.6.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -757,7 +757,7 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const aboutModal = this.alert('',
+            const aboutModal = modals.alert('',
                 `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
                     + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
@@ -825,7 +825,7 @@
             if (modals.stack[1] != 'about') btns.push(function github(){})
 
             // Show modal
-            const feedbackModal = this.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
+            const feedbackModal = modals.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 408)
 
             // Center CTA
             feedbackModal.querySelector('h2').style.justifySelf = 'center'
@@ -884,7 +884,7 @@
             log.debug('Showing Scheme modal...')
 
             // Show modal
-            const schemeModal = this.alert(`${
+            const schemeModal = modals.alert(`${
                 app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
                 [ function auto() {}, function light() {}, function dark() {} ] // buttons
             )
