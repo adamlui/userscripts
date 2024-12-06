@@ -7,7 +7,6 @@
 
     // Import LIBS
     const fs = require('fs'), // to read/write files
-          path = require('path'), // to handle/resolve file/dir paths
           ssri = require('ssri') // to generate SHA-256 hashes
 
     // Init UI COLORS
@@ -26,8 +25,9 @@
 
     async function findUserJS(dir = './') {
         const userJSfiles = []
+        if (!dir.endsWith('/')) dir += '/' // for prettier log
         fs.readdirSync(dir).forEach(async file => {
-            const filePath = path.resolve(dir, file) // get absolute path
+            const filePath = dir + file // relative path
             if (fs.statSync(filePath).isDirectory()) // recursively search subdirs
                 userJSfiles.push(...await findUserJS(filePath))
             else if (file.endsWith('.user.js')) {
@@ -98,7 +98,7 @@
     for (const userJSfilePath of Object.keys(jsrURLmap)) {
 
         // Init repo name
-        let repoName = path.basename(userJSfilePath, '.user.js')
+        let repoName = userJSfilePath.split(devMode ? '\\' : '/').pop().replace('.user.js', '')
         if (repoName.endsWith('-mode')) repoName = repoName.slice(0, -5) // for chatgpt-widescreen
 
         // Fetch latest commit hash
