@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.6.3
+// @version               2024.12.6.4
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -931,7 +931,7 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const aboutModal = this.alert('',
+            const aboutModal = modals.alert('',
                 `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
                     + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
@@ -999,7 +999,7 @@
             if (modals.stack[1] != 'about') btns.push(function github(){})
 
             // Show modal
-            const feedbackModal = this.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 456)
+            const feedbackModal = modals.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 456)
 
             // Center CTA
             feedbackModal.querySelector('h2').style.justifySelf = 'center'
@@ -1060,7 +1060,7 @@
             log.debug('Showing Scheme modal...')
 
             // Show modal
-            const schemeModal = this.alert(`${
+            const schemeModal = modals.alert(`${
                 app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
                 [ function auto() {}, function light() {}, function dark() {} ], // buttons
                 '', 503 // px width
