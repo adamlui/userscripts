@@ -3,7 +3,7 @@
 
 (async () => {
 
-    const devMode = true // true to use ./utils/userJSfiles.dev.json for faster init
+    const devMode = process.argv.includes('--dev') // true to use ./utils/userJSfiles.dev.json for faster init
 
     // Import LIBS
     const fs = require('fs'), // to read/write files
