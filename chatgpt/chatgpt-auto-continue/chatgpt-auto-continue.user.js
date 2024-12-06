@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.5.6
+// @version             2024.12.6
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -228,9 +228,9 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a97b51e465af7f2d06995619b34585c0492d895d/chromium/extension/components/modals.js#sha256-uUCXXc0vcH+GouD0+n2PDAXbRzx5wGlQUSu1cbaeofk=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@9f11ee36c2604ee47ebd0be5c352b5266b23fcfe/chromium/extension/lib/dom.js#sha256-RV5ZNK9lGH9IC1sPNNflDj+fOuC97le/ac6rrezdNos=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a97b51e465af7f2d06995619b34585c0492d895d/chromium/extension/lib/settings.js#sha256-PWr8vJ2R0SO4qYrHfUrem5WHMWTzBSzHHC2hx/7XdLg=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/components/modals.js#sha256-wCrfbRXwtUj7P37iQnZRU3P5JYOrK/oO5lOurtRIqIc=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/dom.js#sha256-RV5ZNK9lGH9IC1sPNNflDj+fOuC97le/ac6rrezdNos=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/settings.js#sha256-JQFSzEyXDmtqseBuscgX2uIYF1yZBEtieMP+wLi6ZJk=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
 // @grant               GM_setValue
@@ -344,7 +344,7 @@
     }
 
     // Init MODALS dependencies
-    modals.dependencies.import({ app, browserLang: env.browser.language, siteAlert, updateCheck })
+    modals.dependencies.import({ app, browserLang: env.browser.language, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -441,11 +441,6 @@
                                                   : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
-    }
-
-    function siteAlert(title = '', msg = '', btns = '', checkbox = '', width = '') {
-        const alertID = chatgpt.alert(title, msg, btns, checkbox, width)
-        return document.getElementById(alertID).firstChild
     }
 
     // Define UI functions
