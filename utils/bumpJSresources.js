@@ -19,8 +19,9 @@
 
     const log = {
         dev(msg) { if (devMode) console.log(msg) },
-        success(msg) { console.log(bg + msg + nc) },
-        working(msg) { console.log(by + msg + nc) }
+        info(msg) { console.log(bw + msg + nc) },
+        working(msg) { console.log(by + msg + nc) },
+        success(msg) { console.log(bg + msg + nc) }
     }
 
     async function findUserJS(dir = './') {
@@ -133,5 +134,9 @@
     }
 
     // Log final summary
-    log.success(`${jsrUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`)
+    log[jsrUpdatedCnt > 0 ? 'success' : 'info'](
+        `${ jsrUpdatedCnt > 0 ? 'Success! ' : '' }${
+            jsrUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`
+    )
+
 })()
