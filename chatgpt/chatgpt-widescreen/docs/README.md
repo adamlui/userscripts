@@ -10,6 +10,8 @@
     <img alt="[License: MIT]" height=31 src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></img></a>
 <a href="https://gm.chatgptwidescreen.com/versions">
     <img height=31 alt="[Versions]" src="https://img.shields.io/greasyfork/v/461473?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
+<a href="https://github.com/adamlui/chatgpt-widescreen/blob/main/greasemonkey/chatgpt-widescreen-mode.user.js">
+    <img height=32 src="https://img.shields.io/github/size/adamlui/chatgpt-widescreen/greasemonkey/chatgpt-widescreen-mode.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/chatgpt-widescreen">
     <img alt="[CodeFactor grade]" height=31 src="https://img.shields.io/codefactor/grade/github/adamlui/chatgpt-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></img></a>
 <a href="https://github.com/KudoAI/chatgpt.js?utm_source=chatgpt_widescreen&utm_content=github_shield">
