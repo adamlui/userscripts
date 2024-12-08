@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.7
+// @version             2024.12.7.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -714,7 +714,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'autoclear' && config.autoclear) clearChatsAndGoHome()
-        if (/autoclear|toggleHidden/.test(options?.updatedKey)) sidebarToggle.updateState()
+        if (/autoclear|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.updateState()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -737,109 +737,112 @@
         targetNode.prepend(starsDivsContainer)
     }
 
-    const sidebarToggle = {
+    const toggles = {
 
-        create() {
-            sidebarToggle.div = document.createElement('div')
+        sidebar: {
 
-            // Create/ID/size/position navicon
-            const navicon = document.createElement('img') ; navicon.id = 'autoclear-toggle-navicon'
-            navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
+            create() {
+                this.div = document.createElement('div')
 
-            // Create/disable/hide checkbox
-            const toggleInput = document.createElement('input')
-            Object.assign(toggleInput, { type: 'checkbox', disabled: true })
-            toggleInput.style.display = 'none'
+                // Create/ID/size/position navicon
+                const navicon = document.createElement('img') ; navicon.id = 'autoclear-toggle-navicon'
+                navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
-            // Create/stylize switch
-            const switchSpan = document.createElement('span')
-            Object.assign(switchSpan.style, {
-                position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
-                backgroundColor: config.autoclear ? '#ccc' : '#AD68FF', // init opposite  final color
-                bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`,
-                width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
-            })
+                // Create/disable/hide checkbox
+                const toggleInput = document.createElement('input')
+                Object.assign(toggleInput, { type: 'checkbox', disabled: true })
+                toggleInput.style.display = 'none'
 
-            // Create/stylize knob, append to switch
-            const knobSpan = document.createElement('span') ; knobSpan.id = 'autoclear-toggle-knob-span'
-            Object.assign(knobSpan.style, {
-                position: 'absolute', left: '3px', bottom: '1.25px',
-                width: '12px', height: '12px', content: '""', borderRadius: '28px',
-                transform: config.autoclear ? // init opposite final pos
-                    'translateX(0)' : 'translateX(13px) translateY(0)',
-                backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
-            }) ; switchSpan.append(knobSpan)
+                // Create/stylize switch
+                const switchSpan = document.createElement('span')
+                Object.assign(switchSpan.style, {
+                    position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
+                    backgroundColor: config.autoclear ? '#ccc' : '#AD68FF', // init opposite  final color
+                    bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`,
+                    width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
+                })
 
-            // Create/stylize/fill label
-            const toggleLabel = document.createElement('label')
-            if (!env.ui.firstLink) // add font size/weight since no env.ui.firstLink to borrow from
-                toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
-            Object.assign(toggleLabel.style, {
-                marginLeft: `-${ !env.ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
-                cursor: 'pointer', // add finger cursor on hover
-                width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
-                overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
-            })
+                // Create/stylize knob, append to switch
+                const knobSpan = document.createElement('span') ; knobSpan.id = 'autoclear-toggle-knob-span'
+                Object.assign(knobSpan.style, {
+                    position: 'absolute', left: '3px', bottom: '1.25px',
+                    width: '12px', height: '12px', content: '""', borderRadius: '28px',
+                    transform: config.autoclear ? // init opposite final pos
+                        'translateX(0)' : 'translateX(13px) translateY(0)',
+                    backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
+                }) ; switchSpan.append(knobSpan)
 
-            // Append elements
-            sidebarToggle.div.append(navicon, toggleInput, switchSpan, toggleLabel)
+                // Create/stylize/fill label
+                const toggleLabel = document.createElement('label')
+                if (!env.ui.firstLink) // add font size/weight since no env.ui.firstLink to borrow from
+                    toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
+                Object.assign(toggleLabel.style, {
+                    marginLeft: `-${ !env.ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
+                    cursor: 'pointer', // add finger cursor on hover
+                    width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
+                    overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
+                })
 
-            // Stylize/classify
-            sidebarToggle.div.style.cssText += 'height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
-            if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
-                const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
-                      firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
-                sidebarToggle.div.classList.add(...env.ui.firstLink.classList, ...(firstLabel?.classList || []))
-                sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
+                // Append elements
+                this.div.append(navicon, toggleInput, switchSpan, toggleLabel)
+
+                // Stylize/classify
+                this.div.style.cssText += 'height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
+                if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
+                    const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
+                          firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
+                    this.div.classList.add(...env.ui.firstLink.classList, ...(firstLabel?.classList || []))
+                    this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
+                }
+
+                toggles.sidebar.updateState() // to opposite init state for animation on 1st load
+
+                // Add click listener
+                this.div.onclick = () => {
+                    settings.save('autoclear', !toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
+                    notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
+                }
+            },
+
+            insert() {
+                if (this.status?.startsWith('insert') || document.getElementById('autoclear-toggle-navicon')) return
+                this.status = 'inserting' ; if (!this.div) this.create()
+
+                // Insert toggle
+                const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
+                if (!sidebar) return
+                sidebar.insertBefore(this.div, sidebar.children[1])
+
+                // Tweak styles
+                const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
+                      navicon = document.getElementById('autoclear-toggle-navicon')
+                this.div.style.flexGrow = 'unset' // overcome OpenAI .grow
+                this.div.style.paddingLeft = '8px'
+                if (knobSpan) knobSpan.style.boxShadow = (
+                    'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
+                if (navicon) navicon.src = `${ // update navicon color in case scheme changed
+                    app.urls.mediaHost}/images/icons/incognito/`
+                + `${ chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
+
+                this.status = 'inserted'
+            },
+
+            updateState() {
+                if (!this.div) return // since toggle never created = sidebar missing
+                const toggleLabel = this.div.querySelector('label'),
+                      toggleInput = this.div.querySelector('input'),
+                      switchSpan = this.div.querySelector('span'),
+                      knobSpan = switchSpan.firstChild
+                this.div.style.display = config.toggleHidden ? 'none' : 'flex'
+                toggleInput.checked = config.autoclear
+                toggleLabel.innerText = `${app.msgs.mode_autoclear} ${
+                    app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
+                setTimeout(() => {
+                    switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+                    switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                    knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
+                }, 1) // min delay to trigger transition fx
             }
-
-            sidebarToggle.updateState() // to opposite init state for animation on 1st load
-
-            // Add click listener
-            sidebarToggle.div.onclick = () => {
-                settings.save('autoclear', !toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
-                notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
-            }
-        },
-
-        insert() {
-            if (sidebarToggle.status?.startsWith('insert') || document.getElementById('autoclear-toggle-navicon')) return
-            sidebarToggle.status = 'inserting' ; if (!sidebarToggle.div) sidebarToggle.create()
-
-            // Insert toggle
-            const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
-            if (!sidebar) return
-            sidebar.insertBefore(sidebarToggle.div, sidebar.children[1])
-
-            // Tweak styles
-            const knobSpan = document.getElementById('autoclear-toggle-knob-span'),
-                  navicon = document.getElementById('autoclear-toggle-navicon')
-            sidebarToggle.div.style.flexGrow = 'unset' // overcome OpenAI .grow
-            sidebarToggle.div.style.paddingLeft = '8px'
-            if (knobSpan) knobSpan.style.boxShadow = (
-                'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
-            if (navicon) navicon.src = `${ // update navicon color in case scheme changed
-                app.urls.mediaHost}/images/icons/incognito/`
-            + `${ chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
-
-            sidebarToggle.status = 'inserted'
-        },
-
-        updateState() {
-            if (!this.div) return // since toggle never created = sidebar missing
-            const toggleLabel = sidebarToggle.div.querySelector('label'),
-                  toggleInput = sidebarToggle.div.querySelector('input'),
-                  switchSpan = sidebarToggle.div.querySelector('span'),
-                  knobSpan = switchSpan.firstChild
-            sidebarToggle.div.style.display = config.toggleHidden ? 'none' : 'flex'
-            toggleInput.checked = config.autoclear
-            toggleLabel.innerText = `${app.msgs.mode_autoclear} ${
-                app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
-            setTimeout(() => {
-                switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
-                switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
-            }, 1) // min delay to trigger transition fx
         }
     }
 
@@ -904,7 +907,7 @@
     // Add STARS styles
     ['brs', 'wrs'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
-    sidebarToggle.insert()
+    toggles.sidebar.insert()
 
     // AUTO-CLEAR on first visit if enabled
     if (config.autoclear) clearChatsAndGoHome()
@@ -912,15 +915,15 @@
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
         if (!config.toggleHidden && !document.getElementById('autoclear-toggle-navicon')
-            && sidebarToggle.status != 'inserting') {
-                sidebarToggle.status = 'missing' ; sidebarToggle.insert() }
+            && toggles.sidebar.status != 'inserting') {
+                toggles.sidebar.status = 'missing' ; toggles.sidebar.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
             if (target.closest('[class*="sidebar"]') // include sidebar divs
-                && !target.id.endsWith('-knob-span') // exclude our sidebarToggle
+                && !target.id.endsWith('-knob-span') // exclude our toggles.sidebar
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
         })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})
