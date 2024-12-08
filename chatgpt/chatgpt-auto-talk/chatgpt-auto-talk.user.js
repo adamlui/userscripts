@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6.3
+// @version             2024.12.7
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -701,7 +701,7 @@
     // Define UI functions
 
     function syncConfigToUI() {
-        sidebarToggle.update() // based on config.autoTalkDisabled + config.toggleHidden
+        sidebarToggle.updateState() // based on config.autoTalkDisabled + config.toggleHidden
         menu.refresh() // prefixes/suffixes
     }
 
@@ -780,7 +780,7 @@
                 sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
             }
 
-            sidebarToggle.update() // to opposite init state for animation on 1st load
+            sidebarToggle.updateState() // to opposite init state for animation on 1st load
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
@@ -812,7 +812,7 @@
             sidebarToggle.status = 'inserted'
         },
 
-        update() {
+        updateState() {
             if (!this.div) return // since toggle never created = sidebar missing
             const toggleLabel = sidebarToggle.div.querySelector('label'),
                   toggleInput = sidebarToggle.div.querySelector('input'),
