@@ -3,7 +3,7 @@
 # <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> Autoclear ChatGPT History
 
 <a href="https://gm.autoclearchatgpt.com">
-    <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/460805?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=af68ff&style=for-the-badge"></a>
+    <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/460805?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="../LICENSE.md">
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://gm.autoclearchatgpt.com/versions">
