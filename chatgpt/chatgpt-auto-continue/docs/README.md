@@ -21,6 +21,8 @@
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://gm.chatgptautocontinue.com/versions">
     <img height=31 alt="[Versions]" src="https://img.shields.io/greasyfork/v/466789?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
+<a href="https://github.com/adamlui/chatgpt-auto-continue/blob/main/greasemonkey/chatgpt-auto-continue.user.js">
+    <img height=32 src="https://img.shields.io/github/size/adamlui/chatgpt-auto-continue/greasemonkey/chatgpt-auto-continue.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/chatgpt-auto-continue">
     <img height=31 alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/chatgpt-auto-continue?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
 <a href="https://github.com/KudoAI/chatgpt.js?utm_source=chatgpt_auto_continue&utm_content=github_shield">
