@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6.3
+// @version             2024.12.7
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -754,7 +754,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'arDisabled') toggleAutoRefresh()
-        if (/arDisabled|toggleHidden/.test(options?.updatedKey)) sidebarToggle.update()
+        if (/arDisabled|toggleHidden/.test(options?.updatedKey)) sidebarToggle.updateState()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -833,7 +833,7 @@
                 sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
             }
 
-            sidebarToggle.update() // to opposite init state for animation on 1st load
+            sidebarToggle.updateState() // to opposite init state for animation on 1st load
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
@@ -865,7 +865,7 @@
             sidebarToggle.status = 'inserted'
         },
 
-        update() {
+        updateState() {
             if (!this.div) return // since toggle never created = sidebar missing
             const toggleLabel = sidebarToggle.div.querySelector('label'),
                   toggleInput = sidebarToggle.div.querySelector('input'),
