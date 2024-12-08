@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6.3
+// @version             2024.12.7
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -714,7 +714,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'autoclear' && config.autoclear) clearChatsAndGoHome()
-        if (/autoclear|toggleHidden/.test(options?.updatedKey)) sidebarToggle.update()
+        if (/autoclear|toggleHidden/.test(options?.updatedKey)) sidebarToggle.updateState()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -793,7 +793,7 @@
                 sidebarToggle.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
             }
 
-            sidebarToggle.update() // to opposite init state for animation on 1st load
+            sidebarToggle.updateState() // to opposite init state for animation on 1st load
 
             // Add click listener
             sidebarToggle.div.onclick = () => {
@@ -825,7 +825,7 @@
             sidebarToggle.status = 'inserted'
         },
 
-        update() {
+        updateState() {
             if (!this.div) return // since toggle never created = sidebar missing
             const toggleLabel = sidebarToggle.div.querySelector('label'),
                   toggleInput = sidebarToggle.div.querySelector('input'),
