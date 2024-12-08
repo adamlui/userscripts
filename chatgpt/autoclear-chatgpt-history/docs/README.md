@@ -8,6 +8,8 @@
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://gm.autoclearchatgpt.com/versions">
     <img height=32 alt="[Versions]" src="https://img.shields.io/greasyfork/v/460805?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
+<a href="https://github.com/adamlui/autoclear-chatgpt-history/blob/main/greasemonkey/autoclear-chatgpt-history.user.js">
+    <img height=32 src="https://img.shields.io/github/size/adamlui/autoclear-chatgpt-history/greasemonkey/autoclear-chatgpt-history.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://github.com/adamlui/autoclear-chatgpt-history/commits">
     <img height=31 alt="[GitHub commits]" src="https://img.shields.io/github/commit-activity/m/adamlui/autoclear-chatgpt-history?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/autoclear-chatgpt-history">
