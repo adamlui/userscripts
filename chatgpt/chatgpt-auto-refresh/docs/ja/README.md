@@ -17,6 +17,8 @@
     <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/badge/ユーザー-10,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://gm.chatgptautorefresh.com/versions">
     <img height=31 alt="[バージョン]" src="https://img.shields.io/greasyfork/v/462422?label=%E6%9C%80%E6%96%B0%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
+<a href="https://github.com/adamlui/chatgpt-auto-refresh/blob/main/greasemonkey/chatgpt-auto-refresh.user.js">
+    <img height=32 src="https://img.shields.io/github/size/adamlui/chatgpt-auto-refresh/greasemonkey/chatgpt-auto-refresh.user.js?label=%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%82%A4%E3%82%BA&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://github.com/adamlui/chatgpt-auto-refresh/stargazers">
     <img height=31 alt="[GitHub スター]" src="https://img.shields.io/github/stars/adamlui/chatgpt-auto-refresh?label=%E5%87%BA%E6%BC%94%E8%80%85&color=af68ff&logo=github&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="../LICENSE.md">
