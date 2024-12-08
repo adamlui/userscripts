@@ -14,7 +14,7 @@
 # <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT 自動更新 ↻
 
 <a href="https://gm.chatgptautorefresh.com">
-    <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/badge/ユーザー-10,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+    <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/462422?label=%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="../LICENSE.md">
     <img height=31 alt="[ライセンス: MIT]" src="https://img.shields.io/badge/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://gm.chatgptautorefresh.com/versions">
