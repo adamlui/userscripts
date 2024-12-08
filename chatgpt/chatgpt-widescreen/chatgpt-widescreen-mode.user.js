@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.6
+// @version             2024.12.7
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -285,7 +285,7 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: 'ebf4cc0'
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: '8d25884'
     }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -891,17 +891,6 @@
             dom.elemIsLoaded(sites[env.site].selectors.btns.login).then(() => false), // false if login button loads
             new Promise(resolve => setTimeout(() => resolve(null), 3000)) // null if 3s passed
         ])
-        sites[env.site].selectors.footer = await Promise.race([
-            new Promise(resolve => { // class of footer container
-                const footerDiv = chatgpt.getFooterDiv()
-                if (footerDiv) resolve(dom.cssSelectorize(footerDiv.classList))
-                else new MutationObserver((_, obs) => {
-                    const footerDiv = chatgpt.getFooterDiv()
-                    if (footerDiv) { obs.disconnect() ; resolve(dom.cssSelectorize(footerDiv.classList)) }
-                }).observe(document.body, { childList: true, subtree: true })
-            }),
-            new Promise(resolve => setTimeout(() => resolve(null), 500)) // null if 500ms passed
-        ])
     }
 
     // Init FULL-MODE states
@@ -938,8 +927,7 @@
                    + '{ max-height: 68vh }'
     const hhStyle = sites[env.site].selectors.header + '{ display: none !important }' // hide header
                   + ( /chatgpt|openai/.test(env.site) ? 'main { padding-top: 12px }' : '' ) // increase top-padding
-    const hfStyle = sites[env.site].selectors.footer + '{ visibility: hidden ;' // hide footer text
-                                                     + '  height: 3px ; overflow: clip }' // reduce height
+    const hfStyle = sites[env.site].selectors.footer + '{ display: none }' // hide footer
 
     update.style.tweaks() ; document.head.append(tweaksStyle);
 
