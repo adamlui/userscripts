@@ -15,7 +15,7 @@ export default [
                 ...globals.browser, ...globals.greasemonkey, ...globals.node, chatgpt: 'readonly', config: 'writable',
                 CryptoJS: 'readonly', dom: 'readonly', GM_cookie: 'readonly', hljs: 'readonly', ipv4: 'readonly',
                 marked: 'readonly', modals: 'writable', renderMathInElement: 'readonly', settings: 'writable',
-                'toggles': 'writable'
+                toggles: 'writable'
             }
         },
         plugins: { regexp, 'js-styles': stylisticJS },
