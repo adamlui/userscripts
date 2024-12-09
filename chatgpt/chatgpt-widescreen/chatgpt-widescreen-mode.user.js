@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.9.1
+// @version             2024.12.9.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -583,19 +583,19 @@
         create() {
             if (/chatgpt|openai/.test(env.site) && chatbar.get()?.nextElementSibling && !env.tallChatbar)
                 env.tallChatbar = true
-            const validBtnTypes = btns.types.filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
+            const validBtnTypes = this.types.filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
             const bOffset = env.site == 'poe' ? -1.5 : env.site == 'perplexity' ? -13 : env.tallChatbar ? 31 : -8.85,
                   rOffset = env.site == 'poe' ? -6   : env.site == 'perplexity' ? -4  : env.tallChatbar ? 47 : -0.25
             validBtnTypes.forEach(async (btnType, idx) => {
-                btns[btnType] = dom.create.elem('div')
-                btns[btnType].id = btnType + '-btn' // for toggle.tooltip()
+                this[btnType] = dom.create.elem('div')
+                this[btnType].id = btnType + '-btn' // for toggle.tooltip()
                 this[btnType].className = this.class // for update.style.tweaks()
-                Object.assign(btns[btnType].style, {
+                Object.assign(this[btnType].style, {
                     position: env.tallChatbar ? 'absolute' : 'relative', cursor: 'pointer',
                     right: `${ rOffset + idx * bOffset }px` // position left of prev button
                 })
-                if (env.tallChatbar) btns[btnType].style.bottom = '8.85px'
-                else btns[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
+                if (env.tallChatbar) this[btnType].style.bottom = '8.85px'
+                else this[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
                 if (/chatgpt|openai|perplexity/.test(env.site)) { // assign classes + tweak styles
                     const btnSelectors = sites[env.site].selectors.btns
                     const rightBtnSelector = `${btnSelectors.send}, ${btnSelectors.voice}`
@@ -607,31 +607,31 @@
                             if (rightBtn) { obs.disconnect() ; resolve(rightBtn) }
                         }).observe(document.body, { childList: true, subtree: true })
                     })
-                    btns[btnType].classList.add(...(rightBtn?.classList || []))
+                    this[btnType].classList.add(...(rightBtn?.classList || []))
                     Object.assign(btns[btnType].style, { // remove dark mode overlay
                         backgroundColor: 'transparent', borderColor: 'transparent' })
                 } else if (env.site == 'poe') // lift buttons slightly
-                    btns[btnType].style.marginBottom = ( btnType == 'newChat' ? '0.45' : '0.2' ) + 'rem'
+                    this[btnType].style.marginBottom = ( btnType == 'newChat' ? '0.45' : '0.2' ) + 'rem'
 
                 // Add hover/click listeners
-                btns[btnType].onmouseover = btns[btnType].onmouseout = toggle.tooltip
-                btns[btnType].onclick = () => {
+                this[btnType].onmouseover = this[btnType].onmouseout = toggle.tooltip
+                this[btnType].onclick = () => {
                     if (btnType == 'newChat') {
                         document.querySelector(sites[env.site].selectors.btns.newChat)?.click()
                         tooltipDiv.style.opacity = 0
                     } else toggle.mode(btnType)
                 }
             })
-            btns.updateColor()
+            this.updateColor()
         },
 
         insert() {
-            if (btns.status?.startsWith('insert') || document.getElementById('wideScreen-btn')) return
-            btns.status = 'inserting' ; if (!btns.wideScreen) btns.create()
+            if (this.status?.startsWith('insert') || document.getElementById('wideScreen-btn')) return
+            this.status = 'inserting' ; if (!this.wideScreen) this.create()
 
             // Init elems
             const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
-            const btnTypesToInsert = btns.types.slice().reverse() // to left-to-right for insertion order
+            const btnTypesToInsert = this.types.slice().reverse() // to left-to-right for insertion order
                 .filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
             const parentToInsertInto = /chatgpt|openai/.test(env.site) ? chatbarDiv.nextElementSibling || chatbarDiv
                                      : env.site == 'perplexity' ? chatbarDiv.lastChild // Pro spam toggle parent
@@ -641,22 +641,22 @@
                                      : chatbarDiv.children[1]
             // Insert buttons
             btnTypesToInsert.forEach(btnType => {
-                btns.updateSVG(btnType) // update icon
-                parentToInsertInto.insertBefore(btns[btnType], elemToInsertBefore)
+                this.updateSVG(btnType) // update icon
+                parentToInsertInto.insertBefore(this[btnType], elemToInsertBefore)
             })
             parentToInsertInto.insertBefore(tooltipDiv, elemToInsertBefore) // add tooltips
             setTimeout(() => chatbar.tweak(), 1)
-            btns.status = 'inserted'
+            this.status = 'inserted'
         },
 
         remove() {
             if (!chatbar.get() || !document.getElementById('wideScreen-btn')) return
-            btns.types.forEach(type => btns[type]?.remove()) ; tooltipDiv?.remove()
-            btns.status = 'missing' // ensure next btns.insert() doesn't return early
+            this.types.forEach(type => this[type]?.remove()) ; tooltipDiv?.remove()
+            this.status = 'missing' // ensure next btns.insert() doesn't return early
         },
 
         updateColor() {
-            btns.color = (
+            this.color = (
                 /chatgpt|openai/.test(env.site) ? (
                     document.querySelector('.dark.bg-black') || chatgpt.isDarkMode() ? 'white' : '#202123' )
               : env.site == 'perplexity' ? (
@@ -665,20 +665,20 @@
                       : 'oklch(var(--text-color-100)/var(--tw-text-opacity))' )
               : 'currentColor' )
 
-            if (btns.wideScreen?.style.fill != btns.color)
-                btns.types.forEach(type => {
-                    if (btns[type]) btns[type].style.fill = btns[type].style.stroke = btns.color })
+            if (this.wideScreen?.style.fill != this.color)
+                this.types.forEach(type => {
+                    if (this[type]) this[type].style.fill = this[type].style.stroke = this.color })
         },
 
         updateSVG(mode, state = '') {
-            if (!btns.wideScreen) btns.create()
+            if (!this.wideScreen) this.create()
 
             // Pick appropriate button/elements
             const [btn, ONelems, OFFelems] = (
-                mode == 'fullScreen' ? [btns.fullScreen, btns.svgElems.fullScreen.on, btns.svgElems.fullScreen.off]
-              : mode == 'fullWindow' ? [btns.fullWindow, btns.svgElems.fullWin, btns.svgElems.fullWin]
-              : mode == 'wideScreen' ? [btns.wideScreen, btns.svgElems.wideScreen.on, btns.svgElems.wideScreen.off]
-                                     : [btns.newChat, btns.svgElems.newChat, btns.svgElems.newChat])
+                mode == 'fullScreen' ? [this.fullScreen, this.svgElems.fullScreen.on, this.svgElems.fullScreen.off]
+              : mode == 'fullWindow' ? [this.fullWindow, this.svgElems.fullWin, this.svgElems.fullWin]
+              : mode == 'wideScreen' ? [this.wideScreen, this.svgElems.wideScreen.on, this.svgElems.wideScreen.off]
+                                     : [this.newChat, this.svgElems.newChat, this.svgElems.newChat])
             if (!btn) return
 
             // Set SVG attributes
