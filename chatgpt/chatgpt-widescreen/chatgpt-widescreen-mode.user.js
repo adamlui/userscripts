@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.9
+// @version             2024.12.9.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -545,6 +545,7 @@
 
     const btns = {
         types: [ 'fullScreen', 'fullWindow', 'wideScreen', 'newChat' ], // right-to-left
+        class: `${app.name.replace(/ /g, '-').toLowerCase()}-btn`,
 
         svgElems: {
             fullScreen: {
@@ -588,6 +589,7 @@
             validBtnTypes.forEach(async (btnType, idx) => {
                 btns[btnType] = dom.create.elem('div')
                 btns[btnType].id = btnType + '-btn' // for toggle.tooltip()
+                this[btnType].className = this.class // for update.style.tweaks()
                 Object.assign(btns[btnType].style, {
                     position: env.tallChatbar ? 'absolute' : 'relative', cursor: 'pointer',
                     right: `${ rOffset + idx * bOffset }px` // position left of prev button
@@ -605,7 +607,7 @@
                             if (rightBtn) { obs.disconnect() ; resolve(rightBtn) }
                         }).observe(document.body, { childList: true, subtree: true })
                     })
-                    btns[btnType].setAttribute('class', rightBtn.classList.toString() || '')
+                    btns[btnType].classList.add(...(rightBtn?.classList || []))
                     Object.assign(btns[btnType].style, { // remove dark mode overlay
                         backgroundColor: 'transparent', borderColor: 'transparent' })
                 } else if (env.site == 'poe') // lift buttons slightly
@@ -737,14 +739,14 @@
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
                     ) : env.site == 'perplexity' ?
-                        '[id$="-btn"] { transition: none }' // prevent chatbar btn animation on hover-off
+                        `.${btns.class} { transition: none }` // prevent chatbar btn animation on hover-off
                     : env.site == 'poe' ? // h-pad mic btn for even spread
                         'button[class*="Voice"] { margin: 0 -3px 0 -8px }' : '' ))
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
                   + ( config.hiddenHeader ? hhStyle : '' ) // hide header
                   + ( config.hiddenFooter ? hfStyle : '' ) // hide footer
                   + `#newChat-btn { display: ${ config.ncbDisabled == true ? 'none' : 'flex' }}`
-                  + '[id$="-btn"]:hover {' // zoom chatbar buttons
+                  + `.${btns.class}:hover {` // zoom chatbar buttons
                       + `transform: scale(${ env.site == 'poe' ? 1.15 : 1.285}) ; transition: transform 0.15s ease }`
             },
 
