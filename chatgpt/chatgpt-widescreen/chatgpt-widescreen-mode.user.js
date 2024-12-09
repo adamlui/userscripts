@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.7.1
+// @version             2024.12.9
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -733,15 +733,19 @@
                       + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
                   + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
                   + ( /chatgpt|openai/.test(env.site) ? (
-                          ( '[id$="-btn"]:hover { opacity: 65% !important }' ) // dim chatbar btns on hover
+                          ( '[id$="-btn"]:hover { opacity: 100% !important }' ) // prevent chatbar btn dim on hover
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
-                    ) : env.site == 'poe' ? // h-pad mic btn for even spread
+                    ) : env.site == 'perplexity' ?
+                        '[id$="-btn"] { transition: none }' // prevent chatbar btn animation on hover-off
+                    : env.site == 'poe' ? // h-pad mic btn for even spread
                         'button[class*="Voice"] { margin: 0 -3px 0 -8px }' : '' ))
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
                   + ( config.hiddenHeader ? hhStyle : '' ) // hide header
                   + ( config.hiddenFooter ? hfStyle : '' ) // hide footer
                   + `#newChat-btn { display: ${ config.ncbDisabled == true ? 'none' : 'flex' }}`
+                  + '[id$="-btn"]:hover {' // zoom chatbar buttons
+                      + `transform: scale(${ env.site == 'poe' ? 1.15 : 1.285}) ; transition: transform 0.15s ease }`
             },
 
             wideScreen() {
