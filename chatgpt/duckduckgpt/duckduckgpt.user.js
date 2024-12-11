@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.10.2
+// @version                2024.12.10.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -189,8 +189,8 @@
 // @resource ddgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/lightmode/logo697x122.png.b64#sha256-7O4AxPinoZ6h36KHuJVa4vwfTEOYTwT+lKiDbf/jjkg=
 // @resource ddgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/duckduckgpt@edc8ee5/media/images/logos/duckduckgpt/darkmode/logo697x122.png.b64#sha256-lSd4M3RPT4+SjjBk8PKGFoyM9p3rZHgxt0NgoKqQkiM=
 // @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource brsCSS        https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
-// @resource wrsCSS        https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
+// @resource brsCSS        https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
+// @resource wrsCSS        https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
 // @grant                  GM_getValue
 // @grant                  GM_setValue
 // @grant                  GM_deleteValue
@@ -2375,7 +2375,7 @@
 
     // Define UI functions
 
-    function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/css/<black|white>-rising-stars.min.css
+    function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
         const starsDivsContainer = document.createElement('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
