@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.10.1
+// @version             2024.12.10.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -245,8 +245,8 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@ec4635e9abdb56fc8abe89af5d2d490fac1f8cbe/chrome/extension/components/modals.js#sha256-k3Hj2lt7A7ZEHFqAavA7AGKisg5FJVpHD/pLqrVRLEc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/dom.js#sha256-78Sl2iVpwThKJ5+zif7VwNehwMWU36I4mDflaksSdqg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/settings.js#sha256-Dspb85b2Nyy1+z4YvFAUelmh31KzMUsjOwpdCOrvHy4=
-// @resource brsCSS     https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
-// @resource wrsCSS     https://assets.aiwebextensions.com/styles/css/white-rising-stars.min.css?v=542104c#sha256-UCMygYN1+KOj8pQJonn7CRZ2b+npvyrXJlnarlJGIh4=
+// @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
+// @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
