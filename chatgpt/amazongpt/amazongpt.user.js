@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.10.1
+// @version                2024.12.10.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -111,7 +111,8 @@
 
     // Init APP data
     const app = {
-        name: 'AmazonGPT', version: GM_info.script.version, symbol: '🤖', configKeyPrefix: 'amazonGPT',
+        name: 'AmazonGPT', version: GM_info.script.version, symbol: '🤖',
+        configKeyPrefix: 'amazonGPT', cssPrefix: 'amazongpt',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: {
             app: 'https://amazongpt.kudoai.com',
@@ -551,7 +552,7 @@
         alerts = alerts.flat() // flatten array args nested by spread operator
         appDiv.textContent = ''
         const alertP = document.createElement('p')
-        alertP.id = 'amzgpt-alert' ; alertP.className = 'no-user-select'
+        alertP.id = `${app.cssPrefix}-alert` ; alertP.className = 'no-user-select'
 
         alerts.forEach((alert, idx) => { // process each alert for display
             let msg = app.alerts[alert] || alert // use string verbatim if not found in app.alerts
@@ -629,7 +630,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
+        class: `${app.cssPrefix}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
@@ -955,7 +956,7 @@
 
                 // Init master elems
                 const settingsContainer = document.createElement('div'),
-                      settingsModal = document.createElement('div') ; settingsModal.id = 'amzgpt-settings'
+                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.cssPrefix}-settings`
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
@@ -971,7 +972,8 @@
                                                    env.browser.isPortrait ? -5 : 7 }px`
 
                 // Init title
-                const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'amzgpt-settings-title'
+                const settingsTitleDiv = document.createElement('div')
+                settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 const settingsTitleIcon = icons.sliders.create()
@@ -1120,7 +1122,7 @@
                 // Create close button
                 log.debug('Creating Close button...')
                 const closeBtn = document.createElement('div')
-                closeBtn.classList.add('amzgpt-modal-close-btn', 'no-mobile-tap-outline')
+                closeBtn.classList.add(`${app.cssPrefix}-modal-close-btn`, 'no-mobile-tap-outline')
                 closeBtn.title = app.msgs.tooltip_close
                 const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
 
@@ -1135,7 +1137,7 @@
                 return settingsContainer
             },
 
-            get() { return document.getElementById('amzgpt-settings') },
+            get() { return document.getElementById(`${app.cssPrefix}-settings`) },
 
             show() {
                 log.caller = 'modals.settings.show()'
@@ -1145,7 +1147,7 @@
                 log.caller = 'modals.settings.show()'
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
-                    const settingsModal = settingsContainer.querySelector('#amzgpt-settings'),
+                    const settingsModal = settingsContainer.querySelector(`#${app.cssPrefix}-settings`),
                           scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
@@ -1236,14 +1238,14 @@
 
         amzgpt: {
             create(color = '') {
-                const icon = document.createElement('img') ; icon.id = 'amzgpt-icon'
+                const icon = document.createElement('img') ; icon.id = `${app.cssPrefix}-icon`
                 icons.amzgpt.update(icon, color)
                 return icon
             },
 
             update(targetIcons = [], color = '') {
                 if (!Array.isArray(targetIcons)) targetIcons = [targetIcons]
-                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#amzgpt-icon')
+                if (targetIcons.length == 0) targetIcons = document.querySelectorAll(`#${app.cssPrefix}-icon`)
                 targetIcons.forEach(icon => {
                     icon.src = GM_getResourceText(`amzgpt${
                         color == 'white' || !color && env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }icon`)
@@ -1562,14 +1564,14 @@
 
             create() {
                 const amzgptLogo = document.createElement('img')
-                amzgptLogo.id = 'amzgpt-logo' ; amzgptLogo.className = 'no-mobile-tap-outline'
+                amzgptLogo.id = `${app.cssPrefix}-logo` ; amzgptLogo.className = 'no-mobile-tap-outline'
                 logos.amzgpt.update(amzgptLogo)
                 return amzgptLogo
             },
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#amzgpt-logo')
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.cssPrefix}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`amzgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
@@ -1624,15 +1626,15 @@
                       + '-webkit-user-select: none ; -moz-user-select: none ;'
                       + '-ms-user-select: none ; user-select: none }'
                   + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
-                  + '#amzgpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
+                  + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
                   + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
                       // ...to show resize cursor everywhere
                       + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                       + 'z-index: 9999 ; cursor: ew-resize }'
-                  + '#amzgpt {'
+                  + `#${app.cssPrefix} {`
                       + 'z-index: 5555 ; border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ;'
-                      + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 15px ;`
-                      + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
+                      + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ;`
+                      + 'border-radius: 15px ; flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
                           + 'box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
                       + ( config.bgAnimationsDisabled ? // classic flat bg
                             `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
@@ -1644,9 +1646,10 @@
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
-                  + '#amzgpt:hover { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) ; transition: box-shadow 0.15s ease }'
-                  + '#amzgpt p { margin: 0 ; ' + ( env.ui.app.scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
-                  + `#amzgpt .alert-link { color: ${
+                  + `#${app.cssPrefix}:hover {`
+                      + 'box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) ; transition: box-shadow 0.15s ease }'
+                  + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
+                  + `#${app.cssPrefix} .alert-link { color: ${
                         env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
                   + '.app-name, .app-name:hover {'
                       + 'font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
@@ -1668,11 +1671,12 @@
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
                   + `.corner-btn:active { ${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                                      : 'fill: #638ed4 ; stroke: #638ed4' } }`
-                  + ( config.bgAnimationsDisabled ? '' : ( '#amzgpt-logo, .corner-btn svg'
+                  + ( config.bgAnimationsDisabled ? '' : ( `#${app.cssPrefix}-logo, .corner-btn svg`
                       + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
-                                                                          : '#84848421 7px' } 7px 3px) }` ))
-                  + '#amzgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-                  + '#amzgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
+                                                                              : '#84848421 7px' } 7px 3px) }` ))
+                  + `#${app.cssPrefix} .loading {`
+                      + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+                  + `#${app.cssPrefix}.sidebar-free { margin-left: 60px ; height: fit-content }`
                   + '#font-size-slider-track {'
                       + 'width: 98% ; height: 7px ; margin: -6px auto -13px ; padding: 15px 0 ;'
                       + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
@@ -1694,13 +1698,15 @@
                   + '.reply-tip {'
                       + 'content: "" ; position: relative ; border: 7px solid transparent ;'
                       + 'float: left ; left: 7px ; margin: 29px -14px 0 0 ;' // positioning
-                      + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ; border-bottom-color:'
+                      + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ;'
+                      + 'border-bottom-color:'
                           + ( env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled ? '#0000' // hide like terminal
                               : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` ) + '}'
-                  + '#amzgpt > pre {'
+                  + `#${app.cssPrefix} > pre {`
                       + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
                       + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
-                      + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ; border-radius: 10px ; overflow: auto ;'
+                      + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ;'
+                      + 'border-radius: 10px ; overflow: auto ;'
                       + ( config.bgAnimationsDisabled ? // classic opaque bg
                             `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
@@ -1710,12 +1716,12 @@
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
                       + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
-                  + '#amzgpt > pre a, #amzgpt > pre a:visited { color: #4495d4 }'
-                  + `#amzgpt pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+                  + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
+                  + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-                  + '#amzgpt section.loading { padding-left: 5px }' // left-pad loading status when sending replies
-                  + '#amzgpt + footer { margin: 2px 0 25px ; position: relative }'
-                  + `#amzgpt + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
+                  + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
+                  + `#${app.cssPrefix} + footer { margin: 2px 0 25px ; position: relative }`
+                  + `#${app.cssPrefix} + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
                         env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
@@ -1742,19 +1748,20 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // rendered markdown styles
-                        '#amzgpt > pre h1 { font-size: 24px } #amzgpt > pre h2 { font-size: 22px }'
-                      + '#amzgpt > pre h3 { font-size: 20px }'
-                      + '#amzgpt > pre h1, #amzgpt > pre h2, #amzgpt > pre h3 { margin-bottom: -15px }'
-                      + '#amzgpt > pre ol {'
+                        `#${app.cssPrefix} > pre h1 { font-size: 24px } #${app.cssPrefix} > pre h2 { font-size: 22px }`
+                      + `#${app.cssPrefix} > pre h3 { font-size: 20px }`
+                      + `#${app.cssPrefix} > pre h1, #${app.cssPrefix} > pre h2, #${app.cssPrefix} > pre h3 {`
+                          + 'margin-bottom: -15px }'
+                      + `#${app.cssPrefix} > pre ol {`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;` // override ol styles
                           + 'margin: -30px 0 -21px }' // reduce v-padding
-                      + '#amzgpt > pre ol > li {' // reduce v-padding, show number markers
+                      + `#${app.cssPrefix} > pre ol > li {` // reduce v-padding, show number markers
                           + 'margin: -10px 0 0 1.6em ; list-style: decimal }'
-                      + '#amzgpt > pre ol > li::marker { font-size: 0.9em }' // shrink number markers
-                      + '#amzgpt > pre ul {'
+                      + `#${app.cssPrefix} > pre ol > li::marker { font-size: 0.9em }` // shrink number markers
+                      + `#${app.cssPrefix} > pre ul {`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;` // override ul styles
                           + 'margin-bottom: -21px }' // reduce bottom-gap
-                      + '#amzgpt > pre ul > li { list-style: inside }' ) // show bullets
+                      + `#${app.cssPrefix} > pre ul > li { list-style: inside }` ) // show bullets
                   + '.katex-html { display: none } ' // hide unrendered math
                   + '.chatgpt-notif {'
                       + 'font-size: 26px !important ; fill: white ; stroke: white ; color: white ;'
@@ -1801,14 +1808,15 @@
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
                         '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
-                  + '.amzgpt-menu {'
+                  + `.${app.cssPrefix}-menu {`
                       + 'position: absolute ; z-index: 2250 ;'
                       + 'padding: 3.5px 5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
-                  + '.amzgpt-menu ul { margin: 0 ; padding: 0 ; list-style: none }'
-                  + '.amzgpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
-                  + '.amzgpt-menu-item:not(.amzgpt-menu-header):hover {'
+                  + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
+                  + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
+                  + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-                  + '#checkmark-icon { fill: #b3f96d } .amzgpt-menu-item:hover #checkmark-icon { fill: green }'
+                  + '#checkmark-icon { fill: #b3f96d }'
+                  + `.${app.cssPrefix}-menu-item:hover #checkmark-icon { fill: green }`
 
                   // Glowing modal btns
                   + ':root { --glow-color: hsl(186 100% 69%); }'
@@ -1847,7 +1855,7 @@
                       + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
                       + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
-                  // chatgpt.alert() + AmazonGPT modals
+                  // chatgpt.alert() + app modals
                   + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
@@ -1867,19 +1875,19 @@
                   + '[class*="-modal"] button { font-size: 14px }'
 
                   // Settings modal
-                  + '#amzgpt-settings {'
+                  + `#${app.cssPrefix}-settings {`
                       + `min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;`
                       + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
-                  + '#amzgpt-settings-title {'
+                  + `#a${app.cssPrefix}-settings-title {`
                       + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
                       + `margin: 0 ${ env.browser.isMobile ? 6 : 24 }px 8px 0 }`
-                  + '#amzgpt-settings-title h4 {'
+                  + `#${app.cssPrefix}-settings-title h4 {`
                       + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -25px }`
-                  + '#amzgpt-settings ul {'
+                  + `#${app.cssPrefix}-settings ul {`
                       + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
                       + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-                  + '#amzgpt-settings li {'
+                  + `#${app.cssPrefix}-settings li {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
@@ -1887,20 +1895,20 @@
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                       + `padding: 6px 10px 4px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                       + 'border-radius: 3px }' // make highlight strips slightly rounded
-                  + '#amzgpt-settings li.active {'
+                  + `#${app.cssPrefix}-settings li.active {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
-                  + '#amzgpt-settings li label {'
+                  + `#${app.cssPrefix}-settings li label {`
                       + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
                       + 'font-weight: normal }' // override Amazon boldening
-                  + '#amzgpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
-                  + '#amzgpt-settings li, #amzgpt-settings li label { cursor: pointer }' // add finger on hover
-                  + '#amzgpt-settings li:hover {'
+                  + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+                  + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
+                  + `#${app.cssPrefix}-settings li:hover {`
                       + 'opacity: 1 ;'
                       + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}`
-                  + '#amzgpt-settings li > input { float: right }' // pos toggles
+                  + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
                   + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
                   + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                       + 'position: relative ; top: 3px ; margin-left: 4px }'
@@ -2342,7 +2350,7 @@
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
                             modals.settings.toggle.switch(streamingToggle)
             }
-            if (appDiv.querySelector('#amzgpt-alert')) location.reload() // re-send query if user alerted
+            if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
             else {
                 log.caller = 'toggle.proxyMode()'
                 log.debug(`Success! config.proxyAPIenabled = ${config.proxyAPIenabled}`)
@@ -2797,7 +2805,7 @@
         copyBtns() {
             if (document.getElementById('copy-btn')) return
 
-            appDiv.querySelectorAll('#amzgpt > pre, code').forEach(parentElem => {
+            appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
                 copyBtn.id = 'copy-btn' ; copySVG.id = 'copy-icon'
@@ -3016,22 +3024,20 @@
     else if (document.querySelector('a > img[src*="/error"]'))
         return log.debug('Exited from 404 page')
 
-    // Create/ID/classify/listenerize amzgpt container
-    const appDiv = document.createElement('div') ; appDiv.id = 'amzgpt'
+    // Create/ID/classify/listenerize/stylize APP container
+    const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv()
-
-    // Stylize APP elems
     const appStyle = create.style() ; update.style.app() ; document.head.append(appStyle);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style(),
-          anchorStyles = '#amzgpt { position: fixed ; bottom: -7px ;'
-                                 + `right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;`
-                                 + `width: ${ env.browser.isMobile ? '98%' : '441px' }}`
-                       + '#chevron-btn, #arrows-btn { display: block !important }',
-          expandedStyles = '#amzgpt { width: 528px }'
+    const tweaksStyle = create.style()
+    const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ;`
+                       + `right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;`
+                       + `width: ${ env.browser.isMobile ? '98%' : '441px' }}`
+                       + '#chevron-btn, #arrows-btn { display: block !important }'
+    const expandedStyles = `#${app.cssPrefix} { width: 528px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
