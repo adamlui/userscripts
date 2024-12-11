@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.7.1
+// @version             2024.12.10
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -279,7 +279,7 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: 'autoclearChatGPThistory',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: 'c6cf21b'
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: '03919c8'
     }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestAssetCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -479,7 +479,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
+        class: `${app.cssPrefix}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
