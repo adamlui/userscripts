@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.7.1
+// @version             2024.12.10
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -288,7 +288,7 @@
             },
             support: 'https://support.chatgptautotalk.com'
         },
-        latestAssetCommitHash: 'bf0296b' // for cached messages.json + navicon
+        latestAssetCommitHash: '6eb8529' // for cached messages.json + navicon
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -467,7 +467,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
+        class: `${app.cssPrefix}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
