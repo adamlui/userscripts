@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.10.1
+// @version             2024.12.10.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -732,7 +732,7 @@
                 this.div = document.createElement('div')
 
                 // Create/ID/size/position navicon
-                const navicon = document.createElement('img') ; navicon.id = 'auto-talk-toggle-navicon'
+                const navicon = document.createElement('img') ; navicon.id = `${app.cssPrefix}-toggle-navicon`
                 navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
                 // Create/disable/hide checkbox
@@ -744,13 +744,13 @@
                 const switchSpan = document.createElement('span')
                 Object.assign(switchSpan.style, {
                     position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
+                    bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`, width: '30px', height: '15px',
                     backgroundColor: !config.autoTalkDisabled ? '#ccc' : '#AD68FF', // init opposite  final color
-                    bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`,
-                    width: '30px', height: '15px', '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
+                    '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
                 })
 
                 // Create/stylize knob, append to switch
-                const knobSpan = document.createElement('span') ; knobSpan.id = 'auto-talk-toggle-knob-span'
+                const knobSpan = document.createElement('span') ; knobSpan.id = `${app.cssPrefix}-toggle-knob-span`
                 Object.assign(knobSpan.style, {
                     position: 'absolute', left: '3px', bottom: '1.25px',
                     width: '12px', height: '12px', content: '""', borderRadius: '28px',
@@ -792,7 +792,8 @@
             },
 
             insert() {
-                if (this.status?.startsWith('insert') || document.getElementById('auto-talk-toggle-navicon')) return
+                if (this.status?.startsWith('insert') || document.getElementById(`${app.cssPrefix}-toggle-navicon`))
+                    return
                 this.status = 'inserting' ; if (!this.div) this.create()
 
                 // Insert toggle
@@ -801,8 +802,8 @@
                 sidebar.insertBefore(this.div, sidebar.children[1])
 
                 // Tweak styles
-                const knobSpan = document.getElementById('auto-talk-toggle-knob-span'),
-                      navicon = document.getElementById('auto-talk-toggle-navicon')
+                const knobSpan = document.getElementById(`${app.cssPrefix}-toggle-knob-span`),
+                      navicon = document.getElementById(`${app.cssPrefix}-toggle-navicon`)
                 this.div.style.flexGrow = 'unset' // overcome OpenAI .grow
                 this.div.style.paddingLeft = '8px'
                 if (knobSpan) knobSpan.style.boxShadow = (
@@ -902,7 +903,7 @@
 
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
-        if (!config.toggleHidden && !document.getElementById('auto-talk-toggle-navicon')
+        if (!config.toggleHidden && !document.getElementById(`${app.cssPrefix}-toggle-navicon`)
             && toggles.sidebar.status != 'inserting') {
                 toggles.sidebar.status = 'missing' ; toggles.sidebar.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
