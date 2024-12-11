@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.10.1
+// @version                2024.12.10.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -236,7 +236,8 @@
 
     // Init APP data
     const app = {
-        name: 'DuckDuckGPT', version: GM_info.script.version, symbol: '🐤', configKeyPrefix: 'duckDuckGPT',
+        name: 'DuckDuckGPT', version: GM_info.script.version, symbol: '🐤',
+        configKeyPrefix: 'duckDuckGPT', cssPrefix: 'ddgpt',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: {
             app: 'https://www.duckduckgpt.com',
@@ -736,7 +737,7 @@
         alerts = alerts.flat() // flatten array args nested by spread operator
         appDiv.textContent = ''
         const alertP = document.createElement('p')
-        alertP.id = 'ddgpt-alert' ; alertP.className = 'no-user-select'
+        alertP.id = `${app.cssPrefix}-alert` ; alertP.className = 'no-user-select'
 
         alerts.forEach((alert, idx) => { // process each alert for display
             let msg = app.alerts[alert] || alert // use string verbatim if not found in app.alerts
@@ -812,7 +813,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
+        class: `${app.cssPrefix}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
@@ -1143,7 +1144,7 @@
 
                 // Init master elems
                 const settingsContainer = document.createElement('div'),
-                      settingsModal = document.createElement('div') ; settingsModal.id = 'ddgpt-settings'
+                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.cssPrefix}-settings`
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
@@ -1158,7 +1159,8 @@
                 settingsIcon.style.cssText = 'width: 65px ; position: relative ; top: -32px ; margin-bottom: 4px ;'
                                            + 'filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3))'
                 // Init title
-                const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'ddgpt-settings-title'
+                const settingsTitleDiv = document.createElement('div')
+                settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 const settingsTitleIcon = icons.sliders.create()
@@ -1317,7 +1319,7 @@
 
                 // Create close button
                 const closeBtn = document.createElement('div')
-                closeBtn.classList.add('ddgpt-modal-close-btn', 'no-mobile-tap-outline')
+                closeBtn.classList.add(`${app.cssPrefix}-modal-close-btn`, 'no-mobile-tap-outline')
                 closeBtn.title = app.msgs.tooltip_close
                 const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
 
@@ -1332,7 +1334,7 @@
                 return settingsContainer
             },
 
-            get() { return document.getElementById('ddgpt-settings') },
+            get() { return document.getElementById(`${app.cssPrefix}-settings`) },
 
             show() {
                 log.caller = 'modals.settings.show()'
@@ -1342,7 +1344,7 @@
                 log.caller = 'modals.settings.show()'
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
-                    const settingsModal = settingsContainer.querySelector('#ddgpt-settings'),
+                    const settingsModal = settingsContainer.querySelector(`#${app.cssPrefix}-settings`),
                           scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
@@ -1453,7 +1455,7 @@
 
             createAppend() {
                 const pinMenu = document.createElement('div') ; pinMenu.id = 'pin-menu'
-                pinMenu.classList.add('ddgpt-menu', 'btn-tooltip', 'fade-in-less', 'no-user-select')
+                pinMenu.classList.add(`${app.cssPrefix}-menu`, 'btn-tooltip', 'fade-in-less', 'no-user-select')
                 menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
                 return pinMenu
             },
@@ -1481,10 +1483,10 @@
                 for (let i = 0 ; i < 4 ; i++) {
                     pinMenuItems.push(document.createElement('li'))
                     pinMenuItems[i].textContent = pinMenulabels[i]
-                    pinMenuItems[i].className = 'ddgpt-menu-item'
+                    pinMenuItems[i].className = `${app.cssPrefix}-menu-item`
                     if (i == 0) { // format header item
                         pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
-                        pinMenuItems[i].classList.add('ddgpt-menu-header') // to not apply hover fx from appStyle
+                        pinMenuItems[i].classList.add(`${app.cssPrefix}-menu-header`) // to not apply hover fx from appStyle
                         pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
                     } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
                     pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
@@ -1937,14 +1939,14 @@
 
             create() {
                 const ddgptLogo = document.createElement('img')
-                ddgptLogo.id = 'ddgpt-logo' ; ddgptLogo.className = 'no-mobile-tap-outline'
+                ddgptLogo.id = `${app.cssPrefix}-logo` ; ddgptLogo.className = 'no-mobile-tap-outline'
                 logos.ddgpt.update(ddgptLogo)
                 return ddgptLogo
             },
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#ddgpt-logo')
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.cssPrefix}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`ddgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
@@ -2013,12 +2015,12 @@
                       + '-webkit-user-select: none ; -moz-user-select: none ;'
                       + '-ms-user-select: none ; user-select: none }'
                   + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
-                  + '#ddgpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
+                  + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
                   + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
                       // ...to show resize cursor everywhere
                       + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                       + 'z-index: 9999 ; cursor: ew-resize }'
-                  + '#ddgpt {'
+                  + `#${app.cssPrefix} {`
                       + 'z-index: 5555 ; padding: 17px 26px 16px ; flex-basis: 0 ;'
                       + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
                       + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
@@ -2033,9 +2035,11 @@
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
-                  + '#ddgpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
-                  + '#ddgpt p { margin: 0 ; ' + ( env.ui.app.scheme == 'dark' ? 'color: #ccc } ' : ' } ' )
-                  + `#ddgpt .alert-link { color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+                  + `#${app.cssPrefix}:hover {`
+                      + 'box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
+                  + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
+                  + `#${app.cssPrefix} .alert-link {`
+                      + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
                   + '.app-name, .app-name:hover {'
                       + 'font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
@@ -2054,10 +2058,11 @@
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
                   + '.corner-btn:active {'
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999' : 'fill: #638ed4 ; stroke: #638ed4' } }`
-                  + ( config.bgAnimationsDisabled ? '' : ( '#ddgpt-logo, .corner-btn svg, .standby-btn'
+                  + ( config.bgAnimationsDisabled ? '' : ( `#${app.cssPrefix}-logo, .corner-btn svg, .standby-btn`
                       + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
-                  + '#ddgpt .loading { color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-                  + '#ddgpt.sidebar-free { margin-left: 60px ; height: fit-content }'
+                  + `#${app.cssPrefix} .loading {`
+                      + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+                  + `#${app.cssPrefix}.sidebar-free { margin-left: 60px ; height: fit-content }`
                   + '#font-size-slider-track {'
                       + 'width: 98% ; height: 7px ; margin: -6px auto -13px ; padding: 15px 0 ;'
                       + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
@@ -2092,11 +2097,12 @@
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                           + `${ // hide reply tip for terminal aesthetic
                                 isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
-                  + '#ddgpt pre { background-color: inherit }' // override DDG's unattractive thicc light border
-                  + '#ddgpt > pre {'
+                  + `#${app.cssPrefix} pre { background-color: inherit }` // override DDG's unattractive thicc light border
+                  + `#${app.cssPrefix} > pre {`
                       + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
                       + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
-                      + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ; border-radius: 10px ; overflow: auto ;'
+                      + 'margin: .99rem 0 7px 0 ; padding: 1.25em 1.25em 0 1.25em ;'
+                      + 'border-radius: 10px ; overflow: auto ;'
                       + ( config.bgAnimationsDisabled ? // classic opaque bg
                             `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
@@ -2106,12 +2112,13 @@
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
                       + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
-                  + '#ddgpt > pre a, #ddgpt > pre a:visited { color: #4495d4 }'
-                  + `#ddgpt pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+                  + `#${app.cssPrefix} > pre a, #ddgpt > pre a:visited { color: #4495d4 }`
+                  + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-                  + '#ddgpt section.loading { padding-left: 5px }' // left-pad loading status when sending replies
-                  + '#ddgpt + footer { margin: 2px 0 25px ; position: relative }'
-                  + `#ddgpt + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
+                  + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
+                  + `#${app.cssPrefix} + footer { margin: 2px 0 25px ; position: relative }`
+                  + `#${app.cssPrefix} + footer * {`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
                         env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
@@ -2165,13 +2172,15 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // rendered markdown styles
-                        '#ddgpt > pre h1 { font-size: 24px } #ddgpt > pre h2 { font-size: 22px } #ddgpt > pre h3 { font-size: 20px }' // size headings
-                      + '#ddgpt > pre h1, #ddgpt > pre h2, #ddgpt > pre h3 { margin-bottom: -15px }' // reduce gap after headings
-                      + '#ddgpt > pre ol { margin: -11px 0 -20px }' // reduce v-padding
-                      + '#ddgpt > pre ol > li { margin: -10px 0 0 1.6em ; list-style: decimal }' // reduce v-padding, show number markers
-                      + '#ddgpt > pre ol > li::marker { font-size: 0.9em }' // shrink number markers
-                      + '#ddgpt > pre ul { margin: -28px 0 -21px }' // reduce v-padding
-                      + '#ddgpt > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }' ) // reduce v-padding, show bullets
+                        `#${app.cssPrefix} > pre h1 { font-size: 24px } #${app.cssPrefix} > pre h2 { font-size: 22px }`
+                      + `#${app.cssPrefix} > pre h3 { font-size: 20px }` // size headings
+                      + `#${app.cssPrefix} > pre h1, #${app.cssPrefix} > pre h2, #${app.cssPrefix} > pre h3 {`
+                          + 'margin-bottom: -15px }' // reduce gap after headings
+                      + `#${app.cssPrefix} > pre ol { margin: -11px 0 -20px }` // reduce v-padding
+                      + `#${app.cssPrefix} > pre ol > li { margin: -10px 0 0 1.6em ; list-style: decimal }` // reduce v-padding, show number markers
+                      + `#${app.cssPrefix} > pre ol > li::marker { font-size: 0.9em }` // shrink number markers
+                      + `#${app.cssPrefix} > pre ul { margin: -28px 0 -21px }` // reduce v-padding
+                      + `#${app.cssPrefix} > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }` ) // reduce v-padding, show bullets
                   + '.katex-html { display: none } ' // hide unrendered math
                   + '.chatgpt-notif { fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }'
                   + '.notif-close-btn { display: none !important }' // hide notif close btn
@@ -2216,14 +2225,15 @@
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
                         '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
-                  + '.ddgpt-menu {'
+                  + `.${app.cssPrefix}-menu {`
                       + 'position: absolute ; z-index: 2250 ;'
                       + 'padding: 3.5px 5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
-                  + '.ddgpt-menu ul { margin: 0 ; padding: 0 ; list-style: none }'
-                  + '.ddgpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
-                  + '.ddgpt-menu-item:not(.ddgpt-menu-header):hover {'
+                  + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
+                  + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
+                  + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-                  + '#checkmark-icon { fill: #b3f96d } .ddgpt-menu-item:hover #checkmark-icon { fill: green }'
+                  + '#checkmark-icon { fill: #b3f96d }'
+                  + `.${app.cssPrefix}-menu-item:hover #checkmark-icon { fill: green }`
 
                   // Glowing modal btns
                   + ':root { --glow-color: hsl(186 100% 69%); }'
@@ -2262,7 +2272,7 @@
                       + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
                       + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
-                  // chatgpt.alert() + DDGPT modals
+                  // chatgpt.alert() + app modals
                   + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
@@ -2280,35 +2290,36 @@
                   + '[class*="-modal"] button { font-size: 13px }'
 
                   // Settings modal
-                  + '#ddgpt-settings {'
+                  + `#${app.cssPrefix}-settings {`
                       + `min-width: ${ env.browser.isPortrait ? 288 : 698 }px ; max-width: 75vw ;`
                       + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
-                  + '#ddgpt-settings-title { font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 3px -3px 0 }'
-                  + '#ddgpt-settings-title h4 {'
+                  + `#${app.cssPrefix}-settings-title {`
+                      + 'font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 3px -3px 0 }'
+                  + `#${app.cssPrefix}-settings-title h4 {`
                       + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -39px }`
-                  + '#ddgpt-settings ul {'
+                  + `#${app.cssPrefix}-settings ul {`
                       + 'list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
                       + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-                  + '#ddgpt-settings li {'
+                  + `#${app.cssPrefix}-settings li {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for text
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
                       + 'height: 25px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
                       + `padding: 4px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
                       + 'border-radius: 3px }' // make highlight strips slightly rounded
-                  + '#ddgpt-settings li.active {'
+                  + `#${app.cssPrefix}-settings li.active {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
-                  + '#ddgpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
-                  + '#ddgpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
-                  + '#ddgpt-settings li, #ddgpt-settings li label { cursor: pointer }' // add finger on hover
-                  + '#ddgpt-settings li:hover {'
+                  + `#${app.cssPrefix}-settings li label { padding-right: 20px }` // right-pad labels so toggles don't hug
+                  + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+                  + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
+                  + `#${app.cssPrefix}-settings li:hover {`
                       + 'opacity: 1 ;'
                       + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
-                  + '#ddgpt-settings li > input { float: right }' // pos toggles
+                  + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
                   + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
                   + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                       + 'position: relative ; top: 3px ; margin-left: 4px }'
@@ -2820,7 +2831,7 @@
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
                             modals.settings.toggle.switch(streamingToggle)
             }
-            if (appDiv.querySelector('#ddgpt-alert')) location.reload() // re-send query if user alerted
+            if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
             else {
                 log.caller = 'toggle.proxyMode()'
                 log.debug(`Success! config.proxyAPIenabled = ${config.proxyAPIenabled}`)
@@ -3392,7 +3403,7 @@
         copyBtns() {
             if (document.getElementById('copy-btn')) return
 
-            appDiv.querySelectorAll('#ddgpt > pre, code').forEach(parentElem => {
+            appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
                 copyBtn.id = 'copy-btn' ; copySVG.id = 'copy-icon'
@@ -3650,7 +3661,7 @@
                 setTimeout(() => show.related(queries), 500, queries) ; return }
 
             // Re-get.related() if current reply is question to suggest answers
-            const currentReply = appDiv.querySelector('#ddgpt > pre')?.textContent.trim()
+            const currentReply = appDiv.querySelector(`#${app.cssPrefix} > pre`)?.textContent.trim()
             if (show.reply.src != 'shuffle' && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
                 log.debug('Re-getting related queries to answer reply question...')
                 get.related.replyIsQuestion = true
@@ -3712,26 +3723,24 @@
 
     log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
 
-    // Create/ID/classify/listenerize DDGPT container
-    const appDiv = document.createElement('div') ; appDiv.id = 'ddgpt'
+    // Create/ID/classify/listenerize/stylize APP container
+    const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv()
-
-    // Stylize APP elems
     const appStyle = create.style() ; update.style.app() ; document.head.append(appStyle);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style(),
-          wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
-                    + 'section[data-area="sidebar"] { min-width: 530px !important ; flex-basis: 530px !important }',
-          ssbStyles = '#ddgpt { position: sticky ; top: 14px }'
-                    + '#ddgpt ~ * { display: none }' // hide sidebar contents
-                    + 'body, div.site-wrapper { overflow: clip }', // replace `overflow: hidden` to allow stickiness
-          anchorStyles = '#ddgpt { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }'
+    const tweaksStyle = create.style()
+    const wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
+                    + 'section[data-area="sidebar"] { min-width: 530px !important ; flex-basis: 530px !important }'
+    const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 14px }`
+                    + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
+                    + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
+    const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
                        + '[class*="feedback"], .related-queries, #wsb-btn  { display: none }'
-                       + '#chevron-btn, #arrows-btn { display: block !important }',
-          expandedStyles = '#ddgpt { width: 528px }'
+                       + '#chevron-btn, #arrows-btn { display: block !important }'
+    const expandedStyles = `#${app.cssPrefix} { width: 528px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
