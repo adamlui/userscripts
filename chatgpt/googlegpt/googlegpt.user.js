@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.10.1
+// @version                  2024.12.10.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -428,7 +428,8 @@
 
     // Init APP data
     const app = {
-        name: 'GoogleGPT', version: GM_info.script.version, symbol: '🤖', configKeyPrefix: 'googleGPT',
+        name: 'GoogleGPT', version: GM_info.script.version, symbol: '🤖',
+        configKeyPrefix: 'googleGPT', cssPrefix: 'googlegpt',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: {
             app: 'https://www.googlegpt.io',
@@ -914,7 +915,7 @@
         alerts = alerts.flat() // flatten array args nested by spread operator
         appDiv.textContent = ''
         const alertP = document.createElement('p')
-        alertP.id = 'googlegpt-alert' ; alertP.className = 'no-user-select'
+        alertP.id = `${app.cssPrefix}-alert` ; alertP.className = 'no-user-select'
         if (!alerts.includes('waitingResponse')) alertP.style.marginBottom = '16px' // counteract #googlegpt p margins
 
         alerts.forEach((alert, idx) => { // process each alert for display
@@ -991,7 +992,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.name.replace(/ /g, '-').toLowerCase()}-modal`,
+        class: `${app.cssPrefix}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
@@ -1316,7 +1317,7 @@
 
                 // Init master elems
                 const settingsContainer = document.createElement('div'),
-                      settingsModal = document.createElement('div') ; settingsModal.id = 'googlegpt-settings'
+                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.cssPrefix}-settings`
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
@@ -1331,7 +1332,8 @@
                                             + `margin: 13px 0 ${ env.browser.isPortrait ? '-35' : '-27' }px ;`
                                             + `position: relative ; top: -42px ; ${ env.browser.isPortrait ? 'left: 6px' : '' }`
                 // Init title
-                const settingsTitleDiv = document.createElement('div') ; settingsTitleDiv.id = 'googlegpt-settings-title'
+                const settingsTitleDiv = document.createElement('div')
+                settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 const settingsTitleIcon = icons.sliders.create()
@@ -1489,7 +1491,7 @@
 
                 // Create close button
                 const closeBtn = document.createElement('div')
-                closeBtn.classList.add('googlegpt-modal-close-btn', 'no-mobile-tap-outline')
+                closeBtn.classList.add(`${app.cssPrefix}-modal-close-btn`, 'no-mobile-tap-outline')
                 closeBtn.title = app.msgs.tooltip_close
                 const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
 
@@ -1504,7 +1506,7 @@
                 return settingsContainer
             },
 
-            get() { return document.getElementById('googlegpt-settings') },
+            get() { return document.getElementById(`${app.cssPrefix}-settings`) },
 
             show() {
                 log.caller = 'modals.settings.show()'
@@ -1514,7 +1516,7 @@
                 log.caller = 'modals.settings.show()'
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
-                    const settingsModal = settingsContainer.querySelector('#googlegpt-settings'),
+                    const settingsModal = settingsContainer.querySelector(`#${app.cssPrefix}-settings`),
                           scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
@@ -1625,7 +1627,7 @@
 
             createAppend() {
                 const pinMenu = document.createElement('div') ; pinMenu.id = 'pin-menu'
-                pinMenu.classList.add('googlegpt-menu', 'btn-tooltip', 'fade-in-less', 'no-user-select')
+                pinMenu.classList.add(`${app.cssPrefix}-menu`, 'btn-tooltip', 'fade-in-less', 'no-user-select')
                 menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
                 return pinMenu
             },
@@ -1653,10 +1655,10 @@
                 for (let i = 0 ; i < 4 ; i++) {
                     pinMenuItems.push(document.createElement('li'))
                     pinMenuItems[i].textContent = pinMenulabels[i]
-                    pinMenuItems[i].className = 'googlegpt-menu-item'
+                    pinMenuItems[i].className = `${app.cssPrefix}-menu-item`
                     if (i == 0) { // format header item
                         pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
-                        pinMenuItems[i].classList.add('googlegpt-menu-header') // to not apply hover fx from appStyle
+                        pinMenuItems[i].classList.add(`${app.cssPrefix}-menu-header`) // to not apply hover fx from appStyle
                         pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
                     } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
                     pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
@@ -1865,14 +1867,14 @@
 
         googleGPT: {
             create(color = '') {
-                const icon = document.createElement('img') ; icon.id = 'googlegpt-icon'
+                const icon = document.createElement('img') ; icon.id = `${app.cssPrefix}-icon`
                 icons.googleGPT.update(icon, color)
                 return icon
             },
 
             update(targetIcons = [], color = '') {
                 if (!Array.isArray(targetIcons)) targetIcons = [targetIcons]
-                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#googlegpt-icon')
+                if (targetIcons.length == 0) targetIcons = document.querySelectorAll(`#${app.cssPrefix}-icon`)
                 targetIcons.forEach(icon => {
                     icon.src = GM_getResourceText(`ggptIcon${( color.charAt(0).toUpperCase() + color.slice(1) )
                                                           || ( env.ui.app.scheme == 'dark' ? 'White' : 'Black' )}`)
@@ -2122,14 +2124,14 @@
 
             create() {
                 const googleGPTlogo = document.createElement('img')
-                googleGPTlogo.id = 'googlegpt-logo' ; googleGPTlogo.className = 'no-mobile-tap-outline'
+                googleGPTlogo.id = `${app.cssPrefix}-logo` ; googleGPTlogo.className = 'no-mobile-tap-outline'
                 logos.googleGPT.update(googleGPTlogo)
                 return googleGPTlogo
             },
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll('#googlegpt-logo')
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.cssPrefix}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`ggpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
@@ -2302,16 +2304,16 @@
                       + '-ms-user-select: none ; user-select: none }'
                   + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
                   + ( // stylize scrollbars in Chromium/Safari
-                        '#googlegpt *::-webkit-scrollbar { width: 7px }'
-                      + '#googlegpt *::-webkit-scrollbar-thumb { background: #cdcdcd }'
-                      + '#googlegpt *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }'
-                      + '#googlegpt *::-webkit-scrollbar-track { background: none }' )
-                  + '#googlegpt * { scrollbar-width: thin }' // make scrollbars thin in Firefox
+                        `#${app.cssPrefix} *::-webkit-scrollbar { width: 7px }`
+                      + `#${app.cssPrefix} *::-webkit-scrollbar-thumb { background: #cdcdcd }`
+                      + `#${app.cssPrefix} *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }`
+                      + `#${app.cssPrefix} *::-webkit-scrollbar-track { background: none }` )
+                  + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
                   + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
                       // ...to show resize cursor everywhere
                       + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                       + 'z-index: 9999 ; cursor: ew-resize }'
-                  + '#googlegpt {'
+                  + `#${app.cssPrefix} {`
                       + `z-index: 5555 ; padding: ${ env.browser.isFF ? 20 : 22 }px 26px 6px 26px ;`
                       + 'flex-basis: 0 ; height: fit-content ;'
                       + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
@@ -2329,9 +2331,11 @@
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                           + ( config.anchored ? 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' : '' ) // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
-                  + '#googlegpt:hover { box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
-                  + '#googlegpt p { margin: 0 ;' + ( env.ui.app.scheme == 'dark' ? 'color: #ccc }' : '}' )
-                  + `#googlegpt .alert-link { color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+                  + `#${app.cssPrefix}:hover {`
+                      + 'box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
+                  + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
+                  + `#${app.cssPrefix} .alert-link {`
+                      + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
                   + '.app-name {'
                       + 'font-size: 1.35rem ; font-weight: 700 ; text-decoration: none ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
@@ -2353,10 +2357,12 @@
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
                   + `.corner-btn:active { ${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                                      : 'fill: #638ed4 ; stroke: #638ed4' } }`
-                  + ( config.bgAnimationsDisabled ? '' : ( '#googlegpt-logo, .corner-btn svg, .standby-btn'
+                  + ( config.bgAnimationsDisabled ? '' : ( `#${app.cssPrefix}-logo, .corner-btn svg, .standby-btn`
                       + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px' : '#aaaaaa21 7px' } 7px 3px) }` ))
-                  + '#googlegpt .loading { padding-bottom: 15px ; color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-                  + '#googlegpt.sidebar-free { margin-left: 60px ; height: fit-content }'
+                  + `#${app.cssPrefix} .loading {`
+                      + 'padding-bottom: 15px ; color: #b6b8ba ;'
+                      + 'animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+                  + `#${app.cssPrefix}.sidebar-free { margin-left: 60px ; height: fit-content }`
                   + '#font-size-slider-track {'
                       + 'width: 98% ; height: 7px ; margin: 0 auto -15px ; padding: 15px 0 ;'
                       + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
@@ -2391,7 +2397,7 @@
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                           + `${ // hide reply tip for terminal aesthetic
                                 isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
-                  + '#googlegpt > pre {'
+                  + `#${app.cssPrefix} > pre {`
                       + `font-size: ${config.fontSize}px ; white-space: pre-wrap ; min-width: 0 ;`
                       + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
                       + 'margin: 16px 0 0 0 ; padding: 1.25em ; border-radius: 10px ; overflow: auto ;'
@@ -2404,10 +2410,10 @@
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
                       + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
-                  + '#googlegpt > pre a, #googlegpt > pre a:visited { color: #4495d4 }'
-                  + `#googlegpt pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#28a017' }}`
+                  + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
+                  + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#28a017' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-                  + '#googlegpt section.loading { padding: 15px 0 14px 5px }' // left/top-pad loading status when sending replies
+                  + `#${app.cssPrefix} section.loading { padding: 15px 0 14px 5px }` // left/top-pad loading status when sending replies
                   + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
                         env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
@@ -2459,11 +2465,12 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // markdown styles
-                        '#googlegpt > pre h1 { font-size: 1.25em } #googlegpt > pre h2 { font-size: 1.1em }' // size headings
-                      + '#googlegpt > pre > p:last-of-type { margin-bottom: -1.25em }' // eliminate bottom gap
-                      + '#googlegpt > pre ol { padding-left: 1.58em }' // indent
-                      + '#googlegpt > pre ul { margin: -10px 0 -6px ; padding-left: 1.5em }' // reduce v-spacing, indent
-                      + '#googlegpt > pre li { margin: -10px 0 ; list-style: unset }' ) // reduce v-spacing, show left symbols
+                        `#${app.cssPrefix} > pre h1 { font-size: 1.25em }`
+                      + `#${app.cssPrefix} > pre h2 { font-size: 1.1em }` // size headings
+                      + `#${app.cssPrefix} > pre > p:last-of-type { margin-bottom: -1.25em }` // eliminate bottom gap
+                      + `#${app.cssPrefix} > pre ol { padding-left: 1.58em }` // indent
+                      + `#${app.cssPrefix} > pre ul { margin: -10px 0 -6px ; padding-left: 1.5em }` // reduce v-spacing, indent
+                      + `#${app.cssPrefix} > pre li { margin: -10px 0 ; list-style: unset }` ) // reduce v-spacing, show left symbols
                   + 'code.hljs { text-wrap: nowrap ; overflow-x: scroll }' // don't wrap highlighted code to be scrollable horizontally
                   + '.katex-html { display: none }' // hide unrendered math
                   + '.chatgpt-notif { fill: white ; stroke: white ; font-size: 25px !important ; padding: 13px 14px 13px 13px !important }'
@@ -2506,19 +2513,20 @@
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
                         '[class$="-modal"] button { transition: transform 0.15s ease }'
                       + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
-                  + '.googlegpt-menu {'
+                  + `.${app.cssPrefix}-menu {`
                       + 'position: absolute ; z-index: 12250 ;'
                       + 'padding: 3.5px 5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
-                  + '.googlegpt-menu ul { margin: 0 ; padding: 0 ; list-style: none }'
-                  + '.googlegpt-menu-item { padding: 0 5px ; line-height: 20.5px }'
-                  + '.googlegpt-menu-item:not(.googlegpt-menu-header):hover {'
+                  + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
+                  + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
+                  + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-                  + '#checkmark-icon { fill: #b3f96d } .googlegpt-menu-item:hover #checkmark-icon { fill: green }'
-                  + '#googlegpt footer {'
+                  + '#checkmark-icon { fill: #b3f96d }'
+                  + `.${app.cssPrefix}-menu-item:hover #checkmark-icon { fill: green }`
+                  + `#${app.cssPrefix} footer {`
                       + 'position: relative ; right: -33px ; text-align: right ; font-size: 0.75rem ; line-height: 1.43em ;'
                       + `margin: ${ env.browser.isFF ? 1 : -2 }px -32px 12px }`
-                  + '#googlegpt footer * { color: #aaa ; text-decoration: none }'
-                  + `#googlegpt footer a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+                  + `#${app.cssPrefix} footer * { color: #aaa ; text-decoration: none }`
+                  + `#${app.cssPrefix} footer a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
 
                   // Glowing modal btns
                   + ':root { --glow-color: hsl(186 100% 69%); }'
@@ -2557,7 +2565,7 @@
                       + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
                       + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
-                  // chatgpt.alert() + GoogleGPT modals
+                  // chatgpt.alert() + app modals
                   + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
                   + '[class*="modal-close-btn"] {'
                       + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
@@ -2576,39 +2584,39 @@
                   + '[class*="-modal"] button { font-size: 12px }'
 
                   // Settings modal
-                  + '#googlegpt-settings {'
+                  + `#${app.cssPrefix}-settings {`
                       + `min-width: ${ env.browser.isPortrait ? 288 : 698 }px ;`
                       + 'max-width: 75vw ; word-wrap: break-word ;'
                       + 'margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
-                  + '#googlegpt-settings-title {'
+                  + `#${app.cssPrefix}-settings-title {`
                       + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
                       + `margin: 0 -6px ${ env.browser.isPortrait ? 2 : -15 }px 0 }`
-                  + '#googlegpt-settings-title h4 {'
+                  + `#${app.cssPrefix}-settings-title h4 {`
                       + `font-size: ${ env.browser.isPortrait ? 22 : 29 }px ; font-weight: bold ;`
                       + `margin: 0 0 ${ env.browser.isPortrait ? 9 : 27 }px }`
-                  + '#googlegpt-settings ul {'
+                  + `#${app.cssPrefix}-settings ul {`
                       + 'list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
                       + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-                  + '#googlegpt-settings li {'
+                  + `#${app.cssPrefix}-settings li {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for text
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
                       + 'height: 24px ; font-size: 13.5px ; transition: transform 0.1s ease ;'
                       + `padding: 6px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
                       + 'border-radius: 3px }' // make highlight strips slightly rounded
-                  + '#googlegpt-settings li.active {'
+                  + `#${app.cssPrefix}-settings li.active {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
                       + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
                       + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
-                  + '#googlegpt-settings li label { padding-right: 20px }' // right-pad labels so toggles don't hug
-                  + '#googlegpt-settings li:last-of-type { border-bottom: none }' // remove last bottom-border
-                  + '#googlegpt-settings li, #googlegpt-settings li label { cursor: pointer }' // add finger on hover
-                  + '#googlegpt-settings li:hover {'
+                  + `#${app.cssPrefix}-settings li label { padding-right: 20px }` // right-pad labels so toggles don't hug
+                  + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+                  + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
+                  + `#${app.cssPrefix}-settings li:hover {`
                       + 'opacity: 1 ;'
                       + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
-                  + '#googlegpt-settings li > input { float: right }' // pos toggles
+                  + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
                   + '#scheme-menu-entry > span { margin: 0 -2px !important }' // align Scheme status
                   + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                       + 'position: relative ; top: 3px ; margin-left: 4px }'
@@ -3144,7 +3152,7 @@
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
                             modals.settings.toggle.switch(streamingToggle)
             }
-            if (appDiv.querySelector('#googlegpt-alert')) location.reload() // re-send query if user alerted
+            if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
             else {
                 log.caller = 'toggle.proxyMode()'
                 log.debug(`Success! config.proxyAPIenabled = ${config.proxyAPIenabled}`)
@@ -3719,7 +3727,7 @@
         copyBtns() {
             if (document.getElementById('copy-btn')) return
 
-            appDiv.querySelectorAll('#googlegpt > pre, code').forEach(parentElem => {
+            appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
                 copyBtn.id = 'copy-btn' ; copySVG.id = 'copy-icon'
@@ -3992,7 +4000,7 @@
                 setTimeout(() => show.related(queries), 500, queries) ; return }
 
             // Re-get.related() if current reply is question to suggest answers
-            const currentReply = appDiv.querySelector('#googlegpt > pre')?.textContent.trim()
+            const currentReply = appDiv.querySelector(`#${app.cssPrefix} > pre`)?.textContent.trim()
             if (show.reply.src != 'shuffle' && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
                 log.debug('Re-getting related queries to answer reply question...')
                 get.related.replyIsQuestion = true
@@ -4072,26 +4080,24 @@
     }
     log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
-    // Create/ID/classify/listenerize GOOGLEGPT container
-    const appDiv = document.createElement('div') ; appDiv.id = 'googlegpt'
+    // Create/ID/classify/listenerize/stylize APP container
+    const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv()
-
-    // Stylize APP elems
     const appStyle = create.style() ; update.style.app() ; document.head.append(appStyle);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style(),
-          wsbStyles = '#center_col, #center_col div { max-width: 516px !important ; overflow: hidden }' // shrink center column
-                    + '#googlegpt { width: 455px }' // expand GoogleGPT when in limiting Google host container
-                    + '#googlegpt ~ div { width: 540px !important }', // expand side snippets
-          ssbStyles = '#googlegpt { position: sticky ; top: 87px }'
-                    + '#googlegpt ~ * { display: none }', // hide sidebar contents
-          anchorStyles = '#googlegpt { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }'
+    const tweaksStyle = create.style()
+    const wsbStyles = '#center_col, #center_col div { max-width: 516px !important ; overflow: hidden }' // shrink center column
+                    + `#${app.cssPrefix} { width: 455px }` // expand GoogleGPT when in limiting Google host container
+                    + `#${app.cssPrefix} ~ div { width: 540px !important }` // expand side snippets
+    const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 87px }`
+                    + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
+    const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
                        + '[class*="feedback"], .related-queries, #wsb-btn  { display: none }'
-                       + '#chevron-btn, #arrows-btn { display: block !important }',
-          expandedStyles = '#googlegpt { width: 528px }'
+                       + '#chevron-btn, #arrows-btn { display: block !important }'
+    const expandedStyles = `#${app.cssPrefix} { width: 528px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
