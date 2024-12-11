@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.9.5
+// @version             2024.12.10
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,7 +242,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/components/modals.js#sha256-2ERkN4twKlbUPjSr9AoY4pt3CKk6ZP6wY1T6ALkI0/E=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@ec4635e9abdb56fc8abe89af5d2d490fac1f8cbe/chrome/extension/components/modals.js#sha256-k3Hj2lt7A7ZEHFqAavA7AGKisg5FJVpHD/pLqrVRLEc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/dom.js#sha256-78Sl2iVpwThKJ5+zif7VwNehwMWU36I4mDflaksSdqg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/settings.js#sha256-Dspb85b2Nyy1+z4YvFAUelmh31KzMUsjOwpdCOrvHy4=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/css/black-rising-stars.min.css?v=542104c#sha256-GQLnVMub4cpV5A59pvnDe8peGrW1v49u1UbDHHTGBBI=
@@ -285,7 +285,7 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: '4c0553b'
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {}, latestAssetCommitHash: 'ec4635e'
     }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
