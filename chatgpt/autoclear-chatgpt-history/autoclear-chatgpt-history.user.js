@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.10.3
+// @version             2024.12.11
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -489,17 +489,17 @@
             return alert
         },
 
-        init(modal) {
-            modal.classList.add(this.class)
-            modal.onmousedown = this.dragHandlers.mousedown
-            fillStarryBG(modal)
-        },
-
         open(modalType, modalSubType) {
             const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
             this.init(modal) // add class/listener/starry bg
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+        },
+
+        init(modal) {
+            modal.classList.add(this.class)
+            modal.onmousedown = this.dragHandlers.mousedown
+            fillStarryBG(modal)
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
