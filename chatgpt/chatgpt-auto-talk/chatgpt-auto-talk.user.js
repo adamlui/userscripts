@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12.4
+// @version             2024.12.12.5
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -795,8 +795,11 @@
                 // Append elements
                 this.div.append(navicon, toggleInput, switchSpan, toggleLabel)
 
-                // Stylize/classify
-                this.div.style.cssText += 'height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
+                // Stylize/classify master div
+                this.div.style.cssText += (
+                    'max-height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
+                  + 'flex-grow: unset' // overcome OpenAI .grow
+                )
                 if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
                     const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
                           firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
@@ -804,7 +807,8 @@
                     this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
                 }
 
-                toggles.sidebar.updateState() // to opposite init state for animation on 1st load
+                // Update color/state
+                this.updateColor() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add listeners
                 this.div.onmouseover = this.div.onmouseout = event =>
@@ -818,25 +822,18 @@
 
             insert() {
                 if (this.status?.startsWith('insert') || document.getElementById(this.ids.navicon)) return
+                const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0] ; if (!sidebar) return
                 this.status = 'inserting' ; if (!this.div) this.create()
+                sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
+            },
 
-                // Insert toggle
-                const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0]
-                if (!sidebar) return
-                sidebar.insertBefore(this.div, sidebar.children[1])
-
-                // Tweak styles
-                const knobSpan = document.getElementById(this.ids.knobSpan),
-                      navicon = document.getElementById(this.ids.navicon)
-                this.div.style.flexGrow = 'unset' // overcome OpenAI .grow
-                this.div.style.paddingLeft = '8px'
-                if (knobSpan) knobSpan.style.boxShadow = (
+            updateColor() {
+                const knobSpan = this.div.querySelector(`#${this.ids.knobSpan}`),
+                      navicon = this.div.querySelector(`#${this.ids.navicon}`)
+                knobSpan.style.boxShadow = (
                     'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
-                if (navicon) navicon.src = `${ // update navicon color in case scheme changed
-                    app.urls.assetHost }/assets/images/icons/speaker/${
+                navicon.src = `${app.urls.assetHost }/assets/images/icons/speaker/${
                     chatgpt.isDarkMode() ? 'white' : 'black' }-icon.svg`
-
-                this.status = 'inserted'
             },
 
             updateState() {
@@ -905,6 +902,10 @@
                 toggles.sidebar.status = 'missing' ; toggles.sidebar.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
 
+    // Monitor SCHEME CHANGES to update sidebar toggle color
+    new MutationObserver(() => toggles.sidebar.updateColor())
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
@@ -912,7 +913,7 @@
                 && !target.id.endsWith('-knob-span') // exclude our toggles.sidebar
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
-        })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})
+        })).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['style'] })
         document.documentElement.setAttribute('sidebar-click-zoom-observed', true)
     }
 
