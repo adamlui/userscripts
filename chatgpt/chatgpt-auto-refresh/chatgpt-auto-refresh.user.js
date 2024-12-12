@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.11
+// @version             2024.12.12
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -536,9 +536,30 @@
         },
 
         init(modal) {
-            modal.classList.add(this.class)
-            modal.onmousedown = this.dragHandlers.mousedown
+            if (!this.styles) this.stylize() // to init/append stylesheet
+            modal.classList.add(this.class) ; modal.onmousedown = this.dragHandlers.mousedown // add class/listener
             fillStarryBG(modal)
+        },
+
+        stylize() {
+            if (!this.styles) {
+                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                document.head.append(this.styles)
+            }
+            this.styles.innerText = (
+                `.${this.class} { z-index: 13456 ; position: absolute }` // to be click-draggable
+              + ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+              + `.${this.class} button {`
+                  + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
+                  + 'border-radius: 0 !important ;' // square borders
+                  + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
+                  + 'cursor: pointer !important ;' // add finger cursor
+                  + 'padding: 5px !important ; min-width: 102px }' // resize
+              + `.${this.class} button:hover {` // add zoom, re-scheme
+                  + 'transform: scale(1.055) ; color: black !important ;'
+                  + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
+              + ( !env.browser.isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
+            )
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
@@ -906,7 +927,7 @@
     env.ui = { firstLink: chatgpt.getNewChatLink() }
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 1732600036095 // timestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1733992854076 // timestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -914,21 +935,7 @@
             tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
             document.head.append(tweaksStyle)
         }
-        tweaksStyle.innerText = (
-            '[class$="-modal"] { z-index: 13456 ; position: absolute }' // to be click-draggable
-          + ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
-          + '.chatgpt-modal button {'
-              + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
-              + 'border-radius: 0 !important ;' // square borders
-              + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
-              + 'cursor: pointer !important ;' // add finger cursor
-              + 'padding: 5px !important ; min-width: 102px }' // resize
-          + '.chatgpt-modal button:hover {' // add zoom, re-scheme
-              + 'transform: scale(1.055) ; color: black !important ;'
-              + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
-          + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
-          + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
-        )
+        tweaksStyle.innerText = '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
     }; // eslint-disable-line
 
     // Add STARS styles
