@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.1
+// @version                2024.12.12.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1908,8 +1908,9 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // rendered markdown styles
-                        `#${app.cssPrefix} > pre h1 { font-size: 24px } #${app.cssPrefix} > pre h2 { font-size: 22px }`
-                      + `#${app.cssPrefix} > pre h3 { font-size: 20px }`
+                        `#${app.cssPrefix} > pre h1 { font-size: 1.8em }`
+                      + `#${app.cssPrefix} > pre h2 { font-size: 1.65em }`
+                      + `#${app.cssPrefix} > pre h3 { font-size: 1.4em }`
                       + `#${app.cssPrefix} > pre h1, #${app.cssPrefix} > pre h2, #${app.cssPrefix} > pre h3 {`
                           + 'margin-bottom: -15px }'
                       + `#${app.cssPrefix} > pre ol {`
