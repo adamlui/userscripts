@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.11.2
+// @version             2024.12.12
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,8 +242,8 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@ec4635e9abdb56fc8abe89af5d2d490fac1f8cbe/chrome/extension/components/modals.js#sha256-k3Hj2lt7A7ZEHFqAavA7AGKisg5FJVpHD/pLqrVRLEc=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/dom.js#sha256-78Sl2iVpwThKJ5+zif7VwNehwMWU36I4mDflaksSdqg=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7107bf9d435ffbe64e3884a5b120313ec518bd66/chrome/extension/components/modals.js#sha256-wYrCWbqsQQm9oYDto0eF3V4lMbie2s7ktyjBuYOzRuk=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7107bf9d435ffbe64e3884a5b120313ec518bd66/chrome/extension/lib/dom.js#sha256-K099+UXtls5Z706WnvRZRjgBjJ740EOTQcB4zglYQj4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/settings.js#sha256-Dspb85b2Nyy1+z4YvFAUelmh31KzMUsjOwpdCOrvHy4=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
@@ -271,8 +271,7 @@
     // Init ENV context
     const env = {
         browser: {
-            language: chatgpt.getUserLanguage(),
-            isFF: chatgpt.browser.isFirefox(), isMobile: chatgpt.browser.isMobile()
+            language: chatgpt.getUserLanguage(), isFF: chatgpt.browser.isFirefox(), isMobile: chatgpt.browser.isMobile()
         },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
@@ -395,7 +394,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init MODALS dependencies
-    modals.dependencies.import({ app, browserLang: env.browser.language, updateCheck })
+    modals.dependencies.import({ app, browserLang: env.browser.language, isMobile: env.browser.isMobile, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -732,18 +731,7 @@
 
             tweaks() {
                 tweaksStyle.innerText = (
-                    '[class$="-modal"] { z-index: 13456 ; position: absolute }' // to be click-draggable
-                  + '[class*="-modal"] button {'
-                      + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
-                      + 'border-radius: 0 !important ;' // square borders
-                      + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
-                      + 'cursor: pointer !important ;' // add finger cursor
-                      + 'padding: 5px !important ; min-width: 102px }' // resize
-                  + '.chatgpt-modal button:hover {' // add zoom, re-scheme
-                      + 'transform: scale(1.055) ; color: black !important ;'
-                      + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
-                  + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
-                  + ( /chatgpt|openai/.test(env.site) ? (
+                    ( /chatgpt|openai/.test(env.site) ? (
                           ( '[id$="-btn"]:hover { opacity: 100% !important }' ) // prevent chatbar btn dim on hover
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
