@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12.2
+// @version             2024.12.12.3
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -821,10 +821,9 @@
                 toggles.sidebar.updateState() // to opposite init state for animation on 1st load
 
                 // Add listeners
-                this.div.onmouseover = () =>
-                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-secondary)')
-                this.div.onmouseout = () =>
-                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-primary)')
+                this.div.onmouseover = this.div.onmouseout = event =>
+                    this.div.style.setProperty('--item-background-color',
+                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
                     settings.save('autoclear', !toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
                     notify(`${app.msgs.mode_autoclear}: ${menu.state.words[+config.autoclear]}`)
