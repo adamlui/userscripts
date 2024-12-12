@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.3
+// @version                2024.12.12.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -831,6 +831,8 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+            if (!modals.handlers.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
         },
 
         init(modal) {
@@ -3915,9 +3917,6 @@
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
-
-    // Add key listener to DISMISS modals
-    document.addEventListener('keydown', modals.handlers.key)
 
     // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode
     new MutationObserver(handleSchemeChange).observe( // class changes from DDG appearance settings
