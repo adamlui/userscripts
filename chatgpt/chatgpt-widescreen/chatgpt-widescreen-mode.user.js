@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.10.2
+// @version             2024.12.11
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -516,8 +516,9 @@
                     else if (!env.tallChatbar) { // narrow it to not clash w/ buttons
                         const widths = { chatbar: chatbarDiv.getBoundingClientRect().width }
                         const visibleBtnTypes = [...btns.types, 'send'].filter(type =>
-                            !(type == 'fullWindow' && !sites[env.site].hasSidebar)
-                            && !(type == 'newChat' && config.ncbDisabled))
+                                !(type == 'fullWindow' && !sites[env.site].hasSidebar)
+                             && !(type == 'wideScreen' && chatgpt.canvasIsOpen())
+                             && !(type == 'newChat' && config.ncbDisabled))
                         visibleBtnTypes.forEach(type =>
                             widths[type] = btns[type]?.getBoundingClientRect().width
                                  || document.querySelector(`${sites[env.site].selectors.btns.send}, ${
@@ -584,9 +585,11 @@
         create() {
             if (/chatgpt|openai/.test(env.site) && chatbar.get()?.nextElementSibling && !env.tallChatbar)
                 env.tallChatbar = true
-            const validBtnTypes = this.types.filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
-            const bOffset = env.site == 'poe' ? -1.5 : env.site == 'perplexity' ? -13 : env.tallChatbar ? 31 : -8.85,
-                  rOffset = env.site == 'poe' ? -6   : env.site == 'perplexity' ? -4  : env.tallChatbar ? 47 : -0.25
+            const validBtnTypes = this.types.filter(type =>
+                    !(type == 'fullWindow' && !sites[env.site].hasSidebar)
+                 && !(type == 'wideScreen' && chatgpt.canvasIsOpen()))
+            const bOffset = env.site == 'poe' ? -1.5 : env.site == 'perplexity' ? -13 : env.tallChatbar ? 31 : -8.85
+            const rOffset = env.site == 'poe' ? -6   : env.site == 'perplexity' ? -4  : env.tallChatbar ? 47 : -0.25
             validBtnTypes.forEach(async (btnType, idx) => {
                 this[btnType] = dom.create.elem('div')
                 this[btnType].id = btnType + '-btn' // for toggle.tooltip()
@@ -627,13 +630,14 @@
         },
 
         insert() {
-            if (this.status?.startsWith('insert') || document.getElementById('wideScreen-btn')) return
+            if (this.status?.startsWith('insert') || document.getElementById('fullScreen-btn')) return
             this.status = 'inserting' ; if (!this.wideScreen) this.create()
 
             // Init elems
             const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
             const btnTypesToInsert = this.types.slice().reverse() // to left-to-right for insertion order
-                .filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
+                .filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar)
+                             && !(type == 'wideScreen' && chatgpt.canvasIsOpen()))
             const parentToInsertInto = /chatgpt|openai/.test(env.site) ? chatbarDiv.nextElementSibling || chatbarDiv
                                      : env.site == 'perplexity' ? chatbarDiv.lastChild // Pro spam toggle parent
                                      : chatbarDiv
@@ -651,7 +655,7 @@
         },
 
         remove() {
-            if (!chatbar.get() || !document.getElementById('wideScreen-btn')) return
+            if (!chatbar.get() || !document.getElementById('fullScreen-btn')) return
             this.types.forEach(type => this[type]?.remove()) ; tooltipDiv?.remove()
             this.status = 'missing' // ensure next btns.insert() doesn't return early
         },
@@ -770,11 +774,14 @@
         },
 
         tooltip(btnType) { // text & position
-            const visibleBtnTypes = btns.types.filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar))
+            const visibleBtnTypes = btns.types.filter(type =>
+                    !(type == 'fullWindow' && !sites[env.site].hasSidebar)
+                 && !(type == 'wideScreen' && chatgpt.canvasIsOpen())
+                 && !(type == 'newChat' && config.ncbDisabled))
             const ctrAddend = ( env.site == 'perplexity' ? ( location.pathname == '/' ? 94 : 105 )
-                              : env.site == 'poe' ? 45 : 13 ) +25,
-                  spreadFactor = env.site == 'perplexity' ? 26.5 : env.site == 'poe' ? 34 : 30.55,
-                  iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
+                              : env.site == 'poe' ? 45 : 13 ) +25
+            const spreadFactor = env.site == 'perplexity' ? 26.5 : env.site == 'poe' ? 34 : 30.55
+            const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
                              + ( env.tallChatbar ? -3 : 4 )
             tooltipDiv.innerText = app.msgs['tooltip_' + btnType + (
                 !/full|wide/i.test(btnType) ? '' : (config[btnType] ? 'OFF' : 'ON'))]
@@ -972,19 +979,25 @@
     // Monitor NODE CHANGES to maintain button visibility + update colors
     let isTempChat = false, canvasWasOpen = chatgpt.canvasIsOpen()
     const nodeObserver = new MutationObserver(([mutation]) => {
-        if (/chatgpt|openai/.test(env.site)) {
-            if (!canvasWasOpen && chatgpt.canvasIsOpen()) {
-                btns.remove() ; chatbar.tweak() ; canvasWasOpen = true
-            } else if (canvasWasOpen && !chatgpt.canvasIsOpen()) {
-                btns.insert() ; chatbar.tweak() ; canvasWasOpen = false }
-        }
-        if (!document.getElementById('wideScreen-btn') && chatbar.get() && btns.status != 'inserting') {
+
+        // Maintain button visibility on nav
+        if (!document.getElementById('fullScreen-btn') && chatbar.get() && btns.status != 'inserting') {
             btns.status = 'missing' ; btns.insert() }
-        if (/chatgpt|openai/.test(env.site)) { // Update button colors on ChatGPT scheme or temp chat toggle
+
+        // Maintain button colors + Widescreen button visibility on snowflake chatgpt.com
+        if (/chatgpt|openai/.test(env.site)) {
+
+            // Update button colors on ChatGPT scheme or temp chat toggle
             const chatbarIsBlack = !!document.querySelector('div[class*="bg-black"]:not([id$="-btn"])')
             if (chatbarIsBlack != isTempChat // temp chat toggled
                 || mutation.target == document.documentElement && mutation.attributeName == 'class') { // scheme toggled
                     btns.updateColor() ; isTempChat = chatbarIsBlack }
+
+            // Add/remove Widescreen button on Canvas mode toggle
+            if (canvasWasOpen ^ chatgpt.canvasIsOpen()) {
+                btns.remove() ; btns.create() // again for new h-offsets
+                btns.insert() ; chatbar.tweak() ; canvasWasOpen = !canvasWasOpen
+            }
         }
     })
     nodeObserver.observe(document[env.site == 'poe' ? 'head' : 'body'], { attributes: true, subtree: true })
