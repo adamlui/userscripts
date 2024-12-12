@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.10.2
+// @version             2024.12.12
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -228,8 +228,8 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@58b5c7ead1fb159aa0bce65e3e04012ed7a2f3ac/chromium/extension/components/modals.js#sha256-A9I4GGKdP2tOlL0PLdyvQobkJYo6nYvBlFumuoJR6BA=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/dom.js#sha256-RV5ZNK9lGH9IC1sPNNflDj+fOuC97le/ac6rrezdNos=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@db647b482b7261d13df25bb466877081c700b989/chromium/extension/components/modals.js#sha256-DD3oGsJ35T47kCUk8Q0hkbbI6uj0V4W/wWBncNdOSdI=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@db647b482b7261d13df25bb466877081c700b989/chromium/extension/lib/dom.js#sha256-J71PBNlBQlpHR47s12FlrFmNWORj6/U8usOYvC/gWu4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/settings.js#sha256-JQFSzEyXDmtqseBuscgX2uIYF1yZBEtieMP+wLi6ZJk=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
@@ -256,7 +256,9 @@
 
     // Init ENV context
     const env = {
-        browser: { language: chatgpt.getUserLanguage() },
+        browser: {
+            language: chatgpt.getUserLanguage(), isFF: chatgpt.browser.isFirefox(), isMobile: chatgpt.browser.isMobile()
+        },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -345,7 +347,7 @@
     }
 
     // Init MODALS dependencies
-    modals.dependencies.import({ app, browserLang: env.browser.language, updateCheck })
+    modals.dependencies.import({ app, browserLang: env.browser.language, isMobile: env.browser.isMobile, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -471,7 +473,7 @@
     menu.register() ; if (env.extensionInstalled) return
 
     // Add/update TWEAKS style
-    const tweaksStyleUpdated = 1732627011377 // timestamp of last edit for this file's tweaksStyle
+    const tweaksStyleUpdated = 1733992854076 // timestamp of last edit for this file's tweaksStyle
     let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
     if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
         if (!tweaksStyle) { // outright missing, create/id/attr/append it first
@@ -479,21 +481,7 @@
                 id: 'tweaks-style', 'last-updated': tweaksStyleUpdated.toString() })
             document.head.append(tweaksStyle)
         }
-        tweaksStyle.innerText = (
-            '[class$="-modal"] { z-index: 13456 ; position: absolute }' // to be click-draggable
-          + ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
-          + '.chatgpt-modal button {'
-              + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
-              + 'border-radius: 0 !important ;' // square borders
-              + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
-              + 'cursor: pointer !important ;' // add finger cursor
-              + 'padding: 5px !important ; min-width: 102px }' // resize
-          + '.chatgpt-modal button:hover {' // add zoom, re-scheme
-              + 'transform: scale(1.055) ; color: black !important ;'
-              + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
-          + ( !env.browser.isMobile ? '.modal-buttons { margin-left: -13px !important }' : '' )
-          + '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
-        )
+        tweaksStyle.innerText = '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
     }; // eslint-disable-line
 
     // Add STARS styles
