@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12
+// @version                2024.12.12.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -684,7 +684,7 @@
               + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
               + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + '.modal-buttons {'
-                    `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
+                  + `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
               + '.chatgpt-modal button {'
                   + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
                   + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
