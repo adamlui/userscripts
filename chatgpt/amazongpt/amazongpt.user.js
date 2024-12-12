@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.11
+// @version                2024.12.12
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -651,6 +651,7 @@
         },
 
         init(modal) {
+            if (!this.styles) this.stylize() // to init/append stylesheet
 
             // Add classes
             modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
@@ -669,6 +670,164 @@
 
             // Glowup btns
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+        },
+
+        stylize() {
+            if (!this.styles) {
+                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                document.head.append(this.styles)
+            }
+            this.styles.innerText = (
+                '.chatgpt-modal > div {'
+                  + 'padding: 20px 25px 24px 25px !important ;' // increase alert padding
+                  + 'background-color: white !important ; color: black }'
+              + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
+              + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + '.modal-buttons {'
+                    `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
+              + '.chatgpt-modal button {'
+                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
+                  + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
+                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+                  + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
+                  + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
+              + '.primary-modal-btn { background: black !important ; color: white !important }'
+              + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
+              + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
+                      + 'background-color: black !important ; color: white }'
+                  + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
+                  + '.chatgpt-modal a { color: #00cfff !important }'
+                  + '.chatgpt-modal button:hover {'
+                      + 'background-color: #00cfff !important ; color: black !important }' ) : '' )
+              + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
+              + '[class*="modal-close-btn"] {'
+                  + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
+                  + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
+              + `[class*="modal-close-btn"] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
+                                                                             : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
+                    '[class*="modal-close-btn"]:hover path { stroke: black ; fill: black }' : '' )
+              + '[class*="modal-close-btn"]:hover { background-color: #f2f2f2 }' // hover underlay
+              + '[class*="modal-close-btn"] svg { margin: 11.5px }' // center SVG for hover underlay
+              + '[class*="-modal"] h2 {'
+                  + 'font-size: 27px ; font-weight: bold ; line-height: 32px ; padding: 0 ;'
+                  + 'margin: 9px 0 22px !important ;'
+                  + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
+                                             : 'justify-self: start' }}` // left-align on desktop
+              + '[class*="-modal"] p { justify-self: start ; font-size: 20px }'
+              + '[class*="-modal"] button { font-size: 14px }'
+              + '[class*="-modal-bg"] {'
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
+                  + 'transition: background-color .25s ease !important ;' // speed to show bg dim
+                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
+              + '[class*="-modal-bg"].animated > div {'
+                  + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
+              + '[class$="-modal"] {' // native modals + chatgpt.alert()s
+                  + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
+                  + 'opacity: 0 ;' // to fade-in
+                  + `background-image: linear-gradient(180deg, ${
+                       env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
+                  + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                  + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
+                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
+                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
+              + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
+                    '[class$="-modal"] button { transition: transform 0.15s ease }'
+                  + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
+
+              // Glowing modal btns
+              + ':root { --glow-color: hsl(186 100% 69%); }'
+              + '.glowing-btn {'
+                  + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
+                  + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                  + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
+                  + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }'
+              + '.glowing-txt {'
+                  + 'animation: text-flicker 3s linear infinite ;'
+                  + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
+              + '.faulty-letter {'
+                  + 'opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
+                  + ( !env.browser.isMobile ? 'background: var(--glow-color) ;'
+                        + 'transform: translateY(120%) rotateX(95deg) scale(1, 0.35)' : '' ) + '}'
+              + '.glowing-btn::after {'
+                  + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
+                  + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
+                  + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
+              + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover .glowing-txt { animation: none }'
+              + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
+              + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
+              + '.glowing-btn:hover:after { opacity: 1 }'
+              + '@keyframes faulty-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
+                  + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 }'
+                  + '87% { opacity: 1 }}'
+              + '@keyframes text-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
+                  + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
+              + '@keyframes border-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
+
+              // Settings modal
+              + `#${app.cssPrefix}-settings {`
+                  + `min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;`
+                  + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
+              + `#a${app.cssPrefix}-settings-title {`
+                  + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
+                  + `margin: 0 ${ env.browser.isMobile ? 6 : 24 }px 8px 0 }`
+              + `#${app.cssPrefix}-settings-title h4 {`
+                  + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -25px }`
+              + `#${app.cssPrefix}-settings ul {`
+                  + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
+                  + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
+              + `#${app.cssPrefix}-settings li {`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                  + 'list-style: none ; height: 37px ; font-size: 15.5px ; transition: transform 0.1s ease ;'
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                  + `padding: 6px 10px 4px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                  + 'border-radius: 3px }' // make highlight strips slightly rounded
+              + `#${app.cssPrefix}-settings li.active {`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
+              + `#${app.cssPrefix}-settings li label {`
+                  + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
+                  + 'font-weight: normal }' // override Amazon boldening
+              + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+              + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
+              + `#${app.cssPrefix}-settings li:hover {`
+                  + 'opacity: 1 ;'
+                  + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}`
+              + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
+              + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
+              + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
+                  + 'position: relative ; top: 3px ; margin-left: 4px }'
+              + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
+              + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+              + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
+              + '#about-menu-entry > span {' // outer About status span
+                  + `width: ${ env.browser.isPortrait ? '15vw' : '92px' } ; height: 20px ; overflow: hidden ;`
+                  + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
+                            'mask-image: linear-gradient('
+                                + 'to right, transparent, black 20%, black 89%, transparent) ;'
+                  + '-webkit-mask-image: linear-gradient('
+                                + 'to right, transparent, black 20%, black 89%, transparent)' )}}`
+              + '#about-menu-entry > span > div {'
+                  + `text-wrap: nowrap ; ${
+                        config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
+              + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
+              + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
+            )
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
@@ -1597,7 +1756,8 @@
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
             env.ui.app.scheme = newScheme ; logos.amzgpt.update() ; icons.amzgpt.update() ; update.style.app()
-            update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
+            modals.stylize() ; update.stars() ; update.replyPrefix() ; toggle.btnGlow()
+            modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
 
@@ -1767,47 +1927,6 @@
                       + 'font-size: 26px !important ; fill: white ; stroke: white ; color: white ;'
                       + 'padding: 9px 14px 18px 11.5px !important }'
                   + '.notif-close-btn { display: none !important }' // hide notif close btn
-                  + '.chatgpt-modal > div {'
-                      + 'padding: 20px 25px 24px 25px !important ;' // increase alert padding
-                      + 'background-color: white !important ; color: black }'
-                  + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
-                  + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-                  + `.modal-buttons { margin: 35px -5px 2px ${
-                        env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
-                  + '.chatgpt-modal button {'
-                      + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
-                      + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
-                      + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-                      + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
-                      + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
-                  + '.primary-modal-btn { background: black !important ; color: white !important }'
-                  + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
-                  + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
-                      ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
-                          + 'background-color: black !important ; color: white }'
-                      + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
-                      + '.chatgpt-modal a { color: #00cfff !important }'
-                      + '.chatgpt-modal button:hover {'
-                          + 'background-color: #00cfff !important ; color: black !important }' ) : '' )
-                  + '[class*="-modal-bg"] {'
-                      + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
-                      + 'transition: background-color .25s ease !important ;' // speed to show bg dim
-                      + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
-                  + '[class*="-modal-bg"].animated > div {'
-                      + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
-                  + '[class$="-modal"] {' // native modals + chatgpt.alert()s
-                      + 'z-index: 13456 ; position: absolute ;' // to be click-draggable
-                      + 'opacity: 0 ;' // to fade-in
-                      + `background-image: linear-gradient(180deg, ${
-                           env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
-                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
-                      + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
-                      + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
-                                  + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
-                  + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                        '[class$="-modal"] button { transition: transform 0.15s ease }'
-                      + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
                   + `.${app.cssPrefix}-menu {`
                       + 'position: absolute ; z-index: 2250 ;'
                       + 'padding: 3.5px 5px !important ; font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
@@ -1817,116 +1936,6 @@
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
                   + '#checkmark-icon { fill: #b3f96d }'
                   + `.${app.cssPrefix}-menu-item:hover #checkmark-icon { fill: green }`
-
-                  // Glowing modal btns
-                  + ':root { --glow-color: hsl(186 100% 69%); }'
-                  + '.glowing-btn {'
-                      + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
-                      + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
-                      + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
-                      + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }'
-                  + '.glowing-txt {'
-                      + 'animation: text-flicker 3s linear infinite ;'
-                      + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
-                      + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
-                      + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
-                  + '.faulty-letter {'
-                      + 'opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
-                      + ( !env.browser.isMobile ? 'background: var(--glow-color) ;'
-                            + 'transform: translateY(120%) rotateX(95deg) scale(1, 0.35)' : '' ) + '}'
-                  + '.glowing-btn::after {'
-                      + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
-                      + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
-                      + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
-                  + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
-                  + '.glowing-btn:hover .glowing-txt { animation: none }'
-                  + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
-                  + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
-                  + '.glowing-btn:hover:after { opacity: 1 }'
-                  + '@keyframes faulty-flicker {'
-                      + '0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
-                      + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 }'
-                      + '87% { opacity: 1 }}'
-                  + '@keyframes text-flicker {'
-                      + '0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
-                      + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 }'
-                      + '70% { opacity: 0.7 } 72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
-                  + '@keyframes border-flicker {'
-                      + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
-                      + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
-
-                  // chatgpt.alert() + app modals
-                  + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
-                  + '[class*="modal-close-btn"] {'
-                      + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
-                      + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-                  + `[class*="modal-close-btn"] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
-                                                                                 : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-                  + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
-                        '[class*="modal-close-btn"]:hover path { stroke: black ; fill: black }' : '' )
-                  + '[class*="modal-close-btn"]:hover { background-color: #f2f2f2 }' // hover underlay
-                  + '[class*="modal-close-btn"] svg { margin: 11.5px }' // center SVG for hover underlay
-                  + '[class*="-modal"] h2 {'
-                      + 'font-size: 27px ; font-weight: bold ; line-height: 32px ; padding: 0 ;'
-                      + 'margin: 9px 0 22px !important ;'
-                      + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
-                                                 : 'justify-self: start' }}` // left-align on desktop
-                  + '[class*="-modal"] p { justify-self: start ; font-size: 20px }'
-                  + '[class*="-modal"] button { font-size: 14px }'
-
-                  // Settings modal
-                  + `#${app.cssPrefix}-settings {`
-                      + `min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;`
-                      + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
-                      + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
-                  + `#a${app.cssPrefix}-settings-title {`
-                      + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
-                      + `margin: 0 ${ env.browser.isMobile ? 6 : 24 }px 8px 0 }`
-                  + `#${app.cssPrefix}-settings-title h4 {`
-                      + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -25px }`
-                  + `#${app.cssPrefix}-settings ul {`
-                      + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
-                      + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-                  + `#${app.cssPrefix}-settings li {`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                      + 'list-style: none ; height: 37px ; font-size: 15.5px ; transition: transform 0.1s ease ;'
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
-                      + `padding: 6px 10px 4px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
-                      + 'border-radius: 3px }' // make highlight strips slightly rounded
-                  + `#${app.cssPrefix}-settings li.active {`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
-                      + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
-                      + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
-                  + `#${app.cssPrefix}-settings li label {`
-                      + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
-                      + 'font-weight: normal }' // override Amazon boldening
-                  + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
-                  + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
-                  + `#${app.cssPrefix}-settings li:hover {`
-                      + 'opacity: 1 ;'
-                      + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
-                      + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}`
-                  + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
-                  + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
-                  + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
-                      + 'position: relative ; top: 3px ; margin-left: 4px }'
-                  + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
-                  + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
-                  + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
-                  + '#about-menu-entry > span {' // outer About status span
-                      + `width: ${ env.browser.isPortrait ? '15vw' : '92px' } ; height: 20px ; overflow: hidden ;`
-                      + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
-                                'mask-image: linear-gradient('
-                                    + 'to right, transparent, black 20%, black 89%, transparent) ;'
-                      + '-webkit-mask-image: linear-gradient('
-                                    + 'to right, transparent, black 20%, black 89%, transparent)' )}}`
-                  + '#about-menu-entry > span > div {'
-                      + `text-wrap: nowrap ; ${
-                            config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
-                  + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
-                  + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
                 )
             },
 
