@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.2
+// @version                2024.12.12.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3787,7 +3787,7 @@
         }).observe(document.body, { childList: true, subtree: true })
     })
     appElems.forEach(elem => appDivContainer.prepend(elem))
-    appElems.reverse().forEach((elem, idx) => // fade in staggered
+    appElems.slice().reverse().forEach((elem, idx) => // fade in staggered
         setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
 
     // REPLACE appDivContainer max-width w/ min-width for better UI
@@ -3927,5 +3927,13 @@
         const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
         if (newScheme != env.ui.app.scheme) update.scheme(newScheme)
     }
+
+    // Observe sidebar for need to RAISE DDGPT as other extensions inject into it
+    const sidebarObserver = new MutationObserver(() => {
+        if (appDivContainer.firstChild != appDiv) {
+            appElems.forEach(elem => appDivContainer.prepend(elem)) ; sidebarObserver.disconnect() }
+    })
+    sidebarObserver.observe(appDivContainer, { subtree: true, childList: true })
+    setTimeout(() => sidebarObserver.disconnect(), 5000) // don't observe forever
 
 })()
