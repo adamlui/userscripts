@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12.2
+// @version             2024.12.12.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -806,7 +806,11 @@
 
                 toggles.sidebar.updateState() // to opposite init state for animation on 1st load
 
-                // Add click listener
+                // Add listeners
+                this.div.onmouseover = () =>
+                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-secondary)')
+                this.div.onmouseout = () =>
+                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-primary)')
                 this.div.onclick = () => {
                     settings.save('autoTalkDisabled', toggleInput.checked) ; syncConfigToUI()
                     notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
