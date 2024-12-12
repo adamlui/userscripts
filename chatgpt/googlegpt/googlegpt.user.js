@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.3
+// @version                  2024.12.12.4
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1010,6 +1010,8 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+            if (!modals.handlers.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
         },
 
         init(modal) {
@@ -4193,9 +4195,6 @@
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
-
-    // Add key listener to DISMISS modals
-    document.addEventListener('keydown', modals.handlers.key)
 
     // Observe DOM for new sidebar div#rhs created by other extensions to INSERT GoogleGPT to visually co-exist
     const sidebarObserver = new MutationObserver(() => {
