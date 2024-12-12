@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12
+// @version                  2024.12.12.1
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2471,7 +2471,7 @@
                       + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                       + 'z-index: 9999 ; cursor: ew-resize }'
                   + `#${app.cssPrefix} {`
-                      + `z-index: 5555 ; padding: ${ env.browser.isFF ? 20 : 22 }px 26px 6px 26px ;`
+                      + `z-index: 111 ; padding: ${ env.browser.isFF ? 20 : 22 }px 26px 6px 26px ;`
                       + 'flex-basis: 0 ; height: fit-content ;'
                       + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
                       + `width: ${ env.browser.isMobile ? 'auto' : '319px' } ;` // hard-width to prevent Google's flex-wrap moving app to bottom
