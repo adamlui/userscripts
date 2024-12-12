@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.10.3
+// @version               2024.12.11
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -813,6 +813,17 @@
             return alert
         },
 
+        open(modalType, modalSubType) { // custom ones
+            const modal = modalSubType ? modals[modalType][modalSubType]()
+                        : (modals[modalType].show || modals[modalType])()
+            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
+                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
+            }
+            this.init(modal) // add classes/listeners/hack bg/glowup btns
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+        },
+
         init(modal) {
 
             // Add classes
@@ -834,27 +845,6 @@
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
         },
 
-        open(modalType, modalSubType) { // custom ones
-            const modal = modalSubType ? modals[modalType][modalSubType]()
-                        : (modals[modalType].show || modals[modalType])()
-            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
-                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
-                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
-            }
-            this.init(modal) // add classes/listeners/hack bg/glowup btns
-            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-        },
-
-        hide(modal) {
-            log.caller = 'modals.hide()'
-            log.debug(`Dismissing div#${modal?.id}...`)
-            const modalContainer = modal?.parentNode
-            if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
-            setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
-                }, 105) // delay for fade-out
-        },
-
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
             const modalBG = modal.parentNode
             new MutationObserver(([mutation], obs) => {
@@ -870,6 +860,16 @@
                     obs.disconnect()
                 }})
             }).observe(modalBG.parentNode, { childList: true, subtree: true })
+        },
+
+        hide(modal) {
+            log.caller = 'modals.hide()'
+            log.debug(`Dismissing div#${modal?.id}...`)
+            const modalContainer = modal?.parentNode
+            if (!modalContainer) return
+            modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
+            setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
+                }, 105) // delay for fade-out
         },
 
         handlers: {
