@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.11.1
+// @version             2024.12.11.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -707,7 +707,7 @@
             if (!btn.contains(btnSVG)) btn.append(btnSVG)
         },
 
-        getVisibleTypes() { // used in update.tooltip() + chatbar.tweak()
+        getVisibleTypes() { // used in update.tooltip() + chatbar.tweak() for horizontal math
             return this.types.filter(type =>
                 !(type == 'fullWindow' && !sites[env.site].hasSidebar)
              && !(type == 'wideScreen' && chatgpt.canvasIsOpen())
