@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.2
+// @version                2024.12.12.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -648,6 +648,8 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+            if (!modals.handlers.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
         },
 
         init(modal) {
@@ -3078,8 +3080,5 @@
     )
     let msgChain = [{ role: 'user', content: augmentQuery(firstQuery) }]
     appAlert('waitingResponse') ; get.reply(msgChain)
-
-    // Add key listener to DISMISS modals
-    document.addEventListener('keydown', modals.handlers.key)
 
 })()
