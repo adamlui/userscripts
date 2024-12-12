@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12
+// @version             2024.12.12.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -762,12 +762,13 @@
     const toggles = {
 
         sidebar: {
+            ids: { navicon: `${app.cssPrefix}-toggle-navicon`, knobSpan: `${app.cssPrefix}-toggle-knob-span` },
 
             create() {
                 this.div = document.createElement('div')
 
                 // Create/ID/size/position navicon
-                const navicon = document.createElement('img') ; navicon.id = `${app.cssPrefix}-toggle-navicon`
+                const navicon = document.createElement('img') ; navicon.id = this.ids.navicon
                 navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
                 // Create/disable/hide checkbox
@@ -785,7 +786,7 @@
                 })
 
                 // Create/stylize knob, append to switch
-                const knobSpan = document.createElement('span') ; knobSpan.id = `${app.cssPrefix}-toggle-knob-span`
+                const knobSpan = document.createElement('span') ; knobSpan.id = this.ids.knobSpan
                 Object.assign(knobSpan.style, {
                     position: 'absolute', left: '3px', bottom: '1.25px',
                     width: '12px', height: '12px', content: '""', borderRadius: '28px',
@@ -827,8 +828,7 @@
             },
 
             insert() {
-                if (this.status?.startsWith('insert') || document.getElementById(`${app.cssPrefix}-toggle-navicon`))
-                    return
+                if (this.status?.startsWith('insert') || document.getElementById(this.ids.navicon)) return
                 this.status = 'inserting' ; if (!this.div) this.create()
 
                 // Insert toggle
@@ -837,8 +837,8 @@
                 sidebar.insertBefore(this.div, sidebar.children[1])
 
                 // Tweak styles
-                const knobSpan = document.getElementById(`${app.cssPrefix}-toggle-knob-span`),
-                      navicon = document.getElementById(`${app.cssPrefix}-toggle-navicon`)
+                const knobSpan = document.getElementById(this.ids.knobSpan),
+                      navicon = document.getElementById(this.ids.navicon)
                 this.div.style.flexGrow = 'unset' // overcome OpenAI .grow
                 this.div.style.paddingLeft = '8px'
                 if (knobSpan) knobSpan.style.boxShadow = (
@@ -923,7 +923,7 @@
 
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
-        if (!config.toggleHidden && !document.getElementById(`${app.cssPrefix}-toggle-navicon`)
+        if (!config.toggleHidden && !document.getElementById(toggles.sidebar.ids.navicon)
             && toggles.sidebar.status != 'inserting') {
                 toggles.sidebar.status = 'missing' ; toggles.sidebar.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
