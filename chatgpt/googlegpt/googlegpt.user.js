@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.10.3
+// @version                  2024.12.11
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1001,6 +1001,34 @@
             return alert
         },
 
+        open(modalType, modalSubType) { // custom ones
+            const modal = modalSubType ? modals[modalType][modalSubType]()
+                        : (modals[modalType].show || modals[modalType])()
+            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
+                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
+            }
+            this.init(modal) // add classes/listeners/hack bg/glowup btns
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+        },
+
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        modals.stack.shift() // remove this modal type from stack 1st
+                        const prevModalType = modals.stack[0]
+                        if (prevModalType) { // open it
+                            modals.stack.shift() // remove type from stack since re-added on open
+                            modals.open(prevModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
+        },
+
         init(modal) {
 
             // Add classes
@@ -1022,17 +1050,6 @@
             if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
         },
 
-        open(modalType, modalSubType) { // custom ones
-            const modal = modalSubType ? modals[modalType][modalSubType]()
-                        : (modals[modalType].show || modals[modalType])()
-            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
-                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
-                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
-            }
-            this.init(modal) // add classes/listeners/hack bg/glowup btns
-            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-        },
-
         hide(modal) {
             log.caller = 'modals.hide()'
             log.debug(`Dismissing div#${modal?.id}...`)
@@ -1041,23 +1058,6 @@
             modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
             setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
                 }, 105) // delay for fade-out
-        },
-
-        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
-            const modalBG = modal.parentNode
-            new MutationObserver(([mutation], obs) => {
-                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
-                        modals.stack.shift() // remove this modal type from stack 1st
-                        const prevModalType = modals.stack[0]
-                        if (prevModalType) { // open it
-                            modals.stack.shift() // remove type from stack since re-added on open
-                            modals.open(prevModalType)
-                        }
-                    }
-                    obs.disconnect()
-                }})
-            }).observe(modalBG.parentNode, { childList: true, subtree: true })
         },
 
         handlers: {
