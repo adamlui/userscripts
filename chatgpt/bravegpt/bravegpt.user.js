@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.12
+// @version               2024.12.12.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -822,6 +822,8 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+            if (!modals.handlers.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
         },
 
         init(modal) {
@@ -3946,9 +3948,6 @@
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
     saveAppDiv() // to fight Brave mutations
-
-    // Add key listener to DISMISS modals
-    document.addEventListener('keydown', modals.handlers.key)
 
     // Observe/listen for site + system SCHEME CHANGES to update app scheme if auto-scheme mode
     new MutationObserver(handleSchemeChange).observe( // class changes from Brave Search theme settings
