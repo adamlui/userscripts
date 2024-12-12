@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.1
+// @version                  2024.12.12.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -4196,5 +4196,13 @@
 
     // Add key listener to DISMISS modals
     document.addEventListener('keydown', modals.handlers.key)
+
+    // Observe DOM for need to re-insert GoogleGPT into new div#rhs created by other extensions
+    const sidebarObserver = new MutationObserver(() => {
+        const newSidebar = document.getElementById('rhs')
+        if (newSidebar) { newSidebar.prepend(appDiv) ; sidebarObserver.disconnect() }
+    })
+    sidebarObserver.observe(document.body, { subtree: true, childList: true })
+    setTimeout(() => sidebarObserver.disconnect(), 5000) // don't observe forever
 
 })()
