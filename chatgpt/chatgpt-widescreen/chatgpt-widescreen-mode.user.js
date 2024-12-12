@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12
+// @version             2024.12.12.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -967,7 +967,7 @@
 
     // Monitor NODE CHANGES to maintain button visibility + update colors
     let isTempChat = false, canvasWasOpen = chatgpt.canvasIsOpen()
-    const nodeObserver = new MutationObserver(([mutation]) => {
+    const nodeObserver = new MutationObserver(() => {
 
         // Maintain button visibility on nav
         if (!document.getElementById('fullScreen-btn') && chatbar.get() && btns.status != 'inserting') {
@@ -976,11 +976,9 @@
         // Maintain button colors + Widescreen button visibility on snowflake chatgpt.com
         if (/chatgpt|openai/.test(env.site)) {
 
-            // Update button colors on ChatGPT scheme or temp chat toggle
+            // Update button colors on temp chat toggle
             const chatbarIsBlack = !!document.querySelector('div[class*="bg-black"]:not([id$="-btn"])')
-            if (chatbarIsBlack != isTempChat // temp chat toggled
-                || mutation.target == document.documentElement && mutation.attributeName == 'class') { // scheme toggled
-                    btns.updateColor() ; isTempChat = chatbarIsBlack }
+            if (chatbarIsBlack != isTempChat) { btns.updateColor() ; isTempChat = chatbarIsBlack }
 
             // Add/remove Widescreen button on Canvas mode toggle
             if (canvasWasOpen ^ chatgpt.canvasIsOpen()) {
@@ -990,6 +988,11 @@
         }
     })
     nodeObserver.observe(document[env.site == 'poe' ? 'head' : 'body'], { attributes: true, subtree: true })
+
+    // Monitor SCHEME CHANGES on chatgpt.com to update button colors
+    if (/chatgpt|openai/.test(env.site))
+        new MutationObserver(() => btns.updateColor())
+            .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
     // Monitor SIDEBAR to update full-window setting
     if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
