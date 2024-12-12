@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12.3
+// @version             2024.12.12.4
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -860,10 +860,9 @@
                 toggles.sidebar.updateState() // to opposite init state for animation on 1st load
 
                 // Add listeners
-                this.div.onmouseover = () =>
-                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-secondary)')
-                this.div.onmouseout = () =>
-                    this.div.style.setProperty('--item-background-color', 'var(--sidebar-surface-primary)')
+                this.div.onmouseover = this.div.onmouseout = event =>
+                    this.div.style.setProperty('--item-background-color',
+                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
                     settings.save('arDisabled', toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
                     notify(`${app.msgs.menuLabel_autoRefresh}: ${menu.state.words[+!config.arDisabled]}`)
