@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12
+// @version                2024.12.12.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2326,8 +2326,8 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // rendered markdown styles
-                        `#${app.cssPrefix} > pre h1 { font-size: 24px } #${app.cssPrefix} > pre h2 { font-size: 22px }`
-                      + `#${app.cssPrefix} > pre h3 { font-size: 20px }` // size headings
+                        `#${app.cssPrefix} > pre h1 { font-size: 3em } #${app.cssPrefix} > pre h2 { font-size: 2em }`
+                      + `#${app.cssPrefix} > pre h3 { font-size: 1em }` // size headings
                       + `#${app.cssPrefix} > pre h1, #${app.cssPrefix} > pre h2, #${app.cssPrefix} > pre h3 {`
                           + 'margin-bottom: -15px }' // reduce gap after headings
                       + `#${app.cssPrefix} > pre ol { margin: -11px 0 -20px }` // reduce v-padding
