@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.10
+// @version                2024.12.12.11
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2511,6 +2511,8 @@
 
                     // Hide/remove elems
                     appDiv.querySelector('.related-queries')?.remove() // remove related queries
+                    if (!env.browser.isMobile) // hide chatbar button tooltips
+                        tooltipDiv.style.opacity = 0
 
                     // Show loading status
                     const replySection = appDiv.querySelector('section')
@@ -2928,13 +2930,13 @@
               : btnType == 'speak' ? app.msgs.tooltip_playAnswer
               : btnType == 'font-size' ? app.msgs.tooltip_fontSize
               : btnType == 'wsb' ? (( config.widerSidebar ? `${app.msgs.prefix_exit} ` :  '' )
-                               + ( app.msgs.menuLabel_widerSidebar ))
+                                 + ( app.msgs.menuLabel_widerSidebar ))
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
               : btnType == 'copy' ? ( btnElem.firstChild.id == 'copy-icon' ? `${app.msgs.tooltip_copy} ${
                   ( btnElem.parentNode.tagName == 'PRE' ? app.msgs.tooltip_reply
                                                         : app.msgs.tooltip_code ).toLowerCase() }`
-                                                                           : `${app.msgs.notif_copiedToClipboard}!` )
+                                                        : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
