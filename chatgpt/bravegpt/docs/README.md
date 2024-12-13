@@ -187,26 +187,26 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 This app exists thanks to code, translations, issues & ideas from the following contributors:
 
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?first-contrib=2023.03.23&h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/68170410?first-contrib=2023.02.19-unproxied-buggy-report-lead-to-proxied-mode&h=50&w=50&mask=circle&maxage=7d "@Delamcode")](https://github.com/Delamcode)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/7660254?first-contrib=2023.03.01-stick-w-gm-api-recommendation&h=50&w=50&mask=circle&maxage=7d "@Quoid")](https://github.com/Quoid)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/47604048?first-contrib=2023.04.01-proxy-ip-bug-report&h=50&w=50&mask=circle&maxage=7d "@Nord1cWarr1or")](https://github.com/Nord1cWarr1or)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/69060894?first-contrib=2023.05.16-katex-idea&h=50&w=50&mask=circle&maxage=7d "@afkvido")](https://github.com/afkvido)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/129722778?first-contrib=2023.05.23-css-readability&h=50&w=50&mask=circle&maxage=7d "@AliAlSarre")](https://github.com/AliAlSarre)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/95589456?first-contrib=2023.09.05-brave-ui-update&h=50&w=50&mask=circle&maxage=7d "@Cozy888")](https://github.com/Cozy888)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/3691490?first-contrib=2023.10.15-taiwanese-msg-improvements&h=50&w=50&mask=circle&maxage=7d "@PeterDaveHello")](https://github.com/PeterDaveHello)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/88123889?first-contrib=2023.10.17-brave-dark-mode-bug-report&h=50&w=50&mask=circle&maxage=7d "@GGHZp")](https://github.com/GGHZp)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/149096330?first-contrib=2023.10.26-brave-dark-mode-bug-ss&h=50&w=50&mask=circle&maxage=7d "@Mrhazed")](https://github.com/Mrhazed)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/22998537?first-contrib=2023.11.25-related-queries-do-not-show-in-openai-mode-bug-report&h=50&w=50&mask=circle&maxage=7d "@Vozf")](https://github.com/Vozf)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/9349164?first-contrib=2023.11.30-standby-mode-suggestion&h=50&w=50&mask=circle&maxage=7d "@T1mL3arn")](https://github.com/T1mL3arn)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/22026520?first-contrib=2023.12.25-french-tts-suggestion&h=50&w=50&mask=circle&maxage=7d "@papapat")](https://github.com/papapat)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/105553471?first-contrib=2024.02.15-openai-endpoint-broke-report&h=50&w=50&mask=circle&maxage=7d "@YashSoPro")](https://github.com/YashSoPro)
+<a href="https://github.com/adamlui"><img width=50 title="@adamlui" src="https://avatars.githubusercontent.com/u/10906554?first-contrib=2023.03.23"></img></a>
+<a href="https://github.com/Delamcode"><img width=50 title="@Delamcode" src="https://avatars.githubusercontent.com/u/68170410?first-contrib=2023.02.19-unproxied-buggy-report-lead-to-proxied-mode"></img></a>
+<a href="https://github.com/Quoid"><img width=50 title="@Quoid" src="https://avatars.githubusercontent.com/u/7660254?first-contrib=2023.03.01-stick-w-gm-api-recommendation"></img></a>
+<a href="https://github.com/Nord1cWarr1or"><img width=50 title="@Nord1cWarr1or" src="https://avatars.githubusercontent.com/u/47604048?first-contrib=2023.04.01-proxy-ip-bug-report"></img></a>
+<a href="https://github.com/afkvido"><img width=50 title="@afkvido" src="https://avatars.githubusercontent.com/u/69060894?first-contrib=2023.05.16-katex-idea"></img></a>
+<a href="https://github.com/AliAlSarre"><img width=50 title="@AliAlSarre" src="https://avatars.githubusercontent.com/u/129722778?first-contrib=2023.05.23-css-readability"></img></a>
+<a href="https://github.com/Cozy888"><img width=50 title="@Cozy888" src="https://avatars.githubusercontent.com/u/95589456?first-contrib=2023.09.05-brave-ui-update"></img></a>
+<a href="https://github.com/PeterDaveHello"><img width=50 title="@PeterDaveHello" src="https://avatars.githubusercontent.com/u/3691490?first-contrib=2023.10.15-taiwanese-msg-improvements"></img></a>
+<a href="https://github.com/GGHZp"><img width=50 title="@GGHZp" src="https://avatars.githubusercontent.com/u/88123889?first-contrib=2023.10.17-brave-dark-mode-bug-report"></img></a>
+<a href="https://github.com/Mrhazed"><img width=50 title="@Mrhazed" src="https://avatars.githubusercontent.com/u/149096330?first-contrib=2023.10.26-brave-dark-mode-bug-ss"></img></a>
+<a href="https://github.com/Vozf"><img width=50 title="@Vozf" src="https://avatars.githubusercontent.com/u/22998537?first-contrib=2023.11.25-related-queries-do-not-show-in-openai-mode-bug-report"></img></a>
+<a href="https://github.com/T1mL3arn"><img width=50 title="@T1mL3arn" src="https://avatars.githubusercontent.com/u/9349164?first-contrib=2023.11.30-standby-mode-suggestion"></img></a>
+<a href="https://github.com/papapat"><img width=50 title="@papapat" src="https://avatars.githubusercontent.com/u/22026520?first-contrib=2023.12.25-french-tts-suggestion"></img></a>
+<a href="https://github.com/YashSoPro"><img width=50 title="@YashSoPro" src="https://avatars.githubusercontent.com/u/105553471?first-contrib=2024.02.15-openai-endpoint-broke-report"></img></a>
 <a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.bravegpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.5.30-render-markdown-idea" title="hacker09"></picture></a>
 <a href="https://greasyfork.org/users/27097-grisipisimisi"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.bravegpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.20-asktip-disabled-localstorage-setting-not-sticky" title="GrisiPisiMisi"></picture></a>
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs&h=50&w=50&mask=circle&maxage=7d "@ChinaGodMan")](https://github.com/ChinaGodMan)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://images.weserv.nl/?url=https://media.bravegpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png?h=50&w=50&mask=circle&maxage=7d"><img src="https://images.weserv.nl/?url=https://media.bravegpt.com/images/icons/platforms/chatgpt/white-on-black/icon50.png?h=50&w=50&mask=circle&maxage=7d" title="ChatGPT"></picture></a>
+<a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
+<a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
+<a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.bravegpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.bravegpt.com/images/icons/platforms/chatgpt/white-on-black/icon50.png"></img></picture></a>
 
 <img height=6px width="100%" src="https://media.bravegpt.com/images/separators/gradient-aqua.png">
 
