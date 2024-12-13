@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.7
+// @version                  2024.12.12.8
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3914,7 +3914,8 @@
                 ['send', 'shuffle'].forEach(btnType => {
                     const btnElem = document.createElement('button')
                     btnElem.id = `${btnType}-btn` ; btnElem.classList.add('chatbar-btn', 'no-mobile-tap-outline')
-                    btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 7 : 5 ) : ( env.browser.isFF ? 9 : 7 )}px`
+                    btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 7 : 5 )
+                                                                : ( env.browser.isFF ? 7 : 2 )}px` // Shuffle btn
                     btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btnElem)
                 })
