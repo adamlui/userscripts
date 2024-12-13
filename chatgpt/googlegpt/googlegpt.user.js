@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.8
+// @version                  2024.12.12.9
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2614,7 +2614,8 @@
                   + '.chatgpt-notif { fill: white ; stroke: white ; font-size: 25px !important ; padding: 13px 14px 13px 13px !important }'
                   + '.notif-close-btn { display: none !important }' // hide notif close btn
                   + `#${app.cssPrefix} footer {`
-                      + 'position: relative ; right: -72px ; text-align: right ; font-size: 0.75rem ; line-height: 1.43em ;'
+                      + 'position: relative ; text-align: right ; font-size: 0.75rem ; line-height: 1.43em ;'
+                      + `right: ${ env.browser.isFF ? -54 : -72 }px ;`
                       + `margin: ${ env.browser.isFF ? 1 : -2 }px -32px 12px }`
                   + `#${app.cssPrefix} footer * { color: #aaa ; text-decoration: none }`
                   + `#${app.cssPrefix} footer a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
