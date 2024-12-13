@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.6
+// @version                2024.12.12.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3575,7 +3575,8 @@
                 ['send', 'shuffle'].forEach(btnType => {
                     const btnElem = document.createElement('button')
                     btnElem.id = `${btnType}-btn` ; btnElem.classList.add('chatbar-btn', 'no-mobile-tap-outline')
-                    btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 8 : 7 ) : ( env.browser.isFF ? 11.5 : 9.5 )}px`
+                    btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 8 : 7 )
+                                                                : ( env.browser.isFF ? 8.5 : 7 )}px` // Shuffle btn
                     btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btnElem)
                 })
