@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.4
+// @version                2024.12.12.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1137,9 +1137,9 @@
                 settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
-                const settingsTitleIcon = icons.sliders.create()
+                const settingsTitleIcon = icons.cogwheel.create()
                 settingsTitleIcon.style.cssText = 'width: 21px ; height: 21px ; margin-right: 3px ;'
-                                                + 'position: relative ; top: 2.5px ; right: 3px'
+                                                + 'position: relative ; top: 1.5px ; right: 3px'
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
                 // Init settings lists
@@ -1535,6 +1535,16 @@
             }
         },
 
+        cogwheel: {
+            create() {
+                const svg = create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 24 24' })
+                svg.append(
+                    create.svgElem('path', { 'fill-rule': 'evenodd',
+                        d: 'M14.279 2.152C13.909 2 13.439 2 12.5 2s-1.409 0-1.779.152a2.008 2.008 0 0 0-1.09 1.083c-.094.223-.13.484-.145.863a1.615 1.615 0 0 1-.796 1.353 1.64 1.64 0 0 1-1.579.008c-.338-.178-.583-.276-.825-.308a2.026 2.026 0 0 0-1.49.396c-.318.242-.553.646-1.022 1.453-.47.807-.704 1.21-.757 1.605-.07.526.074 1.058.4 1.479.148.192.357.353.68.555.477.297.783.803.783 1.361 0 .558-.306 1.064-.782 1.36-.324.203-.533.364-.682.556a1.99 1.99 0 0 0-.399 1.479c.053.394.287.798.757 1.605.47.807.704 1.21 1.022 1.453.424.323.96.465 1.49.396.242-.032.487-.13.825-.308a1.64 1.64 0 0 1 1.58.008c.486.28.774.795.795 1.353.015.38.051.64.145.863.204.49.596.88 1.09 1.083.37.152.84.152 1.779.152s1.409 0 1.779-.152a2.008 2.008 0 0 0 1.09-1.083c.094-.223.13-.483.145-.863.02-.558.309-1.074.796-1.353a1.64 1.64 0 0 1 1.579-.008c.338.178.583.276.825.308.53.07 1.066-.073 1.49-.396.318-.242.553-.646 1.022-1.453.47-.807.704-1.21.757-1.605a1.99 1.99 0 0 0-.4-1.479c-.148-.192-.357-.353-.68-.555-.477-.297-.783-.803-.783-1.361 0-.558.306-1.064.782-1.36.324-.203.533-.364.682-.556a1.99 1.99 0 0 0 .399-1.479c-.053-.394-.287-.798-.757-1.605-.47-.807-.704-1.21-1.022-1.453a2.026 2.026 0 0 0-1.49-.396c-.242.032-.487.13-.825.308a1.64 1.64 0 0 1-1.58-.008 1.615 1.615 0 0 1-.795-1.353c-.015-.38-.051-.64-.145-.863a2.007 2.007 0 0 0-1.09-1.083ZM12.5 15c1.67 0 3.023-1.343 3.023-3S14.169 9 12.5 9c-1.67 0-3.023 1.343-3.023 3s1.354 3 3.023 3Z' }))
+                return svg
+            }
+        },
+
         copy: {
             create() {
                 const svg = create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 1024 1024' })
@@ -1603,38 +1613,6 @@
                 const svgPath = create.svgElem('path', { stroke: '', 'stroke-width': 0.5,
                     d: 'M16 11.75c-2.347 0-4.25 1.903-4.25 4.25s1.903 4.25 4.25 4.25c2.347 0 4.25-1.903 4.25-4.25v0c-0.003-2.346-1.904-4.247-4.25-4.25h-0zM16 17.75c-0.966 0-1.75-0.784-1.75-1.75s0.784-1.75 1.75-1.75c0.966 0 1.75 0.784 1.75 1.75v0c-0.001 0.966-0.784 1.749-1.75 1.75h-0zM3.25 16c0.211-3.416 1.61-6.471 3.784-8.789l-0.007 0.008c0.223-0.226 0.361-0.536 0.361-0.879 0-0.69-0.56-1.25-1.25-1.25-0.344 0-0.655 0.139-0.881 0.363l0-0c-2.629 2.757-4.31 6.438-4.506 10.509l-0.001 0.038c0.198 4.109 1.879 7.79 4.514 10.553l-0.006-0.006c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-2.173-2.307-3.573-5.363-3.774-8.743l-0.002-0.038zM9.363 16c0.149-2.342 1.109-4.436 2.6-6.026l-0.005 0.005c0.224-0.226 0.363-0.537 0.363-0.88 0-0.69-0.56-1.25-1.25-1.25-0.345 0-0.657 0.139-0.883 0.365l0-0c-1.94 2.035-3.179 4.753-3.323 7.759l-0.001 0.028c0.145 3.032 1.384 5.75 3.329 7.79l-0.005-0.005c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-1.49-1.581-2.451-3.676-2.591-5.993l-0.001-0.027zM26.744 5.453c-0.226-0.227-0.54-0.368-0.886-0.368-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.139 0.657 0.365 0.883l-0-0c2.168 2.31 3.567 5.365 3.775 8.741l0.002 0.040c-0.21 3.417-1.609 6.471-3.784 8.789l0.007-0.008c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c2.628-2.757 4.308-6.439 4.504-10.509l0.001-0.038c-0.198-4.108-1.878-7.79-4.512-10.553l0.006 0.007zM21.811 8.214c-0.226-0.224-0.537-0.363-0.881-0.363-0.69 0-1.25 0.56-1.25 1.25 0 0.343 0.138 0.653 0.361 0.879l-0-0c1.486 1.585 2.447 3.678 2.594 5.992l0.001 0.028c-0.151 2.343-1.111 4.436-2.601 6.027l0.005-0.005c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c1.939-2.036 3.178-4.754 3.323-7.759l0.001-0.028c-0.145-3.033-1.385-5.751-3.331-7.791l0.005 0.005z' })
                 svg.append(svgPath) ; return svg
-            }
-        },
-
-        sliders: {
-            create() {
-                const svg = create.svgElem('svg', { width: 19, height: 19, viewBox: '0 0 25 25' })
-
-                // Top track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 5.5, x2: 12, y2: 5.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 18, cy: 5.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 21, y1: 5.5, x2: 23, y2: 5.5 }))
-
-                // Middle track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 12.5, x2: 4, y2: 12.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 8, cy: 12.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 14, y1: 12.5, x2: 23, y2: 12.5 }))
-
-                // Bottom track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 19.5, x2: 8, y2: 19.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 14.5, cy: 19.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 17, y1: 19.5, x2: 23, y2: 19.5 }))
-
-                return svg
             }
         },
 
@@ -2888,7 +2866,7 @@
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
-                      settingsSVG = icons.sliders.create()
+                      settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = 'settings-btn' // for toggle.tooltip()
                 settingsBtn.className = 'corner-btn' ; settingsBtn.style.margin = '0 10.5px 0 0.5px'
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
