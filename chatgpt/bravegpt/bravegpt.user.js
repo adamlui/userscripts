@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.12.4
+// @version               2024.12.12.5
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2633,7 +2633,7 @@
 
                     // Hide/remove elems
                     appDiv.querySelector('.related-queries')?.remove() // remove related queries
-                    if (!env.browser.isMobile) // hide 'Send reply' tooltip post-send btn click
+                    if (!env.browser.isMobile) // hide chatbar button tooltips
                         tooltipDiv.style.opacity = 0
                     const appFooter = appDiv.querySelector('footer')
                     appFooter.textContent = ''
@@ -3054,13 +3054,13 @@
               : btnType == 'speak' ? app.msgs.tooltip_playAnswer
               : btnType == 'font-size' ? app.msgs.tooltip_fontSize
               : btnType == 'wsb' ? (( config.widerSidebar ? `${app.msgs.prefix_exit} ` :  '' )
-                               + ( app.msgs.menuLabel_widerSidebar ))
+                                 + ( app.msgs.menuLabel_widerSidebar ))
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
               : btnType == 'copy' ? ( btnElem.firstChild.id == 'copy-icon' ? `${app.msgs.tooltip_copy} ${
                   ( btnElem.parentNode.tagName == 'PRE' ? app.msgs.tooltip_reply
                                                         : app.msgs.tooltip_code ).toLowerCase() }`
-                                                                           : `${app.msgs.notif_copiedToClipboard}!` )
+                                                        : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
