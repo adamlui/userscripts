@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.5
+// @version                2024.12.12.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2941,7 +2941,7 @@
                     const btnElem = document.createElement('button')
                     btnElem.id = `${btnType}-btn` ; btnElem.classList.add('chatbar-btn', 'no-mobile-tap-outline')
                     btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
-                                                                : ( env.browser.isFF ? 17 : 14 )}px`
+                                                                : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
                     btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btnElem)
                 })
