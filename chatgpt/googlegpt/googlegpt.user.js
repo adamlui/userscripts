@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.5
+// @version                  2024.12.12.6
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1494,8 +1494,9 @@
                 settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
-                const settingsTitleIcon = icons.sliders.create()
-                settingsTitleIcon.style.cssText = 'width: 20px ; height: 20px ; position: relative ; top: 3px ; right: 7px'
+                const settingsTitleIcon = icons.cogwheel.create()
+                settingsTitleIcon.style.cssText = 'width: 20px ; height: 20px ;'
+                                                + 'position: relative ; top: 1px ; right: 7px'
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
                 // Init settings lists
@@ -1998,6 +1999,16 @@
             }
         },
 
+        cogwheel: {
+            create() {
+                const svg = create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 24 24' })
+                svg.append(
+                    create.svgElem('path', { 'fill-rule': 'evenodd',
+                        d: 'M14.279 2.152C13.909 2 13.439 2 12.5 2s-1.409 0-1.779.152a2.008 2.008 0 0 0-1.09 1.083c-.094.223-.13.484-.145.863a1.615 1.615 0 0 1-.796 1.353 1.64 1.64 0 0 1-1.579.008c-.338-.178-.583-.276-.825-.308a2.026 2.026 0 0 0-1.49.396c-.318.242-.553.646-1.022 1.453-.47.807-.704 1.21-.757 1.605-.07.526.074 1.058.4 1.479.148.192.357.353.68.555.477.297.783.803.783 1.361 0 .558-.306 1.064-.782 1.36-.324.203-.533.364-.682.556a1.99 1.99 0 0 0-.399 1.479c.053.394.287.798.757 1.605.47.807.704 1.21 1.022 1.453.424.323.96.465 1.49.396.242-.032.487-.13.825-.308a1.64 1.64 0 0 1 1.58.008c.486.28.774.795.795 1.353.015.38.051.64.145.863.204.49.596.88 1.09 1.083.37.152.84.152 1.779.152s1.409 0 1.779-.152a2.008 2.008 0 0 0 1.09-1.083c.094-.223.13-.483.145-.863.02-.558.309-1.074.796-1.353a1.64 1.64 0 0 1 1.579-.008c.338.178.583.276.825.308.53.07 1.066-.073 1.49-.396.318-.242.553-.646 1.022-1.453.47-.807.704-1.21.757-1.605a1.99 1.99 0 0 0-.4-1.479c-.148-.192-.357-.353-.68-.555-.477-.297-.783-.803-.783-1.361 0-.558.306-1.064.782-1.36.324-.203.533-.364.682-.556a1.99 1.99 0 0 0 .399-1.479c-.053-.394-.287-.798-.757-1.605-.47-.807-.704-1.21-1.022-1.453a2.026 2.026 0 0 0-1.49-.396c-.242.032-.487.13-.825.308a1.64 1.64 0 0 1-1.58-.008 1.615 1.615 0 0 1-.795-1.353c-.015-.38-.051-.64-.145-.863a2.007 2.007 0 0 0-1.09-1.083ZM12.5 15c1.67 0 3.023-1.343 3.023-3S14.169 9 12.5 9c-1.67 0-3.023 1.343-3.023 3s1.354 3 3.023 3Z' }))
+                return svg
+            }
+        },
+
         copy: {
             create() {
                 const svg = create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 1024 1024' })
@@ -2122,38 +2133,6 @@
                 const svg = create.svgElem('svg', { width: 15, height: 15, viewBox: '0 0 15 15' }),
                       svgPath = create.svgElem('path', { stroke: '', d: 'M4.10876 14L9.46582 1H10.8178L5.46074 14H4.10876Z' })
                 svg.append(svgPath) ; return svg
-            }
-        },
-
-        sliders: {
-            create() {
-                const svg = create.svgElem('svg', { width: 19, height: 19, viewBox: '0 0 25 25' })
-
-                // Top track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 5.5, x2: 12, y2: 5.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 18, cy: 5.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 21, y1: 5.5, x2: 23, y2: 5.5 }))
-
-                // Middle track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 12.5, x2: 4, y2: 12.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 8, cy: 12.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 14, y1: 12.5, x2: 23, y2: 12.5 }))
-
-                // Bottom track
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 2, y1: 19.5, x2: 8, y2: 19.5 }))
-                svg.append(create.svgElem('circle', { stroke: '', fill: 'none', 'stroke-width': 1.5,
-                    cx: 14.5, cy: 19.5, r: 3 }))
-                svg.append(create.svgElem('line', { stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round',
-                    x1: 17, y1: 19.5, x2: 23, y2: 19.5 }))
-
-                return svg
             }
         },
 
@@ -3820,9 +3799,9 @@
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
-                      settingsSVG = icons.sliders.create()
+                      settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = 'settings-btn' // for toggle.tooltip()
-                settingsBtn.className = 'corner-btn' ; settingsBtn.style.margin = `${ env.browser.isMobile ? 3 : -3 }px 10px 0 2.5px`
+                settingsBtn.className = 'corner-btn' ; settingsBtn.style.margin = `${ env.browser.isMobile ? 4.5 : -2 }px 10px 0 2.5px`
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
@@ -3830,7 +3809,7 @@
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
                     speakerBtn.id = 'speak-btn' // for toggle.tooltip()
-                    speakerBtn.className = 'corner-btn' ; speakerBtn.style.margin = `${ env.browser.isMobile ? '0.11rem 10px' : '-4.5px 8px' } 0 0`
+                    speakerBtn.className = 'corner-btn' ; speakerBtn.style.margin = `${ env.browser.isMobile ? '2px 6px' : '-4.5px 8px' } 0 0`
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
