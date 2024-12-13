@@ -104,21 +104,21 @@ ChatGPT Auto-Continue relies on code from the powerful [chatgpt.js](https://gith
 
 This project exists thanks to code, testing, issues, translations & ideas from the following contributors:
 
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?first-contrib=2023.04.28&h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/84412716?first-contrib=2023.08.02-ux-update-bug-report&h=50&w=50&mask=circle&maxage=7d "@a12930")](https://github.com/a12930)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/64159148?first-contrib=2023.08.10-observer-freeze-bug-report&h=50&w=50&mask=circle&maxage=7d "@thijsi123")](https://github.com/thijsi123)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/7357354?first-contrib=2023.10.31-observer-freeze-bug-report&h=50&w=50&mask=circle&maxage=7d "@SapitoSucio")](https://github.com/SapitoSucio)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/158176338?first-contrib=2024.3.1-button-click-fails-bug-report&h=50&w=50&mask=circle&maxage=7d "@whz-pku")](https://github.com/whz-pku)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/144692196?first-contrib=2024.5.14-post-gpt-4o-ui-update-broke-script-alert&h=50&w=50&mask=circle&maxage=7d "@vw911")](https://github.com/vw911)
+<a href="https://github.com/adamlui"><img width=50 title="@adamlui" src="https://avatars.githubusercontent.com/u/10906554?first-contrib=2023.04.28"></img></a>
+<a href="https://github.com/a12930"><img width=50 title="@a12930" src="https://avatars.githubusercontent.com/u/84412716?first-contrib=2023.08.02-ux-update-bug-report"></img></a>
+<a href="https://github.com/thijsi123"><img width=50 title="@thijsi123" src="https://avatars.githubusercontent.com/u/64159148?first-contrib=2023.08.10-observer-freeze-bug-report"></img></a>
+<a href="https://github.com/SapitoSucio"><img width=50 title="@SapitoSucio" src="https://avatars.githubusercontent.com/u/7357354?first-contrib=2023.10.31-observer-freeze-bug-report"></img></a>
+<a href="https://github.com/whz-pku"><img width=50 title="@whz-pku" src="https://avatars.githubusercontent.com/u/158176338?first-contrib=2024.3.1-button-click-fails-bug-report"></img></a>
+<a href="https://github.com/vw911"><img width=50 title="@vw911" src="https://avatars.githubusercontent.com/u/144692196?first-contrib=2024.5.14-post-gpt-4o-ui-update-broke-script-alert"></img></a>
 <a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.chatgptautocontinue.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.27-portuguese-translation-corrections" title="hacker09"></picture></a>
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs&h=50&w=50&mask=circle&maxage=7d "@ChinaGodMan")](https://github.com/ChinaGodMan)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/69102590?first-contrib=2024.9.15-stopped-working-alert&h=50&w=50&mask=circle&maxage=7d "@Mailootje")](https://github.com/Mailootje)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/94939237?first-contrib=2024.9.25-dark-reader-interference-alert&h=50&w=50&mask=circle&maxage=7d "@andrew-bierman")](https://github.com/andrew-bierman)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/12082594?first-contrib=2024.10.11-gpt-editor-bug-report&h=50&w=50&mask=circle&maxage=7d "@thepick")](https://github.com/thepick)
-<a href="#"><img width=50 title="Copilot Autofix" src="https://github.githubassets.com/favicons/favicon.svg?first-contrib=2024.12.9-cmd-injection-autofix"></a>
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://images.weserv.nl/?url=https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/black-on-white/icon50.png?h=50&w=50&mask=circle&maxage=7d"><img src="https://images.weserv.nl/?url=https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/white-on-black/icon50.png?h=50&w=50&mask=circle&maxage=7d" title="ChatGPT"></picture></a>
+<a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
+<a href="https://github.com/Mailootje"><img width=50 title="@Mailootje" src="https://avatars.githubusercontent.com/u/69102590?first-contrib=2024.9.15-stopped-working-alert"></img></a>
+<a href="https://github.com/andrew-bierman"><img width=50 title="@andrew-bierman" src="https://avatars.githubusercontent.com/u/94939237?first-contrib=2024.9.25-dark-reader-interference-alert"></img></a>
+<a href="https://github.com/thepick"><img width=50 title="@thepick" src="https://avatars.githubusercontent.com/u/12082594?first-contrib=2024.10.11-gpt-editor-bug-report"></img></a>
+<a href="#"><img width=47 title="Copilot Autofix" src="https://github.githubassets.com/favicons/favicon.svg?first-contrib=2024.12.9-cmd-injection-autofix"></a>
+<a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
+<a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/white-on-black/icon50.png"></img></picture></a>
 
 #
 
