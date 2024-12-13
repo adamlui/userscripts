@@ -134,12 +134,12 @@ If you've tested it to work in a browser not listed, create a [pull request](htt
 
 This app exists thanks to code, translations, issues & ideas from the following contributors:
 
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/175899275?first-contrib=2024.10.6-opera-gx-compatible-report&h=50&w=50&mask=circle&maxage=7d "@pasThal")](https://github.com/pasThal)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match&h=50&w=50&mask=circle&maxage=7d "@mberetvas")](https://github.com/mberetvas)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/images/icons/platforms/chatgpt/black-on-white/icon50.png?h=50&w=50&mask=circle&maxage=7d"><img src="https://images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/images/icons/platforms/chatgpt/white-on-black/icon50.png?h=50&w=50&mask=circle&maxage=7d" title="ChatGPT"></picture></a>
+<a href="https://github.com/adamlui"><img width=50 title="@adamlui" src="https://avatars.githubusercontent.com/u/10906554"></img></a>
+<a href="https://github.com/pasThal"><img width=50 title="@pasThal" src="https://avatars.githubusercontent.com/u/175899275?first-contrib=2024.10.6-opera-gx-compatible-report"></img></a>
+<a href="https://github.com/mberetvas"><img width=50 title="@mberetvas" src="https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match"></img></a>
+<a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
+<a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/images/icons/platforms/chatgpt/white-on-black/icon50.png"></picture></a>
 
 <img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">
 
