@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.4
+// @version                  2024.12.12.5
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2450,7 +2450,7 @@
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
-                      + '--pre-bg-color-light-scheme: #e7e7e7cf ; --pre-bg-color-dark-scheme: #3a3a3a ;'
+                      + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                       + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
                   + '@keyframes modal-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
@@ -2551,7 +2551,7 @@
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
                   + '.reply-tip {'
                       + 'content: "" ; position: relative ; border: 7px solid transparent ;'
-                      + `float: left ; margin: ${ env.browser.isMobile ? 39 : 28 }px -15px 0 0 ;`
+                      + `float: left ; margin: ${ env.browser.isMobile ? 39 : 26 }px -15px 0 0 ;`
                       + `left: ${ env.browser.isMobile ? 12 : 6 }px ;` // positioning
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                           + `${ // hide reply tip for terminal aesthetic
