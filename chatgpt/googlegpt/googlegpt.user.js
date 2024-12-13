@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.12.6
+// @version                  2024.12.12.7
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2614,7 +2614,7 @@
                   + '.chatgpt-notif { fill: white ; stroke: white ; font-size: 25px !important ; padding: 13px 14px 13px 13px !important }'
                   + '.notif-close-btn { display: none !important }' // hide notif close btn
                   + `#${app.cssPrefix} footer {`
-                      + 'position: relative ; right: -33px ; text-align: right ; font-size: 0.75rem ; line-height: 1.43em ;'
+                      + 'position: relative ; right: -72px ; text-align: right ; font-size: 0.75rem ; line-height: 1.43em ;'
                       + `margin: ${ env.browser.isFF ? 1 : -2 }px -32px 12px }`
                   + `#${app.cssPrefix} footer * { color: #aaa ; text-decoration: none }`
                   + `#${app.cssPrefix} footer a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
@@ -3794,14 +3794,16 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = 'about-btn' // for toggle.tooltip()
-                aboutBtn.className = 'corner-btn' ; aboutBtn.style.marginTop = `${ env.browser.isMobile ? 0.25 : -0.15 }rem`
+                aboutBtn.className = 'corner-btn'
+                aboutBtn.style.marginTop = `${ env.browser.isMobile ? 0.25 : -0.15 }rem`
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = 'settings-btn' // for toggle.tooltip()
-                settingsBtn.className = 'corner-btn' ; settingsBtn.style.margin = `${ env.browser.isMobile ? 4.5 : -2 }px 10px 0 2.5px`
+                settingsBtn.className = 'corner-btn'
+                settingsBtn.style.margin = `${ env.browser.isMobile ? 4.5 : -2 }px 10px 0 2.5px`
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
@@ -3809,7 +3811,8 @@
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
                     speakerBtn.id = 'speak-btn' // for toggle.tooltip()
-                    speakerBtn.className = 'corner-btn' ; speakerBtn.style.margin = `${ env.browser.isMobile ? '2px 6px' : '-4.5px 8px' } 0 0`
+                    speakerBtn.className = 'corner-btn'
+                    speakerBtn.style.margin = `${ env.browser.isMobile ? 2 : -4.5 }px 6px 0 0`
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3818,7 +3821,8 @@
                     var fontSizeBtn = document.createElement('btn'),
                         fontSizeSVG = icons.fontSize.create()
                     fontSizeBtn.id = 'font-size-btn' // for toggle.tooltip()
-                    fontSizeBtn.className = 'corner-btn' ; fontSizeBtn.style.margin = `${ env.browser.isMobile ? 5 : -2 }px 9px 0 0`
+                    fontSizeBtn.className = 'corner-btn'
+                    fontSizeBtn.style.margin = `${ env.browser.isMobile ? 5 : -2 }px 9px 0 0`
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
