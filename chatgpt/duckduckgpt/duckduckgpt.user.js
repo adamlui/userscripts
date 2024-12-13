@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.8
+// @version                2024.12.12.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3757,7 +3757,7 @@
     appFooter.append(footerContent)
 
     // APPEND DDGPT + footer to DDG
-    const appElems = [appFooter, appDiv],
+    const appElems = [appDiv, appFooter],
           appDivContainerSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*="mainline"]' : '[class*="sidebar"]'
     const appDivContainer = await new Promise(resolve => {
         const container = document.querySelector(appDivContainerSelector)
@@ -3767,8 +3767,8 @@
             if (container) { obs.disconnect() ; resolve(container) }
         }).observe(document.body, { childList: true, subtree: true })
     })
-    appElems.forEach(elem => appDivContainer.prepend(elem))
-    appElems.slice().reverse().forEach((elem, idx) => // fade in staggered
+    appDivContainer.prepend(...appElems)
+    appElems.forEach((elem, idx) => // fade in staggered
         setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
 
     // REPLACE appDivContainer max-width w/ min-width for better UI
@@ -3909,7 +3909,7 @@
     // Observe sidebar for need to RAISE DDGPT as other extensions inject into it
     const sidebarObserver = new MutationObserver(() => {
         if (appDivContainer.firstChild != appDiv) {
-            appElems.forEach(elem => appDivContainer.prepend(elem)) ; sidebarObserver.disconnect() }
+            appDivContainer.prepend(...appElems) ; sidebarObserver.disconnect() }
     })
     sidebarObserver.observe(appDivContainer, { subtree: true, childList: true })
     setTimeout(() => sidebarObserver.disconnect(), 5000) // don't observe forever
