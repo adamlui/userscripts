@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.12.3
+// @version                2024.12.12.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1776,7 +1776,7 @@
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
-                      + '--pre-bg-color-light-scheme: #e7e7e7cf ; --pre-bg-color-dark-scheme: #3a3a3a ;'
+                      + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                       + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
                   + '@keyframes modal-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
@@ -1859,8 +1859,8 @@
                         '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
                   + '.reply-tip {'
                       + 'content: "" ; position: relative ; border: 7px solid transparent ;'
-                      + 'float: left ; left: 7px ; margin: 29px -14px 0 0 ;' // positioning
-                      + 'border-bottom-style: solid ; border-bottom-width: 1.19rem ; border-top: 0 ;'
+                      + 'float: left ; left: 7px ; margin: 1.89em -14px 0 0 ;' // positioning
+                      + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ;'
                       + 'border-bottom-color:'
                           + ( env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled ? '#0000' // hide like terminal
                               : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` ) + '}'
