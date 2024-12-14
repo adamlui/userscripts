@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.19
+// @version               2024.12.14.20
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -987,7 +987,8 @@
               + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
               + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
-                  : '#scheme-menu-entry svg:has([d^="M204-318q-22"]) { animation: rotation 5s linear infinite }' )
+                  : ( '#scheme-menu-entry svg:has([d^="M204-318q-22"]),'
+                        + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotation 5s linear infinite }' ))
               + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
               + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-menu-entry > span {' // outer About status span
