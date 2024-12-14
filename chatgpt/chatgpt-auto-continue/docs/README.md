@@ -116,6 +116,7 @@ This project exists thanks to code, testing, issues, translations & ideas from t
 <a href="https://github.com/andrew-bierman"><img width=50 title="@andrew-bierman" src="https://avatars.githubusercontent.com/u/94939237?first-contrib=2024.9.25-dark-reader-interference-alert"></img></a>
 <a href="https://github.com/thepick"><img width=50 title="@thepick" src="https://avatars.githubusercontent.com/u/12082594?first-contrib=2024.10.11-gpt-editor-bug-report"></img></a>
 <a href="#"><img width=47 title="Copilot Autofix" src="https://github.githubassets.com/favicons/favicon.svg?first-contrib=2024.12.9-cmd-injection-autofix"></a>
+<a href="https://github.com/9romise"><img width=47 title="@9romise" src="https://avatars.githubusercontent.com/u/38204901?first-contrib=2024.12.13-revealed-unneeded-semicolons"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
 <a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.chatgptautocontinue.com/images/icons/platforms/chatgpt/white-on-black/icon50.png"></img></picture></a>
