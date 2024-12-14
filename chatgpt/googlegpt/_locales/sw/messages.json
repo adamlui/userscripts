@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Punguza" },
   "tooltip_close": { "message": "Funga" },
   "tooltip_copy": { "message": "Nakili " },
+  "tooltip_regen": { "message": "Kuipatia nguvu upya" },
   "tooltip_reply": { "message": "Jibu" },
   "tooltip_code": { "message": "Msimbo" },
   "tooltip_sendRelatedQuery": { "message": "Tuma swali linalohusiana" },

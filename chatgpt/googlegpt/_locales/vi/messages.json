@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Thu Nhỏ/Co Lại (Shrink)" },
   "tooltip_close": { "message": "Đóng" },
   "tooltip_copy": { "message": "Sao chép" },
+  "tooltip_regen": { "message": "Tạo lại" },
   "tooltip_reply": { "message": "Trả lời" },
   "tooltip_code": { "message": "Mã " },
   "tooltip_sendRelatedQuery": { "message": "Gửi truy vấn liên quan" },

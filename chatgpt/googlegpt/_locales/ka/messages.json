@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "დაპატარავება" },
   "tooltip_close": { "message": "დაკეტვა" },
   "tooltip_copy": { "message": "copy" },
+  "tooltip_regen": { "message": "რეგენერაცია" },
   "tooltip_reply": { "message": "პასუხი" },
   "tooltip_code": { "message": "კოდი" },
   "tooltip_sendRelatedQuery": { "message": "Შესაბამისი მოთხოვნის გაგზავნა" },

@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Perkecil" },
   "tooltip_close": { "message": "Tutup" },
   "tooltip_copy": { "message": "Salin" },
+  "tooltip_regen": { "message": "Buat Lagi" },
   "tooltip_reply": { "message": "Balas" },
   "tooltip_code": { "message": "Kode" },
   "tooltip_sendRelatedQuery": { "message": "Kirim kueri terkait" },

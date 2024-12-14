@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "सिकोड़ें" },
   "tooltip_close": { "message": "बंद करें" },
   "tooltip_copy": { "message": "नाम पर्ची" },
+  "tooltip_regen": { "message": "फिर से जनरेट करें" },
   "tooltip_reply": { "message": "जवाब" },
   "tooltip_code": { "message": "कोड" },
   "tooltip_sendRelatedQuery": { "message": "संबंधित क्वेरी भेजें" },

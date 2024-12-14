@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "سکڑیں" },
   "tooltip_close": { "message": "بند" },
   "tooltip_copy": { "message": "کاپی کریں" },
+  "tooltip_regen": { "message": "دوبارہ تخلیق کریں" },
   "tooltip_reply": { "message": "جواب" },
   "tooltip_code": { "message": "کوڈ" },
   "tooltip_sendRelatedQuery": { "message": "متعلقہ استفسار بھیجیں" },

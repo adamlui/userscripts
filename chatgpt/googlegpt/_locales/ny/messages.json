@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "ZOKHUDZA" },
   "tooltip_close": { "message": "tseka" },
   "tooltip_copy": { "message": "Kopelani" },
+  "tooltip_regen": { "message": "Kubwezeretsanso" },
   "tooltip_reply": { "message": "Lumikizanani nafe" },
   "tooltip_code": { "message": "Code" },
   "tooltip_sendRelatedQuery": { "message": "Tumizani mafunso okhudzana" },

@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Verréngeren" },
   "tooltip_close": { "message": "Zoumaachen" },
   "tooltip_copy": { "message": "Kopéieren" },
+  "tooltip_regen": { "message": "CAA -" },
   "tooltip_reply": { "message": "< empty >" },
   "tooltip_code": { "message": "Code" },
   "tooltip_sendRelatedQuery": { "message": "Zesummenhang Ufro schécken" },

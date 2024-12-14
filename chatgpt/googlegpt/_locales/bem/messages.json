@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Fela Kuti Close" },
   "tooltip_copy": { "message": "Kopa" },
+  "tooltip_regen": { "message": "Ukubwekeshapo" },
   "tooltip_reply": { "message": "Icasuko" },
   "tooltip_code": { "message": "Inambala" },
   "tooltip_sendRelatedQuery": { "message": "Tumineni ifipusho ifilanda pali ili lyashi" },

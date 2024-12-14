@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Bigire" },
   "tooltip_copy": { "message": "Kopî bike" },
+  "tooltip_regen": { "message": "نوێی دەکاتەوە، پەیدا دەبێتەوە، بوونەوە" },
   "tooltip_reply": { "message": "Sepandin" },
   "tooltip_code": { "message": "@ title: menu" },
   "tooltip_sendRelatedQuery": { "message": "پرسیاری پەیوەندیدار بنێرە" },

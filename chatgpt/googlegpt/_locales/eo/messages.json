@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Ŝrumpi" },
   "tooltip_close": { "message": "Fermi" },
   "tooltip_copy": { "message": "Kopii" },
+  "tooltip_regen": { "message": "Regeneri" },
   "tooltip_reply": { "message": "Respondi" },
   "tooltip_code": { "message": "Kodo" },
   "tooltip_sendRelatedQuery": { "message": "Sendi rilatan peton" },

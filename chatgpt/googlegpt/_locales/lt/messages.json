@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Sinusas" },
   "tooltip_close": { "message": "Užverti" },
   "tooltip_copy": { "message": "Kopijuoti" },
+  "tooltip_regen": { "message": "Pergeneruoti" },
   "tooltip_reply": { "message": "Atsakyti" },
   "tooltip_code": { "message": "Kodas" },
   "tooltip_sendRelatedQuery": { "message": "Siųsti susijusią užklausą" },

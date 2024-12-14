@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "கூர்மையாக்கு" },
   "tooltip_close": { "message": "மூடு" },
   "tooltip_copy": { "message": "நகலெடு" },
+  "tooltip_regen": { "message": "மறுபடிஜெநிப்பித்தல்" },
   "tooltip_reply": { "message": "பதில் " },
   "tooltip_code": { "message": "குறியீடு" },
   "tooltip_sendRelatedQuery": { "message": "தொடர்புடைய வினவலை அனுப்பவும்" },

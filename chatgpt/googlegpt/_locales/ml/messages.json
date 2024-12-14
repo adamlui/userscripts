@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "ചുരുക്കുക" },
   "tooltip_close": { "message": "ക്ലോസ് ചെയ്യുക" },
   "tooltip_copy": { "message": "പക‍ര്പ്പ്" },
+  "tooltip_regen": { "message": "പുനരുജ്ജീവിപ്പിക്കുക" },
   "tooltip_reply": { "message": "മറുപടി" },
   "tooltip_code": { "message": "കോഡ്Default language code" },
   "tooltip_sendRelatedQuery": { "message": "ബന്ധപ്പെട്ട ചോദ്യം അയയ്ക്കുക" },

@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Psiquiatre" },
   "tooltip_close": { "message": "Tanca" },
   "tooltip_copy": { "message": "Copia" },
+  "tooltip_regen": { "message": "Regenerar" },
   "tooltip_reply": { "message": "Respondre" },
   "tooltip_code": { "message": "Codi" },
   "tooltip_sendRelatedQuery": { "message": "Envia una consulta relacionada" },

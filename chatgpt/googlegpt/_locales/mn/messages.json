@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Буурах" },
   "tooltip_close": { "message": "Хаах" },
   "tooltip_copy": { "message": "Хуулах" },
+  "tooltip_regen": { "message": "Шинэчлэх" },
   "tooltip_reply": { "message": "Хариулах" },
   "tooltip_code": { "message": "Код" },
   "tooltip_sendRelatedQuery": { "message": "Холбогдох асуулга илгээх" },

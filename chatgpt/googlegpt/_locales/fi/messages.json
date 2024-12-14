@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Kutista" },
   "tooltip_close": { "message": "Sulje" },
   "tooltip_copy": { "message": "Kopioi" },
+  "tooltip_regen": { "message": "Luo uudestaan" },
   "tooltip_reply": { "message": "Vastaus" },
   "tooltip_code": { "message": "Koodi" },
   "tooltip_sendRelatedQuery": { "message": "Lähetä liittyvä kysely" },

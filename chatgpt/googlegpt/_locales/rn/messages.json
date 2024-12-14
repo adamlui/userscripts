@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_close": { "message": "Ugara" },
   "tooltip_copy": { "message": "Kopi" },
+  "tooltip_regen": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_reply": { "message": "Inyishu" },
   "tooltip_code": { "message": "Ibanga" },
   "tooltip_sendRelatedQuery": { "message": "Rungika Rungika Ibibazo bifitaniye isano" },

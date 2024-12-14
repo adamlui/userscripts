@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Психијатар" },
   "tooltip_close": { "message": "Затвори" },
   "tooltip_copy": { "message": "Копирај" },
+  "tooltip_regen": { "message": "Регенерирај" },
   "tooltip_reply": { "message": "Одговори" },
   "tooltip_code": { "message": "Код" },
   "tooltip_sendRelatedQuery": { "message": "Испрати поврзано барање" },

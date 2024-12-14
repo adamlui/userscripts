@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Pagminus" },
   "tooltip_close": { "message": "Duol" },
   "tooltip_copy": { "message": "Kopya" },
+  "tooltip_regen": { "message": "Nabag-o" },
   "tooltip_reply": { "message": "nagpaabut nga makita ka" },
   "tooltip_code": { "message": "Kodigo" },
   "tooltip_sendRelatedQuery": { "message": "Ipadala ang may kalabutan nga pangutana" },

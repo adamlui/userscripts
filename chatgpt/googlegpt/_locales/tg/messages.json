@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Шакл" },
   "tooltip_close": { "message": "Пӯшидан" },
   "tooltip_copy": { "message": "Нусха бардоштан" },
+  "tooltip_regen": { "message": "Аз нав сохтан" },
   "tooltip_reply": { "message": "& Ð£ÑÑÐ¾Ð´Ð¸ Ð·Ð¸Ð´Ð´Ð¸ ÑÐ¿Ð°Ð¼" },
   "tooltip_code": { "message": "Рамз" },
   "tooltip_sendRelatedQuery": { "message": "Фиристодани дархости марбута" },
