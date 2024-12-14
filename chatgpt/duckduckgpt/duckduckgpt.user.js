@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.6
+// @version                2024.12.14.8
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2947,9 +2947,9 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                appCornerBtnTypes.includes(btnType) ? -15
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
-              : rects.btnElem.top - rects.appDiv.top -36
+                appCornerBtnTypes.includes(btnType) ? -17
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 45
+              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 5 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
