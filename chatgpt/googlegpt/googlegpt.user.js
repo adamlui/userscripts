@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.9
+// @version                  2024.12.14.10
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3928,9 +3928,9 @@
                 // Otherwise create/append answer bubble
                 } else {
                     const answerPre = document.createElement('pre'),
-                          balloonTipSpan = document.createElement('span')
-                    balloonTipSpan.className = `${app.cssPrefix}-reply-tip`
-                    appDiv.append(balloonTipSpan, answerPre)
+                          replyTipSpan = document.createElement('span')
+                    replyTipSpan.className = `${app.cssPrefix}-reply-tip`
+                    appDiv.append(replyTipSpan, answerPre)
                 }
 
                 update.style.tweaks() // show/hide 'by KudoAI', update pre-height based on mode
