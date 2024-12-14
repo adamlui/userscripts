@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.13
+// @version                2024.12.14.14
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2944,9 +2944,9 @@
 
                 // Create/append answer bubble
                 const answerPre = document.createElement('pre'),
-                      balloonTipSpan = document.createElement('span')
-                balloonTipSpan.className = `${app.cssPrefix}-reply-tip`
-                appDiv.append(balloonTipSpan, answerPre)
+                      replyTipSpan = document.createElement('span')
+                replyTipSpan.className = `${app.cssPrefix}-reply-tip`
+                appDiv.append(replyTipSpan, answerPre)
 
                 update.style.tweaks() // show/hide 'by KudoAI', update pre-height based on mode
             }
