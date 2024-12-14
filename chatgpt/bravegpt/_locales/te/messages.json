@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "కుదించు" },
   "tooltip_close": { "message": "క్లోజ్ చేయండి" },
   "tooltip_copy": { "message": "కాపీ చేయండి" },
+  "tooltip_regen": { "message": "పునర్జన్మించుట" },
   "tooltip_reply": { "message": "ఖాళీReload context menu item" },
   "tooltip_code": { "message": "కోడ్" },
   "tooltip_sendRelatedQuery": { "message": "సంబంధిత ప్రశ్నను పంపండి" },

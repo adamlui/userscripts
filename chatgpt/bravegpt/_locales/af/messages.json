@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Verklein" },
   "tooltip_close": { "message": "Maak toe" },
   "tooltip_copy": { "message": "Kopie" },
+  "tooltip_regen": { "message": "Regenereer" },
   "tooltip_reply": { "message": "Insette" },
   "tooltip_code": { "message": "Kode" },
   "tooltip_sendRelatedQuery": { "message": "Stuur verwante navraag" },

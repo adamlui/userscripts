@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Accipere" },
   "tooltip_close": { "message": "Claudere" },
   "tooltip_copy": { "message": "Duplicare" },
+  "tooltip_regen": { "message": "Plena" },
   "tooltip_reply": { "message": "respondere" },
   "tooltip_code": { "message": "Codex" },
   "tooltip_sendRelatedQuery": { "message": "Mitto quaestionem relatam" },

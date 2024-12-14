@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Straty towaru" },
   "tooltip_close": { "message": "Zamknij" },
   "tooltip_copy": { "message": "Skopiuj" },
+  "tooltip_regen": { "message": "Regeneruj " },
   "tooltip_reply": { "message": "Odpowiedz" },
   "tooltip_code": { "message": "Kod" },
   "tooltip_sendRelatedQuery": { "message": "Wyślij powiązane zapytanie" },

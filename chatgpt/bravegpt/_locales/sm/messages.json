@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Tapuni" },
   "tooltip_copy": { "message": "Kopi" },
+  "tooltip_regen": { "message": "Toe faʻafouina" },
   "tooltip_reply": { "message": "Tali" },
   "tooltip_code": { "message": "Fa'ailoga" },
   "tooltip_sendRelatedQuery": { "message": "Auina atu fesili e fesootai i ai" },

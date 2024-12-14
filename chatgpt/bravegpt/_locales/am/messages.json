@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "ዝጋ" },
   "tooltip_copy": { "message": "ቅጂ" },
+  "tooltip_regen": { "message": "እንደገና ያድሱ" },
   "tooltip_reply": { "message": "መልስ ይስጡ" },
   "tooltip_code": { "message": "ኮድ" },
   "tooltip_sendRelatedQuery": { "message": "ተዛማጅ ጥያቄ ይላኩ" },

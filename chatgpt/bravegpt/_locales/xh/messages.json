@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Nciphisa/-finyeza" },
   "tooltip_close": { "message": "Vala" },
   "tooltip_copy": { "message": "Kopa" },
+  "tooltip_regen": { "message": "Hlaziya" },
   "tooltip_reply": { "message": "Impendulo" },
   "tooltip_code": { "message": "Ikhowudi" },
   "tooltip_sendRelatedQuery": { "message": "Thumela umbuzo onento yokwenza noko" },

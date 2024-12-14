@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Micsora" },
   "tooltip_close": { "message": "Închideți" },
   "tooltip_copy": { "message": "Copiere" },
+  "tooltip_regen": { "message": "Regenereaza tabel sync comenzi" },
   "tooltip_reply": { "message": "Răspunde" },
   "tooltip_code": { "message": "Cod" },
   "tooltip_sendRelatedQuery": { "message": "Trimitere interogare asociată" },

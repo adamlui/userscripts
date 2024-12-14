@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "vhara" },
   "tooltip_copy": { "message": "Kopa" },
+  "tooltip_regen": { "message": "Kubereka patsva" },
   "tooltip_reply": { "message": "Mhinduro" },
   "tooltip_code": { "message": "Kodhi" },
   "tooltip_sendRelatedQuery": { "message": "Tumira mubvunzo wakabatana" },

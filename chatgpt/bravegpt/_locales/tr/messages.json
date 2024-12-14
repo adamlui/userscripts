@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Otomatik boyut" },
   "tooltip_close": { "message": "Kapat" },
   "tooltip_copy": { "message": "Kopya" },
+  "tooltip_regen": { "message": "Canlandırmak" },
   "tooltip_reply": { "message": "Cevap" },
   "tooltip_code": { "message": "Kodu" },
   "tooltip_sendRelatedQuery": { "message": "İlgili sorguyu gönder" },

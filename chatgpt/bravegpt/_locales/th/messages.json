@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "หด" },
   "tooltip_close": { "message": "ปิด" },
   "tooltip_copy": { "message": "คัดลอก" },
+  "tooltip_regen": { "message": "สร้างอีกครั้ง" },
   "tooltip_reply": { "message": "ตอบกลับ" },
   "tooltip_code": { "message": "Code" },
   "tooltip_sendRelatedQuery": { "message": "ส่งคำค้นหาที่เกี่ยวข้อง" },

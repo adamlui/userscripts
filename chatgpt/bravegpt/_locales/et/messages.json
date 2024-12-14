@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Kahandamine" },
   "tooltip_close": { "message": "Sulge" },
   "tooltip_copy": { "message": "Kopeeri" },
+  "tooltip_regen": { "message": "Regeneratsioon" },
   "tooltip_reply": { "message": "Vasta" },
   "tooltip_code": { "message": "Kood" },
   "tooltip_sendRelatedQuery": { "message": "Saada seotud päring" },

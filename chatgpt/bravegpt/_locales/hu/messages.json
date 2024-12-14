@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Zsugorítás" },
   "tooltip_close": { "message": "Bezárás" },
   "tooltip_copy": { "message": "Másolja" },
+  "tooltip_regen": { "message": "Újragenerálás" },
   "tooltip_reply": { "message": "Válasz" },
   "tooltip_code": { "message": "Termékkód" },
   "tooltip_sendRelatedQuery": { "message": "Kapcsolódó lekérdezés küldése" },

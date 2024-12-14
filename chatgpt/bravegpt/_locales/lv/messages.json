@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Samazināt" },
   "tooltip_close": { "message": "Aizvērt" },
   "tooltip_copy": { "message": "Kopēt" },
+  "tooltip_regen": { "message": "Reģenerēt" },
   "tooltip_reply": { "message": "Atbildēt" },
   "tooltip_code": { "message": "Kods" },
   "tooltip_sendRelatedQuery": { "message": "Sūtīt saistīto vaicājumu" },

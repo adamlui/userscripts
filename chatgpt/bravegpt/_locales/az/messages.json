@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Sıxlaşdır" },
   "tooltip_close": { "message": "Bağla" },
   "tooltip_copy": { "message": "Kopyala" },
+  "tooltip_regen": { "message": "Yenidən yaradın" },
   "tooltip_reply": { "message": "Cavab" },
   "tooltip_code": { "message": "Kodu" },
   "tooltip_sendRelatedQuery": { "message": "Əlaqəli sorğu göndərin" },

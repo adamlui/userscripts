@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Krympa" },
   "tooltip_close": { "message": "Stäng" },
   "tooltip_copy": { "message": "Kopiera" },
+  "tooltip_regen": { "message": "Regenerera" },
   "tooltip_reply": { "message": "Svara" },
   "tooltip_code": { "message": "Kod" },
   "tooltip_sendRelatedQuery": { "message": "Skicka relaterad fråga" },

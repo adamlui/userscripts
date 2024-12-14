@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Reducir" },
   "tooltip_close": { "message": "Pechar" },
   "tooltip_copy": { "message": "Copiar" },
+  "tooltip_regen": { "message": "Rexenerar" },
   "tooltip_reply": { "message": "Contestar" },
   "tooltip_code": { "message": "Código" },
   "tooltip_sendRelatedQuery": { "message": "Enviar consulta relacionada" },

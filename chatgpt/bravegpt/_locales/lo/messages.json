@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "ຫຍໍ້" },
   "tooltip_close": { "message": "ປິດ" },
   "tooltip_copy": { "message": "ສຳເນົາ" },
+  "tooltip_regen": { "message": "ຟື້ນຟູ" },
   "tooltip_reply": { "message": "ຕອບ" },
   "tooltip_code": { "message": "ລະຫັດ" },
   "tooltip_sendRelatedQuery": { "message": "ສົ່ງຄຳຖາມທີ່ກ່ຽວຂ້ອງ" },

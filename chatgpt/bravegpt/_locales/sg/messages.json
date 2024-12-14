@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Yângâ tî kodoro ti Shrink" },
   "tooltip_close": { "message": "Pene ni da" },
   "tooltip_copy": { "message": "Kopi" },
+  "tooltip_regen": { "message": "A kiri a kiri a kiri a sara kua na lo" },
   "tooltip_reply": { "message": "Répondre na" },
   "tooltip_code": { "message": "Kode ti kodro" },
   "tooltip_sendRelatedQuery": { "message": "Ti tokua mbeni hundango tënë so andu tënë ni" },
