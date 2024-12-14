@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.13.4
+// @version               2024.12.14
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3057,10 +3057,10 @@
                                  + ( app.msgs.menuLabel_widerSidebar ))
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
-              : btnType == 'copy' ? ( btnElem.firstChild.id == 'copy-icon' ? `${app.msgs.tooltip_copy} ${
-                  ( btnElem.parentNode.tagName == 'PRE' ? app.msgs.tooltip_reply
-                                                        : app.msgs.tooltip_code ).toLowerCase() }`
-                                                        : `${app.msgs.notif_copiedToClipboard}!` )
+              : btnType == 'copy' ? ( btnElem.firstChild.id == 'copy-icon' ?
+                    `${app.msgs.tooltip_copy} ${
+                        app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
+                  : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
