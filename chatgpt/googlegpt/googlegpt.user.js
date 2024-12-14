@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.18
+// @version                  2024.12.14.19
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1452,7 +1452,7 @@
             function schemeNotify(scheme) {
 
                 // Show notification
-                notify(`${app.msgs.menuLabel_colorScheme}:`
+                notify(`${app.msgs.menuLabel_colorScheme}: `
                       + ( scheme == 'light' ? app.msgs.scheme_light || 'Light'
                         : scheme == 'dark'  ? app.msgs.scheme_dark  || 'Dark'
                                             : app.msgs.menuLabel_auto ).toUpperCase() )
@@ -1460,9 +1460,7 @@
                 // Append scheme icon
                 const notifs = document.querySelectorAll('.chatgpt-notif')
                 const notif = notifs[notifs.length -1]
-                const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
-                                       : env.ui.app.scheme == 'dark' ? 'moon'
-                                       : 'arrowsCycle'].create()
+                const schemeIcon = icons[scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCycle'].create()
                 schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
                                          + 'top: 1px ; margin-left: 6px'
                 notif.append(schemeIcon)
