@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.13.1
+// @version                  2024.12.13.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3684,7 +3684,7 @@
                     if (caller.status != 'done') {
                         log.debug('Response text', respText)
                         const failMatch = failFlagsAndURLs.exec(respText)
-                        if (failMatch || /^(?:\{|event:)/.test(respText)) {
+                        if (!respText || failMatch || /^(?:\{|event:)/.test(respText)) {
                             if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
                             api.tryNew(caller)
                         } else {
