@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.3
+// @version                2024.12.14.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1737,8 +1737,7 @@
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
             env.ui.app.scheme = newScheme ; logos.amzgpt.update() ; icons.amzgpt.update() ; update.style.app()
-            modals.stylize() ; update.stars() ; update.replyPrefix() ; toggle.btnGlow()
-            modals.settings.updateSchemeStatus()
+            update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
 
@@ -1752,6 +1751,7 @@
 
         style: {
             app() {
+                modals.stylize() // update modal styles
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
