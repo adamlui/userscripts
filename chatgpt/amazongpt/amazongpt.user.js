@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.17
+// @version                2024.12.14.18
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -815,8 +815,8 @@
               + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
-              + ( config.fgAnimationsDisabled ? ''
-                  : '#scheme-menu-entry svg { animation: rotation 5s linear infinite }' )
+              + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
+                  : '#scheme-menu-entry svg:has([d^="M479.92-34q-91.56"]) { animation: rotation 5s linear infinite }' )
               + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
               + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-menu-entry > span {' // outer About status span
