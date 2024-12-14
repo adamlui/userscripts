@@ -188,7 +188,7 @@ ChatGPT 自动刷新 与使用 [ScriptCat](https://docs.scriptcat.org)、[Violen
 <a href="https://github.com/Yash-Singh1"><img width=50 title="@Yash-Singh1" src="https://avatars.githubusercontent.com/u/53054099?first-contrib=2023.2.3-added-eslint-plugin-userscripts"></img></a>
 <a href="https://github.com/sanchomuzax"><img width=50 title="@sanchomuzax" src="https://avatars.githubusercontent.com/u/2911588?first-contrib=2023.2.26-shortened-hungarian-menu-label"></img></a>
 <a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.27-portuguese-translation-corrections" title="hacker09"></picture></a>
-<a href="https://github.com/eltociear"><img width=47 title="@eltociear" src="https://avatars.githubusercontent.com/u/22633385?first-contrib=2023.07.17-add-ja-doc-md"></img></a>
+<a href="https://github.com/eltociear"><img width=50 title="@eltociear" src="https://avatars.githubusercontent.com/u/22633385?first-contrib=2023.07.17-add-ja-doc-md"></img></a>
 <a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
 <a href="https://github.com/9romise"><img width=50 title="@9romise" src="https://avatars.githubusercontent.com/u/38204901?first-contrib=2024.12.13-revealed-unneeded-semicolons"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
