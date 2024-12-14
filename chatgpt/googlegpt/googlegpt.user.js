@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.6
+// @version                  2024.12.14.7
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3267,9 +3267,9 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                appCornerBtnTypes.includes(btnType) ? -15
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
-              : rects.btnElem.top - rects.appDiv.top -36
+                appCornerBtnTypes.includes(btnType) ? -14
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 43
+              : rects.btnElem.top - rects.appDiv.top -35 - ( event.currentTarget.closest('code') ? 4 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
