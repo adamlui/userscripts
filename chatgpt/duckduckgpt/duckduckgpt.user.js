@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.8
+// @version                2024.12.14.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3773,7 +3773,7 @@
         var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
         document.head.append(create.style('.btn-tooltip {'
             + 'background-color:' // bubble style
-                + 'rgba(0, 0, 0, 0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
+                + 'rgba(0, 0, 0, 0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
             + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
             + 'position: absolute ;' // for update.tooltip() calcs
             + 'box-shadow: 3px 5px 16px 0 rgb(0 0 0 / 21%) ;' // drop shadow
