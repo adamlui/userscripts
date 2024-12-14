@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.9
+// @version               2024.12.14.10
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1589,7 +1589,7 @@
 
         pin: {
             clickHandler(event) {
-                const pinMenu = event.target.closest('#pin-menu'),
+                const pinMenu = event.target.closest(`#${app.cssPrefix}-pin-menu`),
                       itemLabel = event.target.textContent,
                       prevOffsetTop = appDiv.offsetTop
 
@@ -1605,8 +1605,9 @@
             },
 
             createAppend() {
-                const pinMenu = document.createElement('div') ; pinMenu.id = 'pin-menu'
-                pinMenu.classList.add(`${app.cssPrefix}-menu`, 'btn-tooltip', 'fade-in-less', 'no-user-select')
+                const pinMenu = document.createElement('div') ; pinMenu.id = `${app.cssPrefix}-pin-menu`
+                pinMenu.classList.add(
+                    `${app.cssPrefix}-menu`, `${app.cssPrefix}-btn-tooltip`, 'fade-in-less', 'no-user-select')
                 menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
                 return pinMenu
             },
@@ -1615,8 +1616,9 @@
                 pinMenu.textContent = ''
 
                 // Init core elems
-                const pinMenuUL = document.querySelector('#pin-menu ul') || document.createElement('ul'),
-                      pinMenuItems = []
+                const pinMenuUL = document.querySelector(`#${app.cssPrefix}-pin-menu ul`)
+                               || document.createElement('ul')
+                const pinMenuItems = []
                 const pinMenulabels = [
                     `${app.msgs.menuLabel_pinTo}...`, app.msgs.menuLabel_top,
                     app.msgs.menuLabel_sidebar, app.msgs.menuLabel_bottom ]
@@ -1656,7 +1658,7 @@
             },
 
             toggle(event) { // visibility
-                const pinMenu = document.getElementById('pin-menu') || menus.pin.createAppend()
+                const pinMenu = document.getElementById(`${app.cssPrefix}-pin-menu`) || menus.pin.createAppend()
                 if (!menus.pin.topPos)
                      menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -78
                 if (!menus.pin.rightPos)
@@ -1792,7 +1794,7 @@
         checkmark: {
             create() {
                 const svg = create.svgElem('svg', {
-                    id: 'checkmark-icon', width: 10, height: 10, viewBox: '0 0 20 20' })
+                    id: `${app.cssPrefix}-checkmark-icon`, width: 10, height: 10, viewBox: '0 0 20 20' })
                 const svgPath = create.svgElem('path', { stroke: 'none', d: 'M0 11l2-2 5 5L18 3l2 2L7 18z' })
                 svg.append(svgPath) ; return svg
             }
@@ -2201,7 +2203,7 @@
         },
 
         rqVisibility() {
-            const relatedQueriesDiv = appDiv.querySelector('.related-queries')
+            const relatedQueriesDiv = appDiv.querySelector(`.${app.cssPrefix}-related-queries`)
             if (relatedQueriesDiv) // update visibility based on latest setting
                 relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
         },
@@ -2270,63 +2272,65 @@
                   + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
                   + `#${app.cssPrefix} .alert-link {`
                       + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
-                  + '.app-name {'
+                  + `.${app.cssPrefix}-name {`
                       + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
                   + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
                   + '.kudoai a { color: #aaa ; text-decoration: none !important }'
                   + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-                  + '#corner-btns { position: relative ; bottom: 3px ; float: right }'
-                  + '.corner-btn {'
+                  + `#${app.cssPrefix}-corner-btns { position: relative ; bottom: 3px ; float: right }`
+                  + `.${app.cssPrefix}-corner-btn {`
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
-                                                    : 'fill: #adadad ; stroke: #adadad' };` // color
+                                                        : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
                           + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
                                 // ...btn-zoom-fade-out ends
-                  + '.corner-btn:hover'
-                      + `{ ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                      : 'fill: black ; stroke: black' } ;`
+                  + `.${app.cssPrefix}-corner-btn:hover {`
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                                                          : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-                  + `.corner-btn:active { ${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
-                                                                     : 'fill: #638ed4 ; stroke: #638ed4' } }`
-                  + ( config.bgAnimationsDisabled ? '' : ( `#${app.cssPrefix}-logo, .corner-btn svg, .standby-btn`
-                      + `{ filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
-                                                                          : '#aaaaaa21 7px' } 7px 3px) }` ))
+                  + `.${app.cssPrefix}-corner-btn:active {`
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
+                                                        : 'fill: #638ed4 ; stroke: #638ed4' }}`
+                  + ( config.bgAnimationsDisabled ? '' : (
+                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-corner-btn svg, .${app.cssPrefix}-standby-btn {`
+                          + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
+                                                                                : '#aaaaaa21 7px' } 7px 3px) }` ))
                   + `#${app.cssPrefix} .loading {`
                       + 'margin-bottom: -55px ;' // offset vs. app div bottom-padding footer accomodation
                       + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + `#${app.cssPrefix} section.loading { padding-left: 5px ; font-size: 90% }`
-                  + '#font-size-slider-track {'
+                  + `#${app.cssPrefix}-font-size-slider-track {`
                       + 'width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
                       + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
                       + '-webkit-background-clip: content-box }'
-                  + '#font-size-slider-track::before {' // to add finger cursor to unpadded core only
+                  + `#${app.cssPrefix}-font-size-slider-track::before {` // to add finger cursor to unpadded core only
                       + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ;'
                       + 'height: calc(100% - 20px) ; cursor: pointer }'
-                  + '#font-size-slider-tip {'
+                  + `#${app.cssPrefix}-font-size-slider-tip {`
                       + 'z-index: 1 ; position: absolute ; bottom: 20px ;'
                       + 'border-left: 4.5px solid transparent ; border-right: 4.5px solid transparent ;'
                       + 'border-bottom: 16px solid #ccc }'
-                  + '#font-size-slider-thumb {'
-                      + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ; top: -9px ;'
-                      + `transition: transform 0.05s ease ; background-color: ${
-                            env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                  + `#${app.cssPrefix}-font-size-slider-thumb {`
+                      + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ;'
+                      + 'top: -9px ; transition: transform 0.05s ease ;'
+                      + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
                       + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
-                        '' : '#font-size-slider-thumb:hover { transform: scale(1.125) }' )
-                  + '.standby-btn {'
+                        '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
+                  + `.${app.cssPrefix}-standby-btn {`
                       + 'width: 100% ; margin: 14px 0 20px ; padding: 13px 0 ; cursor: pointer ;'
                       + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' } ;`
                       + `color: ${ isStarryDM ? 'white' : 'black' } ; transition: transform 0.15s ease ;`
                       + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
-                  + '.standby-btn:hover {'
+                  + `.${app.cssPrefix}-standby-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
                                                     : 'background: black ; color: white' };`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
-                  + '.reply-tip {'
+                  + `.${app.cssPrefix}-reply-tip {`
                       + 'content: "" ; position: relative ; border: 7px solid transparent ;'
                       + 'float: left ; left: 7px ; margin: 29px -13px 0 0 ;' // positioning
                       + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
@@ -2364,11 +2368,11 @@
                       + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
                   + '.chatgpt-js > a { color: inherit ; top: .054rem }'
                   + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
-                  + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
+                  + `pre > #${app.cssPrefix}-copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
                         env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
-                  + 'code #copy-btn { position: relative ; top: -6px ; right: -9px }'
-                  + 'code #copy-btn > svg { height: 13px ; width: 13px ; fill: white }'
-                  + '#app-chatbar {'
+                  + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
+                  + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
+                  + `#${app.cssPrefix}-chatbar {`
                       + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
                             ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
                       + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ; padding: 12px 51px 12px 10px ;'
@@ -2377,13 +2381,13 @@
                       + `background: ${ env.ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
                                                                 : '#eeeeee9e' } ;`
                       + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
-                  + '.related-queries {'
+                  + `.${app.cssPrefix}-related-queries {`
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -28px ;'
                       + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
                       + `${ env.browser.isFF ? '' : 'margin-top: -31px' }}`
-                  + '.related-query {'
+                  + `.${app.cssPrefix}-related-query {`
                       + 'font-size: 0.77em ; cursor: pointer ;'
-                      + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to .related-queries
+                      + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
                       + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
                                                            : '#767676' } ;`
@@ -2397,26 +2401,26 @@
                             `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
                                 : '8px -6px rgba(169, 169, 169, 0.75)' };`
                       + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
-                  + '.related-query:hover, .related-query:focus {'
+                  + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
                       + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scale(1.055) !important ;' )
                       + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
                             : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
-                  + '.related-query svg {' // related query icon
+                  + `.${app.cssPrefix}-related-query svg {` // related query icon
                       + 'float: left ; margin: 0.09em 6px 0 0 ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
                   + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
                   + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
                   + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
-                  + '.chatbar-btn {'
+                  + `.${app.cssPrefix}-chatbar-btn {`
                       + 'z-index: 560 ;'
                       + 'border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
                       + `bottom: ${ env.browser.isFF ? 28 : 32 }px ; `
                       + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
                                                     : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
-                  + '.chatbar-btn:hover {'
+                  + `.${app.cssPrefix}-chatbar-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
-                                                    : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
+                                                        : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( // markdown styles
                         `#${app.cssPrefix} > pre h1 { font-size: 1.25em }`
                       + `#${app.cssPrefix} > pre h2 { font-size: 1.1em }`
@@ -2436,8 +2440,8 @@
                   + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
                   + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-                  + '#checkmark-icon { fill: #b3f96d }'
-                  + `.${app.cssPrefix}-menu-item:hover #checkmark-icon { fill: green }`
+                  + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
+                  + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
                 )
             },
 
@@ -2451,7 +2455,7 @@
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
                 if (kudoAIspan) {
-                    const visibleBtnCnt = [...appDiv.querySelectorAll('.corner-btn')]
+                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`)]
                         .filter(btn => getComputedStyle(btn).display != 'none').length
                     kudoAIspan.style.display = visibleBtnCnt <= (
                         config.anchored && config.expanded ? 10
@@ -2461,7 +2465,7 @@
 
                 // Update <pre> max-height for various mode toggles
                 const answerPre = appDiv.querySelector('pre'),
-                      relatedQueries = appDiv.querySelector('.related-queries'),
+                      relatedQueries = appDiv.querySelector(`.${app.cssPrefix}-related-queries`),
                       shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
                       longerPreHeight = window.innerHeight - 278
                 if (answerPre) answerPre.style.maxHeight = (
@@ -2508,7 +2512,7 @@
         appDiv() {
             appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
                 if (event.button != 0) return // prevent non-left-click dismissal
-                if (document.getElementById('font-size-slider-track') // slider is visible
+                if (document.getElementById(`${app.cssPrefix}-font-size-slider-track`) // slider is visible
                     && !event.target.closest('[id*="font-size"]') // not clicking slider elem
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
@@ -2516,15 +2520,15 @@
         },
 
         cornerBtns() {
-            appDiv.querySelectorAll('.corner-btn').forEach(btn => { // from right to left
-                if (btn.id == 'chevron-btn') btn.onclick = () => {
-                    if (appDiv.querySelector('#font-size-slider-track')?.classList.contains('active'))
+            appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`).forEach(btn => { // from right to left
+                if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
+                    if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
                     toggle.minimized()
                 }
-                else if (btn.id == 'about-btn') btn.onclick = () => modals.open('about')
-                else if (btn.id == 'settings-btn') btn.onclick = () => modals.open('settings')
-                else if (btn.id == 'speak-btn') btn.onclick = () => {
+                else if (btn.id.endsWith('about-btn')) btn.onclick = () => modals.open('about')
+                else if (btn.id.endsWith('settings-btn')) btn.onclick = () => modals.open('settings')
+                else if (btn.id.endsWith('speak-btn')) btn.onclick = () => {
                     const wholeAnswer = appDiv.querySelector('pre').textContent
                     const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5 }
                     const sgtDialectMap = [
@@ -2575,11 +2579,11 @@
                                 }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakOptions))
                     }}})
                 }
-                else if (btn.id == 'font-size-btn') btn.onclick = () => fontSizeSlider.toggle()
-                else if (btn.id == 'pin-btn') btn.onmouseover = btn.onmouseout = menus.pin.toggle
-                else if (btn.id == 'wsb-btn') btn.onclick = () => toggle.sidebar('wider')
-                else if (btn.id == 'arrows-btn') btn.onclick = () => toggle.expandedMode()
-                if (!env.browser.isMobile && btn.id != 'pin-btn') // add hover listeners for tooltips
+                else if (btn.id.endsWith('font-size-btn')) btn.onclick = () => fontSizeSlider.toggle()
+                else if (btn.id.endsWith('pin-btn')) btn.onmouseover = btn.onmouseout = menus.pin.toggle
+                else if (btn.id.endsWith('wsb-btn')) btn.onclick = () => toggle.sidebar('wider')
+                else if (btn.id.endsWith('arrows-btn')) btn.onclick = () => toggle.expandedMode()
+                if (!env.browser.isMobile && !btn.id.endsWith('pin-btn')) // add hover listeners for tooltips
                     btn.onmouseover = btn.onmouseout = toggle.tooltip
                 if (/about|settings|speak/.test(btn.id)) btn.onmouseup = () => { // add zoom/fade-out to select buttons
                     if (config.fgAnimationsDisabled) return
@@ -2600,7 +2604,7 @@
             replyForm.onkeydown = event => {
                 if (event.key == 'Enter' || event.keyCode == 13) {
                     if (event.ctrlKey) { // add newline
-                        const chatTextarea = appDiv.querySelector('#app-chatbar'),
+                        const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`),
                               caretPos = chatTextarea.selectionStart,
                               textBefore = chatTextarea.value.substring(0, caretPos),
                               textAfter = chatTextarea.value.substring(caretPos)
@@ -2613,7 +2617,7 @@
             // Add form submit listener
             listenerize.replySection.submitHandler = event => {
                 event.preventDefault()
-                const chatTextarea = appDiv.querySelector('#app-chatbar')
+                const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
 
                 // No reply, change placeholder + focus chatbar
                 if (chatTextarea.value.trim() == '') {
@@ -2633,7 +2637,7 @@
                     get.reply(msgChain)
 
                     // Hide/remove elems
-                    appDiv.querySelector('.related-queries')?.remove() // remove related queries
+                    appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove() // remove related queries
                     if (!env.browser.isMobile) // hide chatbar button tooltips
                         tooltipDiv.style.opacity = 0
                     const appFooter = appDiv.querySelector('footer')
@@ -2651,7 +2655,7 @@
             replyForm.onsubmit = listenerize.replySection.submitHandler
 
             // Add chatbar autosizer
-            const chatTextarea = appDiv.querySelector('#app-chatbar')
+            const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
             let prevLength = chatTextarea.value.length
             listenerize.replySection.chatbarAutoSizer = () => {
                 const newLength = chatTextarea.value.length
@@ -2667,8 +2671,8 @@
             chatTextarea.oninput = listenerize.replySection.chatbarAutoSizer
 
             // Add button listeners
-            appDiv.querySelectorAll('.chatbar-btn').forEach(btn => {
-                if (btn.id == 'shuffle-btn') btn.onclick = () => {
+            appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
+                if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
                     const randQAprompt = 'Generate a single random question on any topic then answer it. '
                                        + 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, '
                                            + 'deserts, mindfulness meditation, the Fibonacci sequence, the liver, '
@@ -2697,15 +2701,16 @@
             // Create/ID/classify slider elems
             fontSizeSlider.cursorOverlay = document.createElement('div')
             fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for resize cursor
-            const slider = document.createElement('div') ; slider.id = 'font-size-slider-track'
+            const slider = document.createElement('div') ; slider.id = `${app.cssPrefix}-font-size-slider-track`
             slider.className = 'fade-in-less' ; slider.style.display = 'none'
-            const sliderThumb = document.createElement('div') ; sliderThumb.id = 'font-size-slider-thumb'
+            const sliderThumb = document.createElement('div')
+            sliderThumb.id = `${app.cssPrefix}-font-size-slider-thumb`
             sliderThumb.title = Math.floor(config.fontSize *10) /10 + 'px' // font size tooltip
-            const sliderTip = document.createElement('div') ; sliderTip.id = 'font-size-slider-tip'
+            const sliderTip = document.createElement('div') ; sliderTip.id = `${app.cssPrefix}-font-size-slider-tip`
 
             // Assemble/insert elems
             slider.append(sliderThumb, sliderTip)
-            appDiv.insertBefore(slider, appDiv.querySelector('.btn-tooltip,' // desktop
+            appDiv.insertBefore(slider, appDiv.querySelector(`.${app.cssPrefix}-btn-tooltip,` // desktop
                                                            + 'pre')) // mobile
             // Init thumb pos
             setTimeout(() => {
@@ -2771,16 +2776,17 @@
 
         toggle(state = '') {
             log.caller = `fontSizeSlider.toggle(${ state ? `'${state}'` : '' })`
-            const slider = document.getElementById('font-size-slider-track') || fontSizeSlider.createAppend(),
-                  replyTip = appDiv.querySelector('.reply-tip'),
-                  sliderTip = document.getElementById('font-size-slider-tip')
+            const slider = document.getElementById(`${app.cssPrefix}-font-size-slider-track`)
+                         || fontSizeSlider.createAppend()
+            const replyTip = appDiv.querySelector(`.${app.cssPrefix}-reply-tip`)
+            const sliderTip = document.getElementById(`${app.cssPrefix}-font-size-slider-tip`)
 
             // Show slider
             if (state == 'on' || (!state && slider.style.display == 'none')) {
                 log.debug('Showing Font Size slider...')
 
                 // Position slider tip
-                const btnSpan = document.getElementById('font-size-btn'),
+                const btnSpan = document.getElementById(`${app.cssPrefix}-font-size-btn`),
                       rects = { appDiv: appDiv.getBoundingClientRect(), btnSpan: btnSpan.getBoundingClientRect() }
                 sliderTip.style.right = `${ rects.appDiv.right - ( rects.btnSpan.left + rects.btnSpan.right )/2 -32 }px`
 
@@ -2806,7 +2812,7 @@
 
         anchorMode(state = '') {
             log.caller = `toggle.anchorMode(${ state ? `'${state}'` : '' })`
-            const prevState = config.anchored // for restraining notif if no change from #pin-menu 'Sidebar' click
+            const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
             if (state == 'on' || !state && !config.anchored) {
                 log.debug('Toggling Anchor Mode on...')
                 settings.save('anchored', true)
@@ -2855,7 +2861,7 @@
             log.caller = 'toggle.autoGet()'
             log.debug(`Toggling Auto-Get ${ config.autoGetDisabled ?  'ON' : 'OFF' }...`)
             settings.save('autoGetDisabled', !config.autoGetDisabled)
-            if (appDiv.querySelector('.standby-btn')) show.reply.standbyBtnClickHandler()
+            if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
             if (!config.autoGetDisabled) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(manualMode => {
                     if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
@@ -2921,7 +2927,7 @@
                 const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.firstChild.remove() ; chevronBtn.append(chevronSVG)
                 chevronBtn.onclick = () => {
-                    if (appDiv.querySelector('#font-size-slider-track')?.classList.contains('active'))
+                    if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
                     toggle.minimized()
                 }
@@ -2960,7 +2966,7 @@
             log.debug(`Toggling Related Queries ${ config.rqDisabled ? 'ON' : 'OFF' }...`)
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
-            if (!config.rqDisabled && !appDiv.querySelector('.related-queries')) // get related queries for 1st time
+            if (!config.rqDisabled && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) // get related queries for 1st time
                 get.related(stripQueryAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
@@ -2973,7 +2979,7 @@
             log.caller = `toggle.sidebar('${mode}'${ state ? `, '${state}'` : '' })`
             const configKeyName = mode + 'Sidebar',
                   toToggleOn = state == 'on' || !state && !config[configKeyName],
-                  prevStickyState = config.stickySidebar // for hiding notif if no change from #pin-menu Sidebar-click
+                  prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
             log.debug(`Toggling ${log.toTitleCase(mode)} Sidebar ${ toToggleOn ? 'ON' : 'OFF' }`)
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
@@ -3043,7 +3049,7 @@
         },
 
         tooltip(event) {
-            const btnElem = event.currentTarget, btnType = btnElem.id.replace(/-btn$/, ''),
+            const btnElem = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btnElem.id)[1],
                   appCornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen']
 
@@ -3059,7 +3065,7 @@
                                  + ( app.msgs.menuLabel_widerSidebar ))
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
-              : btnType == 'copy' ? ( btnElem.firstChild.id == 'copy-icon' ?
+              : btnType == 'copy' ? ( btnElem.firstChild.id.endsWith('copy-icon') ?
                     `${app.msgs.tooltip_copy} ${
                         app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
@@ -3525,7 +3531,7 @@
     const show = {
 
         replyCornerBtns() {
-            if (document.getElementById('copy-btn')) return
+            if (document.getElementById(`${app.cssPrefix}-copy-btn`)) return
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
@@ -3537,7 +3543,7 @@
             appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
-                copyBtn.id = 'copy-btn' ; copySVG.id = 'copy-icon'
+                copyBtn.id = `${app.cssPrefix}-copy-btn` ; copySVG.id = `${app.cssPrefix}-copy-icon`
                 copyBtn.className = 'no-mobile-tap-outline' ; copyBtn.style.cssText = baseBtnStyles
                 copyBtn.append(copySVG) ; let elemToPrepend = copyBtn
 
@@ -3551,13 +3557,14 @@
                 // Add listeners
                 if (!env.browser.isMobile) copyBtn.onmouseover = copyBtn.onmouseout = toggle.tooltip
                 copyBtn.onclick = event => { // copy text, update icon + tooltip status
-                    const copySVG = copyBtn.querySelector('#copy-icon')
+                    const copySVG = copyBtn.querySelector(`#${app.cssPrefix}-copy-icon`)
                     if (!copySVG) return // since clicking on Copied icon
                     const textContainer = (
                         copyBtn.parentNode.tagName == 'PRE' ? copyBtn.parentNode // reply container
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
-                    const checkmarksSVG = icons.checkmarkDouble.create() ; checkmarksSVG.id = 'copied-icon'
+                    const checkmarksSVG = icons.checkmarkDouble.create()
+                    checkmarksSVG.id = `${app.cssPrefix}-copied-icon`
                     checkmarksSVG.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
                     copyBtn.replaceChild(checkmarksSVG, copySVG) // change to Copied icon
                     setTimeout(() => copyBtn.replaceChild(copySVG, checkmarksSVG), 1355) // change back to copy icon
@@ -3571,7 +3578,7 @@
             })
 
             // Add Regenerate button
-            const regenBtn = document.createElement('btn') ; regenBtn.id = 'regen-btn'
+            const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.cssPrefix}-regen-btn`
             regenBtn.className = 'no-mobile-tap-outline'
             regenBtn.style.cssText = baseBtnStyles + (
                 'position: relative ; top: 1px ; margin: 0 9px 0 5px ; transform: rotate(35deg)' )
@@ -3596,21 +3603,20 @@
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
                 const appTitleAnchor = create.anchor(app.urls.app, appHeaderLogo)
-                appTitleAnchor.classList.add('app-name', 'no-user-select')
+                appTitleAnchor.classList.add(`${app.cssPrefix}-name`, 'no-user-select')
                 appDiv.append(appTitleAnchor)
 
                 // Create/append corner buttons div
                 const cornerBtnsDiv = document.createElement('div')
-                cornerBtnsDiv.id = 'corner-btns' ; cornerBtnsDiv.className = 'no-mobile-tap-outline'
+                cornerBtnsDiv.id = `${app.cssPrefix}-corner-btns` ; cornerBtnsDiv.className = 'no-mobile-tap-outline'
                 appDiv.append(cornerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.browser.isMobile) {
                     var chevronBtn = document.createElement('btn'),
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
-                    chevronBtn.id = 'chevron-btn' // for toggle.tooltip()
-                    chevronBtn.classList.add('corner-btn')
-                    chevronBtn.style.margin = '0.5px 1px 0 11px'
+                    chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
+                    chevronBtn.className = `${app.cssPrefix}-corner-btn` ; chevronBtn.style.margin = '0.5px 1px 0 11px'
                     chevronBtn.style.display = 'none' // to activate from anchorStyles only
                     chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
                 }
@@ -3618,23 +3624,23 @@
                 // Create/append About button
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
-                aboutBtn.id = 'about-btn' // for toggle.tooltip()
-                aboutBtn.className = 'corner-btn' ; aboutBtn.style.marginTop = '0.8px'
+                aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
+                aboutBtn.className = `${app.cssPrefix}-corner-btn` ; aboutBtn.style.marginTop = '0.8px'
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
-                settingsBtn.id = 'settings-btn' // for toggle.tooltip()
-                settingsBtn.className = 'corner-btn' ; settingsBtn.style.margin = '1.5px 9px 0 1px'
+                settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
+                settingsBtn.className = `${app.cssPrefix}-corner-btn` ; settingsBtn.style.margin = '1.5px 9px 0 1px'
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
                 if (answer != 'standby') {
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
-                    speakerBtn.id = 'speak-btn' // for toggle.tooltip()
-                    speakerBtn.className = 'corner-btn' ; speakerBtn.style.marginRight = '7px'
+                    speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
+                    speakerBtn.className = `${app.cssPrefix}-corner-btn` ; speakerBtn.style.marginRight = '7px'
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3642,8 +3648,8 @@
                 if (answer != 'standby') {
                     var fontSizeBtn = document.createElement('btn'),
                         fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.id = 'font-size-btn' // for toggle.tooltip()
-                    fontSizeBtn.className = 'corner-btn' ; fontSizeBtn.style.margin = '1px 10px 0 2px'
+                    fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
+                    fontSizeBtn.className = `${app.cssPrefix}-corner-btn` ; fontSizeBtn.style.margin = '1px 10px 0 2px'
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3651,23 +3657,23 @@
                 if (!env.browser.isMobile) {
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
-                    pinBtn.id = 'pin-btn' // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.className = 'corner-btn' ; pinBtn.style.margin = '1px 9px 0 0'
+                    pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
+                    pinBtn.className = `${app.cssPrefix}-corner-btn` ; pinBtn.style.margin = '1px 9px 0 0'
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
-                    wsbBtn.id = 'wsb-btn' // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.className = 'corner-btn' ; wsbBtn.style.margin = '0.151em 11px 0 0'
+                    wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
+                    wsbBtn.className = `${app.cssPrefix}-corner-btn` ; wsbBtn.style.margin = '0.151em 11px 0 0'
                     wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
                     var arrowsBtn = document.createElement('btn'),
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.id = 'arrows-btn' // for toggle.tooltip()
-                    arrowsBtn.className = 'corner-btn' ; arrowsBtn.style.margin = '0.5px 12px 0 0'
+                    arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
+                    arrowsBtn.className = `${app.cssPrefix}-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
                     arrowsBtn.style.display = 'none' // to activate from anchorStyles only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
                 }
@@ -3683,12 +3689,12 @@
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
                 kudoAIspan.style.cssText = 'position: relative ; bottom: 8px ; font-size: 12px'
                 kudoAIspan.append(create.anchor(app.urls.publisher, 'KudoAI'))
-                appDiv.querySelector('.app-name').insertAdjacentElement('afterend', kudoAIspan)
+                appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
                     const standbyBtn = document.createElement('button')
-                    standbyBtn.classList.add('standby-btn', 'no-mobile-tap-outline')
+                    standbyBtn.classList.add(`${app.cssPrefix}-standby-btn`, 'no-mobile-tap-outline')
                     standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp || `Send search query to ${app.name}`
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
@@ -3705,7 +3711,7 @@
                 } else {
                     const answerPre = document.createElement('pre'),
                           balloonTipSpan = document.createElement('span')
-                    balloonTipSpan.className = 'reply-tip'
+                    balloonTipSpan.className = `${app.cssPrefix}-reply-tip`
                     appDiv.append(balloonTipSpan, answerPre)
                 }
 
@@ -3713,7 +3719,7 @@
             }
 
             // Build reply section if missing
-            if (!appDiv.querySelector('#app-chatbar')) {
+            if (!appDiv.querySelector(`#${app.cssPrefix}-chatbar`)) {
 
                 // Init/clear reply section content/classes
                 const replySection = appDiv.querySelector('section') || document.createElement('section')
@@ -3723,8 +3729,8 @@
                 const replyForm = document.createElement('form'),
                       continueChatDiv = document.createElement('div'),
                       chatTextarea = document.createElement('textarea')
-                continueChatDiv.className = 'continue-chat'
-                chatTextarea.id = 'app-chatbar' ; chatTextarea.rows = '1'
+                continueChatDiv.className = `${app.cssPrefix}-continue-chat`
+                chatTextarea.id = `${app.cssPrefix}-chatbar` ; chatTextarea.rows = '1'
                 chatTextarea.placeholder = ( answer == 'standby' ? app.msgs.placeholder_askSomethingElse
                                                                  : app.msgs.tooltip_sendReply ) + '...'
                 continueChatDiv.append(chatTextarea)
@@ -3733,8 +3739,8 @@
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btnElem = document.createElement('button')
-                    btnElem.id = `${btnType}-btn` ; btnElem.classList.add('chatbar-btn', 'no-mobile-tap-outline')
+                    const btnElem = document.createElement('button') ; btnElem.id = `${app.cssPrefix}-${btnType}-btn`
+                    btnElem.classList.add(`${app.cssPrefix}-chatbar-btn`, 'no-mobile-tap-outline')
                     btnElem.style.right = `${ btnType == 'send' ? 12 : 20 }px`
                     btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btnElem)
@@ -3805,7 +3811,7 @@
                         || ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )))
                     // ...or Anchored if AF disabled & user interacted
                     || (config.autoFocusChatbarDisabled && config.anchored && show.reply.userInteracted))
-            ) { appDiv.querySelector('#app-chatbar').focus() ; show.reply.chatbarFocused = true }
+            ) { appDiv.querySelector(`#${app.cssPrefix}-chatbar`).focus() ; show.reply.chatbarFocused = true }
 
             // Restore minimized/restored state if anchored
             if (config.anchored) update.appBottomPos()
@@ -3828,11 +3834,11 @@
             }
 
             // Show the queries
-            else if (queries && !appDiv.querySelector('.related-queries')) {
+            else if (queries && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) {
 
                 // Create/classify/append parent div
                 const relatedQueriesDiv = document.createElement('div')
-                relatedQueriesDiv.className = 'related-queries'
+                relatedQueriesDiv.className = `${app.cssPrefix}-related-queries`
                 appDiv.append(relatedQueriesDiv)
 
                 // Fill each child div, add attributes + icon + listener
@@ -3842,7 +3848,8 @@
 
                     // Add attributes
                     relatedQueryDiv.title = app.msgs.tooltip_sendRelatedQuery
-                    relatedQueryDiv.classList.add('related-query', 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
+                    relatedQueryDiv.classList.add(
+                        `${app.cssPrefix}-related-query`, 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
                     relatedQueryDiv.setAttribute('tabindex', 0)
                     relatedQueryDiv.textContent = query
 
@@ -3900,15 +3907,16 @@
     const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 83px }`
                     + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
     const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
-                       + '[class*="feedback"], .related-queries, #wsb-btn  { display: none }'
+                       + `[class*="feedback"], .${app.cssPrefix}-related-queries, #wsb-btn  { display: none }`
                        + '#chevron-btn, #arrows-btn { display: block !important }'
     const expandedStyles = `#${app.cssPrefix} { width: 538px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
-        var tooltipDiv = document.createElement('div') ; tooltipDiv.classList.add('btn-tooltip', 'no-user-select')
-        document.head.append(create.style('.btn-tooltip {'
+        var tooltipDiv = document.createElement('div')
+        tooltipDiv.classList.add(`${app.cssPrefix}-btn-tooltip`, 'no-user-select')
+        document.head.append(create.style(`.${app.cssPrefix}-btn-tooltip {`
             + 'background-color:' // bubble style
                 + 'rgba(0, 0, 0, 0.64) ; padding: 4px 6px 4px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
             + 'font-size: 0.58rem ; color: white ; fill: white ; stroke: white ;' // font/icon style
@@ -3980,11 +3988,11 @@
         appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv()
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
-        if (appDiv.querySelector('.corner-btn')) listenerize.cornerBtns()
-        const standbyBtn = appDiv.querySelector('.standby-btn')
+        if (appDiv.querySelector(`.${app.cssPrefix}-corner-btn`)) listenerize.cornerBtns()
+        const standbyBtn = appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
-        if (appDiv.querySelector('.chatbar-btn')) listenerize.replySection()
+        if (appDiv.querySelector(`.${app.cssPrefix}-chatbar-btn`)) listenerize.replySection()
         appDivParent.prepend(appDiv) ; visibilizeOverflow() ; restoreAppDiv.restored = true
     }
 
