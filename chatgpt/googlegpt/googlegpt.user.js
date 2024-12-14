@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.10
+// @version                  2024.12.14.11
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2568,13 +2568,11 @@
                       + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
                             ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
                       + 'border-radius: 12px 13px 12px 0 ; margin: 13px 0 15px 0 ; padding: 13px 55px 13px 10px ;'
-                      + 'position: relative ; z-index: 555 ; height: 16px ; max-height: 200px ; resize: none ;'
+                      + `position: relative ; z-index: 555 ; color: ${ env.ui.app.scheme == 'dark' ? '#eee' : '#222' } ;`
+                      + 'height: 16px ; max-height: 200px ; resize: none ;'
                       + `background: ${ env.ui.app.scheme == 'dark' ? `#515151${ config.bgAnimationsDisabled ? '' : '9e' }`
                                                                 : '#eeeeee9e' } ;`
                       + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
-                  + ( env.ui.app.scheme == 'dark' ? `.${app.cssPrefix}-continue-chat > textarea { color: white } .${
-                                                        app.cssPrefix}-continue-chat > textarea::placeholder { color: #aaa }`
-                                                  : '' )
                   + `.${app.cssPrefix}-related-queries {`
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: 19px }'
                   + `.${app.cssPrefix}-related-query {`
