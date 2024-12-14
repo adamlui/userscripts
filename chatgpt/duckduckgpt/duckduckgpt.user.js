@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.17
+// @version                2024.12.14.18
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1285,8 +1285,8 @@
                 const notifs = document.querySelectorAll('.chatgpt-notif')
                 const notif = notifs[notifs.length -1]
                 const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
-                                               : scheme == 'dark' ? 'moon'
-                                                                  : 'arrowsCycle'].create()
+                                       : env.ui.app.scheme == 'dark' ? 'moon'
+                                       : 'arrowsCycle'].create()
                 schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
                                          + 'top: 3px ; margin-left: 6px'
                 notif.append(schemeIcon)
