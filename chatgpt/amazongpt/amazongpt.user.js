@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.8
+// @version                2024.12.14.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -948,7 +948,7 @@
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
-                btn.style.cssText = 'height: 52px ; min-width: 136px'
+                btn.style.cssText = 'height: 58px ; min-width: 136px ; text-align: center'
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|extensions/i.test(btn.textContent)) {
