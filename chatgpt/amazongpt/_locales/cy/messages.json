@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Lleihau" },
   "tooltip_close": { "message": "Cau" },
   "tooltip_copy": { "message": "Copïo" },
+  "tooltip_regen": { "message": "Adfywio" },
   "tooltip_reply": { "message": "Ateb" },
   "tooltip_code": { "message": "Côd" },
   "helptip_proxyAPImode": { "message": "Defnyddio API Proxy ar gyfer mynediad dim login i AI" },

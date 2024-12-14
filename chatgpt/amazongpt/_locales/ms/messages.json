@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Kuncup" },
   "tooltip_close": { "message": "Tutup" },
   "tooltip_copy": { "message": "Salin" },
+  "tooltip_regen": { "message": "Menjana semula" },
   "tooltip_reply": { "message": "Balas" },
   "tooltip_code": { "message": "Kod" },
   "helptip_proxyAPImode": { "message": "Menggunakan api Proksi untuk akses tanpa log masuk ke AI" },

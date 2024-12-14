@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Gysgalt" },
   "tooltip_close": { "message": "Ýap" },
   "tooltip_copy": { "message": "Nusgala" },
+  "tooltip_regen": { "message": "Täzeleşdir" },
   "tooltip_reply": { "message": "Jawap" },
   "tooltip_code": { "message": "Kody" },
   "helptip_proxyAPImode": { "message": "AI-de loginsiz giriş üçin proxy API-ni ulan" },

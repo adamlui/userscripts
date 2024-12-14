@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Whakarewa" },
   "tooltip_close": { "message": "Whakamoe&#x0D;" },
   "tooltip_copy": { "message": "Tārua" },
+  "tooltip_regen": { "message": "Whakahoutia" },
   "tooltip_reply": { "message": "Whakautu" },
   "tooltip_code": { "message": "Waehere" },
   "helptip_proxyAPImode": { "message": "Whakamahia he API Proxy mo te urunga kore-login ki AI" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Жиыру" },
   "tooltip_close": { "message": "Жабу" },
   "tooltip_copy": { "message": "Көшіру" },
+  "tooltip_regen": { "message": "Қалпына келтіру" },
   "tooltip_reply": { "message": "Жауап" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "AI-ге логинсіз кіру үшін прокси API пайдаланады" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "หด" },
   "tooltip_close": { "message": "ปิด" },
   "tooltip_copy": { "message": "คัดลอก" },
+  "tooltip_regen": { "message": "สร้างอีกครั้ง" },
   "tooltip_reply": { "message": "ตอบกลับ" },
   "tooltip_code": { "message": "Code" },
   "helptip_proxyAPImode": { "message": "ใช้ API พร็อกซีสำหรับการเข้าถึง AI โดยไม่ต้องเข้าสู่ระบบ" },

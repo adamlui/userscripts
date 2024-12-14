@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Txikitu" },
   "tooltip_close": { "message": "Itxi" },
   "tooltip_copy": { "message": "Kopiatu" },
+  "tooltip_regen": { "message": "Birsortu" },
   "tooltip_reply": { "message": "Erantzun" },
   "tooltip_code": { "message": "Kodea" },
   "helptip_proxyAPImode": { "message": "Proxy API bat erabiltzen du AI-ra saioa hasi gabe sartzeko" },

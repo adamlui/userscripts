@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Шринк" },
   "tooltip_close": { "message": "Жабуу" },
   "tooltip_copy": { "message": "Копиялоо" },
+  "tooltip_regen": { "message": "Калыбына келтирүү" },
   "tooltip_reply": { "message": "Жооп" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "AIге логинсиз кирүү үчүн прокси API колдонот" },

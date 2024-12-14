@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Crùb" },
   "tooltip_close": { "message": "Dùin" },
   "tooltip_copy": { "message": "Dèan lethbhreac" },
+  "tooltip_regen": { "message": "Ath - ghineamhainn" },
   "tooltip_reply": { "message": "Freagairt" },
   "tooltip_code": { "message": "Còd" },
   "helptip_proxyAPImode": { "message": "A 'cleachdadh API Proxy airson ruigsinneachd neo - login gu AI" },

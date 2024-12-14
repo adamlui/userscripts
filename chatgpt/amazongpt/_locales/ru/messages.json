@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Авторазмер" },
   "tooltip_close": { "message": "Закрыть" },
   "tooltip_copy": { "message": "Copy (Копирование)" },
+  "tooltip_regen": { "message": "Регенерировать" },
   "tooltip_reply": { "message": "Ответ" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "Использует API прокси для доступа к ИИ без входа в систему" },

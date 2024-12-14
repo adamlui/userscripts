@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Zmrštiť (Shrink)" },
   "tooltip_close": { "message": "Zatvoriť" },
   "tooltip_copy": { "message": "Kopírovať" },
+  "tooltip_regen": { "message": "Obnoviť" },
   "tooltip_reply": { "message": "Odpovedať" },
   "tooltip_code": { "message": "Kód" },
   "helptip_proxyAPImode": { "message": "Používa rozhranie Proxy API na prístup bez prihlásenia k umelej inteligencii" },

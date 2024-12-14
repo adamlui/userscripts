@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "닫기" },
   "tooltip_copy": { "message": "복사" },
+  "tooltip_regen": { "message": "재생성" },
   "tooltip_reply": { "message": "댓글" },
   "tooltip_code": { "message": "코드" },
   "helptip_proxyAPImode": { "message": "AI에 대한 노-로그인 액세스에 프록시 API 사용" },

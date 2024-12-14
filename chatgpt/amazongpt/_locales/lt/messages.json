@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Sinusas" },
   "tooltip_close": { "message": "Užverti" },
   "tooltip_copy": { "message": "Kopijuoti" },
+  "tooltip_regen": { "message": "Pergeneruoti" },
   "tooltip_reply": { "message": "Atsakyti" },
   "tooltip_code": { "message": "Kodas" },
   "helptip_proxyAPImode": { "message": "Naudoja tarpinio serverio API, kad negalėtų prisijungti prie AI" },

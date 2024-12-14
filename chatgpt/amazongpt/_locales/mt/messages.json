@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Niżżel" },
   "tooltip_close": { "message": "Agħlaq" },
   "tooltip_copy": { "message": "Ikkopja" },
+  "tooltip_regen": { "message": "Irriġenera" },
   "tooltip_reply": { "message": "Irrispondi" },
   "tooltip_code": { "message": "Code" },
   "helptip_proxyAPImode": { "message": "Uża API Proxy għall-aċċess mingħajr login għall-IA" },

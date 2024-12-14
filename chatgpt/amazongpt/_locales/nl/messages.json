@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Krimpen" },
   "tooltip_close": { "message": "Afsluiten" },
   "tooltip_copy": { "message": "Kopieer" },
+  "tooltip_regen": { "message": "Opnieuw aanmaken" },
   "tooltip_reply": { "message": "Antwoord" },
   "tooltip_code": { "message": "Code" },
   "helptip_proxyAPImode": { "message": "Gebruikt een proxy-API voor geen aanmeldingstoegang tot AI" },

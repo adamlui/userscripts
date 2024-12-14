@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Thu Nhỏ/Co Lại (Shrink)" },
   "tooltip_close": { "message": "Đóng" },
   "tooltip_copy": { "message": "Sao chép" },
+  "tooltip_regen": { "message": "Tạo lại" },
   "tooltip_reply": { "message": "Trả lời" },
   "tooltip_code": { "message": "Mã " },
   "helptip_proxyAPImode": { "message": "Sử dụng API Proxy để truy cập AI mà không cần đăng nhập" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Schließen" },
   "tooltip_copy": { "message": "Kopieren" },
+  "tooltip_regen": { "message": "Regenerieren" },
   "tooltip_reply": { "message": "Antworten" },
   "tooltip_code": { "message": "Code" },
   "helptip_proxyAPImode": { "message": "Verwendet eine Proxy-API für den No-Login-Zugriff auf KI" },

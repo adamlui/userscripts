@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Reducir" },
   "tooltip_close": { "message": "Pechar" },
   "tooltip_copy": { "message": "Copiar" },
+  "tooltip_regen": { "message": "Rexenerar" },
   "tooltip_reply": { "message": "Contestar" },
   "tooltip_code": { "message": "Código" },
   "helptip_proxyAPImode": { "message": "Usa unha API Proxy para o acceso sen login á IA" },

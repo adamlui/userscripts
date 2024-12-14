@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Yângâ tî kodoro ti Shrink" },
   "tooltip_close": { "message": "Pene ni da" },
   "tooltip_copy": { "message": "Kopi" },
+  "tooltip_regen": { "message": "A kiri a kiri a kiri a sara kua na lo" },
   "tooltip_reply": { "message": "Répondre na" },
   "tooltip_code": { "message": "Kode ti kodro" },
   "helptip_proxyAPImode": { "message": "Sara kua na mbeni API ti proxy ti wara lege ti sara kua na aye so ayeke na lege ni ape" },

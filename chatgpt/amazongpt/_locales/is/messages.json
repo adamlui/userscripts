@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Gildi" },
   "tooltip_close": { "message": "Loka" },
   "tooltip_copy": { "message": "Afrita" },
+  "tooltip_regen": { "message": "Endurnýjaðu" },
   "tooltip_reply": { "message": "Svara" },
   "tooltip_code": { "message": "Kóði" },
   "helptip_proxyAPImode": { "message": "Notar Proxy API fyrir aðgang án innskráningar að AI" },

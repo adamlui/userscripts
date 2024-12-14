@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "सिकोड़ें" },
   "tooltip_close": { "message": "बंद करें" },
   "tooltip_copy": { "message": "नाम पर्ची" },
+  "tooltip_regen": { "message": "फिर से जनरेट करें" },
   "tooltip_reply": { "message": "जवाब" },
   "tooltip_code": { "message": "कोड" },
   "helptip_proxyAPImode": { "message": "AI तक नो - लॉगिन एक्सेस के लिए एक प्रॉक्सी एपीआई का उपयोग करता है" },

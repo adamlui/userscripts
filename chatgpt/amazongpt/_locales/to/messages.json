@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Holomui" },
   "tooltip_close": { "message": "Tāpuni" },
   "tooltip_copy": { "message": "Hiki Tatau" },
+  "tooltip_regen": { "message": "Fakafoʻou" },
   "tooltip_reply": { "message": "Tali" },
   "tooltip_code": { "message": "Kouti" },
   "helptip_proxyAPImode": { "message": "Fakaʻaongaʻi ha API fakafofonga ki he ʻikai lava ke hu ki he ʻi ai" },

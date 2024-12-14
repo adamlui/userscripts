@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Zsugorítás" },
   "tooltip_close": { "message": "Bezárás" },
   "tooltip_copy": { "message": "Másolja" },
+  "tooltip_regen": { "message": "Újragenerálás" },
   "tooltip_reply": { "message": "Válasz" },
   "tooltip_code": { "message": "Termékkód" },
   "helptip_proxyAPImode": { "message": "Proxy API-t használ a mesterséges intelligenciához való bejelentkezés nélküli hozzáféréshez" },

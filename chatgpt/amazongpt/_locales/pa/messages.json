@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "ਸੁੰਘਡ਼ੋ" },
   "tooltip_close": { "message": "ਬੰਦ" },
   "tooltip_copy": { "message": "ਕਾਪੀ" },
+  "tooltip_regen": { "message": "ਮੁੜ- ਤਿਆਰ ਕਰੋ" },
   "tooltip_reply": { "message": "Responder" },
   "tooltip_code": { "message": "&#x09;&#x09;ਕੋਡ" },
   "helptip_proxyAPImode": { "message": "ਏਆਈ ਤੱਕ ਨੋ-ਲੌਗਇਨ ਪਹੁੰਚ ਲਈ ਇੱਕ ਪ੍ਰੌਕਸੀ ਏਪੀਆਈ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ" },

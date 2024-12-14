@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Павелічэнне рэзкасці" },
   "tooltip_close": { "message": "Закрыць" },
   "tooltip_copy": { "message": "Капіяваць" },
+  "tooltip_regen": { "message": "Рэгенерацыя" },
   "tooltip_reply": { "message": "Адказаць" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "Выкарыстоўвае API проксі для доступу без уваходу ў ІІ" },

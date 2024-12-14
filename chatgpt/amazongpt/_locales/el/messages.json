@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Σμίκρυνση" },
   "tooltip_close": { "message": "Κλείσιμο" },
   "tooltip_copy": { "message": "Αντιγραφή" },
+  "tooltip_regen": { "message": "Ανανέωση" },
   "tooltip_reply": { "message": "Απάντηση" },
   "tooltip_code": { "message": "Κωδικός" },
   "helptip_proxyAPImode": { "message": "Χρησιμοποιεί ένα API διακομιστή μεσολάβησης για πρόσβαση χωρίς σύνδεση στην τεχνητή νοημοσύνη" },

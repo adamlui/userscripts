@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Психијатар" },
   "tooltip_close": { "message": "Затвори" },
   "tooltip_copy": { "message": "Копирај" },
+  "tooltip_regen": { "message": "Регенерирај" },
   "tooltip_reply": { "message": "Одговори" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "Користи Proxy API за пристап без најава до AI" },

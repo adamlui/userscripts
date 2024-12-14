@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "સંકોચો" },
   "tooltip_close": { "message": "બંધ કરો" },
   "tooltip_copy": { "message": "નકલ કરો" },
+  "tooltip_regen": { "message": "પુન: ઉત્પન્ન કરો" },
   "tooltip_reply": { "message": "રિપ્લાય" },
   "tooltip_code": { "message": "કોડ" },
   "helptip_proxyAPImode": { "message": "AI ની નો-લોગિન ઍક્સેસ માટે પ્રોક્સી API નો ઉપયોગ કરે છે" },

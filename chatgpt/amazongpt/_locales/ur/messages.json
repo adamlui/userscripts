@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "سکڑیں" },
   "tooltip_close": { "message": "بند" },
   "tooltip_copy": { "message": "کاپی کریں" },
+  "tooltip_regen": { "message": "دوبارہ تخلیق کریں" },
   "tooltip_reply": { "message": "جواب" },
   "tooltip_code": { "message": "کوڈ" },
   "helptip_proxyAPImode": { "message": "AI تک نو لاگ ان رسائی کے لیے ایک پراکسی API استعمال کرتا ہے" },

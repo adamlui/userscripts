@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Skríggja" },
   "tooltip_close": { "message": "Sløkk" },
   "tooltip_copy": { "message": "Avrita" },
+  "tooltip_regen": { "message": "Endurnýggja" },
   "tooltip_reply": { "message": "Svara" },
   "tooltip_code": { "message": "Kota" },
   "helptip_proxyAPImode": { "message": "Brúka Proxy API til ikki-login atgongd til AI" },

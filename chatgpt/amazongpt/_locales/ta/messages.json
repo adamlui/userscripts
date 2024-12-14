@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "கூர்மையாக்கு" },
   "tooltip_close": { "message": "மூடு" },
   "tooltip_copy": { "message": "நகலெடு" },
+  "tooltip_regen": { "message": "மறுபடிஜெநிப்பித்தல்" },
   "tooltip_reply": { "message": "பதில் " },
   "tooltip_code": { "message": "குறியீடு" },
   "helptip_proxyAPImode": { "message": "AI-க்கான உள்நுழைவு அணுகலுக்கு ப்ராக்ஸி API ஐப் பயன்படுத்துகிறது" },

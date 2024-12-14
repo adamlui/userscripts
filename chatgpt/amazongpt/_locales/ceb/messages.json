@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Pagminus" },
   "tooltip_close": { "message": "Duol" },
   "tooltip_copy": { "message": "Kopya" },
+  "tooltip_regen": { "message": "Nabag-o" },
   "tooltip_reply": { "message": "nagpaabut nga makita ka" },
   "tooltip_code": { "message": "Kodigo" },
   "helptip_proxyAPImode": { "message": "Paggamit usa ka Proxy API alang sa dili pag-login nga pag-access sa AI" },

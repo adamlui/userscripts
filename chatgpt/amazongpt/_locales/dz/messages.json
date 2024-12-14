@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "སེངྒེ་" },
   "tooltip_close": { "message": "སྒོ་བསྡམས་" },
   "tooltip_copy": { "message": "འདྲ་བཤུས་" },
+  "tooltip_regen": { "message": "བསྐྱར་གསོ་འབད་" },
   "tooltip_reply": { "message": "ལན་སློག" },
   "tooltip_code": { "message": "Code" },
   "helptip_proxyAPImode": { "message": "AIལུ་ ཐོ་བཀོད་འབད་ནིའི་དོན་ལུ་ Proxy API ལག་ལེན་འཐབ་དགོ།" },

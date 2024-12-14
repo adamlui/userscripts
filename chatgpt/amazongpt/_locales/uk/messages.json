@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "стискатися" },
   "tooltip_close": { "message": "Закрити" },
   "tooltip_copy": { "message": "Копіювати" },
+  "tooltip_regen": { "message": "Відроджувати" },
   "tooltip_reply": { "message": "Відповісти" },
   "tooltip_code": { "message": "Код" },
   "helptip_proxyAPImode": { "message": "Використовує проксі API для доступу без входу до AI" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "کوچک شدن" },
   "tooltip_close": { "message": "بستن" },
   "tooltip_copy": { "message": "کپی" },
+  "tooltip_regen": { "message": "بازسازی مجوز دانلود" },
   "tooltip_reply": { "message": "پاسخ " },
   "tooltip_code": { "message": "کد" },
   "helptip_proxyAPImode": { "message": "از یک API پروکسی برای دسترسی بدون ورود به هوش مصنوعی استفاده می کند" },

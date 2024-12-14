@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Punguza" },
   "tooltip_close": { "message": "Funga" },
   "tooltip_copy": { "message": "Nakili " },
+  "tooltip_regen": { "message": "Kuipatia nguvu upya" },
   "tooltip_reply": { "message": "Jibu" },
   "tooltip_code": { "message": "Msimbo" },
   "helptip_proxyAPImode": { "message": "Inatumia API Wakala kwa ufikiaji usioingia kwenye AI" },

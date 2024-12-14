@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "ചുരുക്കുക" },
   "tooltip_close": { "message": "ക്ലോസ് ചെയ്യുക" },
   "tooltip_copy": { "message": "പക‍ര്പ്പ്" },
+  "tooltip_regen": { "message": "പുനരുജ്ജീവിപ്പിക്കുക" },
   "tooltip_reply": { "message": "മറുപടി" },
   "tooltip_code": { "message": "കോഡ്Default language code" },
   "helptip_proxyAPImode": { "message": "AI-ലേക്ക് നോ-ലോഗിൻ ആക്‌സസ് ചെയ്യുന്നതിന് ഒരു പ്രോക്സി API ഉപയോഗിക്കുന്നു" },

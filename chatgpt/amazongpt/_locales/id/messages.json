@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Perkecil" },
   "tooltip_close": { "message": "Tutup" },
   "tooltip_copy": { "message": "Salin" },
+  "tooltip_regen": { "message": "Buat Lagi" },
   "tooltip_reply": { "message": "Balas" },
   "tooltip_code": { "message": "Kode" },
   "helptip_proxyAPImode": { "message": "Menggunakan api Proxy untuk akses tanpa login ke AI" },

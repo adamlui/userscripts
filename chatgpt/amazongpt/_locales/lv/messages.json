@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Samazināt" },
   "tooltip_close": { "message": "Aizvērt" },
   "tooltip_copy": { "message": "Kopēt" },
+  "tooltip_regen": { "message": "Reģenerēt" },
   "tooltip_reply": { "message": "Atbildēt" },
   "tooltip_code": { "message": "Kods" },
   "helptip_proxyAPImode": { "message": "Izmanto starpniekservera API, lai bez pieteikšanās piekļūtu MI" },

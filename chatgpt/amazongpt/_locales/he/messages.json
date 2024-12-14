@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "חדות" },
   "tooltip_close": { "message": "סגירה" },
   "tooltip_copy": { "message": "העתקה" },
+  "tooltip_regen": { "message": "צרי מחדש" },
   "tooltip_reply": { "message": "הגב" },
   "tooltip_code": { "message": "קוד" },
   "helptip_proxyAPImode": { "message": "משתמש ב - Proxy API לגישה ללא כניסה ל - AI" },

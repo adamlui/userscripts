@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Gør mindre" },
   "tooltip_close": { "message": "Luk" },
   "tooltip_copy": { "message": "Kopi" },
+  "tooltip_regen": { "message": "Regenerere Nøgler" },
   "tooltip_reply": { "message": "Svar" },
   "tooltip_code": { "message": "Kode" },
   "helptip_proxyAPImode": { "message": "Bruger en proxy-API til nul-login-adgang til AI" },

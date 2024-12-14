@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Kutista" },
   "tooltip_close": { "message": "Sulje" },
   "tooltip_copy": { "message": "Kopioi" },
+  "tooltip_regen": { "message": "Luo uudestaan" },
   "tooltip_reply": { "message": "Vastaus" },
   "tooltip_code": { "message": "Koodi" },
   "helptip_proxyAPImode": { "message": "Käyttää välityspalvelimen sovellusliittymää tekoälyn kirjautumattomaan käyttöön" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Smanji" },
   "tooltip_close": { "message": "Zatvori" },
   "tooltip_copy": { "message": "Kopiraj" },
+  "tooltip_regen": { "message": "Regeneriraj" },
   "tooltip_reply": { "message": "Odgovori" },
   "tooltip_code": { "message": "Kod" },
   "helptip_proxyAPImode": { "message": "Koristi proxy API za pristup AI bez prijave" },

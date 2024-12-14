@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Fela Kuti Close" },
   "tooltip_copy": { "message": "Kopa" },
+  "tooltip_regen": { "message": "Ukubwekeshapo" },
   "tooltip_reply": { "message": "Icasuko" },
   "tooltip_code": { "message": "Inambala" },
   "helptip_proxyAPImode": { "message": "Apeksha Apeksha Apeksha" },

@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "ዝጋ" },
   "tooltip_copy": { "message": "ቅጂ" },
+  "tooltip_regen": { "message": "እንደገና ያድሱ" },
   "tooltip_reply": { "message": "መልስ ይስጡ" },
   "tooltip_code": { "message": "ኮድ" },
   "helptip_proxyAPImode": { "message": "ለ AI ምንም ምዝገባ መዳረሻ ፕሮክሲ ኤፒአይ ይጠቀማል" },

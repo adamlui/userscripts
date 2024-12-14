@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Otomatik boyut" },
   "tooltip_close": { "message": "Kapat" },
   "tooltip_copy": { "message": "Kopya" },
+  "tooltip_regen": { "message": "Canlandırmak" },
   "tooltip_reply": { "message": "Cevap" },
   "tooltip_code": { "message": "Kodu" },
   "helptip_proxyAPImode": { "message": "Yapay zekaya giriş gerektirmeyen erişim için bir Proxy API'si kullanır" },

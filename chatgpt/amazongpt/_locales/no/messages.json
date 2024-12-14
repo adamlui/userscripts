@@ -30,6 +30,7 @@
   "tooltip_shrink": { "message": "Krymp" },
   "tooltip_close": { "message": "Lukk" },
   "tooltip_copy": { "message": "Kopier" },
+  "tooltip_regen": { "message": "Regenerer" },
   "tooltip_reply": { "message": "Svar" },
   "tooltip_code": { "message": "Kode" },
   "helptip_proxyAPImode": { "message": "Bruker en Proxy API for tilgang til AI uten pålogging" },
