@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.6
+// @version                2024.12.14.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2848,7 +2848,8 @@
             regenBtn.className = 'no-mobile-tap-outline'
             regenBtn.style.cssText = baseBtnStyles + (
                 'position: relative ; top: 1px ; margin: 0 9px 0 5px ; transform: rotate(35deg)' )
-            const regenSVG = icons.arrowsCycle.create() ; regenSVG.style.width = regenSVG.style.height = 17
+            const regenSVG = icons.arrowsCycle.create();
+            ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseover = regenBtn.onmouseout = toggle.tooltip
             regenBtn.onclick = () => {
