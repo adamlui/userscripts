@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.22
+// @version                2024.12.14.23
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3443,7 +3443,6 @@
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     const checkmarksSVG = icons.checkmarkDouble.create()
-                    checkmarksSVG.id = `${app.cssPrefix}-copied-icon`
                     checkmarksSVG.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
                     copyBtn.replaceChild(checkmarksSVG, copySVG) // change to Copied icon
                     setTimeout(() => copyBtn.replaceChild(copySVG, checkmarksSVG), 1355) // change back to copy icon
