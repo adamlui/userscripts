@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.19
+// @version                2024.12.14.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1102,8 +1102,8 @@
                 const notifs = document.querySelectorAll('.chatgpt-notif')
                 const notif = notifs[notifs.length -1]
                 const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
-                                               : scheme == 'dark' ? 'moon'
-                                                                  : 'arrowsCycle'].create()
+                                       : env.ui.app.scheme == 'dark' ? 'moon'
+                                       : 'arrowsCycle'].create()
                 schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
                                          + 'top: 3px ; margin: 3px 0 0 6px'
                 notif.append(schemeIcon)
