@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.13
+// @version                2024.12.13.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3761,22 +3761,23 @@
     appFooter.append(footerContent)
 
     // APPEND DDGPT + footer to DDG
-    const appElems = [appDiv, appFooter],
-          appDivContainerSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*="mainline"]' : '[class*="sidebar"]'
-    const appDivContainer = await new Promise(resolve => {
-        const container = document.querySelector(appDivContainerSelector)
-        if (container) resolve(container)
+    const appElems = [appDiv, appFooter]
+    const appDivParentSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*="mainline"]'
+                                                                                : '[class*="sidebar"]'
+    const appDivParent = await new Promise(resolve => {
+        const appDivParent = document.querySelector(appDivParentSelector)
+        if (appDivParent) resolve(appDivParent)
         else new MutationObserver((_, obs) => {
-            const container = document.querySelector(appDivContainerSelector)
-            if (container) { obs.disconnect() ; resolve(container) }
+            const appDivParent = document.querySelector(appDivParentSelector)
+            if (appDivParent) { obs.disconnect() ; resolve(appDivParent) }
         }).observe(document.body, { childList: true, subtree: true })
     })
-    appDivContainer.prepend(...appElems)
+    appDivParent.prepend(...appElems)
     appElems.forEach((elem, idx) => // fade in staggered
         setTimeout(() => elem.classList.add('active'), idx * 550 - 200))
 
-    // REPLACE appDivContainer max-width w/ min-width for better UI
-    if (!env.browser.isMobile) Object.assign(appDivContainer.style, { maxWidth: '', minWidth: '448px' })
+    // REPLACE appDivParent max-width w/ min-width for better UI
+    if (!env.browser.isMobile) Object.assign(appDivParent.style, { maxWidth: '', minWidth: '448px' })
 
     // Check for active TEXT CAMPAIGNS to replace footer CTA
     get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
@@ -3912,10 +3913,10 @@
 
     // Observe sidebar for need to RAISE DDGPT as other extensions inject into it
     const sidebarObserver = new MutationObserver(() => {
-        if (appDivContainer.firstChild != appDiv) {
-            appDivContainer.prepend(...appElems) ; sidebarObserver.disconnect() }
+        if (appDivParent.firstChild != appDiv) {
+            appDivParent.prepend(...appElems) ; sidebarObserver.disconnect() }
     })
-    sidebarObserver.observe(appDivContainer, { subtree: true, childList: true })
+    sidebarObserver.observe(appDivParent, { subtree: true, childList: true })
     setTimeout(() => sidebarObserver.disconnect(), 5000) // don't observe forever
 
 })()
