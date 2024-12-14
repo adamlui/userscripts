@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.7
+// @version                  2024.12.14.8
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3269,7 +3269,7 @@
             tooltipDiv.style.top = `${
                 appCornerBtnTypes.includes(btnType) ? -14
               : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 43
-              : rects.btnElem.top - rects.appDiv.top -35 - ( event.currentTarget.closest('code') ? 4 : 0 )
+              : rects.btnElem.top - rects.appDiv.top -35 - ( event.currentTarget.closest('code') ? 6 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
@@ -3741,7 +3741,7 @@
                 // Wrap code button in div for v-offset
                 if (parentElem.tagName == 'CODE') {
                     elemToPrepend = document.createElement('div')
-                    elemToPrepend.style.cssText = 'height: 11px ; margin: 2px 3px 0 0'
+                    elemToPrepend.style.cssText = 'height: 11px ; margin: 4px 5px 0 0'
                     elemToPrepend.append(copyBtn)
                 }
 
