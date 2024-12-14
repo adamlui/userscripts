@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.7
+// @version               2024.12.14.8
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3073,7 +3073,7 @@
             tooltipDiv.style.top = `${
                 appCornerBtnTypes.includes(btnType) ? -13
               : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
-              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 2 : 0 )
+              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 4 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
@@ -3544,7 +3544,7 @@
                 // Wrap code button in div for v-offset
                 if (parentElem.tagName == 'CODE') {
                     elemToPrepend = document.createElement('div')
-                    elemToPrepend.style.cssText = 'height: 11px ; margin: 2px 3px 0 0'
+                    elemToPrepend.style.cssText = 'height: 11px ; margin: 4px 6px 0 0'
                     elemToPrepend.append(copyBtn)
                 }
 
