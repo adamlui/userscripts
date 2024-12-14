@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.12.5
+// @version               2024.12.13
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2495,7 +2495,7 @@
     }
 
     function visibilizeOverflow() { // for boundless hover fx
-        let appAncestor = appDivContainer
+        let appAncestor = appDivParent
         while (appAncestor) {
             if (getComputedStyle(appAncestor).overflow != 'visible') appAncestor.style.overflow = 'visible'
             appAncestor = appAncestor.parentElement
@@ -3889,16 +3889,16 @@
     }
 
     // APPEND to Brave
-    const appDivContainerSelector = env.browser.isMobile ? '#results' : '.sidebar'
-    const appDivContainer = await new Promise(resolve => {
-        const container = document.querySelector(appDivContainerSelector)
+    const appDivParentSelector = env.browser.isMobile ? '#results' : '.sidebar'
+    const appDivParent = await new Promise(resolve => {
+        const container = document.querySelector(appDivParentSelector)
         if (container) resolve(container)
         else new MutationObserver((_, obs) => {
-            const container = document.querySelector(appDivContainerSelector)
+            const container = document.querySelector(appDivParentSelector)
             if (container) { obs.disconnect() ; resolve(container) }
         }).observe(document.body, { childList: true, subtree: true })
     })
-    appDivContainer.prepend(appDiv) ; visibilizeOverflow()
+    appDivParent.prepend(appDiv) ; visibilizeOverflow()
     setTimeout(() => appDiv.classList.add('active'), 100) // fade in
 
     // Init footer CTA to share feedback
@@ -3955,7 +3955,7 @@
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
         if (appDiv.querySelector('.chatbar-btn')) listenerize.replySection()
-        appDivContainer.prepend(appDiv) ; visibilizeOverflow() ; restoreAppDiv.restored = true
+        appDivParent.prepend(appDiv) ; visibilizeOverflow() ; restoreAppDiv.restored = true
     }
 
 })()
