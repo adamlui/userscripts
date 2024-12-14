@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.13
+// @version               2024.12.13.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3891,11 +3891,11 @@
     // APPEND to Brave
     const appDivParentSelector = env.browser.isMobile ? '#results' : '.sidebar'
     const appDivParent = await new Promise(resolve => {
-        const container = document.querySelector(appDivParentSelector)
-        if (container) resolve(container)
+        const appDivParent = document.querySelector(appDivParentSelector)
+        if (appDivParent) resolve(container)
         else new MutationObserver((_, obs) => {
-            const container = document.querySelector(appDivParentSelector)
-            if (container) { obs.disconnect() ; resolve(container) }
+            const appDivParent = document.querySelector(appDivParentSelector)
+            if (appDivParent) { obs.disconnect() ; resolve(appDivParent) }
         }).observe(document.body, { childList: true, subtree: true })
     })
     appDivParent.prepend(appDiv) ; visibilizeOverflow()
