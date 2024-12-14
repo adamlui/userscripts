@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.9
+// @version                2024.12.14.10
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3149,7 +3149,7 @@
                 config.openAIkey = await Promise.race(
                     [session.getOAItoken(), new Promise(reject => setTimeout(reject, 3000))])
 
-            // Try diff API after 6-9s of no response
+            // Try diff API after 7-10s of no response
             else {
                 const iniAPI = get.reply.api
                 setTimeout(() => {
@@ -3158,7 +3158,7 @@
                         && get.reply.api == iniAPI // not already trying diff API from err
                         && get.reply.triedAPIs.length != Object.keys(apis).length -1 // untried APIs remain
                     ) api.tryNew(get.reply, 'timeout')
-                }, config.streamingDisabled ? 9000 : 6000)
+                }, config.streamingDisabled ? 10000 : 7000)
             }
 
             // Get/show answer from AI
