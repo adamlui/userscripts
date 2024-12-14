@@ -1658,7 +1658,7 @@
             toggle(event) { // visibility
                 const pinMenu = document.getElementById('pin-menu') || menus.pin.createAppend()
                 if (!menus.pin.topPos)
-                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -73
+                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -78
                 if (!menus.pin.rightPos)
                      menus.pin.rightPos = appDiv.getBoundingClientRect().right - event.clientX - pinMenu.offsetWidth/2
                 pinMenu.style.top = `${menus.pin.topPos}px` ; pinMenu.style.right = `${menus.pin.rightPos}px`
@@ -3071,9 +3071,9 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                appCornerBtnTypes.includes(btnType) ? -6
+                appCornerBtnTypes.includes(btnType) ? -13
               : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
-              : rects.btnElem.top - rects.appDiv.top -36
+              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 2 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
