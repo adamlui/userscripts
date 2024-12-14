@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.3
+// @version               2024.12.14.4
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2209,7 +2209,7 @@
         scheme(newScheme) {
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
-            env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.style.app() ; modals.stylize()
+            env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.style.app()
             update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
@@ -2225,6 +2225,7 @@
         style: {
             app() {
                 const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
+                modals.stylize() // update modal styles
                 appStyle.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
