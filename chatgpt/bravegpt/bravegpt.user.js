@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.5
+// @version               2024.12.14.6
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3575,7 +3575,8 @@
             regenBtn.className = 'no-mobile-tap-outline'
             regenBtn.style.cssText = baseBtnStyles + (
                 'position: relative ; top: 1px ; margin: 0 9px 0 5px ; transform: rotate(35deg)' )
-            const regenSVG = icons.arrowsCycle.create() ; regenSVG.style.width = regenSVG.style.height = 17
+            const regenSVG = icons.arrowsCycle.create();
+            ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseover = regenBtn.onmouseout = toggle.tooltip
             regenBtn.onclick = () => {
