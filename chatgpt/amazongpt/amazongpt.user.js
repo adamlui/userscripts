@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.7
+// @version                2024.12.14.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2421,9 +2421,9 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                appCornerBtnTypes.includes(btnType) ? -21
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
-              : rects.btnElem.top - rects.appDiv.top -36
+                appCornerBtnTypes.includes(btnType) ? -22
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 38
+              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 5 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
