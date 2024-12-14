@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.20
+// @version                2024.12.14.21
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1422,7 +1422,8 @@
 
         arrowsCycle: {
             create() {
-                const svg = create.svgElem('svg', { width: 13, height: 13, viewBox: '197 -924 573 891' })
+                const svg = create.svgElem('svg', {
+                    width: 13, height: 13, viewBox: '197 -924 573 891', style: 'transform: rotate(14deg)' })
                 const svgPath = create.svgElem('path', { stroke: 'none',
                     d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' })
                 svg.append(svgPath) ; return svg
@@ -2850,8 +2851,7 @@
             // Add Regenerate button
             const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.cssPrefix}-regen-btn`
             regenBtn.className = 'no-mobile-tap-outline'
-            regenBtn.style.cssText = baseBtnStyles + (
-                'position: relative ; top: 1px ; margin: 0 9px 0 5px ; transform: rotate(35deg)' )
+            regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px'
             const regenSVG = icons.arrowsCycle.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
