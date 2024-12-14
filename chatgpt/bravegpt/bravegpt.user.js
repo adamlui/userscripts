@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.18
+// @version               2024.12.14.19
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1267,7 +1267,7 @@
             function schemeNotify(scheme) {
 
                 // Show notification
-                notify(`${app.msgs.menuLabel_colorScheme}:`
+                notify(`${app.msgs.menuLabel_colorScheme}: `
                       + ( scheme == 'light' ? app.msgs.scheme_light || 'Light'
                         : scheme == 'dark'  ? app.msgs.scheme_dark  || 'Dark'
                                             : app.msgs.menuLabel_auto ).toUpperCase() )
@@ -1275,9 +1275,7 @@
                 // Append scheme icon
                 const notifs = document.querySelectorAll('.chatgpt-notif')
                 const notif = notifs[notifs.length -1]
-                const schemeIcon = icons[env.ui.app.scheme == 'light' ? 'sun'
-                                       : env.ui.app.scheme == 'dark' ? 'moon'
-                                       : 'arrowsCycle'].create()
+                const schemeIcon = icons[scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCycle'].create()
                 schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
                                          + 'top: 3px ; margin-left: 6px'
                 notif.append(schemeIcon)
