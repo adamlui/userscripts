@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.12
+// @version               2024.12.14.13
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3729,7 +3729,6 @@
                 const replyForm = document.createElement('form'),
                       continueChatDiv = document.createElement('div'),
                       chatTextarea = document.createElement('textarea')
-                continueChatDiv.className = `${app.cssPrefix}-continue-chat`
                 chatTextarea.id = `${app.cssPrefix}-chatbar` ; chatTextarea.rows = '1'
                 chatTextarea.placeholder = ( answer == 'standby' ? app.msgs.placeholder_askSomethingElse
                                                                  : app.msgs.tooltip_sendReply ) + '...'
