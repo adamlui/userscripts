@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.2
+// @version               2024.12.14.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3551,13 +3551,14 @@
                 if (!env.browser.isMobile) copyBtn.onmouseover = copyBtn.onmouseout = toggle.tooltip
                 copyBtn.onclick = event => { // copy text, update icon + tooltip status
                     const copySVG = copyBtn.querySelector('#copy-icon')
-                    if (!copySVG) return // since clicking on copied icon
+                    if (!copySVG) return // since clicking on Copied icon
                     const textContainer = (
                         copyBtn.parentNode.tagName == 'PRE' ? copyBtn.parentNode // reply container
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     const checkmarksSVG = icons.checkmarkDouble.create() ; checkmarksSVG.id = 'copied-icon'
-                    copyBtn.replaceChild(checkmarksSVG, copySVG) // change to copied icon
+                    checkmarksSVG.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
+                    copyBtn.replaceChild(checkmarksSVG, copySVG) // change to Copied icon
                     setTimeout(() => copyBtn.replaceChild(copySVG, checkmarksSVG), 1355) // change back to copy icon
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
                     if (!env.browser.isMobile) toggle.tooltip(event) // show copied status in tooltip
