@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14
+// @version                2024.12.14.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -253,7 +253,7 @@
             },
             support: 'https://support.ddgpt.com'
         },
-        latestAssetCommitHash: '380412b' // for cached messages.json
+        latestAssetCommitHash: '6ec1ce9' // for cached messages.json
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -305,6 +305,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
+        tooltip_regen: 'Regenerate',
         tooltip_reply: 'Reply',
         tooltip_code: 'Code',
         tooltip_sendRelatedQuery: 'Send related query',
@@ -992,7 +993,8 @@
               + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
-              + ( config.fgAnimationsDisabled ? '' : '#arrows-cycle { animation: rotation 5s linear infinite }' )
+              + ( config.fgAnimationsDisabled ? ''
+                  : '#scheme-menu-entry svg { animation: rotation 5s linear infinite }' )
               + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
               + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-menu-entry > span {' // outer About status span
@@ -1700,8 +1702,7 @@
 
         arrowsCycle: {
             create() {
-                const svg = create.svgElem('svg', {
-                    id: 'arrows-cycle', width: 13, height: 13, viewBox: '197 -924 573 891' })
+                const svg = create.svgElem('svg', { width: 13, height: 13, viewBox: '197 -924 573 891' })
                 const svgPath = create.svgElem('path', { stroke: 'none',
                     d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' })
                 svg.append(svgPath) ; return svg
@@ -2254,7 +2255,6 @@
                       + 'display: grid ; width: 100% ; margin: 2px 0 25px ; position: relative }'
                   + `#${app.cssPrefix} + footer * {`
                       + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
-                  + '#copy-btn { float: right ; cursor: pointer }'
                   + `pre > #copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
                         env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + 'code #copy-btn { position: relative ; top: -6px ; right: -9px }'
@@ -2919,7 +2919,8 @@
 
         tooltip(event) {
             const btnElem = event.currentTarget, btnType = btnElem.id.replace(/-btn$/, ''),
-                  cornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows']
+                  appCornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
+                  replyCornerBtnTypes = ['copy', 'regen']
 
             // Update text
             tooltipDiv.innerText = (
@@ -2937,6 +2938,7 @@
                     `${app.msgs.tooltip_copy} ${
                         app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
+              : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
@@ -2944,7 +2946,10 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                cornerBtnTypes.includes(btnType) ? -15 : rects.btnElem.top - rects.appDiv.top -36 }px`
+                appCornerBtnTypes.includes(btnType) ? -15
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
+              : rects.btnElem.top - rects.appDiv.top -36
+            }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
 
@@ -3258,7 +3263,7 @@
                         api.tryNew(caller)
                     else { // text was shown
                         caller.status = 'done' ; caller.attemptCnt = null
-                        show.copyBtns() ; api.clearTimedOut(caller.triedAPIs)
+                        show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
                     } return
                 }
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -3366,7 +3371,7 @@
                             api.tryNew(caller)
                         } else {
                             caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
-                            if (caller == get.reply) { show.reply(respText) ; show.copyBtns() }
+                            if (caller == get.reply) { show.reply(respText) ; show.replyCornerBtns() }
                             else resolve(arrayify(respText))
                 }}}
 
@@ -3393,14 +3398,21 @@
 
     const show = {
 
-        copyBtns() {
+        replyCornerBtns() {
             if (document.getElementById('copy-btn')) return
+            const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
+            // Add top parent div
+            const cornerBtnsDiv = document.createElement('div')
+            cornerBtnsDiv.style.float = 'right'
+            appDiv.querySelector('pre').prepend(cornerBtnsDiv)
+
+            // Add Copy buttons
             appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
                 copyBtn.id = 'copy-btn' ; copySVG.id = 'copy-icon'
-                copyBtn.className = 'no-mobile-tap-outline'
+                copyBtn.className = 'no-mobile-tap-outline' ; copyBtn.style.cssText = baseBtnStyles
                 copyBtn.append(copySVG) ; let elemToPrepend = copyBtn
 
                 // Wrap code button in div for v-offset
@@ -3427,8 +3439,23 @@
                 }
 
                 // Prepend button
-                parentElem.prepend(elemToPrepend)
+                const parentToInsertInto = parentElem.tagName == 'CODE' ? parentElem : cornerBtnsDiv
+                parentToInsertInto.prepend(elemToPrepend)
             })
+
+            // Add Regenerate button
+            const regenBtn = document.createElement('btn') ; regenBtn.id = 'regen-btn'
+            regenBtn.className = 'no-mobile-tap-outline'
+            regenBtn.style.cssText = baseBtnStyles + (
+                'position: relative ; top: 1px ; margin: 0 9px 0 5px ; transform: rotate(35deg)' )
+            const regenSVG = icons.arrowsCycle.create() ; regenSVG.style.width = regenSVG.style.height = 17
+            regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
+            if (!env.browser.isMobile) regenBtn.onmouseover = regenBtn.onmouseout = toggle.tooltip
+            regenBtn.onclick = () => {
+                get.reply(msgChain) ; appAlert('waitingResponse')
+                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // or tooltip shows on next reply
+                show.reply.chatbarFocused = false ; show.reply.userInteracted = true
+            }
         },
 
         reply(answer) {
