@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.23
+// @version                2024.12.14.24
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1865,8 +1865,8 @@
                   + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
                   + `#${app.cssPrefix} + footer { margin: 2px 0 25px ; position: relative }`
                   + `#${app.cssPrefix} + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
-                  + `pre > #${app.cssPrefix}-copy-btn > svg { margin: -5px -6px 0 0 ; height: 15px ; width: 15px ; ${
-                        env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
+                  + `pre #${app.cssPrefix}-copy-btn > svg, pre #${app.cssPrefix}-regen-btn > svg {`
+                      + `${ env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
                   + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
                   + `#${app.cssPrefix}-chatbar {`
