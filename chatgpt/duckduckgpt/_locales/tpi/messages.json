@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Skim" },
   "tooltip_close": { "message": "Klostu" },
   "tooltip_copy": { "message": "Salim kopi i go long klipbod / kopi" },
+  "tooltip_regen": { "message": "Ol samting i kamap gen" },
   "tooltip_reply": { "message": "Bekim" },
   "tooltip_code": { "message": "Kod" },
   "tooltip_sendRelatedQuery": { "message": "Send a related query" },

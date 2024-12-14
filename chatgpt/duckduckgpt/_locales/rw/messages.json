@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Kugabanuka" },
   "tooltip_close": { "message": "Funga" },
   "tooltip_copy": { "message": "Gukoporora" },
+  "tooltip_regen": { "message": "Kongera kubyara" },
   "tooltip_reply": { "message": "Gusubiza" },
   "tooltip_code": { "message": "Kode" },
   "tooltip_sendRelatedQuery": { "message": "Ohereza ikibazo gihuye" },

@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "کوچک شدن" },
   "tooltip_close": { "message": "بستن" },
   "tooltip_copy": { "message": "کپی" },
+  "tooltip_regen": { "message": "بازسازی مجوز دانلود" },
   "tooltip_reply": { "message": "پاسخ " },
   "tooltip_code": { "message": "کد" },
   "tooltip_sendRelatedQuery": { "message": "ارسال درخواست مرتبط" },

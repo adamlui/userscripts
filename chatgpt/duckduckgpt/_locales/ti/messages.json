@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "ጸርፊ" },
   "tooltip_close": { "message": "ዕጾ" },
   "tooltip_copy": { "message": "ቅዳሕ" },
+  "tooltip_regen": { "message": "ተሃድሶ" },
   "tooltip_reply": { "message": "መልሲ" },
   "tooltip_code": { "message": "ደንቢ" },
   "tooltip_sendRelatedQuery": { "message": "ምስዚ ዚተሓሓዝ ሕቶ ልኣኽ" },

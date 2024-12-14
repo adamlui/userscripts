@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Gysgalt" },
   "tooltip_close": { "message": "Ýap" },
   "tooltip_copy": { "message": "Nusgala" },
+  "tooltip_regen": { "message": "Täzeleşdir" },
   "tooltip_reply": { "message": "Jawap" },
   "tooltip_code": { "message": "Kody" },
   "tooltip_sendRelatedQuery": { "message": "Baglanyşykly soragy iber" },

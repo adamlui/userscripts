@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "غونجول" },
   "tooltip_close": { "message": "بندول" },
   "tooltip_copy": { "message": "...لمېسل_" },
+  "tooltip_regen": { "message": "بیا تولید کړئ" },
   "tooltip_reply": { "message": "ځواب ورکړه" },
   "tooltip_code": { "message": "کوډ" },
   "tooltip_sendRelatedQuery": { "message": "اړونده پوښتنې ولیږئ" },

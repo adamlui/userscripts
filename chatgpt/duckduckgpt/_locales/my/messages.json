@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "ကျုံ့ပါ" },
   "tooltip_close": { "message": "ပိတ်ရန်" },
   "tooltip_copy": { "message": "မိတ္တူကို" },
+  "tooltip_regen": { "message": "ပြန်လည်မွေးဖွားပါ" },
   "tooltip_reply": { "message": "ပြန်ပြောပါ" },
   "tooltip_code": { "message": "Code" },
   "tooltip_sendRelatedQuery": { "message": "ဆက်စပ်မေးမြန်းချက် ပေးပို့ပါ" },

@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Krymp" },
   "tooltip_close": { "message": "Lukk" },
   "tooltip_copy": { "message": "Kopier" },
+  "tooltip_regen": { "message": "Regenerer" },
   "tooltip_reply": { "message": "Svar" },
   "tooltip_code": { "message": "Kode" },
   "tooltip_sendRelatedQuery": { "message": "Send relatert forespørsel" },

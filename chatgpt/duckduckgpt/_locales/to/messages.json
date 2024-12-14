@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Holomui" },
   "tooltip_close": { "message": "Tāpuni" },
   "tooltip_copy": { "message": "Hiki Tatau" },
+  "tooltip_regen": { "message": "Fakafoʻou" },
   "tooltip_reply": { "message": "Tali" },
   "tooltip_code": { "message": "Kouti" },
   "tooltip_sendRelatedQuery": { "message": "ʻAve ʻa e fehuʻi ʻoku fekauʻaki" },

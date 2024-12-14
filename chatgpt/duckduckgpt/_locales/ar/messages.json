@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "مقدار التقلص أو الانكماش" },
   "tooltip_close": { "message": "إغلاق" },
   "tooltip_copy": { "message": "‫نسخ‬" },
+  "tooltip_regen": { "message": "يجدد" },
   "tooltip_reply": { "message": "الرد" },
   "tooltip_code": { "message": "الكود" },
   "tooltip_sendRelatedQuery": { "message": "إرسال استعلام ذي صلة" },

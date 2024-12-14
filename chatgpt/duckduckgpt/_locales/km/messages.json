@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "បង្រួម" },
   "tooltip_close": { "message": "បិទ" },
   "tooltip_copy": { "message": "ចម្លង​" },
+  "tooltip_regen": { "message": "បង្កើតឡើងវិញ" },
   "tooltip_reply": { "message": "ឆ្លើយតប​" },
   "tooltip_code": { "message": "លេខកូដ" },
   "tooltip_sendRelatedQuery": { "message": "ផ្ញើសំណួរដែលពាក់ព័ន្ធ" },

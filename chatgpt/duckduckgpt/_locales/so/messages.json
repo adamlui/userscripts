@@ -45,6 +45,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Xir" },
   "tooltip_copy": { "message": "Nuqul Ka Samee" },
+  "tooltip_regen": { "message": "Dib u cusboonaysii" },
   "tooltip_reply": { "message": "Jawaab" },
   "tooltip_code": { "message": "Koodh" },
   "tooltip_sendRelatedQuery": { "message": "U dir su 'aalaha la xiriira" },
