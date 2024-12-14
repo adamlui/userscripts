@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.15
+// @version                2024.12.14.16
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2962,7 +2962,6 @@
                 const replyForm = document.createElement('form'),
                       continueChatDiv = document.createElement('div'),
                       chatTextarea = document.createElement('textarea')
-                continueChatDiv.className = `${app.cssPrefix}-continue-chat`
                 chatTextarea.id = `${app.cssPrefix}-chatbar` ; chatTextarea.rows = '1'
                 chatTextarea.placeholder = `${app.msgs.tooltip_sendReply}...`
                 continueChatDiv.append(chatTextarea)
