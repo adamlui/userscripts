@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.10
+// @version                2024.12.14.11
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2622,7 +2622,7 @@
                 config.openAIkey = await Promise.race(
                     [session.getOAItoken(), new Promise(reject => setTimeout(reject, 3000))])
 
-            // Try diff API after 6-9s of no response
+            // Try diff API after 7-10s of no response
             else {
                 const iniAPI = get.reply.api
                 setTimeout(() => {
@@ -2631,7 +2631,7 @@
                         && get.reply.api == iniAPI // not already trying diff API from err
                         && get.reply.triedAPIs.length != Object.keys(apis).length -1 // untried APIs remain
                     ) api.tryNew(get.reply, 'timeout')
-                }, config.streamingDisabled ? 9000 : 6000)
+                }, config.streamingDisabled ? 10000 : 7000)
             }
 
             // Get/show answer from AI
