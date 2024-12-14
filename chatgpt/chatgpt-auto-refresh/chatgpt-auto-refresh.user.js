@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.12.5
+// @version             2024.12.13
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -887,7 +887,7 @@
                     'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
                 navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
                     chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
-                },
+            },
 
             updateState() {
                 if (!this.div) return // since toggle never created = sidebar missing
@@ -936,7 +936,7 @@
             document.head.append(tweaksStyle)
         }
         tweaksStyle.innerText = '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
-    }; // eslint-disable-line
+    }
 
     // Add STARS styles
     ['brs', 'wrs'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
@@ -983,7 +983,7 @@
                 && !target.id.endsWith('-knob-span') // exclude our toggles.sidebar
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
-        })).observe(document.body, { attributes: true, subtree: true, attributeFilter: [ 'style' ]})
+        })).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['style'] })
         document.documentElement.setAttribute('sidebar-click-zoom-observed', true)
     }
 
