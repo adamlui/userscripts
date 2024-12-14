@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.11
+// @version                2024.12.14.12
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3588,9 +3588,9 @@
                 // Otherwise create/append answer bubble
                 } else {
                     const answerPre = document.createElement('pre'),
-                          balloonTipSpan = document.createElement('span')
-                    balloonTipSpan.className = `${app.cssPrefix}-reply-tip`
-                    appDiv.append(balloonTipSpan, answerPre)
+                          replyTipSpan = document.createElement('span')
+                    replyTipSpan.className = `${app.cssPrefix}-reply-tip`
+                    appDiv.append(replyTipSpan, answerPre)
                 }
 
                 update.style.tweaks() // show/hide 'by KudoAI', update pre-height based on mode
