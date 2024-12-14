@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.13
+// @version                  2024.12.13.1
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -4112,16 +4112,16 @@
 
     // APPEND to Google
     const centerCol = document.querySelector('#center_col') || document.querySelector('#main')
-    const appDivContainer = env.browser.isMobile ? centerCol
+    const appDivParent = env.browser.isMobile ? centerCol
         : document.getElementById('rhs') // sidebar container if side snippets exist
         || (() => { // create new one if no side snippets exist
-               const newHostContainer = document.createElement('div')
-               newHostContainer.style.display = 'contents'
+               const appDivParent = document.createElement('div')
+               appDivParent.style.display = 'contents'
                centerCol.style.paddingRight = '65px'
-               centerCol.insertAdjacentElement('afterend', newHostContainer)
-               return newHostContainer
+               centerCol.insertAdjacentElement('afterend', appDivParent)
+               return appDivParent
            })()
-    appDivContainer.prepend(appDiv)
+    appDivParent.prepend(appDiv)
     setTimeout(() => appDiv.classList.add('active'), 100) // fade in
 
     // Strip Google TRACKING
