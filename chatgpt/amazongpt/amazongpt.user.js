@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15
+// @version                2024.12.15.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1962,7 +1962,7 @@
             })
         },
 
-        cornerBtns() {
+        appDivCornerBtns() {
             appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
@@ -2923,8 +2923,8 @@
                     appDiv.append(tooltipDiv)
                 }
 
-                // Add corner button listeners
-                listenerize.cornerBtns()
+                // Add app div corner button listeners
+                listenerize.appDivCornerBtns()
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
