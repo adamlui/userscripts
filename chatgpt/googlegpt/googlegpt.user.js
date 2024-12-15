@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.15
+// @version                  2024.12.15.1
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2712,7 +2712,7 @@
             })
         },
 
-        cornerBtns() {
+        appDivCornerBtns() {
             appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
@@ -3888,8 +3888,8 @@
                 // Add tooltips
                 if (!env.browser.isMobile) appDiv.append(tooltipDiv)
 
-                // Add corner button listeners
-                listenerize.cornerBtns()
+                // Add app div corner button listeners
+                listenerize.appDivCornerBtns()
 
                 // Create/append 'by KudoAI' if it fits
                 if (!env.browser.isMobile) {
