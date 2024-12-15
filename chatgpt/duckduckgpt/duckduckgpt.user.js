@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.23
+// @version                2024.12.15
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -564,15 +564,12 @@
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
-    log.debug('Initializing UI properties...')
     env.ui = {
         app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )},
         site: { isCentered: !!document.documentElement.classList.toString().includes('center') }
     }
-    log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
     // Init API props
-    log.debug('Initializing API properties...')
     const apis = {
         'AIchatOS': {
             endpoint: 'https://api.binjie.fun/api/generateStream',
@@ -617,13 +614,10 @@
             method: 'POST', streamable: true
         }
     }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
 
     // Init INPUT EVENTS
-    log.debug('Initializing input events...')
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
@@ -669,12 +663,9 @@
         },
 
         refresh() {
-            log.caller = 'menu.refresh()'
-            log.debug('Refreshing toolbar menu...')
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
-            log.debug('Success! Menu refreshed')
         }
     }
 
@@ -3756,7 +3747,7 @@
 
     // Run MAIN routine
 
-    log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
+    menu.register()
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
