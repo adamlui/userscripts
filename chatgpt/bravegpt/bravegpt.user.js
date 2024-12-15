@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.12
+// @version               2024.12.15.13
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1542,7 +1542,7 @@
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" href="'
                             + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
-                                `${app.urls.gitHub}/blob/main/greasemonkey/$1user.js`)
+                                `${app.urls.gitHub}/commits/main/greasemonkey/$1user.js`)
                         + `">${app.msgs.link_viewChanges}</a>`,
                     function update() { // button
                         GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
