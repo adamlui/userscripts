@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.3
+// @version                2024.12.15.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2250,8 +2250,8 @@
                   + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
-                  + `pre #${app.cssPrefix}-copy-btn > svg, pre #${app.cssPrefix}-regen-btn > svg {`
-                      + `${ env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
+                  + `.${app.cssPrefix}-reply-corner-btns {`
+                      + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
                   + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
                   + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
                   + `#${app.cssPrefix}-chatbar {`
@@ -3406,7 +3406,7 @@
 
             // Add top parent div
             const cornerBtnsDiv = document.createElement('div')
-            cornerBtnsDiv.style.float = 'right'
+            cornerBtnsDiv.className = `${app.cssPrefix}-reply-corner-btns`
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
 
             // Add Copy buttons
