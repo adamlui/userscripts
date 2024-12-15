@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.7
+// @version               2024.12.15.8
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -848,7 +848,10 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                '.chatgpt-modal > div {'
+                '@keyframes modal-zoom-fade-out {'
+                  + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
+                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
+              + '.chatgpt-modal > div {'
                   + 'padding: 24px 20px 14px 20px !important ;' // increase modal padding
                   + 'background-color: white !important ; color: #202124 }'
               + '.chatgpt-modal p { margin: 14px 0 -20px 4px ; font-size: 18px }' // pos/size modal msg
@@ -2226,9 +2229,6 @@
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                       + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
-                  + '@keyframes modal-zoom-fade-out {'
-                      + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
-                      + '100% { opacity: 0 ; transform: scale(1.35) }}'
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
