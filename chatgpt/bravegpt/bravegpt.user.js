@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.4
+// @version               2024.12.15.5
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2916,7 +2916,7 @@
             const toMinimize = state == 'on' || !state && !config.minimized
             log.debug(`${ toMinimize ? 'Mimizing' : 'Restoring' } ${app.name}...`)
             settings.save('minimized', toMinimize)
-            const chevronBtn = appDiv.querySelector('#chevron-btn')
+            const chevronBtn = appDiv.querySelector(`#${app.cssPrefix}-chevron-btn`)
             if (chevronBtn) { // update icon
                 const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.firstChild.remove() ; chevronBtn.append(chevronSVG)
@@ -3900,7 +3900,7 @@
                     + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
     const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
                        + `[class*="feedback"], .${app.cssPrefix}-related-queries, #wsb-btn  { display: none }`
-                       + '#chevron-btn, #arrows-btn { display: block !important }'
+                       + `#${app.cssPrefix}-chevron-btn, #${app.cssPrefix}-arrows-btn { display: block !important }`
     const expandedStyles = `#${app.cssPrefix} { width: 538px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
