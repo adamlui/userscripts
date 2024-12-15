@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.14.25
+// @version                2024.12.15
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -382,12 +382,9 @@
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
-    log.debug('Initializing UI properties...')
     env.ui = { app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' ) }}
-    log.debug(`Success! env.ui = '${log.prettifyObj(env.ui)}`)
 
     // Init API props
-    log.debug('Initializing API properties...')
     const apis = {
         'AIchatOS': {
             endpoint: 'https://api.binjie.fun/api/generateStream',
@@ -432,13 +429,10 @@
             method: 'POST', streamable: true
         }
     }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
 
     // Init INPUT EVENTS
-    log.debug('Initializing input events...')
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
@@ -484,12 +478,9 @@
         },
 
         refresh() {
-            log.caller = 'menu.refresh()'
-            log.debug('Refreshing toolbar menu...')
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
-            log.debug('Success! Menu refreshed')
         }
     }
 
@@ -3035,7 +3026,7 @@
 
     // Run MAIN routine
 
-    log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
+    menu.register()
 
     // Exit on specific pages
     if (location.pathname == '/message-us')
