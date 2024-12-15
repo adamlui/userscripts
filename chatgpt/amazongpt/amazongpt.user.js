@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.2
+// @version                2024.12.15.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1854,8 +1854,6 @@
                   + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
-                  + `#${app.cssPrefix} + footer { margin: 2px 0 25px ; position: relative }`
-                  + `#${app.cssPrefix} + footer * { color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + `pre #${app.cssPrefix}-copy-btn > svg, pre #${app.cssPrefix}-regen-btn > svg {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
@@ -1898,6 +1896,9 @@
                           + 'margin-bottom: -21px }' // reduce bottom-gap
                       + `#${app.cssPrefix} > pre ul > li { list-style: inside }` ) // show bullets
                   + '.katex-html { display: none } ' // hide unrendered math
+                  + `#${app.cssPrefix} + footer { margin: 2px 0 25px ; position: relative }`
+                  + `#${app.cssPrefix} + footer * {`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + '.chatgpt-notif {'
                       + 'font-size: 26px !important ; fill: white ; stroke: white ; color: white ;'
                       + 'padding: 9px 14px 18px 11.5px !important }'
