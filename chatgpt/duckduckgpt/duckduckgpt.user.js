@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.9
+// @version                2024.12.15.10
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1639,7 +1639,7 @@
                     pinMenuItems[i].className = `${app.cssPrefix}-menu-item`
                     if (i == 0) { // format header item
                         pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
-                        pinMenuItems[i].classList.add(`${app.cssPrefix}-menu-header`) // to not apply hover fx from appStyle
+                        pinMenuItems[i].classList.add(`${app.cssPrefix}-menu-header`) // to not apply hover fx from app.styles
                         pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
                     } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
                     pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
@@ -2132,7 +2132,7 @@
             app() {
                 const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
                 modals.stylize() // update modal styles
-                appStyle.innerText = (
+                app.styles.innerText = (
                     ':root {' // color vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
@@ -3768,7 +3768,7 @@
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv()
-    const appStyle = create.style() ; update.style.app() ; document.head.append(appStyle);
+    app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
