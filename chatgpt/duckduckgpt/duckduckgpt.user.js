@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.2
+// @version                2024.12.15.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2250,10 +2250,6 @@
                   + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
-                  + `#${app.cssPrefix} + footer {`
-                      + 'display: grid ; width: 100% ; margin: 2px 0 25px ; position: relative }'
-                  + `#${app.cssPrefix} + footer * {`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + `pre #${app.cssPrefix}-copy-btn > svg, pre #${app.cssPrefix}-regen-btn > svg {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white' : '' }}`
                   + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
@@ -2318,6 +2314,10 @@
                       + `#${app.cssPrefix} > pre ul { margin: -28px 0 -21px }` // reduce v-padding
                       + `#${app.cssPrefix} > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }` ) // reduce v-padding, show bullets
                   + '.katex-html { display: none } ' // hide unrendered math
+                  + `#${app.cssPrefix} + footer {`
+                      + 'display: grid ; width: 100% ; margin: 2px 0 25px ; position: relative }'
+                  + `#${app.cssPrefix} + footer * {`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
                   + '.chatgpt-notif { fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }'
                   + '.notif-close-btn { display: none !important }' // hide notif close btn
                   + `.${app.cssPrefix}-menu {`
