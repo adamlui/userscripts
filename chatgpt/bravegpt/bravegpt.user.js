@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.1
+// @version               2024.12.15.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2271,23 +2271,23 @@
                   + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
                   + '.kudoai a { color: #aaa ; text-decoration: none !important }'
                   + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-                  + `#${app.cssPrefix}-corner-btns { position: relative ; bottom: 3px ; float: right }`
-                  + `.${app.cssPrefix}-corner-btn {`
+                  + `#${app.cssPrefix}-div-corner-btns { position: relative ; bottom: 3px ; float: right }`
+                  + `.${app.cssPrefix}-div-corner-btn {`
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                         : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
                           + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
                                 // ...btn-zoom-fade-out ends
-                  + `.${app.cssPrefix}-corner-btn:hover {`
+                  + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                           : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-                  + `.${app.cssPrefix}-corner-btn:active {`
+                  + `.${app.cssPrefix}-div-corner-btn:active {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                         : 'fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( config.bgAnimationsDisabled ? '' : (
-                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-corner-btn svg, .${app.cssPrefix}-standby-btn {`
+                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-div-corner-btn svg, .${app.cssPrefix}-standby-btn {`
                           + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                                 : '#aaaaaa21 7px' } 7px 3px) }` ))
                   + `#${app.cssPrefix} .loading {`
@@ -2449,7 +2449,7 @@
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
                 if (kudoAIspan) {
-                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`)]
+                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
                         .filter(btn => getComputedStyle(btn).display != 'none').length
                     kudoAIspan.style.display = visibleBtnCnt <= (
                         config.anchored && config.expanded ? 10
@@ -2514,7 +2514,7 @@
         },
 
         appDivCornerBtns() {
-            appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`).forEach(btn => { // from right to left
+            appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
@@ -3600,7 +3600,8 @@
 
                 // Create/append corner buttons div
                 const cornerBtnsDiv = document.createElement('div')
-                cornerBtnsDiv.id = `${app.cssPrefix}-corner-btns` ; cornerBtnsDiv.className = 'no-mobile-tap-outline'
+                cornerBtnsDiv.id = `${app.cssPrefix}-div-corner-btns`
+                cornerBtnsDiv.className = 'no-mobile-tap-outline'
                 appDiv.append(cornerBtnsDiv)
 
                 // Create/append Chevron button
@@ -3608,7 +3609,8 @@
                     var chevronBtn = document.createElement('btn'),
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                    chevronBtn.className = `${app.cssPrefix}-corner-btn` ; chevronBtn.style.margin = '0.5px 1px 0 11px'
+                    chevronBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    chevronBtn.style.margin = '0.5px 1px 0 11px'
                     chevronBtn.style.display = 'none' // to activate from anchorStyles only
                     chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
                 }
@@ -3617,14 +3619,14 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.className = `${app.cssPrefix}-corner-btn` ; aboutBtn.style.marginTop = '0.8px'
+                aboutBtn.className = `${app.cssPrefix}-div-corner-btn` ; aboutBtn.style.marginTop = '0.8px'
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.className = `${app.cssPrefix}-corner-btn` ; settingsBtn.style.margin = '1.5px 9px 0 1px'
+                settingsBtn.className = `${app.cssPrefix}-div-corner-btn` ; settingsBtn.style.margin = '1.5px 9px 0 1px'
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
@@ -3632,7 +3634,7 @@
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
                     speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                    speakerBtn.className = `${app.cssPrefix}-corner-btn` ; speakerBtn.style.marginRight = '7px'
+                    speakerBtn.className = `${app.cssPrefix}-div-corner-btn` ; speakerBtn.style.marginRight = '7px'
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3641,7 +3643,8 @@
                     var fontSizeBtn = document.createElement('btn'),
                         fontSizeSVG = icons.fontSize.create()
                     fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                    fontSizeBtn.className = `${app.cssPrefix}-corner-btn` ; fontSizeBtn.style.margin = '1px 10px 0 2px'
+                    fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    fontSizeBtn.style.margin = '1px 10px 0 2px'
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3650,14 +3653,14 @@
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
                     pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.className = `${app.cssPrefix}-corner-btn` ; pinBtn.style.margin = '1px 9px 0 0'
+                    pinBtn.className = `${app.cssPrefix}-div-corner-btn` ; pinBtn.style.margin = '1px 9px 0 0'
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
                     wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.className = `${app.cssPrefix}-corner-btn` ; wsbBtn.style.margin = '0.151em 11px 0 0'
+                    wsbBtn.className = `${app.cssPrefix}-div-corner-btn` ; wsbBtn.style.margin = '0.151em 11px 0 0'
                     wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
@@ -3665,7 +3668,7 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.className = `${app.cssPrefix}-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
+                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
                     arrowsBtn.style.display = 'none' // to activate from anchorStyles only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
                 }
@@ -3977,7 +3980,7 @@
         appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv()
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
-        if (appDiv.querySelector(`.${app.cssPrefix}-corner-btn`)) listenerize.appDivCornerBtns()
+        if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appDivCornerBtns()
         const standbyBtn = appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
