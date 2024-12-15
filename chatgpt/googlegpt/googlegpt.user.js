@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.15.7
+// @version                  2024.12.15.8
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1036,7 +1036,10 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                '.chatgpt-modal > div {'
+                '@keyframes modal-zoom-fade-out {'
+                  + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
+                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
+              + '.chatgpt-modal > div {'
                   + '17px 20px 24px 20px !important ;' // increase alert padding
                   + 'background-color: white ; color: #202124 }'
               + '.chatgpt-modal p { margin: 14px 0 -29px 4px ; font-size: 1.28em ; line-height: 1.57 }' // pos/size modal msg
@@ -2428,9 +2431,6 @@
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                       + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
-                  + '@keyframes modal-zoom-fade-out {'
-                      + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
-                      + '100% { opacity: 0 ; transform: scale(1.35) }}'
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
