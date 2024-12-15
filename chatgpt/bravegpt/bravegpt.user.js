@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.14.22
+// @version               2024.12.15
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -562,7 +562,6 @@
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init API props
-    log.debug('Initializing API properties...')
     const apis = {
         'AIchatOS': {
             endpoint: 'https://api.binjie.fun/api/generateStream',
@@ -607,13 +606,10 @@
             method: 'POST', streamable: true
         }
     }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
 
     // Init INPUT EVENTS
-    log.debug('Initializing input events...')
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
@@ -659,12 +655,9 @@
         },
 
         refresh() {
-            log.caller = 'menu.refresh()'
-            log.debug('Refreshing toolbar menu...')
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
-            log.debug('Success! Menu refreshed')
         }
     }
 
@@ -3884,12 +3877,10 @@
 
     // Run MAIN routine
 
-    log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
+    menu.register()
 
     // Init UI props
-    log.debug('Initializing UI properties...')
     env.ui = { app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )}}
-    log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
