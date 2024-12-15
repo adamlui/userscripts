@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.5
+// @version               2024.12.15.6
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2277,8 +2277,8 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                         : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
-                          + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
-                                // ...btn-zoom-fade-out ends
+                          + 'opacity 0.1s ease-in-out, visibility 0.3s ease-in-out }' // for appDiv.onmouseover shows
+                                // + re-shows from btn-zoom-fade-out ends
                   + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                           : 'fill: black ; stroke: black' } ;`
@@ -2511,6 +2511,11 @@
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
+            appDiv.onmouseover = appDiv.onmouseout = event =>
+                appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => {
+                    if (/about|settings|chevron/.test(btn.id)) return
+                    btn.style.opacity = event.type == 'mouseover' ? 1 : 0
+                })
         },
 
         appDivCornerBtns() {
@@ -3610,8 +3615,8 @@
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
                     chevronBtn.className = `${app.cssPrefix}-div-corner-btn`
-                    chevronBtn.style.margin = '0.5px 1px 0 11px'
-                    chevronBtn.style.display = 'none' // to activate from anchorStyles only
+                    chevronBtn.style.margin = '0.5px 1px 0 11px' // position
+                    chevronBtn.style.display = 'none' // show when config.anchored only
                     chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
                 }
 
@@ -3619,14 +3624,16 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.className = `${app.cssPrefix}-div-corner-btn` ; aboutBtn.style.marginTop = '0.8px'
+                aboutBtn.className = `${app.cssPrefix}-div-corner-btn`
+                aboutBtn.style.marginTop = '0.8px' // position
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.className = `${app.cssPrefix}-div-corner-btn` ; settingsBtn.style.margin = '1.5px 9px 0 1px'
+                settingsBtn.className = `${app.cssPrefix}-div-corner-btn`
+                settingsBtn.style.margin = '1.5px 9px 0 1px' // position
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
@@ -3634,7 +3641,9 @@
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
                     speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                    speakerBtn.className = `${app.cssPrefix}-div-corner-btn` ; speakerBtn.style.marginRight = '7px'
+                    speakerBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    speakerBtn.style.marginRight = '7px' // position
+                    speakerBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3644,7 +3653,8 @@
                         fontSizeSVG = icons.fontSize.create()
                     fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
                     fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn`
-                    fontSizeBtn.style.margin = '1px 10px 0 2px'
+                    fontSizeBtn.style.margin = '1px 10px 0 2px' // position
+                    fontSizeBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3653,14 +3663,18 @@
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
                     pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.className = `${app.cssPrefix}-div-corner-btn` ; pinBtn.style.margin = '1px 9px 0 0'
+                    pinBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    pinBtn.style.margin = '1px 9px 0 0' // position
+                    pinBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
                     wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.className = `${app.cssPrefix}-div-corner-btn` ; wsbBtn.style.margin = '0.151em 11px 0 0'
+                    wsbBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    wsbBtn.style.margin = '0.151em 11px 0 0' // position
+                    wsbBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
@@ -3668,8 +3682,10 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
-                    arrowsBtn.style.display = 'none' // to activate from anchorStyles only
+                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
+                    arrowsBtn.style.display = 'none' // show when config.anchored only
+                    arrowsBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
                 }
 
