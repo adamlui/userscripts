@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.5
+// @version                2024.12.15.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1796,8 +1796,8 @@
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                         : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
-                          + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
-                                // ...btn-zoom-fade-out ends
+                          + 'opacity 0.1s ease-in-out, visibility 0.3s ease-in-out }' // for appDiv.onmouseover shows
+                                // + re-shows from btn-zoom-fade-out ends
                   + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                         : 'fill: black ; stroke: black' } ;`
@@ -1961,6 +1961,11 @@
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
+            appDiv.onmouseover = appDiv.onmouseout = event =>
+                appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => {
+                    if (/about|settings|chevron/.test(btn.id)) return
+                    btn.style.opacity = event.type == 'mouseover' ? 1 : 0
+                })
         },
 
         appDivCornerBtns() {
@@ -2877,8 +2882,9 @@
                 const chevronBtn = document.createElement('btn'),
                       chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                chevronBtn.className = `${app.cssPrefix}-div-corner-btn` ; chevronBtn.style.margin = '-1.5px 1px 0 11px'
-                chevronBtn.style.display = 'none' // to activate from anchorStyles only
+                chevronBtn.className = `${app.cssPrefix}-div-corner-btn`
+                chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
+                chevronBtn.style.display = 'none' // show when config.anchored only
                 chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
 
                 // Create/append About button
@@ -2893,21 +2899,25 @@
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
                 settingsBtn.className = `${app.cssPrefix}-div-corner-btn`
-                settingsBtn.style.margin = '0.5px 10.5px 0 0.5px'
+                settingsBtn.style.margin = '0.5px 10.5px 0 0.5px' // position
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
                 const speakerBtn = document.createElement('btn'),
                       speakerSVG = icons.speaker.create()
                 speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                speakerBtn.className = `${app.cssPrefix}-div-corner-btn` ; speakerBtn.style.margin = '-2px 8px 0 0'
+                speakerBtn.className = `${app.cssPrefix}-div-corner-btn`
+                speakerBtn.style.margin = '-2px 8px 0 0' // position
+                speakerBtn.style.opacity = 0 // show when appDiv.onmouseover only
                 speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
 
                 // Create/append Font Size button
                 const fontSizeBtn = document.createElement('btn'),
                       fontSizeSVG = icons.fontSize.create()
                 fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn` ; fontSizeBtn.style.marginRight = '10px'
+                fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn`
+                fontSizeBtn.style.marginRight = '10px' // position
+                fontSizeBtn.style.opacity = 0 // show when appDiv.onmouseover only
                 fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
 
                 if (!env.browser.isMobile) {
@@ -2917,8 +2927,10 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
-                    arrowsBtn.style.display = 'none' // to activate from anchorStyles only
+                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
+                    arrowsBtn.style.display = 'none' // show when config.anchored only
+                    arrowsBtn.style.opacity = 0 // show when appDiv.onmouseover only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
 
                 // Add tooltips
