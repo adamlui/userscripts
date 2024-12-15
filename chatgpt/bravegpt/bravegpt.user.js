@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.8
+// @version               2024.12.15.9
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2280,7 +2280,7 @@
                           + 'opacity 0.1s ease-in-out }' // for appDiv.onmouseover + btn-zoom-fade-out shows
                   + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                          : 'fill: black ; stroke: black' } ;`
+                                                        : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
                   + `.${app.cssPrefix}-div-corner-btn:active {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
@@ -2319,7 +2319,7 @@
                       + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
                   + `.${app.cssPrefix}-standby-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
-                                                    : 'background: black ; color: white' };`
+                                                        : 'background: black ; color: white' };`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
                   + `.${app.cssPrefix}-reply-tip {`
@@ -2372,7 +2372,7 @@
                       + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
                       + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
-                                                           : '#767676' } ;`
+                                                               : '#767676' } ;`
                       + `background: ${
                              config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
                                                          : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
