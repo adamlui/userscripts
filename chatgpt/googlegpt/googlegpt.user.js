@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.14.23
+// @version                  2024.12.15
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -750,7 +750,6 @@
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init API props
-    log.debug('Initializing API properties...')
     const apis = {
         'AIchatOS': {
             endpoint: 'https://api.binjie.fun/api/generateStream',
@@ -795,13 +794,10 @@
             method: 'POST', streamable: true
         }
     }
-    log.debug(`Success! apis = ${log.prettifyObj(apis)}`)
 
     // Init INPUT EVENTS
-    log.debug('Initializing input events...')
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
           inputEvents[action] = ( window.PointerEvent ? 'pointer' : env.browser.isMobile ? 'touch' : 'mouse' ) + action)
-    log.debug(`Success! inputEvents = ${log.prettifyObj(inputEvents)}`)
 
     // Init ALERTS
     Object.assign(app, { alerts: {
@@ -847,12 +843,9 @@
         },
 
         refresh() {
-            log.caller = 'menu.refresh()'
-            log.debug('Refreshing toolbar menu...')
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
-            log.debug('Success! Menu refreshed')
         }
     }
 
@@ -4098,12 +4091,11 @@
 
     // Run MAIN routine
 
-    log.debug('Registering toolbar menu...') ; menu.register() ; log.debug('Success! Menu registered')
+    menu.register()
 
     if (location.search.includes('&udm=2')) return log.debug('Exited from Google Images')
 
     // Init UI props
-    log.debug('Initializing UI properties...')
     await Promise.race([ // dark theme label loaded or 0.5s passed
         new Promise(resolve => {
             (function checkDarkThemeLabel() {
@@ -4116,7 +4108,6 @@
         app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )},
         site: { hasSidebar: !!document.querySelector('[class*="kp-"]') }
     }
-    log.debug(`Success! ui = '${log.prettifyObj(env.ui)}`)
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
