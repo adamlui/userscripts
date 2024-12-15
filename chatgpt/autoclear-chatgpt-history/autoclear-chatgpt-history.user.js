@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.15
+// @version             2024.12.15.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -899,19 +899,7 @@
     // Init UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
     await chatgpt.sidebar.isLoaded()
-    env.ui = { firstLink: chatgpt.getNewChatLink() }
-
-    // Add/update TWEAKS style
-    const tweaksStyleUpdated = 1733992854076 // timestamp of last edit for this file's tweaksStyle
-    let tweaksStyle = document.getElementById('tweaks-style') // try to select existing style
-    if (!tweaksStyle || parseInt(tweaksStyle.getAttribute('last-updated')) < tweaksStyleUpdated) {
-        if (!tweaksStyle) { // outright missing, create/id/attr/append it first
-            tweaksStyle = document.createElement('style') ; tweaksStyle.id = 'tweaks-style'
-            tweaksStyle.setAttribute('last-updated', tweaksStyleUpdated.toString())
-            document.head.append(tweaksStyle)
-        }
-        tweaksStyle.innerText = '* { scrollbar-width: thin }' // make FF scrollbar skinny to not crop toggle
-    }
+    env.ui = { firstLink: chatgpt.getNewChatLink() };
 
     // Add STARS styles
     ['brs', 'wrs'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
