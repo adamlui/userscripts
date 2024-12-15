@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.8
+// @version                2024.12.15.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2221,7 +2221,7 @@
                       + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
                   + `.${app.cssPrefix}-standby-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
-                                                    : 'background: black ; color: white' };`
+                                                        : 'background: black ; color: white' };`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scaleX(1.015) scaleY(1.03)' }}`
                   + `.${app.cssPrefix}-reply-tip {`
@@ -2271,7 +2271,7 @@
                       + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
                       + 'margin: 4px 4px 8px 0 ; padding: 4px 10px 5px 10px ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
-                                                           : '#767676' } ;`
+                                                               : '#767676' } ;`
                       + `background: ${
                              config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
                                                          : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
