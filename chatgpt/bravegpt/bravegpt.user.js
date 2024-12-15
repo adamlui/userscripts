@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.11
+// @version               2024.12.15.12
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3698,7 +3698,7 @@
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
-                kudoAIspan.style.cssText = 'position: relative ; bottom: 8px ; font-size: 12px'
+                kudoAIspan.style.cssText = 'position: relative ; bottom: 6px ; font-size: 11px'
                 kudoAIspan.append(create.anchor(app.urls.publisher, 'KudoAI'))
                 appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
 
