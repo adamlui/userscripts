@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.1
+// @version                2024.12.15.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1790,23 +1790,23 @@
                   + '.kudoai { margin-left: 6px ; color: #aaa } '
                   + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
                   + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-                  + `#${app.cssPrefix}-corner-btns { float: right ; margin-top: -2px }`
-                  + `.${app.cssPrefix}-corner-btn {`
+                  + `#${app.cssPrefix}-div-corner-btns { float: right ; margin-top: -2px }`
+                  + `.${app.cssPrefix}-div-corner-btn {`
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                         : 'fill: #adadad ; stroke: #adadad' };` // color
                       + 'transition: transform 0.15s ease,' // for hover zooms
                           + 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out }' // for re-appearances from...
                                 // ...btn-zoom-fade-out ends
-                  + `.${app.cssPrefix}-corner-btn:hover {`
+                  + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                         : 'fill: black ; stroke: black' } ;`
                       + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-                  + `.${app.cssPrefix}-corner-btn:active {`
+                  + `.${app.cssPrefix}-div-corner-btn:active {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                         : 'fill: #638ed4 ; stroke: #638ed4' }}`
                   + ( config.bgAnimationsDisabled ? '' : (
-                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-corner-btn svg {`
+                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-div-corner-btn svg {`
                           + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                                 : '#aaaaaa21 7px' } 7px 3px) }` ))
                   + `#${app.cssPrefix} .loading {`
@@ -1920,7 +1920,7 @@
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
                 if (kudoAIspan) {
-                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`)]
+                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
                         .filter(btn => getComputedStyle(btn).display != 'none').length
                     kudoAIspan.style.display = visibleBtnCnt <= (
                         env.browser.isMobile ? 3 : !config.expanded ? 5 : 8 ) ? '' : 'none'
@@ -1963,7 +1963,7 @@
         },
 
         appDivCornerBtns() {
-            appDiv.querySelectorAll(`.${app.cssPrefix}-corner-btn`).forEach(btn => { // from right to left
+            appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
@@ -2868,14 +2868,15 @@
 
                 // Create/append corner buttons div
                 const cornerBtnsDiv = document.createElement('div')
-                cornerBtnsDiv.id = `${app.cssPrefix}-corner-btns` ; cornerBtnsDiv.className = 'no-mobile-tap-outline'
+                cornerBtnsDiv.id = `${app.cssPrefix}-div-corner-btns`
+                cornerBtnsDiv.className = 'no-mobile-tap-outline'
                 appDiv.append(cornerBtnsDiv)
 
                 // Create/append Chevron button
                 const chevronBtn = document.createElement('btn'),
                       chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                chevronBtn.className = `${app.cssPrefix}-corner-btn` ; chevronBtn.style.margin = '-1.5px 1px 0 11px'
+                chevronBtn.className = `${app.cssPrefix}-div-corner-btn` ; chevronBtn.style.margin = '-1.5px 1px 0 11px'
                 chevronBtn.style.display = 'none' // to activate from anchorStyles only
                 chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
 
@@ -2883,14 +2884,14 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.className = `${app.cssPrefix}-corner-btn`
+                aboutBtn.className = `${app.cssPrefix}-div-corner-btn`
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.className = `${app.cssPrefix}-corner-btn`
+                settingsBtn.className = `${app.cssPrefix}-div-corner-btn`
                 settingsBtn.style.margin = '0.5px 10.5px 0 0.5px'
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
@@ -2898,14 +2899,14 @@
                 const speakerBtn = document.createElement('btn'),
                       speakerSVG = icons.speaker.create()
                 speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                speakerBtn.className = `${app.cssPrefix}-corner-btn` ; speakerBtn.style.margin = '-2px 8px 0 0'
+                speakerBtn.className = `${app.cssPrefix}-div-corner-btn` ; speakerBtn.style.margin = '-2px 8px 0 0'
                 speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
 
                 // Create/append Font Size button
                 const fontSizeBtn = document.createElement('btn'),
                       fontSizeSVG = icons.fontSize.create()
                 fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.className = `${app.cssPrefix}-corner-btn` ; fontSizeBtn.style.marginRight = '10px'
+                fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn` ; fontSizeBtn.style.marginRight = '10px'
                 fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
 
                 if (!env.browser.isMobile) {
@@ -2915,7 +2916,7 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.className = `${app.cssPrefix}-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
+                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn` ; arrowsBtn.style.margin = '0.5px 12px 0 0'
                     arrowsBtn.style.display = 'none' // to activate from anchorStyles only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
 
