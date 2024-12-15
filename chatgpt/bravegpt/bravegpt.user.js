@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.2
+// @version               2024.12.15.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2345,17 +2345,6 @@
                             'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
                   + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
                   + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
-                  + `#${app.cssPrefix} footer {`
-                      + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
-                      + 'padding-bottom: 12px ; border-top: none !important }'
-                  + `#${app.cssPrefix} .feedback {`
-                      + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
-                      + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
-                  + `#${app.cssPrefix} .feedback .icon {`
-                      + 'fill: currentColor ; color: currentColor ; --size: 12px ;'
-                      + 'position: relative ; top: 0.19em ; right: 2px }'
-                  + `#${app.cssPrefix} footer a:hover {`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
                   + '.chatgpt-js {'
                       + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
@@ -2423,6 +2412,17 @@
                       + `#${app.cssPrefix} > pre li` // reduce v-spacing, show left symbols
                           + '{ margin: -10px 0 ; list-style: inside }' )
                   + '.katex-html { display: none }' // hide unrendered math
+                  + `#${app.cssPrefix} .feedback {`
+                      + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
+                      + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
+                  + `#${app.cssPrefix} .feedback .icon {`
+                      + 'fill: currentColor ; color: currentColor ; --size: 12px ;'
+                      + 'position: relative ; top: 0.19em ; right: 2px }'
+                  + `#${app.cssPrefix} footer {`
+                      + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
+                      + 'padding-bottom: 12px ; border-top: none !important }'
+                  + `#${app.cssPrefix} footer a:hover {`
+                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
                   + '.chatgpt-notif {'
                       + 'fill: white ; stroke: white ; font-size: 25px !important ;'
                       + 'padding: 6.5px 14px 8.5px 11.5px !important }'
