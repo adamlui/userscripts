@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.16
+// @version                2024.12.16.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1660,7 +1660,7 @@
             toggle(event) { // visibility
                 const pinMenu = document.getElementById(`${app.cssPrefix}-pin-menu`) || menus.pin.createAppend()
                 if (!menus.pin.topPos)
-                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 53 : -85
+                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 53 : -82
                 if (!menus.pin.rightPos)
                      menus.pin.rightPos = appDiv.getBoundingClientRect().right - event.clientX - pinMenu.offsetWidth/2
                 pinMenu.style.top = `${menus.pin.topPos}px` ; pinMenu.style.right = `${menus.pin.rightPos}px`
