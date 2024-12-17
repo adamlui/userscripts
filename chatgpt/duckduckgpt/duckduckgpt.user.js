@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.15.12
+// @version                2024.12.16
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3475,7 +3475,7 @@
 
                 // Create/append title
                 const appHeaderLogo = logos.ddgpt.create()
-                appHeaderLogo.width = 181 ; appHeaderLogo.style.margin = '-7px 0'
+                appHeaderLogo.width = 157 ; appHeaderLogo.style.margin = '-4px 0'
                 const appTitleAnchor = create.anchor(app.urls.app, appHeaderLogo)
                 appTitleAnchor.classList.add(`${app.cssPrefix}-name`, 'no-user-select')
                 appDiv.append(appTitleAnchor)
