@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.15.13
+// @version               2024.12.16
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1655,7 +1655,7 @@
             toggle(event) { // visibility
                 const pinMenu = document.getElementById(`${app.cssPrefix}-pin-menu`) || menus.pin.createAppend()
                 if (!menus.pin.topPos)
-                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -78
+                     menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -80
                 if (!menus.pin.rightPos)
                      menus.pin.rightPos = appDiv.getBoundingClientRect().right - event.clientX - pinMenu.offsetWidth/2
                 pinMenu.style.top = `${menus.pin.topPos}px` ; pinMenu.style.right = `${menus.pin.rightPos}px`
