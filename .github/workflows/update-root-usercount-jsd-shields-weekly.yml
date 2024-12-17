@@ -1,8 +1,7 @@
 name: Update usercount/jsDelivr shields in root READMEs
 
 on:
-  schedule:
-    - cron: "35 1 * * 3" # every Wed @ 1:35 AM
+  workflow_dispatch:
 
 jobs:
   update-root-usercount-jsd-shields:
