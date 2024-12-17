@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.16
+// @version                  2024.12.17
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -381,8 +381,8 @@
 // @resource ggptLSlogo      https://cdn.jsdelivr.net/gh/KudoAI/googlegpt@612b976/media/images/logos/googlegpt/flat/black-green/logo480x64.png.b64#sha256-fzSZhLVQQolCLWYr/h29NWfR1Yl4glHv1TcsveYYv+U=
 // @resource ggptDSlogo      https://cdn.jsdelivr.net/gh/KudoAI/googlegpt@612b976/media/images/logos/googlegpt/flat/white-green/logo480x64.png.b64#sha256-3qRdGKhF3pojDqVVh/5kODIg7QvYbbLf4zFkEh5xoGc=
 // @resource hljsCSS         https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource brsCSS          https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
-// @resource wrsCSS          https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
+// @resource brsCSS          https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
+// @resource wrsCSS          https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
 // @grant                    GM_getValue
 // @grant                    GM_setValue
 // @grant                    GM_deleteValue
