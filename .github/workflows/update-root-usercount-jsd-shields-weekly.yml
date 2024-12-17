@@ -176,7 +176,7 @@ jobs:
           echo "COMMIT_MSG=$commit_msg" >> $GITHUB_ENV # expose as env var
 
           # Set Updated flag to check in subseuqent steps
-          if [ "$users_updated" = true ] || [ "requests_updated" = true ] ; then
+          if [ "$users_updated" = true ] || [ "$requests_updated" = true ] ; then
             echo "SHIELDS_UPDATED=true" >> $GITHUB_ENV ; fi
 
       - name: Config committer
