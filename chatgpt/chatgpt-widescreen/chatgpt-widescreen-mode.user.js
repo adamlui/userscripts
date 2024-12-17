@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.15
+// @version             2024.12.17
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -243,10 +243,10 @@
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9f3193fcbfc5da448ebfc63efc54b52ea530eec0/chrome/extension/components/modals.js#sha256-wvZZt7NsjH6SoK8bYF+2knBpDuuqzZM1cJvEqiViqqE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7107bf9d435ffbe64e3884a5b120313ec518bd66/chrome/extension/lib/dom.js#sha256-K099+UXtls5Z706WnvRZRjgBjJ740EOTQcB4zglYQj4=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@95715b6571036a24e4f0969af30baf6a0aa08af0/chrome/extension/lib/dom.js#sha256-7teyvYiji/lnzWaoVKsWUTa7qdSDlvUQRapkDHbSO30=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/settings.js#sha256-Dspb85b2Nyy1+z4YvFAUelmh31KzMUsjOwpdCOrvHy4=
-// @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/black.min.css?v=891df10#sha256-XXTVJUEWrx/FwnEXbj5DcnIjwJtFAEAp0CdT6pV1+n8=
-// @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/css/white.min.css?v=891df10#sha256-7epqkWDhCgDP7Lv/ASLvlqbOn4D5GpnGolOUl65e9j8=
+// @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
+// @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
