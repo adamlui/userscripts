@@ -202,7 +202,7 @@ This app exists thanks to code, translations, issues & ideas from the following 
 <a href="https://greasyfork.org/users/1030895-universedev"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.googlegpt.io/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.12.12-support-other-extensions-idea" title="UniverseDev"></picture></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.ddgpt.com/images/icons/platforms/chatgpt/white-on-black/icon50.png"></img></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.ddgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
 
 #
 
