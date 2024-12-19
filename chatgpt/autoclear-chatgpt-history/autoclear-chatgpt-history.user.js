@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.17
+// @version             2024.12.19
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -498,8 +498,14 @@
 
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
-            modal.classList.add(this.class) ; modal.onmousedown = this.dragHandlers.mousedown // add class/listener
-            fillStarryBG(modal)
+            modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`) // add classes
+            modal.onmousedown = this.dragHandlers.mousedown // add drag handler
+            fillStarryBG(modal) // add Rising Stars bg
+            setTimeout(() => {
+                modal.parentNode.style.backgroundColor = ( // dim bg
+                    `rgba(67, 70, 72, ${ chatgpt.isDarkMode() ? 0.62 : 0.33 })` )
+                modal.parentNode.classList.add('animated') // to trigger modal fade/translate-in
+            }, 100) // delay for transition fx
         },
 
         stylize() {
@@ -508,8 +514,16 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                `.${this.class} { z-index: 13456 ; position: absolute }` // to be click-draggable
-              + ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+                `.${this.class} {`
+                  + 'position: absolute ;' // to be click-draggable
+                  + `border: 1px solid ${ chatgpt.isDarkMode() ? 'white' : '#b5b5b5' } !important ;`
+                  + 'opacity: 0 ;' // to fade-in
+                  + 'transform: translateX(-4px) translateY(7px) !important ;' // offset to move-in from
+                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
+                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
+              + `.${this.class}-bg { transition: background-color .25s ease }` // speed to show dim bg
+              + `.${this.class}-bg.animated > div {` // modal fade/translate-in
+                  + 'z-index: 13456 ; opacity: 0.98 ; transform: translate(0,0) !important }'
               + `.${this.class} button {`
                   + 'font-size: 0.77rem ; text-transform: uppercase ;' // shrink/uppercase labels
                   + 'border-radius: 0 !important ;' // square borders
@@ -896,6 +910,8 @@
     // Run MAIN routine
 
     menu.register() // create browser toolbar menu
+
+    modals.open('about')
 
     // Init UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
