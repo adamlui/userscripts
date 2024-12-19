@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.19.2
+// @version               2024.12.19.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -828,7 +828,11 @@
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
-            modal.onmousedown = modals.handlers.drag.mousedown
+            modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
+            if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
+                const dismissElems = [modal.parentNode, modal.querySelector('[class*="-close-btn"]')]
+                dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
+            }
 
             // Hack BG
             fillStarryBG(modal)
@@ -1031,12 +1035,13 @@
 
         handlers: {
 
-            click(event) { // to dismiss non-chatgpt.alert() modals
+            click(event) { // to dismiss native modals
                 log.caller = 'modals.handlers.click()'
-                if (event.target == event.currentTarget || event.target instanceof SVGPathElement) {
-                    const targetModal = document.querySelector('[class$="-modal"]')
-                    log.debug(`Dismiss element of div#${targetModal?.id} clicked`)
-                    modals.hide(targetModal)
+                const clickedElem = event.target
+                if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
+                    const modal = (clickedElem.closest('[class*="-modal-bg"]') || clickedElem).firstChild
+                    log.debug(`Dismiss element of div#${modal?.id} clicked`)
+                    modals.hide(modal)
                 }
             },
 
@@ -1071,7 +1076,7 @@
 
             },
 
-            key(event) { // to dismiss non-chatgpt.alert() modals
+            key(event) { // to dismiss native modals
                 log.caller = 'modals.handlers.key()'
                 if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
                     log.debug('Escape pressed')
@@ -1472,10 +1477,6 @@
                 // Assemble/append elems
                 settingsModal.append(settingsIcon, settingsTitleDiv, closeBtn, settingsListContainer)
                 document.body.append(settingsContainer)
-
-                // Add listeners to dismiss modal
-                const dismissElems = [settingsContainer, closeBtn, closeSVG]
-                dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
 
                 return settingsContainer
             },
