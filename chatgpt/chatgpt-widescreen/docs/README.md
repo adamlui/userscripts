@@ -193,7 +193,7 @@ This script exists thanks to code, translations, issues & ideas from the followi
 <a href="#"><img width=47 title="Copilot Autofix" src="https://github.githubassets.com/favicons/favicon.svg?first-contrib=2024.12.9-cmd-injection-autofix"></a>
 <a href="https://github.com/dependabot"><img width=46 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=46 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptwidescreen.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img width=46 title="ChatGPT" src="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptwidescreen.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img width=46 title="ChatGPT" src="https://media.chatgptwidescreen.com/images/icons/platforms/chatgpt/white-on-black/icon50.png"></img></picture></a>
 
 </div><br>
 
