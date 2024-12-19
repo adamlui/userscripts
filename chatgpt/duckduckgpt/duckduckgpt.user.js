@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.19.1
+// @version                2024.12.19.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -984,22 +984,22 @@
                   + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
               + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
-              + '#scheme-menu-entry > span { margin: 0 -2px }' // align Scheme status
-              + '#scheme-menu-entry > span > svg {' // v-align/left-pad Scheme status icon
+              + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
+              + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
               + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
-                  : ( '#scheme-menu-entry svg:has([d^="M204-318q-22"]),'
+                  : ( '#scheme-settings-entry svg:has([d^="M204-318q-22"]),'
                         + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotation 5s linear infinite }' ))
               + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
-              + `#about-menu-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
-              + '#about-menu-entry > span {' // outer About status span
+              + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
+              + '#about-settings-entry > span {' // outer About status span
                   + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
                   + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
                             'mask-image: linear-gradient('
                                 + 'to right, transparent, black 20%, black 89%, transparent) ;'
                   + '-webkit-mask-image: linear-gradient('
                                 + 'to right, transparent, black 20%, black 89%, transparent)' )}}`
-              + '#about-menu-entry > span > div {'
+              + '#about-settings-entry > span > div {'
                   + `text-wrap: nowrap ; ${
                         config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
               + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
@@ -1212,7 +1212,7 @@
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
                         '', '', 330) // confirmation width
                     if (modals.settings.get()) // update settings menu status label
-                        document.querySelector('#replyLang-menu-entry span').textContent = replyLang
+                        document.querySelector('#replyLang-settings-entry span').textContent = replyLang
                     break
                 }
             }
@@ -1342,7 +1342,7 @@
                     const setting = settings.controls[key]
 
                     // Create/append item/label elems
-                    const settingItem = document.createElement('li') ; settingItem.id = key + '-menu-entry'
+                    const settingItem = document.createElement('li') ; settingItem.id = key + '-settings-entry'
                     settingItem.title = setting.helptip || '' // for hover assistance
                     const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
                     settingItem.append(settingLabel);
@@ -1524,7 +1524,7 @@
             },
 
             updateSchemeStatus(schemeStatusSpan = null) {
-                schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-menu-entry span')
+                schemeStatusSpan = schemeStatusSpan || document.querySelector('#scheme-settings-entry span')
                 if (schemeStatusSpan) {
                     schemeStatusSpan.textContent = ''
                     schemeStatusSpan.append(...( // status txt + icon
@@ -2721,7 +2721,7 @@
             if (layer == 'fg' && modals.settings.get()) {
 
                 // Toggle ticker-scroll of About status label
-                const aboutStatusLabel = document.querySelector('#about-menu-entry > span > div')
+                const aboutStatusLabel = document.querySelector('#about-settings-entry > span > div')
                 aboutStatusLabel.innerHTML = modals.settings.aboutContent[
                     config.fgAnimationsDisabled ? 'short' : 'long']
                 aboutStatusLabel.style.float = config.fgAnimationsDisabled ? 'right' : ''
