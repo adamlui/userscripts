@@ -139,7 +139,7 @@ This app exists thanks to code, translations, issues & ideas from the following 
 <a href="https://github.com/mberetvas"><img width=50 title="@mberetvas" src="https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/assets/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/assets/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions/assets/images/icons/platforms/chatgpt/white-on-black/icon50.png"></picture></a>
 
 <img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">
 
