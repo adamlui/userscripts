@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.19.1
+// @version             2024.12.20
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -503,6 +503,8 @@
             }
             this.styles.innerText = (
                 `.${this.class} {` // modals
+                  + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
+                      + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
                   + 'position: absolute ;' // to be click-draggable
                   + `border: 1px solid ${ chatgpt.isDarkMode() ? 'white' : '#b5b5b5' } !important ;`
@@ -520,6 +522,7 @@
               + `.${this.class} [class*="modal-close-btn"] {`
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
+              + `.${this.class} [class*="modal-close-btn"] svg { height: 10px }`
               + `.${this.class} [class*="modal-close-btn"] path {`
                   + `${ chatgpt.isDarkMode() ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
               + ( chatgpt.isDarkMode() ?  // invert dark mode hover paths
@@ -527,6 +530,7 @@
               + `.${this.class} [class*="modal-close-btn"]:hover { background-color: #f2f2f2 }` // hover underlay
               + `.${this.class} [class*="modal-close-btn"] svg { margin: 11.5px }` // center SVG for hover underlay
               + `.${this.class} a { color: #${ chatgpt.isDarkMode() ? '00cfff' : '1e9ebb' } !important }`
+              + `.${this.class} h2 { font-weight: bold }`
               + `.${this.class} button {`
                   + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
                   + 'border-radius: 0 !important ;' // square borders
