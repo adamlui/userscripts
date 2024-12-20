@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.2
+// @version             2024.12.20.3
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -526,10 +526,6 @@
                         inputArea.style.width = '100%' // rid h-scrollbar
                     }
                 }
-            } else if (env.site == 'poe') {
-                const clearBtn = document.querySelector(sites.poe.selectors.btns.clear)
-                btns.newChat.style.top = clearBtn ? '-1px' : 0
-                btns.newChat.style.marginRight = clearBtn ? '2px' : '1px'
             }
         }
     }
@@ -579,8 +575,8 @@
             const validBtnTypes = this.types.filter(type =>
                     !(type == 'fullWindow' && !sites[env.site].hasSidebar)
                  && !(type == 'wideScreen' && chatgpt.canvasIsOpen()))
-            const bOffset = env.site == 'poe' ? -1.5 : env.site == 'perplexity' ? -13 : env.tallChatbar ? 31 : -8.85
-            const rOffset = env.site == 'poe' ? -6   : env.site == 'perplexity' ? -4  : env.tallChatbar ? 48 : -0.25
+            const bOffset = env.site == 'poe' ? 1.1  : env.site == 'perplexity' ? -13 : env.tallChatbar ? 31 : -8.85
+            const rOffset = env.site == 'poe' ? -6.5 : env.site == 'perplexity' ? -4  : env.tallChatbar ? 48 : -0.25
             validBtnTypes.forEach(async (btnType, idx) => {
                 this[btnType] = dom.create.elem('div')
                 this[btnType].id = btnType + '-btn' // for toggle.tooltip()
@@ -590,7 +586,8 @@
                     right: `${ rOffset + idx * bOffset }px` // position left of prev button
                 })
                 if (env.tallChatbar) this[btnType].style.bottom = '8.85px'
-                else this[btnType].style.top = /chatgpt|openai/.test(env.site) ? '-3.25px' : 0
+                else this[btnType].style.top = `${ /chatgpt|openai/.test(env.site) ? -3.25
+                                                 : env.site == 'poe' ? ( btnType == 'newChat' ? 0.25 : 3 ) : 0 }px`
                 if (/chatgpt|openai|perplexity/.test(env.site)) { // assign classes + tweak styles
                     const btnSelectors = sites[env.site].selectors.btns
                     const rightBtnSelector = `${btnSelectors.send}, ${btnSelectors.voice}`
@@ -605,8 +602,7 @@
                     this[btnType].classList.add(...(rightBtn?.classList || []))
                     Object.assign(btns[btnType].style, { // remove dark mode overlay
                         backgroundColor: 'transparent', borderColor: 'transparent' })
-                } else if (env.site == 'poe') // lift buttons slightly
-                    this[btnType].style.marginBottom = ( btnType == 'newChat' ? '0.455' : '0.2' ) + 'rem'
+                }
 
                 // Add hover/click listeners
                 this[btnType].onmouseover = this[btnType].onmouseout = toggle.tooltip
@@ -629,11 +625,9 @@
                 .filter(type => !(type == 'fullWindow' && !sites[env.site].hasSidebar)
                              && !(type == 'wideScreen' && chatgpt.canvasIsOpen()))
             const parentToInsertInto = /chatgpt|openai/.test(env.site) ? chatbarDiv.nextElementSibling || chatbarDiv
-                                     : env.site == 'perplexity' ? chatbarDiv.lastChild // Pro spam toggle parent
-                                     : chatbarDiv
+                                     : chatbarDiv.lastChild // (Perplexity Pro spam toggle or Poe Mic/Send btns) parent
             const elemToInsertBefore = /chatgpt|openai/.test(env.site) ? parentToInsertInto.lastChild
-                                     : env.site == 'perplexity' ? parentToInsertInto.firstChild // Pro spam toggle
-                                     : chatbarDiv.children[1]
+                                     : parentToInsertInto.firstChild // Pro spam toggle or Poe Mic btn
             // Insert buttons
             btnTypesToInsert.forEach(btnType => {
                 this.update.svg(btnType) // update icon
@@ -678,10 +672,10 @@
                 if (!btn) return
 
                 // Set SVG attributes
-                const btnSVG = btn?.querySelector('svg') || dom.create.svgElem('svg', { height: 18 })
+                const btnSVG = btn?.querySelector('svg') || dom.create.svgElem('svg')
                 if (mode == 'fullWindow') { // stylize full-window button
                     btnSVG.setAttribute('stroke-width', '2')
-                    const btnSize = env.site == 'perplexity' ? 18 : 'poe' ? '2em' : 17
+                    const btnSize = /chatgpt|openai/.test(env.site) ? 17 : 18
                     btnSVG.setAttribute('height', btnSize) ; btnSVG.setAttribute('width', btnSize)
                 }
                 btnSVG.setAttribute('viewBox', (
@@ -689,8 +683,8 @@
                 + ( mode == 'newChat' ? '13 13' : mode == 'fullWindow' ? '24 24' : '20 20' )
                 )
                 btnSVG.style.pointerEvents = 'none' // prevent triggering tooltips twice
-                if (/chatgpt|openai/.test(env.site)) // override button resizing
-                    btnSVG.style.height = btnSVG.style.width = '1.3rem'
+                btnSVG.style.height = btnSVG.style.width = ( // override button resizing
+                    /chatgpt|openai/.test(env.site) ? '1.3rem' : 18 )
 
                 // Update SVG elements
                 btnSVG.textContent = ''
@@ -732,9 +726,7 @@
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
                     ) : env.site == 'perplexity' ?
-                        `.${btns.class} { transition: none }` // prevent chatbar btn animation on hover-off
-                    : env.site == 'poe' ? // h-pad mic btn for even spread
-                        'button[class*="Voice"] { margin: 0 -3px 0 -8px }' : '' ))
+                        `.${btns.class} { transition: none }` : '' )) // prevent chatbar btn animation on hover-off
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
                   + ( config.hiddenHeader ? hhStyle : '' ) // hide header
                   + ( config.hiddenFooter ? hfStyle : '' ) // hide footer
@@ -764,8 +756,8 @@
         tooltip(btnType) { // text & position
             const visibleBtnTypes = btns.getVisibleTypes()
             const ctrAddend = ( env.site == 'perplexity' ? ( location.pathname == '/' ? 94 : 105 )
-                              : env.site == 'poe' ? 45 : 13 ) +25
-            const spreadFactor = env.site == 'perplexity' ? 26.5 : env.site == 'poe' ? 34 : 30.55
+                              : env.site == 'poe' ? 35 : 13 ) +25
+            const spreadFactor = env.site == 'perplexity' ? 26.5 : env.site == 'poe' ? 28 : 30.55
             const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
                              + ( env.tallChatbar ? -2 : 4 )
             tooltipDiv.innerText = app.msgs['tooltip_' + btnType + (
@@ -853,7 +845,7 @@
             sync.fullerWin() // sync FW
             update.style.tweaks() // sync TCB/NCB/HH/HF
             update.style.chatbar() // sync WCB
-            chatbar.tweak() // update chatgpt.com chatbar inner width + apply poe.com btn alignment (once)
+            chatbar.tweak() // update chatgpt.com chatbar inner width
             menu.refresh() // to update state symbol/suffix
         }
     }
