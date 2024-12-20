@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.5
+// @version             2024.12.20.6
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -508,24 +508,21 @@
         },
 
         tweak() {
+            if (!/chatgpt|openai/.test(env.site)) return
             const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
-            if (/chatgpt|openai/.test(env.site)) {
-                const inputArea = chatbarDiv.querySelector(sites[env.site].selectors.input)
-                if (inputArea) {
-                    if (chatgpt.canvasIsOpen()) inputArea.parentNode.style.width = '100%'
-                    else if (!env.tallChatbar) { // narrow it to not clash w/ buttons
-                        const widths = { chatbar: chatbarDiv.getBoundingClientRect().width }
-                        const visibleBtnTypes = [...btns.getVisibleTypes(), 'send']
-                        visibleBtnTypes.forEach(type =>
-                            widths[type] = btns[type]?.getBoundingClientRect().width
-                                 || document.querySelector(`${sites[env.site].selectors.btns.send}, ${
-                                        sites[env.site].selectors.btns.stop}`)?.getBoundingClientRect().width || 0 )
-                            const totalBtnWidths = visibleBtnTypes.reduce((sum, btnType) => sum + widths[btnType], 0)
-                        inputArea.parentNode.style.width = `${ // expand to close gap w/ buttons
-                            widths.chatbar - totalBtnWidths -( env.browser.isFF ? 60 : 43 )}px`
-                        inputArea.style.width = '100%' // rid h-scrollbar
-                    }
-                }
+            const inputArea = chatbarDiv.querySelector(sites[env.site].selectors.input) ; if (!inputArea) return
+            if (chatgpt.canvasIsOpen()) inputArea.parentNode.style.width = '100%'
+            else if (!env.tallChatbar) { // narrow it to not clash w/ buttons
+                const widths = { chatbar: chatbarDiv.getBoundingClientRect().width }
+                const visibleBtnTypes = [...btns.getVisibleTypes(), 'send']
+                visibleBtnTypes.forEach(type =>
+                    widths[type] = btns[type]?.getBoundingClientRect().width
+                            || document.querySelector(`${sites[env.site].selectors.btns.send}, ${
+                                sites[env.site].selectors.btns.stop}`)?.getBoundingClientRect().width || 0 )
+                    const totalBtnWidths = visibleBtnTypes.reduce((sum, btnType) => sum + widths[btnType], 0)
+                inputArea.parentNode.style.width = `${ // expand to close gap w/ buttons
+                    widths.chatbar - totalBtnWidths -( env.browser.isFF ? 60 : 43 )}px`
+                inputArea.style.width = '100%' // rid h-scrollbar
             }
         }
     }
