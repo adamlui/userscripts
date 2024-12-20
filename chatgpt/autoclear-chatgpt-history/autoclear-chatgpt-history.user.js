@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20
+// @version             2024.12.20.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -768,7 +768,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'autoclear' && config.autoclear) clearChatsAndGoHome()
-        if (/autoclear|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.updateState()
+        if (/autoclear|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.update.state()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -819,7 +819,7 @@
                 })
 
                 // Create/stylize knob, append to switch
-                const knobSpan = document.createElement('span') ; knobSpan.id = this.ids.knobSpan
+                const knobSpan = document.createElement('span') ; knobSpan.id = toggles.sidebar.ids.knobSpan
                 Object.assign(knobSpan.style, {
                     position: 'absolute', left: '3px', bottom: '1.25px',
                     width: '12px', height: '12px', content: '""', borderRadius: '28px',
@@ -855,7 +855,7 @@
                 }
 
                 // Update color/state
-                this.updateColor() ; this.updateState() // to opposite init state for animation on 1st load
+                this.update.color() ; this.update.state() // to opposite init state for animation on 1st load
 
                 // Add listeners
                 this.div.onmouseover = this.div.onmouseout = event =>
@@ -874,30 +874,32 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateColor() {
-                const knobSpan = this.div.querySelector(`#${this.ids.knobSpan}`),
-                      navicon = this.div.querySelector(`#${this.ids.navicon}`)
-                knobSpan.style.boxShadow = (
-                    'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
-                navicon.src = `${app.urls.mediaHost}/images/icons/incognito/${
-                    chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
-            },
+            update: {
+                color() {
+                    const knobSpan = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.knobSpan}`),
+                          navicon = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.navicon}`)
+                    knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
+                        + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
+                    navicon.src = `${app.urls.mediaHost}/images/icons/incognito/${
+                        chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
+                },
 
-            updateState() {
-                if (!this.div) return // since toggle never created = sidebar missing
-                const toggleLabel = this.div.querySelector('label'),
-                      toggleInput = this.div.querySelector('input'),
-                      switchSpan = this.div.querySelector('span'),
-                      knobSpan = switchSpan.firstChild
-                this.div.style.display = config.toggleHidden ? 'none' : 'flex'
-                toggleInput.checked = config.autoclear
-                toggleLabel.innerText = `${app.msgs.mode_autoclear} ${
-                    app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
-                setTimeout(() => {
-                    switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
-                    switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                    knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
-                }, 1) // min delay to trigger transition fx
+                state() {
+                    if (!toggles.sidebar.div) return // since toggle never created = sidebar missing
+                    const toggleLabel = toggles.sidebar.div.querySelector('label'),
+                          toggleInput = toggles.sidebar.div.querySelector('input'),
+                          switchSpan = toggles.sidebar.div.querySelector('span'),
+                          knobSpan = switchSpan.firstChild
+                    toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
+                    toggleInput.checked = config.autoclear
+                    toggleLabel.innerText = `${app.msgs.mode_autoclear} ${
+                        app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
+                    setTimeout(() => {
+                        switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+                        switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                        knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
+                    }, 1) // min delay to trigger transition fx
+                }
             }
         }
     }
@@ -950,7 +952,7 @@
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(() => { toggles.sidebar.updateColor() ; modals.stylize() })
+    new MutationObserver(() => { toggles.sidebar.update.color() ; modals.stylize() })
         .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
