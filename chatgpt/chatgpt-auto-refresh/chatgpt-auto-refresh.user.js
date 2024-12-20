@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.19
+// @version             2024.12.19.1
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -554,7 +554,7 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                `.${this.class} {`
+                `.${this.class} {` // modals
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
                   + 'position: absolute ;' // to be click-draggable
                   + `border: 1px solid ${ chatgpt.isDarkMode() ? 'white' : '#b5b5b5' } !important ;`
@@ -564,7 +564,9 @@
                   + 'transform: translateX(-4px) translateY(7px) !important ;' // offset to move-in from
                   + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                               + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
-              + `.${this.class}-bg { transition: background-color .25s ease }` // speed to show dim bg
+              + `.${this.class}-bg {` // modal BGs
+                  + 'pointer-events: auto ;' // override any disabling from site modals (e.g. chatgpt.com guest login spam)
+                  + 'transition: background-color .25s ease }' // speed to show dim bg
               + `.${this.class}-bg.animated > div {` // modal fade/translate-in
                   + 'z-index: 13456 ; opacity: 0.98 ; transform: translate(0,0) !important }'
               + `.${this.class} [class*="modal-close-btn"] {`
