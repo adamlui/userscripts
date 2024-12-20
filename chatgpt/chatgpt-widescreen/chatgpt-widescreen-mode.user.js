@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.1
+// @version             2024.12.20.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -527,13 +527,7 @@
                     }
                 }
             } else if (env.site == 'poe') {
-                const attachFileBtn = chatbarDiv.querySelector(sites.poe.selectors.btns.attachFile),
-                      clearBtn = document.querySelector(sites.poe.selectors.btns.clear)
-                if (attachFileBtn && !attachFileBtn.style.cssText) { // left-align attach file button
-                    attachFileBtn.style.cssText = 'position: absolute ; left: 1rem ; bottom: 0.35rem'
-                    document.querySelector(sites.poe.selectors.input) // accommodate new btn pos
-                        .style.padding = '0 13px 0 40px'
-                }
+                const clearBtn = document.querySelector(sites.poe.selectors.btns.clear)
                 btns.newChat.style.top = clearBtn ? '-1px' : 0
                 btns.newChat.style.marginRight = clearBtn ? '2px' : '1px'
             }
