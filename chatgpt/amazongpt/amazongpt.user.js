@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.19.3
+// @version                2024.12.19.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -905,7 +905,7 @@
 
             key(event) { // to dismiss native modals
                 log.caller = 'modals.handlers.key()'
-                if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
+                if (event.key.startsWith('Esc') || event.keyCode == 27) {
                     log.debug('Escape pressed')
                     const modal = document.querySelector('[class$="-modal"]')
                     if (modal) modals.hide(modal)
