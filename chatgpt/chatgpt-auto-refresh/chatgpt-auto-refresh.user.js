@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20
+// @version             2024.12.20.1
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -807,7 +807,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'arDisabled') toggleAutoRefresh()
-        if (/arDisabled|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.updateState()
+        if (/arDisabled|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.update.state()
         menu.refresh() // prefixes/suffixes
     }
 
@@ -894,7 +894,7 @@
                 }
 
                 // Update color/state
-                this.updateColor() ; this.updateState() // to opposite init state for animation on 1st load
+                this.update.color() ; this.update.state() // to opposite init state for animation on 1st load
 
                 // Add listeners
                 this.div.onmouseover = this.div.onmouseout = event =>
@@ -913,30 +913,32 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateColor() {
-                const knobSpan = this.div.querySelector(`#${this.ids.knobSpan}`),
-                      navicon = this.div.querySelector(`#${this.ids.navicon}`)
-                knobSpan.style.boxShadow = (
-                    'rgba(0, 0, 0, .3) 0 1px 2px 0' + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' ))
-                navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
-                    chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
-            },
+            update: {
+                color() {
+                    const knobSpan = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.knobSpan}`),
+                          navicon = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.navicon}`)
+                    knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
+                        + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
+                    navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
+                        chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
+                },
 
-            updateState() {
-                if (!this.div) return // since toggle never created = sidebar missing
-                const toggleLabel = this.div.querySelector('label'),
-                      toggleInput = this.div.querySelector('input'),
-                      switchSpan = this.div.querySelector('span'),
-                      knobSpan = switchSpan.firstChild
-                this.div.style.display = config.toggleHidden ? 'none' : 'flex'
-                toggleInput.checked = !config.arDisabled
-                toggleLabel.innerText = `${app.msgs.menuLabel_autoRefresh} ${
-                    app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
-                setTimeout(() => {
-                    switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
-                    switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                    knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
-                }, 1) // min delay to trigger transition fx
+                state() {
+                    if (!toggles.sidebar.div) return // since toggle never created = sidebar missing
+                    const toggleLabel = toggles.sidebar.div.querySelector('label'),
+                          toggleInput = toggles.sidebar.div.querySelector('input'),
+                          switchSpan = toggles.sidebar.div.querySelector('span'),
+                          knobSpan = switchSpan.firstChild
+                    toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
+                    toggleInput.checked = !config.arDisabled
+                    toggleLabel.innerText = `${app.msgs.menuLabel_autoRefresh} ${
+                        app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
+                    setTimeout(() => {
+                        switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+                        switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                        knobSpan.style.transform = toggleInput.checked ? 'translateX(13px) translateY(0)' : 'translateX(0)'
+                    }, 1) // min delay to trigger transition fx
+                }
             }
         }
     }
@@ -994,7 +996,7 @@
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(() => { toggles.sidebar.updateColor() ; modals.stylize() })
+    new MutationObserver(() => { toggles.sidebar.update.color() ; modals.stylize() })
         .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
