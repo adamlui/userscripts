@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.19.4
+// @version                2024.12.19.5
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -901,6 +901,7 @@
               + '[class*="-modal"] p { justify-self: start ; font-size: 20px }'
               + '[class*="-modal"] button { font-size: 13px }'
               + '[class*="-modal-bg"] {'
+                  + 'pointer-events: auto ;' // override any disabling from site modals
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
                   + 'transition: background-color .25s ease !important ;' // speed to show bg dim
                   + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
