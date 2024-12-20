@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.19.1
+// @version             2024.12.19.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,7 +242,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@cdd37ebb2efb87c4e4f9acd9140befb7814f56d1/chrome/extension/components/modals.js#sha256-aapQEHa98JD7DIE3SjZJ8trvmB05CFd3sTfaBSOLbq8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@3e6f51ce28f86ece0ad49f7d6906a8e9d7dd5657/chrome/extension/components/modals.js#sha256-yqsQdWi64ZrHg+OkG/uDgvtTRAXIJRz8pHvIqVwQmFQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@95715b6571036a24e4f0969af30baf6a0aa08af0/chrome/extension/lib/dom.js#sha256-7teyvYiji/lnzWaoVKsWUTa7qdSDlvUQRapkDHbSO30=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c842bec140915cab46cfa0645283e183c62cc276/chrome/extension/lib/settings.js#sha256-Dspb85b2Nyy1+z4YvFAUelmh31KzMUsjOwpdCOrvHy4=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
@@ -395,10 +395,7 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Init MODALS dependencies
-    modals.dependencies.import({
-        app, browserLang: env.browser.language, isMobile: env.browser.isMobile,
-        isPortrait: env.browser.isPortrait, updateCheck
-    })
+    modals.dependencies.import({ app, env, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
