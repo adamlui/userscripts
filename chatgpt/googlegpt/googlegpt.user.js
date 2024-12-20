@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.19.6
+// @version                  2024.12.20
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1217,9 +1217,9 @@
             log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
+            modalContainer.style.animation = 'modal-zoom-fade-out 0.135s ease-out'
             setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
-                }, 105) // delay for fade-out
+                }, 135) // delay for fade-out
         },
 
         handlers: {
