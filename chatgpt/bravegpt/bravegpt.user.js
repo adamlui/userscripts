@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.19.5
+// @version               2024.12.20
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1029,9 +1029,9 @@
             log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out .135s ease-out'
+            modalContainer.style.animation = 'modal-zoom-fade-out 0.135s ease-out'
             setTimeout(() => { modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`)
-                }, 105) // delay for fade-out
+                }, 135) // delay for fade-out
         },
 
         handlers: {
