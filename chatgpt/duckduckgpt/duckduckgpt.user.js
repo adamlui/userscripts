@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.19.3
+// @version                2024.12.19.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1086,7 +1086,7 @@
 
             key(event) { // to dismiss native modals
                 log.caller = 'modals.handlers.key()'
-                if (['Escape', 'Esc'].includes(event.key) || event.keyCode == 27) {
+                if (event.key.startsWith('Esc') || event.keyCode == 27) {
                     log.debug('Escape pressed')
                     const modal = document.querySelector('[class$="-modal"]')
                     if (modal) modals.hide(modal)
