@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.4
+// @version             2024.12.20.5
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -714,8 +714,8 @@
                 chatbarStyle.innerText = (
                     /chatgpt|openai/.test(env.site) ? ( config.widerChatbox ? ''
                         : `main form { max-width: ${chatbar.nativeWidth}px !important ; margin: auto }` )
-                  : env.site == 'poe' ? ( !config.widerChatbox ? ''
-                        : '[class*=footerInner] { width: 100% }' )
+                  : env.site == 'poe' ? ( config.widerChatbox && config.wideScreen ?
+                        '[class^=ChatPageMainFooter_footerInner] { width: 98% ; margin-right: 15px }' : '' )
                   : '' )
             },
 
@@ -837,6 +837,7 @@
             if (/chatgpt|openai/.test(env.site)) setTimeout(() => chatbar.tweak(), // update inner width
                 mode == 'fullWindow' && ( config.wideScreen || config.fullerWindows )
                     && config.widerChatbox ? 111 : 0) // delay if toggled to/from active WCB to avoid wrong width
+            else if (env.site == 'poe' && config.widerChatbox) update.style.chatbar() // sync WCB
             notify(`${app.msgs[`mode_${mode}`]} ${app.msgs[`state_${ state ? 'on' : 'off' }`].toUpperCase()}`)
             config.modeSynced = true ; setTimeout(() => config.modeSynced = false, 100) // prevent repetition
         },
