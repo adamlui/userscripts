@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.20
+// @version                2024.12.20.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -55,7 +55,7 @@
 // @connect                chatgpt.com
 // @connect                update.greasyfork.org
 // @connect                fanyi.sogou.com
-// @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
+// @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
@@ -680,7 +680,7 @@
                   + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
                   + '100% { opacity: 0 ; transform: scale(1.35) }}'
               + '.chatgpt-modal > div {'
-                  + 'padding: 20px 25px 24px 25px !important ;' // increase alert padding
+                  + 'padding: 20px 30px 24px 17px !important ;' // increase alert padding
                   + 'background-color: white !important ; color: black }'
               + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
               + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
@@ -696,7 +696,7 @@
               + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
               + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
                   ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
-                      + 'background-color: black !important ; color: white }'
+                      + 'background-color: black !important ; color: white !important }'
                   + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
                   + '.chatgpt-modal a { color: #00cfff !important }'
                   + '.chatgpt-modal button:hover {'
