@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.19
+// @version             2024.12.19.1
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -228,7 +228,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a29a129876933722fe5cb6711dbb1fe85df16b75/chromium/extension/components/modals.js#sha256-xJDUquLHIpnqAWCNVGsqKxCkQVkRwJrU9hbORs2tdG0=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@4286cadbe264dee8e5f53be17dd74b92737a647c/chromium/extension/components/modals.js#sha256-FuJzD15Zr+dv/3SlMuR3PhBm/OCKCyA/BtR6H2u/iTg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@8292979d9b66c33057d8f27a20906d827768d456/chromium/extension/lib/dom.js#sha256-D5SNzWGIPvOEh7mTFWdEuLQWftXlGUoqFwij+1wOws0=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/settings.js#sha256-JQFSzEyXDmtqseBuscgX2uIYF1yZBEtieMP+wLi6ZJk=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
@@ -348,10 +348,7 @@
     }
 
     // Init MODALS dependencies
-    modals.dependencies.import({
-        app, browserLang: env.browser.language, isMobile: env.browser.isMobile,
-        isPortrait: env.browser.isPortrait, updateCheck
-    })
+    modals.dependencies.import({ app, env, updateCheck })
 
     // Init SETTINGS
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
