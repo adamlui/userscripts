@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.1
+// @version             2024.12.20.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -242,7 +242,7 @@
 // @match               *://chat.openai.com/*
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.3.5/dist/chatgpt.min.js#sha256-rfC4kk8q0byrafp7X0Qf9vaa3JNvkHRwNnUt6uL2hUE=
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
 // @grant               GM_setValue
@@ -500,13 +500,7 @@
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`) // add classes
-            modal.onmousedown = this.dragHandlers.mousedown // add drag handler
             fillStarryBG(modal) // add Rising Stars bg
-            setTimeout(() => {
-                modal.parentNode.style.backgroundColor = ( // dim bg
-                    `rgba(67, 70, 72, ${ chatgpt.isDarkMode() ? 0.62 : 0.33 })` )
-                modal.parentNode.classList.add('animated') // to trigger modal fade/translate-in
-            }, 100) // delay for transition fx
         },
 
         stylize() {
@@ -519,19 +513,8 @@
                   + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
                       + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
-                  + 'position: absolute ;' // to be click-draggable
-                  + `border: 1px solid ${ chatgpt.isDarkMode() ? 'white' : '#b5b5b5' } !important ;`
                   + `background-image: linear-gradient(180deg, ${
-                       chatgpt.isDarkMode() ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
-                  + 'opacity: 0 ;' // to fade-in
-                  + 'transform: translateX(-4px) translateY(7px) !important ;' // offset to move-in from
-                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
-                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
-              + `.${this.class}-bg {` // modal BGs
-                  + 'pointer-events: auto ;' // override any disabling from site modals (e.g. chatgpt.com guest login spam)
-                  + 'transition: background-color .25s ease }' // speed to show dim bg
-              + `.${this.class}-bg.animated > div {` // modal fade/translate-in
-                  + 'z-index: 13456 ; opacity: 0.98 ; transform: translate(0,0) !important }'
+                       chatgpt.isDarkMode() ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
               + `.${this.class} [class*="modal-close-btn"] {`
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
