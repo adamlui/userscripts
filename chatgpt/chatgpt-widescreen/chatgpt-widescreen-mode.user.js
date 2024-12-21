@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.4
+// @version             2024.12.21.5
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -428,7 +428,7 @@
                                     + settings.controls[key].label
                                     + menu.state.separator + menu.state.words[+settingIsEnabled]
                     menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                        settings.save(key, !config[key]) ; sync.configToUI()
+                        settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
                         notify(`${settings.controls[key].label}: ${
                             menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
