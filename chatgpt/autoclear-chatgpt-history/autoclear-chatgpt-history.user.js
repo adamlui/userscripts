@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.1
+// @version             2024.12.21.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -487,21 +487,21 @@
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
                   alert = document.getElementById(alertID).firstChild
-            this.init(alert) // add class/listener/starry bg
+            this.init(alert) // add classes + starry bg
             return alert
         },
 
         open(modalType, modalSubType) {
             const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
-            this.init(modal) // add class/listener/starry bg
+            this.init(modal) // add classes + starry bg
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`) // add classes
-            fillStarryBG(modal) // add Rising Stars bg
+            fillStarryBG(modal) // add starry bg
         },
 
         stylize() {
