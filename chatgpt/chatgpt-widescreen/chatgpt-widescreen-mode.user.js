@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.6
+// @version             2024.12.21
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -280,6 +280,7 @@
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1]
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.scheme = getScheme()
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -483,7 +484,7 @@
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
-        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow')
+        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.scheme == 'dark' ? '' : 'shadow')
         const notif = document.querySelector('.chatgpt-notif:last-child')
 
         // Append styled state word
@@ -645,7 +646,7 @@
             color() {
                 btns.color = (
                     /chatgpt|openai/.test(env.site) ? (
-                        document.querySelector('.dark.bg-black') || chatgpt.isDarkMode() ? 'white' : '#202123' )
+                        document.querySelector('.dark.bg-black') || env.scheme == 'dark' ? 'white' : '#202123' )
                   : env.site == 'perplexity' ? (
                         document.documentElement.dataset.colorScheme == 'dark' ?
                             'oklch(var(--dark-text-color-100)/var(--tw-text-opacity))'
@@ -850,6 +851,12 @@
 
     // Define UI functions
 
+    function getScheme() {
+        const rootElem = document.documentElement
+        return env.site == 'perplexity' ? rootElem.dataset.colorScheme : rootElem.className
+            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+    }
+
     function isFullWin() {
         return env.site == 'poe' ? !!document.getElementById('fullWindow-mode')
             : !sites[env.site].hasSidebar // false if sidebar non-existent
@@ -893,7 +900,7 @@
         const chatgptAlertStyle = dom.create.style()
         chatgptAlertStyle.id = 'chatgpt-alert-override-style'
         chatgptAlertStyle.innerText = (
-            ( chatgpt.isDarkMode() ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+            ( env.scheme == 'dark' ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
         )
         document.head.append(chatgptAlertStyle)
     }
@@ -974,10 +981,9 @@
         }
     }).observe(document[env.site == 'poe' ? 'head' : 'body'], { attributes: true, subtree: true })
 
-    // Monitor SCHEME CHANGES on chatgpt.com to update chatbar button + modal colors
-    if (/chatgpt|openai/.test(env.site))
-        new MutationObserver(() => { modals.stylize() ; if (!config.extensionDisabled) btns.update.color() })
-            .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    // Monitor SCHEME CHANGES to update chatbar button + modal colors
+    new MutationObserver(() => { env.scheme = getScheme() ; modals.stylize() ; btns.update.color() })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-color-scheme'] })
 
     // Monitor SIDEBAR to update full-window setting
     if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
