@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.20.2
+// @version             2024.12.21
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -274,6 +274,7 @@
         }
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.scheme = getScheme()
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -503,7 +504,7 @@
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
-        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || chatgpt.isDarkMode() ? '' : 'shadow')
+        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.scheme == 'dark' ? '' : 'shadow')
         const notif = document.querySelector('.chatgpt-notif:last-child')
 
         // Append styled state word
@@ -552,32 +553,33 @@
                   + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
                       + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
+                  + `color: ${ env.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + `background-image: linear-gradient(180deg, ${
-                       chatgpt.isDarkMode() ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
+                       env.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
               + `.${this.class} [class*="modal-close-btn"] {`
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
               + `.${this.class} [class*="modal-close-btn"] svg { height: 10px }`
               + `.${this.class} [class*="modal-close-btn"] path {`
-                  + `${ chatgpt.isDarkMode() ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-              + ( chatgpt.isDarkMode() ?  // invert dark mode hover paths
+                  + `${ env.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + ( env.scheme == 'dark' ?  // invert dark mode hover paths
                     `.${this.class} [class*="modal-close-btn"]:hover path { stroke: black ; fill: black }` : '' )
               + `.${this.class} [class*="modal-close-btn"]:hover { background-color: #f2f2f2 }` // hover underlay
               + `.${this.class} [class*="modal-close-btn"] svg { margin: 11.5px }` // center SVG for hover underlay
-              + `.${this.class} a { color: #${ chatgpt.isDarkMode() ? '00cfff' : '1e9ebb' } !important }`
+              + `.${this.class} a { color: #${ env.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + `.${this.class} h2 { font-weight: bold }`
               + `.${this.class} button {`
                   + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
                   + 'border-radius: 0 !important ;' // square borders
                   + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
                   + 'cursor: pointer !important ;' // add finger cursor
-                  + `border: 1px solid ${ chatgpt.isDarkMode() ? 'white' : 'black' } !important ;`
+                  + `border: 1px solid ${ env.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + 'padding: 8px !important ; min-width: 102px }' // resize
               + `.${this.class} button:hover {` // add zoom, re-scheme
                   + 'transform: scale(1.055) ; color: black !important ;'
-                  + `background-color: #${ chatgpt.isDarkMode() ? '00cfff' : '9cdaff' } !important }`
+                  + `background-color: #${ env.scheme == 'dark' ? '00cfff' : '9cdaff' } !important }`
               + ( !env.browser.isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
-              + `.about-em { color: ${ chatgpt.isDarkMode() ? 'white' : 'green' } !important }`
+              + `.about-em { color: ${ env.scheme == 'dark' ? 'white' : 'green' } !important }`
             )
         },
 
@@ -700,7 +702,7 @@
                       + `${app.msgs.alert_directlySupports}.</p>`
                   + `<p>${app.msgs.alert_tyForSupport}!</p>`
                   + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
-                      + `${ chatgpt.isDarkMode() ? 'white' : 'black' }.png" `
+                      + `${ env.scheme == 'dark' ? 'white' : 'black' }.png" `
                       + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
                   + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
                       + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
@@ -794,6 +796,11 @@
         menu.refresh() // prefixes/suffixes
     }
 
+    function getScheme() {
+        return document.documentElement.className
+            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+    }
+
     function createStyle(content) {
         const style = document.createElement('style')
         if (content) style.innerText = content
@@ -808,7 +815,7 @@
           + 'z-index: -1'; // allow interactive elems to be clicked
         ['sm', 'med', 'lg'].forEach(starSize => {
             const starsDiv = document.createElement('div')
-            starsDiv.id = `${ chatgpt.isDarkMode() ? 'white' : 'black' }-stars-${starSize}`
+            starsDiv.id = `${ env.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
             starsDivsContainer.append(starsDiv)
         })
         targetNode.prepend(starsDivsContainer)
@@ -901,9 +908,9 @@
                     const knobSpan = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.knobSpan}`),
                           navicon = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.navicon}`)
                     knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
-                        + ( chatgpt.isDarkMode() ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
+                        + ( env.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
                     navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
-                        chatgpt.isDarkMode() ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
+                        env.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
                 },
 
                 state() {
@@ -979,7 +986,7 @@
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(() => { toggles.sidebar.update.color() ; modals.stylize() })
+    new MutationObserver(() => { env.scheme = getScheme() ; toggles.sidebar.update.color() ; modals.stylize() })
         .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
