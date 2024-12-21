@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.20.1
+// @version                2024.12.21
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3783,7 +3783,8 @@
                     + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
                     + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
     const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
-                       + `[class*="feedback"], .${app.cssPrefix}-related-queries, #wsb-btn  { display: none }`
+                       + `[class*="feedback"], [data-testid=feedback-prompt] button,`
+                           + `.${app.cssPrefix}-related-queries, #wsb-btn { display: none }`
                        + `#${app.cssPrefix}-chevron-btn, #${app.cssPrefix}-arrows-btn { display: block !important }`
     const expandedStyles = `#${app.cssPrefix} { width: 528px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
