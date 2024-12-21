@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.1
+// @version             2024.12.21.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -399,7 +399,7 @@
                                 + settings.controls[key].label
                                 + menu.state.separator + menu.state.words[+settingIsEnabled]
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !config[key]) ; syncConfigToUI()
+                    settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
                         menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                 }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
@@ -838,7 +838,8 @@
                     this.div.style.setProperty('--item-background-color',
                         `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
-                    settings.save('autoTalkDisabled', toggleInput.checked) ; syncConfigToUI()
+                    settings.save('autoTalkDisabled', toggleInput.checked)
+                    syncConfigToUI({ updatedKey: 'autoTalkDisabled' })
                     notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
                 }
             },
