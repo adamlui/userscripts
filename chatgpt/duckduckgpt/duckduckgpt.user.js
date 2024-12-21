@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.21.1
+// @version                2024.12.21.2
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -837,7 +837,7 @@
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
             modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
             if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
-                const dismissElems = [modal.parentNode, modal.querySelector('[class*="-close-btn"]')]
+                const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
                 dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
             }
 
@@ -885,29 +885,29 @@
                   + '.chatgpt-modal button:hover {'
                       + 'background-color: #00cfff !important ; color: black !important }' ) : '' )
               + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
-              + '[class*="modal-close-btn"] {'
+              + '[class*=modal-close-btn] {'
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-              + `[class*="modal-close-btn"] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
+              + `[class*=modal-close-btn] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
                                                                              : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
               + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
-                    '[class*="modal-close-btn"]:hover path { stroke: black ; fill: black }' : '' )
-              + '[class*="modal-close-btn"]:hover { background-color: #f2f2f2 }' // hover underlay
-              + '[class*="modal-close-btn"] svg { margin: 11.5px }' // center SVG for hover underlay
-              + '[class*="-modal"] h2 {'
+                    '[class*=modal-close-btn]:hover path { stroke: black ; fill: black }' : '' )
+              + '[class*=modal-close-btn]:hover { background-color: #f2f2f2 }' // hover underlay
+              + '[class*=modal-close-btn] svg { margin: 11.5px }' // center SVG for hover underlay
+              + '[class*=-modal] h2 {'
                   + 'font-weight: bold ; line-height: 32px ; padding: 0 ; margin: 9px 0 14px !important ;'
                   + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
                                              : 'justify-self: start' }}` // left-align on desktop
-              + '[class*="-modal"] p { justify-self: start ; font-size: 20px }'
-              + '[class*="-modal"] button { font-size: 13px }'
-              + '[class*="-modal-bg"] {'
+              + '[class*=-modal] p { justify-self: start ; font-size: 20px }'
+              + '[class*=-modal] button { font-size: 13px }'
+              + '[class*=-modal-bg] {'
                   + 'pointer-events: auto ;' // override any disabling from site modals
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
                   + 'transition: background-color .25s ease !important ;' // speed to show bg dim
                   + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
-              + '[class*="-modal-bg"].animated > div {'
+              + '[class*=-modal-bg].animated > div {'
                   + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
-              + '[class$="-modal"] {' // native modals + chatgpt.alert()s
+              + '[class$=-modal] {' // native modals + chatgpt.alert()s
                   + 'position: absolute ;' // to be click-draggable
                   + 'opacity: 0 ;' // to fade-in
                   + `background-image: linear-gradient(180deg, ${
@@ -918,8 +918,8 @@
                   + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
                               + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
               + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                    '[class$="-modal"] button { transition: transform 0.15s ease }'
-                  + '[class$="-modal"] button:hover { transform: scale(1.055) }' ))
+                    '[class$=-modal] button { transition: transform 0.15s ease }'
+                  + '[class$=-modal] button:hover { transform: scale(1.055) }' ))
 
               // Glowing modal btns
               + ':root { --glow-color: hsl(186 100% 69%); }'
@@ -1045,7 +1045,7 @@
                 log.caller = 'modals.handlers.click()'
                 const clickedElem = event.target
                 if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
-                    const modal = (clickedElem.closest('[class*="-modal-bg"]') || clickedElem).firstChild
+                    const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
                     log.debug(`Dismiss element of div#${modal?.id} clicked`)
                     modals.hide(modal)
                 }
@@ -1061,7 +1061,7 @@
                     event.preventDefault(); // prevent sub-elems like icons being draggable
                     ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.handlers.drag[event]))
                     const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect(),
-                          targetModalIsSettings = event.currentTarget.closest('[id*="-settings"]')
+                          targetModalIsSettings = event.currentTarget.closest('[id*=-settings]')
                     modals.handlers.drag.offsetX = (
                         event.clientX - draggableElemRect.left + ( targetModalIsSettings ? 0 : 21 ))
                     modals.handlers.drag.offsetY = (
@@ -1089,7 +1089,7 @@
                 log.caller = 'modals.handlers.key()'
                 if (event.key.startsWith('Esc') || event.keyCode == 27) {
                     log.debug('Escape pressed')
-                    const modal = document.querySelector('[class$="-modal"]')
+                    const modal = document.querySelector('[class$=-modal]')
                     if (modal) modals.hide(modal)
                 }
             }
@@ -2124,7 +2124,7 @@
 
         stars() {
             ['sm', 'med', 'lg'].forEach(size =>
-                document.querySelectorAll(`[id*="stars-${size}"]`).forEach(starsDiv =>
+                document.querySelectorAll(`[id*=stars-${size}]`).forEach(starsDiv =>
                     starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
                     : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
             ))
@@ -2368,7 +2368,7 @@
     // Define UI functions
 
     function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
-        if (targetNode.querySelector('[id*="stars"]')) return
+        if (targetNode.querySelector('[id*=stars]')) return
         const starsDivsContainer = document.createElement('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
@@ -2388,7 +2388,7 @@
             appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
                 if (event.button != 0) return // prevent non-left-click dismissal
                 if (document.getElementById(`${app.cssPrefix}-font-size-slider-track`) // slider is visible
-                    && !event.target.closest('[id*="font-size"]') // not clicking slider elem
+                    && !event.target.closest('[id*=font-size]') // not clicking slider elem
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
@@ -2704,7 +2704,7 @@
             }
             update.style.tweaks() ; update.chatbarWidth() ; update.rqVisibility() // apply new state to UI
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const anchorToggle = document.querySelector('[id*="anchor"][id*="menu-entry"] input')
+                const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
             }
             if (prevState != config.anchored) {
@@ -2747,7 +2747,7 @@
                     if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
             notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const autoGetToggle = document.querySelector('[id*="autoGet"][id*="menu-entry"] input')
+                const autoGetToggle = document.querySelector('[id*=autoGet][id*=menu-entry] input')
                 if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
             }
             log.caller = 'toggle.autoGet()'
@@ -2756,7 +2756,7 @@
 
         btnGlow(state = '') {
             const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
-            document.querySelectorAll('[class*="-modal"] button').forEach((btn, idx) => {
+            document.querySelectorAll('[class*=-modal] button').forEach((btn, idx) => {
                 setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
@@ -2789,7 +2789,7 @@
             if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
             notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const modeToggle = document.querySelector(`[id*="${modeKey}"][id*="menu-entry"] input`)
+                const modeToggle = document.querySelector(`[id*=${modeKey}][id*=menu-entry] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
             }
             log.caller = `toggle.manualGet('${mode}')`
@@ -2824,8 +2824,8 @@
             notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
             menu.refresh()
             if (modals.settings.get()) { // update visual states of Settings toggles
-                const proxyToggle = document.querySelector('[id*="proxy"][id*="menu-entry"] input'),
-                      streamingToggle = document.querySelector('[id*="streaming"][id*="menu-entry"] input')
+                const proxyToggle = document.querySelector('[id*=proxy][id*=menu-entry] input'),
+                      streamingToggle = document.querySelector('[id*=streaming][id*=menu-entry] input')
                 if (proxyToggle.checked != config.proxyAPIenabled) // Proxy state out-of-sync (from using toolbar menu)
                         modals.settings.toggle.switch(proxyToggle)
                 if (streamingToggle.checked && !config.proxyAPIenabled // Streaming checked but OpenAI mode
@@ -2867,7 +2867,7 @@
             update.style.tweaks() ; update.chatbarWidth() // apply new state to UI
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const stickySidebarToggle = document.querySelector('[id*="sticky"][id*="menu-entry"] input')
+                const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
                 if (stickySidebarToggle.checked != config.stickySidebar)
                     modals.settings.toggle.switch(stickySidebarToggle)
             }
@@ -2916,7 +2916,7 @@
                 const switchPhrase = app.msgs.alert_switchingOn
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
                 const alert = modals.alert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg)
-                alert.querySelector('[href="#"]').onclick = () => {
+                alert.querySelector('[href=#]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
                 log.debug(`Toggling Streaming Mode ${ config.streamingDisabled ? 'ON' : 'OFF' }`)
@@ -3777,13 +3777,13 @@
 
     // Stylize SITE elems
     const tweaksStyle = create.style()
-    const wsbStyles = 'section[data-area="mainline"] { max-width: 590px !important }' // max before centered mode changes
-                    + 'section[data-area="sidebar"] { min-width: 530px !important ; flex-basis: 530px !important }'
+    const wsbStyles = 'section[data-area=mainline] { max-width: 590px !important }' // max before centered mode changes
+                    + 'section[data-area=sidebar] { min-width: 530px !important ; flex-basis: 530px !important }'
     const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 14px }`
                     + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
                     + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
     const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
-                       + `[class*="feedback"], [data-testid=feedback-prompt] button,`
+                       + `[class*=feedback], [data-testid=feedback-prompt] button,`
                            + `.${app.cssPrefix}-related-queries, #wsb-btn { display: none }`
                        + `#${app.cssPrefix}-chevron-btn, #${app.cssPrefix}-arrows-btn { display: block !important }`
     const expandedStyles = `#${app.cssPrefix} { width: 528px }`
@@ -3814,8 +3814,8 @@
 
     // APPEND DDGPT + footer to DDG
     const appElems = [appDiv, appFooter]
-    const appDivParentSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*="mainline"]'
-                                                                                : '[class*="sidebar"]'
+    const appDivParentSelector = env.browser.isMobile || env.ui.site.isCentered ? '[data-area*=mainline]'
+                                                                                : '[class*=sidebar]'
     const appDivParent = await new Promise(resolve => {
         const appDivParent = document.querySelector(appDivParentSelector)
         if (appDivParent) resolve(appDivParent)
