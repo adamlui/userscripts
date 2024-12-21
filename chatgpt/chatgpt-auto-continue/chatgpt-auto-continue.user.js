@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.1
+// @version             2024.12.21.2
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -228,8 +228,8 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@48419fbcc014d5f6fceb25fa464a39199c5634dd/chromium/extension/components/modals.js#sha256-fcu8KEcWgQiSPdqGL7aTWqa2ag+kGa5uAPZXmYq2Sc8=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@8292979d9b66c33057d8f27a20906d827768d456/chromium/extension/lib/dom.js#sha256-D5SNzWGIPvOEh7mTFWdEuLQWftXlGUoqFwij+1wOws0=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@6d2e956cb9653117997c0be55fe644000331e1b6/chromium/extension/components/modals.js#sha256-J1yMvj7EtunF7O1vilI2hq8VpwjthoMctNq+vok4NFQ=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@6d2e956cb9653117997c0be55fe644000331e1b6/chromium/extension/lib/dom.js#sha256-ZwFQlFS1H6S+zWTNiNBlcL7JKkCsHAKR0WuUHEmETa0=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@a68bbea78365880354a05438c635b6e6fe90a575/chromium/extension/lib/settings.js#sha256-JQFSzEyXDmtqseBuscgX2uIYF1yZBEtieMP+wLi6ZJk=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
@@ -348,11 +348,12 @@
         Object.assign(app.msgs, localizedMsgs)
     }
 
-    // Init MODALS dependencies
-    modals.dependencies.import({ app, env, updateCheck })
+    // Export DEPENDENCIES to imported resources
+    dom.dependencies.import({ env }) // for env.scheme
+    modals.dependencies.import({ app, env, updateCheck }) // for app data + env.scheme + update callback in modals.about
+    settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
 
     // Init SETTINGS
-    settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
     settings.load(Object.keys(settings.controls))
 
     // Define MENU functions
