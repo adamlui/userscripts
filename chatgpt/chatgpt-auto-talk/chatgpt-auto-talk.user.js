@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21
+// @version             2024.12.21.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -504,16 +504,16 @@
                   + `color: ${ env.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + `background-image: linear-gradient(180deg, ${
                        env.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
-              + `.${this.class} [class*="modal-close-btn"] {`
+              + `.${this.class} [class*=modal-close-btn] {`
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-              + `.${this.class} [class*="modal-close-btn"] svg { height: 10px }`
-              + `.${this.class} [class*="modal-close-btn"] path {`
+              + `.${this.class} [class*=modal-close-btn] svg { height: 10px }`
+              + `.${this.class} [class*=modal-close-btn] path {`
                   + `${ env.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
               + ( env.scheme == 'dark' ?  // invert dark mode hover paths
-                    `.${this.class} [class*="modal-close-btn"]:hover path { stroke: black ; fill: black }` : '' )
-              + `.${this.class} [class*="modal-close-btn"]:hover { background-color: #f2f2f2 }` // hover underlay
-              + `.${this.class} [class*="modal-close-btn"] svg { margin: 11.5px }` // center SVG for hover underlay
+                    `.${this.class} [class*=modal-close-btn]:hover path { stroke: black ; fill: black }` : '' )
+              + `.${this.class} [class*=modal-close-btn]:hover { background-color: #f2f2f2 }` // hover underlay
+              + `.${this.class} [class*=modal-close-btn] svg { margin: 11.5px }` // center SVG for hover underlay
               + `.${this.class} a { color: #${ env.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + `.${this.class} h2 { font-weight: bold }`
               + `.${this.class} button {`
@@ -755,7 +755,7 @@
     }
 
     function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
-        if (targetNode.querySelector('[id*="stars"]')) return
+        if (targetNode.querySelector('[id*=stars]')) return
         const starsDivsContainer = document.createElement('div')
         starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
@@ -922,7 +922,7 @@
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
-            if (target.closest('[class*="sidebar"]') // include sidebar divs
+            if (target.closest('[class*=sidebar]') // include sidebar divs
                 && !target.id.endsWith('-knob-span') // exclude our toggles.sidebar
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
