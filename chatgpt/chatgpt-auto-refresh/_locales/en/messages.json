@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Please send a donation" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "prompt_updateInt": { "message": "Update refresh interval (in secs)" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh toggle in sidebar" },
   "helptip_modeNotifs": { "message": "Show notifications when toggling modes/settings" },

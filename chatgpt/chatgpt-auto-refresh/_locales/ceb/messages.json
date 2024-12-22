@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Palihug ipadala ang usa ka donasyon" },
   "about_version": { "message": "Bersyon" },
   "about_poweredBy": { "message": "Gipadagan sa" },
-  "about_sourceCode": { "message": "Gigikana sa kodigo" },
+  "about_openSourceCode": { "message": "Gigikana sa kodigo" },
   "prompt_updateInt": { "message": "Awhag sa Intibalo sa Pag-refresh (sa segundos)" },
   "helptip_toggleVis": { "message": "Ipakita ang Auto-Refresh toggle sa sidebar" },
   "helptip_modeNotifs": { "message": "Ipakita ang mga pahibalo kung ang mga mode/setting sa pag-toggle" },

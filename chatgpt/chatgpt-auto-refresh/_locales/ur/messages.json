@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "براہ کرم ایک عطیہ بھیجیں" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "کی طرف سے چلایا جاتا ہے" },
-  "about_sourceCode": { "message": "سورس کوڈ" },
+  "about_openSourceCode": { "message": "کۆسی سەرچاوە" },
   "prompt_updateInt": { "message": "ریفریش انٹروال کو اپ ڈیٹ کریں (سیکنڈز میں)" },
   "helptip_toggleVis": { "message": "سائڈبار میں آٹو ریفریش ٹوگل دکھائیں" },
   "helptip_modeNotifs": { "message": "ٹوگلنگ کے طریقوں/ترتیبات کے دوران اطلاعات دکھائیں" },

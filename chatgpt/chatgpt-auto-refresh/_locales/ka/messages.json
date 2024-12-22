@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Გაიღეთ შემოწირულობა" },
   "about_version": { "message": "ვერსია" },
   "about_poweredBy": { "message": "აგებულია KDE-ზე" },
-  "about_sourceCode": { "message": "საწყისი კოდი" },
+  "about_openSourceCode": { "message": "საწყისი კოდი" },
   "prompt_updateInt": { "message": "განახლების ინტერვალის განახლება (წამებში)" },
   "helptip_toggleVis": { "message": "Გვერდითა ზოლში ავტომატური შეცვლის გადართვის ჩვენება" },
   "helptip_modeNotifs": { "message": "Გაფრთხილებების ჩვენება რეჟიმების/პარამეტრების გადართვისას" },

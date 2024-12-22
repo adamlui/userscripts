@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Iltimos, xayriya yuboring" },
   "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Tomonidan qo'llab-quvvatlanadi" },
-  "about_sourceCode": { "message": "Ochiq kod" },
+  "about_openSourceCode": { "message": "Ochiq kod" },
   "prompt_updateInt": { "message": "Yangilash oralig'i (sekundlarda)" },
   "helptip_toggleVis": { "message": "Yon panelda Avtomatik yangilash tugmachasini ko'rsatish" },
   "helptip_modeNotifs": { "message": "Rejimlar/sozlamalarni almashtirishda bildirishnomalarni ko'rsatish" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Kirimkan donasi" },
   "about_version": { "message": "Versi" },
   "about_poweredBy": { "message": "Didukung oleh" },
-  "about_sourceCode": { "message": "Kode sumber" },
+  "about_openSourceCode": { "message": "Sumber Terbuka" },
   "prompt_updateInt": { "message": "Perbarui interval penyegaran (dalam hitungan detik)" },
   "helptip_toggleVis": { "message": "Tampilkan Auto - Refresh toggle di bilah sisi" },
   "helptip_modeNotifs": { "message": "Tampilkan pemberitahuan saat mengaktifkan mode/pengaturan" },

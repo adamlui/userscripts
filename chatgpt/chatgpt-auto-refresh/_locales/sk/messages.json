@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Pošlite dar" },
   "about_version": { "message": "Verzia" },
   "about_poweredBy": { "message": "Beží na" },
-  "about_sourceCode": { "message": "Zdrojový kód" },
+  "about_openSourceCode": { "message": "Otvorený zdrojový kód" },
   "prompt_updateInt": { "message": "Aktualizovať interval obnovy (v sekundách)" },
   "helptip_toggleVis": { "message": "Zobraziť prepínač Automaticky obnoviť na bočnom paneli" },
   "helptip_modeNotifs": { "message": "Zobraziť upozornenia pri prepínaní režimov/nastavení" },

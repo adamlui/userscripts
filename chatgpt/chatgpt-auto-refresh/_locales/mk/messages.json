@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Испратете донација" },
   "about_version": { "message": "Верзија" },
   "about_poweredBy": { "message": "Овозможено од" },
-  "about_sourceCode": { "message": "Изворен код" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "prompt_updateInt": { "message": "Ажурирајте го интервалот за освежување (во секунди)" },
   "helptip_toggleVis": { "message": "Прикажи автоматско освежување во страничната лента" },
   "helptip_modeNotifs": { "message": "Прикажи известувања кога се префрлаат режимите/подесувањата" },

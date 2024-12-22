@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Cuir tabhartas" },
   "about_version": { "message": "Tionndadh" },
   "about_poweredBy": { "message": "Le cumhachd" },
-  "about_sourceCode": { "message": "Bun-tùs a' chod" },
+  "about_openSourceCode": { "message": "Bun-tùs a' chod" },
   "prompt_updateInt": { "message": "Ùraich an t - eadar - ama ùrachaidh (ann an soidhnichean)" },
   "helptip_toggleVis": { "message": "Seall toglach fèin - ath - nuadhachaidh sa bhàr - taoibh" },
   "helptip_modeNotifs": { "message": "Seall brathan nuair a thogras tu modhan/roghainnean" },

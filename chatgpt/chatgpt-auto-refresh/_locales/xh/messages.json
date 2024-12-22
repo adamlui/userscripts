@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Nceda uthumele umnikelo" },
   "about_version": { "message": "Inguqulelo" },
   "about_poweredBy": { "message": "Ixhaswa ngu" },
-  "about_sourceCode": { "message": "Ikhowudi engumthombo" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "prompt_updateInt": { "message": "Hlaziya ikhefu lokuhlaziya (kwimizuzwana)" },
   "helptip_toggleVis": { "message": "Bonisa i-toggle yokuzihlaziya ngokuzenzekelayo kwibar esecaleni" },
   "helptip_modeNotifs": { "message": "Bonisa imiyalezo xa kuguqulwa iindlela/iisetingi" },

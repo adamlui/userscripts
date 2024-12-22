@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Mangyaring magpadala ng isang pagpap" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Нерӯмандшуда аз тарафи" },
-  "about_sourceCode": { "message": "Рамзи манбаъ" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "prompt_updateInt": { "message": "Фосилаи навсозӣ (дар сонияҳо)" },
   "helptip_toggleVis": { "message": "Намоиши тугмаи навсозии худкор дар панели канорӣ" },
   "helptip_modeNotifs": { "message": "Намоиши огоҳиҳо ҳангоми гузаштан аз режимҳо/танзимотҳо" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Lūdzu, nosūtiet ziedojumu" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Darbināts ar" },
-  "about_sourceCode": { "message": "Pirmkods" },
+  "about_openSourceCode": { "message": "Atklātais pirmkods" },
   "prompt_updateInt": { "message": "Atjaunināt atjaunināšanas intervālu (sekundēs)" },
   "helptip_toggleVis": { "message": "Rādīt automātiskās atsvaidzināšanas pārslēgu sānjoslā" },
   "helptip_modeNotifs": { "message": "Rādīt paziņojumus, pārslēdzot režīmus/iestatījumus" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Stuur een donatie" },
   "about_version": { "message": "Versie" },
   "about_poweredBy": { "message": "Ondersteund door" },
-  "about_sourceCode": { "message": "Broncode" },
+  "about_openSourceCode": { "message": "open bron" },
   "prompt_updateInt": { "message": "Verversingsinterval bijwerken (in seconden)" },
   "helptip_toggleVis": { "message": "Schakelaar Automatisch vernieuwen weergeven in zijbalk" },
   "helptip_modeNotifs": { "message": "Meldingen weergeven bij schakelen tussen modi/instellingen" },

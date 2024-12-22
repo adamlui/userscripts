@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Sicela uthumele umnikelo" },
   "about_version": { "message": "Uhlelo" },
   "about_poweredBy": { "message": "Ixhaswa yi-" },
-  "about_sourceCode": { "message": "Ikhodi yomthombo" },
+  "about_openSourceCode": { "message": "Vula ikhodi yomthombo" },
   "prompt_updateInt": { "message": "Buyekeza isikhawu sokuvuselela (ngemizuzwana)" },
   "helptip_toggleVis": { "message": "Bonisa Ukuguqula kabusha okuzenzakalelayo kubha eseceleni" },
   "helptip_modeNotifs": { "message": "Bonisa izaziso lapho kuguqulwa izindlela/amasethingi" },

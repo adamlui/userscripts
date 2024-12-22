@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "कृपया देणगी पाठवा" },
   "about_version": { "message": "आवृत्ती" },
   "about_poweredBy": { "message": "द्वारा समर्थित" },
-  "about_sourceCode": { "message": "स्रोत कोड" },
+  "about_openSourceCode": { "message": "ओपन सोर्स कोड" },
   "prompt_updateInt": { "message": "रिफ्रेश अंतराल अपडेट करा (सेकंडमध्ये)" },
   "helptip_toggleVis": { "message": "बाजूच्या पट्टीमध्ये स्वयं - रीफ्रेश टॉगल दर्शवा" },
   "helptip_modeNotifs": { "message": "मोड/सेटिंग्ज टॉगल करतेवेळी सूचना दर्शवा" },

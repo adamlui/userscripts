@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Калі ласка, дашліце ахвяраванне" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Пры падтрымцы" },
-  "about_sourceCode": { "message": "Зыходнікі" },
+  "about_openSourceCode": { "message": "Зыходнікі" },
   "prompt_updateInt": { "message": "Абнавіць інтэрвал абнаўлення (у сек)" },
   "helptip_toggleVis": { "message": "Паказваць перамыкач аўтазагрузкі ў бакавой панэлі" },
   "helptip_modeNotifs": { "message": "Паказваць апавяшчэнні пры пераключэнні рэжымаў/налад" },

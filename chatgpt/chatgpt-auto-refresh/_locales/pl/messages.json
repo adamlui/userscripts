@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Prześlij darowiznę" },
   "about_version": { "message": "Wersja" },
   "about_poweredBy": { "message": "Obsługiwane przez" },
-  "about_sourceCode": { "message": "Kod źródłowy" },
+  "about_openSourceCode": { "message": "Otwarty kod PHP" },
   "prompt_updateInt": { "message": "Zaktualizuj interwał odświeżania (w sekundach)" },
   "helptip_toggleVis": { "message": "Pokaż przełącznik automatycznego odświeżania na pasku bocznym" },
   "helptip_modeNotifs": { "message": "Pokaż powiadomienia podczas przełączania trybów/ustawień" },

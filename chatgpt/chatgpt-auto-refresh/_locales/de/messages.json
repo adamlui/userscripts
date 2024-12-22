@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Bitte spenden Sie" },
   "about_version": { "message": "Ausführung" },
   "about_poweredBy": { "message": "Unterstützt von" },
-  "about_sourceCode": { "message": "Quellcode" },
+  "about_openSourceCode": { "message": "Quellcodeoffen" },
   "prompt_updateInt": { "message": "Aktualisieren Sie das Aktualisierungsintervall (in Sekunden)" },
   "helptip_toggleVis": { "message": "Automatische Aktualisierung in der Seitenleiste anzeigen" },
   "helptip_modeNotifs": { "message": "Benachrichtigungen anzeigen, wenn Modi/Einstellungen umgeschaltet werden" },

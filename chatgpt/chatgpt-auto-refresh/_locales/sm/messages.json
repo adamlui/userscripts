@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Faamolemole auina atu se foaʻi" },
   "about_version": { "message": "Faaliliuga" },
   "about_poweredBy": { "message": "Malosiaga e ala i" },
-  "about_sourceCode": { "message": "Punaoa code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "prompt_updateInt": { "message": "Faʻafouina taimi faʻafouina (i SECS)" },
   "helptip_toggleVis": { "message": "Faaali atu Auto-Refresh toggle i sidebar" },
   "helptip_modeNotifs": { "message": "Faaali atu faasilasilaga pe a toggling auala/faatulagaga" },

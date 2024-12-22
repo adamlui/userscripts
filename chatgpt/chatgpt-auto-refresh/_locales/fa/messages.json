@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "لطفا کمک مالی بفرستید" },
   "about_version": { "message": "نسخه برنامه" },
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
-  "about_sourceCode": { "message": "سورس کد" },
+  "about_openSourceCode": { "message": "سورس کد" },
   "prompt_updateInt": { "message": "فاصله بازخوانی به‌روزرسانی (در ثانیه)" },
   "helptip_toggleVis": { "message": "نمایش ضامن بازخوانی خودکار در نوار کناری" },
   "helptip_modeNotifs": { "message": "نمایش اعلان‌ها هنگام تغییر حالت‌ها/تنظیمات" },

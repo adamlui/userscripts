@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Қайырымдылық жасауыңызды сұраймыз" },
   "about_version": { "message": "Нұсқа" },
   "about_poweredBy": { "message": "Сайтты жасаған" },
-  "about_sourceCode": { "message": "Бастапқы код" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "prompt_updateInt": { "message": "Жаңарту аралығы (секундтарда)" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада Автоматты түрде қалпына келтіру қосқышын көрсету" },
   "helptip_modeNotifs": { "message": "Режимдерді/параметрлерді ауыстыру кезінде хабарландыруларды көрсету" },

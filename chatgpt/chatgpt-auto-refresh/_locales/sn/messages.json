@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Ndapota tumira mupiro" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Inoratidzwa na" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "prompt_updateInt": { "message": "Kuchengetedza kupinda kwemaitiro (mumasekondi)" },
   "helptip_toggleVis": { "message": "Ratidza Auto-Refresh toggle mu sidebar" },
   "helptip_modeNotifs": { "message": "Ratidza zviziviso kana toggling modes/marongero" },

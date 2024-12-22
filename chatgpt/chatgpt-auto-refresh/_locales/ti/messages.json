@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ብኽብረትካ በጃኻ ውህበት ልኢኽካ" },
   "about_version": { "message": "መበል" },
   "about_poweredBy": { "message": "ብ" },
-  "about_sourceCode": { "message": "ምንጪ ኮድ" },
+  "about_openSourceCode": { "message": "ክፉት ምንጪ ኮድ" },
   "prompt_updateInt": { "message": "ዝተሓድሶ ግዜ (ኣብ SECs)" },
   "helptip_toggleVis": { "message": "Auto-Refresh Toggle ኣብ ጎኒ ባር ኣርኢ" },
   "helptip_modeNotifs": { "message": "ኣብ እዋን ምትሕልላፍ ኣገባባት/ኣቀማምጣታት ኣፍልጦታት ኣርኢ" },

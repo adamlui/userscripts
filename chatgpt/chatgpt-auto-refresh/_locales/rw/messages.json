@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Yohereze Yohereze Impano" },
   "about_version": { "message": "Umukoro" },
   "about_poweredBy": { "message": "Ku" },
-  "about_sourceCode": { "message": "C Inkomoko ITEGEKONGENGA" },
+  "about_openSourceCode": { "message": "Inkomoko Inyandikoporogaramu" },
   "prompt_updateInt": { "message": "Kugira gishya Intera in amasogonda" },
   "helptip_toggleVis": { "message": "Kugarura Mukomatanya in Umurongo wo ku mpande" },
   "helptip_modeNotifs": { "message": "Ibimenyetso Ryari: Amagenamiterere" },

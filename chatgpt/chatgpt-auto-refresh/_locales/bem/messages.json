@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Napapata Uletuma Ubupe" },
   "about_version": { "message": "Ukupilibula" },
   "about_poweredBy": { "message": "Amapola by Amapola" },
-  "about_sourceCode": { "message": "Ifyebo fyaba mu cipande ca kubalilapo" },
+  "about_openSourceCode": { "message": "Ilembo lya pa kompyuta ilyaba pa kompyuta" },
   "prompt_updateInt": { "message": "Update refresh interval (in kulyashi)" },
   "helptip_toggleVis": { "message": "Tukwila Auto-Refresh Toggle in Sidebar" },
   "helptip_modeNotifs": { "message": "Ukulele Tabs/Ukulele Tabs" },

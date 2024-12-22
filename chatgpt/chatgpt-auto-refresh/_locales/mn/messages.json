@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Хандив илгээнэ үү" },
   "about_version": { "message": "Хувилбар" },
   "about_poweredBy": { "message": "Тодорхойлолтын зорилгоор" },
-  "about_sourceCode": { "message": "Эх бичсэн код" },
+  "about_openSourceCode": { "message": "Нээлттэй Эх сурвалж" },
   "prompt_updateInt": { "message": "Сэсээ шинэчлэх хугацааг шинэчлэх (секундээр)" },
   "helptip_toggleVis": { "message": "Хажуу цэс дотор автоматаар шинэчлэх тохиргоог харуулах" },
   "helptip_modeNotifs": { "message": "Модель/тохиргоонуудыг өөрчлөх үед мэдэгдлүүдийг харуулах" },

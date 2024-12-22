@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Saada annetus" },
   "about_version": { "message": "Versioon" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Lähtekood" },
+  "about_openSourceCode": { "message": "lähtekood" },
   "prompt_updateInt": { "message": "Värskendusintervalli värskendamine (sekundites)" },
   "helptip_toggleVis": { "message": "Kuva külgribal lüliti Auto-Refresh" },
   "helptip_modeNotifs": { "message": "Kuva teated režiimide/seadete vahetamisel" },

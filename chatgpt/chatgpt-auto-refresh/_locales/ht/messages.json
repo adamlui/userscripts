@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Tanpri voye yon don/S 'il vous plaî" },
   "about_version": { "message": "Vèsyon" },
   "about_poweredBy": { "message": "Patrone pa" },
-  "about_sourceCode": { "message": "Kòd sous" },
+  "about_openSourceCode": { "message": "Kòd sous louvri" },
   "prompt_updateInt": { "message": "Mete ajou entèval rafrechisman (an segonn)" },
   "helptip_toggleVis": { "message": "Montre toggle Auto-Refresh nan ankadre" },
   "helptip_modeNotifs": { "message": "Montre notifikasyon lè toggling mòd/anviwònman" },

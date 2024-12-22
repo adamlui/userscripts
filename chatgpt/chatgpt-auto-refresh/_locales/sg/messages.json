@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Sara mbeni ye ti mû maboko na zo" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Propulsé par" },
-  "about_sourceCode": { "message": "Code Source" },
+  "about_openSourceCode": { "message": "Création d 'une brochure open source" },
   "prompt_updateInt": { "message": "Mettre à jour l'intervalle de rafraîchissement (en secondes)" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh Toggle na sidebar" },
   "helptip_modeNotifs": { "message": "Fa awango na ngoi so mo yeke toggling mode/settings" },

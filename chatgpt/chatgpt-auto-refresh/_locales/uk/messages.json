@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Будь ласка, надішліть пожертву" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Працює на" },
-  "about_sourceCode": { "message": "Джерельний код" },
+  "about_openSourceCode": { "message": "Джерельний код" },
   "prompt_updateInt": { "message": "Оновити інтервал оновлення (в секундах)" },
   "helptip_toggleVis": { "message": "Показати перемикач автоматичного оновлення на бічній панелі" },
   "helptip_modeNotifs": { "message": "Показувати сповіщення при перемиканні режимів/налаштувань" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Schéckt w.e.g. eng Donatioun" },
   "about_version": { "message": "Versioun" },
   "about_poweredBy": { "message": "Bereetgestallt vun" },
-  "about_sourceCode": { "message": "Quellcode" },
+  "about_openSourceCode": { "message": "Open Source" },
   "prompt_updateInt": { "message": "Aktualiséieren Erfrëschungsintervall (a Sekonnen)" },
   "helptip_toggleVis": { "message": "Auto-Refresh wiesselen an der Säitbar uweisen" },
   "helptip_modeNotifs": { "message": "Notifikatiounen uweisen wann Dir Modi/Astellunge wiesselt" },

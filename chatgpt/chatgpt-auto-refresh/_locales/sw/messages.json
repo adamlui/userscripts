@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Tafadhali tuma mchango" },
   "about_version": { "message": "Toleo" },
   "about_poweredBy": { "message": "Imewezeshwa na" },
-  "about_sourceCode": { "message": "Msimbo wa chanzo" },
+  "about_openSourceCode": { "message": "Msimbo wa chanzo wazi" },
   "prompt_updateInt": { "message": "Sasisha muda wa upya (kwa sekunde)" },
   "helptip_toggleVis": { "message": "Onyesha swichi ya Kugeuza Kiotomatiki kwenye upau wa pembeni" },
   "helptip_modeNotifs": { "message": "Onyesha arifa wakati wa kugeuza modi/mipangilio" },

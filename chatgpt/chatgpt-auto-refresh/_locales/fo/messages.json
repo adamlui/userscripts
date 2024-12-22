@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Send okkum eina gávu" },
   "about_version": { "message": "Útgáva" },
   "about_poweredBy": { "message": "Powered by SFX" },
-  "about_sourceCode": { "message": "Ada keldukota" },
+  "about_openSourceCode": { "message": "Opna keldukota" },
   "prompt_updateInt": { "message": "Endurvinna tíðarskeið (í sekum)" },
   "helptip_toggleVis": { "message": "Sýni sjálvvirkandi endurnýtslu skifting í síðubarn" },
   "helptip_modeNotifs": { "message": "Vís boð, tá ið tú skiftir stillingar/stillingar" },

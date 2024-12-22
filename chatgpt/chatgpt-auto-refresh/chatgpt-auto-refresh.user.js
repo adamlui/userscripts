@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.7
+// @version             2024.12.21.8
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -315,7 +315,7 @@
         menuLabel_donate: 'Please send a donation',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         prompt_updateInt: 'Update refresh interval (in secs)',
         helptip_toggleVis: 'Show Auto-Refresh toggle in sidebar',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
@@ -638,7 +638,7 @@
                     + `⚡ ${app.msgs.about_poweredBy}: `
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                             + ` v${app.chatgptJSver}\n`
-                    + `📜 ${app.msgs.about_sourceCode}: `
+                    + `📜 ${app.msgs.about_openSourceCode}: `
                         + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons

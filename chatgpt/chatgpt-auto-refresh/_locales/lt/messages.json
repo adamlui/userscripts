@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Siųskite auką" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Įgalino Proneta" },
-  "about_sourceCode": { "message": "Pradinis kodas" },
+  "about_openSourceCode": { "message": "Pradinis kodas" },
   "prompt_updateInt": { "message": "Atnaujinimo atnaujinimo intervalas (sekundėmis)" },
   "helptip_toggleVis": { "message": "Rodyti automatinio atnaujinimo perjungimą šoninėje juostoje" },
   "helptip_modeNotifs": { "message": "Rodyti pranešimus, kai perjungiami režimai/nustatymai" },

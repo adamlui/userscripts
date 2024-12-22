@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ສະນັ້ນ ໃຫ້ບໍລິຈາກ" },
   "about_version": { "message": "ຮຸ່ນ" },
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
-  "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
+  "about_openSourceCode": { "message": "ລະຫັດແຫຼ່ງເປີດ" },
   "prompt_updateInt": { "message": "ອັບເດດໄລຍະເວລາໂຫຼດຂໍ້ມູນຄືນໃໝ່ (ເປັນວິນາທີ)" },
   "helptip_toggleVis": { "message": "ສະແດງ Auto-Refresh toggle ໃນແຖບດ້ານຂ້າງ" },
   "helptip_modeNotifs": { "message": "ສະແດງການແຈ້ງເຕືອນເມື່ອປິດການໃຊ້ງານໂໝດ/ການຕັ້ງຄ່າ" },

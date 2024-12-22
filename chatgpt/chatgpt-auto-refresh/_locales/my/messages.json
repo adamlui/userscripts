@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ကျေးဇူးပြု ၍ လှူဒါန်းမှုတစ်ခု ပေးပို့ပါ" },
   "about_version": { "message": "ဗားရှင်း" },
   "about_poweredBy": { "message": "မှပံ့ပိုးသည်" },
-  "about_sourceCode": { "message": "ပင္မကုဒ္" },
+  "about_openSourceCode": { "message": "ပွင့်လင်းအရင်းအမြစ်ကုဒ်" },
   "prompt_updateInt": { "message": "ပြန်လည်စတင်ချိန်ကာလ (စက္ကန့်အတွင်း) အပ်ဒိတ်လုပ်ပါ" },
   "helptip_toggleVis": { "message": "ဘေးဘားတွင် အလိုအလျောက်ပြန်လည်ပြုပြင်မွမ်းမံခြင်း ပြောင်းရွှေ့မှုကို ပြပါ" },
   "helptip_modeNotifs": { "message": "မုဒ်များ/ဆက်တင်များကို ပြောင်းလဲချိန်တွင် အသိပေးချက်များကို ပြသပါ" },

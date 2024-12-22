@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Por favor, envíe una donación" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Desarrollado por" },
-  "about_sourceCode": { "message": "Código fuente" },
+  "about_openSourceCode": { "message": "Cola ciega" },
   "prompt_updateInt": { "message": "Actualizar intervalo de actualización (en segundos)" },
   "helptip_toggleVis": { "message": "Mostrar alternancia de actualización automática en la barra lateral" },
   "helptip_modeNotifs": { "message": "Mostrar notificaciones al alternar modos/configuraciones" },

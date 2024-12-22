@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Envia una donació" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
-  "about_sourceCode": { "message": "Codi font" },
+  "about_openSourceCode": { "message": "Codi obert" },
   "prompt_updateInt": { "message": "Actualitza l'interval d'actualització (en segons)" },
   "helptip_toggleVis": { "message": "Mostra el commutador d'actualització automàtica a la barra lateral" },
   "helptip_modeNotifs": { "message": "Mostra les notificacions quan es canvien els modes o la configuració" },

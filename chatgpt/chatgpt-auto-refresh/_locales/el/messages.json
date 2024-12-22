@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Στείλτε μια δωρεά" },
   "about_version": { "message": "Έκδοση" },
   "about_poweredBy": { "message": "Με την υποστήριξη" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Ανοιχτός κώδικας. " },
   "prompt_updateInt": { "message": "Ενημερώστε το διάστημα ανανέωσης (σε δευτερόλεπτα)" },
   "helptip_toggleVis": { "message": "Εμφάνιση εναλλαγής αυτόματης ανανέωσης στην πλαϊνή γραμμή" },
   "helptip_modeNotifs": { "message": "Εμφάνιση ειδοποιήσεων κατά την εναλλαγή λειτουργιών/ρυθμίσεων" },

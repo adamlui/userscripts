@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Por fabor haci un donacion" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Potenshá pa" },
-  "about_sourceCode": { "message": "Kòdigu di Fuente" },
+  "about_openSourceCode": { "message": "Codigo Fuente Abierto" },
   "prompt_updateInt": { "message": "Aktualisá intervalo di refresko (den segedonan)" },
   "helptip_toggleVis": { "message": "Show Auto-Refresh Toggle At Sea Turbo" },
   "helptip_modeNotifs": { "message": "Ver Informe Ampliado de Modalidad E Instalacion Sl" },

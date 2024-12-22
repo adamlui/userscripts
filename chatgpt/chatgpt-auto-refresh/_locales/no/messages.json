@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Vennligst send en donasjon" },
   "about_version": { "message": "Versjon" },
   "about_poweredBy": { "message": "Drevet av" },
-  "about_sourceCode": { "message": "Kildekode" },
+  "about_openSourceCode": { "message": "åpen kilde" },
   "prompt_updateInt": { "message": "Oppdater oppdateringsintervallet (i sekunder)" },
   "helptip_toggleVis": { "message": "Vis bryteren for automatisk oppdatering i sidefeltet" },
   "helptip_modeNotifs": { "message": "Vis varsler når du bytter moduser/innstillinger" },

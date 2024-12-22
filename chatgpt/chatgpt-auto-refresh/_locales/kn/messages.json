@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ದಯವಿಟ್ಟು ದೇಣಿಗೆ ಕಳುಹಿಸಿ" },
   "about_version": { "message": "ಆವೃತ್ತಿ" },
   "about_poweredBy": { "message": "ಸಾಮರ್ಥ್ಯ ಇವರಿಂದ" },
-  "about_sourceCode": { "message": "ಮೂಲ ಕೋಡ್" },
+  "about_openSourceCode": { "message": "ಓಪನ್ ಸೋರ್ಸ್ ಕೋಡ್" },
   "prompt_updateInt": { "message": "ಸುರಿಮಳೆ ಅಂತರಾಲವನ್ನು ನವೀಕರಿಸಿ (ಸೆಕೆಂಡುಗಳಲ್ಲಿ)" },
   "helptip_toggleVis": { "message": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಸ್ವಯಂ-ರಿಫ್ರೆಶ್ ಟಾಗಲ್ ತೋರಿಸಿ" },
   "helptip_modeNotifs": { "message": "ಮೋಡ್‌ಗಳು/ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಟಾಗಲ್ ಮಾಡುವಾಗ ಅಧಿಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ" },

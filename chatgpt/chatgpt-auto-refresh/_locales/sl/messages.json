@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Pošljite donacijo" },
   "about_version": { "message": "Različica" },
   "about_poweredBy": { "message": "Poganja" },
-  "about_sourceCode": { "message": "Kliknite tukaj za prenos izvorne kode" },
+  "about_openSourceCode": { "message": "Odprta koda" },
   "prompt_updateInt": { "message": "Posodobite interval osveževanja (v sekundah)" },
   "helptip_toggleVis": { "message": "Prikaži preklop samodejnega osveževanja v stranski vrstici" },
   "helptip_modeNotifs": { "message": "Prikaži obvestila pri preklopu načinov/nastavitev" },

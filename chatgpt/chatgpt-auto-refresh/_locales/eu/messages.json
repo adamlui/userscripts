@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Mesedez, bidali dohaintza" },
   "about_version": { "message": "Bertsioa" },
   "about_poweredBy": { "message": "Teknologia" },
-  "about_sourceCode": { "message": "Iturburu kode" },
+  "about_openSourceCode": { "message": "Kode ireki" },
   "prompt_updateInt": { "message": "Eguneratu freskatze tartea (segundotan)" },
   "helptip_toggleVis": { "message": "Erakutsi Freskatze automatikoa etengailua alboko barran" },
   "helptip_modeNotifs": { "message": "Erakutsi jakinarazpenak moduak/ezarpenak aldatzean" },

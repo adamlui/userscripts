@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "សូមផ្ញើការបរិច្ចាគ" },
   "about_version": { "message": "លេខជំនាន់កម្មវិធី" },
   "about_poweredBy": { "message": "ដំណើរការដោយ" },
-  "about_sourceCode": { "message": "កូដដើម" },
+  "about_openSourceCode": { "message": "កូដ​ដើម" },
   "prompt_updateInt": { "message": "អាប់ដេតចន្លោះពេលរីហ្វ្រែស (គិតជាវិនាទី)" },
   "helptip_toggleVis": { "message": "បង្ហាញ បិទបើក ធ្វើ ឲ្យ ស្រស់ ស្វ័យ ប្រវត្តិ នៅ ក្នុង របារ ចំហៀង" },
   "helptip_modeNotifs": { "message": "បង្ហាញការជូនដំណឹងនៅពេលបិទបើកម៉ូដ/ការកំណត់" },

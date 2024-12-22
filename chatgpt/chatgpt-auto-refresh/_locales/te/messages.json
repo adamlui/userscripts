@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "దయచేసి విరాళం పంపండి" },
   "about_version": { "message": "వివరణం" },
   "about_poweredBy": { "message": "ద్వారా ఆధారితం" },
-  "about_sourceCode": { "message": "సోర్స్ కోడ్" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "prompt_updateInt": { "message": "రిఫ్రెష్ విరామం అప్ ‌ డేట్ చేయండి (సెకన్లలో)" },
   "helptip_toggleVis": { "message": "సైడ్ ‌ బార్ ‌ లో ఆటో-రిఫ్రెష్ టోగుల్ ‌ ను చూపించండి" },
   "helptip_modeNotifs": { "message": "మోడ్ ‌ లు/సెట్టింగ్ ‌ లను టోగుల్ చేసేటప్పుడు నోటిఫికేషన్ ‌ లను చూపించండి" },
