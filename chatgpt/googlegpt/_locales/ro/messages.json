@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Setări" },
   "about_version": { "message": "Versiune" },
   "about_poweredBy": { "message": "Operat de" },
-  "about_sourceCode": { "message": "Codul sursă" },
+  "about_openSourceCode": { "message": "Cod cu sursă deschisă. " },
   "scheme_light": { "message": "Lămpi" },
   "scheme_dark": { "message": "Întunecat" },
   "mode_proxy": { "message": "Mod proxy" },

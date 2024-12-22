@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Akpengba ye so a leke na yâ ti Bible" },
   "about_version": { "message": "Yângâ tî kodoro" },
   "about_poweredBy": { "message": "A yeke sara kua na ni" },
-  "about_sourceCode": { "message": "Source code ti" },
+  "about_openSourceCode": { "message": "Création d 'une brochure open source" },
   "scheme_light": { "message": "Light am na" },
   "scheme_dark": { "message": "Yeke got, dark" },
   "mode_proxy": { "message": "Mbi Proxy Mode" },

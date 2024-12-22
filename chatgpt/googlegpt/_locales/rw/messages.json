@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Gahunda" },
   "about_version": { "message": "Inyandiko" },
   "about_poweredBy": { "message": "Bikozwe na" },
-  "about_sourceCode": { "message": "Kode y'Isoko" },
+  "about_openSourceCode": { "message": "Inkomoko Inyandikoporogaramu" },
   "scheme_light": { "message": "Urumuri" },
   "scheme_dark": { "message": "Umwijima" },
   "mode_proxy": { "message": "Uburyo bwa Proxy" },

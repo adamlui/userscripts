@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "ការកំណត់មុខងារ" },
   "about_version": { "message": "លេខជំនាន់កម្មវិធី" },
   "about_poweredBy": { "message": "ដំណើរការដោយ" },
-  "about_sourceCode": { "message": "កូដដើម" },
+  "about_openSourceCode": { "message": "កូដ​ដើម" },
   "scheme_light": { "message": "ពន្លឺ" },
   "scheme_dark": { "message": "ពតិ៍ចាស់" },
   "mode_proxy": { "message": "ម៉ូដប្រូកស៊ី" },

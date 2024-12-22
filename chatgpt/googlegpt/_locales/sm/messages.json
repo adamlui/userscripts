@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Faʻatulagaina" },
   "about_version": { "message": "Faaliliuga" },
   "about_poweredBy": { "message": "Malosiaga e ala i" },
-  "about_sourceCode": { "message": "Punaoa code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "scheme_light": { "message": "Malamalama" },
   "scheme_dark": { "message": "Pogisa" },
   "mode_proxy": { "message": "Proxy Mode" },

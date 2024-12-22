@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Roghainnean" },
   "about_version": { "message": "Versa" },
   "about_poweredBy": { "message": "Air a chumail le" },
-  "about_sourceCode": { "message": "Còd stòr" },
+  "about_openSourceCode": { "message": "Bun-tùs a' chod" },
   "scheme_light": { "message": "Solais" },
   "scheme_dark": { "message": "Dorcha" },
   "mode_proxy": { "message": "Modh Proxy" },

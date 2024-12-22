@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Tameslayt" },
   "about_version": { "message": "Asent" },
   "about_poweredBy": { "message": "S-aql s" },
-  "about_sourceCode": { "message": "Tuzva n tazrigt" },
+  "about_openSourceCode": { "message": "Tangalt taɣbalut" },
   "scheme_light": { "message": "Ayyur" },
   "scheme_dark": { "message": "Tajlilit" },
   "mode_proxy": { "message": "Tanmirt Proxy" },

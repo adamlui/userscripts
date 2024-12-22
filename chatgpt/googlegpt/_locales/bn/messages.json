@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "সেটিংস" },
   "about_version": { "message": "সংস্করণ" },
   "about_poweredBy": { "message": "নিবেদন করছেন" },
-  "about_sourceCode": { "message": "সোর্স কোড" },
+  "about_openSourceCode": { "message": "সোর্স কোড" },
   "scheme_light": { "message": "আলো" },
   "scheme_dark": { "message": "অন্ধকার" },
   "mode_proxy": { "message": "প্রক্সি মোড" },

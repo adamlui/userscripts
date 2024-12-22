@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "ސެޓިންގސް" },
   "about_version": { "message": "ވާރޝަން" },
   "about_poweredBy": { "message": "ބާރުވެރި ކުރުވާފައިވަނީ" },
-  "about_sourceCode": { "message": "ސޯސް ކޯޑް" },
+  "about_openSourceCode": { "message": "އޮޕަން ސޯސް ކޯޑެވެ" },
   "scheme_light": { "message": "އަލި" },
   "scheme_dark": { "message": "އަނދިރި" },
   "mode_proxy": { "message": "ޕްރޮކްސީ މޯޑް" },

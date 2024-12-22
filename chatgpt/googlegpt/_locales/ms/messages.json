@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Tetapan" },
   "about_version": { "message": "Versi" },
   "about_poweredBy": { "message": "Dijana oleh" },
-  "about_sourceCode": { "message": "Kod sumber" },
+  "about_openSourceCode": { "message": "Sumber Terbuka" },
   "scheme_light": { "message": "Cerah" },
   "scheme_dark": { "message": "Gelap" },
   "mode_proxy": { "message": "Mod Proksi" },

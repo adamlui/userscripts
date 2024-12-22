@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "설정" },
   "about_version": { "message": "버전" },
   "about_poweredBy": { "message": "제공" },
-  "about_sourceCode": { "message": "원본 코드" },
+  "about_openSourceCode": { "message": "오픈소스" },
   "scheme_light": { "message": "라이트" },
   "scheme_dark": { "message": "다크" },
   "mode_proxy": { "message": "프록시 모드" },

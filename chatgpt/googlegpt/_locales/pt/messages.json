@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Settings (Configurações)" },
   "about_version": { "message": "Versão" },
   "about_poweredBy": { "message": "Alimentado por" },
-  "about_sourceCode": { "message": "Código-fonte" },
+  "about_openSourceCode": { "message": "Código-fonte aberto" },
   "scheme_light": { "message": "Claro" },
   "scheme_dark": { "message": "Escuro" },
   "mode_proxy": { "message": "Modo Proxy" },
