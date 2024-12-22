@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Поставки" },
   "about_version": { "message": "верзија" },
   "about_poweredBy": { "message": "Овозможено од" },
-  "about_sourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "scheme_light": { "message": "Светлина" },
   "scheme_dark": { "message": "Темна" },
   "mode_proxy": { "message": "Режим на прокси" },

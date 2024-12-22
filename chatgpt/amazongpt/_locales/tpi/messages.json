@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Aitaim" },
   "about_version": { "message": "Tok Pisin" },
   "about_poweredBy": { "message": "Em i gat bikpela strong" },
-  "about_sourceCode": { "message": "Kod bilong as" },
+  "about_openSourceCode": { "message": "Open source code" },
   "scheme_light": { "message": "Lait" },
   "scheme_dark": { "message": "Tudak" },
   "mode_proxy": { "message": "Proxy mode" },

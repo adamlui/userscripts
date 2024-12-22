@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Reglaj" },
   "about_version": { "message": "Vèsyon" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "kòd sous/ code source / le code source mis à jour/code en langage source" },
+  "about_openSourceCode": { "message": "Kòd sous louvri" },
   "scheme_light": { "message": "Limyè" },
   "scheme_dark": { "message": "Fonse/Sonm" },
   "mode_proxy": { "message": "Proxy Mode" },

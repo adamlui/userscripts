@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Zikhazikiko" },
   "about_version": { "message": "Lumikizanani nafe" },
   "about_poweredBy": { "message": "Mothandizidwa ndi" },
-  "about_sourceCode": { "message": "Gwero kachidindo" },
+  "about_openSourceCode": { "message": "Open gwero kachidindo" },
   "scheme_light": { "message": "Kuwala" },
   "scheme_dark": { "message": "Mdima" },
   "mode_proxy": { "message": "Mchitidwe wa Proxy" },

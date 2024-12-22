@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Settings" },
   "about_version": { "message": "Verżjoni" },
   "about_poweredBy": { "message": "Imħaddem minn" },
-  "about_sourceCode": { "message": "Kodiċi tas-sors" },
+  "about_openSourceCode": { "message": "sors miftuħ" },
   "scheme_light": { "message": "Dawl" },
   "scheme_dark": { "message": "Skur" },
   "mode_proxy": { "message": "Modalità Proxy" },

@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Ustawienia" },
   "about_version": { "message": "Wersja" },
   "about_poweredBy": { "message": "Obsługiwane przez" },
-  "about_sourceCode": { "message": "Kod źródłowy" },
+  "about_openSourceCode": { "message": "Otwarty kod PHP" },
   "scheme_light": { "message": "Jasny" },
   "scheme_dark": { "message": "Ciemny" },
   "mode_proxy": { "message": "Tryb proxy" },

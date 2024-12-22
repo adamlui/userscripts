@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "སྒྲིག་བཀོད" },
   "about_version": { "message": "པར་གཞི།" },
   "about_poweredBy": { "message": "དྲ་ཚིག་བཟོ་མཁན།" },
-  "about_sourceCode": { "message": "འབྱུང་ཁུངས །" },
+  "about_openSourceCode": { "message": "ཁ་ཕྱེ་བའི་ཁ་བྱང་།" },
   "scheme_light": { "message": "མདོག་སྐྱ།" },
   "scheme_dark": { "message": "Koyu" },
   "mode_proxy": { "message": "པརོཀསི་རྣམ་གཞག" },

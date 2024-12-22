@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "సెట్టింగ్‌లు" },
   "about_version": { "message": "వివరణం" },
   "about_poweredBy": { "message": "ద్వారా ఆధారితం" },
-  "about_sourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "scheme_light": { "message": "లైట్" },
   "scheme_dark": { "message": "చీకటి" },
   "mode_proxy": { "message": "ప్రాక్సీ మోడ్" },

@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Gosodiadau" },
   "about_version": { "message": "Fersiwn" },
   "about_poweredBy": { "message": "Wedi'i gynnal gan" },
-  "about_sourceCode": { "message": "Cod ffynhonnell" },
+  "about_openSourceCode": { "message": "Cod ffynhonnell" },
   "scheme_light": { "message": "Ysgafn" },
   "scheme_dark": { "message": "Tywyll" },
   "mode_proxy": { "message": "Modd Dirprwy" },

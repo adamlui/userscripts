@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Innstillinger" },
   "about_version": { "message": "Versjon" },
   "about_poweredBy": { "message": "Drevet av" },
-  "about_sourceCode": { "message": "Kildekode" },
+  "about_openSourceCode": { "message": "åpen kilde" },
   "scheme_light": { "message": "Belysning" },
   "scheme_dark": { "message": "Mørk" },
   "mode_proxy": { "message": "Proxy-modus" },

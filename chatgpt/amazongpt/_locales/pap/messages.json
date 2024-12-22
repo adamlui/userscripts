@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Establesimentunan" },
   "about_version": { "message": "Vershon" },
   "about_poweredBy": { "message": "Potenciá por" },
-  "about_sourceCode": { "message": "Kódigo di fuente" },
+  "about_openSourceCode": { "message": "Codigo Fuente Abierto" },
   "scheme_light": { "message": "Lus" },
   "scheme_dark": { "message": "Skuridat" },
   "mode_proxy": { "message": "Propiedad Moda" },

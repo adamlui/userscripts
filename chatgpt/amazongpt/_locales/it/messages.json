@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Impostazioni" },
   "about_version": { "message": "Versione" },
   "about_poweredBy": { "message": "Offerto da" },
-  "about_sourceCode": { "message": "Codice sorgente" },
+  "about_openSourceCode": { "message": "Codice open source" },
   "scheme_light": { "message": "Light" },
   "scheme_dark": { "message": "Scuro" },
   "mode_proxy": { "message": "Modalità Proxy" },

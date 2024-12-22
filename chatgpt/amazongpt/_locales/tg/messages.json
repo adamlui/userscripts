@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Танзимот" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Нерӯмандшуда аз тарафи" },
-  "about_sourceCode": { "message": "Рамзи манбаъ" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "scheme_light": { "message": "QFontDatabase" },
   "scheme_dark": { "message": "Торик" },
   "mode_proxy": { "message": "Ҳолати прокси" },

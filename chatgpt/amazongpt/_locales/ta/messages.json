@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "அமைப்புகள்" },
   "about_version": { "message": "பதிப்பு" },
   "about_poweredBy": { "message": "மூலம் இயக்கப்படுகிறது" },
-  "about_sourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "scheme_light": { "message": "ஒளி" },
   "scheme_dark": { "message": "இருள்" },
   "mode_proxy": { "message": "ப்ராக்ஸி பயன்முறை" },

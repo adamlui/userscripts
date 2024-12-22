@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "تنظیمات" },
   "about_version": { "message": ":نسخه" },
   "about_poweredBy": { "message": "طراحی شده توسط" },
-  "about_sourceCode": { "message": "سرچينه كوډه" },
+  "about_openSourceCode": { "message": "سرچينه كوډه" },
   "scheme_light": { "message": "روشن" },
   "scheme_dark": { "message": "تاریک" },
   "mode_proxy": { "message": "ګوډاګی اکر" },

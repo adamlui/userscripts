@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "设置" },
   "about_version": { "message": "版本" },
   "about_poweredBy": { "message": "技术支持方" },
-  "about_sourceCode": { "message": "源代码" },
+  "about_openSourceCode": { "message": "开源代码" },
   "scheme_light": { "message": "浅色" },
   "scheme_dark": { "message": "深色" },
   "mode_proxy": { "message": "代理模式" },

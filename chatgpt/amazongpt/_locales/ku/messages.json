@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Mîheng" },
   "about_version": { "message": "وەشان" },
   "about_poweredBy": { "message": "پشتگیریکراو لە لایەن" },
-  "about_sourceCode": { "message": "Koda çavkanî" },
+  "about_openSourceCode": { "message": "Koda çavkanî" },
   "scheme_light": { "message": "Ronahî" },
   "scheme_dark": { "message": "تاریک" },
   "mode_proxy": { "message": "Mode Proxy" },

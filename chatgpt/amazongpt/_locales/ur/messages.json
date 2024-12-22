@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "ترتیبات" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "تقویت یافتہ از" },
-  "about_sourceCode": { "message": "کۆسی سەرچاوە" },
+  "about_openSourceCode": { "message": "کۆسی سەرچاوە" },
   "scheme_light": { "message": "روشنی " },
   "scheme_dark": { "message": "تاریک" },
   "mode_proxy": { "message": "پراکسی موڈ" },

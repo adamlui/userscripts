@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "การตั้งค่า" },
   "about_version": { "message": "เวอร์ชัน" },
   "about_poweredBy": { "message": "สนับสนุนโดย" },
-  "about_sourceCode": { "message": "รหัสต้นฉบับ" },
+  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ " },
   "scheme_light": { "message": "บาง" },
   "scheme_dark": { "message": "มืด" },
   "mode_proxy": { "message": "โหมดพร็อกซี" },

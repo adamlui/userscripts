@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Postavke" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "Pokreće" },
-  "about_sourceCode": { "message": "Izvorni kod" },
+  "about_openSourceCode": { "message": "Izvorni kod" },
   "scheme_light": { "message": "Svjetlo" },
   "scheme_dark": { "message": "Tamno" },
   "mode_proxy": { "message": "Proxy način rada" },

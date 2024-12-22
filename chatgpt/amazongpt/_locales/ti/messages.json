@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "መቓናት" },
   "about_version": { "message": "መበል" },
   "about_poweredBy": { "message": "ብ" },
-  "about_sourceCode": { "message": "ምንጪ ኮድ" },
+  "about_openSourceCode": { "message": "ክፉት ምንጪ ኮድ" },
   "scheme_light": { "message": "ብርሃን" },
   "scheme_dark": { "message": "ጸሊም" },
   "mode_proxy": { "message": "ፕሮክሲ ሞድ" },

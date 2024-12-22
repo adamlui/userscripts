@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Ajustes" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Con la tecnología de" },
-  "about_sourceCode": { "message": "Código fuente" },
+  "about_openSourceCode": { "message": "Cola ciega" },
   "scheme_light": { "message": "Claro" },
   "scheme_dark": { "message": "Oscuro" },
   "mode_proxy": { "message": "Modo Proxy" },

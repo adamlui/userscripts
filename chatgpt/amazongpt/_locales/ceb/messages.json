@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Mga Konteksto" },
   "about_version": { "message": "Bersyon" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Gigikana sa kodigo" },
+  "about_openSourceCode": { "message": "Gigikana sa kodigo" },
   "scheme_light": { "message": "kainit" },
   "scheme_dark": { "message": "Ngitngit" },
   "mode_proxy": { "message": "Proxy Mode" },

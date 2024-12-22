@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Ifilundwa" },
   "about_version": { "message": "Ukupilibula" },
   "about_poweredBy": { "message": "Amapola by Amapola" },
-  "about_sourceCode": { "message": "Ifyebo fyaba mu cipande ca kubalilapo" },
+  "about_openSourceCode": { "message": "Ilembo lya pa kompyuta ilyaba pa kompyuta" },
   "scheme_light": { "message": "Ulubuuto" },
   "scheme_dark": { "message": "Mu mfifi" },
   "mode_proxy": { "message": "Proxy Mode" },

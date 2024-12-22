@@ -13,7 +13,7 @@
   "menuLabel_settings": { "message": "Ngaahi Feituʻú" },
   "about_version": { "message": "Tatau" },
   "about_poweredBy": { "message": "Fakalele ʻe he" },
-  "about_sourceCode": { "message": "Maʻuʻanga fakamatala" },
+  "about_openSourceCode": { "message": "Fakaava ʻa e kouti maʻuʻanga tokoni" },
   "scheme_light": { "message": "Maama" },
   "scheme_dark": { "message": "Fakapoʻuli" },
   "mode_proxy": { "message": "Founga fakafofonga" },
