@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Ke kopa gore o romele moneelo" },
   "about_version": { "message": "VERSION" },
   "about_poweredBy": { "message": "E tsamaisiwa ke" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "SHOW Auto-Talk toggle in sidebar" },
   "alert_updateAvail": { "message": "Diphetogo tse di leng teng" },

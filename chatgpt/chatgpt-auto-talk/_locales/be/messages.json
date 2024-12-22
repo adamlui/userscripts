@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Калі ласка, дашліце ахвяраванне" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Пры падтрымцы" },
-  "about_sourceCode": { "message": "Зыходнікі" },
+  "about_openSourceCode": { "message": "Зыходнікі" },
   "mode_autoTalk": { "message": "Аўтаматычная размова" },
   "helptip_toggleVis": { "message": "Паказваць перамыкач аўтаматычнай прамовы ў бакавой панэлі" },
   "alert_updateAvail": { "message": "Ёсць абнаўленне" },

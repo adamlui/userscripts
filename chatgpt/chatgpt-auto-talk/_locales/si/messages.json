@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "කරුණාකර පරිත් ‍ යාගයක් යවන්න" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "විවෘත කේතය" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "පැති තීරුවේ ස්වයංක් ‍ රීය සංවාද ටොගලය පෙන්වන්න" },
   "alert_updateAvail": { "message": "Update available" },

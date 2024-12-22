@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Prosíme o zaslání daru" },
   "about_version": { "message": "Verze" },
   "about_poweredBy": { "message": "Běží na" },
-  "about_sourceCode": { "message": "Zdrojový kód" },
+  "about_openSourceCode": { "message": "Otevřený zdrojový kód. " },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "Zobrazit přepínač Auto-Talk v postranním panelu" },
   "alert_updateAvail": { "message": "Aktualizace k dispozici" },

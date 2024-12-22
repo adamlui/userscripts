@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Iltimos, xayriya yuboring" },
   "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Tomonidan qo'llab-quvvatlanadi" },
-  "about_sourceCode": { "message": "Ochiq kod" },
+  "about_openSourceCode": { "message": "Ochiq kod" },
   "mode_autoTalk": { "message": "Avtomatik suhbat" },
   "helptip_toggleVis": { "message": "Yon panelda avtomatik gaplashish tugmachasini ko'rsatish" },
   "alert_updateAvail": { "message": "Mavjud yangilanishlar" },

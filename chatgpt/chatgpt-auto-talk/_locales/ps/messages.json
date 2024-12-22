@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "مهرباني وکړئ یوه بسپنه ولیږئ" },
   "about_version": { "message": ":نسخه" },
   "about_poweredBy": { "message": "طراحی شده توسط" },
-  "about_sourceCode": { "message": "سرچينه كوډه" },
+  "about_openSourceCode": { "message": "سرچينه كوډه" },
   "mode_autoTalk": { "message": "خپلکاره خبرې کول" },
   "helptip_toggleVis": { "message": "په اړخپټه کې د اتوماتیک خبرو ټګل وښایاست" },
   "alert_updateAvail": { "message": "اوسمهالیزې شته" },

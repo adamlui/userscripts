@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Kérjük, küldjön adományt" },
   "about_version": { "message": "Verió" },
   "about_poweredBy": { "message": "Kiszolgálja" },
-  "about_sourceCode": { "message": "Forráskód" },
+  "about_openSourceCode": { "message": "Open Source" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "Automatikus beszédváltás megjelenítése az oldalsávban" },
   "alert_updateAvail": { "message": "Frissítés érhető el" },

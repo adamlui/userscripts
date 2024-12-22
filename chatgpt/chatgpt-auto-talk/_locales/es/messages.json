@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Por favor, envíe una donación" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Con la tecnología de" },
-  "about_sourceCode": { "message": "Código fuente" },
+  "about_openSourceCode": { "message": "Cola ciega" },
   "mode_autoTalk": { "message": "Diálogo automático" },
   "helptip_toggleVis": { "message": "Mostrar alternancia de diálogo automático en la barra lateral" },
   "alert_updateAvail": { "message": "Actualización disponible" },

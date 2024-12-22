@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Vennligst send en donasjon" },
   "about_version": { "message": "Versjon" },
   "about_poweredBy": { "message": "Drevet av" },
-  "about_sourceCode": { "message": "Kildekode" },
+  "about_openSourceCode": { "message": "åpen kilde" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "Vis Auto-Talk-bryteren i sidefeltet" },
   "alert_updateAvail": { "message": "Oppdatering tilgjengelig" },

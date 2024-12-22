@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "براہ کرم ایک عطیہ بھیجیں" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "تقویت یافتہ از" },
-  "about_sourceCode": { "message": "کۆسی سەرچاوە" },
+  "about_openSourceCode": { "message": "کۆسی سەرچاوە" },
   "mode_autoTalk": { "message": "آٹو ٹاک" },
   "helptip_toggleVis": { "message": "سائڈبار میں آٹو ٹاک ٹوگل دکھائیں" },
   "alert_updateAvail": { "message": "اپڈیٹ دستیاب ہے" },

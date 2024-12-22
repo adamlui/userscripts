@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Ndapota tumira mupiro" },
   "about_version": { "message": "Vhezheni" },
   "about_poweredBy": { "message": "Inofambiswa ne" },
-  "about_sourceCode": { "message": "Kunobva kodhi" },
+  "about_openSourceCode": { "message": "Open source code" },
   "mode_autoTalk": { "message": "Auto-Kutaura" },
   "helptip_toggleVis": { "message": "Ratidza Auto-Talk toggle mu sidebar" },
   "alert_updateAvail": { "message": "Zadzisa zviripo" },

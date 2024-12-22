@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Schéckt w.e.g. eng Donatioun" },
   "about_version": { "message": "Versioun" },
   "about_poweredBy": { "message": "Bereetgestallt vun" },
-  "about_sourceCode": { "message": "Quellcode" },
+  "about_openSourceCode": { "message": "Open Source" },
   "mode_autoTalk": { "message": "CAA -" },
   "helptip_toggleVis": { "message": "Auto-Talk wiesselen an der Säitbar uweisen" },
   "alert_updateAvail": { "message": "Aktualiséierung verfügbar" },

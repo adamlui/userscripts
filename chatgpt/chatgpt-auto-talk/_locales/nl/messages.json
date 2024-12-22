@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Stuur een donatie" },
   "about_version": { "message": "Versie" },
   "about_poweredBy": { "message": "Ondersteund door" },
-  "about_sourceCode": { "message": "Broncode" },
+  "about_openSourceCode": { "message": "open bron" },
   "mode_autoTalk": { "message": "AUTOMATISCH BEANTWOORDEN" },
   "helptip_toggleVis": { "message": "Toon Auto-Talk-schakelaar in zijbalk" },
   "alert_updateAvail": { "message": "Güncelleme uygun" },

@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Пожалуйста, отправьте пожертвование" },
   "about_version": { "message": "Редакция" },
   "about_poweredBy": { "message": "На базе технологии" },
-  "about_sourceCode": { "message": "Исходный код" },
+  "about_openSourceCode": { "message": "Открытый исходный код" },
   "mode_autoTalk": { "message": "Авторазговор" },
   "helptip_toggleVis": { "message": "Показать переключатель Auto-Talk на боковой панели" },
   "alert_updateAvail": { "message": "Доступны обновления" },

@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Lütfen bağış gönderin" },
   "about_version": { "message": "Versiyon" },
   "about_poweredBy": { "message": "Destek" },
-  "about_sourceCode": { "message": "Kaynak Kodu" },
+  "about_openSourceCode": { "message": "Açık kaynak kodu" },
   "mode_autoTalk": { "message": "Otomatik Konuşma" },
   "helptip_toggleVis": { "message": "Kenar çubuğunda Otomatik Konuşma geçişini göster" },
   "alert_updateAvail": { "message": "Güncelleme uygun" },

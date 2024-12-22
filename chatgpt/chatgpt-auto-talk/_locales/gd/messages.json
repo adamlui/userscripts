@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Cuir tabhartas" },
   "about_version": { "message": "Tionndadh" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Bun-tùs a' chod" },
+  "about_openSourceCode": { "message": "Bun-tùs a' chod" },
   "mode_autoTalk": { "message": "A 'bruidhinn gu fèin - obrachail" },
   "helptip_toggleVis": { "message": "Seall toglaig gu fèin - obrachail sa bhàr - taoibh" },
   "alert_updateAvail": { "message": "Chan eil ùrachadh ri fhaighinn" },

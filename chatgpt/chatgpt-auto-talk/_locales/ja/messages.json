@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "寄付を送ってください" },
   "about_version": { "message": "バージョン" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "ソースコード" },
+  "about_openSourceCode": { "message": "Open Source" },
   "mode_autoTalk": { "message": "オートトーク" },
   "helptip_toggleVis": { "message": "サイドバーにオートトークトグルを表示" },
   "alert_updateAvail": { "message": "利用可能なアップデート" },

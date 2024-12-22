@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.8
+// @version             2024.12.21.9
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -304,7 +304,7 @@
         menuLabel_donate: 'Please send a donation',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         mode_autoTalk: 'Auto-Talk',
         helptip_toggleVis: 'Show Auto-Talk toggle in sidebar',
         alert_updateAvail: 'Update available',
@@ -586,7 +586,7 @@
                     + `⚡ ${app.msgs.about_poweredBy}: `
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                             + ` v${app.chatgptJSver}\n`
-                    + `📜 ${app.msgs.about_sourceCode}: `
+                    + `📜 ${app.msgs.about_openSourceCode}: `
                         + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons

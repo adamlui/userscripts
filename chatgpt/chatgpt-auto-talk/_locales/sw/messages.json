@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Tafadhali tuma mchango" },
   "about_version": { "message": "Toleo" },
   "about_poweredBy": { "message": "Imewezeshwa na" },
-  "about_sourceCode": { "message": "Msimbo wa chanzo" },
+  "about_openSourceCode": { "message": "Msimbo wa chanzo wazi" },
   "mode_autoTalk": { "message": "Mazungumzo ya Kiotomatiki" },
   "helptip_toggleVis": { "message": "Onyesha swichi ya Mazungumzo ya Kiotomatiki kwenye upau wa pembeni" },
   "alert_updateAvail": { "message": "Sasisho lipo" },

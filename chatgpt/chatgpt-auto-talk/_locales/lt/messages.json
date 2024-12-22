@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Siųskite auką" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Įgalino Proneta" },
-  "about_sourceCode": { "message": "Pradinis kodas" },
+  "about_openSourceCode": { "message": "Pradinis kodas" },
   "mode_autoTalk": { "message": "Automatinis kalbėjimas" },
   "helptip_toggleVis": { "message": "Rodyti automatinio kalbėjimo perjungimą šoninėje juostoje" },
   "alert_updateAvail": { "message": "Yra naujinys" },

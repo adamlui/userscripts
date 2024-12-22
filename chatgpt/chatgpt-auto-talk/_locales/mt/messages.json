@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Jekk jogħġbok ibgħat donazzjoni" },
   "about_version": { "message": "Verżjoni" },
   "about_poweredBy": { "message": "Imħaddem minn" },
-  "about_sourceCode": { "message": "Kodiċi tas-sors" },
+  "about_openSourceCode": { "message": "sors miftuħ" },
   "mode_autoTalk": { "message": "Taħdit Awtomatiku" },
   "helptip_toggleVis": { "message": "Uri l-bidla fit-Taħdit Awtomatiku fil-ġenb" },
   "alert_updateAvail": { "message": "Aġġornament ġdid disponibbli" },

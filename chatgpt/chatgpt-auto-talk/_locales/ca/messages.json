@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Envia una donació" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
-  "about_sourceCode": { "message": "Codi font" },
+  "about_openSourceCode": { "message": "Codi obert" },
   "mode_autoTalk": { "message": "Conversació automàtica" },
   "helptip_toggleVis": { "message": "Mostra el commutador de diàleg automàtic a la barra lateral" },
   "alert_updateAvail": { "message": "Nova versió disponible" },

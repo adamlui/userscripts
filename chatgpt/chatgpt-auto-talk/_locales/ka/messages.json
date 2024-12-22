@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Გაიღეთ შემოწირულობა" },
   "about_version": { "message": "ვერსია" },
   "about_poweredBy": { "message": "აგებულია KDE-ზე" },
-  "about_sourceCode": { "message": "საწყისი კოდი" },
+  "about_openSourceCode": { "message": "საწყისი კოდი" },
   "mode_autoTalk": { "message": "Ავტომატური საუბარი" },
   "helptip_toggleVis": { "message": "Გვერდითა ზოლში ავტომატური საუბრის გადართვის ჩვენება" },
   "alert_updateAvail": { "message": "ხელმისაწვდომია განახლება" },

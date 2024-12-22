@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Lūdzu, nosūtiet ziedojumu" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Izstrādāts" },
-  "about_sourceCode": { "message": "Avots" },
+  "about_openSourceCode": { "message": "Atklātais pirmkods" },
   "mode_autoTalk": { "message": "Automātiskā saruna" },
   "helptip_toggleVis": { "message": "Rādīt automātiskās sarunas pārslēgšanu sānjoslā" },
   "alert_updateAvail": { "message": "Pieejams jauninājums" },

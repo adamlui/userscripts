@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "សូមផ្ញើការបរិច្ចាគ" },
   "about_version": { "message": "លេខជំនាន់កម្មវិធី" },
   "about_poweredBy": { "message": "ដំណើរការ​ដោយ" },
-  "about_sourceCode": { "message": "កូដ​ដើម" },
+  "about_openSourceCode": { "message": "កូដ​ដើម" },
   "mode_autoTalk": { "message": "ការនិយាយដោយស្វ័យប្រវត្តិ" },
   "helptip_toggleVis": { "message": "បង្ហាញ បិទបើក ការ និយាយ ដោយ ស្វ័យ ប្រវត្តិ នៅ ក្នុង របារ ចំហៀង" },
   "alert_updateAvail": { "message": "ការអាប់ដេតមាន" },

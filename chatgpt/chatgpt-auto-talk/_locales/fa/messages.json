@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "لطفا کمک مالی بفرستید" },
   "about_version": { "message": "نسخه برنامه" },
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
-  "about_sourceCode": { "message": "سورس کد" },
+  "about_openSourceCode": { "message": "سورس کد" },
   "mode_autoTalk": { "message": "صحبت خودکار" },
   "helptip_toggleVis": { "message": "نمایش تغییر حالت Auto-Talk در نوار کناری" },
   "alert_updateAvail": { "message": "آپدیت موجود است" },

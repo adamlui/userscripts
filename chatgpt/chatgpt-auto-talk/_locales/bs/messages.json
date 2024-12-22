@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Pošaljite donaciju" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "omogućio" },
-  "about_sourceCode": { "message": "Izvorni kod" },
+  "about_openSourceCode": { "message": "Izvorni kod" },
   "mode_autoTalk": { "message": "Automatski razgovor" },
   "helptip_toggleVis": { "message": "Prikaži opciju automatskog razgovora u bočnoj traci" },
   "alert_updateAvail": { "message": "Ažuriranje dostupno" },

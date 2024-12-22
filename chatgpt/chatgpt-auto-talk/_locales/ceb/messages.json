@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Palihug ipadala ang usa ka donasyon" },
   "about_version": { "message": "Bersyon" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Gigikana sa kodigo" },
+  "about_openSourceCode": { "message": "Gigikana sa kodigo" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "Ipakita ang Auto-Talk toggle sa sidebar" },
   "alert_updateAvail": { "message": "Magamit ang pag-update" },

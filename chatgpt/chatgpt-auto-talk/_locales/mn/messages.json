@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Хандив илгээнэ үү" },
   "about_version": { "message": "Хувилбар" },
   "about_poweredBy": { "message": "ИЛЧЛЭГЧ" },
-  "about_sourceCode": { "message": "ᠰᠣᠷᠪᠤᠯᠵᠢ ᠺᠣᠳ᠋ " },
+  "about_openSourceCode": { "message": "Нээлттэй Эх сурвалж" },
   "mode_autoTalk": { "message": "Автоматаар яриа хийх" },
   "helptip_toggleVis": { "message": "Автоматаар аялахыг хажуу цэс рүү зөөх" },
   "alert_updateAvail": { "message": "Шинэчлэх (update) боломжтой" },

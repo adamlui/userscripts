@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Por favor, envíe unha doazón" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Fornecido por" },
-  "about_sourceCode": { "message": "Código fonte" },
+  "about_openSourceCode": { "message": "Código fonte" },
   "mode_autoTalk": { "message": "Conversa automática" },
   "helptip_toggleVis": { "message": "Mostrar a opción de conversa automática na barra lateral" },
   "alert_updateAvail": { "message": "Actualización dispoñible" },

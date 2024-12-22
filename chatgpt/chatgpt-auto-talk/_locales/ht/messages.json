@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Tanpri voye yon don/S 'il vous plaî" },
   "about_version": { "message": "Vèsyon" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "kòd sous/ code source / le code source mis à jour/code en langage source" },
+  "about_openSourceCode": { "message": "Kòd sous louvri" },
   "mode_autoTalk": { "message": "Oto-Pale" },
   "helptip_toggleVis": { "message": "Montre Oto-Pale aktive nan ankadre" },
   "alert_updateAvail": { "message": "Mizajou ki disponib" },

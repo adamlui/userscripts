@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "કૃપા કરીને દાન મોકલો" },
   "about_version": { "message": "આવૃત્તિ" },
   "about_poweredBy": { "message": "દ્વારા સંચાલિત" },
-  "about_sourceCode": { "message": "સ્ત્રોત કોડ" },
+  "about_openSourceCode": { "message": "સ્ત્રોત કોડ" },
   "mode_autoTalk": { "message": "સ્વતઃ ચર્ચા" },
   "helptip_toggleVis": { "message": "સાઇડબારમાં આપોઆપ-ટૉક ટૉગલ બતાવો" },
   "alert_updateAvail": { "message": "સુધારો ઉપલબ્ધ" },

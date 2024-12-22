@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Mangyaring magpadala ng isang pagpap" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Нерӯмандшуда аз тарафи" },
-  "about_sourceCode": { "message": "Рамзи манбаъ" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "mode_autoTalk": { "message": "Ð  Ð ° Ð ¼ Ð ¾ Ð" },
   "helptip_toggleVis": { "message": "Намоиши тугмаи гуфтугӯи худкор дар панели канорӣ" },
   "alert_updateAvail": { "message": "I-update ang magagamit" },

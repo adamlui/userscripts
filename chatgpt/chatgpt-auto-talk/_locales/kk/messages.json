@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Қайырымдылық жасауыңызды сұраймыз" },
   "about_version": { "message": "Нұсқа" },
   "about_poweredBy": { "message": "Сайтты жасаған" },
-  "about_sourceCode": { "message": "Бастапқы код" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "mode_autoTalk": { "message": "Автоматты сөйлесу" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада Auto-Talk (Автоматты сөйлеу) ауыстыруын көрсету" },
   "alert_updateAvail": { "message": "Қолжетімді жаңарту" },

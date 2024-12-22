@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Сураныч, кайрымдуулук жөнөтүңүз" },
   "about_version": { "message": "Версиясы" },
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
-  "about_sourceCode": { "message": "Баштапкы код" },
+  "about_openSourceCode": { "message": "Баштапкы код" },
   "mode_autoTalk": { "message": "Авто-сүйлөшүү" },
   "helptip_toggleVis": { "message": "Dialogs-action" },
   "alert_updateAvail": { "message": "Баяндалмасы табылган жок" },

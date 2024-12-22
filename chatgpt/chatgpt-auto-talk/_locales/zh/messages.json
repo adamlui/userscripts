@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "请捐款" },
   "about_version": { "message": "版本" },
   "about_poweredBy": { "message": "技术支持方" },
-  "about_sourceCode": { "message": "源代码" },
+  "about_openSourceCode": { "message": "开源代码" },
   "mode_autoTalk": { "message": "自动通话" },
   "helptip_toggleVis": { "message": "在侧边栏中显示自动通话切换" },
   "alert_updateAvail": { "message": "有最新版本" },

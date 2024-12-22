@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Vui lòng gửi khoản quyên góp" },
   "about_version": { "message": "Phiên bản" },
   "about_poweredBy": { "message": "Cung cấp bởi " },
-  "about_sourceCode": { "message": "Mã nguồn" },
+  "about_openSourceCode": { "message": "Nguồn mở" },
   "mode_autoTalk": { "message": "Tự động nói chuyện" },
   "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động nói chuyện trong thanh bên" },
   "alert_updateAvail": { "message": "Cập nhật có sẵn" },

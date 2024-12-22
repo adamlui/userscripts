@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Στείλτε μια δωρεά" },
   "about_version": { "message": "Έκδοση" },
   "about_poweredBy": { "message": "Με την υποστήριξη" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Ανοιχτός κώδικας. " },
   "mode_autoTalk": { "message": "Αυτόματη συνομιλία" },
   "helptip_toggleVis": { "message": "Εμφάνιση εναλλαγής αυτόματης ομιλίας στην πλαϊνή γραμμή" },
   "alert_updateAvail": { "message": "Υπάρχει διαθέσιμη ενημέρωση" },

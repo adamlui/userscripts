@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་གྲོགས་རམ་བྱིན་" },
   "about_version": { "message": "ཐོན་རིམ།" },
   "about_poweredBy": { "message": "དབང་ཤུགས་ཀྱི་ཐོག་ལས་" },
-  "about_sourceCode": { "message": "ཐོན་ཁུངས་ཀོཌ་" },
+  "about_openSourceCode": { "message": "ཁ་ཕྱེ་ཡོད་པའི་འབྱུང་ཁུངས་ཀོཌ་" },
   "mode_autoTalk": { "message": "རང་མགོ་རང་འདྲོངས་" },
   "helptip_toggleVis": { "message": "སྒོ་བསྡམས་སའི་ཟུར་ནང་ རང་བཞིན་གྱི་ཁ་སླབ་ལྡེ་མིག་ཅིག་སྟོན་" },
   "alert_updateAvail": { "message": "ད་ལྟོའི་དུས་ཚོད།" },

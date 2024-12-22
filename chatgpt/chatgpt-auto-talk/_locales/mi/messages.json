@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "Tukua mai he takoha" },
   "about_version": { "message": "Whakaaturanga" },
   "about_poweredBy": { "message": "Te mana o te mana" },
-  "about_sourceCode": { "message": "Waehere puna" },
+  "about_openSourceCode": { "message": "Waehere puna tuwhera" },
   "mode_autoTalk": { "message": "Auto-Talk" },
   "helptip_toggleVis": { "message": "Whakaatu Auto-Talk toggle i te taha" },
   "alert_updateAvail": { "message": "Ngā whakahoutanga e wātea ana" },

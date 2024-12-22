@@ -7,7 +7,7 @@
   "menuLabel_donate": { "message": "অনুগ্রহ করে একটি অনুদান পাঠান" },
   "about_version": { "message": "সংস্করণ" },
   "about_poweredBy": { "message": "নিবেদন করছেন" },
-  "about_sourceCode": { "message": "সোর্স কোড" },
+  "about_openSourceCode": { "message": "সোর্স কোড" },
   "mode_autoTalk": { "message": "অটো-টক" },
   "helptip_toggleVis": { "message": "সাইডবারে অটো-টক টগল দেখান" },
   "alert_updateAvail": { "message": "আপডেট উপলব্ধ" },
