@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.6
+// @version             2024.12.21.7
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -983,11 +983,11 @@
     }).observe(document[env.site == 'poe' ? 'head' : 'body'], { attributes: true, subtree: true })
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(handleSchemeChange).observe( // site scheme changes
+    new MutationObserver(handleSchemePrefChange).observe( // site scheme changes
         document.documentElement, { attributes: true, attributeFilter: ['class', 'data-color-scheme'] })
     window.matchMedia('(prefers-color-scheme: dark)').onchange = () => // browser/system scheme changes
-        requestAnimationFrame(handleSchemeChange)
-    function handleSchemeChange() { env.scheme = getScheme() ; modals.stylize() ; btns.update.color() }
+        requestAnimationFrame(handleSchemePrefChange)
+    function handleSchemePrefChange() { env.scheme = getScheme() ; modals.stylize() ; btns.update.color() }
 
     // Monitor SIDEBAR to update full-window setting
     if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
