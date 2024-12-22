@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.21.6
+// @version               2024.12.21.7
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3973,7 +3973,7 @@
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
     saveAppDiv() // to fight Brave mutations
 
-    // Monitor SCHEME PREF changes to update env.ui.app.scheme if auto-scheme mode
+    // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
     new MutationObserver(handleSchemePrefChange).observe( // class changes from Brave Search theme settings
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
