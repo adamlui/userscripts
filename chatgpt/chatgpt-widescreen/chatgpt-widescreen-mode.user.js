@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.9
+// @version             2024.12.21.10
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -287,7 +287,7 @@
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
-        latestAssetCommitHash: '0332908' // for cached app.json + messages.json
+        latestAssetCommitHash: 'b825162' // for cached app.json + messages.json
     }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
