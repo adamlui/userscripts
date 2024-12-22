@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.7
+// @version             2024.12.21.8
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -490,10 +490,10 @@
     notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(handleSchemePrefChange).observe( // site scheme changes
+    new MutationObserver(handleSchemePrefChange).observe( // site scheme pref changes
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    window.matchMedia('(prefers-color-scheme: dark)').onchange = () => // browser/system scheme changes
-        requestAnimationFrame(handleSchemePrefChange)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // browser/system scheme pref changes
+        'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.scheme != displayedScheme) { env.scheme = displayedScheme ;  modals.stylize() }
