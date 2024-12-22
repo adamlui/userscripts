@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.3
+// @version             2024.12.21.4
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -986,8 +986,11 @@
     }).observe(document.body, { attributes: true, subtree: true })
 
     // Monitor SCHEME CHANGES to update sidebar toggle + modal colors
-    new MutationObserver(() => { env.scheme = getScheme() ; toggles.sidebar.update.color() ; modals.stylize() })
-        .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    new MutationObserver(handleSchemeChange).observe( // site scheme changes
+        document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    window.matchMedia('(prefers-color-scheme: dark)').onchange = () => // browser/system scheme changes
+        requestAnimationFrame(handleSchemeChange)
+    function handleSchemeChange() { env.scheme = getScheme() ; toggles.sidebar.update.color() ; modals.stylize() }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
