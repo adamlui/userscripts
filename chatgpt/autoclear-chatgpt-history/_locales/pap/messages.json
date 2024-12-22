@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Por fabor haci un donacion" },
   "about_version": { "message": "Vershon" },
   "about_poweredBy": { "message": "Potenciá por" },
-  "about_sourceCode": { "message": "Kódigo di fuente" },
+  "about_openSourceCode": { "message": "Codigo Fuente Abierto" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Un po 'di storia ahora" },
   "helptip_toggleVis": { "message": "Tocando a tope na lateral" },

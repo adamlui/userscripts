@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਦਾਨ ਭੇਜੋ" },
   "about_version": { "message": "ਵਰਜਨ" },
   "about_poweredBy": { "message": "ਦੁਆਰਾ ਸੰਚਾਲਿਤ" },
-  "about_sourceCode": { "message": "ਸੂਤਰ ਸੰਕੇਤਾਵਲੀ" },
+  "about_openSourceCode": { "message": "ਸਰੋਤ ਕੋਡ@ info: whatsthis" },
   "mode_autoclear": { "message": "ਆਟੋ - ਸਾਫ਼" },
   "helptip_clearNow": { "message": "ਹੁਣ ਚੈਟ ਦਾ ਇਤਿਹਾਸ ਸਾਫ਼ ਕਰੋ" },
   "helptip_toggleVis": { "message": "ਬਾਹੀ ਵਿੱਚ ਆਟੋ- ਕਲੀਅਰ ਟੌਗਲ ਵੇਖੋ" },

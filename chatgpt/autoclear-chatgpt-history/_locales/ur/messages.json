@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "براہ کرم ایک عطیہ بھیجیں" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "تقویت یافتہ از" },
-  "about_sourceCode": { "message": "کۆسی سەرچاوە" },
+  "about_openSourceCode": { "message": "کۆسی سەرچاوە" },
   "mode_autoclear": { "message": "خود بخود صاف کریں" },
   "helptip_clearNow": { "message": "ابھی چیٹ کی سرگزشت صاف کریں" },
   "helptip_toggleVis": { "message": "سائڈبار میں آٹو کلیئر ٹوگل دکھائیں" },

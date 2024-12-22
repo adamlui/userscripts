@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Prosíme o zaslání daru" },
   "about_version": { "message": "Verze" },
   "about_poweredBy": { "message": "Běží na" },
-  "about_sourceCode": { "message": "Zdrojový kód" },
+  "about_openSourceCode": { "message": "Otevřený zdrojový kód. " },
   "mode_autoclear": { "message": "Automatické vymazání" },
   "helptip_clearNow": { "message": "Vymazat historii chatu nyní" },
   "helptip_toggleVis": { "message": "Zobrazit přepínač Automatické vymazání v postranním panelu" },

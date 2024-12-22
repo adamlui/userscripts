@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Kātaki ʻo ʻave ha foaki" },
   "about_version": { "message": "Tatau" },
   "about_poweredBy": { "message": "Fakalele ʻe he" },
-  "about_sourceCode": { "message": "Maʻuʻanga fakamatala" },
+  "about_openSourceCode": { "message": "Fakaava ʻa e kouti maʻuʻanga tokoni" },
   "mode_autoclear": { "message": "Meʻalele-fakaʻataʻata" },
   "helptip_clearNow": { "message": "Fakaʻataʻata ʻa e hisitolia ʻo e talanoa he taimi" },
   "helptip_toggleVis": { "message": "Fakaʻasi ʻa e tuʻu ʻa e meʻalele ʻi he tafaʻaki" },

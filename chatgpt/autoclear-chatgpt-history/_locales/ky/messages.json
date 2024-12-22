@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Сураныч, кайрымдуулук жөнөтүңүз" },
   "about_version": { "message": "Версиясы" },
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
-  "about_sourceCode": { "message": "Баштапкы код" },
+  "about_openSourceCode": { "message": "Баштапкы код" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Чат тарыхын азыр тазалоо" },
   "helptip_toggleVis": { "message": "Бет тилкесинде Авто тазалоо өтмөгүн көрсөтүү" },

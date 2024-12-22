@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Пожалуйста, отправьте пожертвование" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "На базе технологии" },
-  "about_sourceCode": { "message": "Исходный код" },
+  "about_openSourceCode": { "message": "Открытый исходный код" },
   "mode_autoclear": { "message": "Автоматическая очистка" },
   "helptip_clearNow": { "message": "Удалить историю чата" },
   "helptip_toggleVis": { "message": "Показать переключатель Auto-Clear на боковой панели" },

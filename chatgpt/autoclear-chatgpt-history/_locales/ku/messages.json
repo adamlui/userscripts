@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Ji kerema xwe bexşê bişînin" },
   "about_version": { "message": "وەرژن" },
   "about_poweredBy": { "message": "ڕاگرتن لە لای" },
-  "about_sourceCode": { "message": "کۆدی سەرچاوە" },
+  "about_openSourceCode": { "message": "Koda çavkanî" },
   "mode_autoclear": { "message": "خۆکارانە پاک بکە" },
   "helptip_clearNow": { "message": "Naha dîroka chatê paqij bike" },
   "helptip_toggleVis": { "message": "Veguheztina Oto-Paqijkirina li kêlekê nîşan bide" },

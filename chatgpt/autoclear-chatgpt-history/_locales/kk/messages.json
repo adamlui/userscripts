@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Қайырымдылық жасауыңызды сұраймыз" },
   "about_version": { "message": "Нұсқа" },
   "about_poweredBy": { "message": "Сайтты жасаған" },
-  "about_sourceCode": { "message": "Бастапқы код" },
+  "about_openSourceCode": { "message": "@ info: whatsthis" },
   "mode_autoclear": { "message": "Автоматты тазалау" },
   "helptip_clearNow": { "message": "Қазір сөйлесу тарихын тазалау" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада автоматты түрде тазалау ауыстырғышын көрсету" },

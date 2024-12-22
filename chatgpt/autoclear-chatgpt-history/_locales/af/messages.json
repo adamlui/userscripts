@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Stuur asseblief 'n donasie" },
   "about_version": { "message": "Weergawe" },
   "about_poweredBy": { "message": "Aangedryf deur" },
-  "about_sourceCode": { "message": "Oorsprong Kode" },
+  "about_openSourceCode": { "message": "Oopbronkode" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Maak kletsgeskiedenis nou skoon" },
   "helptip_toggleVis": { "message": "Vertoon Outo- Leier skakelaar in sybalk" },

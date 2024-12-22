@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "مهرباني وکړئ یوه بسپنه ولیږئ" },
   "about_version": { "message": ":نسخه" },
   "about_poweredBy": { "message": "طراحی شده توسط" },
-  "about_sourceCode": { "message": "سرچينه كوډه" },
+  "about_openSourceCode": { "message": "سرچينه كوډه" },
   "mode_autoclear": { "message": "اتومات لارموندنه" },
   "helptip_clearNow": { "message": "اوس د خبرو مخینه پاکه کړئ" },
   "helptip_toggleVis": { "message": "په اړخپټه کې د اتومات - پلنوالي څرنګتياونج ښکاره کړئ" },

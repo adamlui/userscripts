@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Jekk jogħġbok ibgħat donazzjoni" },
   "about_version": { "message": "Verżjoni" },
   "about_poweredBy": { "message": "Imħaddem minn" },
-  "about_sourceCode": { "message": "Kodiċi tas-sors" },
+  "about_openSourceCode": { "message": "sors miftuħ" },
   "mode_autoclear": { "message": "Neħħi l-Awtomatikament" },
   "helptip_clearNow": { "message": "Neħħi l-istorja taċ-chat issa" },
   "helptip_toggleVis": { "message": "Uri l-bidla awtomatika fil-gidebar" },

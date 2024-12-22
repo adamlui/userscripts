@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Lütfen bağış gönderin" },
   "about_version": { "message": "Versiyon" },
   "about_poweredBy": { "message": "Destek" },
-  "about_sourceCode": { "message": "Kaynak Kodu" },
+  "about_openSourceCode": { "message": "Açık kaynak kodu" },
   "mode_autoclear": { "message": "Otomatik Temizle" },
   "helptip_clearNow": { "message": "Sohbet geçmişini şimdi temizle" },
   "helptip_toggleVis": { "message": "Kenar çubuğunda Otomatik Temizle geçişini göster" },

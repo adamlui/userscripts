@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Prześlij darowiznę" },
   "about_version": { "message": "Wersja" },
   "about_poweredBy": { "message": "Obsługiwane przez" },
-  "about_sourceCode": { "message": "Kod źródłowy" },
+  "about_openSourceCode": { "message": "Otwarty kod PHP" },
   "mode_autoclear": { "message": "Automatyczne czyszczenie" },
   "helptip_clearNow": { "message": "Wyczyść historię czatu" },
   "helptip_toggleVis": { "message": "Pokaż przełącznik automatycznego czyszczenia na pasku bocznym" },

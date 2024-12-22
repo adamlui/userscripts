@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ദയവായി ഒരു സംഭാവന അയയ്ക്കുക" },
   "about_version": { "message": "പതിപ്പ്" },
   "about_poweredBy": { "message": "നയിച്ചത്" },
-  "about_sourceCode": { "message": "സോഴ്സ് കോഡ്" },
+  "about_openSourceCode": { "message": "ഓപ്പൺ സോഴ്സ് കോഡ്" },
   "mode_autoclear": { "message": "ഓട്ടോ-ക്ലിയർ" },
   "helptip_clearNow": { "message": "ചാറ്റ് ഹിസ്റ്ററി ഇപ്പോൾ മായ്‌ക്കുക" },
   "helptip_toggleVis": { "message": "സൈഡ്ബാറിൽ യാന്ത്രിക ക്ലിയർ ടോഗിൾ കാണിക്കുക" },

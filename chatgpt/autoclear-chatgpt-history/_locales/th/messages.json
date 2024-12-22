@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "โปรดส่งเงินบริจาค" },
   "about_version": { "message": "เวอร์ชัน" },
   "about_poweredBy": { "message": "สนับสนุนโดย" },
-  "about_sourceCode": { "message": "รหัสต้นฉบับ" },
+  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ " },
   "mode_autoclear": { "message": "ล้างอัตโนมัติ" },
   "helptip_clearNow": { "message": "ล้างประวัติการแชทเลย" },
   "helptip_toggleVis": { "message": "แสดงการสลับการล้างอัตโนมัติในแถบด้านข้าง" },

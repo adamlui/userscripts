@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "لطفا کمک مالی بفرستید" },
   "about_version": { "message": "نسخه برنامه" },
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
-  "about_sourceCode": { "message": "سورس کد" },
+  "about_openSourceCode": { "message": "سورس کد" },
   "mode_autoclear": { "message": "پاک کردن خودکار" },
   "helptip_clearNow": { "message": "اکنون سابقه چت را پاک کنید" },
   "helptip_toggleVis": { "message": "نمایش کلید پاکسازی خودکار در نوار کناری" },

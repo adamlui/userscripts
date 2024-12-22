@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Palihug ipadala ang usa ka donasyon" },
   "about_version": { "message": "Bersyon" },
   "about_poweredBy": { "message": "Gipadagan sa" },
-  "about_sourceCode": { "message": "Gigikana sa kodigo" },
+  "about_openSourceCode": { "message": "Gigikana sa kodigo" },
   "mode_autoclear": { "message": "Autoplay Loop" },
   "helptip_clearNow": { "message": "Tin-aw nga chat kasaysayan karon" },
   "helptip_toggleVis": { "message": "Ipakita ang Auto-Clear toggle sa sidebar" },

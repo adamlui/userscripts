@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Envia una donació" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
-  "about_sourceCode": { "message": "Codi font" },
+  "about_openSourceCode": { "message": "Codi obert" },
   "mode_autoclear": { "message": "Esborra automàticament" },
   "helptip_clearNow": { "message": "Esborra l'historial del xat ara" },
   "helptip_toggleVis": { "message": "Mostra el commutador de neteja automàtica a la barra lateral" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ສະນັ້ນ ໃຫ້ບໍລິຈາກ" },
   "about_version": { "message": "ຮຸ່ນ" },
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
-  "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
+  "about_openSourceCode": { "message": "ລະຫັດແຫຼ່ງເປີດ" },
   "mode_autoclear": { "message": "ອັດຕະໂນມັດ-ການຮຽນຮູ້" },
   "helptip_clearNow": { "message": "ລ້າງປະຫວັດການສົນທະນາຕອນນີ້" },
   "helptip_toggleVis": { "message": "ສະແດງອັດຕະໂນມັດ-Clear toggle ໃນແຖບຂ້າງ" },

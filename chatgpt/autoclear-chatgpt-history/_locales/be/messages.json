@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Калі ласка, дашліце ахвяраванне" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Пры падтрымцы" },
-  "about_sourceCode": { "message": "Зыходнікі" },
+  "about_openSourceCode": { "message": "Зыходнікі" },
   "mode_autoclear": { "message": "Аўтаачыстка" },
   "helptip_clearNow": { "message": "Ачысціць гісторыю чата зараз" },
   "helptip_toggleVis": { "message": "Паказваць аўтаматычную ачыстку перамыкача ў бакавой панэлі" },

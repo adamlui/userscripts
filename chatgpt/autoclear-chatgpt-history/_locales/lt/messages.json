@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Siųskite auką" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Įgalino Proneta" },
-  "about_sourceCode": { "message": "Pradinis kodas" },
+  "about_openSourceCode": { "message": "Pradinis kodas" },
   "mode_autoclear": { "message": "Automatinis valymas" },
   "helptip_clearNow": { "message": "Išvalyti pokalbių istoriją dabar" },
   "helptip_toggleVis": { "message": "Rodyti automatinio išvalymo perjungimą šoninėje juostoje" },

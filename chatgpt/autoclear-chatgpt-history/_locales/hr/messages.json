@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Pošaljite donaciju" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "Pokreće" },
-  "about_sourceCode": { "message": "Izvorni kod" },
+  "about_openSourceCode": { "message": "Izvorni kod" },
   "mode_autoclear": { "message": "automatsko �i��enje" },
   "helptip_clearNow": { "message": "Odmah izbriši povijest razgovora" },
   "helptip_toggleVis": { "message": "Prikaži prekidač automatskog čišćenja u bočnoj traci" },

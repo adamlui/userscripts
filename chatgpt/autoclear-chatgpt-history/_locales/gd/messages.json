@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Cuir tabhartas" },
   "about_version": { "message": "Tionndadh" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Bun-tùs a' chod" },
+  "about_openSourceCode": { "message": "Bun-tùs a' chod" },
   "mode_autoclear": { "message": "Glan gu fèin - obrachail" },
   "helptip_clearNow": { "message": "Falamhaich eachdraidh a 'chabadaich a - nis" },
   "helptip_toggleVis": { "message": "Seall toglaig gu fèin - obrachail sa bhàr - taoibh" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Send en donation" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Drevet af" },
-  "about_sourceCode": { "message": "Kildekode" },
+  "about_openSourceCode": { "message": "åben kilde" },
   "mode_autoclear": { "message": "Ryd automatisk" },
   "helptip_clearNow": { "message": "Ryd chathistorik nu" },
   "helptip_toggleVis": { "message": "Vis automatisk slukning i sidebjælken" },

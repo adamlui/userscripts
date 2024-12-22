@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Faamolemole auina atu se foaʻi" },
   "about_version": { "message": "Faaliliuga" },
   "about_poweredBy": { "message": "Malosiaga e ala i" },
-  "about_sourceCode": { "message": "Punaoa code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Talafaasolopito o le talatalanoaga manino i le taimi nei" },
   "helptip_toggleVis": { "message": "Faaali atu Auto-Clear toggle i sidebar" },

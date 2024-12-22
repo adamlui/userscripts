@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Vui lòng gửi khoản quyên góp" },
   "about_version": { "message": "Phiên bản" },
   "about_poweredBy": { "message": "Cung cấp bởi" },
-  "about_sourceCode": { "message": "Mã nguồn" },
+  "about_openSourceCode": { "message": "Nguồn mở" },
   "mode_autoclear": { "message": "Tự động xóa" },
   "helptip_clearNow": { "message": "Xóa lịch sử trò chuyện ngay bây giờ" },
   "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động xóa trong thanh bên" },

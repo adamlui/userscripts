@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Kirimkan donasi" },
   "about_version": { "message": "Versi" },
   "about_poweredBy": { "message": "Didukung oleh" },
-  "about_sourceCode": { "message": "Kode sumber" },
+  "about_openSourceCode": { "message": "Sumber Terbuka" },
   "mode_autoclear": { "message": "Bersihkan Otomatis" },
   "helptip_clearNow": { "message": "Hapus riwayat obrolan sekarang" },
   "helptip_toggleVis": { "message": "Tampilkan Auto - Clear toggle di bilah sisi" },

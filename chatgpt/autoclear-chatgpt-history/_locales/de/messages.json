@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Bitte spenden Sie" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Unterstützt von" },
-  "about_sourceCode": { "message": "Quellcode" },
+  "about_openSourceCode": { "message": "Quellcodeoffen" },
   "mode_autoclear": { "message": "Automatisch löschen" },
   "helptip_clearNow": { "message": "Chat-Verlauf jetzt löschen" },
   "helptip_toggleVis": { "message": "Auto-Clear-Schalter in der Seitenleiste anzeigen" },

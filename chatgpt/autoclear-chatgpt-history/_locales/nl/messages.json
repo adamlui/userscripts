@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Stuur een donatie" },
   "about_version": { "message": "Versie" },
   "about_poweredBy": { "message": "Ondersteund door" },
-  "about_sourceCode": { "message": "Broncode" },
+  "about_openSourceCode": { "message": "open bron" },
   "mode_autoclear": { "message": "Auto-opruiming" },
   "helptip_clearNow": { "message": "Chatgeschiedenis nu wissen" },
   "helptip_toggleVis": { "message": "Schakelen automatisch wissen in zijbalk weergeven" },

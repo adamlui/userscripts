@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Στείλτε μια δωρεά" },
   "about_version": { "message": "Έκδοση" },
   "about_poweredBy": { "message": "Με την υποστήριξη" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Ανοιχτός κώδικας. " },
   "mode_autoclear": { "message": "Αυτόματος καθαρισμός" },
   "helptip_clearNow": { "message": "Διαγραφή ιστορικού συνομιλίας τώρα" },
   "helptip_toggleVis": { "message": "Εμφάνιση αυτόματης εκκαθάρισης στην πλαϊνή γραμμή" },

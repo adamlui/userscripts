@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.7
+// @version             2024.12.21.8
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -302,7 +302,7 @@
         menuLabel_donate: 'Please send a donation',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         mode_autoclear: 'Auto-Clear',
         helptip_clearNow: 'Clear chat history now',
         helptip_toggleVis: 'Show Auto-Clear toggle in sidebar',
@@ -599,7 +599,7 @@
                     + `⚡ ${app.msgs.about_poweredBy}: `
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                             + ` v${app.chatgptJSver}\n`
-                    + `📜 ${app.msgs.about_sourceCode}: `
+                    + `📜 ${app.msgs.about_openSourceCode}: `
                         + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons

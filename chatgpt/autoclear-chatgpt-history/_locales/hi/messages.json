@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "कृपया दान भेजें" },
   "about_version": { "message": "संस्करण" },
   "about_poweredBy": { "message": "...द्वारा पावरशुदा" },
-  "about_sourceCode": { "message": "सोर्स कोड" },
+  "about_openSourceCode": { "message": "सोर्स कोड" },
   "mode_autoclear": { "message": "ऑटो - क्लियर" },
   "helptip_clearNow": { "message": "चैट का इतिहास अभी साफ़ करें" },
   "helptip_toggleVis": { "message": "साइडबार में ऑटो - क्लियर टॉगल दिखाएँ" },

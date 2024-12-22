@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "기부금을 보내주세요" },
   "about_version": { "message": "버전" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "원본 코드" },
+  "about_openSourceCode": { "message": "오픈소스" },
   "mode_autoclear": { "message": "자동 삭제 모드" },
   "helptip_clearNow": { "message": "채팅 기록 삭제" },
   "helptip_toggleVis": { "message": "사이드바에 자동 지우기 토글 표시" },

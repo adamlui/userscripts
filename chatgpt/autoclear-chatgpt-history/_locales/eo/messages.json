@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Sendu al mi donacon" },
   "about_version": { "message": "Versio" },
   "about_poweredBy": { "message": "funkciigita de" },
-  "about_sourceCode": { "message": "Fontkodo" },
+  "about_openSourceCode": { "message": "Fontkodo" },
   "mode_autoclear": { "message": "Aŭtomate purigi" },
   "helptip_clearNow": { "message": "Forviŝi babilhistorion nun" },
   "helptip_toggleVis": { "message": "Montri aŭtomate malplenan ŝnurstangeton en flankobreto" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Invia una donazione" },
   "about_version": { "message": "Versione" },
   "about_poweredBy": { "message": "Alimentato da" },
-  "about_sourceCode": { "message": "Codice sorgente" },
+  "about_openSourceCode": { "message": "Codice open source" },
   "mode_autoclear": { "message": "Cancellazione automatica" },
   "helptip_clearNow": { "message": "Cancella ora la cronologia chat" },
   "helptip_toggleVis": { "message": "Mostra attivazione/disattivazione automatica nella barra laterale" },

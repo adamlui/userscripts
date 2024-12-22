@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Vennligst send en donasjon" },
   "about_version": { "message": "Versjon" },
   "about_poweredBy": { "message": "Drevet av" },
-  "about_sourceCode": { "message": "Kildekode" },
+  "about_openSourceCode": { "message": "åpen kilde" },
   "mode_autoclear": { "message": "Auto-tøm" },
   "helptip_clearNow": { "message": "Tøm chatloggen nå" },
   "helptip_toggleVis": { "message": "Vis Auto-slett-bryteren i sidefeltet" },

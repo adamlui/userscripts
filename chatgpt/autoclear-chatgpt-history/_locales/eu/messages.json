@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Mesedez, bidali dohaintza" },
   "about_version": { "message": "Bertsioa" },
   "about_poweredBy": { "message": "Teknologia" },
-  "about_sourceCode": { "message": "Iturburu kode" },
+  "about_openSourceCode": { "message": "Kode ireki" },
   "mode_autoclear": { "message": "Automatikoki garbitu" },
   "helptip_clearNow": { "message": "Garbitu txat-historia orain" },
   "helptip_toggleVis": { "message": "Erakutsi Garbitu automatikoko etengailua alboko barran" },

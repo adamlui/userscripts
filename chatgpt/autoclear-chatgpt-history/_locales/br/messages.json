@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Ne gasit ket un testeni" },
   "about_version": { "message": "Handelv" },
   "about_poweredBy": { "message": "Powered by" },
-  "about_sourceCode": { "message": "Kod orin" },
+  "about_openSourceCode": { "message": "Kod tarzh digor" },
   "mode_autoclear": { "message": "Claro" },
   "helptip_clearNow": { "message": "Diverkañ istor ar flapañ bremañ" },
   "helptip_toggleVis": { "message": "Diskouez an alc'hwez Diverkañ emgefre er varrenn gostez" },

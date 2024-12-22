@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ကျေးဇူးပြု ၍ လှူဒါန်းမှုတစ်ခု ပေးပို့ပါ" },
   "about_version": { "message": "ဗားရှင်း" },
   "about_poweredBy": { "message": "မှပံ့ပိုးသည်" },
-  "about_sourceCode": { "message": "ပင္မကုဒ္" },
+  "about_openSourceCode": { "message": "ပွင့်လင်းအရင်းအမြစ်ကုဒ်" },
   "mode_autoclear": { "message": "အလိုအလျောက်ရှင်းလင်းခြင်း" },
   "helptip_clearNow": { "message": "စကားပြောရာဇဝင်ကို ယခု ရှင်းလင်းပါ" },
   "helptip_toggleVis": { "message": "ဘေးဘားတွင် အလိုအလျောက် ပြသပါ" },

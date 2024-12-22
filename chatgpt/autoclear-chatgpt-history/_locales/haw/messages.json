@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "E ʻoluʻolu e hoʻouna i haʻawina" },
   "about_version": { "message": "Manao" },
   "about_poweredBy": { "message": "Hoʻāmana ʻia e" },
-  "about_sourceCode": { "message": "Hoʻopā'ālua" },
+  "about_openSourceCode": { "message": "Wehe kumu kumu" },
   "mode_autoclear": { "message": "Holoʻokoʻa" },
   "helptip_clearNow": { "message": "Holoi i ka mōʻaukala kamaʻilio i kēia manawa" },
   "helptip_toggleVis": { "message": "Hōʻike i ka hoʻololi ʻokoʻa hoʻomaʻemaʻe ma ka ʻaoʻao ʻaoʻao" },

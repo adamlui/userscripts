@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Por favor, envíe una donación" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Desarrollado por" },
-  "about_sourceCode": { "message": "Código fuente" },
+  "about_openSourceCode": { "message": "Cola ciega" },
   "mode_autoclear": { "message": "Borrar automáticamente" },
   "helptip_clearNow": { "message": "Borrar historial de chat" },
   "helptip_toggleVis": { "message": "Mostrar botón de borrado automático en la barra lateral" },

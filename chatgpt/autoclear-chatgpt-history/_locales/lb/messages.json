@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Schéckt w.e.g. eng Donatioun" },
   "about_version": { "message": "Versioun" },
   "about_poweredBy": { "message": "Bereetgestallt vun" },
-  "about_sourceCode": { "message": "Quellcode" },
+  "about_openSourceCode": { "message": "Open Source" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Chatgeschicht elo läschen" },
   "helptip_toggleVis": { "message": "Auto-Clear wiesselen an der Säitbar uweisen" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ביטע שיקן אַ צושטייַער" },
   "about_version": { "message": "ווערסיע" },
   "about_poweredBy": { "message": "פּאַוערד דורך" },
-  "about_sourceCode": { "message": "מקור קאָד" },
+  "about_openSourceCode": { "message": "עפֿענען מקור קאָד" },
   "mode_autoclear": { "message": "אַוטאָ-קלאָר" },
   "helptip_clearNow": { "message": "איצט ויסמעקן שמועס געשיכטע" },
   "helptip_toggleVis": { "message": "ווייַזן אַוטאָ-קלאָר טאַגאַל אין סיידבאַר" },

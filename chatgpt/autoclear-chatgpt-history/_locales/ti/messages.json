@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "ብኽብረትካ በጃኻ ውህበት ልኢኽካ" },
   "about_version": { "message": "መበል" },
   "about_poweredBy": { "message": "ብ" },
-  "about_sourceCode": { "message": "ምንጪ ኮድ" },
+  "about_openSourceCode": { "message": "ክፉት ምንጪ ኮድ" },
   "mode_autoclear": { "message": "ኣውቶ-ትምህርቲ" },
   "helptip_clearNow": { "message": "ንጹህ ታሪኽ ቻት ሕጂ" },
   "helptip_toggleVis": { "message": "ኣብ ጎኒ ባር ናይ ኣውቶ-ትምህርቲ መትረብ ኣርኢ" },

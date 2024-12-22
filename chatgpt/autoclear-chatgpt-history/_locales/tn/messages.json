@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Ke kopa gore o romele moneelo" },
   "about_version": { "message": "VERSION" },
   "about_poweredBy": { "message": "E tsamaisiwa ke" },
-  "about_sourceCode": { "message": "Source code" },
+  "about_openSourceCode": { "message": "Open source code" },
   "mode_autoclear": { "message": "Auto-Clear" },
   "helptip_clearNow": { "message": "Hisitori ya motlotlo e e tlhaloganyesegang sentle jaanong jaana" },
   "helptip_toggleVis": { "message": "SHOW Auto-Clear toggle in sidebar" },

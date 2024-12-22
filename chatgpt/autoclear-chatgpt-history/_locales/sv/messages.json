@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Vänligen skicka en donation" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Drivs av" },
-  "about_sourceCode": { "message": "Källkod" },
+  "about_openSourceCode": { "message": "öppen källkod" },
   "mode_autoclear": { "message": "Automatisk rensning" },
   "helptip_clearNow": { "message": "Rensa chatthistoriken nu" },
   "helptip_toggleVis": { "message": "Visa Auto-Clear växling i sidofältet" },

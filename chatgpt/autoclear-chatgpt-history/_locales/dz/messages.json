@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་གྲོགས་རམ་བྱིན་" },
   "about_version": { "message": "ཐོན་རིམ།" },
   "about_poweredBy": { "message": "དབང་ཤུགས་ཀྱི་ཐོག་ལས་" },
-  "about_sourceCode": { "message": "ཐོན་ཁུངས་ཀོཌ་" },
+  "about_openSourceCode": { "message": "ཁ་ཕྱེ་ཡོད་པའི་འབྱུང་ཁུངས་ཀོཌ་" },
   "mode_autoclear": { "message": "རང་བཞིན་གྱི་མིང་" },
   "helptip_clearNow": { "message": "Chatroulette གི་ལོ་རྒྱུས་འདི་ ད་ལྟོ་གསལ་སྒྲགས་འབད་" },
   "helptip_toggleVis": { "message": "ཟུར་ཟུར་ལུ་ རང་བཞིན་གྱི་སློབ་སྦྱོང་ལྡེ་མིག་ཅིག་སྟོན་" },

@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "Ndapota tumira mupiro" },
   "about_version": { "message": "Vhezheni" },
   "about_poweredBy": { "message": "Inofambiswa ne" },
-  "about_sourceCode": { "message": "Kunobva kodhi" },
+  "about_openSourceCode": { "message": "Open source code" },
   "mode_autoclear": { "message": "Auto-yakavharwa" },
   "helptip_clearNow": { "message": "Yakajeka nhoroondo yekukurukurirana ikozvino" },
   "helptip_toggleVis": { "message": "Ratidza Auto-Clear toggle mu sidebar" },

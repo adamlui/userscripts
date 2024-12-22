@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "অনুগ্রহ করে একটি অনুদান পাঠান" },
   "about_version": { "message": "সংস্করণ" },
   "about_poweredBy": { "message": "নিবেদন করছেন" },
-  "about_sourceCode": { "message": "সোর্স কোড" },
+  "about_openSourceCode": { "message": "সোর্স কোড" },
   "mode_autoclear": { "message": "অটো- ক্লিয়ার" },
   "helptip_clearNow": { "message": "এখনই চ্যাটের ইতিহাস সাফ করুন" },
   "helptip_toggleVis": { "message": "সাইডবারে অটো-ক্লিয়ার টগল দেখান" },
