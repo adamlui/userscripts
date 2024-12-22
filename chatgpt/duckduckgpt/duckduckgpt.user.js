@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.21.5
+// @version                2024.12.21.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3954,9 +3954,11 @@
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
 
-    // Observe for DDG SCHEME CHANGES to update DDGPT scheme if auto-scheme mode
-    new MutationObserver(handleSchemePrefChange).observe( // class changes from DDG appearance settings
+    // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
+    new MutationObserver(handleSchemePrefChange).observe( // for site scheme pref changes
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
+        'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
