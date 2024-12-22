@@ -313,7 +313,7 @@
         menuLabel_disabled: 'Disabled (extension installed)',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         mode_wideScreen: 'Wide screen',
         mode_fullWindow: 'Full-window',
         mode_fullScreen: 'Full screen',
