@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Nastavení" },
   "about_version": { "message": "Verze" },
   "about_poweredBy": { "message": "Běží na" },
-  "about_sourceCode": { "message": "Zdrojový kód" },
+  "about_openSourceCode": { "message": "Otevřený zdrojový kód. " },
   "scheme_light": { "message": "Světlo" },
   "scheme_dark": { "message": "Tmavý" },
   "mode_proxy": { "message": "Režim proxy" },

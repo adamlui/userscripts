@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Системийн тохиргоо" },
   "about_version": { "message": "Хувилбар" },
   "about_poweredBy": { "message": "ИЛЧЛЭГЧ" },
-  "about_sourceCode": { "message": "Эх код" },
+  "about_openSourceCode": { "message": "Нээлттэй Эх сурвалж" },
   "scheme_light": { "message": "гэрэл" },
   "scheme_dark": { "message": "Харанхуй" },
   "mode_proxy": { "message": "Proxy Горим" },

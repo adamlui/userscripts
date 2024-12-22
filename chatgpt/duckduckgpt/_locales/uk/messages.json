@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Налаштування" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Працює на" },
-  "about_sourceCode": { "message": "Джерельний код" },
+  "about_openSourceCode": { "message": "Джерельний код" },
   "scheme_light": { "message": "Невеликий" },
   "scheme_dark": { "message": "Темна" },
   "mode_proxy": { "message": "Режим проксі-сервера" },

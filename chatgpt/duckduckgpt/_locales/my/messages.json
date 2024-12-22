@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "ဆက္တင္မ်ား" },
   "about_version": { "message": "ဗားရှင်း" },
   "about_poweredBy": { "message": "မှပံ့ပိုးသည်" },
-  "about_sourceCode": { "message": "ပင္မကုဒ္" },
+  "about_openSourceCode": { "message": "ပွင့်လင်းအရင်းအမြစ်ကုဒ်" },
   "scheme_light": { "message": "အလင်း" },
   "scheme_dark": { "message": "အမှောင်" },
   "mode_proxy": { "message": "Proxy မုဒ်" },

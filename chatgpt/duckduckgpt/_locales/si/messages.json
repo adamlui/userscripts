@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "සැකසුම්" },
   "about_version": { "message": "වෙළුම" },
   "about_poweredBy": { "message": "විසින් බල ගැන්වී ඇත" },
-  "about_sourceCode": { "message": "මූලාශ්‍ර කේතය" },
+  "about_openSourceCode": { "message": "විවෘත කේතය" },
   "scheme_light": { "message": "ආලෝකය" },
   "scheme_dark": { "message": "අඳුරු" },
   "mode_proxy": { "message": "ප් ‍ රොක්සි ප් ‍ රකාරය" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Ngā Tautuhinga" },
   "about_version": { "message": "Whakaaturanga" },
   "about_poweredBy": { "message": "Te mana o te mana" },
-  "about_sourceCode": { "message": "Waehere puna" },
+  "about_openSourceCode": { "message": "Waehere puna tuwhera" },
   "scheme_light": { "message": "Light" },
   "scheme_dark": { "message": "He pouri" },
   "mode_proxy": { "message": "Mode Proxy" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Configuració" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
-  "about_sourceCode": { "message": "Codi font" },
+  "about_openSourceCode": { "message": "Codi obert" },
   "scheme_light": { "message": "Clar" },
   "scheme_dark": { "message": "Fosc" },
   "mode_proxy": { "message": "Mode de servidor intermediari" },

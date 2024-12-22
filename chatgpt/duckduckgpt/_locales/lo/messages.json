@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "ການຕັ້ງຄ່າ" },
   "about_version": { "message": "ຮຸ່ນ" },
   "about_poweredBy": { "message": "ຂັບເຄື່ອນໂດຍ" },
-  "about_sourceCode": { "message": "ຊອດສ໌ໂຄດ" },
+  "about_openSourceCode": { "message": "ລະຫັດແຫຼ່ງເປີດ" },
   "scheme_light": { "message": "ແສງສະຫວ່າງ" },
   "scheme_dark": { "message": "ສີມືດ" },
   "mode_proxy": { "message": "ໂໝດໂປຣແກຣມ" },

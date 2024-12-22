@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Fikirana" },
   "about_version": { "message": "Dika" },
   "about_poweredBy": { "message": "Tantanin'ny" },
-  "about_sourceCode": { "message": "Kaody Loharano" },
+  "about_openSourceCode": { "message": "Kaody niaingana" },
   "scheme_light": { "message": "Mazava" },
   "scheme_dark": { "message": "Maizina" },
   "mode_proxy": { "message": "Fomba Proxy" },

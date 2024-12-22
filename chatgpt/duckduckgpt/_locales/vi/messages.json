@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Cài đặt" },
   "about_version": { "message": "Phiên bản" },
   "about_poweredBy": { "message": "Cung cấp bởi" },
-  "about_sourceCode": { "message": "Mã nguồn" },
+  "about_openSourceCode": { "message": "Nguồn mở" },
   "scheme_light": { "message": "Hạng nhẹ" },
   "scheme_dark": { "message": "Tối" },
   "mode_proxy": { "message": "Chế độ proxy IP" },

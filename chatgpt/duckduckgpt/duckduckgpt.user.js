@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.21.3
+// @version                2024.12.21.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -285,7 +285,7 @@
         menuLabel_settings: 'Settings',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         scheme_light: 'Light',
         scheme_dark: 'Dark',
         mode_proxy: 'Proxy Mode',
@@ -1105,7 +1105,7 @@
                     + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
                         + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                             + ` v${app.chatgptJSver}\n`
-                    + '📜 ' + ( app.msgs.about_sourceCode )
+                    + '📜 ' + ( app.msgs.about_openSourceCode )
                         + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                             + app.urls.gitHub + '</a>',
                 [ // buttons

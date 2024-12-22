@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Iestatījumi" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Izstrādāts" },
-  "about_sourceCode": { "message": "Pirmkods" },
+  "about_openSourceCode": { "message": "Atklātais pirmkods" },
   "scheme_light": { "message": "Videi draudzīgs&#10;Produktam jābūt izgatavotam no ilgtspējīgiem materiāliem, lai radītu minimālu ietekmi uz vidi" },
   "scheme_dark": { "message": "Tumša" },
   "mode_proxy": { "message": "Starpniekservera režīms" },

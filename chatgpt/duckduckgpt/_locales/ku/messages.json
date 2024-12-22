@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Mîheng" },
   "about_version": { "message": "وەرژن" },
   "about_poweredBy": { "message": "پارێزراوە لەلایەن" },
-  "about_sourceCode": { "message": "کۆدی سەرچاوە" },
+  "about_openSourceCode": { "message": "Koda çavkanî" },
   "scheme_light": { "message": "Ronahî" },
   "scheme_dark": { "message": "تاریک" },
   "mode_proxy": { "message": "Mode Proxy" },

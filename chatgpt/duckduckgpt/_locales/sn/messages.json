@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Masetingi" },
   "about_version": { "message": "Vhezheni" },
   "about_poweredBy": { "message": "Inofambiswa ne" },
-  "about_sourceCode": { "message": "Kunobva kodhi" },
+  "about_openSourceCode": { "message": "Open source code" },
   "scheme_light": { "message": "Chiedza" },
   "scheme_dark": { "message": "Rima" },
   "mode_proxy": { "message": "Proxy Mode" },

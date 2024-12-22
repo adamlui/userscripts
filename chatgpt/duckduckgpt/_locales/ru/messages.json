@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Настройки" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "На базе технологии" },
-  "about_sourceCode": { "message": "Исходный код" },
+  "about_openSourceCode": { "message": "Открытый исходный код" },
   "scheme_light": { "message": "Светлая" },
   "scheme_dark": { "message": "Тёмная" },
   "mode_proxy": { "message": "режим прокси" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "&მორგება" },
   "about_version": { "message": "ვერსია" },
   "about_poweredBy": { "message": "აგებულია KDE-ზე" },
-  "about_sourceCode": { "message": "საწყისი კოდი" },
+  "about_openSourceCode": { "message": "საწყისი კოდი" },
   "scheme_light": { "message": "მცირედი" },
   "scheme_dark": { "message": "ბნელი" },
   "mode_proxy": { "message": "Პროქსი რეჟიმი" },
