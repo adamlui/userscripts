@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "à²µà²¿à²²à³à²® à²à²¯à³à²à³@ action: inmenu Go" },
   "about_version": { "message": "ಆವೃತ್ತಿ" },
   "about_poweredBy": { "message": "ಸಾಮರ್ಥ್ಯ ಇವರಿಂದ" },
-  "about_sourceCode": { "message": "ಮೂಲ ಕೋಡ್" },
+  "about_openSourceCode": { "message": "ಓಪನ್ ಸೋರ್ಸ್ ಕೋಡ್" },
   "scheme_light": { "message": "ಬೆಳಕು" },
   "scheme_dark": { "message": "ಗಾಢ" },
   "mode_proxy": { "message": "ಪ್ರಾಕ್ಸಿ ಮೋಡ್" },

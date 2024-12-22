@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "הגדרות" },
   "about_version": { "message": "גירסה" },
   "about_poweredBy": { "message": "באמצעות" },
-  "about_sourceCode": { "message": "קוד מקור" },
+  "about_openSourceCode": { "message": "קוד מקור" },
   "scheme_light": { "message": "בהיר" },
   "scheme_dark": { "message": "כהה" },
   "mode_proxy": { "message": "מצב מתווך" },

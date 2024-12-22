@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Seaded" },
   "about_version": { "message": "Versioon" },
   "about_poweredBy": { "message": "Toiteallikaks" },
-  "about_sourceCode": { "message": "Lähtekood" },
+  "about_openSourceCode": { "message": "lähtekood" },
   "scheme_light": { "message": "Hele" },
   "scheme_dark": { "message": "Tume" },
   "mode_proxy": { "message": "Puhverrežiim" },

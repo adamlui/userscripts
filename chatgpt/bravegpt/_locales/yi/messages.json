@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "סעטטינגס" },
   "about_version": { "message": "ווערסיע" },
   "about_poweredBy": { "message": "פּאַוערד דורך" },
-  "about_sourceCode": { "message": "מקור קאָד" },
+  "about_openSourceCode": { "message": "עפֿענען מקור קאָד" },
   "scheme_light": { "message": "ליכט" },
   "scheme_dark": { "message": "טונקל" },
   "mode_proxy": { "message": "פּראָקסי מאָדע" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Diseting" },
   "about_version": { "message": "Thanolo" },
   "about_poweredBy": { "message": "E tsamaisiwa ke" },
-  "about_sourceCode": { "message": "Khoutu ya motswedi" },
+  "about_openSourceCode": { "message": "Open source code" },
   "scheme_light": { "message": "Ga e bofefo" },
   "scheme_dark": { "message": "Letobo" },
   "mode_proxy": { "message": "Proxy Mode" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Чычканды ырастоо" },
   "about_version": { "message": "Версиясы" },
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
-  "about_sourceCode": { "message": "Баштапкы код" },
+  "about_openSourceCode": { "message": "Баштапкы код" },
   "scheme_light": { "message": "Жарык" },
   "scheme_dark": { "message": "Караңгы" },
   "mode_proxy": { "message": "Прокси режими" },

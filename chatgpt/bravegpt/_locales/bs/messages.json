@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Postavke" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "omogućio" },
-  "about_sourceCode": { "message": "Izvorni kod" },
+  "about_openSourceCode": { "message": "Izvorni kod" },
   "scheme_light": { "message": "Svijetlo" },
   "scheme_dark": { "message": "Taman" },
   "mode_proxy": { "message": "Režim proxyja" },

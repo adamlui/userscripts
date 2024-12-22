@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Mipangilio" },
   "about_version": { "message": "Toleo" },
   "about_poweredBy": { "message": "Imewezeshwa na" },
-  "about_sourceCode": { "message": "Msimbo wa chanzo" },
+  "about_openSourceCode": { "message": "Msimbo wa chanzo wazi" },
   "scheme_light": { "message": "Nuru" },
   "scheme_dark": { "message": "Giza" },
   "mode_proxy": { "message": "Hali ya Wakala" },

@@ -25,7 +25,7 @@
   "menuLabel_settings": { "message": "Ayarlar" },
   "about_version": { "message": "Versiyon" },
   "about_poweredBy": { "message": "Destek" },
-  "about_sourceCode": { "message": "Kaynak Kodu" },
+  "about_openSourceCode": { "message": "Açık kaynak kodu" },
   "scheme_light": { "message": "Açık" },
   "scheme_dark": { "message": "Koyu" },
   "mode_proxy": { "message": "Proxy Modu" },
