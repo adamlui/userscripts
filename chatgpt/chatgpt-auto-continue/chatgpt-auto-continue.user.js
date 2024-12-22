@@ -290,7 +290,7 @@
         menuLabel_disabled: 'Disabled (extension installed)',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
-        about_sourceCode: 'Source code',
+        about_openSourceCode: 'Open source code',
         mode_autoContinue: 'Auto-Continue',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
         alert_updateAvail: 'Update available',
