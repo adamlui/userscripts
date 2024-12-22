@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.21.5
+// @version               2024.12.21.6
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3973,11 +3973,11 @@
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
     saveAppDiv() // to fight Brave mutations
 
-    // Observe/listen for site + system SCHEME PREF changes to update app scheme if auto-scheme mode
+    // Monitor SCHEME PREF changes to update env.ui.app.scheme if auto-scheme mode
     new MutationObserver(handleSchemePrefChange).observe( // class changes from Brave Search theme settings
         document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    window.matchMedia('(prefers-color-scheme: dark)') // window.matchMedia changes from browser/system settings
-        .onchange = handleSchemePrefChange
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
+        'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         if (config.scheme) return // since light/dark hard-set
         const newScheme = isDarkMode() ? 'dark' : 'light'
