@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.2
+// @version             2024.12.23.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -403,17 +403,14 @@
                     notify(`${settings.controls[key].label}: ${
                         menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                 }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
-            })
+            });
 
-            // Add About entry
-            const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, () => modals.open('about'),
-                tooltipsSupported ? { title: ' ' } : undefined ))
-
-            // Add Donate entry
-            const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-            menu.ids.push(GM_registerMenuCommand(donateLabel, () => modals.open('donate'),
-                tooltipsSupported ? { title: ' ' } : undefined ))
+            // Add About/Donate entries
+            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+                `${ entryType == 'about' ? '💡' : '💖' }`
+                    + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
+                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+            )))
         },
 
         refresh() {
