@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.1
+// @version             2024.12.23.2
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -607,7 +607,8 @@
                 modals.dragHandlers.draggableElem = event.currentTarget
                 modals.dragHandlers.draggableElem.style.cursor = 'grabbing'
                 event.preventDefault(); // prevent sub-elems like icons being draggable
-                ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.dragHandlers[event]))
+                ['mousemove', 'mouseup'].forEach(eventType =>
+                    document.addEventListener(eventType, modals.dragHandlers[eventType]))
                 const draggableElemRect = modals.dragHandlers.draggableElem.getBoundingClientRect()
                 modals.dragHandlers.offsetX = event.clientX - draggableElemRect.left +21
                 modals.dragHandlers.offsetY = event.clientY - draggableElemRect.top +12
@@ -623,8 +624,8 @@
 
             mouseup() { // remove listeners, reset modals.dragHandlers.draggableElem
                 modals.dragHandlers.draggableElem.style.cursor = 'inherit';
-                ['mousemove', 'mouseup'].forEach(event =>
-                    document.removeEventListener(event, modals.dragHandlers[event]))
+                ['mousemove', 'mouseup'].forEach(eventType =>
+                    document.removeEventListener(eventType, modals.dragHandlers[eventType]))
                 modals.dragHandlers.draggableElem = null
             }
         },
