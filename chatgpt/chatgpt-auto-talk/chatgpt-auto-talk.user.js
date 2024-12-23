@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.21.11
+// @version             2024.12.23
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -265,7 +265,7 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        scheme: getScheme()
+        ui: { scheme: getScheme() }
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -452,7 +452,7 @@
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
-        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.scheme == 'dark' ? '' : 'shadow')
+        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
         const notif = document.querySelector('.chatgpt-notif:last-child')
 
         // Append styled state word
@@ -501,33 +501,33 @@
                   + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
                       + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
-                  + `color: ${ env.scheme == 'dark' ? 'white' : 'black' } !important ;`
+                  + `color: ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + `background-image: linear-gradient(180deg, ${
-                       env.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
+                       env.ui.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
               + `.${this.class} [class*=modal-close-btn] {`
                   + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
                   + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
               + `.${this.class} [class*=modal-close-btn] svg { height: 10px }`
               + `.${this.class} [class*=modal-close-btn] path {`
-                  + `${ env.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-              + ( env.scheme == 'dark' ?  // invert dark mode hover paths
+                  + `${ env.ui.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + ( env.ui.scheme == 'dark' ?  // invert dark mode hover paths
                     `.${this.class} [class*=modal-close-btn]:hover path { stroke: black ; fill: black }` : '' )
               + `.${this.class} [class*=modal-close-btn]:hover { background-color: #f2f2f2 }` // hover underlay
               + `.${this.class} [class*=modal-close-btn] svg { margin: 11.5px }` // center SVG for hover underlay
-              + `.${this.class} a { color: #${ env.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + `.${this.class} a { color: #${ env.ui.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + `.${this.class} h2 { font-weight: bold }`
               + `.${this.class} button {`
                   + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
                   + 'border-radius: 0 !important ;' // square borders
                   + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
                   + 'cursor: pointer !important ;' // add finger cursor
-                  + `border: 1px solid ${ env.scheme == 'dark' ? 'white' : 'black' } !important ;`
+                  + `border: 1px solid ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + 'padding: 8px !important ; min-width: 102px }' // resize
               + `.${this.class} button:hover {` // add zoom, re-scheme
                   + 'transform: scale(1.055) ; color: black !important ;'
-                  + `background-color: #${ env.scheme == 'dark' ? '00cfff' : '9cdaff' } !important }`
+                  + `background-color: #${ env.ui.scheme == 'dark' ? '00cfff' : '9cdaff' } !important }`
               + ( !env.browser.isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
-              + `.about-em { color: ${ env.scheme == 'dark' ? 'white' : 'green' } !important }`
+              + `.about-em { color: ${ env.ui.scheme == 'dark' ? 'white' : 'green' } !important }`
             )
         },
 
@@ -650,7 +650,7 @@
                       + `${app.msgs.alert_directlySupports}.</p>`
                   + `<p>${app.msgs.alert_tyForSupport}!</p>`
                   + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
-                      + `${ env.scheme == 'dark' ? 'white' : 'black' }.png" `
+                      + `${ env.ui.scheme == 'dark' ? 'white' : 'black' }.png" `
                       + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
                   + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
                       + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
@@ -762,7 +762,7 @@
           + 'z-index: -1'; // allow interactive elems to be clicked
         ['sm', 'med', 'lg'].forEach(starSize => {
             const starsDiv = document.createElement('div')
-            starsDiv.id = `${ env.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+            starsDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
             starsDivsContainer.append(starsDiv)
         })
         targetNode.prepend(starsDivsContainer)
@@ -856,9 +856,9 @@
                     const knobSpan = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.knobSpan}`),
                           navicon = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.navicon}`)
                     knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
-                        + ( env.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
+                        + ( env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
                     navicon.src = `${app.urls.assetHost }/assets/images/icons/speaker/${
-                        env.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
+                        env.ui.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
                 },
 
                 state() {
@@ -888,7 +888,7 @@
     // Init BROWSER/UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
     await chatgpt.sidebar.isLoaded()
-    env.ui = { firstLink: chatgpt.getNewChatLink() };
+    env.ui.firstLink = chatgpt.getNewChatLink();
 
     // Add STARS styles
     ['brs', 'wrs'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
@@ -923,8 +923,8 @@
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
-        if (env.scheme != displayedScheme) {
-            env.scheme = displayedScheme ; toggles.sidebar.update.color() ; modals.stylize() }
+        if (env.ui.scheme != displayedScheme) {
+            env.ui.scheme = displayedScheme ; toggles.sidebar.update.color() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
