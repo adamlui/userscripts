@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.7
+// @version             2024.12.23.8
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -277,10 +277,10 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1]
+        site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1], ui: {}
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.scheme = getScheme()
+    env.ui.scheme = getScheme()
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -398,8 +398,8 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Export DEPENDENCIES to imported resources
-    dom.dependencies.import({ env }) // for env.scheme
-    modals.dependencies.import({ app, env, updateCheck }) // for app data + env.scheme + update callback in modals.about
+    dom.dependencies.import({ env }) // for env.ui.scheme
+    modals.dependencies.import({ app, env, updateCheck }) // for app data + env.ui.scheme + modals.about
     settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
 
     // Init SETTINGS
@@ -487,7 +487,7 @@
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
-        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.scheme == 'dark' ? '' : 'shadow')
+        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
         const notif = document.querySelector('.chatgpt-notif:last-child')
 
         // Append styled state word
@@ -649,7 +649,7 @@
             color() {
                 btns.color = (
                     /chatgpt|openai/.test(env.site) ? (
-                        document.querySelector('.dark.bg-black') || env.scheme == 'dark' ? 'white' : '#202123' )
+                        document.querySelector('.dark.bg-black') || env.ui.scheme == 'dark' ? 'white' : '#202123' )
                   : env.site == 'perplexity' ? (
                         document.documentElement.dataset.colorScheme == 'dark' ?
                             'oklch(var(--dark-text-color-100)/var(--tw-text-opacity))'
@@ -922,7 +922,7 @@
         const chatgptAlertStyle = dom.create.style()
         chatgptAlertStyle.id = 'chatgpt-alert-override-style'
         chatgptAlertStyle.innerText = (
-            ( env.scheme == 'dark' ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
+            ( env.ui.scheme == 'dark' ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
         )
         document.head.append(chatgptAlertStyle)
     }
@@ -1010,7 +1010,8 @@
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
-        if (env.scheme != displayedScheme) { env.scheme = displayedScheme ; modals.stylize() ; btns.update.color() }
+        if (env.ui.scheme != displayedScheme) {
+            env.ui.scheme = displayedScheme ; modals.stylize() ; btns.update.color() }
     }
 
     // Monitor SIDEBAR to update full-window setting
