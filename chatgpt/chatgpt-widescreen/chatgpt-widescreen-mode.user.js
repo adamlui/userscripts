@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.11
+// @version             2024.12.23.12
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -438,11 +438,14 @@
             });
 
             // Add About/Donate entries
-            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
-                `${ entryType == 'about' ? '💡' : '💖' }`
-                    + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
-                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
-            )))
+            ['about', 'donate'].forEach(entryType => {
+                if (entryType === 'donate' && env.extensionInstalled) return
+                menu.ids.push(GM_registerMenuCommand(
+                    `${ entryType == 'about' ? '💡' : '💖' }`
+                        + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
+                    () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                ))
+            })
         },
 
         refresh() {
