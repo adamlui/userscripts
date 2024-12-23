@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.21.6
+// @version                2024.12.23
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1059,7 +1059,8 @@
                     modals.handlers.drag.draggableElem = event.currentTarget
                     modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
                     event.preventDefault(); // prevent sub-elems like icons being draggable
-                    ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.handlers.drag[event]))
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.addEventListener(eventType, modals.handlers.drag[eventType]))
                     const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect(),
                           targetModalIsSettings = event.currentTarget.closest('[id*=-settings]')
                     modals.handlers.drag.offsetX = (
@@ -1078,8 +1079,8 @@
 
                 mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
                     modals.handlers.drag.draggableElem.style.cursor = 'inherit';
-                    ['mousemove', 'mouseup'].forEach(event =>
-                        document.removeEventListener(event, modals.handlers.drag[event]))
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.removeEventListener(eventType, modals.handlers.drag[eventType]))
                     modals.handlers.drag.draggableElem = null
                 }
 
