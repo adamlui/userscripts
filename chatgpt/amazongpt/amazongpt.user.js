@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.21.3
+// @version                2024.12.23
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -881,7 +881,8 @@
                     modals.handlers.drag.draggableElem = event.currentTarget
                     modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
                     event.preventDefault(); // prevent sub-elems like icons being draggable
-                    ['mousemove', 'mouseup'].forEach(event => document.addEventListener(event, modals.handlers.drag[event]))
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.addEventListener(eventType, modals.handlers.drag[eventType]))
                     const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect()
                     modals.handlers.drag.offsetX = event.clientX - draggableElemRect.left +21
                     modals.handlers.drag.offsetY = event.clientY - draggableElemRect.top +12
@@ -897,8 +898,8 @@
 
                 mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
                     modals.handlers.drag.draggableElem.style.cursor = 'inherit';
-                    ['mousemove', 'mouseup'].forEach(event =>
-                        document.removeEventListener(event, modals.handlers.drag[event]))
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.removeEventListener(eventType, modals.handlers.drag[eventType]))
                     modals.handlers.drag.draggableElem = null
                 }
 
