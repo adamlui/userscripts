@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.8
+// @version             2024.12.23.9
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,8 +242,8 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@50fc700ea40e796015a0ccbcf6097ec43aa4c654/chrome/extension/components/modals.js#sha256-f5d0jrL7XuKohKZMypvZcX0A61U11w0dM8HZazw3B/8=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@15c2d82616f95eebfcb7ed98bf63fbbbfa19cc71/chrome/extension/lib/dom.js#sha256-q8/Xm3k9wcj0qWmIkrDSa3rowIyjjIzG44Q2bZkHfF0=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7556b05e60686664ff88cacbf237a1ae7c48510b/chrome/extension/components/modals.js#sha256-AWzeQ47QKkBbumDDSLhLS1fQgoFzTfua+GUpe5mVjO0=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7556b05e60686664ff88cacbf237a1ae7c48510b/chrome/extension/lib/dom.js#sha256-mMUljWP1ZlSgzGCVZmMLv4LAiKHeE190CHpMPlIaX9s=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7fa71708a5e8587e322c222640e75ad78e94925e/chrome/extension/lib/settings.js#sha256-+eJZpeHRSC3tGzlY5ytQwjIkW1OFAx+ooxEpFdX9tc8=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
