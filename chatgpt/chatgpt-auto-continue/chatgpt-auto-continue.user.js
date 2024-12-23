@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.3
+// @version             2024.12.23.4
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -387,11 +387,14 @@
             });
 
             // Add About/Donate entries
-            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
-                `${ entryType == 'about' ? '💡' : '💖' }`
-                    + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
-                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
-            )))
+            ['about', 'donate'].forEach(entryType => {
+                if (entryType === 'donate' && env.extensionInstalled) return
+                menu.ids.push(GM_registerMenuCommand(
+                    `${ entryType == 'about' ? '💡' : '💖' }`
+                        + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
+                    () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                ))
+            })
         },
 
         refresh() {
