@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.10
+// @version             2024.12.23.11
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -435,19 +435,14 @@
                             menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
                 }
-            })
+            });
 
-            // Add About entry
-            const aboutLabel = `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, () => modals.open('about'),
-                tooltipsSupported ? { title: ' ' } : undefined ))
-
-            // Add Donate entry
-            if (!env.extensionInstalled) {
-                const donateLabel = `💖 ${app.msgs.menuLabel_donate}`
-                menu.ids.push(GM_registerMenuCommand(donateLabel, () => modals.open('donate'),
-                    tooltipsSupported ? { title: ' ' } : undefined ))
-            }
+            // Add About/Donate entries
+            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+                `${ entryType == 'about' ? '💡' : '💖' }`
+                    + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
+                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+            )))
         },
 
         refresh() {
