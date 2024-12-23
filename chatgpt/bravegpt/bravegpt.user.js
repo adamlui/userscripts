@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.23
+// @version               2024.12.23.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -641,17 +641,13 @@
                           + settings.controls.proxyAPIenabled.label + ' '
                           + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
             menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
-                tooltipsSupported ? { title: settings.controls.proxyAPIenabled.helptip } : undefined))
+                tooltipsSupported ? { title: settings.controls.proxyAPIenabled.helptip } : undefined));
 
-            // Add About entry
-            const aboutLabel = `💡 ${settings.controls.about.label}`
-            menu.ids.push(GM_registerMenuCommand(aboutLabel, () => modals.open('about'),
-                tooltipsSupported ? { title: ' ' } : undefined ))
-
-            // Add Settings entry
-            const settingsLabel = `⚙️ ${app.msgs.menuLabel_settings}`
-            menu.ids.push(GM_registerMenuCommand(settingsLabel, () => modals.open('settings'),
-                tooltipsSupported ? { title: ' ' } : undefined))
+            // Add About/Settings entries
+            ['about', 'settings'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+                entryType == 'about' ? `💡 ${settings.controls.about.label}` : `⚙️ ${app.msgs.menuLabel_settings}`,
+                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+            )))
         },
 
         refresh() {
