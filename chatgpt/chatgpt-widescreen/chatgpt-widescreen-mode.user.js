@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.13
+// @version             2024.12.23.14
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -702,7 +702,7 @@
              && !(type == 'newChat' && config.ncbDisabled))
         },
 
-        preiewAnimations() { // used in sync.configToUI() on Button Animations toggle-on
+        previewAnimations() { // used in sync.configToUI() on Button Animations toggle-on
             const btnHoverStyles = new RegExp(`.${btns.class}:hover\\s*\\{([^}]*)\\}`, 'm')
                 .exec(tweaksStyle.innerText)?.[1].trim()
             document.querySelectorAll(`.${btns.class}`).forEach((btn, idx) =>
@@ -864,8 +864,8 @@
             chatbar.tweak() // update chatgpt.com chatbar inner width
             menu.refresh() // to update state symbol/suffix
             if (options?.updatedKey == 'btnAnimationsDisabled' && !config.btnAnimationsDisabled) // apply/remove fx
-                // ...to visually signal location affected by Button Animations toggle-on
-                btns.preiewAnimations()
+                // ...to visually signal location + preview fx applied by Button Animations toggle-on
+                btns.previewAnimations()
         }
     }
 
