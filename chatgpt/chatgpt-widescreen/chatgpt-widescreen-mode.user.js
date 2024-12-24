@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.16
+// @version             2024.12.23.17
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -504,8 +504,8 @@
 
         get() {
             let chatbar = document.querySelector(sites[env.site].selectors.input)
-            const parentLvls = /chatgpt|openai/.test(env.site) ? 3 : 2
-            for (let i = 0 ; i < parentLvls ; i++) chatbar = chatbar?.parentNode
+            const lvlsToParent = /chatgpt|openai/.test(env.site) ? 3 : 2
+            for (let i = 0 ; i < lvlsToParent ; i++) chatbar = chatbar?.parentNode
             return chatbar
         },
 
