@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.14
+// @version             2024.12.23.15
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -705,12 +705,13 @@
         previewAnimations() { // used in sync.configToUI() on Button Animations toggle-on
             const btnHoverStyles = new RegExp(`.${btns.class}:hover\\s*\\{([^}]*)\\}`, 'm')
                 .exec(tweaksStyle.innerText)?.[1].trim()
-            document.querySelectorAll(`.${btns.class}`).forEach((btn, idx) =>
+            btns.types.slice().reverse().forEach((btnType, idx) => {
+                const btn = btns[btnType] ; if (!btn) return
                 setTimeout(() => { // apply/remove fx
                     btn.style.cssText += btnHoverStyles
                     setTimeout(() => btn.style.transform = '', 150) // keep transition for smooth removal
                 }, idx *75) // ...staggered @ 75ms interval
-            )
+            })
         }
     }
 
