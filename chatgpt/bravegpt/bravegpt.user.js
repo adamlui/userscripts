@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.25
+// @version               2024.12.25.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -244,6 +244,7 @@
         urls: {
             app: 'https://www.bravegpt.com',
             chatgptJS: 'https://chatgpt.js.org',
+            contributors: "https://docs.bravegpt.com/#-contributors",
             gitHub: 'https://github.com/KudoAI/bravegpt',
             greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt',
             publisher: 'https://www.kudoai.com',
