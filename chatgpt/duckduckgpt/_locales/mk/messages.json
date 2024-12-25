@@ -28,7 +28,7 @@
   "about_contributors": { "message": "Придонесувачи" },
   "about_version": { "message": "Верзија" },
   "about_poweredBy": { "message": "Поддржано од" },
-  "about_openSourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "Код со отворен код" },
   "scheme_light": { "message": "Светлина" },
   "scheme_dark": { "message": "Темна" },
   "mode_proxy": { "message": "Режим на прокси" },
