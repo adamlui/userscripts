@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.24
+// @version               2024.12.25
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -232,6 +232,8 @@
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
+    env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -633,20 +635,18 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
-                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Add Proxy API Mode toggle
             const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
                           + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
             menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
-                tooltipsSupported ? { title: settings.controls.proxyAPIenabled.helptip } : undefined));
+                env.scriptManager.supportsTooltips ? { title: settings.controls.proxyAPIenabled.helptip } : undefined));
 
             // Add About/Settings entries
             ['about', 'settings'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
                 entryType == 'about' ? `💡 ${settings.controls.about.label}` : `⚙️ ${app.msgs.menuLabel_settings}`,
-                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
         },
 
