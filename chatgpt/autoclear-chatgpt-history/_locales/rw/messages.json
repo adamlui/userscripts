@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "&lt; Uburemere UTSINDAGIYE" },
   "menuLabel_about": { "message": "Bigyanye" },
   "menuLabel_donate": { "message": "Yohereze Yohereze Impano" },
+  "about_author": { "message": "Ibisobanuro" },
+  "about_andContributors": { "message": "na Abaterankunga" },
   "about_version": { "message": "Umukoro" },
   "about_poweredBy": { "message": "Ku" },
   "about_openSourceCode": { "message": "Inkomoko Inyandikoporogaramu" },

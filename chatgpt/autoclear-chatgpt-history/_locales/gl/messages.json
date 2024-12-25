@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "Notificacións de modo" },
   "menuLabel_about": { "message": "Acerca de" },
   "menuLabel_donate": { "message": "Por favor, envíe unha doazón" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "e colaboradores" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Fornecido por" },
   "about_openSourceCode": { "message": "Código fonte" },

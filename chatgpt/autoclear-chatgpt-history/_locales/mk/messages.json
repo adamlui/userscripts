@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "Известувања за режим" },
   "menuLabel_about": { "message": "За" },
   "menuLabel_donate": { "message": "Испратете донација" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "и соработници" },
   "about_version": { "message": "Верзија" },
   "about_poweredBy": { "message": "Поддржано од" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },

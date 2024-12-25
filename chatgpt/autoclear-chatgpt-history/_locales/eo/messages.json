@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "Mode Sciigoj" },
   "menuLabel_about": { "message": "Alproksimigas" },
   "menuLabel_donate": { "message": "Sendu al mi donacon" },
+  "about_author": { "message": "Aŭtoro" },
+  "about_andContributors": { "message": "kontribuantoj" },
   "about_version": { "message": "Versio" },
   "about_poweredBy": { "message": "funkciigita de" },
   "about_openSourceCode": { "message": "Fontkodo" },

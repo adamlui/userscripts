@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "മോഡ് അറിയിപ്പുകൾ" },
   "menuLabel_about": { "message": "സംബന്ധിച്ച്" },
   "menuLabel_donate": { "message": "ദയവായി ഒരു സംഭാവന അയയ്ക്കുക" },
+  "about_author": { "message": "രചയിതാവ്" },
+  "about_andContributors": { "message": "s" },
   "about_version": { "message": "പതിപ്പ്" },
   "about_poweredBy": { "message": "നയിച്ചത്" },
   "about_openSourceCode": { "message": "ഓപ്പൺ സോഴ്സ് കോഡ്" },

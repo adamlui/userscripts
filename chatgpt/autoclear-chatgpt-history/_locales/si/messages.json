@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "ප් ‍ රකාර දැනුම්දීම්" },
   "menuLabel_about": { "message": "සම්බන්ධව" },
   "menuLabel_donate": { "message": "කරුණාකර පරිත් ‍ යාගයක් යවන්න" },
+  "about_author": { "message": "කතෘ" },
+  "about_andContributors": { "message": "දායකයෝ" },
   "about_version": { "message": "වෙළුම" },
   "about_poweredBy": { "message": "විසින් බල ගැන්වී ඇත" },
   "about_openSourceCode": { "message": "විවෘත කේතය" },

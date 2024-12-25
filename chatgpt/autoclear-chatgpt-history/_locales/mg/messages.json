@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "Famaritana" },
   "menuLabel_about": { "message": "Mikasika ny" },
   "menuLabel_donate": { "message": "AZAFADY, alefaso amin'ny" },
+  "about_author": { "message": "Mpanoratra" },
+  "about_andContributors": { "message": "ary mpandray anjara" },
   "about_version": { "message": "Kinova" },
   "about_poweredBy": { "message": "Ampandehanin'i" },
   "about_openSourceCode": { "message": "Kaody niaingana" },

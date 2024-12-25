@@ -8,6 +8,8 @@
   "menuLabel_modeNotifs": { "message": "Hysbysiadau Modd" },
   "menuLabel_about": { "message": "Gwybodaeth" },
   "menuLabel_donate": { "message": "Anfonwch rodd os gwelwch yn dda" },
+  "about_author": { "message": "Awdur" },
+  "about_andContributors": { "message": "a chyfranwyr" },
   "about_version": { "message": "Fersiwn" },
   "about_poweredBy": { "message": "Wedi'i gynnal gan" },
   "about_openSourceCode": { "message": "Cod ffynhonnell" },
