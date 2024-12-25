@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.24
+// @version             2024.12.25
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -281,6 +281,8 @@
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.ui.scheme = getScheme()
+    env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -414,13 +416,11 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
-                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Show "Disabled (extension installed)"
             if (env.extensionInstalled)
                 GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
-                    () => modals.open('about'), tooltipsSupported ? { title: ' ' } : undefined )
+                    () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
 
             // ...or add settings toggles
             else Object.keys(settings.controls).forEach(key => {
@@ -433,7 +433,7 @@
                         settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
                         notify(`${settings.controls[key].label}: ${
                             menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
-                    }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
+                    }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
                 }
             });
 
@@ -443,7 +443,7 @@
                 menu.ids.push(GM_registerMenuCommand(
                     `${ entryType == 'about' ? '💡' : '💖' }`
                         + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
-                    () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                    () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
                 ))
             })
         },
