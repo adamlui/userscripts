@@ -3,7 +3,7 @@
   "menuLabel_autoGetAnswers": { "message": "Aŭtomate ricevi respondojn" },
   "menuLabel_autoFocusChatbar": { "message": "Aŭtomata Fokusa Babilejo" },
   "menuLabel_whenStreaming": { "message": "dum fluo" },
-  "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
+  "menuLabel_proxyAPImode": { "message": "Prokura API-Reĝimo" },
   "menuLabel_show": { "message": "Montri" },
   "menuLabel_relatedQueries": { "message": "Rilataj demandoj" },
   "menuLabel_require": { "message": "necesi" },
@@ -40,9 +40,9 @@
   "mode_debug": { "message": "Sencimigreĝimo" },
   "tooltip_playAnswer": { "message": "Ludi respondon" },
   "tooltip_fontSize": { "message": "grando de tiparo" },
-  "tooltip_sendReply": { "message": "Sendi  La Respondo" },
+  "tooltip_sendReply": { "message": "Sendi La Respondo" },
   "tooltip_feelingLucky": { "message": "I 'm Feeling Lucky" },
-  "tooltip_minimize": { "message": "& Minimumigu" },
+  "tooltip_minimize": { "message": "Minimumigi" },
   "tooltip_restore": { "message": "Restaŭri" },
   "tooltip_expand": { "message": "Etendi" },
   "tooltip_shrink": { "message": "Ŝrumpi" },
@@ -115,5 +115,5 @@
   "link_shareFeedback": { "message": "Kunhavigi Rimarkojn" },
   "prefix_exit": { "message": "Eliri" },
   "state_on": { "message": "Oran" },
-  "state_off": { "message": "for" }
+  "state_off": { "message": "Malŝaltita" }
 }
