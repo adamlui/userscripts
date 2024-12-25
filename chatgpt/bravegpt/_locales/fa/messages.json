@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "خودکار" },
   "menuLabel_about": { "message": "درباره" },
   "menuLabel_settings": { "message": "تنظیمات" },
+  "about_author": { "message": "نویسنده" },
+  "about_andContributors": { "message": "تیم و مشارکت کنندگان" },
   "about_version": { "message": "نسخه برنامه" },
   "about_poweredBy": { "message": "قدرت گرفته توسط" },
   "about_openSourceCode": { "message": "سورس کد" },

@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "O nama" },
   "menuLabel_settings": { "message": "Postavke" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "i suradnici" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "Pokreće" },
   "about_openSourceCode": { "message": "Izvorni kod" },

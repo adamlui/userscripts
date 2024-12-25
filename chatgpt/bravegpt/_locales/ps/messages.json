@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "آټو (Auto)" },
   "menuLabel_about": { "message": "په هکله" },
   "menuLabel_settings": { "message": "تنظیمات" },
+  "about_author": { "message": "لیکونکی" },
+  "about_andContributors": { "message": "او ګډونوالان" },
   "about_version": { "message": ":نسخه" },
   "about_poweredBy": { "message": "طراحی شده توسط" },
   "about_openSourceCode": { "message": "سرچينه كوډه" },
