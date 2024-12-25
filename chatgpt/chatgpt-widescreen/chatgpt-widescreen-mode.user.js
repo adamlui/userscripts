@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25.3
+// @version             2024.12.25.4
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -583,7 +583,7 @@
                 Object.assign(this[btnType].style, {
                     position: env.tallChatbar ? 'absolute' : 'relative', cursor: 'pointer',
                     right: `${ rOffset + idx * bOffset }px`, // position left of prev button
-                    transition: 'transform 0.15s ease, opacity 0.3s ease' // for tweaksStyle's :hover + .insert()'s fade-in
+                    transition: 'transform 0.15s ease, opacity 0.5s ease' // for tweaksStyle's :hover + .insert()'s fade-in
                 })
                 if (env.tallChatbar) this[btnType].style.bottom = '8.85px'
                 else this[btnType].style.top = `${ /chatgpt|openai/.test(env.site) ? -3.25
@@ -629,12 +629,12 @@
             const elemToInsertBefore = /chatgpt|openai/.test(env.site) ? parentToInsertInto.lastChild
                                      : parentToInsertInto.firstChild // Pro spam toggle or Poe Mic btn
             // Insert buttons
-            btnTypesToInsert.forEach(btnType => {
+            btnTypesToInsert.slice().reverse().forEach((btnType, idx) => {
                 const btn = this[btnType]
                 this.update.svg(btnType) // update icon
                 btn.style.opacity = 0 // hide for fade-in
                 parentToInsertInto.insertBefore(btn, elemToInsertBefore) // insert buttons
-                setTimeout(() => btn.style.opacity = 1, 10) // fade-in
+                setTimeout(() => btn.style.opacity = 1, (idx +1) *30) // fade-in
             })
             parentToInsertInto.insertBefore(tooltipDiv, elemToInsertBefore) // add tooltips
             setTimeout(() => chatbar.tweak(), 1) ; this.update.color()
