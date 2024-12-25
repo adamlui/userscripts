@@ -90,7 +90,7 @@
   "alert_userscriptMgrNoStream": { "message": "Kullanıcı betiği yöneticiniz geri dönen akış yanıtlarını desteklemiyor" },
   "alert_isCurrentlyOnlyAvailBy": { "message": "şu anda yalnızca tarafından kullanılabilir" },
   "alert_openAIsupportSoon": { "message": "OpenAI API desteği kısa süre içinde eklenecektir" },
-  "alert_waitingFor": { "message": "Bekliyor," },
+  "alert_waitingFor": { "message": "Bekliyor" },
   "alert_response": { "message": "vermiyor" },
   "alert_login": { "message": "Lütfen giriş yapın" },
   "alert_thenRefreshPage": { "message": "Ardından sayfayı yenileyin" },

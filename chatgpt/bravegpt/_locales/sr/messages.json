@@ -48,7 +48,7 @@
   "tooltip_shrink": { "message": "Smanji" },
   "tooltip_close": { "message": "Zatvori" },
   "tooltip_copy": { "message": "Kopiraj" },
-  "tooltip_regen": { "message": "Regeneriši se!" },
+  "tooltip_regen": { "message": "Regeneriši se" },
   "tooltip_reply": { "message": "Odgovor" },
   "tooltip_code": { "message": "Šifra" },
   "tooltip_sendRelatedQuery": { "message": "Pošaljite povezani upit" },
