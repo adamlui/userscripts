@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.25
+// @version                2024.12.25.1
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -244,6 +244,7 @@
         urls: {
             app: 'https://www.duckduckgpt.com',
             chatgptJS: 'https://chatgpt.js.org',
+            contributors: "https://docs.duckduckgpt.com/#-contributors",
             gitHub: 'https://github.com/KudoAI/duckduckgpt',
             greasyFork: 'https://greasyfork.org/scripts/459849-duckduckgpt',
             publisher: 'https://www.kudoai.com',
