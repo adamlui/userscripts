@@ -13,7 +13,7 @@
   "about_contributors": { "message": "Придонесувачи" },
   "about_version": { "message": "Верзија" },
   "about_poweredBy": { "message": "Поддржано од" },
-  "about_openSourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "Код со отворен код" },
   "mode_autoclear": { "message": "Автоматско чистење" },
   "helptip_clearNow": { "message": "Исчистете ја историјата на разговорот сега" },
   "helptip_toggleVis": { "message": "Прикажи копче за автоматско бришење во страничната лента" },
