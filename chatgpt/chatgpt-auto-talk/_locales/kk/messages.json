@@ -10,7 +10,7 @@
   "about_contributors": { "message": "Қатысушылар" },
   "about_version": { "message": "Нұсқа" },
   "about_poweredBy": { "message": "Сайтты жасаған" },
-  "about_openSourceCode": { "message": "@ info: whatsthis" },
+  "about_openSourceCode": { "message": "Ашық бастапқы код" },
   "mode_autoTalk": { "message": "Автоматты сөйлесу" },
   "helptip_toggleVis": { "message": "Бүйірлік тақтада Auto-Talk (Автоматты сөйлеу) ауыстыруын көрсету" },
   "alert_updateAvail": { "message": "Қолжетімді жаңарту" },
