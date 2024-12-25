@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.4
+// @version             2024.12.25
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -268,6 +268,8 @@
         ui: { scheme: getScheme() }
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -390,8 +392,7 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
-                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
+
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
@@ -402,14 +403,14 @@
                     settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
                         menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
-                }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
+                }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
                 `${ entryType == 'about' ? '💡' : '💖' }`
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
-                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
         },
 
