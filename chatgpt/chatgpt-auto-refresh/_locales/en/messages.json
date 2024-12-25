@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Refresh Interval" },
   "menuLabel_about": { "message": "About" },
   "menuLabel_donate": { "message": "Please send a donation" },
+  "about_author": { "message": "Author" },
+  "about_andContributors": { "message": "and contributors" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Open source code" },

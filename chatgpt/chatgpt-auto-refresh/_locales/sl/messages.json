@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Interval osveÅ¾evanja" },
   "menuLabel_about": { "message": "Vizitka" },
   "menuLabel_donate": { "message": "Pošljite donacijo" },
+  "about_author": { "message": "Avtor" },
+  "about_andContributors": { "message": "in sodelavci" },
   "about_version": { "message": "Različica" },
   "about_poweredBy": { "message": "Poganja" },
   "about_openSourceCode": { "message": "Odprta koda" },

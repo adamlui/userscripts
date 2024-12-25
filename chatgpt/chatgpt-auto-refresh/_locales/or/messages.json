@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "ରିଫ୍ରେସ୍ ଇଣ୍ଟରଭାଲ୍" },
   "menuLabel_about": { "message": "ବିଷୟ" },
   "menuLabel_donate": { "message": "ଦୟାକରି ଦାନ ପଠାନ୍ତୁ" },
+  "about_author": { "message": "ଲେଖକ" },
+  "about_andContributors": { "message": "ଏବଂ ଯୋଗଦାନକାରୀ" },
   "about_version": { "message": "ସଂସ୍କରଣ" },
   "about_poweredBy": { "message": "ଦ୍ୱାରା ଚାଳିତ" },
   "about_openSourceCode": { "message": "ଉତ୍ସ କୋଡକୁ ଖୋଲନ୍ତୁ" },

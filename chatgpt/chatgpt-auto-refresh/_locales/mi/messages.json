@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Iahiko Whakahōu" },
   "menuLabel_about": { "message": "E whai ake nei te" },
   "menuLabel_donate": { "message": "Tukua mai he takoha" },
+  "about_author": { "message": "Kaitito:" },
+  "about_andContributors": { "message": "ngā kaihauturu" },
   "about_version": { "message": "Tūtaki" },
   "about_poweredBy": { "message": "I whakahohehia e" },
   "about_openSourceCode": { "message": "Waehere puna tuwhera" },

@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Сэсээ шинэчлэх хугацаа" },
   "menuLabel_about": { "message": "Тухай" },
   "menuLabel_donate": { "message": "Хандив илгээнэ үү" },
+  "about_author": { "message": "Зохиогч" },
+  "about_andContributors": { "message": "хувь нэмэр оруулагчид" },
   "about_version": { "message": "Хувилбар" },
   "about_poweredBy": { "message": "Тодорхойлолтын зорилгоор" },
   "about_openSourceCode": { "message": "Нээлттэй Эх сурвалж" },

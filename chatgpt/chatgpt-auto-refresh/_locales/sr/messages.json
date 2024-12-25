@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Интервал освежавања" },
   "menuLabel_about": { "message": "O nama" },
   "menuLabel_donate": { "message": "Pošaljite donaciju" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "i saradnici" },
   "about_version": { "message": "Verzija" },
   "about_poweredBy": { "message": "Покреће га" },
   "about_openSourceCode": { "message": "Izvorni kod" },

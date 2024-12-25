@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Khoảng thời gian làm mới" },
   "menuLabel_about": { "message": "Về ứng dụng" },
   "menuLabel_donate": { "message": "Vui lòng gửi khoản quyên góp" },
+  "about_author": { "message": "Tác giả:" },
+  "about_andContributors": { "message": "và những người đóng góp" },
   "about_version": { "message": "Phiên bản" },
   "about_poweredBy": { "message": "Được hỗ trợ bởi" },
   "about_openSourceCode": { "message": "Nguồn mở" },

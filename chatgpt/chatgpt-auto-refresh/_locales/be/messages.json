@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "ÐÐ½ÑÑÑÐ²Ð°Ð» Ð°Ð±Ð½Ð°ÑÐ»ÐµÐ½Ð½Ñ" },
   "menuLabel_about": { "message": "Пра нас" },
   "menuLabel_donate": { "message": "Калі ласка, дашліце ахвяраванне" },
+  "about_author": { "message": "Аўтар" },
+  "about_andContributors": { "message": "і ўдзельнікі" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Пры падтрымцы" },
   "about_openSourceCode": { "message": "Зыходнікі" },

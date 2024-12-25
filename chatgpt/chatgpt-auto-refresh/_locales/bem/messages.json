@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Anusha Interval" },
   "menuLabel_about": { "message": "pafya" },
   "menuLabel_donate": { "message": "Napapata Uletuma Ubupe" },
+  "about_author": { "message": "Kalemba" },
+  "about_andContributors": { "message": "abalesendamo ulubali" },
   "about_version": { "message": "Ukupilibula" },
   "about_poweredBy": { "message": "Amapola by Amapola" },
   "about_openSourceCode": { "message": "Ilembo lya pa kompyuta ilyaba pa kompyuta" },

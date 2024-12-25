@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Fampindrampototra ny antso" },
   "menuLabel_about": { "message": "Momba ity" },
   "menuLabel_donate": { "message": "AZAFADY, alefaso amin'ny" },
+  "about_author": { "message": "Mpanoratra" },
+  "about_andContributors": { "message": "ary mpandray anjara" },
   "about_version": { "message": "Teny malalaka" },
   "about_poweredBy": { "message": "Manolotra ny herinandro" },
   "about_openSourceCode": { "message": "Kaody niaingana" },

@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Kupinda KweChengetedzo" },
   "menuLabel_about": { "message": "Kuhusu" },
   "menuLabel_donate": { "message": "Ndapota tumira mupiro" },
+  "about_author": { "message": "Munyori" },
+  "about_andContributors": { "message": "uye Contributors" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Inoratidzwa na" },
   "about_openSourceCode": { "message": "Open source code" },

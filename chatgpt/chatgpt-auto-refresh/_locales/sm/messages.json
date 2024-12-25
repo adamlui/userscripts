@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Faʻafouina Interval" },
   "menuLabel_about": { "message": "E uiga i" },
   "menuLabel_donate": { "message": "Faamolemole auina atu se foaʻi" },
+  "about_author": { "message": "Tusitala" },
+  "about_andContributors": { "message": "ma saofaga" },
   "about_version": { "message": "Faaliliuga" },
   "about_poweredBy": { "message": "Malosiaga e ala i" },
   "about_openSourceCode": { "message": "Open source code" },

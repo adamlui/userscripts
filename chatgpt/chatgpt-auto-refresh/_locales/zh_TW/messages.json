@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "重新整理間隔" },
   "menuLabel_about": { "message": "關於" },
   "menuLabel_donate": { "message": "請發送捐款" },
+  "about_author": { "message": "作者" },
+  "about_andContributors": { "message": "团队与贡献者" },
   "about_version": { "message": "版本" },
   "about_poweredBy": { "message": "技術提供" },
   "about_openSourceCode": { "message": "開放源代碼" },

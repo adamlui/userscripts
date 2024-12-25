@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Eadar - ama ùrachaidh" },
   "menuLabel_about": { "message": "Mar deidhinn" },
   "menuLabel_donate": { "message": "Cuir tabhartas" },
+  "about_author": { "message": "Ùghdar:" },
+  "about_andContributors": { "message": "agus luchd-tabhartais" },
   "about_version": { "message": "Tionndadh" },
   "about_poweredBy": { "message": "Le cumhachd" },
   "about_openSourceCode": { "message": "Bun-tùs a' chod" },

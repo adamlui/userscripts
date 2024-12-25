@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Refresh Interval" },
   "menuLabel_about": { "message": "A-zivout" },
   "menuLabel_donate": { "message": "Ne gasit ket un testeni" },
+  "about_author": { "message": "Oberour" },
+  "about_andContributors": { "message": "ha kenlabourerien" },
   "about_version": { "message": "Handelv" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Kod tarzh digor" },

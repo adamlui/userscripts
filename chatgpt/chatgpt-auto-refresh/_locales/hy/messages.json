@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Թարմացման ընդմիջում" },
   "menuLabel_about": { "message": "Մանրամասն" },
   "menuLabel_donate": { "message": "Խնդրում ենք նվիրատվություն ուղարկել" },
+  "about_author": { "message": "Հեղինակ" },
+  "about_andContributors": { "message": "և ներդրողներ" },
   "about_version": { "message": "Ստանալ պրեմիում տարբերակը" },
   "about_poweredBy": { "message": "🇦🇲" },
   "about_openSourceCode": { "message": "Ծրագրային կոդ" },

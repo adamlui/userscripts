@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "Интервал на опресняване" },
   "menuLabel_about": { "message": "Относно" },
   "menuLabel_donate": { "message": "Моля, изпратете дарение" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "и сътрудници" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Създадено от" },
   "about_openSourceCode": { "message": "Отворен код" },

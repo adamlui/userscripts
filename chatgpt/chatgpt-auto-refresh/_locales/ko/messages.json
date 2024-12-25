@@ -8,6 +8,8 @@
   "menuLabel_refreshInt": { "message": "새로고침 간격" },
   "menuLabel_about": { "message": "소개" },
   "menuLabel_donate": { "message": "기부금을 보내주세요" },
+  "about_author": { "message": "작성자" },
+  "about_andContributors": { "message": "팀 및 기고자" },
   "about_version": { "message": "버전" },
   "about_poweredBy": { "message": "제공" },
   "about_openSourceCode": { "message": "오픈소스" },
