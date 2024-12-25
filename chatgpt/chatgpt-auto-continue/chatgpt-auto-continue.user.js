@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25
+// @version             2024.12.25.1
 // @license             MIT
 // @icon                https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?de3b6bd
 // @icon64              https://media.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?de3b6bd
@@ -267,7 +267,7 @@
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
-                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
