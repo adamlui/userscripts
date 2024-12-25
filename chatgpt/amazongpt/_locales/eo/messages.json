@@ -1,7 +1,7 @@
 {
   "appDesc": { "message": "Aldonas al Amazon butikumado" },
-  "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
-  "menuLabel_autoFocusChatbar": { "message": "@ info: whatsthis" },
+  "menuLabel_proxyAPImode": { "message": "Prokura API-Reĝimo" },
+  "menuLabel_autoFocusChatbar": { "message": "Aŭtomata Fokusa Babilejo" },
   "menuLabel_whenStreaming": { "message": "dum fluo" },
   "menuLabel_background": { "message": "Fono" },
   "menuLabel_foreground": { "message": "Malfono" },
@@ -25,9 +25,9 @@
   "mode_debug": { "message": "Sencimigreĝimo" },
   "tooltip_playAnswer": { "message": "Ludi respondon" },
   "tooltip_fontSize": { "message": "grando de tiparo" },
-  "tooltip_sendReply": { "message": "Sendi  La Respondo" },
+  "tooltip_sendReply": { "message": "Sendi La Respondo" },
   "tooltip_askRandQuestion": { "message": "Hazarda demando" },
-  "tooltip_minimize": { "message": "& Minimumigu" },
+  "tooltip_minimize": { "message": "Minimumigi" },
   "tooltip_restore": { "message": "Restaŭri" },
   "tooltip_expand": { "message": "Etendi" },
   "tooltip_shrink": { "message": "Ŝrumpi" },
@@ -88,5 +88,5 @@
   "btnLabel_dismiss": { "message": "Malakcepti" },
   "link_viewChanges": { "message": "Vidi ŝanĝojn" },
   "state_on": { "message": "Oran" },
-  "state_off": { "message": "for" }
+  "state_off": { "message": "Malŝaltita" }
 }
