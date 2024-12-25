@@ -54,7 +54,7 @@
   "alert_updateAvail": { "message": "Posodobitev na voljo" },
   "alert_newerVer": { "message": "Posodobitev na" },
   "alert_isAvail": { "message": "je na voljo" },
-  "alert_upToDate": { "message": "Ažurna," },
+  "alert_upToDate": { "message": "Ažurna" },
   "alert_isUpToDate": { "message": "najnovejši" },
   "alert_isUnsupportedIn": { "message": "voznik ni podprt v" },
   "alert_whenUsing": { "message": "pri uporabi" },
