@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25.2
+// @version             2024.12.25.3
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -582,7 +582,8 @@
                 this[btnType].className = this.class // for update.style.tweaks()
                 Object.assign(this[btnType].style, {
                     position: env.tallChatbar ? 'absolute' : 'relative', cursor: 'pointer',
-                    right: `${ rOffset + idx * bOffset }px` // position left of prev button
+                    right: `${ rOffset + idx * bOffset }px`, // position left of prev button
+                    transition: 'transform 0.15s ease, opacity 0.3s ease' // for tweaksStyle's :hover + .insert()'s fade-in
                 })
                 if (env.tallChatbar) this[btnType].style.bottom = '8.85px'
                 else this[btnType].style.top = `${ /chatgpt|openai/.test(env.site) ? -3.25
@@ -631,7 +632,7 @@
             btnTypesToInsert.forEach(btnType => {
                 const btn = this[btnType]
                 this.update.svg(btnType) // update icon
-                Object.assign(btn.style, { opacity: 0, transition: 'opacity 0.3s ease' }) // init styles for fade-in
+                btn.style.opacity = 0 // hide for fade-in
                 parentToInsertInto.insertBefore(btn, elemToInsertBefore) // insert buttons
                 setTimeout(() => btn.style.opacity = 1, 10) // fade-in
             })
@@ -712,7 +713,7 @@
                 const btn = btns[btnType] ; if (!btn) return
                 setTimeout(() => { // apply/remove fx
                     btn.style.cssText += btnHoverStyles
-                    setTimeout(() => btn.style.transform = '', 150) // keep transition for smooth removal
+                    setTimeout(() => btn.style.cssText = btn.style.cssText.replace(btnHoverStyles, ''), 150)
                 }, idx *75) // ...staggered @ 75ms interval
             })
         }
@@ -747,12 +748,9 @@
                   + ( config.hiddenHeader ? hhStyle : '' ) // hide header
                   + ( config.hiddenFooter ? hfStyle : '' ) // hide footer
                   + `#newChat-btn { display: ${ config.ncbDisabled == true ? 'none' : 'flex' }}`
-                  + ( !config.btnAnimationsDisabled ? // zoom chatbar buttons on hover
-                        ( `.${btns.class}:hover {`
-                            + `transform: scale(${ env.site == 'poe' ? 1.15 : 1.285}) ;`
-                            + 'transition: transform 0.15s ease }' ) : ''
-                    )
-            },
+                  + ( config.btnAnimationsDisabled ? '' : // zoom chatbar buttons on hover
+                        `.${btns.class}:hover { transform: scale(${ env.site == 'poe' ? 1.15 : 1.285}) }` )
+        },
 
             wideScreen() {
                 wideScreenStyle.innerText = (
