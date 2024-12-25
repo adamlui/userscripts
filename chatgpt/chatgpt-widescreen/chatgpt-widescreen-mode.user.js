@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25.1
+// @version             2024.12.25.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -629,11 +629,14 @@
                                      : parentToInsertInto.firstChild // Pro spam toggle or Poe Mic btn
             // Insert buttons
             btnTypesToInsert.forEach(btnType => {
+                const btn = this[btnType]
                 this.update.svg(btnType) // update icon
-                parentToInsertInto.insertBefore(this[btnType], elemToInsertBefore)
+                Object.assign(btn.style, { opacity: 0, transition: 'opacity 0.3s ease' }) // init styles for fade-in
+                parentToInsertInto.insertBefore(btn, elemToInsertBefore) // insert buttons
+                setTimeout(() => btn.style.opacity = 1, 10) // fade-in
             })
             parentToInsertInto.insertBefore(tooltipDiv, elemToInsertBefore) // add tooltips
-            setTimeout(() => { chatbar.tweak() ; this.animate() }, 1) ; this.update.color()
+            setTimeout(() => chatbar.tweak(), 1) ; this.update.color()
             this.status = 'inserted'
         },
 
