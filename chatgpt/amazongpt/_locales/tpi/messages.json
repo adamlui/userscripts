@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Automation" },
   "menuLabel_about": { "message": "About" },
   "menuLabel_settings": { "message": "Aitaim" },
+  "about_author": { "message": "Man bilong raitim" },
+  "about_andContributors": { "message": "ol contributor" },
   "about_version": { "message": "Tok Pisin" },
   "about_poweredBy": { "message": "Em i gat bikpela strong" },
   "about_openSourceCode": { "message": "Open source code" },

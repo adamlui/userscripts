@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Outo" },
   "menuLabel_about": { "message": "About About" },
   "menuLabel_settings": { "message": "Establesimentunan" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "y contribuidornan" },
   "about_version": { "message": "Vershon" },
   "about_poweredBy": { "message": "Potenciá por" },
   "about_openSourceCode": { "message": "Codigo Fuente Abierto" },

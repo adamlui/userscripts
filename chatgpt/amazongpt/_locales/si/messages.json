@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "ස්වයංක්‍රීය" },
   "menuLabel_about": { "message": "සම්බන්ධව" },
   "menuLabel_settings": { "message": "සැකසුම්" },
+  "about_author": { "message": "කතෘ" },
+  "about_andContributors": { "message": "දායකයෝ" },
   "about_version": { "message": "වෙළුම" },
   "about_poweredBy": { "message": "විසින් සවිබල ගැන්වේ" },
   "about_openSourceCode": { "message": "විවෘත කේතය" },

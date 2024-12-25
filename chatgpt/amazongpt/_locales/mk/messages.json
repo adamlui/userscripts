@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Автоматски" },
   "menuLabel_about": { "message": "За" },
   "menuLabel_settings": { "message": "Поставки" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "и соработници" },
   "about_version": { "message": "верзија" },
   "about_poweredBy": { "message": "Овозможено од" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },

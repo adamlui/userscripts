@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "স্বয়ংক্রিয়" },
   "menuLabel_about": { "message": "সম্বন্ধে" },
   "menuLabel_settings": { "message": "সেটিংস" },
+  "about_author": { "message": "রচয়িতা" },
+  "about_andContributors": { "message": "এবং অবদানকারী" },
   "about_version": { "message": "সংস্করণ" },
   "about_poweredBy": { "message": "নিবেদন করছেন" },
   "about_openSourceCode": { "message": "সোর্স কোড" },

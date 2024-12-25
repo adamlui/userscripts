@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Om" },
   "menuLabel_settings": { "message": "Indstillinger" },
+  "about_author": { "message": "Forfatter" },
+  "about_andContributors": { "message": "Team og bidragydere" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Drevet af" },
   "about_openSourceCode": { "message": "åben kilde" },

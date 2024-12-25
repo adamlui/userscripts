@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "ኣውቶሞቢል" },
   "menuLabel_about": { "message": "ብዛዕባ" },
   "menuLabel_settings": { "message": "መቓናት" },
+  "about_author": { "message": "ደራሲ" },
+  "about_andContributors": { "message": "እቶም ኣበርክቶ ዝገበሩ" },
   "about_version": { "message": "መበል" },
   "about_poweredBy": { "message": "ብ" },
   "about_openSourceCode": { "message": "ክፉት ምንጪ ኮድ" },

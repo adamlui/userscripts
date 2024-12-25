@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Mikasika ny" },
   "menuLabel_settings": { "message": "Fandrindrana" },
+  "about_author": { "message": "Mpanoratra" },
+  "about_andContributors": { "message": "ary mpandray anjara" },
   "about_version": { "message": "Kinova" },
   "about_poweredBy": { "message": "Ampandehanin'i" },
   "about_openSourceCode": { "message": "Kaody niaingana" },

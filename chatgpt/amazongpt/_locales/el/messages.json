@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Αυτόματη εφαρμογή" },
   "menuLabel_about": { "message": "Σχετικά" },
   "menuLabel_settings": { "message": "Ρυθμίσεις" },
+  "about_author": { "message": "Συντάκτης" },
+  "about_andContributors": { "message": "και συνεισφέροντες" },
   "about_version": { "message": "Έκδοση" },
   "about_poweredBy": { "message": "Με την υποστήριξη" },
   "about_openSourceCode": { "message": "Ανοιχτός κώδικας. " },

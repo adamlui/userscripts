@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "自動" },
   "menuLabel_about": { "message": "詳細" },
   "menuLabel_settings": { "message": "設定" },
+  "about_author": { "message": "作成者" },
+  "about_andContributors": { "message": "チームと貢献者" },
   "about_version": { "message": "バージョン" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Open Source" },

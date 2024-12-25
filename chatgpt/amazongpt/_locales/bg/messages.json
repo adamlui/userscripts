@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Автоматичен" },
   "menuLabel_about": { "message": "Относно" },
   "menuLabel_settings": { "message": "Настройки" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "и сътрудници" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Създадено от" },
   "about_openSourceCode": { "message": "Отворен код" },

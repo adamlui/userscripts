@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Iwwer Qt" },
   "menuLabel_settings": { "message": "Astellungen" },
+  "about_author": { "message": "Auteur" },
+  "about_andContributors": { "message": "a Contributiounen" },
   "about_version": { "message": "Versioun" },
   "about_poweredBy": { "message": "Bereetgestallt vun" },
   "about_openSourceCode": { "message": "Open Source" },

@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Samodejno" },
   "menuLabel_about": { "message": "Več informacij" },
   "menuLabel_settings": { "message": "Nastavitve" },
+  "about_author": { "message": "Avtor" },
+  "about_andContributors": { "message": "in sodelavci" },
   "about_version": { "message": "Različica" },
   "about_poweredBy": { "message": "Poganja" },
   "about_openSourceCode": { "message": "Odprta koda" },

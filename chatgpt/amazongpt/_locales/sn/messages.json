@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Nezvedu" },
   "menuLabel_settings": { "message": "Masetingi" },
+  "about_author": { "message": "Munyori" },
+  "about_andContributors": { "message": "uye Contributors" },
   "about_version": { "message": "Vhezheni" },
   "about_poweredBy": { "message": "Inofambiswa ne" },
   "about_openSourceCode": { "message": "Open source code" },

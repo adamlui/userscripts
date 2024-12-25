@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "အလိုအလျောက်" },
   "menuLabel_about": { "message": "အကြောင်း" },
   "menuLabel_settings": { "message": "ဆက္တင္မ်ား" },
+  "about_author": { "message": "ရေးသူ" },
+  "about_andContributors": { "message": "နှင့် ပံ့ပိုးပေးသူများ" },
   "about_version": { "message": "မူ -" },
   "about_poweredBy": { "message": "စွမ်းဆောင်ရည် -" },
   "about_openSourceCode": { "message": "ပွင့်လင်းအရင်းအမြစ်ကုဒ်" },

@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Tự động" },
   "menuLabel_about": { "message": "Giới thiệu" },
   "menuLabel_settings": { "message": "Cài đặt" },
+  "about_author": { "message": "Tác giả:" },
+  "about_andContributors": { "message": "và những người đóng góp" },
   "about_version": { "message": "Phiên bản" },
   "about_poweredBy": { "message": "Cung cấp bởi " },
   "about_openSourceCode": { "message": "Nguồn mở" },

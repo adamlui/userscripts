@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Automatico" },
   "menuLabel_about": { "message": "Generalità" },
   "menuLabel_settings": { "message": "Impostazioni" },
+  "about_author": { "message": "Autore" },
+  "about_andContributors": { "message": "e collaboratori." },
   "about_version": { "message": "Versione" },
   "about_poweredBy": { "message": "Offerto da" },
   "about_openSourceCode": { "message": "Codice open source" },

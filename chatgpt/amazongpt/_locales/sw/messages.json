@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Otomatiki" },
   "menuLabel_about": { "message": "Kuhusu" },
   "menuLabel_settings": { "message": "Mipangilio" },
+  "about_author": { "message": "Mwandishi" },
+  "about_andContributors": { "message": "na wachangiaji" },
   "about_version": { "message": "Toleo" },
   "about_poweredBy": { "message": "Imewezeshwa na" },
   "about_openSourceCode": { "message": "Msimbo wa chanzo wazi" },

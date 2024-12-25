@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Ada" },
   "menuLabel_about": { "message": "Omtrent" },
   "menuLabel_settings": { "message": "bevel" },
+  "about_author": { "message": "Outeur" },
+  "about_andContributors": { "message": "en bydraers" },
   "about_version": { "message": "Weergawe" },
   "about_poweredBy": { "message": "Aangedryf deur" },
   "about_openSourceCode": { "message": "Oopbronkode" },

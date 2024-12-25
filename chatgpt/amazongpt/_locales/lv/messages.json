@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Automātiski" },
   "menuLabel_about": { "message": "Par produktu " },
   "menuLabel_settings": { "message": "Iestatījumi" },
+  "about_author": { "message": "Autors" },
+  "about_andContributors": { "message": "un līdzautori" },
   "about_version": { "message": "Versija" },
   "about_poweredBy": { "message": "Izstrādāts" },
   "about_openSourceCode": { "message": "Atklātais pirmkods" },

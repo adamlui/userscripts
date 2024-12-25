@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Acerca de" },
   "menuLabel_settings": { "message": "Configuración" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "e colaboradores" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Fornecido por" },
   "about_openSourceCode": { "message": "Código fonte" },

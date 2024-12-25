@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Худкор" },
   "menuLabel_about": { "message": "Дар бораи" },
   "menuLabel_settings": { "message": "Танзимот" },
+  "about_author": { "message": "Муаалиф" },
+  "about_andContributors": { "message": "ва саҳмгузорон" },
   "about_version": { "message": "Версия" },
   "about_poweredBy": { "message": "Нерӯмандшуда аз тарафи" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },

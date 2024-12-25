@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "További információk" },
   "menuLabel_settings": { "message": "Beállítások" },
+  "about_author": { "message": "Szerző" },
+  "about_andContributors": { "message": "és közreműködők" },
   "about_version": { "message": "Verió" },
   "about_poweredBy": { "message": "Kiszolgálja" },
   "about_openSourceCode": { "message": "Open Source" },

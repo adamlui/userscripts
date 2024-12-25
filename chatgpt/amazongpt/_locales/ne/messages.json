@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "लेखक" },
   "menuLabel_about": { "message": "बारेमा" },
   "menuLabel_settings": { "message": "सेटिङहरू" },
+  "about_author": { "message": "लेखक" },
+  "about_andContributors": { "message": "र योगदानकर्ताहरू" },
   "about_version": { "message": "संस्करण " },
   "about_poweredBy": { "message": "समर्थनकर्ता " },
   "about_openSourceCode": { "message": "स्रोत सङ्केत" },

@@ -11,6 +11,8 @@
   "menuLabel_auto": { "message": "Aŭtomate" },
   "menuLabel_about": { "message": "Alproksimigas" },
   "menuLabel_settings": { "message": "Agordoj" },
+  "about_author": { "message": "Aŭtoro" },
+  "about_andContributors": { "message": "kontribuantoj" },
   "about_version": { "message": "Versio" },
   "about_poweredBy": { "message": "funkciigita de" },
   "about_openSourceCode": { "message": "Fontkodo" },
