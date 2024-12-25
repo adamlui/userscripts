@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25
+// @version             2024.12.25.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -279,6 +279,7 @@
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             chatgptJS: 'https://chatgpt.js.org',
+            contributors: 'https://docs.chatgptautotalk.com/#-contributors',
             donate: {
                 cashApp: 'https://cash.app/$adamlui',
                 gitHub: 'https://github.com/sponsors/adamlui',
