@@ -10,7 +10,7 @@
   "menuLabel_donate": { "message": "நன்கொடை அனுப்பவும்" },
   "about_author": { "message": "நூலாசிரியர்" },
   "about_and": { "message": "You are about to translate the 'Or' COMMAND, there are some rules on how to translate it. Please see http: // edu. kde. org/ kturtle/ translator. php to learn how to properly translate it." },
-  "about_contributors": { "message": "பங்களிப்போர்:" },
+  "about_contributors": { "message": "பங்களிப்போர்" },
   "about_version": { "message": "பதிப்பு" },
   "about_poweredBy": { "message": "மூலம் இயக்கப்படுகிறது" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },
