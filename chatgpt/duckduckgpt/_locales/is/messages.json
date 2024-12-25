@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Sjálfvirkt" },
   "menuLabel_about": { "message": "Um" },
   "menuLabel_settings": { "message": "Stillingar" },
+  "about_author": { "message": "Author" },
+  "about_andContributors": { "message": "og meðhöfundar" },
   "about_version": { "message": "Útgáfa" },
   "about_poweredBy": { "message": "Knúið af" },
   "about_openSourceCode": { "message": "Upprunakóði@ info: whatsthis" },

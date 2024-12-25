@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "ਆਟੋ" },
   "menuLabel_about": { "message": "ਇਸ ਬਾਰੇ" },
   "menuLabel_settings": { "message": "GConf ਸੈਟਿੰਗ" },
+  "about_author": { "message": "_ਲੇਖਕ" },
+  "about_andContributors": { "message": "ਅਤੇ ਯੋਗਦਾਨ ਪਾਉਣ ਵਾਲੇ" },
   "about_version": { "message": "ਵਰਜਨ" },
   "about_poweredBy": { "message": "ਦੁਆਰਾ ਸੰਚਾਲਿਤ" },
   "about_openSourceCode": { "message": "ਸਰੋਤ ਕੋਡ@ info: whatsthis" },

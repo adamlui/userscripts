@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Automàtic" },
   "menuLabel_about": { "message": "Quant a" },
   "menuLabel_settings": { "message": "Configuració" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "i col·laboradors" },
   "about_version": { "message": "Versió" },
   "about_poweredBy": { "message": "Desenvolupat per" },
   "about_openSourceCode": { "message": "Codi obert" },

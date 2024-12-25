@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Acerca de" },
   "menuLabel_settings": { "message": "Ajustes" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "Equipo y colaboradores" },
   "about_version": { "message": "Versión" },
   "about_poweredBy": { "message": "Desarrollado por" },
   "about_openSourceCode": { "message": "Cola ciega" },

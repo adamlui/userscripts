@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Despre" },
   "menuLabel_settings": { "message": "Setări" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "și colaboratori" },
   "about_version": { "message": "Versiune" },
   "about_poweredBy": { "message": "Operat de" },
   "about_openSourceCode": { "message": "Cod cu sursă deschisă. " },

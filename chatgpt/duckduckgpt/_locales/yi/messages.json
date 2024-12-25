@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "אַוטאָ" },
   "menuLabel_about": { "message": "וועגן" },
   "menuLabel_settings": { "message": "סעטטינגס" },
+  "about_author": { "message": "מחבר" },
+  "about_andContributors": { "message": "און מיטארבעטערס" },
   "about_version": { "message": "ווערסיע" },
   "about_poweredBy": { "message": "פּאַוערד דורך" },
   "about_openSourceCode": { "message": "עפֿענען מקור קאָד" },

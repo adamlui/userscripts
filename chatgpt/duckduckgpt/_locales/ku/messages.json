@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Der barê" },
   "menuLabel_about": { "message": "دەربارە" },
   "menuLabel_settings": { "message": "Mîheng" },
+  "about_author": { "message": "Nivîskar" },
+  "about_andContributors": { "message": "û beşdaran" },
   "about_version": { "message": "وەرژن" },
   "about_poweredBy": { "message": "پارێزراوە لەلایەن" },
   "about_openSourceCode": { "message": "Koda çavkanî" },

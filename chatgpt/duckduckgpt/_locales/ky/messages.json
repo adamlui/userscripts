@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Авто" },
   "menuLabel_about": { "message": "Апплет жөнүндө" },
   "menuLabel_settings": { "message": "Чычканды ырастоо" },
+  "about_author": { "message": "Автору: " },
+  "about_andContributors": { "message": "жана салым кошуучулар" },
   "about_version": { "message": "Версиясы" },
   "about_poweredBy": { "message": "Тарабынан иштелип чыккан" },
   "about_openSourceCode": { "message": "Баштапкы код" },

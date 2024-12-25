@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Umbes" },
   "menuLabel_settings": { "message": "Seaded" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "Meeskond ja panustajad" },
   "about_version": { "message": "Versioon" },
   "about_poweredBy": { "message": "Toiteallikaks" },
   "about_openSourceCode": { "message": "lähtekood" },

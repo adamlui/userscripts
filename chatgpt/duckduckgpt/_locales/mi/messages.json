@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Mō" },
   "menuLabel_settings": { "message": "Ngā Tautuhinga" },
+  "about_author": { "message": "Kaitito:" },
+  "about_andContributors": { "message": "ngā kaihauturu" },
   "about_version": { "message": "Whakaaturanga" },
   "about_poweredBy": { "message": "Te mana o te mana" },
   "about_openSourceCode": { "message": "Waehere puna tuwhera" },

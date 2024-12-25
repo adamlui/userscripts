@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Byikora" },
   "menuLabel_about": { "message": "Ibyerekeye" },
   "menuLabel_settings": { "message": "Gahunda" },
+  "about_author": { "message": "Ibisobanuro" },
+  "about_andContributors": { "message": "na Abaterankunga" },
   "about_version": { "message": "Inyandiko" },
   "about_poweredBy": { "message": "Bikozwe na" },
   "about_openSourceCode": { "message": "Inkomoko Inyandikoporogaramu" },

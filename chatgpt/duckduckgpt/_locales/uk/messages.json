@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Автоматичний режим" },
   "menuLabel_about": { "message": "Про нас" },
   "menuLabel_settings": { "message": "Налаштування" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "та дописувачі" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Працює на" },
   "about_openSourceCode": { "message": "Джерельний код" },

@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Aderwa" },
   "menuLabel_about": { "message": "Axxam" },
   "menuLabel_settings": { "message": "Tameslayt" },
+  "about_author": { "message": "Ameskar " },
+  "about_andContributors": { "message": "et imusnawen" },
   "about_version": { "message": "Asent" },
   "about_poweredBy": { "message": "S-aql s" },
   "about_openSourceCode": { "message": "Tangalt taɣbalut" },

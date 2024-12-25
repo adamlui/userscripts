@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "خودکار" },
   "menuLabel_about": { "message": "متعلق" },
   "menuLabel_settings": { "message": "ترتیبات" },
+  "about_author": { "message": "مصنف" },
+  "about_andContributors": { "message": "اور تعاون کنندگان" },
   "about_version": { "message": "ورژن" },
   "about_poweredBy": { "message": "تقویت یافتہ از" },
   "about_openSourceCode": { "message": "کۆسی سەرچاوە" },
