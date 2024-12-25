@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Hoʻololi i ka ʻike" },
   "menuLabel_about": { "message": "Ho‘ākāka" },
   "menuLabel_donate": { "message": "E ʻoluʻolu e hoʻouna i haʻawina" },
+  "about_author": { "message": "Mea kākau" },
+  "about_andContributors": { "message": "a me nā mea kōkua" },
   "about_version": { "message": "Manao" },
   "about_poweredBy": { "message": "Hoʻāmana ʻia e" },
   "about_openSourceCode": { "message": "Wehe kumu kumu" },

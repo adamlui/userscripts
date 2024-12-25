@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Synleg bokmerke" },
   "menuLabel_about": { "message": "Om" },
   "menuLabel_donate": { "message": "Vennligst send en donasjon" },
+  "about_author": { "message": "Forfatter" },
+  "about_andContributors": { "message": "og bidragsytere" },
   "about_version": { "message": "Versjon" },
   "about_poweredBy": { "message": "Drevet av" },
   "about_openSourceCode": { "message": "åpen kilde" },

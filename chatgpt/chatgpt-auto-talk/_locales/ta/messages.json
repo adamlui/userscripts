@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "தெரிவுநிலையை மாற்றுக" },
   "menuLabel_about": { "message": "இறக்கப் போகிறது" },
   "menuLabel_donate": { "message": "நன்கொடை அனுப்பவும்" },
+  "about_author": { "message": "நூலாசிரியர்" },
+  "about_andContributors": { "message": "மற்றும் பங்களிப்பாளர்கள்" },
   "about_version": { "message": "பதிப்பு" },
   "about_poweredBy": { "message": "மூலம் இயக்கப்படுகிறது" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },

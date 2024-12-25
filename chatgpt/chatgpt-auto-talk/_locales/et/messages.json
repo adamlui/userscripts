@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Vaheta nähtavust" },
   "menuLabel_about": { "message": "Yense" },
   "menuLabel_donate": { "message": "Saada annetus" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "Meeskond ja panustajad" },
   "about_version": { "message": "Versioon" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "lähtekood" },

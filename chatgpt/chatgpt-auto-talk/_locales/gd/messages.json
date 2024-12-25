@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Toggle Faicsinneachd" },
   "menuLabel_about": { "message": "Mar deidhinn" },
   "menuLabel_donate": { "message": "Cuir tabhartas" },
+  "about_author": { "message": "Ùghdar:" },
+  "about_andContributors": { "message": "agus luchd-tabhartais" },
   "about_version": { "message": "Tionndadh" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Bun-tùs a' chod" },

@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Koʻrinishni oʻzgartirish" },
   "menuLabel_about": { "message": "Qisqacha ma'lumot" },
   "menuLabel_donate": { "message": "Iltimos, xayriya yuboring" },
+  "about_author": { "message": "Muallif" },
+  "about_andContributors": { "message": "va hissa qo'shuvchilar" },
   "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Tomonidan qo'llab-quvvatlanadi" },
   "about_openSourceCode": { "message": "Ochiq kod" },

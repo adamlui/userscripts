@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Muuqaalka Toggle" },
   "menuLabel_about": { "message": "Jabuuti" },
   "menuLabel_donate": { "message": "Fadlan soo dir deeq" },
+  "about_author": { "message": "Qoraa" },
+  "about_andContributors": { "message": "iyo tabaruceyaasha" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Waxa fudaydiyay" },
   "about_openSourceCode": { "message": "Koodhka ilaha furan" },

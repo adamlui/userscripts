@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Veguhastina Dîtinê" },
   "menuLabel_about": { "message": "Derbarê de" },
   "menuLabel_donate": { "message": "Ji kerema xwe bexşê bişînin" },
+  "about_author": { "message": "Nivîskar" },
+  "about_andContributors": { "message": "û beşdaran" },
   "about_version": { "message": "وەشان" },
   "about_poweredBy": { "message": "پشتگیریکراو لە لایەن" },
   "about_openSourceCode": { "message": "Koda çavkanî" },

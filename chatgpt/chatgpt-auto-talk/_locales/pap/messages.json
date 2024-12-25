@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Topi Visibilitá" },
   "menuLabel_about": { "message": "About About" },
   "menuLabel_donate": { "message": "Por fabor haci un donacion" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "y contribuidornan" },
   "about_version": { "message": "Vershon" },
   "about_poweredBy": { "message": "Potenciá por" },
   "about_openSourceCode": { "message": "Codigo Fuente Abierto" },

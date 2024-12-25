@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "दृश्यता टगल गर्नुहोस्" },
   "menuLabel_about": { "message": "बारेमा" },
   "menuLabel_donate": { "message": "कृपया दान पठाउनुहोस्" },
+  "about_author": { "message": "लेखक" },
+  "about_andContributors": { "message": "र योगदानकर्ताहरू" },
   "about_version": { "message": "संस्करण " },
   "about_poweredBy": { "message": "समर्थनकर्ता " },
   "about_openSourceCode": { "message": "स्रोत सङ्केत" },

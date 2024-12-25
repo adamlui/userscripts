@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Prepnúť viditeľnosť" },
   "menuLabel_about": { "message": "About" },
   "menuLabel_donate": { "message": "Pošlite dar" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "a prispievatelia" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Otvorený zdrojový kód" },

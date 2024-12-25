@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Preklopi vidnost" },
   "menuLabel_about": { "message": "About" },
   "menuLabel_donate": { "message": "Pošljite donacijo" },
+  "about_author": { "message": "Avtor" },
+  "about_andContributors": { "message": "in sodelavci" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "Odprta koda" },

@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "切换可见性" },
   "menuLabel_about": { "message": "关于" },
   "menuLabel_donate": { "message": "请捐款" },
+  "about_author": { "message": "作者" },
+  "about_andContributors": { "message": "团队和贡献者" },
   "about_version": { "message": "版本" },
   "about_poweredBy": { "message": "技术支持方" },
   "about_openSourceCode": { "message": "开源代码" },

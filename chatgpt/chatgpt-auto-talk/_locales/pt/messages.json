@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Alternar Visibilidade" },
   "menuLabel_about": { "message": "Sobre" },
   "menuLabel_donate": { "message": "Envie um donativo" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "e colaboradores" },
   "about_version": { "message": "Versão" },
   "about_poweredBy": { "message": "Distribuído pela" },
   "about_openSourceCode": { "message": "Código-fonte aberto" },

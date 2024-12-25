@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "ވިސިބިލިޓީ ޓޮގަލް" },
   "menuLabel_about": { "message": "މިއާއި ބެހޭ" },
   "menuLabel_donate": { "message": "ހަދިޔާ ފޮނުއްވުން އެދެމެވެ" },
+  "about_author": { "message": "ލިޔުންތެރިޔާ" },
+  "about_andContributors": { "message": "އަދި ކޮންޓްރިބިއުޓަރުންނެވެ" },
   "about_version": { "message": "ވާރޝަން" },
   "about_poweredBy": { "message": "ޕަވަރޑް ބައި" },
   "about_openSourceCode": { "message": "އޮޕަން ސޯސް ކޯޑެވެ" },

@@ -5,6 +5,8 @@
   "menuLabel_toggleVis": { "message": "Перемкнути видимість" },
   "menuLabel_about": { "message": "Про нас" },
   "menuLabel_donate": { "message": "Будь ласка, надішліть пожертву" },
+  "about_author": { "message": "Автор" },
+  "about_andContributors": { "message": "та дописувачі" },
   "about_version": { "message": "Версія" },
   "about_poweredBy": { "message": "Працює на" },
   "about_openSourceCode": { "message": "Джерельний код" },
