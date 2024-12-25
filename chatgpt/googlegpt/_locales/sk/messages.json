@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "O nás" },
   "menuLabel_settings": { "message": "Nastavenia" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "a prispievatelia" },
   "about_version": { "message": "Verzia" },
   "about_poweredBy": { "message": "Beží na" },
   "about_openSourceCode": { "message": "Otvorený zdrojový kód" },

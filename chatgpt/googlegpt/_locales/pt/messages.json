@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Quem somos" },
   "menuLabel_settings": { "message": "Settings (Configurações)" },
+  "about_author": { "message": "Autor" },
+  "about_andContributors": { "message": "e colaboradores" },
   "about_version": { "message": "Versão" },
   "about_poweredBy": { "message": "Alimentado por" },
   "about_openSourceCode": { "message": "Código-fonte aberto" },

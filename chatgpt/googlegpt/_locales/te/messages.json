@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "స్వయంచాలితం" },
   "menuLabel_about": { "message": "About" },
   "menuLabel_settings": { "message": "సెట్టింగ్‌లు" },
+  "about_author": { "message": "రచయిత" },
+  "about_andContributors": { "message": "మరియు కంట్రిబ్యూటర్ ‌ లు" },
   "about_version": { "message": "Version" },
   "about_poweredBy": { "message": "Powered by" },
   "about_openSourceCode": { "message": "@ info: whatsthis" },

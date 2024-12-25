@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Ho‘ākāka" },
   "menuLabel_settings": { "message": "Nā hoʻonohonoho" },
+  "about_author": { "message": "Mea kākau" },
+  "about_andContributors": { "message": "a me nā mea kōkua" },
   "about_version": { "message": "Manao" },
   "about_poweredBy": { "message": "Hoʻāmana ʻia e" },
   "about_openSourceCode": { "message": "Wehe kumu kumu" },

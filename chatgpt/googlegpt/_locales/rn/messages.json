@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Imodoka" },
   "menuLabel_about": { "message": "Ku vyerekeye" },
   "menuLabel_settings": { "message": "Ingorozi" },
+  "about_author": { "message": "Umwanditsi" },
+  "about_andContributors": { "message": "abatanga intererano" },
   "about_version": { "message": "Traduzione" },
   "about_poweredBy": { "message": "Yashizwe mu ngiro na" },
   "about_openSourceCode": { "message": "Ikodero ry'isôko r" },

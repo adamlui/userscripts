@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Ավտոմեքենա" },
   "menuLabel_about": { "message": "Մանրամասն" },
   "menuLabel_settings": { "message": "Կարգավորումներ" },
+  "about_author": { "message": "Հեղինակ" },
+  "about_andContributors": { "message": "և ներդրողներ" },
   "about_version": { "message": "Ստանալ պրեմիում տարբերակը" },
   "about_poweredBy": { "message": "🇦🇲" },
   "about_openSourceCode": { "message": "Ծրագրային կոդ" },

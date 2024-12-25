@@ -23,6 +23,8 @@
   "menuLabel_auto": { "message": "Ho azy" },
   "menuLabel_about": { "message": "Momba ny" },
   "menuLabel_settings": { "message": "Fikirana" },
+  "about_author": { "message": "Mpanoratra" },
+  "about_andContributors": { "message": "ary mpandray anjara" },
   "about_version": { "message": "Dika" },
   "about_poweredBy": { "message": "Tantanin'ny" },
   "about_openSourceCode": { "message": "Kaody niaingana" },
