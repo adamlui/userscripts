@@ -40,9 +40,9 @@
   "mode_debug": { "message": "Sencimigreĝimo" },
   "tooltip_playAnswer": { "message": "Ludi respondon" },
   "tooltip_fontSize": { "message": "grando de tiparo" },
-  "tooltip_sendReply": { "message": "Sendi  La Respondo" },
+  "tooltip_sendReply": { "message": "Sendi La Respondo" },
   "tooltip_askRandQuestion": { "message": "Hazarda demando" },
-  "tooltip_minimize": { "message": "& Minimumigu" },
+  "tooltip_minimize": { "message": "Minimumigi" },
   "tooltip_restore": { "message": "Restaŭri" },
   "tooltip_expand": { "message": "Etendi" },
   "tooltip_shrink": { "message": "Ŝrumpi" },
@@ -115,5 +115,5 @@
   "link_shareFeedback": { "message": "Retrosciigo" },
   "prefix_exit": { "message": "Eliri" },
   "state_on": { "message": "Oran" },
-  "state_off": { "message": "for" }
+  "state_off": { "message": "Malŝaltita" }
 }
