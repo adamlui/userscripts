@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.23.4
+// @version             2024.12.25
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -275,6 +275,8 @@
         ui: { scheme: getScheme() }
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -414,8 +416,6 @@
         },
 
         register() {
-            const tooltipsSupported = env.scriptManager.name == 'Tampermonkey'
-                                   && parseInt(env.scriptManager.version.split('.')[0]) >= 5
 
             // Init prompt setting status labels
             settings.controls.refreshInterval.status = `${config.refreshInterval}s`
@@ -453,14 +453,14 @@
                         }}
                     }
                     syncConfigToUI({ updatedKey: key })
-                }, tooltipsSupported ? { title: settings.controls[key].helptip || ' ' } : undefined))
+                }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
                 `${ entryType == 'about' ? '💡' : '💖' }`
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
-                () => modals.open(entryType), tooltipsSupported ? { title: ' ' } : undefined
+                () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
         },
 
