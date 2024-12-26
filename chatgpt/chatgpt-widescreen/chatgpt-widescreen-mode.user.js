@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.26.2
+// @version             2024.12.26.3
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,9 +242,9 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/dom.js#sha256-vd7Wxz1QPumLWWJOgWtRC06EahUunFUsn3rAl+sKBHk=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@cda316ebe8899acf18f156c9b179b0544301aa9c/chrome/extension/lib/dom.js#sha256-jgui07Xgu18IrR4mtE7fS772z/IuOEpMfTmruqIAmSE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/settings.js#sha256-qblUyOK8+TXF1KpeND7wB2/yJrZMirzjhDlvd6XPSVY=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/components/buttons.js#sha256-mgIyQdQmKrcLRkdtgxRC8sCiVVZME4TxwjMEWa5y4Vs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@cda316ebe8899acf18f156c9b179b0544301aa9c/chrome/extension/components/buttons.js#sha256-Rm0FASk2F93VHJS5iCnHDjmsm2VsE3Lf0R1S6Mlo+Dg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/components/modals.js#sha256-566D6KzH4e5/NIRWqmp0knkHtYN3ijSPWI6THpY8zY8=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
@@ -708,9 +708,9 @@
 
     // Init UI props
     if (/chatgpt|openai/.test(env.site)) {
-        sites[env.site].hasSidebar = await Promise.race([
-            dom.elemIsLoaded(sites[env.site].selectors.btns.sidebarToggle), // true if sidebar toggle loads
-            dom.elemIsLoaded(sites[env.site].selectors.btns.login).then(() => false), // false if login button loads
+        sites[env.site].hasSidebar = !!await Promise.race([
+            dom.getLoadedElement(sites.chatgpt.selectors.btns.sidebarToggle), // DOM element if sidebar toggle loads
+            dom.getLoadedElement(sites.chatgpt.selectors.btns.login).then(() => false), // null if login button loads
             new Promise(resolve => setTimeout(() => resolve(null), 3000)) // null if 3s passed
         ])
     }
@@ -757,7 +757,7 @@
     // Create WIDESCREEN style
     const wideScreenStyle = dom.create.style()
     wideScreenStyle.id = 'wideScreen-mode' // for sync.mode()
-    if (!chatbar.get()) await dom.elemIsLoaded(sites[env.site].selectors.input)
+    if (!chatbar.get()) await dom.getLoadedElem(sites[env.site].selectors.input)
     if (/chatgpt|openai/.test(env.site)) // store native chatbar width for Wider Chatbox style
         chatbar.nativeWidth = /\d+/.exec(getComputedStyle(document.querySelector('main form')).width)[0]
     update.style.wideScreen()
