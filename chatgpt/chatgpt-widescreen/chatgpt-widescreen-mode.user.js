@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.26
+// @version             2024.12.26.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -242,10 +242,10 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7556b05e60686664ff88cacbf237a1ae7c48510b/chrome/extension/lib/dom.js#sha256-mMUljWP1ZlSgzGCVZmMLv4LAiKHeE190CHpMPlIaX9s=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@0682da4cc061f16f702acb20851f0fa97ad7c337/chrome/extension/lib/settings.js#sha256-ejX+5oDVL+zTmvJBOUFXV81aT2Xgi4X9A7I03k713v8=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@f7b078966940478d454a9f9e5455043170a82d98/chrome/extension/components/buttons.js#sha256-kMW6gmMlCg8N8jgTGAV9TxPK+kxVob42R1Qx0bCeuqo=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@a150549768c6b8e2166935cd4fb61425b0c2cd4c/chrome/extension/components/modals.js#sha256-cxFJumnsUSk/+OfBmv6nShkyfs1hiPOyf/Adb69nCM8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/dom.js#sha256-vd7Wxz1QPumLWWJOgWtRC06EahUunFUsn3rAl+sKBHk=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/settings.js#sha256-qblUyOK8+TXF1KpeND7wB2/yJrZMirzjhDlvd6XPSVY=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/components/buttons.js#sha256-mgIyQdQmKrcLRkdtgxRC8sCiVVZME4TxwjMEWa5y4Vs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/components/modals.js#sha256-566D6KzH4e5/NIRWqmp0knkHtYN3ijSPWI6THpY8zY8=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
 // @grant               GM_setValue
@@ -401,9 +401,9 @@
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
 
     // Export DEPENDENCIES to imported resources
-    dom.dependencies.import({ env }) // for env.ui.scheme
-    modals.dependencies.import({ app, env, updateCheck }) // for app data + env.ui.scheme + modals.about
-    settings.dependencies.import({ app }) // for app.msgs + app.configKeyPrefix refs
+    dom.imports.import({ env }) // for env.ui.scheme
+    modals.imports.import({ app, env, updateCheck }) // for app data + env.ui.scheme + modals.about
+    settings.imports.import({ app }) // for app.msgs + app.configKeyPrefix refs
 
     // Init SETTINGS
     settings.load(sites[env.site].availFeatures)
@@ -570,7 +570,7 @@
     // Export dependencies to BUTTONS
     const tooltipDiv = dom.create.elem('div', { class: 'cwm-tooltip' }),
           tweaksStyle = dom.create.style()
-    buttons.dependencies.import({ app, chatbar, env, sites, toggle, tooltipDiv, tweaksStyle })
+    buttons.imports.import({ app, chatbar, env, sites, toggle, tooltipDiv, tweaksStyle })
 
     const update = {
 
