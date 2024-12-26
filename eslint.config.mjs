@@ -13,10 +13,10 @@ export default [
         languageOptions: {
             ecmaVersion: 'latest', sourceType: 'script',
             globals: {
-                ...globals.browser, ...globals.greasemonkey, ...globals.node, chatgpt: 'readonly', config: 'writable',
-                CryptoJS: 'readonly', dom: 'readonly', GM_cookie: 'readonly', hljs: 'readonly', ipv4: 'readonly',
-                marked: 'readonly', modals: 'writable', renderMathInElement: 'readonly', settings: 'writable',
-                toggles: 'writable'
+                ...globals.browser, ...globals.greasemonkey, ...globals.node, buttons: 'writable', chatgpt: 'readonly',
+                config: 'writable', CryptoJS: 'readonly', dom: 'readonly', GM_cookie: 'readonly', hljs: 'readonly',
+                ipv4: 'readonly', marked: 'readonly', modals: 'writable', renderMathInElement: 'readonly',
+                settings: 'writable', toggles: 'writable'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
