@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.26
+// @version               2024.12.26.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -257,7 +257,7 @@
             },
             support: 'https://support.bravegpt.com'
         },
-        latestAssetCommitHash: '28474f9' // for cached messages.json
+        latestAssetCommitHash: '7184be8' // for cached messages.json
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -287,6 +287,9 @@
         menuLabel_auto: 'Auto',
         menuLabel_about: 'About',
         menuLabel_settings: 'Settings',
+        about_author: 'Author',
+        about_and: '&',
+        about_contributors: 'contributors',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
         about_openSourceCode: 'Open source code',
@@ -1089,14 +1092,18 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const aboutModal = modals.alert('',
-                `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
-                    + '⚡ ' + ( app.msgs.about_poweredBy ) + ': '
-                        + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
-                            + ` v${app.chatgptJSver}\n`
-                    + '📜 ' + ( app.msgs.about_openSourceCode )
-                        + `: <a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                            + app.urls.gitHub + '</a>',
+            const aboutModal = modals.alert(
+                `${app.symbol} ${app.msgs.appName}`, // title
+                `🧠 ${app.msgs.about_author}: ` // msg
+                    + `<a href="${app.author.url}">${app.author.name}</a> ${app.msgs.about_and}`
+                        + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
+                + `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
+                + `📜 ${app.msgs.about_openSourceCode}: `
+                    + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                        + app.urls.gitHub + '</a>\n'
+                + `⚡ ${app.msgs.about_poweredBy}: `
+                    + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
+                        + ` v${app.chatgptJSver}`,
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
                     function getSupport(){},
@@ -1115,7 +1122,7 @@
             aboutModal.querySelector('h2').remove() // remove empty title h2
             aboutModal.querySelector('p')
                 .style.cssText = 'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
-                               + `margin: ${ env.browser.isPortrait ? '15px 0 -21px' : '9px 0 -12px' }`
+                               + `margin: ${ env.browser.isPortrait ? '15px 0 -21px' : '3px 0 -18px' }`
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
@@ -1203,9 +1210,9 @@
                     settings.save('replyLanguage', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
                     modals.alert(`${app.msgs.alert_langUpdated}!`, // title
-                        `${app.name} ${app.msgs.alert_willReplyIn} `
+                        `${app.name} ${app.msgs.alert_willReplyIn} ` // msg
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
-                        '', '', 447) // confirmation width
+                        '', '', 447) // modal width
                     if (modals.settings.get()) // update settings menu status label
                         document.querySelector('#replyLang-settings-entry span').textContent = replyLang
                     break
@@ -1219,7 +1226,7 @@
 
             // Show modal
             const schemeModal = modals.alert(`${
-                app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '',
+                app.name } ${( app.msgs.menuLabel_colorScheme ).toLowerCase() }:`, '', // title
                 [ function auto() {}, function light() {}, function dark() {} ], // buttons
                 '', 503 // px width
             )
@@ -1537,7 +1544,7 @@
 
                 // Show modal
                 const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
-                    `${app.msgs.alert_newerVer} ${app.name} `
+                    `${app.msgs.alert_newerVer} ${app.name} ` // msg
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 0.93rem" href="'
                             + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
