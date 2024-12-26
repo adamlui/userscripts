@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.25.1
+// @version             2024.12.26
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -301,7 +301,7 @@
             },
             support: 'https://support.chatgptautorefresh.com'
         },
-        latestAssetCommitHash: 'ebd07be' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestAssetCommitHash: 'd92959c' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -316,6 +316,9 @@
         menuLabel_refreshInt: 'Refresh Interval',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
+        about_author: 'Author',
+        about_and: '&',
+        about_contributors: 'contributors',
         about_version: 'Version',
         about_poweredBy: 'Powered by',
         about_openSourceCode: 'Open source code',
@@ -603,19 +606,22 @@
             // Show modal
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
-                    + `⚡ ${app.msgs.about_poweredBy}: `
-                        + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
-                            + ` v${app.chatgptJSver}\n`
-                    + `📜 ${app.msgs.about_openSourceCode}: `
-                        + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
-                            + app.urls.gitHub + '</a>',
+                `🧠 ${app.msgs.about_author}: ` // msg
+                    + `<a href="${app.author.url}">${app.msgs.appAuthor}</a> ${app.msgs.about_and}`
+                        + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
+                + `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
+                + `📜 ${app.msgs.about_openSourceCode}: `
+                    + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                        + app.urls.gitHub + '</a>\n'
+                + `⚡ ${app.msgs.about_poweredBy}: `
+                    + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
+                        + ` v${app.chatgptJSver}`,
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
                     function getSupport(){},
                     function rateUs() {},
                     function moreAIextensions(){}
-                ], '', 656 // set width
+                ], '', 714 // set width
             )
 
             // Format text
@@ -623,7 +629,7 @@
                 'text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0' )
             aboutModal.querySelector('p').style.cssText = (
                 'text-align: center ; overflow-wrap: anywhere ;'
-              + `margin: ${ env.browser.isPortrait ? '6px 0 -16px' : '3px 0 0' }` )
+              + `margin: ${ env.browser.isPortrait ? '6px 0 -16px' : '3px 0 29px' }` )
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
@@ -663,18 +669,18 @@
             const donateModal = modals.alert(
                 `💖 ${app.msgs.alert_showYourSupport}`, // title
                     `<p>${app.msgs.appName} ${app.msgs.alert_isOSS}.</p>`
-                  + `<p>${app.msgs.alert_despiteAffliction} `
-                      + '<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Long_COVID">'
-                          + `${app.msgs.alert_longCOVID}</a> `
-                      + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
-                  + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
-                      + `${app.msgs.alert_directlySupports}.</p>`
-                  + `<p>${app.msgs.alert_tyForSupport}!</p>`
-                  + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
-                      + `${ env.ui.scheme == 'dark' ? 'white' : 'black' }.png" `
-                      + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
-                  + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
-                      + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
+                    + `<p>${app.msgs.alert_despiteAffliction} `
+                        + '<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Long_COVID">'
+                            + `${app.msgs.alert_longCOVID}</a> `
+                        + `${app.msgs.alert_since2020}, ${app.msgs.alert_byDonatingResults}.</p>`
+                    + `<p>${app.msgs.alert_yourContrib}, <b>${app.msgs.alert_noMatterSize}</b>, `
+                        + `${app.msgs.alert_directlySupports}.</p>`
+                    + `<p>${app.msgs.alert_tyForSupport}!</p>`
+                    + '<img src="https://cdn.jsdelivr.net/gh/adamlui/adamlui/images/siggie/'
+                        + `${ env.ui.scheme == 'dark' ? 'white' : 'black' }.png" `
+                        + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
+                    + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
+                        + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
                 [ // buttons
                     function paypal(){},
                     function githubSponsors(){},
@@ -725,7 +731,7 @@
 
                 // Show modal
                 const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
-                    `${app.msgs.alert_newerVer} ${app.msgs.appName} `
+                    `${app.msgs.alert_newerVer} ${app.msgs.appName} ` // msg
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
                             + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
