@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.25.2
+// @version               2024.12.26
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -241,6 +241,7 @@
         name: 'BraveGPT', version: GM_info.script.version, symbol: '🦁',
         configKeyPrefix: 'braveGPT', cssPrefix: 'bravegpt',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
+        author: { name: 'KudoAI', url: 'https://kudoai.com' },
         urls: {
             app: 'https://www.bravegpt.com',
             chatgptJS: 'https://chatgpt.js.org',
