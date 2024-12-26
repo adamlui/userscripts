@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.26
+// @version             2024.12.26.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -329,7 +329,6 @@
         alert_noMatterSize: 'no matter the size',
         alert_directlySupports: 'directly supports my unpaid efforts to ensure this project remains free and open for all to use',
         alert_tyForSupport: 'Thank you for your support',
-        alert_author: 'author',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_getSupport: 'Get Support',
@@ -641,7 +640,7 @@
                         + `${ env.ui.scheme == 'dark' ? 'white' : 'black' }.png" `
                         + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
                     + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
-                        + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
+                        + `${app.msgs.appAuthor}</a></b>, ${app.msgs.about_author.toLowerCase()}</p>`,
                 [ // buttons
                     function paypal(){},
                     function githubSponsors(){},
