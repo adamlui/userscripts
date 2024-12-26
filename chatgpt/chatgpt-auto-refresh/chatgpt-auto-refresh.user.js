@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.26
+// @version             2024.12.26.1
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -343,7 +343,6 @@
         alert_noMatterSize: 'no matter the size',
         alert_directlySupports: 'directly supports my unpaid efforts to ensure this project remains free and open for all to use',
         alert_tyForSupport: 'Thank you for your support',
-        alert_author: 'author',
         alert_isUpToDate: 'is up-to-date',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
@@ -680,7 +679,7 @@
                         + `${ env.ui.scheme == 'dark' ? 'white' : 'black' }.png" `
                         + 'style="height: 54px ; margin: 5px 0 -2px 5px"></img>'
                     + `<p>—<b><a target="_blank" rel="noopener" href="${app.author.url}">`
-                        + `${app.msgs.appAuthor}</a></b>, ${app.msgs.alert_author}</p>`,
+                        + `${app.msgs.appAuthor}</a></b>, ${app.msgs.about_author.toLowerCase()}</p>`,
                 [ // buttons
                     function paypal(){},
                     function githubSponsors(){},
