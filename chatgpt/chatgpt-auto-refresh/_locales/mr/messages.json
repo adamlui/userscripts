@@ -37,7 +37,6 @@
   "alert_directlySupports": { "message": "हा प्रकल्प विनामूल्य आणि सर्वांसाठी वापरण्यासाठी खुला राहील याची खात्री करण्यासाठी माझ्या विना मोबदल्याच्या प्रयत्नांचे थेट समर्थन करते" },
   "alert_growTogether": { "message": "एकत्रितपणे, आपण हे शक्तिशाली सॉफ्टवेअर वाढवत राहू शकतो" },
   "alert_tyForSupport": { "message": "आपल्या समर्थनाबद्दल धन्यवाद" },
-  "alert_author": { "message": "लेखक" },
   "btnLabel_moreAIextensions": { "message": "अधिक एआय विस्तार" },
   "btnLabel_leaveReview": { "message": "पुनरावलोकन सोडा" },
   "btnLabel_rateUs": { "message": "आम्हाला रेट करा" },
