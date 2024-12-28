@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.26.8
+// @version             2024.12.28
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -244,7 +244,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b067617252caea259d42a17bd43a261ad34a94c6/chrome/extension/lib/dom.js#sha256-6ZG+oGJ+xnnXPZHwMwieBh778euTmyoJFX53D7d6QRc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/settings.js#sha256-qblUyOK8+TXF1KpeND7wB2/yJrZMirzjhDlvd6XPSVY=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@cda316ebe8899acf18f156c9b179b0544301aa9c/chrome/extension/components/buttons.js#sha256-Rm0FASk2F93VHJS5iCnHDjmsm2VsE3Lf0R1S6Mlo+Dg=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@e51de077c76e2d70f57baa5177f2ec1d4d2777c4/chrome/extension/components/buttons.js#sha256-LPgXdPehngyVjTj4EZrWPqEh1ulYl5xk86gMg/l5J0E=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2415cdcb1c607783e8e75c660979c283729f1ddc/chrome/extension/components/modals.js#sha256-6SkditdZTA8gtY35zcFgwdaQMoTlNjz9eN1mlFo0ZCY=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
@@ -572,7 +572,7 @@
     // Export dependencies to BUTTONS
     const tooltipDiv = dom.create.elem('div', { class: 'cwm-tooltip' }),
           tweaksStyle = dom.create.style()
-    buttons.imports.import({ app, chatbar, env, sites, toggle, tooltipDiv, tweaksStyle })
+    buttons.imports.import({ app, chatbar, env, getScheme, sites, toggle, tooltipDiv, tweaksStyle })
 
     const update = {
 
