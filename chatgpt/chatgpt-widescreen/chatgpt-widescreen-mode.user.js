@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29.3
+// @version             2024.12.29.4
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -243,7 +243,7 @@
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b067617252caea259d42a17bd43a261ad34a94c6/chrome/extension/lib/dom.js#sha256-6ZG+oGJ+xnnXPZHwMwieBh778euTmyoJFX53D7d6QRc=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d0baca6a3c651249f88e6a8bf9f926be18bba268/chrome/extension/lib/settings.js#sha256-qblUyOK8+TXF1KpeND7wB2/yJrZMirzjhDlvd6XPSVY=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@900bee420dc5c698f3befb811f9688bfe117d6d5/chrome/extension/lib/settings.js#sha256-dTGHlkJRGCGXIRYCT69tkYbU8SVp4dw5uuA1iYl7t6c=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@5d1ebf5f16c4f83b7a98804996148d1c896be6c7/chrome/extension/components/buttons.js#sha256-zMaK1yM8Wr+89X2RaKwUEZfSSi6/SzZjaU0c240SeyM=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2415cdcb1c607783e8e75c660979c283729f1ddc/chrome/extension/components/modals.js#sha256-6SkditdZTA8gtY35zcFgwdaQMoTlNjz9eN1mlFo0ZCY=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
@@ -290,7 +290,7 @@
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
-        latestAssetCommitHash: '37dede2' // for cached app.json + sites.json + messages.json
+        latestAssetCommitHash: '7b15e31' // for cached app.json + sites.json + messages.json
     }
     app.urls.assetHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestAssetCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -312,6 +312,7 @@
         menuLabel_hiddenFooter: 'Hidden Footer',
         menuLabel_btnAnimations: 'Button Animations',
         menuLabel_modeNotifs: 'Mode Notifications',
+        menuLabel_blockSpam: 'Spam Block',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
         menuLabel_disabled: 'Disabled (extension installed)',
@@ -339,6 +340,7 @@
         helptip_hiddenHeader: 'Hide site header',
         helptip_btnAnimations: 'Animate chatbar buttons on hover',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
+        helptip_blockSpam: 'Hide spam banners from cluttering the page',
         alert_choosePlatform: 'Choose a platform',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -593,10 +595,12 @@
                             '[id$=-btn]:hover { opacity: 100% !important }' // prevent chatbar btn dim on hover
                           + 'main { overflow: clip !important }' // prevent h-scrollbar...
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
-                          + '[class^="@lg/thread"]:has(button[data-testid=close-button]),' // hide Get Plus spam banner
-                                + '[class*=bottom]:has(button[data-testid=close-button]) { display: none }'
+                          + ( config.blockSpamDisabled ? '' : // hide Get Plus spam banner
+                                ( '[class^="@lg/thread"]:has(button[data-testid=close-button]),' // logged-in
+                                + '[class*=bottom]:has(button[data-testid=close-button]) { display: none }' )) // logged-out
                     ) : env.site == 'perplexity' ? (
-                            'div.absolute.w-full:has(svg[data-icon="xmark"]) { display: none }' // hide homepage spam banners
+                            ( config.blockSpamDisabled ? '' : // hide homepage spam banners
+                                'div.absolute.w-full:has(svg[data-icon="xmark"]) { display: none }' )
                           + `.${buttons.class} { transition: none }` // prevent chatbar btn animation on hover-off
                     ) : '' )
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
