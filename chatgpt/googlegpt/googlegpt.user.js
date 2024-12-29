@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2024.12.26.1
+// @version                  2024.12.29
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -369,7 +369,7 @@
 // @connect                  chatgpt.com
 // @connect                  update.greasyfork.org
 // @connect                  fanyi.sogou.com
-// @require                  https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.4.0/dist/chatgpt.min.js#sha256-LfB3mqeB6Xiq2BDub1tn3BtvEiMcaWEp+I094MFpA+Q=
+// @require                  https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                  https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                  https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
 // @require                  https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
