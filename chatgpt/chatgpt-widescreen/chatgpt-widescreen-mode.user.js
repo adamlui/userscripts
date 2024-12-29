@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.28
+// @version             2024.12.28.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -595,15 +595,18 @@
                                 // ...on sync.mode('fullWindow) => delayed chatbar.tweak()
                           + '[class^="@lg/thread"]:has(button[data-testid=close-button]),' // hide Get Plus spam banner
                                 + '[class*=bottom]:has(button[data-testid=close-button]) { display: none }'
-                    ) : env.site == 'perplexity' ?
-                        `.${buttons.class} { transition: none }` : '' )) // prevent chatbar btn animation on hover-off
+                    ) : env.site == 'perplexity' ? (
+                            'div.absolute.w-full:has(svg[data-icon="xmark"]) { display: none }' // hide homepage spam banners
+                          + `.${buttons.class} { transition: none }` // prevent chatbar btn animation on hover-off
+                    ) : '' )
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
                   + ( config.hiddenHeader ? hhStyle : '' ) // hide header
                   + ( config.hiddenFooter ? hfStyle : '' ) // hide footer
                   + `#newChat-btn { display: ${ config.ncbDisabled == true ? 'none' : 'flex' }}`
                   + ( config.btnAnimationsDisabled ? '' : // zoom chatbar buttons on hover
                         `.${buttons.class}:hover { transform: scale(${ env.site == 'poe' ? 1.15 : 1.285}) }` )
-        },
+                )
+            },
 
             wideScreen() {
                 wideScreenStyle.innerText = (
