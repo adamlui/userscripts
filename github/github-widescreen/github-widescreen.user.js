@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29
+// @version             2024.12.29.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -26,6 +26,7 @@
 // @updateURL           https://update.greasyfork.org/scripts/473439/github-widescreen.meta.js
 // @homepageURL         https://github.com/adamlui/github-widescreen
 // @supportURL          https://github.com/adamlui/github-widescreen/issues
+// @contributionURL     https://github.com/sponsors/adamlui
 // ==/UserScript==
 
 (async () => {
