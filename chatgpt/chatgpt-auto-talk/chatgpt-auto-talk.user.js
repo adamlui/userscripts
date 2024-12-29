@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29
+// @version             2024.12.29.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -873,7 +873,7 @@
     // Observe <main> for need to AUTO-PLAY response
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 1000))])
     const autoPlayObserver = new MutationObserver(mutations => {
-        if (config.autoTalkDisabled) return
+        if (config.autoTalkDisabled || document.querySelector('[data-testid*=login]')) return
         for (const mutation of mutations) { if (mutation.type == 'childList')
             mutation.addedNodes.forEach(node => { if (node?.tagName == 'DIV') {
                 const playIcon = node.querySelector('path[d^="M11 4.9099C11"]')
