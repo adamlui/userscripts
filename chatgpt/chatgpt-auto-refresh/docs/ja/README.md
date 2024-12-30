@@ -207,7 +207,7 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 ## 📜 関連スクリプト
 
 ### <img width=17 src="https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT ワイドスクリーン モード](https://chatgptwidescreen.com) &nbsp;<img src="https://media.chatgptwidescreen.com/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24">
-> ChatGPT にワイドスクリーン + フルスクリーン モードを追加して、表示を強化し、スクロールを減らします。
+> ワイド/フル/トールスクリーン+スパンブロックモードで ChatGPT を強化します。perplexity.ai + poe.com でも動作します！
 <br>[インストール](https://docs.chatgptwidescreen.com/#-greasemonkey-userscript) /
 [Readme](https://docs.chatgptwidescreen.com/#readme) /
 [ディスカッション](https://github.com/adamlui/chatgpt-widescreen/discussions)
