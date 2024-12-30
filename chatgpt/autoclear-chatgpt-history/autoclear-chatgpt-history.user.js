@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30.4
+// @version             2024.12.30.5
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -771,7 +771,7 @@
                 this.switchSpan = document.createElement('span')
                 this.knobSpan = document.createElement('span')
 
-                // Assemble/append elems
+                // Assemble elems into parent div
                 this.switchSpan.append(this.knobSpan)
                 this.div.append(this.navicon, this.toggleInput, this.switchSpan, this.toggleLabel)
 
@@ -786,7 +786,7 @@
                 }
 
                 // Update color/state
-                this.updateColor() ; this.updateState() // to opposite init state for animation on 1st load
+                this.updateAesthetic() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -803,13 +803,16 @@
                 this.styles.innerText = (
                     ':root {' // vars
                       + '--switch-enabled-bg-color: #ad68ff ; --switch-disabled-bg-color: #ccc ;'
-                      + '--switch-enabled-box-shadow: 2px 1px 9px #d8a9ff }'
+                      + '--switch-enabled-box-shadow: 2px 1px 9px #d8a9ff ;'
+                      + '--switch-enabled-hover-box-shadow: 0 1px 10px #9b5ad1 }'
+
+                    // Element styles
                   + `.${this.class} {` // parent div
                       + 'max-height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer ;'
                       + 'flex-grow: unset }' // overcome OpenAI .grow
                   + `.${this.class} > img {` // navicon
                       + 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px }'
-                  + `.${this.class} > input { display: none }` // hdie checkbox
+                  + `.${this.class} > input { display: none }` // hide checkbox
                   + `.${this.class} > span {` // switch span
                       + 'position: relative ; width: 30px ; height: 15px ;'
                       + `background-color: var(--switch-${ // init opposite final color
@@ -819,7 +822,11 @@
                       + `left: ${ env.browser.isMobile ? 169
                                 : env.ui.firstLink ? 154 : 160 }px }`
                   + `.${this.class} > span.enabled {` // switch on
-                      + 'background-color: var(--switch-enabled-bg-color) ; box-shadow: var(--switch-enabled-box-shadow) }'
+                      + 'background-color: var(--switch-enabled-bg-color) ;'
+                      + 'box-shadow: var(--switch-enabled-box-shadow) }'
+                  + `.${this.class}:hover > span.enabled {` // switch on when hover on parent div
+                      + 'box-shadow: var(--switch-enabled-hover-box-shadow) ;'
+                      + '-webkit-transition: 0.2s ; transition: 0.2s }'
                   + `.${this.class} > span.disabled {` // switch off
                       + 'background-color: var(--switch-disabled-bg-color) ; box-shadow: none }'
                   + `.${this.class} > span > span {` // knob span
@@ -831,6 +838,13 @@
                       + `width: ${ env.browser.isMobile ? 201 : 148 }px ;`
                       + `margin-left: -${ env.ui.firstLink ? 41 : 23 }px ;` // left-shift to navicon
                       + `${ env.ui.firstLink ? '' : 'font-size: 0.875rem ; font-weight: 600' }}`
+
+                    // Dark scheme mods
+                  + `.${this.class}.dark > span.enabled {` // switch on
+                      + 'background-color: var(--switch-enabled-bg-color) ;'
+                      + 'box-shadow: var(--switch-enabled-hover-box-shadow) }' // use hover style instead
+                  + `.${this.class}.dark:hover > span.enabled {` // switch on when hover on parent div
+                      + 'box-shadow: var(--switch-enabled-box-shadow) }' // use regular style instead
                 )
                 document.head.append(this.styles)
             },
@@ -842,7 +856,10 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateColor() {
+            updateAesthetic() { // to match UI scheme
+                const isDarkScheme = env.ui.scheme == 'dark'
+                this.div.classList.add(isDarkScheme ? 'dark' : 'light')
+                this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
                 this.knobSpan.style.boxShadow = `rgba(0, 0, 0, 0.3) 0 1px 2px 0${
                     env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, 0.15) 0 3px 6px 2px' : '' }`
                 this.navicon.src = `${app.urls.mediaHost}/images/icons/incognito/${
@@ -856,8 +873,7 @@
                 this.toggleLabel.innerText = `${app.msgs.mode_autoclear} `
                     + app.msgs[`state_${ this.toggleInput.checked ? 'enabled' : 'disabled' }`]
                 setTimeout(() => {
-                    this.switchSpan.style.backgroundColor = this.toggleInput.checked ? '#ad68ff' : '#ccc'
-                    this.switchSpan.style.boxShadow = this.toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                    this.switchSpan.className = this.toggleInput.checked ? 'enabled' : 'disabled'
                     this.knobSpan.style.transform = `translateX(${ this.toggleInput.checked ? 13 : 0 }px)`
                 }, 1) // min delay to trigger 1st transition fx
             }
@@ -919,7 +935,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.updateColor() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.updateAesthetic() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
