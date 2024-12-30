@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30.3
+// @version             2024.12.30.4
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -714,7 +714,7 @@
     // Define UI functions
 
     function syncConfigToUI() {
-        toggles.sidebar.update.state() // based on config.autoTalkDisabled + config.toggleHidden
+        toggles.sidebar.updateState() // based on config.autoTalkDisabled + config.toggleHidden
         menu.refresh() // prefixes/suffixes
     }
 
@@ -773,7 +773,7 @@
                 }
 
                 // Update color/state
-                this.update.color() ; this.update.state() // to opposite init state for animation on 1st load
+                this.updateColor() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -830,29 +830,24 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            update: {
-                color() {
-                    toggles.sidebar.knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
-                        + ( env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
-                    toggles.sidebar.navicon.src = `${app.urls.assetHost }/assets/images/icons/speaker/${
-                        env.ui.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
-                },
+            updateColor() {
+                this.knobSpan.style.boxShadow = `rgba(0, 0, 0, 0.3) 0 1px 2px 0${
+                    env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, 0.15) 0 3px 6px 2px' : '' }`
+                this.navicon.src = `${app.urls.assetHost }/assets/images/icons/speaker/${
+                    env.ui.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
+            },
 
-                state() {
-                    if (!toggles.sidebar.div) return // since toggle never created = sidebar missing
-                    toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
-                    toggles.sidebar.toggleInput.checked = !config.autoTalkDisabled
-                    toggles.sidebar.toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
-                        + app.msgs[`state_${ toggles.sidebar.toggleInput.checked ? 'enabled' : 'disabled' }`]
-                    setTimeout(() => {
-                        toggles.sidebar.switchSpan.style.backgroundColor = (
-                            toggles.sidebar.toggleInput.checked ? '#ad68ff' : '#ccc' )
-                        toggles.sidebar.switchSpan.style.boxShadow = (
-                            toggles.sidebar.toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none' )
-                        toggles.sidebar.knobSpan.style.transform = `translateX(${
-                            toggles.sidebar.toggleInput.checked ? 13 : 0 }px)`
-                    }, 1) // min delay to trigger 1st transition fx
-                }
+            updateState() {
+                if (!this.div) return // since toggle never created = sidebar missing
+                this.div.style.display = config.toggleHidden ? 'none' : 'flex'
+                this.toggleInput.checked = !config.autoTalkDisabled
+                this.toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
+                    + app.msgs[`state_${ this.toggleInput.checked ? 'enabled' : 'disabled' }`]
+                setTimeout(() => {
+                    this.switchSpan.style.backgroundColor = this.toggleInput.checked ? '#ad68ff' : '#ccc'
+                    this.switchSpan.style.boxShadow = this.toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                    this.knobSpan.style.transform = `translateX(${ this.toggleInput.checked ? 13 : 0 }px)`
+                }, 1) // min delay to trigger 1st transition fx
             }
         }
     }
@@ -898,7 +893,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.update.color() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.updateColor() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
