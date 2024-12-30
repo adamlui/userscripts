@@ -219,10 +219,10 @@
 // @description:zh-HK   使用寬/全/高螢幕+垃圾郵件區塊模式增強 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
 // @description:zh-SG   通过宽屏/全屏/高屏+垃圾邮件块模式增强 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
 // @description:zh-TW   使用寬/全/高螢幕+垃圾郵件區塊模式增強 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
-// @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!// @author              Adam Lui
+// @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30.2
+// @version             2024.12.30.3
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -244,7 +244,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b067617252caea259d42a17bd43a261ad34a94c6/chrome/extension/lib/dom.js#sha256-6ZG+oGJ+xnnXPZHwMwieBh778euTmyoJFX53D7d6QRc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@900bee420dc5c698f3befb811f9688bfe117d6d5/chrome/extension/lib/settings.js#sha256-dTGHlkJRGCGXIRYCT69tkYbU8SVp4dw5uuA1iYl7t6c=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@5d1ebf5f16c4f83b7a98804996148d1c896be6c7/chrome/extension/components/buttons.js#sha256-zMaK1yM8Wr+89X2RaKwUEZfSSi6/SzZjaU0c240SeyM=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@8ba0d796f2602ec655d2e6e140f400df730acc8f/chrome/extension/components/buttons.js#sha256-CwmLdmwM/tqHbdrjFvIGiwziOBeEcJ+g0LeTKhaJGUQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2415cdcb1c607783e8e75c660979c283729f1ddc/chrome/extension/components/modals.js#sha256-6SkditdZTA8gtY35zcFgwdaQMoTlNjz9eN1mlFo0ZCY=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
@@ -574,7 +574,7 @@
     // Export dependencies to BUTTONS
     const tooltipDiv = dom.create.elem('div', { class: 'cwm-tooltip' }),
           tweaksStyle = dom.create.style()
-    buttons.imports.import({ app, chatbar, env, getScheme, sites, toggle, tooltipDiv, tweaksStyle })
+    buttons.imports.import({ app, chatbar, env, sites, toggle, tooltipDiv, tweaksStyle })
 
     const update = {
 
