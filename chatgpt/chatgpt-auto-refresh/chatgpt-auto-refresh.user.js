@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29
+// @version             2024.12.30
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -798,13 +798,13 @@
     const toggles = {
 
         sidebar: {
-            ids: { navicon: `${app.cssPrefix}-toggle-navicon`, knobSpan: `${app.cssPrefix}-toggle-knob-span` },
+            class: `${app.cssPrefix}-sidebar-toggle`,
 
             create() {
-                this.div = document.createElement('div')
+                this.div = document.createElement('div') ; this.div.className = this.class
 
-                // Create/ID/size/position navicon
-                const navicon = document.createElement('img') ; navicon.id = this.ids.navicon
+                // Create/size/position navicon
+                const navicon = document.createElement('img')
                 navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
 
                 // Create/disable/hide checkbox
@@ -822,7 +822,7 @@
                 })
 
                 // Create/stylize knob, append to switch
-                const knobSpan = document.createElement('span') ; knobSpan.id = this.ids.knobSpan
+                const knobSpan = document.createElement('span')
                 Object.assign(knobSpan.style, {
                     position: 'absolute', left: '3px', bottom: '1.25px',
                     width: '12px', height: '12px', content: '""', borderRadius: '28px',
@@ -871,7 +871,7 @@
             },
 
             insert() {
-                if (this.status?.startsWith('insert') || document.getElementById(this.ids.navicon)) return
+                if (this.status?.startsWith('insert') || document.querySelector(`.${this.class}`)) return
                 const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0] ; if (!sidebar) return
                 this.status = 'inserting' ; if (!this.div) this.create()
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
@@ -879,8 +879,8 @@
 
             update: {
                 color() {
-                    const knobSpan = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.knobSpan}`),
-                          navicon = toggles.sidebar.div.querySelector(`#${toggles.sidebar.ids.navicon}`)
+                    const knobSpan = toggles.sidebar.div.querySelector('span > span'),
+                          navicon = toggles.sidebar.div.querySelector('img')
                     knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
                         + ( env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
                     navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
@@ -954,7 +954,7 @@
 
     // Monitor NODE CHANGES to maintain sidebar toggle visibility
     new MutationObserver(() => {
-        if (!config.toggleHidden && !document.getElementById(toggles.sidebar.ids.navicon)
+        if (!config.toggleHidden && !document.querySelector(`.${toggles.sidebar.class}`)
             && toggles.sidebar.status != 'inserting') {
                 toggles.sidebar.status = 'missing' ; toggles.sidebar.insert() }
     }).observe(document.body, { attributes: true, subtree: true })
@@ -973,8 +973,8 @@
     // Disable distracting SIDEBAR CLICK-ZOOM effect
     if (!document.documentElement.hasAttribute('sidebar-click-zoom-observed')) {
         new MutationObserver(mutations => mutations.forEach(({ target }) => {
-            if (target.closest('[class*=sidebar]') // include sidebar divs
-                && !target.id.endsWith('-knob-span') // exclude our toggles.sidebar
+            if (target.closest('[class*=sidebar]') // include sidebar elems
+                && !target.closest('[class*=sidebar-toggle]') // exclude our toggles.sidebar's elems
                 && target.style.transform != 'none' // click-zoom occurred
             ) target.style.transform = 'none'
         })).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['style'] })
