@@ -222,7 +222,7 @@
 // @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29.4
+// @version             2024.12.29.5
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -600,7 +600,7 @@
                                 + '[class*=bottom]:has(button[data-testid=close-button]) { display: none }' )) // logged-out
                     ) : env.site == 'perplexity' ? (
                             ( config.blockSpamDisabled ? '' : // hide homepage spam banners
-                                'div.absolute.w-full:has(svg[data-icon="xmark"]) { display: none }' )
+                                'div.absolute.w-full:has(svg[data-icon=xmark]) { display: none }' )
                           + `.${buttons.class} { transition: none }` // prevent chatbar btn animation on hover-off
                     ) : '' )
                   + ( config.tcbDisabled == false ? tcbStyle : '' ) // expand text input vertically
