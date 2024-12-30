@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30
+// @version             2024.12.30.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -751,65 +751,31 @@
             create() {
                 this.div = document.createElement('div') ; this.div.className = this.class
 
-                // Create/size/position navicon
-                const navicon = document.createElement('img')
-                navicon.style.cssText = 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px'
+                // Create toggle elems
+                const navicon = document.createElement('img'),
+                      toggleLabel = document.createElement('label'),
+                      toggleInput = document.createElement('input'),
+                      switchSpan = document.createElement('span'),
+                      knobSpan = document.createElement('span')
 
-                // Create/disable/hide checkbox
-                const toggleInput = document.createElement('input')
-                Object.assign(toggleInput, { type: 'checkbox', disabled: true })
-                toggleInput.style.display = 'none'
+                // Assemble/append elems
+                switchSpan.append(knobSpan) ; this.div.append(navicon, toggleInput, switchSpan, toggleLabel)
 
-                // Create/stylize switch
-                const switchSpan = document.createElement('span')
-                Object.assign(switchSpan.style, {
-                    position: 'relative', left: `${ env.browser.isMobile ? 169 : !env.ui.firstLink ? 160 : 154 }px`,
-                    bottom: `${ !env.ui.firstLink ? -0.15 : 0 }em`, width: '30px', height: '15px',
-                    backgroundColor: !config.autoTalkDisabled ? '#ccc' : '#AD68FF', // init opposite  final color
-                    '-webkit-transition': '.4s', transition: '0.4s',  borderRadius: '28px'
-                })
-
-                // Create/stylize knob, append to switch
-                const knobSpan = document.createElement('span')
-                Object.assign(knobSpan.style, {
-                    position: 'absolute', left: '3px', bottom: '1.25px',
-                    width: '12px', height: '12px', content: '""', borderRadius: '28px',
-                    transform: !config.autoTalkDisabled ? // init opposite final pos
-                        'translateX(0)' : 'translateX(13px) translateY(0)',
-                    backgroundColor: 'white',  '-webkit-transition': '0.4s', transition: '0.4s'
-                }) ; switchSpan.append(knobSpan)
-
-                // Create/stylize/fill label
-                const toggleLabel = document.createElement('label')
-                if (!env.ui.firstLink) // add font size/weight since no env.ui.firstLink to borrow from
-                    toggleLabel.style.cssText = 'font-size: 0.875rem, font-weight: 600'
-                Object.assign(toggleLabel.style, {
-                    marginLeft: `-${ !env.ui.firstLink ? 23 : 41 }px`, // left-shift to navicon
-                    cursor: 'pointer', // add finger cursor on hover
-                    width: `${ env.browser.isMobile ? 201 : 148 }px`, // to truncate overflown text
-                    overflow: 'hidden', textOverflow: 'ellipsis' // to truncate overflown text
-                })
-
-                // Append elements
-                this.div.append(navicon, toggleInput, switchSpan, toggleLabel)
-
-                // Stylize/classify master div
-                this.div.style.cssText += (
-                    'max-height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer'
-                  + 'flex-grow: unset' // overcome OpenAI .grow
-                )
-                if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
-                    const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
-                          firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
-                    this.div.classList.add(...env.ui.firstLink.classList, ...(firstLabel?.classList || []))
+                // Stylize elems
+                this.stylize() // create/append stylesheet
+                if (toggles.imports.env.ui.firstLink) { // borrow/assign classes from sidebar elems
+                    const firstIcon = toggles.imports.env.ui.firstLink.querySelector('div:first-child'),
+                          firstLabel = toggles.imports.env.ui.firstLink.querySelector('div:nth-child(2)')
+                    this.div.classList.add(
+                        ...toggles.imports.env.ui.firstLink.classList, ...(firstLabel?.classList || []))
                     this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
                 }
 
                 // Update color/state
                 this.update.color() ; this.update.state() // to opposite init state for animation on 1st load
 
-                // Add listeners
-                this.div.onmouseover = this.div.onmouseout = event =>
+                // Add hover/click listeners
+                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
                         `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
@@ -817,6 +783,43 @@
                     syncConfigToUI({ updatedKey: 'autoTalkDisabled' })
                     notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
                 }
+            },
+
+            stylize() {
+                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                this.styles.innerText = (
+                    ':root {' // vars
+                      + '--switch-enabled-bg-color: #ad68ff ; --switch-disabled-bg-color: #ccc ;'
+                      + '--switch-enabled-box-shadow: 2px 1px 9px #d8a9ff }'
+                  + `.${this.class} {` // parent div
+                      + 'max-height: 37px ; margin: 2px 0 ; user-select: none ; cursor: pointer ;'
+                      + 'flex-grow: unset }' // overcome OpenAI .grow
+                  + `.${this.class} > img {` // navicon
+                      + 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px }'
+                  + `.${this.class} > input { display: none }` // hdie checkbox
+                  + `.${this.class} > span {` // switch span
+                      + 'position: relative ; width: 30px ; height: 15px ;'
+                      + `background-color: var(--switch-${ // init opposite final color
+                            !config.autoTalkDisabled ? 'disabled' : 'enabled' }-bg-color) ;`
+                      + '-webkit-transition: 0.4s ; transition: 0.4s ; border-radius: 28px ;'
+                      + `bottom: ${ toggles.imports.env.ui.firstLink ? 0 : -0.15 }em ;`
+                      + `left: ${ toggles.imports.env.browser.isMobile ? 169
+                                : toggles.imports.env.ui.firstLink ? 154 : 160 }px }`
+                  + `.${this.class} > span.enabled {` // switch on
+                      + 'background-color: var(--switch-enabled-bg-color) ; box-shadow: var(--switch-enabled-box-shadow) }'
+                  + `.${this.class} > span.disabled {` // switch off
+                      + 'background-color: var(--switch-disabled-bg-color) ; box-shadow: none }'
+                  + `.${this.class} > span > span {` // knob span
+                      + 'position: absolute ; width: 12px ; height: 12px ; content: "" ; border-radius: 28px ;'
+                      + 'background-color: white ; -webkit-transition: 0.4s ; transition: 0.4s ; left: 3px ; bottom: 1.25px ;'
+                      + `transform: translateX(${ !config.autoTalkDisabled ? 0 : 13 }px) }` // init opposite final pos
+                  + `.${this.class} > label {` // toggle label
+                      + 'cursor: pointer ; overflow: hidden ; text-overflow: ellipsis ;'
+                      + `width: ${ toggles.imports.env.browser.isMobile ? 201 : 148 }px ;`
+                      + `margin-left: -${ toggles.imports.env.ui.firstLink ? 41 : 23 }px ;` // left-shift to navicon
+                      + `${ toggles.imports.env.ui.firstLink ? '' : 'font-size: 0.875rem ; font-weight: 600' }}`
+                )
+                document.head.append(this.styles)
             },
 
             insert() {
@@ -844,13 +847,13 @@
                           knobSpan = switchSpan.firstChild
                     toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
                     toggleInput.checked = !config.autoTalkDisabled
-                    toggleLabel.innerText = `${app.msgs.mode_autoTalk} ${
-                        app.msgs['state_' + ( toggleInput.checked ? 'enabled' : 'disabled' )]}`
+                    toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
+                                            + app.msgs[`state_${ toggleInput.checked ? 'enabled' : 'disabled' }`]
                     setTimeout(() => {
                         switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
                         switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
                         knobSpan.style.transform = `translateX(${ toggleInput.checked ? 13 : 0 }px)`
-                    }, 1) // min delay to trigger transition fx
+                    }, 1) // min delay to trigger 1st transition fx
                 }
             }
         }
