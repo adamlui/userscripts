@@ -104,125 +104,124 @@
 // @name:zh-SG          ChatGPT 宽屏模式 🖥️
 // @name:zh-TW          ChatGPT 寬螢幕模 🖥️
 // @name:zu             ChatGPT Isimo sokudlalwa emkhumbini 🖥️
-// @description         Adds Widescreen + Fullscreen modes to chatgpt.com + perplexity.ai + poe.com for enhanced viewing + reduced scrolling
-// @description:af      Voeg Widescreen + Volledige skermmodusse by chatgpt.com + perplexity.ai + poe.com vir verbeterde kyk + verminderde skrol
-// @description:am      የራስ መጠን በ chatgpt.com + perplexity.ai + poe.com ውስጥ የተከፈተውን ወደ ትንቢት ማድረግ + ድምፅ እንዲታትና
-// @description:ar      إضافة وضعي الشاشة العريضة + الشاشة الكاملة إلى chatgpt.com + perplexity.ai + poe.com لتحسين العرض + تقليل التمرير
-// @description:az      chatgpt.com + perplexity.ai + poe.com üçün Geniş Ekran + Tam Ekran rejimləri əlavə etmək, görüntünü yaxşılaşdırmaq + səlahətən keçirməni azaltmaq
-// @description:be      Дадае рэжымы шырокага экрана + поўнага экрана да chatgpt.com + perplexity.ai + poe.com для паляпшэнага прагляду + змяншэння скролінгу
-// @description:bem     Ena Mode ya Widescreen + ya Fullscreen ku chatgpt.com + perplexity.ai + poe.com pa kuongeza kulandila + ukukonda scrolling
-// @description:bg      Добавя режими на Широк екран + Пълен екран към chatgpt.com + perplexity.ai + poe.com за подобрено гледане + намалено плъзгане
-// @description:bn      এক্স এগ্রিসিভ দেখার জন্য chatgpt.com + perplexity.ai + poe.com-এ ওয়াইডস্ক্রিন + ফুলস্ক্রিন মোড যুক্ত করে + স্ক্রলিং হ্রাস করে
-// @description:bo      བཅའ་དྲུག་རྒྱུས་པ་+ བདེ་ཆེན་རྒྱུས་པ་འདི་chatgpt.com + perplexity.ai + poe.com་ནང་ལས་བསྒྲགས་བཞག་བའི་ལྷག་པ་ཞིག་ཁམས་པའི་བརྟག་ཞིབ་བཅོ་སྒྲིག་འདུག
-// @description:bs      Dodaje Widescreen + Fullscreen režime chatgpt.com + perplexity.ai + poe.com-u za poboljšani prikaz + smanjenje klizanja
-// @description:ca      Afegeix els modes de pantalla ampla + pantalla completa a chatgpt.com + perplexity.ai + poe.com per a una visualització millorada + reducció de desplaçament
-// @description:ceb     Gidugang ang Mga Modo sa Widescreen + Fullscreen sa chatgpt.com + perplexity.ai + poe.com alang sa labaw nga pagtan-aw + paggamot sa pag-scroll
-// @description:ckb     Mode Widescreen + Mode Fullscreen bo chatgpt.com + perplexity.ai + poe.com zêde bike ji bo nêzîkbûna başkirinê + kam kirina birevandinê
-// @description:cs      Přidává režimy Widescreen + Fullscreen do chatgpt.com + perplexity.ai + poe.com pro zlepšené zobrazení + snížení posouvání
-// @description:cy      Ychwanega dulliau Sgrin Llydan + Sgrin Lawn i chatgpt.com + perplexity.ai + poe.com ar gyfer gwylio well + lleihau sgrolio
-// @description:da      Tilføjer Widescreen + Fuldscreen-tilstande til chatgpt.com + perplexity.ai + poe.com for forbedret visning + reduceret rulning
-// @description:de      Fügt Widescreen + Vollbildmodus zu chatgpt.com + perplexity.ai + poe.com für verbesserte Ansicht + reduziertes Scrollen hinzu
-// @description:dv      chatgpt.com + perplexity.ai + poe.com ބޮޓޮބޭސީ + ފަންވައިދާ މޯޑިއުލްއަޤް ހެދުމަށް ކަނޑުގެންނަވަން + ރުސަބް ބެންކުރުމަށްވެއްޖެ
-// @description:dz      chatgpt.com + perplexity.ai + poe.com སྒྲུབ་ཐབས་ + མིང་དཔྱད་ཆེས་དང་པ་ཡོངས་ཀྱི་ལྷག་པ་ཁྱབ་ལ་ཉོ་གར་བཞག་པ་དང་བདེན་པས་ཆེད་པ་དང་ཚིག་རྐྱང་ལ་མགོ་ནི་
-// @description:el      Προσθέτει λειτουργίες Widescreen + Fullscreen στο chatgpt.com + perplexity.ai + poe.com για βελτιωμένη προβολή + μείωση της κύλισης
-// @description:eo      Aldonas larĝekranajn + plenekranajn reĝimojn al chatgpt.com + perplexity.ai + poe.com por plibonigita vidado + malpliigo de ŝovado
-// @description:es      Agrega modos de pantalla panorámica + pantalla completa a chatgpt.com + perplexity.ai + poe.com para una visualización mejorada + desplazamiento reducido
-// @description:et      Lisab chatgpt.com + perplexity.ai + poe.com-le Widescreen + Täisekraani režiimid parema vaatamise ja vähenenud kerimisega
-// @description:eu      Gehitu Widescreen + Pantaila oso moduak chatgpt.com + perplexity.ai + poe.com-ra ikusmen hobetu + mugimendua gutxituz
-// @description:fa      اضافه کردن حالت های واید اسکرین + تمام صفحه به chatgpt.com + perplexity.ai + poe.com برای مشاهده بهتر + کاهش اسکرول
-// @description:fi      Lisää Widescreen + Koko näytön tilat chatgpt.com + perplexity.ai + poe.com:hen paremman katselun + vähentyneen vierityksen ansiosta
-// @description:fo      Leggur til Widescreen + Fullscreen hamrar á chatgpt.com + perplexity.ai + poe.com fyri bætta sýning + minnka skúvsetan
-// @description:fr      Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
-// @description:fr-CA   Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
-// @description:gd      Cuir gnèithean Leudachaidh + Faidhlichean sàbhaladh sgrùdair gu chatgpt.com + perplexity.ai + poe.com airson sealladh air àrdachadh + sgroladh lag
-// @description:gl      Engade os modos de pantalla panorámica + pantalla completa a chatgpt.com + perplexity.ai + poe.com para unha visualización mellorada + desprazamento reducido
-// @description:gu      એન્હાનો જોડાણ કરો વાઈડસ્ક્રીન + ફુલસ્ક્રીન મોડ તેમજ chatgpt.com + perplexity.ai + poe.com માટે સુધારેલ જોઈન્ટ પ્રદર્શન + કમેલી સ્ક્રોલિંગ માટે
-// @description:haw     Kālele i nā Ao Waiwai + Ao Piha i loko o chatgpt.com + perplexity.ai + poe.com no ka ho'ohana'ana ikaika + ka'u hā'ule 'ana
-// @description:he      מוסיף מצבי מסך מורחב + מסך מלא ל־chatgpt.com + perplexity.ai + poe.com לשיפור תצוגה + הפחתת גלילה
-// @description:hi      बढ़िया दृश्य + कम स्क्रोलिंग के लिए chatgpt.com + perplexity.ai + poe.com में वाइडस्क्रीन + फुलस्क्रीन मोड जोड़ता है
-// @description:hr      Dodaje Widescreen + Fullscreen načine na chatgpt.com + perplexity.ai + poe.com za poboljšani prikaz + smanjenje klizanja
-// @description:ht      Ajoute modes Widescreen + Fullscreen nan chatgpt.com + perplexity.ai + poe.com pou amelyore gade + redui defileman
-// @description:hu      Hozzáadja a Widescreen + Teljes képernyő módokat a chatgpt.com + perplexity.ai + poe.com-hoz jobb megtekintés + görgetés csökkentése érdekében
-// @description:hy      Ավելացնում է Widescreen + Fullscreen ռեժիմները chatgpt.com + perplexity.ai + poe.com-ում բարելավված դիտումի համար + սահմանափակումը
-// @description:id      Menambahkan mode Widescreen + Layar Penuh ke chatgpt.com + perplexity.ai + poe.com untuk penampilan yang lebih baik + pengurangan pengguliran
-// @description:is      Bætir við Widescreen + Fullskjárshamra í chatgpt.com + perplexity.ai + poe.com til að bæta sýn + draga úr skruni
-// @description:it      Aggiunge le modalità Widescreen + Schermo intero a chatgpt.com + perplexity.ai + poe.com per una visualizzazione migliorata + riduzione dello scorrimento
-// @description:ja      chatgpt.com + perplexity.ai + poe.comの表示を向上するために、ワイドスクリーン+フルスクリーンモードを追加します
-// @description:jv      Nambahi Modus Widescreen + Fullscreen menyang chatgpt.com + perplexity.ai + poe.com kanggo tampilan sing ditingkatake + ngecilake scrolling
-// @description:ka      დაამატებს Widescreen + Fullscreen რეჟიმებს chatgpt.com + perplexity.ai + poe.com-ში გაუმჯობესებული ნახვა + გამოკლებული გადადების მიზნით
-// @description:kk      chatgpt.com + perplexity.ai + poe.com-ге Widescreen + Fullscreen режимдерін қосу арқылы көрініс үздіктемелеу + скроллауды кеміту
-// @description:km      បន្ថែមរបៀប Widescreen + Fullscreen ទៅក្នុង chatgpt.com + perplexity.ai + poe.com សម្រាប់ការមើលឡើងប្រហែលជាក្រុមហ៊ុន + ការរងចាំខ្លួនឯងប៉ុណ្ណោះ
-// @description:kn      ಅಭ್ಯಾಸಕ್ರಮದ ದೃಷ್ಟಿಗೆ ಅನುಗುಣವಾಗಿ Widescreen + Fullscreen ಮೋಡ್ಗಳನ್ನು chatgpt.com + perplexity.ai + poe.comಗೆ ಸೇರಿಸುತ್ತದೆ
-// @description:ko      chatgpt.com + perplexity.ai + poe.com에 와이드스크린 + 전체화면 모드를 추가하여 개선된 화면 표시 + 스크롤 감소
-// @description:ku      Dihênîne modên Widescreen + Fullscreenê bo chatgpt.com + perplexity.ai + poe.comê ji bo pêşînkirina nîşandina + kêmkirina kayanînê
-// @description:ky      chatgpt.com + perplexity.ai + poe.com-го Widescreen + Fullscreen режимдору кошо аркылуу жакшы көрүнүштү + скроллоо жоготуу
-// @description:la      TV + Fullscreen modos addit chatgpt.com + perplexity.ai + poe.com ad augendam viewing + reducta scrolling
-// @description:lb      Füügt Widescreen + Fullscreen Modi dem chatgpt.com + perplexity.ai + poe.com bäi fir verbessert Visioun + reduzéiert Scrollen
-// @description:lo      ເພີ່ມຮູບແບບ Widescreen + Fullscreen ໃຫ້ໄດ້ຮຽນ chatgpt.com + perplexity.ai + poe.com ສຳເລັດຂອງການສະແດງອ້າງວ່າງ + ການປະເມີດໃຫ້ນ້ໍາຂາຍຫນ້າ
-// @description:lt      Prideda Widescreen + Fullscreen režimus į chatgpt.com + perplexity.ai + poe.com, siekiant pagerinti peržiūrą ir sumažinti slinkimą
-// @description:lv      Pievieno Widescreen + Fullscreen režīmus chatgpt.com + perplexity.ai + poe.com, lai uzlabotu skatīšanos + samazinātu ritināšanu
-// @description:mg      Mametraka ny fomba Widescreen + Fullscreen amin'ny chatgpt.com + perplexity.ai + poe.com mba handresy ny fandefasana + famindrampoana ny firotsahana
-// @description:mi      Ka whakarite ana i ngā āhuatanga Widescreen + Fullscreen ki te chatgpt.com + perplexity.ai + poe.com mō te whakaatu whakapai ake + te whakaiti i te whakararuraru
-// @description:mk      Додава режими на Widescreen + Fullscreen во chatgpt.com + perplexity.ai + poe.com за подобрување на приказот + намалување на скролирањето
-// @description:ml      വായ്ഡ്സ്ക്രീൻ + പൂർണ്ണസ്ക്രീൻ മോഡുകൾ ചേർക്കുന്നു chatgpt.com + perplexity.ai + poe.com-യിൽ മിക്കവാറും കാഴ്ചപ്പാട് + കുറവ് തിരിക്കൽ ചെയ്യുന്നതിന്
-// @description:mn      Widescreen + Fullscreen горимуудыг chatgpt.com + perplexity.ai + poe.com рүү нэмэх нь дэлгэцэнд хувцаслан + гүйлгээний эвдрэлдээ хянахыг оруулна
-// @description:mr      व्हाइडस्क्रीन + फुलस्क्रीन मोड्स चे chatgpt.com + perplexity.ai + poe.comमध्ये जोडले जातात व पाहणी वाढविण्यासाठी स्क्रोलिंग कमी करतात
-// @description:ms      Menambah mod Widescreen + Layar Penuh ke chatgpt.com + perplexity.ai + poe.com untuk tampilan yang lebih baik + pengurangan penatalan
-// @description:mt      Jiddoqq modes Widescreen + Fullscreen għal chatgpt.com + perplexity.ai + poe.com għall-viżwalizzazzjoni miġġielda + qasam it-telf
-// @description:my      ပိုမိုကောင်းမွန်သောကြည့်ရှုရန်အတွက် chatgpt.com + perplexity.ai + poe.com တွင် Widescreen + မျက်နှာပြင်အပြည့်မုဒ်များကို ထည့်သွင်းထားသည်။
-// @description:ne      सुधारिएको दृश्य + कम स्क्रोलिंगका लागि वाइडस्क्रिन + फुलस्क्रिन मोडहरूलाई chatgpt.com + perplexity.ai + poe.comमा थप्दछ
-// @description:nl      Voegt Widescreen + Fullscreen modi toe aan chatgpt.com + perplexity.ai + poe.com voor verbeterde weergave + verminderd scrollen
-// @description:no      Legger til Widescreen + Fullskjerm-moduser i chatgpt.com + perplexity.ai + poe.com for forbedret visning + redusert rulling
-// @description:ny      Ndiwonetsa zolengedwa + Zomwe zosowa ndi chatgpt.com + perplexity.ai + poe.com kwa kudzaza kuona + kuchotsa kupinda
-// @description:pa      ਵਿਸਤ੍ਰਿਤ ਦੇਖਣ ਲਈ chatgpt.com + perplexity.ai + poe.com ਵਿੱਚ ਵਾਈਡਸਕ੍ਰੀਨ + ਫੁੱਲਸਕ੍ਰੀਨ ਮੋਡ ਸ਼ਾਮਲ ਕਰਦਾ ਹੈ + ਘਟੀ ਹੋਈ ਸਕ੍ਰੌਲਿੰਗ
-// @description:pl      Dodaje tryby Widescreen + Fullscreen do chatgpt.com + perplexity.ai + poe.com dla lepszej widoczności + zmniejszonego przewijania
-// @description:ps      ځانګړې + ټولې پرده په chatgpt.com + perplexity.ai + poe.com کې اضافه کړي لپاره لاسرسی ترلاسه کړي + کوښښول په کمته
-// @description:pt      Adiciona modos Widescreen + Tela cheia ao chatgpt.com + perplexity.ai + poe.com para visualização aprimorada + rolagem reduzida
-// @description:pt-BR   Adiciona modos Widescreen + Tela cheia ao chatgpt.com + perplexity.ai + poe.com para visualização aprimorada + rolagem reduzida
-// @description:ro      Adaugă modurile Widescreen + Ecran complet la chatgpt.com + perplexity.ai + poe.com pentru vizualizare îmbunătățită + defilare redusă
-// @description:ru      Добавляет режимы Widescreen + Fullscreen в chatgpt.com + perplexity.ai + poe.com для улучшенного просмотра + сокращенной прокрутки
-// @description:rw      Ongeraho Mugari Mugari + Byuzuye Mugaragaza kuri chatgpt.com + perplexity.ai + poe.com kugirango ubone kureba neza + kugabanya umuzingo
-// @description:sg      Ajoute les modes écran large + plein écran à chatgpt.com + perplexity.ai + poe.com pour une meilleure visualisation + un défilement réduit
-// @description:si      chatgpt.com + perplexity.ai + poe.com සඳහා Widescreen + Fullscreen ප්‍රදර්ශනයක් එක් කරයි තවත් පෙන්වන්නේ දැන් සිතූවාසිකාරක්ෂක විසින් සහ කෙසේදැයි ඇති අගයන් හුස්ම ක්‍රියාවලියකි
-// @description:sk      Pridáva Widescreen + Fullscreen režimy do chatgpt.com + perplexity.ai + poe.com pre vylepšené zobrazenie + zníženie posúvania
-// @description:sl      Dodaja Widescreen + Fullscreen načine v chatgpt.com + perplexity.ai + poe.com za izboljšan prikaz + zmanjšano premikanje
-// @description:sm      Faamauina Widescreen + Fullscreen faavae i le chatgpt.com + perplexity.ai + poe.com mo le faailoga faapea le mafaufau + le auina faavaivai
-// @description:sn      Ongorora Mutaundi wa Widescreen + Fullscreen muchatgpt.com + perplexity.ai + poe.com kutora dzokubvumidzwa + kusha kusweropfuura
-// @description:so      Wax ka beddelaa Hababka Widescreen + Fullscreen ee chatgpt.com + perplexity.ai + poe.com si aad u fiirsato + si aad u yaraato garaabinta
-// @description:sq      Shton modalitete Widescreen + Fullscreen në chatgpt.com + perplexity.ai + poe.com për pamje të përmirësuar + ulje të skrollimit
-// @description:sr      Додаје режиме широког екрана + целог екрана на chatgpt.com + perplexity.ai + poe.com за побољшано гледање + смањено померање
-// @description:st      E ngolisitsoe mokhabo Widescreen + Fullscreen ho chatgpt.com + perplexity.ai + poe.com bakeng sa mofuta ona le ho fokotsa liphalantere
-// @description:sv      Lägger till Widescreen + Fullscreen-lägen i chatgpt.com + perplexity.ai + poe.com för förbättrad visning + minskad scrollning
-// @description:sw      Inaongeza modes Widescreen + Fullscreen kwenye chatgpt.com + perplexity.ai + poe.com kwa kuimarisha kuonyesha + kupunguza kusokota
-// @description:ta      chatgpt.com + perplexity.ai + poe.com க்கு அகலத்திரை + முழுத்திரை முறைகளைச் சேர்க்கிறது + மேம்படுத்தப்பட்ட பார்வைக்கு + குறைக்கப்பட்ட ஸ்க்ரோலிங்
-// @description:te      Widescreen + Fullscreen మోడ్లను chatgpt.com + perplexity.ai + poe.comకి చేర్చుకోవడంతో చంపుకునే వీక్షణ కనిపించడానికి స్క్రోల్ తక్కువగా మార్చండి
-// @description:tg      Маводиҳои Widescreen + Fullscreen-ро ба chatgpt.com + perplexity.ai + poe.com илова мекунад, барои кӯҳнашудаи намоиш + кам кардани скроллаш
-// @description:th      เพิ่มโหมดจอแบบ Widescreen + Fullscreen ใน chatgpt.com + perplexity.ai + poe.com สำหรับการดูที่ดีขึ้น + การเลื่อนลดลง
-// @description:ti      ንዝለዓለ ምርኣይ + ምጉዳል ምዝዋር ኣብ chatgpt.com + perplexity.ai + poe.com Widescreen + Fullscreen modes ይውስኽ
-// @description:tk      Giňeldilen görmek + peseltmek üçin chatgpt.com + perplexity.ai + poe.com-ä giň ekran + Doly ekran reesimlerini goşýar
-// @description:tl      Nagdaragdag ng mga mode ng Widescreen + Fullscreen sa chatgpt.com + perplexity.ai + poe.com para sa pinabuting pagtingin + pinaikling pag-scroll
-// @description:tn      Inowedzera Widescreen + Fullscreen modes kuchatgpt.com + perplexity.ai + poe.com yekuwedzera kutarisa + kuderedzwa kupuruzira
-// @description:to      Hoʻohui i ka Widescreen + Fullscreen modes i chatgpt.com + perplexity.ai + poe.com no ka hoʻonui ʻia ʻana o ka nānā ʻana + hoʻemi i ka ʻōwili ʻana
-// @description:tr      Geliştirilmiş görüntüleme + azaltılmış kaydırma için chatgpt.com + perplexity.ai + poe.com'ye Widescreen + Fullscreen modları ekler
-// @description:tt      chatgpt.com + perplexity.ai + poe.com-га Widescreen + Fullscreen рәжимләрен өстәәдегезгә, күрүләштеңләри үткәргә + скроллауны буянтартарга
-// @description:ug      chatgpt.com + perplexity.ai + poe.comغا Widescreen + Fullscreen كۆرۈنمە پەسەند قىلىش+يىتىپ ئاجرا قىلىش مۆچىيى
-// @description:uk      Додає режими Widescreen + Fullscreen до chatgpt.com + perplexity.ai + poe.com для поліпшеного перегляду + зменшення прокрутки
-// @description:ur      ترقی یافتہ دیکھائی کے لئے chatgpt.com + perplexity.ai + poe.com میں وائڈ اسکرین + پوری اسکرین موڈز شامل کرتا ہے
-// @description:uz      chatgpt.com + perplexity.ai + poe.com-ga Widescreen + Fullscreen rejimlarini qo'shadi, ko'rishni yaxshilash + aylantirishni kamaytirish uchun
-// @description:vi      Thêm chế độ Widescreen + Fullscreen vào chatgpt.com + perplexity.ai + poe.com để cải thiện hiển thị + giảm cuộn trang
-// @description:wo      Bëgg na ñiis-ñiis Widescreen + Fullscreen ci chatgpt.com + perplexity.ai + poe.com buñ leen waxtu dib lu jàmm + ñaari jëm
-// @description:xh      Enza izimvo Widescreen + Fullscreen kwakuhlanganiselelwa kwichatgpt.com + perplexity.ai + poe.com ukuze kube khona okukhulu + kokucima kwesithombe
-// @description:yi      מוסיף Widescreen + Fullscreen מאָדעס צו chatgpt.com + perplexity.ai + poe.com פֿאַר ימפּרוווד וויוינג + רידוסט סקראָללינג
-// @description:yo      Fi àwọn ohun ọrọ Widescreen + Fullscreen si chatgpt.com + perplexity.ai + poe.com fun iwọle aiyewo + iwọle ififunwọle
-// @description:zh      向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-CN   向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-HK   向 chatgpt.com + perplexity.ai + poe.com 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
-// @description:zh-SG   向 chatgpt.com + perplexity.ai + poe.com 添加宽屏 + 全屏模式以增强查看效果 + 减少滚动
-// @description:zh-TW   向 chatgpt.com + perplexity.ai + poe.com 添加寬屏 + 全屏模式以增強查看效果 + 減少滾動
-// @description:zu      Yengeza Isikrini Esibanzi + Izindlela Zesikrini Esigcwele ku-chatgpt.com + perplexity.ai + poe.com ukuze uthole ukubuka okuthuthukisiwe + okuncishisiwe ukuskrola
-// @author              Adam Lui
+// @description         Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on perplexity.ai + poe.com!
+// @description:af      Verbetert ChatGPT met breë/volle/lang-skerm + spamblokkeringsmodusse. Werk ook op perplexity.ai + poe.com!
+// @description:am      ቻትጂፒቲን በትልቅ/ሙሉ/ረጅም ስክሪን + ስፓም ብሎክ ሞዶች ይማራል። በperplexity.ai + poe.com ላይም ይሰራል!
+// @description:ar      يعزز ChatGPT مع أوضاع الشاشة الواسعة / الكاملة / الطويلة + وضع حظر الرسائل المزعجة. يعمل أيضًا على perplexity.ai + poe.com!
+// @description:az      ChatGPT-ni geniş/dolğu/yüksək ekran + spam bloklama rejimləri ilə təkmilləşdirir. Həmçinin perplexity.ai + poe.com-da işləyir!
+// @description:be      Палепшыць ChatGPT з рэжымамі шырокі/поўны/высокі экран + блокаванне спаму. Таксама працуе на perplexity.ai + poe.com!
+// @description:bem     ChatGPT ikalishe na mawodi ya kufyala/kukwata/manyefu + spamblock. Ikaba na ntchito ku perplexity.ai + poe.com!
+// @description:bg      Подобрява ChatGPT с режими за широк екран/пълен/висок + блокиране на спам. Работи също на perplexity.ai + poe.com!
+// @description:bn      চ্যাটজিপিটি কে প্রশস্ত/পূর্ণ/উচ্চ-স্ক্রীন + স্প্যামব্লক মোডের সাথে উন্নত করে। এটি perplexity.ai + poe.com-এও কাজ করে!
+// @description:bo      ChatGPTའདི་ལུང་བརྗེད་འཕྲིན་སྐོར་དབྱར་ཆེན་སྐོར་འདི་ཡིན་ནི་ཁ་ལོག་+ spamblock མཉམ་སྒོའི་མཐར་ཕྱོགས་མཛད་ཡིན། perplexity.ai + poe.com་ལ་འགྱོ་ཡིན།
+// @description:bs      Poboljšava ChatGPT s režimima širokog/punog/visokog ekrana + blokade spama. Također radi na perplexity.ai + poe.com!
+// @description:ca      Millora ChatGPT amb modes d'écran ampli/complet/alt + modes de bloqueig de correu brossa. També funciona a perplexity.ai + poe.com!
+// @description:ceb     Nagpalambo sa ChatGPT gamit ang lapad/puno/taas-screen + spamblock nga mga mode. Nagtrabaho usab kini sa perplexity.ai + poe.com!
+// @description:ckb     پارەکەری دەکات ChatGPT بە ڕووکاری وشەی کەسەرە/کامل/بەرز + ڕووکاری پەڕەی ڕووكارەوە. هەروەها کاردەکاتە سەر perplexity.ai + poe.com!
+// @description:cs      Vylepšuje ChatGPT s režimy širokého/plného/vysokého displeje + blokování spamu. Také funguje na perplexity.ai + poe.com!
+// @description:cy      Gwella ChatGPT gyda fodiwlau sgrin eang/lawn/uchel + blocio sbam. Mae'n gweithio hefyd ar perplexity.ai + poe.com!
+// @description:da      Forbedrer ChatGPT med brede/fulde/høje skærm + spamblock-modes. Virker også på perplexity.ai + poe.com!
+// @description:de      Erweitert ChatGPT mit breiten/vollen/großen Bildschirm- und Spamblock-Modi. Funktioniert auch auf perplexity.ai + poe.com!
+// @description:dv      ކަމަށް ChatGPT މެއްދައްކާ ދެއްވިފައިވަން / ފަލްލާލް / ހަމަކޮށް ބަށަލަތް + ސްޕެމބލޮކް މޮދުންގެންޓެކަށް އެލެކް ކައިވެލް perplexity.ai + poe.com!
+// @description:dz      འཕེལ་འབྱོར་ལས ChatGPT ནི་རོགས་བཏོད་འབུལ་མཉམ་ནོར་འཛུལ་སྒོར་དབྱར་དགོན་/འཛིང་སྒོར་སྤུས་ནང་མཐར་ཕྱོགས་ལེགས་རོགས་ཡིན། perplexity.ai + poe.com་ནང་འཁོད་འཇུག་ཡིན།
+// @description:el      Ενισχύει το ChatGPT με λειτουργίες ευρείας/πλήρους/υψηλής οθόνης + μπλοκ αποστολής ανεπιθύμητης αλληλογραφίας. Λειτουργεί επίσης στο perplexity.ai + poe.com!
+// @description:eo      Plibonigas ChatGPT kun larĝa/plena/alta ekrano + blokado de spamo. Ankaŭ funkcias ĉe perplexity.ai + poe.com!
+// @description:es      Mejora ChatGPT con modos de pantalla ancha/completa/alta + modo de bloqueo de spam. También funciona en perplexity.ai + poe.com!
+// @description:et      Parandab ChatGPT lai lai/terve/täiesti-ekraani + spämmi blokeerimisrežiimid. Töötab ka perplexity.ai + poe.com!
+// @description:eu      Hobetzen du ChatGPT zabala/oso/altua pantaila + spam blokeatzeko moduekin. Perplexity.ai + poe.com-n ere funtzionatzen du!
+// @description:fa      ChatGPT را با حالت های صفحه عریض/تمام/بلند + مسدودسازی هرزنامه بهبود می بخشد. همچنین در perplexity.ai + poe.com کار می کند!
+// @description:fi      Parantaa ChatGPT:tä laaja/ täysi/ korkea näyttö + roskapostin estäminen -tiloilla. Toimii myös perplexity.ai + poe.com!
+// @description:fo      Bætir ChatGPT við breiðum/fullum/háum skjá + ruslpósthemlunaraðgerðum. Virkar einnig á perplexity.ai + poe.com!
+// @description:fr      Améliore ChatGPT avec les modes écran large/complet/grand + mode anti-spam. Fonctionne également sur perplexity.ai + poe.com !
+// @description:fr      Améliore ChatGPT avec les modes écran large/complet/grand + mode anti-spam. Fonctionne également sur perplexity.ai + poe.com !
+// @description:gd      Leasaich ChatGPT le modhan scrion farsaing/làn/àrd + modan bacadh spàm. Bidh e ag obair cuideachd air perplexity.ai + poe.com!
+// @description:gl      Mellora ChatGPT con modos de pantalla ancha/completa/alta + modo de bloqueo de spam. Tamén funciona en perplexity.ai + poe.com!
+// @description:gu      ચેટજીપીટીને વ્યાપક/પૂર્ણ/ઊંચી સ્ક્રીન + સ્પામબ્લોક મોડ્સ સાથે સુધારે છે. તે perplexity.ai + poe.com પર પણ કાર્ય કરે છે!
+// @description:haw     Hoʻololi i ka ChatGPT me nā ʻano pālākiō / piha / kiʻekiʻe + nā ʻano pāpā spam. Hana pū kēia ma perplexity.ai + poe.com!
+// @description:he      משדרג את ChatGPT עם מצבי מסך רחב/מלא/גבוה + חסימת דואר זבל. עובד גם ב-perplexity.ai + poe.com!
+// @description:hi      चैटजीपीटी को चौड़े/पूर्ण/लंबे स्क्रीन + स्पैमब्लॉक मोड के साथ सुधारता है। यह perplexity.ai + poe.com पर भी काम करता है!
+// @description:hr      Poboljšava ChatGPT s načinima širokog/punog/visokog ekrana + blokiranje neželjene pošte. Također radi na perplexity.ai + poe.com!
+// @description:ht      Amelyore ChatGPT ak mòd ekran laj/pou/bonè + mod blokaj spam. Li travay tou sou perplexity.ai + poe.com!
+// @description:hu      Fejleszti a ChatGPT-t széles/teljes/magas képernyős + spamblokkoló módokkal. A perplexity.ai + poe.com oldalon is működik!
+// @description:hy      ChatGPT-ն բարելավում է լայն/պատասխանատու/բարձր էկրանի + սպամի բլոկավորման ռեժիմներով: Այն նաև գործում է perplexity.ai + poe.com-ում!
+// @description:id      Meningkatkan ChatGPT dengan mode layar lebar/penuh/tinggi + mode pemblokiran spam. Juga bekerja di perplexity.ai + poe.com!
+// @description:is      Bætir ChatGPT með breiðum/fullum/háum skjá + ruslpósthemlunaraðgerðum. Virkar einnig á perplexity.ai + poe.com!
+// @description:it      Migliora ChatGPT con modalità schermo ampio/completo/alto + modalità di blocco spam. Funziona anche su perplexity.ai + poe.com!
+// @description:ja      ChatGPTを広い/フル/高画面+スパムブロックモードで強化します。また、perplexity.ai + poe.comでも動作します！
+// @description:jv      Ningkataké ChatGPT nganggo mode layar jembar/penuh/tinggi + mode blokir spam. Uga bisa digunakake ing perplexity.ai + poe.com!
+// @description:ka      აუმჯობესებს ChatGPT-ს ფართო/სრული/სიმაღლის ეკრანის + სპამ-ბლოკირების რეჟიმებით. ასევე მუშაობს perplexity.ai + poe.com-ზე!
+// @description:kk      ChatGPT-ні кең/толық/биік экран + спам блоктау режимдерімен жақсартады. Сонымен қатар, perplexity.ai + poe.com сайттарында жұмыс істейді!
+// @description:km      បង្កើន ChatGPT ជាមួយម៉ូដអេក្រង់ទូលំទូលាយ/ពេញលេញ/កម្ពស់ + ម៉ូដប្លុកស្ពាម។ ក៏ដូចជាធ្វើការនៅលើ perplexity.ai + poe.com!
+// @description:kn      ಚಾಟ್GPTನ್ನು ವಿಶಾಲ/ಪೂರ್ಣ/ಎತ್ತರದ-ಸ್ಕ್ರೀನ್ + ಸ್ಪ್ಯಾಮ್‌ಬ್ಲಾಕ್‌ ಮೋಡ್‌ಗಳೊಂದಿಗೆ ಸುಧಾರಿಸುತ್ತದೆ. ಇದು perplexity.ai + poe.com ನಲ್ಲಿ ಸಹ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ!
+// @description:ko      ChatGPT를 와이드/풀/높은 화면 + 스팸 차단 모드로 향상시킵니다. 또한 perplexity.ai + poe.com에서도 작동합니다!
+// @description:ku      ChatGPT-ê bi modên pêşandanê nermal/temam/dirêj + spam-block veşart dike. Hêmû de li perplexity.ai + poe.com jî dixebite!
+// @description:ky      ChatGPT-ni keng/temam/biyik ekran + spam-block rejimderi menen jaqsyrtady. Ol perplexity.ai + poe.com-da da ishleydi!
+// @description:la      ChatGPT cum latum/plenum/altum screen + spam blockade modis emendatur. Etiam in perplexity.ai + poe.com operatur!
+// @description:lb      ChatGPT mat weiten/ganz/hoechst Schirm + Spamblock Modi verbessert. Et funktionnéiert och op perplexity.ai + poe.com!
+// @description:lo      ພັກພັນ ChatGPT ກັບສະກຣີນຫຼາຍ/ຄົບຮອບ/ສູງ + ມູດກັບສະປາມ. ມັນກະທຳງານຢູ່ perplexity.ai + poe.com!
+// @description:lt      Patobulina ChatGPT su plačiais/visiškais/aukštais ekrano + spam blokavimo režimais. Taip pat veikia ant perplexity.ai + poe.com!
+// @description:lv      Uzlabo ChatGPT ar plaša/pilna/augsta ekrāna + surogātprogrammu bloķēšanas režīmiem. Tāpat darbojas arī perplexity.ai + poe.com!
+// @description:mg      Manatsara ChatGPT miaraka amin'ny fomba feno/sarotra/haavo + fanakanana spam. Miasa amin'ny perplexity.ai + poe.com koa!
+// @description:mi      Whakarei i ChatGPT me ngā huarahi rahi/paerewa/teitei + he poke pātea. Kei te mahi hoki i runga i perplexity.ai + poe.com!
+// @description:mk      Ја подобрува ChatGPT со режими за широк/полн/висок екран + блокирање на спам. Работи и на perplexity.ai + poe.com!
+// @description:ml      ചാറ്റ്‌ജിപിടി വിപുല/പൂര്‍ണ/ഉയര്‍ന്ന സ്ക്രീന്‍ + സ്‌പാം ബ്ലോക്ക് മോഡുകളോടെ മെച്ചപ്പെടുത്തുന്നു. ഇത് perplexity.ai + poe.com-ലും പ്രവര്‍ത്തിക്കുന്നു!
+// @description:mn      ChatGPT-г өргөн/бүтэн/өндөр дэлгэц + спам блоклогч горимуудтай сайжруулна. Мөн perplexity.ai + poe.com дээр ажиллана!
+// @description:mr      चैटGPTला विस्तृत/पूर्ण/उच्च-स्क्रीन + स्पॅम ब्लॉक मोडसह सुधारते. हे perplexity.ai + poe.com वर देखील कार्य करते!
+// @description:ms      Meningkatkan ChatGPT dengan mod paparan lebar/penuh/tinggi + mod penyekatan spam. Ia juga berfungsi di perplexity.ai + poe.com!
+// @description:mt      Ittejjeb ChatGPT bi modalità ta' skrin wiesgħa/piena/ogħla + modalità ta' blokkjar ta' spam. Jaħdem ukoll fuq perplexity.ai + poe.com!
+// @description:my      ChatGPT ကို ကျယ်/ပြည့်/အရည်အချင်းပြည့်သော စကရင် + စပෑမ် ဘလော့ခ် မုဒ်များဖြင့် တိုးတက်စေသည်။ ဒါဟာ perplexity.ai + poe.com ပေါ်မှာလဲ အလုပ်လုပ်ပါတယ်!
+// @description:ne      चौडाइ/पूर्ण/उचाइ-स्क्रीन + स्प्याम ब्लॉक मोडसहित ChatGPT लाई सुधार्नुहोस्। यो perplexity.ai + poe.com मा पनि काम गर्दछ!
+// @description:nl      Verbetert ChatGPT met brede/volle/hoge scherm + spamblokkering modi. Werkt ook op perplexity.ai + poe.com!
+// @description:no      Forbedrer ChatGPT med brede/full/høye skjerm + spamblock-modus. Også tilgjengelig på perplexity.ai + poe.com!
+// @description:ny      Apanga ChatGPT ndi makonda a chinsalu cha ambiri/chonse/chikulu + njira zowononga spam. Imagwira ntchito pa perplexity.ai + poe.com!
+// @description:pa      ਚੈਟਜੀਪੀਟੀ ਨੂੰ ਵਿਆਪਕ/ਪੂਰਨ/ਉੱਚ ਸਕ੍ਰੀਨ + ਸਪੈਮ ਬਲੌਕ ਮੋਡ ਨਾਲ ਸੁਧਾਰਦਾ ਹੈ। ਇਹ perplexity.ai + poe.com 'ਤੇ ਵੀ ਕੰਮ ਕਰਦਾ ਹੈ!
+// @description:pl      Ulepsza ChatGPT za pomocą trybów szerokiego/pełnego/wysokiego ekranu + blokady spamu. Działa również na perplexity.ai + poe.com!
+// @description:ps      ChatGPT ته د پراخ/مکمل/لوړ سکرین + سپیم بلاک کولو حالتونو سره وده ورکوي. دا په perplexity.ai + poe.com کې هم کار کوي!
+// @description:pt      Melhora o ChatGPT com modos de tela larga/completa/alta + modos de bloqueio de spam. Também funciona em perplexity.ai + poe.com!
+// @description:pt      Melhora o ChatGPT com modos de tela larga/completa/alta + modos de bloqueio de spam. Também funciona em perplexity.ai + poe.com!
+// @description:ro      Îmbunătățește ChatGPT cu moduri de ecran larg/complet/înalt + moduri de blocare a spamului. De asemenea, funcționează pe perplexity.ai + poe.com!
+// @description:ru      Улучшает ChatGPT с режимами широкого/полного/высокого экрана и блокировки спама. Также работает на perplexity.ai + poe.com!
+// @description:rw      Guhuza ChatGPT hamwe n'ibimenyetso bya ekran nini/bikozwe/byinshi + uburyo bwo gukumira spam. Kandi ikora ku perplexity.ai + poe.com!
+// @description:sg      Améliore ChatGPT avec les modes d’écran large/complet/haut + le mode de blocage de spam. Fonctionne également sur perplexity.ai + poe.com!
+// @description:si      ChatGPT එක විශාල/සම්පූර්ණ/ඉහළ-පෙරටු + ස්පාම් බ්ලොක් ක්‍රම මඟින් වැඩිදියුණු කරයි. මෙය perplexity.ai + poe.com හිද ක්‍රියාත්මක වේ!
+// @description:sk      Zlepšuje ChatGPT s režimami širokého/plného/vysokého displeja + blokovanie spamu. Takéto funguje aj na perplexity.ai + poe.com!
+// @description:sl      Izboljšuje ChatGPT z načini širokega/polnega/visokega zaslona + blokado neželene pošte. Prav tako deluje na perplexity.ai + poe.com!
+// @description:sm      Fa'amaoniga ChatGPT i auala laupapa/puni/lamava + metotia o le 'spam' fa'atekinolosi. E fa'amaoni i perplexity.ai + poe.com!
+// @description:sn      Zvikurudzira ChatGPT nehutungamiri hwepamusoro/huzhinji/hupfumi + matanho ekudzivirira spam. Zvinotora chirevo pa perplexity.ai + poe.com!
+// @description:so      Hagaajinta ChatGPT iyadoo la adeegsanayo hababka shaashadda ballaaran/buuxa/sare + habka xanniba spam. Waxa kale oo ay ka shaqeysaa perplexity.ai + poe.com!
+// @description:sq      Pëmirëson ChatGPT me modulet e ekranit të gjerë/të plotë/të lartë + bllokimin e spamit. Po ashtu punon në perplexity.ai + poe.com!
+// @description:sr      Unapređuje ChatGPT sa režimima širokog/punog/visokog ekrana + blokadom spama. Takođe funkcioniše na perplexity.ai + poe.com!
+// @description:st      Khothaletsa ChatGPT ka mekhoa ea skrine e kholo/e felletseng/e phahameng + mekhoa ea thibelo ea spam. E sebetsa hape ho perplexity.ai + poe.com!
+// @description:sv      Förbättrar ChatGPT med bred/full/hög skärm + spamblock-lägen. Fungerar också på perplexity.ai + poe.com!
+// @description:sw      Inaboresha ChatGPT kwa hali ya skrini pana/kamilifu/ya juu + hali ya kuzima spam. Pia inafanya kazi kwenye perplexity.ai + poe.com!
+// @description:ta      ChatGPTஐ விரிவான/முழு/உயர்ந்த திரை + ஸ்பாம் தடுப்பு முறைமைகளுடன் மேம்படுத்துகிறது. இது perplexity.ai + poe.com இல் செயல்படுகிறது!
+// @description:te      చాట్GPTని విస్తృత/పూర్ణ/ఎత్తు-స్క్రీన్ + స్పామ్ బ్లాక్ మోడ్‌లతో మెరుగుపరుస్తుంది. ఇది perplexity.ai + poe.comపై కూడా పని చేస్తుంది!
+// @description:tg      ChatGPT-ро бо режими экранҳои васеъ/комил/баланд + блоки спам такмил медиҳад. Ҳамчунин дар perplexity.ai + poe.com кор мекунад!
+// @description:th      ปรับปรุง ChatGPT ด้วยโหมดหน้าจอกว้าง/เต็ม/สูง + โหมดบล็อกสแปม ทำงานได้ที่ perplexity.ai + poe.com!
+// @description:ti      ቻትጂፒቲን በስፋት/ሙሉ/ረጅም ስክሪን + ስፓም ብሎክ ሞዶች ይማራል። በperplexity.ai + poe.com ላይም ይሰራል!
+// @description:tk      ChatGPT-ni giňişleýin/dolup/buýuk ekran + spam blokirlemek ýagdaýlarynda gowulandyrýar. Şeýle hem perplexity.ai + poe.com-da işleýär!
+// @description:tl      Pinapabuti ang ChatGPT gamit ang mga mode ng malawak/puno/mataas na screen + mode ng pagharang sa spam. Gumagana rin ito sa perplexity.ai + poe.com!
+// @description:tn      Tokafatsa ChatGPT ka ditsela tsa sehaweng se se pharaletseng/se felletseng/se phahameng + ditsela tsa ho thibela spam. E sebetsa hape ho perplexity.ai + poe.com!
+// @description:to      Fa'amaonia ChatGPT i auala mata'itusi laupapa/puni/lamava + auala fa'amaoniga spam. E mafai foi ona fa'agaioi i perplexity.ai + poe.com!
+// @description:tr      ChatGPT'yi geniş/tam/yüksek ekran + spam engelleme modlarıyla geliştirir. Ayrıca perplexity.ai + poe.com'da da çalışır!
+// @description:tt      ChatGPT-ны киң/тулы/югары экран + спам блоклау режимнары белән яхшырта. Шул ук вакытта perplexity.ai + poe.com да эшли!
+// @description:ug      ChatGPT'ni keng/to'liq/yuqori ekran + spam blokirovka rejimlari bilan yaxshilaydi. Shuningdek, perplexity.ai + poe.com saytlarida ishlaydi!
+// @description:uk      Покращує ChatGPT за допомогою режимів широкого/повного/високого екрану + блокування спаму. Також працює на perplexity.ai + poe.com!
+// @description:ur      چیٹ جی پی ٹی کو وسیع/مکمل/اونچی اسکرین + اسپام بلاک موڈ کے ساتھ بہتر کرتا ہے۔ یہ perplexity.ai + poe.com پر بھی کام کرتا ہے!
+// @description:uz      ChatGPT-ni keng/to'liq/baland ekran + spam bloklash rejimlari bilan yaxshilaydi. Bundan tashqari, perplexity.ai + poe.com-da ham ishlaydi!
+// @description:vi      Cải thiện ChatGPT với các chế độ màn hình rộng/toàn màn/hồ sơ cao + chế độ chặn spam. Cũng hoạt động trên perplexity.ai + poe.com!
+// @description:wo      Jëfandikoo ChatGPT ak modu yu gëstu-gëstu/fini/gëstu guddi + mode spam-block. It works too on perplexity.ai + poe.com!
+// @description:xh      Ukuphucula iChatGPT ngezithuba zesikrini ezibanzi/egcwele/ephezulu + imodi ye-spamblock. Isebenza ku-perplexity.ai + poe.com!
+// @description:yi      אַוואַנסירטער ChatGPT מיט ברייט/גאַנץ/הויך-סקירן + ספּאַם בלאָק מאָדעס. עס אַרבעט אויך אויף perplexity.ai + poe.com!
+// @description:yo      Ṣe ilọsiwaju ChatGPT pẹlu awọn ipo iboju jakejado/pipe/giga + ipo idiwọ spam. O tun n ṣiṣẹ lori perplexity.ai + poe.com!
+// @description:zh      通过宽屏/全屏/高屏+垃圾邮件块模式增强 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
+// @description:zh-CN   通过宽屏/全屏/高屏+垃圾邮件块模式增强 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
+// @description:zh-HK   使用寬/全/高螢幕+垃圾郵件區塊模式增強 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
+// @description:zh-SG   通过宽屏/全屏/高屏+垃圾邮件块模式增强 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
+// @description:zh-TW   使用寬/全/高螢幕+垃圾郵件區塊模式增強 ChatGPT。也可以在 perplexity.ai + poe.com 上使用！
+// @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!// @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29.5
+// @version             2024.12.30
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be

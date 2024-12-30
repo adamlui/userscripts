@@ -36,7 +36,7 @@
 
 ## 💡 About
 
-**ChatGPT Widescreen Mode** adds widescreen + fullscreen modes to chatgpt.com + perplexity.ai + poe.com, enhancing your chat sessions by reducing scrolling & creating a more immersive viewing experience.
+**ChatGPT Widescreen Mode** adds wide/full/tall-screen + spamblock modes to ChatGPT, enhancing your chat sessions by reducing scrolling & removing clutter, creating a more immersive viewing experience.
 
 <img height=6px width="100%" src="https://media.chatgptwidescreen.com/images/separators/aqua.png">
 
