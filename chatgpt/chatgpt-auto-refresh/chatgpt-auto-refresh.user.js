@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30.1
+// @version             2024.12.30.3
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -801,25 +801,26 @@
             class: `${app.cssPrefix}-sidebar-toggle`,
 
             create() {
-                this.div = document.createElement('div') ; this.div.className = this.class
 
-                // Create toggle elems
-                const navicon = document.createElement('img'),
-                      toggleLabel = document.createElement('label'),
-                      toggleInput = document.createElement('input'),
-                      switchSpan = document.createElement('span'),
-                      knobSpan = document.createElement('span')
+                // Init toggle elems
+                this.div = document.createElement('div') ; this.div.className = this.class
+                this.navicon = document.createElement('img')
+                this.toggleLabel = document.createElement('label')
+                this.toggleInput = document.createElement('input')
+                this.switchSpan = document.createElement('span')
+                this.knobSpan = document.createElement('span')
 
                 // Assemble/append elems
-                switchSpan.append(knobSpan) ; this.div.append(navicon, toggleInput, switchSpan, toggleLabel)
+                this.switchSpan.append(this.knobSpan)
+                this.div.append(this.navicon, this.toggleInput, this.switchSpan, this.toggleLabel)
 
                 // Stylize elems
                 this.stylize() // create/append stylesheet
-                if (toggles.imports.env.ui.firstLink) { // borrow/assign classes from sidebar elems
-                    const firstIcon = toggles.imports.env.ui.firstLink.querySelector('div:first-child'),
-                          firstLabel = toggles.imports.env.ui.firstLink.querySelector('div:nth-child(2)')
+                if (env.ui.firstLink) { // borrow/assign classes from sidebar elems
+                    const firstIcon = env.ui.firstLink.querySelector('div:first-child'),
+                          firstLabel = env.ui.firstLink.querySelector('div:nth-child(2)')
                     this.div.classList.add(
-                        ...toggles.imports.env.ui.firstLink.classList, ...(firstLabel?.classList || []))
+                        ...env.ui.firstLink.classList, ...(firstLabel?.classList || []))
                     this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
                 }
 
@@ -831,7 +832,7 @@
                     this.div.style.setProperty('--item-background-color',
                         `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
-                    settings.save('arDisabled', toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
+                    settings.save('arDisabled', this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
                     notify(`${app.msgs.menuLabel_autoRefresh}: ${menu.state.words[+!config.arDisabled]}`)
                 }
             },
@@ -853,9 +854,9 @@
                       + `background-color: var(--switch-${ // init opposite final color
                             !config.arDisabled ? 'disabled' : 'enabled' }-bg-color) ;`
                       + '-webkit-transition: 0.4s ; transition: 0.4s ; border-radius: 28px ;'
-                      + `bottom: ${ toggles.imports.env.ui.firstLink ? 0 : -0.15 }em ;`
-                      + `left: ${ toggles.imports.env.browser.isMobile ? 169
-                                : toggles.imports.env.ui.firstLink ? 154 : 160 }px }`
+                      + `bottom: ${ env.ui.firstLink ? 0 : -0.15 }em ;`
+                      + `left: ${ env.browser.isMobile ? 169
+                                : env.ui.firstLink ? 154 : 160 }px }`
                   + `.${this.class} > span.enabled {` // switch on
                       + 'background-color: var(--switch-enabled-bg-color) ; box-shadow: var(--switch-enabled-box-shadow) }'
                   + `.${this.class} > span.disabled {` // switch off
@@ -866,9 +867,9 @@
                       + `transform: translateX(${ !config.arDisabled ? 0 : 13 }px) }` // init opposite final pos
                   + `.${this.class} > label {` // toggle label
                       + 'cursor: pointer ; overflow: hidden ; text-overflow: ellipsis ;'
-                      + `width: ${ toggles.imports.env.browser.isMobile ? 201 : 148 }px ;`
-                      + `margin-left: -${ toggles.imports.env.ui.firstLink ? 41 : 23 }px ;` // left-shift to navicon
-                      + `${ toggles.imports.env.ui.firstLink ? '' : 'font-size: 0.875rem ; font-weight: 600' }}`
+                      + `width: ${ env.browser.isMobile ? 201 : 148 }px ;`
+                      + `margin-left: -${ env.ui.firstLink ? 41 : 23 }px ;` // left-shift to navicon
+                      + `${ env.ui.firstLink ? '' : 'font-size: 0.875rem ; font-weight: 600' }}`
                 )
                 document.head.append(this.styles)
             },
@@ -882,28 +883,25 @@
 
             update: {
                 color() {
-                    const knobSpan = toggles.sidebar.div.querySelector('span > span'),
-                          navicon = toggles.sidebar.div.querySelector('img')
-                    knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
+                    toggles.sidebar.knobSpan.style.boxShadow = 'rgba(0, 0, 0, .3) 0 1px 2px 0'
                         + ( env.ui.scheme == 'dark' ? ', rgba(0, 0, 0, .15) 0 3px 6px 2px' : '' )
-                    navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
+                    toggles.sidebar.navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
                         env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
                 },
 
                 state() {
                     if (!toggles.sidebar.div) return // since toggle never created = sidebar missing
-                    const toggleLabel = toggles.sidebar.div.querySelector('label'),
-                          toggleInput = toggles.sidebar.div.querySelector('input'),
-                          switchSpan = toggles.sidebar.div.querySelector('span'),
-                          knobSpan = switchSpan.firstChild
                     toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
-                    toggleInput.checked = !config.arDisabled
-                    toggleLabel.innerText = `${app.msgs.menuLabel_autoRefresh} `
-                                            + app.msgs[`state_${ toggleInput.checked ? 'enabled' : 'disabled' }`]
+                    toggles.sidebar.toggleInput.checked = !config.arDisabled
+                    toggles.sidebar.toggleLabel.innerText = `${app.msgs.menuLabel_autoRefresh} `
+                        + app.msgs[`state_${ toggles.sidebar.toggleInput.checked ? 'enabled' : 'disabled' }`]
                     setTimeout(() => {
-                        switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
-                        switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                        knobSpan.style.transform = `translateX(${ toggleInput.checked ? 13 : 0 }px)`
+                        toggles.sidebar.switchSpan.style.backgroundColor = (
+                            toggles.sidebar.toggleInput.checked ? '#ad68ff' : '#ccc' )
+                        toggles.sidebar.switchSpan.style.boxShadow = (
+                            toggles.sidebar.toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none' )
+                        toggles.sidebar.knobSpan.style.transform = `translateX(${
+                            toggles.sidebar.toggleInput.checked ? 13 : 0 }px)`
                     }, 1) // min delay to trigger 1st transition fx
                 }
             }
