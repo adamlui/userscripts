@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1.1
+// @version             2025.1.1.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -518,9 +518,12 @@
               + `.${this.class} a { color: #${ env.ui.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + `.${this.class} h2 { font-weight: bold }`
               + `.${this.class} button {`
+                  + '--btn-transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;'
                   + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
                   + 'border-radius: 0 !important ;' // square borders
-                  + 'transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;' // smoothen hover fx
+                  + 'transition: var(--btn-transition) ;' // smoothen hover fx
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) ;'
                   + 'cursor: pointer !important ;' // add finger cursor
                   + `border: 1px solid ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
                   + 'padding: 8px !important ; min-width: 102px }' // resize
@@ -804,26 +807,29 @@
                       + 'width: 1.25rem ; height: 1.25rem ; margin-left: 2px ; margin-right: 4px }'
                   + `.${this.class} > input { display: none }` // hide checkbox
                   + `.${this.class} > span {` // switch span
-                      + 'position: relative ; width: 30px ; height: 15px ;'
+                      + 'position: relative ; width: 30px ; height: 15px ; border-radius: 28px ;'
                       + `background-color: var(--switch-${ // init opposite final color
                             config.autoclear ? 'disabled' : 'enabled' }-bg-color) ;`
-                      + '-webkit-transition: 0.4s ; transition: 0.4s ; border-radius: 28px ;'
                       + `bottom: ${ env.ui.firstLink ? 0 : -0.15 }em ;`
-                      + `left: ${ env.browser.isMobile ? 169
-                                : env.ui.firstLink ? 154 : 160 }px }`
+                      + `left: ${ env.browser.isMobile ? 169 : env.ui.firstLink ? 154 : 160 }px ;`
+                      + 'transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;'
+                          + '-o-transition: 0.4s ; -ms-transition: 0.4s }'
                   + `.${this.class} > span.enabled {` // switch on
                       + 'background-color: var(--switch-enabled-bg-color) ;'
                       + 'box-shadow: var(--switch-enabled-box-shadow) }'
                   + `.${this.class}:hover > span.enabled {` // switch on when hover on parent div
                       + 'box-shadow: var(--switch-enabled-hover-box-shadow) ;'
-                      + '-webkit-transition: 0.2s ; transition: 0.2s }'
+                      + 'transition: 0.2s ; -webkit-transition: 0.2s ; -moz-transition: 0.2s ;'
+                          + '-o-transition: 0.2s ; -ms-transition: 0.2s }'
                   + `.${this.class} > span.disabled {` // switch off
                       + 'background-color: var(--switch-disabled-bg-color) ; box-shadow: none }'
                   + `.${this.class} > span > span {` // knob span
                       + 'position: absolute ; width: 12px ; height: 12px ; content: "" ; border-radius: 28px ;'
-                      + 'background-color: white ; -webkit-transition: 0.4s ; transition: 0.4s ; left: 3px ; bottom: 1.25px ;'
+                      + 'background-color: white ; left: 3px ; bottom: 1.25px ;'
                       + 'box-shadow: var(--knob-box-shadow) ;' // make 3D
-                      + `transform: translateX(${ config.autoclear ? 0 : 13 }px) }` // init opposite final pos
+                      + `transform: translateX(${ !config.autoTalkDisabled ? 0 : 13 }px) ;` // init opposite final pos
+                      + 'transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;'
+                          + '-o-transition: 0.4s ; -ms-transition: 0.4s }'
                   + `.${this.class} > label {` // toggle label
                       + 'cursor: pointer ; overflow: hidden ; text-overflow: ellipsis ;'
                       + `width: ${ env.browser.isMobile ? 201 : 148 }px ;`
