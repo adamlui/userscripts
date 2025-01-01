@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2024.12.29
+// @version               2025.1.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2231,10 +2231,12 @@
                 const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
                 modals.stylize() // update modal styles
                 app.styles.innerText = (
-                    ':root {' // color vars
+                    ':root {' // vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
-                      + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
+                      + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
+                      + '--app-hover-shadow: 0 9px 28px rgba(0,0,0,0.09) }'
+
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
@@ -2260,14 +2262,15 @@
                             `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                       : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
-                            env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px' : '#b6ebff -163px, white 65px' }) ;`
-                      + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' ))
+                            env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
+                                                        : '#b6ebff -163px, white 65px' }) ;` )
+                      + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' )
                       + ( !config.fgAnimationsDisabled ?
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
                   + `#${app.cssPrefix}:hover {`
-                      + 'box-shadow: 0 9px 28px rgba(0, 0, 0, 0.09) ; transition: box-shadow 0.15s ease }'
+                      + 'box-shadow: var(--app-hover-shadow) ; transition: box-shadow 0.15s ease }'
                   + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
                   + `#${app.cssPrefix} .alert-link {`
                       + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
