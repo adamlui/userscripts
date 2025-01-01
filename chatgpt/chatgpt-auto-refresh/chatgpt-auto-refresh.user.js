@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1
+// @version             2025.1.1.1
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -259,7 +259,7 @@
 
 // Documentation: https://docs.chatgptautorefresh.com
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org
-//  © 2023–2024 KudoAI & contributors under the MIT license.
+//  © 2023–2025 KudoAI & contributors under the MIT license.
 
 (async () => {
 
