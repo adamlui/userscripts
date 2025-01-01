@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.2
+// @version                2025.1.1.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -860,7 +860,15 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                '@keyframes modal-zoom-fade-out {'
+                ':root {' // vars
+                    + '--transition: opacity 0.65s cubic-bezier(0.165,0.84,0.44,1),' // for modal fade-in
+                                  + 'transform 0.55s cubic-bezier(0.165,0.84,0.44,1) !important ;' // for modal move-in
+                    + '--bg-transition: background-color 0.25s ease !important ;' // for modal bg dim
+                    + '--btn-transition: transform 0.15s ease ;' // for modal button hover-zoom
+                    + '--settings-transition: transform 0.1s ease }' // for Settings entry hover-zoom
+
+                // Main modal styles
+              + '@keyframes modal-zoom-fade-out {'
                   + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
                   + '100% { opacity: 0 ; transform: scale(1.35) }}'
               + '.chatgpt-modal > div {'
@@ -904,8 +912,10 @@
               + '[class*=-modal-bg] {'
                   + 'pointer-events: auto ;' // override any disabling from site modals
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
-                  + 'transition: background-color .25s ease !important ;' // speed to show bg dim
-                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 }' // align
+                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 ;' // align
+                  + 'transition: var(--bg-transition) ;' // for bg dim
+                      + '-webkit-transition: var(--bg-transition) ; -moz-transition: var(--bg-transition) ;'
+                      + '-o-transition: var(--bg-transition) ; -ms-transition: var(--bg-transition) }'
               + '[class*=-modal-bg].animated > div {'
                   + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
               + '[class$=-modal] {' // native modals + chatgpt.alert()s
@@ -916,14 +926,17 @@
                   + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                   + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
-                  + 'transition: opacity 0.65s cubic-bezier(.165,.84,.44,1),' // for fade-ins
-                              + 'transform 0.55s cubic-bezier(.165,.84,.44,1) !important }' // for move-ins
+                  + 'transition: var(--transition) ;' // for fade-in + move-in
+                      + '-webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;'
+                      + '-o-transition: var(--transition) ; -ms-transition: var(--transition) }'
               + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                    '[class$=-modal] button { transition: transform 0.15s ease }'
-                  + '[class$=-modal] button:hover { transform: scale(1.055) }' ))
+                    '[class$=-modal] button:hover { transform: scale(1.055) }'
+                  + '[class$=-modal] button { transition: var(--btn-transition) ;'
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }' ))
 
               // Glowing modal btns
-              + ':root { --glow-color: hsl(186 100% 69%); }'
+              + ':root { --glow-color: hsl(186 100% 69%) ; --glow-btn-transition: opacity 100ms linear }'
               + '.glowing-btn {'
                   + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
                   + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
@@ -941,7 +954,10 @@
               + '.glowing-btn::after {'
                   + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
                   + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
-                  + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
+                  + 'background-color: var(--glow-color)'
+                  + 'transition: var(--glow-btn-transition) ;'
+                      + '-webkit-transition: var(--glow-btn-transition) ; -moz-transition: var(--glow-btn-transition) ;'
+                      + '-o-transition: var(--glow-btn-transition) ; -ms-transition: var(--glow-btn-transition) }'
               + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
               + '.glowing-btn:hover .glowing-txt { animation: none }'
               + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
@@ -975,9 +991,12 @@
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for text
                   + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for icons
                   + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for icons
-                  + 'height: 25px ; font-size: 14.5px ; transition: transform 0.1s ease ;'
-                  + `padding: 4px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
-                  + 'border-radius: 3px }' // make highlight strips slightly rounded
+                  + 'height: 25px ; padding: 4px 10px ; font-size: 14.5px ;'
+                  + `border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add separator
+                  + 'border-radius: 3px ;' // slightly round highlight strip
+                  + 'transition: var(--settings-transition) ;' // for hover-zoom
+                      + '-webkit-transition: var(--settings-transition) ; -moz-transition: var(--settings-transition) ;'
+                      + '-o-transition: var(--settings-transition) ; -ms-transition: var(--settings-transition) }'
               + `#${app.cssPrefix}-settings li.active {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
                   + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
@@ -1396,18 +1415,20 @@
                         Object.assign(switchSpan.style, {
                             position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
                             backgroundColor: settingToggle.checked ? '#ccc' : '#AD68FF', // init opposite  final color
-                            width: '26px', height: '13px', '-webkit-transition': '.4s',
-                            transition: '0.4s',  borderRadius: '28px'
+                            width: '26px', height: '13px', borderRadius: '28px',
+                            transition: '0.4s', '-webkit-transition': '0.4s', '-moz-transition': '0.4s',
+                                '-o-transition': '0.4s', '-ms-transition': '0.4s'
                         })
 
                         // Create/stylize knob
                         const knobSpan = document.createElement('span')
                         Object.assign(knobSpan.style, {
-                            position: 'absolute', left: '1px', bottom: '1px',
+                            position: 'absolute', left: '1px', bottom: '1px', backgroundColor: 'white',
                             width: '11px', height: '11px', content: '""', borderRadius: '28px',
                             transform: settingToggle.checked ? // init opposite final pos
                                 'translateX(0)' : 'translateX(14px) translateY(0)',
-                            backgroundColor: 'white',  '-webkit-transition': '0.2s', transition: '0.2s'
+                            transition: '0.2s', '-webkit-transition': '0.2s', '-moz-transition': '0.2s',
+                                '-o-transition': '0.2s', '-ms-transition': '0.2s'
                         })
 
                         // Append elems
@@ -2146,7 +2167,17 @@
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                       + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
                       + '--app-shadow: 0 2px 3px rgb(0,0,0,0.06) ;'
-                      + '--app-hover-shadow: 0px 1px 4px rgba(0,0,0,0.1), 0px 4px 8px rgba(0,0,0,0.08) }'
+                      + '--app-hover-shadow: 0px 1px 4px rgba(0,0,0,0.1), 0px 4px 8px rgba(0,0,0,0.08) ;'
+                      + '--app-transition: opacity 0.5s ease, transform 0.5s ease,' // for 1st fade-in
+                                        + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
+                                        + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
+                      + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
+                      + '--btn-transition: transform 0.15s ease,' // for hover-zoom
+                                        + 'opacity 0.1s ease-in-out ;' // + appDiv.onmouseover + btn-zoom-fade-out shows
+                      + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
+                      + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
+                      + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
+                      + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
 
                     // App element styles
                   + '@keyframes btn-zoom-fade-out {'
@@ -2171,12 +2202,16 @@
                       : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
                             env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                         : '#b6ebff -163px, white 65px' }) ;` )
-                      + ( !config.fgAnimationsDisabled ?
-                            'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
-                                      + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
-                                      + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
+                      + 'transition: var(--app-transition) ;'
+                          + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
+                          + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
                   + `#${app.cssPrefix}:hover {`
-                      + 'box-shadow: var(--app-hover-shadow) ; transition: box-shadow 0.15s ease }'
+                      + 'box-shadow: var(--app-hover-shadow) ;'
+                      + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
+                          + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                          + '-moz-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                          + '-o-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                          + '-ms-transition: var(--app-transition), var(--app-shadow-transition) }'
                   + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
                   + `#${app.cssPrefix} .alert-link {`
                       + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
@@ -2191,8 +2226,9 @@
                       + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                         : 'fill: #adadad ; stroke: #adadad' };` // color
-                      + 'transition: transform 0.15s ease,' // for hover zooms
-                          + 'opacity 0.1s ease-in-out }' // for appDiv.onmouseover + btn-zoom-fade-out shows
+                      + 'transition: var(--btn-transition) ;'
+                          + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                          + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
                   + `.${app.cssPrefix}-div-corner-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                         : 'fill: black ; stroke: black' } ;`
@@ -2220,16 +2256,24 @@
                       + 'border-bottom: 16px solid #ccc }'
                   + `#${app.cssPrefix}-font-size-slider-thumb {`
                       + 'z-index: 2 ; width: 10px ; height: 25px ; border-radius: 30% ; position: relative ;'
-                      + 'top: -7.65px ; transition: transform 0.05s ease ;'
+                      + 'top: -7.65px ; cursor: ew-resize ;'
                       + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-                      + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
+                      + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ;'
+                      + 'transition: var(--font-size-slider-thumb-transition) ;'
+                          + '-webkit-transition: var(--font-size-slider-thumb-transition) ;'
+                          + '-moz-transition: var(--font-size-slider-thumb-transition) ;'
+                          + '-o-transition: var(--font-size-slider-thumb-transition) ;'
+                          + '-ms-transition: var(--font-size-slider-thumb-transition) }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                         '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
                   + `.${app.cssPrefix}-standby-btn {`
                       + 'width: 100% ; margin: 9px 0 9px ; padding: 11px 0 ; cursor: pointer ;'
-                      + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' } ;`
-                      + `color: ${ isStarryDM ? 'white' : 'black' } ; transition: transform 0.15s ease ;`
-                      + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' } }`
+                      + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
+                      + `color: ${ isStarryDM ? 'white' : 'black' };`
+                      + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' };`
+                      + 'transition: var(--btn-transition) ;'
+                          + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                          + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
                   + `.${app.cssPrefix}-standby-btn:hover {`
                       + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
                                                         : 'background: black ; color: white' };`
@@ -2254,8 +2298,12 @@
                             'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                                 : 'background: var(--pre-bg-color-light-scheme) ;'
                                     + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
-                      + ( !config.fgAnimationsDisabled ? // smoothen Anchor mode vertical expand/shrink
-                            'transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' : '' ) + '}'
+                      + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
+                            'transition: var(--answer-pre-transition) ;'
+                                + '-webkit-transition: var(--answer-pre-transition) ;'
+                                + '-moz-transition: var(--answer-pre-transition) ;'
+                                + '-o-transition: var(--answer-pre-transition) ;'
+                                + '-ms-transition: var(--answer-pre-transition) }' }}`
                   + `#${app.cssPrefix} > pre a, #ddgpt > pre a:visited { color: #4495d4 }`
                   + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
                   + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
@@ -2276,7 +2324,7 @@
                   + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
                   + `.${app.cssPrefix}-related-queries {`
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
-                      + `${ env.browser.isFF ? 'top: -20px ; margin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
+                      + `${ env.browser.isFF ? 'top: -20px ; smargin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
                   + `.${app.cssPrefix}-related-query {`
                       + 'font-size: 0.88em ; cursor: pointer ;'
                       + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
@@ -2292,7 +2340,10 @@
                       + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
                             `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
                                 : '8px -6px rgba(169,169,169,0.75)' };`
-                      + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
+                      + `${ config.fgAnimationsDisabled ? '' : // smoothen hover-zoom
+                            'transition: var(--rq-transition) ;'
+                              + '-webkit-transition: var(--rq-transition) ; -moz-transition: var(--rq-transition) ;'
+                              + '-o-transition: var(--rq-transition) ; -ms-transition: var(--rq-transition)' }}`
                   + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
                       + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
                             : 'transform: scale(1.055) !important ;' )
@@ -2302,7 +2353,12 @@
                       + 'position: relative ; top: 4px ; margin-right: 6px ;'
                       + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
                   + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
-                  + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
+                  + '.fade-in-less { opacity: 0 ;'
+                      + 'transition: var(--fade-in-less-transition) ;'
+                          + '-webkit-transition: var(--fade-in-less-transition) ;'
+                          + '-moz-transition: var(--fade-in-less-transition) ;'
+                          + '-o-transition: var(--fade-in-less-transition) ;'
+                          + '-ms-transition: var(--fade-in-less-transition) }'
                   + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
                   + `.${app.cssPrefix}-chatbar-btn {`
                       + 'z-index: 560 ; border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
@@ -3808,7 +3864,9 @@
             + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
             + 'position: absolute ;' // for update.tooltip() calcs
             + 'box-shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;' // drop shadow
-            + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
+            + 'opacity: 0 ; height: fit-content ; z-index: 1250 ;' // visibility
+            + 'transition: opacity 0.1s ; -webkit-transition: opacity 0.1s ; -moz-transition: opacity 0.1s ;'
+                + '-o-transition: opacity 0.1s ; -ms-transition: opacity 0.1s }'
         ))
     }
 
