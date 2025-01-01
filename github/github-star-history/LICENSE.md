@@ -1,6 +1,6 @@
 # 🏛️ MIT License
 
-**Copyright © 2023–2024 [Adam Lui](https://github.com/adamlui).**
+**Copyright © 2023–2025 [Adam Lui](https://github.com/adamlui).**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
