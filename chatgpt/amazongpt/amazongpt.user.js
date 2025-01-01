@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2024.12.29
+// @version                2025.1.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1756,10 +1756,12 @@
                 const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
                 modals.stylize() // update modal styles
                 app.styles.innerText = (
-                    ':root {' // color vars
+                    ':root {' // vars
                       + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                       + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
-                      + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 }'
+                      + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
+                      + '--app-shadow: 0 2px 3px rgb(0,0,0,0.06) ; --app-hover-shadow: 0 1px 6px rgba(0,0,0,0.14) }'
+
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
@@ -1776,19 +1778,19 @@
                       + 'z-index: 5555 ; border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ;'
                       + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ;`
                       + 'border-radius: 15px ; flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
-                          + 'box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06) ;'
+                      + 'box-shadow: var(--app-shadow) ;'
                       + ( config.bgAnimationsDisabled ? // classic flat bg
                             `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
                           + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                       : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
                               env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
-                                                      : '#b6ebff -163px, white 65px' }) ;` )
+                                                          : '#b6ebff -163px, white 65px' }) ;` )
                       + ( !config.fgAnimationsDisabled ?
                             'transition: bottom 0.1s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor Y minimize/restore
                                       + 'width 0.167s cubic-bezier(0, 0, 0.2, 1),' // smoothen Anchor X expand/shrink
                                       + 'opacity 0.5s ease, transform 0.5s ease ;' : '' ) + '}' // smoothen 1st fade-in
                   + `#${app.cssPrefix}:hover {`
-                      + 'box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14) ; transition: box-shadow 0.15s ease }'
+                      + 'box-shadow: var(--app-hover-shadow) ; transition: box-shadow 0.15s ease }'
                   + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
                   + `#${app.cssPrefix} .alert-link { color: ${
                         env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
