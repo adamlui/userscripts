@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.30.6
+// @version             2025.1.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -460,8 +460,8 @@
         if (foundState) {
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
-                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -793,8 +793,8 @@
                       + '--switch-enabled-bg-color: #ad68ff ; --switch-disabled-bg-color: #ccc ;'
                       + '--switch-enabled-box-shadow: 2px 1px 9px #d8a9ff ;'
                       + '--switch-enabled-hover-box-shadow: 0 1px 10px #9b5ad1 ;'
-                      + '--knob-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px 0 ;'
-                      + '--knob-box-shadow-dark: rgba(0, 0, 0, 0.3) 0 1px 2px 0, rgba(0, 0, 0, 0.15) 0 3px 6px 2px }'
+                      + '--knob-box-shadow: rgba(0,0,0,0.3) 0 1px 2px 0 ;'
+                      + '--knob-box-shadow-dark: rgba(0,0,0,0.3) 0 1px 2px 0, rgba(0,0,0,0.15) 0 3px 6px 2px }'
 
                     // Element styles
                   + `.${this.class} {` // parent div
