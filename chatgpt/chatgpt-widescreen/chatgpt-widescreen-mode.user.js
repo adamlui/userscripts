@@ -222,7 +222,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.31
+// @version             2025.1.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -495,8 +495,8 @@
         if (foundState) {
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = `color: ${
-                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -747,7 +747,7 @@
 
     // Stylize TOOLTIP div
     document.head.append(dom.create.style('.cwm-tooltip {'
-        + 'background-color: rgba(0, 0, 0, 0.71) ; padding: 5px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
+        + 'background-color: rgba(0,0,0,0.71) ; padding: 5px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
         + 'font-size: 0.85rem ; color: white ;' // font style
         + 'box-shadow: 4px 6px 16px 0 rgb(0 0 0 / 38%) ;' // drop shadow
         + 'position: absolute ; bottom: 58px ; opacity: 0 ; transition: opacity 0.1s ; z-index: 9999 ;' // visibility
