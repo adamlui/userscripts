@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.6
+// @version                2025.1.1.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -754,7 +754,7 @@
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }' ))
 
               // Glowing modal btns
-              + ':root { --glow-color: hsl(186 100% 69%) ; --glow-btn-transition: opacity 100ms linear }'
+              + ':root { --glow-color: hsl(186 100% 69%) }'
               + '.glowing-btn {'
                   + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
                   + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
@@ -769,13 +769,6 @@
                   + 'opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
                   + ( !env.browser.isMobile ? 'background: var(--glow-color) ;'
                         + 'transform: translateY(120%) rotateX(95deg) scale(1, 0.35)' : '' ) + '}'
-              + '.glowing-btn::after {'
-                  + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
-                  + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
-                  + 'background-color: var(--glow-color)'
-                  + 'transition: var(--glow-btn-transition) ;'
-                      + '-webkit-transition: var(--glow-btn-transition) ; -moz-transition: var(--glow-btn-transition) ;'
-                      + '-o-transition: var(--glow-btn-transition) ; -ms-transition: var(--glow-btn-transition) }'
               + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
               + '.glowing-btn:hover .glowing-txt { animation: none }'
               + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
