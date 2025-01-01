@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.1.1
+// @version                  2025.1.1.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -977,8 +977,8 @@
         if (foundState) {
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
-                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -1026,7 +1026,7 @@
             // Hack BG
             fillStarryBG(modal)
             setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${
+                modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
                     env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
             }, 100) // delay for transition fx
@@ -1121,7 +1121,7 @@
                   + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
                   + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
                   + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
-              + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
               + '.glowing-btn:hover .glowing-txt { animation: none }'
               + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
               + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
@@ -1142,7 +1142,7 @@
               + `#${app.cssPrefix}-settings {`
                   + `min-width: ${ env.browser.isPortrait ? 288 : 698 }px ;`
                   + 'max-width: 75vw ; word-wrap: break-word ;'
-                  + 'margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + 'margin: 12px 23px ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0,0,0,0.12) ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
               + `#${app.cssPrefix}-settings-title {`
                   + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
@@ -1154,22 +1154,22 @@
                   + 'list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
                   + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
               + `#${app.cssPrefix}-settings li {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for text
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;` // for icons
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for text
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for icons
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for icons
                   + 'height: 24px ; font-size: 13.5px ; transition: transform 0.1s ease ;'
                   + `padding: 6px 10px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add settings separators
                   + 'border-radius: 3px }' // make highlight strips slightly rounded
               + `#${app.cssPrefix}-settings li.active {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}` // for icons
               + `#${app.cssPrefix}-settings li label { padding-right: 20px }` // right-pad labels so toggles don't hug
               + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
               + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
               + `#${app.cssPrefix}-settings li:hover {`
                   + 'opacity: 1 ;'
-                  + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
+                  + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
               + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
               + '#scheme-settings-entry > span { margin: 0 -2px !important }' // align Scheme status
@@ -2058,8 +2058,8 @@
                     icon.src = GM_getResourceText(`ggptIcon${( color.charAt(0).toUpperCase() + color.slice(1) )
                                                           || ( env.ui.app.scheme == 'dark' ? 'White' : 'Black' )}`)
                     icon.style.filter = icon.style.webkitFilter = (
-                        'drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3))' // drop shadow
-                      + 'drop-shadow(2px 1px 0 #ff5b5b) drop-shadow(-1px -1px 0 rgb(73, 215, 73, 0.75))' // RGB shift
+                        'drop-shadow(5px 5px 15px rgba(0,0,0,0.3))' // drop shadow
+                      + 'drop-shadow(2px 1px 0 #ff5b5b) drop-shadow(-1px -1px 0 rgb(73,215,73,0.75))' // RGB shift
                           + ( env.ui.app.scheme == 'light' ? 'drop-shadow(white 1px 1px)' : '' ))
                 })
             }
@@ -2528,7 +2528,7 @@
                       + 'z-index: 2 ; width: 10px ; height: 26px ; border-radius: 30% ; position: relative ;'
                       + 'top: -8.25px ; transition: transform 0.05s ease ;'
                       + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-                      + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
+                      + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                         '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
                   + `.${app.cssPrefix}-standby-btn {`
@@ -2577,7 +2577,7 @@
                       + 'height: 16px ; max-height: 200px ; resize: none ;'
                       + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
                             : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
-                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
+                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
                   + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
                   + `.${app.cssPrefix}-related-queries {`
                       + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: 19px }'
@@ -2595,7 +2595,7 @@
                       + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
                       + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
                             `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
-                                : '8px -6px rgba(169, 169, 169, 0.75)' };`
+                                : '8px -6px rgba(169,169,169,0.75)' };`
                       + `${ config.fgAnimationsDisabled ? '' : 'transition: transform 0.1s ease !important' }}`
                   + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
                       + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
@@ -4161,10 +4161,10 @@
         var tooltipDiv = document.createElement('div')
         tooltipDiv.classList.add(`${app.cssPrefix}-btn-tooltip`, 'no-user-select')
         document.head.append(create.style(`.${app.cssPrefix}-btn-tooltip {`
-            + 'background-color: rgba(0, 0, 0, 0.64) ; padding: 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
+            + 'background-color: rgba(0,0,0,0.64) ; padding: 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
             + 'font-size: 0.75rem ; color: white ; fill: white ; stroke: white ;' // font/icon style
             + 'position: absolute ;' // for update.tooltip() calcs
-            + 'box-shadow: 3px 5px 16px 0 rgb(0 0 0 / 21%) ;' // drop shadow
+            + 'box-shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;' // drop shadow
             + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
         ))
     }
