@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.1.2
+// @version               2025.1.1.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -210,8 +210,8 @@
 // ==/UserScript==
 
 // Dependencies:
-// ✓ chatgpt.js (https://chatgpt.js.org) © 2023–2024 KudoAI & contributors under the MIT license
-// ✓ generate-ip (https://generate-ip.org) © 2024 Adam Lui & contributors under the MIT license
+// ✓ chatgpt.js (https://chatgpt.js.org) © 2023–2025 KudoAI & contributors under the MIT license
+// ✓ generate-ip (https://generate-ip.org) © 2024–2025 Adam Lui & contributors under the MIT license
 // ✓ highlight.js (https://highlightjs.org) © 2006 Ivan Sagalaev under the BSD 3-Clause license
 // ✓ KaTeX (https://katex.org) © 2013–2020 Khan Academy & other contributors under the MIT license
 // ✓ Marked (https://marked.js.org) © 2018+ MarkedJS © 2011–2018 Christopher Jeffrey under the MIT license
