@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.1.4
+// @version               2025.1.1.5
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -189,8 +189,8 @@
 // @resource bgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/lightmode/logo730x155.png.b64#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
 // @resource bgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/darkmode/logo730x155.png.b64#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
 // @resource hljsCSS      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource brsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-4nbm81/JSas4wmxFIdliBBzoEEHRZ057TpzNX1PoQIs=
-// @resource wrsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=0cde30f9ae3ce99ae998141f6e7a36de9b0cc2e7#sha256-pW8xWWV6tm8Q6Ms+HWZv6+QzzTLJPyL1DyE18ywpVaE=
+// @resource brsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
+// @resource wrsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
 // @grant                 GM_getValue
 // @grant                 GM_setValue
 // @grant                 GM_deleteValue
