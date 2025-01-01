@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.6
+// @version                2025.1.1.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1000,7 +1000,7 @@
               + `#${app.cssPrefix}-settings li:hover {`
                   + 'opacity: 1 ;'
                   + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}` // add zoom
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.15)' }}`
               + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
               + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
@@ -1047,7 +1047,7 @@
             log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out 0.135s ease-out'
+            modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
             modalContainer.onanimationend = () => {
                 modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`) }
         },
