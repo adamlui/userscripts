@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29.1
+// @version             2025.1.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -197,7 +197,7 @@ class="btn btn-sm tooltipped tooltipped-s">
         const overlay = document.createElement('div')
         overlay.style.position = 'fixed'; overlay.style.top = '0'; overlay.style.left = '0'
         overlay.style.width = '100%'; overlay.style.height = '100%'
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; overlay.style.display = 'flex'
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.7)'; overlay.style.display = 'flex'
         overlay.style.alignItems = 'center'; overlay.style.justifyContent = 'center'
         overlay.style.zIndex = '9999'
 

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2024.12.29
+// @version           2025.1.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -427,15 +427,15 @@
     html[dark] {
       --yt-spec-general-background-a: #181818 !important;
       --yt-spec-general-background-b: #0f0f0f !important;
-      --yt-spec-brand-background-primary: rgba(33, 33, 33, 0.98) !important;
-      --yt-spec-10-percent-layer: rgba(255, 255, 255, 0.1) !important;
+      --yt-spec-brand-background-primary: rgba(33,33,33,0.98) !important;
+      --yt-spec-10-percent-layer: rgba(255,255,255,0.1) !important;
     }
     
     html:not([dark]) {
       --yt-spec-general-background-a: #f9f9f9 !important;
       --yt-spec-general-background-b: #f1f1f1 !important;
-      --yt-spec-brand-background-primary: rgba(255, 255, 255, 0.98) !important;
-      --yt-spec-10-percent-layer: rgba(0, 0, 0, 0.1) !important;
+      --yt-spec-brand-background-primary: rgba(255,255,255,0.98) !important;
+      --yt-spec-10-percent-layer: rgba(0,0,0,0.1) !important;
     }
     
     ytd-masthead {
@@ -477,11 +477,11 @@
     }
     
     ytd-feed-filter-chip-bar-renderer[is-dark-theme] #left-arrow.ytd-feed-filter-chip-bar-renderer::after {
-      background: linear-gradient(to right, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important;
+      background: linear-gradient(to right, var(--yt-spec-brand-background-primary) 20%, rgba(33,33,33,0) 80%) !important;
     }
     
     ytd-feed-filter-chip-bar-renderer[is-dark-theme] #right-arrow.ytd-feed-filter-chip-bar-renderer::before {
-      background: linear-gradient(to left, var(--yt-spec-brand-background-primary) 20%, rgba(33, 33, 33, 0) 80%) !important;
+      background: linear-gradient(to left, var(--yt-spec-brand-background-primary) 20%, rgba(33,33,33,0) 80%) !important;
     }
     
     ytd-feed-filter-chip-bar-renderer #left-arrow-button.ytd-feed-filter-chip-bar-renderer,
@@ -490,7 +490,7 @@
     }
     
     yt-chip-cloud-renderer[is-dark-theme] #right-arrow.yt-chip-cloud-renderer::before {
-      background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important;
+      background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24,24,24,0) 90%) !important;
     }
     
     yt-chip-cloud-renderer #left-arrow-button.yt-chip-cloud-renderer,
@@ -499,15 +499,15 @@
     }
     
     yt-chip-cloud-renderer[is-dark-theme] #left-arrow.yt-chip-cloud-renderer::after {
-      background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24, 24, 24, 0) 90%) !important;
+      background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(24,24,24,0) 90%) !important;
     }
     
     yt-chip-cloud-renderer #left-arrow.yt-chip-cloud-renderer::after {
-      background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important;
+      background: linear-gradient(to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249,249,249,0) 90%) !important;
     }
     
     yt-chip-cloud-renderer #right-arrow.yt-chip-cloud-renderer::before {
-      background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249, 249, 249, 0) 90%) !important;
+      background: linear-gradient(to left, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%, rgba(249,249,249,0) 90%) !important;
     }
     
     ytd-feed-filter-chip-bar-renderer[component-style="FEED_FILTER_CHIP_BAR_STYLE_TYPE_HASHTAG_LANDING_PAGE"] #chips-wrapper.ytd-feed-filter-chip-bar-renderer,
