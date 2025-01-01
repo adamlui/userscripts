@@ -222,7 +222,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1
+// @version             2025.1.1.1
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -265,7 +265,7 @@
 
 // Documentation: https://docs.chatgptwidescreen.com
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org
-//  © 2023–2024 KudoAI & contributors under the MIT license.
+//  © 2023–2025 KudoAI & contributors under the MIT license.
 
 (async () => {
 
