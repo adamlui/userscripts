@@ -1,14 +1,17 @@
 // ==UserScript==
 // @name                ChatGPT Widescreen Mode 🖥️
 // @name:af             ChatGPT Widescreen Modus 🖥️
+// @name:am             ቻትጂፒቲ ሰፊ ስክሪን 🖥️
 // @name:ar             ChatGPT وضع شاشة عريضة 🖥️
 // @name:az             ChatGPT Geniş Ekran Rejimi 🖥️
 // @name:be             ChatGPT Рэжым шырокага экрана 🖥️
+// @name:bem            ChatGPT Icikope Icakulisha 🖥️
 // @name:bg             ChatGPT Широкоекранен режим 🖥️
 // @name:bn             ChatGPT উইডস্ক্রিন মোড 🖥️
 // @name:bo             ChatGPT རྒྱུ་ཆེན་གཞི་བསྒྲུབ་ རྒྱལ་བཤད། 🖥️
 // @name:bs             ChatGPT Režim širokog ekrana 🖥️
 // @name:ca             ChatGPT Mode de pantalla ampla 🖥️
+// @name:ceb            ChatGPT Lapadscreen 🖥️
 // @name:ckb            ChatGPT دەستکاری چوارچێوەی ڕووکاری 🖥️
 // @name:cs             ChatGPT Režim širokoúhlé obrazovky 🖥️
 // @name:cy             ChatGPT Mod Sgrin Lled 🖥️
@@ -29,6 +32,7 @@
 // @name:gd             ChatGPT Dreach-sgrìn Leud 🖥️
 // @name:gl             ChatGPT Modo de pantalla ancha 🖥️
 // @name:gu             ChatGPT પ્રશાંત સ્ક્રીન મોડ 🖥️
+// @name:haw            ChatGPT Widescreen 🖥️
 // @name:he             ChatGPT מצב מסך רחב 🖥️
 // @name:hi             ChatGPT चहचटजीपटी वाइडस्क्रीन मोड 🖥️
 // @name:hr             ChatGPT Način širokog zaslona 🖥️
@@ -58,6 +62,7 @@
 // @name:mk             ChatGPT Режим на широк екран 🖥️
 // @name:ml             ChatGPT വൈഡ്സ്ക്രീൻ മോഡ് 🖥️
 // @name:mn             ChatGPT Жинхэнэ Экранны Арга 🖥️
+// @name:mr             चॅटजीपीटी वाइडस्क्रीन 🖥️
 // @name:ms             ChatGPT Mod Skrin Lebar 🖥️
 // @name:mt             ChatGPT Modalità Widescreen 🖥️
 // @name:my             ChatGPT အများနှုန်းကျော်ဘုံ 🖥️
@@ -80,7 +85,9 @@
 // @name:sm             ChatGPT Laititi Fuamatala 🖥️
 // @name:sn             ChatGPT Zvimwe Zvitsva Mode 🖥️
 // @name:so             ChatGPT hab Widescreen Mode 🖥️
+// @name:sq             ChatGPT me ekran të gjerë 🖥️
 // @name:sr             ChatGPT Режим широког екрана 🖥️
+// @name:st             ChatGPT Skrene e Phara 🖥️
 // @name:sv             ChatGPT Bredbildsläge 🖥️
 // @name:sw             ChatGPT Njia ya Skrini Panoramio 🖥️
 // @name:ta             ChatGPT விரிவான திரை முறை 🖥️
@@ -89,15 +96,20 @@
 // @name:th             ChatGPT โหมดหน้าจอแบบเต็มจอ 🖥️
 // @name:ti             ቻትጂፒቲ ዋይድስክሪን ሞድ 🖥️
 // @name:tk             ChatGPT Giň Ekran Tertibi 🖥️
+// @name:tl             ChatGPT Malapad na Screen 🖥️
 // @name:tn             ChatGPT Nyemba Yemba Mzizo 🖥️
 // @name:to             ChatGPT Moli ʻo e Ngaahi Fatongi ʻo Haʻaneesi 🖥️
 // @name:tr             ChatGPT Geniş Ekran Modu 🖥️
+// @name:tt             ChatGPT киң экран 🖥️
+// @name:ug             ChatGPT keng ekran 🖥️
 // @name:uk             ChatGPT Режим широкого екрана 🖥️
 // @name:ur             ChatGPT وائڈ اسکرین موڈ 🖥️
 // @name:uz             ChatGPT Keng ekranga rejim 🖥️
 // @name:vi             ChatGPT Chế độ Màn hình Rộng 🖥️
+// @name:wo             ChatGPT écran large 🖥️
 // @name:xh             ChatGPT Indlela ye-Widescreen Mode 🖥️
 // @name:yi             ChatGPT ווידעסקרעען מאָדע 🖥️
+// @name:yo             Wide iboju 🖥️ ChatGPT
 // @name:zh             ChatGPT 宽屏模式 🖥️
 // @name:zh-CN          ChatGPT 宽屏模式 🖥️
 // @name:zh-HK          ChatGPT 寬螢幕模 🖥️
@@ -133,7 +145,7 @@
 // @description:fi      Parantaa ChatGPT:tä laaja/ täysi/ korkea näyttö + roskapostin estäminen -tiloilla. Toimii myös perplexity.ai + poe.com!
 // @description:fo      Bætir ChatGPT við breiðum/fullum/háum skjá + ruslpósthemlunaraðgerðum. Virkar einnig á perplexity.ai + poe.com!
 // @description:fr      Améliore ChatGPT avec les modes écran large/complet/grand + mode anti-spam. Fonctionne également sur perplexity.ai + poe.com !
-// @description:fr      Améliore ChatGPT avec les modes écran large/complet/grand + mode anti-spam. Fonctionne également sur perplexity.ai + poe.com !
+// @description:fr-CA   Améliore ChatGPT avec les modes écran large/complet/grand + mode anti-spam. Fonctionne également sur perplexity.ai + poe.com !
 // @description:gd      Leasaich ChatGPT le modhan scrion farsaing/làn/àrd + modan bacadh spàm. Bidh e ag obair cuideachd air perplexity.ai + poe.com!
 // @description:gl      Mellora ChatGPT con modos de pantalla ancha/completa/alta + modo de bloqueo de spam. Tamén funciona en perplexity.ai + poe.com!
 // @description:gu      ચેટજીપીટીને વ્યાપક/પૂર્ણ/ઊંચી સ્ક્રીન + સ્પામબ્લોક મોડ્સ સાથે સુધારે છે. તે perplexity.ai + poe.com પર પણ કાર્ય કરે છે!
@@ -150,6 +162,7 @@
 // @description:ja      ChatGPTを広い/フル/高画面+スパムブロックモードで強化します。また、perplexity.ai + poe.comでも動作します！
 // @description:jv      Ningkataké ChatGPT nganggo mode layar jembar/penuh/tinggi + mode blokir spam. Uga bisa digunakake ing perplexity.ai + poe.com!
 // @description:ka      აუმჯობესებს ChatGPT-ს ფართო/სრული/სიმაღლის ეკრანის + სპამ-ბლოკირების რეჟიმებით. ასევე მუშაობს perplexity.ai + poe.com-ზე!
+// @description:kab     Yernu ChatGPT s yimezda n uferq/aṭṭas/uzelmat di tgejdit. Tura yettsen-d deg perplexity.ai akked poe.com!
 // @description:kk      ChatGPT-ні кең/толық/биік экран + спам блоктау режимдерімен жақсартады. Сонымен қатар, perplexity.ai + poe.com сайттарында жұмыс істейді!
 // @description:km      បង្កើន ChatGPT ជាមួយម៉ូដអេក្រង់ទូលំទូលាយ/ពេញលេញ/កម្ពស់ + ម៉ូដប្លុកស្ពាម។ ក៏ដូចជាធ្វើការនៅលើ perplexity.ai + poe.com!
 // @description:kn      ಚಾಟ್GPTನ್ನು ವಿಶಾಲ/ಪೂರ್ಣ/ಎತ್ತರದ-ಸ್ಕ್ರೀನ್ + ಸ್ಪ್ಯಾಮ್‌ಬ್ಲಾಕ್‌ ಮೋಡ್‌ಗಳೊಂದಿಗೆ ಸುಧಾರಿಸುತ್ತದೆ. ಇದು perplexity.ai + poe.com ನಲ್ಲಿ ಸಹ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ!
@@ -178,7 +191,7 @@
 // @description:pl      Ulepsza ChatGPT za pomocą trybów szerokiego/pełnego/wysokiego ekranu + blokady spamu. Działa również na perplexity.ai + poe.com!
 // @description:ps      ChatGPT ته د پراخ/مکمل/لوړ سکرین + سپیم بلاک کولو حالتونو سره وده ورکوي. دا په perplexity.ai + poe.com کې هم کار کوي!
 // @description:pt      Melhora o ChatGPT com modos de tela larga/completa/alta + modos de bloqueio de spam. Também funciona em perplexity.ai + poe.com!
-// @description:pt      Melhora o ChatGPT com modos de tela larga/completa/alta + modos de bloqueio de spam. Também funciona em perplexity.ai + poe.com!
+// @description:pt-BR   Melhora o ChatGPT com modos de tela larga/completa/alta + modos de bloqueio de spam. Também funciona em perplexity.ai + poe.com!
 // @description:ro      Îmbunătățește ChatGPT cu moduri de ecran larg/complet/înalt + moduri de blocare a spamului. De asemenea, funcționează pe perplexity.ai + poe.com!
 // @description:ru      Улучшает ChatGPT с режимами широкого/полного/высокого экрана и блокировки спама. Также работает на perplexity.ai + poe.com!
 // @description:rw      Guhuza ChatGPT hamwe n'ibimenyetso bya ekran nini/bikozwe/byinshi + uburyo bwo gukumira spam. Kandi ikora ku perplexity.ai + poe.com!
@@ -222,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1.1
+// @version             2025.1.1.2
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
