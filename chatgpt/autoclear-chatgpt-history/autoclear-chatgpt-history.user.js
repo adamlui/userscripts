@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1
+// @version             2025.1.1.1
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -262,7 +262,7 @@
 
 // Documentation: https://docs.autoclearchatgpt.com
 // NOTE: This script relies on the powerful chatgpt.js library @ https://chatgpt.js.org
-//  © 2023–2024 KudoAI & contributors under the MIT license.
+//  © 2023–2025 KudoAI & contributors under the MIT license.
 
 (async () => {
 
