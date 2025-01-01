@@ -1,7 +1,7 @@
 # MIT License
 
-Copyright © 2023–2024 [Adam Lui](https://github.com/adamlui).
-Copyright © 2023–2024 [KudoAI](https://github.com/KudoAI) & contributors.
+Copyright © 2023–2025 [Adam Lui](https://github.com/adamlui).
+Copyright © 2023–2025 [KudoAI](https://github.com/KudoAI) & contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
