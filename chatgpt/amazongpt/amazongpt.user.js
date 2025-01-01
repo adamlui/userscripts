@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.2
+// @version                2025.1.1.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -88,8 +88,8 @@
 // ==/UserScript==
 
 // Dependencies:
-// ✓ chatgpt.js (https://chatgpt.js.org) © 2023–2024 KudoAI & contributors under the MIT license
-// ✓ generate-ip (https://generate-ip.org) © 2024 Adam Lui & contributors under the MIT license
+// ✓ chatgpt.js (https://chatgpt.js.org) © 2023–2025 KudoAI & contributors under the MIT license
+// ✓ generate-ip (https://generate-ip.org) © 2024–2025 Adam Lui & contributors under the MIT license
 // ✓ highlight.js (https://highlightjs.org) © 2006 Ivan Sagalaev under the BSD 3-Clause license
 // ✓ KaTeX (https://katex.org) © 2013–2020 Khan Academy & other contributors under the MIT license
 // ✓ Marked (https://marked.js.org) © 2018+ MarkedJS © 2011–2018 Christopher Jeffrey under the MIT license
