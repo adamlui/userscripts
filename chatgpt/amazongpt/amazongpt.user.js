@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.8
+// @version                2025.1.1.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -821,7 +821,7 @@
               + `#${app.cssPrefix}-settings li:hover {`
                   + 'opacity: 1 ;'
                   + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}`
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.15)' }}`
               + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
               + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
@@ -868,7 +868,7 @@
             log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out 0.135s ease-out'
+            modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
             modalContainer.onanimationend = () => {
                 modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`) }
         },
