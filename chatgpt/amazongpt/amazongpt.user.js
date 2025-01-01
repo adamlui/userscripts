@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.1
+// @version                2025.1.1.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -613,8 +613,8 @@
         if (foundState) {
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `font-weight: bold ; color: ${
-                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255, 169, 225, 0.44) 2px 1px 5px'
-                                                  : '#5cef48 ; text-shadow: rgba(255, 250, 169, 0.38) 2px 1px 5px' }`
+                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -662,7 +662,7 @@
             // Hack BG
             fillStarryBG(modal)
             setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67, 70, 72, ${
+                modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
                     env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
                 modal.parentNode.classList.add('animated')
             }, 100) // delay for transition fx
@@ -760,7 +760,7 @@
                   + 'content: "" ; position: absolute ; top: 0 ; bottom: 0 ; left: 0 ; right: 0 ;'
                   + 'opacity: 0 ; z-index: -1 ; box-shadow: 0 0 2em 0.2em var(--glow-color) ;'
                   + 'background-color: var(--glow-color) ; transition: opacity 100ms linear }'
-              + '.glowing-btn:hover { color: rgba(0, 0, 0, 0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
               + '.glowing-btn:hover .glowing-txt { animation: none }'
               + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
               + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
@@ -780,7 +780,7 @@
               // Settings modal
               + `#${app.cssPrefix}-settings {`
                   + `min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;`
-                  + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0, 0, 0, .12) ;'
+                  + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0,0,0,0.12) ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
               + `#a${app.cssPrefix}-settings-title {`
                   + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
@@ -791,17 +791,17 @@
                   + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
                   + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
               + `#${app.cssPrefix}-settings li {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)' } ;`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
                   + 'list-style: none ; height: 37px ; font-size: 15.5px ; transition: transform 0.1s ease ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                   + `padding: 6px 10px 4px ; border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
                   + 'border-radius: 3px }' // make highlight strips slightly rounded
               + `#${app.cssPrefix}-settings li.active {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for text
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' } ;` // for icons
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0)' }}` // for icons
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}` // for icons
               + `#${app.cssPrefix}-settings li label {`
                   + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
                   + 'font-weight: normal }' // override Amazon boldening
@@ -809,7 +809,7 @@
               + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
               + `#${app.cssPrefix}-settings li:hover {`
                   + 'opacity: 1 ;'
-                  + 'background: rgba(100, 149, 237, 0.88) ; color: white ; fill: white ; stroke: white ;'
+                  + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.22)' }}`
               + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
               + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
@@ -1414,9 +1414,9 @@
                     icon.src = GM_getResourceText(`amzgpt${
                         color == 'white' || !color && env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }icon`)
                     icon.style.filter = icon.style.webkitFilter = (
-                        'drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3))' // drop shadow
+                        'drop-shadow(5px 5px 15px rgba(0,0,0,0.3))' // drop shadow
                       + ( env.ui.app.scheme == 'dark' ? // RGB shift
-                            'drop-shadow(2px 1px 0 #ff5b5b) drop-shadow(-1px -1px 0 rgb(73, 215, 73, 0.75))' : '' ))
+                            'drop-shadow(2px 1px 0 #ff5b5b) drop-shadow(-1px -1px 0 rgb(73,215,73,0.75))' : '' ))
                 })
             }
         },
@@ -1837,7 +1837,7 @@
                       + 'z-index: 2 ; width: 10px ; height: 25px ; border-radius: 30% ; position: relative ;'
                       + 'top: -7.65px ; transition: transform 0.05s ease ;'
                       + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-                      + 'box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
+                      + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ; cursor: ew-resize }'
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                         '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
                   + `.${app.cssPrefix}-reply-tip {`
@@ -1876,7 +1876,7 @@
                       + `position: relative ; z-index: 555 ; color: #${ env.ui.app.scheme == 'dark' ? 'eee' : '222' } ;`
                       + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
                             : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
-                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,.1) inset' : '' }}`
+                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
                   + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
                   + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
                   + '.fade-in-less { opacity: 0 ; transition: opacity 0.2s ease }'
@@ -3083,10 +3083,10 @@
         tooltipDiv.classList.add(`${app.cssPrefix}-btn-tooltip`, 'no-user-select')
         document.head.append(create.style(`.${app.cssPrefix}-btn-tooltip {`
             + 'background-color:' // bubble style
-                + 'rgba(0, 0, 0, 0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
+                + 'rgba(0,0,0,0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
             + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
             + 'position: absolute ;' // for update.tooltip() calcs
-            + 'box-shadow: 3px 5px 16px 0 rgb(0 0 0 / 21%) ;' // drop shadow
+            + 'box-shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;' // drop shadow
             + 'opacity: 0 ; transition: opacity 0.1s ; height: fit-content ; z-index: 1250 }' // visibility
         ))
     }
