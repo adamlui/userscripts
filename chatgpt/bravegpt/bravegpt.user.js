@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.18
+// @version               2025.1.2.19
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1038,8 +1038,7 @@
         },
 
         hide(modal) {
-            const modalContainer = modal?.parentNode
-            if (!modalContainer) return
+            const modalContainer = modal?.parentNode ; if (!modalContainer) return
             modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
             modalContainer.onanimationend = () => modalContainer.remove()
         },
