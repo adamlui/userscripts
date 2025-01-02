@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.1
+// @version               2025.1.2.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2254,7 +2254,7 @@
                       + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
                       + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
 
-                    // App element styles
+                    // Main styles
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
@@ -2487,6 +2487,14 @@
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
                   + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
                   + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
+
+                  // Anchor Mode styles
+                  + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
+                  + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
+                        #${app.cssPrefix}.anchored > footer { display: none }`
+                  + `#${app.cssPrefix}.anchored [id$=chevron-btn], #${app.cssPrefix}.anchored [id$=arrows-btn] {
+                        display: block !important }`
+                  + `#${app.cssPrefix}.expanded { width: 538px !important }`
                 )
             },
 
@@ -2494,8 +2502,7 @@
 
                 // Update tweaks style based on settings
                 tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                    + ( config.stickySidebar ? ssbStyles
-                      : config.anchored ? ( anchorStyles + ( config.expanded ? expandedStyles : '' )) : '' )
+                    + ( config.stickySidebar ? ssbStyles : '' )
 
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
@@ -2866,11 +2873,11 @@
             const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
             if (state == 'on' || !state && !config.anchored) {
                 log.debug('Toggling Anchor Mode on...')
-                settings.save('anchored', true)
+                settings.save('anchored', true) ; appDiv.classList.add('anchored')
                 if (config.stickySidebar) toggle.sidebar('sticky') // off
             } else {
                 log.debug('Toggling Anchor Mode off...')
-                settings.save('anchored', false)
+                settings.save('anchored', false) ; appDiv.classList.remove('anchored')
                 if (config.expanded) toggle.expandedMode('off')
             }
             update.style.tweaks() ; update.rqVisibility() // apply new state to UI
@@ -2945,9 +2952,8 @@
             log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             const toExpand = state == 'on' || !state && !config.expanded
             log.debug(`${ toExpand ? 'Expanding' : 'Shrinking' } ${app.name}...`)
-            settings.save('expanded', toExpand)
+            settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
-            update.style.tweaks() // apply new state to UI
             icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
             log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             log.debug(`Success! ${app.name} ${ toExpand ? 'expanded' : 'shrunk' }`)
@@ -3955,7 +3961,8 @@
 
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-    appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv()
+    appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv();
+    ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
@@ -3966,10 +3973,6 @@
                     + `#${app.cssPrefix} { width: 521px }`
     const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 83px }`
                     + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
-    const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
-                       + `[class*=feedback], .${app.cssPrefix}-related-queries, #wsb-btn  { display: none }`
-                       + `#${app.cssPrefix}-chevron-btn, #${app.cssPrefix}-arrows-btn { display: block !important }`
-    const expandedStyles = `#${app.cssPrefix} { width: 538px }`
     update.style.tweaks() ; document.head.append(tweaksStyle)
 
     // Create/stylize TOOLTIPs
@@ -4047,7 +4050,8 @@
         log.caller = 'restoreAppDiv()'
         log.debug(`Restoring ${app.name} from mutation...`)
         appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-        appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv()
+        appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv();
+        ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
         if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appDivCornerBtns()
