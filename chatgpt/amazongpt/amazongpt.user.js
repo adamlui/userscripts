@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.12
+// @version                2025.1.2.13
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2263,7 +2263,6 @@
         },
 
         toggle(state = '') {
-            log.caller = `fontSizeSlider.toggle(${ state ? `'${state}'` : '' })`
             const slider = document.getElementById(`${app.cssPrefix}-font-size-slider-track`)
                          || fontSizeSlider.createAppend()
             const replyTip = appDiv.querySelector(`.${app.cssPrefix}-reply-tip`)
@@ -2271,7 +2270,6 @@
 
             // Show slider
             if (state == 'on' || (!state && slider.style.display == 'none')) {
-                log.debug('Showing Font Size slider...')
 
                 // Position slider tip
                 const btnSpan = document.getElementById(`${app.cssPrefix}-font-size-btn`),
@@ -2282,14 +2280,10 @@
                 slider.style.display = sliderTip.style.display = '' ; if (replyTip) replyTip.style.display = 'none'
                 setTimeout(() => slider.classList.add('active'), fontSizeSlider.fadeInDelay)
 
-                log.debug('Success! Font Size slider shown')
-
             // Hide slider
             } else if (state == 'off' || (!state && slider.style.display != 'none')) {
-                log.debug('Hiding Font Size slider...')
                 slider.classList.remove('active') ; if (replyTip) replyTip.style.display = ''
                 sliderTip.style.display = slider.style.display = 'none'
-                log.debug('Success! Font Size slider hidden')
             }
         }
     }
@@ -2299,9 +2293,7 @@
     const toggle = {
 
         animations(layer) {
-            log.caller = `toggle.animations('${layer}')`
             const configKey = layer + 'AnimationsDisabled'
-            log.debug(`Toggling ${layer.toUpperCase()} animations ${ config[configKey] ? 'ON' : 'OFF' }...`)
             settings.save(configKey, !config[configKey])
             update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
@@ -2315,8 +2307,6 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            log.caller = `toggle.animations('${layer}')`
-            log.debug(`Success! ${layer.toUpperCase()} animations toggled ${ config[configKey] ? 'OFF' : 'ON' }`)
             notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${
                 menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
         },
@@ -2337,20 +2327,14 @@
         },
 
         expandedMode(state = '') {
-            log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             const toExpand = state == 'on' || !state && !config.expanded
-            log.debug(`${ toExpand ? 'Expanding' : 'Shrinking' } ${app.name}...`)
             settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
             icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
-            log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
-            log.debug(`Success! ${app.name} ${ toExpand ? 'expanded' : 'shrunk' }`)
         },
 
         minimized(state = '') {
-            log.caller = `toggle.minimized(${ state ? `'${state}'` : '' })`
             const toMinimize = state == 'on' || !state && !config.minimized
-            log.debug(`${ toMinimize ? 'Mimizing' : 'Restoring' } ${app.name}...`)
             settings.save('minimized', toMinimize)
             const chevronBtn = appDiv.querySelector(`#${app.cssPrefix}-chevron-btn`)
             if (chevronBtn) { // update icon
@@ -2364,13 +2348,9 @@
             }
             update.appBottomPos() // toggle visual minimization
             if (!env.browser.isMobile) setTimeout(() => tooltipDiv.style.opacity = 0, 1) // remove lingering tooltip
-            log.caller = `toggle.minimized(${ state ? `'${state}'` : '' })`
-            log.debug(`Success! ${app.name} ${ toMinimize ? 'minimized' : 'restored' }`)
         },
 
         proxyMode() {
-            log.caller = 'toggle.proxyMode()'
-            log.debug(`Toggling Proxy Mode ${ config.proxyAPIenabled ? 'OFF' : 'ON' }...`)
             settings.save('proxyAPIenabled', !config.proxyAPIenabled)
             notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
             menu.refresh()
@@ -2385,21 +2365,15 @@
                             modals.settings.toggle.switch(streamingToggle)
             }
             if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
-            else {
-                log.caller = 'toggle.proxyMode()'
-                log.debug(`Success! config.proxyAPIenabled = ${config.proxyAPIenabled}`)
-            }
         },
 
         streaming() {
-            log.caller = 'toggle.streaming()'
             const scriptCatLink = env.browser.isFF ?
                     'https://addons.mozilla.org/firefox/addon/scriptcat/'
                 : env.browser.isEdge ?
                     'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
-                log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -2410,7 +2384,6 @@
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
             } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
-                log.debug('Streaming Mode unsupported in browser')
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
@@ -2420,7 +2393,6 @@
                             scriptCatLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                log.debug('Streaming Mode unsupported in OpenAI mode')
                 let msg = `${settings.controls.streamingDisabled.label} `
                         + `${app.msgs.alert_isCurrentlyOnlyAvailBy} `
                         + `${app.msgs.alert_switchingOn} ${app.msgs.mode_proxy}. `
@@ -2431,10 +2403,8 @@
                 alert.querySelector('[href="#"]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
-                log.debug(`Toggling Streaming Mode ${ config.streamingDisabled ? 'ON' : 'OFF' }`)
                 settings.save('streamingDisabled', !config.streamingDisabled)
                 notify(`${settings.controls.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
-                log.debug(`Success! config.streamingDisabled = ${config.streamingDisabled}`)
             }
         },
 
