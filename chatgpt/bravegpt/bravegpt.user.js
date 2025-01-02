@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.7
+// @version               2025.1.2.8
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3972,7 +3972,8 @@
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv();
-    ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
+    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
+        if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
