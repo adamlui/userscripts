@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.16
+// @version                2025.1.2.17
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2715,7 +2715,6 @@
         },
 
         toggle(state = '') {
-            log.caller = `fontSizeSlider.toggle(${ state ? `'${state}'` : '' })`
             const slider = document.getElementById(`${app.cssPrefix}-font-size-slider-track`)
                          || fontSizeSlider.createAppend()
             const replyTip = appDiv.querySelector(`.${app.cssPrefix}-reply-tip`)
@@ -2723,7 +2722,6 @@
 
             // Show slider
             if (state == 'on' || (!state && slider.style.display == 'none')) {
-                log.debug('Showing Font Size slider...')
 
                 // Position slider tip
                 const btnSpan = document.getElementById(`${app.cssPrefix}-font-size-btn`),
@@ -2735,14 +2733,10 @@
                 slider.style.display = sliderTip.style.display = '' ; if (replyTip) replyTip.style.display = 'none'
                 setTimeout(() => slider.classList.add('active'), fontSizeSlider.fadeInDelay)
 
-                log.debug('Success! Font Size slider shown')
-
             // Hide slider
             } else if (state == 'off' || (!state && slider.style.display != 'none')) {
-                log.debug('Hiding Font Size slider...')
                 slider.classList.remove('active') ; if (replyTip) replyTip.style.display = ''
                 sliderTip.style.display = slider.style.display = 'none'
-                log.debug('Success! Font Size slider hidden')
             }
         }
     }
@@ -2775,9 +2769,7 @@
         },
 
         animations(layer) {
-            log.caller = `toggle.animations('${layer}')`
             const configKey = layer + 'AnimationsDisabled'
-            log.debug(`Toggling ${layer.toUpperCase()} animations ${ config[configKey] ? 'ON' : 'OFF' }...`)
             settings.save(configKey, !config[configKey])
             update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
@@ -2791,15 +2783,11 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            log.caller = `toggle.animations('${layer}')`
-            log.debug(`Success! ${layer.toUpperCase()} animations toggled ${ config[configKey] ? 'OFF' : 'ON' }`)
             notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${
                 menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
         },
 
         autoGet() {
-            log.caller = 'toggle.autoGet()'
-            log.debug(`Toggling Auto-Get ${ config.autoGet ?  'OFF' : 'ON' }...`)
             settings.save('autoGet', !config.autoGet)
             if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
@@ -2810,8 +2798,6 @@
                 const autoGetToggle = document.querySelector('[id*=autoGet][id*=menu-entry] input')
                 if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
             }
-            log.caller = 'toggle.autoGet()'
-            log.debug(`Success! config.autoget = ${config.autoGet}`)
         },
 
         btnGlow(state = '') {
@@ -2830,21 +2816,15 @@
         },
 
         expandedMode(state = '') {
-            log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             const toExpand = state == 'on' || !state && !config.expanded
-            log.debug(`${ toExpand ? 'Expanding' : 'Shrinking' } ${app.name}...`)
             settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
             update.chatbarWidth() // apply new state to UI
             icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
-            log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
-            log.debug(`Success! ${app.name} ${ toExpand ? 'expanded' : 'shrunk' }`)
         },
 
         manualGet(mode) { // Prefix/Suffix modes
-            log.caller = `toggle.manualGet('${mode}')`
             const modeKey = mode + 'Enabled'
-            log.debug(`Toggling ${log.toTitleCase(mode)} Mode ${ config[modeKey] ? 'OFF' : 'ON' }...`)
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
             notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
@@ -2852,14 +2832,10 @@
                 const modeToggle = document.querySelector(`[id*=${modeKey}][id*=menu-entry] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
             }
-            log.caller = `toggle.manualGet('${mode}')`
-            log.debug(`Success! config.${modeKey} = ${config[modeKey]}`)
         },
 
         minimized(state = '') {
-            log.caller = `toggle.minimized(${ state ? `'${state}'` : '' })`
             const toMinimize = state == 'on' || !state && !config.minimized
-            log.debug(`${ toMinimize ? 'Mimizing' : 'Restoring' } ${app.name}...`)
             settings.save('minimized', toMinimize)
             const chevronBtn = appDiv.querySelector(`#${app.cssPrefix}-chevron-btn`)
             if (chevronBtn) { // update icon
@@ -2873,13 +2849,9 @@
             }
             update.appBottomPos() // toggle visual minimization
             if (!env.browser.isMobile) setTimeout(() => tooltipDiv.style.opacity = 0, 1) // remove lingering tooltip
-            log.caller = `toggle.minimized(${ state ? `'${state}'` : '' })`
-            log.debug(`Success! ${app.name} ${ toMinimize ? 'minimized' : 'restored' }`)
         },
 
         proxyMode() {
-            log.caller = 'toggle.proxyMode()'
-            log.debug(`Toggling Proxy Mode ${ config.proxyAPIenabled ? 'OFF' : 'ON' }...`)
             settings.save('proxyAPIenabled', !config.proxyAPIenabled)
             notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
             menu.refresh()
@@ -2894,15 +2866,9 @@
                             modals.settings.toggle.switch(streamingToggle)
             }
             if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
-            else {
-                log.caller = 'toggle.proxyMode()'
-                log.debug(`Success! config.proxyAPIenabled = ${config.proxyAPIenabled}`)
-            }
         },
 
         relatedQueries() {
-            log.caller = 'toggle.relatedQueries()'
-            log.debug(`Toggling Related Queries ${ config.rqDisabled ? 'ON' : 'OFF' }...`)
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
             if (!config.rqDisabled && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) // get related queries for 1st time
@@ -2911,15 +2877,11 @@
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
             update.answerPreMaxHeight()
             notify(`${app.msgs.menuLabel_relatedQueries} ${menu.state.words[+!config.rqDisabled]}`)
-            log.debug(`Success! config.rqDisabled = ${config.rqDisabled}`)
         },
 
         sidebar(mode, state = '') {
-            log.caller = `toggle.sidebar('${mode}'${ state ? `, '${state}'` : '' })`
             const configKeyName = mode + 'Sidebar',
-                  toToggleOn = state == 'on' || !state && !config[configKeyName],
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
-            log.debug(`Toggling ${log.toTitleCase(mode)} Sidebar ${ toToggleOn ? 'ON' : 'OFF' }`)
 
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
@@ -2937,23 +2899,19 @@
             }
 
             // Notify of mode change
-            if (mode == 'sticky' && prevStickyState == config.stickySidebar)
-                return log.debug(`No change to ${log.toTitleCase(mode)} Sidebar`)
+            if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
                     || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' } ${
                        menu.state.words[+config[configKeyName]]}`)
-            log.debug(`Success! ${log.toTitleCase(mode)} Sidebar toggled ${ toToggleOn ? 'ON' : 'OFF' }`)
         },
 
         streaming() {
-            log.caller = 'toggle.streaming()'
             const scriptCatLink = env.browser.isFF ?
                     'https://addons.mozilla.org/firefox/addon/scriptcat/'
                 : env.browser.isEdge ?
                     'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
             if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
-                log.debug(`Streaming Mode unsupported in ${env.scriptManager.name}`)
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -2964,7 +2922,6 @@
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
             } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
-                log.debug('Streaming Mode unsupported in browser')
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
@@ -2974,7 +2931,6 @@
                             scriptCatLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
-                log.debug('Streaming Mode unsupported in OpenAI mode')
                 let msg = `${settings.controls.streamingDisabled.label} `
                         + `${app.msgs.alert_isCurrentlyOnlyAvailBy} `
                         + `${app.msgs.alert_switchingOn} ${app.msgs.mode_proxy}. `
@@ -2985,10 +2941,8 @@
                 alert.querySelector('[href=#]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
-                log.debug(`Toggling Streaming Mode ${ config.streamingDisabled ? 'ON' : 'OFF' }`)
                 settings.save('streamingDisabled', !config.streamingDisabled)
                 notify(`${settings.controls.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
-                log.debug(`Success! config.streamingDisabled = ${config.streamingDisabled}`)
             }
         },
 
