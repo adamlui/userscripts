@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.18
+// @version                  2025.1.2.19
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3083,16 +3083,12 @@
 
             // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
-                log.debug('Toggling Anchor Mode on...')
-                settings.save('anchored', true) ; appDiv.classList.add('anchored')
-                if (config.stickySidebar) toggle.sidebar('sticky') // off
+                settings.save('anchored', true) ; if (config.stickySidebar) toggle.sidebar('sticky') // off
             } else {
-                log.debug('Toggling Anchor Mode off...')
-                settings.save('anchored', false) ; appDiv.classList.remove('anchored')
-                if (config.expanded) toggle.expandedMode('off')
-            }
+                settings.save('anchored', false) ; if (config.expanded) toggle.expandedMode('off') }
 
             // Apply new state to UI
+            appDiv.classList[config.anchored ? 'add' : 'remove']('anchored')
             update.rqVisibility() ; update.answerPreMaxHeight() ; update.bylineVisibility() ; update.chatbarWidth()
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
@@ -3101,7 +3097,6 @@
             if (prevState != config.anchored) {
                 menus.pin.topPos = menus.pin.rightPos = null
                 notify(`${app.msgs.mode_anchor} ${menu.state.words[+config.anchored]}`)
-                log.debug(`Success! Anchor Mode toggled ${ config.anchored ? 'ON' : 'OFF' }`)
             }
         },
 
