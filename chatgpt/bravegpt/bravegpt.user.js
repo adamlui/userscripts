@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.13
+// @version               2025.1.2.14
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1046,7 +1046,7 @@
 
             click(event) { // to dismiss native modals
                 const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
+                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
                     const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
                     modals.hide(modal)
                 }
