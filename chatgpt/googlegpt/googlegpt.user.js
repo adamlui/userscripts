@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.11
+// @version                  2025.1.2.12
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1236,7 +1236,7 @@
 
             click(event) { // to dismiss native modals
                 const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
+                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
                     const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
                     modals.hide(modal)
                 }
