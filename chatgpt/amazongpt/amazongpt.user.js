@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2
+// @version                2025.1.2.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -864,23 +864,18 @@
         },
 
         hide(modal) {
-            log.caller = 'modals.hide()'
-            log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
             modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
-            modalContainer.onanimationend = () => {
-                modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`) }
+            modalContainer.onanimationend = () => modalContainer.remove()
         },
 
         handlers: {
 
             click(event) { // to dismiss native modals
-                log.caller = 'modals.handlers.click()'
                 const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
+                if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
                     const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
-                    log.debug(`Dismiss element of div#${modal?.id} clicked`)
                     modals.hide(modal)
                 }
             },
@@ -918,9 +913,7 @@
             },
 
             key(event) { // to dismiss native modals
-                log.caller = 'modals.handlers.key()'
                 if (event.key.startsWith('Esc') || event.keyCode == 27) {
-                    log.debug('Escape pressed')
                     const modal = document.querySelector('[class$=-modal]')
                     if (modal) modals.hide(modal)
                 }
