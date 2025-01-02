@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.14
+// @version                  2025.1.2.15
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1005,8 +1005,10 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-            if (!modals.handlers.key.added) { // add key listener to dismiss modals
-                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
+            if (!modals.handlers.dismiss.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.dismiss.key)
+                modals.handlers.dismiss.key.added = true
+            }
         },
 
         init(modal) {
@@ -1020,7 +1022,7 @@
             modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
             if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
                 const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
-                dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
+                dismissElems.forEach(elem => elem.onclick = modals.handlers.dismiss.click)
             }
 
             // Hack BG
@@ -1234,11 +1236,16 @@
 
         handlers: {
 
-            click(event) { // to dismiss native modals
-                const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
-                    const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
-                    modals.hide(modal)
+            dismiss: { // to dismiss native modals
+                click(event) {
+                    const clickedElem = event.target
+                    if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]'))
+                        modals.hide((clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild)
+                },
+
+                key(event) {
+                    if (event.key.startsWith('Esc') || event.keyCode == 27)
+                        modals.hide(document.querySelector('[class$=-modal]'))
                 }
             },
 
@@ -1272,13 +1279,6 @@
                     modals.handlers.drag.draggableElem = null
                 }
 
-            },
-
-            key(event) { // to dismiss native modals
-                if (event.key.startsWith('Esc') || event.keyCode == 27) {
-                    const modal = document.querySelector('[class$=-modal]')
-                    if (modal) modals.hide(modal)
-                }
             }
         },
 
