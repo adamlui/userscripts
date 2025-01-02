@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.1.9
+// @version                2025.1.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1075,7 +1075,7 @@
 
             // Re-format each button
             const buttons = schemeModal.querySelectorAll('button'),
-                  schemes = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+                  schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
             for (const btn of buttons) {
                 const btnScheme = btn.textContent.toLowerCase()
 
@@ -1085,8 +1085,8 @@
                       ? 'primary-modal-btn' : '' )
 
                 // Prepend emoji + localize labels
-                if (Object.prototype.hasOwnProperty.call(schemes, btnScheme))
-                    btn.textContent = `${schemes[btnScheme]} ${ // emoji
+                if (Object.prototype.hasOwnProperty.call(schemeEmojis, btnScheme))
+                    btn.textContent = `${schemeEmojis[btnScheme]} ${ // emoji
                         app.msgs['scheme_' + btnScheme] || app.msgs['menuLabel_' + btnScheme]
                             || btnScheme.toUpperCase() }`
                 else btn.style.display = 'none' // hide Dismiss button
