@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1.4
+// @version             2025.1.2
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -539,7 +539,7 @@
 
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
-            modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`) // add classes
+            modal.classList.add(this.class, 'no-user-select') ; modal.parentNode.classList.add(`${this.class}-bg`)
             fillStarryBG(modal) // add starry bg
         },
 
@@ -549,7 +549,9 @@
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
-                `.${this.class} {` // modals
+                `.no-user-select {
+                    user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none }`
+              + `.${this.class} {` // modals
                   + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
                       + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
                   + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
