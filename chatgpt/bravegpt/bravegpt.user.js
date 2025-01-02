@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.2
+// @version               2025.1.2.3
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2488,6 +2488,15 @@
                   + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
                   + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
 
+                  // Wider Sidebar styles
+                  + `main.main-column:has(~ .sidebar #${app.cssPrefix}.wider),
+                        .sidebar:has(~ div #${app.cssPrefix}.wider) { max-width: 521px !important }
+                     #${app.cssPrefix}.wider { width: 521px }`
+
+                  // Sticky Sidebar styles
+                  + `#${app.cssPrefix}.sticky { position: sticky ; top: 83px }
+                     #${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
+
                   // Anchor Mode styles
                   + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
                   + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
@@ -2499,10 +2508,6 @@
             },
 
             tweaks() {
-
-                // Update tweaks style based on settings
-                tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                    + ( config.stickySidebar ? ssbStyles : '' )
 
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
@@ -3038,17 +3043,23 @@
                   toToggleOn = state == 'on' || !state && !config[configKeyName],
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
             log.debug(`Toggling ${log.toTitleCase(mode)} Sidebar ${ toToggleOn ? 'ON' : 'OFF' }`)
+
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
                 settings.save(configKeyName, true)
             } else settings.save(configKeyName, false)
-            update.style.tweaks() // apply new state to UI
+
+            // Apply new state to UI
+            appDiv.classList[config[configKeyName] ? 'add' : 'remove'](mode)
+            update.style.tweaks()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
                 if (stickySidebarToggle.checked != config.stickySidebar)
                     modals.settings.toggle.switch(stickySidebarToggle)
             }
+
+            // Notify of mode change
             if (mode == 'sticky' && prevStickyState == config.stickySidebar)
                 return log.debug(`No change to ${log.toTitleCase(mode)} Sidebar`)
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
@@ -3056,7 +3067,6 @@
                        menu.state.words[+config[configKeyName]]}`)
             log.debug(`Success! ${log.toTitleCase(mode)} Sidebar toggled ${ toToggleOn ? 'ON' : 'OFF' }`)
         },
-
 
         streaming() {
             log.caller = 'toggle.streaming()'
@@ -3968,12 +3978,7 @@
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style()
-    const wsbStyles = 'main.main-column, aside.sidebar { max-width: 521px !important }'
-                    + `#${app.cssPrefix} { width: 521px }`
-    const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 83px }`
-                    + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
-    update.style.tweaks() ; document.head.append(tweaksStyle)
+    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
