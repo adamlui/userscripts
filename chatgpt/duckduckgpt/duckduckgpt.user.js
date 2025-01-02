@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.2
+// @version                2025.1.2.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2382,6 +2382,17 @@
                   + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
                   + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
 
+                  // Wider Sidebar styles
+                  + `section[data-area=mainline]:has(~ section #${app.cssPrefix}.wider) { max-width: 590px !important }
+                     section[data-area=sidebar]:has(#${app.cssPrefix}.wider) {
+                        min-width: 530px !important ; flex-basis: 530px !important }`
+
+                  // Sticky Sidebar styles
+                  + `#${app.cssPrefix}.sticky { position: sticky ; top: 14px }`
+                  + `#${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
+                  + `body:has(#${app.cssPrefix}.sticky), div.site-wrapper:has(#${app.cssPrefix}.sticky) {
+                        overflow: clip }` // replace `overflow: hidden` to allow stickiness
+
                   // Anchor Mode styles
                   + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
                   + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
@@ -2393,10 +2404,6 @@
             },
 
             tweaks() {
-
-                // Update tweaks style based on settings
-                tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                    + ( config.stickySidebar ? ssbStyles : '' )
 
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
@@ -2918,17 +2925,23 @@
                   toToggleOn = state == 'on' || !state && !config[configKeyName],
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
             log.debug(`Toggling ${log.toTitleCase(mode)} Sidebar ${ toToggleOn ? 'ON' : 'OFF' }`)
+
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
                 settings.save(configKeyName, true)
             } else settings.save(configKeyName, false)
-            update.style.tweaks() ; update.chatbarWidth() // apply new state to UI
+
+            // Apply new state to UI
+            appDiv.classList[config[configKeyName] ? 'add' : 'remove'](mode)
+            update.style.tweaks() ; update.chatbarWidth()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
                 if (stickySidebarToggle.checked != config.stickySidebar)
                     modals.settings.toggle.switch(stickySidebarToggle)
             }
+
+            // Notify of mode change
             if (mode == 'sticky' && prevStickyState == config.stickySidebar)
                 return log.debug(`No change to ${log.toTitleCase(mode)} Sidebar`)
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
@@ -3835,13 +3848,7 @@
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style()
-    const wsbStyles = 'section[data-area=mainline] { max-width: 590px !important }' // max before centered mode changes
-                    + 'section[data-area=sidebar] { min-width: 530px !important ; flex-basis: 530px !important }'
-    const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 14px }`
-                    + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
-                    + 'body, div.site-wrapper { overflow: clip }' // replace `overflow: hidden` to allow stickiness
-    update.style.tweaks() ; document.head.append(tweaksStyle)
+    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
