@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.10
+// @version               2025.1.2.11
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -4053,7 +4053,7 @@
         log.debug(`Restoring ${app.name} from mutation...`)
         appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
         appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv();
-        ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
+        ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
         if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appDivCornerBtns()
