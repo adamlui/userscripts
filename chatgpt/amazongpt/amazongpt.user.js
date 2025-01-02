@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.7
+// @version                2025.1.2.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1176,8 +1176,8 @@
                     const setting = settings.controls[key]
 
                     // Create/append item/label elems
-                    const settingItem = document.createElement('li') ; settingItem.id = key + '-settings-entry'
-                    settingItem.title = setting.helptip || '' // for hover assistance
+                    const settingItem = document.createElement('li')
+                    Object.assign(settingItem, { id: `${key}-settings-entry`, title: setting.helptip || '' })
                     const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
                     settingItem.append(settingLabel);
                     (settingsLists[env.browser.isPortrait ? 0 : +(idx >= settingItemCap)]).append(settingItem)
