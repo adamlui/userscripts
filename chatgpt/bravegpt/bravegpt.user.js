@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.20
+// @version               2025.1.2.21
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2875,16 +2875,12 @@
 
             // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
-                log.debug('Toggling Anchor Mode on...')
-                settings.save('anchored', true) ; appDiv.classList.add('anchored')
-                if (config.stickySidebar) toggle.sidebar('sticky') // off
+                settings.save('anchored', true) ; if (config.stickySidebar) toggle.sidebar('sticky') // off
             } else {
-                log.debug('Toggling Anchor Mode off...')
-                settings.save('anchored', false) ; appDiv.classList.remove('anchored')
-                if (config.expanded) toggle.expandedMode('off')
-            }
+                settings.save('anchored', false) ; if (config.expanded) toggle.expandedMode('off') }
 
             // Apply new state to UI
+            appDiv.classList[config.anchored ? 'add' : 'remove']('anchored')
             update.rqVisibility() ; update.answerPreMaxHeight() ; update.bylineVisibility()
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
@@ -2893,7 +2889,6 @@
             if (prevState != config.anchored) {
                 menus.pin.topPos = menus.pin.rightPos = null
                 notify(`${app.msgs.mode_anchor} ${menu.state.words[+config.anchored]}`)
-                log.debug(`Success! Anchor Mode toggled ${ config.anchored ? 'ON' : 'OFF' }`)
             }
         },
 
