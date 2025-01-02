@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.1.8
+// @version               2025.1.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1250,7 +1250,7 @@
 
             // Re-format each button
             const buttons = schemeModal.querySelectorAll('button'),
-                  schemes = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+                  schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
             for (const btn of buttons) {
                 const btnScheme = btn.textContent.toLowerCase()
 
@@ -1260,8 +1260,8 @@
                       ? 'primary-modal-btn' : '' )
 
                 // Prepend emoji + localize labels
-                if (Object.prototype.hasOwnProperty.call(schemes, btnScheme))
-                    btn.textContent = `${schemes[btnScheme]} ${ // emoji
+                if (Object.prototype.hasOwnProperty.call(schemeEmojis, btnScheme))
+                    btn.textContent = `${schemeEmojis[btnScheme]} ${ // emoji
                         app.msgs['scheme_' + btnScheme] || app.msgs['menuLabel_' + btnScheme]
                             || btnScheme.toUpperCase() }`
                 else btn.style.display = 'none' // hide Dismiss button
