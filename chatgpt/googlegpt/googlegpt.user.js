@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2
+// @version                  2025.1.2.1
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1226,23 +1226,18 @@
         },
 
         hide(modal) {
-            log.caller = 'modals.hide()'
-            log.debug(`Dismissing div#${modal?.id}...`)
             const modalContainer = modal?.parentNode
             if (!modalContainer) return
             modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
-            modalContainer.onanimationend = () => {
-                modalContainer.remove() ; log.debug(`Success! div#${modal?.id} dismissed`) }
+            modalContainer.onanimationend = () => modalContainer.remove()
         },
 
         handlers: {
 
             click(event) { // to dismiss native modals
-                log.caller = 'modals.handlers.click()'
                 const clickedElem = event.target
                 if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
                     const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
-                    log.debug(`Dismiss element of div#${modal?.id} clicked`)
                     modals.hide(modal)
                 }
             },
@@ -1280,9 +1275,7 @@
             },
 
             key(event) { // to dismiss native modals
-                log.caller = 'modals.handlers.key()'
                 if (event.key.startsWith('Esc') || event.keyCode == 27) {
-                    log.debug('Escape pressed')
                     const modal = document.querySelector('[class$=-modal]')
                     if (modal) modals.hide(modal)
                 }
