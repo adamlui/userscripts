@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.6
+// @version                  2025.1.2.7
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2687,11 +2687,13 @@
                   + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
 
                   // Wider Sidebar styles
-                  + `#${app.cssPrefix}.wider { width: 455px }`
-                  + `#${app.cssPrefix}.wider ~ div { width: 540px !important }` // expand side snippets
+                  + `#${app.cssPrefix}.wider { min-width: 455px }
+                     #${app.cssPrefix}.wider ~ div { min-width: 508px }` // expand side snippets
                   + `#center_col:has(~ div #${app.cssPrefix}.wider),
-                        #center_col:has(~ div #${app.cssPrefix}.wider) div) {
-                            max-width: 516px !important ; overflow: hidden }` // shrink center column/children
+                        #center_col:has(~ div #${app.cssPrefix}.wider) div {
+                            max-width: 516px }` // shrink center column/children
+                  + `div:has(> #${app.cssPrefix}.wider) {` // shift sidebar left to align w/ skinnier center column
+                      + 'position: relative ; left: -136px }'
 
                   // Sticky Sidebar styles
                   + `#${app.cssPrefix}.sticky { position: sticky ; top: 87px }
@@ -4231,7 +4233,6 @@
         : document.getElementById('rhs') // sidebar container if side snippets exist
         || (() => { // create new one if no side snippets exist
                const appDivParent = document.createElement('div')
-               appDivParent.style.display = 'contents'
                centerCol.insertAdjacentElement('afterend', appDivParent)
                return appDivParent
            })()
