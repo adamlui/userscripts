@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.14
+// @version               2025.1.2.15
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -1351,8 +1351,8 @@
                     const setting = settings.controls[key]
 
                     // Create/append item/label elems
-                    const settingItem = document.createElement('li') ; settingItem.id = key + '-settings-entry'
-                    settingItem.title = setting.helptip || '' // for hover assistance
+                    const settingItem = document.createElement('li')
+                    Object.assign(settingItem, { id: `${key}-settings-entry`, title: setting.helptip || '' })
                     const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
                     settingItem.append(settingLabel);
                     (settingsLists[env.browser.isPortrait ? 0 : +(idx >= settingItemCap)]).append(settingItem)
