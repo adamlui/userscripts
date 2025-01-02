@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.8
+// @version                2025.1.2.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2152,7 +2152,7 @@
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                   + 'z-index: 9999 ; cursor: ew-resize }'
               + `#${app.cssPrefix} {`
-                  + 'z-index: 5555 ; padding: 17px 26px 16px ; flex-basis: 0 ; border-radius: 8px ;'
+                  + 'position: sticky ; z-index: 5555 ; padding: 17px 26px 16px ; flex-basis: 0 ; border-radius: 8px ;'
                   + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #e5e5e5' } ;`
                   + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: var(--app-shadow) ;'
                   + ( config.bgAnimationsDisabled ? // classic flat bg
