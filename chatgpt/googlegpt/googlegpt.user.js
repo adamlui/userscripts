@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.3
+// @version                  2025.1.2.4
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2857,7 +2857,7 @@
                     btn.onanimationend = () => {
                         Object.assign(btn.style, { opacity: '0', visibility: 'hidden', animation: '' }) // hide btn
                         setTimeout(() => // show btn after short delay
-                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 200)
+                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 100)
                     }
                 }
             })
