@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.2
+// @version                  2025.1.2.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2686,6 +2686,17 @@
                   + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
                   + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
 
+                  // Wider Sidebar styles
+                  + `#${app.cssPrefix}.wider { width: 455px }`
+                  + `#${app.cssPrefix}.wider ~ div { width: 540px !important }` // expand side snippets
+                  + `#center_col:has(~ div #${app.cssPrefix}.wider),
+                        #center_col:has(~ div #${app.cssPrefix}.wider) div:has(#${app.cssPrefix}.wider) {
+                            max-width: 516px !important ; overflow: hidden }` // shrink center column/children
+
+                  // Sticky Sidebar styles
+                  + `#${app.cssPrefix}.sticky { position: sticky ; top: 87px }
+                     #${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
+
                   // Anchor Mode styles
                   + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
                   + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
@@ -2697,10 +2708,6 @@
             },
 
             tweaks() {
-
-                // Update tweaks style based on settings
-                tweaksStyle.innerText = ( config.widerSidebar ? wsbStyles : '' )
-                    + ( config.stickySidebar ? ssbStyles : '' )
 
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
@@ -3242,17 +3249,23 @@
                   toToggleOn = state == 'on' || !state && !config[configKeyName],
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
             log.debug(`Toggling ${log.toTitleCase(mode)} Sidebar ${ toToggleOn ? 'ON' : 'OFF' }`)
+
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
                 settings.save(configKeyName, true)
             } else settings.save(configKeyName, false)
-            update.style.tweaks() ; update.chatbarWidth() // apply new state to UI
+
+            // Apply new state to UI
+            appDiv.classList[config[configKeyName] ? 'add' : 'remove'](mode)
+            update.style.tweaks() ; update.chatbarWidth()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
                 if (stickySidebarToggle.checked != config.stickySidebar)
                     modals.settings.toggle.switch(stickySidebarToggle)
             }
+
+            // Notify of mode change
             if (mode == 'sticky' && prevStickyState == config.stickySidebar)
                 return log.debug(`No change to ${log.toTitleCase(mode)} Sidebar`)
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
@@ -4188,19 +4201,14 @@
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv();
-    ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
+    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
+        if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style()
-    const wsbStyles = '#center_col, #center_col div { max-width: 516px !important ; overflow: hidden }' // shrink center column
-                    + `#${app.cssPrefix} { width: 455px }` // expand GoogleGPT when in limiting Google host container
-                    + `#${app.cssPrefix} ~ div { width: 540px !important }` // expand side snippets
-    const ssbStyles = `#${app.cssPrefix} { position: sticky ; top: 87px }`
-                    + `#${app.cssPrefix} ~ * { display: none }` // hide sidebar contents
-    update.style.tweaks() ; document.head.append(tweaksStyle)
+    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
