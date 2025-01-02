@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.12
+// @version                  2025.1.2.13
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1539,8 +1539,8 @@
                     const setting = settings.controls[key]
 
                     // Create/append item/label elems
-                    const settingItem = document.createElement('li') ; settingItem.id = key + '-settings-entry'
-                    settingItem.title = setting.helptip || '' // for hover assistance
+                    const settingItem = document.createElement('li')
+                    Object.assign(settingItem, { id: `${key}-settings-entry`, title: setting.helptip || '' })
                     const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
                     settingItem.append(settingLabel);
                     (settingsLists[env.browser.isPortrait ? 0 : +(idx >= settingItemCap)]).append(settingItem)
