@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.4
+// @version                2025.1.2.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1730,7 +1730,23 @@
 
     const update = {
 
+        answerPreMaxHeight() { // for various mode toggles
+            const answerPre = appDiv.querySelector('pre'),
+                  longerPreHeight = window.innerHeight - 255
+            if (answerPre) answerPre.style.maxHeight = `${ longerPreHeight - ( config.expanded ? 115 : 365 )}px`
+        },
+
         appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 55 - appDiv.offsetHeight : -7 }px` },
+
+        bylineVisibility() { // based on corner space available in header
+            const kudoAIspan = appDiv.querySelector('.kudoai')
+            if (kudoAIspan) {
+                const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
+                    .filter(btn => getComputedStyle(btn).display != 'none').length
+                kudoAIspan.style.display = visibleBtnCnt <= (
+                    env.browser.isMobile ? 3 : !config.expanded ? 5 : 8 ) ? '' : 'none'
+            }
+        },
 
         replyPrefix() {
             const firstP = appDiv.querySelector('pre p')
@@ -1965,23 +1981,6 @@
                         display: block !important }`
                   + `#${app.cssPrefix}.expanded { width: 528px !important }`
                 )
-            },
-
-            tweaks() {
-
-                // Update 'by KudoAI' visibility based on corner space available
-                const kudoAIspan = appDiv.querySelector('.kudoai')
-                if (kudoAIspan) {
-                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
-                        .filter(btn => getComputedStyle(btn).display != 'none').length
-                    kudoAIspan.style.display = visibleBtnCnt <= (
-                        env.browser.isMobile ? 3 : !config.expanded ? 5 : 8 ) ? '' : 'none'
-                }
-
-                // Update <pre> max-height for various mode toggles
-                const answerPre = appDiv.querySelector('pre'),
-                      longerPreHeight = window.innerHeight - 255
-                if (answerPre) answerPre.style.maxHeight = `${ longerPreHeight - ( config.expanded ? 115 : 365 )}px`
             }
         }
     }
@@ -2996,14 +2995,13 @@
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
                 kudoAIspan.append(create.anchor(app.urls.publisher, 'KudoAI'))
                 appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
+                update.bylineVisibility()
 
                 // Create/append answer bubble
                 const answerPre = document.createElement('pre'),
                       replyTipSpan = document.createElement('span')
                 replyTipSpan.className = `${app.cssPrefix}-reply-tip`
-                appDiv.append(replyTipSpan, answerPre)
-
-                update.style.tweaks() // show/hide 'by KudoAI', update pre-height based on mode
+                appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
             }
 
             // Build reply section if missing
@@ -3108,9 +3106,6 @@
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
-
-    // Stylize SITE elems
-    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
