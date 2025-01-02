@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.9
+// @version                2025.1.2.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -641,8 +641,8 @@
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-            if (!modals.handlers.key.added) { // add key listener to dismiss modals
-                document.addEventListener('keydown', modals.handlers.key) ; modals.handlers.key.added = true }
+            if (!modals.handlers.dismiss.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.dismiss.key) ; modals.handlers.dismiss.key.added = true }
         },
 
         init(modal) {
@@ -656,7 +656,7 @@
             modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
             if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
                 const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
-                dismissElems.forEach(elem => elem.onclick = modals.handlers.click)
+                dismissElems.forEach(elem => elem.onclick = modals.handlers.dismiss.click)
             }
 
             // Hack BG
@@ -872,11 +872,16 @@
 
         handlers: {
 
-            click(event) { // to dismiss native modals
-                const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
-                    const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
-                    modals.hide(modal)
+            dismiss: { // to dismiss native modals
+                click(event) {
+                    const clickedElem = event.target
+                    if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]'))
+                        modals.hide((clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild)
+                },
+
+                key(event) {
+                    if (event.key.startsWith('Esc') || event.keyCode == 27)
+                        modals.hide(document.querySelector('[class$=-modal]'))
                 }
             },
 
@@ -908,14 +913,6 @@
                     ['mousemove', 'mouseup'].forEach(eventType =>
                         document.removeEventListener(eventType, modals.handlers.drag[eventType]))
                     modals.handlers.drag.draggableElem = null
-                }
-
-            },
-
-            key(event) { // to dismiss native modals
-                if (event.key.startsWith('Esc') || event.keyCode == 27) {
-                    const modal = document.querySelector('[class$=-modal]')
-                    if (modal) modals.hide(modal)
                 }
             }
         },
