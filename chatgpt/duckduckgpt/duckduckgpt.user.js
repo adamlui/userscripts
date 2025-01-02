@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.9
+// @version                2025.1.2.10
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -1053,7 +1053,7 @@
 
             click(event) { // to dismiss native modals
                 const clickedElem = event.target
-                if (clickedElem == event.currentTarget || clickedElem.closest('[class*="-close-btn]')) {
+                if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]')) {
                     const modal = (clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild
                     modals.hide(modal)
                 }
