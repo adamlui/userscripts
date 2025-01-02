@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.2.13
+// @version                  2025.1.2.14
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -1013,7 +1013,7 @@
             if (!this.styles) this.stylize() // to init/append stylesheet
 
             // Add classes
-            modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
+            modal.classList.add(this.class, 'no-user-select') ; modal.parentNode.classList.add(`${this.class}-bg`)
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
