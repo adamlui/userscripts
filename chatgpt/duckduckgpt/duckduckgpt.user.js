@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.3
+// @version                2025.1.2.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2536,7 +2536,7 @@
                     btn.onanimationend = () => {
                         Object.assign(btn.style, { opacity: '0', visibility: 'hidden', animation: '' }) // hide btn
                         setTimeout(() => // show btn after short delay
-                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 200)
+                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 100)
                     }
                 }
             })
