@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.8
+// @version               2025.1.2.9
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2097,7 +2097,31 @@
 
     const update = {
 
+        answerPreMaxHeight() { // for various mode toggles
+            const answerPre = appDiv.querySelector('pre'),
+                  relatedQueries = appDiv.querySelector(`.${app.cssPrefix}-related-queries`),
+                  shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
+                  longerPreHeight = window.innerHeight - 278
+            if (answerPre) answerPre.style.maxHeight = (
+                config.stickySidebar ? (
+                    relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
+              : config.anchored ? `${ longerPreHeight - ( config.expanded ? 115 : 365 ) }px` : 'none'
+            )
+        },
+
         appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 56 - appDiv.offsetHeight : -32 }px` },
+
+        bylineVisibility() { // based on corner space available in header
+            const kudoAIspan = appDiv.querySelector('.kudoai')
+            if (kudoAIspan) {
+                const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
+                    .filter(btn => getComputedStyle(btn).display != 'none').length
+                kudoAIspan.style.display = visibleBtnCnt <= (
+                    config.anchored && config.expanded ? 10
+                 : !config.anchored && config.widerSidebar ? 9
+                 :  config.anchored && !config.expanded ? 6 : 4 ) ? '' : 'none'
+            }
+        },
 
         footerContent() {
             get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
@@ -2505,31 +2529,6 @@
                         display: block !important }`
                   + `#${app.cssPrefix}.expanded { width: 538px !important }`
                 )
-            },
-
-            tweaks() {
-
-                // Update 'by KudoAI' visibility based on corner space available
-                const kudoAIspan = appDiv.querySelector('.kudoai')
-                if (kudoAIspan) {
-                    const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
-                        .filter(btn => getComputedStyle(btn).display != 'none').length
-                    kudoAIspan.style.display = visibleBtnCnt <= (
-                        config.anchored && config.expanded ? 10
-                     : !config.anchored && config.widerSidebar ? 9
-                     :  config.anchored && !config.expanded ? 6 : 4 ) ? '' : 'none'
-                }
-
-                // Update <pre> max-height for various mode toggles
-                const answerPre = appDiv.querySelector('pre'),
-                      relatedQueries = appDiv.querySelector(`.${app.cssPrefix}-related-queries`),
-                      shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
-                      longerPreHeight = window.innerHeight - 278
-                if (answerPre) answerPre.style.maxHeight = (
-                    config.stickySidebar ? (
-                        relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
-                  : config.anchored ? `${ longerPreHeight - ( config.expanded ? 115 : 365 ) }px` : 'none'
-                )
             }
         }
     }
@@ -2876,6 +2875,8 @@
         anchorMode(state = '') {
             log.caller = `toggle.anchorMode(${ state ? `'${state}'` : '' })`
             const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
+
+            // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
                 log.debug('Toggling Anchor Mode on...')
                 settings.save('anchored', true) ; appDiv.classList.add('anchored')
@@ -2885,7 +2886,9 @@
                 settings.save('anchored', false) ; appDiv.classList.remove('anchored')
                 if (config.expanded) toggle.expandedMode('off')
             }
-            update.style.tweaks() ; update.rqVisibility() // apply new state to UI
+
+            // Apply new state to UI
+            update.rqVisibility() ; update.answerPreMaxHeight() ; update.bylineVisibility()
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
@@ -3032,7 +3035,7 @@
                 get.related(stripQueryAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
-            update.style.tweaks() // toggle <pre> max-height
+            update.answerPreMaxHeight()
             notify(`${app.msgs.menuLabel_relatedQueries} ${menu.state.words[+!config.rqDisabled]}`)
             log.debug(`Success! config.rqDisabled = ${config.rqDisabled}`)
         },
@@ -3051,7 +3054,7 @@
 
             // Apply new state to UI
             appDiv.classList[config[configKeyName] ? 'add' : 'remove'](mode)
-            update.style.tweaks()
+            update.answerPreMaxHeight() ; update.bylineVisibility()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
@@ -3769,6 +3772,7 @@
                 kudoAIspan.style.cssText = 'position: relative ; bottom: 6px ; font-size: 11px'
                 kudoAIspan.append(create.anchor(app.urls.publisher, 'KudoAI'))
                 appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
+                update.bylineVisibility()
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
@@ -3791,10 +3795,8 @@
                     const answerPre = document.createElement('pre'),
                           replyTipSpan = document.createElement('span')
                     replyTipSpan.className = `${app.cssPrefix}-reply-tip`
-                    appDiv.append(replyTipSpan, answerPre)
+                    appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
                 }
-
-                update.style.tweaks() // show/hide 'by KudoAI', update pre-height based on mode
             }
 
             // Build reply section if missing
@@ -3870,7 +3872,7 @@
                         throwOnError: false
                 })})
 
-                if (config.stickySidebar) update.style.tweaks() // to reset answerPre height
+                if (config.stickySidebar) update.answerPreMaxHeight()
                 saveAppDiv() // to fight Brave mutations
 
                 // Auto-scroll if active
@@ -3956,8 +3958,7 @@
                     }}}}, idx * 100)
                 })
 
-                get.related.replyIsQuestion = null
-                update.style.tweaks() // to shorten <pre> max-height
+                update.answerPreMaxHeight() ; get.related.replyIsQuestion = null
             }
         }
     }
@@ -3977,9 +3978,6 @@
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
-
-    // Stylize SITE elems
-    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
