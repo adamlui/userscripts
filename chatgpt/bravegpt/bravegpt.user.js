@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.2.9
+// @version               2025.1.2.10
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2111,6 +2111,279 @@
 
         appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 56 - appDiv.offsetHeight : -32 }px` },
 
+        appStyle() {
+            const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
+            modals.stylize() // update modal styles
+            app.styles.innerText = (
+                ':root {' // vars
+                  + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
+                  + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
+                  + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
+                  + '--app-hover-shadow: 0 9px 28px rgba(0,0,0,0.09) ;'
+                  + '--app-transition: opacity 0.5s ease, transform 0.5s ease,' // for 1st fade-in
+                                    + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
+                                    + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
+                  + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
+                  + '--btn-transition: transform 0.15s ease,' // for hover-zoom
+                                    + 'opacity 0.1s ease-in-out ;' // + appDiv.onmouseover + btn-zoom-fade-out shows
+                  + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
+                  + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
+                  + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
+                  + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
+
+                // Main styles
+              + '@keyframes btn-zoom-fade-out {'
+                  + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
+                  + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
+              + '.no-user-select {'
+                  + '-webkit-user-select: none ; -moz-user-select: none ;'
+                  + '-ms-user-select: none ; user-select: none }'
+              + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
+              + ( // stylize scrollbars in Chromium/Safari
+                    `#${app.cssPrefix} *::-webkit-scrollbar { width: 7px }`
+                  + `#${app.cssPrefix} *::-webkit-scrollbar-thumb { background: #cdcdcd }`
+                  + `#${app.cssPrefix} *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }`
+                  + `#${app.cssPrefix} *::-webkit-scrollbar-track { background: none }` )
+              + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
+              + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
+                  // ...to show resize cursor everywhere
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
+                  + 'z-index: 9999 ; cursor: ew-resize }'
+              + `#${app.cssPrefix} {`
+                  + 'z-index: 5555 ; word-wrap: break-word ; white-space: pre-wrap ;'
+                  + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
+                  + `margin: ${ env.browser.isMobile ? '0 8px 16px' : '0 0 20px' } ; padding: 24px 23px 45px 23px ;`
+                  + ( config.bgAnimationsDisabled ? // classic flat bg
+                        `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
+                      + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
+                  : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
+                        env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
+                                                    : '#b6ebff -163px, white 65px' }) ;` )
+                  + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' )
+                  + 'transition: var(--app-transition) ;'
+                      + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
+                      + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
+              + `#${app.cssPrefix}:hover {`
+                  + 'box-shadow: var(--app-hover-shadow) ;'
+                  + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
+                      + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                      + '-moz-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                      + '-o-transition: var(--app-transition), var(--app-shadow-transition) ;'
+                      + '-ms-transition: var(--app-transition), var(--app-shadow-transition) }'
+              + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
+              + `#${app.cssPrefix} .alert-link {`
+                  + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
+              + `.${app.cssPrefix}-name {`
+                  + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
+              + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
+              + '.kudoai a { color: #aaa ; text-decoration: none !important }'
+              + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+              + `#${app.cssPrefix}-div-corner-btns { position: relative ; bottom: 3px ; float: right }`
+              + `.${app.cssPrefix}-div-corner-btn {`
+                  + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
+                  + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
+                                                    : 'fill: #adadad ; stroke: #adadad' };` // color
+                  + 'transition: var(--btn-transition) ;'
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
+              + `.${app.cssPrefix}-div-corner-btn:hover {`
+                  + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                                                    : 'fill: black ; stroke: black' } ;`
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
+              + `.${app.cssPrefix}-div-corner-btn:active {`
+                  + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
+                                                    : 'fill: #638ed4 ; stroke: #638ed4' }}`
+              + ( config.bgAnimationsDisabled ? '' : (
+                    `#${app.cssPrefix}-logo, .${app.cssPrefix}-div-corner-btn svg, .${app.cssPrefix}-standby-btn {`
+                      + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
+                                                                            : '#aaaaaa21 7px' } 7px 3px) }` ))
+              + `#${app.cssPrefix} .loading {`
+                  + 'margin-bottom: -55px ;' // offset vs. app div bottom-padding footer accomodation
+                  + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + `#${app.cssPrefix} section.loading { padding-left: 5px ; font-size: 90% }`
+              + `#${app.cssPrefix}-font-size-slider-track {`
+                  + 'width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
+                  + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
+                  + '-webkit-background-clip: content-box }'
+              + `#${app.cssPrefix}-font-size-slider-track::before {` // to add finger cursor to unpadded core only
+                  + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ;'
+                  + 'height: calc(100% - 20px) ; cursor: pointer }'
+              + `#${app.cssPrefix}-font-size-slider-tip {`
+                  + 'z-index: 1 ; position: absolute ; bottom: 20px ;'
+                  + 'border-left: 4.5px solid transparent ; border-right: 4.5px solid transparent ;'
+                  + 'border-bottom: 16px solid #ccc }'
+              + `#${app.cssPrefix}-font-size-slider-thumb {`
+                  + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ;'
+                  + 'top: -9px ; cursor: ew-resize ;'
+                  + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
+                  + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ;'
+                  + 'transition: var(--font-size-slider-thumb-transition) ;'
+                      + '-webkit-transition: var(--font-size-slider-thumb-transition) ;'
+                      + '-moz-transition: var(--font-size-slider-thumb-transition) ;'
+                      + '-o-transition: var(--font-size-slider-thumb-transition) ;'
+                      + '-ms-transition: var(--font-size-slider-thumb-transition) }'
+              + ( config.fgAnimationsDisabled || env.browser.isMobile ?
+                    '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
+              + `.${app.cssPrefix}-standby-btn {`
+                  + 'width: 100% ; margin: 14px 0 20px ; padding: 13px 0 ; cursor: pointer ;'
+                  + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
+                  + `color: ${ isStarryDM ? 'white' : 'black' };`
+                  + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' };`
+                  + 'transition: var(--btn-transition) ;'
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
+              + `.${app.cssPrefix}-standby-btn:hover {`
+                  + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
+                                                    : 'background: black ; color: white' };`
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'transform: scaleX(1.015) scaleY(1.03)' }}`
+              + `.${app.cssPrefix}-reply-tip {`
+                  + 'content: "" ; position: relative ; border: 7px solid transparent ;'
+                  + 'float: left ; left: 7px ; margin: 29px -13px 0 0 ;' // positioning
+                  + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
+                      + `${ // hide reply tip for terminal aesthetic
+                            isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
+              + `#${app.cssPrefix} > pre {`
+                  + `font-size: ${config.fontSize}px ; white-space: pre-wrap ;`
+                  + 'font-family: Consolas, Menlo, Monaco, monospace ;'
+                  + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
+                  + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
+                  + ( config.bgAnimationsDisabled ? // classic opaque bg
+                        `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
+                      + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
+                  : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
+                        'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
+                            : 'background: var(--pre-bg-color-light-scheme) ;'
+                                + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
+                  + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
+                        'transition: var(--answer-pre-transition) ;'
+                            + '-webkit-transition: var(--answer-pre-transition) ;'
+                            + '-moz-transition: var(--answer-pre-transition) ;'
+                            + '-o-transition: var(--answer-pre-transition) ;'
+                            + '-ms-transition: var(--answer-pre-transition) }' }}`
+              + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
+              + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + '.chatgpt-js {'
+                  + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
+              + '.chatgpt-js > a { color: inherit ; top: .054rem }'
+              + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
+              + `.${app.cssPrefix}-reply-corner-btns {`
+                  + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
+              + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
+              + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
+              + `#${app.cssPrefix}-chatbar {`
+                  + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
+                        ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
+                  + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ; padding: 12px 51px 12px 10px ;'
+                  + `position: relative ; z-index: 555 ; color: ${ env.ui.app.scheme == 'dark' ? '#eee' : '#222' } ;`
+                  + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ;'
+                  + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
+                        : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
+                  + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
+              + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
+              + `.${app.cssPrefix}-related-queries {`
+                  + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -28px ;'
+                  + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
+                  + `${ env.browser.isFF ? '' : 'margin-top: -31px' }}`
+              + `.${app.cssPrefix}-related-query {`
+                  + 'font-size: 0.77em ; cursor: pointer ;'
+                  + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
+                  + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
+                  + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
+                                                           : '#767676' } ;`
+                  + `background: ${
+                         config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
+                                                     : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
+                  + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? (
+                        config.bgAnimationsDisabled ? '#5f5f5f' : '#777' ) : '#e1e1e1' } ;`
+                  + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
+                  + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
+                        `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
+                            : '8px -6px rgba(169,169,169,0.75)' };`
+                  + `${ config.fgAnimationsDisabled ? '' : // smoothen hover-zoom
+                        'transition: var(--rq-transition) ;'
+                          + '-webkit-transition: var(--rq-transition) ; -moz-transition: var(--rq-transition) ;'
+                          + '-o-transition: var(--rq-transition) ; -ms-transition: var(--rq-transition)' }}`
+              + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
+                  + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'transform: scale(1.055) !important ;' )
+                  + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
+                        : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
+              + `.${app.cssPrefix}-related-query svg {` // related query icon
+                  + 'float: left ; margin: 0.09em 6px 0 0 ;'
+                  + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
+              + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
+              + '.fade-in-less { opacity: 0 ;'
+                  + 'transition: var(--fade-in-less-transition) ;'
+                      + '-webkit-transition: var(--fade-in-less-transition) ;'
+                      + '-moz-transition: var(--fade-in-less-transition) ;'
+                      + '-o-transition: var(--fade-in-less-transition) ;'
+                      + '-ms-transition: var(--fade-in-less-transition) }'
+              + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
+              + `.${app.cssPrefix}-chatbar-btn {`
+                  + 'z-index: 560 ;'
+                  + 'border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
+                  + `bottom: ${ env.browser.isFF ? 28 : 32 }px ; `
+                  + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
+                                                : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
+              + `.${app.cssPrefix}-chatbar-btn:hover {`
+                  + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
+                                                    : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
+              + ( // markdown styles
+                    `#${app.cssPrefix} > pre h1 { font-size: 1.25em }`
+                  + `#${app.cssPrefix} > pre h2 { font-size: 1.1em }`
+                  + `#${app.cssPrefix} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
+                  + `#${app.cssPrefix} > pre ol { margin: -33px 0 -6px ; }` // reduce v-spacing
+                  + `#${app.cssPrefix} > pre li` // reduce v-spacing, show left symbols
+                      + '{ margin: -10px 0 ; list-style: inside }' )
+              + '.katex-html { display: none }' // hide unrendered math
+              + `#${app.cssPrefix} .feedback {`
+                  + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
+                  + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
+              + `#${app.cssPrefix} .feedback .icon {`
+                  + 'fill: currentColor ; color: currentColor ; --size: 12px ;'
+                  + 'position: relative ; top: 0.19em ; right: 2px }'
+              + `#${app.cssPrefix} footer {`
+                  + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
+                  + 'padding-bottom: 12px ; border-top: none !important }'
+              + `#${app.cssPrefix} footer a:hover {`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
+              + '.chatgpt-notif {'
+                  + 'fill: white ; stroke: white ; font-size: 25px !important ;'
+                  + 'padding: 6.5px 14px 8.5px 11.5px !important }'
+              + '.notif-close-btn { display: none !important }' // hide notif close btn
+              + `.${app.cssPrefix}-menu {`
+                  + 'position: absolute ; z-index: 2250 ; padding: 3.5px 5px 4.5px !important ;'
+                  + 'font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
+              + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
+              + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
+              + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
+                  + 'cursor: pointer ; background: white ; color: black ; fill: black }'
+              + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
+              + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
+
+              // Wider Sidebar styles
+              + `#${app.cssPrefix}.wider { width: 489px }
+                 main.main-column:has(~ .sidebar #${app.cssPrefix}.wider),
+                    .sidebar:has(#${app.cssPrefix}.wider) { max-width: 505px !important }`
+
+              // Sticky Sidebar styles
+              + `#${app.cssPrefix}.sticky { position: sticky ; top: 83px }
+                 #${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
+
+              // Anchor Mode styles
+              + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
+              + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
+                    #${app.cssPrefix}.anchored > footer { display: none }`
+              + `#${app.cssPrefix}.anchored [id$=chevron-btn], #${app.cssPrefix}.anchored [id$=arrows-btn] {
+                    display: block !important }`
+              + `#${app.cssPrefix}.expanded { width: 538px !important }`
+            )
+        },
+
         bylineVisibility() { // based on corner space available in header
             const kudoAIspan = appDiv.querySelector('.kudoai')
             if (kudoAIspan) {
@@ -2244,7 +2517,7 @@
         scheme(newScheme) {
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
-            env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.style.app()
+            env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.appStyle()
             update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
@@ -2255,281 +2528,6 @@
                     starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
                     : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
             ))
-        },
-
-        style: {
-            app() {
-                const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
-                modals.stylize() // update modal styles
-                app.styles.innerText = (
-                    ':root {' // vars
-                      + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
-                      + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
-                      + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
-                      + '--app-hover-shadow: 0 9px 28px rgba(0,0,0,0.09) ;'
-                      + '--app-transition: opacity 0.5s ease, transform 0.5s ease,' // for 1st fade-in
-                                        + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
-                                        + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
-                      + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
-                      + '--btn-transition: transform 0.15s ease,' // for hover-zoom
-                                        + 'opacity 0.1s ease-in-out ;' // + appDiv.onmouseover + btn-zoom-fade-out shows
-                      + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
-                      + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
-                      + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
-                      + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
-
-                    // Main styles
-                  + '@keyframes btn-zoom-fade-out {'
-                      + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
-                      + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
-                  + '.no-user-select {'
-                      + '-webkit-user-select: none ; -moz-user-select: none ;'
-                      + '-ms-user-select: none ; user-select: none }'
-                  + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
-                  + ( // stylize scrollbars in Chromium/Safari
-                        `#${app.cssPrefix} *::-webkit-scrollbar { width: 7px }`
-                      + `#${app.cssPrefix} *::-webkit-scrollbar-thumb { background: #cdcdcd }`
-                      + `#${app.cssPrefix} *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }`
-                      + `#${app.cssPrefix} *::-webkit-scrollbar-track { background: none }` )
-                  + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
-                  + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
-                      // ...to show resize cursor everywhere
-                      + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
-                      + 'z-index: 9999 ; cursor: ew-resize }'
-                  + `#${app.cssPrefix} {`
-                      + 'z-index: 5555 ; word-wrap: break-word ; white-space: pre-wrap ;'
-                      + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
-                      + `margin: ${ env.browser.isMobile ? '0 8px 16px' : '0 0 20px' } ; padding: 24px 23px 45px 23px ;`
-                      + ( config.bgAnimationsDisabled ? // classic flat bg
-                            `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
-                      : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
-                            env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
-                                                        : '#b6ebff -163px, white 65px' }) ;` )
-                      + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' )
-                      + 'transition: var(--app-transition) ;'
-                          + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
-                          + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
-                  + `#${app.cssPrefix}:hover {`
-                      + 'box-shadow: var(--app-hover-shadow) ;'
-                      + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
-                          + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                          + '-moz-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                          + '-o-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                          + '-ms-transition: var(--app-transition), var(--app-shadow-transition) }'
-                  + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
-                  + `#${app.cssPrefix} .alert-link {`
-                      + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
-                  + `.${app.cssPrefix}-name {`
-                      + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
-                  + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
-                  + '.kudoai a { color: #aaa ; text-decoration: none !important }'
-                  + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-                  + `#${app.cssPrefix}-div-corner-btns { position: relative ; bottom: 3px ; float: right }`
-                  + `.${app.cssPrefix}-div-corner-btn {`
-                      + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
-                      + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
-                                                        : 'fill: #adadad ; stroke: #adadad' };` // color
-                      + 'transition: var(--btn-transition) ;'
-                          + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                          + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-                  + `.${app.cssPrefix}-div-corner-btn:hover {`
-                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                        : 'fill: black ; stroke: black' } ;`
-                      + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-                  + `.${app.cssPrefix}-div-corner-btn:active {`
-                      + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
-                                                        : 'fill: #638ed4 ; stroke: #638ed4' }}`
-                  + ( config.bgAnimationsDisabled ? '' : (
-                        `#${app.cssPrefix}-logo, .${app.cssPrefix}-div-corner-btn svg, .${app.cssPrefix}-standby-btn {`
-                          + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
-                                                                                : '#aaaaaa21 7px' } 7px 3px) }` ))
-                  + `#${app.cssPrefix} .loading {`
-                      + 'margin-bottom: -55px ;' // offset vs. app div bottom-padding footer accomodation
-                      + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
-                  + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-                  + `#${app.cssPrefix} section.loading { padding-left: 5px ; font-size: 90% }`
-                  + `#${app.cssPrefix}-font-size-slider-track {`
-                      + 'width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
-                      + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
-                      + '-webkit-background-clip: content-box }'
-                  + `#${app.cssPrefix}-font-size-slider-track::before {` // to add finger cursor to unpadded core only
-                      + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ;'
-                      + 'height: calc(100% - 20px) ; cursor: pointer }'
-                  + `#${app.cssPrefix}-font-size-slider-tip {`
-                      + 'z-index: 1 ; position: absolute ; bottom: 20px ;'
-                      + 'border-left: 4.5px solid transparent ; border-right: 4.5px solid transparent ;'
-                      + 'border-bottom: 16px solid #ccc }'
-                  + `#${app.cssPrefix}-font-size-slider-thumb {`
-                      + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ;'
-                      + 'top: -9px ; cursor: ew-resize ;'
-                      + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-                      + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ;'
-                      + 'transition: var(--font-size-slider-thumb-transition) ;'
-                          + '-webkit-transition: var(--font-size-slider-thumb-transition) ;'
-                          + '-moz-transition: var(--font-size-slider-thumb-transition) ;'
-                          + '-o-transition: var(--font-size-slider-thumb-transition) ;'
-                          + '-ms-transition: var(--font-size-slider-thumb-transition) }'
-                  + ( config.fgAnimationsDisabled || env.browser.isMobile ?
-                        '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
-                  + `.${app.cssPrefix}-standby-btn {`
-                      + 'width: 100% ; margin: 14px 0 20px ; padding: 13px 0 ; cursor: pointer ;'
-                      + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
-                      + `color: ${ isStarryDM ? 'white' : 'black' };`
-                      + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' };`
-                      + 'transition: var(--btn-transition) ;'
-                          + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                          + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-                  + `.${app.cssPrefix}-standby-btn:hover {`
-                      + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
-                                                        : 'background: black ; color: white' };`
-                      + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
-                            : 'transform: scaleX(1.015) scaleY(1.03)' }}`
-                  + `.${app.cssPrefix}-reply-tip {`
-                      + 'content: "" ; position: relative ; border: 7px solid transparent ;'
-                      + 'float: left ; left: 7px ; margin: 29px -13px 0 0 ;' // positioning
-                      + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
-                          + `${ // hide reply tip for terminal aesthetic
-                                isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
-                  + `#${app.cssPrefix} > pre {`
-                      + `font-size: ${config.fontSize}px ; white-space: pre-wrap ;`
-                      + 'font-family: Consolas, Menlo, Monaco, monospace ;'
-                      + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
-                      + 'margin-top: 12px ; padding: 1.2em 1.2em 0 1.2em ; border-radius: 13px ; overflow: auto ;'
-                      + ( config.bgAnimationsDisabled ? // classic opaque bg
-                            `background: var(--pre-bg-color-${env.ui.app.scheme}-scheme) ;`
-                          + `color: var(--font-color-${env.ui.app.scheme}-scheme)`
-                      : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
-                            'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
-                                : 'background: var(--pre-bg-color-light-scheme) ;'
-                                    + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
-                      + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
-                            'transition: var(--answer-pre-transition) ;'
-                                + '-webkit-transition: var(--answer-pre-transition) ;'
-                                + '-moz-transition: var(--answer-pre-transition) ;'
-                                + '-o-transition: var(--answer-pre-transition) ;'
-                                + '-ms-transition: var(--answer-pre-transition) }' }}`
-                  + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
-                  + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
-                  + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-                  + '.chatgpt-js {'
-                      + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
-                  + '.chatgpt-js > a { color: inherit ; top: .054rem }'
-                  + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
-                  + `.${app.cssPrefix}-reply-corner-btns {`
-                      + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
-                  + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
-                  + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
-                  + `#${app.cssPrefix}-chatbar {`
-                      + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
-                            ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
-                      + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ; padding: 12px 51px 12px 10px ;'
-                      + `position: relative ; z-index: 555 ; color: ${ env.ui.app.scheme == 'dark' ? '#eee' : '#222' } ;`
-                      + 'height: 43px ; line-height: 17px ; width: 100% ; max-height: 200px ; resize: none ;'
-                      + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
-                            : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
-                      + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
-                  + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
-                  + `.${app.cssPrefix}-related-queries {`
-                      + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -28px ;'
-                      + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
-                      + `${ env.browser.isFF ? '' : 'margin-top: -31px' }}`
-                  + `.${app.cssPrefix}-related-query {`
-                      + 'font-size: 0.77em ; cursor: pointer ;'
-                      + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
-                      + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
-                      + `color: ${ env.ui.app.scheme == 'dark' ? ( config.bgAnimationsDisabled ? '#ccc' : '#f2f2f2' )
-                                                               : '#767676' } ;`
-                      + `background: ${
-                             config.bgAnimationsDisabled ? ( env.ui.app.scheme == 'dark' ? '#404040' : '#dadada12' )
-                                                         : ( env.ui.app.scheme == 'dark' ? '#595858d6' : '#fbfbfbb0' )} ;`
-                      + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? (
-                            config.bgAnimationsDisabled ? '#5f5f5f' : '#777' ) : '#e1e1e1' } ;`
-                      + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
-                      + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
-                            `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
-                                : '8px -6px rgba(169,169,169,0.75)' };`
-                      + `${ config.fgAnimationsDisabled ? '' : // smoothen hover-zoom
-                            'transition: var(--rq-transition) ;'
-                              + '-webkit-transition: var(--rq-transition) ; -moz-transition: var(--rq-transition) ;'
-                              + '-o-transition: var(--rq-transition) ; -ms-transition: var(--rq-transition)' }}`
-                  + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
-                      + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
-                            : 'transform: scale(1.055) !important ;' )
-                      + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
-                            : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
-                  + `.${app.cssPrefix}-related-query svg {` // related query icon
-                      + 'float: left ; margin: 0.09em 6px 0 0 ;'
-                      + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
-                  + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
-                  + '.fade-in-less { opacity: 0 ;'
-                      + 'transition: var(--fade-in-less-transition) ;'
-                          + '-webkit-transition: var(--fade-in-less-transition) ;'
-                          + '-moz-transition: var(--fade-in-less-transition) ;'
-                          + '-o-transition: var(--fade-in-less-transition) ;'
-                          + '-ms-transition: var(--fade-in-less-transition) }'
-                  + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
-                  + `.${app.cssPrefix}-chatbar-btn {`
-                      + 'z-index: 560 ;'
-                      + 'border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
-                      + `bottom: ${ env.browser.isFF ? 28 : 32 }px ; `
-                      + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
-                                                    : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
-                  + `.${app.cssPrefix}-chatbar-btn:hover {`
-                      + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
-                                                        : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
-                  + ( // markdown styles
-                        `#${app.cssPrefix} > pre h1 { font-size: 1.25em }`
-                      + `#${app.cssPrefix} > pre h2 { font-size: 1.1em }`
-                      + `#${app.cssPrefix} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
-                      + `#${app.cssPrefix} > pre ol { margin: -33px 0 -6px ; }` // reduce v-spacing
-                      + `#${app.cssPrefix} > pre li` // reduce v-spacing, show left symbols
-                          + '{ margin: -10px 0 ; list-style: inside }' )
-                  + '.katex-html { display: none }' // hide unrendered math
-                  + `#${app.cssPrefix} .feedback {`
-                      + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
-                      + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
-                  + `#${app.cssPrefix} .feedback .icon {`
-                      + 'fill: currentColor ; color: currentColor ; --size: 12px ;'
-                      + 'position: relative ; top: 0.19em ; right: 2px }'
-                  + `#${app.cssPrefix} footer {`
-                      + `margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ;`
-                      + 'padding-bottom: 12px ; border-top: none !important }'
-                  + `#${app.cssPrefix} footer a:hover {`
-                      + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
-                  + '.chatgpt-notif {'
-                      + 'fill: white ; stroke: white ; font-size: 25px !important ;'
-                      + 'padding: 6.5px 14px 8.5px 11.5px !important }'
-                  + '.notif-close-btn { display: none !important }' // hide notif close btn
-                  + `.${app.cssPrefix}-menu {`
-                      + 'position: absolute ; z-index: 2250 ; padding: 3.5px 5px 4.5px !important ;'
-                      + 'font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
-                  + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
-                  + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
-                  + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
-                      + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-                  + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
-                  + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
-
-                  // Wider Sidebar styles
-                  + `#${app.cssPrefix}.wider { width: 489px }
-                     main.main-column:has(~ .sidebar #${app.cssPrefix}.wider),
-                        .sidebar:has(#${app.cssPrefix}.wider) { max-width: 505px !important }`
-
-                  // Sticky Sidebar styles
-                  + `#${app.cssPrefix}.sticky { position: sticky ; top: 83px }
-                     #${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
-
-                  // Anchor Mode styles
-                  + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }`
-                  + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
-                        #${app.cssPrefix}.anchored > footer { display: none }`
-                  + `#${app.cssPrefix}.anchored [id$=chevron-btn], #${app.cssPrefix}.anchored [id$=arrows-btn] {
-                        display: block !important }`
-                  + `#${app.cssPrefix}.expanded { width: 538px !important }`
-                )
-            }
         }
     }
 
@@ -2905,7 +2903,7 @@
             const configKey = layer + 'AnimationsDisabled'
             log.debug(`Toggling ${layer.toUpperCase()} animations ${ config[configKey] ? 'ON' : 'OFF' }...`)
             settings.save(configKey, !config[configKey])
-            update.style.app() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
+            update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
 
                 // Toggle ticker-scroll of About status label
@@ -3975,7 +3973,7 @@
     appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv();
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
         if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
-    app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
+    app.styles = create.style() ; update.appStyle() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
