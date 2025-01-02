@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.1
+// @version                2025.1.2.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1778,7 +1778,7 @@
                       + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
                       + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider
 
-                    // App element styles
+                    // Main styles
                   + '@keyframes btn-zoom-fade-out {'
                       + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
                       + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
@@ -1955,13 +1955,19 @@
                   + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
                   + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
                       + 'cursor: pointer ; background: white ; color: black ; fill: black }'
+
+                  // Anchor Mode styles
+                  + `#${app.cssPrefix}.anchored {
+                        position: fixed ; bottom: -7px ; right: 35px ; width: 441px
+                        right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;
+                        width: ${ env.browser.isMobile ? '98%' : '441px' }}`
+                  + `#${app.cssPrefix}.anchored [id$=chevron-btn], #${app.cssPrefix}.anchored [id$=arrows-btn] {
+                        display: block !important }`
+                  + `#${app.cssPrefix}.expanded { width: 528px !important }`
                 )
             },
 
             tweaks() {
-
-                // Update tweaks style based on settings
-                tweaksStyle.innerText = anchorStyles + ( config.expanded ? expandedStyles : '' )
 
                 // Update 'by KudoAI' visibility based on corner space available
                 const kudoAIspan = appDiv.querySelector('.kudoai')
@@ -2341,9 +2347,8 @@
             log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             const toExpand = state == 'on' || !state && !config.expanded
             log.debug(`${ toExpand ? 'Expanding' : 'Shrinking' } ${app.name}...`)
-            settings.save('expanded', toExpand)
+            settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
-            update.style.tweaks() // apply new state to UI
             icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
             log.caller = `toggle.expandedMode(${ state ? `'${state}'` : '' })`
             log.debug(`Success! ${app.name} ${ toExpand ? 'expanded' : 'shrunk' }`)
@@ -3098,19 +3103,14 @@
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-    appDiv.classList.add('fade-in') ; listenerize.appDiv()
+    appDiv.classList.add('anchored', 'fade-in') ; listenerize.appDiv()
+    if (config.expanded) appDiv.classList.add('expanded')
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Stylize SITE elems
-    const tweaksStyle = create.style()
-    const anchorStyles = `#${app.cssPrefix} { position: fixed ; bottom: -7px ;`
-                       + `right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;`
-                       + `width: ${ env.browser.isMobile ? '98%' : '441px' }}`
-                       + `#${app.cssPrefix}-chevron-btn, #${app.cssPrefix}-arrows-btn { display: block !important }`
-    const expandedStyles = `#${app.cssPrefix} { width: 528px }`
-    update.style.tweaks() ; document.head.append(tweaksStyle)
+    update.style.tweaks()
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
