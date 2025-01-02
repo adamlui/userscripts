@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.5
+// @version                2025.1.2.6
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3842,7 +3842,8 @@
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv();
-    ['anchored', 'expanded'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
+    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
+        if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
     app.styles = create.style() ; update.style.app() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
