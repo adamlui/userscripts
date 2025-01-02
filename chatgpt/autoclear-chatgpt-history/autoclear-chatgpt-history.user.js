@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1.5
+// @version             2025.1.2
 // @license             MIT
 // @icon                https://media.autoclearchatgpt.com/images/icons/openai/black/icon48.png?a8868ef
 // @icon64              https://media.autoclearchatgpt.com/images/icons/openai/black/icon64.png?a8868ef
@@ -500,7 +500,7 @@
 
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
-            modal.classList.add(this.class, 'no-user-select') ; modal.parentNode.classList.add(`${this.class}-bg`)
+            modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
             fillStarryBG(modal) // add starry bg
         },
 
