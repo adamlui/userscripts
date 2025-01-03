@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.3.1
+// @version                  2025.1.3.2
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -688,7 +688,7 @@
             && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
         byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     }
-    log.debug(`Success! eenv.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
+    log.debug(`Success! env.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
 
     // Init SETTINGS
     log.debug('Initializing settings...')
