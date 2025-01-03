@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.10
+// @version               2025.1.3.11
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2577,7 +2577,7 @@
         appDivCornerBtns() {
             appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
-                    if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
+                    if (appDiv.querySelector('[id$=font-size-slider-track')?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
                     toggle.minimized()
                 }
@@ -2954,12 +2954,12 @@
         minimized(state = '') {
             const toMinimize = state == 'on' || !state && !config.minimized
             settings.save('minimized', toMinimize)
-            const chevronBtn = appDiv.querySelector(`#${app.cssPrefix}-chevron-btn`)
+            const chevronBtn = appDiv.querySelector('[id$=chevron-btn]')
             if (chevronBtn) { // update icon
                 const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.firstChild.remove() ; chevronBtn.append(chevronSVG)
                 chevronBtn.onclick = () => {
-                    if (appDiv.querySelector(`#${app.cssPrefix}-font-size-slider-track`)?.classList.contains('active'))
+                    if (appDiv.querySelector('[id$=font-size-slider-track')?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
                     toggle.minimized()
                 }
