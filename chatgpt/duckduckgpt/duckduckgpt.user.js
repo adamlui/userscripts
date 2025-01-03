@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.6
+// @version                2025.1.3.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2827,7 +2827,7 @@
         },
 
         manualGet(mode) { // Prefix/Suffix modes
-            const modeKey = mode + 'Enabled'
+            const modeKey = `${mode}Enabled`
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
             notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
