@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.11
+// @version                2025.1.3.12
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2910,11 +2910,12 @@
         },
 
         streaming() {
-            const scriptCatLink = env.browser.isFF ?
+            const scLink = (
+                env.browser.isFF ?
                     'https://addons.mozilla.org/firefox/addon/scriptcat/'
-                : env.browser.isEdge ?
+              : env.browser.isEdge ?
                     'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
-                  : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
+                  : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf' )
             if (!env.streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
@@ -2922,7 +2923,7 @@
                         + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
                             ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${
                                 app.msgs.alert_and}` : '' )
-                        + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
+                        + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.` // suggest SC
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
             } else if (!env.streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
@@ -2932,7 +2933,7 @@
                         + `${ env.browser.isChrome ? 'Chrome' : env.browser.isEdge ? 'Edge' : 'Brave' } ${
                             app.msgs.alert_whenUsing} Tampermonkey. `
                         + `${app.msgs.alert_pleaseUse} <a target="_blank" rel="noopener" href="${
-                            scriptCatLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
+                            scLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 let msg = `${settings.controls.streamingDisabled.label} `
