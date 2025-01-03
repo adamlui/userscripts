@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.2.17
+// @version                2025.1.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -495,12 +495,12 @@
 
     // Init COMPATIBILITY flags
     log.debug('Initializing compatibility flags...')
-    const streamingSupported = {
+    env.streamingSupported = {
         byBrowser: !(env.scriptManager.name == 'Tampermonkey'
             && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
         byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     }
-    log.debug(`Success! streamingSupported = ${log.prettifyObj(streamingSupported)}`)
+    log.debug(`Success! eenv.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
 
     // Init SETTINGS
     log.debug('Initializing settings...')
@@ -564,7 +564,7 @@
     )
     if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
-    if (!streamingSupported.byBrowser || !streamingSupported.byScriptManager)
+    if (!env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager)
         settings.save('streamingDisabled', true) // disable Streaming in unspported env
     if (!config.notFirstRun && env.browser.isMobile) settings.save('autoGet', true) // reverse default auto-get disabled if mobile
     settings.save('notFirstRun', true)
@@ -1426,7 +1426,7 @@
                         settingItem.onclick = () => {
                             if (!(key == 'streamingDisabled' // visually switch toggle if not Streaminng...
                                 && ( // ...in unsupported env...
-                                    !streamingSupported.byBrowser || !streamingSupported.byScriptManager
+                                    !env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager
                                         || !config.proxyAPIenabled )
                             )) modals.settings.toggle.switch(settingToggle)
 
@@ -2911,7 +2911,7 @@
                 : env.browser.isEdge ?
                     'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf'
-            if (!streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
+            if (!env.streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -2921,7 +2921,7 @@
                         + ` <a target="_blank" rel="noopener" href="${scriptCatLink}">ScriptCat</a>.` // suggest SC
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
-            } else if (!streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
+            } else if (!env.streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
