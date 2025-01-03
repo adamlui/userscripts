@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.9
+// @version               2025.1.3.10
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2941,7 +2941,7 @@
         },
 
         manualGet(mode) { // Prefix/Suffix modes
-            const modeKey = mode + 'Enabled'
+            const modeKey = `${mode}Enabled`
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey] && !config.autoGetDisabled) toggle.autoGet() // disable Auto-Get mode if enabled
             notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
