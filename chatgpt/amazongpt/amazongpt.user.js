@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.1
+// @version                2025.1.3.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2293,7 +2293,7 @@
     const toggle = {
 
         animations(layer) {
-            const configKey = layer + 'AnimationsDisabled'
+            const configKey = `${layer}AnimationsDisabled`
             settings.save(configKey, !config[configKey])
             update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
@@ -2307,8 +2307,7 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${
-                menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
+            notify(`${settings.controls[configKey].label} ${menu.state.words[+!config[configKey]]}`)
         },
 
         btnGlow(state = '') {
