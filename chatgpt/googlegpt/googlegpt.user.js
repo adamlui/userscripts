@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.3.5
+// @version                  2025.1.3.6
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3130,9 +3130,9 @@
         },
 
         btnGlow(state = '') {
-            const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
+            const toRemove = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*=-modal] button').forEach((btn, idx) => {
-                setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
+                setTimeout(() => btn.classList[toRemove ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
@@ -3140,7 +3140,7 @@
                     btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
                     btn.append(btnTextSpan)
                 }
-                btnTextSpan.classList[removeCondition ? 'remove' : 'add']('glowing-txt')
+                btnTextSpan.classList[toRemove ? 'remove' : 'add']('glowing-txt')
             })
         },
 
