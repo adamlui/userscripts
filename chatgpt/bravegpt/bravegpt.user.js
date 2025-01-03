@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3
+// @version               2025.1.3.1
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2869,9 +2869,14 @@
 
             // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
-                settings.save('anchored', true) ; if (config.stickySidebar) toggle.sidebar('sticky') // off
+                settings.save('anchored', true);
+                ['sticky', 'wider'].forEach(mode => { if (config[`${mode}Sidebar`]) toggle.sidebar(mode) })
+                appDiv.querySelector('[id$=-wsb-btn]').style.display = 'none'
             } else {
-                settings.save('anchored', false) ; if (config.expanded) toggle.expandedMode('off') }
+                settings.save('anchored', false)
+                if (config.expanded) toggle.expandedMode('off')
+                appDiv.querySelector('[id$=-wsb-btn]').style.display = 'initial'
+            }
 
             // Apply new state to UI
             appDiv.classList[config.anchored ? 'add' : 'remove']('anchored')
