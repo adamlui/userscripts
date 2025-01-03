@@ -2311,9 +2311,9 @@
         },
 
         btnGlow(state = '') {
-            const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
+            const toRemove = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*=-modal] button').forEach((btn, idx) => {
-                setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
+                setTimeout(() => btn.classList[toRemove ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
@@ -2321,7 +2321,7 @@
                     btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
                     btn.append(btnTextSpan)
                 }
-                btnTextSpan.classList[removeCondition ? 'remove' : 'add']('glowing-txt')
+                btnTextSpan.classList[toRemove ? 'remove' : 'add']('glowing-txt')
             })
         },
 
