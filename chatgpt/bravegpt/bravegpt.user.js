@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.4
+// @version               2025.1.3.5
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -500,7 +500,7 @@
             && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
         byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     }
-    log.debug(`Success! eenv.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
+    log.debug(`Success! env.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
 
     // Init SETTINGS
     log.debug('Initializing settings...')
