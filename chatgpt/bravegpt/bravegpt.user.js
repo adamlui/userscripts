@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.5
+// @version               2025.1.3.6
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2866,7 +2866,7 @@
             // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
                 settings.save('anchored', true);
-                ['sticky', 'wider'].forEach(mode => { if (config[`${mode}Sidebar`]) toggle.sidebar(mode) })
+                ['sticky', 'wider'].forEach(mode => config[`${mode}Sidebar`] && toggle.sidebar(mode))
                 appDiv.querySelector('[id$=-wsb-btn]').style.display = 'none'
             } else {
                 settings.save('anchored', false)
@@ -2910,8 +2910,7 @@
             settings.save('autoGetDisabled', !config.autoGetDisabled)
             if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
             if (!config.autoGetDisabled) // disable Prefix/Suffix mode if enabled
-                ['prefix', 'suffix'].forEach(manualMode => {
-                    if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
+                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGetDisabled.label} ${menu.state.words[+!config.autoGetDisabled]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const autoGetToggle = document.querySelector('[id*=autoGet][id*=menu-entry] input')
@@ -3920,8 +3919,8 @@
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv();
-    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
-        if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
+    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
+        (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = create.style() ; update.appStyle() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
@@ -4002,7 +4001,8 @@
         log.debug(`Restoring ${app.name} from mutation...`)
         appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
         appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv();
-        ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => { if (config[mode]) appDiv.classList.add(mode) })
+        ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
+            (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
         if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appDivCornerBtns()
