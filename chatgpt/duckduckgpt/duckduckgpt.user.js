@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.3
+// @version                2025.1.3.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2774,7 +2774,7 @@
         },
 
         animations(layer) {
-            const configKey = layer + 'AnimationsDisabled'
+            const configKey = `${layer}AnimationsDisabled`
             settings.save(configKey, !config[configKey])
             update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
@@ -2788,8 +2788,7 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${
-                menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
+            notify(`${settings.controls[configKey].label} ${menu.state.words[+!config[configKey]]}`)
         },
 
         autoGet() {
