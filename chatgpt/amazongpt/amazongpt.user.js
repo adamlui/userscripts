@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.4
+// @version                2025.1.3.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2357,7 +2357,7 @@
                 const proxyToggle = document.querySelector('[id*=proxy][id*=menu-entry] input'),
                       streamingToggle = document.querySelector('[id*=streaming][id*=menu-entry] input')
                 if (proxyToggle.checked != config.proxyAPIenabled) // Proxy state out-of-sync (from using toolbar menu)
-                        modals.settings.toggle.switch(proxyToggle)
+                    modals.settings.toggle.switch(proxyToggle)
                 if (streamingToggle.checked && !config.proxyAPIenabled // Streaming checked but OpenAI mode
                     || // ...or Streaming unchecked but enabled in Proxy mode
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
