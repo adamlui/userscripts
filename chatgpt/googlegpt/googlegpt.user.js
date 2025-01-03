@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.3.2
+// @version                  2025.1.3.3
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3078,7 +3078,7 @@
             // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config.anchored) {
                 settings.save('anchored', true);
-                ['sticky', 'wider'].forEach(mode => { if (config[`${mode}Sidebar`]) toggle.sidebar(mode) })
+                ['sticky', 'wider'].forEach(mode => config[`${mode}Sidebar`] && toggle.sidebar(mode))
                 appDiv.querySelector('[id$=-wsb-btn]').style.display = 'none'
             } else {
                 settings.save('anchored', false)
@@ -3122,8 +3122,7 @@
             settings.save('autoGet', !config.autoGet)
             if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
-                ['prefix', 'suffix'].forEach(manualMode => {
-                    if (config[manualMode + 'Enabled']) toggle.manualGet(manualMode) })
+                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const autoGetToggle = document.querySelector('[id*=autoGet][id*=menu-entry] input')
@@ -4155,8 +4154,8 @@
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
     appDiv.classList.add('fade-in') ; listenerize.appDiv();
-    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode => {
-        if (config[mode] || config[`${mode}Sidebar`]) appDiv.classList.add(mode) })
+    ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
+        (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = create.style() ; update.appStyle() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
         document.head.append(create.style(GM_getResourceText(`${cssType}CSS`))))
