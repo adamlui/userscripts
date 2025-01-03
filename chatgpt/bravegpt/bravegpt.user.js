@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.12
+// @version               2025.1.3.13
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2976,7 +2976,7 @@
                 const proxyToggle = document.querySelector('[id*=proxy][id*=menu-entry] input'),
                       streamingToggle = document.querySelector('[id*=streaming][id*=menu-entry] input')
                 if (proxyToggle.checked != config.proxyAPIenabled) // Proxy state out-of-sync (from using toolbar menu)
-                        modals.settings.toggle.switch(proxyToggle)
+                    modals.settings.toggle.switch(proxyToggle)
                 if (streamingToggle.checked && !config.proxyAPIenabled // Streaming checked but OpenAI mode
                     || // ...or Streaming unchecked but enabled in Proxy mode
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
