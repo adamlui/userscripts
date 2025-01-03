@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.13
+// @version               2025.1.3.14
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -3000,6 +3000,7 @@
             const configKeyName = mode + 'Sidebar',
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
 
+            // Save new state + disable incompatible modes
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
                 if (mode == 'sticky' && config.anchored) toggle.anchorMode()
                 settings.save(configKeyName, true)
