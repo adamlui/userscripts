@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.9
+// @version                2025.1.3.10
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2862,7 +2862,7 @@
                 const proxyToggle = document.querySelector('[id*=proxy][id*=menu-entry] input'),
                       streamingToggle = document.querySelector('[id*=streaming][id*=menu-entry] input')
                 if (proxyToggle.checked != config.proxyAPIenabled) // Proxy state out-of-sync (from using toolbar menu)
-                        modals.settings.toggle.switch(proxyToggle)
+                    modals.settings.toggle.switch(proxyToggle)
                 if (streamingToggle.checked && !config.proxyAPIenabled // Streaming checked but OpenAI mode
                     || // ...or Streaming unchecked but enabled in Proxy mode
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
