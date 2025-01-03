@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.3.4
+// @version                  2025.1.3.5
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -3119,7 +3119,7 @@
 
         autoGet() {
             settings.save('autoGet', !config.autoGet)
-            if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
+            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.standbyBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
