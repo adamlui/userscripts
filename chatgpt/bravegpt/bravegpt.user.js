@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.8
+// @version               2025.1.3.9
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2919,9 +2919,9 @@
 
         btnGlow(state = '') {
             log.caller = `toggle.btnGlow(${ state ? `'${state}'` : '' })`
-            const removeCondition = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
+            const toRemove = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*=-modal] button').forEach((btn, idx) => {
-                setTimeout(() => btn.classList[removeCondition ? 'remove' : 'add']('glowing-btn'),
+                setTimeout(() => btn.classList[toRemove ? 'remove' : 'add']('glowing-btn'),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
@@ -2929,7 +2929,7 @@
                     btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
                     btn.append(btnTextSpan)
                 }
-                btnTextSpan.classList[removeCondition ? 'remove' : 'add']('glowing-txt')
+                btnTextSpan.classList[toRemove ? 'remove' : 'add']('glowing-txt')
             })
         },
 
