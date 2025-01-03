@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.4
+// @version                2025.1.3.5
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2793,7 +2793,7 @@
 
         autoGet() {
             settings.save('autoGet', !config.autoGet)
-            if (appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)) show.reply.standbyBtnClickHandler()
+            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.standbyBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
