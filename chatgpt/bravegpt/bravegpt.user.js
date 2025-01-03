@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.6
+// @version               2025.1.3.7
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2888,7 +2888,7 @@
         },
 
         animations(layer) {
-            const configKey = layer + 'AnimationsDisabled'
+            const configKey = `${layer}AnimationsDisabled`
             settings.save(configKey, !config[configKey])
             update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
@@ -2902,8 +2902,7 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            notify(`${settings.controls[layer + 'AnimationsDisabled'].label} ${
-                menu.state.words[+!config[layer + 'AnimationsDisabled']]}`)
+            notify(`${settings.controls[configKey].label} ${menu.state.words[+!config[configKey]]}`)
         },
 
         autoGet() {
