@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.2
+// @version                2025.1.4.3
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2781,18 +2781,17 @@
                 settings.save('anchored', false)
                 if (config.expanded) toggle.expandedMode('off')
             }
+            if (prevState == config.anchored) return
 
-            // Apply new state to UI
+            // Apply changed state to UI
             appDiv.classList[config.anchored ? 'add' : 'remove']('anchored')
             update.rqVisibility() ; update.answerPreMaxHeight() ; update.bylineVisibility() ; update.chatbarWidth()
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
             }
-            if (prevState != config.anchored) {
-                menus.pin.topPos = menus.pin.rightPos = null
-                notify(`${app.msgs.mode_anchor} ${menu.state.words[+config.anchored]}`)
-            }
+            menus.pin.topPos = menus.pin.rightPos = null
+            notify(`${app.msgs.mode_anchor} ${menu.state.words[+config.anchored]}`)
         },
 
         animations(layer) {
