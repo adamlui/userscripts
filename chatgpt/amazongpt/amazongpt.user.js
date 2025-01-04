@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.8
+// @version                2025.1.3.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1952,7 +1952,7 @@
             const appDivStyle = getComputedStyle(appDiv)
             const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
 
-            // Calc/store widths of app/x-padding + non-btn header elems
+            // Calc/store widths of app/x-padding + header elems
             const widths = {
                 appDiv: appDiv.getBoundingClientRect().width,
                 appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
@@ -1965,23 +1965,20 @@
                     elem.style.cssText = elem.style.cssText.replace(forceDisplayStyles, '')
             })
 
-            // Calc/store widths of corner btns
-            widths.btns = 0
-            appDiv.querySelectorAll('[id$=-corner-btns] > btn').forEach(btn => {
-                const btnStyle = getComputedStyle(btn)
-                if (btnStyle.display == 'none' || btnStyle.opacity == 0) return // since btn invisible
-                widths.btns += getComputedWidth(btn)
-            })
-
             // Hide/show byline based on space available
             const availSpace = widths.appDiv - widths.appDivXpadding - widths.logo - widths.btns
             headerElems.byline.style.display = (widths.byline +10) < availSpace ? 'initial' : 'none'
 
-            function getComputedWidth(elem) {
-                if (!elem || !(elem instanceof Element)) return 0
-                const elemStyle = getComputedStyle(elem)
-                return elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
-                                                          + parseFloat(elemStyle.marginRight)
+            function getComputedWidth(elems) {
+                if (!elems) return 0
+                elems = elems instanceof Element ? [elems] : elems // enforce elems as array
+                let totalWidth = 0
+                for (const elem of elems) {
+                    if (!(elem instanceof Element)) continue
+                    const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') continue
+                    totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
+                                                                     + parseFloat(elemStyle.marginRight)
+                } return totalWidth
             }
         },
 
