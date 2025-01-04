@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.4.7
+// @version               2025.1.4.8
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2245,7 +2245,7 @@
                   + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
               + '.chatgpt-js > a { color: inherit ; top: .054rem }'
               + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
-              + `.${app.cssPrefix}-reply-corner-btns {`
+              + `.${app.cssPrefix}-header-btns {`
                   + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
               + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
               + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
@@ -2367,7 +2367,7 @@
 
         bylineVisibility() {
             const headerElems = {
-                btns: appDiv.querySelectorAll('[id$=-corner-btns] > btn'),
+                btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
                 byline: appDiv.querySelector('.kudoai'),
                 logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
             }
@@ -3556,7 +3556,7 @@
 
             // Add top parent div
             const cornerBtnsDiv = document.createElement('div')
-            cornerBtnsDiv.className = `${app.cssPrefix}-reply-corner-btns`
+            cornerBtnsDiv.className = `${app.cssPrefix}-header-btns`
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
 
             // Add Copy buttons
@@ -3934,7 +3934,7 @@
 
         getComputedWidth(...elems) { // including margins
             let totalWidth = 0
-            elems.flat().forEach(elem => {
+            elems.map(arg => arg instanceof NodeList ? [...arg] : arg).flat().forEach(elem => {
                 if (!(elem instanceof Element)) return
                 const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
                 totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
