@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.4.12
+// @version                  2025.1.4.13
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -4229,8 +4229,7 @@
     document.addEventListener(inputEvents.down, event => {
         let a = event.target ; while (a && !a.href) a = a.parentElement ; if (!a) return // find closest ancestor href
         a.removeAttribute('ping') // prevent pingback on link click
-        const inlineMousedown = a.getAttribute('onmousedown')
-        if (inlineMousedown && /\ba?rwt\(/.test(inlineMousedown)) {
+        if (a.getAttribute('onmousedown')?.includes('rwt(')) {
             a.removeAttribute('onmousedown')
             if (env.browser.isChrome) event.stopImmediatePropagation() // since inline listener still runs
         }
