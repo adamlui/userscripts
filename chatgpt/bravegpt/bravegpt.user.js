@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.4.10
+// @version               2025.1.4.11
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -384,10 +384,7 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
         save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     } ; settings.load('debugMode')
 
