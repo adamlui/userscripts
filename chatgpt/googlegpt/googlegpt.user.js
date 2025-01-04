@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.4.4
+// @version                  2025.1.4.5
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -2378,9 +2378,7 @@
               + `.${app.cssPrefix}-name {`
                   + 'font-size: 1.35rem ; font-weight: 700 ; text-decoration: none ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
-              + '.kudoai {'
-                  + `font-size: ${ env.browser.isMobile ? 0.85 : 0.75 }rem ;`
-                  + `position: relative ; left: ${ env.browser.isMobile ? 8 : 6 }px ; color: #aaa }`
+              + '.kudoai { font-size: 0.75rem ; position: relative ; left: 6px ; color: #aaa }'
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.cssPrefix}-header-btns { float: right }`
@@ -2580,6 +2578,14 @@
               // Touch device styles
               + '@media (hover: none) {'
                   + `#${app.cssPrefix} .app-hover-only { display: initial }` // show app-hover-only elems
+              + '}'
+
+              // Phone styles
+              + '@media screen and (max-width: 480px) {'
+                  + `#${app.cssPrefix} #${app.cssPrefix}-logo {` // header logo...
+                      + 'top: 0 ; width: calc(100% - 154px) }' // remove y-pos, widen till btns
+                  + `#${app.cssPrefix} .kudoai { display: none !important }` // hide byline
+                  + `#${app.cssPrefix} [class*=reply-tip] { display: none }` // hide reply tip
               + '}'
             )
         },
