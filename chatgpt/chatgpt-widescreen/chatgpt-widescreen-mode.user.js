@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.3
+// @version             2025.1.4
 // @license             MIT
 // @icon                https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?9a393be
 // @icon64              https://media.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?9a393be
@@ -255,8 +255,8 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b067617252caea259d42a17bd43a261ad34a94c6/chrome/extension/lib/dom.js#sha256-6ZG+oGJ+xnnXPZHwMwieBh778euTmyoJFX53D7d6QRc=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@900bee420dc5c698f3befb811f9688bfe117d6d5/chrome/extension/lib/settings.js#sha256-dTGHlkJRGCGXIRYCT69tkYbU8SVp4dw5uuA1iYl7t6c=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d9ee1f0fe202d79e97af5aa868f9d0a0e63f8852/chrome/extension/lib/dom.js#sha256-yXmJN2t86NkJfj2Xo227Zh5M33eq0tloHsq6vKg5GEs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d9ee1f0fe202d79e97af5aa868f9d0a0e63f8852/chrome/extension/lib/settings.js#sha256-tf47qquXcBN3uDB+NyH3MdK/xzcedWCFXQCHRjQLc2Y=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c53d488a5e89d07f72f09e9edf8cca58d8f51ed8/chrome/extension/components/buttons.js#sha256-cf8uqPcLdpEPM21OSeh2Xj2mi987eeGtg+wXR1EmHlI=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@4d064379deb556b06883106c631c84bbbbce6fa6/chrome/extension/components/modals.js#sha256-q7HDIY/6ZVzmXNpAKHhRGeftUPcwI1IusZ2RszEnKCc=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
