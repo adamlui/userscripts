@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.4.11
+// @version                  2025.1.4.12
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -572,10 +572,7 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
         save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     } ; settings.load('debugMode')
 
