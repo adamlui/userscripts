@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.1
+// @version                2025.1.4.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2027,7 +2027,7 @@
         targetNode.prepend(starsDivsContainer)
     }
 
-    const listenerize = {
+    const addListeners = {
 
         appDiv() {
             appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
@@ -2129,12 +2129,12 @@
                               textAfter = chatTextarea.value.substring(caretPos)
                         chatTextarea.value = textBefore + '\n' + textAfter // add newline
                         chatTextarea.selectionStart = chatTextarea.selectionEnd = caretPos + 1 // preserve caret pos
-                        listenerize.replySection.chatbarAutoSizer()
-                    } else if (!event.shiftKey) listenerize.replySection.submitHandler(event)
+                        addListeners.replySection.chatbarAutoSizer()
+                    } else if (!event.shiftKey) addListeners.replySection.submitHandler(event)
             }}
 
             // Add form submit listener
-            listenerize.replySection.submitHandler = event => {
+            addListeners.replySection.submitHandler = event => {
                 event.preventDefault()
                 const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
 
@@ -2168,12 +2168,12 @@
                     show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
-            replyForm.onsubmit = listenerize.replySection.submitHandler
+            replyForm.onsubmit = addListeners.replySection.submitHandler
 
             // Add chatbar autosizer
             const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
             let prevLength = chatTextarea.value.length
-            listenerize.replySection.chatbarAutoSizer = () => {
+            addListeners.replySection.chatbarAutoSizer = () => {
                 const newLength = chatTextarea.value.length
                 if (newLength < prevLength) { // if deleting txt
                     chatTextarea.style.height = 'auto' // ...auto-fit height
@@ -2184,7 +2184,7 @@
                                                                                : 46 }px`
                 prevLength = newLength
             }
-            chatTextarea.oninput = listenerize.replySection.chatbarAutoSizer
+            chatTextarea.oninput = addListeners.replySection.chatbarAutoSizer
 
             // Add button listeners
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
@@ -2981,7 +2981,7 @@
                 }
 
                 // Add app header button listeners
-                listenerize.appHeaderBtns()
+                addListeners.appHeaderBtns()
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
@@ -3025,7 +3025,7 @@
                 })
 
                 // Add listeners
-                listenerize.replySection()
+                addListeners.replySection()
 
                 // Scroll to top on mobile if user interacted
                 if (env.browser.isMobile && show.reply.userInteracted) {
@@ -3094,7 +3094,7 @@
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-    appDiv.classList.add('anchored', 'fade-in') ; listenerize.appDiv()
+    appDiv.classList.add('anchored', 'fade-in') ; addListeners.appDiv()
     if (config.expanded) appDiv.classList.add('expanded')
     app.styles = create.style() ; update.appStyle() ; document.head.append(app.styles);
     ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
