@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.6
+// @version                2025.1.4.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1846,7 +1846,7 @@
               + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + `#${app.cssPrefix} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
-              + `.${app.cssPrefix}-reply-corner-btns {`
+              + `.${app.cssPrefix}-header-btns {`
                   + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
               + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
               + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
@@ -1933,7 +1933,7 @@
 
         bylineVisibility() {
             const headerElems = {
-                btns: appDiv.querySelectorAll('[id$=-corner-btns] > btn'),
+                btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
                 byline: appDiv.querySelector('.kudoai'),
                 logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
             }
@@ -2825,7 +2825,7 @@
 
             // Add top parent div
             const cornerBtnsDiv = document.createElement('div')
-            cornerBtnsDiv.className = `${app.cssPrefix}-reply-corner-btns`
+            cornerBtnsDiv.className = `${app.cssPrefix}-header-btns`
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
 
             // Add Copy buttons
@@ -3083,7 +3083,7 @@
 
         getComputedWidth(...elems) { // including margins
             let totalWidth = 0
-            elems.flat().forEach(elem => {
+            elems.map(arg => arg instanceof NodeList ? [...arg] : arg).flat().forEach(elem => {
                 if (!(elem instanceof Element)) return
                 const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
                 totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
