@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.20
+// @version               2025.1.3.21
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2609,7 +2609,7 @@
             }
         },
 
-        appDivCornerBtns() {
+        appHeaderBtns() {
             appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
@@ -3752,8 +3752,8 @@
                 // Add tooltips
                 if (!env.browser.isMobile) appDiv.append(tooltipDiv)
 
-                // Add app div corner button listeners
-                listenerize.appDivCornerBtns()
+                // Add app header button listeners
+                listenerize.appHeaderBtns()
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
@@ -4045,7 +4045,7 @@
             (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
-        if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appDivCornerBtns()
+        if (appDiv.querySelector(`.${app.cssPrefix}-div-corner-btn`)) listenerize.appHeaderBtns()
         const standbyBtn = appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
