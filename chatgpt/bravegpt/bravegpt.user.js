@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.18
+// @version               2025.1.3.19
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2599,7 +2599,9 @@
             })
             appDiv.onmouseover = appDiv.onmouseout = event => {
                 appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => {
-                    if (/about|settings|chevron/.test(btn.id)) return
+                    if (/about|settings|chevron/.test(btn.id) // primary corner btns
+                        || (btn.id.includes('arrows') && !config.anchored) // Arrows btn outside Anchor mode
+                    ) return // skip showing them on app hover
                     btn.style.display = event.type == 'mouseover' ? 'initial' : 'none'
                 })
                 update.bylineVisibility()
