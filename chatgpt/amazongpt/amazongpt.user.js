@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.5
+// @version                2025.1.4.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -3081,16 +3081,15 @@
             }
         },
 
-        getComputedWidth(elems) { // including margins
-            if (!elems) return 0
-            elems = elems instanceof Element ? [elems] : elems // enforce elems as array
+        getComputedWidth(...elems) { // including margins
             let totalWidth = 0
-            for (const elem of elems) {
-                if (!(elem instanceof Element)) continue
-                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') continue
+            elems.flat().forEach(elem => {
+                if (!(elem instanceof Element)) return
+                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
                 totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
                                                                  + parseFloat(elemStyle.marginRight)
-            } return totalWidth
+            })
+            return totalWidth
         }
     }
 
