@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.16
+// @version               2025.1.3.17
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2379,15 +2379,45 @@
             )
         },
 
-        bylineVisibility() { // based on corner space available in header
-            const kudoAIspan = appDiv.querySelector('.kudoai')
-            if (kudoAIspan) {
-                const visibleBtnCnt = [...appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`)]
-                    .filter(btn => getComputedStyle(btn).display != 'none').length
-                kudoAIspan.style.display = visibleBtnCnt <= (
-                    config.anchored && config.expanded ? 10
-                 : !config.anchored && config.widerSidebar ? 9
-                 :  config.anchored && !config.expanded ? 6 : 4 ) ? '' : 'none'
+        bylineVisibility() {
+            const headerElems = {
+                btns: appDiv.querySelectorAll('[id$=-corner-btns] > btn'),
+                byline: appDiv.querySelector('.kudoai'),
+                logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
+            }
+            const appDivStyle = getComputedStyle(appDiv)
+            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
+
+            // Calc/store widths of app/x-padding + non-btn header elems
+            const widths = {
+                appDiv: appDiv.getBoundingClientRect().width,
+                appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
+            }
+            Object.entries(headerElems).forEach(([key, elem]) => {
+                if (elem && key == 'byline' && getComputedStyle(elem).display == 'none')
+                    elem.style.cssText += forceDisplayStyles // override hidden byline display style to measure width
+                widths[key] = getComputedWidth(elem)
+                if (elem?.style?.cssText.includes(forceDisplayStyles)) // restore display style for hidden byline
+                    elem.style.cssText = elem.style.cssText.replace(forceDisplayStyles, '')
+            })
+
+            // Calc/store widths of corner btns
+            widths.btns = 0
+            appDiv.querySelectorAll('[id$=-corner-btns] > btn').forEach(btn => {
+                const btnStyle = getComputedStyle(btn)
+                if (btnStyle.display == 'none' || btnStyle.opacity == 0) return // since btn invisible
+                widths.btns += getComputedWidth(btn)
+            })
+
+            // Hide/show byline based on space available
+            const availSpace = widths.appDiv - widths.appDivXpadding - widths.logo - widths.btns
+            headerElems.byline.style.display = (widths.byline +10) < availSpace ? 'initial' : 'none'
+
+            function getComputedWidth(elem) {
+                if (!elem || !(elem instanceof Element)) return 0
+                const elemStyle = getComputedStyle(elem)
+                return elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
+                                                          + parseFloat(elemStyle.marginRight)
             }
         },
 
@@ -2567,11 +2597,13 @@
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
-            appDiv.onmouseover = appDiv.onmouseout = event =>
+            appDiv.onmouseover = appDiv.onmouseout = event => {
                 appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => {
                     if (/about|settings|chevron/.test(btn.id)) return
-                    btn.style.opacity = event.type == 'mouseover' ? 1 : 0
+                    btn.style.display = event.type == 'mouseover' ? 'initial' : 'none'
                 })
+                update.bylineVisibility()
+            }
         },
 
         appDivCornerBtns() {
@@ -2636,10 +2668,11 @@
                 }
                 else if (btn.id.endsWith('font-size-btn')) btn.onclick = () => fontSizeSlider.toggle()
                 else if (btn.id.endsWith('pin-btn')) btn.onmouseover = btn.onmouseout = menus.pin.toggle
-                else if (btn.id.endsWith('wsb-btn')) btn.onclick = () => toggle.sidebar('wider')
+                else if (btn.id.endsWith('wsb-btn'))
+                    btn.onclick = event => { toggle.sidebar('wider') ; toggle.tooltip(event) }
                 else if (btn.id.endsWith('arrows-btn')) btn.onclick = () => toggle.expandedMode()
                 if (!env.browser.isMobile && !btn.id.endsWith('pin-btn')) // add hover listeners for tooltips
-                    btn.onmouseover = btn.onmouseout = toggle.tooltip
+                    btn.onmouseenter = btn.onmouseleave = toggle.tooltip
                 if (/about|settings|speak/.test(btn.id)) btn.onmouseup = () => { // add zoom/fade-out to select buttons
                     if (config.fgAnimationsDisabled) return
                     btn.style.animation = 'btn-zoom-fade-out .220s ease-out'
@@ -2740,7 +2773,7 @@
                     show.reply.src = 'shuffle'
                 }
                 if (!env.browser.isMobile) // add hover listener for tooltips
-                    btn.onmouseover = btn.onmouseout = toggle.tooltip
+                    btn.onmouseenter = btn.onmouseleave = toggle.tooltip
             })
         }
     }
@@ -2937,6 +2970,11 @@
             const toExpand = state == 'on' || !state && !config.expanded
             settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
+            if (getComputedStyle(appDiv).transitionProperty.includes('width')) // update byline visibility
+                appDiv.addEventListener('transitionend', function onTransitionEnd(event) { // ...after width transition
+                    if (event.propertyName == 'width') {
+                        update.bylineVisibility() ; appDiv.removeEventListener('transitionend', onTransitionEnd)
+            }})
             icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
         },
 
@@ -3066,6 +3104,8 @@
         },
 
         tooltip(event) {
+            if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
+
             const btnElem = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btnElem.id)[1],
                   appCornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen']
@@ -3101,8 +3141,8 @@
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
 
-            // Toggle visibility
-            tooltipDiv.style.opacity = event.type == 'mouseover' ? 1 : 0
+            // Show tooltip
+            tooltipDiv.style.opacity = 1
         }
     }
 
@@ -3572,7 +3612,7 @@
                 }
 
                 // Add listeners
-                if (!env.browser.isMobile) copyBtn.onmouseover = copyBtn.onmouseout = toggle.tooltip
+                if (!env.browser.isMobile) copyBtn.onmouseenter = copyBtn.onmouseleave = toggle.tooltip
                 copyBtn.onclick = event => { // copy text, update icon + tooltip status
                     const copySVG = copyBtn.querySelector(`#${app.cssPrefix}-copy-icon`)
                     if (!copySVG) return // since clicking on Copied icon
@@ -3600,7 +3640,7 @@
             const regenSVG = icons.arrowsCycle.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
-            if (!env.browser.isMobile) regenBtn.onmouseover = regenBtn.onmouseout = toggle.tooltip
+            if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = () => {
                 get.reply(msgChain) ; appAlert('waitingResponse')
                 if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // or tooltip shows on next reply
@@ -3661,7 +3701,7 @@
                     speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
                     speakerBtn.className = `${app.cssPrefix}-div-corner-btn`
                     speakerBtn.style.marginRight = '7px' // position
-                    speakerBtn.style.opacity = 0 // show when appDiv.onmouseover only
+                    speakerBtn.style.display = 'none' // show when appDiv.onmouseover only
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3672,7 +3712,7 @@
                     fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
                     fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn`
                     fontSizeBtn.style.margin = '1px 10px 0 2px' // position
-                    fontSizeBtn.style.opacity = 0 // show when appDiv.onmouseover only
+                    fontSizeBtn.style.display = 'none' // show when appDiv.onmouseover only
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3683,7 +3723,7 @@
                     pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
                     pinBtn.className = `${app.cssPrefix}-div-corner-btn`
                     pinBtn.style.margin = '1px 9px 0 0' // position
-                    pinBtn.style.opacity = 0 // show when appDiv.onmouseover only
+                    pinBtn.style.display = 'none' // show when appDiv.onmouseover only
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
@@ -3692,7 +3732,7 @@
                     wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
                     wsbBtn.className = `${app.cssPrefix}-div-corner-btn`
                     wsbBtn.style.margin = '0.151em 11px 0 0' // position
-                    wsbBtn.style.opacity = 0 // show when appDiv.onmouseover only
+                    wsbBtn.style.display = 'none' // show when appDiv.onmouseover only
                     wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
@@ -3702,8 +3742,7 @@
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
                     arrowsBtn.className = `${app.cssPrefix}-div-corner-btn`
                     arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.style.display = 'none' // show when config.anchored only
-                    arrowsBtn.style.opacity = 0 // show when appDiv.onmouseover only
+                    arrowsBtn.style.display = 'none' // show when config.anchored + appDiv.onmouseover only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
                 }
 
