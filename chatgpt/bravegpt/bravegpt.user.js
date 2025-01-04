@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.4.1
+// @version               2025.1.4.2
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2585,7 +2585,7 @@
         }
     }
 
-    const listenerize = {
+    const addListeners = {
 
         appDiv() {
             appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
@@ -2690,12 +2690,12 @@
                               textAfter = chatTextarea.value.substring(caretPos)
                         chatTextarea.value = textBefore + '\n' + textAfter // add newline
                         chatTextarea.selectionStart = chatTextarea.selectionEnd = caretPos + 1 // preserve caret pos
-                        listenerize.replySection.chatbarAutoSizer()
-                    } else if (!event.shiftKey) listenerize.replySection.submitHandler(event)
+                        addListeners.replySection.chatbarAutoSizer()
+                    } else if (!event.shiftKey) addListeners.replySection.submitHandler(event)
             }}
 
             // Add form submit listener
-            listenerize.replySection.submitHandler = event => {
+            addListeners.replySection.submitHandler = event => {
                 event.preventDefault()
                 const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
 
@@ -2732,12 +2732,12 @@
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
-            replyForm.onsubmit = listenerize.replySection.submitHandler
+            replyForm.onsubmit = addListeners.replySection.submitHandler
 
             // Add chatbar autosizer
             const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
             let prevLength = chatTextarea.value.length
-            listenerize.replySection.chatbarAutoSizer = () => {
+            addListeners.replySection.chatbarAutoSizer = () => {
                 const newLength = chatTextarea.value.length
                 if (newLength < prevLength) { // if deleting txt
                     chatTextarea.style.height = 'auto' // ...auto-fit height
@@ -2748,7 +2748,7 @@
                     chatTextarea.scrollHeight > 60 ? ( chatTextarea.scrollHeight +2 ) : 43 }px`
                 prevLength = newLength
             }
-            chatTextarea.oninput = listenerize.replySection.chatbarAutoSizer
+            chatTextarea.oninput = addListeners.replySection.chatbarAutoSizer
 
             // Add button listeners
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
@@ -3734,7 +3734,7 @@
                 if (!env.browser.isMobile) appDiv.append(tooltipDiv)
 
                 // Add app header button listeners
-                listenerize.appHeaderBtns()
+                addListeners.appHeaderBtns()
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
@@ -3801,7 +3801,7 @@
                 if (!appDiv.querySelector('footer')) appDiv.append(appFooter)
 
                 // Add listeners
-                listenerize.replySection()
+                addListeners.replySection()
 
                 // Scroll to top on mobile if user interacted
                 if (env.browser.isMobile && show.reply.userInteracted) {
@@ -3918,7 +3918,7 @@
                                     chatbar.value = relatedQuery
                                     if (/\[[^[\]]+\]/.test(relatedQuery)) { // highlight 1st bracleted placeholder
                                         chatbar.focus()
-                                        listenerize.replySection.chatbarAutoSizer() // since query not auto-sent
+                                        addListeners.replySection.chatbarAutoSizer() // since query not auto-sent
                                         chatbar.setSelectionRange(
                                             relatedQuery.indexOf('['), relatedQuery.indexOf(']') +1)
                                     } else // send placeholder-free related query
@@ -3941,7 +3941,7 @@
 
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-    appDiv.classList.add('fade-in',  'snippet') ; listenerize.appDiv();
+    appDiv.classList.add('fade-in',  'snippet') ; addListeners.appDiv();
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = create.style() ; update.appStyle() ; document.head.append(app.styles);
@@ -4022,16 +4022,16 @@
         log.caller = 'restoreAppDiv()'
         log.debug(`Restoring ${app.name} from mutation...`)
         appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
-        appDiv.classList.add('fade-in', 'active', 'snippet') ; listenerize.appDiv();
+        appDiv.classList.add('fade-in', 'active', 'snippet') ; addListeners.appDiv();
         ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
             (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
-        if (appDiv.querySelector(`.${app.cssPrefix}-header-btn`)) listenerize.appHeaderBtns()
+        if (appDiv.querySelector(`.${app.cssPrefix}-header-btn`)) addListeners.appHeaderBtns()
         const standbyBtn = appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
-        if (appDiv.querySelector(`.${app.cssPrefix}-chatbar-btn`)) listenerize.replySection()
+        if (appDiv.querySelector(`.${app.cssPrefix}-chatbar-btn`)) addListeners.replySection()
         appDivParent.prepend(appDiv) ; visibilizeOverflow() ; restoreAppDiv.restored = true
     }
 
