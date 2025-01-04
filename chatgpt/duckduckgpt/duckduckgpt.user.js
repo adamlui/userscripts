@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.17
+// @version                2025.1.3.18
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2495,7 +2495,7 @@
             }
         },
 
-        appDivCornerBtns() {
+        appHeaderBtns() {
             appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
@@ -3637,8 +3637,8 @@
                 // Add tooltips
                 if (!env.browser.isMobile) appDiv.append(tooltipDiv)
 
-                // Add app div corner button listeners
-                listenerize.appDivCornerBtns()
+                // Add app header button listeners
+                listenerize.appHeaderBtns()
 
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
