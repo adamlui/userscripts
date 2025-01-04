@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.4.9
+// @version               2025.1.4.10
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -812,7 +812,7 @@
             }
 
             // Hack BG
-            fillStarryBG(modal)
+            dom.fillStarryBG(modal)
             setTimeout(() => { // dim bg
                 modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
                     env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
@@ -2536,21 +2536,6 @@
              : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
     }
 
-    function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
-        if (targetNode.querySelector('[id*=stars]')) return
-        const starsDivsContainer = document.createElement('div')
-        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
-          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-          + 'z-index: -1'; // allow interactive elems to be clicked
-        ['sm', 'med', 'lg'].forEach(starSize => {
-            const starsDiv = document.createElement('div')
-            starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
-                : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
-            starsDivsContainer.append(starsDiv)
-        })
-        targetNode.prepend(starsDivsContainer)
-    }
-
     function visibilizeOverflow() { // for boundless hover fx
         let appAncestor = appDivParent
         while (appAncestor) {
@@ -3616,7 +3601,7 @@
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 appDiv.textContent = ''
-                fillStarryBG(appDiv) // add stars
+                dom.fillStarryBG(appDiv) // add stars
 
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
@@ -3930,6 +3915,21 @@
                 for (const attr in attrs) elem.setAttributeNS(null, attr, attrs[attr])
                 return elem
             }
+        },
+
+        fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
+            if (targetNode.querySelector('[id*=stars]')) return
+            const starsDivsContainer = document.createElement('div')
+            starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+              + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
+              + 'z-index: -1'; // allow interactive elems to be clicked
+            ['sm', 'med', 'lg'].forEach(starSize => {
+                const starsDiv = document.createElement('div')
+                starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
+                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
+                starsDivsContainer.append(starsDiv)
+            })
+            targetNode.prepend(starsDivsContainer)
         },
 
         getComputedWidth(...elems) { // including margins
