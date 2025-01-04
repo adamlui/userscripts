@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.3.19
+// @version                2025.1.4
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2131,7 +2131,7 @@
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
                   + '--btn-transition: transform 0.15s ease,' // for hover-zoom
-                                    + 'opacity 0.1s ease-in-out ;' // + appDiv.onmouseover + btn-zoom-fade-out shows
+                                    + 'opacity 0.1s ease-in-out ;' // + btn-zoom-fade-out shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
                   + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
@@ -2163,7 +2163,9 @@
                   + 'transition: var(--app-transition) ;'
                       + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
                       + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
-              + `#${app.cssPrefix}:hover {`
+              + `#${app.cssPrefix} .app-hover-only { display: none }` // hide app-hover-only elems
+              + `#${app.cssPrefix}:hover .app-hover-only { display: initial }` // show app-hover-only elems on hover
+              + `#${app.cssPrefix}:hover {` // show app shadow on hover
                   + 'box-shadow: var(--app-hover-shadow) ;'
                   + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
@@ -2367,11 +2369,9 @@
 
               // Anchor Mode styles
               + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
-              + `#${app.cssPrefix}.anchored #wsb-btn, #${app.cssPrefix}.anchored [class$=related-queries],
-                    #${app.cssPrefix}.anchored + footer { display: none }`
-              + `#${app.cssPrefix}.anchored [id$=chevron-btn], #${app.cssPrefix}.anchored [id$=arrows-btn] {
-                    display: block !important }`
               + `#${app.cssPrefix}.expanded { width: 528px !important }`
+              + `#${app.cssPrefix}.anchored .anchored-hidden { display: none }` // hide non-Anchor elems in mode
+              + `#${app.cssPrefix}:not(.anchored) .anchored-only { display: none }` // hide Anchor elems outside mode
             )
         },
 
@@ -2480,16 +2480,7 @@
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
-            appDiv.onmouseover = appDiv.onmouseout = event => {
-                appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => {
-                    if (/about|settings|chevron/.test(btn.id) // primary corner btns
-                        || (btn.id.includes('wsb') && config.anchored) // Wider Sidebar btn in Anchor mode
-                        || (btn.id.includes('arrows') && !config.anchored) // Arrows btn outside Anchor mode
-                    ) return // skip showing them on app hover
-                    btn.style.display = event.type == 'mouseover' ? 'initial' : 'none'
-                })
-                update.bylineVisibility()
-            }
+            appDiv.onmouseover = appDiv.onmouseout = update.bylineVisibility // for btn.app-hover-only shows
         },
 
         appHeaderBtns() {
@@ -2786,11 +2777,9 @@
             if (state == 'on' || !state && !config.anchored) {
                 settings.save('anchored', true);
                 ['sticky', 'wider'].forEach(mode => config[`${mode}Sidebar`] && toggle.sidebar(mode))
-                appDiv.querySelector('[id$=-wsb-btn]').style.display = 'none'
             } else {
                 settings.save('anchored', false)
                 if (config.expanded) toggle.expandedMode('off')
-                appDiv.querySelector('[id$=-wsb-btn]').style.display = 'initial'
             }
 
             // Apply new state to UI
@@ -3558,9 +3547,8 @@
                     var chevronBtn = document.createElement('btn'),
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                    chevronBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    chevronBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'anchored-only')
                     chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
-                    chevronBtn.style.display = 'none' // show when config.anchored only
                     chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
                 }
 
@@ -3568,14 +3556,14 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.className = `${app.cssPrefix}-div-corner-btn`
+                aboutBtn.classList.add(`${app.cssPrefix}-div-corner-btn`)
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.className = `${app.cssPrefix}-div-corner-btn`
+                settingsBtn.classList.add(`${app.cssPrefix}-div-corner-btn`)
                 settingsBtn.style.margin = '0 10.5px 0 0.5px' // position
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
@@ -3584,9 +3572,8 @@
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
                     speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                    speakerBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    speakerBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only')
                     speakerBtn.style.margin = '-2px 8px 0 0' // position
-                    speakerBtn.style.display = 'none' // show when appDiv.onmouseover only
                     speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
                 }
 
@@ -3595,9 +3582,8 @@
                     var fontSizeBtn = document.createElement('btn'),
                         fontSizeSVG = icons.fontSize.create()
                     fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                    fontSizeBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    fontSizeBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only')
                     fontSizeBtn.style.marginRight = '10px' // position
-                    fontSizeBtn.style.display = 'none' // show when appDiv.onmouseover only
                     fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3606,18 +3592,16 @@
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
                     pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    pinBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only')
                     pinBtn.style.margin = '1px 9px 0 0' // position
-                    pinBtn.style.display = 'none' // show when appDiv.onmouseover only
                     pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
                     wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    wsbBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only', 'anchored-hidden')
                     wsbBtn.style.margin = `${ env.browser.isFF ? 0.5 : 0 }px 13.5px 0 0` // position
-                    wsbBtn.style.display = 'none' // show when appDiv.onmouseover only
                     wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
@@ -3625,9 +3609,8 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.className = `${app.cssPrefix}-div-corner-btn`
+                    arrowsBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only', 'anchored-only')
                     arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.style.display = 'none' // show when config.anchored + appDiv.onmouseover only
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
                 }
 
@@ -3781,7 +3764,7 @@
 
                 // Create/classify/append parent div
                 const relatedQueriesDiv = document.createElement('div')
-                relatedQueriesDiv.className = `${app.cssPrefix}-related-queries`
+                relatedQueriesDiv.classList.add(`${app.cssPrefix}-related-queries`, 'anchored-hidden')
                 appDiv.append(relatedQueriesDiv)
 
                 // Fill each child div, add attributes + icon + listener
