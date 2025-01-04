@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.3.17
+// @version               2025.1.3.18
 // @license               MIT
 // @icon                  https://media.bravegpt.com/images/icons/bravegpt/icon48.png?0a9e287
 // @icon64                https://media.bravegpt.com/images/icons/bravegpt/icon64.png?0a9e287
@@ -2175,7 +2175,7 @@
               + `.${app.cssPrefix}-name {`
                   + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
-              + '.kudoai { margin-left: 7px ; font-size: .65rem ; color: #aaa }'
+              + '.kudoai { position: relative ; bottom: 5.5px ; margin-left: 7px ; color: #aaa ; font-size: 11px }'
               + '.kudoai a { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.cssPrefix}-div-corner-btns { position: relative ; bottom: 3px ; float: right }`
@@ -3755,7 +3755,6 @@
                 // Create/append 'by KudoAI'
                 const kudoAIspan = document.createElement('span')
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
-                kudoAIspan.style.cssText = 'position: relative ; bottom: 6px ; font-size: 11px'
                 kudoAIspan.append(create.anchor(app.urls.publisher, 'KudoAI'))
                 appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
                 update.bylineVisibility()
