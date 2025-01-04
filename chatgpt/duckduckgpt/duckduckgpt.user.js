@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.6
+// @version                2025.1.4.7
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -3809,16 +3809,15 @@
             }
         },
 
-        getComputedWidth(elems) { // including margins
-            if (!elems) return 0
-            elems = elems instanceof Element ? [elems] : elems // enforce elems as array
+        getComputedWidth(...elems) { // including margins
             let totalWidth = 0
-            for (const elem of elems) {
-                if (!(elem instanceof Element)) continue
-                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') continue
+            elems.flat().forEach(elem => {
+                if (!(elem instanceof Element)) return
+                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
                 totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
                                                                  + parseFloat(elemStyle.marginRight)
-            } return totalWidth
+            })
+            return totalWidth
         }
     }
 
