@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4
+// @version                2025.1.4.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1799,23 +1799,23 @@
               + '.kudoai { margin-left: 6px ; color: #aaa } '
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-              + `#${app.cssPrefix}-div-corner-btns { float: right ; margin-top: -2px }`
-              + `.${app.cssPrefix}-div-corner-btn {`
+              + `#${app.cssPrefix}-header-btns { float: right ; margin-top: -2px }`
+              + `.${app.cssPrefix}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                     : 'fill: #adadad ; stroke: #adadad' };` // color
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.cssPrefix}-div-corner-btn:hover {`
+              + `.${app.cssPrefix}-header-btn:hover {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                     : 'fill: black ; stroke: black' } ;`
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-              + `.${app.cssPrefix}-div-corner-btn:active {`
+              + `.${app.cssPrefix}-header-btn:active {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                     : 'fill: #638ed4 ; stroke: #638ed4' }}`
               + ( config.bgAnimationsDisabled ? '' : (
-                    `#${app.cssPrefix}-logo, .${app.cssPrefix}-div-corner-btn svg {`
+                    `#${app.cssPrefix}-logo, .${app.cssPrefix}-header-btn svg {`
                       + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                             : '#aaaaaa21 7px' } 7px 3px) }` ))
               + `#${app.cssPrefix} .loading {`
@@ -2041,7 +2041,7 @@
         },
 
         appHeaderBtns() {
-            appDiv.querySelectorAll(`.${app.cssPrefix}-div-corner-btn`).forEach(btn => { // from right to left
+            appDiv.querySelectorAll(`.${app.cssPrefix}-header-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
@@ -2922,7 +2922,7 @@
 
                 // Create/append corner buttons div
                 const cornerBtnsDiv = document.createElement('div')
-                cornerBtnsDiv.id = `${app.cssPrefix}-div-corner-btns`
+                cornerBtnsDiv.id = `${app.cssPrefix}-header-btns`
                 cornerBtnsDiv.className = 'no-mobile-tap-outline'
                 appDiv.append(cornerBtnsDiv)
 
@@ -2930,7 +2930,7 @@
                 const chevronBtn = document.createElement('btn'),
                       chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                 chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                chevronBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'anchored-only')
+                chevronBtn.classList.add(`${app.cssPrefix}-header-btn`, 'anchored-only')
                 chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
                 chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
 
@@ -2938,14 +2938,14 @@
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.classList.add(`${app.cssPrefix}-div-corner-btn`)
+                aboutBtn.classList.add(`${app.cssPrefix}-header-btn`)
                 aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.classList.add(`${app.cssPrefix}-div-corner-btn`)
+                settingsBtn.classList.add(`${app.cssPrefix}-header-btn`)
                 settingsBtn.style.margin = '0.5px 10.5px 0 0.5px' // position
                 settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
 
@@ -2953,7 +2953,7 @@
                 const speakerBtn = document.createElement('btn'),
                       speakerSVG = icons.speaker.create()
                 speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                speakerBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only')
+                speakerBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
                 speakerBtn.style.margin = '-2px 8px 0 0' // position
                 speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
 
@@ -2961,7 +2961,7 @@
                 const fontSizeBtn = document.createElement('btn'),
                       fontSizeSVG = icons.fontSize.create()
                 fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only')
+                fontSizeBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
                 fontSizeBtn.style.marginRight = '10px' // position
                 fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
 
@@ -2972,7 +2972,7 @@
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.classList.add(`${app.cssPrefix}-div-corner-btn`, 'app-hover-only', 'anchored-only')
+                    arrowsBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only', 'anchored-only')
                     arrowsBtn.style.margin = '0.5px 12px 0 0' // position
                     arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
 
