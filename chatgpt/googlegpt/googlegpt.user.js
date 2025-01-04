@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.4.6
+// @version                  2025.1.4.7
 // @license                  MIT
 // @icon                     https://media.googlegpt.io/images/icons/googlegpt/black/icon48.png?8652a6e
 // @icon64                   https://media.googlegpt.io/images/icons/googlegpt/black/icon64.png?8652a6e
@@ -4161,16 +4161,15 @@
             }
         },
 
-        getComputedWidth(elems) { // including margins
-            if (!elems) return 0
-            elems = elems instanceof Element ? [elems] : elems // enforce elems as array
+        getComputedWidth(...elems) { // including margins
             let totalWidth = 0
-            for (const elem of elems) {
-                if (!(elem instanceof Element)) continue
-                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') continue
+            elems.flat().forEach(elem => {
+                if (!(elem instanceof Element)) return
+                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
                 totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
                                                                  + parseFloat(elemStyle.marginRight)
-            } return totalWidth
+            })
+            return totalWidth
         }
     }
 
