@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.2.1
+// @version             2025.1.4
 // @license             MIT
 // @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
 // @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
@@ -400,10 +400,7 @@
                 label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
-        load(...keys) {
-            if (Array.isArray(keys[0])) keys = keys[0] // use 1st array arg, else all comma-separated ones
-            keys.forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false))
-        },
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
 
         save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     }
