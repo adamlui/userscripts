@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.4.8
+// @version                2025.1.4.9
 // @license                MIT
 // @icon                   https://media.ddgpt.com/images/icons/duckduckgpt/icon48.png?af89302
 // @icon64                 https://media.ddgpt.com/images/icons/duckduckgpt/icon64.png?af89302
@@ -2955,7 +2955,7 @@
             if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
 
             const btnElem = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btnElem.id)[1],
-                  appCornerBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
+                  appHeaderBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen']
 
             // Update text
@@ -2982,7 +2982,7 @@
             const elems = { appDiv, btnElem, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
-                appCornerBtnTypes.includes(btnType) ? -17
+                appHeaderBtnTypes.includes(btnType) ? -17
               : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 45
               : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 5 : 0 )
             }px`
@@ -3509,11 +3509,11 @@
                 appTitleAnchor.classList.add(`${app.cssPrefix}-name`, 'no-user-select')
                 appDiv.append(appTitleAnchor)
 
-                // Create/append corner buttons div
-                const cornerBtnsDiv = document.createElement('div')
-                cornerBtnsDiv.id = `${app.cssPrefix}-header-btns`
-                cornerBtnsDiv.className = 'no-mobile-tap-outline'
-                appDiv.append(cornerBtnsDiv)
+                // Create/append header buttons div
+                const headerBtnsDiv = document.createElement('div')
+                headerBtnsDiv.id = `${app.cssPrefix}-header-btns`
+                headerBtnsDiv.className = 'no-mobile-tap-outline'
+                appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.ui.site.isCentered && !env.browser.isMobile) {
@@ -3522,7 +3522,7 @@
                     chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
                     chevronBtn.classList.add(`${app.cssPrefix}-header-btn`, 'anchored-only')
                     chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
-                    chevronBtn.append(chevronSVG) ; cornerBtnsDiv.append(chevronBtn)
+                    chevronBtn.append(chevronSVG) ; headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
@@ -3530,7 +3530,7 @@
                       aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
                 aboutBtn.classList.add(`${app.cssPrefix}-header-btn`)
-                aboutBtn.append(aboutSVG) ; cornerBtnsDiv.append(aboutBtn)
+                aboutBtn.append(aboutSVG) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
@@ -3538,7 +3538,7 @@
                 settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
                 settingsBtn.classList.add(`${app.cssPrefix}-header-btn`)
                 settingsBtn.style.margin = '0 10.5px 0 0.5px' // position
-                settingsBtn.append(settingsSVG) ; cornerBtnsDiv.append(settingsBtn)
+                settingsBtn.append(settingsSVG) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Speak button
                 if (answer != 'standby') {
@@ -3547,7 +3547,7 @@
                     speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
                     speakerBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
                     speakerBtn.style.margin = '-2px 8px 0 0' // position
-                    speakerBtn.append(speakerSVG) ; cornerBtnsDiv.append(speakerBtn)
+                    speakerBtn.append(speakerSVG) ; headerBtnsDiv.append(speakerBtn)
                 }
 
                 // Create/append Font Size button
@@ -3557,7 +3557,7 @@
                     fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
                     fontSizeBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
                     fontSizeBtn.style.marginRight = '10px' // position
-                    fontSizeBtn.append(fontSizeSVG) ; cornerBtnsDiv.append(fontSizeBtn)
+                    fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
                 // Create/append Pin button
@@ -3567,7 +3567,7 @@
                     pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
                     pinBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
                     pinBtn.style.margin = '1px 9px 0 0' // position
-                    pinBtn.append(pinSVG) ; cornerBtnsDiv.append(pinBtn)
+                    pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
@@ -3575,7 +3575,7 @@
                     wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
                     wsbBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only', 'anchored-hidden')
                     wsbBtn.style.margin = `${ env.browser.isFF ? 0.5 : 0 }px 13.5px 0 0` // position
-                    wsbBtn.append(wsbSVG) ; cornerBtnsDiv.append(wsbBtn)
+                    wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
                     var arrowsBtn = document.createElement('btn'),
@@ -3584,7 +3584,7 @@
                     arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
                     arrowsBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only', 'anchored-only')
                     arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.append(arrowsSVG) ; cornerBtnsDiv.append(arrowsBtn)
+                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
                 }
 
                 // Add tooltips
