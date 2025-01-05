@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> Autoclear ChatGPT History
+# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.autoclearchatgpt.com/images/icons/openai/white/icon32.png"><img width=23 src="https://assets.autoclearchatgpt.com/images/icons/openai/black/icon32.png"></picture> Autoclear ChatGPT History
 
 <a href="https://gm.autoclearchatgpt.com">
     <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/460805?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
@@ -25,7 +25,7 @@
 
 ### Auto-clears chat history when visiting chatgpt.com for maximum privacy
 
-<a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://media.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) /
 [Review](https://gm.autoclearchatgpt.com/feedback#post-discussion) /
@@ -33,10 +33,10 @@
 
 #
 
-![](https://media.autoclearchatgpt.com/images/screenshots/demo.png)
+![](https://assets.autoclearchatgpt.com/images/screenshots/demo.png)
 <br>
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## 🚀 Installation
 
@@ -52,11 +52,11 @@
 
 <div align="center">
 
-![](https://media.autoclearchatgpt.com/images/screenshots/sidebar-toggle-on.png)
+![](https://assets.autoclearchatgpt.com/images/screenshots/sidebar-toggle-on.png)
 
 </div>
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## ⚡ Dependencies
 
@@ -77,7 +77,7 @@ Autoclear ChatGPT History relies on code from the powerful <a href="https://gith
 </div>
 </h6>
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## 🌐 Compatibility
 
@@ -95,13 +95,13 @@ Autoclear ChatGPT History is compatible w/ the following browsers using [ScriptC
 
 <br>
 
-<a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://media.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) / 
 [Leave a review](https://gm.autoclearchatgpt.com/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## 🧠 Contributors
 
@@ -116,24 +116,24 @@ This project exists thanks to code, testing, issues, translations & ideas from t
 <a href="https://github.com/Yash-Singh1"><img width=50 title="@Yash-Singh1" src="https://avatars.githubusercontent.com/u/53054099?first-contrib=2023.1.31-added-eslint-plugin-userscripts"></img></a>
 <a href="https://github.com/dreirund"><img width=50 title="@dreirund" src="https://avatars.githubusercontent.com/u/1590519?first-contrib=2024.02.16-add-sri-hashes-suggestion"></img></a>
 <a href="https://github.com/sanchomuzax"><img width=50 title="@sanchomuzax" src="https://avatars.githubusercontent.com/u/2911588?first-contrib=2023.2.26-truncate-toggle-label-idea"></img></a>
-<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.6.7-toggle-unreliable-alert" title="hacker09"></picture></a>
-<a href="https://greasyfork.org/users/9946-boris-2"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.6.17-bitdefender-false-positive-alert" title="boris 2"></picture></a>
+<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.6.7-toggle-unreliable-alert" title="hacker09"></picture></a>
+<a href="https://greasyfork.org/users/9946-boris-2"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.autoclearchatgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.6.17-bitdefender-false-positive-alert" title="boris 2"></picture></a>
 <a href="https://github.com/schmorp"><img width=50 title="@schmorp" src="https://avatars.githubusercontent.com/u/42950150?first-contrib=2024.8.30-stopped-working-bug-report"></img></a>
 <a href="https://github.com/dliedke"><img width=50 title="@dliedke" src="https://avatars.githubusercontent.com/u/16479450?first-contrib=2024.9.3-stopped-working-bug-report-testing"></img></a>
 <a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
 <a href="https://github.com/9romise"><img width=50 title="@9romise" src="https://avatars.githubusercontent.com/u/38204901?first-contrib=2024.12.13-revealed-unneeded-semicolons"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.autoclearchatgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.autoclearchatgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.autoclearchatgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.autoclearchatgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## 🤖 More ChatGPT apps
 
 For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extensions
 <br><br>
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
 
 ## 📜 Related scripts
 
@@ -158,7 +158,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extens
 [Readme](https://github.com/adamlui/chatgpt-widescreen/#readme) / 
 [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
-<img height=6px width="100%" src="https://media.autoclearchatgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#top">Back to top ↑</a>
