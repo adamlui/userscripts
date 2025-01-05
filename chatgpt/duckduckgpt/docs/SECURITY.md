@@ -5,8 +5,8 @@
             <img height=14 src="https://assets.ddgpt.com/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
-        <a href="https://github.com/KudoAI/duckduckgpt/blob/main/docs/zh-cn/SECURITY.md">简体中文</a> |
-        <a href="https://github.com/KudoAI/duckduckgpt/blob/main/docs/hi/SECURITY.md">हिंदी</a>
+        <a href="https://docs.ddgpt.com/zh-cn/SECURITY.md">简体中文</a> |
+        <a href="https://docs.ddgpt.com/hi/SECURITY.md">हिंदी</a>
     </h6>
 </div>
 
