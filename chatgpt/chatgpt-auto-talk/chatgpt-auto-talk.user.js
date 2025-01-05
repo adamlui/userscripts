@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.4
+// @version             2025.1.5
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -378,7 +378,6 @@
         },
 
         load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
-
         save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
     }
     settings.load('autoTalkDisabled', 'toggleHidden')
