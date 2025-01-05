@@ -2,8 +2,8 @@
 
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/logos/duckduckgpt/darkmode/logo371x65.png">
-    <img src="https://media.ddgpt.com/images/logos/duckduckgpt/lightmode/logo371x65.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/logos/duckduckgpt/darkmode/logo371x65.png">
+    <img src="https://assets.ddgpt.com/images/logos/duckduckgpt/lightmode/logo371x65.png">
   </picture>
 </h1>
 
@@ -32,7 +32,7 @@
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to DDG (powered by GPT-4o!)</h3>
 
-<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
@@ -40,11 +40,11 @@
 
 #
 
-<img src="https://media.ddgpt.com/images/screenshots/desktop/how-to-becum-rich-query/darkmode.png">
+<img src="https://assets.ddgpt.com/images/screenshots/desktop/how-to-becum-rich-query/darkmode.png">
 
 ### Mobile:
 
-<img src="https://media.ddgpt.com/images/screenshots/mobile/hi-there-query/darkmode.png">
+<img src="https://assets.ddgpt.com/images/screenshots/mobile/hi-there-query/darkmode.png">
 
 ## 🚀 Installation
 
@@ -66,7 +66,7 @@
   
 </div>
 
-## <img width=25px src="https://media.ddgpt.com/images/icons/platforms/tampermonkey/icon28.png"> Tampermonkey Users
+## <img width=25px src="https://assets.ddgpt.com/images/icons/platforms/tampermonkey/icon28.png"> Tampermonkey Users
 
 If you are installing **Tampermonkey** (v5.2.0+) for the first time from the [Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), you must enable **Developer Mode** for userscripts to function.
 
@@ -76,7 +76,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 <div align="center">
 
-<img width=635 src="https://media.ddgpt.com/images/screenshots/desktop/chrome/developer-mode-toggle.png">
+<img width=635 src="https://assets.ddgpt.com/images/screenshots/desktop/chrome/developer-mode-toggle.png">
 
 </div>
 
@@ -102,7 +102,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 - [QQ](https://browser.qq.com)
 - [Whale](https://whale.naver.com)
 
-<br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/logos/platforms/android/head-plus-word/white/logo150x24.png"><img alt="Android" width=111 src="https://media.ddgpt.com/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png"></picture><br>
+<br><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/logos/platforms/android/head-plus-word/white/logo150x24.png"><img alt="Android" width=111 src="https://assets.ddgpt.com/images/logos/platforms/android/head-plus-word/green-head-black-word/logo150x24.png"></picture><br>
 
 - [Mozilla Firefox](https://www.mozilla.org/firefox/browsers/mobile/android/) (using [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)* for Firefox)
 - [Kiwi](https://kiwibrowser.com) (using [ScriptCat](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf) or [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)* for Chrome)
@@ -124,14 +124,14 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 <div align='center'>
 
-![](https://media.ddgpt.com/images/screenshots/desktop/proxy-mode/tm-menu.png)
-![](https://media.ddgpt.com/images/screenshots/desktop/proxy-mode/notif.png)
+![](https://assets.ddgpt.com/images/screenshots/desktop/proxy-mode/tm-menu.png)
+![](https://assets.ddgpt.com/images/screenshots/desktop/proxy-mode/notif.png)
 
 </div>
 
 <br>
 
-<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://media.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Leave a review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
@@ -159,8 +159,8 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 <div align="center">
 
 <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/logos/dependencies/collage/white.png">
-    <img src="https://media.ddgpt.com/images/logos/dependencies/collage/black.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/logos/dependencies/collage/white.png">
+    <img src="https://assets.ddgpt.com/images/logos/dependencies/collage/black.png">
 </picture>
 
 [chatgpt.js](https://chatgpt.js.org) © 2023–2025 [KudoAI](https://kudoai.com) & contributors under the MIT license
@@ -194,15 +194,15 @@ This app exists thanks to code, translations, issues & ideas from the following 
 <a href="https://github.com/papapat"><img width=50 title="@papapat" src="https://avatars.githubusercontent.com/u/22026520?first-contrib=2023.12.25-french-tts-suggestion"></img></a>
 <a href="https://github.com/Yash-Singh1"><img width=50 title="@Yash-Singh1" src="https://avatars.githubusercontent.com/u/53054099?first-contrib=2023.1.27-added-eslint-plugin-userscripts-"></img></a>
 <a href="https://github.com/YashSoPro"><img width=50 title="@YashSoPro" src="https://avatars.githubusercontent.com/u/105553471?first-contrib=2024.02.15-openai-endpoint-broke-report"></img></a>
-<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.ddgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.5.30-render-markdown-idea" title="hacker09"></picture></a>
+<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.ddgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.5.30-render-markdown-idea" title="hacker09"></picture></a>
 <a href="https://github.com/Mrhazed"><img width=50 title="@Mrhazed" src="https://avatars.githubusercontent.com/u/149096330?first-contrib=2024.6.20-streaming-mode-unsupported-by-brave"></img></a>
-<a href="https://greasyfork.org/users/27097-grisipisimisi"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.ddgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.20-asktip-disabled-localstorage-setting-not-sticky" title="GrisiPisiMisi"></picture></a>
+<a href="https://greasyfork.org/users/27097-grisipisimisi"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.ddgpt.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.20-asktip-disabled-localstorage-setting-not-sticky" title="GrisiPisiMisi"></picture></a>
 <a href="https://github.com/eltociear"><img width=50 title="@eltociear" src="https://avatars.githubusercontent.com/u/22633385?first-contrib=2024.6.22-corrected-typo-in-comment"></img></a>
 <a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
 <a href="https://greasyfork.org/users/1030895-universedev"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.googlegpt.io/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.googlegpt.io/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.12.12-support-other-extensions-idea" title="UniverseDev"></picture></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.ddgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.ddgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.ddgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
 
 #
 
@@ -249,7 +249,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extens
 [Readme](https://github.kudoai.com/googlegpt/#readme) /
 [Discuss](https://github.kudoai.com/googlegpt/discussions)
 
-<img height=6px width="100%" src="https://media.ddgpt.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.ddgpt.com/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#top">Back to top ↑</a>
