@@ -148,10 +148,10 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.5.1
+// @version               2025.1.5.2
 // @license               MIT
-// @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=0a9e287
-// @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=0a9e287
+// @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
+// @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
 // @antifeature           ads A very tiny text ad displays below BraveGPT chatbar. This motivates me to spend otherwise unpaid time upgrading script w/ new features & APIs.
 // @antifeature           referral-link
 // @compatible            chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
