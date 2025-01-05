@@ -5,8 +5,8 @@
             <img height=14 src="https://assets.googlegpt.io/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
-        <a href="https://docs.googlegpt.io/zh-cn/SECURITY.md">简体中文</a> |
-        <a href="https://docs.googlegpt.io/hi/SECURITY.md">हिंदी</a>
+        <a href="https://github.com/KudoAI/googlegpt/blob/main/docs/zh-cn/SECURITY.md">简体中文</a> |
+        <a href="https://github.com/KudoAI/googlegpt/blob/main/docs/hi/SECURITY.md">हिंदी</a>
     </h6>
 </div>
 
