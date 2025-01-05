@@ -3,15 +3,15 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://media.chatgptautorefresh.com/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://assets.chatgptautorefresh.com/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
         <a href="zh-cn/#readme">简体中文</a>
     </h6>
 </div>
 
-# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://media.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT Auto Refresh ↻
+# <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/openai/white/icon32.png"><img width=23 src="https://assets.chatgptautorefresh.com/images/icons/openai/black/icon32.png"></picture> ChatGPT Auto Refresh ↻
 
 <a href="https://gm.chatgptautorefresh.com">
     <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/462422?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
@@ -34,7 +34,7 @@
 
 ### Keeps ChatGPT sessions fresh via background requests to eliminate network errors + Cloudflare checks.
 
-<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
 [Review](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
@@ -45,11 +45,11 @@
 <div align="center">
 
 ![](https://user-images.githubusercontent.com/10906554/234756105-cf367acc-644a-49ee-8586-43c51d43e359.png)
-<img width=355 src="https://media.chatgptautorefresh.com/images/screenshots/mode-notification-on.png">
+<img width=355 src="https://assets.chatgptautorefresh.com/images/screenshots/mode-notification-on.png">
 
 </div>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 💡 What it does
 
@@ -59,7 +59,7 @@
 
 <div align="center">
     
-![](https://media.chatgptautorefresh.com/images/alerts/cloudflare-stand-by.png)
+![](https://assets.chatgptautorefresh.com/images/alerts/cloudflare-stand-by.png)
 
 </div>
 
@@ -67,13 +67,13 @@
 
 <div align="center">
 
-![](https://media.chatgptautorefresh.com/images/alerts/chatgpt-something-went-wrong.png)
-![](https://media.chatgptautorefresh.com/images/alerts/chatgpt-network-error.png)
-<img width=333 src="https://media.chatgptautorefresh.com/images/alerts/chatgpt-error-generating-response.png">
+![](https://assets.chatgptautorefresh.com/images/alerts/chatgpt-something-went-wrong.png)
+![](https://assets.chatgptautorefresh.com/images/alerts/chatgpt-network-error.png)
+<img width=333 src="https://assets.chatgptautorefresh.com/images/alerts/chatgpt-error-generating-response.png">
     
 </div>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 💊 Benefits
 
@@ -85,13 +85,13 @@
 
 &nbsp;&nbsp;&nbsp;🤯 <mark>Works ***even in background tabs!***</mark>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 🗨️ User feedback
 
-<img width=535 src="https://media.chatgptautorefresh.com/images/reviews/greasy-fork.png">
+<img width=535 src="https://assets.chatgptautorefresh.com/images/reviews/greasy-fork.png">
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 🚀 Installation
 
@@ -107,11 +107,11 @@
 
 <div align="center">
     
-![](https://media.chatgptautorefresh.com/images/screenshots/sidebar-toggle-on.png)
+![](https://assets.chatgptautorefresh.com/images/screenshots/sidebar-toggle-on.png)
 
 </div>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## ⚡ Dependencies
 
@@ -132,7 +132,7 @@ ChatGPT Auto Refresh relies on code from the powerful <a href="https://github.co
 </div>
 </h6>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 🌐 Compatibility
 
@@ -151,13 +151,13 @@ ChatGPT Auto Refresh is compatible w/ the following browsers using [ScriptCat](h
 
 <br>
 
-<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://media.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
 [Leave a review](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 🧠 Contributors
 
@@ -178,7 +178,7 @@ This project exists thanks to code, testing, issues, translations & ideas from t
 <a href="https://github.com/maplepicker"><img width=50 title="@maplepicker" src="https://avatars.githubusercontent.com/u/116735067?first-contrib=2023.04.18"></img></a>
 <a href="https://github.com/Cloudkkk"><img width=50 title="@Cloudkkk" src="https://avatars.githubusercontent.com/u/58101940?first-contrib=2023.04.19"></img></a>
 <a href="https://github.com/chenzhihao1040728129"><img width=50 title="@chenzhihao1040728129" src="https://avatars.githubusercontent.com/u/49114216?first-contrib=2023.04.23"></img></a>
-<a href="https://greasyfork.org/users/1041317-dlzrncsb"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.4.24-short-interval-complaint-leading-to-custom-interval-idea" title="dlzrncsb"></picture></a>
+<a href="https://greasyfork.org/users/1041317-dlzrncsb"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2023.4.24-short-interval-complaint-leading-to-custom-interval-idea" title="dlzrncsb"></picture></a>
 <a href="https://github.com/Zin6969"><img width=50 title="@Zin6969" src="https://avatars.githubusercontent.com/u/131989355?first-contrib=2023.04.27"></img></a>
 <a href="https://github.com/nabilfreeman"><img width=50 title="@nabilfreeman" src="https://avatars.githubusercontent.com/u/2470659?first-contrib=2023.08.03-chat-reset-issue"></img></a>
 <a href="https://github.com/h-h-h-h"><img width=50 title="@h-h-h-h" src="https://avatars.githubusercontent.com/u/13482553?first-contrib=2023.10.05-chat-reset-fix"></img></a>
@@ -186,24 +186,24 @@ This project exists thanks to code, testing, issues, translations & ideas from t
 <a href="https://github.com/Chipsum"><img width=50 title="@Chipsum" src="https://avatars.githubusercontent.com/u/37517008?first-contrib=2023.12.05-first-button-bug-report"></img></a>
 <a href="https://github.com/Yash-Singh1"><img width=50 title="@Yash-Singh1" src="https://avatars.githubusercontent.com/u/53054099?first-contrib=2023.2.3-added-eslint-plugin-userscripts"></img></a>
 <a href="https://github.com/sanchomuzax"><img width=50 title="@sanchomuzax" src="https://avatars.githubusercontent.com/u/2911588?first-contrib=2023.2.26-shortened-hungarian-menu-label"></img></a>
-<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://media.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.27-portuguese-translation-corrections" title="hacker09"></picture></a>
+<a href="https://greasyfork.org/users/670188-hacker09"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/white/icon50.png"><img width=50 src="https://assets.chatgptautorefresh.com/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2024.6.27-portuguese-translation-corrections" title="hacker09"></picture></a>
 <a href="https://github.com/eltociear"><img width=50 title="@eltociear" src="https://avatars.githubusercontent.com/u/22633385?first-contrib=2023.07.17-add-ja-doc-md"></img></a>
 <a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.9.7-improved-chinese-msgs"></img></a>
 <a href="https://github.com/9romise"><img width=50 title="@9romise" src="https://avatars.githubusercontent.com/u/38204901?first-contrib=2024.12.13-revealed-unneeded-semicolons"></img></a>
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://media.chatgptautorefresh.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://media.chatgptautorefresh.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.chatgptautorefresh.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
 
 </div>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 🤖 More ChatGPT apps
 
 For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extensions
 <br><br>
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
 ## 📜 Related scripts
 
@@ -225,7 +225,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extens
 [Readme](https://docs.chatgptinfinity.com/#readme) / 
 [Discuss](https://github.com/adamlui/chatgpt-infinity/discussions)
 
-<img height=6px width="100%" src="https://media.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> /
 <a href="#top">Back to top ↑</a>

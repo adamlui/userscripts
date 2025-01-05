@@ -220,10 +220,10 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.5.1
+// @version             2025.1.5.2
 // @license             MIT
-// @icon                https://media.chatgptautorefresh.com/images/icons/openai/black/icon48.png?c56f963
-// @icon64              https://media.chatgptautorefresh.com/images/icons/openai/black/icon64.png?c56f963
+// @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=c56f963
+// @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=c56f963
 // @compatible          chrome
 // @compatible          firefox
 // @compatible          edge
@@ -294,7 +294,7 @@
             },
             gitHub: 'https://github.com/adamlui/chatgpt-auto-refresh',
             greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh',
-            mediaHost: 'https://media.chatgptautorefresh.com',
+            mediaHost: 'https://assets.chatgptautorefresh.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
