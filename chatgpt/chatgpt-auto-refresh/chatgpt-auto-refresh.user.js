@@ -294,7 +294,7 @@
             },
             gitHub: 'https://github.com/adamlui/chatgpt-auto-refresh',
             greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh',
-            mediaHost: 'https://assets.chatgptautorefresh.com',
+            assetHost: 'https://assets.chatgptautorefresh.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
@@ -908,7 +908,7 @@
                 const isDarkScheme = env.ui.scheme == 'dark'
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
-                this.navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
+                this.navicon.src = `${app.urls.assetHost}/images/icons/auto-refresh/${
                     env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestResourceCommitHash}`
             },
 
