@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.5
+// @version             2025.1.5.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -293,9 +293,9 @@
             },
             support: 'https://support.chatgptautotalk.com'
         },
-        latestAssetCommitHash: '19ff069' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '19ff069' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
-    app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
+    app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
@@ -344,7 +344,7 @@
     // LOCALIZE app.msgs for non-English users
     if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
+            const msgHostDir = app.urls.resourceHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
@@ -857,7 +857,7 @@
                 const isDarkScheme = env.ui.scheme == 'dark'
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
-                this.navicon.src = `${app.urls.assetHost }/assets/images/icons/speaker/${
+                this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/speaker/${
                     env.ui.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
             },
 
