@@ -869,7 +869,7 @@
                 const isDarkScheme = env.ui.scheme == 'dark'
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
-                this.navicon.src = `${app.urls.mediaHost}/images/icons/incognito/${
+                this.navicon.src = `${app.urls.assetHost}/images/icons/incognito/${
                     env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestResourceCommitHash}`
             },
 
