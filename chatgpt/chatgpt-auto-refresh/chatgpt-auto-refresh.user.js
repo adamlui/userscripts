@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.5.4
+// @version             2025.1.5.5
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=85253d4
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=85253d4
@@ -301,9 +301,9 @@
             },
             support: 'https://support.chatgptautorefresh.com'
         },
-        latestAssetCommitHash: 'd68daee' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: 'd68daee' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
-    app.urls.assetHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestAssetCommitHash}`
+    app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
@@ -361,7 +361,7 @@
     // LOCALIZE app.msgs for non-English users
     if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = app.urls.assetHost + '/greasemonkey/_locales/',
+            const msgHostDir = app.urls.resourceHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
@@ -909,7 +909,7 @@
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
                 this.navicon.src = `${app.urls.mediaHost}/images/icons/auto-refresh/${
-                    env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestAssetCommitHash}`
+                    env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?${app.latestResourceCommitHash}`
             },
 
             updateState() {
