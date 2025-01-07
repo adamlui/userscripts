@@ -48,7 +48,7 @@
 [自述文件](../../highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://media.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://greasyfork.org/scripts/456132) /
