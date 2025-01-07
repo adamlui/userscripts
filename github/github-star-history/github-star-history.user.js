@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.7.4
+// @version             2025.1.7.5
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -38,8 +38,9 @@
 
 (async () => {
 
-    // Init ENV vars
-    const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
+    // Init ENV context
+    const env = { browser: { isPhone: chatgpt.browser.isMobile() && window.innerWidth <= 480 }},
+          xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP info
     const app = { latestResourceCommitHash: '8405505', urls: {} }
@@ -155,14 +156,15 @@
                 // Insert div
                 const aboutSection = document.querySelector('.about-margin > div')
                 aboutSection.insertAdjacentElement('afterend', starHistoryDiv)
-                //移动设备添加顶部按钮
-                insertBtn(imgDataURL)
+
+                // Add top button to show chart on phones
+                if (env.browser.isPhone) insertPhoneBtn(imgDataURL)
             }
 
         } catch (err) { console.error('>> Error loading star history chart:', err) }
     }
 
-    function insertBtn(imgDataURL) {
+    function insertPhoneBtn(imgDataURL) {
         const el = document.querySelector('#responsive-meta-container .d-flex.gap-2.mt-n3.mb-3.flex-wrap')
         if (!el) return
         if (document.getElementById('zoomStarHistory')) return
