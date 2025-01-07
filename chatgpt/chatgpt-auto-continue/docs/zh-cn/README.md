@@ -144,7 +144,7 @@ ChatGPT 自动继续 依赖于功能强大的 [chatgpt.js](https://github.com/Ku
 
 ## 📜 相关脚本
 
-### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/white/icon16.png"><img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/icons/openai/black/icon16.png"></picture> [ChatGPT 自动谈话 📣](https://github.com/adamlui/chatgpt-auto-talk) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautotalk.com/images/icons/openai/white/icon16.png"><img width=16 src="https://assets.chatgptautotalk.com/images/icons/openai/black/icon16.png"></picture> [ChatGPT 自动谈话 📣](https://github.com/adamlui/chatgpt-auto-talk) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://assets.chatgptautotalk.com/images/badges/awesome/badge.svg"></a>
 
 > 自动播放 ChatGPT 的回复。
 <br>[安装](https://github.com/adamlui/chatgpt-auto-talk/tree/main/docs/zh-cn/#-如何安装) /
