@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
 
 <a href="https://github.com/adamlui/github-star-history/blob/main/LICENSE.md">
     <img alt = "[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
@@ -16,7 +16,7 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
@@ -24,7 +24,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/adamlui/github-star-history/main/media/images/screenshots/star-history-in-sidebar.png">
+<img src="https://raw.githubusercontent.com/adamlui/github-star-history/main/assets/images/screenshots/star-history-in-sidebar.png">
 
 </div>
 
@@ -38,7 +38,7 @@
 
 <br>
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
@@ -59,21 +59,21 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 ## 📜 Related scripts
 
-### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
 [Install](https://github.com/adamlui/github-widescreen#-installation) /
 [Readme](https://github.com/adamlui/github-widescreen#readme) /
 [Discuss](https://github.com/adamlui/github-widescreen/discussions)
 
-### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
+### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
 [Discuss](https://chatgptevo.com/widescreen/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#top">Back to top ↑</a>
