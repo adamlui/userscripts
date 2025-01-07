@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.1
+// @version             2025.1.7
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -39,8 +39,8 @@
 (async () => {
 
     // Init ENV vars
-    const env = { scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' } })() },
-          xhr = env.scriptManager == 'OrangeMonkey' ? GM_xmlhttpRequest : GM.xmlHttpRequest
+    const env = { scriptManager: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' } })() }
+    const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP info
     const app = { latestAssetCommitHash: '8405505' },
