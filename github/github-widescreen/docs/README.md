@@ -2,9 +2,12 @@
 
 # <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE.md)
-[![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/github-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-widescreen)
-[![SonarCloud vulnerabilities](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_github-widescreen%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonarcloud&logoColor=white&labelColor=464646&label=Vulnerabilities&color=gold)](https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_github-widescreen)
+<a href="https://github.com/adamlui/github-widescreen/blob/main/LICENSE.md">
+    <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+<a href="https://www.codefactor.io/repository/github/adamlui/github-widescreen">
+    <img alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/github-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
+<a href="https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_github-widescreen">
+    <img alt="[SonarCloud vulnerabilities]" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_github-widescreen%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonarcloud&logoColor=white&labelColor=464646&label=Vulnerabilities&color=gold"></a>
 
 ### Auto-hides obtrusive side panels from GitHub
 
