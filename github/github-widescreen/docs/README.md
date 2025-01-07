@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> GitHub Widescreen 🖥️ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hide%20the%20annoying%20sidebars%20from%20new%20GitHub%20UI%20with%20this%20userscript%21&url=https://github.com/adamlui/github-widescreen&hashtags=greasemonkey,github,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/github-widescreen/blob/main/LICENSE.md)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/github-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/github-widescreen)
@@ -8,7 +8,7 @@
 
 ### Auto-hides obtrusive side panels from GitHub
 
-<a href="https://greasyfork.org/scripts/473439-github-widescreen"><img height=42 alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/473439-github-widescreen"><img height=42 alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-widescreen/discussions) /
 [Review](https://greasyfork.org/scripts/473439-github-widescreen/feedback#post-discussion) /
@@ -34,21 +34,21 @@
 
 ## 📜 Related scripts
 
-### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/media/images/badges/awesome/badge.svg"></a>
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/badges/awesome/badge.svg"></a>
 
 Adds star history chart to sidebar of GitHub repos.<br>
 [Install](https://greasyfork.org/scripts/473377) /
 [Readme](https://github.com/adamlui/github-star-history#readme) /
 [Discuss](https://github.com/adamlui/github-star-history/discussions)
 
-### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/media/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
+### <img width=17 src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/main/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
 [Discuss](https://chatgptwidescreen.com/discuss)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
 <a href="#top">Back to top ↑</a>
