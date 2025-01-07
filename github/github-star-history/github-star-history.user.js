@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.7.1
+// @version             2025.1.7.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -42,8 +42,8 @@
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP info
-    const app = { latestAssetCommitHash: '8405505' },
-        assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestAssetCommitHash}`
+    const app = { latestResourceCommitHash: '8405505' },
+        assetHostURL = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestResourceCommitHash}`
     Object.assign(app, await new Promise(resolve => xhr({
         method: 'GET', url: `${assetHostURL}/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
