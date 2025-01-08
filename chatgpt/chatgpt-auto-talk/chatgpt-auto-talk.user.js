@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.8
+// @version             2025.1.8.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -426,8 +426,8 @@
             onload: resp => {
 
                 // Compare versions, alert if update found
-                app.latestVer = /@version +(.*)/.exec(resp.responseText)[1]
-                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                app.latestVer = /@version +(.*)/.exec(resp.responseText)?.[1]
+                if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
