@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.7
+// @version             2025.1.8
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -479,8 +479,8 @@
             onload: resp => {
 
                 // Compare versions, alert if update found
-                app.latestVer = /@version +(.*)/.exec(resp.responseText)[1]
-                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                app.latestVer = /@version +(.*)/.exec(resp.responseText)?.[1]
+                if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
