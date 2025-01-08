@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.5.1
+// @version             2025.1.8
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -286,10 +286,10 @@
                 payPal: 'https://paypal.me/adamlui'
             },
             gitHub: 'https://github.com/adamlui/chatgpt-auto-talk',
-            greasyFork: 'https://greasyfork.org/en/scripts/500940-chatgpt-auto-talk',
+            greasyFork: 'https://greasyfork.org/scripts/500940-chatgpt-auto-talk',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
-                greasyFork: 'https://greasyfork.org/en/scripts/500940-chatgpt-auto-talk/feedback#post-discussion'
+                greasyFork: 'https://greasyfork.org/scripts/500940-chatgpt-auto-talk/feedback#post-discussion'
             },
             support: 'https://support.chatgptautotalk.com'
         },
