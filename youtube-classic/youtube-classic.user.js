@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.1
+// @version           2025.1.10
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -27,10 +27,17 @@
 
 (() => {
 
+    // Init APP data
+    const app = { configKeyPrefix: 'ytClassic' }
+
+    // Init SETTINGS
+    const config = {}
+    loadSetting('disableShorts')
+
     // Define FUNCTIONS
 
-    function loadSetting(...keys) { keys.forEach(key => { config[key] = GM_getValue(config.prefix + '_' + key, false) })}
-    function saveSetting(key, value) { GM_setValue(config.prefix + '_' + key, value) ; config[key] = value }
+    function loadSetting(...keys) { keys.forEach(key => { config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false) })}
+    function saveSetting(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
     function getUserscriptManager() { try { return GM_info.scriptHandler } catch (error) { return 'other' }}
     function registerMenu() {
         const menuIDs = [] // to store registered commands for removal while preserving order
@@ -50,9 +57,6 @@
     }
 
     // Run MAIN routine
-
-    const config = { prefix: 'ytClassic' }
-    loadSetting('disableShorts')
     registerMenu()
 
     // Redirect Shorts
