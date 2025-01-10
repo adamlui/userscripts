@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.13
+// @version           2025.1.10.14
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -117,8 +117,7 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'disableShorts') {
-            if (config.disableShorts)
-                !redirIfShorts() && shortsObserver.observe(document.body, { childList: true, subtree: true })
+            if (config.disableShorts) shortsObserver.observe(document.body, { childList: true, subtree: true })
             else shortsObserver.disconnect()
         } else if (options?.updatedKey == 'adBlock') {
             if (config.adBlock) adObserver.observe(document.body, { childList: true, subtree: true })
@@ -2032,16 +2031,13 @@
     let locationPath = location.pathname // to track nav
     const obsConfig = { childList: true, subtree: true }
     const shortsObserver = new MutationObserver(() => {
-        if (location.pathname != locationPath && !redirIfShorts()) { // nav'd to diff page, re-observe if no redir
+        if (location.pathname != locationPath) { // nav'd to diff page, re-observe if no redir
             locationPath = location.pathname ; shortsObserver.disconnect()
             waitForElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
-        }
+        } else if (location.pathname.startsWith('/shorts'))
+            location.replace(location.href.replace('/shorts/', '/watch?v='))
     })
     if (config.disableShorts) waitForElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
-    function redirIfShorts() {
-        if (location.href.includes('/shorts/')) {
-            location.replace(location.href.replace('/shorts/', '/watch?v=')) ; return true }
-    }
 
     // Remove homepage ads/rich sections
     const adObserver = new MutationObserver(() => {
