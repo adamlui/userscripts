@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.8.2
+// @version             2025.1.10
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -400,8 +400,8 @@
                 label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
-        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
     settings.load('arDisabled', 'notifDisabled', 'refreshInterval', 'toggleHidden')
     if (!config.refreshInterval) settings.save('refreshInterval', 30) // init refresh interval to 30 secs if unset
