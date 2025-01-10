@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.10
+// @version           2025.1.10.11
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -2024,28 +2024,31 @@
     }
 
     // Redirect Shorts to classic player
-    let prevURL = location.href
+    let locationPath = location.pathname // to track nav
+    const obsConfig = { childList: true, subtree: true }
     const shortsObserver = new MutationObserver(() => {
-        if (location.href != prevURL) { prevURL = location.href ; redirIfShorts() }})
-    if (config.disableShorts) shortsObserver.observe(document.body, { childList: true, subtree: true })
+        if (location.pathname != locationPath && !redirIfShorts()) { // nav'd to diff page, re-observe if no redir
+            locationPath = location.pathname ; shortsObserver.disconnect()
+            waitForElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
+        }
+    })
+    if (config.disableShorts) shortsObserver.observe(document.body, obsConfig)
     function redirIfShorts() {
         if (location.href.includes('/shorts/')) {
             location.replace(location.href.replace('/shorts/', '/watch?v=')) ; return true }
     }
 
     // Remove homepage ads/rich sections
-    let locationPath = location.pathname
-    const adObsConfig = { childList: true, subtree: true }
     const adObserver = new MutationObserver(() => {
-        if (location.pathname != locationPath) { // page changed, re-observe
+        if (location.pathname != locationPath) { // nav'd to diff page, re-observe
             locationPath = location.pathname ; adObserver.disconnect()
-            waitForElem('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+            waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
         } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer'),
                   richSection = document.querySelector('ytd-rich-section-renderer')
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    waitForElem('html').then(() => adObserver.observe(document.documentElement, adObsConfig))
+    waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
 
 })()
