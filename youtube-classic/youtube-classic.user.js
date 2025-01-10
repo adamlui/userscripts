@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.9
+// @version           2025.1.10.10
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -114,9 +114,11 @@
     }
 
     function syncConfigToUI(options) {
-        if (options?.updatedKey == 'disableShorts')
-            shortsObserver[config.disableShorts? 'observe' : 'disconnect'](
-                document.body, { childList: true, subtree: true })
+        if (options?.updatedKey == 'disableShorts') {
+            if (config.disableShorts)
+                 !redirIfShorts() && shortsObserver.observe(document.body, { childList: true, subtree: true })
+            else shortsObserver.disconnect()
+        }
         menu.refresh() // prefixes/suffixes
     }
 
@@ -2024,12 +2026,12 @@
     // Redirect Shorts to classic player
     let prevURL = location.href
     const shortsObserver = new MutationObserver(() => {
-        if (location.href != prevURL) {
-            prevURL = location.href
-            if (location.href.includes('/shorts/')) location.replace(location.href.replace('/shorts/', '/watch?v='))
-        }
-    })
+        if (location.href != prevURL) { prevURL = location.href ; redirIfShorts() }})
     if (config.disableShorts) shortsObserver.observe(document.body, { childList: true, subtree: true })
+    function redirIfShorts() {
+        if (location.href.includes('/shorts/')) {
+            location.replace(location.href.replace('/shorts/', '/watch?v=')) ; return true }
+    }
 
     // Remove homepage ads/rich sections
     let locationPath = location.pathname
