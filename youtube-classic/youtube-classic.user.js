@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.4
+// @version           2025.1.10.5
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -30,11 +30,15 @@
 
     // Init ENV context
     const env = {
-        scriptManager: { name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() },
+        scriptManager: {
+            name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
+            version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
+        },
         ui: { scheme: document.documentElement.hasAttribute('dark')
                    || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
     }
-
+    env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
+                                      && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     // Init APP data
     const app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
 
@@ -43,7 +47,8 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            disableShorts: { type: 'toggle', label: 'Redirect Shorts' }
+            disableShorts: { type: 'toggle', label: 'Redirect Shorts',
+                helptip: 'Redirect Shorts to classic wide player' }
         },
 
         load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
@@ -76,7 +81,7 @@
                             menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                     }
                     syncConfigToUI({ updatedKey: key })
-                }))
+                }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             })
         },
 
