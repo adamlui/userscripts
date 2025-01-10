@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.15
+// @version           2025.1.10.16
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -50,7 +50,9 @@
             disableShorts: { type: 'toggle', label: 'Redirect Shorts',
                 helptip: 'Redirect Shorts to classic wide player' },
             adBlock: { type: 'toggle', label: 'Ad Block',
-                helptip: 'Hide ad thumbnails from page layouts' }
+                helptip: 'Hide ad thumbnails from page layouts' },
+            notifDisabled: { type: 'toggle', label: 'Mode Notifications',
+                helptip: 'Show notifications when toggling mode/settings' }
         },
 
         load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
@@ -94,7 +96,7 @@
     }
 
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
-        if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
+        if (config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
 
         // Strip state word to append colored one later
         const foundState = menu.state.words.find(word => msg.includes(word))
