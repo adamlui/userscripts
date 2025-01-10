@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.3
+// @version           2025.1.10.4
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -13,6 +13,7 @@
 // @compatible        safari
 // @compatible        edge
 // @match             *://*.youtube.com/*
+// @require           https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @grant             GM_registerMenuCommand
 // @grant             GM_unregisterMenuCommand
 // @grant             GM_getValue
@@ -29,10 +30,13 @@
 
     // Init ENV context
     const env = {
-        scriptManager: { name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() }}
+        scriptManager: { name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})() },
+        ui: { scheme: document.documentElement.hasAttribute('dark')
+                   || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
+    }
 
     // Init APP data
-    const app = { configKeyPrefix: 'ytClassic' }
+    const app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
 
     // Init SETTINGS
     const config = {}
@@ -66,7 +70,11 @@
                                                                             + menu.state.words[+settingIsEnabled]
                                                                             : `— ${settings.controls[key].status}` )
                 menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    if (settings.controls[key].type == 'toggle') settings.save(key, !config[key])
+                    if (settings.controls[key].type == 'toggle') {
+                        settings.save(key, !config[key])
+                        notify(`${settings.controls[key].label}: ${
+                            menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                    }
                     syncConfigToUI({ updatedKey: key })
                 }))
             })
@@ -75,6 +83,27 @@
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+        }
+    }
+
+    function notify(msg, pos = '', notifDuration = '', shadow = '') {
+        if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
+
+        // Strip state word to append colored one later
+        const foundState = menu.state.words.find(word => msg.includes(word))
+        if (foundState) msg = msg.replace(foundState, '')
+
+        // Show notification
+        chatgpt.notify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
+        const notif = document.querySelector('.chatgpt-notif:last-child')
+
+        // Append styled state word
+        if (foundState) {
+            const styledStateSpan = document.createElement('span')
+            styledStateSpan.style.cssText = `color: ${
+                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
+            styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
 
