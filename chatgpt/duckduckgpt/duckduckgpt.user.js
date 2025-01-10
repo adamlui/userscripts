@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.10
+// @version                2025.1.10.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -555,11 +555,7 @@
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
-    settings.load(
-        'anchored', 'autoGet', 'autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded',
-        'fgAnimationsDisabled', 'fontSize', 'minimized', 'notFirstRun', 'prefixEnabled', 'proxyAPIenabled',
-        'replyLanguage', 'rqDisabled', 'scheme', 'stickySidebar', 'streamingDisabled', 'suffixEnabled', 'widerSidebar'
-    )
+    settings.load([...Object.keys(settings.controls), 'expanded', 'fontSize', 'minimized', 'notFirstRun'])
     if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
     if (!env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager)

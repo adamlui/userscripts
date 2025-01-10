@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.10
+// @version                2025.1.10.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -378,8 +378,7 @@
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
-    settings.load('autoFocusChatbarDisabled', 'autoScroll', 'bgAnimationsDisabled', 'expanded', 'fgAnimationsDisabled',
-                  'fontSize', 'minimized', 'proxyAPIenabled', 'replyLanguage', 'scheme', 'streamingDisabled')
+    settings.load([...Object.keys(settings.controls), 'expanded', 'fontSize', 'minimized'])
     if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
     if (!env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager)
