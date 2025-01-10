@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.8
+// @version                2025.1.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -229,8 +229,8 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false)) },
-        save(key, val) { GM_setValue(app.configKeyPrefix + '_' + key, val) ; config[key] = val }
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     } ; settings.load('debugMode')
 
     // Define LOG props/functions
