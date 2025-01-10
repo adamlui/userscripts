@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.1
+// @version           2025.1.10.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -33,6 +33,11 @@
     // Init SETTINGS
     const config = {}
     const settings = {
+
+        controls: { // displays top-to-bottom in toolbar menu
+            disableShorts: { type: 'toggle', label: 'Redirect Shorts' }
+        },
+
         load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
@@ -41,25 +46,44 @@
     // Define FUNCTIONS
 
     function getUserscriptManager() { try { return GM_info.scriptHandler } catch (error) { return 'other' }}
-    function registerMenu() {
-        const menuIDs = [] // to store registered commands for removal while preserving order
-        const state = {
-            symbol: ['✔️', '❌'], word: ['ON', 'OFF'],
-            separator: getUserscriptManager() === 'Tampermonkey' ? ' — ' : ': ' }
 
-        // Add command to toggle Shorts redirect
-        const rsLabel = state.symbol[+!config.disableShorts] + ' Redirect Shorts '
-                      + state.separator + state.word[+!config.disableShorts]
-        menuIDs.push(GM_registerMenuCommand(rsLabel, () => {
-            settings.save('disableShorts', !config.disableShorts)
-            for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
-            if (unsafeWindow.location.href.match(/shorts\/.+/))
-                unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
-        }))
+    const menu = {
+        ids: [], state: {
+            symbols: ['❌', '✔️'], separator: getUserscriptManager() == 'Tampermonkey' ? ' — ' : ': ',
+            words: ['OFF', 'ON']
+        },
+
+        register() {
+
+            // Add toggles
+            Object.keys(settings.controls).forEach(key => {
+                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
+                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                                + settings.controls[key].label
+                                + ( settings.controls[key].type == 'toggle' ? menu.state.separator
+                                                                            + menu.state.words[+settingIsEnabled]
+                                                                            : `— ${settings.controls[key].status}` )
+                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                    if (settings.controls[key].type == 'toggle') settings.save(key, !config[key])
+                    syncConfigToUI({ updatedKey: key })
+                }))
+            })
+        },
+
+        refresh() {
+            if (typeof GM_unregisterMenuCommand == 'undefined') return
+            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+        }
+    }
+
+    function syncConfigToUI() {
+        if (config.disableShorts && unsafeWindow.location.href.match(/shorts\/.+/))
+            unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
+        menu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
-    registerMenu()
+    menu.register()
 
     // Redirect Shorts
     if (config.disableShorts) {
