@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.17
+// @version           2025.1.10.18
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -47,15 +47,21 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            disableShorts: { type: 'toggle', label: 'Redirect Shorts',
+            disableShorts: { type: 'toggle', label: 'Redirect Shorts', defaultVal: false,
                 helptip: 'Redirect Shorts to classic wide player' },
-            adBlock: { type: 'toggle', label: 'Ad Block',
+            adBlock: { type: 'toggle', label: 'Ad Block', defaultVal: false,
                 helptip: 'Hide ad thumbnails from page layouts' },
-            notifDisabled: { type: 'toggle', label: 'Mode Notifications',
+            notifDisabled: { type: 'toggle', label: 'Mode Notifications', defaultVal: false,
                 helptip: 'Show notifications when toggling mode/settings' }
         },
 
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        load(...keys) {
+            keys.flat().forEach(key => {
+                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
+                    this.controls[key]?.defaultVal || this.controls[key]?.type == 'toggle')
+            })
+        },
+
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
     settings.load(Object.keys(settings.controls))
