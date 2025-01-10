@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10
+// @version           2025.1.10.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -32,12 +32,14 @@
 
     // Init SETTINGS
     const config = {}
-    loadSetting('disableShorts')
+    const settings = {
+        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
+    }
+    settings.load('disableShorts')
 
     // Define FUNCTIONS
 
-    function loadSetting(...keys) { keys.forEach(key => { config[key] = GM_getValue(app.configKeyPrefix + '_' + key, false) })}
-    function saveSetting(key, value) { GM_setValue(app.configKeyPrefix + '_' + key, value) ; config[key] = value }
     function getUserscriptManager() { try { return GM_info.scriptHandler } catch (error) { return 'other' }}
     function registerMenu() {
         const menuIDs = [] // to store registered commands for removal while preserving order
@@ -49,7 +51,7 @@
         const rsLabel = state.symbol[+!config.disableShorts] + ' Redirect Shorts '
                       + state.separator + state.word[+!config.disableShorts]
         menuIDs.push(GM_registerMenuCommand(rsLabel, () => {
-            saveSetting('disableShorts', !config.disableShorts)
+            settings.save('disableShorts', !config.disableShorts)
             for (const id of menuIDs) { GM_unregisterMenuCommand(id) } registerMenu() // refresh menu
             if (unsafeWindow.location.href.match(/shorts\/.+/))
                 unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
