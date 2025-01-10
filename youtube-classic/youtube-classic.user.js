@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.5
+// @version           2025.1.10.7
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -112,33 +112,15 @@
         }
     }
 
-    function syncConfigToUI() {
-        if (config.disableShorts && unsafeWindow.location.href.match(/shorts\/.+/))
-            unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
+    function syncConfigToUI(options) {
+        if (options?.updatedKey == 'disableShorts')
+            shortsObserver[config.disableShorts? 'observe' : 'disconnect'](
+                document.body, { childList: true, subtree: true })
         menu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
     menu.register()
-
-    // Redirect Shorts
-    if (config.disableShorts) {
-        var oldHref = location.href;
-        if (unsafeWindow.location.href.match(/shorts\/.+/))
-            unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
-        unsafeWindow.onload = () => {
-            var bodyList = document.querySelector('body')
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function() {
-                    if (oldHref != location.href) {
-                        oldHref = location.href
-                        if (unsafeWindow.location.href.match(/shorts\/.+/))
-                            unsafeWindow.location.replace(unsafeWindow.location.toString().replace('/shorts/', '/watch?v='))
-            }})})
-            var config = { childList: true, subtree: true }
-            observer.observe(bodyList, config);
-        }
-    }
 
     // Config keys
     const CONFIGS = { BUTTON_REWORK: false }
@@ -2037,6 +2019,16 @@
             } else { getDislikeButton().querySelector('.button-renderer-text').innerText = mobileDislikes; }
         }, 1000);
     }
+
+    // Redirect Shorts to classic player
+    let prevURL = location.href
+    const shortsObserver = new MutationObserver(() => {
+        if (location.href != prevURL) {
+            prevURL = location.href
+            if (location.href.includes('/shorts/')) location.replace(location.href.replace('/shorts/', '/watch?v='))
+        }
+    })
+    if (config.disableShorts) shortsObserver.observe(document.body, { childList: true, subtree: true })
 
     // Remove homepage ads/rich sections
     let locationPath = location.pathname
