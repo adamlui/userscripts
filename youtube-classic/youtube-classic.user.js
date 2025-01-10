@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.12
+// @version           2025.1.10.13
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -48,13 +48,15 @@
 
         controls: { // displays top-to-bottom in toolbar menu
             disableShorts: { type: 'toggle', label: 'Redirect Shorts',
-                helptip: 'Redirect Shorts to classic wide player' }
+                helptip: 'Redirect Shorts to classic wide player' },
+            adBlock: { type: 'toggle', label: 'Ad Block',
+                helptip: 'Hide ad thumbnails from page layouts' }
         },
 
         load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
-    settings.load('disableShorts')
+    settings.load(Object.keys(settings.controls))
 
     // Define FUNCTIONS
 
@@ -116,8 +118,11 @@
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'disableShorts') {
             if (config.disableShorts)
-                 !redirIfShorts() && shortsObserver.observe(document.body, { childList: true, subtree: true })
+                !redirIfShorts() && shortsObserver.observe(document.body, { childList: true, subtree: true })
             else shortsObserver.disconnect()
+        } else if (options?.updatedKey == 'adBlock') {
+            if (config.adBlock) adObserver.observe(document.body, { childList: true, subtree: true })
+            else adObserver.disconnect()
         }
         menu.refresh() // prefixes/suffixes
     }
@@ -2049,6 +2054,6 @@
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+    if (config.adBlock) waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
 
 })()
