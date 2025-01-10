@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.16
+// @version           2025.1.10.17
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -126,6 +126,7 @@
     }
 
     // Run MAIN routine
+
     menu.register()
 
     // Config keys
@@ -281,14 +282,17 @@
 
     function $(q) { return document.querySelector(q) }
 
-    // Re-add 'Explore' tab in sidebar (it also replaces the 'Shorts' tab)
-    function waitForElem(selector) {
-        return new Promise(resolve => {
-            if (document.querySelector(selector)) resolve(true)
+    function getLoadedElem(selector, timeout = null) {
+        const timeoutPromise = timeout ? new Promise(resolve => setTimeout(() => resolve(null), timeout)) : null
+        const isLoadedPromise = new Promise(resolve => {
+            const elem = document.querySelector(selector)
+            if (elem) resolve(elem)
             else new MutationObserver((_, obs) => {
-                if (document.querySelector(selector)) { resolve(true) ; obs.disconnect() }
+                const elem = document.querySelector(selector)
+                if (elem) { obs.disconnect() ; resolve(elem) }
             }).observe(document.documentElement, { childList: true, subtree: true })
         })
+        return ( timeoutPromise ? Promise.race([isLoadedPromise, timeoutPromise]) : isLoadedPromise )
     }
 
     function restoreTrending() {
@@ -315,8 +319,8 @@
         document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
     }
 
-    waitForElem('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
-    waitForElem('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
+    getLoadedElem('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
+    getLoadedElem('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
 
     // Fix YouTube dislikes
     addEventListener('yt-page-data-updated', function() {
@@ -1510,7 +1514,7 @@
       opacity: 1 !important;
     }`
 
-    waitForElem('head').then(() => document.head.append(fixesStyle));
+    getLoadedElem('head').then(() => document.head.append(fixesStyle));
 
     (() => {
         const css = [
@@ -2032,23 +2036,23 @@
     const shortsObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe if no redir
             locationPath = location.pathname ; shortsObserver.disconnect()
-            waitForElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
+            getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
         } else if (location.pathname.startsWith('/shorts'))
             location.replace(location.href.replace('/shorts/', '/watch?v='))
     })
-    if (config.disableShorts) waitForElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
+    if (config.disableShorts) getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
 
     // Remove homepage ads/rich sections
     const adObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe
             locationPath = location.pathname ; adObserver.disconnect()
-            waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+            getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
         } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer'),
                   richSection = document.querySelector('ytd-rich-section-renderer')
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    if (config.adBlock) waitForElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+    if (config.adBlock) getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
 
 })()
