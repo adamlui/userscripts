@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.10.14
+// @version           2025.1.10.15
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -116,13 +116,10 @@
     }
 
     function syncConfigToUI(options) {
-        if (options?.updatedKey == 'disableShorts') {
-            if (config.disableShorts) shortsObserver.observe(document.body, { childList: true, subtree: true })
-            else shortsObserver.disconnect()
-        } else if (options?.updatedKey == 'adBlock') {
-            if (config.adBlock) adObserver.observe(document.body, { childList: true, subtree: true })
-            else adObserver.disconnect()
-        }
+        if (options?.updatedKey == 'disableShorts')
+            shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
+        else if (options?.updatedKey == 'adBlock')
+            adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         menu.refresh() // prefixes/suffixes
     }
 
