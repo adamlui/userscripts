@@ -1,9 +1,12 @@
-name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/ & adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+name: Sync chatgpt/googlegpt/ to KudoAI/googlegpt/greasemonkey/ & adamlui/ai-apps/googlegpt/greasemonkey/
 
 on:
   push:
     branches: [master]
-    paths: [chatgpt/chatgpt-auto-refresh/**]
+    paths: [chatgpt/googlegpt/**]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -21,12 +24,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout adamlui/chatgpt-auto-refresh
+      - name: Checkout KudoAI/googlegpt
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-auto-refresh
-          path: adamlui/chatgpt-auto-refresh
+          repository: KudoAI/googlegpt
+          path: KudoAI/googlegpt
 
       - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
@@ -35,26 +38,26 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs/ to adamlui/chatgpt-auto-refresh/docs/ && adamlui/ai-apps/chatgpt-auto-refresh/docs/
+      - name: Sync docs/ to KudoAI/googlegpt/docs/ & adamlui/ai-apps/googlegpt/docs/
         run: |
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs \
-            ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
+            ${{ github.workspace }}/KudoAI/googlegpt/
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-refresh/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
+            ${{ github.workspace }}/adamlui/ai-apps/googlegpt/
 
-      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/
+      - name: Sync chatgpt/googlegpt/ to KudoAI/googlegpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ \
-            ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
+            ${{ github.workspace }}/KudoAI/googlegpt/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+      - name: Sync chatgpt/googlegpt/ to adamlui/ai-apps/googlegpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
+            ${{ github.workspace }}/adamlui/ai-apps/googlegpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,16 +75,16 @@ jobs:
           git config --global user.email "auto-sync@kudoai.com"
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
-      - name: Push changes to adamlui/chatgpt-auto-refresh
+      - name: Push changes to KudoAI/googlegpt
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-auto-refresh
+          cd ${{ github.workspace }}/KudoAI/googlegpt
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt]" || true
           git push
 
       - name: Push changes to adamlui/ai-apps
         run: |
           cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt]" || true
           git push

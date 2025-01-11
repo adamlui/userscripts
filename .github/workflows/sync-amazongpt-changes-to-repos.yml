@@ -1,9 +1,12 @@
-name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/ & adamlui/ai-apps/bravegpt/greasemonkey/
+name: Sync chatgpt/amazongpt/ to KudoAI/amazongpt/greasemonkey/ & adamlui/ai-apps/amazongpt/greasemonkey/
 
 on:
   push:
     branches: [master]
-    paths: [chatgpt/bravegpt/**]
+    paths: [chatgpt/amazongpt/**]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -21,12 +24,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout KudoAI/bravegpt
+      - name: Checkout KudoAI/amazongpt
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: KudoAI/bravegpt
-          path: KudoAI/bravegpt
+          repository: KudoAI/amazongpt
+          path: KudoAI/amazongpt
 
       - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
@@ -35,26 +38,26 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync docs/ to KudoAI/bravegpt/docs/ && adamlui/ai-apps/bravegpt/docs/
+      - name: Sync docs/ to KudoAI/amazongpt/docs/ && adamlui/ai-apps/amazongpt/docs/
         run: |
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
-            ${{ github.workspace }}/KudoAI/bravegpt/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/docs \
+            ${{ github.workspace }}/KudoAI/amazongpt/
           cp -r -f -v \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
-            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/docs \
+            ${{ github.workspace }}/adamlui/ai-apps/amazongpt/
 
-      - name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/
+      - name: Sync chatgpt/amazongpt/ to KudoAI/amazongpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
-            ${{ github.workspace }}/KudoAI/bravegpt/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/ \
+            ${{ github.workspace }}/KudoAI/amazongpt/greasemonkey/
 
-      - name: Sync chatgpt/bravegpt/ to adamlui/ai-apps/bravegpt/greasemonkey/
+      - name: Sync chatgpt/amazongpt/ to adamlui/ai-apps/amazongpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
-            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/amazongpt/ \
+            ${{ github.workspace }}/adamlui/ai-apps/amazongpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -72,16 +75,16 @@ jobs:
           git config --global user.email "auto-sync@kudoai.com"
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
-      - name: Push changes to KudoAI/bravegpt
+      - name: Push changes to KudoAI/amazongpt
         run: |
-          cd ${{ github.workspace }}/KudoAI/bravegpt
+          cd ${{ github.workspace }}/KudoAI/amazongpt
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt]" || true
           git push
 
       - name: Push changes to adamlui/ai-apps
         run: |
           cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt]" || true
           git push

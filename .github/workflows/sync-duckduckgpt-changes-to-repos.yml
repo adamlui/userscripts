@@ -1,9 +1,12 @@
-name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/ & adamlui/ai-apps/chatgpt-infinity/greasemonkey/
+name: Sync chatgpt/duckduckgpt/ to KudoAI/duckduckgpt/greasemonkey/ & adamlui/ai-apps/duckduckgpt/greasemonkey/
 
 on:
   push:
     branches: [master]
-    paths: [chatgpt/chatgpt-infinity/**]
+    paths: [chatgpt/duckduckgpt/**]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -21,12 +24,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout adamlui/chatgpt-infinity
+      - name: Checkout KudoAI/duckduckgpt
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-infinity
-          path: adamlui/chatgpt-infinity
+          repository: KudoAI/duckduckgpt
+          path: KudoAI/duckduckgpt
 
       - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
@@ -35,17 +38,26 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
+      - name: Sync docs/ to KudoAI/duckduckgpt/docs/ & adamlui/ai-apps/duckduckgpt/docs/
         run: |
-          rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
-            ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
+            ${{ github.workspace }}/KudoAI/duckduckgpt/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/docs \
+            ${{ github.workspace }}/adamlui/ai-apps/duckduckgpt/
 
-      - name: Sync chatgpt/chatgpt-infinity/ to adamlui/ai-apps/chatgpt-infinity/greasemonkey/
+      - name: Sync chatgpt/duckduckgpt/ to KudoAI/duckduckgpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-infinity/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ \
+            ${{ github.workspace }}/KudoAI/duckduckgpt/greasemonkey/
+
+      - name: Sync chatgpt/duckduckgpt/ to adamlui/ai-apps/duckduckgpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/duckduckgpt/ \
+            ${{ github.workspace }}/adamlui/ai-apps/duckduckgpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -63,16 +75,16 @@ jobs:
           git config --global user.email "auto-sync@kudoai.com"
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
-      - name: Push changes to adamlui/chatgpt-infinity
+      - name: Push changes to KudoAI/duckduckgpt
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-infinity
+          cd ${{ github.workspace }}/KudoAI/duckduckgpt
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt]" || true
           git push
 
       - name: Push changes to adamlui/ai-apps
         run: |
           cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt]" || true
           git push

@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "45 1 * * 5" # every Fri @ 1:45 AM
 
+permissions:
+  contents: read
+
 jobs:
   update-chatgpt-usercount-jsd-shields:
     runs-on: ubuntu-latest

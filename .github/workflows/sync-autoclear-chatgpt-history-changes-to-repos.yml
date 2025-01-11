@@ -5,6 +5,9 @@ on:
     branches: [master]
     paths: [chatgpt/autoclear-chatgpt-history/**]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')

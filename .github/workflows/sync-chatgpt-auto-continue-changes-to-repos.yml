@@ -1,9 +1,12 @@
-name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/ & adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/ & adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
 
 on:
   push:
     branches: [master]
-    paths: [chatgpt/chatgpt-widescreen/**]
+    paths: [chatgpt/chatgpt-auto-continue/**]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -21,12 +24,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout adamlui/chatgpt-widescreen
+      - name: Checkout adamlui/chatgpt-auto-continue
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-widescreen
-          path: adamlui/chatgpt-widescreen
+          repository: adamlui/chatgpt-auto-continue
+          path: adamlui/chatgpt-auto-continue
 
       - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
@@ -35,17 +38,17 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/
+      - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ \
-            ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
+            ${{ github.workspace }}/adamlui/chatgpt-auto-continue/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+      - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
+            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -63,16 +66,16 @@ jobs:
           git config --global user.email "auto-sync@kudoai.com"
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
-      - name: Push changes to adamlui/chatgpt-widescreen
+      - name: Push changes to adamlui/chatgpt-auto-continue
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-widescreen
+          cd ${{ github.workspace }}/adamlui/chatgpt-auto-continue
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue]" || true
           git push
 
       - name: Push changes to adamlui/ai-apps
         run: |
           cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue]" || true
           git push

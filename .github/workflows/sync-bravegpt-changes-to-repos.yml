@@ -1,9 +1,12 @@
-name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/ & adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
+name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/ & adamlui/ai-apps/bravegpt/greasemonkey/
 
 on:
   push:
     branches: [master]
-    paths: [chatgpt/chatgpt-auto-continue/**]
+    paths: [chatgpt/bravegpt/**]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -21,12 +24,12 @@ jobs:
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
-      - name: Checkout adamlui/chatgpt-auto-continue
+      - name: Checkout KudoAI/bravegpt
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/chatgpt-auto-continue
-          path: adamlui/chatgpt-auto-continue
+          repository: KudoAI/bravegpt
+          path: KudoAI/bravegpt
 
       - name: Checkout adamlui/ai-apps
         uses: actions/checkout@v4
@@ -35,17 +38,26 @@ jobs:
           repository: adamlui/ai-apps
           path: adamlui/ai-apps
 
-      - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/
+      - name: Sync docs/ to KudoAI/bravegpt/docs/ && adamlui/ai-apps/bravegpt/docs/
         run: |
-          rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
-            ${{ github.workspace }}/adamlui/chatgpt-auto-continue/greasemonkey/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
+            ${{ github.workspace }}/KudoAI/bravegpt/
+          cp -r -f -v \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/docs \
+            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/
 
-      - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
+      - name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/
         run: |
           rsync -avhr --delete \
-            ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-continue/greasemonkey/
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
+            ${{ github.workspace }}/KudoAI/bravegpt/greasemonkey/
+
+      - name: Sync chatgpt/bravegpt/ to adamlui/ai-apps/bravegpt/greasemonkey/
+        run: |
+          rsync -avhr --delete \
+            ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
+            ${{ github.workspace }}/adamlui/ai-apps/bravegpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -63,16 +75,16 @@ jobs:
           git config --global user.email "auto-sync@kudoai.com"
           git config --global user.signingkey "${{ secrets.GPG_PRIVATE_ID }}"
 
-      - name: Push changes to adamlui/chatgpt-auto-continue
+      - name: Push changes to KudoAI/bravegpt
         run: |
-          cd ${{ github.workspace }}/adamlui/chatgpt-auto-continue
+          cd ${{ github.workspace }}/KudoAI/bravegpt
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt]" || true
           git push
 
       - name: Push changes to adamlui/ai-apps
         run: |
           cd ${{ github.workspace }}/adamlui/ai-apps
           git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue]" || true
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt]" || true
           git push
