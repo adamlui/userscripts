@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.11
+// @version             2025.1.11.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -31,32 +31,35 @@
 
 (async () => {
 
-    // Init CONFIG
-    const config = {
-        appName: 'GitHub Widescreen',
-        gitHubURL: 'https://github.com/adamlui/github-widescreen',
-        greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
-    config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
+    // Init APP data
+    const app = {
+        name: 'GitHub Widescreen',
+        urls: {
+            gitHub: 'https://github.com/adamlui/github-widescreen',
+            greasyFork: 'https://greasyfork.org/scripts/473439-github-widescreen'
+        }
+    }
+    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
         .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ !name ? 'script' : name }.meta.js`)
 
     // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About ' + config.appName, async () => {
+    GM_registerMenuCommand('💡 About ' + app.name, async () => {
 
         // Show alert
         const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
               pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
         const aboutAlertID = chatgpt.alert(
-            config.appName, // title
+            app.name, // title
             `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
                 + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
             + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${pBrStyle}"><a href="${config.gitHubURL}" target="_blank" rel="nopener">`
-                + config.gitHubURL + '</a></span>',
+                + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+                + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
                 function leaveAReview() { safeWindowOpen(
-                    config.greasyForkURL + '/feedback#post-discussion') }
+                    app.urls.greasyFork + '/feedback#post-discussion') }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
@@ -95,7 +98,7 @@
         // Fetch latest meta
         const currentVer = GM_info.script.version
         GM.xmlHttpRequest({
-            method: 'GET', url: config.updateURL + '?t=' + Date.now(),
+            method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
 
@@ -108,13 +111,13 @@
 
                         // Alert to update
                         chatgpt.alert('Update available! 🚀', // title
-                            `A newer version of ${config.appName} v${latestVer} is available!  `
+                            `A newer version of ${app.name} v${latestVer} is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
-                                    + 'href="' + config.gitHubURL + '/commits/main/greasemonkey/'
-                                    + config.updateURL.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '" '
+                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
+                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '" '
                                     + '>View changes</a>',
                             function update() { // button
-                                GM_openInTab(config.updateURL.replace('meta.js', 'user.js') + '?t=' + Date.now(),
+                                GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
                                 ).onclose = () => location.reload() },
                             '', 383 // width
@@ -122,7 +125,7 @@
                         return
                 }}
 
-                chatgpt.alert('Up to date!', `${config.appName} (v${currentVer}) is up-to-date!`)
+                chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up-to-date!`)
     }})}
 
     function hideSidePanels() {
