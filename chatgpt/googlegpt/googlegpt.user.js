@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.11
+// @version                  2025.1.11.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -573,9 +573,15 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        load(...keys) {
+            keys.flat().forEach(key => {
+                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
+                    this.controls?.[key]?.defaultVal || this.controls?.[key]?.type == 'toggle')
+            })
+        },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
-    } ; settings.load('debugMode')
+    }
+    settings.load('debugMode')
 
     // Define LOG props/functions
     const log = {
@@ -690,44 +696,44 @@
 
     // Init SETTINGS
     log.debug('Initializing settings...')
-    Object.assign(settings, { controls: {
-        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+    Object.assign(settings, { controls: { // displays top-to-bottom, left-to-right in Settings modal
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses', defaultVal: false,
             label: app.msgs.menuLabel_proxyAPImode,
             helptip: app.msgs.helptip_proxyAPImode },
-        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+        streamingDisabled: { type: 'toggle', icon: 'signalStream', defaultVal: false,
             label: app.msgs.mode_streaming,
             helptip: app.msgs.helptip_streamingMode },
-        autoGet: { type: 'toggle', icon: 'speechBalloonLasso',
+        autoGet: { type: 'toggle', icon: 'speechBalloonLasso', defaultVal: false,
             label: app.msgs.menuLabel_autoGetAnswers,
             helptip: app.msgs.helptip_autoGetAnswers },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: false,
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
-        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown', defaultVal: false,
             label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
             helptip: app.msgs.helptip_autoScroll },
-        rqDisabled: { type: 'toggle', icon: 'speechBalloons',
+        rqDisabled: { type: 'toggle', icon: 'speechBalloons', defaultVal: false,
             label: `${app.msgs.menuLabel_show} ${app.msgs.menuLabel_relatedQueries}`,
             helptip: app.msgs.helptip_showRelatedQueries },
-        prefixEnabled: { type: 'toggle', icon: 'slash',
+        prefixEnabled: { type: 'toggle', icon: 'slash', defaultVal: false,
             label: `${app.msgs.menuLabel_require} "/" ${app.msgs.menuLabel_beforeQuery}`,
             helptip: app.msgs.helptip_prefixMode },
-        suffixEnabled: { type: 'toggle', icon: 'questionMark',
+        suffixEnabled: { type: 'toggle', icon: 'questionMark', defaultVal: false,
             label: `${app.msgs.menuLabel_require} "?" ${app.msgs.menuLabel_afterQuery}`,
             helptip: app.msgs.helptip_suffixMode },
-        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen',
+        widerSidebar: { type: 'toggle', mobile: false, icon: 'widescreen', defaultVal: false,
             label: app.msgs.menuLabel_widerSidebar,
             helptip: app.msgs.helptip_widerSidebar },
-        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner',
+        stickySidebar: { type: 'toggle', mobile: false, icon: 'webCorner', defaultVal: false,
             label: app.msgs.menuLabel_stickySidebar,
             helptip: app.msgs.helptip_stickySidebar },
-        anchored: { type: 'toggle', mobile: false, icon: 'anchor',
+        anchored: { type: 'toggle', mobile: false, icon: 'anchor', defaultVal: false,
             label: app.msgs.mode_anchor,
             helptip: app.msgs.helptip_anchorMode },
-        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles', defaultVal: false,
             label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
             helptip: app.msgs.helptip_bgAnimations },
-        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles', defaultVal: false,
             label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
             helptip: app.msgs.helptip_fgAnimations },
         replyLang: { type: 'prompt', icon: 'languageChars',
@@ -736,7 +742,7 @@
         scheme: { type: 'modal', icon: 'scheme',
             label: app.msgs.menuLabel_colorScheme,
             helptip: app.msgs.helptip_colorScheme },
-        debugMode: { type: 'toggle', icon: 'bug',
+        debugMode: { type: 'toggle', icon: 'bug', defaultVal: false,
             label: app.msgs.mode_debug,
             helptip: app.msgs.helptip_debugMode },
         about: { type: 'modal', icon: 'questionMarkCircle',
