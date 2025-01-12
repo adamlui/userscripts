@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.11.2
+// @version           2025.1.11.3
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -47,7 +47,7 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            disableShorts: { type: 'toggle', label: 'Redirect Shorts',
+            disableShorts: { type: 'toggle', label: 'Redirect Shorts', defaultVal: true,
                 helptip: 'Redirect Shorts to classic wide player' },
             adBlock: { type: 'toggle', label: 'Ad Block', defaultVal: false,
                 helptip: 'Hide ad thumbnails from homepage layouts' },
