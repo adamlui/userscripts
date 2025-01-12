@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.11
+// @version                2025.1.11.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -229,9 +229,15 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        load(...keys) {
+            keys.flat().forEach(key => {
+                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
+                    this.controls?.[key]?.defaultVal || this.controls?.[key]?.type == 'toggle')
+            })
+        },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
-    } ; settings.load('debugMode')
+    }
+    settings.load('debugMode')
 
     // Define LOG props/functions
     const log = {
@@ -346,23 +352,23 @@
 
     // Init SETTINGS
     log.debug('Initializing settings...')
-    Object.assign(settings, { controls: {
-        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses',
+    Object.assign(settings, { controls: { // displays top-to-bottom, left-to-right in Settings modal
+        proxyAPIenabled: { type: 'toggle', icon: 'sunglasses', defaultVal: false,
             label: app.msgs.menuLabel_proxyAPImode,
             helptip: app.msgs.helptip_proxyAPImode },
-        streamingDisabled: { type: 'toggle', icon: 'signalStream',
+        streamingDisabled: { type: 'toggle', icon: 'signalStream', defaultVal: false,
             label: app.msgs.mode_streaming,
             helptip: app.msgs.helptip_streamingMode },
         autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
-        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown',
+        autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown', defaultVal: false,
             label: `${app.msgs.mode_autoScroll} (${app.msgs.menuLabel_whenStreaming})`,
             helptip: app.msgs.helptip_autoScroll },
-        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+        bgAnimationsDisabled: { type: 'toggle', icon: 'sparkles', defaultVal: false,
             label: `${app.msgs.menuLabel_background} ${app.msgs.menuLabel_animations}`,
             helptip: app.msgs.helptip_bgAnimations },
-        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles',
+        fgAnimationsDisabled: { type: 'toggle', icon: 'sparkles', defaultVal: false,
             label: `${app.msgs.menuLabel_foreground} ${app.msgs.menuLabel_animations}`,
             helptip: app.msgs.helptip_fgAnimations },
         replyLang: { type: 'prompt', icon: 'languageChars',
@@ -371,7 +377,7 @@
         scheme: { type: 'modal', icon: 'scheme',
             label: app.msgs.menuLabel_colorScheme,
             helptip: app.msgs.helptip_colorScheme },
-        debugMode: { type: 'toggle', icon: 'bug',
+        debugMode: { type: 'toggle', icon: 'bug', defaultVal: false,
             label: app.msgs.mode_debug,
             helptip: app.msgs.helptip_debugMode },
         about: { type: 'modal', icon: 'questionMarkCircle',
