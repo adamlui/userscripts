@@ -10,8 +10,8 @@ import yml from 'eslint-plugin-yml'
 export default [
     { ignores: ['**/package-lock.json'] },
     {
-        files: ['**/*.js', '**/*.mjs'],
-        languageOptions: {
+        files: ['**/*.{js,mjs}'],
+            languageOptions: {
             ecmaVersion: 'latest', sourceType: 'script',
             globals: {
                 ...globals.browser, ...globals.greasemonkey, ...globals.node, buttons: 'writable', chatgpt: 'readonly',
@@ -52,5 +52,5 @@ export default [
         }
     },
     { files: ['**/*.mjs'], languageOptions: { sourceType: 'module' }},
-    { files: ['**/*.yaml, **/*.yml'], ...yml.configs['flat/standard'][1] }
+    { files: ['**/*.{yaml,yml}'], ...yml.configs['flat/standard'][1] }
 ]
