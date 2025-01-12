@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.11.2
+// @version             2025.1.11.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -36,7 +36,10 @@
         name: 'GitHub Widescreen',
         urls: {
             gitHub: 'https://github.com/adamlui/github-widescreen',
-            greasyFork: 'https://greasyfork.org/scripts/473439-github-widescreen'
+            greasyFork: 'https://greasyfork.org/scripts/473439-github-widescreen',
+            review: {
+                greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
+            }
         }
     }
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
@@ -58,8 +61,7 @@
                 + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWindowOpen(
-                    app.urls.greasyFork + '/feedback#post-discussion') }
+                function leaveAReview() { safeWindowOpen(app.urls.review.greasyFork) }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
