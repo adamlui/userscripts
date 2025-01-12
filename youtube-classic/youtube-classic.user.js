@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.1.11.1
+// @version           2025.1.11.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -58,7 +58,7 @@
         load(...keys) {
             keys.flat().forEach(key => {
                 config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
-                    this.controls[key]?.defaultVal || this.controls[key]?.type == 'toggle')
+                    this.controls[key]?.defaultVal ?? this.controls[key]?.type == 'toggle')
             })
         },
 
