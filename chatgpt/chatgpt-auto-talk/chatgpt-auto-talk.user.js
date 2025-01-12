@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.10.1
+// @version             2025.1.11
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -373,11 +373,19 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            autoTalkDisabled: { type: 'toggle', label: app.msgs.mode_autoTalk },
-            toggleHidden: { type: 'toggle', label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis }
+            autoTalkDisabled: { type: 'toggle', defaultVal: false,
+                label: app.msgs.mode_autoTalk },
+            toggleHidden: { type: 'toggle', defaultVal: false,
+                label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis }
         },
 
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        load(...keys) {
+            keys.flat().forEach(key => {
+                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
+                    this.controls[key]?.defaultVal || this.controls[key]?.type == 'toggle')
+            })
+        },
+
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
     settings.load(Object.keys(settings.controls))
