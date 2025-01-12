@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.11.1
+// @version             2025.1.11.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -40,7 +40,7 @@
         }
     }
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ !name ? 'script' : name }.meta.js`)
+        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + app.name, async () => {
