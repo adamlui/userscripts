@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.11.2
+// @version                2025.1.11.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -359,7 +359,7 @@
         streamingDisabled: { type: 'toggle', icon: 'signalStream', defaultVal: false,
             label: app.msgs.mode_streaming,
             helptip: app.msgs.helptip_streamingMode },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward',
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: false,
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
         autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown', defaultVal: false,
