@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2024.12.29.1
+// @version             2025.1.11
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -33,7 +33,7 @@
 
     // Init CONFIG
     const config = {
-        appName: 'GitHub Widescreen', appSymbol: '🖥️',
+        appName: 'GitHub Widescreen',
         gitHubURL: 'https://github.com/adamlui/github-widescreen',
         greasyForkURL: 'https://greasyfork.org/scripts/473439-github-widescreen' }
     config.updateURL = config.greasyForkURL.replace('https://', 'https://update.')
