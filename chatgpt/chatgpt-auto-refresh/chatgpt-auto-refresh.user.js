@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.10.1
+// @version             2025.1.11
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -390,17 +390,23 @@
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            arDisabled: { type: 'toggle',
+            arDisabled: { type: 'toggle', defaultVal: false,
                 label: app.msgs.menuLabel_autoRefresh },
-            toggleHidden: { type: 'toggle',
+            toggleHidden: { type: 'toggle', defaultVal: false,
                 label: app.msgs.menuLabel_toggleVis, helptip: app.msgs.helptip_toggleVis },
-            notifDisabled: { type: 'toggle',
+            notifDisabled: { type: 'toggle', defaultVal: false,
                 label: app.msgs.menuLabel_modeNotifs, helptip: app.msgs.helptip_modeNotifs },
             refreshInterval: { type: 'prompt', symbol: '⌚',
                 label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
-        load(...keys) { keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, false)) },
+        load(...keys) {
+            keys.flat().forEach(key => {
+                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
+                    this.controls[key]?.defaultVal || this.controls[key]?.type == 'toggle')
+            })
+        },
+
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
     settings.load(Object.keys(settings.controls))
