@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.11
+// @version             2025.1.11.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -382,7 +382,7 @@
         load(...keys) {
             keys.flat().forEach(key => {
                 config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
-                    this.controls[key]?.defaultVal || this.controls[key]?.type == 'toggle')
+                    this.controls[key]?.defaultVal ?? this.controls[key]?.type == 'toggle')
             })
         },
 
