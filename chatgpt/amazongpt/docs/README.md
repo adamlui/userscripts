@@ -143,6 +143,11 @@ This app exists thanks to code, translations, issues & ideas from the following 
     <img width=50 title="@mberetvas" src="https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match"></img></a>
 <a href="https://github.com/ChinaGodMan">
     <img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2025.1.3-showed-googlegpt-header-distorts-reply-bubble-on-skinny-phones"></img></a>
+<a href="https://greasyfork.org/users/1406320-happyhojjat">
+    <picture>
+        <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://amazongpt.kudoai.com/assets/images/icons/web-stores/greasy-fork/white/icon50.png">
+        <img width=50 src="https://amazongpt.kudoai.com/assets/images/icons/web-stores/greasy-fork/black/icon50.png?first-contrib=2025.1.12-reported-googlegpt-reply-lang-setting-stopped-persisting" title="happyhojjat">
+    </picture></a>
 <a href="https://github.com/ImgBotApp">
     <img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot">
