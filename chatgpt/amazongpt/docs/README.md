@@ -135,13 +135,20 @@ If you've tested it to work in a browser not listed, create a [pull request](htt
 
 This app exists thanks to code, translations, issues & ideas from the following contributors:
 
-<a href="https://github.com/adamlui"><img width=50 title="@adamlui" src="https://avatars.githubusercontent.com/u/10906554"></img></a>
-<a href="https://github.com/pasThal"><img width=50 title="@pasThal" src="https://avatars.githubusercontent.com/u/175899275?first-contrib=2024.10.6-opera-gx-compatible-report"></img></a>
-<a href="https://github.com/mberetvas"><img width=50 title="@mberetvas" src="https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match"></img></a>
-<a href="https://github.com/ChinaGodMan"><img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2025.1.3-showed-googlegpt-header-distorts-reply-bubble-on-skinny-phones"></img></a>
-<a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
-<a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
-<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></picture></a>
+<a href="https://github.com/adamlui">
+    <img width=50 title="@adamlui" src="https://avatars.githubusercontent.com/u/10906554"></img></a>
+<a href="https://github.com/pasThal">
+    <img width=50 title="@pasThal" src="https://avatars.githubusercontent.com/u/175899275?first-contrib=2024.10.6-opera-gx-compatible-report"></img></a>
+<a href="https://github.com/mberetvas">
+    <img width=50 title="@mberetvas" src="https://avatars.githubusercontent.com/u/100215730?first-contrib=2024.11.2-fix-belgium-amazon-match"></img></a>
+<a href="https://github.com/ChinaGodMan">
+    <img width=50 title="@ChinaGodMan" src="https://avatars.githubusercontent.com/u/96548841?first-contrib=2025.1.3-showed-googlegpt-header-distorts-reply-bubble-on-skinny-phones"></img></a>
+<a href="https://github.com/ImgBotApp">
+    <img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
+<a href="https://github.com/dependabot">
+    <img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
+<a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/black-on-white/icon50.png">
+    <img title="ChatGPT" src="https://assets.aiwebextensions.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></picture></a>
 
 <img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">
 
