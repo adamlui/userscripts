@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.12
+// @version                2025.1.12.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -612,6 +612,7 @@
         open(modalType, modalSubType) { // custom ones
             const modal = modalSubType ? modals[modalType][modalSubType]()
                         : (modals[modalType].show || modals[modalType])()
+            if (!modal) return // since no div returned
             if (settings.controls[modalType]?.type != 'prompt') { // add to stack
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
                 log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
@@ -623,7 +624,6 @@
         },
 
         init(modal) {
-            if (!modal) return // to support non-div this.open()s
             if (!this.styles) this.stylize() // to init/append stylesheet
 
             // Add classes
