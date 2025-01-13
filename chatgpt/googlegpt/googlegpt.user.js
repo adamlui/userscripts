@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.12
+// @version                  2025.1.12.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -975,6 +975,7 @@
         open(modalType, modalSubType) { // custom ones
             const modal = modalSubType ? modals[modalType][modalSubType]()
                         : (modals[modalType].show || modals[modalType])()
+            if (!modal) return // since no div returned
             if (settings.controls[modalType]?.type != 'prompt') { // add to stack
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
                 log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
@@ -988,7 +989,6 @@
         },
 
         init(modal) {
-            if (!modal) return // to support non-div this.open()s
             if (!this.styles) this.stylize() // to init/append stylesheet
 
             // Add classes
