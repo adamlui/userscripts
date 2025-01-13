@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.12
+// @version             2025.1.12.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -228,7 +228,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@c475f17b4bd2ef60b3c6afc9fb3d53f14b4177a4/chromium/extension/components/modals.js#sha256-r3jtnd9prshkjwaz19RnNL/qmSbkuFyhcdplZF8Je2E=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@c27aa92bb83e678f2664a06c33fbe683e9fcce62/chromium/extension/components/modals.js#sha256-hAdfzVJT0hvXx8T+2/5rbRt73/qgFLMl0P7AQx/ftsQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@f957abad33bb6639933256808b81aa041b160988/chromium/extension/lib/dom.js#sha256-/QaqzuGGC7PrzjYnXtYh411rJJOp27jWLA4ataKaWWY=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9ea86b5aaf7fee4adc56b0464a815725c19/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
