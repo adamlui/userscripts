@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.12.1
+// @version                2025.1.12.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -385,7 +385,7 @@
     }})
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
     settings.load([...Object.keys(settings.controls), 'expanded', 'fontSize', 'minimized'])
-    if (!config.replyLanguage) settings.save('replyLanguage', env.browser.language) // init reply language if unset
+    if (!config.replyLang) settings.save('replyLang', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
     if (!env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager)
         settings.save('streamingDisabled', true) // disable Streaming in unspported env
@@ -1005,15 +1005,15 @@
             log.caller = 'modals.replyLang()'
             while (true) {
                 let replyLang = prompt(
-                    ( app.msgs.prompt_updateReplyLang ) + ':', config.replyLanguage)
+                    ( app.msgs.prompt_updateReplyLang ) + ':', config.replyLang)
                 if (replyLang == null) break // user cancelled so do nothing
                 else if (!/\d/.test(replyLang)) {
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
                             : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
                     log.debug('Saving reply language...')
-                    settings.save('replyLanguage', replyLang || env.browser.language)
-                    log.debug(`Success! config.replyLanguage = ${config.replyLanguage}`)
+                    settings.save('replyLang', replyLang || env.browser.language)
+                    log.debug(`Success! config.replyLang = ${config.replyLang}`)
                     modals.alert(`${app.msgs.alert_langUpdated}!`, // title
                         `${app.name} ${app.msgs.alert_willReplyIn} ` // msg
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
@@ -1242,7 +1242,7 @@
                         configStatusSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: 3px ;'
                             + ( !key.includes('about') ? 'text-transform: uppercase !important' : '' )
                         if (key.includes('replyLang')) {
-                            configStatusSpan.textContent = config.replyLanguage
+                            configStatusSpan.textContent = config.replyLang
                             settingItem.onclick = () => modals.open('replyLang')
                         } else if (key.includes('scheme')) {
                             modals.settings.updateSchemeStatus(configStatusSpan)
@@ -2038,7 +2038,7 @@
                         { code: 'zh-CHS', regex: /^(chi(nese)?|zh|中[国國])/i, rate: 2 }
                     ]
                     const sgtReplyDialect = sgtDialectMap.find(entry =>
-                        entry.regex.test(config.replyLanguage)) || sgtDialectMap[0]
+                        entry.regex.test(config.replyLang)) || sgtDialectMap[0]
                     const payload = {
                         text: wholeAnswer, curTime: Date.now(), spokenDialect: sgtReplyDialect.code,
                         rate: sgtReplyDialect.rate.toString()
@@ -2589,7 +2589,7 @@
 
     // Define QUERY AUGMENT functions
 
-    function augmentQuery(query) { return query + ` (reply in ${config.replyLanguage})` }
+    function augmentQuery(query) { return query + ` (reply in ${config.replyLang})` }
 
     function stripQueryAugments(msgChain) {
         const augmentCnt = augmentQuery.toString().match(/\+/g).length
