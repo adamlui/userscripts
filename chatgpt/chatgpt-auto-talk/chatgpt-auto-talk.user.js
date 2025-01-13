@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.12
+// @version             2025.1.12.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -485,13 +485,13 @@
 
         open(modalType, modalSubType) {
             const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
+            if (!modal) return // since no div returned
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
             this.init(modal) // add classes + starry bg
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
         init(modal) {
-            if (!modal) return // to support non-div this.open()s
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
             fillStarryBG(modal) // add starry bg
