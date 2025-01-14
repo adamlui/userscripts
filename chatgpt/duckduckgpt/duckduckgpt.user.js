@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.1
+// @version                2025.1.14.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2902,10 +2902,9 @@
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
-                        + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
-                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${
-                                app.msgs.alert_and}` : '' )
-                        + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.` // suggest SC
+                        + ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${
+                                app.msgs.alert_and}`
+                        + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.`
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
