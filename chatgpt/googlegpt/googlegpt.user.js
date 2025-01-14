@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.13
+// @version                  2025.1.13.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3609,11 +3609,12 @@
             }, 7000)
 
             // Get queries
-            return new Promise(async resolve => xhr({
+            const payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
+            return new Promise(resolve => xhr({
                 method: apis[get.related.api].method,
                 url: apis[get.related.api].endpoints?.completions || apis[get.related.api].endpoint,
                 responseType: 'text', headers: api.createHeaders(get.related.api),
-                data: await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }]),
+                data: payload,
                 onload: resp => dataProcess.text(get.related, resp).then(resolve),
                 onerror: err => { log.error(err) ; api.tryNew(get.related) }
             }))
