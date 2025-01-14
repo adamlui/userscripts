@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.13.4
+// @version                2025.1.13.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -109,6 +109,7 @@
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
+    env.scriptManager.supportsStreaming = /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -342,15 +343,6 @@
         log.debug(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
     }
 
-    // Init COMPATIBILITY flags
-    log.debug('Initializing compatibility flags...')
-    env.streamingSupported = {
-        byBrowser: !(env.scriptManager.name == 'Tampermonkey'
-            && (env.browser.isChrome || env.browser.isEdge || env.browser.isBrave)),
-        byScriptManager: /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
-    }
-    log.debug(`Success! env.streamingSupported = ${log.prettifyObj(env.streamingSupported)}`)
-
     // Init SETTINGS
     log.debug('Initializing settings...')
     Object.assign(settings, { controls: { // displays top-to-bottom, left-to-right in Settings modal
@@ -388,8 +380,7 @@
     settings.load([...Object.keys(settings.controls), 'expanded', 'fontSize', 'minimized'])
     if (!config.replyLang) settings.save('replyLang', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
-    if (!env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager)
-        settings.save('streamingDisabled', true) // disable Streaming in unspported env
+    if (!env.scriptManager.supportsStreaming) settings.save('streamingDisabled', true) // disable Streaming in unspported env
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
@@ -1225,8 +1216,7 @@
                         settingItem.onclick = () => {
                             if (!(key == 'streamingDisabled' // visually switch toggle if not Streaminng...
                                 && ( // ...in unsupported env...
-                                    !env.streamingSupported.byBrowser || !env.streamingSupported.byScriptManager
-                                        || !config.proxyAPIenabled )
+                                    !env.scriptManager.supportsStreaming || !config.proxyAPIenabled )
                             )) modals.settings.toggle.switch(settingToggle)
 
                             // Call specialized toggle funcs
@@ -2381,7 +2371,7 @@
               : env.browser.isEdge ?
                     'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
                   : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf' )
-            if (!env.streamingSupported.byScriptManager) { // alert userscript manager unsupported, suggest TM/SC
+            if (!env.scriptManager.supportsStreaming) { // alert userscript manager unsupported, suggest TM/SC
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
@@ -2390,15 +2380,6 @@
                                 app.msgs.alert_and}` : '' )
                         + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.` // suggest SC
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
-                )
-            } else if (!env.streamingSupported.byBrowser) { // alert TM/browser unsupported, suggest SC
-                modals.alert(
-                    `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
-                    `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isUnsupportedIn} `
-                        + `${ env.browser.isChrome ? 'Chrome' : env.browser.isEdge ? 'Edge' : 'Brave' } ${
-                            app.msgs.alert_whenUsing} Tampermonkey. `
-                        + `${app.msgs.alert_pleaseUse} <a target="_blank" rel="noopener" href="${
-                            scLink}">ScriptCat</a> ${app.msgs.alert_instead}.`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
                 let msg = `${settings.controls.streamingDisabled.label} `
