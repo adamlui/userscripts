@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.6
+// @version                2025.1.14.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2360,13 +2360,13 @@
         },
 
         streaming() {
-            const scLink = (
-                env.browser.isFF ?
-                    'https://addons.mozilla.org/firefox/addon/scriptcat/'
-              : env.browser.isEdge ?
-                    'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
-                  : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf' )
             if (!env.scriptManager.supportsStreaming) { // alert userscript manager unsupported, suggest TM/SC
+                const scLink = (
+                    env.browser.isFF ?
+                        'https://addons.mozilla.org/firefox/addon/scriptcat/'
+                  : env.browser.isEdge ?
+                        'https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh'
+                      : 'https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf' )
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
