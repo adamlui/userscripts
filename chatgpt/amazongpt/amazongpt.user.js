@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.13.1
+// @version                2025.1.13.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2551,7 +2551,7 @@
                 payload = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
                 payload = {
-                    network: true, prompt: msgs[msgs.length - 1].content,
+                    network: true, prompt: lastUserMsg.content,
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
             } else if (api == 'FREEGPT') {
@@ -2564,8 +2564,7 @@
                 }
             } else if (api == 'GPTforLove') {
                 payload = {
-                    prompt: msgs[msgs.length - 1].content,
-                    secret: session.generateGPTFLkey(),
+                    prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI.'
                                  + 'Follow the user\'s instructions carefully.',
                     temperature: 0.8, top_p: 1
