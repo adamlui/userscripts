@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.13.4
+// @version                2025.1.13.5
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3152,8 +3152,7 @@
         return msgChain.map(msg => { // stripped chain
             if (msg.role == 'user') {
                 let content = msg.content
-                const augments = content.match(/\s*\{\{[^}]*\}\}\s*/g)
-                if (augments) augments.forEach(augment => content = content.replace(augment, ''))
+                content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
                 return { ...msg, content: content.trim() }
             } else return msg // agent's unstripped
         })
