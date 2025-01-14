@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.13.2
+// @version                2025.1.13.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3087,7 +3087,7 @@
                 payload = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
                 payload = {
-                    network: true, prompt: msgs[msgs.length - 1].content,
+                    network: true, prompt: lastUserMsg.content,
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
             } else if (api == 'FREEGPT') {
@@ -3100,8 +3100,7 @@
                 }
             } else if (api == 'GPTforLove') {
                 payload = {
-                    prompt: msgs[msgs.length - 1].content,
-                    secret: session.generateGPTFLkey(),
+                    prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI.'
                                  + 'Follow the user\'s instructions carefully.',
                     temperature: 0.8, top_p: 1
