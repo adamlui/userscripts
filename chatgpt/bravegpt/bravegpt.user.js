@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.13.4
+// @version               2025.1.13.5
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3266,8 +3266,7 @@
         return msgChain.map(msg => { // stripped chain
             if (msg.role == 'user') {
                 let content = msg.content
-                const augments = content.match(/\s*\{\{[^}]*\}\}\s*/g)
-                if (augments) augments.forEach(augment => content = content.replace(augment, ''))
+                content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
                 return { ...msg, content: content.trim() }
             } else return msg // agent's unstripped
         })
