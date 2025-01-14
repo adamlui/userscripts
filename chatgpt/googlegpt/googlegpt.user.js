@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.14.7
+// @version                  2025.1.14.8
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3698,7 +3698,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) {
-                    if (/AIchatOS|ToYaml.com|FREEGPT/.test(caller.api)) {
+                    if (/AIchatOS|ToYaml|FREEGPT/.test(caller.api)) {
                         try { // to show response or return related queries
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
