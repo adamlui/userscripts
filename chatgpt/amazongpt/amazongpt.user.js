@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.8
+// @version                2025.1.14.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2755,7 +2755,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) {
-                    if (/AIchatOS|ToYaml.com|FREEGPT/.test(caller.api)) {
+                    if (/AIchatOS|ToYaml|FREEGPT/.test(caller.api)) {
                         try { // to show response
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
