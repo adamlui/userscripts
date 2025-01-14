@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.8
+// @version                2025.1.14.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3868,8 +3868,7 @@
 
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
-    appFooter.classList.add('fade-in', // DDGPT class
-                            'feedback-prompt') // DDG class
+    appFooter.classList.add('fade-in', 'anchored-hidden') // DDG class
     let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
     footerContent.className = 'js-feedback-prompt-generic' // DDG footer class
     footerContent.onclick = () => modals.open('feedback')
@@ -3965,8 +3964,7 @@
                             const newFooterContent = destinationURL ? dom.create.anchor(destinationURL)
                                                                     : document.createElement('span')
                             footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
-                            footerContent.classList.add('fade-in', // DDGPT fade class
-                                                        'js-feedback-prompt-generic') // DDG footer class
+                            footerContent.classList.add('fade-in', 'anchored-hidden') // DDG footer class
                             footerContent.textContent = chosenAd.text
                             footerContent.setAttribute('title', chosenAd.tooltip || '')
                             setTimeout(() => footerContent.classList.add('active'), 100) // to trigger fade
