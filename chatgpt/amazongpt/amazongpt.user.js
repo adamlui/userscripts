@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.7
+// @version                2025.1.14.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2517,7 +2517,6 @@
                 'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
                 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors'
             })
-            else if (apis[api].method == 'GET') headers['x-requested-with'] = 'XMLHttpRequest'
             Object.assign(headers, apis[api].expectedOrigin.headers) // API-specific ones
             if (api == 'OpenAI') headers.Authorization = `Bearer ${config.openAIkey}`
             return headers
