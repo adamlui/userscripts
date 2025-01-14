@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.6
+// @version                2025.1.14.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3053,7 +3053,6 @@
                 'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
                 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors'
             })
-            else if (apis[api].method == 'GET') headers['x-requested-with'] = 'XMLHttpRequest'
             Object.assign(headers, apis[api].expectedOrigin.headers) // API-specific ones
             if (api == 'OpenAI') headers.Authorization = `Bearer ${config.openAIkey}`
             return headers
