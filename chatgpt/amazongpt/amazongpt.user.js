@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.1
+// @version                2025.1.14.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -403,10 +403,7 @@
             endpoint: 'https://am.aifree.site/api/generate',
             expectedOrigin: {
                 url: 'https://am.aifree.site',
-                headers: {
-                    'Accept': '*/*', 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8',
-                    'Priority': 'u=4', 'Sec-Fetch-Site': 'same-origin'
-                }
+                headers: { 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8', 'Priority': 'u=4' }
             },
             method: 'POST', streamable: true
         },
@@ -415,7 +412,8 @@
             expectedOrigin: {
                 url: 'https://ai28.gptforlove.com',
                 headers: {
-                    'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site'
+                    'Accept': 'application/json, text/plain, */*',
+                    'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site', 'TE': 'trailers'
                 }
             },
             method: 'POST', streamable: true, accumulatesText: true,
@@ -424,9 +422,7 @@
         'MixerBox AI': {
             endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
             expectedOrigin: {
-                url: 'https://chatai.mixerbox.com',
-                headers: { 'Accept': '*/*', 'Alt-Used': 'chatai.mixerbox.com', 'Sec-Fetch-Site': 'same-origin' }
-            },
+                url: 'https://chatai.mixerbox.com', headers: { 'Alt-Used': 'chatai.mixerbox.com',  'TE': 'trailers' }},
             method: 'POST', streamable: true, accumulatesText: false
         },
         'OpenAI': {
@@ -435,10 +431,7 @@
                 completions: 'https://api.openai.com/v1/chat/completions',
                 session: 'https://chatgpt.com/api/auth/session'
             },
-            expectedOrigin: {
-                url: 'https://chatgpt.com',
-                headers: { 'Accept': '*/*', 'Priority': 'u=4', 'Sec-Fetch-Site': 'same-site' }
-            },
+            expectedOrigin: { url: 'https://chatgpt.com', headers: { 'Priority': 'u=4' }},
             method: 'POST', streamable: true
         }
     }
@@ -2513,12 +2506,11 @@
         createHeaders(api) {
             const ip = ipv4.generate({ verbose: false })
             const headers = {
-                'Accept-Encoding': 'gzip, deflate, br, zstd',
+                'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br, zstd',
                 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'DNT': '1',
                 'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
-                'Origin': apis[api].expectedOrigin.url,
-                'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors',
-                'TE': 'trailers', 'X-Forwarded-For': ip, 'X-Real-IP': ip
+                'Origin': apis[api].expectedOrigin.url, 'Sec-Fetch-Site': 'same-origin',
+                'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'X-Forwarded-For': ip, 'X-Real-IP': ip
             }
             headers.Referer = headers.Origin + '/'
             if (api == 'OpenAI') headers.Authorization = 'Bearer ' + config.openAIkey
