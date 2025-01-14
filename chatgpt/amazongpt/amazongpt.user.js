@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.13.3
+// @version                2025.1.13.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2615,8 +2615,7 @@
         return msgChain.map(msg => { // stripped chain
             if (msg.role == 'user') {
                 let content = msg.content
-                const augments = content.match(/\s*\{\{[^}]*\}\}\s*/g)
-                if (augments) augments.forEach(augment => content = content.replace(augment, ''))
+                content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
                 return { ...msg, content: content.trim() }
             } else return msg // agent's unstripped
         })
