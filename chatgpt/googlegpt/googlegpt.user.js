@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.14.6
+// @version                  2025.1.14.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3388,7 +3388,6 @@
                 'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
                 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors'
             })
-            else if (apis[api].method == 'GET') headers['x-requested-with'] = 'XMLHttpRequest'
             Object.assign(headers, apis[api].expectedOrigin.headers) // API-specific ones
             if (api == 'OpenAI') headers.Authorization = `Bearer ${config.openAIkey}`
             return headers
