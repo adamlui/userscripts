@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.14.2
+// @version                  2025.1.14.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -535,10 +535,6 @@
         alert_isAvail: 'is available',
         alert_upToDate: 'Up-to-date',
         alert_isUpToDate: 'is up-to-date',
-        alert_isUnsupportedIn: 'is unsupported in',
-        alert_whenUsing: 'when using',
-        alert_pleaseUse: 'Please use',
-        alert_instead: 'instead',
         alert_unavailable: 'unavailable',
         alert_isOnlyAvailFor: 'is only available for',
         alert_and: 'and',
