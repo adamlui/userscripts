@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.3
+// @version                2025.1.14.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -194,10 +194,6 @@
         alert_isAvail: 'is available',
         alert_upToDate: 'Up-to-date',
         alert_isUpToDate: 'is up-to-date',
-        alert_isUnsupportedIn: 'is unsupported in',
-        alert_whenUsing: 'when using',
-        alert_pleaseUse: 'Please use',
-        alert_instead: 'instead',
         alert_unavailable: 'unavailable',
         alert_isOnlyAvailFor: 'is only available for',
         alert_and: 'and',
