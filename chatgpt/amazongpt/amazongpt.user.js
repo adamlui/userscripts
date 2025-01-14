@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.2
+// @version                2025.1.14.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2368,10 +2368,9 @@
                 modals.alert(
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_unavailable}`,
                     `${settings.controls.streamingDisabled.label} ${app.msgs.alert_isOnlyAvailFor}`
-                        + ( !env.browser.isEdge && !env.browser.isBrave ? // suggest TM for supported browsers
-                            ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${
-                                app.msgs.alert_and}` : '' )
-                        + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.` // suggest SC
+                        + ` <a target="_blank" rel="noopener" href="https://tampermonkey.net">Tampermonkey</a> ${
+                                app.msgs.alert_and}`
+                        + ` <a target="_blank" rel="noopener" href="${scLink}">ScriptCat</a>.`
                         + ` (${app.msgs.alert_userscriptMgrNoStream}.)`
                 )
             } else if (!config.proxyAPIenabled) { // alert OpenAI API unsupported, suggest Proxy Mode
