@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.5
+// @version                2025.1.14.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -56,6 +56,7 @@
 // @connect                chatgpt.com
 // @connect                update.greasyfork.org
 // @connect                fanyi.sogou.com
+// @connect                toyaml.com
 // @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
@@ -429,6 +430,11 @@
             },
             expectedOrigin: { url: 'https://chatgpt.com', headers: { 'Priority': 'u=4' }},
             method: 'POST', streamable: true
+        },
+        'ToYaml.com': {
+            endpoint: 'https://toyaml.com/streams',
+            expectedOrigin: { url: 'https://toyaml.com/chat.html', headers: { 'x-requested-with': 'XMLHttpRequest' }},
+            method: 'GET', streamable: true, watermark: '【本答案来自 toyaml.com】'
         }
     }
 
@@ -2502,14 +2508,18 @@
             const ip = ipv4.generate({ verbose: false })
             const headers = {
                 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br, zstd',
-                'Connection': 'keep-alive', 'Content-Type': 'application/json', 'DNT': '1',
-                'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
-                'Origin': apis[api].expectedOrigin.url, 'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'X-Forwarded-For': ip, 'X-Real-IP': ip
+                'Connection': 'keep-alive', 'DNT': '1',
+                'Origin': apis[api].expectedOrigin.url, 'X-Forwarded-For': ip, 'X-Real-IP': ip
             }
             headers.Referer = headers.Origin + '/'
-            if (api == 'OpenAI') headers.Authorization = 'Bearer ' + config.openAIkey
-            Object.assign(headers, apis[api].expectedOrigin.headers)
+            if (apis[api].method == 'POST') Object.assign(headers, {
+                'Content-Type': 'application/json',
+                'Host': new URL(apis[api].endpoints?.completions || apis[api].endpoint).hostname,
+                'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors'
+            })
+            else if (apis[api].method == 'GET') headers['x-requested-with'] = 'XMLHttpRequest'
+            Object.assign(headers, apis[api].expectedOrigin.headers) // API-specific ones
+            if (api == 'OpenAI') headers.Authorization = `Bearer ${config.openAIkey}`
             return headers
         },
 
@@ -2632,19 +2642,22 @@
             }
 
             // Get/show answer from AI
-            xhr({
-                method: apis[get.reply.api].method,
-                url: apis[get.reply.api].endpoints?.completions || apis[get.reply.api].endpoint,
+            const reqMethod = apis[get.reply.api].method
+            const xhrConfig = {
+                headers: api.createHeaders(get.reply.api), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
-                headers: api.createHeaders(get.reply.api), data: await api.createPayload(get.reply.api, msgChain),
-                onload: resp => dataProcess.text(get.reply, resp),
-                onloadstart: resp => dataProcess.stream(get.reply, resp),
                 onerror: err => { log.error(err)
                     if (!config.proxyAPIenabled)
                         appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
                     else api.tryNew(get.reply)
-                }
-            })
+                },
+                onload: resp => dataProcess.text(get.reply, resp),
+                onloadstart: resp => dataProcess.stream(get.reply, resp),
+                url: ( apis[get.reply.api].endpoints?.completions || apis[get.reply.api].endpoint )
+                     + ( reqMethod == 'GET' ? `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}` : '' )
+            }
+            if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(get.reply.api, msgChain)
+            xhr(xhrConfig)
         }
     }
 
@@ -2666,15 +2679,9 @@
             reader.read().then(processStreamText).catch(err => log.error('Error processing stream', err.message))
 
             function processStreamText({ done, value }) {
-                if (done) { caller.sender = null
-                    if (appDiv.querySelector('.loading')) // no text shown
-                        api.tryNew(caller)
-                    else { // text was shown
-                        caller.status = 'done' ; caller.attemptCnt = null
-                        show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
-                    } return
-                }
+                if (done) { handleProcessCompletion() ; return }
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
+                if (chunk.includes(apis[caller.api].watermark)) { handleProcessCompletion() ; return }
                 if (caller.api == 'MixerBox AI') { // pre-process chunks
                     const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
@@ -2709,6 +2716,16 @@
                         processStreamText({ done, value })
                 }).catch(err => log.error('Error reading stream', err.message))
             }
+
+            function handleProcessCompletion() {
+                caller.sender = null
+                if (appDiv.querySelector('.loading')) // no text shown
+                    api.tryNew(caller)
+                else { // text was shown
+                    caller.status = 'done' ; caller.attemptCnt = null
+                    show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
+                } return
+            }
         },
 
         text(caller, resp) {
@@ -2739,7 +2756,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) {
-                    if (/AIchatOS|FREEGPT/.test(caller.api)) {
+                    if (/AIchatOS|ToYaml.com|FREEGPT/.test(caller.api)) {
                         try { // to show response
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
@@ -2776,6 +2793,7 @@
                             api.tryNew(caller)
                         } else {
                             caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
+                            respText = respText.replace(apis[caller.api].watermark, '').trim()
                             show.reply(respText) ; show.replyCornerBtns()
                 }}}
 
