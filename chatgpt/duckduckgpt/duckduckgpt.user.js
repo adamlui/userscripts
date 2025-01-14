@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.2
+// @version                2025.1.14.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -347,10 +347,6 @@
         alert_isAvail: 'is available',
         alert_upToDate: 'Up-to-date',
         alert_isUpToDate: 'is up-to-date',
-        alert_isUnsupportedIn: 'is unsupported in',
-        alert_whenUsing: 'when using',
-        alert_pleaseUse: 'Please use',
-        alert_instead: 'instead',
         alert_unavailable: 'unavailable',
         alert_isOnlyAvailFor: 'is only available for',
         alert_and: 'and',
