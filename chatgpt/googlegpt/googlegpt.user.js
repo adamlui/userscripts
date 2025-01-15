@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.6
+// @version                  2025.1.15.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -422,7 +422,7 @@
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         }
     };
-    ['Chrome', 'Firefox', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
+    ['Chromium', 'Firefox', 'Chrome', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
@@ -3629,7 +3629,8 @@
                 // Handle stream done
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[caller.api].watermark)) return handleProcessCompletion()
-                this.timeout = setTimeout(handleProcessCompletion, 500) // since reader.read() doesn't signal done in Chromium
+                if (env.browser.isChromium) { // clear/add timeout since reader.read() doesn't signal done
+                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
 
                 // Process/show chunk
                 if (caller.api == 'MixerBox AI') { // pre-process chunks
@@ -3668,7 +3669,7 @@
             }
 
             function handleProcessCompletion() {
-                caller.sender = this.timeout = null
+                caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
                 if (appDiv.querySelector('.loading')) // no text shown
                     api.tryNew(caller)
                 else { // text was shown
