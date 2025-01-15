@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.9
+// @version                2025.1.15.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -432,11 +432,12 @@
             method: 'POST', streamable: true
         },
         'ToYaml.com': {
-            endpoint: 'https://toyaml.com/streams', expectedOrigin: { url: 'https://toyaml.com/chat.html',
+            endpoint: 'https://toyaml.com/streams',
+            expectedOrigin: { url: 'https://toyaml.com/chat.html', headers: { 'x-requested-with': 'XMLHttpRequest' }},
+            method: 'GET', streamable: true, watermark: '【本答案来自 toyaml.com】',
             failFlags: [
-                '请等待网友当前提问回答完毕再试'], // 'Please wait until the current question is answered before trying again'
-            headers: { 'x-requested-with': 'XMLHttpRequest' }}, method: 'GET', streamable: true,
-            watermark: '【本答案来自 toyaml.com】'
+                '请等待网友当前提问回答完毕再试' // 'Please wait until the current question is answered before trying again'
+            ]
         }
     }
 
