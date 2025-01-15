@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.9
+// @version                  2025.1.15.10
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -796,10 +796,12 @@
             method: 'POST', streamable: true
         },
         'ToYaml.com': {
-            endpoint: 'https://toyaml.com/streams', expectedOrigin: { url: 'https://toyaml.com/chat.html',
-            failFlags: ['请等待网友当前提问回答完毕再试'], // Please wait until the current question is answered before trying again
-            headers: { 'x-requested-with': 'XMLHttpRequest' }}, method: 'GET', streamable: true,
-            watermark: '【本答案来自 toyaml.com】'
+            endpoint: 'https://toyaml.com/streams',
+            expectedOrigin: { url: 'https://toyaml.com/chat.html', headers: { 'x-requested-with': 'XMLHttpRequest' }},
+            method: 'GET', streamable: true, watermark: '【本答案来自 toyaml.com】',
+            failFlags: [
+                '请等待网友当前提问回答完毕再试' // 'Please wait until the current question is answered before trying again'
+            ]
         }
     }
 
