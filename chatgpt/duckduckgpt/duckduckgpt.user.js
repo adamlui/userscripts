@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.14.10
+// @version                2025.1.15
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2312,8 +2312,8 @@
                   + `#${app.cssPrefix} > pre ul { margin: -28px 0 -21px }` // reduce v-padding
                   + `#${app.cssPrefix} > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }` ) // reduce v-padding, show bullets
               + '.katex-html { display: none } ' // hide unrendered math
-              + `#${app.cssPrefix} + footer {`
-                  + 'display: grid ; width: 100% ; margin: 2px 0 25px ; position: relative }'
+              + `#${app.cssPrefix} + footer {
+                    text-align: right ; display: grid ; width: 100% ; margin: 6px 0 25px ; position: relative }`
               + `#${app.cssPrefix} + footer * {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
               + '.chatgpt-notif { fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }'
@@ -3869,9 +3869,8 @@
 
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
-    appFooter.classList.add('fade-in', 'anchored-hidden') // DDG class
+    appFooter.classList.add('fade-in', 'anchored-hidden')
     let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
-    footerContent.className = 'js-feedback-prompt-generic' // DDG footer class
     footerContent.onclick = () => modals.open('feedback')
     appFooter.append(footerContent)
 
@@ -3965,7 +3964,7 @@
                             const newFooterContent = destinationURL ? dom.create.anchor(destinationURL)
                                                                     : document.createElement('span')
                             footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
-                            footerContent.classList.add('fade-in', 'anchored-hidden') // DDG footer class
+                            footerContent.classList.add('fade-in', 'anchored-hidden')
                             footerContent.textContent = chosenAd.text
                             footerContent.setAttribute('title', chosenAd.tooltip || '')
                             setTimeout(() => footerContent.classList.add('active'), 100) // to trigger fade
