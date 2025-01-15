@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.10
+// @version               2025.1.15.11
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -606,11 +606,12 @@
             method: 'POST', streamable: true
         },
         'ToYaml.com': {
-            endpoint: 'https://toyaml.com/streams', expectedOrigin: { url: 'https://toyaml.com/chat.html',
+            endpoint: 'https://toyaml.com/streams',
+            expectedOrigin: { url: 'https://toyaml.com/chat.html', headers: { 'x-requested-with': 'XMLHttpRequest' }},
+            method: 'GET', streamable: true, watermark: '【本答案来自 toyaml.com】',
             failFlags: [
-                '请等待网友当前提问回答完毕再试'], // 'Please wait until the current question is answered before trying again'
-            headers: { 'x-requested-with': 'XMLHttpRequest' }}, method: 'GET', streamable: true,
-            watermark: '【本答案来自 toyaml.com】'
+                '请等待网友当前提问回答完毕再试' // 'Please wait until the current question is answered before trying again'
+            ]
         }
     }
 
