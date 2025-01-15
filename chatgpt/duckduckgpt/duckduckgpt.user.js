@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.1
+// @version                2025.1.15.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2362,15 +2362,18 @@
 
         bylineVisibility() {
             if (env.browser.isPhone) return // since byline hidden by app.styles
-            const headerElems = {
+
+            // Init header elems
+            const headerElems = { byline: appDiv.querySelector('.kudoai') }
+            if (!headerElems.byline) return // since in loading state
+            Object.assign(headerElems, {
                 btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
-                byline: appDiv.querySelector('.kudoai'),
                 logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
-            }
-            const appDivStyle = getComputedStyle(appDiv)
-            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
+            })
 
             // Calc/store widths of app/x-padding + header elems
+            const appDivStyle = getComputedStyle(appDiv)
+            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
             const widths = {
                 appDiv: appDiv.getBoundingClientRect().width,
                 appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
