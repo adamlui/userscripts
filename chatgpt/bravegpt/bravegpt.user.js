@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.5
+// @version               2025.1.15.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3407,9 +3407,8 @@
             function processStreamText({ done, value }) {
 
                 // Handle stream done
-                if (done) { handleProcessCompletion() ; return }
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (chunk.includes(apis[caller.api].watermark)) { handleProcessCompletion() ; return }
+                if (done || chunk.includes(apis[caller.api].watermark)) return handleProcessCompletion()
                 this.timeout = setTimeout(handleProcessCompletion, 500) // since reader.read() doesn't signal done in Chromium
 
                 // Process/show chunk
