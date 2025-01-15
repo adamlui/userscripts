@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15
+// @version               2025.1.15.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2365,15 +2365,18 @@
 
         bylineVisibility() {
             if (env.browser.isPhone) return // since byline hidden by app.styles
-            const headerElems = {
+
+            // Init header elems
+            const headerElems = { byline: appDiv.querySelector('.kudoai') }
+            if (!headerElems.byline) return // since in loading state
+            Object.assign(headerElems, {
                 btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
-                byline: appDiv.querySelector('.kudoai'),
                 logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
-            }
-            const appDivStyle = getComputedStyle(appDiv)
-            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
+            })
 
             // Calc/store widths of app/x-padding + header elems
+            const appDivStyle = getComputedStyle(appDiv)
+            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
             const widths = {
                 appDiv: appDiv.getBoundingClientRect().width,
                 appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
