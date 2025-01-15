@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.3
+// @version               2025.1.15.4
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3370,7 +3370,7 @@
                 ) api.tryNew(get.related, 'timeout')
             }, 7000)
 
-            // Get queries
+            // Get related queries
             const payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqMethod = apis[get.related.api].method
@@ -3378,10 +3378,10 @@
                     headers: api.createHeaders(get.related.api), method: reqMethod, responseType: 'text',
                     onerror: err => { log.error(err) ; api.tryNew(get.related) },
                     onload: resp => dataProcess.text(get.related, resp).then(resolve),
-                    url: ( apis[get.related.api].endpoints?.completions || apis[get.related.api].endpoint )
-                         + ( reqMethod == 'GET' ? `?q=${rqPrompt}` : '' )
+                    url: apis[get.related.api].endpoints?.completions || apis[get.related.api].endpoint
                 }
                 if (reqMethod == 'POST') xhrConfig.data = payload
+                else if (reqMethod == 'GET') xhrConfig.url += `?q=${rqPrompt}`
                 xhr(xhrConfig)
             })
         }
