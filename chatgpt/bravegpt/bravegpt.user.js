@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.8
+// @version               2025.1.15.9
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3400,7 +3400,8 @@
             }, 7000)
 
             // Get related queries
-            const payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
+            const rqPrompt = augmentQuery(prompts.create({ type: 'relatedQueries', prevQuery: query })),
+                  payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqMethod = apis[get.related.api].method
                 const xhrConfig = {
