@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.5
+// @version                  2025.1.15.6
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3627,9 +3627,8 @@
             function processStreamText({ done, value }) {
 
                 // Handle stream done
-                if (done) { handleProcessCompletion() ; return }
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (chunk.includes(apis[caller.api].watermark)) { handleProcessCompletion() ; return }
+                if (done || chunk.includes(apis[caller.api].watermark)) return handleProcessCompletion()
                 this.timeout = setTimeout(handleProcessCompletion, 500) // since reader.read() doesn't signal done in Chromium
 
                 // Process/show chunk
