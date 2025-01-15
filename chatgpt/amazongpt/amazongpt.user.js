@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.1
+// @version                2025.1.15.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2752,14 +2752,14 @@
                         log.error('Fail flag detected', `'${failMatch[0]}'`)
                         appAlert('openAInotWorking', 'suggestProxy')
                     } else {
-                        try { // to show response or return related queries
+                        try { // to show response
                             respText = JSON.parse(resp.response).choices[0].message.content
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     }
-                } else if (resp.responseText) {
-                    if (/AIchatOS|ToYaml|FREEGPT/.test(caller.api)) {
-                        try { // to show response
+                } else if (resp.responseText) { // show response
+                    if (/AIchatOS|FREEGPT|ToYaml/.test(caller.api)) {
+                        try {
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
                             while (currentIdx < text.length) {
@@ -2769,14 +2769,14 @@
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (caller.api == 'GPTforLove') {
-                        try { // to show response
+                        try {
                             let chunks = resp.responseText.trim().split('\n'),
                                 lastObj = JSON.parse(chunks[chunks.length - 1])
                             if (lastObj.id) apis.GPTforLove.parentID = lastObj.id
                             respText = lastObj.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (caller.api == 'MixerBox AI') {
-                        try { // to show response
+                        try {
                             const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .filter(match => !/message_(?:start|end)|done/.test(match))
