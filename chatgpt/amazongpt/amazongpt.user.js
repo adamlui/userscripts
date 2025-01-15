@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15
+// @version                2025.1.15.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1934,15 +1934,18 @@
 
         bylineVisibility() {
             if (env.browser.isPhone) return // since byline hidden by app.styles
-            const headerElems = {
+
+            // Init header elems
+            const headerElems = { byline: appDiv.querySelector('.kudoai') }
+            if (!headerElems.byline) return // since in loading state
+            Object.assign(headerElems, {
                 btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
-                byline: appDiv.querySelector('.kudoai'),
                 logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
-            }
-            const appDivStyle = getComputedStyle(appDiv)
-            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
+            })
 
             // Calc/store widths of app/x-padding + header elems
+            const appDivStyle = getComputedStyle(appDiv)
+            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
             const widths = {
                 appDiv: appDiv.getBoundingClientRect().width,
                 appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
