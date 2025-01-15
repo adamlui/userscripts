@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.1
+// @version               2025.1.15.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3480,9 +3480,9 @@
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     }
-                } else if (resp.responseText) {
-                    if (/AIchatOS|ToYaml|FREEGPT/.test(caller.api)) {
-                        try { // to show response or return related queries
+                } else if (resp.responseText) { // show response or return related queries
+                    if (/AIchatOS|FREEGPT|ToYaml/.test(caller.api)) {
+                        try {
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
                             while (currentIdx < text.length) {
@@ -3492,14 +3492,14 @@
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (caller.api == 'GPTforLove') {
-                        try { // to show response or return related queries
+                        try {
                             let chunks = resp.responseText.trim().split('\n'),
                                 lastObj = JSON.parse(chunks[chunks.length - 1])
                             if (lastObj.id) apis.GPTforLove.parentID = lastObj.id
                             respText = lastObj.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (caller.api == 'MixerBox AI') {
-                        try { // to show response or return related queries
+                        try {
                             const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .filter(match => !/message_(?:start|end)|done/.test(match))
