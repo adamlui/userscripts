@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.2
+// @version                2025.1.15.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2154,10 +2154,12 @@
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
                     const randQAprompt = 'Generate a single random question on any topic then answer it. '
-                                       + 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, '
+                                       + 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, ' // OpenAI bias
                                            + 'deserts, mindfulness meditation, the Fibonacci sequence, the liver, '
                                            + 'Jupiter, the Great Wall of China, Sheakespeare or da Vinci. '
+                                       + 'Dont\'t talk about the benefits of practicing something regularly. ' // MixerBox AI bias
                                        + 'Try to give an answer that is 50-100 words. '
+                                       + 'Dont\'t provide a question you generated before. '
                                        + 'Do not type anything but the question and answer. Reply in markdown.'
                     chatTextarea.value = augmentQuery(randQAprompt)
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
