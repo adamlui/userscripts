@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.10
+// @version                2025.1.15.11
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2599,15 +2599,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    const randQAprompt = 'Generate a single random question on any topic then answer it. '
-                                       + 'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, ' // OpenAI bias
-                                           + 'deserts, mindfulness meditation, the Fibonacci sequence, the liver, '
-                                           + 'Jupiter, the Great Wall of China, Sheakespeare or da Vinci. '
-                                       + 'Dont\'t talk about the benefits of practicing something regularly. ' // MixerBox AI bias
-                                       + 'Try to give an answer that is 50-100 words. '
-                                       + 'Dont\'t provide a question you generated before. '
-                                       + 'Do not type anything but the question and answer. Reply in markdown.'
-                    chatTextarea.value = augmentQuery(randQAprompt)
+                    chatTextarea.value = augmentQuery(prompts.create({ type: 'randomQA' }))
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                     show.reply.src = 'shuffle'
@@ -2725,6 +2717,63 @@
             } else if (state == 'off' || (!state && slider.style.display != 'none')) {
                 slider.classList.remove('active') ; if (replyTip) replyTip.style.display = ''
                 sliderTip.style.display = slider.style.display = 'none'
+            }
+        }
+    }
+
+    // Define PROMPTS props/function
+
+    const prompts = {
+
+        create({ type, prevQuery }) {
+            const promptSrc = this[type],
+                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods)
+            let builtPrompt = `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
+            if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
+            return builtPrompt
+        },
+
+        randomQA: {
+            base: 'Generate a single random question on any topic then answer it.',
+            mods: [
+                { type: 'formatting', mods: [
+                    'Try to give an answer that is 50-100 words.',
+                    'Do not type anything but the question and answer.',
+                    'Reply in markdown.'
+                ]},
+                { type: 'loopBias', mods: [
+                    'Don\'t provide a question you generated before.',
+                    'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
+                        + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
+                        + 'the Great Wall of China, Shakespeare, or da Vinci.'
+                ]},
+                { type: 'MixerBox AI', mods: [
+                    'Don\'t talk about the benefits of practicing something regularly.'
+                ]}
+            ]
+        },
+
+        relatedQueries: {
+            get base() {
+                return `Print me a numbered list of ${
+                    get.related.replyIsQuestion ? 'possible answers to this question'
+                                                : 'queries related to this one' }:\n\n"\${prevQuery}"\n\n`
+            },
+
+            get mods() {
+                return get.related.replyIsQuestion ?
+                    'Generate answers as if in reply to a search engine chatbot asking the question.'
+                  : [{ type: 'variety', mods: [
+                        'Make sure to suggest a variety that can even greatly deviate from the original topic.',
+                        'For example, if the original query asked about someone\'s wife, '
+                            + 'a good related query could involve a different relative and using their name.',
+                        'Another example, if the query asked about a game/movie/show, '
+                            + 'good related queries could involve pertinent characters.',
+                        'Another example, if the original query asked how to learn JavaScript, '
+                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs.',
+                        'But the key is variety. Do not be repetitive. '
+                            + 'You must entice user to want to ask one of your related queries.'
+                    ]}]
             }
         }
     }
@@ -3224,26 +3273,6 @@
                 config.openAIkey = await Promise.race(
                     [session.getOAItoken(), new Promise(reject => setTimeout(reject, 3000))])
 
-            // Init prompt
-            const rqPrompt = 'Print me a numbered list of '
-                + `${ get.related.replyIsQuestion ? 'possible answers to this question'
-                                                  : 'queries related to this one' }:\n\n"${query}"\n\n`
-                +   ( get.related.replyIsQuestion ?
-                        'Generate answers as if in reply to a search engine chatbot asking the question.'
-
-                  // Extended instructions for non-question queries
-                  : ( 'Make sure to suggest a variety that can even greatly deviate from the original topic. '
-                    + 'For example, if the original query asked about someone\'s wife, '
-                        + ' a good related query could involve a different relative and using their name. '
-                    + 'Another example, if the query asked about a game/movie/show, '
-                        + ' good related queries could involve pertinent characters. '
-                    + 'Another example, if the original query asked how to learn JavaScript, '
-                       + ' good related queries could ask why/when/where instead, even replacing JS w/ other langs. '
-                    + 'But the key is variety. Do not be repetitive. '
-                       + ' You must entice user to want to ask one of your related queries.' ))
-
-                + ` Reply in ${config.replyLang}`
-
             // Try diff API after 7s of no response
             const iniAPI = get.related.api
             get.related.query = query // expose to api.tryNew() in case modded
@@ -3255,7 +3284,8 @@
             }, 7000)
 
             // Get related queries
-            const payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
+            const rqPrompt = augmentQuery(prompts.create({ type: 'relatedQueries', prevQuery: query })),
+                  payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqMethod = apis[get.related.api].method
                 const xhrConfig = {
