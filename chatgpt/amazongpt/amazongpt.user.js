@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.7
+// @version                2025.1.15.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2269,6 +2269,63 @@
             } else if (state == 'off' || (!state && slider.style.display != 'none')) {
                 slider.classList.remove('active') ; if (replyTip) replyTip.style.display = ''
                 sliderTip.style.display = slider.style.display = 'none'
+            }
+        }
+    }
+
+    // Define PROMPTS props/function
+
+    const prompts = {
+
+        create({ type, prevQuery }) {
+            const promptSrc = this[type],
+                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods)
+            let builtPrompt = `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
+            if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
+            return builtPrompt
+        },
+
+        randomQA: {
+            base: 'Generate a single random question on any topic then answer it.',
+            mods: [
+                { type: 'formatting', mods: [
+                    'Try to give an answer that is 50-100 words.',
+                    'Do not type anything but the question and answer.',
+                    'Reply in markdown.'
+                ]},
+                { type: 'loopBias', mods: [
+                    'Don\'t provide a question you generated before.',
+                    'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
+                        + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
+                        + 'the Great Wall of China, Shakespeare, or da Vinci.'
+                ]},
+                { type: 'MixerBox AI', mods: [
+                    'Don\'t talk about the benefits of practicing something regularly.'
+                ]}
+            ]
+        },
+
+        relatedQueries: {
+            get base() {
+                return `Print me a numbered list of ${
+                    get.related.replyIsQuestion ? 'possible answers to this question'
+                                                : 'queries related to this one' }:\n\n"\${prevQuery}"\n\n`
+            },
+
+            get mods() {
+                return get.related.replyIsQuestion ?
+                    'Generate answers as if in reply to a search engine chatbot asking the question.'
+                  : [{ type: 'variety', mods: [
+                        'Make sure to suggest a variety that can even greatly deviate from the original topic.',
+                        'For example, if the original query asked about someone\'s wife, '
+                            + 'a good related query could involve a different relative and using their name.',
+                        'Another example, if the query asked about a game/movie/show, '
+                            + 'good related queries could involve pertinent characters.',
+                        'Another example, if the original query asked how to learn JavaScript, '
+                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs.',
+                        'But the key is variety. Do not be repetitive. '
+                            + 'You must entice user to want to ask one of your related queries.'
+                    ]}]
             }
         }
     }
