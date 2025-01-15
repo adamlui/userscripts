@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.6
+// @version                2025.1.15.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3289,9 +3289,14 @@
             reader.read().then(processStreamText).catch(err => log.error('Error processing stream', err.message))
 
             function processStreamText({ done, value }) {
+
+                // Handle stream done
                 if (done) { handleProcessCompletion() ; return }
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (chunk.includes(apis[caller.api].watermark)) { handleProcessCompletion() ; return }
+                this.timeout = setTimeout(handleProcessCompletion, 500) // since reader.read() doesn't signal done in Chromium
+
+                // Process/show chunk
                 if (caller.api == 'MixerBox AI') { // pre-process chunks
                     const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
@@ -3328,7 +3333,7 @@
             }
 
             function handleProcessCompletion() {
-                caller.sender = null
+                caller.sender = this.timeout = null
                 if (appDiv.querySelector('.loading')) // no text shown
                     api.tryNew(caller)
                 else { // text was shown
