@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.19
+// @version                  2025.1.15.20
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2903,7 +2903,7 @@
                     replySection.classList.add('loading', 'no-user-select')
                     replySection.innerText = app.alerts.waitingResponse
 
-                    // Set flags
+                    // Reset flags
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
@@ -3864,9 +3864,20 @@
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = () => {
-                get.reply(msgChain) ; appAlert('waitingResponse')
-                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // or tooltip shows on next reply
-                show.reply.chatbarFocused = false ; show.reply.userInteracted = true
+                get.reply(msgChain)
+
+                // Hide/remove elems
+                regenBtn.style.display = 'none'
+                appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove()
+                appDiv.querySelector('footer').textContent = ''
+
+                // Show loading status
+                const replySection = appDiv.querySelector('section')
+                replySection.classList.add('loading', 'no-user-select')
+                replySection.innerText = app.alerts.waitingResponse
+
+                // Reset flags
+                show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
             }
         },
 
