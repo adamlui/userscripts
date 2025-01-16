@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.13
+// @version                  2025.1.15.14
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3059,7 +3059,7 @@
         create({ type, prevQuery }) {
             const promptSrc = this[type],
                   modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
-                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /(?:\n|\.)$/.test(elem) ? '' : '.')
+                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /[\n.]$/.test(elem) ? '' : '.')
             let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
             return builtPrompt
