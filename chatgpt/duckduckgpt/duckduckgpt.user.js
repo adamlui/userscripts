@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.14
+// @version                2025.1.15.15
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2730,28 +2730,29 @@
 
         create({ type, prevQuery }) {
             const promptSrc = this[type],
-                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || []
-            let builtPrompt = `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
+                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
+                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /(?:\n|\.)$/.test(elem) ? '' : '.')
+            let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
             return builtPrompt
         },
 
         randomQA: {
-            base: 'Generate a single random question on any topic then answer it.',
+            base: 'Generate a single random question on any topic then answer it',
             mods: [
                 { type: 'formatting', mods: [
-                    'Try to give an answer that is 50-100 words.',
-                    'Do not type anything but the question and answer.',
+                    'Try to give an answer that is 50-100 words',
+                    'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
                 { type: 'loopBias', mods: [
-                    'Don\'t provide a question you generated before.',
+                    'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
-                        + 'the Great Wall of China, Shakespeare, or da Vinci.'
+                        + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
                 { type: 'MixerBox AI', mods: [
-                    'Don\'t talk about the benefits of practicing something regularly.'
+                    'Don\'t talk about the benefits of practicing something regularly'
                 ]}
             ]
         },
@@ -2765,17 +2766,17 @@
 
             get mods() {
                 return get.related.replyIsQuestion ?
-                    'Generate answers as if in reply to a search engine chatbot asking the question.'
+                    'Generate answers as if in reply to a search engine chatbot asking the question'
                   : [{ type: 'variety', mods: [
-                        'Make sure to suggest a variety that can even greatly deviate from the original topic.',
+                        'Make sure to suggest a variety that can even greatly deviate from the original topic',
                         'For example, if the original query asked about someone\'s wife, '
-                            + 'a good related query could involve a different relative and using their name.',
+                            + 'a good related query could involve a different relative and using their name',
                         'Another example, if the query asked about a game/movie/show, '
-                            + 'good related queries could involve pertinent characters.',
+                            + 'good related queries could involve pertinent characters',
                         'Another example, if the original query asked how to learn JavaScript, '
-                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs.',
+                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs',
                         'But the key is variety. Do not be repetitive. '
-                            + 'You must entice user to want to ask one of your related queries.'
+                            + 'You must entice user to want to ask one of your related queries'
                     ]}]
             }
         }
