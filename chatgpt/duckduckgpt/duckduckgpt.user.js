@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.23
+// @version                2025.1.15.24
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2576,7 +2576,7 @@
                     replySection.classList.add('loading', 'no-user-select')
                     replySection.innerText = app.alerts.waitingResponse
 
-                    // Set flags
+                    // Reset flags
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
@@ -3528,9 +3528,19 @@
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = () => {
-                get.reply(msgChain) ; appAlert('waitingResponse')
-                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // or tooltip shows on next reply
-                show.reply.chatbarFocused = false ; show.reply.userInteracted = true
+                get.reply(msgChain)
+
+                // Hide/remove elems
+                appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove()
+                regenBtn.style.display = 'none'
+
+                // Show loading status
+                const replySection = appDiv.querySelector('section')
+                replySection.classList.add('loading', 'no-user-select')
+                replySection.innerText = app.alerts.waitingResponse
+
+                // Reset flags
+                show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
             }
         },
 
