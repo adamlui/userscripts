@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.15
+// @version                2025.1.15.16
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2745,7 +2745,7 @@
                     'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
-                { type: 'loopBias', mods: [
+                { type: 'variety', mods: [
                     'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
