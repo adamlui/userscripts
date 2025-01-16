@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.17
+// @version                2025.1.15.18
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2765,9 +2765,10 @@
             },
 
             get mods() {
-                return get.related.replyIsQuestion ?
-                    'Generate answers as if in reply to a search engine chatbot asking the question'
-                  : [{ type: 'variety', mods: [
+                return [
+                    get.related.replyIsQuestion ?
+                        'Generate answers as if in reply to a search engine chatbot asking the question'
+                  : { type: 'variety', mods: [
                         'Make sure to suggest a variety that can even greatly deviate from the original topic',
                         'For example, if the original query asked about someone\'s wife, '
                             + 'a good related query could involve a different relative and using their name',
@@ -2777,7 +2778,8 @@
                             + 'good related queries could ask why/when/where instead, even replace JS w/ other langs',
                         'But the key is variety. Do not be repetitive. '
                             + 'You must entice user to want to ask one of your related queries'
-                    ]}]
+                    ]}
+                ]
             }
         }
     }
