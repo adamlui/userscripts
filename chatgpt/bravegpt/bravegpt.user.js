@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.13
+// @version               2025.1.15.14
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2859,7 +2859,7 @@
                     'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
-                { type: 'loopBias', mods: [
+                { type: 'variety', mods: [
                     'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
@@ -2880,17 +2880,17 @@
 
             get mods() {
                 return get.related.replyIsQuestion ?
-                    'Generate answers as if in reply to a search engine chatbot asking the question.'
+                    'Generate answers as if in reply to a search engine chatbot asking the question'
                   : [{ type: 'variety', mods: [
-                        'Make sure to suggest a variety that can even greatly deviate from the original topic.',
+                        'Make sure to suggest a variety that can even greatly deviate from the original topic',
                         'For example, if the original query asked about someone\'s wife, '
-                            + 'a good related query could involve a different relative and using their name.',
+                            + 'a good related query could involve a different relative and using their name',
                         'Another example, if the query asked about a game/movie/show, '
-                            + 'good related queries could involve pertinent characters.',
+                            + 'good related queries could involve pertinent characters',
                         'Another example, if the original query asked how to learn JavaScript, '
-                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs.',
+                            + 'good related queries could ask why/when/where instead, even replace JS w/ other langs',
                         'But the key is variety. Do not be repetitive. '
-                            + 'You must entice user to want to ask one of your related queries.'
+                            + 'You must entice user to want to ask one of your related queries'
                     ]}]
             }
         }
