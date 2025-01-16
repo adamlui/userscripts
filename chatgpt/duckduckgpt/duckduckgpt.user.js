@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.21
+// @version                2025.1.15.22
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2548,11 +2548,11 @@
 
                     // Modify/submit msg chain
                     if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-                    msgChain = stripQueryAugments(msgChain)
+                    msgChain = prompts.stripAugments(msgChain)
                     const prevReplyTrimmed = appDiv.querySelector('pre')
                         ?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
                     msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
-                    msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
+                    msgChain.push({ role: 'user', content: prompts.augment(chatTextarea.value) })
                     get.reply(msgChain)
 
                     // Hide/remove elems
@@ -2591,7 +2591,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = augmentQuery(prompts.create({ type: 'randomQA' }))
+                    chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                     show.reply.src = 'shuffle'
@@ -2713,9 +2713,11 @@
         }
     }
 
-    // Define PROMPTS props/function
+    // Define PROMPT functions
 
     const prompts = {
+
+        augment(prompt) { return `${prompt} {{reply in ${config.replyLang}}}` },
 
         create({ type, prevQuery }) {
             const promptSrc = this[type],
@@ -2724,6 +2726,16 @@
             let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
             return builtPrompt
+        },
+
+        stripAugments(msgChain) {
+            return msgChain.map(msg => { // stripped chain
+                if (msg.role == 'user') {
+                    let content = msg.content
+                    content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
+                    return { ...msg, content: content.trim() }
+                } else return msg // agent's unstripped
+            })
         },
 
         randomQA: {
@@ -2909,7 +2921,7 @@
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
             if (!config.rqDisabled && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) // get related queries for 1st time
-                get.related(stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
             update.answerPreMaxHeight()
@@ -3171,20 +3183,6 @@
         }
     }
 
-    // Define QUERY AUGMENT functions
-
-    function augmentQuery(query) { return `${query} {{reply in ${config.replyLang}}}` }
-
-    function stripQueryAugments(msgChain) {
-        return msgChain.map(msg => { // stripped chain
-            if (msg.role == 'user') {
-                let content = msg.content
-                content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
-                return { ...msg, content: content.trim() }
-            } else return msg // agent's unstripped
-        })
-    }
-
     // Define GET functions
 
     const get = {
@@ -3247,7 +3245,7 @@
 
             // Get/show related queries if enabled on 1st get.reply()
             if (!config.rqDisabled && get.reply.attemptCnt == 1)
-                get.related(stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
         },
@@ -3279,7 +3277,7 @@
             }, 7000)
 
             // Get related queries
-            const rqPrompt = augmentQuery(prompts.create({ type: 'relatedQueries', prevQuery: query })),
+            const rqPrompt = prompts.augment(prompts.create({ type: 'relatedQueries', prevQuery: query })),
                   payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqMethod = apis[get.related.api].method
@@ -3638,7 +3636,8 @@
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
-                        msgChain.push({ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) })
+                        msgChain.push({ role: 'user', content:
+                            prompts.augment(new URL(location.href).searchParams.get('q')) })
                         show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                         menus.pin.topPos = menus.pin.rightPos = null
                         get.reply(msgChain)
@@ -4039,13 +4038,13 @@
     }), 1500)
 
     // Show STANDBY mode or get/show ANSWER
-    let msgChain = [{ role: 'user', content: augmentQuery(new URL(location.href).searchParams.get('q')) }]
+    let msgChain = [{ role: 'user', content: prompts.augment(new URL(location.href).searchParams.get('q')) }]
     if (!config.autoGet // Auto-Get disabled
         || config.prefixEnabled && !/.*q=%2F/.test(location.href) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
             show.reply('standby')
             if (!config.rqDisabled)
-                get.related(stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
