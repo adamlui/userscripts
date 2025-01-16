@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.11
+// @version                2025.1.15.12
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2286,6 +2286,20 @@
             return `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
         },
 
+        informCategory: {
+            get base() {
+                return `Tell me more about what to look for when shopping for this category: ${document.title}`
+            }
+        },
+
+        informProduct: {
+            get base() { return `Tell me more about this product: ${document.title}\n\n` },
+            mods: [
+                'Include benefits and the brand if possible.',
+                'Also talk about similar products in a markdown list.'
+            ]
+        },
+
         randomQA: {
             base: 'Generate a single random question on any topic then answer it.',
             mods: [
@@ -3182,14 +3196,9 @@
     setTimeout(() => appDiv.classList.add('active'), 350) // fade in
 
     // Get/show FIRST REPLY
-    const firstQuery = (
-        /\/(?:dp|product)\//.test(location.href) ? (
-            'Tell me more about this product, including benefits and the brand if possible.'
-          + ' Also talk about similar products in a markdown list. The product is: ' + document.title
-        ) : /\/b\//.test(location.href) ?
-            ( 'Tell me more about what to look for when shopping for this category: ' + document.title
-        ) : 'Hi there'
-    )
+    const pageType = /\/(?:dp|product)\//.test(location.href) ? 'Product'
+                   : /\/b\//.test(location.href) ? 'Category' : 'Other'
+    const firstQuery = pageType == 'Other' ? 'Hi there' : prompts.create({ type: `inform${pageType}` })
     let msgChain = [{ role: 'user', content: augmentQuery(firstQuery) }]
     appAlert('waitingResponse') ; get.reply(msgChain)
 
