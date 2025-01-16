@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.18
+// @version                2025.1.15.19
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2115,11 +2115,11 @@
 
                     // Modify/submit msg chain
                     if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-                    msgChain = stripQueryAugments(msgChain)
+                    msgChain = prompts.stripAugments(msgChain)
                     const prevReplyTrimmed = appDiv.querySelector('pre')
                         ?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
                     msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
-                    msgChain.push({ role: 'user', content: augmentQuery(chatTextarea.value) })
+                    msgChain.push({ role: 'user', content: prompts.augment(chatTextarea.value) })
                     get.reply(msgChain)
 
                     // Hide/remove elems
@@ -2156,7 +2156,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = augmentQuery(prompts.create({ type: 'randomQA' }))
+                    chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                 }
@@ -2276,9 +2276,11 @@
         }
     }
 
-    // Define PROMPTS props/function
+    // Define PROMPT functions
 
     const prompts = {
+
+        augment(prompt) { return `${prompt} {{reply in ${config.replyLang}}}` },
 
         create({ type }) {
             const promptSrc = this[type],
@@ -2299,6 +2301,16 @@
                 'Include benefits and the brand if possible',
                 'Also talk about similar products in a markdown list'
             ]
+        },
+
+        stripAugments(msgChain) {
+            return msgChain.map(msg => { // stripped chain
+                if (msg.role == 'user') {
+                    let content = msg.content
+                    content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
+                    return { ...msg, content: content.trim() }
+                } else return msg // agent's unstripped
+            })
         },
 
         randomQA: {
@@ -2622,26 +2634,12 @@
             if (caller.attemptCnt < Object.keys(apis).length -+(caller == get.reply)) {
                 log.debug('Trying another endpoint...')
                 caller.attemptCnt++
-                caller(caller == get.reply ? msgChain : stripQueryAugments(msgChain)[msgChain.length - 1].content)
+                caller(caller == get.reply ? msgChain : prompts.stripAugments(msgChain)[msgChain.length - 1].content)
             } else {
                 log.debug('No remaining untried endpoints')
                 if (caller == get.reply) appAlert('proxyNotWorking', 'suggestOpenAI')
             }
         }
-    }
-
-    // Define QUERY AUGMENT functions
-
-    function augmentQuery(query) { return `${query} {{reply in ${config.replyLang}}}` }
-
-    function stripQueryAugments(msgChain) {
-        return msgChain.map(msg => { // stripped chain
-            if (msg.role == 'user') {
-                let content = msg.content
-                content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
-                return { ...msg, content: content.trim() }
-            } else return msg // agent's unstripped
-        })
     }
 
     // Define GET functions
@@ -3200,7 +3198,7 @@
     const pageType = /\/(?:dp|product)\//.test(location.href) ? 'Product'
                    : /\/b\//.test(location.href) ? 'Category' : 'Other'
     const firstQuery = pageType == 'Other' ? 'Hi there' : prompts.create({ type: `inform${pageType}` })
-    let msgChain = [{ role: 'user', content: augmentQuery(firstQuery) }]
+    let msgChain = [{ role: 'user', content: prompts.augment(firstQuery) }]
     appAlert('waitingResponse') ; get.reply(msgChain)
 
 })()
