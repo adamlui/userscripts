@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.13
+// @version                2025.1.15.14
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2282,8 +2282,9 @@
 
         create({ type }) {
             const promptSrc = this[type],
-                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || []
-            return `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
+                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
+                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /(?:\n|\.)$/.test(elem) ? '' : '.')
+            return promptElems.join(' ').trim()
         },
 
         informCategory: {
@@ -2295,27 +2296,27 @@
         informProduct: {
             get base() { return `Tell me more about this product: ${document.title}\n\n` },
             mods: [
-                'Include benefits and the brand if possible.',
-                'Also talk about similar products in a markdown list.'
+                'Include benefits and the brand if possible',
+                'Also talk about similar products in a markdown list'
             ]
         },
 
         randomQA: {
-            base: 'Generate a single random question on any topic then answer it.',
+            base: 'Generate a single random question on any topic then answer it',
             mods: [
                 { type: 'formatting', mods: [
-                    'Try to give an answer that is 50-100 words.',
-                    'Do not type anything but the question and answer.',
+                    'Try to give an answer that is 50-100 words',
+                    'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
                 { type: 'loopBias', mods: [
-                    'Don\'t provide a question you generated before.',
+                    'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
-                        + 'the Great Wall of China, Shakespeare, or da Vinci.'
+                        + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
                 { type: 'MixerBox AI', mods: [
-                    'Don\'t talk about the benefits of practicing something regularly.'
+                    'Don\'t talk about the benefits of practicing something regularly'
                 ]}
             ]
         }
