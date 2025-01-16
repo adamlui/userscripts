@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.18
+// @version               2025.1.15.19
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2466,7 +2466,7 @@
 
                                     // Update footer content
                                     const newFooterContent = destinationURL ?
-                                        dom.create.anchor(destinationURL, { target: '_self'  })
+                                        dom.create.anchor(destinationURL)
                                       : document.createElement('span')
                                     newFooterContent.className = braveClassList
                                     footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
