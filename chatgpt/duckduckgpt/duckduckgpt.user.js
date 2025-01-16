@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.24
+// @version                2025.1.15.25
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3925,7 +3925,7 @@
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
     appFooter.classList.add('fade-in', 'anchored-hidden')
-    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback)
+    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
     footerContent.onclick = () => modals.open('feedback')
     appFooter.append(footerContent)
 
