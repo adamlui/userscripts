@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.15
+// @version                  2025.1.15.16
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2675,7 +2675,7 @@
 
                                     // Update footer content
                                     const newFooterContent = destinationURL ?
-                                        dom.create.anchor(destinationURL, { class: 'anchored-hidden' })
+                                        dom.create.anchor(destinationURL)
                                       : document.createElement('span')
                                     footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
                                     footerContent.textContent = chosenAd.text
@@ -4334,7 +4334,7 @@
     }), 1500)
 
     // Init footer CTA to share feedback
-    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self', class: 'anchored-hidden' })
+    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
     footerContent.onclick = () => modals.open('feedback')
 
     // Show STANDBY mode or get/show ANSWER
