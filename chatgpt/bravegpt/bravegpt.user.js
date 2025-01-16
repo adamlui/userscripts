@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.19
+// @version               2025.1.15.20
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -576,7 +576,7 @@
                 url: 'https://am.aifree.site',
                 headers: { 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8', 'Priority': 'u=4' }
             },
-            method: 'POST', streamable: true
+            method: 'POST', streamable: true, failFlags: ['upstream_error']
         },
         'GPTforLove': {
             endpoint: 'https://api11.gptforlove.com/chat-process',
