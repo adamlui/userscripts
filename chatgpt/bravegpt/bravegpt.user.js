@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.12
+// @version               2025.1.15.13
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2844,28 +2844,29 @@
 
         create({ type, prevQuery }) {
             const promptSrc = this[type],
-                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || []
-            let builtPrompt = `${promptSrc.base} ${modsToApply?.join(' ')}`.trim()
+                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
+                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /(?:\n|\.)$/.test(elem) ? '' : '.')
+            let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
             return builtPrompt
         },
 
         randomQA: {
-            base: 'Generate a single random question on any topic then answer it.',
+            base: 'Generate a single random question on any topic then answer it',
             mods: [
                 { type: 'formatting', mods: [
-                    'Try to give an answer that is 50-100 words.',
-                    'Do not type anything but the question and answer.',
+                    'Try to give an answer that is 50-100 words',
+                    'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
                 { type: 'loopBias', mods: [
-                    'Don\'t provide a question you generated before.',
+                    'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
-                        + 'the Great Wall of China, Shakespeare, or da Vinci.'
+                        + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
                 { type: 'MixerBox AI', mods: [
-                    'Don\'t talk about the benefits of practicing something regularly.'
+                    'Don\'t talk about the benefits of practicing something regularly'
                 ]}
             ]
         },
