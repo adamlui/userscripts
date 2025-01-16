@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.15
+// @version                2025.1.15.16
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2283,7 +2283,7 @@
         create({ type }) {
             const promptSrc = this[type],
                   modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
-                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /(?:\n|\.)$/.test(elem) ? '' : '.')
+                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /[\n.]$/.test(elem) ? '' : '.')
             return promptElems.join(' ').trim()
         },
 
