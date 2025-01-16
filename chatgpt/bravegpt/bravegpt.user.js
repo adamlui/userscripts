@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.17
+// @version               2025.1.15.18
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2468,7 +2468,7 @@
                                     const newFooterContent = destinationURL ?
                                         dom.create.anchor(destinationURL, { target: '_self'  })
                                       : document.createElement('span')
-                                    newFooterContent.className = `${braveClassList} anchored-hidden`
+                                    newFooterContent.className = braveClassList
                                     footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
                                     footerContent.textContent = chosenAd.text
                                     footerContent.setAttribute('title', chosenAd.tooltip || '')
@@ -4054,8 +4054,7 @@
 
     // Init footer CTA to share feedback
     const braveClassList = 'feedback svelte-8js1iq'
-    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, {
-        target: '_self', class: `${braveClassList} anchored-hidden` })
+    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self', class: braveClassList })
     footerContent.onclick = () => modals.open('feedback')
 
     // REFERRALIZE links to support author
