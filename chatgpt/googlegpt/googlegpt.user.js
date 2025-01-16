@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.21
+// @version                  2025.1.15.22
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -4004,8 +4004,6 @@
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
-                        msgChain.push({ role: 'user', content:
-                            prompts.augment(new URL(location.href).searchParams.get('q')) })
                         show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                         menus.pin.topPos = menus.pin.rightPos = null
                         get.reply(msgChain)
