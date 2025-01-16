@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.25
+// @version                2025.1.15.26
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3657,8 +3657,6 @@
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
-                        msgChain.push({ role: 'user', content:
-                            prompts.augment(new URL(location.href).searchParams.get('q')) })
                         show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                         menus.pin.topPos = menus.pin.rightPos = null
                         get.reply(msgChain)
