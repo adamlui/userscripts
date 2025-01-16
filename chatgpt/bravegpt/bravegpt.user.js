@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.15.22
+// @version               2025.1.15.23
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2692,7 +2692,7 @@
                     replySection.classList.add('loading', 'no-user-select')
                     replySection.innerText = app.alerts.waitingResponse
 
-                    // Set flags
+                    // Reset flags
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
@@ -3644,9 +3644,20 @@
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = () => {
-                get.reply(msgChain) ; appAlert('waitingResponse')
-                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // or tooltip shows on next reply
-                show.reply.chatbarFocused = false ; show.reply.userInteracted = true
+                get.reply(msgChain)
+
+                // Hide/remove elems
+                regenBtn.style.display = 'none'
+                appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove()
+                appDiv.querySelector('footer').textContent = ''
+
+                // Show loading status
+                const replySection = appDiv.querySelector('section')
+                replySection.classList.add('loading', 'no-user-select')
+                replySection.innerText = app.alerts.waitingResponse
+
+                // Reset flags
+                show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
             }
         },
 
