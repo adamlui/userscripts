@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.18
+// @version                2025.1.15.20
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -567,24 +567,13 @@
 
     // Init API props
     const apis = {
-        'AIchatOS': {
-            endpoint: 'https://api.binjie.fun/api/generateStream',
-            expectedOrigin: {
-                url: 'https://chat18.aichatos68.com',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site'
-                }
-            },
-            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
-            userID: '#/chat/' + Date.now()
-        },
         'FREEGPT': {
             endpoint: 'https://am.aifree.site/api/generate',
             expectedOrigin: {
                 url: 'https://am.aifree.site',
                 headers: { 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8', 'Priority': 'u=4' }
             },
-            method: 'POST', streamable: true
+            method: 'POST', streamable: true, failFlags: ['upstream_error']
         },
         'GPTforLove': {
             endpoint: 'https://api11.gptforlove.com/chat-process',
@@ -3916,7 +3905,7 @@
     // Create/classify/fill feedback FOOTER
     const appFooter = document.createElement('footer')
     appFooter.classList.add('fade-in', 'anchored-hidden')
-    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
+    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback)
     footerContent.onclick = () => modals.open('feedback')
     appFooter.append(footerContent)
 
