@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.16
+// @version                2025.1.15.17
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -402,7 +402,7 @@
                 url: 'https://am.aifree.site',
                 headers: { 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8', 'Priority': 'u=4' }
             },
-            method: 'POST', streamable: true
+            method: 'POST', streamable: true, failFlags: ['upstream_error']
         },
         'GPTforLove': {
             endpoint: 'https://api11.gptforlove.com/chat-process',
