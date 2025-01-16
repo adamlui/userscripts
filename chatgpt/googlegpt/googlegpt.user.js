@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.17
+// @version                  2025.1.15.18
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3139,7 +3139,7 @@
                         update.bylineVisibility() ; appDiv.removeEventListener('transitionend', onTransitionEnd)
             }})
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const anchorToggle = document.querySelector('[id*=anchor][id*=menu-entry] input')
+                const anchorToggle = document.querySelector('[id*=anchor] input')
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
             }
             menus.pin.topPos = menus.pin.rightPos = null
@@ -3171,7 +3171,7 @@
                 ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const autoGetToggle = document.querySelector('[id*=autoGet][id*=menu-entry] input')
+                const autoGetToggle = document.querySelector('[id*=autoGet] input')
                 if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
             }
         },
@@ -3210,7 +3210,7 @@
             if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
             notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const modeToggle = document.querySelector(`[id*=${modeKey}][id*=menu-entry] input`)
+                const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
             }
         },
@@ -3237,8 +3237,8 @@
             notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
             menu.refresh()
             if (modals.settings.get()) { // update visual states of Settings toggles
-                const proxyToggle = document.querySelector('[id*=proxy][id*=menu-entry] input'),
-                      streamingToggle = document.querySelector('[id*=streaming][id*=menu-entry] input')
+                const proxyToggle = document.querySelector('[id*=proxy] input'),
+                      streamingToggle = document.querySelector('[id*=streaming] input')
                 if (proxyToggle.checked != config.proxyAPIenabled) // Proxy state out-of-sync (from using toolbar menu)
                     modals.settings.toggle.switch(proxyToggle)
                 if (streamingToggle.checked && !config.proxyAPIenabled // Streaming checked but OpenAI mode
@@ -3275,7 +3275,7 @@
             update.answerPreMaxHeight() ; update.bylineVisibility() ; update.chatbarWidth()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const stickySidebarToggle = document.querySelector('[id*=sticky][id*=menu-entry] input')
+                const stickySidebarToggle = document.querySelector('[id*=sticky] input')
                 if (stickySidebarToggle.checked != config.stickySidebar)
                     modals.settings.toggle.switch(stickySidebarToggle)
             }
