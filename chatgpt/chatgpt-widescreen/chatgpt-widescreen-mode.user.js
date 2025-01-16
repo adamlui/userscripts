@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.12.1
+// @version             2025.1.16
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -303,11 +303,11 @@
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
-        latestResourceCommitHash: 'ad86f2f' // for cached app.json + sites.json + messages.json
+        latestResourceCommitHash: '7a20e13' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
-        method: 'GET', url: `${app.urls.resourceHost}/data/app.json`,
+        method: 'GET', url: `${app.urls.resourceHost}/data/assets/data/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
     }))
     Object.assign(app, { ...remoteAppData, urls: { ...app.urls, ...remoteAppData.urls }})
@@ -412,7 +412,7 @@
 
     // Init SITE profiles
     const sites = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: `${app.urls.resourceHost}/data/sites.json`,
+        method: 'GET', url: `${app.urls.resourceHost}/assets/data/sites.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     sites.openai = { ...sites.chatgpt } // shallow copy to cover old domain
