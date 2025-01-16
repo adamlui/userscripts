@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.15.12
+// @version                  2025.1.15.13
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3073,7 +3073,7 @@
                     'Do not type anything but the question and answer',
                     'Reply in markdown.'
                 ]},
-                { type: 'loopBias', mods: [
+                { type: 'variety', mods: [
                     'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
