@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.15.26
+// @version                2025.1.16
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -174,6 +174,7 @@
 // @connect                api.binjie.fun
 // @connect                api.openai.com
 // @connect                api11.gptforlove.com
+// @connect                assets.aiwebextensions.com
 // @connect                cdn.jsdelivr.net
 // @connect                chatai.mixerbox.com
 // @connect                chatgpt.com
@@ -381,6 +382,13 @@
         state_off: 'Off'
     }
 
+    // Init API data
+    const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=abfa673',
+        onload: resp => resolve(JSON.parse(resp.responseText))
+    })))
+    apis.AIchatOS.userID = '#/chat/' + Date.now()
+
     // Init DEBUG mode
     const config = {}
     const settings = {
@@ -563,64 +571,6 @@
     env.ui = {
         app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )},
         site: { isCentered: !!document.documentElement.classList.toString().includes('center') }
-    }
-
-    // Init API props
-    const apis = {
-        'AIchatOS': {
-            endpoint: 'https://api.binjie.fun/api/generateStream',
-            expectedOrigin: {
-                url: 'https://chat18.aichatos68.com',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*', 'Priority': 'u=0', 'Sec-Fetch-Site': 'cross-site'
-                }
-            },
-            method: 'POST', streamable: true, accumulatesText: false, failFlags: ['很抱歉地', '系统公告'],
-            userID: '#/chat/' + Date.now()
-        },
-        'FREEGPT': {
-            endpoint: 'https://am.aifree.site/api/generate',
-            expectedOrigin: {
-                url: 'https://am.aifree.site',
-                headers: { 'Alt-Used': 'am.aifree.site', 'Content-Type': 'text/plain;charset=UTF-8', 'Priority': 'u=4' }
-            },
-            method: 'POST', streamable: true, failFlags: ['upstream_error']
-        },
-        'GPTforLove': {
-            endpoint: 'https://api11.gptforlove.com/chat-process',
-            expectedOrigin: {
-                url: 'https://ai28.gptforlove.com',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Priority': 'u=0', 'Sec-Fetch-Site': 'same-site', 'TE': 'trailers'
-                }
-            },
-            method: 'POST', streamable: true, accumulatesText: true,
-            failFlags: ['[\'"]?status[\'"]?:\\s*[\'"]Fail[\'"]']
-        },
-        'MixerBox AI': {
-            endpoint: 'https://chatai.mixerbox.com/api/chat/stream',
-            expectedOrigin: {
-                url: 'https://chatai.mixerbox.com', headers: { 'Alt-Used': 'chatai.mixerbox.com',  'TE': 'trailers' }},
-            method: 'POST', streamable: true, accumulatesText: false
-        },
-        'OpenAI': {
-            endpoints: {
-                auth: 'https://auth0.openai.com',
-                completions: 'https://api.openai.com/v1/chat/completions',
-                session: 'https://chatgpt.com/api/auth/session'
-            },
-            expectedOrigin: { url: 'https://chatgpt.com', headers: { 'Priority': 'u=4' }},
-            method: 'POST', streamable: true
-        },
-        'ToYaml.com': {
-            endpoint: 'https://toyaml.com/streams',
-            expectedOrigin: { url: 'https://toyaml.com/chat.html', headers: { 'x-requested-with': 'XMLHttpRequest' }},
-            method: 'GET', streamable: true, watermark: '【本答案来自 toyaml.com】',
-            failFlags: [
-                '请等待网友当前提问回答完毕再试' // 'Please wait until the current question is answered before trying again'
-            ]
-        }
     }
 
     // Init INPUT EVENTS
