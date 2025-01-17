@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.16.1
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -328,7 +328,8 @@
         menuLabel_blockSpam: 'Spam Block',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
-        menuLabel_disabled: 'Disabled (extension installed)',
+        menuLabel_disabled: 'Disabled',
+        menuLabel_extensionInstalled: 'extension installed',
         about_author: 'Author',
         about_and: '&',
         about_contributors: 'contributors',
@@ -438,9 +439,10 @@
         register() {
 
             // Show "Disabled (extension installed)"
-            if (env.extensionInstalled)
-                GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
-                    () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
+            if (env.extensionInstalled) GM_registerMenuCommand(
+                `${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionInstalled})`,
+                () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
+            )
 
             // ...or add settings toggles
             else Object.keys(settings.controls).forEach(key => {
