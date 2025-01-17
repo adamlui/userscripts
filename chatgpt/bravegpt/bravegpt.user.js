@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.16.1
+// @version               2025.1.16.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -262,7 +262,7 @@
             },
             support: 'https://support.bravegpt.com'
         },
-        latestResourceCommitHash: '2b23b0f' // for cached messages.json
+        latestResourceCommitHash: 'e6e7822' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
