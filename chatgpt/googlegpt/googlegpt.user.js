@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.16.2
+// @version                  2025.1.16.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3431,8 +3431,9 @@
             } else if (api == 'GPTforLove') {
                 payload = {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
-                    systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI.'
-                                 + 'Follow the user\'s instructions carefully.',
+                    systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
+                                 + 'Follow the user\'s instructions carefully. '
+                                 + 'Do not respond in Chinese unless you were asked to!',
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
