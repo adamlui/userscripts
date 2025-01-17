@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.16.2
+// @version               2025.1.16.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3211,8 +3211,9 @@
             } else if (api == 'GPTforLove') {
                 payload = {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
-                    systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI.'
-                                 + 'Follow the user\'s instructions carefully.',
+                    systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
+                                 + 'Follow the user\'s instructions carefully. '
+                                 + 'Do not respond in Chinese unless you were asked to!',
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
