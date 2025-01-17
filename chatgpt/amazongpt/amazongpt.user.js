@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.16
+// @version                2025.1.16.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -162,7 +162,7 @@
         mode_proxy: 'Proxy Mode',
         mode_streaming: 'Streaming Mode',
         mode_autoScroll: 'Auto-Scroll',
-        mode_debug: 'Debug Mode',
+        mode_dev: 'Dev Mode',
         tooltip_playAnswer: 'Play answer',
         tooltip_fontSize: 'Font size',
         tooltip_sendReply: 'Send reply',
@@ -184,7 +184,7 @@
         helptip_fgAnimations: 'Show foreground animations in UI components',
         helptip_replyLanguage: 'Language for AmazonGPT to reply in',
         helptip_colorScheme: 'Scheme to display AmazonGPT UI components in',
-        helptip_debugMode: 'Show detailed logging in browser console',
+        helptip_devMode: 'Show detailed logging in browser console',
         placeholder_typeSomething: 'Type something',
         prompt_updateReplyLang: 'Update reply language',
         alert_langUpdated: 'Language updated',
@@ -233,7 +233,7 @@
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
 
-    // Init DEBUG mode
+    // Init DEV Mode
     const config = {}
     const settings = {
         load(...keys) {
@@ -244,7 +244,7 @@
         },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
     }
-    settings.load('debugMode')
+    settings.load('devMode')
 
     // Define LOG props/functions
     const log = {
@@ -280,9 +280,9 @@
 
         toTitleCase(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
 
-    } ; ['info', 'error', 'debug'].forEach(logType =>
+    } ; ['info', 'error', 'dev'].forEach(logType =>
         log[logType] = function() {
-            if (logType == 'debug' && !config.debugMode) return
+            if (logType == 'dev' && !config.devMode) return
 
             const args = Array.from(arguments).map(arg => typeof arg == 'object' ? JSON.stringify(arg) : arg)
             const msgType = args.some(arg => /\.{3}$/.test(arg)) ? 'working'
@@ -321,7 +321,7 @@
 
     // LOCALIZE app.msgs for non-English users
     if (!env.browser.language.startsWith('en')) {
-        log.debug('Localizing app messages...')
+        log.dev('Localizing app messages...')
         const localizedMsgs = await new Promise(resolve => {
             const msgHostDir = app.urls.resourceHost + '/greasemonkey/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
@@ -345,11 +345,11 @@
             fetchMsgs()
         })
         Object.assign(app.msgs, localizedMsgs)
-        log.debug(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
+        log.dev(`Success! app.msgs = ${log.prettifyObj(app.msgs)}`)
     }
 
     // Init SETTINGS
-    log.debug('Initializing settings...')
+    log.dev('Initializing settings...')
     Object.assign(settings, { controls: { // displays top-to-bottom, left-to-right in Settings modal
         proxyAPIenabled: { type: 'toggle', icon: 'sunglasses', defaultVal: false,
             label: app.msgs.menuLabel_proxyAPImode,
@@ -375,9 +375,9 @@
         scheme: { type: 'modal', icon: 'scheme',
             label: app.msgs.menuLabel_colorScheme,
             helptip: app.msgs.helptip_colorScheme },
-        debugMode: { type: 'toggle', icon: 'bug', defaultVal: false,
-            label: app.msgs.mode_debug,
-            helptip: app.msgs.helptip_debugMode },
+        devMode: { type: 'toggle', icon: 'code', defaultVal: false,
+            label: app.msgs.mode_dev,
+            helptip: app.msgs.helptip_devMode },
         about: { type: 'modal', icon: 'questionMarkCircle',
             label: `${app.msgs.menuLabel_about} ${app.name}...` }
     }})
@@ -386,7 +386,7 @@
     if (!config.replyLang) settings.save('replyLang', env.browser.language) // init reply language if unset
     if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
     if (!env.scriptManager.supportsStreaming) settings.save('streamingDisabled', true) // disable Streaming in unspported env
-    log.debug(`Success! config = ${log.prettifyObj(config)}`)
+    log.dev(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
     env.ui = { app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' ) }}
@@ -434,25 +434,25 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') {
-                log.debug('GM_unregisterMenuCommand not supported.') ; return }
+                log.dev('GM_unregisterMenuCommand not supported.') ; return }
             for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
 
     function updateCheck() {
         log.caller = 'updateCheck()'
-        log.debug(`currentVer = ${app.version}`)
+        log.dev(`currentVer = ${app.version}`)
 
         // Fetch latest meta
-        log.debug('Fetching latest userscript metadata...')
+        log.dev('Fetching latest userscript metadata...')
         xhr({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
             onload: resp => {
-                log.debug('Success! Response received')
+                log.dev('Success! Response received')
 
                 // Compare versions, alert if update found
-                log.debug('Comparing versions...')
+                log.dev('Comparing versions...')
                 app.latestVer = /@version +(.*)/.exec(resp.responseText)?.[1]
                 if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
@@ -532,8 +532,8 @@
             modeIcon.style.cssText = iconStyles
                 + ( // raise some icons
                     /focus|scroll/i.test(mode) ? 'top: 4px' : '' )
-                + ( // shrink some icons
-                    /animation|debug/i.test(mode) ? 'width: 23px ; height: 23px ; margin-top: 3px' : '' )
+                + ( // shrink Animations icon
+                    /animation/i.test(mode) ? 'width: 23px ; height: 23px ; margin-top: 3px' : '' )
             notif.append(modeIcon)
         }
 
@@ -566,7 +566,7 @@
             if (!modal) return // since no div returned
             if (settings.controls[modalType]?.type != 'prompt') { // add to stack
                 this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
-                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
+                log.dev(`Modal stack: ${JSON.stringify(modals.stack)}`)
             }
             this.init(modal) // add classes/listeners/hack bg/glowup btns
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
@@ -847,7 +847,7 @@
 
         about() {
             log.caller = 'modals.about()'
-            log.debug('Showing About modal...')
+            log.dev('Showing About modal...')
 
             // Show modal
             const aboutModal = modals.alert(
@@ -908,14 +908,14 @@
                 else btn.style.display = 'none'
             })
 
-            log.debug('Success! About Modal shown')
+            log.dev('Success! About Modal shown')
 
             return aboutModal
         },
 
         feedback() {
             log.caller = 'modals.feedback()'
-            log.debug('Showing Feedback modal...')
+            log.dev('Showing Feedback modal...')
 
             // Init buttons
             let btns = [ function greasyFork() {} ]
@@ -947,7 +947,7 @@
                 )
             })
 
-            log.debug('Success! Feedback modal shown')
+            log.dev('Success! Feedback modal shown')
 
             return feedbackModal
         },
@@ -962,9 +962,9 @@
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
                             : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
-                    log.debug('Saving reply language...')
+                    log.dev('Saving reply language...')
                     settings.save('replyLang', replyLang || env.browser.language)
-                    log.debug(`Success! config.replyLang = ${config.replyLang}`)
+                    log.dev(`Success! config.replyLang = ${config.replyLang}`)
                     modals.alert(`${app.msgs.alert_langUpdated}!`, // title
                         `${app.name} ${app.msgs.alert_willReplyIn} ` // msg
                             + ( replyLang || app.msgs.alert_yourSysLang ) + '.',
@@ -978,7 +978,7 @@
 
         scheme() {
             log.caller = 'modals.scheme()'
-            log.debug('Showing Scheme modal...')
+            log.dev('Showing Scheme modal...')
 
             // Show modal
             const schemeModal = modals.alert(`${
@@ -1024,7 +1024,7 @@
                 }
             }
 
-            log.debug('Success! Scheme modal shown')
+            log.dev('Success! Scheme modal shown')
 
             function schemeNotify(scheme) {
 
@@ -1057,10 +1057,10 @@
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
-                log.debug('Initializing settings keys...')
+                log.dev('Initializing settings keys...')
                 const settingsKeys = Object.keys(settings.controls).filter(key =>
                     !(env.browser.isMobile && settings.controls[key].mobile == false))
-                log.debug(`Success! settingsKeys = ${log.prettifyObj(settingsKeys)}`)
+                log.dev(`Success! settingsKeys = ${log.prettifyObj(settingsKeys)}`)
 
                 // Init logo
                 const settingsIcon = icons.amzgpt.create()
@@ -1079,7 +1079,7 @@
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
                 // Init settings lists
-                log.debug('Initializing settings lists...')
+                log.dev('Initializing settings lists...')
                 const settingsLists = [], middleGap = 30 // px
                 const settingsListContainer = document.createElement('div')
                 const settingsListCnt = (
@@ -1094,7 +1094,7 @@
                         `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${
                             env.ui.app.scheme == 'dark' ? 'white' : 'black '}` )
                 }
-                log.debug(`Success! settingsListCnt = ${settingsListCnt}`)
+                log.dev(`Success! settingsListCnt = ${settingsListCnt}`)
 
                 // Create/append setting icons/labels/toggles
                 settingsKeys.forEach((key, idx) => {
@@ -1117,8 +1117,8 @@
                       : /animation/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 6.5px'
                       : /replylang/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 9px'
                       : /scheme/i.test(key) ? 'top: 2.5px ; left: -1.5px ; margin-right: 8px'
-                      : /debug/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 8px'
-                      : /about/i.test(key) ? 'top: 3px ; left: -3px ; margin-right: 5.5px' : ''
+                      : /dev/i.test(key) ? 'top: 3.5px ; left: -2.5px ; margin-right: 7px'
+                      : /about/i.test(key) ? 'top: 3px ; left: -1.5px ; margin-right: 8.5px' : ''
                     )
                     settingItem.prepend(settingIcon)
 
@@ -1176,12 +1176,12 @@
                             // ...or generically toggle/notify
                             else {
                                 log.caller = 'settings.createAppend()'
-                                log.debug(`Toggling ${settingItem.textContent} ${
+                                log.dev(`Toggling ${settingItem.textContent} ${
                                     key.includes('Disabled') ^ config[key] ? 'OFF' : 'ON' }...`)
                                 settings.save(key, !config[key]) // update config
                                 notify(`${settings.controls[key].label} ${
                                     menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
-                                log[key.includes('debug') ? 'info' : 'debug'](`Success! config.${key} = ${config[key]}`)
+                                log[key.includes('dev') ? 'info' : 'dev'](`Success! config.${key} = ${config[key]}`)
                             }
                         }
 
@@ -1218,7 +1218,7 @@
                 settingsListContainer.append(...settingsLists)
 
                 // Create close button
-                log.debug('Creating Close button...')
+                log.dev('Creating Close button...')
                 const closeBtn = document.createElement('div')
                 closeBtn.classList.add(`${app.cssPrefix}-modal-close-btn`, 'no-mobile-tap-outline')
                 closeBtn.title = app.msgs.tooltip_close
@@ -1235,17 +1235,17 @@
 
             show() {
                 log.caller = 'modals.settings.show()'
-                log.debug('Showing Settings modal...')
+                log.dev('Showing Settings modal...')
                 const settingsContainer = modals.settings.get()?.parentNode || modals.settings.createAppend()
                 settingsContainer.style.display = '' // show modal
                 log.caller = 'modals.settings.show()'
                 if (env.browser.isMobile) { // scale 93% to viewport sides
-                    log.debug('Scaling 93% to viewport sides...')
+                    log.dev('Scaling 93% to viewport sides...')
                     const settingsModal = settingsContainer.querySelector(`#${app.cssPrefix}-settings`),
                           scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
-                log.debug('Success! Settings modal shown')
+                log.dev('Success! Settings modal shown')
                 return settingsContainer.firstChild
             },
 
@@ -1286,7 +1286,7 @@
             width: 488,
 
             available() {
-                log.debug(`Update v${app.latestVer} found!`)
+                log.dev(`Update v${app.latestVer} found!`)
 
                 // Show modal
                 const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
@@ -1305,7 +1305,7 @@
 
                 // Localize button labels if needed
                 if (!env.browser.language.startsWith('en')) {
-                    log.debug('Localizing button labels in non-English alert...')
+                    log.dev('Localizing button labels in non-English alert...')
                     const updateBtns = updateAvailModal.querySelectorAll('button')
                     updateBtns[1].textContent = app.msgs.btnLabel_update
                     updateBtns[0].textContent = app.msgs.btnLabel_dismiss
@@ -1315,7 +1315,7 @@
             },
 
             unavailable() {
-                log.debug('No update found.')
+                log.dev('No update found.')
                 return modals.alert(`${app.msgs.alert_upToDate}!`, // title
                     `${app.name} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
                     '', '', modals.update.width
@@ -1418,18 +1418,6 @@
             }
         },
 
-        bug: {
-            create() {
-                const svg = dom.create.svgElem('svg', { width: 16, height: 16, viewBox: '0 0 17 17' })
-                svg.append(
-                    dom.create.svgElem('path', {
-                        d: 'M7 0V1.60002C7.32311 1.53443 7.65753 1.5 8 1.5C8.34247 1.5 8.67689 1.53443 9 1.60002V0H11V2.49963C11.8265 3.12041 12.4543 3.99134 12.7711 5H3.2289C3.5457 3.99134 4.17354 3.12041 5 2.49963V0H7Z' }),
-                    dom.create.svgElem('path', {
-                        d: 'M0 7V9H3V10.4957L0.225279 11.2885L0.774721 13.2115L3.23189 12.5095C3.87194 14.5331 5.76467 16 8 16C10.2353 16 12.1281 14.5331 12.7681 12.5095L15.2253 13.2115L15.7747 11.2885L13 10.4957V9H16V7H9V12H7V7H0Z' }))
-                return svg
-            }
-        },
-
         caretsInward: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 24' })
@@ -1464,6 +1452,15 @@
             create() {
                 const svg = dom.create.svgElem('svg', { width: 20, height: 20, viewBox: '0 0 16 16' }),
                       svgPath = dom.create.svgElem('path', { stroke: 'none', d: 'M15 11L8 6.39 1 11V8.61L8 4l7 4.61z' })
+                svg.append(svgPath) ; return svg
+            }
+        },
+
+        code: {
+            create() {
+                const svg = dom.create.svgElem('svg', { width: 19, height: 19, viewBox: '0 0 24 24' })
+                const svgPath = dom.create.svgElem('path', { stroke: 'none',
+                    d: 'M1.293,11.293l4-4A1,1,0,1,1,6.707,8.707L3.414,12l3.293,3.293a1,1,0,1,1-1.414,1.414l-4-4A1,1,0,0,1,1.293,11.293Zm17.414-4a1,1,0,1,0-1.414,1.414L20.586,12l-3.293,3.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414ZM13.039,4.726l-4,14a1,1,0,0,0,.686,1.236A1.053,1.053,0,0,0,10,20a1,1,0,0,0,.961-.726l4-14a1,1,0,1,0-1.922-.548Z' })
                 svg.append(svgPath) ; return svg
             }
         },
@@ -1927,10 +1924,10 @@
 
         scheme(newScheme) {
             log.caller = `update.scheme('${newScheme}')`
-            log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
+            log.dev(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
             env.ui.app.scheme = newScheme ; logos.amzgpt.update() ; icons.amzgpt.update() ; update.appStyle()
             update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
-            log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
+            log.dev(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
 
         stars() {
@@ -2122,7 +2119,7 @@
 
         createAppend() {
             log.caller = 'fontSizeSlider.createAppend()'
-            log.debug('Creating/appending Font Size slider...')
+            log.dev('Creating/appending Font Size slider...')
 
             // Create/ID/classify slider elems
             fontSizeSlider.cursorOverlay = document.createElement('div')
@@ -2446,7 +2443,7 @@
 
         deleteOpenAIcookies() {
             log.caller = 'session.deleteOpenAIcookies()'
-            log.debug('Deleting OpenAI cookies...')
+            log.dev('Deleting OpenAI cookies...')
             GM_deleteValue(app.configKeyPrefix + '_openAItoken')
             if (env.scriptManager.name != 'Tampermonkey') return
             GM_cookie.list({ url: apis.OpenAI.endpoints.auth }, (cookies, error) => {
@@ -2457,7 +2454,7 @@
 
         generateGPTFLkey() {
             log.caller = 'session.generateGPTFLkey()'
-            log.debug('Generating GPTforLove key...')
+            log.dev('Generating GPTforLove key...')
             let nn = Math.floor(new Date().getTime() / 1e3)
             const fD = e => {
                 let t = CryptoJS.enc.Utf8.parse(e),
@@ -2467,24 +2464,24 @@
                 return o.toString()
             }
             const gptflKey = fD(nn)
-            log.debug(gptflKey) ; return gptflKey
+            log.dev(gptflKey) ; return gptflKey
         },
 
         getOAItoken() {
             log.caller = 'session.getOAItoken()'
-            log.debug('Getting OpenAI token...')
+            log.dev('Getting OpenAI token...')
             return new Promise(resolve => {
                 const accessToken = GM_getValue(app.configKeyPrefix + '_openAItoken')
-                if (accessToken) { log.debug(accessToken) ; resolve(accessToken) }
+                if (accessToken) { log.dev(accessToken) ; resolve(accessToken) }
                 else {
-                    log.debug(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
+                    log.dev(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
                     xhr({ url: apis.OpenAI.endpoints.session, onload: resp => {
                         if (session.isBlockedByCF(resp.responseText)) {
                             appAlert('checkCloudflare') ; return }
                         try {
                             const newAccessToken = JSON.parse(resp.responseText).accessToken
                             GM_setValue(app.configKeyPrefix + '_openAItoken', newAccessToken)
-                            log.debug(`Success! newAccessToken = ${newAccessToken}`)
+                            log.dev(`Success! newAccessToken = ${newAccessToken}`)
                             resolve(newAccessToken)
                         } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
             }})}})
@@ -2496,7 +2493,7 @@
                       title = html.querySelector('title')
                 if (title.innerText == 'Just a moment...') {
                     log.caller = 'session.isBlockedByCF'
-                    log.debug('Blocked by CloudFlare')
+                    log.dev('Blocked by CloudFlare')
                     return true
                 }
             } catch (err) { return false }
@@ -2571,7 +2568,7 @@
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
-            log.debug('Endpoint chosen', apis[chosenAPI].endpoints?.completions || apis[chosenAPI].endpoint)
+            log.dev('Endpoint chosen', apis[chosenAPI].endpoints?.completions || apis[chosenAPI].endpoint)
             return chosenAPI
         },
 
@@ -2582,11 +2579,11 @@
                                    || apis[caller.api].endpoint } due to ${reason}`)
             caller.triedAPIs.push({ [caller.api]: reason })
             if (caller.attemptCnt < Object.keys(apis).length -+(caller == get.reply)) {
-                log.debug('Trying another endpoint...')
+                log.dev('Trying another endpoint...')
                 caller.attemptCnt++
                 caller(caller == get.reply ? msgChain : prompts.stripAugments(msgChain)[msgChain.length - 1].content)
             } else {
-                log.debug('No remaining untried endpoints')
+                log.dev('No remaining untried endpoints')
                 if (caller == get.reply) appAlert('proxyNotWorking', 'suggestOpenAI')
             }
         }
@@ -2698,7 +2695,7 @@
                     } else textToShow = accumulatedChunks
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
-                        log.debug('Response text', textToShow)
+                        log.dev('Response text', textToShow)
                         log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
@@ -2744,7 +2741,7 @@
                 } else if (caller.api == 'OpenAI' && resp.response) {
                     const failMatch = failFlagsAndURLs.exec(resp.response)
                     if (failMatch) { // suggest proxy
-                        log.debug('Response text', resp.response)
+                        log.dev('Response text', resp.response)
                         log.error('Fail flag detected', `'${failMatch[0]}'`)
                         appAlert('openAInotWorking', 'suggestProxy')
                     } else {
@@ -2784,7 +2781,7 @@
 
                 function handleProcessCompletion() {
                     if (caller.status != 'done') {
-                        log.debug('Response text', respText)
+                        log.dev('Response text', respText)
                         const failMatch = failFlagsAndURLs.exec(respText)
                         if (!respText || failMatch || /^(?:\{|event:)/.test(respText)) {
                             if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
@@ -2796,7 +2793,7 @@
                 }}}
 
                 function handleProcessError(err) { // suggest proxy or try diff API
-                    log.debug('Response text', resp.response)
+                    log.dev('Response text', resp.response)
                     log.error(app.alerts.parseFailed, err)
                     if (caller.api == 'OpenAI' && caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
                     else api.tryNew(caller)
@@ -3116,11 +3113,11 @@
 
     // Exit on specific pages
     if (location.pathname == '/message-us')
-        return log.debug('Exited from support bot')
+        return log.dev('Exited from support bot')
     else if (document.querySelector('form[action*=Captcha]'))
-        return log.debug('Exited from Captcha page')
+        return log.dev('Exited from Captcha page')
     else if (document.querySelector('a > img[src*="/error"]'))
-        return log.debug('Exited from 404 page')
+        return log.dev('Exited from 404 page')
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
