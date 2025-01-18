@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.2
+// @version             2025.1.17.3
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -43,7 +43,7 @@
     }
 
     // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About ' + app.name, async () => {
+    GM_registerMenuCommand(`💡 About ${app.name}`, async () => {
 
         // Show alert
         const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
