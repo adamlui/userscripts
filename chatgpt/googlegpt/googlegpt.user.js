@@ -149,12 +149,10 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.17
+// @version                  2025.1.17.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
-// @antifeature              ads A very tiny text ad displays below GoogleGPT chatbar. This motivates me to spend otherwise unpaid time upgrading script w/ new features & APIs.
-// @antifeature              referral-link
 // @compatible               chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
 // @compatible               firefox
 // @compatible               edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
