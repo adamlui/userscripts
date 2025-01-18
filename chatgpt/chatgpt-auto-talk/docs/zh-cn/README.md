@@ -28,7 +28,7 @@
 
 ### 自动播放 ChatGPT 响应。
 
-<a href="https://gm.chatgptautotalk.com"><img height=45 alt="安装此脚本" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-installation"><img height=45 alt="如何安装" title="如何安装" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautotalk.com"><img height=45 alt="[安装这个脚本]" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-installation"><img height=45 alt="[如何安装]" title="如何安装" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-talk/discussions) /
 [获取支持](https://support.chatgptautotalk.com) /

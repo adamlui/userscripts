@@ -32,7 +32,7 @@
 
 ### 背景リクエストを介して ChatGPT セッションを最新の状態に保ち、ネットワーク エラーと Cloudflare チェックを排除します。
 
-<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="[このスクリプトをインストール]" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="[インストール方法]" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
 [サポートを受ける](https://support.chatgptautorefresh.com) /
@@ -149,7 +149,7 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 
 <br>
 
-<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautorefresh.com"><img height=45 alt="[このスクリプトをインストール]" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="[インストール方法]" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
 [サポートを受ける](https://support.chatgptautorefresh.com) /

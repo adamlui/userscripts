@@ -31,7 +31,7 @@
     <img height=31 alt="[jsDelivr 统计数据]" src="https://img.shields.io/jsdelivr/gh/hm/adamlui/chatgpt-auto-continue?style=for-the-badge&logo=jsdelivr&logoColor=white&label=jsDelivr%20%E8%AF%B7%E6%B1%82&labelColor=464646&color=2bbbd8"></a>
 <br><br>
 
-<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg?54af935"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="[安装这个脚本]" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg?54af935"></a><a href="#-如何安装"><img height=45 alt="[如何安装]" title="如何安装" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
 [获取支持](https://support.chatgptautocontinue.com) /
@@ -88,7 +88,7 @@ ChatGPT 自动继续 依赖于功能强大的 [chatgpt.js](https://github.com/Ku
 
 <div align="center">
 
-<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img alt="如何安装" title="如何安装" height=45 src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img alt="[如何安装]" title="如何安装" height=45 src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-continue/discussions) / 
 [更多 ChatGPT 用户脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt)
