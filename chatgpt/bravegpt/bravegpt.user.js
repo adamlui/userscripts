@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.18.1
+// @version               2025.1.18.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -249,6 +249,7 @@
             app: 'https://www.bravegpt.com',
             chatgptJS: 'https://chatgpt.js.org',
             contributors: 'https://docs.bravegpt.com/#-contributors',
+            discuss: 'https://github.com/KudoAI/bravegpt/discussions',
             gitHub: 'https://github.com/KudoAI/bravegpt',
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
@@ -1111,7 +1112,7 @@
                 btn.onclick = () => modals.safeWinOpen(
                     btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
                   : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
-                  : `${app.urls.gitHub}/discussions/new/choose`
+                  : app.urls.discuss
                 )
             })
 
