@@ -40,6 +40,7 @@
   "btnLabel_moreAIextensions": { "message": "अधिक एआय विस्तार" },
   "btnLabel_leaveReview": { "message": "पुनरावलोकन सोडा" },
   "btnLabel_rateUs": { "message": "आम्हाला रेट करा" },
+  "btnLabel_discuss": { "message": "चर्चा करा" },
   "btnLabel_getSupport": { "message": "सहाय्य मिळवा" },
   "btnLabel_checkForUpdates": { "message": "अद्यतनांसाठी तपासा" },
   "btnLabel_update": { "message": "अद्यतनित करा" },
