@@ -36,7 +36,7 @@
 
 <h3>🤖 Bring the magic of AI to Amazon Shopping 🛒</h3>
 
-<a href="https://greasyfork.org/scripts/500663-amazongpt"><img height=50 alt="[Install this script]" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="[How to install]" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js"><img height=50 alt="[Install this script]" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="[How to install]" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/amazongpt/discussions) / 
 [Get support](https://amazongpt.kudoai.com/issues) / 
@@ -65,7 +65,7 @@
     - Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)* for Chrome
 
-2. Install [AmazonGPT](https://greasyfork.org/scripts/500663-amazongpt) userscript (will load in manager installed above)
+2. Install [AmazonGPT](https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js) userscript (will load in manager installed above)
 
 3. Visit [Amazon.com](https://amazon.com), engage bot!
 
@@ -181,7 +181,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extens
 ### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/googlegpt/white/icon32.png?8652a6e"><img width=17 src="https://assets.googlegpt.io/images/icons/googlegpt/black/icon32.png?8652a6e"></picture> [GoogleGPT](https://googlegpt.io) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://assets.googlegpt.io/images/badges/awesome/badge.svg?699c63d"></a>
 
 > Bring the magic of AI to Google Search (powered by Google Gemma + GPT-4o!)
-<br>[Install](https://greasyfork.org/scripts/478597-googlegpt) /
+<br>[Install](https://gm.googlegpt.io) /
 [Readme](https://github.kudoai.com/googlegpt/#readme) /
 [Discuss](https://github.kudoai.com/googlegpt/discussions)
 

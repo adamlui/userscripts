@@ -37,21 +37,21 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
-<br>[安装](https://greasyfork.org/scripts/12639) /
+<br>[安装](https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/hide-forum-images.user.js) /
 [自述文件](../../hide-forum-images/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
-<br>[安装](https://greasyfork.org/scripts/26311) /
+<br>[安装](https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [自述文件](../../highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
-<br>[安装](https://greasyfork.org/scripts/456132) /
+<br>[安装](https://gm.ytclassic.com) /
 [自述文件](../../youtube-classic/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 

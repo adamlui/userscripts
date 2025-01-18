@@ -37,21 +37,21 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
-<br>[Install](https://greasyfork.org/scripts/12639) /
+<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/hide-forum-images.user.js) /
 [Readme](../hide-forum-images/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
-<br>[Install](https://greasyfork.org/scripts/26311) /
+<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [Readme](../highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube Classic](../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
-<br>[Install](https://greasyfork.org/scripts/456132) /
+<br>[Install](https://gm.ytclassic.com) /
 [Readme](../youtube-classic/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 

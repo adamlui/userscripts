@@ -50,7 +50,7 @@
     - Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)* for Chrome
 
-2. Install [DuckDuckGPT](https://greasyfork.org/scripts/459849-duckduckgpt) userscript (will load in manager installed above)
+2. Install [DuckDuckGPT](https://gm.ddgpt.com) userscript (will load in manager installed above)
 
 3. Visit [duckduckgo.com](https://duckduckgo.com), type your search, engage bot!
 
@@ -242,7 +242,7 @@ For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extens
 ### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=17 src="https://assets.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](https://googlegpt.io) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://assets.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
 > Bring the magic of AI to Google Search (powered by Google Gemma + GPT-4o!)
-<br>[Install](https://greasyfork.org/scripts/478597-googlegpt) /
+<br>[Install](https://gm.googlegpt.io) /
 [Readme](https://github.kudoai.com/googlegpt/#readme) /
 [Discuss](https://github.kudoai.com/googlegpt/discussions)
 
