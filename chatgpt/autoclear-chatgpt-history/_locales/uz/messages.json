@@ -39,6 +39,7 @@
   "btnLabel_moreAIextensions": { "message": "Ko'proq AI kengaytmalari" },
   "btnLabel_leaveReview": { "message": "Sharh qoldiring" },
   "btnLabel_rateUs": { "message": "Bizni baholash" },
+  "btnLabel_discuss": { "message": "Muhokama qiling" },
   "btnLabel_getSupport": { "message": "Yordam oling" },
   "btnLabel_checkForUpdates": { "message": "Yangiliklarni tekshirish" },
   "btnLabel_update": { "message": "Yangilash" },

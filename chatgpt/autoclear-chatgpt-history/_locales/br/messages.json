@@ -39,6 +39,7 @@
   "btnLabel_moreAIextensions": { "message": "Muioc'h a astennadoù IA" },
   "btnLabel_leaveReview": { "message": "Leuskel" },
   "btnLabel_rateUs": { "message": "Feur" },
+  "btnLabel_discuss": { "message": "Divizout" },
   "btnLabel_getSupport": { "message": "QShortcut" },
   "btnLabel_checkForUpdates": { "message": "Klask chabistroù _nevez" },
   "btnLabel_update": { "message": "Hizivaat" },
