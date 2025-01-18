@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.3
+// @version             2025.1.17.4
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -67,17 +67,17 @@
             onload: response => { const updateAlertWidth = 377
 
                 // Compare versions
-                const latestVer = /@version +(.*)/.exec(response.responseText)?.[1]
-                if (latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                app.latestVer = /@version +(.*)/.exec(response.responseText)?.[1]
+                if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                          latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
                     else if (latestSubVer > currentSubVer) { // if outdated
 
                         // Alert to update
                         chatgpt.alert('🚀 Update available!', // title
                             `A newer version of ${app.name} `
-                                + `(v${latestVer}) is available!  `
+                                + `(v${app.latestVer}) is available!  `
                                 + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
                                     + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
                                     + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '"'
