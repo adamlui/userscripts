@@ -38,7 +38,7 @@
 <a href="https://gm.chatgptautocontinue.com"><img height=45 alt="Install this script" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
-[Review](https://gm.chatgptautocontinue.com/feedback#post-discussion) /
+[Get support](https://support.chatgptautocontinue.com) /
 [Contact author](https://github.com/adamlui)
 
 </div>

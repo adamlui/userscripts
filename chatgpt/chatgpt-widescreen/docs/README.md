@@ -29,7 +29,7 @@
 <a href="https://gm.chatgptwidescreen.com"><img height=45 alt="Install this script" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions) / 
-[Review](https://gm.chatgptwidescreen.com/feedback#post-discussion) / 
+[Get support](https://support.chatgptwidescreen.com) / 
 [Contact author](https://github.com/adamlui)
 
 </div>
@@ -137,7 +137,7 @@ ChatGPT Widescreen Mode is compatible w/ the following browsers using [ScriptCat
 <a href="https://gm.chatgptwidescreen.com"><img height=45 alt="Install this script" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions) / 
-[Leave a review](https://gm.chatgptwidescreen.com/feedback#post-discussion) / 
+[Get support](https://support.chatgptwidescreen.com) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.chatgptwidescreen.com/images/separators/aqua.png">

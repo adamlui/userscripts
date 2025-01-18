@@ -37,7 +37,7 @@
 <a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=45 alt="Install this script" src="https://assets.bravegpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=45 alt="How to install" title="How to install" src="https://assets.bravegpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/bravegpt/discussions) / 
-[Review](https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion) / 
+[Get support](https://support.bravegpt.com) / 
 [Contact author](https://github.com/adamlui)
 
 #
@@ -140,7 +140,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 <a href="https://greasyfork.org/scripts/462440-bravegpt"><img height=45 alt="Install this script" src="https://assets.bravegpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=45 alt="How to install" title="How to install" src="https://assets.bravegpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/bravegpt/discussions) /
-[Leave a review](https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion) /
+[Get support](https://support.bravegpt.com) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.bravegpt.com/images/separators/gradient-aqua.png">

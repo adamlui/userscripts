@@ -41,7 +41,7 @@
 <a href="https://greasyfork.org/scripts/500663-amazongpt"><img height=50 alt="Install this script" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="How to install" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/amazongpt/discussions) / 
-[Review](https://greasyfork.org/scripts/500663-amazongpt#post-discussion) / 
+[Get support](https://amazongpt.kudoai.com/issues) / 
 [Contact author](https://github.com/adamlui)
 
 <img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">

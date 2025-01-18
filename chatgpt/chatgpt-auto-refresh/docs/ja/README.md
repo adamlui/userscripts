@@ -39,7 +39,7 @@
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[レビュー](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[サポートを受ける](https://support.chatgptautorefresh.com) /
 [作者に連絡する](https://github.com/adamlui)
 
 #
@@ -156,7 +156,7 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="このスクリプトをインストール" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="インストール方法" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [ディスカッション](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[レビューを残す](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[サポートを受ける](https://support.chatgptautorefresh.com) /
 [その他の ChatGPT ユーザースクリプト](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">

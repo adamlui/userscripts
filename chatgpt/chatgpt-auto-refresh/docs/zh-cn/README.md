@@ -38,7 +38,7 @@
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[审查](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[获取支持](https://support.chatgptautorefresh.com) /
 [联系作者](https://github.com/adamlui)
 
 #
@@ -154,7 +154,7 @@ ChatGPT 自动刷新 与使用 [ScriptCat](https://docs.scriptcat.org)、[Violen
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="安装这个脚本" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/zh-cn/install-button.svg"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[发表评论](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[获取支持](https://support.chatgptautorefresh.com) /
 [更多 ChatGPT 用户脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">

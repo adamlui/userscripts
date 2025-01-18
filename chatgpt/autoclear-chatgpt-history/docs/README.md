@@ -28,7 +28,7 @@
 <a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) /
-[Review](https://gm.autoclearchatgpt.com/feedback#post-discussion) /
+[Get support](https://support.autoclearchatgpt.com) /
 [Contact author](https://github.com/adamlui)
 
 #
@@ -98,7 +98,7 @@ Autoclear ChatGPT History is compatible w/ the following browsers using [ScriptC
 <a href="https://gm.autoclearchatgpt.com"><img height=45 alt="Install this script" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) / 
-[Leave a review](https://gm.autoclearchatgpt.com/feedback#post-discussion) /
+[Get support](https://support.autoclearchatgpt.com) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.autoclearchatgpt.com/images/separators/gradient-aqua.png">

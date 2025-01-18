@@ -17,7 +17,7 @@
 <a href="https://greasyfork.org/scripts/456132"><img alt="Install this script" height=42 src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="How to install" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
+[Get support](https://support.ytclassic.com) /
 [Contact author](https://github.com/adamlui)
 
 <h2>What it does</h2>
@@ -44,7 +44,7 @@
 
 [Install this script](https://greasyfork.org/scripts/456132) /
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Leave a review](https://greasyfork.org/scripts/456132/feedback#post-discussion) /
+[Get support](https://support.ytclassic.com) /
 [More userscripts](https://github.com/adamlui/userscripts)
 
 #### Contributor links:

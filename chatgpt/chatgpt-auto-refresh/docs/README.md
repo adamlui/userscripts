@@ -37,7 +37,7 @@
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) /
-[Review](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[Get support](https://support.chatgptautorefresh.com) /
 [Contact author](https://github.com/adamlui)
 
 #
@@ -154,7 +154,7 @@ ChatGPT Auto Refresh is compatible w/ the following browsers using [ScriptCat](h
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="Install this script" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-refresh/discussions) / 
-[Leave a review](https://gm.chatgptautorefresh.com/feedback#post-discussion) /
+[Get support](https://support.chatgptautorefresh.com) /
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 
 <img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">

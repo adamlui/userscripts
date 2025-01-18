@@ -16,7 +16,7 @@
 <a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
-[Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
+[Get support](https://github.com/adamlui/github-star-history/issues) /
 [Contact author](https://github.com/adamlui)
 
 <div align="center">
@@ -38,7 +38,7 @@
 <a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
-[Review](https://greasyfork.org/scripts/473377-github-star-history/feedback#post-discussion) /
+[Get support](https://github.com/adamlui/github-star-history/issues) /
 [More userscripts](https://github.com/adamlui/userscripts)
 
 ## 🧠 Contributors

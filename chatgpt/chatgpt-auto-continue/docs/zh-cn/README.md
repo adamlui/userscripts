@@ -38,7 +38,7 @@
 <a href="https://gm.chatgptautocontinue.com"><img height=45 alt="安装此脚本" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/zh-cn/install-button.svg?54af935"></a><a href="#-如何安装"><img height=45 alt="如何安装" title="如何安装" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
-[审查](https://gm.chatgptautocontinue.com/feedback#post-discussion) /
+[获取支持](https://support.chatgptautocontinue.com) /
 [联系作者](https://github.com/adamlui)
 
 </div>

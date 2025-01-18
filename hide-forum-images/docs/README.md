@@ -8,7 +8,7 @@ Hides images/videos from XenForo, vBulletin & Discourse forums.
 <a href="https://greasyfork.org/scripts/12639-hide-forum-images"><img alt="Install this script" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="How to install" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
-[Review](https://greasyfork.org/scripts/12639/feedback#post-discussion) /
+[Get support](https://github.com/adamlui/userscripts/issues) /
 [Contact author](https://github.com/adamlui)
 
 #### Author links:

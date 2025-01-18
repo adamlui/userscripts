@@ -35,7 +35,7 @@
 <a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
-[Review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
+[Get support](https://support.ddgpt.com) / 
 [Contact author](https://github.com/adamlui)
 
 #
@@ -134,7 +134,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 <a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
-[Leave a review](https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion) /
+[Get support](https://support.ddgpt.com) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)
 <br><br>
 
