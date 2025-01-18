@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/ & adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/ & adamlui/ai-web-extensions/chatgpt-auto-refresh/greasemonkey/
 
 on:
   push:
@@ -31,21 +31,21 @@ jobs:
           repository: adamlui/chatgpt-auto-refresh
           path: adamlui/chatgpt-auto-refresh
 
-      - name: Checkout adamlui/ai-apps
+      - name: Checkout adamlui/ai-web-extensions
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/ai-apps
-          path: adamlui/ai-apps
+          repository: adamlui/ai-web-extensions
+          path: adamlui/ai-web-extensions
 
-      - name: Sync docs/ to adamlui/chatgpt-auto-refresh/docs/ && adamlui/ai-apps/chatgpt-auto-refresh/docs/
+      - name: Sync docs/ to adamlui/chatgpt-auto-refresh/docs/ && adamlui/ai-web-extensions/chatgpt-auto-refresh/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs \
             ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/docs \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-refresh/
+            ${{ github.workspace }}/adamlui/ai-web-extensions/chatgpt-auto-refresh/
 
       - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/chatgpt-auto-refresh/greasemonkey/
         run: |
@@ -53,11 +53,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ \
             ${{ github.workspace }}/adamlui/chatgpt-auto-refresh/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+      - name: Sync chatgpt/chatgpt-auto-refresh/ to adamlui/ai-web-extensions/chatgpt-auto-refresh/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-refresh/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-auto-refresh/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-web-extensions/chatgpt-auto-refresh/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -82,9 +82,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh]" || true
           git push
 
-      - name: Push changes to adamlui/ai-apps
+      - name: Push changes to adamlui/ai-web-extensions
         run: |
-          cd ${{ github.workspace }}/adamlui/ai-apps
+          cd ${{ github.workspace }}/adamlui/ai-web-extensions
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh]" || true
           git push

@@ -1,4 +1,4 @@
-name: Sync chatgpt/googlegpt/ to KudoAI/googlegpt/greasemonkey/ & adamlui/ai-apps/googlegpt/greasemonkey/
+name: Sync chatgpt/googlegpt/ to KudoAI/googlegpt/greasemonkey/ & adamlui/ai-web-extensions/googlegpt/greasemonkey/
 
 on:
   push:
@@ -31,21 +31,21 @@ jobs:
           repository: KudoAI/googlegpt
           path: KudoAI/googlegpt
 
-      - name: Checkout adamlui/ai-apps
+      - name: Checkout adamlui/ai-web-extensions
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/ai-apps
-          path: adamlui/ai-apps
+          repository: adamlui/ai-web-extensions
+          path: adamlui/ai-web-extensions
 
-      - name: Sync docs/ to KudoAI/googlegpt/docs/ & adamlui/ai-apps/googlegpt/docs/
+      - name: Sync docs/ to KudoAI/googlegpt/docs/ & adamlui/ai-web-extensions/googlegpt/docs/
         run: |
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
             ${{ github.workspace }}/KudoAI/googlegpt/
           cp -r -f -v \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/docs \
-            ${{ github.workspace }}/adamlui/ai-apps/googlegpt/
+            ${{ github.workspace }}/adamlui/ai-web-extensions/googlegpt/
 
       - name: Sync chatgpt/googlegpt/ to KudoAI/googlegpt/greasemonkey/
         run: |
@@ -53,11 +53,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
             ${{ github.workspace }}/KudoAI/googlegpt/greasemonkey/
 
-      - name: Sync chatgpt/googlegpt/ to adamlui/ai-apps/googlegpt/greasemonkey/
+      - name: Sync chatgpt/googlegpt/ to adamlui/ai-web-extensions/googlegpt/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/googlegpt/ \
-            ${{ github.workspace }}/adamlui/ai-apps/googlegpt/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-web-extensions/googlegpt/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -82,9 +82,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt]" || true
           git push
 
-      - name: Push changes to adamlui/ai-apps
+      - name: Push changes to adamlui/ai-web-extensions
         run: |
-          cd ${{ github.workspace }}/adamlui/ai-apps
+          cd ${{ github.workspace }}/adamlui/ai-web-extensions
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt]" || true
           git push

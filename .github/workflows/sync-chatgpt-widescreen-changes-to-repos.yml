@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/ & adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/ & adamlui/ai-web-extensions/chatgpt-widescreen/greasemonkey/
 
 on:
   push:
@@ -31,12 +31,12 @@ jobs:
           repository: adamlui/chatgpt-widescreen
           path: adamlui/chatgpt-widescreen
 
-      - name: Checkout adamlui/ai-apps
+      - name: Checkout adamlui/ai-web-extensions
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
-          repository: adamlui/ai-apps
-          path: adamlui/ai-apps
+          repository: adamlui/ai-web-extensions
+          path: adamlui/ai-web-extensions
 
       - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/chatgpt-widescreen/greasemonkey/
         run: |
@@ -44,11 +44,11 @@ jobs:
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ \
             ${{ github.workspace }}/adamlui/chatgpt-widescreen/greasemonkey/
 
-      - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+      - name: Sync chatgpt/chatgpt-widescreen/ to adamlui/ai-web-extensions/chatgpt-widescreen/greasemonkey/
         run: |
           rsync -avhr --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-widescreen/ \
-            ${{ github.workspace }}/adamlui/ai-apps/chatgpt-widescreen/greasemonkey/
+            ${{ github.workspace }}/adamlui/ai-web-extensions/chatgpt-widescreen/greasemonkey/
 
       - name: Escape backticks in commit msg
         env:
@@ -73,9 +73,9 @@ jobs:
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen]" || true
           git push
 
-      - name: Push changes to adamlui/ai-apps
+      - name: Push changes to adamlui/ai-web-extensions
         run: |
-          cd ${{ github.workspace }}/adamlui/ai-apps
+          cd ${{ github.workspace }}/adamlui/ai-web-extensions
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen]" || true
           git push
