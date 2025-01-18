@@ -78,6 +78,7 @@
   "btnLabel_moreAIextensions": { "message": "Илүү AI Өргөтгөлүүд" },
   "btnLabel_leaveReview": { "message": "Сэтгэгдэл үлдээх" },
   "btnLabel_rateUs": { "message": "Биднийг үнэлэх" },
+  "btnLabel_discuss": { "message": "Хэлэлцүүлэг" },
   "btnLabel_getSupport": { "message": "Тусламж авах" },
   "btnLabel_checkForUpdates": { "message": "Шинэчлэлтүүдийг шалгана уу" },
   "btnLabel_update": { "message": "Шинэчлэх" },

@@ -78,6 +78,7 @@
   "btnLabel_moreAIextensions": { "message": "Zêdetir Pêvekên AI-ê" },
   "btnLabel_leaveReview": { "message": "Bihêle Review" },
   "btnLabel_rateUs": { "message": "Me binirxînin" },
+  "btnLabel_discuss": { "message": "گفتوگۆ دەکات، تاووتوێکردن(دانوستاندن)، گفتوگۆدەکات، تاووتوێکردن، دانوستان، وتووێژ، گفتوگۆ" },
   "btnLabel_getSupport": { "message": "Piştgiriyê bistînin" },
   "btnLabel_checkForUpdates": { "message": "Ji bo Nûvekirinan kontrol bikin" },
   "btnLabel_update": { "message": "Rojane Bike" },
