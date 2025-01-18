@@ -37,14 +37,14 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](../hide-forum-images)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
-<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/hide-forum-images.user.js) /
+<br>[Install](https://github.com/adamlui/userscripts/raw/refs/heads/master/hide-forum-images/hide-forum-images.user.js) /
 [Readme](../hide-forum-images/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](../highlight-radio-bubbles)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
-<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
+<br>[Install](https://github.com/adamlui/userscripts/raw/refs/heads/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [Readme](../highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 

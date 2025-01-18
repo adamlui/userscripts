@@ -25,7 +25,7 @@
 ### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../../amazongpt) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/gold-badge.png">
 
 > 将 AI 添加到 Amazon 购物.
-<br>[Install](https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js) /
+<br>[Install](https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js) /
 [自述文件](../../amazongpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 

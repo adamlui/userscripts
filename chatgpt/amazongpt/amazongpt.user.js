@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.17.2
+// @version                2025.1.18
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -82,8 +82,8 @@
 // @grant                  GM_xmlhttpRequest
 // @grant                  GM.xmlHttpRequest
 // @noframes
-// @downloadURL            https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js
-// @updateURL              https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js
+// @downloadURL            https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js
+// @updateURL              https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js
 // @homepageURL            https://amazongpt.kudoai.com
 // @supportURL             https://amazongpt.kudoai.com/issues
 // @contributionURL        https://github.com/sponsors/KudoAI
@@ -131,7 +131,7 @@
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: { greasyFork: 'https://greasyfork.org/scripts/500663-amazongpt/feedback#post-discussion' },
             support: 'https://amazongpt.kudoai.com/issues',
-            update: 'https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js'
+            update: 'https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js'
         },
         latestResourceCommitHash: '1431d02' // for cached messages.json
     }

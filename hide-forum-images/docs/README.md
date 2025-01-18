@@ -5,7 +5,7 @@
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.
 
-<a href="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/hide-forum-images.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://github.com/adamlui/userscripts/raw/refs/heads/master/hide-forum-images/hide-forum-images.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
 [Get support](https://github.com/adamlui/userscripts/issues) /

@@ -37,14 +37,14 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/media/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
-<br>[安装](https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/hide-forum-images.user.js) /
+<br>[安装](https://github.com/adamlui/userscripts/raw/refs/heads/master/hide-forum-images/hide-forum-images.user.js) /
 [自述文件](../../hide-forum-images/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
-<br>[安装](https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
+<br>[安装](https://github.com/adamlui/userscripts/raw/refs/heads/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [自述文件](../../highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
