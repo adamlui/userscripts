@@ -11,12 +11,8 @@
 
 <br>
 
-<a href="https://gm.googlegpt.io">
-    <img height=31 alt="[Greasy Fork]" src="https://img.shields.io/greasyfork/dt/478597?label=Users&logo=weightsandbiases&logoColor=white&labelColor=464646&color=blue&style=for-the-badge"></a>
 <a href="../LICENSE.md">
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="https://gm.googlegpt.io/versions">
-    <img height=31 alt="[Versions]" src="https://img.shields.io/greasyfork/v/478597?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
 <a href="https://github.com/KudoAI/googlegpt/blob/main/greasemonkey/googlegpt.user.js">
     <img height=32 src="https://img.shields.io/github/size/KudoAI/googlegpt/greasemonkey/googlegpt.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://github.com/KudoAI/googlegpt/commits">

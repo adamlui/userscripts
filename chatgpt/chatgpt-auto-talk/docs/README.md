@@ -15,8 +15,6 @@
 
 <a href="../LICENSE.md">
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="https://gm.chatgptautotalk.com/versions">
-    <img height=31 alt="[Versions]" src="https://img.shields.io/greasyfork/v/500940?label=Latest+Release&logo=surveymonkey&logoColor=white&labelColor=464646&color=1e971e&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/chatgpt-auto-talk/blob/main/greasemonkey/chatgpt-auto-talk.user.js">
     <img height=32 src="https://img.shields.io/github/size/adamlui/chatgpt-auto-talk/greasemonkey/chatgpt-auto-talk.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/chatgpt-auto-talk">
