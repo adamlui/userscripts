@@ -1,21 +1,21 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
         <a href="zh-cn#readme">简体中文</a>
     </h6>
 </div>
 
-# <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
+# <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/github/icon32.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
 
 Userscripts that enhance the GitHub user experience. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/badges/awesome/mentioned-badge.svg"></a>
 
@@ -31,6 +31,6 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 [Readme](../github-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a>

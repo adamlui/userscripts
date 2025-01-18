@@ -1,8 +1,8 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
         <a href="https://github.com/adamlui/userscripts/blob/master/docs/zh-cn#readme">简体中文</a>
@@ -20,15 +20,15 @@
 
 A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](../chatgpt)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](../chatgpt)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
 <br>[View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/icons/github/icon32.png"> [GitHub scripts](../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/github/icon32.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](../github) /
@@ -55,7 +55,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](../youtube-classic/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/media/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> /
 <a href="#english--简体中文">Back to top ↑</a>
