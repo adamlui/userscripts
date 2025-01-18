@@ -32,6 +32,7 @@
   "btnLabel_moreAIextensions": { "message": "Ďalšie rozšírenia umelej inteligencie" },
   "btnLabel_leaveReview": { "message": "Nechať recenziu" },
   "btnLabel_rateUs": { "message": "Ohodnoťte nás" },
+  "btnLabel_discuss": { "message": "Debata" },
   "btnLabel_getSupport": { "message": "Get Support" },
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "Update" },

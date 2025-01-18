@@ -32,6 +32,7 @@
   "btnLabel_moreAIextensions": { "message": "Barrachd leudachain" },
   "btnLabel_leaveReview": { "message": "Fàg Lèirmheas" },
   "btnLabel_rateUs": { "message": "Rèitich sinn" },
+  "btnLabel_discuss": { "message": "Bruidhinn" },
   "btnLabel_getSupport": { "message": "Faigh Taic" },
   "btnLabel_checkForUpdates": { "message": "Thoir sùil airson ùrachaidhean" },
   "btnLabel_update": { "message": "Ùraich" },
