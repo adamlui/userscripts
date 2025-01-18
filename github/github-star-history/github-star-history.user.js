@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.1
+// @version             2025.1.17.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -243,7 +243,7 @@
     // Run MAIN routine
 
     // Register ABOUT menu command
-    GM_registerMenuCommand('💡 About ' + app.name, async () => {
+    GM_registerMenuCommand(`💡 About ${app.name}`, async () => {
 
         // Show alert
         const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
