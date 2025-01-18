@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.18
+// @version               2025.1.18.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -250,18 +250,16 @@
             chatgptJS: 'https://chatgpt.js.org',
             contributors: 'https://docs.bravegpt.com/#-contributors',
             gitHub: 'https://github.com/KudoAI/bravegpt',
-            greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt',
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 alternativeTo: 'https://alternativeto.net/software/bravegpt/about/',
-                greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion',
                 productHunt: 'https://www.producthunt.com/products/bravegpt/reviews/new'
             },
             support: 'https://support.bravegpt.com',
             update: 'https://gm.bravegpt.com'
         },
-        latestResourceCommitHash: 'e6e7822' // for cached messages.json
+        latestResourceCommitHash: '908456f' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.msgs = {
@@ -1087,7 +1085,7 @@
             log.dev('Showing Feedback modal...')
 
             // Init buttons
-            let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeto() {} ]
+            let btns = [ function productHunt(){}, function alternativeto() {} ]
             if (modals.stack[0] != 'about') btns.push(function github(){})
 
             // Show modal
@@ -1111,8 +1109,7 @@
                 const btnClone = btn.cloneNode(true)
                 btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                 btn.onclick = () => modals.safeWinOpen(
-                    btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
-                  : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
+                    btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
                   : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
                   : `${app.urls.gitHub}/discussions/new/choose`
                 )
