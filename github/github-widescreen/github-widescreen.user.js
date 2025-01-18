@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.3
+// @version             2025.1.17.4
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -58,8 +58,8 @@
                 + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function getSupport() { safeWindowOpen(app.urls.support) },
-                function discuss() { safeWindowOpen(app.urls.discuss) }
+                function getSupport() { safeWinOpen(app.urls.support) },
+                function discuss() { safeWinOpen(app.urls.discuss) }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
@@ -91,7 +91,7 @@
 
     // Define SCRIPT functions
 
-    function safeWindowOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+    function safeWinOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
 
     function updateCheck() {
 
