@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17
+// @version             2025.1.18
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -280,21 +280,18 @@
         urls: {
             chatgptJS: 'https://chatgpt.js.org',
             contributors: 'https://docs.chatgptautotalk.com/#-contributors',
+            discuss: 'https://github.com/adamlui/chatgpt-auto-talk/discussions',
             donate: {
                 cashApp: 'https://cash.app/$adamlui',
                 gitHub: 'https://github.com/sponsors/adamlui',
                 payPal: 'https://paypal.me/adamlui'
             },
             gitHub: 'https://github.com/adamlui/chatgpt-auto-talk',
-            greasyFork: 'https://greasyfork.org/scripts/500940-chatgpt-auto-talk',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
-            review: {
-                greasyFork: 'https://greasyfork.org/scripts/500940-chatgpt-auto-talk/feedback#post-discussion'
-            },
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
         },
-        latestResourceCommitHash: '19ff069' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: 'ded5e95' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.msgs = {
@@ -329,6 +326,7 @@
         alert_isUpToDate: 'is up-to-date',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
+        btnLabel_discuss: 'Discuss',
         btnLabel_getSupport: 'Get Support',
         btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
@@ -576,7 +574,7 @@
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
                     function getSupport(){},
-                    function rateUs() {},
+                    function discuss() {},
                     function moreAIextensions(){}
                 ], '', 691 // set width
             )
@@ -593,14 +591,13 @@
                 btn.style.cssText = 'height: 58px ; min-width: 136px ; text-align: center'
 
                 // Replace link buttons w/ clones that don't dismiss modal
-                if (/support|rate|extensions/i.test(btn.textContent)) {
+                if (/support|discuss|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
-                      : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
-                      : app.urls.relatedExtensions
-                    )
+                    btn.onclick = () => modals.safeWinOpen(app.urls[
+                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
+                      : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
+                    ])
                 }
 
                 // Prepend emoji + localize labels
@@ -608,8 +605,8 @@
                     btn.textContent = `🚀 ${app.msgs.btnLabel_checkForUpdates}`
                 else if (/support/i.test(btn.textContent))
                     btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
-                else if (/rate/i.test(btn.textContent))
-                    btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                else if (/discuss/i.test(btn.textContent))
+                    btn.textContent = `🗨️ ${app.msgs.btnLabel_discuss}`
                 else if (/extensions/i.test(btn.textContent))
                     btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
 
@@ -641,8 +638,7 @@
                 [ // buttons
                     function paypal(){},
                     function githubSponsors(){},
-                    function cashApp(){},
-                    function rateUs() { modals.safeWinOpen(app.urls.review.greasyFork) }
+                    function cashApp(){}
                 ], '', 478 // set width
             )
 
@@ -655,15 +651,13 @@
             btns.forEach((btn, idx) => {
 
                 // Replace link buttons w/ clones that don't dismiss modal
-                if (!/dismiss|rate/i.test(btn.textContent)) {
+                if (!/dismiss/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent == 'Cash App' ? app.urls.donate.cashApp
-                      : btn.textContent == 'Github Sponsors' ? app.urls.donate.gitHub
-                      : btn.textContent == 'Paypal' ? app.urls.donate.payPal
-                      : app.urls.review.greasyFork
-                    )
+                    btn.onclick = () => modals.safeWinOpen(app.urls.donate[
+                        btn.textContent == 'Cash App' ? 'cashApp'
+                      : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
+                    ])
                 }
 
                 // Format buttons
@@ -673,8 +667,6 @@
                                       + ' width: 107px ; line-height: 14px'
                     if (idx == btns.length -1) // de-emphasize right-most button
                         btn.classList.remove('primary-modal-btn')
-                    else if (/rate/i.test(btn.textContent)) // localize 'Rate Us' label
-                        btn.textContent = app.msgs.btnLabel_rateUs
                 }
             })
 
