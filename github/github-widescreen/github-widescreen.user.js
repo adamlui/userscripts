@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17
+// @version             2025.1.17.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -35,12 +35,9 @@
     const app = {
         name: 'GitHub Widescreen',
         urls: {
+            discuss: 'https://github.com/adamlui/github-widescreen/discuss',
             gitHub: 'https://github.com/adamlui/github-widescreen',
-            greasyFork: 'https://greasyfork.org/scripts/473439-github-widescreen',
-            review: {
-                greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
-            },
-            update: 'https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js'
+            support: 'https://github.com/adamlui/github-widescreen/issues'
         }
     }
 
@@ -60,17 +57,18 @@
                 + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWindowOpen(app.urls.review.greasyFork) }
+                function getSupport() { safeWindowOpen(app.urls.support) },
+                function discuss() { safeWindowOpen(app.urls.discuss) }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
         for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
             if (/updates/i.test(button.textContent))
                 button.textContent = '🚀 Check for Updates'
-            else if (/review/i.test(button.textContent))
-                button.textContent = '⭐ Leave a Review'
-            else if (/github/i.test(button.textContent))
-                button.textContent = '📜 GitHub Source'
+            else if (/support/i.test(button.textContent))
+                button.textContent = '🧠 Get Support'
+            else if (/discuss/i.test(button.textContent))
+                button.textContent = '🗨️ Discuss'
             else button.style.display = 'none' // hide Dismiss button
         }
     })
