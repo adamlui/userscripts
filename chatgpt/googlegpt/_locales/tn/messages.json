@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Romela potso ya go senka go GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Leave Review" },
   "btnLabel_rateUs": { "message": "Maemo a Rona" },
+  "btnLabel_discuss": { "message": "Tlotla le bone" },
   "btnLabel_getSupport": { "message": "Bona Kemonokeng" },
   "btnLabel_checkForUpdates": { "message": "Tlhatlhoba Diphetogo" },
   "btnLabel_update": { "message": "Ntshwafatso" },

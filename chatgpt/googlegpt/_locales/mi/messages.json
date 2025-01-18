@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Tukuna he uiuinga rapu ki te GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Waiho i te arotake" },
   "btnLabel_rateUs": { "message": "Te utu ki a tatou" },
+  "btnLabel_discuss": { "message": "Wanangatia" },
   "btnLabel_getSupport": { "message": "Tautoko" },
   "btnLabel_checkForUpdates": { "message": "Tirohia nga whakahoutanga" },
   "btnLabel_update": { "message": "Whakahou" },

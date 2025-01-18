@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "GoogleGPT'ye arama sorgusu gönder" },
   "btnLabel_leaveReview": { "message": "İncelemeyi bırak" },
   "btnLabel_rateUs": { "message": "Bize oy verin" },
+  "btnLabel_discuss": { "message": "Discuss" },
   "btnLabel_getSupport": { "message": "Destek Al" },
   "btnLabel_checkForUpdates": { "message": "Güncellemeleri Kontrol Et" },
   "btnLabel_update": { "message": "Update" },

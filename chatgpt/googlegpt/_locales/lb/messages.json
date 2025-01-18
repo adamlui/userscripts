@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Suchanfrage an GoogleGPT senden" },
   "btnLabel_leaveReview": { "message": "Ik ben heel benieuwd naar jouw mening laat het me" },
   "btnLabel_rateUs": { "message": "Bewäert eis" },
+  "btnLabel_discuss": { "message": "Diskutéieren" },
   "btnLabel_getSupport": { "message": "Kréien Support" },
   "btnLabel_checkForUpdates": { "message": "Fakten an Erënnerungen" },
   "btnLabel_update": { "message": "Aktualiséieren" },

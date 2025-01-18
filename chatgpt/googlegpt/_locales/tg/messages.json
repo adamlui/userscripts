@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Фиристодани дархости ҷустуҷӯӣ ба GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Баромадан аз тафсир" },
   "btnLabel_rateUs": { "message": "Баҳои мо" },
+  "btnLabel_discuss": { "message": "Баҳс кардан" },
   "btnLabel_getSupport": { "message": "Гирифтани Дастгирӣ" },
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "Навсозӣ кардан" },

@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "ਖੋਜ ਕਿਊਰੀ GoogleGPT ਨੂੰ ਭੇਜੋ" },
   "btnLabel_leaveReview": { "message": "ਸਮੀਖਿਆ ਛੱਡੋ" },
   "btnLabel_rateUs": { "message": "ਸਾਡੇ ਨਾਲ ਰੇਟ ਕਰੋ" },
+  "btnLabel_discuss": { "message": "ਚਰਚਾ ਕਰੋ" },
   "btnLabel_getSupport": { "message": "ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਕਰੋ" },
   "btnLabel_checkForUpdates": { "message": "ਨਵੇਂ ਐਪੀਸੋਡ ਲਈ ਚੈੱਕ ਕਰੋ" },
   "btnLabel_update": { "message": "ਅੱਪਡੇਟ ਕਰੋ" },

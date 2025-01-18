@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Sūtīt meklēšanas vaicājumu GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Atstāt atsauksmi?" },
   "btnLabel_rateUs": { "message": "Novērtē mūs" },
+  "btnLabel_discuss": { "message": "Apspriest" },
   "btnLabel_getSupport": { "message": "Saņemt atbalstu" },
   "btnLabel_checkForUpdates": { "message": "Pārbaudīt vai nav jauni atjauninājumi" },
   "btnLabel_update": { "message": "Atjauninināt" },

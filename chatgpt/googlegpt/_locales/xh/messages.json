@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Thumela umbuzo wokukhangela kwi-GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Shiya Uluvo" },
   "btnLabel_rateUs": { "message": "Silinganise" },
+  "btnLabel_discuss": { "message": "Xoxani." },
   "btnLabel_getSupport": { "message": "Fumana Uncedo" },
   "btnLabel_checkForUpdates": { "message": "Jonga Izinto Ezihlaziyiweyo" },
   "btnLabel_update": { "message": "Lungisa" },

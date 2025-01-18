@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Изпращане на заявка за търсене до GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Оставете рецензия" },
   "btnLabel_rateUs": { "message": "Оценете ни" },
+  "btnLabel_discuss": { "message": "Обсъждам" },
   "btnLabel_getSupport": { "message": "Вземи поддръжка" },
   "btnLabel_checkForUpdates": { "message": "Проверка за обновяване" },
   "btnLabel_update": { "message": "Актуализация" },

@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "将搜索查询发送到 GoogleGPT" },
   "btnLabel_leaveReview": { "message": "评价脚本" },
   "btnLabel_rateUs": { "message": "给我们评价" },
+  "btnLabel_discuss": { "message": "讨论" },
   "btnLabel_getSupport": { "message": "获取帮助" },
   "btnLabel_checkForUpdates": { "message": "检查更新" },
   "btnLabel_update": { "message": "更新" },

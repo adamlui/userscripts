@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Send search query to GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Lusim toksave" },
   "btnLabel_rateUs": { "message": "Toksave long mipela" },
+  "btnLabel_discuss": { "message": "Toktok" },
   "btnLabel_getSupport": { "message": "Kisim helpim" },
   "btnLabel_checkForUpdates": { "message": "Lukim ol eleksen" },
   "btnLabel_update": { "message": "UPDATE" },

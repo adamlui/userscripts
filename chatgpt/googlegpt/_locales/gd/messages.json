@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Cuir ceist rannsachaidh gu GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Fàg Lèirmheas" },
   "btnLabel_rateUs": { "message": "Rèitich sinn" },
+  "btnLabel_discuss": { "message": "Bruidhinn" },
   "btnLabel_getSupport": { "message": "Faigh Taic" },
   "btnLabel_checkForUpdates": { "message": "Dèan sgrùdadh airson Ùrachaidhean" },
   "btnLabel_update": { "message": "Ùrachadh" },

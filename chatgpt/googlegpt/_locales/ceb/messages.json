@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Ipadala ang query sa pagpangita sa GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Biyai ang Review" },
   "btnLabel_rateUs": { "message": "I-rate Kanato" },
+  "btnLabel_discuss": { "message": "Hisguti" },
   "btnLabel_getSupport": { "message": "Kuhaa ang Suporta" },
   "btnLabel_checkForUpdates": { "message": "Susiha ang mga Update" },
   "btnLabel_update": { "message": "I-update" },

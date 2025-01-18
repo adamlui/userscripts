@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Ibgħat mistoqsija tat-tiftix lil GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Ħalli r-Review" },
   "btnLabel_rateUs": { "message": "Rata us" },
+  "btnLabel_discuss": { "message": "Iddiskuti." },
   "btnLabel_getSupport": { "message": "Ikseb l-Għajnuna" },
   "btnLabel_checkForUpdates": { "message": "Iċċekkja għall-aġġornamenti" },
   "btnLabel_update": { "message": "Aġġornament" },

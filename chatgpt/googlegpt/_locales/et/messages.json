@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Saada otsingupäring GoogleGPT-le" },
   "btnLabel_leaveReview": { "message": "Jäta tagasiside" },
   "btnLabel_rateUs": { "message": "Hinda meid" },
+  "btnLabel_discuss": { "message": "Väitlus" },
   "btnLabel_getSupport": { "message": "Saage tuge" },
   "btnLabel_checkForUpdates": { "message": "Kontrolli uuendusi" },
   "btnLabel_update": { "message": "Uuenda" },

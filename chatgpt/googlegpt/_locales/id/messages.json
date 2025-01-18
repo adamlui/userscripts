@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Kirim permintaan pencarian ke GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Buat Ulasan" },
   "btnLabel_rateUs": { "message": "Beri Kami Nilai" },
+  "btnLabel_discuss": { "message": "Diskusikan" },
   "btnLabel_getSupport": { "message": "Mendapat dukungan" },
   "btnLabel_checkForUpdates": { "message": "Periksa Pemutakhiran" },
   "btnLabel_update": { "message": "Pembaruan" },

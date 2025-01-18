@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Αποστολή ερωτήματος αναζήτησης στο GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Αφήστε μια Kριτική" },
   "btnLabel_rateUs": { "message": "Βαθμολογήστε μας" },
+  "btnLabel_discuss": { "message": "συζήτηση" },
   "btnLabel_getSupport": { "message": "Λάβετε υποστήριξη" },
   "btnLabel_checkForUpdates": { "message": "Έλεγχος για ενημερώσεις" },
   "btnLabel_update": { "message": "Ενημέρωση" },

@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Mitte quaestionem quaerendi ad GoogleGPT" },
   "btnLabel_leaveReview": { "message": "REVISORUM EXAMINATIS" },
   "btnLabel_rateUs": { "message": "Próximo Us" },
+  "btnLabel_discuss": { "message": "disputo" },
   "btnLabel_getSupport": { "message": "Accipe Sustentationem" },
   "btnLabel_checkForUpdates": { "message": "Revidere Renovationes" },
   "btnLabel_update": { "message": "Renovatio" },

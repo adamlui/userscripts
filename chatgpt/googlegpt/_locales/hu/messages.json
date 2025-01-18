@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Keresési lekérdezés küldése a GoogleGPT-nek" },
   "btnLabel_leaveReview": { "message": "Írj értékelést" },
   "btnLabel_rateUs": { "message": "Értékeljen minket" },
+  "btnLabel_discuss": { "message": "Megbeszélni" },
   "btnLabel_getSupport": { "message": "Kérj támogatást" },
   "btnLabel_checkForUpdates": { "message": "Frissítések keresése" },
   "btnLabel_update": { "message": "Frissítés" },

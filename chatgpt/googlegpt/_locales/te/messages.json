@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "శోధన ప్రశ్నను GoogleGPTకి పంపండి" },
   "btnLabel_leaveReview": { "message": "సమీక్షను వదిలివేయండి" },
   "btnLabel_rateUs": { "message": "మాకు రేటింగ్ ఇవ్వండి" },
+  "btnLabel_discuss": { "message": "చర్చించండి " },
   "btnLabel_getSupport": { "message": "సహకారం తీసుకోండి" },
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "అప్‌డేట్" },

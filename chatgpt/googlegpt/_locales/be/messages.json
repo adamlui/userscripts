@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Адправіць пошукавы запыт у GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Пакінуць водгук" },
   "btnLabel_rateUs": { "message": "Ацаніць нас" },
+  "btnLabel_discuss": { "message": "Абмеркаваць" },
   "btnLabel_getSupport": { "message": "Атрымаць падтрымку" },
   "btnLabel_checkForUpdates": { "message": "Праверыць абнаўленьні" },
   "btnLabel_update": { "message": "Абноўлена" },

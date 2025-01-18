@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "GoogleGPT руу хайлтын хайлт илгээх" },
   "btnLabel_leaveReview": { "message": "Сэтгэгдэл үлдээх" },
   "btnLabel_rateUs": { "message": "Биднийг үнэлэх" },
+  "btnLabel_discuss": { "message": "Хэлэлцүүлэг" },
   "btnLabel_getSupport": { "message": "Тусламж авах" },
   "btnLabel_checkForUpdates": { "message": "Шинэчлэлтийг шинэчлэх" },
   "btnLabel_update": { "message": "Шинэчлэх" },

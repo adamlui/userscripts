@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Pošaljite upit za pretraživanje GoogleGPT-u" },
   "btnLabel_leaveReview": { "message": "Ostavite recenziju" },
   "btnLabel_rateUs": { "message": "Ocijenite nas" },
+  "btnLabel_discuss": { "message": "Rasprava" },
   "btnLabel_getSupport": { "message": "Podrška" },
   "btnLabel_checkForUpdates": { "message": "Provjeri za nadogradnje" },
   "btnLabel_update": { "message": "Ažuriraj" },

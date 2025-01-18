@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Thumela umbuzo wokusesha ku-GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Shiya Okushiwo Abanye" },
   "btnLabel_rateUs": { "message": "Silinganise" },
+  "btnLabel_discuss": { "message": "Xoxani" },
   "btnLabel_getSupport": { "message": "Thola Usizo" },
   "btnLabel_checkForUpdates": { "message": "Hlola Izibuyekezo" },
   "btnLabel_update": { "message": "Lungisa" },

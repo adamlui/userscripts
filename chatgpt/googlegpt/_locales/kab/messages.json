@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Sselk tazult i GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Aneggaru yeǧǧa-d" },
   "btnLabel_rateUs": { "message": "Rmed-aɣ" },
+  "btnLabel_discuss": { "message": "Mmeslay" },
   "btnLabel_getSupport": { "message": "Tadlis" },
   "btnLabel_checkForUpdates": { "message": "Tserkit i tazwara" },
   "btnLabel_update": { "message": "Tserkit" },

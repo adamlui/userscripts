@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Tumineni ifipusho fya kufwaya pa GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Lekeni ukupituluka" },
   "btnLabel_rateUs": { "message": "Rate Twine" },
+  "btnLabel_discuss": { "message": "Landenipo" },
   "btnLabel_getSupport": { "message": "Peeleniko bambi Peeleni" },
   "btnLabel_checkForUpdates": { "message": "Check Kuli Kuli Updates" },
   "btnLabel_update": { "message": "Update" },

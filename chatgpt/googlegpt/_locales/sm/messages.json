@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Auina atu fesili sailiiliga i le GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Tuua Iloiloga" },
   "btnLabel_rateUs": { "message": "Faatusatusaina i Tatou" },
+  "btnLabel_discuss": { "message": "Talanoa" },
   "btnLabel_getSupport": { "message": "Maua Lagolago" },
   "btnLabel_checkForUpdates": { "message": "Siaki mo Faʻafouga" },
   "btnLabel_update": { "message": "Fa'afouga" },

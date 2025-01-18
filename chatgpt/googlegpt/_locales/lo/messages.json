@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "ສົ່ງຄໍາຖາມຄົ້ນຫາໄປທີ່ GoogleGPT" },
   "btnLabel_leaveReview": { "message": "ໃຫ້ການທົບທວນຄືນ" },
   "btnLabel_rateUs": { "message": "ປະເມີນພວກເຮົາ" },
+  "btnLabel_discuss": { "message": "ປຶກສາຫາລື" },
   "btnLabel_getSupport": { "message": "ໄດ້ຮັບການສະໜັບສະໜູນ" },
   "btnLabel_checkForUpdates": { "message": "ກວດເບິ່ງການອັບເດດ" },
   "btnLabel_update": { "message": "ອັບເດດ" },

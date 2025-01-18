@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Enviar consulta de pesquisa para GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Deixar Avaliação" },
   "btnLabel_rateUs": { "message": "Avalie-nos" },
+  "btnLabel_discuss": { "message": "Discussão" },
   "btnLabel_getSupport": { "message": "Obter suporte" },
   "btnLabel_checkForUpdates": { "message": "Verificar se há atualizações" },
   "btnLabel_update": { "message": "Atualizar" },

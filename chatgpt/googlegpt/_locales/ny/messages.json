@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "Tumizani funso lofufuzira ku GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Kusiya Review" },
   "btnLabel_rateUs": { "message": "Kuwerengetsa Ife" },
+  "btnLabel_discuss": { "message": "Kukambitsirana" },
   "btnLabel_getSupport": { "message": "Pezani Thandizo" },
   "btnLabel_checkForUpdates": { "message": "Fufuzani Zosintha" },
   "btnLabel_update": { "message": "Sinthani" },

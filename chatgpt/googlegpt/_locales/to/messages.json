@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "ʻAve ʻa e fehuʻi ki he GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Tuku Hono Toe Vakaiʻí" },
   "btnLabel_rateUs": { "message": "Fakafuofuaʻi Kimautolu" },
+  "btnLabel_discuss": { "message": "Aleaʻi" },
   "btnLabel_getSupport": { "message": "Maʻu ha Tokoni" },
   "btnLabel_checkForUpdates": { "message": "Vakaiʻi e Ngaahi Fakamatala Fakamuimuitahá" },
   "btnLabel_update": { "message": "Fakamatala Fakamuimuitahá" },

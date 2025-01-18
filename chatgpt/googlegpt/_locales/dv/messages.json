@@ -103,6 +103,7 @@
   "btnLabel_sendQueryToApp": { "message": "ސެންޑް ސަރޗް ކިއުރީ ޓޯ GoogleGPT" },
   "btnLabel_leaveReview": { "message": "ރިވިއު ދޫކޮށްލާށެވެ" },
   "btnLabel_rateUs": { "message": "ރޭޓް އަސް" },
+  "btnLabel_discuss": { "message": "މަޝްވަރާކުރުން" },
   "btnLabel_getSupport": { "message": "ގެޓް ސަޕޯޓް" },
   "btnLabel_checkForUpdates": { "message": "އަޕްޑޭޓްތައް ބަލާށެވެ" },
   "btnLabel_update": { "message": "އަޕްޑޭޓް" },
