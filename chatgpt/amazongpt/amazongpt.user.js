@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18.2
+// @version                2025.1.18.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -82,8 +82,8 @@
 // @grant                  GM_xmlhttpRequest
 // @grant                  GM.xmlHttpRequest
 // @noframes
-// @downloadURL            https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js
-// @updateURL              https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js
+// @downloadURL            https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js
+// @updateURL              https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js
 // @homepageURL            https://amazongpt.kudoai.com
 // @supportURL             https://amazongpt.kudoai.com/issues
 // @contributionURL        https://github.com/sponsors/KudoAI
@@ -130,7 +130,7 @@
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             support: 'https://amazongpt.kudoai.com/issues',
-            update: 'https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js'
+            update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
         latestResourceCommitHash: 'fe71878' // for cached messages.json
     }

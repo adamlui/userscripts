@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Hide Forum Images
-// @version           2025.1.18
+// @version           2025.1.18.1
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -13,8 +13,8 @@
 // @compatible        safari
 // @compatible        edge
 // @match             *://*/*
-// @downloadURL       https://github.com/adamlui/userscripts/raw/refs/heads/master/hide-forum-images/hide-forum-images.user.js
-// @updateURL         https://github.com/adamlui/userscripts/raw/refs/heads/master/hide-forum-images/hide-forum-images.user.js
+// @downloadURL       https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js
+// @updateURL         https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js
 // @homepageURL       https://github.com/adamlui/userscripts
 // @supportURL        https://github.com/adamlui/userscripts/issues
 // @contributionURL   https://github.com/sponsors/adamlui

@@ -36,7 +36,7 @@
 
 <h3>🤖 Bring the magic of AI to Amazon Shopping 🛒</h3>
 
-<a href="https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js"><img height=50 alt="[Install this script]" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="[How to install]" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js"><img height=50 alt="[Install this script]" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="[How to install]" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/amazongpt/discussions) / 
 [Get support](https://amazongpt.kudoai.com/issues) / 
@@ -65,7 +65,7 @@
     - Violentmonkey* for [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/) or [Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)
     - [OrangeMonkey](https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf)* or [OrangeMonkey Pro](https://chromewebstore.google.com/detail/orangemonkey-pro/ggdmdoodcfamjggeigifpjfnnjfbland)* for Chrome
 
-2. Install [AmazonGPT](https://github.com/KudoAI/amazongpt/raw/refs/heads/main/greasemonkey/amazongpt.user.js) userscript (will load in manager installed above)
+2. Install [AmazonGPT](https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js) userscript (will load in manager installed above)
 
 3. Visit [Amazon.com](https://amazon.com), engage bot!
 
