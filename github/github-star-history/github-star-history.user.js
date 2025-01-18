@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.4
+// @version             2025.1.18
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -23,13 +23,14 @@
 // @match               *://github.com/*
 // @connect             api.star-history.com
 // @connect             cdn.jsdelivr.net
+// @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js
-// @updateURL           https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js
+// @downloadURL         https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js
+// @updateURL           https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js
 // @homepageURL         https://github.com/adamlui/github-star-history
 // @supportURL          https://github.com/adamlui/github-star-history/issues
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -44,7 +45,7 @@
     // Init APP info
     const app = {
         latestResourceCommitHash: '8405505',
-        urls: { update: 'https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js' }
+        urls: { update: 'https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js' }
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({

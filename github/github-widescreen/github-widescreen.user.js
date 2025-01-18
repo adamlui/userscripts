@@ -13,17 +13,17 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.6
+// @version             2025.1.18
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
-// @connect             cdn.jsdelivr.net
+// @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js
-// @updateURL           https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js
+// @downloadURL         https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js
+// @updateURL           https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js
 // @homepageURL         https://github.com/adamlui/github-widescreen
 // @supportURL          https://github.com/adamlui/github-widescreen/issues
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -38,7 +38,7 @@
             discuss: 'https://github.com/adamlui/github-widescreen/discuss',
             gitHub: 'https://github.com/adamlui/github-widescreen',
             support: 'https://github.com/adamlui/github-widescreen/issues',
-            update: 'https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js'
+            update: 'https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js'
         }
     }
 

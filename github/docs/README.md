@@ -20,14 +20,14 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/icons/github/icon32.png"> [GitHub Star History ⭐](../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/badges/awesome/mentioned-badge.svg"></a>
 
 > Adds star history chart to sidebar of GitHub repos.
-<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js) /
+<br>[Install](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
 [Readme](../github-star-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](../github-widescreen)
 
 > Auto-hides obtrusive side panels on GitHub.
-<br>[Install](https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js) /
+<br>[Install](https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js) /
 [Readme](../github-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 

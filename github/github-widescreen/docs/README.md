@@ -11,7 +11,7 @@
 
 ### Auto-hides obtrusive side panels from GitHub
 
-<a href="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js"><img height=42 alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js"><img height=42 alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-widescreen/discussions) /
 [Get support](https://github.com/adamlui/github-widescreen/issues) /
@@ -21,7 +21,7 @@
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/))
 
-2. Install [GitHub Widescreen](https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js) (will load in userscript manager installed above)
+2. Install [GitHub Widescreen](https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js) (will load in userscript manager installed above)
 
 3. Visit [github.com](https://github.com) as normal, and side panels (like the symbols navigator) will auto-hide on first load!
 
@@ -40,7 +40,7 @@
 ### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/badges/awesome/badge.svg"></a>
 
 Adds star history chart to sidebar of GitHub repos.<br>
-[Install](https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js) /
+[Install](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
 [Readme](https://github.com/adamlui/github-star-history#readme) /
 [Discuss](https://github.com/adamlui/github-star-history/discussions)
 
