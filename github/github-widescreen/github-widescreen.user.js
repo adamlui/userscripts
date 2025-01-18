@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.4
+// @version             2025.1.17.5
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -100,10 +100,10 @@
         GM.xmlHttpRequest({
             method: 'GET', url: app.urls.update + '?t=' + Date.now(),
             headers: { 'Cache-Control': 'no-cache' },
-            onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)[1]
+            onload: response => { const latestVer = /@version +(.*)/.exec(response.responseText)?.[1]
 
                 // Compare versions
-                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                if (latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
                     const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
                           latestSubVer = parseInt(latestVer.split('.')[i], 10) || 0
                     if (currentSubVer > latestSubVer) break // out of comparison since not outdated
