@@ -13,7 +13,7 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Get support](https://github.com/adamlui/github-star-history/issues) /
@@ -29,13 +29,13 @@
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/))
 
-2. Install [GitHub Star History](https://greasyfork.org/scripts/473377-github-star-history) (will load in userscript manager installed above)
+2. Install [GitHub Star History](https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js) (will load in userscript manager installed above)
 
 3. Visit [github.com](https://github.com) as normal, and star history chart will show in sidebar of repos!
 
 <br>
 
-<a href="https://greasyfork.org/scripts/473377-github-star-history"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/media/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Get support](https://github.com/adamlui/github-star-history/issues) /

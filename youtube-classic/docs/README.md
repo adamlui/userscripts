@@ -13,7 +13,7 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-<a href="https://greasyfork.org/scripts/456132"><img alt="[Install this script]" height=42 src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ytclassic.com"><img alt="[Install this script]" height=42 src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Get support](https://support.ytclassic.com) /
@@ -41,7 +41,7 @@
 
 ## Script links
 
-[Install this script](https://greasyfork.org/scripts/456132) /
+[Install this script](https://gm.ytclassic.com) /
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Get support](https://support.ytclassic.com) /
 [More userscripts](https://github.com/adamlui/userscripts)
