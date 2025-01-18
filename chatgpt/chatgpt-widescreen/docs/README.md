@@ -22,7 +22,7 @@
     <img alt="[www.chatgptwidescreen.com]" height=31 src="https://img.shields.io/badge/web-www.chatgptwidescreen.com-lightgrey?logo=dribbble&logoColor=white&labelColor=464646&style=for-the-badge"></img></a>
 <br><br>
 
-<a href="https://gm.chatgptwidescreen.com"><img height=45 alt="Install this script" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptwidescreen.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions) / 
 [Get support](https://support.chatgptwidescreen.com) / 
@@ -130,7 +130,7 @@ ChatGPT Widescreen Mode is compatible w/ the following browsers using [ScriptCat
 
 <br>
 
-<a href="https://gm.chatgptwidescreen.com"><img height=45 alt="Install this script" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptwidescreen.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.chatgptwidescreen.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions) / 
 [Get support](https://support.chatgptwidescreen.com) / 

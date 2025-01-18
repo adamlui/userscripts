@@ -28,7 +28,7 @@
 
 <h3><b>DuckDuckGPT</b> brings the magic of ChatGPT to DDG (powered by GPT-4o!)</h3>
 
-<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="[Install this script]" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Get support](https://support.ddgpt.com) / 
@@ -127,7 +127,7 @@ When disabled, a ChatGPT account is required to fetch responses. If OpenAI API i
 
 <br>
 
-<a href="https://gm.ddgpt.com"><img height=45 alt="Install this script" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.ddgpt.com"><img height=45 alt="[Install this script]" src="https://assets.ddgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.ddgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/duckduckgpt/discussions) /
 [Get support](https://support.ddgpt.com) / 

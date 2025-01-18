@@ -31,7 +31,7 @@
     <img height=31 alt="[jsDelivr stats]" src="https://img.shields.io/jsdelivr/gh/hm/adamlui/chatgpt-auto-continue?style=for-the-badge&logo=jsdelivr&logoColor=white&label=jsDelivr%20Requests&labelColor=464646&color=2bbbd8"></a>
 <br><br>
 
-<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="Install this script" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="How to install" title="How to install" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptautocontinue.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
 [Get support](https://support.chatgptautocontinue.com) /
@@ -89,7 +89,7 @@ ChatGPT Auto-Continue relies on code from the powerful [chatgpt.js](https://gith
 
 <div align="center">
 
-<a href="https://gm.chatgptinfinity.com"><img height=45 alt="Install this script" src="https://assets.chatgptinfinity.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="How to install" title="How to install" height=45 src="https://assets.chatgptinfinity.com/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://gm.chatgptinfinity.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptinfinity.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="[How to install]" title="How to install" height=45 src="https://assets.chatgptinfinity.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-infinity/discussions) / 
 [More ChatGPT userscripts](https://github.com/adamlui/userscripts/tree/master/chatgpt)

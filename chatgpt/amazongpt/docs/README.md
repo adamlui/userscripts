@@ -36,7 +36,7 @@
 
 <h3>🤖 Bring the magic of AI to Amazon Shopping 🛒</h3>
 
-<a href="https://greasyfork.org/scripts/500663-amazongpt"><img height=50 alt="Install this script" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="How to install" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://greasyfork.org/scripts/500663-amazongpt"><img height=50 alt="[Install this script]" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=50 alt="[How to install]" title="How to install" src="https://amazongpt.kudoai.com/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/KudoAI/amazongpt/discussions) / 
 [Get support](https://amazongpt.kudoai.com/issues) / 
