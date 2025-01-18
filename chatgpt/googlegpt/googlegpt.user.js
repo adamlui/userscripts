@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.18
+// @version                  2025.1.18.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -441,15 +441,14 @@
             app: 'https://www.googlegpt.io',
             chatgptJS: 'https://chatgpt.js.org',
             contributors: 'https://docs.googlegpt.io/#-contributors',
+            discuss: 'https://github.com/KudoAI/googlegpt/discussions',
             gitHub: 'https://github.com/KudoAI/googlegpt',
-            greasyFork: 'https://greasyfork.org/scripts/478597-googlegpt',
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
-            review: { greasyFork: 'https://greasyfork.org/scripts/478597-googlegpt/feedback#post-discussion' },
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: '4880b93' // for cached messages.json
+        latestResourceCommitHash: 'cc95f34' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.msgs = {
@@ -556,6 +555,7 @@
         btnLabel_sendQueryToApp: 'Send search query to GoogleGPT',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
+        btnLabel_discuss: 'Discuss',
         btnLabel_getSupport: 'Get Support',
         btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
@@ -1226,7 +1226,7 @@
                 [ // buttons
                     function checkForUpdates() { updateCheck() },
                     function getSupport(){},
-                    function rateUs(){},
+                    function discuss(){},
                     function moreAIextensions(){}
                 ], '', 585 // modal width
             )
@@ -1248,14 +1248,12 @@
                 btn.style.cssText = 'height: 50px ; min-width: 136px'
 
                 // Replace link buttons w/ clones that don't dismiss modal
-                if (/support|rate|extensions/i.test(btn.textContent)) {
+                if (/support|discuss|extensions/i.test(btn.textContent)) {
                     const btnClone = btn.cloneNode(true)
                     btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                    btn.onclick = () => modals.safeWinOpen(
-                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? app.urls.support
-                      : btn.textContent.includes(app.msgs.btnLabel_rateUs) ? app.urls.review.greasyFork
-                      : app.urls.relatedExtensions
-                    )
+                    btn.onclick = () => modals.safeWinOpen(app.urls[
+                        btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
+                      : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions' ])
                 }
 
                 // Prepend emoji + localize labels
@@ -1263,8 +1261,8 @@
                     btn.textContent = `🚀 ${app.msgs.btnLabel_checkForUpdates}`
                 else if (/support/i.test(btn.textContent))
                     btn.textContent = `🧠 ${app.msgs.btnLabel_getSupport}`
-                else if (/rate/i.test(btn.textContent))
-                    btn.textContent = `⭐ ${app.msgs.btnLabel_rateUs}`
+                else if (/discuss/i.test(btn.textContent))
+                    btn.textContent = `⭐ ${app.msgs.btnLabel_discuss}`
                 else if (/extensions/i.test(btn.textContent))
                     btn.textContent = `🤖 ${app.msgs.btnLabel_moreAIextensions}`
 
@@ -1275,45 +1273,6 @@
             log.dev('Success! About Modal shown')
 
             return aboutModal
-        },
-
-        feedback() {
-            log.caller = 'modals.feedback()'
-            log.dev('Showing Feedback modal...')
-
-            // Init buttons
-            let btns = [ function greasyFork(){} ]
-            if (modals.stack[0] != 'about') btns.push(function github(){})
-
-            // Show modal
-            const feedbackModal = modals.alert(`${app.msgs.alert_choosePlatform}:`, '', btns, '', 333)
-
-            // Center CTA
-            feedbackModal.querySelector('h2').style.justifySelf = 'center'
-
-            // Re-style button cluster
-            const btnsDiv = feedbackModal.querySelector('.modal-buttons')
-            btnsDiv.style.cssText += 'display: flex ; flex-wrap: wrap ; justify-content: center ;'
-                                   + 'margin: 16px 0 5px !important' // close gap between title/btns
-            // Hack buttons
-            btns = btnsDiv.querySelectorAll('button')
-            btns.forEach((btn, idx) => {
-                if (idx == 0) btn.style.display = 'none' // hide Dismiss button
-                if (idx == btns.length -1) btn.classList.remove('primary-modal-btn') // de-emphasize last link
-                btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
-
-                // Replace buttons w/ clones that don't dismiss modal
-                const btnClone = btn.cloneNode(true)
-                btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
-                btn.onclick = () => modals.safeWinOpen(
-                    btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
-                                                     : `${app.urls.gitHub}/discussions/new/choose`
-                )
-            })
-
-            log.dev('Success! Feedback modal shown')
-
-            return feedbackModal
         },
 
         replyLang() {
@@ -4286,8 +4245,7 @@
     }), 1500)
 
     // Init footer CTA to share feedback
-    let footerContent = dom.create.anchor('#', app.msgs.link_shareFeedback, { target: '_self' })
-    footerContent.onclick = () => modals.open('feedback')
+    let footerContent = dom.create.anchor(app.urls.discuss, app.msgs.link_shareFeedback)
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: prompts.augment(new URL(location.href).searchParams.get('q')) }]
