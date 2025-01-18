@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17
+// @version             2025.1.17.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -258,17 +258,18 @@
             + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
-                function leaveAReview() { safeWinOpen(app.urls.greasyFork + '/feedback#post-discussion') }
+                function getSupport() { safeWinOpen(app.urls.support) },
+                function discuss() { safeWinOpen(app.urls.discuss) }
             ])
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
         for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
             if (/updates/i.test(button.textContent))
                 button.textContent = '🚀 Check for Updates'
-            else if (/review/i.test(button.textContent))
-                button.textContent = '⭐ Leave a Review'
-            else if (/github/i.test(button.textContent))
-                button.textContent = '📜 GitHub Source'
+            else if (/support/i.test(button.textContent))
+                button.textContent = '🧠 Get Support'
+            else if (/discuss/i.test(button.textContent))
+                button.textContent = '🗨️ Discuss'
             else button.style.display = 'none' // hide Dismiss button
         }
     })
