@@ -13,17 +13,17 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.11.3
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
-// @connect             update.greasyfork.org
+// @connect             cdn.jsdelivr.net
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://update.greasyfork.org/scripts/473439/github-widescreen.user.js
-// @updateURL           https://update.greasyfork.org/scripts/473439/github-widescreen.meta.js
+// @downloadURL         https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js
+// @updateURL           https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js
 // @homepageURL         https://github.com/adamlui/github-widescreen
 // @supportURL          https://github.com/adamlui/github-widescreen/issues
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -39,11 +39,10 @@
             greasyFork: 'https://greasyfork.org/scripts/473439-github-widescreen',
             review: {
                 greasyFork: 'https://greasyfork.org/scripts/462422-chatgpt-auto-refresh/feedback#post-discussion'
-            }
+            },
+            update: 'https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/greasemonkey/github-widescreen.user.js'
         }
     }
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
 
     // Register ABOUT menu command
     GM_registerMenuCommand('💡 About ' + app.name, async () => {

@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.16.5
+// @version               2025.1.17
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -178,8 +178,8 @@
 // @connect               cdn.jsdelivr.net
 // @connect               chatai.mixerbox.com
 // @connect               chatgpt.com
-// @connect               update.greasyfork.org
 // @connect               fanyi.sogou.com
+// @connect               gm.bravegpt.com
 // @connect               toyaml.com
 // @require               https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require               https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
@@ -205,8 +205,8 @@
 // @grant                 GM_xmlhttpRequest
 // @grant                 GM.xmlHttpRequest
 // @noframes
-// @downloadURL           https://update.greasyfork.org/scripts/462440/bravegpt.user.js
-// @updateURL             https://update.greasyfork.org/scripts/462440/bravegpt.meta.js
+// @downloadURL           https://gm.bravegpt.com
+// @updateURL             https://gm.bravegpt.com
 // @homepageURL           https://www.bravegpt.com
 // @supportURL            https://support.bravegpt.com
 // @contributionURL       https://github.com/sponsors/KudoAI
@@ -260,13 +260,12 @@
                 greasyFork: 'https://greasyfork.org/scripts/462440-bravegpt/feedback#post-discussion',
                 productHunt: 'https://www.producthunt.com/products/bravegpt/reviews/new'
             },
-            support: 'https://support.bravegpt.com'
+            support: 'https://support.bravegpt.com',
+            update: 'https://gm.bravegpt.com'
         },
         latestResourceCommitHash: 'e6e7822' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appDesc: 'Adds ChatGPT answers to Brave Search sidebar (powered by GPT-4o!)',
         menuLabel_proxyAPImode: 'Proxy API Mode',

@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.16.5
+// @version                2025.1.17
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -55,7 +55,6 @@
 // @connect                cdn.jsdelivr.net
 // @connect                chatai.mixerbox.com
 // @connect                chatgpt.com
-// @connect                update.greasyfork.org
 // @connect                fanyi.sogou.com
 // @connect                toyaml.com
 // @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
@@ -83,8 +82,8 @@
 // @grant                  GM_xmlhttpRequest
 // @grant                  GM.xmlHttpRequest
 // @noframes
-// @downloadURL            https://update.greasyfork.org/scripts/500663/amazongpt.user.js
-// @updateURL              https://update.greasyfork.org/scripts/500663/amazongpt.meta.js
+// @downloadURL            https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js
+// @updateURL              https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js
 // @homepageURL            https://amazongpt.kudoai.com
 // @supportURL             https://amazongpt.kudoai.com/issues
 // @contributionURL        https://github.com/sponsors/KudoAI
@@ -130,14 +129,13 @@
             greasyFork: 'https://greasyfork.org/scripts/500663-amazongpt',
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
-            review: { greasyFork: 'https://greasyfork.org/scripts/500663-amazongpt/feedback#post-discussion' }
+            review: { greasyFork: 'https://greasyfork.org/scripts/500663-amazongpt/feedback#post-discussion' },
+            update: 'https://cdn.jsdelivr.net/gh/KudoAI/amazongpt/greasemonkey/amazongpt.user.js'
         },
         latestResourceCommitHash: '1431d02' // for cached messages.json
     }
     app.urls.support = app.urls.gitHub + '/issues/new'
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appDesc: 'Adds AI to Amazon shopping',
         menuLabel_proxyAPImode: 'Proxy API Mode',

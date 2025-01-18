@@ -225,14 +225,14 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.12.1
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @connect             cdn.jsdelivr.net
-// @connect             update.greasyfork.org
+// @connect             gm.chatgptautotalk.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
@@ -244,8 +244,8 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/500940/autoclear-chatgpt-history.user.js
-// @updateURL           https://update.greasyfork.org/scripts/500940/autoclear-chatgpt-history.meta.js
+// @downloadURL         https://gm.chatgptautotalk.com
+// @updateURL           https://gm.chatgptautotalk.com
 // @homepageURL         https://www.chatgptautotalk.com
 // @supportURL          https://support.chatgptautotalk.com
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -291,13 +291,12 @@
             review: {
                 greasyFork: 'https://greasyfork.org/scripts/500940-chatgpt-auto-talk/feedback#post-discussion'
             },
-            support: 'https://support.chatgptautotalk.com'
+            support: 'https://support.chatgptautotalk.com',
+            update: 'https://gm.chatgptautotalk.com'
         },
         latestResourceCommitHash: '19ff069' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,

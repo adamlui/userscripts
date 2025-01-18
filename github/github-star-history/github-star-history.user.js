@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.7.8
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -23,14 +23,13 @@
 // @match               *://github.com/*
 // @connect             api.star-history.com
 // @connect             cdn.jsdelivr.net
-// @connect             update.greasyfork.org
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
-// @downloadURL         https://update.greasyfork.org/scripts/473377/github-star-history.user.js
-// @updateURL           https://update.greasyfork.org/scripts/473377/github-star-history.meta.js
+// @downloadURL         https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js
+// @updateURL           https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js
 // @homepageURL         https://github.com/adamlui/github-star-history
 // @supportURL          https://github.com/adamlui/github-star-history/issues
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -43,15 +42,16 @@
           xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP info
-    const app = { latestResourceCommitHash: '8405505', urls: {} }
+    const app = {
+        latestResourceCommitHash: '8405505',
+        urls: { update: 'https://cdn.jsdelivr.net/gh/adamlui/github-star-history/greasemonkey/github-star-history.user.js' }
+    }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
         method: 'GET', url: `${app.urls.resourceHost}/app.json`,
         onload: resp => resolve(JSON.parse(resp.responseText))
     }))
     Object.assign(app, { ...remoteAppData, urls: { ...app.urls, ...remoteAppData.urls }})
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${name || 'script'}.meta.js`)
 
     // Define SCRIPT functions
 

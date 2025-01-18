@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.16
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -241,7 +241,7 @@
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @connect             cdn.jsdelivr.net
-// @connect             update.greasyfork.org
+// @connect             gm.autoclearchatgpt.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
@@ -253,8 +253,8 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/460805/autoclear-chatgpt-history.user.js
-// @updateURL           https://update.greasyfork.org/scripts/460805/autoclear-chatgpt-history.meta.js
+// @downloadURL         https://gm.autoclearchatgpt.com
+// @updateURL           https://gm.autoclearchatgpt.com
 // @homepageURL         https://www.autoclearchatgpt.com
 // @supportURL          https://support.autoclearchatgpt.com
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -283,7 +283,8 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: 'autoclearChatGPThistory',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
+        urls: { update: 'https://gm.autoclearchatgpt.com' },
         latestResourceCommitHash: '06d6690' // for cached app.json + messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@${app.latestResourceCommitHash}`
@@ -292,8 +293,6 @@
         onload: resp => resolve(JSON.parse(resp.responseText))
     }))
     Object.assign(app, { ...remoteAppData, urls: { ...app.urls, ...remoteAppData.urls }})
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,

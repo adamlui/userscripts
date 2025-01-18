@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.17.1
+// @version             2025.1.17.2
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -253,7 +253,7 @@
 // @match               *://*.perplexity.ai/*
 // @match               *://poe.com/*
 // @connect             cdn.jsdelivr.net
-// @connect             update.greasyfork.org
+// @connect             gm.chatgptwidescreen.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bea60fff2bc2e8745ea1daa91a3cf01b387e7ca9/chrome/extension/lib/dom.js#sha256-ubog9pHcDtVAuo9YKH6uLSrW0TAYInk70w9+DQ5C4aQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@019cc96d33cf1a0f2436e3e5513f5b3d8da56f26/chrome/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
@@ -269,8 +269,8 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/461473/chatgpt-widescreen.user.js
-// @updateURL           https://update.greasyfork.org/scripts/461473/chatgpt-widescreen.meta.js
+// @downloadURL         https://gm.chatgptwidescreen.com
+// @updateURL           https://gm.chatgptwidescreen.com
 // @homepageURL         https://www.chatgptwidescreen.com
 // @supportURL          https://support.chatgptwidescreen.com
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -302,7 +302,8 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
+        urls: { update: 'https://gm.chatgptwidescreen.com' },
         latestResourceCommitHash: '4edb2da' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
@@ -311,8 +312,6 @@
         onload: resp => resolve(JSON.parse(resp.responseText))
     }))
     Object.assign(app, { ...remoteAppData, urls: { ...app.urls, ...remoteAppData.urls }})
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,

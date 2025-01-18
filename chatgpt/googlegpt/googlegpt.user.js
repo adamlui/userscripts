@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.16.5
+// @version                  2025.1.17
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -369,8 +369,8 @@
 // @connect                  cdn.jsdelivr.net
 // @connect                  chatai.mixerbox.com
 // @connect                  chatgpt.com
-// @connect                  update.greasyfork.org
 // @connect                  fanyi.sogou.com
+// @connect                  gm.googlegpt.io
 // @connect                  toyaml.com
 // @require                  https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                  https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
@@ -397,8 +397,8 @@
 // @grant                    GM_xmlhttpRequest
 // @grant                    GM.xmlHttpRequest
 // @noframes
-// @downloadURL              https://update.greasyfork.org/scripts/478597/googlegpt.user.js
-// @updateURL                https://update.greasyfork.org/scripts/478597/googlegpt.meta.js
+// @downloadURL              https://gm.googlegpt.io
+// @updateURL                https://gm.googlegpt.io
 // @homepageURL              https://www.googlegpt.io
 // @supportURL               https://support.googlegpt.io
 // @contributionURL          https://github.com/sponsors/KudoAI
@@ -448,13 +448,12 @@
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: { greasyFork: 'https://greasyfork.org/scripts/478597-googlegpt/feedback#post-discussion' },
-            support: 'https://support.googlegpt.io'
+            support: 'https://support.googlegpt.io',
+            update: 'https://gm.googlegpt.io'
         },
         latestResourceCommitHash: '4880b93' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appDesc: 'Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)',
         menuLabel_autoGetAnswers: 'Auto-Get Answers',

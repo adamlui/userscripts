@@ -219,14 +219,14 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.16
+// @version             2025.1.17
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
 // @match               *://chatgpt.com/*
 // @match               *://chat.openai.com/*
 // @connect             cdn.jsdelivr.net
-// @connect             update.greasyfork.org
+// @connect             gm.chatgptautocontinue.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@c27aa92bb83e678f2664a06c33fbe683e9fcce62/chromium/extension/components/modals.js#sha256-hAdfzVJT0hvXx8T+2/5rbRt73/qgFLMl0P7AQx/ftsQ=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@f957abad33bb6639933256808b81aa041b160988/chromium/extension/lib/dom.js#sha256-/QaqzuGGC7PrzjYnXtYh411rJJOp27jWLA4ataKaWWY=
@@ -241,8 +241,8 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @noframes
-// @downloadURL         https://update.greasyfork.org/scripts/466789/chatgpt-auto-continue.user.js
-// @updateURL           https://update.greasyfork.org/scripts/466789/chatgpt-auto-continue.meta.js
+// @downloadURL         https://gm.chatgptautocontinue.com
+// @updateURL           https://gm.chatgptautocontinue.com
 // @homepageURL         https://www.chatgptautocontinue.com
 // @supportURL          https://support.chatgptautocontinue.com
 // @contributionURL     https://github.com/sponsors/adamlui
@@ -273,7 +273,8 @@
     // Init APP data
     const app = {
         version: GM_info.script.version, configKeyPrefix: 'chatGPTautoContinue',
-        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1], urls: {},
+        chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
+        urls: { update: 'https://gm.chatgptautocontinue.com' },
         latestResourceCommitHash: 'b81310f' // for cached app.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestResourceCommitHash}`
@@ -282,8 +283,6 @@
         onload: resp => resolve(JSON.parse(resp.responseText))
     }))
     Object.assign(app, { ...remoteAppData, urls: { ...app.urls, ...remoteAppData.urls }})
-    app.urls.update = app.urls.greasyFork.replace('https://', 'https://update.')
-        .replace(/(\d+)-?([a-z-]*)$/i, (_, id, name) => `${id}/${ name || 'script' }.meta.js`)
     app.msgs = {
         appName: app.name,
         appAuthor: app.author.name,
