@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18
+// @version                2025.1.18.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -250,18 +250,16 @@
             chatgptJS: 'https://chatgpt.js.org',
             contributors: 'https://docs.duckduckgpt.com/#-contributors',
             gitHub: 'https://github.com/KudoAI/duckduckgpt',
-            greasyFork: 'https://greasyfork.org/scripts/459849-duckduckgpt',
             publisher: 'https://www.kudoai.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             review: {
                 alternativeTo: 'https://alternativeto.net/software/duckduckgpt/about/',
-                greasyFork: 'https://greasyfork.org/scripts/459849-duckduckgpt/feedback#post-discussion',
                 productHunt: 'https://www.producthunt.com/products/duckduckgpt/reviews/new'
             },
             support: 'https://support.ddgpt.com',
             update: 'https://gm.ddgpt.com'
         },
-        latestResourceCommitHash: '7a76b64' // for cached messages.json
+        latestResourceCommitHash: '8c6c9a2' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
     app.msgs = {
@@ -1097,7 +1095,7 @@
             log.dev('Showing Feedback modal...')
 
             // Init buttons
-            let btns = [ function greasyFork(){}, function productHunt(){}, function alternativeto() {} ]
+            let btns = [ function productHunt(){}, function alternativeto() {} ]
             if (modals.stack[0] != 'about') btns.push(function github(){})
 
             // Show modal
@@ -1121,8 +1119,7 @@
                 const btnClone = btn.cloneNode(true)
                 btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
                 btn.onclick = () => modals.safeWinOpen(
-                    btn.textContent == 'Greasy Fork' ? app.urls.review.greasyFork
-                  : btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
+                    btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
                   : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
                   : `${app.urls.gitHub}/discussions/new/choose`
                 )
