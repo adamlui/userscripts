@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.18.5
+// @version                  2025.1.18.6
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3600,7 +3600,7 @@
                         if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
                         if (caller.sender == callerAPI // app is sending from this api
                             && textToShow.trim() != '' // empty chunk not read
-                        ) show.reply(textToShow)
+                        ) show.reply(textToShow, footerContent)
                     }
                 } catch (err) { log.error('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
@@ -3687,7 +3687,7 @@
                         } else {
                             caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
                             respText = respText.replace(apis[callerAPI].watermark, '').trim()
-                            if (caller == get.reply) { show.reply(respText) ; show.replyCornerBtns() }
+                            if (caller == get.reply) { show.reply(respText, footerContent) ; show.replyCornerBtns() }
                             else resolve(arrayify(respText))
                         }
                     }
