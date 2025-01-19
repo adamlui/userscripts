@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.18.5
+// @version               2025.1.18.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3306,10 +3306,11 @@
                 },
                 onload: resp => dataProcess.text(resp, { caller: get.reply, callerAPI: reqAPI }),
                 onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
-                url: ( apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint )
-                   + ( reqMethod == 'GET' ? `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}` : '' )
+                url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
             if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(reqAPI, msgChain)
+            else if (reqMethod == 'GET')
+                xhrConfig.url += `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}`
             xhr(xhrConfig)
 
             // Get/show related queries if enabled on 1st get.reply()
