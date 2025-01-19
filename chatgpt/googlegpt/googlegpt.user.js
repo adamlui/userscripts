@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.18.3
+// @version                  2025.1.18.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3486,10 +3486,11 @@
                 },
                 onload: resp => dataProcess.text(resp, { caller: get.reply, callerAPI: reqAPI }),
                 onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
-                url: ( apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint )
-                   + ( reqMethod == 'GET' ? `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}` : '' )
+                url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
             if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(reqAPI, msgChain)
+            else if (reqMethod == 'GET')
+                xhrConfig.url += `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}`
             xhr(xhrConfig)
 
             // Get/show related queries if enabled on 1st get.reply()
