@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.18.1
+// @version             2025.1.19
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -282,7 +282,7 @@
 
     // Init APP data
     const app = {
-        name: 'ChatGPT Auto Refresh', version: GM_info.script.version, symbol: '↻', cssPrefix: 'chatgpt-auto-refresh',
+        name: 'ChatGPT Auto Refresh', version: GM_info.script.version, symbol: '↻', slug: 'chatgpt-auto-refresh',
         configKeyPrefix: 'chatGPTautoRefresh', chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
@@ -521,7 +521,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.cssPrefix}-modal`,
+        class: `${app.slug}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
@@ -798,7 +798,7 @@
     const toggles = {
 
         sidebar: {
-            class: `${app.cssPrefix}-sidebar-toggle`,
+            class: `${app.slug}-sidebar-toggle`,
 
             create() {
 
