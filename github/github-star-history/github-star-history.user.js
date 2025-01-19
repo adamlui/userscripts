@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.18.1
+// @version             2025.1.19
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -44,7 +44,7 @@
 
     // Init APP info
     const app = {
-        latestResourceCommitHash: '53a4c12',
+        latestResourceCommitHash: '27cf60e',
         urls: { update: 'https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js' }
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/github-star-history@${app.latestResourceCommitHash}`
@@ -77,12 +77,10 @@
 
                         // Alert to update
                         chatgpt.alert('🚀 Update available!', // title
-                            `A newer version of ${app.name} `
-                                + `(v${app.latestVer}) is available!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" '
-                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '"'
-                                    + '> View changes</a>',
+                            `A newer version of ${app.name} v${app.latestVer} is available!  `
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" href="'
+                                    + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}.user.js`
+                                + '">View changes</a>',
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent

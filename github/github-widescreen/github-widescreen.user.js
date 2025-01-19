@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.18
+// @version             2025.1.19
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -33,7 +33,7 @@
 
     // Init APP data
     const app = {
-        name: 'GitHub Widescreen',
+        name: 'GitHub Widescreen', slug: 'github-widescreen',
         urls: {
             discuss: 'https://github.com/adamlui/github-widescreen/discuss',
             gitHub: 'https://github.com/adamlui/github-widescreen',
@@ -112,10 +112,9 @@
                         // Alert to update
                         chatgpt.alert('Update available! 🚀', // title
                             `A newer version of ${app.name} v${app.latestVer} is available!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" '
-                                    + 'href="' + app.urls.gitHub + '/commits/main/greasemonkey/'
-                                    + app.urls.update.replace(/[^/]*\/([^/]*?)meta\.js/, '$1user.js') + '" '
-                                    + '>View changes</a>',
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" href="'
+                                    + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}.user.js`
+                                + '">View changes</a>',
                             function update() { // button
                                 GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
                                     { active: true, insert: true } // focus, make adjacent
