@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18.3
+// @version                2025.1.18.4
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3096,7 +3096,8 @@
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
-                                 + 'Do not respond in Chinese unless you were asked to!',
+                                 + 'Do not respond in Chinese unless you were asked to!'
+                                 + 'Don\'t complain you are bot w/ no feelings.',
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
