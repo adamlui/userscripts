@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.18.2
+// @version                  2025.1.18.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3475,21 +3475,21 @@
             }
 
             // Get/show answer from AI
-            const reqMethod = apis[get.reply.api].method
+            const reqAPI = get.reply.api, reqMethod = apis[reqAPI].method
             const xhrConfig = {
-                headers: api.createHeaders(get.reply.api), method: reqMethod,
+                headers: api.createHeaders(reqAPI), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
                 onerror: err => { log.error(err)
                     if (!config.proxyAPIenabled)
                         appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
                     else api.tryNew(get.reply)
                 },
-                onload: resp => dataProcess.text(get.reply, resp),
-                onloadstart: resp => dataProcess.stream(get.reply, resp),
-                url: ( apis[get.reply.api].endpoints?.completions || apis[get.reply.api].endpoint )
-                     + ( reqMethod == 'GET' ? `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}` : '' )
+                onload: resp => dataProcess.text(resp, { caller: get.reply, callerAPI: reqAPI }),
+                onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
+                url: ( apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint )
+                   + ( reqMethod == 'GET' ? `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}` : '' )
             }
-            if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(get.reply.api, msgChain)
+            if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(reqAPI, msgChain)
             xhr(xhrConfig)
 
             // Get/show related queries if enabled on 1st get.reply()
@@ -3531,12 +3531,12 @@
             const rqPrompt = prompts.augment(prompts.create({ type: 'relatedQueries', prevQuery: query })),
                   payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
-                const reqMethod = apis[get.related.api].method
+                const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
                 const xhrConfig = {
-                    headers: api.createHeaders(get.related.api), method: reqMethod, responseType: 'text',
+                    headers: api.createHeaders(reqAPI), method: reqMethod, responseType: 'text',
                     onerror: err => { log.error(err) ; api.tryNew(get.related) },
-                    onload: resp => dataProcess.text(get.related, resp).then(resolve),
-                    url: apis[get.related.api].endpoints?.completions || apis[get.related.api].endpoint
+                    onload: resp => dataProcess.text(resp, { caller: get.related, callerAPI: reqAPI }).then(resolve),
+                    url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
                 }
                 if (reqMethod == 'POST') xhrConfig.data = payload
                 else if (reqMethod == 'GET') xhrConfig.url += `?q=${rqPrompt}`
@@ -3555,32 +3555,33 @@
             return new RegExp([...failFlags, ...escapedAPIurls].join('|'))
         },
 
-        stream(caller, stream) {
+        stream(resp, { caller, callerAPI }) {
             if (config.streamingDisabled || !config.proxyAPIenabled) return
             log.caller = `get.${caller.name}() » dataProcess.stream()`
-            const failFlagsAndURLs = dataProcess.initFailFlags(caller.api),
-                  reader = stream.response.getReader() ; let accumulatedChunks = ''
-            reader.read().then(processStreamText).catch(err => log.error('Error processing stream', err.message))
+            const failFlagsAndURLs = this.initFailFlags(callerAPI),
+                  reader = resp.response.getReader() ; let accumulatedChunks = ''
+            reader.read().then(result => processStreamText(callerAPI, result))
+                .catch(err => log.error('Error processing stream', err.message))
 
-            function processStreamText({ done, value }) {
+            function processStreamText(callerAPI, { done, value }) {
 
                 // Handle stream done
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (done || chunk.includes(apis[caller.api].watermark)) return handleProcessCompletion()
+                if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since reader.read() doesn't signal done
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
 
                 // Process/show chunk
-                if (caller.api == 'MixerBox AI') { // pre-process chunks
+                if (callerAPI == 'MixerBox AI') { // pre-process chunks
                     const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .filter(match => !/message_(?:start|end)|done/.test(match))
                     chunk = extractedChunks.join('')
                 }
-                accumulatedChunks = apis[caller.api].accumulatesText ? chunk : accumulatedChunks + chunk
+                accumulatedChunks = apis[callerAPI].accumulatesText ? chunk : accumulatedChunks + chunk
                 try { // to show stream text
                     let textToShow = ''
-                    if (caller.api == 'GPTforLove') { // extract parentID + latest chunk text
+                    if (callerAPI == 'GPTforLove') { // extract parentID + latest chunk text
                         const jsonLines = accumulatedChunks.split('\n'),
                               nowResult = JSON.parse(jsonLines[jsonLines.length -1])
                         if (nowResult.id) apis.GPTforLove.parentID = nowResult.id // for contextual replies
@@ -3594,15 +3595,15 @@
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
                     } else if (caller.status != 'done') { // app waiting or sending
-                        if (!caller.sender) caller.sender = caller.api // app is waiting, become sender
-                        if (caller.sender == caller.api // app is sending from this caller.api
+                        if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
+                        if (caller.sender == callerAPI // app is sending from this api
                             && textToShow.trim() != '' // empty chunk not read
                         ) show.reply(textToShow)
                     }
                 } catch (err) { log.error('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == caller.api) // am designated sender, recurse
-                        processStreamText({ done, value })
+                    if (caller.sender == callerAPI) // am designated sender, recurse
+                        processStreamText(callerAPI, { done, value })
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
@@ -3617,22 +3618,22 @@
             }
         },
 
-        text(caller, resp) {
+        text(resp, { caller, callerAPI }) {
             return new Promise(resolve => {
                 if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
                     || caller.status == 'done') return
                 log.caller = `get.${caller.name}() » dataProcess.text()`
-                const failFlagsAndURLs = dataProcess.initFailFlags(caller.api) ; let respText = ''
+                const failFlagsAndURLs = this.initFailFlags(callerAPI) ; let respText = ''
                 if (resp.status != 200) {
                     log.error('Response status', resp.status)
                     log.info('Response text', resp.response || resp.responseText)
-                    if (caller == get.reply && caller.api == 'OpenAI')
+                    if (caller == get.reply && callerAPI == 'OpenAI')
                         appAlert(resp.status == 401 ? 'login'
                                : resp.status == 403 ? 'checkCloudflare'
                                : resp.status == 429 ? ['tooManyRequests', 'suggestProxy']
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
-                } else if (caller.api == 'OpenAI' && resp.response) {
+                } else if (callerAPI == 'OpenAI' && resp.response) {
                     const failMatch = failFlagsAndURLs.exec(resp.response)
                     if (failMatch) { // suggest proxy or try diff API
                         log.dev('Response text', resp.response)
@@ -3646,7 +3647,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response or return related queries
-                    if (/AIchatOS|FREEGPT|ToYaml/.test(caller.api)) {
+                    if (/AIchatOS|FREEGPT|ToYaml/.test(callerAPI)) {
                         try {
                             const text = resp.responseText, chunkSize = 1024
                             let currentIdx = 0
@@ -3656,14 +3657,14 @@
                             }
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
-                    } else if (caller.api == 'GPTforLove') {
+                    } else if (callerAPI == 'GPTforLove') {
                         try {
                             let chunks = resp.responseText.trim().split('\n'),
                                 lastObj = JSON.parse(chunks[chunks.length - 1])
                             if (lastObj.id) apis.GPTforLove.parentID = lastObj.id
                             respText = lastObj.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
-                    } else if (caller.api == 'MixerBox AI') {
+                    } else if (callerAPI == 'MixerBox AI') {
                         try {
                             const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
@@ -3683,8 +3684,8 @@
                             api.tryNew(caller)
                         } else {
                             caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
-                            respText = respText.replace(apis[caller.api].watermark, '').trim()
-                            if (caller == get.reply) { show.reply(respText, footerContent) ; show.replyCornerBtns() }
+                            respText = respText.replace(apis[callerAPI].watermark, '').trim()
+                            if (caller == get.reply) { show.reply(respText) ; show.replyCornerBtns() }
                             else resolve(arrayify(respText))
                         }
                     }
@@ -3693,7 +3694,7 @@
                 function handleProcessError(err) { // suggest proxy or try diff API
                     log.dev('Response text', resp.response)
                     log.error(app.alerts.parseFailed, err)
-                    if (caller.api == 'OpenAI' && caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
+                    if (callerAPI == 'OpenAI' && caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
                     else api.tryNew(caller)
                 }
 
