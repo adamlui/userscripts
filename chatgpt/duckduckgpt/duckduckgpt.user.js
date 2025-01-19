@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.1
+// @version                2025.1.19.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1481,8 +1481,7 @@
                     `${app.msgs.alert_newerVer} ${app.name} ` // msg
                         + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
                         + '<a target="_blank" rel="noopener" style="font-size: 1.1rem" href="'
-                            + app.urls.update.replace(/.+\/([^/]+)meta\.js/,
-                                `${app.urls.gitHub}/commits/main/greasemonkey/$1user.js`)
+                            + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}user.js`
                         + `">${app.msgs.link_viewChanges}</a>`,
                     function update() { // button
                         GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
