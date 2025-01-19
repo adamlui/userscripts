@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.19
+// @version               2025.1.19.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -243,7 +243,7 @@
     // Init APP data
     const app = {
         name: 'BraveGPT', version: GM_info.script.version, symbol: '🦁',
-        configKeyPrefix: 'braveGPT', cssPrefix: 'bravegpt',
+        configKeyPrefix: 'braveGPT', slug: 'bravegpt',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         author: { name: 'KudoAI', url: 'https://kudoai.com' },
         urls: {
@@ -644,7 +644,7 @@
         alerts = alerts.flat() // flatten array args nested by spread operator
         appDiv.textContent = ''
         const alertP = document.createElement('p')
-        alertP.id = `${app.cssPrefix}-alert` ; alertP.className = 'no-user-select'
+        alertP.id = `${app.slug}-alert` ; alertP.className = 'no-user-select'
         alertP.style.marginBottom = '-20px' // counteract appDiv padding
 
         alerts.forEach((alert, idx) => { // process each alert for display
@@ -721,7 +721,7 @@
 
     const modals = {
         stack: [], // of types of undismissed modals
-        class: `${app.cssPrefix}-modal`,
+        class: `${app.slug}-modal`,
 
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
@@ -884,21 +884,21 @@
                   + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
               // Settings modal
-              + `#${app.cssPrefix}-settings {`
+              + `#${app.slug}-settings {`
                   + 'font-family: var(--brand-font) ;'
                   + `min-width: ${ env.browser.isPortrait ? 288 : 758 }px ; max-width: 75vw ; margin: 12px 23px ;`
                   + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0,0,0,0.12) ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}`
-              + `#${app.cssPrefix}-settings-title {`
+              + `#${app.slug}-settings-title {`
                   + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
                   + `margin: 0 ${ env.browser.isMobile ? -31 : -6 }px -3px 0 }`
-              + `#${app.cssPrefix}-settings-title h4 {`
+              + `#${app.slug}-settings-title h4 {`
                   + `font-size: ${ env.browser.isPortrait ? 26 : 30 }px ; font-weight: bold ;`
                   + 'margin: -31px 17px 7px 0 }'
-              + `#${app.cssPrefix}-settings ul {`
+              + `#${app.slug}-settings ul {`
                   + 'list-style: none ; padding: 0 ; margin: 0 ;' // hide bullets, override Brave ul margins
                   + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-              + `#${app.cssPrefix}-settings li {`
+              + `#${app.slug}-settings li {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
                   + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
                   + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
@@ -908,18 +908,18 @@
                   + 'transition: var(--settings-transition) ;' // for hover-zoom
                       + '-webkit-transition: var(--settings-transition) ; -moz-transition: var(--settings-transition) ;'
                       + '-o-transition: var(--settings-transition) ; -ms-transition: var(--settings-transition) }'
-              + `#${app.cssPrefix}-settings li.active {`
+              + `#${app.slug}-settings li.active {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
                   + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
                   + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}` // for icons
-              + `#${app.cssPrefix}-settings li label { padding-right: 20px }` // right-pad labels so toggles don't hug
-              + `#${app.cssPrefix}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
-              + `#${app.cssPrefix}-settings li, #${app.cssPrefix}-settings li label { cursor: pointer }` // add finger on hover
-              + `#${app.cssPrefix}-settings li:hover {`
+              + `#${app.slug}-settings li label { padding-right: 20px }` // right-pad labels so toggles don't hug
+              + `#${app.slug}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+              + `#${app.slug}-settings li, #${app.slug}-settings li label { cursor: pointer }` // add finger on hover
+              + `#${app.slug}-settings li:hover {`
                   + 'opacity: 1 ;'
                   + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.15)' }}`
-              + `#${app.cssPrefix}-settings li > input { float: right }` // pos toggles
+              + `#${app.slug}-settings li > input { float: right }` // pos toggles
               + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
               + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
@@ -1224,7 +1224,7 @@
 
                 // Init master elems
                 const settingsContainer = document.createElement('div'),
-                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.cssPrefix}-settings`
+                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.slug}-settings`
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
@@ -1241,7 +1241,7 @@
 
                 // Init title
                 const settingsTitleDiv = document.createElement('div')
-                settingsTitleDiv.id = `${app.cssPrefix}-settings-title`
+                settingsTitleDiv.id = `${app.slug}-settings-title`
                 const settingsTitleH4 = document.createElement('h4')
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 const settingsTitleIcon = icons.cogwheel.create()
@@ -1402,7 +1402,7 @@
                 // Create close button
                 log.dev('Creating Close button...')
                 const closeBtn = document.createElement('div')
-                closeBtn.classList.add(`${app.cssPrefix}-modal-close-btn`, 'no-mobile-tap-outline')
+                closeBtn.classList.add(`${app.slug}-modal-close-btn`, 'no-mobile-tap-outline')
                 closeBtn.title = app.msgs.tooltip_close
                 const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
 
@@ -1413,7 +1413,7 @@
                 return settingsContainer
             },
 
-            get() { return document.getElementById(`${app.cssPrefix}-settings`) },
+            get() { return document.getElementById(`${app.slug}-settings`) },
 
             show() {
                 log.caller = 'modals.settings.show()'
@@ -1423,7 +1423,7 @@
                 log.caller = 'modals.settings.show()'
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.dev('Scaling 93% to viewport sides...')
-                    const settingsModal = settingsContainer.querySelector(`#${app.cssPrefix}-settings`),
+                    const settingsModal = settingsContainer.querySelector(`#${app.slug}-settings`),
                           scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
@@ -1517,7 +1517,7 @@
 
         pin: {
             clickHandler(event) {
-                const pinMenu = event.target.closest(`#${app.cssPrefix}-pin-menu`),
+                const pinMenu = event.target.closest(`#${app.slug}-pin-menu`),
                       itemLabel = event.target.textContent,
                       prevOffsetTop = appDiv.offsetTop
 
@@ -1533,9 +1533,9 @@
             },
 
             createAppend() {
-                const pinMenu = document.createElement('div') ; pinMenu.id = `${app.cssPrefix}-pin-menu`
+                const pinMenu = document.createElement('div') ; pinMenu.id = `${app.slug}-pin-menu`
                 pinMenu.classList.add(
-                    `${app.cssPrefix}-menu`, `${app.cssPrefix}-btn-tooltip`, 'fade-in-less', 'no-user-select')
+                    `${app.slug}-menu`, `${app.slug}-btn-tooltip`, 'fade-in-less', 'no-user-select')
                 menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
                 return pinMenu
             },
@@ -1544,7 +1544,7 @@
                 pinMenu.textContent = ''
 
                 // Init core elems
-                const pinMenuUL = document.querySelector(`#${app.cssPrefix}-pin-menu ul`)
+                const pinMenuUL = document.querySelector(`#${app.slug}-pin-menu ul`)
                                || document.createElement('ul')
                 const pinMenuItems = []
                 const pinMenulabels = [
@@ -1564,10 +1564,10 @@
                 for (let i = 0 ; i < 4 ; i++) {
                     pinMenuItems.push(document.createElement('li'))
                     pinMenuItems[i].textContent = pinMenulabels[i]
-                    pinMenuItems[i].className = `${app.cssPrefix}-menu-item`
+                    pinMenuItems[i].className = `${app.slug}-menu-item`
                     if (i == 0) { // format header item
                         pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
-                        pinMenuItems[i].classList.add(`${app.cssPrefix}-menu-header`) // to not apply hover fx from app.styles
+                        pinMenuItems[i].classList.add(`${app.slug}-menu-header`) // to not apply hover fx from app.styles
                         pinMenuItems[i].style.cssText = 'margin-bottom: 1px ; border-bottom: 1px dotted white'
                     } else if (i == 1) pinMenuItems[i].style.marginTop = '3px' // top-pad first non-header item
                     pinMenuItems[i].style.paddingRight = '24px' // make room for checkmark
@@ -1586,7 +1586,7 @@
             },
 
             toggle(event) { // visibility
-                const pinMenu = document.getElementById(`${app.cssPrefix}-pin-menu`) || menus.pin.createAppend()
+                const pinMenu = document.getElementById(`${app.slug}-pin-menu`) || menus.pin.createAppend()
                 if (!menus.pin.topPos)
                      menus.pin.topPos = ( event.clientY || event.touches?.[0]?.clientY ) < 195 ? 58 : -80
                 if (!menus.pin.rightPos)
@@ -1711,7 +1711,7 @@
         checkmark: {
             create() {
                 const svg = dom.create.svgElem('svg', {
-                    id: `${app.cssPrefix}-checkmark-icon`, width: 10, height: 10, viewBox: '0 0 20 20' })
+                    id: `${app.slug}-checkmark-icon`, width: 10, height: 10, viewBox: '0 0 20 20' })
                 const svgPath = dom.create.svgElem('path', { stroke: 'none', d: 'M0 11l2-2 5 5L18 3l2 2L7 18z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1996,14 +1996,14 @@
 
             create() {
                 const braveGPTlogo = document.createElement('img')
-                braveGPTlogo.id = `${app.cssPrefix}-logo` ; braveGPTlogo.className = 'no-mobile-tap-outline'
+                braveGPTlogo.id = `${app.slug}-logo` ; braveGPTlogo.className = 'no-mobile-tap-outline'
                 logos.braveGPT.update(braveGPTlogo)
                 return braveGPTlogo
             },
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.cssPrefix}-logo`)
+                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`bgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
@@ -2016,7 +2016,7 @@
 
         answerPreMaxHeight() { // for various mode toggles
             const answerPre = appDiv.querySelector('pre'),
-                  relatedQueries = appDiv.querySelector(`.${app.cssPrefix}-related-queries`),
+                  relatedQueries = appDiv.querySelector(`.${app.slug}-related-queries`),
                   shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
                   longerPreHeight = window.innerHeight - 278
             if (answerPre) answerPre.style.maxHeight = (
@@ -2057,16 +2057,16 @@
                   + '-ms-user-select: none ; user-select: none }'
               + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
               + ( // stylize scrollbars in Chromium/Safari
-                    `#${app.cssPrefix} *::-webkit-scrollbar { width: 7px }`
-                  + `#${app.cssPrefix} *::-webkit-scrollbar-thumb { background: #cdcdcd }`
-                  + `#${app.cssPrefix} *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }`
-                  + `#${app.cssPrefix} *::-webkit-scrollbar-track { background: none }` )
-              + `#${app.cssPrefix} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
+                    `#${app.slug} *::-webkit-scrollbar { width: 7px }`
+                  + `#${app.slug} *::-webkit-scrollbar-thumb { background: #cdcdcd }`
+                  + `#${app.slug} *::-webkit-scrollbar-thumb:hover { background: #a6a6a6 }`
+                  + `#${app.slug} *::-webkit-scrollbar-track { background: none }` )
+              + `#${app.slug} * { scrollbar-width: thin }` // make scrollbars thin in Firefox
               + '.cursor-overlay {' // for fontSizeSlider.createAppend() drag listeners
                   // ...to show resize cursor everywhere
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                   + 'z-index: 9999 ; cursor: ew-resize }'
-              + `#${app.cssPrefix} {`
+              + `#${app.slug} {`
                   + 'position: sticky ; z-index: 1111 ; word-wrap: break-word ; white-space: pre-wrap ;'
                   + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
                   + `margin: ${ env.browser.isMobile ? '0 8px 16px' : '0 0 20px' } ; padding: 24px 23px 45px 23px ;`
@@ -2080,60 +2080,60 @@
                   + 'transition: var(--app-transition) ;'
                       + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
                       + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
-              + `#${app.cssPrefix} .app-hover-only { display: none }` // hide app-hover-only elems
-              + `#${app.cssPrefix}:hover .app-hover-only { display: initial }` // show app-hover-only elems on hover
-              + `#${app.cssPrefix}:hover {` // show app shadow on hover
+              + `#${app.slug} .app-hover-only { display: none }` // hide app-hover-only elems
+              + `#${app.slug}:hover .app-hover-only { display: initial }` // show app-hover-only elems on hover
+              + `#${app.slug}:hover {` // show app shadow on hover
                   + 'box-shadow: var(--app-hover-shadow) ;'
                   + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-moz-transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-o-transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-ms-transition: var(--app-transition), var(--app-shadow-transition) }'
-              + `#${app.cssPrefix} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
-              + `#${app.cssPrefix} .alert-link {`
+              + `#${app.slug} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
+              + `#${app.slug} .alert-link {`
                   + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
-              + `.${app.cssPrefix}-name {`
+              + `.${app.slug}-name {`
                   + 'font-size: 20px ; font-family: var(--brand-font) ; text-decoration: none ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
               + '.kudoai { position: relative ; bottom: 5.5px ; margin-left: 7px ; color: #aaa ; font-size: 11px }'
               + '.kudoai a { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-              + `#${app.cssPrefix}-header-btns { position: relative ; bottom: 3px ; float: right }`
-              + `.${app.cssPrefix}-header-btn {`
+              + `#${app.slug}-header-btns { position: relative ; bottom: 3px ; float: right }`
+              + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                     : 'fill: #adadad ; stroke: #adadad' };` // color
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.cssPrefix}-header-btn:hover {`
+              + `.${app.slug}-header-btn:hover {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                     : 'fill: black ; stroke: black' } ;`
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
-              + `.${app.cssPrefix}-header-btn:active {`
+              + `.${app.slug}-header-btn:active {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                     : 'fill: #638ed4 ; stroke: #638ed4' }}`
               + ( config.bgAnimationsDisabled ? '' : (
-                    `#${app.cssPrefix}-logo, .${app.cssPrefix}-header-btn svg, .${app.cssPrefix}-standby-btn {`
+                    `#${app.slug}-logo, .${app.slug}-header-btn svg, .${app.slug}-standby-btn {`
                       + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                             : '#aaaaaa21 7px' } 7px 3px) }` ))
-              + `#${app.cssPrefix} .loading {`
+              + `#${app.slug} .loading {`
                   + 'margin-bottom: -55px ;' // offset vs. app div bottom-padding footer accomodation
                   + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
-              + `#${app.cssPrefix} section.loading { padding: 0 0 14px 5px ; font-size: 90% }`
-              + `#${app.cssPrefix}-font-size-slider-track {`
+              + `#${app.slug} section.loading { padding: 0 0 14px 5px ; font-size: 90% }`
+              + `#${app.slug}-font-size-slider-track {`
                   + 'width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
                   + 'background-color: #ccc ; box-sizing: content-box; background-clip: content-box ;'
                   + '-webkit-background-clip: content-box }'
-              + `#${app.cssPrefix}-font-size-slider-track::before {` // to add finger cursor to unpadded core only
+              + `#${app.slug}-font-size-slider-track::before {` // to add finger cursor to unpadded core only
                   + 'content: "" ; position: absolute ; top: 10px ; left: 0 ; right: 0 ;'
                   + 'height: calc(100% - 20px) ; cursor: pointer }'
-              + `#${app.cssPrefix}-font-size-slider-tip {`
+              + `#${app.slug}-font-size-slider-tip {`
                   + 'z-index: 1 ; position: absolute ; bottom: 20px ;'
                   + 'border-left: 4.5px solid transparent ; border-right: 4.5px solid transparent ;'
                   + 'border-bottom: 16px solid #ccc }'
-              + `#${app.cssPrefix}-font-size-slider-thumb {`
+              + `#${app.slug}-font-size-slider-thumb {`
                   + 'z-index: 2 ; width: 10px ; height: 27px ; border-radius: 30% ; position: relative ;'
                   + 'top: -9px ; cursor: ew-resize ;'
                   + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
@@ -2144,8 +2144,8 @@
                       + '-o-transition: var(--font-size-slider-thumb-transition) ;'
                       + '-ms-transition: var(--font-size-slider-thumb-transition) }'
               + ( config.fgAnimationsDisabled || env.browser.isMobile ?
-                    '' : `#${app.cssPrefix}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
-              + `.${app.cssPrefix}-standby-btn {`
+                    '' : `#${app.slug}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
+              + `.${app.slug}-standby-btn {`
                   + 'width: 100% ; margin: 14px 0 20px ; padding: 13px 0 ; cursor: pointer ;'
                   + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
                   + `color: ${ isStarryDM ? 'white' : 'black' };`
@@ -2153,18 +2153,18 @@
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.cssPrefix}-standby-btn:hover {`
+              + `.${app.slug}-standby-btn:hover {`
                   + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
                                                     : 'background: black ; color: white' };`
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                         : 'transform: scaleX(1.015) scaleY(1.03)' }}`
-              + `.${app.cssPrefix}-reply-tip {`
+              + `.${app.slug}-reply-tip {`
                   + 'content: "" ; position: relative ; border: 7px solid transparent ;'
                   + 'float: left ; left: 7px ; margin: 29px -13px 0 0 ;' // positioning
                   + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                       + `${ // hide reply tip for terminal aesthetic
                             isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
-              + `#${app.cssPrefix} > pre {`
+              + `#${app.slug} > pre {`
                   + `font-size: ${config.fontSize}px ; white-space: pre-wrap ;`
                   + 'font-family: Consolas, Menlo, Monaco, monospace ;'
                   + `line-height: ${ config.fontSize * config.lineHeightRatio }px ; overscroll-behavior: contain ;`
@@ -2182,18 +2182,18 @@
                             + '-moz-transition: var(--answer-pre-transition) ;'
                             + '-o-transition: var(--answer-pre-transition) ;'
                             + '-ms-transition: var(--answer-pre-transition) }' }}`
-              + `#${app.cssPrefix} > pre a, #${app.cssPrefix} > pre a:visited { color: #4495d4 }`
-              + `#${app.cssPrefix} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
+              + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
+              + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + '.chatgpt-js {'
                   + 'font-family: var(--brand-font) ; font-size: .65rem ; position: relative ; right: .9rem }'
               + '.chatgpt-js > a { color: inherit ; top: .054rem }'
               + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
-              + `.${app.cssPrefix}-header-btns {`
+              + `.${app.slug}-header-btns {`
                   + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
-              + `code #${app.cssPrefix}-copy-btn { position: relative ; top: -6px ; right: -9px }`
-              + `code #${app.cssPrefix}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
-              + `#${app.cssPrefix}-chatbar {`
+              + `code #${app.slug}-copy-btn { position: relative ; top: -6px ; right: -9px }`
+              + `code #${app.slug}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
+              + `#${app.slug}-chatbar {`
                   + `border: solid 1px ${ env.ui.app.scheme == 'dark' ?
                         ( config.bgAnimationsDisabled ? '#777' : '#aaa' ) : '#638ed4' } ;`
                   + 'border-radius: 15px 16px 15px 0 ; margin: -6px 0 -7px 0 ; padding: 12px 51px 12px 10px ;'
@@ -2202,12 +2202,12 @@
                   + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
                         : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
                   + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
-              + `#${app.cssPrefix}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
-              + `.${app.cssPrefix}-related-queries {`
+              + `#${app.slug}-chatbar:focus-visible { outline: -webkit-focus-ring-color auto 1px }`
+              + `.${app.slug}-related-queries {`
                   + 'display: flex ; flex-wrap: wrap ; width: 100% ; margin-bottom: -28px ;'
                   + 'position: relative ; top: -3px ;' // scooch up to hug feedback gap
                   + `${ env.browser.isFF ? '' : 'margin-top: -31px' }}`
-              + `.${app.cssPrefix}-related-query {`
+              + `.${app.slug}-related-query {`
                   + 'font-size: 0.77em ; cursor: pointer ;'
                   + 'box-sizing: border-box ; width: fit-content ; max-width: 100% ;' // confine to outer div
                   + 'margin: 4px 4px 7px 0 ; padding: 8px 13px 7px 14px ;'
@@ -2226,12 +2226,12 @@
                         'transition: var(--rq-transition) ;'
                           + '-webkit-transition: var(--rq-transition) ; -moz-transition: var(--rq-transition) ;'
                           + '-o-transition: var(--rq-transition) ; -ms-transition: var(--rq-transition)' }}`
-              + `.${app.cssPrefix}-related-query:hover, .${app.cssPrefix}-related-query:focus {`
+              + `.${app.slug}-related-query:hover, .${app.slug}-related-query:focus {`
                   + ( config.fgAnimationsDisabled || env.browser.isMobile ? ''
                         : 'transform: scale(1.055) !important ;' )
                   + `background: ${ env.ui.app.scheme == 'dark' ? '#a2a2a270'
                         : '#dae5ffa3 ; color: #000000a8 ; border-color: #a3c9ff' }}`
-              + `.${app.cssPrefix}-related-query svg {` // related query icon
+              + `.${app.slug}-related-query svg {` // related query icon
                   + 'float: left ; margin: 0.09em 6px 0 0 ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? '#aaa' : '#c1c1c1' }}`
               + '.fade-in { opacity: 0 ; transform: translateY(10px) }'
@@ -2242,69 +2242,69 @@
                       + '-o-transition: var(--fade-in-less-transition) ;'
                       + '-ms-transition: var(--fade-in-less-transition) }'
               + '.fade-in.active, .fade-in-less.active { opacity: 1 ; transform: translateY(0) }'
-              + `.${app.cssPrefix}-chatbar-btn {`
+              + `.${app.slug}-chatbar-btn {`
                   + 'z-index: 560 ;'
                   + 'border: none ; float: right ; position: relative ; background: none ; cursor: pointer ;'
                   + `bottom: ${ env.browser.isFF ? 28 : 32 }px ; `
                   + `${ env.ui.app.scheme == 'dark' ? 'color: #aaa ; fill: #aaa ; stroke: #aaa'
                                                 : 'color: lightgrey ; fill: lightgrey ; stroke: lightgrey' }}`
-              + `.${app.cssPrefix}-chatbar-btn:hover {`
+              + `.${app.slug}-chatbar-btn:hover {`
                   + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
               + ( // markdown styles
-                    `#${app.cssPrefix} > pre h1 { font-size: 1.25em }`
-                  + `#${app.cssPrefix} > pre h2 { font-size: 1.1em }`
-                  + `#${app.cssPrefix} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
-                  + `#${app.cssPrefix} > pre ol { margin: -33px 0 -6px ; }` // reduce v-spacing
-                  + `#${app.cssPrefix} > pre li` // reduce v-spacing, show left symbols
+                    `#${app.slug} > pre h1 { font-size: 1.25em }`
+                  + `#${app.slug} > pre h2 { font-size: 1.1em }`
+                  + `#${app.slug} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
+                  + `#${app.slug} > pre ol { margin: -33px 0 -6px ; }` // reduce v-spacing
+                  + `#${app.slug} > pre li` // reduce v-spacing, show left symbols
                       + '{ margin: -10px 0 ; list-style: inside }' )
               + '.katex-html { display: none }' // hide unrendered math
-              + `#${app.cssPrefix} .feedback {`
+              + `#${app.slug} .feedback {`
                   + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
                   + 'letter-spacing: .02em ; position: relative ; right: -18px ; bottom: 15px }'
-              + `#${app.cssPrefix} footer {
+              + `#${app.slug} footer {
                     text-align: right ; margin: ${ env.browser.isFF ? 32 : 27 }px 18px -26px 0 ; padding-bottom: 12px }`
-              + `#${app.cssPrefix} footer a:hover {`
+              + `#${app.slug} footer a:hover {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ; text-decoration: none }`
               + '.chatgpt-notif {'
                   + 'fill: white ; stroke: white ; font-size: 25px !important ;'
                   + 'padding: 6.5px 14px 8.5px 11.5px !important }'
               + '.notif-close-btn { display: none !important }' // hide notif close btn
-              + `.${app.cssPrefix}-menu {`
+              + `.${app.slug}-menu {`
                   + 'position: absolute ; z-index: 2250 ; padding: 3.5px 5px 4.5px !important ;'
                   + 'font-family: "Source Sans Pro", sans-serif ; font-size: 12px }'
-              + `.${app.cssPrefix}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
-              + `.${app.cssPrefix}-menu-item { padding: 0 5px ; line-height: 20.5px }`
-              + `.${app.cssPrefix}-menu-item:not(.${app.cssPrefix}-menu-header):hover {`
+              + `.${app.slug}-menu ul { margin: 0 ; padding: 0 ; list-style: none }`
+              + `.${app.slug}-menu-item { padding: 0 5px ; line-height: 20.5px }`
+              + `.${app.slug}-menu-item:not(.${app.slug}-menu-header):hover {`
                   + 'cursor: pointer ; background: white ; color: black ; fill: black }'
-              + `#${app.cssPrefix}-checkmark-icon { fill: #b3f96d }`
-              + `.${app.cssPrefix}-menu-item:hover #${app.cssPrefix}-checkmark-icon { fill: green }`
+              + `#${app.slug}-checkmark-icon { fill: #b3f96d }`
+              + `.${app.slug}-menu-item:hover #${app.slug}-checkmark-icon { fill: green }`
 
               // Wider Sidebar styles
-              + `#${app.cssPrefix}.wider { width: 489px }
-                 main.main-column:has(~ .sidebar #${app.cssPrefix}.wider),
-                    .sidebar:has(#${app.cssPrefix}.wider) { max-width: 505px !important }`
+              + `#${app.slug}.wider { width: 489px }
+                 main.main-column:has(~ .sidebar #${app.slug}.wider),
+                    .sidebar:has(#${app.slug}.wider) { max-width: 505px !important }`
 
               // Sticky Sidebar styles
-              + `#${app.cssPrefix}.sticky { position: sticky ; top: 83px }
-                 #${app.cssPrefix}.sticky ~ * { display: none }` // hide sidebar contents
+              + `#${app.slug}.sticky { position: sticky ; top: 83px }
+                 #${app.slug}.sticky ~ * { display: none }` // hide sidebar contents
 
               // Anchor Mode styles
-              + `#${app.cssPrefix}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }
-                 #${app.cssPrefix}.expanded { width: 538px !important }`
-              + `#${app.cssPrefix}.anchored .anchored-hidden { display: none }` // hide non-Anchor elems in mode
-              + `#${app.cssPrefix}:not(.anchored) .anchored-only { display: none }` // hide Anchor elems outside mode
+              + `#${app.slug}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 441px }
+                 #${app.slug}.expanded { width: 538px !important }`
+              + `#${app.slug}.anchored .anchored-hidden { display: none }` // hide non-Anchor elems in mode
+              + `#${app.slug}:not(.anchored) .anchored-only { display: none }` // hide Anchor elems outside mode
 
               // Touch device styles
               + '@media (hover: none) {'
-                  + `#${app.cssPrefix} .app-hover-only { display: initial }` // show app-hover-only elems
+                  + `#${app.slug} .app-hover-only { display: initial }` // show app-hover-only elems
               + '}'
 
               // Phone styles
               + '@media screen and (max-width: 480px) {'
-                  + `#${app.cssPrefix} #${app.cssPrefix}-logo { width: calc(100% - 118px) }` // widen logo till btns
-                  + `#${app.cssPrefix} .kudoai { display: none !important }` // hide byline
-                  + `#${app.cssPrefix} [class*=reply-tip] { display: none }` // hide reply tip
+                  + `#${app.slug} #${app.slug}-logo { width: calc(100% - 118px) }` // widen logo till btns
+                  + `#${app.slug} .kudoai { display: none !important }` // hide byline
+                  + `#${app.slug} [class*=reply-tip] { display: none }` // hide reply tip
               + '}'
             )
         },
@@ -2317,7 +2317,7 @@
             if (!headerElems.byline) return // since in loading state
             Object.assign(headerElems, {
                 btns: appDiv.querySelectorAll('[id$=-header-btns] > btn'),
-                logo: appDiv.querySelector(`#${app.cssPrefix}-logo`)
+                logo: appDiv.querySelector(`#${app.slug}-logo`)
             })
 
             // Calc/store widths of app/x-padding + header elems
@@ -2454,7 +2454,7 @@
         },
 
         rqVisibility() {
-            const relatedQueriesDiv = appDiv.querySelector(`.${app.cssPrefix}-related-queries`)
+            const relatedQueriesDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
             if (relatedQueriesDiv) // update visibility based on latest setting
                 relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
         },
@@ -2497,7 +2497,7 @@
         appDiv() {
             appDiv.addEventListener(inputEvents.down, event => { // to dismiss visible font size slider
                 if (event.button != 0) return // prevent non-left-click dismissal
-                if (document.getElementById(`${app.cssPrefix}-font-size-slider-track`) // slider is visible
+                if (document.getElementById(`${app.slug}-font-size-slider-track`) // slider is visible
                     && !event.target.closest('[id*=font-size]') // not clicking slider elem
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
@@ -2506,7 +2506,7 @@
         },
 
         appHeaderBtns() {
-            appDiv.querySelectorAll(`.${app.cssPrefix}-header-btn`).forEach(btn => { // from right to left
+            appDiv.querySelectorAll(`.${app.slug}-header-btn`).forEach(btn => { // from right to left
                 if (btn.id.endsWith('chevron-btn')) btn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
@@ -2591,7 +2591,7 @@
             replyForm.onkeydown = event => {
                 if (event.key == 'Enter' || event.keyCode == 13) {
                     if (event.ctrlKey) { // add newline
-                        const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`),
+                        const chatTextarea = appDiv.querySelector(`#${app.slug}-chatbar`),
                               caretPos = chatTextarea.selectionStart,
                               textBefore = chatTextarea.value.substring(0, caretPos),
                               textAfter = chatTextarea.value.substring(caretPos)
@@ -2604,7 +2604,7 @@
             // Add form submit listener
             addListeners.replySection.submitHandler = event => {
                 event.preventDefault()
-                const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
+                const chatTextarea = appDiv.querySelector(`#${app.slug}-chatbar`)
 
                 // No reply, change placeholder + focus chatbar
                 if (chatTextarea.value.trim() == '') {
@@ -2624,7 +2624,7 @@
                     get.reply(msgChain)
 
                     // Hide/remove elems
-                    appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove() // remove related queries
+                    appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // remove related queries
                     if (!env.browser.isMobile) // hide chatbar button tooltips
                         tooltipDiv.style.opacity = 0
                     appDiv.querySelector('footer').textContent = ''
@@ -2641,7 +2641,7 @@
             replyForm.onsubmit = addListeners.replySection.submitHandler
 
             // Add chatbar autosizer
-            const chatTextarea = appDiv.querySelector(`#${app.cssPrefix}-chatbar`)
+            const chatTextarea = appDiv.querySelector(`#${app.slug}-chatbar`)
             let prevLength = chatTextarea.value.length
             addListeners.replySection.chatbarAutoSizer = () => {
                 const newLength = chatTextarea.value.length
@@ -2657,7 +2657,7 @@
             chatTextarea.oninput = addListeners.replySection.chatbarAutoSizer
 
             // Add button listeners
-            appDiv.querySelectorAll(`.${app.cssPrefix}-chatbar-btn`).forEach(btn => {
+            appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
                     chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
@@ -2681,16 +2681,16 @@
             // Create/ID/classify slider elems
             fontSizeSlider.cursorOverlay = document.createElement('div')
             fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for resize cursor
-            const slider = document.createElement('div') ; slider.id = `${app.cssPrefix}-font-size-slider-track`
+            const slider = document.createElement('div') ; slider.id = `${app.slug}-font-size-slider-track`
             slider.className = 'fade-in-less' ; slider.style.display = 'none'
             const sliderThumb = document.createElement('div')
-            sliderThumb.id = `${app.cssPrefix}-font-size-slider-thumb`
+            sliderThumb.id = `${app.slug}-font-size-slider-thumb`
             sliderThumb.title = Math.floor(config.fontSize *10) /10 + 'px' // font size tooltip
-            const sliderTip = document.createElement('div') ; sliderTip.id = `${app.cssPrefix}-font-size-slider-tip`
+            const sliderTip = document.createElement('div') ; sliderTip.id = `${app.slug}-font-size-slider-tip`
 
             // Assemble/insert elems
             slider.append(sliderThumb, sliderTip)
-            appDiv.insertBefore(slider, appDiv.querySelector(`.${app.cssPrefix}-btn-tooltip,` // desktop
+            appDiv.insertBefore(slider, appDiv.querySelector(`.${app.slug}-btn-tooltip,` // desktop
                                                            + 'pre')) // mobile
             // Init thumb pos
             setTimeout(() => {
@@ -2755,16 +2755,16 @@
         },
 
         toggle(state = '') {
-            const slider = document.getElementById(`${app.cssPrefix}-font-size-slider-track`)
+            const slider = document.getElementById(`${app.slug}-font-size-slider-track`)
                          || fontSizeSlider.createAppend()
-            const replyTip = appDiv.querySelector(`.${app.cssPrefix}-reply-tip`)
-            const sliderTip = document.getElementById(`${app.cssPrefix}-font-size-slider-tip`)
+            const replyTip = appDiv.querySelector(`.${app.slug}-reply-tip`)
+            const sliderTip = document.getElementById(`${app.slug}-font-size-slider-tip`)
 
             // Show slider
             if (state == 'on' || (!state && slider.style.display == 'none')) {
 
                 // Position slider tip
-                const btnSpan = document.getElementById(`${app.cssPrefix}-font-size-btn`),
+                const btnSpan = document.getElementById(`${app.slug}-font-size-btn`),
                       rects = { appDiv: appDiv.getBoundingClientRect(), btnSpan: btnSpan.getBoundingClientRect() }
                 sliderTip.style.right = `${ rects.appDiv.right - ( rects.btnSpan.left + rects.btnSpan.right )/2 -32 }px`
 
@@ -2981,13 +2981,13 @@
                         !streamingToggle.checked && config.proxyAPIenabled && !config.streamingDisabled)
                             modals.settings.toggle.switch(streamingToggle)
             }
-            if (appDiv.querySelector(`#${app.cssPrefix}-alert`)) location.reload() // re-send query if user alerted
+            if (appDiv.querySelector(`#${app.slug}-alert`)) location.reload() // re-send query if user alerted
         },
 
         relatedQueries() {
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
-            if (!config.rqDisabled && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) // get related queries for 1st time
+            if (!config.rqDisabled && !appDiv.querySelector(`.${app.slug}-related-queries`)) // get related queries for 1st time
                 get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
@@ -3536,19 +3536,19 @@
     const show = {
 
         replyCornerBtns() {
-            if (document.getElementById(`${app.cssPrefix}-copy-btn`)) return
+            if (document.getElementById(`${app.slug}-copy-btn`)) return
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
             const cornerBtnsDiv = document.createElement('div')
-            cornerBtnsDiv.className = `${app.cssPrefix}-header-btns`
+            cornerBtnsDiv.className = `${app.slug}-header-btns`
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
 
             // Add Copy buttons
-            appDiv.querySelectorAll(`#${app.cssPrefix} > pre, code`).forEach(parentElem => {
+            appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
                 const copyBtn = document.createElement('btn'),
                       copySVG = icons.copy.create(parentElem)
-                copyBtn.id = `${app.cssPrefix}-copy-btn` ; copySVG.id = `${app.cssPrefix}-copy-icon`
+                copyBtn.id = `${app.slug}-copy-btn` ; copySVG.id = `${app.slug}-copy-icon`
                 copyBtn.className = 'no-mobile-tap-outline' ; copyBtn.style.cssText = baseBtnStyles
                 copyBtn.append(copySVG) ; let elemToPrepend = copyBtn
 
@@ -3562,7 +3562,7 @@
                 // Add listeners
                 if (!env.browser.isMobile) copyBtn.onmouseenter = copyBtn.onmouseleave = toggle.tooltip
                 copyBtn.onclick = event => { // copy text, update icon + tooltip status
-                    const copySVG = copyBtn.querySelector(`#${app.cssPrefix}-copy-icon`)
+                    const copySVG = copyBtn.querySelector(`#${app.slug}-copy-icon`)
                     if (!copySVG) return // since clicking on Copied icon
                     const textContainer = (
                         copyBtn.parentNode.tagName == 'PRE' ? copyBtn.parentNode // reply container
@@ -3582,7 +3582,7 @@
             })
 
             // Add Regenerate button
-            const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.cssPrefix}-regen-btn`
+            const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.slug}-regen-btn`
             regenBtn.className = 'no-mobile-tap-outline'
             regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px'
             const regenSVG = icons.arrowsCycle.create();
@@ -3594,7 +3594,7 @@
 
                 // Hide/remove elems
                 regenBtn.style.display = 'none'
-                appDiv.querySelector(`.${app.cssPrefix}-related-queries`)?.remove()
+                appDiv.querySelector(`.${app.slug}-related-queries`)?.remove()
                 appDiv.querySelector('footer').textContent = ''
 
                 // Show loading status
@@ -3617,12 +3617,12 @@
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
                 const appTitleAnchor = dom.create.anchor(app.urls.app, appHeaderLogo)
-                appTitleAnchor.classList.add(`${app.cssPrefix}-name`, 'no-user-select')
+                appTitleAnchor.classList.add(`${app.slug}-name`, 'no-user-select')
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
                 const headerBtnsDiv = document.createElement('div')
-                headerBtnsDiv.id = `${app.cssPrefix}-header-btns`
+                headerBtnsDiv.id = `${app.slug}-header-btns`
                 headerBtnsDiv.className = 'no-mobile-tap-outline'
                 appDiv.append(headerBtnsDiv)
 
@@ -3630,8 +3630,8 @@
                 if (!env.browser.isMobile) {
                     var chevronBtn = document.createElement('btn'),
                         chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
-                    chevronBtn.id = `${app.cssPrefix}-chevron-btn` // for toggle.tooltip()
-                    chevronBtn.classList.add(`${app.cssPrefix}-header-btn`, 'anchored-only')
+                    chevronBtn.id = `${app.slug}-chevron-btn` // for toggle.tooltip()
+                    chevronBtn.classList.add(`${app.slug}-header-btn`, 'anchored-only')
                     chevronBtn.style.margin = '0.5px 1px 0 11px' // position
                     chevronBtn.append(chevronSVG) ; headerBtnsDiv.append(chevronBtn)
                 }
@@ -3639,16 +3639,16 @@
                 // Create/append About button
                 const aboutBtn = document.createElement('btn'),
                       aboutSVG = icons.questionMarkCircle.create()
-                aboutBtn.id = `${app.cssPrefix}-about-btn` // for toggle.tooltip()
-                aboutBtn.classList.add(`${app.cssPrefix}-header-btn`)
+                aboutBtn.id = `${app.slug}-about-btn` // for toggle.tooltip()
+                aboutBtn.classList.add(`${app.slug}-header-btn`)
                 aboutBtn.style.marginTop = '0.8px' // position
                 aboutBtn.append(aboutSVG) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = document.createElement('btn'),
                       settingsSVG = icons.cogwheel.create()
-                settingsBtn.id = `${app.cssPrefix}-settings-btn` // for toggle.tooltip()
-                settingsBtn.classList.add(`${app.cssPrefix}-header-btn`)
+                settingsBtn.id = `${app.slug}-settings-btn` // for toggle.tooltip()
+                settingsBtn.classList.add(`${app.slug}-header-btn`)
                 settingsBtn.style.margin = '1.5px 9px 0 1px' // position
                 settingsBtn.append(settingsSVG) ; headerBtnsDiv.append(settingsBtn)
 
@@ -3656,8 +3656,8 @@
                 if (answer != 'standby') {
                     var speakerBtn = document.createElement('btn'),
                         speakerSVG = icons.speaker.create()
-                    speakerBtn.id = `${app.cssPrefix}-speak-btn` // for toggle.tooltip()
-                    speakerBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
+                    speakerBtn.id = `${app.slug}-speak-btn` // for toggle.tooltip()
+                    speakerBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
                     speakerBtn.style.marginRight = '7px' // position
                     speakerBtn.append(speakerSVG) ; headerBtnsDiv.append(speakerBtn)
                 }
@@ -3666,8 +3666,8 @@
                 if (answer != 'standby') {
                     var fontSizeBtn = document.createElement('btn'),
                         fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.id = `${app.cssPrefix}-font-size-btn` // for toggle.tooltip()
-                    fontSizeBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
+                    fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
+                    fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
                     fontSizeBtn.style.margin = '1px 10px 0 2px' // position
                     fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
                 }
@@ -3676,16 +3676,16 @@
                 if (!env.browser.isMobile) {
                     var pinBtn = document.createElement('btn'),
                         pinSVG = icons.pin.create()
-                    pinBtn.id = `${app.cssPrefix}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only')
+                    pinBtn.id = `${app.slug}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
+                    pinBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
                     pinBtn.style.margin = '1px 9px 0 0' // position
                     pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = document.createElement('btn'),
                         wsbSVG = icons.widescreen.create()
-                    wsbBtn.id = `${app.cssPrefix}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only', 'anchored-hidden')
+                    wsbBtn.id = `${app.slug}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
+                    wsbBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only', 'anchored-hidden')
                     wsbBtn.style.margin = '0.151em 11px 0 0' // position
                     wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
 
@@ -3693,8 +3693,8 @@
                     var arrowsBtn = document.createElement('btn'),
                         arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.id = `${app.cssPrefix}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.classList.add(`${app.cssPrefix}-header-btn`, 'app-hover-only', 'anchored-only')
+                    arrowsBtn.id = `${app.slug}-arrows-btn` // for toggle.tooltip()
+                    arrowsBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only', 'anchored-only')
                     arrowsBtn.style.margin = '0.5px 12px 0 0' // position
                     arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
                 }
@@ -3709,13 +3709,13 @@
                 const kudoAIspan = document.createElement('span')
                 kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
                 kudoAIspan.append(dom.create.anchor(app.urls.publisher, 'KudoAI'))
-                appDiv.querySelector(`.${app.cssPrefix}-name`).insertAdjacentElement('afterend', kudoAIspan)
+                appDiv.querySelector(`.${app.slug}-name`).insertAdjacentElement('afterend', kudoAIspan)
                 update.bylineVisibility()
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
                     const standbyBtn = document.createElement('button')
-                    standbyBtn.classList.add(`${app.cssPrefix}-standby-btn`, 'no-mobile-tap-outline')
+                    standbyBtn.classList.add(`${app.slug}-standby-btn`, 'no-mobile-tap-outline')
                     standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp || `Send search query to ${app.name}`
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
@@ -3730,13 +3730,13 @@
                 } else {
                     const answerPre = document.createElement('pre'),
                           replyTipSpan = document.createElement('span')
-                    replyTipSpan.className = `${app.cssPrefix}-reply-tip`
+                    replyTipSpan.className = `${app.slug}-reply-tip`
                     appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
                 }
             }
 
             // Build reply section if missing
-            if (!appDiv.querySelector(`#${app.cssPrefix}-chatbar`)) {
+            if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
 
                 // Init/clear reply section content/classes
                 const replySection = appDiv.querySelector('section') || document.createElement('section')
@@ -3746,7 +3746,7 @@
                 const replyForm = document.createElement('form'),
                       continueChatDiv = document.createElement('div'),
                       chatTextarea = document.createElement('textarea')
-                chatTextarea.id = `${app.cssPrefix}-chatbar` ; chatTextarea.rows = '1'
+                chatTextarea.id = `${app.slug}-chatbar` ; chatTextarea.rows = '1'
                 chatTextarea.placeholder = ( answer == 'standby' ? app.msgs.placeholder_askSomethingElse
                                                                  : app.msgs.tooltip_sendReply ) + '...'
                 continueChatDiv.append(chatTextarea)
@@ -3755,8 +3755,8 @@
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btnElem = document.createElement('button') ; btnElem.id = `${app.cssPrefix}-${btnType}-btn`
-                    btnElem.classList.add(`${app.cssPrefix}-chatbar-btn`, 'no-mobile-tap-outline')
+                    const btnElem = document.createElement('button') ; btnElem.id = `${app.slug}-${btnType}-btn`
+                    btnElem.classList.add(`${app.slug}-chatbar-btn`, 'no-mobile-tap-outline')
                     btnElem.style.right = `${ btnType == 'send' ? 12 : 20 }px`
                     btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btnElem)
@@ -3827,7 +3827,7 @@
                         || ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )))
                     // ...or Anchored if AF disabled & user interacted
                     || (config.autoFocusChatbarDisabled && config.anchored && show.reply.userInteracted))
-            ) { appDiv.querySelector(`#${app.cssPrefix}-chatbar`).focus() ; show.reply.chatbarFocused = true }
+            ) { appDiv.querySelector(`#${app.slug}-chatbar`).focus() ; show.reply.chatbarFocused = true }
 
             // Restore minimized/restored state if anchored
             if (config.anchored) update.appBottomPos()
@@ -3841,7 +3841,7 @@
                 setTimeout(() => show.related(queries), 500, queries) ; return }
 
             // Re-get.related() if current reply is question to suggest answers
-            const currentReply = appDiv.querySelector(`#${app.cssPrefix} > pre`)?.textContent.trim()
+            const currentReply = appDiv.querySelector(`#${app.slug} > pre`)?.textContent.trim()
             if (show.reply.src != 'shuffle' && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
                 log.dev('Re-getting related queries to answer reply question...')
                 get.related.replyIsQuestion = true
@@ -3850,11 +3850,11 @@
             }
 
             // Show the queries
-            else if (queries && !appDiv.querySelector(`.${app.cssPrefix}-related-queries`)) {
+            else if (queries && !appDiv.querySelector(`.${app.slug}-related-queries`)) {
 
                 // Create/classify/append parent div
                 const relatedQueriesDiv = document.createElement('div')
-                relatedQueriesDiv.classList.add(`${app.cssPrefix}-related-queries`, 'anchored-hidden')
+                relatedQueriesDiv.classList.add(`${app.slug}-related-queries`, 'anchored-hidden')
                 appDiv.append(relatedQueriesDiv)
 
                 // Fill each child div, add attributes + icon + listener
@@ -3865,7 +3865,7 @@
                     // Add attributes
                     relatedQueryDiv.title = app.msgs.tooltip_sendRelatedQuery
                     relatedQueryDiv.classList.add(
-                        `${app.cssPrefix}-related-query`, 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
+                        `${app.slug}-related-query`, 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
                     relatedQueryDiv.setAttribute('tabindex', 0)
                     relatedQueryDiv.textContent = query
 
@@ -3968,7 +3968,7 @@
     env.ui = { app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )}}
 
     // Create/ID/classify/listenerize/stylize APP container
-    let appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
+    let appDiv = document.createElement('div') ; appDiv.id = app.slug
     appDiv.classList.add('fade-in',  'snippet') ; addListeners.appDiv();
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
@@ -3979,8 +3979,8 @@
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
         var tooltipDiv = document.createElement('div')
-        tooltipDiv.classList.add(`${app.cssPrefix}-btn-tooltip`, 'no-user-select')
-        document.head.append(dom.create.style(`.${app.cssPrefix}-btn-tooltip {`
+        tooltipDiv.classList.add(`${app.slug}-btn-tooltip`, 'no-user-select')
+        document.head.append(dom.create.style(`.${app.slug}-btn-tooltip {`
             + 'background-color:' // bubble style
                 + 'rgba(0,0,0,0.64) ; padding: 4px 6px 4px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
             + 'font-size: 0.58rem ; color: white ; fill: white ; stroke: white ;' // font/icon style
@@ -4042,23 +4042,23 @@
 
     // Observe DOM for need to re-insert app div
     new MutationObserver((_, obs) => {
-        if (!document.getElementById(app.cssPrefix)) { restoreAppDiv() ; obs.disconnect() }
+        if (!document.getElementById(app.slug)) { restoreAppDiv() ; obs.disconnect() }
     }).observe(document.body, { subtree: true, childList: true })
     function saveAppDiv() { if (restoreAppDiv.restored) return ; saveAppDiv.html = appDiv.innerHTML }
     function restoreAppDiv() {
         log.caller = 'restoreAppDiv()'
         log.dev(`Restoring ${app.name} from mutation...`)
-        appDiv = document.createElement('div') ; appDiv.id = app.cssPrefix
+        appDiv = document.createElement('div') ; appDiv.id = app.slug
         appDiv.classList.add('fade-in', 'active', 'snippet') ; addListeners.appDiv();
         ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
             (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
         appDiv.innerHTML = saveAppDiv.html
         if (!env.browser.isMobile) appDiv.append(tooltipDiv)
-        if (appDiv.querySelector(`.${app.cssPrefix}-header-btn`)) addListeners.appHeaderBtns()
-        const standbyBtn = appDiv.querySelector(`.${app.cssPrefix}-standby-btn`)
+        if (appDiv.querySelector(`.${app.slug}-header-btn`)) addListeners.appHeaderBtns()
+        const standbyBtn = appDiv.querySelector(`.${app.slug}-standby-btn`)
         if (standbyBtn) standbyBtn.onclick = show.reply.standbyBtnClickHandler
         else if (appDiv.querySelector('pre')) show.copyBtns()
-        if (appDiv.querySelector(`.${app.cssPrefix}-chatbar-btn`)) addListeners.replySection()
+        if (appDiv.querySelector(`.${app.slug}-chatbar-btn`)) addListeners.replySection()
         appDivParent.prepend(appDiv) ; visibilizeOverflow() ; restoreAppDiv.restored = true
     }
 
