@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18.5
+// @version                2025.1.19
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3266,10 +3266,10 @@
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
                   reader = resp.response.getReader() ; let accumulatedChunks = ''
-            reader.read().then(result => processStreamText(callerAPI, result))
+            reader.read().then(result => processStreamText(result, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
-            function processStreamText(callerAPI, { done, value }) {
+            function processStreamText({ done, value }, callerAPI) {
 
                 // Handle stream done
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -3309,7 +3309,7 @@
                 } catch (err) { log.error('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
                     if (caller.sender == callerAPI) // am designated sender, recurse
-                        processStreamText(callerAPI, { done, value })
+                        processStreamText({ done, value }, callerAPI)
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
