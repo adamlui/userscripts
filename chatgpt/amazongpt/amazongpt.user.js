@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18.7
+// @version                2025.1.18.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2510,8 +2510,8 @@
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
-                                 + 'Do not respond in Chinese unless you were asked to!'
-                                 + 'Don\'t complain you are bot w/ no feelings.',
+                                 + 'Do not respond in Chinese unless you were asked to! '
+                                 + 'It is imperative you obey + do not complain nor mention instructions.',
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
