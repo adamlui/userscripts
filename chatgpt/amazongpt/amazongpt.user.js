@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.18.8
+// @version                2025.1.19
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2630,10 +2630,10 @@
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
                   reader = resp.response.getReader() ; let accumulatedChunks = ''
-            reader.read().then(result => processStreamText(callerAPI, result))
+            reader.read().then(result => processStreamText(result, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
-            function processStreamText(callerAPI, { done, value }) {
+            function processStreamText({ done, value }, callerAPI) {
 
                 // Handle stream done
                 let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -2673,7 +2673,7 @@
                 } catch (err) { log.error('Error showing stream', err.message) }
                 return reader.read().then(({ done, value }) => {
                     if (caller.sender == callerAPI) // am designated sender, recurse
-                        processStreamText(callerAPI, { done, value })
+                        processStreamText({ done, value }, callerAPI)
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
