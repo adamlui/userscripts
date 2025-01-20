@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.7
+// @version                2025.1.19.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2245,7 +2245,7 @@
                 { type: 'formatting', mods: [
                     'Try to give an answer that is 50-100 words',
                     'Do not type anything but the question and answer',
-                    'Reply in markdown.'
+                    'Reply in markdown'
                 ]},
                 { type: 'variety', mods: [
                     'Don\'t provide a question you generated before',
