@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.5
+// @version                2025.1.19.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2672,10 +2672,19 @@
 
         augment(prompt) { return `${prompt} {{reply in the language ${config.replyLang}}}` },
 
-        create({ type, prevQuery }) {
-            const promptSrc = this[type],
-                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
-                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /[\n.]$/.test(elem) ? '' : '.')
+        create({ type, mods, prevQuery }) {
+            mods = [].concat(mods || []) // normalize mods into array
+            const promptSrc = this[type]
+            const modsToApply = promptSrc.mods?.flatMap(mod =>
+                !mods.length && typeof mod == 'string' ? mod // string if no mods passed
+              : !mods.length || mods.includes(mod.type) ? mod.mods : [] // sub-array if no mods passed or includes type
+            ) || []
+            const promptElems = [promptSrc.base || '', ...modsToApply].map((elem, idx, array) => {
+                if (elem && !/[\n,.!]$/.test(elem)) elem += '.' // append missing punctuation
+                if (idx > 0 && array[idx -1].endsWith(',')) // prev elem ended in comma...
+                    elem = elem.charAt(0).toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
+                return elem
+            })
             let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
             return builtPrompt
