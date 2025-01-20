@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.19.7
+// @version               2025.1.19.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2828,7 +2828,7 @@
                 { type: 'formatting', mods: [
                     'Try to give an answer that is 50-100 words',
                     'Do not type anything but the question and answer',
-                    'Reply in markdown.'
+                    'Reply in markdown'
                 ]},
                 { type: 'variety', mods: [
                     'Don\'t provide a question you generated before',
