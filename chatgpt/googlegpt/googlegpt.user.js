@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.19.3
+// @version                  2025.1.19.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3591,7 +3591,7 @@
                     } else textToShow = accumulatedChunks
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
-                        log.dev('Response text', textToShow)
+                        log.dev('Text to show', textToShow)
                         log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
@@ -3624,7 +3624,7 @@
                 if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
                     || caller.status == 'done') return
                 log.caller = `get.${caller.name}() » dataProcess.text()`
-                const failFlagsAndURLs = this.initFailFlags(callerAPI) ; let respText = ''
+                const failFlagsAndURLs = this.initFailFlags(callerAPI) ; let textToShow = ''
                 if (resp.status != 200) {
                     log.error('Response status', resp.status)
                     log.info('Response text', resp.response || resp.responseText)
@@ -3643,51 +3643,42 @@
                         else api.tryNew(caller)
                     } else {
                         try { // to show response or return related queries
-                            respText = JSON.parse(resp.response).choices[0].message.content
+                            textToShow = JSON.parse(resp.response).choices[0].message.content
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response or return related queries
-                    if (/AIchatOS|FREEGPT|ToYaml/.test(callerAPI)) {
+                    if (callerAPI == 'GPTforLove') {
                         try {
-                            const text = resp.responseText, chunkSize = 1024
-                            let currentIdx = 0
-                            while (currentIdx < text.length) {
-                                const chunk = text.substring(currentIdx, currentIdx + chunkSize)
-                                respText += chunk ; currentIdx += chunkSize
-                            }
-                            handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    } else if (callerAPI == 'GPTforLove') {
-                        try {
-                            let chunks = resp.responseText.trim().split('\n'),
-                                lastObj = JSON.parse(chunks[chunks.length - 1])
-                            if (lastObj.id) apis.GPTforLove.parentID = lastObj.id
-                            respText = lastObj.text ; handleProcessCompletion()
+                            let chunks = resp.responseText.trim().split('\n')
+                            const lastChunk = JSON.parse(chunks[chunks.length -1])
+                            if (lastChunk.id) apis.GPTforLove.parentID = lastChunk.id
+                            textToShow = lastChunk.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (callerAPI == 'MixerBox AI') {
                         try {
-                            const extractedData = Array.from(resp.responseText.matchAll(/data:(.*)/g), match => match[1]
+                            const extractedData = [...resp.responseText.matchAll(/data:(.*)/g)].map(match => match[1]
                                 .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .filter(match => !/message_(?:start|end)|done/.test(match))
-                            respText = extractedData.join('') ; handleProcessCompletion()
+                            textToShow = extractedData.join('') ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
-                    }
+                    } else { // no processing required for all other APIs
+                        textToShow = resp.responseText ; handleProcessCompletion() }
                 } else if (caller.status != 'done') { // proxy 200 response failure
                     log.info('Response text', resp.responseText) ; api.tryNew(caller) }
 
                 function handleProcessCompletion() {
                     if (caller.status != 'done') {
-                        log.dev('Response text', respText)
-                        const failMatch = failFlagsAndURLs.exec(respText)
-                        if (!respText || failMatch || /^(?:\{|event:)/.test(respText)) {
+                        log.dev('Text to show', textToShow)
+                        const failMatch = failFlagsAndURLs.exec(textToShow)
+                        if (!textToShow || failMatch || /^(?:\{|event:)/.test(textToShow)) {
                             if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
                             api.tryNew(caller)
                         } else {
                             caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
-                            respText = respText.replace(apis[callerAPI].watermark, '').trim()
-                            if (caller == get.reply) { show.reply(respText, footerContent) ; show.replyCornerBtns() }
-                            else resolve(arrayify(respText))
+                            textToShow = textToShow.replace(apis[callerAPI].watermark, '').trim()
+                            if (caller == get.reply) { show.reply(textToShow, footerContent) ; show.replyCornerBtns() }
+                            else resolve(arrayify(textToShow))
                         }
                     }
                 }
