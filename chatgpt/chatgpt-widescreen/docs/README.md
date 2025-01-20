@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-<a href="https://gm.chatgptwidescreen.com"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen/chrome/media/images/tiles/marquee-promo-tile-1400x560.png"></img></a>
+<a href="https://gm.chatgptwidescreen.com"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen/chromium/media/images/tiles/marquee-promo-tile-1400x560.png"></img></a>
 
 <div align="center">
 

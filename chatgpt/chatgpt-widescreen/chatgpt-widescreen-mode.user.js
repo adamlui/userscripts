@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.19
+// @version             2025.1.20
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -256,10 +256,10 @@
 // @connect             gm.chatgptwidescreen.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bea60fff2bc2e8745ea1daa91a3cf01b387e7ca9/chrome/extension/lib/dom.js#sha256-ubog9pHcDtVAuo9YKH6uLSrW0TAYInk70w9+DQ5C4aQ=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@019cc96d33cf1a0f2436e3e5513f5b3d8da56f26/chrome/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@c53d488a5e89d07f72f09e9edf8cca58d8f51ed8/chrome/extension/components/buttons.js#sha256-cf8uqPcLdpEPM21OSeh2Xj2mi987eeGtg+wXR1EmHlI=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@90abb87185c1703b89b8d4e6a057235d352dce92/chrome/extension/components/modals.js#sha256-DE9EI5FH60q80qvfnZ9Lwgp7ayTdZyOSdUdnjbt/4Mw=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea45e415d77fd89e729ff75ded3c78b0d27a/chromium/extension/lib/dom.js#sha256-ubog9pHcDtVAuo9YKH6uLSrW0TAYInk70w9+DQ5C4aQ=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea45e415d77fd89e729ff75ded3c78b0d27a/chromium/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea45e415d77fd89e729ff75ded3c78b0d27a/chromium/extension/components/buttons.js#sha256-cf8uqPcLdpEPM21OSeh2Xj2mi987eeGtg+wXR1EmHlI=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea45e415d77fd89e729ff75ded3c78b0d27a/chromium/extension/components/modals.js#sha256-DE9EI5FH60q80qvfnZ9Lwgp7ayTdZyOSdUdnjbt/4Mw=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
 // @grant               GM_setValue
@@ -305,7 +305,7 @@
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptwidescreen.com' },
-        latestResourceCommitHash: '36697fc' // for cached app.json + sites.json + messages.json
+        latestResourceCommitHash: 'bbd0ea4' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -388,7 +388,7 @@
     // LOCALIZE app.msgs for non-English users
     if (!env.browser.language.startsWith('en')) {
         const localizedMsgs = await new Promise(resolve => {
-            const msgHostDir = app.urls.resourceHost + '/chrome/extension/_locales/',
+            const msgHostDir = app.urls.resourceHost + '/chromium/extension/_locales/',
                   msgLocaleDir = ( env.browser.language ? env.browser.language.replace('-', '_') : 'en' ) + '/'
             let msgHref = msgHostDir + msgLocaleDir + 'messages.json', msgXHRtries = 0
             function fetchMsgs() { xhr({ method: 'GET', url: msgHref, onload: handleMsgs })}
