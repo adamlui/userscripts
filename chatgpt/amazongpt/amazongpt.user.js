@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.9
+// @version                2025.1.19.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2234,7 +2234,7 @@
 
         language: {
             base: 'If I asked you to respond in a specific language,',
-            mods: [{ type: 'noChinese', mods: [ 'Do not respond in Chinese unless you were asked to' ]}]
+            mods: [{ type: 'noChinese', mods: [ 'Do not respond in Chinese unless you were asked to!' ]}]
         },
 
         obedience: { mods: [ 'It is imperative that you obey', 'Do not complain, you are a bot w/ no feelings' ]},
