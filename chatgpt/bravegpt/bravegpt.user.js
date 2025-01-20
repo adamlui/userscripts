@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.19.10
+// @version               2025.1.20
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -187,9 +187,9 @@
 // @require               https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
 // @require               https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js#sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4=
 // @require               https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js#sha256-Ffq85bZYmLMrA/XtJen4kacprUwNbYdxEKd0SqhHqJQ=
-// @resource bgptIcon     https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@ad5606e/media/images/icons/bravegpt/icon64.png.b64#sha256-Abqr6XIwT+g72ig2haUUkniR89b5UlxL28cAI6BVT/c=
-// @resource bgptLSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/lightmode/logo730x155.png.b64#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
-// @resource bgptDSlogo   https://cdn.jsdelivr.net/gh/KudoAI/bravegpt@01dd539/media/images/logos/bravegpt/darkmode/logo730x155.png.b64#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
+// @resource bgptIcon     https://assets.bravegpt.com/images/icons/bravegpt/icon64.png.b64?v=a76e718#sha256-Abqr6XIwT+g72ig2haUUkniR89b5UlxL28cAI6BVT/c=
+// @resource bgptLSlogo   https://assets.bravegpt.com/images/logos/bravegpt/lightmode/logo730x155.png.b64?v=a76e718#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
+// @resource bgptDSlogo   https://assets.bravegpt.com/images/logos/bravegpt/darkmode/logo730x155.png.b64?v=a76e718#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
 // @resource hljsCSS      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
 // @resource brsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=

@@ -1,4 +1,4 @@
-# <img width=24 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/media/images/icons/radio-bubble/icon32.png"> Highlight Radio Bubbles &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles&hashtags=greasemonkey,userscripts,javascript)
+# <img width=24 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> Highlight Radio Bubbles &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20this%20epic%20userscript!&url=https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles&hashtags=greasemonkey,userscripts,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 ![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg) 
