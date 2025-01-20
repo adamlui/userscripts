@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.9
+// @version                2025.1.19.10
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2704,7 +2704,7 @@
 
         language: {
             base: 'If I asked you to respond in a specific language,',
-            mods: [{ type: 'noChinese', mods: [ 'Do not respond in Chinese unless you were asked to' ]}]
+            mods: [{ type: 'noChinese', mods: [ 'Do not respond in Chinese unless you were asked to!' ]}]
         },
 
         obedience: { mods: [ 'It is imperative that you obey', 'Do not complain, you are a bot w/ no feelings' ]},
