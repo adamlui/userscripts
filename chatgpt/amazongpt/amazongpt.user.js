@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.5
+// @version                2025.1.19.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2189,12 +2189,22 @@
 
         augment(prompt) { return `${prompt} {{reply in the language ${config.replyLang}}}` },
 
-        create({ type }) {
-            const promptSrc = this[type],
-                  modsToApply = promptSrc.mods?.flatMap(mod => typeof mod == 'string' ? mod : mod.mods) || [],
-                  promptElems = [promptSrc.base, ...modsToApply].map(elem => elem += /[\n.]$/.test(elem) ? '' : '.')
+        create({ type, mods }) {
+            mods = [].concat(mods || []) // normalize mods into array
+            const promptSrc = this[type]
+            const modsToApply = promptSrc.mods?.flatMap(mod =>
+                !mods.length && typeof mod == 'string' ? mod // string if no mods passed
+              : !mods.length || mods.includes(mod.type) ? mod.mods : [] // sub-array if no mods passed or includes type
+            ) || []
+            const promptElems = [promptSrc.base || '', ...modsToApply].map((elem, idx, array) => {
+                if (elem && !/[\n,.!]$/.test(elem)) elem += '.' // append missing punctuation
+                if (idx > 0 && array[idx -1].endsWith(',')) // prev elem ended in comma...
+                    elem = elem.charAt(0).toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
+                return elem
+            })
             return promptElems.join(' ').trim()
         },
+
 
         informCategory: {
             get base() {
