@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.20
+// @version                2025.1.20.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1655,7 +1655,7 @@
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
-                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
+                if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
                     icon.firstChild?.remove() // clear prev paths
                     icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
@@ -1974,7 +1974,7 @@
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
-                if (targetIcons.length == 0)
+                if (!targetIcons.length)
                     targetIcons = document.querySelectorAll('#widescreen-icon:not(.chatgpt-notif *)')
                 targetIcons.forEach(icon => {
                     icon.firstChild?.remove() // clear prev paths
@@ -2007,7 +2007,7 @@
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
+                if (!targetLogos.length) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`ddgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
@@ -3951,7 +3951,7 @@
 
                             // Filter out inactive ads, pick random active one
                             const activeAds = adGroup.ads.filter(ad => ad.active != false)
-                            if (activeAds.length == 0) continue // to next group since no ads active
+                            if (!activeAds.length) continue // to next group since no ads active
                             const chosenAd = ( // random active one
                                 activeAds[Math.floor(chatgpt.randomFloat() * activeAds.length)])
 
