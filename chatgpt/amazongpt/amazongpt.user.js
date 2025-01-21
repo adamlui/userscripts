@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.19.10
+// @version                2025.1.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1299,7 +1299,7 @@
 
             update(targetIcons = [], color = '') {
                 if (!Array.isArray(targetIcons)) targetIcons = [targetIcons]
-                if (targetIcons.length == 0) targetIcons = document.querySelectorAll(`#${app.slug}-icon`)
+                if (!targetIcons.length) targetIcons = document.querySelectorAll(`#${app.slug}-icon`)
                 targetIcons.forEach(icon => {
                     icon.src = GM_getResourceText(`amzgpt${
                         color == 'white' || !color && env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }icon`)
@@ -1338,7 +1338,7 @@
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
-                if (targetIcons.length == 0) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
+                if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
                     icon.firstChild?.remove() // clear prev paths
                     icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
@@ -1600,7 +1600,7 @@
 
             update(...targetLogos) {
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
-                if (targetLogos.length == 0) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
+                if (!targetLogos.length) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
                 targetLogos.forEach(logo =>
                     logo.src = GM_getResourceText(`amzgpt${ env.ui.app.scheme == 'dark' ? 'DS' : 'LS' }logo`))
             }
