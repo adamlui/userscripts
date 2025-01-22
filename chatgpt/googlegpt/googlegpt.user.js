@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.21.3
+// @version                  2025.1.21.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -569,7 +569,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=fb3092a',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=0580e5d',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
