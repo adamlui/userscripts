@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.21.8
+// @version               2025.1.21.9
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3423,7 +3423,7 @@
                         .map(match => // normalize whitespace
                             match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .join('') // stringify AI reply text
-                }
+                } else replyChunk = chunk // no processing required for all other APIs
                 textToShow += replyChunk
 
                 // Show accumulated reply chunks
