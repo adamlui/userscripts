@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.8
+// @version                2025.1.21.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3357,7 +3357,7 @@
                                : resp.status == 429 ? ['tooManyRequests', 'suggestProxy']
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
-                } else if (callerAPI == 'OpenAI' && resp.response) {
+                } else if (callerAPI == 'OpenAI' && resp.response) { // show response or return RQs from OpenAI
                     const failMatch = failFlagsAndURLs.exec(resp.response)
                     if (failMatch) { // suggest proxy or try diff API
                         log.dev('Response text', resp.response)
@@ -3365,25 +3365,27 @@
                         if (caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
                         else api.tryNew(caller)
                     } else {
-                        try { // to show response or return related queries
+                        try { // to show response or return RQs
                             textToShow = JSON.parse(resp.response).choices[0].message.content
                             handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     }
-                } else if (resp.responseText) { // show response or return related queries
+                } else if (resp.responseText) { // show response or return RQs from proxy API
                     if (callerAPI == 'GPTforLove') {
                         try {
-                            const chunks = resp.responseText.trim().split('\n'),
-                                  lastChunk = JSON.parse(chunks[chunks.length -1])
-                            if (lastChunk.id) apis.GPTforLove.parentID = lastChunk.id
-                            textToShow = lastChunk.text ; handleProcessCompletion()
+                            const chunkLines = resp.responseText.trim().split('\n'),
+                                  lastChunkObj = JSON.parse(chunkLines[chunkLines.length -1])
+                            apis.GPTforLove.parentID = lastChunkObj.id || null
+                            textToShow = lastChunkObj.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else if (callerAPI == 'MixerBox AI') {
                         try {
-                            const extractedData = [...resp.responseText.matchAll(/data:(.*)/g)].map(match => match[1]
-                                .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                .filter(match => !/message_(?:start|end)|done/.test(match))
-                            textToShow = extractedData.join('') ; handleProcessCompletion()
+                            textToShow = [...resp.responseText.matchAll(/data:(.*)/g)] // arrayify data
+                                .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                                .map(match => // normalize whitespace
+                                     match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                .join('') // stringify AI reply text
+                            handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
                     } else { // no processing required for all other APIs
                         textToShow = resp.responseText ; handleProcessCompletion() }
