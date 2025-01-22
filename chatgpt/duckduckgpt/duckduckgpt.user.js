@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.10
+// @version                2025.1.21.11
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3307,7 +3307,7 @@
                         .map(match => // normalize whitespace
                             match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .join('') // stringify AI reply text
-                }
+                } else replyChunk = chunk // no processing required for all other APIs
                 textToShow += replyChunk
 
                 // Show accumulated reply chunks
