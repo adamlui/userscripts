@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.6
+// @version                2025.1.21.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2180,7 +2180,7 @@
                             + '-moz-transition: var(--answer-pre-transition) ;'
                             + '-o-transition: var(--answer-pre-transition) ;'
                             + '-ms-transition: var(--answer-pre-transition) }' }}`
-              + `#${app.slug} > pre a, #ddgpt > pre a:visited { color: #4495d4 }`
+              + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + `#${app.slug} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
