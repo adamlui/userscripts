@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.21.1
+// @version               2025.1.21.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3544,7 +3544,9 @@
     const show = {
 
         replyCornerBtns() {
-            if (document.getElementById(`${app.slug}-copy-btn`)) return
+            if (!document.querySelector(`#${app.slug} > pre`) // reply bubble missing
+              || document.getElementById(`${app.slug}-copy-btn`) // Copy button not missing
+            ) return
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
