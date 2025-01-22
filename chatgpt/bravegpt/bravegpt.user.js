@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.21.9
+// @version               2025.1.21.10
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3407,7 +3407,7 @@
                 const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
-                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
+                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                 // Process/accumulate chunk
                 let replyChunk = ''
