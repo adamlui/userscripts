@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.5
+// @version                2025.1.21.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2656,23 +2656,22 @@
                 // Handle stream done
                 const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
-                if (env.browser.isChromium) { // clear/add timeout since reader.read() doesn't signal done
+                if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
 
                 // Process/accumulate chunk
                 let replyChunk = ''
-                if (callerAPI == 'GPTforLove') { // extract parentID + chunk.delta
-                    const chunkLines = chunk.trim().split('\n'),
-                          chunkObjs = chunkLines.map(line => JSON.parse(line))
-                    if (chunkObjs[0].id) apis.GPTforLove.parentID = chunkObjs[0].id // for contextual replies
-                    chunkObjs.forEach(obj =>
-                        replyChunk += obj.delta // AI reply
+                if (callerAPI == 'GPTforLove') { // extract parentID + deltas
+                    const chunkObjs = chunk.trim().split('\n').map(line => JSON.parse(line))
+                    apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
+                    chunkObjs.forEach(obj => // accumulate replyChunk
+                        replyChunk += obj.delta // AI reply text
                                    || JSON.stringify(obj)) // error response for fail flag check
-                } else if (callerAPI == 'MixerBox AI') { // extract/normalize chunk.data
-                    const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
-                        .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                        .filter(match => !/message_(?:start|end)|done/.test(match))
-                    replyChunk = extractedChunks.join('')
+                } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
+                    replyChunk = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1] // arrayify data
+                        .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n')) // normalize whitespace
+                        .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                        .join('') // stringify AI reply text
                 }
                 textToShow += replyChunk
 
