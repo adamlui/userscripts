@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.9
+// @version                2025.1.21.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2657,7 +2657,7 @@
                 const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
-                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
+                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                 // Process/accumulate chunk
                 let replyChunk = ''
