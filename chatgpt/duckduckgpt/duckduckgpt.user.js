@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.11
+// @version                2025.1.21.12
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3291,7 +3291,7 @@
                 const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
-                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
+                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                 // Process/accumulate chunk
                 let replyChunk = ''
