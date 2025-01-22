@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.21
+// @version               2025.1.21.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3487,8 +3487,8 @@
                 } else if (resp.responseText) { // show response or return related queries
                     if (callerAPI == 'GPTforLove') {
                         try {
-                            let chunks = resp.responseText.trim().split('\n')
-                            const lastChunk = JSON.parse(chunks[chunks.length -1])
+                            const chunks = resp.responseText.trim().split('\n'),
+                                  lastChunk = JSON.parse(chunks[chunks.length -1])
                             if (lastChunk.id) apis.GPTforLove.parentID = lastChunk.id
                             textToShow = lastChunk.text ; handleProcessCompletion()
                         } catch (err) { handleProcessError(err) }
