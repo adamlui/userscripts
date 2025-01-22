@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.2
+// @version                2025.1.21.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3428,7 +3428,9 @@
     const show = {
 
         replyCornerBtns() {
-            if (document.getElementById(`${app.slug}-copy-btn`)) return
+            if (!document.querySelector(`#${app.slug} > pre`) // reply bubble missing
+              || document.getElementById(`${app.slug}-copy-btn`) // Copy button not missing
+            ) return
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
