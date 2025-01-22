@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.21.2
+// @version                  2025.1.21.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3577,35 +3577,37 @@
             if (config.streamingDisabled || !config.proxyAPIenabled) return
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
-                  reader = resp.response.getReader() ; let accumulatedChunks = ''
+                  reader = resp.response.getReader() ; let textToShow = ''
             reader.read().then(result => processStreamText(result, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
             function processStreamText({ done, value }, callerAPI) {
 
                 // Handle stream done
-                let chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
+                const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                 if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since reader.read() doesn't signal done
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 500) }
 
-                // Process/show chunk
-                if (callerAPI == 'MixerBox AI') { // pre-process chunks
+                // Process/accumulate chunk
+                let replyChunk = ''
+                if (callerAPI == 'GPTforLove') { // extract parentID + chunk.delta
+                    const chunkLines = chunk.trim().split('\n'),
+                          chunkObjs = chunkLines.map(line => JSON.parse(line))
+                    if (chunkObjs[0].id) apis.GPTforLove.parentID = chunkObjs[0].id // for contextual replies
+                    chunkObjs.forEach(obj =>
+                        replyChunk += obj.delta // AI reply
+                                   || JSON.stringify(obj)) // error response for fail flag check
+                } else if (callerAPI == 'MixerBox AI') { // extract/normalize chunk.data
                     const extractedChunks = Array.from(chunk.matchAll(/data:(.*)/g), match => match[1]
                         .replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .filter(match => !/message_(?:start|end)|done/.test(match))
-                    chunk = extractedChunks.join('')
+                    replyChunk = extractedChunks.join('')
                 }
-                accumulatedChunks = apis[callerAPI].accumulatesText ? chunk : accumulatedChunks + chunk
-                try { // to show stream text
-                    let textToShow = ''
-                    if (callerAPI == 'GPTforLove') { // extract parentID + latest chunk text
-                        const jsonLines = accumulatedChunks.split('\n'),
-                              nowResult = JSON.parse(jsonLines[jsonLines.length -1])
-                        if (nowResult.id) apis.GPTforLove.parentID = nowResult.id // for contextual replies
-                        textToShow = nowResult.text // for AI response
-                                  || JSON.stringify(nowResult) // for error response
-                    } else textToShow = accumulatedChunks
+                textToShow += replyChunk
+
+                // Show accumulated reply chunks
+                try {
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
                         log.dev('Text to show', textToShow)
@@ -3619,9 +3621,10 @@
                         ) show.reply(textToShow, footerContent)
                     }
                 } catch (err) { log.error('Error showing stream', err.message) }
+
+                // Read next chunk, process if designated sender
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) // am designated sender, recurse
-                        processStreamText({ done, value }, callerAPI)
+                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI)
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
