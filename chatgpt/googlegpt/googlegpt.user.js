@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.21.1
+// @version                  2025.1.21.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3724,7 +3724,9 @@
     const show = {
 
         replyCornerBtns() {
-            if (document.getElementById(`${app.slug}-copy-btn`)) return
+            if (!document.querySelector(`#${app.slug} > pre`) // reply bubble missing
+              || document.getElementById(`${app.slug}-copy-btn`) // Copy button not missing
+            ) return
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
