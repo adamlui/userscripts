@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.21.13
+// @version                2025.1.23
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2257,9 +2257,8 @@
                   + `#${app.slug} > pre ul > li { margin: -10px 0 0 1.2em ; list-style: inside }` ) // reduce v-padding, show bullets
               + '.katex-html { display: none } ' // hide unrendered math
               + `#${app.slug} + footer {
-                    text-align: right ; display: grid ; width: 100% ; margin: 6px 0 25px ; position: relative }`
-              + `#${app.slug} + footer * {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? '#ccc' : '#666' } !important }`
+                    font-size: 13px ; color: #${ env.ui.scheme == 'dark' ? 'ccc' : 'aaa' } ; line-height: 1.25 ;
+                    text-align: right ; display: grid ; width: 100% ; margin: 14px 0 25px ; position: relative }`
               + '.chatgpt-notif { fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }'
               + '.notif-close-btn { display: none !important }' // hide notif close btn
               + `.${app.slug}-menu {`
