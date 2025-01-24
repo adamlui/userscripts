@@ -62,7 +62,7 @@
   
 </div>
 
-## <img width=25px src="https://assets.ddgpt.com/images/icons/platforms/tampermonkey/icon28.png"> Tampermonkey Users
+## <img width=25px src="https://assets.ddgpt.com/images/icons/platforms/tampermonkey/icon28.png"><img width=25px src="https://assets.ddgpt.com/images/icons/platforms/orangemonkey/icon32.png"> Tampermonkey / OrangeMonkey Users
 
 If you are installing **Tampermonkey** or **OrangeMonkey** for a Chromium browser (Chrome, Edge, etc.) you _must enable **Developer Mode**_ for userscripts to function.
 
@@ -200,6 +200,27 @@ This app exists thanks to code, translations, issues & ideas from the following 
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
 <a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.ddgpt.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.ddgpt.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+
+#
+
+</div>
+
+<div align="center">
+
+<br>
+
+**DuckDuckGPT** is funded in part by:
+
+<a href="https://burncloud.com/?utm_source=github&utm_medium=readme&utm_content=partner-logo&campaign=duckduckgpt">
+    <picture>
+        <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/white.png?v=610795b">
+        <img width=400 src="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/black.png?v=610795b">
+    </picture>
+</a>
+
+</div>
+
+<br>
 
 #
 
