@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.23.1
+// @version                  2025.1.23.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -390,7 +390,6 @@
 // @grant                    GM_cookie
 // @grant                    GM_registerMenuCommand
 // @grant                    GM_unregisterMenuCommand
-// @grant                    GM_openInTab
 // @grant                    GM_getResourceText
 // @grant                    GM_xmlhttpRequest
 // @grant                    GM.xmlHttpRequest
@@ -1626,9 +1625,7 @@
                             + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}.user.js`
                         + `">${app.msgs.link_viewChanges}</a>`,
                     function update() { // button
-                        GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
-                            { active: true, insert: true } // focus, make adjacent
-                        ).onclose = () => location.reload()
+                        modals.safeWinOpen(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now())
                     }, '', modals.update.width
                 )
 
