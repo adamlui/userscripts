@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.23
+// @version                2025.1.23.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2668,7 +2668,7 @@
                         replyChunk += obj.delta // AI reply text
                                    || JSON.stringify(obj)) // error response for fail flag check
                 } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
-                    replyChunk = [respChunk.matchAll(/data:(.*)/g)] // arrayify data
+                    replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
                         .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
                         .map(match => // normalize whitespace
                             match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
