@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.21.11
+// @version               2025.1.23
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2066,9 +2066,9 @@
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                   + 'z-index: 9999 ; cursor: ew-resize }'
               + `#${app.slug} {`
-                  + 'position: sticky ; z-index: 1111 ; word-wrap: break-word ; white-space: pre-wrap ;'
+                  + 'position: sticky ; z-index: 1111 ; padding: 24px 23px 45px 23px ;'
+                  + 'word-wrap: break-word ; white-space: pre-wrap ;'
                   + 'border: 1px solid var(--color-divider-subtle) ; border-radius: 18px ;'
-                  + `margin: ${ env.browser.isMobile ? '0 8px 16px' : '0 0 20px' } ; padding: 24px 23px 45px 23px ;`
                   + ( config.bgAnimationsDisabled ? // classic flat bg
                         `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
                       + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
@@ -2250,7 +2250,7 @@
               + `.${app.slug}-chatbar-btn:hover {`
                   + `${ env.ui.app.scheme == 'dark' ? 'color: white ; fill: white ; stroke: white'
                                                     : 'color: #638ed4 ; fill: #638ed4 ; stroke: #638ed4' }}`
-              + ( // markdown styles
+              + ( // Markdown styles
                     `#${app.slug} > pre h1 { font-size: 1.25em }`
                   + `#${app.slug} > pre h2 { font-size: 1.1em }`
                   + `#${app.slug} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
