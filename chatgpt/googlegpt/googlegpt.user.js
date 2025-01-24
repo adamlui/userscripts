@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.23.3
+// @version                  2025.1.23.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -381,7 +381,8 @@
 // @resource ggptIconBlack   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png.b64?v=9db3bda#sha256-yiTqggYRNsWcJtyIUDzFrPqrL3yeTaPCrEGAW0QFuPM=
 // @resource ggptIconWhite   https://assets.googlegpt.io/images/icons/googlegpt/white/icon64.png.b64?v=9db3bda#sha256-BYRq92cF5knykaKnmNi1U4CrwBC/jK1V+MGfH4NGui4=
 // @resource ggptLSlogo      https://assets.googlegpt.io/images/logos/googlegpt/flat/black-green/logo480x64.png.b64?v=9db3bda#sha256-fzSZhLVQQolCLWYr/h29NWfR1Yl4glHv1TcsveYYv+U=
-// @resource ggptDSlogo      https://assets.googlegpt.io/images/logos/googlegpt/flat/white-green/logo480x64.png.b64?v=9db3bda#sha256-3qRdGKhF3pojDqVVh/5kODIg7QvYbbLf4zFkEh5xoGc=// @resource hljsCSS         https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
+// @resource ggptDSlogo      https://assets.googlegpt.io/images/logos/googlegpt/flat/white-green/logo480x64.png.b64?v=9db3bda#sha256-3qRdGKhF3pojDqVVh/5kODIg7QvYbbLf4zFkEh5xoGc=
+// @resource hljsCSS         https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
 // @resource brsCSS          https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS          https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
 // @grant                    GM_getValue
