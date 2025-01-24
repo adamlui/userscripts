@@ -94,9 +94,9 @@
 
 <img height=6px width="100%" src="https://assets.googlegpt.io/images/separators/gradient-aqua.png">
 
-## <img width=25px src="https://assets.googlegpt.io/images/icons/platforms/tampermonkey/icon28.png"> Tampermonkey Users
+## <img width=25px src="https://assets.googlegpt.io/images/icons/platforms/tampermonkey/icon28.png"><img width=25px src="https://assets.googlegpt.io/images/icons/platforms/orangemonkey/icon32.png"> Tampermonkey / OrangeMonkey Users
 
-If you are installing **Tampermonkey** (v5.2.0+) for the first time from the [Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), you must enable **Developer Mode** for userscripts to function.
+If you are installing **Tampermonkey** or **OrangeMonkey** for a Chromium browser (Chrome, Edge, etc.) you _must enable **Developer Mode**_ for userscripts to function.
 
 To do so, visit [chrome://extensions](chrome://extensions) > activate **Developer Mode** toggle > restart browser
 
@@ -110,7 +110,7 @@ To do so, visit [chrome://extensions](chrome://extensions) > activate **Develope
 
 <br>
 
-💡 _**Note:** If you installed Tampermonkey from the add-on store for [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/), then Developer Mode is not required._
+💡 _**Note:** If you installed Tampermonkey from the add-on store for [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), then Developer Mode is not required._
 
 <img height=6px width="100%" src="https://assets.googlegpt.io/images/separators/gradient-aqua.png">
 
