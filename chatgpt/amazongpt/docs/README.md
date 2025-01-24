@@ -155,6 +155,25 @@ This app exists thanks to code, translations, issues & ideas from the following 
 
 <img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">
 
+<div align="center">
+
+<br>
+
+**AmazonGPT** is funded in part by:
+
+<a href="https://burncloud.com/?utm_source=github&utm_medium=readme&utm_content=partner-logo&campaign=amazongpt">
+    <picture>
+        <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/white.png?v=610795b">
+        <img width=400 src="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/black.png?v=610795b">
+    </picture>
+</a>
+
+</div>
+
+<br>
+
+<img height=6px width="100%" src="https://amazongpt.kudoai.com/assets/images/separators/gradient-aqua.png">
+
 ## 🤖 More ChatGPT apps
 
 For even more epic ChatGPT apps, visit: https://github.com/adamlui/ai-web-extensions
