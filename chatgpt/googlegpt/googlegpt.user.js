@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.21.11
+// @version                  2025.1.23
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3584,26 +3584,26 @@
             function processStreamText({ done, value }, callerAPI) {
 
                 // Handle stream done
-                const chunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (done || chunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
+                const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
+                if (done || respChunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
-                // Process/accumulate chunk
+                // Process/accumulate reply chunk
                 let replyChunk = ''
                 if (callerAPI == 'GPTforLove') { // extract parentID + deltas
-                    const chunkObjs = chunk.trim().split('\n').map(line => JSON.parse(line))
+                    const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
                     apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
                     chunkObjs.forEach(obj => // accumulate replyChunk
                         replyChunk += obj.delta // AI reply text
                                    || JSON.stringify(obj)) // error response for fail flag check
                 } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
-                    replyChunk = [chunk.matchAll(/data:(.*)/g)] // arrayify data
+                    replyChunk = [respChunk.matchAll(/data:(.*)/g)] // arrayify data
                         .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
                         .map(match => // normalize whitespace
                             match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .join('') // stringify AI reply text
-                } else replyChunk = chunk // no processing required for all other APIs
+                } else replyChunk = respChunk // no processing required for all other APIs
                 textToShow += replyChunk
 
                 // Show accumulated reply chunks
@@ -3617,7 +3617,7 @@
                     } else if (caller.status != 'done') { // app waiting or sending
                         if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
                         if (caller.sender == callerAPI // app is sending from this api
-                            && textToShow.trim() != '' // empty chunk not read
+                            && textToShow.trim() != '' // empty reply chunk not read
                         ) show.reply(textToShow, footerContent)
                     }
                 } catch (err) { log.error('Error showing stream', err.message) }
