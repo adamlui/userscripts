@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.25.18
+// @version                  2025.1.25.19
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2959,7 +2959,7 @@
                 : `${prompt} //`
                     + ` ${prompts.create('language',
                             /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
-                    + ` ${prompts.create('obedience', { mods: 'all' })}`
+                    + ( api != 'ToYaml.com' ? ` ${prompts.create('obedience', { mods: 'all' })}` : '' )
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
 
