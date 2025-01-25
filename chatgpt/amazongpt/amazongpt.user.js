@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.14
+// @version                2025.1.25.15
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2525,7 +2525,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
+            return reqData
         },
 
         pick(caller) {
@@ -2619,7 +2619,7 @@
                 onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = await api.createReqData(reqAPI, msgChain)
+            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(await api.createReqData(reqAPI, msgChain))
             else if (reqMethod == 'GET') xhrConfig.url += `?q=${await api.createReqData(reqAPI, msgChain)}`
             xhr(xhrConfig)
         }
