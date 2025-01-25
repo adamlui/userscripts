@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.8
+// @version                2025.1.25.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3118,11 +3118,14 @@
         pick(caller) {
             log.caller = `get.${caller.name}() » api.pick()`
             const untriedAPIs = Object.keys(apis).filter(api =>
-                   api != ( caller == get.reply ? 'OpenAI' : '' ) // exclude OpenAI for get.reply() since Proxy Mode
-                && !caller.triedAPIs.some(entry => // exclude tried APIs
-                    Object.prototype.hasOwnProperty.call(entry, api))
-                && ( // exclude unstreamable APIs if !config.streamingDisabled
-                    config.streamingDisabled || apis[api].streamable))
+                    !caller.triedAPIs.some(entry => // exclude tried APIs
+                        Object.prototype.hasOwnProperty.call(entry, api))
+                 && caller == 'get.related' || ( // handle get.reply exclusions
+                        api != 'OpenAI' // exclude OpenAI since api.pick in get.reply only in Proxy Mode
+                     && ( // exclude unstreamable APIs if !config.streamingDisabled
+                        config.streamingDisabled || apis[api].streamable)
+                     && !( // exclude GET APIs if msg history established
+                        msgChain.length > 2 && apis[api].method == 'GET')))
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
