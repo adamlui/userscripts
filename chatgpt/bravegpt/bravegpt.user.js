@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.24.1
+// @version               2025.1.24.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2655,7 +2655,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
+                    chatTextarea.value = prompts.create({ type: 'randomQA' })
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                     show.reply.src = 'shuffle'
