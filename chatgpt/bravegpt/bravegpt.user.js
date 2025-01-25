@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.24
+// @version               2025.1.24.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2787,7 +2787,8 @@
             const promptSrc = this[type]
             const modsToApply = promptSrc.mods?.flatMap(mod =>
                 !mods.length && typeof mod == 'string' ? mod // string if no mods passed
-              : !mods.length || mods.includes(mod.type) ? mod.mods : [] // sub-array if no mods passed or includes type
+              : !mods.length || mods.includes(Object.keys(mod)[0]) ? // no mods passed or includes type
+                    Object.values(mod)[0] : [] // ...so use sub-array
             ) || []
             const promptElems = [promptSrc.base || '', ...modsToApply].map((elem, idx, array) => {
                 if (elem && !/[\n,.!]$/.test(elem)) elem += '.' // append missing punctuation
@@ -2814,7 +2815,7 @@
 
         language: {
             base: 'If I asked you to respond in a specific language,',
-            mods: [{ type: 'noChinese', mods: [ 'Do not respond in Chinese unless you were asked to!' ]}]
+            mods: [{ noChinese: [ 'Do not respond in Chinese unless you were asked to!' ]}]
         },
 
         obedience: { mods: [ 'It is imperative that you obey', 'Do not complain, you are a bot w/ no feelings' ]},
@@ -2822,20 +2823,18 @@
         randomQA: {
             base: 'Generate a single random question on any topic then answer it',
             mods: [
-                { type: 'formatting', mods: [
+                { formatting: [
                     'Try to give an answer that is 50-100 words',
                     'Do not type anything but the question and answer',
                     'Reply in markdown'
                 ]},
-                { type: 'variety', mods: [
+                { variety: [
                     'Don\'t provide a question you generated before',
                     'Don\'t talk about Canberra, Tokyo, blue whales, photosynthesis, oceans, deserts, '
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
                         + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
-                { type: 'MixerBox AI', mods: [
-                    'Don\'t talk about the benefits of practicing something regularly'
-                ]}
+                { 'MixerBox AI': [ 'Don\'t talk about the benefits of practicing something regularly' ]}
             ]
         },
 
@@ -2845,12 +2844,11 @@
                     get.related.replyIsQuestion ? 'possible answers to this question'
                                                 : 'queries related to this one' }:\n\n"\${prevQuery}"\n\n`
             },
-
             get mods() {
                 return [
                     get.related.replyIsQuestion ?
                         'Generate answers as if in reply to a search engine chatbot asking the question'
-                  : { type: 'variety', mods: [
+                  : { variety: [
                         'Make sure to suggest a variety that can even greatly deviate from the original topic',
                         'For example, if the original query asked about someone\'s wife, '
                             + 'a good related query could involve a different relative and using their name',
@@ -3410,8 +3408,8 @@
                 let replyChunk = ''
                 if (callerAPI == 'GPTforLove') { // extract parentID + deltas
                     const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
-                    if (typeof chunkObjs[0].text == 'undefined') // error response for fail flag check
-                        replyChunk = JSON.stringify(chunkObjs[0])
+                    if (typeof chunkObjs[0].text == 'undefined') // error response
+                        replyChunk = JSON.stringify(chunkObjs[0]) // for fail flag check
                     else { // AI response
                         apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
                         chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
