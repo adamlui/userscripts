@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.10
+// @version                2025.1.25.11
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2184,9 +2184,11 @@
     const prompts = {
 
         augment(prompt, { api } = {}) {
-            return `${prompt} //`
-                + ` ${prompts.create('language', /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
-                + ` ${prompts.create('humanity', { mods: 'all' })}`
+            return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
+                : `${prompt} //`
+                    + ` ${prompts.create('language',
+                            /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
+                    + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
 
         create(type, { mods } = {}) {
@@ -2502,8 +2504,7 @@
         async createReqData(api, msgs) { // returns payload for POST / query string for GET
             msgs = structuredClone(msgs) // avoid mutating global msgChain
             let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            if (api != 'GPTforLove') // augment user msg except for GPTFL since has systemMessage
-                lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             if (api == 'OpenAI') reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
                 reqData = {
