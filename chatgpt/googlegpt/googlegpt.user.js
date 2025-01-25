@@ -3381,9 +3381,9 @@
         async createReqData(api, msgs) { // returns payload for POST / query string for GET
             msgs = structuredClone(msgs) // avoid mutating global msgChain
             let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
-            if (api == 'OpenAI')
-                reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
+            if (api != 'GPTforLove') // augment user msg except for GPTFL since has systemMessage
+                lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
+            if (api == 'OpenAI') reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
                 reqData = {
                     network: true, prompt: lastUserMsg.content,
@@ -3401,7 +3401,8 @@
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
-                                 + `${prompts.create('language', { mods: 'noChinese' })} `,
+                                 + `${prompts.create('language', { mods: 'noChinese' })} `
+                                 + `${prompts.create('humanity', { mods: 'all' })} `,
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) reqData.options = { parentMessageId: apis.GPTforLove.parentID }
