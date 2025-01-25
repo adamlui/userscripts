@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.7
+// @version                2025.1.25.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2534,11 +2534,14 @@
         pick(caller) {
             log.caller = `get.${caller.name}() » api.pick()`
             const untriedAPIs = Object.keys(apis).filter(api =>
-                   api != ( caller == get.reply ? 'OpenAI' : '' ) // exclude OpenAI for get.reply() since Proxy Mode
-                && !caller.triedAPIs.some(entry => // exclude tried APIs
-                    Object.prototype.hasOwnProperty.call(entry, api))
-                && ( // exclude unstreamable APIs if !config.streamingDisabled
-                    config.streamingDisabled || apis[api].streamable))
+                    !caller.triedAPIs.some(entry => // exclude tried APIs
+                        Object.prototype.hasOwnProperty.call(entry, api))
+                 && ( // handle get.reply exclusions
+                        api != 'OpenAI' // exclude OpenAI since api.pick in get.reply only in Proxy Mode
+                     && ( // exclude unstreamable APIs if !config.streamingDisabled
+                        config.streamingDisabled || apis[api].streamable)
+                     && !( // exclude GET APIs if msg history established
+                        msgChain.length > 2 && apis[api].method == 'GET')))
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
