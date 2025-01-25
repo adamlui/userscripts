@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.4
+// @version                2025.1.25.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2674,8 +2674,7 @@
                 try {
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
-                        log.dev('Text to show', textToShow)
-                        log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        log.dev('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
                     } else if (caller.status != 'done') { // app waiting or sending
@@ -2721,8 +2720,7 @@
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response from OpenAI
                     const failMatch = failFlagsAndURLs.exec(resp.response)
                     if (failMatch) { // suggest proxy
-                        log.dev('Response text', resp.response)
-                        log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        log.dev('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         appAlert('openAInotWorking', 'suggestProxy')
                     } else {
                         try { // to show response
