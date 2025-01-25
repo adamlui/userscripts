@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.9
+// @version                2025.1.25.10
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2666,7 +2666,7 @@
     const prompts = {
 
         augment(prompt, { api } = {}) {
-            return prompt
+            return `${prompt} //`
                 + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                 + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
