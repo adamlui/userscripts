@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.25.7
+// @version               2025.1.25.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3225,7 +3225,7 @@
                 }
                 if (apis.GPTforLove.parentID) reqData.options = { parentMessageId: apis.GPTforLove.parentID }
             } else if (api == 'MixerBox AI') reqData = { model: 'gpt-3.5-turbo', prompt: msgs }
-            else if (api == 'ToYaml.com') reqData = encodeURIComponent(lastUserMsg.content)
+            else if (apis[api].method == 'GET') reqData = encodeURIComponent(lastUserMsg.content)
             return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
         },
 
