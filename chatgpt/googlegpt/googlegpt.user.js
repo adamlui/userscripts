@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.24.4
+// @version                  2025.1.25
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2957,7 +2957,7 @@
 
         augment(prompt) { return `${prompt} {{reply in the language ${config.replyLang}}}` },
 
-        create(type, { mods, prevQuery }) {
+        create(type, { mods, prevQuery } = {}) {
             mods = [].concat(mods || []) // normalize mods into array
             const promptSrc = this[type]
             const modsToApply = promptSrc.mods?.flatMap(mod =>
