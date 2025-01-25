@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.24.2
+// @version                2025.1.24.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2060,7 +2060,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
+                    chatTextarea.value = prompts.create({ type: 'randomQA' })
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                 }
