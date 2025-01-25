@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.25.13
+// @version               2025.1.25.14
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3202,32 +3202,27 @@
 
         async createReqData(api, msgs) { // returns payload for POST / query string for GET
             msgs = structuredClone(msgs) // avoid mutating global msgChain
-            let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
+            const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
-            if (api == 'OpenAI') reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
-            else if (api == 'AIchatOS')
-                reqData = {
+            const reqData = api == 'OpenAI' ? { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
+              : api == 'AIchatOS' ? {
                     network: true, prompt: lastUserMsg.content,
                     userId: apis.AIchatOS.userID, withoutContext: false
-                }
-            else if (api == 'FREEGPT')
-                reqData = {
+            } : api == 'FREEGPT' ? {
                     messages: msgs, pass: null,
                     sign: await crypto.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
                     time: time
-                }
-            else if (api == 'GPTforLove') {
-                reqData = {
+            } : api == 'GPTforLove' ? {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
                                  + `${prompts.create('language', { mods: 'noChinese' })} `
                                  + `${prompts.create('humanity', { mods: 'all' })} `,
                     temperature: 0.8, top_p: 1
-                }
-                if (apis.GPTforLove.parentID) reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            } else if (api == 'MixerBox AI') reqData = { model: 'gpt-3.5-turbo', prompt: msgs }
-            else if (apis[api].method == 'GET') reqData = encodeURIComponent(lastUserMsg.content)
+            } : api == 'MixerBox AI' ? { model: 'gpt-3.5-turbo', prompt: msgs }
+              : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
+            if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
+                reqData.options = { parentMessageId: apis.GPTforLove.parentID }
             return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
         },
 
