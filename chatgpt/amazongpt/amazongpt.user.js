@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.17
+// @version                2025.1.25.18
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2189,7 +2189,7 @@
                 : `${prompt} //`
                     + ` ${prompts.create('language',
                             /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
-                    + ` ${prompts.create('obedience', { mods: 'all' })}`
+                    + ( api != 'ToYaml.com' ? ` ${prompts.create('obedience', { mods: 'all' })}` : '' )
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
 
