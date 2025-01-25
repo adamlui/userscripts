@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.18
+// @version                2025.1.25.19
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2539,10 +2539,10 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
+                    show.reply.src = 'shuffle'
                     chatTextarea.value = prompts.create('randomQA', { mods: 'all' })
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
-                    show.reply.src = 'shuffle'
                 }
                 if (!env.browser.isMobile) // add hover listener for tooltips
                     btn.onmouseenter = btn.onmouseleave = toggle.tooltip
@@ -3121,8 +3121,8 @@
                         api != 'OpenAI' // exclude OpenAI since api.pick in get.reply only in Proxy Mode
                      && ( // exclude unstreamable APIs if !config.streamingDisabled
                         config.streamingDisabled || apis[api].streamable)
-                     && !( // exclude GET APIs if msg history established
-                        msgChain.length > 2 && apis[api].method == 'GET')))
+                     && !( // exclude GET APIs if msg history established while not shuffling
+                        apis[api].method == 'GET' && show.reply.src != 'shuffle' && msgChain.length > 2)))
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
