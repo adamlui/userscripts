@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.24.3
+// @version                  2025.1.24.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2972,7 +2972,7 @@
                 return elem
             })
             let builtPrompt = promptElems.join(' ').trim()
-            if (prevQuery) builtPrompt = builtPrompt.replace('${prevQuery}', prevQuery)
+            if (prevQuery) builtPrompt = builtPrompt.replace('%prevQuery%', prevQuery)
             return builtPrompt
         },
 
@@ -3017,7 +3017,7 @@
             get base() {
                 return `Print me a numbered list of ${
                     get.related.replyIsQuestion ? 'possible answers to this question'
-                                                : 'queries related to this one' }:\n\n"\${prevQuery}"\n\n`
+                                                : 'queries related to this one' }:\n\n"%prevQuery%"\n\n`
             },
             get mods() {
                 return [
