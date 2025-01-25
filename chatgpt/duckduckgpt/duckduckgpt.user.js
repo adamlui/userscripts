@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.12
+// @version                2025.1.25.13
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2666,9 +2666,11 @@
     const prompts = {
 
         augment(prompt, { api } = {}) {
-            return `${prompt} //`
-                + ` ${prompts.create('language', /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
-                + ` ${prompts.create('humanity', { mods: 'all' })}`
+            return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
+                : `${prompt} //`
+                    + ` ${prompts.create('language',
+                            /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
+                    + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
 
         create(type, { mods, prevQuery } = {}) {
@@ -3086,8 +3088,7 @@
         async createReqData(api, msgs) { // returns payload for POST / query string for GET
             msgs = structuredClone(msgs) // avoid mutating global msgChain
             let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            if (api != 'GPTforLove') // augment user msg except for GPTFL since has systemMessage
-                lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             if (api == 'OpenAI') reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
                 reqData = {
