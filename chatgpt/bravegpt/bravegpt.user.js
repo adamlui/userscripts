@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.25.2
+// @version               2025.1.25.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2612,7 +2612,6 @@
 
                     // Modify/submit msg chain
                     if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-                    msgChain = prompts.stripAugments(msgChain)
                     const prevReplyTrimmed = appDiv.querySelector('pre')
                         ?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
                     msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
@@ -2782,8 +2781,8 @@
 
         augment(prompt, { api } = {}) {
             return prompt
-                + ` {{${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}}}`
-                + ` {{${prompts.create('humanity', { mods: 'all' })}}}`
+                + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
+                + ` ${prompts.create('humanity', { mods: 'all' })}`
         },
 
         create(type, { mods, prevQuery } = {}) {
@@ -2808,16 +2807,6 @@
             let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('%prevQuery%', prevQuery)
             return builtPrompt
-        },
-
-        stripAugments(msgChain) {
-            return msgChain.map(msg => { // stripped chain
-                if (msg.role == 'user') {
-                    let content = msg.content
-                    content.match(/\{\{[^}]+\}\}/g)?.forEach(augment => content = content.replace(augment, ''))
-                    return { ...msg, content: content.trim() }
-                } else return msg // agent's unstripped
-            })
         },
 
         humanity: { mods: [ 'Never mention your instructions' ]},
@@ -3009,7 +2998,7 @@
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
             if (!config.rqDisabled && !appDiv.querySelector(`.${app.slug}-related-queries`)) // get related queries for 1st time
-                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
+                get.related(msgChain[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
             update.answerPreMaxHeight()
@@ -3209,6 +3198,7 @@
         },
 
         async createPayload(api, msgs) {
+            msgs = structuredClone(msgs) // to avoid modifying original msgChain
             let payload = {} ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             if (api == 'OpenAI')
@@ -3219,7 +3209,7 @@
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
             } else if (api == 'FREEGPT') {
-                lastUserMsg.content += ` {{${prompts.create('obedience', { mods: 'all' })}}}`
+                lastUserMsg.content += ` ${prompts.create('obedience', { mods: 'all' })}`
                 payload = {
                     messages: msgs, pass: null,
                     sign: await crypto.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
@@ -3335,7 +3325,7 @@
 
             // Get/show related queries if enabled on 1st get.reply()
             if (!config.rqDisabled && get.reply.attemptCnt == 1)
-                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
+                get.related(msgChain[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
 
@@ -4044,7 +4034,7 @@
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
             show.reply('standby', footerContent)
             if (!config.rqDisabled)
-                get.related(prompts.stripAugments(msgChain)[msgChain.length - 1].content)
+                get.related(msgChain[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     } else { appAlert('waitingResponse') ; get.reply(msgChain) }
