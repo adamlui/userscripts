@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.4
+// @version                2025.1.25.5
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3242,9 +3242,8 @@
             }, 7000)
 
             // Get related queries
-            const rqPrompt = prompts.augment(prompts.create('relatedQueries',
-                { prevQuery: query, mods: 'all' }), { api: get.related.api })
-            const payload = await api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
+            const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' }),
+                  reqData = await api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
                 const xhrConfig = {
@@ -3253,8 +3252,8 @@
                     onload: resp => dataProcess.text(resp, { caller: get.related, callerAPI: reqAPI }).then(resolve),
                     url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
                 }
-                if (reqMethod == 'POST') xhrConfig.data = payload
-                else if (reqMethod == 'GET') xhrConfig.url += `?q=${rqPrompt}`
+                if (reqMethod == 'POST') xhrConfig.data = reqData
+                else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
                 xhr(xhrConfig)
             })
         }
