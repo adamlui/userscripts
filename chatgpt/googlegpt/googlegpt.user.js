@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.24.1
+// @version                  2025.1.24.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2829,7 +2829,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = prompts.augment(prompts.create({ type: 'randomQA' }))
+                    chatTextarea.value = prompts.create({ type: 'randomQA' })
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                     show.reply.src = 'shuffle'
