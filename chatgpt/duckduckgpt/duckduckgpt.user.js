@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.7
+// @version                2025.1.25.8
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3111,7 +3111,7 @@
                 }
                 if (apis.GPTforLove.parentID) reqData.options = { parentMessageId: apis.GPTforLove.parentID }
             } else if (api == 'MixerBox AI') reqData = { model: 'gpt-3.5-turbo', prompt: msgs }
-            else if (api == 'ToYaml.com') reqData = encodeURIComponent(lastUserMsg.content)
+            else if (apis[api].method == 'GET') reqData = encodeURIComponent(lastUserMsg.content)
             return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
         },
 
