@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.25.12
+// @version                  2025.1.25.13
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2960,6 +2960,7 @@
                     + ` ${prompts.create('language',
                             /FREEGPT|ToYaml\.com/.test(api) ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
+                    + ( api == 'FREEGPT' ? ` ${prompts.create('obedience', { mods: 'all' })}` : '' )
         },
 
         create(type, { mods, prevQuery } = {}) {
@@ -3385,19 +3386,18 @@
             let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             if (api == 'OpenAI') reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
-            else if (api == 'AIchatOS') {
+            else if (api == 'AIchatOS')
                 reqData = {
                     network: true, prompt: lastUserMsg.content,
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
-            } else if (api == 'FREEGPT') {
-                lastUserMsg.content += ` ${prompts.create('obedience', { mods: 'all' })}`
+            else if (api == 'FREEGPT')
                 reqData = {
                     messages: msgs, pass: null,
                     sign: await crypto.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
                     time: time
                 }
-            } else if (api == 'GPTforLove') {
+            else if (api == 'GPTforLove') {
                 reqData = {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
