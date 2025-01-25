@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.25.15
+// @version               2025.1.25.16
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3223,7 +3223,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
+            return reqData
         },
 
         pick(caller) {
@@ -3318,7 +3318,7 @@
                 onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = await api.createReqData(reqAPI, msgChain)
+            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(await api.createReqData(reqAPI, msgChain))
             else if (reqMethod == 'GET') xhrConfig.url += `?q=${await api.createReqData(reqAPI, msgChain)}`
             xhr(xhrConfig)
 
@@ -3358,8 +3358,9 @@
             }, 7000)
 
             // Get related queries
-            const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' }),
-                  reqData = await api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
+            const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
+            const reqData = JSON.stringify(
+                await api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }]))
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
                 const xhrConfig = {
