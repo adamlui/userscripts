@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.24
+// @version                2025.1.24.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2660,10 +2660,12 @@
                 let replyChunk = ''
                 if (callerAPI == 'GPTforLove') { // extract parentID + deltas
                     const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
-                    apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
-                    chunkObjs.forEach(obj => // accumulate replyChunk
-                        replyChunk += obj.delta // AI reply text
-                                   || JSON.stringify(obj)) // error response for fail flag check
+                    if (typeof chunkObjs[0].text == 'undefined') // error response for fail flag check
+                        replyChunk = JSON.stringify(chunkObjs[0])
+                    else { // AI response
+                        apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
+                        chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
+                    }
                 } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
                     replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
                         .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
