@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.25.5
+// @version               2025.1.25.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3424,8 +3424,7 @@
                 try {
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
-                        log.dev('Text to show', textToShow)
-                        log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        log.dev('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
                     } else if (caller.status != 'done') { // app waiting or sending
@@ -3471,8 +3470,7 @@
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response or return RQs from OpenAI
                     const failMatch = failFlagsAndURLs.exec(resp.response)
                     if (failMatch) { // suggest proxy or try diff API
-                        log.dev('Response text', resp.response)
-                        log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        log.dev('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
                         else api.tryNew(caller)
                     } else {
