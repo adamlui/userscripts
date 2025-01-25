@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.24.2
+// @version                2025.1.24.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2540,7 +2540,7 @@
             // Add button listeners
             appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
                 if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    chatTextarea.value = prompts.create({ type: 'randomQA' })
+                    chatTextarea.value = prompts.create('randomQA')
                     chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
                         { key: 'Enter', bubbles: true, cancelable: true }))
                     show.reply.src = 'shuffle'
@@ -2668,7 +2668,7 @@
 
         augment(prompt) { return `${prompt} {{reply in the language ${config.replyLang}}}` },
 
-        create({ type, mods, prevQuery }) {
+        create(type, { mods, prevQuery }) {
             mods = [].concat(mods || []) // normalize mods into array
             const promptSrc = this[type]
             const modsToApply = promptSrc.mods?.flatMap(mod =>
@@ -3087,7 +3087,7 @@
 
         async createPayload(api, msgs) {
             let payload = {} ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content += ` {{${prompts.create({ type: 'humanity' })}}}`
+            lastUserMsg.content += ` {{${prompts.create('humanity')}}}`
             if (api == 'OpenAI')
                 payload = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
@@ -3096,8 +3096,8 @@
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
             } else if (api == 'FREEGPT') {
-                lastUserMsg.content += ` {{${prompts.create({ type: 'language', mods: 'noChinese' })}}}`
-                                     + ` {{${prompts.create({ type: 'obedience' })}}}`
+                lastUserMsg.content += ` {{${prompts.create('language', { mods: 'noChinese' })}}}`
+                                     + ` {{${prompts.create('obedience')}}}`
                 payload = {
                     messages: msgs, pass: null,
                     sign: await crypto.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
@@ -3108,7 +3108,7 @@
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
-                                 + `${prompts.create({ type: 'language', mods: 'noChinese' })} `,
+                                 + `${prompts.create('language', { mods: 'noChinese' })} `,
                     temperature: 0.8, top_p: 1
                 }
                 if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
@@ -3245,7 +3245,7 @@
             }, 7000)
 
             // Get related queries
-            const rqPrompt = prompts.augment(prompts.create({ type: 'relatedQueries', prevQuery: query })),
+            const rqPrompt = prompts.augment(prompts.create('relatedQueries', { prevQuery: query })),
                   payload = await api.createPayload(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
