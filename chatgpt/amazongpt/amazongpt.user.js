@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.3
+// @version                2025.1.25.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2499,36 +2499,36 @@
             return headers
         },
 
-        async createPayload(api, msgs) {
-            msgs = structuredClone(msgs) // to avoid modifying original msgChain
-            let payload = {} ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
+        async createReqData(api, msgs) { // returns payload for POST / query string for GET
+            msgs = structuredClone(msgs) // avoid mutating global msgChain
+            let reqData ; const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             if (api == 'OpenAI')
-                payload = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
+                reqData = { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
             else if (api == 'AIchatOS') {
-                payload = {
+                reqData = {
                     network: true, prompt: lastUserMsg.content,
                     userId: apis.AIchatOS.userID, withoutContext: false
                 }
             } else if (api == 'FREEGPT') {
                 lastUserMsg.content += ` ${prompts.create('obedience', { mods: 'all' })}`
-                payload = {
+                reqData = {
                     messages: msgs, pass: null,
                     sign: await crypto.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
                     time: time
                 }
             } else if (api == 'GPTforLove') {
-                payload = {
+                reqData = {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
                     systemMessage: 'You are ChatGPT, the version is GPT-4o, a large language model trained by OpenAI. '
                                  + 'Follow the user\'s instructions carefully. '
                                  + `${prompts.create('language', { mods: 'noChinese' })} `,
                     temperature: 0.8, top_p: 1
                 }
-                if (apis.GPTforLove.parentID) payload.options = { parentMessageId: apis.GPTforLove.parentID }
-            } else if (api == 'MixerBox AI')
-                payload = { model: 'gpt-3.5-turbo', prompt: msgs }
-            return JSON.stringify(payload)
+                if (apis.GPTforLove.parentID) reqData.options = { parentMessageId: apis.GPTforLove.parentID }
+            } else if (api == 'MixerBox AI') reqData = { model: 'gpt-3.5-turbo', prompt: msgs }
+            else if (api == 'ToYaml.com') reqData = encodeURIComponent(lastUserMsg.content)
+            return typeof reqData == 'string' ? reqData : JSON.stringify(reqData)
         },
 
         pick(caller) {
@@ -2619,9 +2619,8 @@
                 onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = await api.createPayload(reqAPI, msgChain)
-            else if (reqMethod == 'GET')
-                xhrConfig.url += `?q=${encodeURIComponent(msgChain[msgChain.length -1].content)}`
+            if (reqMethod == 'POST') xhrConfig.data = await api.createReqData(reqAPI, msgChain)
+            else if (reqMethod == 'GET') xhrConfig.url += `?q=${await api.createReqData(reqAPI, msgChain)}`
             xhr(xhrConfig)
         }
     }
