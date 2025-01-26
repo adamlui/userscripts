@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.9
+// @version                2025.1.26.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2727,16 +2727,10 @@
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response from OpenAI
-                    const failMatch = reFailFlags?.exec(resp.response)
-                    if (failMatch) { // suggest proxy
-                        log.debug('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
-                        appAlert('openAInotWorking', 'suggestProxy')
-                    } else {
-                        try { // to show response
-                            textToShow = JSON.parse(resp.response).choices[0].message.content
-                            handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    }
+                    try { // to show response
+                        textToShow = JSON.parse(resp.response).choices[0].message.content
+                        handleProcessCompletion()
+                    } catch (err) { handleProcessError(err) }
                 } else if (resp.responseText) { // show response from proxy API
                     if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
