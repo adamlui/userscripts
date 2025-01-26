@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.6
+// @version                2025.1.26.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3088,6 +3088,7 @@
         },
 
         async createReqData(api, msgs) { // returns payload for POST / query string for GET
+            log.caller = `api.createReqData('${api}', msgs)`
             msgs = structuredClone(msgs) // avoid mutating global msgChain
             const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
@@ -3110,7 +3111,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            return reqData
+            log.dev(reqData) ; return reqData
         },
 
         pick(caller) {
