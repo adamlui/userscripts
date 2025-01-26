@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.11
+// @version                2025.1.26.12
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2552,6 +2552,150 @@
             return chosenAPI
         },
 
+        process: {
+            initFailFlags(api) { return apis[api].respPatterns?.fail ? new RegExp(apis[api].respPatterns.fail) : null },
+
+            stream(resp, { caller, callerAPI }) {
+                if (config.streamingDisabled || !config.proxyAPIenabled) return
+                log.caller = `get.${caller.name}() » api.process.stream()`
+                const reader = resp.response.getReader(), reFailFlags = this.initFailFlags(callerAPI)
+                let textToShow = '', isDone = false
+                reader.read().then(chunk => handleChunk(chunk, callerAPI))
+                    .catch(err => log.error('Error processing stream', err.message))
+
+                function handleChunk({ done, value }, callerAPI) {
+
+                    // Handle stream done
+                    const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
+                    if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
+                        return handleProcessCompletion()
+                    if (env.browser.isChromium) { // clear/add timeout since Chromium stream reader doesn't signal done
+                        clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
+
+                    // Process/accumulate reply chunk
+                    if (!apis[callerAPI].parsingRequired) textToShow += respChunk
+                    else { // parse structured chunk(s)
+                        let replyChunk = ''
+                        if (callerAPI == 'GPTforLove') { // extract parentID + deltas
+                            const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
+                            if (typeof chunkObjs[0].text == 'undefined') // error response
+                                replyChunk = JSON.stringify(chunkObjs[0]) // for fail flag check
+                            else { // AI response
+                                apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
+                                chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
+                            }
+                        } else if (callerAPI == 'MixerBox AI') // extract/normalize AI reply data
+                            replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
+                                .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                                .map(match => // normalize whitespace
+                                    match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                .join('') // stringify AI reply text
+                        textToShow += replyChunk
+                        if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
+                    }
+
+                    // Show accumulated reply chunks
+                    try {
+                        const failMatch = reFailFlags?.exec(textToShow)
+                        if (failMatch) {
+                            log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
+                            if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
+                            if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
+                            return
+                        } else if (caller.status != 'done') { // app waiting or sending
+                            if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
+                            if (caller.sender == callerAPI // app is sending from this api
+                                && textToShow.trim() != '' // empty reply chunk not read
+                            ) show.reply(textToShow)
+                        }
+                    } catch (err) { log.error('Error showing stream', err.message) }
+
+                    // handleProcessCompletion() or read next chunk
+                    return isDone ? handleProcessCompletion() // from API's custom signal
+                        : reader.read().then(({ done, value }) => {
+                            if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
+                            else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
+                        }).catch(err => log.error('Error reading stream', err.message))
+                }
+
+                function handleProcessCompletion() {
+                    caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
+                    if (appDiv.querySelector('.loading')) // no text shown
+                        api.tryNew(caller)
+                    else { // text was shown
+                        caller.status = 'done' ; caller.attemptCnt = null
+                        show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
+                    }
+                }
+            },
+
+            text(resp, { caller, callerAPI }) {
+                return new Promise(() => {
+                    if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
+                        || caller.status == 'done') return
+                    log.caller = `get.${caller.name}() » api.process.text()`
+                    const reFailFlags = this.initFailFlags(callerAPI) ; let textToShow = ''
+                    if (resp.status != 200) {
+                        log.error('Response status', resp.status)
+                        log.info('Response text', resp.response || resp.responseText)
+                        if (caller == get.reply && callerAPI == 'OpenAI')
+                            appAlert(resp.status == 401 ? 'login'
+                                   : resp.status == 403 ? 'checkCloudflare'
+                                   : resp.status == 429 ? ['tooManyRequests', 'suggestProxy']
+                                                        : ['openAInotWorking', 'suggestProxy'] )
+                        else api.tryNew(caller)
+                    } else if (callerAPI == 'OpenAI' && resp.response) { // show response from OpenAI
+                        try { // to show response
+                            textToShow = JSON.parse(resp.response).choices[0].message.content
+                            handleProcessCompletion()
+                        } catch (err) { handleProcessError(err) }
+                    } else if (resp.responseText) { // show response from proxy API
+                        if (!apis[callerAPI].parsingRequired) {
+                            textToShow = resp.responseText ; handleProcessCompletion() }
+                        else { // parse structured responseText
+                            if (callerAPI == 'GPTforLove') {
+                                try {
+                                    const chunkLines = resp.responseText.trim().split('\n'),
+                                        lastChunkObj = JSON.parse(chunkLines[chunkLines.length -1])
+                                    apis.GPTforLove.parentID = lastChunkObj.id || null
+                                    textToShow = lastChunkObj.text ; handleProcessCompletion()
+                                } catch (err) { handleProcessError(err) }
+                            } else if (callerAPI == 'MixerBox AI') {
+                                try {
+                                    textToShow = [...resp.responseText.matchAll(/data:(.*)/g)] // arrayify data
+                                        .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                                        .map(match => // normalize whitespace
+                                            match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                        .join('') // stringify AI reply text
+                                    handleProcessCompletion()
+                                } catch (err) { handleProcessError(err) }
+                            }
+                        }
+                    } else if (caller.status != 'done') { // proxy 200 response failure
+                        log.info('Response text', resp.responseText) ; api.tryNew(caller) }
+
+                    function handleProcessCompletion() {
+                        if (caller.status != 'done') {
+                            log.debug('Text to show', textToShow)
+                            const failMatch = reFailFlags?.exec(textToShow)
+                            if (!textToShow || failMatch) {
+                                if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                api.tryNew(caller)
+                            } else {
+                                caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
+                                textToShow = textToShow.replace(apis[callerAPI].respPatterns?.watermark, '').trim()
+                                show.reply(textToShow) ; show.replyCornerBtns()
+                    }}}
+
+                    function handleProcessError(err) { // suggest proxy or try diff API
+                        log.debug('Response text', resp.response)
+                        log.error(app.alerts.parseFailed, err)
+                        if (caller.api == 'OpenAI' && caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
+                        else api.tryNew(caller)
+                    }
+            })}
+        },
+
         tryNew(caller, reason = 'err') {
             log.caller = `get.${caller.name}() » api.tryNew()`
             if (caller.status == 'done') return
@@ -2621,160 +2765,14 @@
                         appAlert(!config.openAIkey ? 'login' : ['openAInotWorking', 'suggestProxy'])
                     else api.tryNew(get.reply)
                 },
-                onload: resp => dataProcess.text(resp, { caller: get.reply, callerAPI: reqAPI }),
-                onloadstart: resp => dataProcess.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
+                onload: resp => api.process.text(resp, { caller: get.reply, callerAPI: reqAPI }),
+                onloadstart: resp => api.process.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
             if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(await api.createReqData(reqAPI, msgChain))
             else if (reqMethod == 'GET') xhrConfig.url += `?q=${await api.createReqData(reqAPI, msgChain)}`
             xhr(xhrConfig)
         }
-    }
-
-    // Define PROCESS functions
-
-    const dataProcess = {
-
-        initFailFlags(api) { return apis[api].respPatterns?.fail ? new RegExp(apis[api].respPatterns.fail) : null },
-
-        stream(resp, { caller, callerAPI }) {
-            if (config.streamingDisabled || !config.proxyAPIenabled) return
-            log.caller = `get.${caller.name}() » dataProcess.stream()`
-            const reader = resp.response.getReader(), reFailFlags = this.initFailFlags(callerAPI)
-            let textToShow = '', isDone = false
-            reader.read().then(chunk => handleChunk(chunk, callerAPI))
-                .catch(err => log.error('Error processing stream', err.message))
-
-            function handleChunk({ done, value }, callerAPI) {
-
-                // Handle stream done
-                const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
-                    return handleProcessCompletion()
-                if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
-                    clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
-
-                // Process/accumulate reply chunk
-                if (!apis[callerAPI].parsingRequired) textToShow += respChunk
-                else { // parse structured chunk(s)
-                    let replyChunk = ''
-                    if (callerAPI == 'GPTforLove') { // extract parentID + deltas
-                        const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
-                        if (typeof chunkObjs[0].text == 'undefined') // error response
-                            replyChunk = JSON.stringify(chunkObjs[0]) // for fail flag check
-                        else { // AI response
-                            apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
-                            chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
-                        }
-                    } else if (callerAPI == 'MixerBox AI') // extract/normalize AI reply data
-                        replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
-                            .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
-                            .map(match => // normalize whitespace
-                                match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                            .join('') // stringify AI reply text
-                    textToShow += replyChunk
-                    if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
-                }
-
-                // Show accumulated reply chunks
-                try {
-                    const failMatch = reFailFlags?.exec(textToShow)
-                    if (failMatch) {
-                        log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
-                        if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                        if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
-                        return
-                    } else if (caller.status != 'done') { // app waiting or sending
-                        if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
-                        if (caller.sender == callerAPI // app is sending from this api
-                            && textToShow.trim() != '' // empty reply chunk not read
-                        ) show.reply(textToShow)
-                    }
-                } catch (err) { log.error('Error showing stream', err.message) }
-
-                // handleProcessCompletion() or read next chunk
-                return isDone ? handleProcessCompletion() // from API's custom signal
-                    : reader.read().then(({ done, value }) => {
-                        if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
-                        else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                    }).catch(err => log.error('Error reading stream', err.message))
-            }
-
-            function handleProcessCompletion() {
-                caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
-                if (appDiv.querySelector('.loading')) // no text shown
-                    api.tryNew(caller)
-                else { // text was shown
-                    caller.status = 'done' ; caller.attemptCnt = null
-                    show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
-                }
-            }
-        },
-
-        text(resp, { caller, callerAPI }) {
-            return new Promise(() => {
-                if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
-                    || caller.status == 'done') return
-                log.caller = `get.${caller.name}() » dataProcess.text()`
-                const reFailFlags = this.initFailFlags(callerAPI) ; let textToShow = ''
-                if (resp.status != 200) {
-                    log.error('Response status', resp.status)
-                    log.info('Response text', resp.response || resp.responseText)
-                    if (caller == get.reply && callerAPI == 'OpenAI')
-                        appAlert(resp.status == 401 ? 'login'
-                               : resp.status == 403 ? 'checkCloudflare'
-                               : resp.status == 429 ? ['tooManyRequests', 'suggestProxy']
-                                                    : ['openAInotWorking', 'suggestProxy'] )
-                    else api.tryNew(caller)
-                } else if (callerAPI == 'OpenAI' && resp.response) { // show response from OpenAI
-                    try { // to show response
-                        textToShow = JSON.parse(resp.response).choices[0].message.content
-                        handleProcessCompletion()
-                    } catch (err) { handleProcessError(err) }
-                } else if (resp.responseText) { // show response from proxy API
-                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
-                    else { // parse structured responseText
-                        if (callerAPI == 'GPTforLove') {
-                            try {
-                                const chunkLines = resp.responseText.trim().split('\n'),
-                                    lastChunkObj = JSON.parse(chunkLines[chunkLines.length -1])
-                                apis.GPTforLove.parentID = lastChunkObj.id || null
-                                textToShow = lastChunkObj.text ; handleProcessCompletion()
-                            } catch (err) { handleProcessError(err) }
-                        } else if (callerAPI == 'MixerBox AI') {
-                            try {
-                                textToShow = [...resp.responseText.matchAll(/data:(.*)/g)] // arrayify data
-                                    .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
-                                    .map(match => // normalize whitespace
-                                        match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                    .join('') // stringify AI reply text
-                                handleProcessCompletion()
-                            } catch (err) { handleProcessError(err) }
-                        }
-                    }
-                } else if (caller.status != 'done') { // proxy 200 response failure
-                    log.info('Response text', resp.responseText) ; api.tryNew(caller) }
-
-                function handleProcessCompletion() {
-                    if (caller.status != 'done') {
-                        log.debug('Text to show', textToShow)
-                        const failMatch = reFailFlags?.exec(textToShow)
-                        if (!textToShow || failMatch) {
-                            if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
-                            api.tryNew(caller)
-                        } else {
-                            caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
-                            textToShow = textToShow.replace(apis[callerAPI].respPatterns?.watermark, '').trim()
-                            show.reply(textToShow) ; show.replyCornerBtns()
-                }}}
-
-                function handleProcessError(err) { // suggest proxy or try diff API
-                    log.debug('Response text', resp.response)
-                    log.error(app.alerts.parseFailed, err)
-                    if (caller.api == 'OpenAI' && caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
-                    else api.tryNew(caller)
-                }
-        })}
     }
 
     // Define SHOW functions
