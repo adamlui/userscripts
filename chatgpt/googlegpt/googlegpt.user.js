@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.26.2
+// @version                  2025.1.26.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3671,7 +3671,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response or return RQs from proxy API
-                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion }
+                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
                         if (callerAPI == 'GPTforLove') {
                             try {
