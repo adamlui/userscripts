@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.26.4
+// @version                  2025.1.26.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3597,13 +3597,13 @@
                             apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
                             chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
                         }
-                    } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
+                    } else if (callerAPI == 'MixerBox AI') // extract/normalize AI reply data
                         replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
                             .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
                             .map(match => // normalize whitespace
                                 match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                             .join('') // stringify AI reply text
-                    } textToShow += replyChunk
+                    textToShow += replyChunk
                     if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
                 }
 
