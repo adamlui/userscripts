@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.2
+// @version                2025.1.26.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2739,7 +2739,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response from proxy API
-                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion }
+                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
                         if (callerAPI == 'GPTforLove') {
                             try {
