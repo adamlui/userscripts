@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.18
+// @version                2025.1.25.19
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2676,6 +2676,7 @@
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
                         log.dev('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
                     } else if (caller.status != 'done') { // app waiting or sending
@@ -2688,7 +2689,8 @@
 
                 // Read next chunk, process if designated sender
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI)
+                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI) // recurse
+                    else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
