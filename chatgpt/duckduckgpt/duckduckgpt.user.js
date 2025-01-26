@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26
+// @version                2025.1.26.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -380,7 +380,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=b7a8a8b',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=b529a64',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
@@ -3265,9 +3265,9 @@
     const dataProcess = {
 
         initFailFlags(api) { // escape/merge URLs w/ fail flags
-            const { failFlags = [], endpoint = apis[api].endpoints.completions, expectedOrigin } = apis[api],
+            const { respPatterns = {}, endpoint = apis[api].endpoints.completions, expectedOrigin } = apis[api],
                   escapedAPIurls = [endpoint, expectedOrigin.url].map(url => url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-            return new RegExp([...failFlags, ...escapedAPIurls].join('|'))
+            return new RegExp([respPatterns.fail, ...escapedAPIurls].filter(Boolean).join('|'))
         },
 
         stream(resp, { caller, callerAPI }) {
@@ -3283,7 +3283,8 @@
 
                 // Handle stream done
                 const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
-                if (done || respChunk.includes(apis[callerAPI].watermark)) return handleProcessCompletion()
+                if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
+                    return handleProcessCompletion()
                 if (env.browser.isChromium) { // clear/add timeout since ReadableStream.getReader() doesn't signal done
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
