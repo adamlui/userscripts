@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.25.20
+// @version                  2025.1.25.21
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3572,10 +3572,10 @@
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
                   reader = resp.response.getReader() ; let textToShow = ''
-            reader.read().then(result => processStreamText(result, callerAPI))
+            reader.read().then(chunk => handleChunk(chunk, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
-            function processStreamText({ done, value }, callerAPI) {
+            function handleChunk({ done, value }, callerAPI) {
 
                 // Handle stream done
                 const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -3620,7 +3620,7 @@
 
                 // Read next chunk, process if designated sender
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI) // recurse
+                    if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
                     else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                 }).catch(err => log.error('Error reading stream', err.message))
             }
