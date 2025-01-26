@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.4
+// @version                2025.1.26.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2666,13 +2666,13 @@
                             apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
                             chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
                         }
-                    } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
+                    } else if (callerAPI == 'MixerBox AI') // extract/normalize AI reply data
                         replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
                             .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
                             .map(match => // normalize whitespace
                                 match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                             .join('') // stringify AI reply text
-                    } textToShow += replyChunk
+                    textToShow += replyChunk
                     if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
                 }
 
