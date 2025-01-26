@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.26.9
+// @version               2025.1.26.10
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3477,17 +3477,10 @@
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response or return RQs from OpenAI
-                    const failMatch = reFailFlags?.exec(resp.response)
-                    if (failMatch) { // suggest proxy or try diff API
-                        log.debug('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
-                        if (caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
-                        else api.tryNew(caller)
-                    } else {
-                        try { // to show response or return RQs
-                            textToShow = JSON.parse(resp.response).choices[0].message.content
-                            handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    }
+                    try { // to show response or return RQs
+                        textToShow = JSON.parse(resp.response).choices[0].message.content
+                        handleProcessCompletion()
+                    } catch (err) { handleProcessError(err) }
                 } else if (resp.responseText) { // show response or return RQs from proxy API
                     if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
