@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.20
+// @version                2025.1.25.21
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2945,7 +2945,7 @@
                 const switchPhrase = app.msgs.alert_switchingOn
                 msg = msg.replace(switchPhrase, `<a class="alert-link" href="#">${switchPhrase}</a>`)
                 const alert = modals.alert(`${app.msgs.mode_streaming} ${app.msgs.alert_unavailable}`, msg)
-                alert.querySelector('[href=#]').onclick = () => {
+                alert.querySelector('[href="#"]').onclick = () => {
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
                 settings.save('streamingDisabled', !config.streamingDisabled)
