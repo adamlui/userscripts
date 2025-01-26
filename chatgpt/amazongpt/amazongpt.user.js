@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.19
+// @version                2025.1.25.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2641,10 +2641,10 @@
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
                   reader = resp.response.getReader() ; let textToShow = ''
-            reader.read().then(result => processStreamText(result, callerAPI))
+            reader.read().then(chunk => handleChunk(chunk, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
-            function processStreamText({ done, value }, callerAPI) {
+            function handleChunk({ done, value }, callerAPI) {
 
                 // Handle stream done
                 const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
@@ -2689,7 +2689,7 @@
 
                 // Read next chunk, process if designated sender
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI) // recurse
+                    if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
                     else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                 }).catch(err => log.error('Error reading stream', err.message))
             }
