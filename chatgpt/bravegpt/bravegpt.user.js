@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.26.5
+// @version               2025.1.26.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2835,7 +2835,8 @@
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
                         + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
-                { 'MixerBox AI': [ 'Don\'t talk about the benefits of practicing something regularly' ]}
+                { 'MixerBox AI': [ 'Don\'t talk about the benefits of practicing something regularly' ]},
+                { adherence: [ 'Remember to give both the question and answer' ]}
             ]
         },
 
