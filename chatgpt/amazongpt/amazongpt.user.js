@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.5
+// @version                2025.1.26.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2252,7 +2252,8 @@
                         + 'mindfulness meditation, the Fibonacci sequence, the liver, Jupiter, '
                         + 'the Great Wall of China, Shakespeare, or da Vinci'
                 ]},
-                { 'MixerBox AI': [ 'Don\'t talk about the benefits of practicing something regularly' ]}
+                { 'MixerBox AI': [ 'Don\'t talk about the benefits of practicing something regularly' ]},
+                { adherence: [ 'Remember to give both the question and answer' ]}
             ]
         }
     }
