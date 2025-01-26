@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.12
+// @version                2025.1.26.13
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -134,7 +134,8 @@
         },
         latestResourceCommitHash: 'fe71878' // for cached messages.json
     }
-    app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh') + `@${app.latestResourceCommitHash}`
+    app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
+                          + `@${app.latestResourceCommitHash}`
     app.msgs = {
         appDesc: 'Adds AI to Amazon shopping',
         menuLabel_proxyAPImode: 'Proxy API Mode',
