@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.25.21
+// @version                2025.1.25.22
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3310,6 +3310,7 @@
                     const failMatch = failFlagsAndURLs.exec(textToShow)
                     if (failMatch) {
                         log.dev('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
+                        if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
                         return
                     } else if (caller.status != 'done') { // app waiting or sending
@@ -3322,7 +3323,8 @@
 
                 // Read next chunk, process if designated sender
                 return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI)
+                    if (caller.sender == callerAPI) processStreamText({ done, value }, callerAPI) // recurse
+                    else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                 }).catch(err => log.error('Error reading stream', err.message))
             }
 
