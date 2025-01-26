@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.26.1
+// @version                  2025.1.26.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -569,7 +569,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=b529a64',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=556cbfe',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
@@ -3586,25 +3586,27 @@
                     clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                 // Process/accumulate reply chunk
-                let replyChunk = ''
-                if (callerAPI == 'GPTforLove') { // extract parentID + deltas
-                    const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
-                    if (typeof chunkObjs[0].text == 'undefined') // error response
-                        replyChunk = JSON.stringify(chunkObjs[0]) // for fail flag check
-                    else { // AI response
-                        apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
-                        chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
-                        if (respChunk.includes('"finish_reason":"stop"')) isDone = true
-                    }
-                } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
-                    replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
-                        .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
-                        .map(match => // normalize whitespace
-                            match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                        .join('') // stringify AI reply text
-                    if (/data:(?:message_end|done)/.test(respChunk)) isDone = true
-                } else replyChunk = respChunk // no processing required for all other APIs
-                textToShow += replyChunk
+                if (!apis[callerAPI].parsingRequired) textToShow += respChunk
+                else { // parse structured chunk(s)
+                    let replyChunk = ''
+                    if (callerAPI == 'GPTforLove') { // extract parentID + deltas
+                        const chunkObjs = respChunk.trim().split('\n').map(line => JSON.parse(line))
+                        if (typeof chunkObjs[0].text == 'undefined') // error response
+                            replyChunk = JSON.stringify(chunkObjs[0]) // for fail flag check
+                        else { // AI response
+                            apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
+                            chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
+                            if (respChunk.includes('"finish_reason":"stop"')) isDone = true
+                        }
+                    } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
+                        replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
+                            .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                            .map(match => // normalize whitespace
+                                match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                            .join('') // stringify AI reply text
+                        if (/data:(?:message_end|done)/.test(respChunk)) isDone = true
+                    } textToShow += replyChunk
+                }
 
                 // Show accumulated reply chunks
                 try {
@@ -3669,24 +3671,26 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response or return RQs from proxy API
-                    if (callerAPI == 'GPTforLove') {
-                        try {
-                            const chunkLines = resp.responseText.trim().split('\n'),
-                                  lastChunkObj = JSON.parse(chunkLines[chunkLines.length -1])
-                            apis.GPTforLove.parentID = lastChunkObj.id || null
-                            textToShow = lastChunkObj.text ; handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    } else if (callerAPI == 'MixerBox AI') {
-                        try {
-                            textToShow = [...resp.responseText.matchAll(/data:(.*)/g)] // arrayify data
-                                .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
-                                .map(match => // normalize whitespace
-                                     match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
-                                .join('') // stringify AI reply text
-                            handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    } else { // no processing required for all other APIs
-                        textToShow = resp.responseText ; handleProcessCompletion() }
+                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion }
+                    else { // parse structured responseText
+                        if (callerAPI == 'GPTforLove') {
+                            try {
+                                const chunkLines = resp.responseText.trim().split('\n'),
+                                    lastChunkObj = JSON.parse(chunkLines[chunkLines.length -1])
+                                apis.GPTforLove.parentID = lastChunkObj.id || null
+                                textToShow = lastChunkObj.text ; handleProcessCompletion()
+                            } catch (err) { handleProcessError(err) }
+                        } else if (callerAPI == 'MixerBox AI') {
+                            try {
+                                textToShow = [...resp.responseText.matchAll(/data:(.*)/g)] // arrayify data
+                                    .filter(match => !/message_(?:start|end)|done/.test(match)) // exclude signals
+                                    .map(match => // normalize whitespace
+                                        match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
+                                    .join('') // stringify AI reply text
+                                handleProcessCompletion()
+                            } catch (err) { handleProcessError(err) }
+                        }
+                    }
                 } else if (caller.status != 'done') { // proxy 200 response failure
                     log.info('Response text', resp.responseText) ; api.tryNew(caller) }
 
