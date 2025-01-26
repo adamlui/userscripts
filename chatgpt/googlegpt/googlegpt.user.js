@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.26.9
+// @version                  2025.1.26.10
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3658,17 +3658,10 @@
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response or return RQs from OpenAI
-                    const failMatch = reFailFlags?.exec(resp.response)
-                    if (failMatch) { // suggest proxy or try diff API
-                        log.debug('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
-                        if (caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
-                        else api.tryNew(caller)
-                    } else {
-                        try { // to show response or return RQs
-                            textToShow = JSON.parse(resp.response).choices[0].message.content
-                            handleProcessCompletion()
-                        } catch (err) { handleProcessError(err) }
-                    }
+                    try { // to show response or return RQs
+                        textToShow = JSON.parse(resp.response).choices[0].message.content
+                        handleProcessCompletion()
+                    } catch (err) { handleProcessError(err) }
                 } else if (resp.responseText) { // show response or return RQs from proxy API
                     if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
