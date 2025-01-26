@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.25.21
+// @version                  2025.1.26
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3571,7 +3571,8 @@
             if (config.streamingDisabled || !config.proxyAPIenabled) return
             log.caller = `get.${caller.name}() » dataProcess.stream()`
             const failFlagsAndURLs = this.initFailFlags(callerAPI),
-                  reader = resp.response.getReader() ; let textToShow = ''
+                  reader = resp.response.getReader()
+            let textToShow = '', isDone = false
             reader.read().then(chunk => handleChunk(chunk, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
 
@@ -3592,6 +3593,7 @@
                     else { // AI response
                         apis.GPTforLove.parentID = chunkObjs[0].id || null // for contextual replies
                         chunkObjs.forEach(obj => replyChunk += obj.delta || '') // accumulate AI reply text
+                        if (respChunk.includes('"finish_reason":"stop"')) isDone = true
                     }
                 } else if (callerAPI == 'MixerBox AI') { // extract/normalize AI reply data
                     replyChunk = [...respChunk.matchAll(/data:(.*)/g)] // arrayify data
@@ -3599,6 +3601,7 @@
                         .map(match => // normalize whitespace
                             match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                         .join('') // stringify AI reply text
+                    if (/data:(?:message_end|done)/.test(respChunk)) isDone = true
                 } else replyChunk = respChunk // no processing required for all other APIs
                 textToShow += replyChunk
 
@@ -3618,11 +3621,12 @@
                     }
                 } catch (err) { log.error('Error showing stream', err.message) }
 
-                // Read next chunk, process if designated sender
-                return reader.read().then(({ done, value }) => {
-                    if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
-                    else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                }).catch(err => log.error('Error reading stream', err.message))
+                // handleProcessCompletion() or read next chunk
+                return isDone ? handleProcessCompletion() // from API's custom signal
+                    : reader.read().then(({ done, value }) => {
+                        if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
+                        else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
+                    }).catch(err => log.error('Error reading stream', err.message))
             }
 
             function handleProcessCompletion() {
