@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.8
+// @version                2025.1.26.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3269,17 +3269,12 @@
 
     const dataProcess = {
 
-        initFailFlags(api) { // escape/merge URLs w/ fail flags
-            const { respPatterns = {}, endpoint = apis[api].endpoints.completions, expectedOrigin } = apis[api],
-                  escapedAPIurls = [endpoint, expectedOrigin.url].map(url => url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-            return new RegExp([respPatterns.fail, ...escapedAPIurls].filter(Boolean).join('|'))
-        },
+        initFailFlags(api) { return apis[api].respPatterns?.fail ? new RegExp(apis[api].respPatterns.fail) : null },
 
         stream(resp, { caller, callerAPI }) {
             if (config.streamingDisabled || !config.proxyAPIenabled) return
             log.caller = `get.${caller.name}() » dataProcess.stream()`
-            const failFlagsAndURLs = this.initFailFlags(callerAPI),
-                  reader = resp.response.getReader()
+            const reader = resp.response.getReader(), reFailFlags = this.initFailFlags(callerAPI)
             let textToShow = '', isDone = false
             reader.read().then(chunk => handleChunk(chunk, callerAPI))
                 .catch(err => log.error('Error processing stream', err.message))
@@ -3317,7 +3312,7 @@
 
                 // Show accumulated reply chunks
                 try {
-                    const failMatch = failFlagsAndURLs.exec(textToShow)
+                    const failMatch = reFailFlags?.exec(textToShow)
                     if (failMatch) {
                         log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
@@ -3355,7 +3350,7 @@
                 if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
                     || caller.status == 'done') return
                 log.caller = `get.${caller.name}() » dataProcess.text()`
-                const failFlagsAndURLs = this.initFailFlags(callerAPI) ; let textToShow = ''
+                const reFailFlags = this.initFailFlags(callerAPI) ; let textToShow = ''
                 if (resp.status != 200) {
                     log.error('Response status', resp.status)
                     log.info('Response text', resp.response || resp.responseText)
@@ -3366,7 +3361,7 @@
                                                     : ['openAInotWorking', 'suggestProxy'] )
                     else api.tryNew(caller)
                 } else if (callerAPI == 'OpenAI' && resp.response) { // show response or return RQs from OpenAI
-                    const failMatch = failFlagsAndURLs.exec(resp.response)
+                    const failMatch = reFailFlags?.exec(resp.response)
                     if (failMatch) { // suggest proxy or try diff API
                         log.debug('Response text', resp.response) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                         if (caller == get.reply) appAlert('openAInotWorking', 'suggestProxy')
@@ -3404,7 +3399,7 @@
                 function handleProcessCompletion() {
                     if (caller.status != 'done') {
                         log.debug('Text to show', textToShow)
-                        const failMatch = failFlagsAndURLs.exec(textToShow)
+                        const failMatch = reFailFlags?.exec(textToShow)
                         if (!textToShow || failMatch) {
                             if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
                             api.tryNew(caller)
