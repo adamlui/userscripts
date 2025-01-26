@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.26.2
+// @version               2025.1.26.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3490,7 +3490,7 @@
                         } catch (err) { handleProcessError(err) }
                     }
                 } else if (resp.responseText) { // show response or return RQs from proxy API
-                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion }
+                    if (!apis[callerAPI].parsingRequired) { textToShow = resp.responseText ; handleProcessCompletion() }
                     else { // parse structured responseText
                         if (callerAPI == 'GPTforLove') {
                             try {
