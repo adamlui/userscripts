@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.16
+// @version                2025.1.26.17
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -61,6 +61,7 @@
 // @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                https://assets.aiwebextensions.com/lib/crypto-utils.js/dist/crypto-utils.min.js?v=9e1e11d#sha256-bx3N1EAkmOTOFXxeyalh+IJnadXqVFHMBIPjRczmnEk=
+// @require                https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=a724796#sha256-oP9HSQKyQERkYfYRaQYxM3FIO9KXkgl/4tW55zjbGeE=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
 // @require                https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
@@ -407,6 +408,9 @@
         suggestProxy:     `${app.msgs.alert_try} ${app.msgs.alert_switchingOn} ${app.msgs.mode_proxy}`,
         suggestOpenAI:    `${app.msgs.alert_try} ${app.msgs.alert_switchingOff} ${app.msgs.mode_proxy}`
     }})
+
+    // Export DEPENDENCIES to dom.js
+    dom.imports.import({ config, env }) // for config.bgAnimationsDisabled + env.ui.scheme in dom.fillStarryBg()
 
     // Define MENU functions
 
@@ -1865,7 +1869,7 @@
             Object.entries(headerElems).forEach(([key, elem]) => {
                 if (elem && key == 'byline' && getComputedStyle(elem).display == 'none')
                     elem.style.cssText += forceDisplayStyles // override hidden byline display style to measure width
-                widths[key] = dom.getComputedWidth(elem)
+                widths[key] = dom.get.computedWidth(elem)
                 if (elem?.style?.cssText.includes(forceDisplayStyles)) // restore display style for hidden byline
                     elem.style.cssText = elem.style.cssText.replace(forceDisplayStyles, '')
             })
@@ -3021,60 +3025,6 @@
             update.appBottomPos() // restore minimized/restored state
 
             show.reply.userInteracted = false
-        }
-    }
-
-    // Define DOM utilities
-
-    const dom = {
-
-        create: {
-            anchor(linkHref, displayContent, attrs = {}) {
-                const anchor = document.createElement('a'),
-                      defaultAttrs = { href: linkHref, target: '_blank', rel: 'noopener' },
-                      finalAttrs = { ...defaultAttrs, ...attrs }
-                Object.entries(finalAttrs).forEach(([attr, value]) => anchor.setAttribute(attr, value))
-                if (displayContent) anchor.append(displayContent)
-                return anchor
-            },
-
-            style(content) {
-                const style = document.createElement('style')
-                if (content) style.innerText = content
-                return style
-            },
-
-            svgElem(type, attrs) {
-                const elem = document.createElementNS('http://www.w3.org/2000/svg', type)
-                for (const attr in attrs) elem.setAttributeNS(null, attr, attrs[attr])
-                return elem
-            }
-        },
-
-        fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
-            if (targetNode.querySelector('[id*=stars]')) return
-            const starsDivsContainer = document.createElement('div')
-            starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
-              + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-              + 'z-index: -1'; // allow interactive elems to be clicked
-            ['sm', 'med', 'lg'].forEach(starSize => {
-                const starsDiv = document.createElement('div')
-                starsDiv.id = config.bgAnimationsDisabled ? `stars-${starSize}-off`
-                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
-                starsDivsContainer.append(starsDiv)
-            })
-            targetNode.prepend(starsDivsContainer)
-        },
-
-        getComputedWidth(...elems) { // including margins
-            let totalWidth = 0
-            elems.map(arg => arg instanceof NodeList ? [...arg] : arg).flat().forEach(elem => {
-                if (!(elem instanceof Element)) return
-                const elemStyle = getComputedStyle(elem) ; if (elemStyle.display == 'none') return
-                totalWidth += elem.getBoundingClientRect().width + parseFloat(elemStyle.marginLeft)
-                                                                 + parseFloat(elemStyle.marginRight)
-            })
-            return totalWidth
         }
     }
 
