@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.26.18
+// @version                  2025.1.26.19
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -631,10 +631,9 @@
             const args = Array.from(arguments).map(arg => typeof arg == 'object' ? JSON.stringify(arg) : arg)
             const msgType = args.some(arg => /\.{3}$/.test(arg)) ? 'working'
                           : args.some(arg => /\bsuccess\b|!$/i.test(arg)) ? 'success'
-                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning'
-                                                                                                    : 'info'
+                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning' : 'info'
             const prefixStyle = log.styles.prefix.base + log.styles.prefix[msgType]
-            const baseMsgStyle = log.styles.msg[msgType], msgStyles = []
+            const baseMsgStyle = log.styles.msg[msgType] || '', msgStyles = []
 
             // Combine regex
             const allPatterns = Object.values(log.regEx).flatMap(val =>
