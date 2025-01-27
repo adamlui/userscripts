@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.26.18
+// @version                2025.1.26.19
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -288,10 +288,9 @@
             const args = Array.from(arguments).map(arg => typeof arg == 'object' ? JSON.stringify(arg) : arg)
             const msgType = args.some(arg => /\.{3}$/.test(arg)) ? 'working'
                           : args.some(arg => /\bsuccess\b|!$/i.test(arg)) ? 'success'
-                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning'
-                                                                                                    : 'info'
+                          : args.some(arg => /\b(?:error|fail)\b/i.test(arg)) || logType == 'error' ? 'warning' : 'info'
             const prefixStyle = log.styles.prefix.base + log.styles.prefix[msgType]
-            const baseMsgStyle = log.styles.msg[msgType], msgStyles = []
+            const baseMsgStyle = log.styles.msg[msgType] || '', msgStyles = []
 
             // Combine regex
             const allPatterns = Object.values(log.regEx).flatMap(val =>
