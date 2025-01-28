@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.28
+// @version                  2025.1.28.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3474,7 +3474,8 @@
                                     match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .join('') // stringify AI reply text
                         textToShow += replyChunk
-                        if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
+                        const donePattern = apis[callerAPI].respPatterns?.done
+                        isDone = donePattern ? new RegExp(donePattern).test(replyChunk) : false
                     }
 
                     // Show accumulated reply chunks
