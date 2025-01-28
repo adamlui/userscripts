@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.28
+// @version               2025.1.28.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3293,7 +3293,8 @@
                                     match[1].replace(/\[SPACE\]/g, ' ').replace(/\[NEWLINE\]/g, '\n'))
                                 .join('') // stringify AI reply text
                         textToShow += replyChunk
-                        if (new RegExp(apis[callerAPI].respPatterns?.done).test(respChunk)) isDone = true
+                        const donePattern = apis[callerAPI].respPatterns?.done
+                        isDone = donePattern ? new RegExp(donePattern).test(replyChunk) : false
                     }
 
                     // Show accumulated reply chunks
