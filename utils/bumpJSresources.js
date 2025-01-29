@@ -11,10 +11,12 @@
           ssri = require('ssri') // to generate SHA-256 hashes
 
     // Init UI COLORS
-    const nc = '\x1b[0m',    // no color
-          by = '\x1b[1;33m', // bright yellow
-          bg = '\x1b[1;92m', // bright green
-          bw = '\x1b[1;97m'  // bright white
+    const nc = '\x1b[0m',        // no color
+          dg = '\x1b[38;5;243m', // dim gray
+          bw = '\x1b[1;97m',     // bright white
+          by = '\x1b[1;33m',     // bright yellow
+          bg = '\x1b[1;92m',     // bright green
+          br = '\x1b[1;91m'      // bright red
 
     // Init REGEX
     const rePatterns = {
@@ -26,8 +28,8 @@
     // Define FUNCTIONS
 
     const log = {};
-    ['working', 'success'].forEach(lvl => log[lvl] = function(msg) {
-        const logColor = lvl == 'working' ? by : bg,
+    ['hash', 'info', 'working', 'success', 'error'].forEach(lvl => log[lvl] = function(msg) {
+        const logColor = lvl == 'hash' ? dg : lvl == 'info' ? bw : lvl == 'working' ? by : lvl == 'success' ? bg : br,
               formattedMsg = logColor + ( log.endedWithLineBreak ? msg.trimStart() : msg ) + nc
         console.log(formattedMsg) ; log.endedWithLineBreak = msg.toString().endsWith('\n')
     })
