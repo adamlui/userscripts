@@ -20,7 +20,7 @@
     const rePatterns = {
         resName: /\w+\/\w+\.js(?=#|$)/,
         jsURL: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/,
-        commitHash: /(@|\?v=)([^/#]+)/, sriHash: /#sha.+/
+        commitHash: /(@|\?v=)([^/#]+)/, sriHash: /[^#]+$/
     }
 
     // Define FUNCTIONS
