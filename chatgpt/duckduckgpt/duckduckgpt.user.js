@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.5
+// @version                2025.1.29.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3521,7 +3521,7 @@
 
             // Get related queries
             const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' }),
-                  reqData = JSON.stringify(api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }]))
+                  reqData = api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
                 const xhrConfig = {
@@ -3530,7 +3530,7 @@
                     onload: resp => api.process.text(resp, { caller: get.related, callerAPI: reqAPI }).then(resolve),
                     url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
                 }
-                if (reqMethod == 'POST') xhrConfig.data = reqData
+                if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(reqData)
                 else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
                 xhr(xhrConfig)
             })
