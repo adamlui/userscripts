@@ -3,17 +3,17 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.3
+// @version                2025.1.29.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
-// @compatible             chrome except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             chrome
 // @compatible             firefox
-// @compatible             edge except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             edge
 // @compatible             opera
 // @compatible             operagx
-// @compatible             brave except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
-// @compatible             vivaldi except for Streaming Mode w/ Tampermonkey (use ScriptCat instead)
+// @compatible             brave
+// @compatible             vivaldi
 // @compatible             waterfox
 // @compatible             librewolf
 // @compatible             ghost
