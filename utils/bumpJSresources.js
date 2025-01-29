@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 // Bumps @require'd JS in userscripts
 // NOTE: Doesn't git commit to allow potentially required script editing
 // NOTE: Pass --dev to use ./utils/userJSfiles.dev.json for faster init
@@ -65,16 +63,16 @@
     function bumpUserJSver(userJSfilePath) {
         const date = new Date(),
               today = `${date.getFullYear()}.${date.getMonth() +1}.${date.getDate()}`, // YYYY.M.D format
-              re_version = /(@version\s+)([\d.]+)/
+              reVersion = /(@version\s+)([\d.]+)/
         let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
-        const currentVer = userJScontent.match(re_version)[2] ; let newVer
+        const currentVer = userJScontent.match(reVersion)[2] ; let newVer
         if (currentVer.startsWith(today)) { // bump sub-ver
             const verParts = currentVer.split('.'),
                   subVer = verParts.length > 3 ? parseInt(verParts[3], 10) +1 : 1
             newVer = `${today}.${subVer}`
         } else // bump to today
             newVer = today
-        userJScontent = userJScontent.replace(re_version, `$1${newVer}`)
+        userJScontent = userJScontent.replace(reVersion, `$1${newVer}`)
         fs.writeFileSync(userJSfilePath, userJScontent, 'utf-8')
         console.log(`Updated: ${bw}v${currentVer}${nc} → ${bg}v${newVer}${nc}\n`)
     }
@@ -88,18 +86,18 @@
     log.dev(userJSfiles)
 
     log.working('\nCollecting JS resources...\n')
-    const jsrURLmap = {} ; let jsrCnt = 0
+    const urlMap = {} ; let resCnt = 0
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
-              re_jsrURL = /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+$)/gm,
-              jsrURLs = [...userJScontent.matchAll(re_jsrURL)].map(match => match[1])
-        if (jsrURLs.length > 0) { jsrURLmap[userJSfilePath] = jsrURLs ; jsrCnt += jsrURLs.length }
+              reJSRurl = /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+$)/gm,
+              resURLs = [...userJScontent.matchAll(reJSRurl)].map(match => match[1])
+        if (resURLs.length > 0) { urlMap[userJSfilePath] = resURLs ; resCnt += resURLs.length }
     })
-    log.success(`${jsrCnt} bumpable resource(s) found.`)
+    log.success(`${resCnt} bumpable resource(s) found.`)
 
     log.working('\nProcessing resource(s)...\n')
-    let jsrUpdatedCnt = 0 ; let filesUpdatedCnt = 0
-    for (const userJSfilePath of Object.keys(jsrURLmap)) {
+    let urlsUpdatedCnt = 0 ; let filesUpdatedCnt = 0
+    for (const userJSfilePath of Object.keys(urlMap)) {
 
         // Init repo name
         let repoName = userJSfilePath.split(devMode ? '\\' : '/').pop().replace('.user.js', '')
@@ -113,7 +111,7 @@
 
         // Process each resource in the userscript
         const re_commitHash = /@([^/]+)/ ; let fileUpdated = false
-        for (const url of jsrURLmap[userJSfilePath]) {
+        for (const url of urlMap[userJSfilePath]) {
             const resourceName = url.match(/\w+\/\w+\.js(?=#|$)/)[0] // dir/filename.js for logs
 
             // Update hashes
@@ -127,7 +125,7 @@
                 let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
                 userJScontent = userJScontent.replace(url, updatedURL)
                 fs.writeFileSync(userJSfilePath, userJScontent, 'utf-8')
-                jsrUpdatedCnt++ ; fileUpdated = true
+                urlsUpdatedCnt++ ; fileUpdated = true
             }
         }
         if (fileUpdated) {
@@ -137,9 +135,9 @@
     }
 
     // Log final summary
-    log[jsrUpdatedCnt > 0 ? 'success' : 'info'](
-        `${ jsrUpdatedCnt > 0 ? 'Success! ' : '' }${
-            jsrUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`
+    log[urlsUpdatedCnt > 0 ? 'success' : 'info'](
+        `${ urlsUpdatedCnt > 0 ? 'Success! ' : '' }${
+            urlsUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`
     )
 
 })()
