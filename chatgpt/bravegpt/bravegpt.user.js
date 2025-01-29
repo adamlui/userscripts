@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.29.11
+// @version               2025.1.29.12
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3311,8 +3311,8 @@
 
                     // handleProcessCompletion() or read next chunk
                     return isDone ? handleProcessCompletion() // from API's custom signal
-                        : reader.read().then(({ done, value }) => {
-                            if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
+                        : reader.read().then(nextChunk => {
+                            if (caller.sender == callerAPI) handleChunk(nextChunk, callerAPI) // recurse
                             else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         }).catch(err => log.error('Error reading stream', err.message))
                 }
