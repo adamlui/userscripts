@@ -18,9 +18,9 @@
 
     // Init REGEX
     const rePatterns = {
-        resName: /\w+\/\w+\.js(?=#|$)/,
-        jsURL: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/,
-        commitHash: /(@|\?v=)([^/#]+)/, sriHash: /[^#]+$/
+        hash: { commit: /(@|\?v=)([^/#]+)/, sri: /[^#]+$/ },
+        resName: /[^/]+\/(?:css|dist)?\/?[^/]+\.(?:css|js)(?=[?#]|$)/,
+        url: { js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/ }
     }
 
     // Define FUNCTIONS
@@ -94,7 +94,7 @@
 
     log.working('\nCollecting JS resources...\n')
     const urlMap = {} ; let resCnt = 0
-    const reResURL = new RegExp(rePatterns.jsURL.source, 'gm')
+    const reResURL = new RegExp(rePatterns.url.js.source, 'gm')
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
               resURLs = [...userJScontent.matchAll(reResURL)].map(match => match[1] || match[2])
@@ -122,11 +122,11 @@
             const resourceName = rePatterns.resName.exec(url)?.[0] || 'resource' // dir/filename for logs
 
             // Update hashes
-            if ((url.match(rePatterns.commitHash) || [])[1] != latestCommitHash) {
+            if ((url.match(rePatterns.hash.commit) || [])[1] != latestCommitHash) {
                 console.log(`Updating commit hash for ${resourceName}...`)
-                let updatedURL = url.replace(rePatterns.commitHash, `@${latestCommitHash}`)
+                let updatedURL = url.replace(rePatterns.hash.commit, `@${latestCommitHash}`)
                 console.log(`Updating SRI hash for ${resourceName}...`)
-                updatedURL = updatedURL.replace(rePatterns.sriHash, `#${await getSRIhash(updatedURL)}`)
+                updatedURL = updatedURL.replace(rePatterns.hash.sri, `#${await getSRIhash(updatedURL)}`)
 
                 // Write updated URL to userscript
                 let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
