@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.29.1
+// @version                  2025.1.29.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -641,7 +641,7 @@
             const combinedPattern = new RegExp(allPatterns.map(pattern => pattern.source).join('|'), 'g')
 
             // Combine args into finalMsg, color chars
-            let finalMsg = logType == 'error' && args.length == 1 ? 'ERROR: ' : ''
+            let finalMsg = logType == 'error' && args.length == 1 && !/error:/i.test(args[0]) ? 'ERROR: ' : ''
             args.forEach((arg, idx) => {
                 finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
