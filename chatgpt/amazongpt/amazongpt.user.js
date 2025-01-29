@@ -3,14 +3,14 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.4
+// @version                2025.1.29.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
 // @compatible             chrome
 // @compatible             firefox
 // @compatible             edge
-// @compatible             opera
+// @compatible             opera after allowing userscript manager access to search page results in opera://extensions
 // @compatible             operagx
 // @compatible             brave
 // @compatible             vivaldi
