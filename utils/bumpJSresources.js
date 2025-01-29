@@ -65,8 +65,10 @@
     }
 
     async function generateSRIhash(resURL, algorithm = 'sha256') {
-        return ssri.fromData(
+        const sriHash = ssri.fromData(
             Buffer.from(await (await fetchData(resURL)).arrayBuffer()), { algorithms: [algorithm] }).toString()
+        log.hash(`${sriHash}\n`)
+        return sriHash
     }
 
     function bumpUserJSver(userJSfilePath) {
