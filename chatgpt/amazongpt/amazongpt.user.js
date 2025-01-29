@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29
+// @version                2025.1.29.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -298,7 +298,7 @@
             const combinedPattern = new RegExp(allPatterns.map(pattern => pattern.source).join('|'), 'g')
 
             // Combine args into finalMsg, color chars
-            let finalMsg = logType == 'error' && args.length == 1 ? 'ERROR: ' : ''
+            let finalMsg = logType == 'error' && args.length == 1 && !/error:/i.test(args[0]) ? 'ERROR: ' : ''
             args.forEach((arg, idx) => {
                 finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
