@@ -1,15 +1,19 @@
-// Bumps @require'd JS in userscripts
+#!/usr/bin/env node
+
+// Bumps @require'd JS + rising-stars CSS @resource's in userscripts
 // NOTE: Doesn't git commit to allow script editing from breaking changes
-// NOTE: Pass --dev to use ./utils/userJSfiles.dev.json for faster init
+// NOTE: Pass --cache to use cacheFilePath for faster init
 
 (async () => {
-
-    const devMode = process.argv.includes('--dev')
 
     // Import LIBS
     const fs = require('fs'), // to read/write files
           path = require('path'), // to manipulate paths
           ssri = require('ssri') // to generate SHA-256 hashes
+
+    // Init CACHE vars
+    const cacheMode = process.argv.includes('--cache'),
+          cacheFilePath = path.join(__dirname, '.cache/userJSpaths.json')
 
     // Init UI COLORS
     const nc = '\x1b[0m',        // no color
@@ -23,7 +27,10 @@
     const rePatterns = {
         hash: { commit: /(@|\?v=)([^/#]+)/, sri: /[^#]+$/ },
         resName: /[^/]+\/(?:css|dist)?\/?[^/]+\.(?:css|js)(?=[?#]|$)/,
-        url: { js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/ }
+        url: {
+            css: /^\/\/ @resource.+(https:\/\/assets.+\.css.+)$/,
+            js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/
+        }
     }
 
     // Define FUNCTIONS
@@ -72,6 +79,24 @@
             return fetch(url)
     }
 
+    async function isValidResource(resURL) {
+        try {
+            const resIsValid = !(await (await fetchData(resURL)).text()).startsWith('Package size exceeded')
+            if (!resIsValid) log.error(`\nInvalid resource: ${resURL}\n`)
+            return resIsValid
+        } catch (err) {
+            log.error(`\nCannot validate resource: ${resURL}\n`)
+            return null
+        }
+    }
+
+    async function getLatestCommitHash(repo, path) {
+        const endpoint = `https://api.github.com/repos/${repo}/commits`,
+              latestCommitHash = (await (await fetchData(`${endpoint}?path=${ path || '' }`)).json())[0]?.sha
+        if (latestCommitHash) log.hash(`${latestCommitHash}\n`)
+        return latestCommitHash
+    }
+
     async function generateSRIhash(resURL, algorithm = 'sha256') {
         const sriHash = ssri.fromData(
             Buffer.from(await (await fetchData(resURL)).arrayBuffer()), { algorithms: [algorithm] }).toString()
@@ -98,64 +123,100 @@
 
     // Run MAIN routine
 
-    log.working('\nSearching for userscripts...\n')
-    const userJSfiles = await (async () =>
-        devMode ? JSON.parse(await fs.promises.readFile('./utils/userJSfiles.dev.json', 'utf-8')) : findUserJS()
-    )()
+    // Collect userscripts
+    log.working(`\n${ cacheMode ? 'Collecting' : 'Searching for' } userscripts...\n`)
+    let userJSfiles = []
+    if (cacheMode) {
+        try { // create missing cache file
+            fs.mkdirSync(path.dirname(cacheFilePath), { recursive: true })
+            const fd = fs.openSync(cacheFilePath, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR)
+            log.error(`Cache file missing. Generating ${cacheFilePath}...\n`)
+            userJSfiles = await findUserJS() ; console.log('')
+            fs.writeFileSync(fd, JSON.stringify(userJSfiles, null, 2), 'utf-8')
+            log.success(`\nCache file created @ ${cacheFilePath}`)
+        } catch (err) { // use existing cache file
+            userJSfiles = JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'))
+            console.log(userJSfiles) ; console.log('')
+        }
+    } else { // use findUserJS()
+        userJSfiles = await findUserJS() ; console.log('') }
 
-    log.working('\nCollecting JS resources...\n')
+    // Collect resources
+    log.working('\nCollecting resources...\n')
     const urlMap = {} ; let resCnt = 0
-    const reResURL = new RegExp(rePatterns.url.js.source, 'gm')
+    const reResURL = new RegExp( // eslint-disable-next-line
+        `(?:${rePatterns.url.css.source})|(?:${rePatterns.url.js.source})`, 'gm')
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
               resURLs = [...userJScontent.matchAll(reResURL)].map(match => match[1] || match[2])
         if (resURLs.length > 0) { urlMap[userJSfilePath] = resURLs ; resCnt += resURLs.length }
     })
-    log.success(`${resCnt} bumpable resource(s) found.`)
+    log.success(`${resCnt} potentially bumpable resource(s) found.`)
 
-    log.working('\nProcessing resource(s)...\n')
+    // Fetch latest commit hash for adamlui/ai-web-extensions/assets/styles/rising-stars
+    const risingStarsPath = 'assets/styles/rising-stars'
+    log.working(`\nFetching latest commit hash for ${risingStarsPath}...\n`)
+    const latestCommitHashes = { risingStars: await getLatestCommitHash('adamlui/ai-web-extensions', risingStarsPath) }
+
+    // Process each userscript
     let urlsUpdatedCnt = 0 ; let filesUpdatedCnt = 0
     for (const userJSfilePath of Object.keys(urlMap)) {
 
         // Init repo name
-        let repoName = userJSfilePath.split(devMode ? '\\' : '/').pop().replace('.user.js', '')
+        let repoName = userJSfilePath.split('\\').pop().replace('.user.js', '')
         if (repoName.endsWith('-mode')) repoName = repoName.slice(0, -5) // for chatgpt-widescreen
 
-        // Fetch latest commit hash
-        console.log(`Fetching latest commit hash for ${repoName}...`)
-        const latestCommitHash = require('child_process').execSync(
-            `git ls-remote https://github.com/adamlui/${repoName}.git HEAD`).toString().split('\t')[0]
-        console.log(latestCommitHash + '\n')
+        log.working(`\nProcessing ${repoName}...\n`)
 
-        // Process each resource in the userscript
+        // Fetch latest commit hash for repo/chromium/extension
+        if (urlMap[userJSfilePath].some(url => url.includes(repoName))) {
+            console.log('Fetching latest commit hash for Chromium extension...')
+            latestCommitHashes.chromium = await getLatestCommitHash(`adamlui/${repoName}`, 'chromium/extension')
+        }
+
+        // Process each resource
         let fileUpdated = false
-        for (const url of urlMap[userJSfilePath]) {
-            const resourceName = rePatterns.resName.exec(url)?.[0] || 'resource' // dir/filename for logs
+        for (const resURL of urlMap[userJSfilePath]) {
+            if (!await isValidResource(resURL)) continue // to next resource
+            const resName = rePatterns.resName.exec(resURL)?.[0] || 'resource' // dir/filename for logs
 
-            // Update hashes
-            if ((url.match(rePatterns.hash.commit) || [])[1] != latestCommitHash) {
-                console.log(`Updating commit hash for ${resourceName}...`)
-                let updatedURL = url.replace(rePatterns.hash.commit, `@${latestCommitHash}`)
-                console.log(`Updating SRI hash for ${resourceName}...`)
-                updatedURL = updatedURL.replace(rePatterns.hash.sri, `#${await generateSRIhash(updatedURL)}`)
+            // Compare/update commit hash
+            let resLatestCommitHash = latestCommitHashes[resURL.includes(repoName) ? 'chromium' : 'risingStars']
+            if (resLatestCommitHash.startsWith( // compare hashes
+                rePatterns.hash.commit.exec(resURL)?.[2] || '')) { // commit hash didn't change...
+                    console.log(`${resName} already up-to-date!`) ; log.endedWithLineBreak = false
+                    continue // ...so skip resource
+                }
+            resLatestCommitHash = resLatestCommitHash.substring(0, 7) // abbr it
+            let updatedURL = resURL.replace(rePatterns.hash.commit, `$1${resLatestCommitHash}`) // update hash
+            if (!await isValidResource(updatedURL)) continue // to next resource
 
-                // Write updated URL to userscript
-                let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
-                userJScontent = userJScontent.replace(url, updatedURL)
-                fs.writeFileSync(userJSfilePath, userJScontent, 'utf-8')
-                urlsUpdatedCnt++ ; fileUpdated = true
+            // Generate/compare/update SRI hash
+            console.log(`${ !log.endedWithLineBreak ? '\n' : '' }Generating SRI (SHA-256) hash for ${resName}...`)
+            const newSRIhash = await generateSRIhash(updatedURL)
+            if (rePatterns.hash.sri.exec(resURL)?.[0] == newSRIhash) { // SRI hash didn't change
+                console.log(`${resName} already up-to-date!`) ; log.endedWithLineBreak = false
+                continue // ...so skip resource
             }
+            updatedURL = updatedURL.replace(rePatterns.hash.sri, newSRIhash) // update hash
+            if (!await isValidResource(updatedURL)) continue // to next resource
+
+            // Write updated URL to userscript
+            console.log(`Writing updated URL for ${resName}...`)
+            const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
+            fs.writeFileSync(userJSfilePath, userJScontent.replace(resURL, updatedURL), 'utf-8')
+            log.success(`${resName} bumped!\n`) ; urlsUpdatedCnt++ ; fileUpdated = true
         }
         if (fileUpdated) {
-            console.log('\nBumping userscript version...')
+            console.log(`${ !log.endedWithLineBreak ? '\n' : '' }Bumping userscript version...`)
             bumpUserJSver(userJSfilePath) ; filesUpdatedCnt++
         }
     }
 
     // Log final summary
     log[urlsUpdatedCnt > 0 ? 'success' : 'info'](
-        `${ urlsUpdatedCnt > 0 ? 'Success! ' : '' }${
-            urlsUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`
+        `\n${ urlsUpdatedCnt > 0 ? 'Success! ' : '' }${
+              urlsUpdatedCnt} resource(s) bumped across ${filesUpdatedCnt} file(s).`
     )
 
 })()
