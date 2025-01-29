@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.8
+// @version                2025.1.29.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2616,8 +2616,8 @@
 
                     // handleProcessCompletion() or read next chunk
                     return isDone ? handleProcessCompletion() // from API's custom signal
-                        : reader.read().then(({ done, value }) => {
-                            if (caller.sender == callerAPI) handleChunk({ done, value }, callerAPI) // recurse
+                        : reader.read().then(nextChunk => {
+                            if (caller.sender == callerAPI) handleChunk(nextChunk, callerAPI) // recurse
                             else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         }).catch(err => log.error('Error reading stream', err.message))
                 }
