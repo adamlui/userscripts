@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.29.10
+// @version               2025.1.29.11
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3533,7 +3533,7 @@
             const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
-                const reqData = api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
+                const reqData = api.createReqData(reqAPI, [{ role: 'user', content: rqPrompt }])
                 const xhrConfig = {
                     headers: api.createHeaders(reqAPI), method: reqMethod, responseType: 'text',
                     onerror: err => { log.error(err) ; api.tryNew(get.related) },
