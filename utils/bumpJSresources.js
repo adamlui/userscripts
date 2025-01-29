@@ -1,5 +1,5 @@
 // Bumps @require'd JS in userscripts
-// NOTE: Doesn't git commit to allow potentially required script editing
+// NOTE: Doesn't git commit to allow script editing from breaking changes
 // NOTE: Pass --dev to use ./utils/userJSfiles.dev.json for faster init
 
 (async () => {
@@ -15,6 +15,13 @@
           by = '\x1b[1;33m', // bright yellow
           bg = '\x1b[1;92m', // bright green
           bw = '\x1b[1;97m'  // bright white
+
+    // Init REGEX
+    const rePatterns = {
+        resName: /\w+\/\w+\.js(?=#|$)/,
+        jsURL: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/,
+        commitHash: /(@|\?v=)([^/#]+)/, sriHash: /#sha.+/
+    }
 
     // Define FUNCTIONS
 
@@ -87,10 +94,10 @@
 
     log.working('\nCollecting JS resources...\n')
     const urlMap = {} ; let resCnt = 0
+    const reResURL = new RegExp(rePatterns.jsURL.source, 'gm')
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
-              reJSRurl = /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/gm,
-              resURLs = [...userJScontent.matchAll(reJSRurl)].map(match => match[1])
+              resURLs = [...userJScontent.matchAll(reResURL)].map(match => match[1] || match[2])
         if (resURLs.length > 0) { urlMap[userJSfilePath] = resURLs ; resCnt += resURLs.length }
     })
     log.success(`${resCnt} bumpable resource(s) found.`)
@@ -110,16 +117,16 @@
         console.log(latestCommitHash + '\n')
 
         // Process each resource in the userscript
-        const reCommitHash = /(@|\?v=)([^/#]+)/ ; let fileUpdated = false
+        let fileUpdated = false
         for (const url of urlMap[userJSfilePath]) {
-            const resourceName = url.match(/\w+\/\w+\.js(?=#|$)/)[0] // dir/filename.js for logs
+            const resourceName = rePatterns.resName.exec(url)?.[0] || 'resource' // dir/filename for logs
 
             // Update hashes
-            if ((url.match(reCommitHash) || [])[1] != latestCommitHash) {
+            if ((url.match(rePatterns.commitHash) || [])[1] != latestCommitHash) {
                 console.log(`Updating commit hash for ${resourceName}...`)
-                let updatedURL = url.replace(reCommitHash, `@${latestCommitHash}`)
+                let updatedURL = url.replace(rePatterns.commitHash, `@${latestCommitHash}`)
                 console.log(`Updating SRI hash for ${resourceName}...`)
-                updatedURL = updatedURL.replace(/#sha.+/, `#${await getSRIhash(updatedURL)}`)
+                updatedURL = updatedURL.replace(rePatterns.sriHash, `#${await getSRIhash(updatedURL)}`)
 
                 // Write updated URL to userscript
                 let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
