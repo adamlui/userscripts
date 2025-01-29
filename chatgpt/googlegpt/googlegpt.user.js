@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.28.1
+// @version                  2025.1.29
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2514,102 +2514,99 @@
               : config.widerSidebar ? ( env.ui.site.hasSidebar ? 85.4 : 85.9 ) : ( env.ui.site.hasSidebar ? 79.3 : 80.1 )}%`
         },
 
-        footerContent() {
-            get.json('https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json',
-                (err, advertisersData) => { if (err) return
+        async footerContent() {
 
-                    // Init vars
-                    let chosenAdvertiser, adSelected
-                    const re_appName = new RegExp(app.name.toLowerCase(), 'i')
-                    const currentDate = (() => { // in YYYYMMDD format
-                        const today = new Date(), year = today.getFullYear(),
-                              month = String(today.getMonth() + 1).padStart(2, '0'),
-                              day = String(today.getDate()).padStart(2, '0')
-                        return year + month + day
-                    })()
+            // Init advertisers data
+            const advertisersData = await get.json(
+                'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/index.json'
+            ).catch(err => log.error(err.message)) ; if (!advertisersData) return
 
-                    // Select random, active advertiser
-                    for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
-                        if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
+            // Pick random advertiser
+            let chosenAdvertiser
+            for (const [advertiser, details] of shuffle(applyBoosts(Object.entries(advertisersData))))
+                if (details.campaigns.text) { chosenAdvertiser = advertiser ; break }
+            if (!chosenAdvertiser) return
 
-                    // Fetch a random, active creative
-                    if (chosenAdvertiser) {
-                        const campaignsURL = 'https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/'
-                                           + chosenAdvertiser + '/text/campaigns.json'
-                        get.json(campaignsURL, (err, campaignsData) => { if (err) return
+            // Init chosen advertiser's campaigns data
+            const campaignsData = await get.json(
+                `https://cdn.jsdelivr.net/gh/KudoAI/ads-library/advertisers/${
+                    chosenAdvertiser}/text/campaigns.json`
+            ).catch(err => log.error(err.message)) ; if (!campaignsData) return
 
-                            // Select random, active campaign
-                            for (const [campaignName, campaign] of shuffle(
-                                applyBoosts(Object.entries(campaignsData)))) {
-                                        const campaignIsActive = campaign.active && (
-                                    !campaign.endDate || currentDate <= campaign.endDate)
-                                if (!campaignIsActive) continue // to next campaign since campaign inactive
+            // Init vars for ad selection
+            const reAppName = new RegExp(app.name.toLowerCase(), 'i')
+            const currentDate = (() => { // in YYYYMMDD format
+                const today = new Date(), year = today.getFullYear(),
+                      month = String(today.getMonth() + 1).padStart(2, '0'),
+                      day = String(today.getDate()).padStart(2, '0')
+                return year + month + day
+            })() ; let adSelected = false
 
-                                // Select random active group
-                                for (const [groupName, adGroup] of shuffle(
-                                    applyBoosts(Object.entries(campaign.adGroups)))) {
+            // Select random, active campaign
+            for (const [campaignName, campaign] of shuffle(applyBoosts(Object.entries(campaignsData)))) {
+                const campaignIsActive = campaign.active && (!campaign.endDate || currentDate <= campaign.endDate)
+                if (!campaignIsActive) continue // to next campaign since campaign inactive
 
-                                    // Skip disqualified groups
-                                    if ( // self-group for other apps
-                                        /^self$/i.test(groupName) && !re_appName.test(campaignName)
-                                        || ( // non-self group for this app
-                                            re_appName.test(campaignName) && !/^self$/i.test(groupName))
-                                        || adGroup.active == false // group explicitly disabled
-                                        || adGroup.targetBrowsers && // target browser(s) exist...
-                                            !adGroup.targetBrowsers.some( // ...but doesn't match user's
-                                                browser => new RegExp(browser, 'i').test(navigator.userAgent))
-                                        || adGroup.targetLocations && ( // target locale(s) exist...
-                                            // ...but user locale is missing or excluded
-                                            !env.userLocale || !adGroup.targetLocations.some(
-                                                loc => loc.includes(env.userLocale) || env.userLocale.includes(loc)))
-                                    ) continue // to next group
+                // Select random active group
+                for (const [groupName, adGroup] of shuffle(applyBoosts(Object.entries(campaign.adGroups)))) {
 
-                                    // Filter out inactive ads, pick random active one
-                                    const activeAds = adGroup.ads.filter(ad => ad.active != false)
-                                    if (!activeAds.length) continue // to next group since no ads active
-                                    const chosenAd = ( // random active one
-                                        activeAds[Math.floor(chatgpt.randomFloat() * activeAds.length)])
+                    // Skip disqualified groups
+                    if ( // self-group for other apps
+                        /^self$/i.test(groupName) && !reAppName.test(campaignName)
+                        || ( // non-self group for this app
+                            reAppName.test(campaignName) && !/^self$/i.test(groupName))
+                        || adGroup.active == false // group explicitly disabled
+                        || adGroup.targetBrowsers && // target browser(s) exist...
+                            !adGroup.targetBrowsers.some( // ...but doesn't match user's
+                                browser => new RegExp(browser, 'i').test(navigator.userAgent))
+                        || adGroup.targetLocations && ( // target locale(s) exist...
+                            // ...but user locale is missing or excluded
+                            !env.userLocale || !adGroup.targetLocations.some(
+                                loc => loc.includes(env.userLocale) || env.userLocale.includes(loc)))
+                    ) continue // to next group
 
-                                    // Build destination URL
-                                    let destinationURL = chosenAd.destinationURL || adGroup.destinationURL
-                                        || campaign.destinationURL || ''
-                                    if (destinationURL.includes('http')) { // insert UTM tags
-                                        const [baseURL, queryString] = destinationURL.split('?'),
-                                              queryParams = new URLSearchParams(queryString || '')
-                                        queryParams.set('utm_source', app.name.toLowerCase())
-                                        queryParams.set('utm_content', 'app_footer_link')
-                                        destinationURL = baseURL + '?' + queryParams.toString()
-                                    }
+                    // Filter out inactive ads, pick random active one
+                    const activeAds = adGroup.ads.filter(ad => ad.active != false)
+                    if (!activeAds.length) continue // to next group since no ads active
+                    const chosenAd = activeAds[Math.floor(chatgpt.randomFloat() * activeAds.length)]
 
-                                    // Update footer content
-                                    const newFooterContent = destinationURL ?
-                                        dom.create.anchor(destinationURL)
-                                      : document.createElement('span')
-                                    footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
-                                    footerContent.textContent = chosenAd.text
-                                    footerContent.setAttribute('title', chosenAd.tooltip || '')
-                                    adSelected = true ; break
-                                }
-                                if (adSelected) break // out of campaign loop after ad selection
-            }})}})
+                    // Build destination URL
+                    let destinationURL = chosenAd.destinationURL || adGroup.destinationURL || campaign.destinationURL || ''
+                    if (destinationURL.includes('http')) { // insert UTM tags
+                        const [baseURL, queryString] = destinationURL.split('?'),
+                              queryParams = new URLSearchParams(queryString || '')
+                        queryParams.set('utm_source', app.name.toLowerCase())
+                        queryParams.set('utm_content', 'app_footer_link')
+                        destinationURL = `${baseURL}?${queryParams.toString()}`
+                    }
+
+                    // Update footer content
+                    const newFooterContent = destinationURL ? dom.create.anchor(destinationURL)
+                                                            : dom.create.elem('span')
+                    footerContent.replaceWith(newFooterContent) ; footerContent = newFooterContent
+                    footerContent.textContent = chosenAd.text
+                    footerContent.setAttribute('title', chosenAd.tooltip || '')
+                    adSelected = true ; break // out of group loop
+                }
+                if (adSelected) break // out of campaign loop
+            }
 
             function shuffle(list) {
                 let currentIdx = list.length, tempValue, randomIdx
                 while (currentIdx != 0) { // elements remain to be shuffled
-                    randomIdx = Math.floor(chatgpt.randomFloat() * currentIdx) ; currentIdx -= 1
+                    randomIdx = Math.floor(chatgpt.randomFloat() * currentIdx) ; currentIdx -=1
                     tempValue = list[currentIdx] ; list[currentIdx] = list[randomIdx] ; list[randomIdx] = tempValue
-                }
-                return list
+                } return list
             }
 
             function applyBoosts(list) {
                 let boostedList = [...list],
-                    boostedListLength = boostedList.length - 1 // for applying multiple boosts
+                    boostedListLength = boostedList.length -1 // for applying multiple boosts
                 list.forEach(([name, data]) => { // check for boosts
                     if (data.boost) { // boost flagged entry's selection probability
-                        const boostPercent = parseInt(data.boost) / 100,
-                              entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
-                                            * boostPercent - 1 // reduced to boosted entries needed
+                        const boostPercent = parseInt(data.boost) / 100
+                        const entriesNeeded = Math.ceil(boostedListLength / (1 - boostPercent)) // total entries needed
+                                            * boostPercent -1 // reduced to boosted entries needed
                         for (let i = 0 ; i < entriesNeeded ; i++) boostedList.push([name, data]) // saturate list
                         boostedListLength += entriesNeeded // update for subsequent calculations
                 }})
@@ -3616,13 +3613,19 @@
 
     const get = {
 
-        json(url, callback) { // for dynamic footer
-            xhr({ method: 'GET', url: url, onload: resp => {
-                if (resp.status >= 200 && resp.status < 300) {
-                    try { const data = JSON.parse(resp.responseText) ; callback(null, data) }
-                    catch (err) { callback(err, null) }
-                } else callback(new Error('Failed to load data: ' + resp.statusText), null)
-            }})
+        json(url) {
+            log.caller = `get.json('${url}')`
+            return new Promise((resolve, reject) =>
+                xhr({ method: 'GET', url: url, onload: resp => {
+                    if (resp.status >= 300) { // status error
+                        const errType = resp.status >= 300 && resp.status < 400 ? 'REDIRECT'
+                                      : resp.status >= 400 && resp.status < 500 ? 'CLIENT' : 'SERVER'
+                        reject(new Error(`${errType} ERROR: ${resp.status}`))
+                    }
+                    try { resolve(JSON.parse(resp.responseText)) }
+                    catch (err) { reject(new Error(`PARSE ERROR: ${err.message}`)) }
+                }})
+            )
         },
 
         async reply(msgChain) {
