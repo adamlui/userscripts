@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.5
+// @version                2025.1.29.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2763,6 +2763,7 @@
 
             // Get/show answer from AI
             const reqAPI = get.reply.api, reqMethod = apis[reqAPI].method
+            const reqData = api.createReqData(reqAPI, msgChain)
             const xhrConfig = {
                 headers: api.createHeaders(reqAPI), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
@@ -2775,8 +2776,8 @@
                 onloadstart: resp => api.process.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(api.createReqData(reqAPI, msgChain))
-            else if (reqMethod == 'GET') xhrConfig.url += `?q=${api.createReqData(reqAPI, msgChain)}`
+            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(reqData)
+            else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
             xhr(xhrConfig)
         }
     }
