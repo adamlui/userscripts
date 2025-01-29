@@ -25,12 +25,12 @@
 
     // Define FUNCTIONS
 
-    const log = {
-        dev(msg) { if (devMode) console.log(msg) },
-        info(msg) { console.log(bw + msg + nc) },
-        working(msg) { console.log(by + msg + nc) },
-        success(msg) { console.log(bg + msg + nc) }
-    }
+    const log = {};
+    ['working', 'success'].forEach(lvl => log[lvl] = function(msg) {
+        const logColor = lvl == 'working' ? by : bg,
+              formattedMsg = logColor + ( log.endedWithLineBreak ? msg.trimStart() : msg ) + nc
+        console.log(formattedMsg) ; log.endedWithLineBreak = msg.toString().endsWith('\n')
+    })
 
     async function findUserJS(dir = './') {
         const userJSfiles = []
@@ -90,7 +90,6 @@
     const userJSfiles = await (async () =>
         devMode ? JSON.parse(await fs.promises.readFile('./utils/userJSfiles.dev.json', 'utf-8')) : findUserJS()
     )()
-    log.dev(userJSfiles)
 
     log.working('\nCollecting JS resources...\n')
     const urlMap = {} ; let resCnt = 0
