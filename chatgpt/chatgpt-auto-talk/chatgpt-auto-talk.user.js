@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.4
+// @version             2025.1.29.5
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -291,7 +291,7 @@
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
         },
-        latestResourceCommitHash: '50ad120' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '3b65ef6' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -866,7 +866,7 @@
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
                 this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
-                    + `/${ config.autoTalkDisabled ? '' : 'tall-thick' }`
+                    + `/${ config.autoTalkDisabled ? '' : 'tall' }`
                     + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
             },
 
