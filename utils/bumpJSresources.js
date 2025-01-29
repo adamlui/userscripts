@@ -62,9 +62,9 @@
             return fetch(url)
     }
 
-    async function getSRIhash(url, algorithm = 'sha256') {
+    async function generateSRIhash(resURL, algorithm = 'sha256') {
         return ssri.fromData(
-            Buffer.from(await (await fetchData(url)).arrayBuffer()), { algorithms: [algorithm] }).toString()
+            Buffer.from(await (await fetchData(resURL)).arrayBuffer()), { algorithms: [algorithm] }).toString()
     }
 
     function bumpUserJSver(userJSfilePath) {
@@ -126,7 +126,7 @@
                 console.log(`Updating commit hash for ${resourceName}...`)
                 let updatedURL = url.replace(rePatterns.hash.commit, `@${latestCommitHash}`)
                 console.log(`Updating SRI hash for ${resourceName}...`)
-                updatedURL = updatedURL.replace(rePatterns.hash.sri, `#${await getSRIhash(updatedURL)}`)
+                updatedURL = updatedURL.replace(rePatterns.hash.sri, `#${await generateSRIhash(updatedURL)}`)
 
                 // Write updated URL to userscript
                 let userJScontent = fs.readFileSync(userJSfilePath, 'utf-8')
