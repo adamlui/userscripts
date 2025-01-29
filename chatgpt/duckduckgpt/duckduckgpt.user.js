@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.8
+// @version                2025.1.29.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2290,7 +2290,7 @@
                     overflow: clip }` // replace `overflow: hidden` to allow stickiness
 
               // Anchor Mode styles
-              + `#${app.slug}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 388px }`
+              + `#${app.slug}.anchored { position: fixed ; bottom: -7px ; right: 35px ; width: 388px ; z-index: 8888 }`
               + `#${app.slug}.expanded { width: 528px !important }`
               + `#${app.slug}.anchored .anchored-hidden,
                      #${app.slug}.anchored ~ .anchored-hidden { display: none }` // hide non-Anchor elems in mode
