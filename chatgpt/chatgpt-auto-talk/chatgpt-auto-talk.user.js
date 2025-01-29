@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.1
+// @version             2025.1.29.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -291,7 +291,7 @@
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
         },
-        latestResourceCommitHash: 'ded5e95' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: 'f260579' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -774,7 +774,7 @@
                 }
 
                 // Update color/state
-                this.updateAesthetic() ; this.updateState() // to opposite init state for animation on 1st load
+                this.updateNavicon() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -853,12 +853,13 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateAesthetic() { // to match UI scheme
+            updateNavicon() { // to match UI scheme
                 const isDarkScheme = env.ui.scheme == 'dark'
                 this.div.classList.add(isDarkScheme ? 'dark' : 'light')
                 this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
-                this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/speaker/${
-                    env.ui.scheme == 'dark' ? 'white' : 'black' }-icon.svg`
+                this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
+                    + `/${ config.autoTalkDisabled ? '' : 'tall-thick' }`
+                    + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
             },
 
             updateState() {
@@ -867,6 +868,7 @@
                 this.toggleInput.checked = !config.autoTalkDisabled
                 this.toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
                     + app.msgs[`state_${ this.toggleInput.checked ? 'enabled' : 'disabled' }`]
+                this.updateNavicon()
                 setTimeout(() => {
                     this.switchSpan.className = this.toggleInput.checked ? 'enabled' : 'disabled'
                     this.knobSpan.style.transform = `translateX(${ this.toggleInput.checked ? 13 : 0 }px)`
@@ -916,7 +918,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.updateAesthetic() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.updateNavicon() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
