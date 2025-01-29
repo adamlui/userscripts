@@ -8,6 +8,7 @@
 
     // Import LIBS
     const fs = require('fs'), // to read/write files
+          path = require('path'), // to manipulate paths
           ssri = require('ssri') // to generate SHA-256 hashes
 
     // Init UI COLORS
@@ -34,15 +35,22 @@
         console.log(formattedMsg) ; log.endedWithLineBreak = msg.toString().endsWith('\n')
     })
 
-    async function findUserJS(dir = './') {
+    async function findUserJS(dir = findUserJS.monorepoRoot) {
         const userJSfiles = []
-        if (!dir.endsWith('/')) dir += '/' // for prettier log
-        fs.readdirSync(dir).forEach(async file => {
-            const filePath = dir + file // relative path
-            if (fs.statSync(filePath).isDirectory()) // recursively search subdirs
-                userJSfiles.push(...await findUserJS(filePath))
-            else if (file.endsWith('.user.js')) {
-                console.log(filePath) ; userJSfiles.push(filePath) }
+        if (!dir && !findUserJS.monorepoRoot) { // no arg passed, init monorepo root
+            dir = __dirname
+            while (!fs.existsSync(path.join(dir, 'package.json')))
+                dir = path.dirname(dir) // traverse up to closest manifest dir
+            findUserJS.monorepoRoot = dir
+        }
+        dir = path.resolve(dir)
+        fs.readdirSync(dir).forEach(async entry => {
+            if (/^(?:\.|node_modules$)/.test(entry)) return
+            const entryPath = path.join(dir, entry)
+            if (fs.statSync(entryPath).isDirectory()) // recursively search subdirs
+                userJSfiles.push(...await findUserJS(entryPath))
+            else if (entry.endsWith('.user.js')) {
+                console.log(entryPath) ; userJSfiles.push(entryPath) }
         })
         return userJSfiles
     }
