@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.29.1
+// @version                2025.1.29.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -60,7 +60,7 @@
 // @connect                toyaml.com
 // @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
-// @require                https://assets.aiwebextensions.com/lib/crypto-utils.js/dist/crypto-utils.min.js?v=9e1e11d#sha256-bx3N1EAkmOTOFXxeyalh+IJnadXqVFHMBIPjRczmnEk=
+// @require                https://assets.aiwebextensions.com/lib/crypto-utils.js/dist/crypto-utils.min.js?v=37e0d7d#sha256-xRkis9u0tYeTn/GBN4sqVRqcCdEhDUN16/PlCy9wNnk=
 // @require                https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=a724796#sha256-oP9HSQKyQERkYfYRaQYxM3FIO9KXkgl/4tW55zjbGeE=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
@@ -2512,7 +2512,7 @@
             return headers
         },
 
-        async createReqData(api, msgs) { // returns payload for POST / query string for GET
+        createReqData(api, msgs) { // returns payload for POST / query string for GET
             log.caller = `api.createReqData('${api}', msgs)`
             msgs = structuredClone(msgs) // avoid mutating global msgChain
             const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
@@ -2523,7 +2523,7 @@
                     userId: apis.AIchatOS.userID, withoutContext: false
             } : api == 'FREEGPT' ? {
                     messages: msgs, pass: null,
-                    sign: await cryptoUtils.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
+                    sign: cryptoUtils.generateSignature({ time: time, msg: lastUserMsg.content, pkey: '' }),
                     time: time
             } : api == 'GPTforLove' ? {
                     prompt: lastUserMsg.content, secret: session.generateGPTFLkey(),
@@ -2775,8 +2775,8 @@
                 onloadstart: resp => api.process.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(await api.createReqData(reqAPI, msgChain))
-            else if (reqMethod == 'GET') xhrConfig.url += `?q=${await api.createReqData(reqAPI, msgChain)}`
+            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(api.createReqData(reqAPI, msgChain))
+            else if (reqMethod == 'GET') xhrConfig.url += `?q=${api.createReqData(reqAPI, msgChain)}`
             xhr(xhrConfig)
         }
     }
