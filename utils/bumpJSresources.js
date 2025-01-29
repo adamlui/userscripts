@@ -89,7 +89,7 @@
     const urlMap = {} ; let resCnt = 0
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
-              reJSRurl = /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+$)/gm,
+              reJSRurl = /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/gm,
               resURLs = [...userJScontent.matchAll(reJSRurl)].map(match => match[1])
         if (resURLs.length > 0) { urlMap[userJSfilePath] = resURLs ; resCnt += resURLs.length }
     })
