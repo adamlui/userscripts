@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.26
+// @version             2025.1.29
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -829,11 +829,11 @@
                           + '-o-transition: 0.4s ; -ms-transition: 0.4s }'
                   + `.${this.class} > span.enabled {` // switch on
                       + 'background-color: var(--switch-enabled-bg-color) ;'
-                      + 'box-shadow: var(--switch-enabled-box-shadow) }'
+                      + 'box-shadow: var(--switch-enabled-box-shadow) ;'
+                      + 'transition: 0.15s ; -webkit-transition: 0.15s ; -moz-transition: 0.15s ;'
+                          + '-o-transition: 0.15s ; -ms-transition: 0.15s }'
                   + `.${this.class}:hover > span.enabled {` // switch on when hover on parent div
-                      + 'box-shadow: var(--switch-enabled-hover-box-shadow) ;'
-                      + 'transition: none ; -webkit-transition: none ; -moz-transition: none ;'
-                          + '-o-transition: none ; -ms-transition: none }'
+                      + 'box-shadow: var(--switch-enabled-hover-box-shadow) }'
                   + `.${this.class} > span.disabled {` // switch off
                       + 'background-color: var(--switch-disabled-bg-color) ; box-shadow: none }'
                   + `.${this.class} > span > span {` // knob span
