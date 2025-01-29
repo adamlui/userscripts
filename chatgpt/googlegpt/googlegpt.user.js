@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.29.10
+// @version                  2025.1.29.11
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3714,7 +3714,7 @@
             const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
             return new Promise(resolve => {
                 const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
-                const reqData = api.createReqData(get.related.api, [{ role: 'user', content: rqPrompt }])
+                const reqData = api.createReqData(reqAPI, [{ role: 'user', content: rqPrompt }])
                 const xhrConfig = {
                     headers: api.createHeaders(reqAPI), method: reqMethod, responseType: 'text',
                     onerror: err => { log.error(err) ; api.tryNew(get.related) },
