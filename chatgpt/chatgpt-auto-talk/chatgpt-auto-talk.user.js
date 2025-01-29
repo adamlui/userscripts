@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.26
+// @version             2025.1.29
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -807,7 +807,7 @@
                   + `.${this.class} > span {` // switch span
                       + 'position: relative ; width: 30px ; height: 15px ; border-radius: 28px ;'
                       + `background-color: var(--switch-${ // init opposite final color
-                            config.autoclear ? 'disabled' : 'enabled' }-bg-color) ;`
+                            !config.autoTalkDisabled ? 'disabled' : 'enabled' }-bg-color) ;`
                       + `bottom: ${ env.ui.firstLink ? 0 : -0.15 }em ;`
                       + `left: ${ env.browser.isMobile ? 169 : env.ui.firstLink ? 154 : 160 }px ;`
                       + 'transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;'
