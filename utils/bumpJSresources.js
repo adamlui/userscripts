@@ -110,14 +110,14 @@
         console.log(latestCommitHash + '\n')
 
         // Process each resource in the userscript
-        const re_commitHash = /@([^/]+)/ ; let fileUpdated = false
+        const reCommitHash = /(@|\?v=)([^/#]+)/ ; let fileUpdated = false
         for (const url of urlMap[userJSfilePath]) {
             const resourceName = url.match(/\w+\/\w+\.js(?=#|$)/)[0] // dir/filename.js for logs
 
             // Update hashes
-            if ((url.match(re_commitHash) || [])[1] != latestCommitHash) {
+            if ((url.match(reCommitHash) || [])[1] != latestCommitHash) {
                 console.log(`Updating commit hash for ${resourceName}...`)
-                let updatedURL = url.replace(re_commitHash, `@${latestCommitHash}`)
+                let updatedURL = url.replace(reCommitHash, `@${latestCommitHash}`)
                 console.log(`Updating SRI hash for ${resourceName}...`)
                 updatedURL = updatedURL.replace(/#sha.+/, `#${await getSRIhash(updatedURL)}`)
 
