@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.27
+// @version             2025.1.29
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -228,9 +228,9 @@
 // @connect             gm.chatgptautocontinue.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7ad2c296d540483854a520a91c71661113038bef/chromium/extension/components/modals.js#sha256-WsU/FpgwYrSF9pWPk0kDOaWiX4j44oDhxvItj95Zn7Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7644314558f02e53a8ca1779300cd0bb09e7bf98/chromium/extension/lib/dom.js#sha256-x42VLAXHPZdt08Dp23Oo7AWqCRsK4EgfBEX3B1dyW4w=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9ea86b5aaf7fee4adc56b0464a815725c19/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7ad2c29/chromium/extension/components/modals.js#sha256-WsU/FpgwYrSF9pWPk0kDOaWiX4j44oDhxvItj95Zn7Q=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7644314/chromium/extension/lib/dom.js#sha256-x42VLAXHPZdt08Dp23Oo7AWqCRsK4EgfBEX3B1dyW4w=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9e/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
 // @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
 // @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
 // @grant               GM_setValue
