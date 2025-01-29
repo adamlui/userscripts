@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.29.7
+// @version               2025.1.29.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3478,6 +3478,7 @@
 
             // Get/show answer from AI
             const reqAPI = get.reply.api, reqMethod = apis[reqAPI].method
+            const reqData = api.createReqData(reqAPI, msgChain)
             const xhrConfig = {
                 headers: api.createHeaders(reqAPI), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
@@ -3490,8 +3491,8 @@
                 onloadstart: resp => api.process.stream(resp, { caller: get.reply, callerAPI: reqAPI }),
                 url: apis[reqAPI].endpoints?.completions || apis[reqAPI].endpoint
             }
-            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(api.createReqData(reqAPI, msgChain))
-            else if (reqMethod == 'GET') xhrConfig.url += `?q=${api.createReqData(reqAPI, msgChain)}`
+            if (reqMethod == 'POST') xhrConfig.data = JSON.stringify(reqData)
+            else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
             xhr(xhrConfig)
 
             // Get/show related queries if enabled on 1st get.reply()
