@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.4
+// @version             2025.1.29.5
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -831,7 +831,7 @@
                 }
 
                 // Update color/state
-                this.updateAesthetic() ; this.updateState() // to opposite init state for animation on 1st load
+                this.updateScheme() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -909,10 +909,9 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateAesthetic() { // to match UI scheme
-                const isDarkScheme = env.ui.scheme == 'dark'
-                this.div.classList.add(isDarkScheme ? 'dark' : 'light')
-                this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
+            updateScheme() { // to match UI scheme
+                this.div.classList.add(env.ui.scheme)
+                this.div.classList.remove(env.ui.scheme == 'dark' ? 'light' : 'dark')
                 this.navicon.src = `${app.urls.assetHost}/images/icons/auto-refresh/${
                     env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?v=${app.latestResourceCommitHash}`
             },
@@ -991,7 +990,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.updateAesthetic() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.updateScheme() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
