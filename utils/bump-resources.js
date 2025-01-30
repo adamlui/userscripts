@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Bumps @require'd JS + rising-stars CSS @resource's in userscripts
+// Bumps @require'd JS + rising-particles CSS @resource's in userscripts
 // NOTE: Doesn't git commit to allow script editing from breaking changes
 // NOTE: Pass --cache to use cacheFilePath for faster init
 
@@ -153,10 +153,11 @@
     })
     log.success(`${resCnt} potentially bumpable resource(s) found.`)
 
-    // Fetch latest commit hash for adamlui/ai-web-extensions/assets/styles/rising-stars
-    const risingStarsPath = 'assets/styles/rising-stars'
-    log.working(`\nFetching latest commit hash for ${risingStarsPath}...\n`)
-    const latestCommitHashes = { risingStars: await getLatestCommitHash('adamlui/ai-web-extensions', risingStarsPath) }
+    // Fetch latest commit hash for adamlui/ai-web-extensions/assets/styles/rising-particles
+    const risingParticlesPath = 'assets/styles/rising-particles'
+    log.working(`\nFetching latest commit hash for ${risingParticlesPath}...\n`)
+    const latestCommitHashes = {
+        risingParticles: await getLatestCommitHash('adamlui/ai-web-extensions', risingParticlesPath) }
 
     // Process each userscript
     let urlsUpdatedCnt = 0 ; let filesUpdatedCnt = 0
@@ -181,7 +182,7 @@
             const resName = rePatterns.resName.exec(resURL)?.[0] || 'resource' // dir/filename for logs
 
             // Compare/update commit hash
-            let resLatestCommitHash = latestCommitHashes[resURL.includes(repoName) ? 'chromium' : 'risingStars']
+            let resLatestCommitHash = latestCommitHashes[resURL.includes(repoName) ? 'chromium' : 'risingParticles']
             if (resLatestCommitHash.startsWith( // compare hashes
                 rePatterns.hash.commit.exec(resURL)?.[2] || '')) { // commit hash didn't change...
                     console.log(`${resName} already up-to-date!`) ; log.endedWithLineBreak = false
