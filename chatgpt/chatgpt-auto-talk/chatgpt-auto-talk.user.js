@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.7
+// @version             2025.1.29.8
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -861,13 +861,17 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateNavicon() { // to match UI scheme
-                const isDarkScheme = env.ui.scheme == 'dark'
-                this.div.classList.add(isDarkScheme ? 'dark' : 'light')
-                this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
+            updateNavicon() {
                 this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
                     + `/${ config.autoTalkDisabled ? '' : 'tall' }`
                     + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
+            },
+
+            updateScheme() { // to match UI scheme
+                const isDarkScheme = env.ui.scheme == 'dark'
+                this.div.classList.add(isDarkScheme ? 'dark' : 'light')
+                this.div.classList.remove(isDarkScheme ? 'light' : 'dark')
+                this.updateNavicon()
             },
 
             updateState() {
@@ -926,7 +930,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.updateNavicon() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.updateScheme() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
