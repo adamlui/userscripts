@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.2
+// @version             2025.1.29.3
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -228,8 +228,8 @@
 // @connect             gm.chatgptautocontinue.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7ad2c29/chromium/extension/components/modals.js#sha256-WsU/FpgwYrSF9pWPk0kDOaWiX4j44oDhxvItj95Zn7Q=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7644314/chromium/extension/lib/dom.js#sha256-x42VLAXHPZdt08Dp23Oo7AWqCRsK4EgfBEX3B1dyW4w=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@d27ed79/chromium/extension/components/modals.js#sha256-otkuF1oCI4Vhw7gKTnmAyg/FxAGIk8FXm1MOk8S8Ahc=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@d27ed79/chromium/extension/lib/dom.js#sha256-xEUxmi1rb1RalCMFwWjDMSNihO87tldqwAWEOumd0K0=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9e/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
 // @resource brpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
 // @resource wrpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
