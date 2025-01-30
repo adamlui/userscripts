@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.8
+// @version             2025.1.30
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -910,9 +910,19 @@
             },
 
             update: {
-                navicon() {
-                    toggles.sidebar.navicon.src = `${app.urls.assetHost}/images/icons/auto-refresh/${
-                        env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?v=${app.latestResourceCommitHash}`
+
+                navicon({ preload = false } = {}) {
+                    const baseURL = `${app.urls.assetHost}/images/icons/auto-refresh`,
+                          schemeMap = { light: 'black', dark: 'white' },
+                          fileName = 'icon32.png'
+
+                    if (preload)
+                        Object.keys(schemeMap).forEach(scheme =>
+                            new Image().src = `${baseURL}/${schemeMap[scheme]}/${fileName}?v=`
+                                            + app.latestResourceCommitHash
+                        )
+                    else toggles.sidebar.navicon.src = baseURL
+                        + `/${schemeMap[env.ui.scheme]}/${fileName}?v=${app.latestResourceCommitHash}`
                 },
 
                 scheme() { // to match UI scheme
@@ -950,6 +960,7 @@
     // Run MAIN routine
 
     menu.register() // create browser toolbar menu
+    toggles.sidebar.update.navicon({ preload: true }) // preload sidebar NAVICON variants
 
     // Init UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
