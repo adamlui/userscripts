@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30.4
+// @version             2025.1.30.5
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -287,6 +287,7 @@
                 payPal: 'https://paypal.me/adamlui'
             },
             gitHub: 'https://github.com/adamlui/chatgpt-auto-talk',
+            assetHost: 'https://assets.chatgptautotalk.com',
             relatedExtensions: 'https://github.com/adamlui/ai-web-extensions',
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
@@ -862,7 +863,7 @@
             update: {
 
                 navicon({ preload = false } = {}) {
-                    const baseURL = `${app.urls.resourceHost}/assets/images/icons/soundwave`,
+                    const baseURL = `${app.urls.assetHost}/images/icons/soundwave`,
                           stateMap = { enabled: 'tall', disabled: '' },
                           schemeMap = { light: 'black', dark: 'white' }
                     if (preload)
