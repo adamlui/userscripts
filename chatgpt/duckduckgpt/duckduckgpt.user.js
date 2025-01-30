@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.6
+// @version                2025.1.30.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -567,8 +567,8 @@
 
     // Init UI props
     env.ui = {
-        app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' )},
-        site: { isCentered: !!document.documentElement.classList.toString().includes('center') }
+        app: { scheme: config.scheme || getScheme() },
+        site: { isCentered: !!document.documentElement.classList.toString().includes('center'), scheme: getScheme() }
     }
 
     // Init INPUT EVENTS
@@ -732,7 +732,7 @@
             }
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
-                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.app.scheme] }`
+                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -1205,7 +1205,7 @@
                 // Clone button to replace listener to not dismiss modal on click
                 const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                 newBtn.onclick = () => {
-                    const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                    const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
@@ -2484,6 +2484,11 @@
     }
 
     // Define UI functions
+
+    function getScheme() {
+        return document.documentElement?.className?.includes('dark') // from DDG pref
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
+    }
 
     const addListeners = {
 
@@ -3984,7 +3989,7 @@
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         if (config.scheme) return // since light/dark hard-set
-        const newScheme = chatgpt.isDarkMode() ? 'dark' : 'light'
+        const newScheme = getScheme()
         if (newScheme != env.ui.app.scheme) update.scheme(newScheme)
     }
 
