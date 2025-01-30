@@ -724,7 +724,7 @@
             }
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
-                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.app.scheme] }`
+                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -1195,7 +1195,7 @@
                 // Clone button to replace listener to not dismiss modal on click
                 const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                 newBtn.onclick = () => {
-                    const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                    const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
@@ -2479,10 +2479,9 @@
 
     // Define UI functions
 
-    function isDarkMode() {
-        return document.documentElement.classList.contains('dark') ? true
-             : document.documentElement.classList.contains('light') ? false
-             : window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    function getScheme() {
+        return document.documentElement?.classList?.contains('dark') // from Brave Search pref
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function visibilizeOverflow() { // for boundless hover fx
@@ -3923,7 +3922,7 @@
     menu.register()
 
     // Init UI props
-    env.ui = { app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )}}
+    env.ui = { app: { scheme: config.scheme || getScheme() }, site: { scheme: getScheme() }}
 
     // Create/ID/classify/listenerize/stylize APP container
     let appDiv = document.createElement('div') ; appDiv.id = app.slug
@@ -3994,7 +3993,7 @@
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         if (config.scheme) return // since light/dark hard-set
-        const newScheme = isDarkMode() ? 'dark' : 'light'
+        const newScheme = getScheme()
         if (newScheme != env.ui.app.scheme) update.scheme(newScheme)
     }
 
