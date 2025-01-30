@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.1
+// @version             2025.1.29.2
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -231,8 +231,8 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7ad2c29/chromium/extension/components/modals.js#sha256-WsU/FpgwYrSF9pWPk0kDOaWiX4j44oDhxvItj95Zn7Q=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7644314/chromium/extension/lib/dom.js#sha256-x42VLAXHPZdt08Dp23Oo7AWqCRsK4EgfBEX3B1dyW4w=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9e/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
-// @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
-// @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
+// @resource brpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
+// @resource wrpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
@@ -490,8 +490,8 @@
 
     menu.register() ; if (env.extensionInstalled) return
 
-    // Add STARS styles
-    ['brs', 'wrs'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
+    // Add RISING PARTICLES styles
+    ['brp', 'wrp'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Observe DOM for need to continue generating response
     checkContinueBtn()
