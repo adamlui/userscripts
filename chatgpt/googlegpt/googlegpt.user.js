@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.30.6
+// @version                  2025.1.30.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -915,7 +915,7 @@
             }
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = stateStyles[
-                foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.app.scheme]
+                foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -1347,7 +1347,7 @@
                 // Clone button to replace listener to not dismiss modal on click
                 const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                 newBtn.onclick = () => {
-                    const newScheme = btnScheme == 'auto' ? ( isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                    const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
@@ -2511,7 +2511,8 @@
             if (chatbar) chatbar.style.width = `${
                 env.browser.isMobile ? 81.4
               : config.anchored ? ( config.expanded ? 87.4 : 83.3 )
-              : config.widerSidebar ? ( env.ui.site.hasSidebar ? 85.4 : 85.9 ) : ( env.ui.site.hasSidebar ? 79.3 : 80.1 )}%`
+              : config.widerSidebar ? ( env.ui.site.hasSidebar ? 85.4 : 85.9 )
+                                    : ( env.ui.site.hasSidebar ? 79.3 : 80.1 )}%`
         },
 
         async footerContent() {
@@ -2648,21 +2649,9 @@
 
     // Define UI functions
 
-    function isDarkMode() {
-
-        // Dark theme status elem method
-        const domDarkStatus = [...document.querySelectorAll('span')]
-            .find(span => span.textContent == 'Dark theme') // dark theme status label
-            ?.nextElementSibling.textContent // dark theme status
-        if (domDarkStatus) return domDarkStatus == 'On'
-
-        // Vanilla logo method
-        for (const img of document.getElementsByTagName('img'))
-            if (img.alt == 'Google' && img.src.includes('light'))
-                return true
-
-        // Final fallback to matchMedia
-        return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    function getScheme() {
+        return document.querySelector('meta[name="color-scheme"]')?.content?.includes('dark') // from Google Search pref
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     const addListeners = {
@@ -4116,17 +4105,9 @@
     if (location.search.includes('&udm=2')) return log.debug('Exited from Google Images')
 
     // Init UI props
-    await Promise.race([ // dark theme label loaded or 0.5s passed
-        new Promise(resolve => {
-            (function checkDarkThemeLabel() {
-                [...document.querySelectorAll('span')].find(span => span.textContent == 'Dark theme')
-                    ? resolve(true) : setTimeout(checkDarkThemeLabel, 200)
-            })()
-        }), new Promise(resolve => setTimeout(resolve, 500))
-    ])
     env.ui = {
-        app: { scheme: config.scheme || ( isDarkMode() ? 'dark' : 'light' )},
-        site: { hasSidebar: !!document.querySelector('[class*=kp-]') }
+        app: { scheme: config.scheme || getScheme() },
+        site: { hasSidebar: !!document.querySelector('[class*=kp-]'), scheme: getScheme() }
     }
 
     // Create/ID/classify/listenerize/stylize APP container
