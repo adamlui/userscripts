@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.4
+// @version             2025.1.29.5
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -796,7 +796,7 @@
                     this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
                 }
 
-                // Update color/state
+                // Update scheme/state
                 this.updateScheme() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
