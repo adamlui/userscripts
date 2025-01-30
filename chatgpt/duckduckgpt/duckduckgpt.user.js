@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.5
+// @version                2025.1.30.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1686,7 +1686,7 @@
         arrowsTwistedRight: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '-1 -1 32 32' })
-                const svgPath = dom.create.svgElem('path', { stroke: '',
+                const svgPath = dom.create.svgElem('path', {
                     d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1698,7 +1698,7 @@
                     width: 16, height: 16, viewBox: '4 2 16 16', 'stroke-width': '2',
                     'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
                 const svgPath = dom.create.svgElem('path', {
-                    stroke: '', fill: 'none', 'stroke-width': '2', linecap: 'round',
+                    fill: 'none', 'stroke-width': '2', linecap: 'round',
                     'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
                 svg.append(svgPath) ; return svg
             }
@@ -1719,7 +1719,7 @@
         caretsInward: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 24' })
-                const svgPath = dom.create.svgElem('path', { stroke: '',
+                const svgPath = dom.create.svgElem('path', {
                     d: 'M11.29,9.71a1,1,0,0,0,1.42,0l5-5a1,1,0,1,0-1.42-1.42L12,7.59,7.71,3.29A1,1,0,0,0,6.29,4.71Zm1.42,4.58a1,1,0,0,0-1.42,0l-5,5a1,1,0,0,0,1.42,1.42L12,16.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1809,7 +1809,7 @@
             create() {
                 const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 24' })
                 const svgPath = dom.create.svgElem('path', {
-                    fill: 'none', stroke: '', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+                    fill: 'none', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
                     d: 'M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1818,7 +1818,7 @@
         pin: {
             create() {
                 const svg = dom.create.svgElem('svg', { id: 'pin-icon', width: 17, height: 17, viewBox: '0 0 16 16' })
-                const svgPath = dom.create.svgElem('path', { stroke: '',
+                const svgPath = dom.create.svgElem('path', {
                     d: 'M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1863,7 +1863,7 @@
         signalStream: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 16, height: 16, viewBox: '0 0 32 32' })
-                const svgPath = dom.create.svgElem('path', { stroke: '', 'stroke-width': 0.5,
+                const svgPath = dom.create.svgElem('path', { 'stroke-width': 0.5,
                     d: 'M16 11.75c-2.347 0-4.25 1.903-4.25 4.25s1.903 4.25 4.25 4.25c2.347 0 4.25-1.903 4.25-4.25v0c-0.003-2.346-1.904-4.247-4.25-4.25h-0zM16 17.75c-0.966 0-1.75-0.784-1.75-1.75s0.784-1.75 1.75-1.75c0.966 0 1.75 0.784 1.75 1.75v0c-0.001 0.966-0.784 1.749-1.75 1.75h-0zM3.25 16c0.211-3.416 1.61-6.471 3.784-8.789l-0.007 0.008c0.223-0.226 0.361-0.536 0.361-0.879 0-0.69-0.56-1.25-1.25-1.25-0.344 0-0.655 0.139-0.881 0.363l0-0c-2.629 2.757-4.31 6.438-4.506 10.509l-0.001 0.038c0.198 4.109 1.879 7.79 4.514 10.553l-0.006-0.006c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-2.173-2.307-3.573-5.363-3.774-8.743l-0.002-0.038zM9.363 16c0.149-2.342 1.109-4.436 2.6-6.026l-0.005 0.005c0.224-0.226 0.363-0.537 0.363-0.88 0-0.69-0.56-1.25-1.25-1.25-0.345 0-0.657 0.139-0.883 0.365l0-0c-1.94 2.035-3.179 4.753-3.323 7.759l-0.001 0.028c0.145 3.032 1.384 5.75 3.329 7.79l-0.005-0.005c0.226 0.228 0.54 0.369 0.886 0.369 0.69 0 1.249-0.559 1.249-1.249 0-0.346-0.141-0.659-0.368-0.885l-0-0c-1.49-1.581-2.451-3.676-2.591-5.993l-0.001-0.027zM26.744 5.453c-0.226-0.227-0.54-0.368-0.886-0.368-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.139 0.657 0.365 0.883l-0-0c2.168 2.31 3.567 5.365 3.775 8.741l0.002 0.040c-0.21 3.417-1.609 6.471-3.784 8.789l0.007-0.008c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c2.628-2.757 4.308-6.439 4.504-10.509l0.001-0.038c-0.198-4.108-1.878-7.79-4.512-10.553l0.006 0.007zM21.811 8.214c-0.226-0.224-0.537-0.363-0.881-0.363-0.69 0-1.25 0.56-1.25 1.25 0 0.343 0.138 0.653 0.361 0.879l-0-0c1.486 1.585 2.447 3.678 2.594 5.992l0.001 0.028c-0.151 2.343-1.111 4.436-2.601 6.027l0.005-0.005c-0.224 0.226-0.362 0.537-0.362 0.88 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.657-0.14 0.883-0.365l-0 0c1.939-2.036 3.178-4.754 3.323-7.759l0.001-0.028c-0.145-3.033-1.385-5.751-3.331-7.791l0.005 0.005z' })
                 svg.append(svgPath) ; return svg
             }
@@ -1872,7 +1872,7 @@
         slash: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 15, height: 15, viewBox: '0 0 15 15' }),
-                      svgPath = dom.create.svgElem('path', { stroke: '', d: 'M4.10876 14L9.46582 1H10.8178L5.46074 14H4.10876Z' })
+                      svgPath = dom.create.svgElem('path', { d: 'M4.10876 14L9.46582 1H10.8178L5.46074 14H4.10876Z' })
                 svg.append(svgPath) ; return svg
             }
         },
@@ -1880,7 +1880,7 @@
         sliders: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 24 24' })
-                const svgPath = dom.create.svgElem('path', { stroke: '',
+                const svgPath = dom.create.svgElem('path', {
                     d: 'M13.82 19.333H3.834a.834.834 0 0 1 0-1.666h9.988A2.49 2.49 0 0 1 16.167 16c1.085 0 2 .698 2.346 1.667h1.654a.834.834 0 0 1 0 1.666h-1.654A2.5 2.5 0 0 1 16.167 21c-1.085 0-2.001-.7-2.346-1.667M17 18.5a.834.834 0 1 0-1.668.002A.834.834 0 0 0 17 18.5M5.487 12.833H3.833a.834.834 0 0 1 0-1.666h1.654A2.5 2.5 0 0 1 7.833 9.5c1.085 0 2.001.7 2.347 1.667h9.987a.834.834 0 0 1 0 1.666H10.18A2.5 2.5 0 0 1 7.833 14.5c-1.085 0-2-.698-2.346-1.667M8.667 12a.834.834 0 1 0-1.669.002A.834.834 0 0 0 8.667 12m.986-5.667h-5.82a.834.834 0 0 1 0-1.666h5.82A2.495 2.495 0 0 1 12 3c1.085 0 2.002.698 2.347 1.667h5.82a.834.834 0 0 1 0 1.666h-5.82A2.5 2.5 0 0 1 12 8c-1.085 0-2.002-.7-2.347-1.667m3.18-.833A.835.835 0 0 0 12 4.667a.835.835 0 0 0-.833.833.834.834 0 0 0 1.666 0' })
                 svg.append(svgPath) ; return svg
             }
@@ -1890,15 +1890,15 @@
             create(style) { // style = ( 'fg' ? filled front sparkle : 'bg' ? filled rear sparkles )
                 const svg = dom.create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 512 512' })
                 svg.append(dom.create.svgElem('path', { // large front sparkle
-                    fill: style == 'bg' ? 'none' : '', stroke: '',
+                    fill: style == 'bg' ? 'none' : '',
                     'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
                     d: 'M259.92,262.91,216.4,149.77a9,9,0,0,0-16.8,0L156.08,262.91a9,9,0,0,1-5.17,5.17L37.77,311.6a9,9,0,0,0,0,16.8l113.14,43.52a9,9,0,0,1,5.17,5.17L199.6,490.23a9,9,0,0,0,16.8,0l43.52-113.14a9,9,0,0,1,5.17-5.17L378.23,328.4a9,9,0,0,0,0-16.8L265.09,268.08A9,9,0,0,1,259.92,262.91Z' }))
                 svg.append(dom.create.svgElem('polygon', { // small(est) rear-left sparkle
-                    fill: style == 'fg' ? 'none' : '', stroke: '',
+                    fill: style == 'fg' ? 'none' : '',
                     'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 24,
                     points: '108 68 88 16 68 68 16 88 68 108 88 160 108 108 160 88 108 68' }))
                 svg.append(dom.create.svgElem('polygon', { // small rear-right sparkle
-                    fill: style == 'fg' ? 'none' : '', stroke: '',
+                    fill: style == 'fg' ? 'none' : '',
                     'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': 32,
                     points: '426.67 117.33 400 48 373.33 117.33 304 144 373.33 170.67 400 240 426.67 170.67 496 144 426.67 117.33' }))
                 return svg
@@ -1909,11 +1909,11 @@
             create() {
                 const svg = dom.create.svgElem('svg', { width: 22, height: 22, viewBox: '0 0 32 32' })
                 svg.append(
-                    dom.create.svgElem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
+                    dom.create.svgElem('path', { 'stroke-width': '2px', fill: 'none',
                         d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
-                    dom.create.svgElem('path', { stroke: '', 'stroke-width': '2px', fill: 'none',
+                    dom.create.svgElem('path', { 'stroke-width': '2px', fill: 'none',
                         d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
-                    dom.create.svgElem('path', { stroke: 'none', fill: '',
+                    dom.create.svgElem('path', { stroke: 'none',
                         d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
                 )
                 return svg
@@ -1967,14 +1967,10 @@
 
         widescreen: {
             wideSVGpath() { return dom.create.svgElem('path', {
-                stroke: '', fill: '', 'fill-rule': 'evenodd',
-                d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z'
-            })},
+                'fill-rule': 'evenodd', d: 'm26,13 0,10 -16,0 0,-10 z m-14,2 12,0 0,6 -12,0 0,-6 z' })},
 
             tallSVGpath() { return dom.create.svgElem('path', {
-                stroke: '', fill: '', 'fill-rule': 'evenodd',
-                d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z'
-            })},
+                'fill-rule': 'evenodd', d: 'm28,11 0,14 -20,0 0,-14 z m-18,2 16,0 0,10 -16,0 0,-10 z' })},
 
             create() {
                 const svg = dom.create.svgElem('svg', {
