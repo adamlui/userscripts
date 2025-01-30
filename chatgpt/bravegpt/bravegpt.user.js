@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.30.7
+// @version               2025.1.30.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3254,8 +3254,8 @@
             initFailFlags(api) { return apis[api].respPatterns?.fail ? new RegExp(apis[api].respPatterns.fail) : null },
 
             stream(resp, { caller, callerAPI }) {
+                log.caller = `api.process.stream(resp, { caller: get.${caller.name}, callerAPI: '${callerAPI}' })`
                 if (config.streamingDisabled || !config.proxyAPIenabled) return
-                log.caller = `get.${caller.name}() » api.process.stream()`
                 const reader = resp.response.getReader(), reFailFlags = this.initFailFlags(callerAPI)
                 let textToShow = '', isDone = false
                 reader.read().then(chunk => handleChunk(chunk, callerAPI))
@@ -3329,10 +3329,10 @@
             },
 
             text(resp, { caller, callerAPI }) {
+                log.caller = `api.process.text(resp, { caller: get.${caller.name}, callerAPI: '${callerAPI}' })`
                 return new Promise(resolve => {
                     if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
                         || caller.status == 'done') return
-                    log.caller = `get.${caller.name}() » api.process.text()`
                     const reFailFlags = this.initFailFlags(callerAPI) ; let textToShow = ''
                     if (resp.status != 200) {
                         log.error('Response status', resp.status)
