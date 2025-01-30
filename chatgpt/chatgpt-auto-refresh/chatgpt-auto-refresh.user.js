@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.2
+// @version             2025.1.29.3
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -239,8 +239,8 @@
 // @connect             gm.chatgptautorefresh.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @resource brsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
-// @resource wrsCSS     https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
+// @resource brpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
+// @resource wrpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
 // @grant               GM_getValue
 // @grant               GM_registerMenuCommand
@@ -533,7 +533,7 @@
         alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
             const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
                   alert = document.getElementById(alertID).firstChild
-            this.init(alert) // add classes + starry bg
+            this.init(alert) // add classes + rising particles bg
             return alert
         },
 
@@ -541,14 +541,14 @@
             const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
             if (!modal) return // since no div returned
             this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
-            this.init(modal) // add classes + starry bg
+            this.init(modal) // add classes + rising particles bg
             this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
         },
 
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
-            fillStarryBG(modal) // add starry bg
+            addRisingParticles(modal)
         },
 
         stylize() {
@@ -787,18 +787,18 @@
         return style
     }
 
-    function fillStarryBG(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-stars/css/<black|white>.min.css
-        if (targetNode.querySelector('[id*=stars]')) return
-        const starsDivsContainer = document.createElement('div')
-        starsDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+    function addRisingParticles(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<black|white>.min.css
+        if (targetNode.querySelector('[id*=particles]')) return
+        const particlesDivsContainer = document.createElement('div')
+        particlesDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
           + 'z-index: -1'; // allow interactive elems to be clicked
-        ['sm', 'med', 'lg'].forEach(starSize => {
-            const starsDiv = document.createElement('div')
-            starsDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'black' }-stars-${starSize}`
-            starsDivsContainer.append(starsDiv)
+        ['sm', 'med', 'lg'].forEach(particleSize => {
+            const particlesDiv = document.createElement('div')
+            particlesDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'black' }-particles-${particleSize}`
+            particlesDivsContainer.append(particlesDiv)
         })
-        targetNode.prepend(starsDivsContainer)
+        targetNode.prepend(particlesDivsContainer)
     }
 
     const toggles = {
@@ -949,8 +949,8 @@
     await chatgpt.sidebar.isLoaded()
     env.ui.firstLink = chatgpt.getNewChatLink();
 
-    // Add STARS styles
-    ['brs', 'wrs'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
+    // Add RISING PARTICLES styles
+    ['brp', 'wrp'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     toggles.sidebar.insert()
 
