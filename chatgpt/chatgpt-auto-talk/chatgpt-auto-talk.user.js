@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30.3
+// @version             2025.1.30.4
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -782,7 +782,7 @@
                 }
 
                 // Update scheme/state
-                this.update.scheme() ; this.update.state() // to opposite init state for animation on 1st load
+                this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -814,8 +814,7 @@
                   + `.${this.class} > input { display: none }` // hide checkbox
                   + `.${this.class} > span {` // switch span
                       + 'position: relative ; width: 30px ; height: 15px ; border-radius: 28px ;'
-                      + `background-color: var(--switch-${ // init opposite final color
-                            !config.autoTalkDisabled ? 'disabled' : 'enabled' }-bg-color) ;`
+                      + 'background-color: var(--switch-disabled-bg-color) ;'
                       + `bottom: ${ env.ui.firstLink ? 0 : -0.15 }em ;`
                       + `left: ${ env.browser.isMobile ? 169 : env.ui.firstLink ? 154 : 160 }px ;`
                       + 'transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;'
@@ -833,7 +832,6 @@
                       + 'position: absolute ; width: 12px ; height: 12px ; content: "" ; border-radius: 28px ;'
                       + 'background-color: white ; left: 3px ; bottom: 1.25px ;'
                       + 'box-shadow: var(--knob-box-shadow) ;' // make 3D
-                      + `transform: translateX(${ !config.autoTalkDisabled ? 0 : 13 }px) ;` // init opposite final pos
                       + 'transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;'
                           + '-o-transition: 0.4s ; -ms-transition: 0.4s }'
                   + `.${this.class} > label {` // toggle label
