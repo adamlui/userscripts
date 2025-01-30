@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.30.4
+// @version               2025.1.30.5
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -1333,8 +1333,8 @@
                         // Create/stylize knob
                         const knobSpan = document.createElement('span')
                         Object.assign(knobSpan.style, {
-                            position: 'absolute', left: '1px', bottom: '1px', backgroundColor: 'white', content: '""',
-                            width: '11px', height: '11px', borderRadius: '28px', transform: 'translateX(0)',
+                            position: 'absolute', left: '1px', bottom: '1px', content: '""',
+                            backgroundColor: 'white', width: '11px', height: '11px', borderRadius: '28px',
                             transition: '0.2s', '-webkit-transition': '0.2s', '-moz-transition': '0.2s',
                                 '-o-transition': '0.2s', '-ms-transition': '0.2s'
                         })
