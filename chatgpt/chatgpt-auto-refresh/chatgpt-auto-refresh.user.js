@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.3
+// @version             2025.1.29.4
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -239,7 +239,7 @@
 // @connect             gm.chatgptautorefresh.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
-// @resource brpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
+// @resource grpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
 // @resource wrpCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
 // @grant               GM_getValue
@@ -787,7 +787,7 @@
         return style
     }
 
-    function addRisingParticles(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<black|white>.min.css
+    function addRisingParticles(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<gray|white>.min.css
         if (targetNode.querySelector('[id*=particles]')) return
         const particlesDivsContainer = document.createElement('div')
         particlesDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
@@ -795,7 +795,7 @@
           + 'z-index: -1'; // allow interactive elems to be clicked
         ['sm', 'med', 'lg'].forEach(particleSize => {
             const particlesDiv = document.createElement('div')
-            particlesDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'black' }-particles-${particleSize}`
+            particlesDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'gray' }-particles-${particleSize}`
             particlesDivsContainer.append(particlesDiv)
         })
         targetNode.prepend(particlesDivsContainer)
@@ -950,7 +950,7 @@
     env.ui.firstLink = chatgpt.getNewChatLink();
 
     // Add RISING PARTICLES styles
-    ['brp', 'wrp'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
+    ['grp', 'wrp'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
 
     toggles.sidebar.insert()
 
