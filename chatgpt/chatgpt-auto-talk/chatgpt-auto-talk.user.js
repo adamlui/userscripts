@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.11
+// @version             2025.1.30
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -862,10 +862,20 @@
             },
 
             update: {
-                navicon() {
-                    toggles.sidebar.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
-                        + `/${ config.autoTalkDisabled ? '' : 'tall' }`
-                        + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
+
+                navicon({ preload = false } = {}) {
+                    const baseURL = `${app.urls.resourceHost}/assets/images/icons/soundwave`,
+                          stateMap = { enabled: 'tall', disabled: '' },
+                          schemeMap = { light: 'black', dark: 'white' }
+
+                    if (preload)
+                        Object.keys(stateMap).forEach(state =>
+                            Object.keys(schemeMap).forEach(scheme =>
+                                new Image().src = `${baseURL}/${stateMap[state]}/${schemeMap[scheme]}.svg`
+                        ))
+                    else toggles.sidebar.navicon.src = baseURL
+                        + `/${ stateMap[config.autoTalkDisabled ? 'disabled' : 'enabled'] }`
+                        + `/${ schemeMap[env.ui.scheme] }.svg`
                 },
 
                 scheme() { // to match UI scheme
@@ -888,7 +898,6 @@
                             toggles.sidebar.toggleInput.checked ? 13 : 0 }px)`
                     }, 1) // min delay to trigger 1st transition fx
                 }
-
             }
         }
     }
@@ -896,6 +905,7 @@
     // Run MAIN routine
 
     menu.register() // create browser toolbar menu
+    toggles.sidebar.update.navicon({ preload: true }) // preload sidebar NAVICON variants
 
     // Init BROWSER/UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
