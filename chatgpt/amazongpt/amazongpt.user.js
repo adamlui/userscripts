@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.6
+// @version                2025.1.30.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -388,7 +388,7 @@
     log.debug(`Success! config = ${log.prettifyObj(config)}`)
 
     // Init UI props
-    env.ui = { app: { scheme: config.scheme || ( chatgpt.isDarkMode() ? 'dark' : 'light' ) }}
+    env.ui = { app: { scheme: config.scheme || getScheme() }, site: { scheme: getScheme() }}
 
     // Init INPUT EVENTS
     const inputEvents = {} ; ['down', 'move', 'up'].forEach(action =>
@@ -553,7 +553,7 @@
             }
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
-                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.app.scheme] }`
+                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -985,7 +985,7 @@
                 // Clone button to replace listener to not dismiss modal on click
                 const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
                 newBtn.onclick = () => {
-                    const newScheme = btnScheme == 'auto' ? ( chatgpt.isDarkMode() ? 'dark' : 'light' ) : btnScheme
+                    const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
@@ -1909,6 +1909,9 @@
     }
 
     // Define UI functions
+
+    function getScheme() {
+        return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
 
     const addListeners = {
 
