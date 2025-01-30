@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.29.14
+// @version               2025.1.29.15
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -192,8 +192,8 @@
 // @resource bgptLSlogo   https://assets.bravegpt.com/images/logos/bravegpt/lightmode/logo730x155.png.b64?v=a76e718#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
 // @resource bgptDSlogo   https://assets.bravegpt.com/images/logos/bravegpt/darkmode/logo730x155.png.b64?v=a76e718#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
 // @resource hljsCSS      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource brsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/black.min.css?v=3289404#sha256-CTj6Ndngq+TsPlNpQ6Ej39PQKSDpmxyKUFohhc91ruQ=
-// @resource wrsCSS       https://assets.aiwebextensions.com/styles/rising-stars/dist/white.min.css?v=3289404#sha256-tOOIvIe6O5/x2A5E7s9kP4+zw0d4EEDfRgXQLq2KwLs=
+// @resource brpCSS       https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
+// @resource wrpCSS       https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant                 GM_getValue
 // @grant                 GM_setValue
 // @grant                 GM_deleteValue
@@ -580,7 +580,7 @@
     }})
 
     // Export DEPENDENCIES to dom.js
-    dom.imports.import({ config, env }) // for config.bgAnimationsDisabled + env.ui.app.scheme in dom.fillStarryBg()
+    dom.imports.import({ config, env }) // for config.bgAnimationsDisabled + env.ui.app.scheme in dom.addRisingParticles()
 
     // Define MENU functions
 
@@ -773,7 +773,7 @@
             }
 
             // Hack BG
-            dom.fillStarryBG(modal)
+            dom.addRisingParticles(modal)
             setTimeout(() => { // dim bg
                 modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
                     env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
@@ -2041,7 +2041,7 @@
         appBottomPos() { appDiv.style.bottom = `${ config.minimized ? 48 - appDiv.offsetHeight : -32 }px` },
 
         appStyle() {
-            const isStarryDM = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
+            const isParticlizedDS = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
             modals.stylize() // update modal styles
             app.styles.innerText = (
                 ':root {' // vars
@@ -2085,7 +2085,7 @@
                   + ( config.bgAnimationsDisabled ? // classic flat bg
                         `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
                       + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
-                  : `background-image: linear-gradient(180deg, ${ // gradient bg to match stars
+                  : `background-image: linear-gradient(180deg, ${ // gradient bg to match rising particles
                         env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                     : '#b6ebff -163px, white 65px' }) ;` )
                   + ( env.ui.app.scheme == 'dark' ? 'border: none ;' : '' )
@@ -2160,8 +2160,8 @@
               + `.${app.slug}-standby-btn {`
                   + 'width: 100% ; margin: 14px 0 20px ; padding: 13px 0 ; cursor: pointer ;'
                   + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
-                  + `color: ${ isStarryDM ? 'white' : 'black' };`
-                  + `border-radius: 4px ; border: 1px solid ${ isStarryDM ? '#fff' : '#888' };`
+                  + `color: ${ isParticlizedDS ? 'white' : 'black' };`
+                  + `border-radius: 4px ; border: 1px solid ${ isParticlizedDS ? '#fff' : '#888' };`
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
@@ -2175,7 +2175,7 @@
                   + 'float: left ; left: 7px ; margin: 29px -13px 0 0 ;' // positioning
                   + 'border-bottom-style: solid ; border-bottom-width: 16px ; border-top: 0 ; border-bottom-color:'
                       + `${ // hide reply tip for terminal aesthetic
-                            isStarryDM ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
+                            isParticlizedDS ? '#0000' : `var(--pre-bg-color-${env.ui.app.scheme}-scheme)` }}`
               + `#${app.slug} > pre {`
                   + `font-size: ${config.fontSize}px ; white-space: pre-wrap ;`
                   + 'font-family: Consolas, Menlo, Monaco, monospace ;'
@@ -2472,15 +2472,15 @@
             log.caller = `update.scheme('${newScheme}')`
             log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
             env.ui.app.scheme = newScheme ; logos.braveGPT.update() ; update.appStyle()
-            update.stars() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
+            update.risingParticles() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
             log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         },
 
-        stars() {
+        risingParticles() {
             ['sm', 'med', 'lg'].forEach(size =>
-                document.querySelectorAll(`[id*=stars-${size}]`).forEach(starsDiv =>
-                    starsDiv.id = config.bgAnimationsDisabled ? `stars-${size}-off`
-                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-stars-${size}`
+                document.querySelectorAll(`[id*=particles-${size}]`).forEach(particlesDiv =>
+                    particlesDiv.id = config.bgAnimationsDisabled ? `particles-${size}-off`
+                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-particles-${size}`
             ))
         }
     }
@@ -2911,7 +2911,7 @@
         animations(layer) {
             const configKey = `${layer}AnimationsDisabled`
             settings.save(configKey, !config[configKey])
-            update.appStyle() ; if (layer == 'bg') { update.stars() ; update.replyPrefix() }
+            update.appStyle() ; if (layer == 'bg') { update.risingParticles() ; update.replyPrefix() }
             if (layer == 'fg' && modals.settings.get()) {
 
                 // Toggle ticker-scroll of About status label
@@ -3639,7 +3639,7 @@
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 appDiv.textContent = ''
-                dom.fillStarryBG(appDiv) // add stars
+                dom.addRisingParticles(appDiv)
 
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
@@ -3939,7 +3939,7 @@
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
-    ['brs', 'wrs', 'hljs'].forEach(cssType => // black rising stars, white rising stars, code highlighting
+    ['brp', 'wrp', 'hljs'].forEach(cssType => // black rising particles, white rising particles, code highlighting
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
