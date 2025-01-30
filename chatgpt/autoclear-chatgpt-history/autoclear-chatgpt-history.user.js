@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30
+// @version             2025.1.30.1
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -876,9 +876,19 @@
             },
 
             update: {
-                navicon() {
-                    toggles.sidebar.navicon.src = `${app.urls.assetHost}/images/icons/incognito/${
-                        env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?v=${app.latestResourceCommitHash}`
+
+                navicon({ preload = false } = {}) {
+                    const baseURL = `${app.urls.assetHost}/images/icons/incognito`,
+                          schemeMap = { light: 'black', dark: 'white' },
+                          fileName = 'icon32.png'
+
+                    if (preload)
+                        Object.keys(schemeMap).forEach(scheme =>
+                            new Image().src = `${baseURL}/${schemeMap[scheme]}/${fileName}?v=`
+                                            + app.latestResourceCommitHash
+                        )
+                    else toggles.sidebar.navicon.src = baseURL
+                        + `/${schemeMap[env.ui.scheme]}/${fileName}?v=${app.latestResourceCommitHash}`
                 },
 
                 scheme() { // to match UI scheme
@@ -900,7 +910,6 @@
                             toggles.sidebar.toggleInput.checked ? 13 : 0 }px)`
                     }, 1) // min delay to trigger 1st transition fx
                 }
-
             }
         }
     }
@@ -931,6 +940,7 @@
     // Run MAIN routine
 
     menu.register() // create browser toolbar menu
+    toggles.sidebar.update.navicon({ preload: true }) // preload sidebar NAVICON variants
 
     // Init UI props
     await Promise.race([chatgpt.isLoaded(), new Promise(resolve => setTimeout(resolve, 5000))]) // initial UI loaded
