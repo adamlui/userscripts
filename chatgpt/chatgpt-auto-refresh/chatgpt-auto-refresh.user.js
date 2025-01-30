@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30.2
+// @version             2025.1.30.3
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -914,15 +914,11 @@
                 navicon({ preload = false } = {}) {
                     const baseURL = `${app.urls.assetHost}/images/icons/auto-refresh`,
                           schemeMap = { light: 'black', dark: 'white' },
-                          fileName = 'icon32.png'
-
+                          fileName = `icon32.png?v=${app.latestResourceCommitHash}`
                     if (preload)
                         Object.keys(schemeMap).forEach(scheme =>
-                            new Image().src = `${baseURL}/${schemeMap[scheme]}/${fileName}?v=`
-                                            + app.latestResourceCommitHash
-                        )
-                    else toggles.sidebar.navicon.src = baseURL
-                        + `/${schemeMap[env.ui.scheme]}/${fileName}?v=${app.latestResourceCommitHash}`
+                            new Image().src = `${baseURL}/${schemeMap[scheme]}/${fileName}`)
+                    else toggles.sidebar.navicon.src = `${baseURL}/${schemeMap[env.ui.scheme]}/${fileName}`
                 },
 
                 scheme() { // to match UI scheme
