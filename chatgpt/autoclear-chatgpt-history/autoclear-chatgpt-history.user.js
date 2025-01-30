@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.5
+// @version             2025.1.29.6
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -875,11 +875,15 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
+            updateNavicon() {
+                this.navicon.src = `${app.urls.assetHost}/images/icons/incognito/${
+                    env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?v=${app.latestResourceCommitHash}`
+            },
+
             updateScheme() { // to match UI scheme
                 this.div.classList.add(env.ui.scheme)
                 this.div.classList.remove(env.ui.scheme == 'dark' ? 'light' : 'dark')
-                this.navicon.src = `${app.urls.assetHost}/images/icons/incognito/${
-                    env.ui.scheme == 'dark' ? 'white' : 'black' }/icon32.png?v=${app.latestResourceCommitHash}`
+                this.updateNavicon()
             },
 
             updateState() {
