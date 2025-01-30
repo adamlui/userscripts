@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.3
+// @version                2025.1.30.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1110,8 +1110,7 @@
                         const switchSpan = document.createElement('span')
                         Object.assign(switchSpan.style, {
                             position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
-                            backgroundColor: settingToggle.checked ? '#ccc' : '#AD68FF', // init opposite  final color
-                            width: '26px', height: '13px', borderRadius: '28px',
+                            backgroundColor: '#ccc', width: '26px', height: '13px', borderRadius: '28px',
                             transition: '0.4s', '-webkit-transition': '0.4s', '-moz-transition': '0.4s',
                                 '-o-transition': '0.4s', '-ms-transition': '0.4s'
                         })
@@ -1119,10 +1118,8 @@
                         // Create/stylize knob
                         const knobSpan = document.createElement('span')
                         Object.assign(knobSpan.style, {
-                            position: 'absolute', left: '1px', bottom: '1px', backgroundColor: 'white',
-                            width: '11px', height: '11px', content: '""', borderRadius: '28px',
-                            transform: settingToggle.checked ? // init opposite final pos
-                                'translateX(0)' : 'translateX(14px) translateY(0)',
+                            position: 'absolute', left: '1px', bottom: '1px', backgroundColor: 'white', content: '""',
+                            width: '11px', height: '11px', borderRadius: '28px', transform: 'translateX(0)',
                             transition: '0.2s', '-webkit-transition': '0.2s', '-moz-transition': '0.2s',
                                 '-o-transition': '0.2s', '-ms-transition': '0.2s'
                         })
@@ -1131,7 +1128,7 @@
                         switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
 
                         // Update visual state w/ animation
-                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), idx *25 -25)
+                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), +155)
 
                         // Add click listener
                         settingItem.onclick = () => {
