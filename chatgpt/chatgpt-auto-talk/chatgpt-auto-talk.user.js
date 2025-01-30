@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.10
+// @version             2025.1.29.11
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -723,7 +723,7 @@
     // Define UI functions
 
     function syncConfigToUI() {
-        toggles.sidebar.updateState() // based on config.autoTalkDisabled + config.toggleHidden
+        toggles.sidebar.update.state() // based on config.autoTalkDisabled + config.toggleHidden
         menu.refresh() // prefixes/suffixes
     }
 
@@ -782,7 +782,7 @@
                 }
 
                 // Update scheme/state
-                this.updateScheme() ; this.updateState() // to opposite init state for animation on 1st load
+                this.update.scheme() ; this.update.state() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
@@ -861,29 +861,34 @@
                 sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
             },
 
-            updateNavicon() {
-                this.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
-                    + `/${ config.autoTalkDisabled ? '' : 'tall' }`
-                    + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
-            },
+            update: {
+                navicon() {
+                    toggles.sidebar.navicon.src = `${app.urls.resourceHost }/assets/images/icons/soundwave`
+                        + `/${ config.autoTalkDisabled ? '' : 'tall' }`
+                        + `/${ env.ui.scheme == 'dark' ? 'white' : 'black' }.svg`
+                },
 
-            updateScheme() { // to match UI scheme
-                this.div.classList.add(env.ui.scheme)
-                this.div.classList.remove(env.ui.scheme == 'dark' ? 'light' : 'dark')
-                this.updateNavicon()
-            },
+                scheme() { // to match UI scheme
+                    toggles.sidebar.div.classList.add(env.ui.scheme)
+                    toggles.sidebar.div.classList.remove(env.ui.scheme == 'dark' ? 'light' : 'dark')
+                    toggles.sidebar.update.navicon()
+                },
 
-            updateState() {
-                if (!this.div) return // since toggle never created = sidebar missing
-                this.div.style.display = config.toggleHidden ? 'none' : 'flex'
-                this.toggleInput.checked = !config.autoTalkDisabled
-                this.toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
-                    + app.msgs[`state_${ this.toggleInput.checked ? 'enabled' : 'disabled' }`]
-                this.updateNavicon()
-                setTimeout(() => {
-                    this.switchSpan.className = this.toggleInput.checked ? 'enabled' : 'disabled'
-                    this.knobSpan.style.transform = `translateX(${ this.toggleInput.checked ? 13 : 0 }px)`
-                }, 1) // min delay to trigger 1st transition fx
+                state() {
+                    if (!toggles.sidebar.div) return // since toggle never created = sidebar missing
+                    toggles.sidebar.div.style.display = config.toggleHidden ? 'none' : 'flex'
+                    toggles.sidebar.toggleInput.checked = !config.autoTalkDisabled
+                    toggles.sidebar.toggleLabel.innerText = `${app.msgs.mode_autoTalk} `
+                        + app.msgs[`state_${ toggles.sidebar.toggleInput.checked ? 'enabled' : 'disabled' }`]
+                    toggles.sidebar.update.navicon()
+                    setTimeout(() => {
+                        toggles.sidebar.switchSpan.className = toggles.sidebar.toggleInput.checked ? 'enabled'
+                                                                                                   : 'disabled'
+                        toggles.sidebar.knobSpan.style.transform = `translateX(${
+                            toggles.sidebar.toggleInput.checked ? 13 : 0 }px)`
+                    }, 1) // min delay to trigger 1st transition fx
+                }
+
             }
         }
     }
@@ -929,7 +934,7 @@
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
         if (env.ui.scheme != displayedScheme) {
-            env.ui.scheme = displayedScheme ; toggles.sidebar.updateScheme() ; modals.stylize() }
+            env.ui.scheme = displayedScheme ; toggles.sidebar.update.scheme() ; modals.stylize() }
     }
 
     // Disable distracting SIDEBAR CLICK-ZOOM effect
