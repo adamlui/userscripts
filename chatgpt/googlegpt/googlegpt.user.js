@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.29.15
+// @version                  2025.1.29.16
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -384,7 +384,7 @@
 // @resource ggptLSlogo      https://assets.googlegpt.io/images/logos/googlegpt/flat/black-green/logo480x64.png.b64?v=9db3bda#sha256-fzSZhLVQQolCLWYr/h29NWfR1Yl4glHv1TcsveYYv+U=
 // @resource ggptDSlogo      https://assets.googlegpt.io/images/logos/googlegpt/flat/white-green/logo480x64.png.b64?v=9db3bda#sha256-3qRdGKhF3pojDqVVh/5kODIg7QvYbbLf4zFkEh5xoGc=
 // @resource hljsCSS         https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource brpCSS          https://assets.aiwebextensions.com/styles/rising-particles/dist/black.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
+// @resource grpCSS          https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-7ycEGqwB5zKKoaW3olhaFP8yj0KEXe+Ks2kS/4iRGZM=
 // @resource wrpCSS          https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant                    GM_getValue
 // @grant                    GM_setValue
@@ -2649,7 +2649,7 @@
             ['sm', 'med', 'lg'].forEach(size =>
                 document.querySelectorAll(`[id*=particles-${size}]`).forEach(particlesDiv =>
                     particlesDiv.id = config.bgAnimationsDisabled ? `particles-${size}-off`
-                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }-particles-${size}`
+                    : `${ env.ui.app.scheme == 'dark' ? 'white' : 'gray' }-particles-${size}`
             ))
         }
     }
@@ -4143,7 +4143,7 @@
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
-    ['brp', 'wrp', 'hljs'].forEach(cssType => // black rising particles, white rising particles, code highlighting
+    ['grp', 'wrp', 'hljs'].forEach(cssType => // gray rising particles, white rising particles, code highlighting
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
