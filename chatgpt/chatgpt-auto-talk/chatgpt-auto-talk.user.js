@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.29.9
+// @version             2025.1.29.10
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -781,8 +781,8 @@
                     this.div.querySelector('img')?.classList.add(...(firstIcon?.classList || []))
                 }
 
-                // Update color/state
-                this.updateNavicon() ; this.updateState() // to opposite init state for animation on 1st load
+                // Update scheme/state
+                this.updateScheme() ; this.updateState() // to opposite init state for animation on 1st load
 
                 // Add hover/click listeners
                 this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
