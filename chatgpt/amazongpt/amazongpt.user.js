@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.7
+// @version                2025.1.30.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2567,8 +2567,8 @@
             initFailFlags(api) { return apis[api].respPatterns?.fail ? new RegExp(apis[api].respPatterns.fail) : null },
 
             stream(resp, { caller, callerAPI }) {
+                log.caller = `api.process.stream(resp, { caller: get.${caller.name}, callerAPI: '${callerAPI}' })`
                 if (config.streamingDisabled || !config.proxyAPIenabled) return
-                log.caller = `get.${caller.name}() » api.process.stream()`
                 const reader = resp.response.getReader(), reFailFlags = this.initFailFlags(callerAPI)
                 let textToShow = '', isDone = false
                 reader.read().then(chunk => handleChunk(chunk, callerAPI))
@@ -2642,10 +2642,10 @@
             },
 
             text(resp, { caller, callerAPI }) {
+                log.caller = `api.process.text(resp, { caller: get.${caller.name}, callerAPI: '${callerAPI}' })`
                 return new Promise(() => {
                     if (caller == get.reply && config.proxyAPIenabled && !config.streamingDisabled
                         || caller.status == 'done') return
-                    log.caller = `get.${caller.name}() » api.process.text()`
                     const reFailFlags = this.initFailFlags(callerAPI) ; let textToShow = ''
                     if (resp.status != 200) {
                         log.error('Response status', resp.status)
