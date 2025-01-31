@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.6
+// @version                2025.1.31.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -71,7 +71,6 @@
 // @resource amzgptLSlogo  https://amazongpt.kudoai.com/assets/images/logos/amazongpt/black-gold/logo509x74.png.b64?v=1ac5561#sha256-wSW1EtGtscP0ZcUweFBqKfswt3NzEjbKxn5COYyihVA=
 // @resource amzgptDSlogo  https://amazongpt.kudoai.com/assets/images/logos/amazongpt/white-teal/logo509x74.png.b64?v=1ac5561#sha256-EWstwtlU8+gXSM98gpr6OR3OZ63ttHVNp/NQ7IMzFDA=
 // @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource rpbCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/blue.min.css?v=0195359#sha256-ZTNsuOLeW4j59Tz54DwA88QPG/NKX1GUnGj5jRFI004=
 // @resource rpgCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant                  GM_getValue
@@ -2876,8 +2875,7 @@
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                appDiv.textContent = ''
-                dom.addRisingParticles(appDiv, { lightScheme: 'blue' })
+                appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
 
                 // Create/append title
                 const appHeaderLogo = logos.amzgpt.create()
@@ -3063,7 +3061,7 @@
     appDiv.classList.add('anchored', 'fade-in') ; addListeners.appDiv()
     if (config.expanded) appDiv.classList.add('expanded')
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
-    ['rpb', 'rpg', 'rpw', 'hljs'].forEach(cssType => // rising particles, code highlighting
+    ['rpg', 'rpw', 'hljs'].forEach(cssType => // rising particles, code highlighting
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
