@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.15
+// @version                2025.1.31.16
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1905,18 +1905,12 @@
             }
         },
 
-        speaker: {
+        soundwave: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 22, height: 22, viewBox: '0 0 32 32' })
-                svg.append(
-                    dom.create.svgElem('path', { 'stroke-width': '2px', fill: 'none',
-                        d: 'M24.5,26c2.881,-2.652 4.5,-6.249 4.5,-10c0,-3.751 -1.619,-7.348 -4.5,-10' }),
-                    dom.create.svgElem('path', { 'stroke-width': '2px', fill: 'none',
-                        d: 'M22,20.847c1.281,-1.306 2,-3.077 2,-4.924c0,-1.846 -0.719,-3.617 -2,-4.923' }),
-                    dom.create.svgElem('path', { stroke: 'none',
-                        d: 'M9.957,10.88c-0.605,0.625 -1.415,0.98 -2.262,0.991c-4.695,0.022 -4.695,0.322 -4.695,4.129c0,3.806 0,4.105 4.695,4.129c0.846,0.011 1.656,0.366 2.261,0.991c1.045,1.078 2.766,2.856 4.245,4.384c0.474,0.49 1.18,0.631 1.791,0.36c0.611,-0.272 1.008,-0.904 1.008,-1.604c0,-4.585 0,-11.936 0,-16.52c0,-0.7 -0.397,-1.332 -1.008,-1.604c-0.611,-0.271 -1.317,-0.13 -1.791,0.36c-1.479,1.528 -3.2,3.306 -4.244,4.384Z' })
-                )
-                return svg
+                const svg = dom.create.svgElem('svg', { width: 22, height: 22, viewBox: '0 0 24 24' })
+                const svgPath = dom.create.svgElem('path', { 'stroke-width': 1.75, 'stroke-linecap': 'round',
+                    d: 'M3 11V13M6 10V14M9 11V13M12 9V15M15 6V18M18 10V14M21 11V13' })
+                svg.append(svgPath) ; return svg
             }
         },
 
@@ -2198,8 +2192,9 @@
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + `#${app.slug} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
-              + `.${app.slug}-header-btns {`
-                  + `float: right ; fill: ${ env.ui.app.scheme == 'dark' ? 'white' : '#6f6f6f' }}`
+              + `.${app.slug}-header-btns {
+                    --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ;
+                    fill: var(--${env.ui.app.scheme}-scheme-color) ; stroke: var(--${env.ui.app.scheme}-scheme-color) }`
               + `code #${app.slug}-copy-btn { position: relative ; top: -6px ; right: -9px }`
               + `code #${app.slug}-copy-btn > svg { height: 13px ; width: 13px ; fill: white }`
               + `#${app.slug}-chatbar {`
@@ -2517,57 +2512,6 @@
                 }
                 else if (btn.id.endsWith('about-btn')) btn.onclick = () => modals.open('about')
                 else if (btn.id.endsWith('settings-btn')) btn.onclick = () => modals.open('settings')
-                else if (btn.id.endsWith('speak-btn')) btn.onclick = () => {
-                    const wholeAnswer = appDiv.querySelector('pre').textContent
-                    const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5 }
-                    const sgtDialectMap = [
-                        { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
-                        { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
-                        { code: 'cs', regex: /^(cze(ch)?|[cč]e[sš].*|cs)$/i, rate: 1.4 },
-                        { code: 'da', regex: /^dan?(ish|sk)?$/i, rate: 1.3 },
-                        { code: 'de', regex: /^(german|deu?(tsch)?)$/i, rate: 1.5 },
-                        { code: 'es', regex: /^(spa(nish)?|espa.*|es(-\w\w)?)$/i, rate: 1.5 },
-                        { code: 'fi', regex: /^(fin?(nish)?|suom.*)$/i, rate: 1.4 },
-                        { code: 'fr', regex: /^fr/i, rate: 1.2 },
-                        { code: 'hu', regex: /^(hun?(garian)?|magyar)$/i, rate: 1.5 },
-                        { code: 'it', regex: /^ita?(lian[ao]?)?$/i, rate: 1.4 },
-                        { code: 'ja', regex: /^(ja?pa?n(ese)?|日本語|ja)$/i, rate: 1.5 },
-                        { code: 'nl', regex: /^(dut(ch)?|flemish|nederlandse?|vlaamse?|nld?)$/i, rate: 1.3 },
-                        { code: 'pl', regex: /^po?l(ish|ski)?$/i, rate: 1.4 },
-                        { code: 'pt', regex: /^(por(tugu[eê]se?)?|pt(-\w\w)?)$/i, rate: 1.5 },
-                        { code: 'ru', regex: /^(rus?(sian)?|русский)$/i, rate: 1.3 },
-                        { code: 'sv', regex: /^(swe?(dish)?|sv(enska)?)$/i, rate: 1.4 },
-                        { code: 'tr', regex: /^t[uü]?r(k.*)?$/i, rate: 1.6 },
-                        { code: 'vi', regex: /^vi[eệ]?t?(namese)?$/i, rate: 1.5 },
-                        { code: 'zh-CHS', regex: /^(chi(nese)?|zh|中[国國])/i, rate: 2 }
-                    ]
-                    const sgtReplyDialect = sgtDialectMap.find(entry =>
-                        entry.regex.test(config.replyLang)) || sgtDialectMap[0]
-                    const payload = {
-                        text: wholeAnswer, curTime: Date.now(), spokenDialect: sgtReplyDialect.code,
-                        rate: sgtReplyDialect.rate.toString()
-                    }
-                    const key = CryptoJS.enc.Utf8.parse('76350b1840ff9832eb6244ac6d444366')
-                    const iv = CryptoJS.enc.Utf8.parse(
-                        atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
-                    const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
-                        iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
-                    xhr({ // audio from Sogou TTS
-                        url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
-                            + encodeURIComponent(securePayload),
-                        method: 'GET', responseType: 'arraybuffer',
-                        onload: async resp => {
-                            if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakOptions)
-                            else {
-                                const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-                                audioContext.decodeAudioData(resp.response, buffer => {
-                                    const audioSrc = audioContext.createBufferSource()
-                                    audioSrc.buffer = buffer
-                                    audioSrc.connect(audioContext.destination) // connect source to speakers
-                                    audioSrc.start(0) // play audio
-                                }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakOptions))
-                    }}})
-                }
                 else if (btn.id.endsWith('font-size-btn')) btn.onclick = () => fontSizeSlider.toggle()
                 else if (btn.id.endsWith('pin-btn')) btn.onmouseover = btn.onmouseout = menus.pin.toggle
                 else if (btn.id.endsWith('wsb-btn'))
@@ -3080,8 +3024,8 @@
             if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
 
             const btnElem = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btnElem.id)[1],
-                  appHeaderBtnTypes = ['chevron', 'about', 'settings', 'speak', 'font-size', 'pin', 'wsb', 'arrows'],
-                  replyCornerBtnTypes = ['copy', 'regen']
+                  appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'pin', 'wsb', 'arrows'],
+                  replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
             // Update text
             tooltipDiv.innerText = (
@@ -3089,7 +3033,6 @@
                                                           : `${app.msgs.tooltip_minimize}` )
               : btnType == 'about' ? app.msgs.menuLabel_about
               : btnType == 'settings' ? app.msgs.menuLabel_settings
-              : btnType == 'speak' ? app.msgs.tooltip_playAnswer
               : btnType == 'font-size' ? app.msgs.tooltip_fontSize
               : btnType == 'wsb' ? (( config.widerSidebar ? `${app.msgs.prefix_exit} ` :  '' )
                                  + ( app.msgs.menuLabel_widerSidebar ))
@@ -3100,6 +3043,7 @@
                         app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'speak' ? app.msgs.tooltip_playAnswer
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
@@ -3631,6 +3575,76 @@
                 // Reset flags
                 show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
             }
+
+            // Add Speak button
+            const speakBtn = document.createElement('btn') ; speakBtn.id = `${app.slug}-speak-btn`
+            speakBtn.className = 'no-mobile-tap-outline'
+            speakBtn.style.cssText = baseBtnStyles + 'margin: -2px 4px 0 0'
+            speakBtn.append(icons.soundwave.create()) ; cornerBtnsDiv.append(speakBtn)
+            if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
+            speakBtn.onclick = () => {
+
+                // Disable button
+                speakBtn.style.pointerEvents = 'none' // disable button
+                speakBtn.style.cursor = 'not-allowed' // remove finger
+                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // hide tooltip
+
+                // Play reply
+                const wholeAnswer = appDiv.querySelector('pre').textContent
+                const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5 }
+                const sgtDialectMap = [
+                    { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
+                    { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
+                    { code: 'cs', regex: /^(cze(ch)?|[cč]e[sš].*|cs)$/i, rate: 1.4 },
+                    { code: 'da', regex: /^dan?(ish|sk)?$/i, rate: 1.3 },
+                    { code: 'de', regex: /^(german|deu?(tsch)?)$/i, rate: 1.5 },
+                    { code: 'es', regex: /^(spa(nish)?|espa.*|es(-\w\w)?)$/i, rate: 1.5 },
+                    { code: 'fi', regex: /^(fin?(nish)?|suom.*)$/i, rate: 1.4 },
+                    { code: 'fr', regex: /^fr/i, rate: 1.2 },
+                    { code: 'hu', regex: /^(hun?(garian)?|magyar)$/i, rate: 1.5 },
+                    { code: 'it', regex: /^ita?(lian[ao]?)?$/i, rate: 1.4 },
+                    { code: 'ja', regex: /^(ja?pa?n(ese)?|日本語|ja)$/i, rate: 1.5 },
+                    { code: 'nl', regex: /^(dut(ch)?|flemish|nederlandse?|vlaamse?|nld?)$/i, rate: 1.3 },
+                    { code: 'pl', regex: /^po?l(ish|ski)?$/i, rate: 1.4 },
+                    { code: 'pt', regex: /^(por(tugu[eê]se?)?|pt(-\w\w)?)$/i, rate: 1.5 },
+                    { code: 'ru', regex: /^(rus?(sian)?|русский)$/i, rate: 1.3 },
+                    { code: 'sv', regex: /^(swe?(dish)?|sv(enska)?)$/i, rate: 1.4 },
+                    { code: 'tr', regex: /^t[uü]?r(k.*)?$/i, rate: 1.6 },
+                    { code: 'vi', regex: /^vi[eệ]?t?(namese)?$/i, rate: 1.5 },
+                    { code: 'zh-CHS', regex: /^(chi(nese)?|zh|中[国國])/i, rate: 2 }
+                ]
+                const sgtReplyDialect = sgtDialectMap.find(entry =>
+                    entry.regex.test(config.replyLang)) || sgtDialectMap[0]
+                const payload = {
+                    text: wholeAnswer, curTime: Date.now(), spokenDialect: sgtReplyDialect.code,
+                    rate: sgtReplyDialect.rate.toString()
+                }
+                const key = CryptoJS.enc.Utf8.parse('76350b1840ff9832eb6244ac6d444366')
+                const iv = CryptoJS.enc.Utf8.parse(
+                    atob('AAAAAAAAAAAAAAAAAAAAAA==') || '76350b1840ff9832eb6244ac6d444366')
+                const securePayload = CryptoJS.AES.encrypt(JSON.stringify(payload), key, {
+                    iv: iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.Pkcs7 }).toString()
+                xhr({ // audio from Sogou TTS
+                    url: 'https://fanyi.sogou.com/openapi/external/getWebTTS?S-AppId=102356845&S-Param='
+                        + encodeURIComponent(securePayload),
+                    method: 'GET', responseType: 'arraybuffer',
+                    onload: async resp => {
+                        if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakOptions)
+                        else {
+                            const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+                            audioContext.decodeAudioData(resp.response, buffer => {
+                                const audioSrc = audioContext.createBufferSource()
+                                audioSrc.buffer = buffer
+                                audioSrc.connect(audioContext.destination) // connect source to speakers
+                                audioSrc.start(0) // play audio
+                                audioSrc.onended = reactivateBtn
+                            }).catch(() => { chatgpt.speak(wholeAnswer, cjsSpeakOptions) ; reactivateBtn() })
+                        }
+                    }
+                })
+
+                function reactivateBtn() { Object.assign(speakBtn.style, { pointerEvents: 'auto', cursor: 'pointer' }) }
+            }
         },
 
         reply(answer) {
@@ -3676,16 +3690,6 @@
                 settingsBtn.classList.add(`${app.slug}-header-btn`)
                 settingsBtn.style.margin = '0 10.5px 0 0.5px' // position
                 settingsBtn.append(settingsSVG) ; headerBtnsDiv.append(settingsBtn)
-
-                // Create/append Speak button
-                if (answer != 'standby') {
-                    var speakerBtn = document.createElement('btn'),
-                        speakerSVG = icons.speaker.create()
-                    speakerBtn.id = `${app.slug}-speak-btn` // for toggle.tooltip()
-                    speakerBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
-                    speakerBtn.style.margin = '-2px 8px 0 0' // position
-                    speakerBtn.append(speakerSVG) ; headerBtnsDiv.append(speakerBtn)
-                }
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
