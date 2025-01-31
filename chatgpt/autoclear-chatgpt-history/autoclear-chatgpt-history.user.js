@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30.5
+// @version             2025.1.30.6
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -753,18 +753,21 @@
         return style
     }
 
-    function addRisingParticles(targetNode) { // requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<gray|white>.min.css
+    function addRisingParticles(targetNode, { lightScheme = 'gray', darkScheme = 'white' } = {}) {
+    // Requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<lightScheme|darkScheme>.min.css
+
         if (targetNode.querySelector('[id*=particles]')) return
-        const particlesDivsContainer = document.createElement('div')
-        particlesDivsContainer.style.cssText = 'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
+        const particlesDivsWrapper = document.createElement('div')
+        particlesDivsWrapper.style.cssText = (
+            'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
           + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-          + 'z-index: -1'; // allow interactive elems to be clicked
+          + 'z-index: -1' ); // allow interactive elems to be clicked
         ['sm', 'med', 'lg'].forEach(particleSize => {
             const particlesDiv = document.createElement('div')
-            particlesDiv.id = `${ env.ui.scheme == 'dark' ? 'white' : 'gray' }-particles-${particleSize}`
-            particlesDivsContainer.append(particlesDiv)
+            particlesDiv.id = `${ env.ui.scheme == 'dark' ? darkScheme : lightScheme }-particles-${particleSize}`
+            particlesDivsWrapper.append(particlesDiv)
         })
-        targetNode.prepend(particlesDivsContainer)
+        targetNode.prepend(particlesDivsWrapper)
     }
 
     const toggles = {
