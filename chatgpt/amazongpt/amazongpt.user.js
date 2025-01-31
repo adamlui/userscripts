@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.1
+// @version                2025.1.31.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1643,7 +1643,7 @@
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
                   + '--btn-transition: transform 0.15s ease,' // for hover-zoom
-                                    + 'opacity 0.1s ease-in-out ;' // + btn-zoom-fade-out shows
+                                    + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
                   + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
@@ -1676,8 +1676,10 @@
                   + 'transition: var(--app-transition) ;'
                       + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
                       + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
-              + `#${app.slug} .app-hover-only { display: none }` // hide app-hover-only elems
-              + `#${app.slug}:hover .app-hover-only { display: initial }` // show app-hover-only elems on hover
+              + `#${app.slug} .app-hover-only {` // hide app-hover-only elems...
+                  + 'position: absolute ; left: -9999px ; width: 0 ; height: 0 ; opacity: 0 }' // ...using pos/w/h to support transition
+              + `#${app.slug}:hover .app-hover-only {` // show app-hover-only elems on hover
+                  + `position: relative ; left: auto ; width: auto ; height: auto ; opacity: 1 }`
               + `#${app.slug}:hover {` // show app shadow on hover
                   + 'box-shadow: var(--app-hover-shadow) ;'
                   + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
@@ -1924,7 +1926,7 @@
                     && getComputedStyle(event.target).cursor != 'pointer') // ...or other interactive elem
                         fontSizeSlider.toggle('off')
             })
-            appDiv.onmouseover = appDiv.onmouseout = update.bylineVisibility // for btn.app-hover-only shows
+            appDiv.onmouseover = appDiv.onmouseout = update.bylineVisibility
         },
 
         appHeaderBtns() {
