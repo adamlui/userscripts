@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.31
+// @version             2025.1.31.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -882,7 +882,7 @@
     // Add KEY LISTENER to enable flag on F11 + stop generating text on ESC
     document.addEventListener('keydown', event => {
         if ((event.key == 'F11' || event.keyCode == 122) && !config.fullScreen) config.f11 = true
-        else if ((event.key.startsWith('Esc') || event.keyCode == 27) && !chatgpt.isIdle()) chatgpt.stop()
+        else if ((event.key.startsWith('Esc') || event.keyCode == 27)) try { chatgpt.stop() } catch (err) {}
     })
 
 })()
