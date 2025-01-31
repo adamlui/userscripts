@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.12
+// @version                2025.1.31.13
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2787,12 +2787,13 @@
 
     const prompts = {
 
-        augment(prompt, { api } = {}) {
+        augment(prompt, { api, caller } = {}) {
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
-                : `${prompt} //`
+                : `{{${prompt}}} // `
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
+                    + ( caller == get.reply ? ' Reply to the prompt enclosed in {{}}.' : '' )
         },
 
         create(type, { mods, prevQuery } = {}) {
@@ -3479,7 +3480,7 @@
             const reqAPI = get.reply.api,
                   msgs = structuredClone(msgChain), // avoid mutating global msgChain
                   lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI })
+            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
 
             // Get/show answer from AI
             const reqMethod = apis[reqAPI].method
@@ -3536,7 +3537,7 @@
             // Augment query
             const reqAPI = get.related.api
             let rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
-            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI })
+            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
 
             // Get related queries
             return new Promise(resolve => {
