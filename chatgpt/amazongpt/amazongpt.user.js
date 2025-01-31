@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.8
+// @version                2025.1.31.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2523,9 +2523,7 @@
 
         createReqData(api, msgs) { // returns payload for POST / query string for GET
             log.caller = `api.createReqData('${api}', msgs)`
-            msgs = structuredClone(msgs) // avoid mutating global msgChain
             const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             const reqData = api == 'OpenAI' ? { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
               : api == 'AIchatOS' ? {
                     network: true, prompt: lastUserMsg.content,
@@ -2770,9 +2768,15 @@
                 }, config.streamingDisabled ? 10000 : 7000)
             }
 
+            // Augment query
+            const reqAPI = get.reply.api,
+                  msgs = structuredClone(msgChain), // avoid mutating global msgChain
+                  lastUserMsg = msgs[msgs.length - 1]
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI })
+
             // Get/show answer from AI
-            const reqAPI = get.reply.api, reqMethod = apis[reqAPI].method
-            const reqData = api.createReqData(reqAPI, msgChain)
+            const reqMethod = apis[reqAPI].method
+            const reqData = api.createReqData(reqAPI, msgs)
             const xhrConfig = {
                 headers: api.createHeaders(reqAPI), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
