@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.30.11
+// @version                2025.1.30.12
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -183,7 +183,7 @@
 // @require                https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
 // @require                https://assets.aiwebextensions.com/lib/crypto-utils.js/dist/crypto-utils.min.js?v=37e0d7d#sha256-xRkis9u0tYeTn/GBN4sqVRqcCdEhDUN16/PlCy9wNnk=
-// @require                https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=89fbf65#sha256-/EgED9SPTv8tS4G5b0X5/FnHAsMppAnhvPUpRQUiJA4=
+// @require                https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=0195359#sha256-xcOM7QjvlXqcQzvUexsDRZ7Kujdsvy7bXhb2mcYHZfw=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
 // @require                https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js#sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY=
 // @require                https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js#sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE=
@@ -193,6 +193,7 @@
 // @resource ddgptLSlogo   https://assets.ddgpt.com/images/logos/duckduckgpt/lightmode/logo697x122.png.b64?v=8482c4b#sha256-7O4AxPinoZ6h36KHuJVa4vwfTEOYTwT+lKiDbf/jjkg=
 // @resource ddgptDSlogo   https://assets.ddgpt.com/images/logos/duckduckgpt/darkmode/logo697x122.png.b64?v=8482c4b#sha256-lSd4M3RPT4+SjjBk8PKGFoyM9p3rZHgxt0NgoKqQkiM=
 // @resource hljsCSS       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
+// @resource rpbCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/blue.min.css?v=0195359#sha256-ZTNsuOLeW4j59Tz54DwA88QPG/NKX1GUnGj5jRFI004=
 // @resource rpgCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS        https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant                  GM_getValue
@@ -589,7 +590,7 @@
     }})
 
     // Export DEPENDENCIES to dom.js
-    dom.imports.import({ config, env }) // for config.bgAnimationsDisabled + env.ui.app.scheme in dom.addRisingParticles()
+    dom.imports.import({ config, env }) // for config.bgAnimationsDisabled + env.ui.app.scheme in addRisingParticles()
 
     // Define MENU functions
 
@@ -3627,7 +3628,8 @@
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
                 appDiv.textContent = ''
-                dom.addRisingParticles(appDiv)
+                                dom.addRisingParticles(appDiv, { lightScheme: 'blue' })
+
 
                 // Create/append title
                 const appHeaderLogo = logos.ddgpt.create()
@@ -3918,7 +3920,7 @@
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
-    ['rpg', 'rpw', 'hljs'].forEach(cssType => // gray rising particles, white rising particles, code highlighting
+    ['rpb', 'rpg', 'rpw', 'hljs'].forEach(cssType => // rising particles, code highlighting
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
