@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.31.11
+// @version                  2025.1.31.12
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3651,7 +3651,7 @@
             const reqAPI = get.reply.api,
                   msgs = structuredClone(msgChain), // avoid mutating global msgChain
                   lastUserMsg = msgs[msgs.length - 1]
-            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI, caller: get.reply })
 
             // Get/show answer from AI
             const reqMethod = apis[reqAPI].method
