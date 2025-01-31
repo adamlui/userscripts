@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.10
+// @version                2025.1.31.11
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2773,7 +2773,7 @@
             const reqAPI = get.reply.api,
                   msgs = structuredClone(msgChain), // avoid mutating global msgChain
                   lastUserMsg = msgs[msgs.length - 1]
-            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI, caller: get.reply })
 
             // Get/show answer from AI
             const reqMethod = apis[reqAPI].method
