@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.31.14
+// @version               2025.1.31.15
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2732,11 +2732,11 @@
 
         augment(prompt, { api, caller } = {}) {
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
-                : `{{${prompt}}} // `
+                : `{{${prompt}}} //`
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
-                    + ( caller == get.reply ? ' Reply to the prompt enclosed in {{}}.' : '' )
+                    + ( caller == get.reply ? ' Reply to the prompt I enclosed in {{}} at the start of this msg.' : '' )
         },
 
         create(type, { mods, prevQuery } = {}) {
