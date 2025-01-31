@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.14
+// @version                2025.1.31.15
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3537,7 +3537,7 @@
             // Augment query
             const reqAPI = get.related.api
             let rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
-            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
+            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI })
 
             // Get related queries
             return new Promise(resolve => {
