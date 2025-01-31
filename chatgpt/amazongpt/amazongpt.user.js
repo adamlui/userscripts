@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.14
+// @version                2025.1.31.15
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1535,10 +1535,12 @@
         },
 
         soundwave: {
-            create() {
+            create({ tall } = {}) {
                 const svg = dom.create.svgElem('svg', { width: 22, height: 22, viewBox: '0 0 24 24' })
                 const svgPath = dom.create.svgElem('path', { 'stroke-width': 1.75, 'stroke-linecap': 'round',
-                    d: 'M3 11V13M6 10V14M9 11V13M12 9V15M15 6V18M18 10V14M21 11V13' })
+                    d: tall ? 'M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13'
+                            : 'M3 11V13M6 10V14M9 11V13M12 9V15M15 6V18M18 10V14M21 11V13'
+                })
                 svg.append(svgPath) ; return svg
             }
         },
@@ -2813,10 +2815,12 @@
             }
 
             // Add Speak button
-            const speakBtn = document.createElement('btn') ; speakBtn.id = `${app.slug}-speak-btn`
+            const speakBtn = document.createElement('btn'),
+                  soundwaveSVG = icons.soundwave.create()
+            speakBtn.id = `${app.slug}-speak-btn` ; soundwaveSVG.id = `${app.slug}-soundwave-icon`
             speakBtn.className = 'no-mobile-tap-outline'
             speakBtn.style.cssText = baseBtnStyles + 'margin: -2px 4px 0 0'
-            speakBtn.append(icons.soundwave.create()) ; cornerBtnsDiv.append(speakBtn)
+            speakBtn.append(soundwaveSVG) ; cornerBtnsDiv.append(speakBtn)
             if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
             speakBtn.onclick = () => {
 
@@ -2824,6 +2828,12 @@
                 speakBtn.style.pointerEvents = 'none' // disable button
                 speakBtn.style.cursor = 'not-allowed' // remove finger
                 if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // hide tooltip
+
+                // Update icon
+                const soundwaveSVG = speakBtn.querySelector(`#${app.slug}-soundwave-icon`)
+                if (!soundwaveSVG) return // since clicking on Playing icon
+                const soundwaveTallSVG = icons.soundwave.create({ tall: true }) // shorter one
+                speakBtn.replaceChild(soundwaveTallSVG, soundwaveSVG) // change to Played icon
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
@@ -2879,7 +2889,10 @@
                     }
                 })
 
-                function reactivateBtn() { Object.assign(speakBtn.style, { pointerEvents: 'auto', cursor: 'pointer' }) }
+                function reactivateBtn() {
+                    Object.assign(speakBtn.style, { pointerEvents: 'auto', cursor: 'pointer' })
+                    speakBtn.replaceChild(soundwaveSVG, soundwaveTallSVG)
+                }
             }
         },
 
