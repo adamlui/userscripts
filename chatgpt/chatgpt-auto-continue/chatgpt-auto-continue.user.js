@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.1.30.2
+// @version             2025.1.31
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -230,7 +230,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.5.0/dist/chatgpt.min.js#sha256-+C0x4BOFQc38aZB3pvUC2THu+ZSvuCxRphGdtRLjCDg=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@d27ed79/chromium/extension/components/modals.js#sha256-otkuF1oCI4Vhw7gKTnmAyg/FxAGIk8FXm1MOk8S8Ahc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@4a01f88/chromium/extension/lib/dom.js#sha256-XmWslXRtiDLcXgIFfAIP1RWmFiEh8+d3tAPCBmT7gA4=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@7623f9e/chromium/extension/lib/settings.js#sha256-+1SzWklvhvhJPIE8vxmP6hgWBlxFS6st8SeSjC/Cvgg=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@de9ac91/chromium/extension/lib/settings.js#sha256-GFfYLlKJcMMC+fFyDeQnZDcW2QV4VQfWXr2NV8izQZo=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -275,7 +275,7 @@
         version: GM_info.script.version, configKeyPrefix: 'chatGPTautoContinue',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptautocontinue.com' },
-        latestResourceCommitHash: '8b0f93d' // for cached app.json + messages.json
+        latestResourceCommitHash: 'f6585f5' // for cached app.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -287,6 +287,7 @@
         appName: app.name,
         appAuthor: app.author.name,
         appDesc: 'Automatically continue generating multiple ChatGPT responses',
+        menuLabel_autoScroll: 'Auto-Scroll',
         menuLabel_modeNotifs: 'Mode Notifications',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
@@ -298,6 +299,7 @@
         about_poweredBy: 'Powered by',
         about_openSourceCode: 'Open source code',
         mode_autoContinue: 'Auto-Continue',
+        helptip_autoScroll: 'Automatically scroll to bottom as replies are generating',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -468,14 +470,19 @@
             || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
     }
 
-    function checkContinueBtn() {
-        const continueBtn = chatgpt.getContinueBtn()
-        if (continueBtn) {
-            continueBtn.click()
-            notify(app.msgs.notif_chatAutoContinued, 'bottom-right')
-            try { chatgpt.scrollToBottom() } catch(err) {}
-            setTimeout(checkContinueBtn, 5000)
-        } else setTimeout(checkContinueBtn, 500)
+    function checkBtnsToClick() {
+        let continueBtnClicked = false // to increase delay before next check if true to avoid repeated clicks
+        const btnTypesToCheck = ['Continue'] ; if (config.autoScroll) btnTypesToCheck.push('Scroll')
+        const btns = {} ; btnTypesToCheck.forEach(type => btns[type] = chatgpt[`get${type}Btn`]())
+        Object.entries(btns).forEach(([btnType, btn]) => {
+            if (!btn || btnType == 'Scroll' && ( !config.autoScroll || !chatgpt.getStopBtn() )) return
+            btn.click()
+            if (btnType == 'Continue') {
+                continueBtnClicked = true
+                notify(app.msgs.notif_chatAutoContinued, 'bottom-right')
+                try { chatgpt.scrollToBottom() } catch(err) {}
+        }})
+        setTimeout(checkBtnsToClick, continueBtnClicked ? 5000 : 500)
     }
 
     // Run MAIN routine
@@ -494,7 +501,7 @@
     ['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Observe DOM for need to continue generating response
-    checkContinueBtn()
+    checkBtnsToClick()
 
     // NOTIFY of status on load
     notify(`${app.msgs.mode_autoContinue}: ${app.msgs.state_on.toUpperCase()}`)
