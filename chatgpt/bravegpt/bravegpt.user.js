@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.31.6
+// @version               2025.1.31.7
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -192,7 +192,6 @@
 // @resource bgptLSlogo   https://assets.bravegpt.com/images/logos/bravegpt/lightmode/logo730x155.png.b64?v=a76e718#sha256-gGomHdYcs/AE4Ep8dAJhPFbCX6uyHmb38vi9hWYJZLI=
 // @resource bgptDSlogo   https://assets.bravegpt.com/images/logos/bravegpt/darkmode/logo730x155.png.b64?v=a76e718#sha256-2Qx4bTS8s7dKj4m2dsJdPnijThaYRwYQMi30+KjtopI=
 // @resource hljsCSS      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css#sha256-v0N76BFFkH0dCB8bUr4cHSVN8A/zCaOopMuSmJWV/5w=
-// @resource rpbCSS       https://assets.aiwebextensions.com/styles/rising-particles/dist/blue.min.css?v=0195359#sha256-ZTNsuOLeW4j59Tz54DwA88QPG/NKX1GUnGj5jRFI004=
 // @resource rpgCSS       https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS       https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant                 GM_getValue
@@ -3640,9 +3639,7 @@
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
-                appDiv.textContent = ''
-                                dom.addRisingParticles(appDiv, { lightScheme: 'blue' })
-
+                appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
 
                 // Create/append title
                 const appHeaderLogo = logos.braveGPT.create() ; appHeaderLogo.width = 104
@@ -3942,7 +3939,7 @@
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
-    ['rpb', 'rpg', 'rpw', 'hljs'].forEach(cssType => // rising particles, code highlighting
+    ['rpg', 'rpw', 'hljs'].forEach(cssType => // rising particles, code highlighting
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
