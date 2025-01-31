@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.31.9
+// @version               2025.1.31.10
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3209,9 +3209,7 @@
 
         createReqData(api, msgs) { // returns payload for POST / query string for GET
             log.caller = `api.createReqData('${api}', msgs)`
-            msgs = structuredClone(msgs) // avoid mutating global msgChain
             const time = Date.now(), lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: api })
             const reqData = api == 'OpenAI' ? { messages: msgs, model: 'gpt-3.5-turbo', max_tokens: 4000 }
               : api == 'AIchatOS' ? {
                     network: true, prompt: lastUserMsg.content,
@@ -3477,9 +3475,15 @@
                 }, config.streamingDisabled ? 10000 : 7000)
             }
 
+            // Augment query
+            const reqAPI = get.reply.api,
+                  msgs = structuredClone(msgChain), // avoid mutating global msgChain
+                  lastUserMsg = msgs[msgs.length - 1]
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI })
+
             // Get/show answer from AI
-            const reqAPI = get.reply.api, reqMethod = apis[reqAPI].method
-            const reqData = api.createReqData(reqAPI, msgChain)
+            const reqMethod = apis[reqAPI].method
+            const reqData = api.createReqData(reqAPI, msgs)
             const xhrConfig = {
                 headers: api.createHeaders(reqAPI), method: reqMethod,
                 responseType: config.streamingDisabled || !config.proxyAPIenabled ? 'text' : 'stream',
@@ -3531,10 +3535,14 @@
                 ) api.tryNew(get.related, 'timeout')
             }, 7000)
 
+            // Augment query
+            const reqAPI = get.related.api
+            let rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
+            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI })
+
             // Get related queries
-            const rqPrompt = prompts.create('relatedQueries', { prevQuery: query, mods: 'all' })
             return new Promise(resolve => {
-                const reqAPI = get.related.api, reqMethod = apis[reqAPI].method
+                const reqMethod = apis[reqAPI].method
                 const reqData = api.createReqData(reqAPI, [{ role: 'user', content: rqPrompt }])
                 const xhrConfig = {
                     headers: api.createHeaders(reqAPI), method: reqMethod, responseType: 'text',
