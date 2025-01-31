@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.8
+// @version                2025.1.31.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2332,24 +2332,17 @@
 
             // Calc/store widths of app/x-padding + header elems
             const appDivStyle = getComputedStyle(appDiv)
-            const forceDisplayStyles = 'position: absolute; visibility: hidden; display: block;'
             const widths = {
                 appDiv: appDiv.getBoundingClientRect().width,
                 appDivXpadding: parseFloat(appDivStyle.paddingLeft) + parseFloat(appDivStyle.paddingRight)
             }
-            Object.entries(headerElems).forEach(([key, elem]) => {
-                if (elem && key == 'byline' && getComputedStyle(elem).display == 'none')
-                    elem.style.cssText += forceDisplayStyles // override hidden byline display style to measure width
-                widths[key] = dom.get.computedWidth(elem)
-                if (elem?.style?.cssText.includes(forceDisplayStyles)) // restore display style for hidden byline
-                    elem.style.cssText = elem.style.cssText.replace(forceDisplayStyles, '')
-            })
+            Object.entries(headerElems).forEach(([key, elem]) => widths[key] = dom.get.computedWidth(elem))
 
             // Hide/show byline based on space available
             const availSpace = widths.appDiv - widths.appDivXpadding - widths.logo - widths.btns
-            Object.assign(headerElems.byline.style, (widths.byline +10) < availSpace ?
-                { position: 'relative', left: 'auto', opacity: 1 } // show using position to support transition
-              : { position: 'absolute', left: '-9999px', opacity: 0 } // hide
+            Object.assign(headerElems.byline.style, (widths.byline +10) > availSpace ?
+                { position: 'absolute', left: '-9999px', opacity: 0 } // hide using position to support transition
+              : { position: '', left: '', opacity: 1 } // show
             )
         },
 
