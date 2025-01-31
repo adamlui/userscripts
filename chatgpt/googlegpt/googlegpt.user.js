@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.31.14
+// @version                  2025.1.31.15
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2897,11 +2897,11 @@
 
         augment(prompt, { api, caller } = {}) {
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
-                : `{{${prompt}}} // `
+                : `{{${prompt}}} //`
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
-                    + ( caller == get.reply ? ' Reply to the prompt enclosed in {{}}.' : '' )
+                    + ( caller == get.reply ? ' Reply to the prompt I enclosed in {{}} at the start of this msg.' : '' )
         },
 
         create(type, { mods, prevQuery } = {}) {
