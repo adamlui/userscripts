@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.6
+// @version                2025.1.31.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2273,7 +2273,7 @@
               + '.katex-html { display: none } ' // hide unrendered math
               + `#${app.slug} + footer {
                     font-size: 13px ; line-height: 1.25 ; text-align: right ;
-                    display: grid ; width: 100% ; margin: 14px 0 25px ; position: relative }`
+                    display: block ; width: 100% ; margin: 14px 0 25px ; position: relative }`
               + `#${app.slug} + footer, #${app.slug} + footer a { color: #${ env.ui.scheme == 'dark' ? 'ccc' : 'aaa' }}`
               + `.chatgpt-notif {
                     fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }`
