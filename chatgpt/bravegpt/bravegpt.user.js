@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.30.9
+// @version               2025.1.31
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -514,7 +514,7 @@
         autoGetDisabled: { type: 'toggle', icon: 'speechBalloonLasso', defaultVal: false,
             label: app.msgs.menuLabel_autoGetAnswers,
             helptip: app.msgs.helptip_autoGetAnswers },
-        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: false,
+        autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: true,
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
         autoScroll: { type: 'toggle', mobile: false, icon: 'arrowsDown', defaultVal: false,
