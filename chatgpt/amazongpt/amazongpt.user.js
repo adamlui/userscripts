@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.13
+// @version                2025.1.31.14
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2148,11 +2148,11 @@
 
         augment(prompt, { api, caller } = {}) {
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
-                : `{{${prompt}}} // `
+                : `{{${prompt}}} //`
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
-                    + ( caller == get.reply ? ' Reply to the prompt enclosed in {{}}.' : '' )
+                    + ( caller == get.reply ? ' Reply to the prompt I enclosed in {{}} at the start of this msg.' : '' )
         },
 
         create(type, { mods } = {}) {
