@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.31.2
+// @version                  2025.1.31.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2739,11 +2739,11 @@
                     btn.onmouseenter = btn.onmouseleave = toggle.tooltip
                 if (/about|settings|speak/.test(btn.id)) btn.onmouseup = () => { // add zoom/fade-out to select buttons
                     if (config.fgAnimationsDisabled) return
-                    btn.style.animation = 'btn-zoom-fade-out .2s ease-out'
+                    btn.style.animation = 'btn-zoom-fade-out 0.2s ease-out'
                     btn.onanimationend = () => {
                         Object.assign(btn.style, { opacity: '0', visibility: 'hidden', animation: '' }) // hide btn
                         setTimeout(() => // show btn after short delay
-                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 100)
+                            Object.assign(btn.style, { visibility: 'visible', opacity: '1' }), 135)
                     }
                 }
             })
