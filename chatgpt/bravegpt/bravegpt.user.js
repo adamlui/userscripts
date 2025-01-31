@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.1.31
+// @version               2025.1.31.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2055,8 +2055,8 @@
 
                 // Main styles
               + '@keyframes btn-zoom-fade-out {'
-                  + '0% { opacity: 1 } 50% { opacity: 0.65 ; transform: scale(1.85) }'
-                  + '75% { opacity: 0.05 ; transform: scale(3.15) } 100% { opacity: 0 ; transform: scale(5.85) }}'
+                  + '0% { opacity: 1 } 55% { opacity: 0.25 ; transform: scale(1.85) }'
+                  + '75% { opacity: 0.05 ; transform: scale(2.15) } 100% { opacity: 0 ; transform: scale(6.85) }}'
               + '.no-user-select {'
                   + '-webkit-user-select: none ; -moz-user-select: none ;'
                   + '-ms-user-select: none ; user-select: none }'
@@ -2575,7 +2575,7 @@
                     btn.onmouseenter = btn.onmouseleave = toggle.tooltip
                 if (/about|settings|speak/.test(btn.id)) btn.onmouseup = () => { // add zoom/fade-out to select buttons
                     if (config.fgAnimationsDisabled) return
-                    btn.style.animation = 'btn-zoom-fade-out .220s ease-out'
+                    btn.style.animation = 'btn-zoom-fade-out .2s ease-out'
                     btn.onanimationend = () => {
                         Object.assign(btn.style, { opacity: '0', visibility: 'hidden', animation: '' }) // hide btn
                         setTimeout(() => // show btn after short delay
