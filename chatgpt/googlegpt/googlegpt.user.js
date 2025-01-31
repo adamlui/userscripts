@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.1.31.5
+// @version                  2025.1.31.6
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2267,7 +2267,11 @@
               + `.${app.slug}-name {`
                   + 'font-size: 1.35rem ; font-weight: 700 ; text-decoration: none ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } !important }`
-              + '.kudoai { font-size: 12px ; margin-left: 7px ; color: #aaa }'
+              + '.kudoai {' // header byline
+                  + `font-size: 12px ; margin-left: 7px ; color: #aaa ;
+                    --transition: 0.15s ease-in-out ; transition: var(--transition) ;
+                        -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
+                        -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.slug}-header-btns { float: right }`
@@ -2507,7 +2511,10 @@
 
             // Hide/show byline based on space available
             const availSpace = widths.appDiv - widths.appDivXpadding - widths.appPrefix - widths.logo - widths.btns
-            headerElems.byline.style.display = (widths.byline +10) < availSpace ? 'initial' : 'none'
+            Object.assign(headerElems.byline.style, (widths.byline +10) < availSpace ?
+                { position: 'relative', left: 'auto', opacity: 1 } // show using position to support transition
+              : { position: 'absolute', left: '-9999px', opacity: 0 } // hide
+            )
         },
 
         chatbarWidth() {
