@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.9
+// @version                2025.1.31.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2202,12 +2202,13 @@
 
     const prompts = {
 
-        augment(prompt, { api } = {}) {
+        augment(prompt, { api, caller } = {}) {
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
-                : `${prompt} //`
+                : `{{${prompt}}} // `
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
+                    + ( caller == get.reply ? ' Reply to the prompt enclosed in {{}}.' : '' )
         },
 
         create(type, { mods } = {}) {
@@ -2772,7 +2773,7 @@
             const reqAPI = get.reply.api,
                   msgs = structuredClone(msgChain), // avoid mutating global msgChain
                   lastUserMsg = msgs[msgs.length - 1]
-            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI })
+            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
 
             // Get/show answer from AI
             const reqMethod = apis[reqAPI].method
