@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.1.31.13
+// @version                2025.1.31.14
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3480,7 +3480,7 @@
             const reqAPI = get.reply.api,
                   msgs = structuredClone(msgChain), // avoid mutating global msgChain
                   lastUserMsg = msgs[msgs.length - 1]
-            rqPrompt = prompts.augment(rqPrompt, { api: reqAPI, caller: get.related })
+            lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI, caller: get.reply })
 
             // Get/show answer from AI
             const reqMethod = apis[reqAPI].method
