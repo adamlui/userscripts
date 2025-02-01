@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1
+// @version                2025.2.1.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -133,7 +133,7 @@
             support: 'https://amazongpt.kudoai.com/issues',
             update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
-        latestResourceCommitHash: '83819d3' // for cached messages.json
+        latestResourceCommitHash: '3799c70' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -162,7 +162,6 @@
         mode_streaming: 'Streaming Mode',
         mode_autoScroll: 'Auto-Scroll',
         mode_debug: 'Debug Mode',
-        tooltip_playAnswer: 'Play answer',
         tooltip_fontSize: 'Font size',
         tooltip_sendReply: 'Send reply',
         tooltip_askRandQuestion: 'Ask random question',
@@ -173,6 +172,7 @@
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
         tooltip_regen: 'Regenerate',
+        tooltip_play: 'Play',
         tooltip_reply: 'Reply',
         tooltip_code: 'Code',
         helptip_proxyAPImode: 'Uses a Proxy API for no-login access to AI',
@@ -2358,7 +2358,7 @@
                         app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
-              : btnType == 'speak' ? app.msgs.tooltip_playAnswer
+              : btnType == 'speak' ? `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply}`
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
