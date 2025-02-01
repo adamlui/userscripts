@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "关闭" },
   "tooltip_copy": { "message": "复制" },
   "tooltip_regen": { "message": "重新生成" },
+  "tooltip_regenerating": { "message": "再生…" },
   "tooltip_play": { "message": "播放" },
   "tooltip_playing": { "message": "播放中" },
   "tooltip_reply": { "message": "回复" },

@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Sløkk" },
   "tooltip_copy": { "message": "Avrita" },
   "tooltip_regen": { "message": "Endurnýggja" },
+  "tooltip_regenerating": { "message": "Endurnýggja" },
   "tooltip_play": { "message": "spæl" },
   "tooltip_playing": { "message": "Spæl" },
   "tooltip_reply": { "message": "Svara" },

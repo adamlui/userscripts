@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "වසන්න" },
   "tooltip_copy": { "message": "පිටපත් කරන්න" },
   "tooltip_regen": { "message": "ප් ‍ රතිජනනය කරන්න" },
+  "tooltip_regenerating": { "message": "ප් ‍ රතිජනනය කිරීම" },
   "tooltip_play": { "message": "වාදනය" },
   "tooltip_playing": { "message": "වාදනය" },
   "tooltip_reply": { "message": "පිළිතුර" },

@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Dùin" },
   "tooltip_copy": { "message": "Dèan lethbhreac" },
   "tooltip_regen": { "message": "Ath-ghineamhainn" },
+  "tooltip_regenerating": { "message": "'Ga ath - nuadhachadh" },
   "tooltip_play": { "message": "Cluich" },
   "tooltip_playing": { "message": "A 'cluich" },
   "tooltip_reply": { "message": "Freagairt" },

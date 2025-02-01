@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Xir" },
   "tooltip_copy": { "message": "Nuqul Ka Samee" },
   "tooltip_regen": { "message": "Dib u cusboonaysii" },
+  "tooltip_regenerating": { "message": "Dib u cusboonaysiinta" },
   "tooltip_play": { "message": "Ciyaar" },
   "tooltip_playing": { "message": "Daarista" },
   "tooltip_reply": { "message": "Jawaab" },

@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "ക്ലോസ് ചെയ്യുക" },
   "tooltip_copy": { "message": "പക‍ര്പ്പ്" },
   "tooltip_regen": { "message": "പുനരുജ്ജീവിപ്പിക്കുക" },
+  "tooltip_regenerating": { "message": "പുനരുജ്ജീവിപ്പിക്കുന്നു" },
   "tooltip_play": { "message": "തുടരുക" },
   "tooltip_playing": { "message": "കളിക്കുന്നു" },
   "tooltip_reply": { "message": "മറുപടി" },

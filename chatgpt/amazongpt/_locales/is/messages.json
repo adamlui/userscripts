@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Loka" },
   "tooltip_copy": { "message": "Afrita" },
   "tooltip_regen": { "message": "Endurnýjaðu" },
+  "tooltip_regenerating": { "message": "Endurnýjun" },
   "tooltip_play": { "message": "Spila" },
   "tooltip_playing": { "message": "Spila" },
   "tooltip_reply": { "message": "Svara" },

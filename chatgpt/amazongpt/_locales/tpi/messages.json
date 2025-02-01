@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Klostu" },
   "tooltip_copy": { "message": "Salim kopi i go long klipbod / kopi" },
   "tooltip_regen": { "message": "Ol samting i kamap gen" },
+  "tooltip_regenerating": { "message": "Ol samting i kamap gen" },
   "tooltip_play": { "message": "Putim" },
   "tooltip_playing": { "message": "Ol i save pilai" },
   "tooltip_reply": { "message": "Bekim" },

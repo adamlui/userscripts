@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "ਬੰਦ" },
   "tooltip_copy": { "message": "ਕਾਪੀ" },
   "tooltip_regen": { "message": "ਮੁੜ- ਤਿਆਰ ਕਰੋ" },
+  "tooltip_regenerating": { "message": "ਮੁੜ- ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ" },
   "tooltip_play": { "message": "ਪਲੇ ਕਰੋ" },
   "tooltip_playing": { "message": "ਚੱਲ ਰਿਹਾ ਹੈ" },
   "tooltip_reply": { "message": "Responder" },

@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Затвори" },
   "tooltip_copy": { "message": "Копирај" },
   "tooltip_regen": { "message": "Регенерирај" },
+  "tooltip_regenerating": { "message": "Се регенерира" },
   "tooltip_play": { "message": "Играј" },
   "tooltip_playing": { "message": "Играјќи" },
   "tooltip_reply": { "message": "Одговори" },

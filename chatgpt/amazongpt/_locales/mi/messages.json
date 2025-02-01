@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Whakamoe&#x0D;" },
   "tooltip_copy": { "message": "Tārua" },
   "tooltip_regen": { "message": "Whakahoutia" },
+  "tooltip_regenerating": { "message": "Te whakahoutanga" },
   "tooltip_play": { "message": "Tākoro" },
   "tooltip_playing": { "message": "pukākā" },
   "tooltip_reply": { "message": "Whakautu" },

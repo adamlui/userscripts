@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "إغلاق" },
   "tooltip_copy": { "message": "‫نسخ‬" },
   "tooltip_regen": { "message": "يجدد" },
+  "tooltip_regenerating": { "message": "تجديد،" },
   "tooltip_play": { "message": "الترفيه" },
   "tooltip_playing": { "message": "الألعاب" },
   "tooltip_reply": { "message": "الرد" },

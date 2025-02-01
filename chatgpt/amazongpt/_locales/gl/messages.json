@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Pechar" },
   "tooltip_copy": { "message": "Copiar" },
   "tooltip_regen": { "message": "Rexenerar" },
+  "tooltip_regenerating": { "message": "Rexenerando" },
   "tooltip_play": { "message": "Reproducir" },
   "tooltip_playing": { "message": "Reproducindo" },
   "tooltip_reply": { "message": "Contestar" },

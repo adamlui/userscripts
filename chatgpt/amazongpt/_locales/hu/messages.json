@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Bezárás" },
   "tooltip_copy": { "message": "Másolja" },
   "tooltip_regen": { "message": "Újragenerálás" },
+  "tooltip_regenerating": { "message": "Javítás" },
   "tooltip_play": { "message": "Játék" },
   "tooltip_playing": { "message": "Játék" },
   "tooltip_reply": { "message": "Válasz" },

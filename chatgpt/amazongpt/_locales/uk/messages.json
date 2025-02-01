@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Закрити" },
   "tooltip_copy": { "message": "Копіювати" },
   "tooltip_regen": { "message": "Відроджувати" },
+  "tooltip_regenerating": { "message": "Регенерація" },
   "tooltip_play": { "message": "Грати" },
   "tooltip_playing": { "message": "Бавлення" },
   "tooltip_reply": { "message": "Відповісти" },

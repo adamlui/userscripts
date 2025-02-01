@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "بند" },
   "tooltip_copy": { "message": "کاپی کریں" },
   "tooltip_regen": { "message": "دوبارہ تخلیق کریں" },
+  "tooltip_regenerating": { "message": "دوبارہ پیدا کرنا" },
   "tooltip_play": { "message": "پلے" },
   "tooltip_playing": { "message": "چلا رہا ہے" },
   "tooltip_reply": { "message": "جواب" },

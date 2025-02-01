@@ -33,6 +33,7 @@
   "tooltip_close": { "message": "Užverti" },
   "tooltip_copy": { "message": "Kopijuoti" },
   "tooltip_regen": { "message": "Pergeneruoti" },
+  "tooltip_regenerating": { "message": "Regeneravimas" },
   "tooltip_play": { "message": "Paleisti" },
   "tooltip_playing": { "message": "Leidžiama" },
   "tooltip_reply": { "message": "Atsakyti" },
