@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.8
+// @version                2025.2.1.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -262,7 +262,7 @@
             support: 'https://support.ddgpt.com',
             update: 'https://gm.ddgpt.com'
         },
-        latestResourceCommitHash: '17e1d58' // for cached messages.json
+        latestResourceCommitHash: '1f196e1' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -315,7 +315,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
-        tooltip_regen: 'Regenerate',
+        tooltip_regenenerate: 'Regenerate',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
@@ -3049,7 +3049,7 @@
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
-              : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'regen' ? `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}`
               : btnType == 'speak' ? (
                     btnElem.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
