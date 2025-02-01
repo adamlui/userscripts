@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.6
+// @version                  2025.2.1.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3779,7 +3779,7 @@
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
-                const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5, onend: handleAudioEnded }
+                const cjsSpeakConfig = { voice: 2, pitch: 1, speed: 1.5, onend: handleAudioEnded }
                 const sgtDialectMap = [
                     { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
                     { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
@@ -3818,7 +3818,7 @@
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
                         speakBtn.replaceChild(speakSVGs.playing, speakSVGs.generating) // update icon to Playing one
-                        if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakOptions)
+                        if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
                         else {
                             const audioContext = new (AudioContext || webkitAudioContext)()
                             audioContext.decodeAudioData(resp.response, buffer => {
@@ -3827,7 +3827,7 @@
                                 audioSrc.connect(audioContext.destination) // connect source to speakers
                                 audioSrc.start(0) // play audio
                                 audioSrc.onended = handleAudioEnded
-                            }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakOptions))
+                            }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakConfig))
                         }
                     }
                 })
