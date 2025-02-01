@@ -50,5 +50,5 @@
   "state_enabled": { "message": "whakahohea" },
   "state_disabled": { "message": "whakakore" },
   "state_on": { "message": "runga" },
-  "state_off": { "message": "..e whakaweto ana." }
+  "state_off": { "message": "..e whakaweto ana" }
 }
