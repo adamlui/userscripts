@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.9
+// @version                  2025.2.1.10
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2629,9 +2629,9 @@
         },
 
         rqVisibility() {
-            const relatedQueriesDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
-            if (relatedQueriesDiv) // update visibility based on latest setting
-                relatedQueriesDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
+            const rqsDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
+            if (rqsDiv) // update visibility based on latest setting
+                rqsDiv.style.display = config.rqDisabled || config.anchored ? 'none' : 'flex'
         },
 
         scheme(newScheme) {
@@ -4084,29 +4084,28 @@
             else if (queries && !appDiv.querySelector(`.${app.slug}-related-queries`)) {
 
                 // Create/classify/append parent div
-                const relatedQueriesDiv = document.createElement('div')
-                relatedQueriesDiv.classList.add(`${app.slug}-related-queries`, 'anchored-hidden')
-                appDiv.append(relatedQueriesDiv)
+                const rqsDiv = document.createElement('div')
+                rqsDiv.classList.add(`${app.slug}-related-queries`, 'anchored-hidden')
+                appDiv.append(rqsDiv)
 
                 // Fill each child div, add attributes + icon + listener
                 queries.forEach((query, idx) => {
-                    const relatedQueryDiv = document.createElement('div'),
-                          relatedQuerySVG = icons.arrowDownRight.create()
+                    const rqDiv = document.createElement('div'), rqSVG = icons.arrowDownRight.create()
 
                     // Add attributes
-                    relatedQueryDiv.title = app.msgs.tooltip_sendRelatedQuery
-                    relatedQueryDiv.classList.add(
+                    Object.assign(rqDiv, { title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0 })
+                    rqDiv.title = app.msgs.tooltip_sendRelatedQuery ; rqDiv.setAttribute('tabindex', 0)
+                    rqDiv.classList.add(
                         `${app.slug}-related-query`, 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
-                    relatedQueryDiv.setAttribute('tabindex', 0)
-                    relatedQueryDiv.textContent = query
+                    rqDiv.textContent = query
 
                     // Assemble/insert elems
-                    relatedQueryDiv.prepend(relatedQuerySVG) ; relatedQueriesDiv.append(relatedQueryDiv)
+                    rqDiv.prepend(rqSVG) ; rqsDiv.append(rqDiv)
 
                     // Add fade + listeners
                     setTimeout(() => {
-                        relatedQueryDiv.classList.add('active')
-                        relatedQueryDiv.onclick = relatedQueryDiv.onkeydown = event => {
+                        rqDiv.classList.add('active')
+                        rqDiv.onclick = rqDiv.onkeydown = event => {
                             const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]
                             if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
                                 event.preventDefault() // prevent scroll on space taps
