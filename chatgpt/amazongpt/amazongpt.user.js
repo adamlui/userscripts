@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.1
+// @version                2025.2.1.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -133,7 +133,7 @@
             support: 'https://amazongpt.kudoai.com/issues',
             update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
-        latestResourceCommitHash: '3799c70' // for cached messages.json
+        latestResourceCommitHash: 'a3f9dad' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -173,8 +173,10 @@
         tooltip_copy: 'Copy',
         tooltip_regen: 'Regenerate',
         tooltip_play: 'Play',
+        tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
         tooltip_code: 'Code',
+        tooltip_generatingAudio: 'Generating audio',
         helptip_proxyAPImode: 'Uses a Proxy API for no-login access to AI',
         helptip_streamingMode: 'Receive replies in a continuous text stream',
         helptip_autoFocusChatbar: 'Auto-focus chatbar whenever it appears',
@@ -1535,11 +1537,12 @@
         },
 
         soundwave: {
-            create({ tall } = {}) {
+            create({ height } = {}) {
                 const svg = dom.create.svgElem('svg', { width: 22, height: 22, viewBox: '0 0 24 24' })
                 const svgPath = dom.create.svgElem('path', { 'stroke-width': 1.75, 'stroke-linecap': 'round',
-                    d: tall ? 'M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13'
-                            : 'M3 11V13M6 10V14M9 11V13M12 9V15M15 6V18M18 10V14M21 11V13'
+                    d: height == 'short' ? 'M3 11V13M6 11V13M9 11V13M12 10V14M15 11V13M18 11V13M21 11V13'
+                     : height == 'tall' ? 'M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13'
+                     : 'M3 11V13M6 10V14M9 11V13M12 9V15M15 6V18M18 10V14M21 11V13'
                 })
                 svg.append(svgPath) ; return svg
             }
@@ -2353,12 +2356,17 @@
               : btnType == 'font-size' ? app.msgs.tooltip_fontSize
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
-              : btnType == 'copy' ? ( btnElem.firstChild.id.endsWith('copy-icon') ?
-                    `${app.msgs.tooltip_copy} ${
-                        app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
+              : btnType == 'copy' ? (
+                    btnElem.firstChild.id.endsWith('copy-icon') ?
+                        `${app.msgs.tooltip_copy} ${
+                            app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
-              : btnType == 'speak' ? `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply}`
+              : btnType == 'speak' ? (
+                    btnElem.firstChild.id.includes('-speak-') ?
+                        `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
+                  : btnElem.firstChild.id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
+                  : `${app.msgs.tooltip_playing} ${app.msgs.tooltip_reply.toLowerCase()}...` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
@@ -2815,29 +2823,28 @@
             }
 
             // Add Speak button
-            const speakBtn = document.createElement('btn'),
-                  soundwaveSVG = icons.soundwave.create()
-            speakBtn.id = `${app.slug}-speak-btn` ; soundwaveSVG.id = `${app.slug}-soundwave-icon`
-            speakBtn.className = 'no-mobile-tap-outline'
+            const speakBtn = document.createElement('btn')
+            Object.assign(speakBtn, { id: `${app.slug}-speak-btn`, className: 'no-mobile-tap-outline' })
             speakBtn.style.cssText = baseBtnStyles + 'margin: -2px 4px 0 0'
-            speakBtn.append(soundwaveSVG) ; cornerBtnsDiv.append(speakBtn)
+            const speakSVGs = {
+                speak: icons.soundwave.create(),
+                generating: icons.soundwave.create({ height: 'short' }),
+                playing: icons.soundwave.create({ height: 'tall' })
+            }
+            Object.entries(speakSVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
+            speakBtn.append(speakSVGs.speak) ; cornerBtnsDiv.append(speakBtn)
             if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
             speakBtn.onclick = () => {
+                speakBtn.style.cursor = 'default' // remove finger
 
-                // Disable button
-                speakBtn.style.pointerEvents = 'none' // disable button
-                speakBtn.style.cursor = 'not-allowed' // remove finger
-                if (!env.browser.isMobile) tooltipDiv.style.opacity = 0 // hide tooltip
-
-                // Update icon
-                const soundwaveSVG = speakBtn.querySelector(`#${app.slug}-soundwave-icon`)
-                if (!soundwaveSVG) return // since clicking on Playing icon
-                const soundwaveTallSVG = icons.soundwave.create({ tall: true }) // shorter one
-                speakBtn.replaceChild(soundwaveTallSVG, soundwaveSVG) // change to Played icon
+                // Update icon to Generating one
+                const speakSVG = speakBtn.querySelector(`#${app.slug}-speak-icon`)
+                if (!speakSVG) return // since clicking on Generating or Playing icon
+                speakBtn.replaceChild(speakSVGs.generating, speakSVGs.speak)
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
-                const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5 }
+                const cjsSpeakOptions = { voice: 2, pitch: 1, speed: 1.5, onend: handleAudioEnded }
                 const sgtDialectMap = [
                     { code: 'en', regex: /^(eng(lish)?|en(-\w\w)?)$/i, rate: 2 },
                     { code: 'ar', regex: /^(ara?(bic)?|اللغة العربية)$/i, rate: 1.5 },
@@ -2875,23 +2882,24 @@
                         + encodeURIComponent(securePayload),
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
+                        speakBtn.replaceChild(speakSVGs.playing, speakSVGs.generating) // update icon to Playing one
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakOptions)
                         else {
-                            const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+                            const audioContext = new (AudioContext || webkitAudioContext)()
                             audioContext.decodeAudioData(resp.response, buffer => {
                                 const audioSrc = audioContext.createBufferSource()
                                 audioSrc.buffer = buffer
                                 audioSrc.connect(audioContext.destination) // connect source to speakers
                                 audioSrc.start(0) // play audio
-                                audioSrc.onended = reactivateBtn
-                            }).catch(() => { chatgpt.speak(wholeAnswer, cjsSpeakOptions) ; reactivateBtn() })
+                                audioSrc.onended = handleAudioEnded
+                            }).catch(() => { chatgpt.speak(wholeAnswer, cjsSpeakOptions) ; handleAudioEnded() })
                         }
                     }
                 })
 
-                function reactivateBtn() {
-                    Object.assign(speakBtn.style, { pointerEvents: 'auto', cursor: 'pointer' })
-                    speakBtn.replaceChild(soundwaveSVG, soundwaveTallSVG)
+                function handleAudioEnded() {
+                    speakBtn.style.cursor = 'pointer' // restore cursor
+                    speakBtn.replaceChild(speakSVGs.speak, speakSVGs.playing) // revert to Play icon
                 }
             }
         },
