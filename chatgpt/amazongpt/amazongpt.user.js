@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.7
+// @version                2025.2.1.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -133,7 +133,7 @@
             support: 'https://amazongpt.kudoai.com/issues',
             update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
-        latestResourceCommitHash: 'a3f9dad' // for cached messages.json
+        latestResourceCommitHash: '6e61df3' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -171,7 +171,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
-        tooltip_regen: 'Regenerate',
+        tooltip_regenenerate: 'Regenerate',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
@@ -2362,7 +2362,7 @@
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
-              : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'regen' ? `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}`
               : btnType == 'speak' ? (
                     btnElem.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
