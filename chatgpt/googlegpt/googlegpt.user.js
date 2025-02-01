@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.2
+// @version                  2025.2.1.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3214,7 +3214,7 @@
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
               : btnType == 'copy' ? (
-                    btnElem.firstChild.id.endsWith('copy-icon') ?
+                    btnElem.firstChild.id.includes('-copy-') ?
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
@@ -3700,11 +3700,12 @@
 
             // Add Copy buttons
             appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
-                const copyBtn = document.createElement('btn'),
-                      copySVG = icons.copy.create(parentElem)
-                copyBtn.id = `${app.slug}-copy-btn` ; copySVG.id = `${app.slug}-copy-icon`
-                copyBtn.className = 'no-mobile-tap-outline' ; copyBtn.style.cssText = baseBtnStyles
-                copyBtn.append(copySVG) ; let elemToPrepend = copyBtn
+                const copyBtn = document.createElement('btn') ; copyBtn.style.cssText = baseBtnStyles
+                Object.assign(copyBtn, { id: `${app.slug}-copy-btn`, className: 'no-mobile-tap-outline' })
+                const copySVGs = { copy: icons.copy.create(parentElem), copied: icons.checkmarkDouble.create() }
+                Object.entries(copySVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
+                copySVGs.copied.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
+                copyBtn.append(copySVGs.copy) ; let elemToPrepend = copyBtn
 
                 // Wrap code button in div for v-offset
                 if (parentElem.tagName == 'CODE') {
@@ -3715,19 +3716,17 @@
 
                 // Add listeners
                 if (!env.browser.isMobile) copyBtn.onmouseenter = copyBtn.onmouseleave = toggle.tooltip
-                copyBtn.onclick = event => { // copy text, update icon + tooltip status
-                    const copySVG = copyBtn.querySelector(`#${app.slug}-copy-icon`)
-                    if (!copySVG) return // since clicking on Copied icon
+                copyBtn.onclick = () => { // copy text, update icon + tooltip status
+                    if (!copyBtn.contains(copySVGs.copy)) return // since clicking on Copied icon
                     const textContainer = (
                         copyBtn.parentNode.tagName == 'PRE' ? copyBtn.parentNode // reply container
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
-                    const checkmarksSVG = icons.checkmarkDouble.create()
-                    checkmarksSVG.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
-                    copyBtn.replaceChild(checkmarksSVG, copySVG) // change to Copied icon
-                    setTimeout(() => copyBtn.replaceChild(copySVG, checkmarksSVG), 1355) // change back to copy icon
+                    copyBtn.style.cursor = 'default' // remove finger
+                    copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
+                    setTimeout(() => { // restore icon/cursor after a bit
+                        copyBtn.style.cursor = 'pointer' ; copyBtn.replaceChild(copySVGs.copy, copySVGs.copied) }, 1355)
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
-                    if (!env.browser.isMobile) toggle.tooltip(event) // show copied status in tooltip
                 }
 
                 // Prepend button
