@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1
+// @version                  2025.2.1.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -449,7 +449,7 @@
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: 'a6eb4c3' // for cached messages.json
+        latestResourceCommitHash: '959e4a0' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -493,7 +493,6 @@
         mode_suffix: 'Suffix Mode',
         mode_anchor: 'Anchor Mode',
         mode_debug: 'Debug Mode',
-        tooltip_playAnswer: 'Play answer',
         tooltip_fontSize: 'Font size',
         tooltip_sendReply: 'Send reply',
         tooltip_feelingLucky: 'I\'m Feeling Lucky',
@@ -504,6 +503,7 @@
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
         tooltip_regen: 'Regenerate',
+        tooltip_play: 'Play',
         tooltip_reply: 'Reply',
         tooltip_code: 'Code',
         tooltip_sendRelatedQuery: 'Send related query',
@@ -3215,7 +3215,7 @@
                         app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
-              : btnType == 'speak' ? app.msgs.tooltip_playAnswer
+              : btnType == 'speak' ? `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply}`
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_feelingLucky : '' )
 
