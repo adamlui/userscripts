@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Ýap" },
   "tooltip_copy": { "message": "Nusgala" },
   "tooltip_regen": { "message": "Täzeleşdir" },
+  "tooltip_regenerating": { "message": "Täzeleşdirmek" },
   "tooltip_play": { "message": "Oynat" },
   "tooltip_playing": { "message": "Oýnalýar..." },
   "tooltip_reply": { "message": "Jawap" },

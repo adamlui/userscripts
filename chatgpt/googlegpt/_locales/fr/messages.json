@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Fermer" },
   "tooltip_copy": { "message": "Copie" },
   "tooltip_regen": { "message": "Regénérer" },
+  "tooltip_regenerating": { "message": "Regeneración" },
   "tooltip_play": { "message": "Reproducer" },
   "tooltip_playing": { "message": "Les jeux" },
   "tooltip_reply": { "message": "Répondre" },

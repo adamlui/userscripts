@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Vala" },
   "tooltip_copy": { "message": "Kopa" },
   "tooltip_regen": { "message": "Hlaziya" },
+  "tooltip_regenerating": { "message": "Ukuvuselela" },
   "tooltip_play": { "message": "Dlala" },
   "tooltip_playing": { "message": "Dlala" },
   "tooltip_reply": { "message": "Impendulo" },

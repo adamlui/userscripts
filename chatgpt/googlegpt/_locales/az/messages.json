@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Bağla" },
   "tooltip_copy": { "message": "Kopyala" },
   "tooltip_regen": { "message": "Yenidən yaradın" },
+  "tooltip_regenerating": { "message": "Yeniləşən" },
   "tooltip_play": { "message": "Oyna" },
   "tooltip_playing": { "message": "Çal" },
   "tooltip_reply": { "message": "Cavab" },

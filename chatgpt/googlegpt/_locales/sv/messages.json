@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Stäng" },
   "tooltip_copy": { "message": "Kopiera" },
   "tooltip_regen": { "message": "Regenerera" },
+  "tooltip_regenerating": { "message": "Regenererar" },
   "tooltip_play": { "message": "Spela upp" },
   "tooltip_playing": { "message": "Spelar" },
   "tooltip_reply": { "message": "Svara" },

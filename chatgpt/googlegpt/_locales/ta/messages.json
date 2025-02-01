@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "மூடு" },
   "tooltip_copy": { "message": "நகலெடு" },
   "tooltip_regen": { "message": "மறுபடிஜெநிப்பித்தல்" },
+  "tooltip_regenerating": { "message": "மறுபடிஜெநிப்பித்தல்" },
   "tooltip_play": { "message": "A button on a Remote Control" },
   "tooltip_playing": { "message": "இயக்குகிறது" },
   "tooltip_reply": { "message": "பதில் " },

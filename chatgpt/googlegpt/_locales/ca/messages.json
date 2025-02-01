@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Tanca" },
   "tooltip_copy": { "message": "Copia" },
   "tooltip_regen": { "message": "Regenerar" },
+  "tooltip_regenerating": { "message": "Regenerant" },
   "tooltip_play": { "message": "Juga" },
   "tooltip_playing": { "message": "Jocs" },
   "tooltip_reply": { "message": "Respondre" },

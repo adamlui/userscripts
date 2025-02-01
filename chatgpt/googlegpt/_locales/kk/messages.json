@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Жабу" },
   "tooltip_copy": { "message": "Көшіру" },
   "tooltip_regen": { "message": "Қалпына келтіру" },
+  "tooltip_regenerating": { "message": "Регенерациялау" },
   "tooltip_play": { "message": "Ойнау" },
   "tooltip_playing": { "message": "Ойнату" },
   "tooltip_reply": { "message": "Жауап" },
