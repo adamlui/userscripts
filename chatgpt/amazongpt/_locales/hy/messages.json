@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Նեղանալ" },
   "tooltip_close": { "message": "Փակել" },
   "tooltip_copy": { "message": "Պատճենել" },
-  "tooltip_regen": { "message": "Գրանցել մուտքի «QR» կոդ (TOTP)" },
+  "tooltip_regenerate": { "message": "Գրանցել մուտքի «QR» կոդ (TOTP)" },
   "tooltip_regenerating": { "message": "Վերագտնում" },
   "tooltip_play": { "message": "Խաղալ" },
   "tooltip_playing": { "message": "Խաղում ենք" },

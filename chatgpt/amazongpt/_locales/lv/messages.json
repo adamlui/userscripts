@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Samazināt" },
   "tooltip_close": { "message": "Aizvērt" },
   "tooltip_copy": { "message": "Kopēt" },
-  "tooltip_regen": { "message": "Reģenerēt" },
+  "tooltip_regenerate": { "message": "Reģenerēt" },
   "tooltip_regenerating": { "message": "Atjaunojošs. " },
   "tooltip_play": { "message": "Spēlēties" },
   "tooltip_playing": { "message": "Spēlēšana" },

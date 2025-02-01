@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Hoʻoemi" },
   "tooltip_close": { "message": "Pani" },
   "tooltip_copy": { "message": "kope" },
-  "tooltip_regen": { "message": "Hana hou" },
+  "tooltip_regenerate": { "message": "Hana hou" },
   "tooltip_regenerating": { "message": "Hana hou" },
   "tooltip_play": { "message": "Pāʻani" },
   "tooltip_playing": { "message": "Pāʻani" },

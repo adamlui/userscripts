@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "דערלאָז שרימפּן" },
   "tooltip_close": { "message": "נאָענט" },
   "tooltip_copy": { "message": "קאָפּיר" },
-  "tooltip_regen": { "message": "רידזשענערייט" },
+  "tooltip_regenerate": { "message": "רידזשענערייט" },
   "tooltip_regenerating": { "message": "רידזשענערייטינג" },
   "tooltip_play": { "message": "שפּיל" },
   "tooltip_playing": { "message": "פּלייַינג" },

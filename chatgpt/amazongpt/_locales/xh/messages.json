@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Nciphisa/-finyeza" },
   "tooltip_close": { "message": "Vala" },
   "tooltip_copy": { "message": "Kopa" },
-  "tooltip_regen": { "message": "Hlaziya" },
+  "tooltip_regenerate": { "message": "Hlaziya" },
   "tooltip_regenerating": { "message": "Ukuvuselela" },
   "tooltip_play": { "message": "Dlala" },
   "tooltip_playing": { "message": "Dlala" },

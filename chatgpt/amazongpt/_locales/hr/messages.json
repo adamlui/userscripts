@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Smanji" },
   "tooltip_close": { "message": "Zatvori" },
   "tooltip_copy": { "message": "Kopiraj" },
-  "tooltip_regen": { "message": "Obnavljanje" },
+  "tooltip_regenerate": { "message": "Obnavljanje" },
   "tooltip_regenerating": { "message": "Regeneriranje" },
   "tooltip_play": { "message": "Reproduciraj" },
   "tooltip_playing": { "message": "Igra" },

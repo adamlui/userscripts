@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Изостряне" },
   "tooltip_close": { "message": "Затвори" },
   "tooltip_copy": { "message": "Копиране" },
-  "tooltip_regen": { "message": "Регенерира" },
+  "tooltip_regenerate": { "message": "Регенерира" },
   "tooltip_regenerating": { "message": "Regenerating/" },
   "tooltip_play": { "message": "Играй" },
   "tooltip_playing": { "message": "Изпълнение" },

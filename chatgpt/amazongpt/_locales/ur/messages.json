@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "سکڑیں" },
   "tooltip_close": { "message": "بند" },
   "tooltip_copy": { "message": "کاپی کریں" },
-  "tooltip_regen": { "message": "دوبارہ تخلیق کریں" },
+  "tooltip_regenerate": { "message": "دوبارہ تخلیق کریں" },
   "tooltip_regenerating": { "message": "دوبارہ پیدا کرنا" },
   "tooltip_play": { "message": "پلے" },
   "tooltip_playing": { "message": "چلا رہا ہے" },

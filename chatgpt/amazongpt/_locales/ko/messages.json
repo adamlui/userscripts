@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "닫기" },
   "tooltip_copy": { "message": "복사" },
-  "tooltip_regen": { "message": "재생성" },
+  "tooltip_regenerate": { "message": "재생성" },
   "tooltip_regenerating": { "message": "재생성 중" },
   "tooltip_play": { "message": "재생" },
   "tooltip_playing": { "message": "재생 중 " },

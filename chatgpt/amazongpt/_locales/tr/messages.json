@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Otomatik boyut" },
   "tooltip_close": { "message": "Kapat" },
   "tooltip_copy": { "message": "Kopya" },
-  "tooltip_regen": { "message": "Canlandırmak" },
+  "tooltip_regenerate": { "message": "Canlandırmak" },
   "tooltip_regenerating": { "message": "Rejeneratif" },
   "tooltip_play": { "message": "Oynat" },
   "tooltip_playing": { "message": "Oynuyorum" },

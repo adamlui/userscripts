@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Zmrštiť (Shrink)" },
   "tooltip_close": { "message": "Zatvoriť" },
   "tooltip_copy": { "message": "Kopírovať" },
-  "tooltip_regen": { "message": "Obnoviť" },
+  "tooltip_regenerate": { "message": "Obnoviť" },
   "tooltip_regenerating": { "message": "Regenerácia" },
   "tooltip_play": { "message": "Prehrať" },
   "tooltip_playing": { "message": "Prehrávanie" },

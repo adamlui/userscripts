@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "सिकोड़ें" },
   "tooltip_close": { "message": "बंद करें" },
   "tooltip_copy": { "message": "नाम पर्ची" },
-  "tooltip_regen": { "message": "फिर से जनरेट करें" },
+  "tooltip_regenerate": { "message": "फिर से जनरेट करें" },
   "tooltip_regenerating": { "message": "नए सिरे से बनाया जा रहा है" },
   "tooltip_play": { "message": "चलाएं" },
   "tooltip_playing": { "message": "बजाया जा रहा है" },

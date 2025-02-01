@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Krimpen" },
   "tooltip_close": { "message": "Afsluiten" },
   "tooltip_copy": { "message": "Kopieer" },
-  "tooltip_regen": { "message": "Opnieuw aanmaken" },
+  "tooltip_regenerate": { "message": "Opnieuw aanmaken" },
   "tooltip_regenerating": { "message": "Regenererend" },
   "tooltip_play": { "message": "Afspelen" },
   "tooltip_playing": { "message": "Aan het afspelen " },

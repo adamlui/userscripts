@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Diminuer" },
   "tooltip_close": { "message": "Fermer" },
   "tooltip_copy": { "message": "Copie" },
-  "tooltip_regen": { "message": "Regénérer" },
+  "tooltip_regenerate": { "message": "Regénérer" },
   "tooltip_regenerating": { "message": "Regeneración" },
   "tooltip_play": { "message": "Reproducer" },
   "tooltip_playing": { "message": "Les jeux" },

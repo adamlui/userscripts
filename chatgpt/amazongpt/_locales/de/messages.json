@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Schließen" },
   "tooltip_copy": { "message": "Kopieren" },
-  "tooltip_regen": { "message": "Regenerieren" },
+  "tooltip_regenerate": { "message": "Regenerieren" },
   "tooltip_regenerating": { "message": "Neu generieren" },
   "tooltip_play": { "message": "Abspielen" },
   "tooltip_playing": { "message": "Spielt" },

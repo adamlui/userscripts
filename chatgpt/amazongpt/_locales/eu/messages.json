@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Txikitu" },
   "tooltip_close": { "message": "Itxi" },
   "tooltip_copy": { "message": "Kopiatu" },
-  "tooltip_regen": { "message": "Birsortu" },
+  "tooltip_regenerate": { "message": "Birsortu" },
   "tooltip_regenerating": { "message": "Birsortzen" },
   "tooltip_play": { "message": "Entzun" },
   "tooltip_playing": { "message": "Erreproduzitzea" },

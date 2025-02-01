@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Accipere" },
   "tooltip_close": { "message": "Claudere" },
   "tooltip_copy": { "message": "Duplicare" },
-  "tooltip_regen": { "message": "Plena" },
+  "tooltip_regenerate": { "message": "Plena" },
   "tooltip_regenerating": { "message": "Regeneratio" },
   "tooltip_play": { "message": "una cum natura" },
   "tooltip_playing": { "message": "Playa" },

@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "ಕುಗ್ಗಿಸಿ" },
   "tooltip_close": { "message": "ಮುಚ್ಚಿ" },
   "tooltip_copy": { "message": "à²à²²à²¾à²¯à²¿à²¸à³" },
-  "tooltip_regen": { "message": "ಪುನರುತ್ಪಾದನೆ" },
+  "tooltip_regenerate": { "message": "ಪುನರುತ್ಪಾದನೆ" },
   "tooltip_regenerating": { "message": "ಪುನರುತ್ಪಾದನೆ" },
   "tooltip_play": { "message": "ಪ್ಲೇ" },
   "tooltip_playing": { "message": "ಚಲಾಯಿಸಲಾಗುತ್ತಿದೆ" },

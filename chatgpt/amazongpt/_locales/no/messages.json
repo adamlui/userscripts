@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Krymp" },
   "tooltip_close": { "message": "Lukk" },
   "tooltip_copy": { "message": "Kopier" },
-  "tooltip_regen": { "message": "Regenerer" },
+  "tooltip_regenerate": { "message": "Regenerer" },
   "tooltip_regenerating": { "message": "Regenererer…" },
   "tooltip_play": { "message": "Spill" },
   "tooltip_playing": { "message": "Spiller" },

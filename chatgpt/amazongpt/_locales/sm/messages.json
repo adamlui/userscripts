@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "Tapuni" },
   "tooltip_copy": { "message": "Kopi" },
-  "tooltip_regen": { "message": "Toe faʻafouina" },
+  "tooltip_regenerate": { "message": "Toe faʻafouina" },
   "tooltip_regenerating": { "message": "Toe faʻafouina" },
   "tooltip_play": { "message": "Ta mai" },
   "tooltip_playing": { "message": "Taaalo" },

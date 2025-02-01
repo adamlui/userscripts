@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Straty towaru" },
   "tooltip_close": { "message": "Zamknij" },
   "tooltip_copy": { "message": "Skopiuj" },
-  "tooltip_regen": { "message": "Regeneruj " },
+  "tooltip_regenerate": { "message": "Regeneruj " },
   "tooltip_regenerating": { "message": "Regeneracja  " },
   "tooltip_play": { "message": "Odtwórz" },
   "tooltip_playing": { "message": "Odtwarzanie" },

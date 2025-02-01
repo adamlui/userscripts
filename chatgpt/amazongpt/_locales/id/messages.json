@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Perkecil" },
   "tooltip_close": { "message": "Tutup" },
   "tooltip_copy": { "message": "Salin" },
-  "tooltip_regen": { "message": "Buat Lagi" },
+  "tooltip_regenerate": { "message": "Buat Lagi" },
   "tooltip_regenerating": { "message": "regenerasi" },
   "tooltip_play": { "message": "Mainkan" },
   "tooltip_playing": { "message": "Memutar" },

@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "បង្រួម" },
   "tooltip_close": { "message": "បិទ​" },
   "tooltip_copy": { "message": "ចម្លង​" },
-  "tooltip_regen": { "message": "បង្កើតឡើងវិញ" },
+  "tooltip_regenerate": { "message": "បង្កើតឡើងវិញ" },
   "tooltip_regenerating": { "message": "បង្កើតឡើងវិញ" },
   "tooltip_play": { "message": "Play" },
   "tooltip_playing": { "message": "កំពុង​ចាក់" },

@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Psiquiatre" },
   "tooltip_close": { "message": "Tanca" },
   "tooltip_copy": { "message": "Copia" },
-  "tooltip_regen": { "message": "Regenerar" },
+  "tooltip_regenerate": { "message": "Regenerar" },
   "tooltip_regenerating": { "message": "Regenerant" },
   "tooltip_play": { "message": "Juga" },
   "tooltip_playing": { "message": "Jocs" },

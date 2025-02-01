@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Павелічэнне рэзкасці" },
   "tooltip_close": { "message": "Закрыць" },
   "tooltip_copy": { "message": "Капіяваць" },
-  "tooltip_regen": { "message": "Рэгенерацыя" },
+  "tooltip_regenerate": { "message": "Рэгенерацыя" },
   "tooltip_regenerating": { "message": "Рэгенерацыя" },
   "tooltip_play": { "message": "Прайграць" },
   "tooltip_playing": { "message": "Прайграецца" },

@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Kahandamine" },
   "tooltip_close": { "message": "Sulge" },
   "tooltip_copy": { "message": "Kopeeri" },
-  "tooltip_regen": { "message": "Regeneratsioon" },
+  "tooltip_regenerate": { "message": "Regeneratsioon" },
   "tooltip_regenerating": { "message": "Taastav" },
   "tooltip_play": { "message": "Mängi" },
   "tooltip_playing": { "message": "Mängin" },

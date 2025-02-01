@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Shrink" },
   "tooltip_close": { "message": "ዝጋ" },
   "tooltip_copy": { "message": "ቅጂ" },
-  "tooltip_regen": { "message": "እንደገና ያድሱ" },
+  "tooltip_regenerate": { "message": "እንደገና ያድሱ" },
   "tooltip_regenerating": { "message": "ማደስ" },
   "tooltip_play": { "message": "መጫወት" },
   "tooltip_playing": { "message": "በመጫወት ላይ" },

@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Kugabanuka" },
   "tooltip_close": { "message": "Gufunga" },
   "tooltip_copy": { "message": "Gukoporora" },
-  "tooltip_regen": { "message": "Kongera kubyara" },
+  "tooltip_regenerate": { "message": "Kongera kubyara" },
   "tooltip_regenerating": { "message": "Kongera kubyara" },
   "tooltip_play": { "message": "Gukina" },
   "tooltip_playing": { "message": "Gukina" },

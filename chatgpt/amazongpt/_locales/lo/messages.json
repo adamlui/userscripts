@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "ຫຍໍ້" },
   "tooltip_close": { "message": "ປິດ" },
   "tooltip_copy": { "message": "ສຳເນົາ" },
-  "tooltip_regen": { "message": "ຟື້ນຟູ" },
+  "tooltip_regenerate": { "message": "ຟື້ນຟູ" },
   "tooltip_regenerating": { "message": "ການເກີດໃໝ່" },
   "tooltip_play": { "message": "ຫຼິ້ນ" },
   "tooltip_playing": { "message": "ຫຼີ້ນ" },

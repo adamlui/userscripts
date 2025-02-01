@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Шринк" },
   "tooltip_close": { "message": "Жабуу" },
   "tooltip_copy": { "message": "Копиялоо" },
-  "tooltip_regen": { "message": "Калыбына келтирүү" },
+  "tooltip_regenerate": { "message": "Калыбына келтирүү" },
   "tooltip_regenerating": { "message": "Регенерациялоо" },
   "tooltip_play": { "message": "Ойноту" },
   "tooltip_playing": { "message": "Азыр ойнотулат" },

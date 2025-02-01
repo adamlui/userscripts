@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Hampihemotra" },
   "tooltip_close": { "message": "Mifanakaiky" },
   "tooltip_copy": { "message": "Adikao" },
-  "tooltip_regen": { "message": "Alina Mihaylova" },
+  "tooltip_regenerate": { "message": "Alina Mihaylova" },
   "tooltip_regenerating": { "message": "Mamelona indray" },
   "tooltip_play": { "message": "Mamaky" },
   "tooltip_playing": { "message": "Mamaky" },
