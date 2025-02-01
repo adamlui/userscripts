@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.7
+// @version                2025.2.1.8
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3920,19 +3920,18 @@
                             const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]
                             if (keys.includes(event.key) || keyCodes.includes(event.keyCode) || event.type == 'click') {
                                 event.preventDefault() // prevent scroll on space taps
-                                const relatedQuery = event.target.textContent,
-                                      chatbar = appDiv.querySelector('textarea')
-                                if (chatbar) {
-                                    chatbar.value = relatedQuery
-                                    if (/\[[^[\]]+\]/.test(relatedQuery)) { // highlight 1st bracleted placeholder
-                                        chatbar.focus()
-                                        addListeners.replySection.chatbarAutoSizer() // since query not auto-sent
-                                        chatbar.setSelectionRange(
-                                            relatedQuery.indexOf('['), relatedQuery.indexOf(']') +1)
-                                    } else // send placeholder-free related query
-                                        chatbar.dispatchEvent(new KeyboardEvent('keydown',
-                                            { key: 'Enter', bubbles: true, cancelable: true }))
-                    }}}}, idx * 100)
+                                const chatbar = appDiv.querySelector('textarea') ; if (!chatbar) return
+                                const relatedQuery = event.target.textContent ; chatbar.value = relatedQuery
+                                if (/\[[^[\]]+\]/.test(relatedQuery)) { // highlight 1st bracleted placeholder
+                                    chatbar.focus()
+                                    addListeners.replySection.chatbarAutoSizer() // since query not auto-sent
+                                    chatbar.setSelectionRange(relatedQuery.indexOf('['), relatedQuery.indexOf(']') +1)
+                                } else // send placeholder-free related query
+                                    chatbar.dispatchEvent(new KeyboardEvent('keydown',
+                                        { key: 'Enter', bubbles: true, cancelable: true }))
+                            }
+                        }
+                    }, idx * 100)
                 })
 
                 update.answerPreMaxHeight() ; get.related.replyIsQuestion = null
