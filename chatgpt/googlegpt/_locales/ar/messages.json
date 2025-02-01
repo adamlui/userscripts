@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "مقدار التقلص أو الانكماش" },
   "tooltip_close": { "message": "إغلاق" },
   "tooltip_copy": { "message": "‫نسخ‬" },
-  "tooltip_regen": { "message": "يجدد" },
+  "tooltip_regenerate": { "message": "يجدد" },
   "tooltip_regenerating": { "message": "تجديد،" },
   "tooltip_play": { "message": "الترفيه" },
   "tooltip_playing": { "message": "الألعاب" },

@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_close": { "message": "Ugara" },
   "tooltip_copy": { "message": "Kopi" },
-  "tooltip_regen": { "message": "Gusubiza ibintu mu buryo" },
+  "tooltip_regenerate": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_regenerating": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_play": { "message": "Kwinana" },
   "tooltip_playing": { "message": "Kwinana" },

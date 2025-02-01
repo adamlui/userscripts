@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Reduzir" },
   "tooltip_close": { "message": "Close (Fechar)" },
   "tooltip_copy": { "message": "Copiar" },
-  "tooltip_regen": { "message": "Regenerar" },
+  "tooltip_regenerate": { "message": "Regenerar" },
   "tooltip_regenerating": { "message": "Regeneração." },
   "tooltip_play": { "message": "Jogue" },
   "tooltip_playing": { "message": "Reproduzindo" },

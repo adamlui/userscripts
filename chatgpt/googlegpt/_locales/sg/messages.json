@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Yângâ tî kodoro ti Shrink" },
   "tooltip_close": { "message": "Pene ni da" },
   "tooltip_copy": { "message": "Kopi" },
-  "tooltip_regen": { "message": "A kiri a kiri a kiri a sara kua na lo" },
+  "tooltip_regenerate": { "message": "A kiri a kiri a kiri a sara kua na lo" },
   "tooltip_regenerating": { "message": "A kiri a kiri a kiri a sara kua na lo" },
   "tooltip_play": { "message": "Jouer a Bango" },
   "tooltip_playing": { "message": "Jouer a Bango" },

@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Kuncup" },
   "tooltip_close": { "message": "Tutup" },
   "tooltip_copy": { "message": "Salin" },
-  "tooltip_regen": { "message": "Menjana semula" },
+  "tooltip_regenerate": { "message": "Menjana semula" },
   "tooltip_regenerating": { "message": "Menjana semula" },
   "tooltip_play": { "message": "Main" },
   "tooltip_playing": { "message": "Memainkan" },

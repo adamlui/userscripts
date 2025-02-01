@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "ጸርፊ" },
   "tooltip_close": { "message": "ዕጾ" },
   "tooltip_copy": { "message": "ቅዳሕ" },
-  "tooltip_regen": { "message": "ተሃድሶ" },
+  "tooltip_regenerate": { "message": "ተሃድሶ" },
   "tooltip_regenerating": { "message": "ህዳሰ" },
   "tooltip_play": { "message": "ወልዕ" },
   "tooltip_playing": { "message": "ተጻወቱ" },

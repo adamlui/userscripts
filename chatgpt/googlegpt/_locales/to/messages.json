@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Holomui" },
   "tooltip_close": { "message": "Tāpuni" },
   "tooltip_copy": { "message": "Hiki Tatau" },
-  "tooltip_regen": { "message": "Fakafoʻou" },
+  "tooltip_regenerate": { "message": "Fakafoʻou" },
   "tooltip_regenerating": { "message": "Toe Fakafoʻou" },
   "tooltip_play": { "message": "Kamata" },
   "tooltip_playing": { "message": "Vaʻinga" },

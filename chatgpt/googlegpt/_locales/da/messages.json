@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Gør mindre" },
   "tooltip_close": { "message": "Luk" },
   "tooltip_copy": { "message": "Kopi" },
-  "tooltip_regen": { "message": "Regenerere Nøgler" },
+  "tooltip_regenerate": { "message": "Regenerere Nøgler" },
   "tooltip_regenerating": { "message": "Regenererer" },
   "tooltip_play": { "message": "Afspil" },
   "tooltip_playing": { "message": "Spiller" },

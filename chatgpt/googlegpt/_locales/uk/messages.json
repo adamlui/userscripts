@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "стискатися" },
   "tooltip_close": { "message": "Закрити" },
   "tooltip_copy": { "message": "Копіювати" },
-  "tooltip_regen": { "message": "Відроджувати" },
+  "tooltip_regenerate": { "message": "Відроджувати" },
   "tooltip_regenerating": { "message": "Регенерація" },
   "tooltip_play": { "message": "Грати" },
   "tooltip_playing": { "message": "Бавлення" },

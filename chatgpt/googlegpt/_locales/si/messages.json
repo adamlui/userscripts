@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "හැකිලෙනවා" },
   "tooltip_close": { "message": "වසන්න" },
   "tooltip_copy": { "message": "පිටපත් කරන්න" },
-  "tooltip_regen": { "message": "ප් ‍ රතිජනනය කරන්න" },
+  "tooltip_regenerate": { "message": "ප් ‍ රතිජනනය කරන්න" },
   "tooltip_regenerating": { "message": "ප් ‍ රතිජනනය" },
   "tooltip_play": { "message": "වාදනය" },
   "tooltip_playing": { "message": "වාදනය" },
