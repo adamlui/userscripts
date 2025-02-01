@@ -25,7 +25,7 @@
   "mode_debug": { "message": "Debug Modus" },
   "tooltip_fontSize": { "message": "Schriftgröße" },
   "tooltip_sendReply": { "message": "Antwort senden" },
-  "tooltip_askRandQuestion": { "message": "Wie heisst das fehlende Wort: Frühling, Sommer, Herbst, ." },
+  "tooltip_askRandQuestion": { "message": "Wie heisst das fehlende Wort: Frühling, Sommer, Herbst, " },
   "tooltip_minimize": { "message": "Minimieren" },
   "tooltip_restore": { "message": "Wiederherstellen" },
   "tooltip_expand": { "message": "Ausklappen" },
