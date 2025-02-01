@@ -50,7 +50,7 @@
   "tooltip_regenerate": { "message": "Täzeleşdir" },
   "tooltip_regenerating": { "message": "Täzeleşdirmek" },
   "tooltip_play": { "message": "Oynat" },
-  "tooltip_playing": { "message": "Oýnalýar..." },
+  "tooltip_playing": { "message": "Oýnalýar" },
   "tooltip_reply": { "message": "Jawap" },
   "tooltip_code": { "message": "Kody" },
   "tooltip_generatingAudio": { "message": "Saýlamalary döretmek" },

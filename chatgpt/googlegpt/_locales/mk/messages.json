@@ -106,7 +106,7 @@
   "btnLabel_sendQueryToApp": { "message": "Испрати барање за пребарување до GoogleGPT" },
   "btnLabel_leaveReview": { "message": "Остави еден преглед" },
   "btnLabel_rateUs": { "message": "Оценете не" },
-  "btnLabel_discuss": { "message": "Дискутирајте:" },
+  "btnLabel_discuss": { "message": "Дискутирајте" },
   "btnLabel_getSupport": { "message": "Добијте поддршка" },
   "btnLabel_checkForUpdates": { "message": "Провери за нова верзија" },
   "btnLabel_update": { "message": "Ажурирај" },
