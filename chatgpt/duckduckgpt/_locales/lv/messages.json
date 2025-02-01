@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Aizvērt" },
   "tooltip_copy": { "message": "Kopēt" },
   "tooltip_regen": { "message": "Reģenerēt" },
+  "tooltip_regenerating": { "message": "Atjaunojošs. " },
   "tooltip_play": { "message": "Spēlēties" },
   "tooltip_playing": { "message": "Spēlēšana" },
   "tooltip_reply": { "message": "Atbildēt" },

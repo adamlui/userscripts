@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "ލެއްޕުން" },
   "tooltip_copy": { "message": "(ކޮޕީ)" },
   "tooltip_regen": { "message": "ރިޖެނެރޭޓް ކުރުން" },
+  "tooltip_regenerating": { "message": "ރިޖެނެރޭޓް ކުރުން" },
   "tooltip_play": { "message": "ކުޅުން" },
   "tooltip_playing": { "message": "ކުޅުން" },
   "tooltip_reply": { "message": "ޖަވާބުދިނުން" },

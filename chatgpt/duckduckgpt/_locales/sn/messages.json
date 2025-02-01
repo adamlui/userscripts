@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "vhara" },
   "tooltip_copy": { "message": "Kopa" },
   "tooltip_regen": { "message": "Kubereka patsva" },
+  "tooltip_regenerating": { "message": "Kugadzirazve" },
   "tooltip_play": { "message": "Tamba" },
   "tooltip_playing": { "message": "Kutamba" },
   "tooltip_reply": { "message": "Mhinduro" },

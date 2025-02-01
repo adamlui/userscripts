@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "ပိတ်ရန်" },
   "tooltip_copy": { "message": "မိတ္တူကို" },
   "tooltip_regen": { "message": "ပြန်လည်မွေးဖွားပါ" },
+  "tooltip_regenerating": { "message": "ပြန်လည်ထုတ်လုပ်ခြင်း" },
   "tooltip_play": { "message": "ကစားခြင်း " },
   "tooltip_playing": { "message": "ကစားခြင်း" },
   "tooltip_reply": { "message": "ပြန်ပြောပါ" },

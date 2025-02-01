@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Agħlaq" },
   "tooltip_copy": { "message": "Ikkopja" },
   "tooltip_regen": { "message": "Irriġenera" },
+  "tooltip_regenerating": { "message": "Qed jerġa' jiġġenera" },
   "tooltip_play": { "message": "Reċta" },
   "tooltip_playing": { "message": "jilgħab" },
   "tooltip_reply": { "message": "Irrispondi" },

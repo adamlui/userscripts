@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Sser" },
   "tooltip_copy": { "message": "Nɣel" },
   "tooltip_regen": { "message": "Ales asirew" },
+  "tooltip_regenerating": { "message": "Asebded" },
   "tooltip_play": { "message": "Ɣeṛ" },
   "tooltip_playing": { "message": "Urar iteddu" },
   "tooltip_reply": { "message": "Err" },
