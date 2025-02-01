@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.5
+// @version                2025.2.1.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3653,7 +3653,7 @@
                                 audioSrc.connect(audioContext.destination) // connect source to speakers
                                 audioSrc.start(0) // play audio
                                 audioSrc.onended = handleAudioEnded
-                            }).catch(() => { chatgpt.speak(wholeAnswer, cjsSpeakOptions) ; handleAudioEnded() })
+                            }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakOptions))
                         }
                     }
                 })
