@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.4
+// @version                  2025.2.1.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3773,12 +3773,9 @@
             speakBtn.append(speakSVGs.speak) ; cornerBtnsDiv.append(speakBtn)
             if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
             speakBtn.onclick = () => {
+                if (!speakBtn.contains(speakSVGs.speak)) return // since clicking on Generating or Playing icon
                 speakBtn.style.cursor = 'default' // remove finger
-
-                // Update icon to Generating one
-                const speakSVG = speakBtn.querySelector(`#${app.slug}-speak-icon`)
-                if (!speakSVG) return // since clicking on Generating or Playing icon
-                speakBtn.replaceChild(speakSVGs.generating, speakSVGs.speak)
+                speakBtn.replaceChild(speakSVGs.generating, speakSVGs.speak) // update icon to Generating one
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
