@@ -18,7 +18,7 @@
   "helptip_clearNow": { "message": "채팅 기록 삭제" },
   "helptip_toggleVis": { "message": "사이드바에 자동 지우기 토글 표시" },
   "helptip_modeNotifs": { "message": "모드/설정을 전환할 때 알림 표시" },
-  "notif_chatsCleared": { "message": "삭제된 이력." },
+  "notif_chatsCleared": { "message": "삭제된 이력" },
   "alert_choosePlatform": { "message": "플랫폼 선택" },
   "alert_updateAvail": { "message": "업데이트 사용 가능" },
   "alert_newerVer": { "message": "다음으로 업데이트" },
