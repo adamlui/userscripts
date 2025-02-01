@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.1.5
+// @version               2025.2.1.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3656,7 +3656,7 @@
                                 audioSrc.connect(audioContext.destination) // connect source to speakers
                                 audioSrc.start(0) // play audio
                                 audioSrc.onended = handleAudioEnded
-                            }).catch(() => { chatgpt.speak(wholeAnswer, cjsSpeakOptions) ; handleAudioEnded() })
+                            }).catch(() => chatgpt.speak(wholeAnswer, cjsSpeakOptions))
                         }
                     }
                 })
