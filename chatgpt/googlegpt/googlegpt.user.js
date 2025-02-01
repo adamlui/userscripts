@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.8
+// @version                  2025.2.1.9
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -449,7 +449,7 @@
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: '5a46f7d' // for cached messages.json
+        latestResourceCommitHash: '7bca459' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -502,7 +502,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
-        tooltip_regen: 'Regenerate',
+        tooltip_regenenerate: 'Regenerate',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
@@ -3219,7 +3219,7 @@
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
-              : btnType == 'regen' ? `${app.msgs.tooltip_regen} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'regen' ? `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}`
               : btnType == 'speak' ? (
                     btnElem.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
