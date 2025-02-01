@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Khutshwane" },
   "tooltip_close": { "message": "Tswala" },
   "tooltip_copy": { "message": "Khopi" },
-  "tooltip_regen": { "message": "Go tsosolosa" },
+  "tooltip_regenerate": { "message": "Go tsosolosa" },
   "tooltip_regenerating": { "message": "Go tsosolosa" },
   "tooltip_play": { "message": "Go tshameka" },
   "tooltip_playing": { "message": "Go tshameka" },

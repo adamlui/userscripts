@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "חדות" },
   "tooltip_close": { "message": "סגירה" },
   "tooltip_copy": { "message": "העתקה" },
-  "tooltip_regen": { "message": "צרי מחדש" },
+  "tooltip_regenerate": { "message": "צרי מחדש" },
   "tooltip_regenerating": { "message": "מתחדש" },
   "tooltip_play": { "message": "נגן" },
   "tooltip_playing": { "message": "מנגן" },

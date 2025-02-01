@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Шакл" },
   "tooltip_close": { "message": "Пӯшидан" },
   "tooltip_copy": { "message": "Нусха бардоштан" },
-  "tooltip_regen": { "message": "Аз нав сохтан" },
+  "tooltip_regenerate": { "message": "Аз нав сохтан" },
   "tooltip_regenerating": { "message": "Бозсозӣ" },
   "tooltip_play": { "message": "Пахш кардан" },
   "tooltip_playing": { "message": "Дар ҳоли пахш" },

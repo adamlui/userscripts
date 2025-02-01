@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "కుదించు" },
   "tooltip_close": { "message": "క్లోజ్ చేయండి" },
   "tooltip_copy": { "message": "కాపీ చేయండి" },
-  "tooltip_regen": { "message": "పునర్జన్మించుట" },
+  "tooltip_regenerate": { "message": "పునర్జన్మించుట" },
   "tooltip_regenerating": { "message": "పునర్జన్మింపజేయుట" },
   "tooltip_play": { "message": "ప్లే" },
   "tooltip_playing": { "message": "ఆడుతోంది" },

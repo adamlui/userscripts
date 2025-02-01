@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "縮小" },
   "tooltip_close": { "message": "關閉" },
   "tooltip_copy": { "message": "複製" },
-  "tooltip_regen": { "message": "重新生成" },
+  "tooltip_regenerate": { "message": "重新生成" },
   "tooltip_regenerating": { "message": "正在重新生成" },
   "tooltip_play": { "message": "播放" },
   "tooltip_playing": { "message": "正在播放" },

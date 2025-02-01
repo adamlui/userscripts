@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Kutista" },
   "tooltip_close": { "message": "Sulje" },
   "tooltip_copy": { "message": "Kopioi" },
-  "tooltip_regen": { "message": "Luo uudestaan" },
+  "tooltip_regenerate": { "message": "Luo uudestaan" },
   "tooltip_regenerating": { "message": "Uudistuu" },
   "tooltip_play": { "message": "Toista" },
   "tooltip_playing": { "message": "Pelaa" },

@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Жиыру" },
   "tooltip_close": { "message": "Жабу" },
   "tooltip_copy": { "message": "Көшіру" },
-  "tooltip_regen": { "message": "Қалпына келтіру" },
+  "tooltip_regenerate": { "message": "Қалпына келтіру" },
   "tooltip_regenerating": { "message": "Регенерациялау" },
   "tooltip_play": { "message": "Ойнау" },
   "tooltip_playing": { "message": "Ойнату" },

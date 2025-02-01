@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Punguza" },
   "tooltip_close": { "message": "Funga" },
   "tooltip_copy": { "message": "Nakili " },
-  "tooltip_regen": { "message": "Kuipatia nguvu upya" },
+  "tooltip_regenerate": { "message": "Kuipatia nguvu upya" },
   "tooltip_regenerating": { "message": "Inazalisha upya" },
   "tooltip_play": { "message": "Cheza" },
   "tooltip_playing": { "message": "kyela\n" },

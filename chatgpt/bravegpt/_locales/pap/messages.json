@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Kibra" },
   "tooltip_close": { "message": "Será" },
   "tooltip_copy": { "message": "Kopia" },
-  "tooltip_regen": { "message": "Rekuperashon" },
+  "tooltip_regenerate": { "message": "Rekuperashon" },
   "tooltip_regenerating": { "message": "Regeneracion" },
   "tooltip_play": { "message": "Wega" },
   "tooltip_playing": { "message": "Hunga" },

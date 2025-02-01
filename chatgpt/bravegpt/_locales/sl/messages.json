@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Skrči" },
   "tooltip_close": { "message": "Zapri" },
   "tooltip_copy": { "message": "Kopiraj" },
-  "tooltip_regen": { "message": "Ponovno ustvari" },
+  "tooltip_regenerate": { "message": "Ponovno ustvari" },
   "tooltip_regenerating": { "message": "Regenerativni" },
   "tooltip_play": { "message": "Predvajaj" },
   "tooltip_playing": { "message": "Predvajanje" },

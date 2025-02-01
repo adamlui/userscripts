@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "小さく" },
   "tooltip_close": { "message": "Close" },
   "tooltip_copy": { "message": "コピー" },
-  "tooltip_regen": { "message": "再生" },
+  "tooltip_regenerate": { "message": "再生" },
   "tooltip_regenerating": { "message": "回復" },
   "tooltip_play": { "message": "プレイ" },
   "tooltip_playing": { "message": "再生中" },
