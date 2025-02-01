@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Duol" },
   "tooltip_copy": { "message": "Kopya" },
   "tooltip_regen": { "message": "Nabag-o" },
+  "tooltip_regenerating": { "message": "Pagpasig-uli" },
   "tooltip_play": { "message": "Ang dula ni LEt" },
   "tooltip_playing": { "message": "nagdula" },
   "tooltip_reply": { "message": "nagpaabut nga makita ka" },

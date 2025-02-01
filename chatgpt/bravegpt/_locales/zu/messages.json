@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Vala" },
   "tooltip_copy": { "message": "Phinda" },
   "tooltip_regen": { "message": "Vuselela" },
+  "tooltip_regenerating": { "message": "Ukuvuselela" },
   "tooltip_play": { "message": "Dlala" },
   "tooltip_playing": { "message": "Iyadlala" },
   "tooltip_reply": { "message": "Phendula" },

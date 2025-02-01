@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Yopish" },
   "tooltip_copy": { "message": "NUSXA QILISh" },
   "tooltip_regen": { "message": "Qayta tiklash" },
+  "tooltip_regenerating": { "message": "Qayta tiklash" },
   "tooltip_play": { "message": "Oʻynash" },
   "tooltip_playing": { "message": "Oʻynamoqda" },
   "tooltip_reply": { "message": "Ответить" },

@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Κλείσιμο" },
   "tooltip_copy": { "message": "Αντιγραφή" },
   "tooltip_regen": { "message": "Ανανέωση" },
+  "tooltip_regenerating": { "message": "Αναγεννά" },
   "tooltip_play": { "message": "Αναπαραγωγή" },
   "tooltip_playing": { "message": "Αναπαράγεται" },
   "tooltip_reply": { "message": "Απάντηση" },

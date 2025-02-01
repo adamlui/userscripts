@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Funga" },
   "tooltip_copy": { "message": "Gukoporora" },
   "tooltip_regen": { "message": "Kongera kubyara" },
+  "tooltip_regenerating": { "message": "Kongera kubyara" },
   "tooltip_play": { "message": "Gukina" },
   "tooltip_playing": { "message": "Gukina" },
   "tooltip_reply": { "message": "Gusubiza" },

@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Закрыть" },
   "tooltip_copy": { "message": "Copy (Копирование)" },
   "tooltip_regen": { "message": "Регенерировать" },
+  "tooltip_regenerating": { "message": "Регенерация" },
   "tooltip_play": { "message": "Воспроизведение" },
   "tooltip_playing": { "message": "Воспроизведение" },
   "tooltip_reply": { "message": "Ответ" },

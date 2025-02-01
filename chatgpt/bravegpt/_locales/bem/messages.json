@@ -48,6 +48,7 @@
   "tooltip_close": { "message": "Fela Kuti Close" },
   "tooltip_copy": { "message": "Kopa" },
   "tooltip_regen": { "message": "Ukubwekeshapo" },
+  "tooltip_regenerating": { "message": "Ukubwekeshapo" },
   "tooltip_play": { "message": "Tinikeni" },
   "tooltip_playing": { "message": "Ukuteya" },
   "tooltip_reply": { "message": "Icasuko" },
