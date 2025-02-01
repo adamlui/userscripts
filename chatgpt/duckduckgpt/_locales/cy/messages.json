@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Lleihau" },
   "tooltip_close": { "message": "Cau" },
   "tooltip_copy": { "message": "Copïo" },
-  "tooltip_regen": { "message": "Adfywio" },
+  "tooltip_regenerate": { "message": "Adfywio" },
   "tooltip_regenerating": { "message": "Adfywio" },
   "tooltip_play": { "message": "Chwarae" },
   "tooltip_playing": { "message": "Yn chwarae" },

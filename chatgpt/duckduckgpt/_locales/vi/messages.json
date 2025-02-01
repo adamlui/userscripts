@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Thu Nhỏ/Co Lại (Shrink)" },
   "tooltip_close": { "message": "Đóng" },
   "tooltip_copy": { "message": "Sao chép" },
-  "tooltip_regen": { "message": "Tạo lại" },
+  "tooltip_regenerate": { "message": "Tạo lại" },
   "tooltip_regenerating": { "message": "Tái tạo" },
   "tooltip_play": { "message": "Chơi" },
   "tooltip_playing": { "message": "Đang chơi" },

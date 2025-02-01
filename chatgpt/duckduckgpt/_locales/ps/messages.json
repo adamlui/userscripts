@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "غونجول" },
   "tooltip_close": { "message": "بندول" },
   "tooltip_copy": { "message": "...لمېسل_" },
-  "tooltip_regen": { "message": "بیا تولید کړئ" },
+  "tooltip_regenerate": { "message": "بیا تولید کړئ" },
   "tooltip_regenerating": { "message": "بیا راژوندي کول" },
   "tooltip_play": { "message": "وغږوئ" },
   "tooltip_playing": { "message": "غږيږي" },

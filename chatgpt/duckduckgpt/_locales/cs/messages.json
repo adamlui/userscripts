@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Zmenšit" },
   "tooltip_close": { "message": "Zavřít" },
   "tooltip_copy": { "message": "Kopírování" },
-  "tooltip_regen": { "message": "Znovu generovat" },
+  "tooltip_regenerate": { "message": "Znovu generovat" },
   "tooltip_regenerating": { "message": "REGENERAČNÍ" },
   "tooltip_play": { "message": "Hrát" },
   "tooltip_playing": { "message": "Hraje" },

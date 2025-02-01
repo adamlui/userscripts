@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "སེངྒེ་" },
   "tooltip_close": { "message": "སྒོ་བསྡམས་" },
   "tooltip_copy": { "message": "འདྲ་བཤུས་" },
-  "tooltip_regen": { "message": "བསྐྱར་གསོ་འབད་" },
+  "tooltip_regenerate": { "message": "བསྐྱར་གསོ་འབད་" },
   "tooltip_regenerating": { "message": "བསྐྱར་གསོ་འབད་" },
   "tooltip_play": { "message": "རྩེདམ།" },
   "tooltip_playing": { "message": "རྩེདམོ་རྩོམ།" },

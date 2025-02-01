@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Krympa" },
   "tooltip_close": { "message": "Stäng" },
   "tooltip_copy": { "message": "Kopiera" },
-  "tooltip_regen": { "message": "Regenerera" },
+  "tooltip_regenerate": { "message": "Regenerera" },
   "tooltip_regenerating": { "message": "Regenererar" },
   "tooltip_play": { "message": "Spela upp" },
   "tooltip_playing": { "message": "Spelar" },

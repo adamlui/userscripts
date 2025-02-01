@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "Буурах" },
   "tooltip_close": { "message": "Хаах" },
   "tooltip_copy": { "message": "Хуулах" },
-  "tooltip_regen": { "message": "Шинэчлэх" },
+  "tooltip_regenerate": { "message": "Шинэчлэх" },
   "tooltip_regenerating": { "message": "Шинэчлэх" },
   "tooltip_play": { "message": "Тоглуулах" },
   "tooltip_playing": { "message": "Тоглох" },

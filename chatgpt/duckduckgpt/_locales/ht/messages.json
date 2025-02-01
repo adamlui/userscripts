@@ -47,7 +47,7 @@
   "tooltip_shrink": { "message": "retresi/rakornir/vini pi piti/rétrécir" },
   "tooltip_close": { "message": "Fèmen" },
   "tooltip_copy": { "message": "Copy" },
-  "tooltip_regen": { "message": "rejenere/relanse " },
+  "tooltip_regenerate": { "message": "rejenere/relanse " },
   "tooltip_regenerating": { "message": "rejenerant/régénération" },
   "tooltip_play": { "message": "Jwe" },
   "tooltip_playing": { "message": "Jwe" },
