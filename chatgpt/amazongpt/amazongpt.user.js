@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.19
+// @version                2025.2.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1652,6 +1652,8 @@
               + '@keyframes btn-zoom-fade-out {'
                   + '0% { opacity: 1 } 55% { opacity: 0.25 ; transform: scale(1.85) }'
                   + '75% { opacity: 0.05 ; transform: scale(2.15) } 100% { opacity: 0 ; transform: scale(6.85) }}'
+              + '@keyframes icon-scroll-left { 0% { transform: translateX(0) } 100% { transform: translateX(-18px) }}'
+              + '@keyframes icon-scroll-right { 0% { transform: translateX(-18px) } 100% { transform: translateX(0) }}'
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + '@keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
 
@@ -2372,9 +2374,9 @@
                         `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
                       : `${app.msgs.tooltip_regenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
-                    btn.firstChild.id.includes('-speak-') ?
+                    btn.querySelector('svg').id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
-                  : btn.firstChild.id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
+                  : btn.querySelector('svg').id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
                   : `${app.msgs.tooltip_playing} ${app.msgs.tooltip_reply.toLowerCase()}...` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
@@ -2836,19 +2838,36 @@
             // Add Speak button
             const speakBtn = document.createElement('btn')
             Object.assign(speakBtn, { id: `${app.slug}-speak-btn`, className: 'no-mobile-tap-outline' })
-            speakBtn.style.cssText = baseBtnStyles + 'margin: -2px 4px 0 0'
-            const speakSVGs = {
-                speak: icons.soundwave.create(),
-                generating: icons.soundwave.create({ height: 'short' }),
-                playing: icons.soundwave.create({ height: 'tall' })
-            }
-            Object.entries(speakSVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
-            speakBtn.append(speakSVGs.speak) ; cornerBtnsDiv.append(speakBtn)
+            speakBtn.style.cssText = baseBtnStyles + 'margin: -1px 3px 0 0'
+            const speakSVGwrapper = document.createElement('div') // to show 1 icon at a time during scroll
+            Object.assign(speakSVGwrapper.style, { width: '22px', height: '22px', overflow: 'hidden' })
+            const speakSVGscroller = document.createElement('div') // to scroll the icons
+            Object.assign(speakSVGscroller.style, {
+                display: 'flex', // align the SVGs horizontally
+                width: '41px', height: '22px' // rectangle to fit both icons
+            })
+            const speakSVGs = { speak: icons.soundwave.create() } ; speakSVGs.speak.id = `${app.slug}-speak-icon`;
+            ['generating', 'playing'].forEach(state => {
+                speakSVGs[state] = []
+                for (let i = 0 ; i < 2 ; i++) { // push/id 2 of each state icon for continuous scroll animation
+                    speakSVGs[state].push(icons.soundwave.create({ height: state == 'generating' ? 'short' : 'tall' }))
+                    speakSVGs[state][i].id = `${app.slug}-${state}-icon-${i+1}`
+                    if (i == 1) speakSVGs[state][i].style.marginLeft = '-3px' // close gap of 2nd icon during scroll
+                }
+            })
+            speakSVGscroller.append(speakSVGs.speak) ; speakSVGwrapper.append(speakSVGscroller)
+            speakBtn.append(speakSVGwrapper) ; cornerBtnsDiv.append(speakBtn)
             if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
             speakBtn.onclick = () => {
                 if (!speakBtn.contains(speakSVGs.speak)) return // since clicking on Generating or Playing icon
                 speakBtn.style.cursor = 'default' // remove finger
-                speakBtn.replaceChild(speakSVGs.generating, speakSVGs.speak) // update icon to Generating one
+
+                // Update/animate icon
+                speakSVGscroller.textContent = '' // rid Speak icon
+                speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1])
+                speakSVGscroller.style.animation = 'icon-scroll-left 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
+                speakSVGwrapper.style.maskImage = ( // fade edges
+                    'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
@@ -2890,7 +2909,13 @@
                         + encodeURIComponent(securePayload),
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
-                        speakBtn.replaceChild(speakSVGs.playing, speakSVGs.generating) // update icon to Playing one
+
+                        // Update icon, re-animate to be slower/smoother
+                        speakSVGscroller.textContent = '' // rid Generating icons
+                        speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1])
+                        speakSVGscroller.style.animation = 'icon-scroll-left 0.5s linear infinite'
+
+                        // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
                         else {
                             const audioContext = new (AudioContext || webkitAudioContext)()
@@ -2907,7 +2932,9 @@
 
                 function handleAudioEnded() {
                     speakBtn.style.cursor = 'pointer' // restore cursor
-                    speakBtn.replaceChild(speakSVGs.speak, speakSVGs.playing) // revert to Play icon
+                    speakSVGscroller.textContent = '' // rid Playing icons
+                    speakSVGscroller.append(speakSVGs.speak) // restore Speak icon
+                    speakSVGscroller.style.animation = '' // end animation
                 }
             }
         },
