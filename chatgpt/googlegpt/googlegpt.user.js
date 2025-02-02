@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.14
+// @version                  2025.2.1.15
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1784,7 +1784,8 @@
         arrowsCycle: {
             create() {
                 const svg = dom.create.svgElem('svg', {
-                    width: 13, height: 13, viewBox: '197 -924 573 891', style: 'transform: rotate(14deg)' })
+                    id: `${app.slug}-arrows-cycle-icon`, width: 13, height: 13,
+                    viewBox: '197 -924 573 891', style: 'transform: rotate(14deg)' })
                 const svgPath = dom.create.svgElem('path', { stroke: 'none',
                     d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' })
                 svg.append(svgPath) ; return svg
