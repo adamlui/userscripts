@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.17
+// @version                2025.2.1.18
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -315,7 +315,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
-        tooltip_regenenerate: 'Regenerate',
+        tooltip_regenerate: 'Regenerate',
         tooltip_regenerating: 'Regenerating',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
@@ -3055,7 +3055,7 @@
               : btnType == 'regen' ? (
                     btn.firstChild.style.animation ?
                         `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
-                      : `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
+                      : `${app.msgs.tooltip_regenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
                     btn.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
