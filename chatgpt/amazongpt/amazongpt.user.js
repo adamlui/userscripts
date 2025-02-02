@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.15
+// @version                2025.2.1.16
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -171,7 +171,7 @@
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
-        tooltip_regenenerate: 'Regenerate',
+        tooltip_regenerate: 'Regenerate',
         tooltip_regenerating: 'Regenerating',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
@@ -2369,7 +2369,7 @@
               : btnType == 'regen' ? (
                     btn.firstChild.style.animation ?
                         `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
-                      : `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
+                      : `${app.msgs.tooltip_regenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
                     btn.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
