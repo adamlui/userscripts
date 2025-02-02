@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2
+// @version                2025.2.2.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -231,7 +231,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=0929cb1',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=ed6bcc5',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
