@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.16
+// @version                  2025.2.1.17
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1131,8 +1131,8 @@
               + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
               + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
-                  : ( '#scheme-settings-entry svg:has([d^="M204-318q-22"]),'
-                        + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotate 5s linear infinite }' ))
+                  : ( '#scheme-settings-entry svg[id*=arrows-cycle],'
+                            + '.chatgpt-notif svg[id*=arrows-cycle] { animation: rotate 5s linear infinite }' ))
               + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-settings-entry > span {' // outer About status span
                   + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
