@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.1.19
+// @version               2025.2.1.20
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3572,17 +3572,19 @@
             })
 
             // Add Regenerate button
-            const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.slug}-regen-btn`
-            regenBtn.className = 'no-mobile-tap-outline'
-            regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px'
+            const regenBtn = document.createElement('btn')
+            Object.assign(regenBtn, { id: `${app.slug}-regen-btn`, className: 'no-mobile-tap-outline' })
+            regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px';
+            const regenSVGwrapper = document.createElement('div') // to rotate while respecting ini icon tilt
+            regenSVGwrapper.style.display = 'flex' // wrap the icon tightly
             const regenSVG = icons.arrowsCycle.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
-            regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
+            regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
-                get.reply(msgChain)
-                Object.assign(regenSVG.style, { animation: 'rotate 1.8s linear infinite', cursor: 'default' })
-                toggle.tooltip(event) // trigger tooltip update
+                get.reply(msgChain) ; toggle.tooltip(event) // regenerate reply, update tooltip
+                Object.assign(regenSVGwrapper.style, { // disable finger cursor, animate icon
+                    cursor: 'default', animation: 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' })
 
                 // Hide/remove elems
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove()
