@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.1
+// @version                2025.2.2.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2864,7 +2864,7 @@
 
                 // Update/animate icon
                 speakSVGscroller.textContent = '' // rid Speak icon
-                speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1])
+                speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1]) // add Generating icons
                 speakSVGscroller.style.animation = 'icon-scroll-left 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
                 speakSVGwrapper.style.maskImage = ( // fade edges
                     'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
@@ -2910,9 +2910,9 @@
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
 
-                        // Update icon, re-animate to be slower/smoother
+                        // Update icon, re-animate to be faster/smoother
                         speakSVGscroller.textContent = '' // rid Generating icons
-                        speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1])
+                        speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
                         speakSVGscroller.style.animation = 'icon-scroll-left 0.5s linear infinite'
 
                         // Play audio
