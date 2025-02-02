@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.13
+// @version                2025.2.1.14
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -262,7 +262,7 @@
             support: 'https://support.ddgpt.com',
             update: 'https://gm.ddgpt.com'
         },
-        latestResourceCommitHash: '1f196e1' // for cached messages.json
+        latestResourceCommitHash: '200735c' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -316,6 +316,7 @@
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
         tooltip_regenenerate: 'Regenerate',
+        tooltip_regenerating: 'Regenerating',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
@@ -3048,7 +3049,10 @@
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
-              : btnType == 'regen' ? `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'regen' ? (
+                    btnElem.firstChild.style.animation ?
+                        `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
+                      : `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
                     btnElem.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
@@ -3562,19 +3566,20 @@
             })
 
             // Add Regenerate button
-            const regenBtn = document.createElement('btn') ; regenBtn.id = `${app.slug}-regen-btn`
-            regenBtn.className = 'no-mobile-tap-outline'
+            const regenBtn = document.createElement('btn')
+            Object.assign(regenBtn, { id: `${app.slug}-regen-btn`, className: 'no-mobile-tap-outline' })
             regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px'
             const regenSVG = icons.arrowsCycle.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
-            regenBtn.onclick = () => {
+            regenBtn.onclick = event => {
                 get.reply(msgChain)
+                Object.assign(regenSVG.style, { animation: 'rotation 1.8s linear infinite', cursor: 'default' })
+                toggle.tooltip(event) // trigger tooltip update
 
                 // Hide/remove elems
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove()
-                regenBtn.style.display = 'none'
 
                 // Show loading status
                 const replySection = appDiv.querySelector('section')
@@ -3665,6 +3670,7 @@
         },
 
         reply(answer) {
+            tooltipDiv.style.opacity = 0 // hide lingering tooltip if cursor was on corner button
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
