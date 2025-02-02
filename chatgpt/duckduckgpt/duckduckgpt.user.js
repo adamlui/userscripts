@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.15
+// @version                2025.2.1.16
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -947,8 +947,8 @@
               + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
               + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
-                  : ( '#scheme-settings-entry svg:has([d^="M204-318q-22"]),'
-                        + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotate 5s linear infinite }' ))
+                  : ( '#scheme-settings-entry svg[id*=arrows-cycle],'
+                            + '.chatgpt-notif svg[id*=arrows-cycle] { animation: rotate 5s linear infinite }' ))
               + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-settings-entry > span {' // outer About status span
                   + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
@@ -1642,7 +1642,8 @@
         arrowsCycle: {
             create() {
                 const svg = dom.create.svgElem('svg', {
-                    width: 13, height: 13, viewBox: '197 -924 573 891', style: 'transform: rotate(14deg)' })
+                    id: `${app.slug}-arrows-cycle-icon`, width: 13, height: 13,
+                    viewBox: '197 -924 573 891', style: 'transform: rotate(14deg)' })
                 const svgPath = dom.create.svgElem('path', { stroke: 'none',
                     d: 'M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z' })
                 svg.append(svgPath) ; return svg
