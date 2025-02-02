@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.1.11
+// @version               2025.2.1.12
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2200,7 +2200,7 @@
               + '.chatgpt-js > a { color: inherit ; top: .054rem }'
               + '.chatgpt-js > svg { top: 3px ; position: relative ; margin-right: 1px }'
               + `.${app.slug}-header-btns {
-                    --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ;
+                    --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ; margin-left: 5px ;
                     fill: var(--${env.ui.app.scheme}-scheme-color) ; stroke: var(--${env.ui.app.scheme}-scheme-color) }`
               + `.${app.slug}-header-btns + pre { margin-top: 25px }` // nudge top-code blocks down to expand full-width
               + `code #${app.slug}-copy-btn { position: relative ; top: -6px ; right: -9px }`
