@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.13
+// @version                2025.2.1.14
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2348,7 +2348,7 @@
         tooltip(event) {
             if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
 
-            const btnElem = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btnElem.id)[1],
+            const btn = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
@@ -2362,32 +2362,32 @@
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
               : btnType == 'copy' ? (
-                    btnElem.firstChild.id.includes('-copy-') ?
+                    btn.firstChild.id.includes('-copy-') ?
                         `${app.msgs.tooltip_copy} ${
-                            app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
+                            app.msgs[`tooltip_${ btn.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? (
-                    btnElem.firstChild.style.animation ?
+                    btn.firstChild.style.animation ?
                         `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
                       : `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
-                    btnElem.firstChild.id.includes('-speak-') ?
+                    btn.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
-                  : btnElem.firstChild.id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
+                  : btn.firstChild.id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
                   : `${app.msgs.tooltip_playing} ${app.msgs.tooltip_reply.toLowerCase()}...` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
             // Update position
-            const elems = { appDiv, btnElem, tooltipDiv },
+            const elems = { appDiv, btn, tooltipDiv },
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -22
               : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 38
-              : rects.btnElem.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 7 : 0 )
+              : rects.btn.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 7 : 0 )
             }px`
             tooltipDiv.style.right = `${
-                rects.appDiv.right - ( rects.btnElem.left + rects.btnElem.right )/2 - rects.tooltipDiv.width/2 }px`
+                rects.appDiv.right - ( rects.btn.left + rects.btn.right )/2 - rects.tooltipDiv.width/2 }px`
 
             // Show tooltip
             tooltipDiv.style.opacity = 1
@@ -3012,12 +3012,12 @@
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btnElem = document.createElement('button') ; btnElem.id = `${app.slug}-${btnType}-btn`
-                    btnElem.classList.add(`${app.slug}-chatbar-btn`, 'no-mobile-tap-outline')
-                    btnElem.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
+                    const btn = document.createElement('button') ; btn.id = `${app.slug}-${btnType}-btn`
+                    btn.classList.add(`${app.slug}-chatbar-btn`, 'no-mobile-tap-outline')
+                    btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
                                                                 : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
-                    btnElem.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
-                    continueChatDiv.append(btnElem)
+                    btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
+                    continueChatDiv.append(btn)
                 })
 
                 // Add listeners
