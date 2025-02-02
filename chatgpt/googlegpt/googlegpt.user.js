@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.1.13
+// @version                  2025.2.1.14
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1132,8 +1132,7 @@
                   + 'position: relative ; top: 3px ; margin-left: 4px }'
               + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
                   : ( '#scheme-settings-entry svg:has([d^="M204-318q-22"]),'
-                        + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotation 5s linear infinite }' ))
-              + '@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+                        + '.chatgpt-notif svg:has([d^="M204-318q-22"]) { animation: rotate 5s linear infinite }' ))
               + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
               + '#about-settings-entry > span {' // outer About status span
                   + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
@@ -2214,10 +2213,14 @@
                   + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
                   + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
 
-                // Main styles
+                // Animations
               + '@keyframes btn-zoom-fade-out {'
                   + '0% { opacity: 1 } 55% { opacity: 0.25 ; transform: scale(1.85) }'
                   + '75% { opacity: 0.05 ; transform: scale(2.15) } 100% { opacity: 0 ; transform: scale(6.85) }}'
+              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
+              + '@keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+
+                // Main styles
               + '.no-user-select {'
                   + '-webkit-user-select: none ; -moz-user-select: none ;'
                   + '-ms-user-select: none ; user-select: none }'
@@ -2358,7 +2361,6 @@
                             + '-ms-transition: var(--answer-pre-transition) }' }}`
               + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#28a017' }}`
-              + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + `#${app.slug} section.loading { padding: 15px 0 14px 5px }` // left/top-pad loading status when sending replies
               + `.${app.slug}-header-btns {
                     --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ; margin-left: 5px ;
@@ -3749,7 +3751,7 @@
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
                 get.reply(msgChain)
-                Object.assign(regenSVG.style, { animation: 'rotation 1.8s linear infinite', cursor: 'default' })
+                Object.assign(regenSVG.style, { animation: 'rotate 1.8s linear infinite', cursor: 'default' })
                 toggle.tooltip(event) // trigger tooltip update
 
                 // Hide/remove elems
