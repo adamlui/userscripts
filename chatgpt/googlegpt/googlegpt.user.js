@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.2.1
+// @version                  2025.2.2.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3801,7 +3801,7 @@
 
                 // Update/animate icon
                 speakSVGscroller.textContent = '' // rid Speak icon
-                speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1])
+                speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1]) // add Generating icons
                 speakSVGscroller.style.animation = 'icon-scroll-left 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
                 speakSVGwrapper.style.maskImage = ( // fade edges
                     'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
@@ -3847,9 +3847,9 @@
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
 
-                        // Update icon, re-animate to be slower/smoother
+                        // Update icon, re-animate to be faster/smoother
                         speakSVGscroller.textContent = '' // rid Generating icons
-                        speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1])
+                        speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
                         speakSVGscroller.style.animation = 'icon-scroll-left 0.5s linear infinite'
 
                         // Play audio
