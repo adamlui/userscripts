@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.1.12
+// @version               2025.2.1.13
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -261,7 +261,7 @@
             support: 'https://support.bravegpt.com',
             update: 'https://gm.bravegpt.com'
         },
-        latestResourceCommitHash: '0848942' // for cached messages.json
+        latestResourceCommitHash: 'fd7dbde' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -315,6 +315,7 @@
         tooltip_close: 'Close',
         tooltip_copy: 'Copy',
         tooltip_regenenerate: 'Regenerate',
+        tooltip_regenerating: 'Regenerating',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
         tooltip_reply: 'Reply',
@@ -3048,7 +3049,10 @@
                         `${app.msgs.tooltip_copy} ${
                             app.msgs[`tooltip_${ btnElem.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
-              : btnType == 'regen' ? `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}`
+              : btnType == 'regen' ? (
+                    btnElem.firstChild.style.animation ?
+                        `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
+                      : `${app.msgs.tooltip_regenenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
                     btnElem.firstChild.id.includes('-speak-') ?
                         `${app.msgs.tooltip_play} ${app.msgs.tooltip_reply.toLowerCase()}`
@@ -3572,11 +3576,12 @@
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenBtn.append(regenSVG) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
-            regenBtn.onclick = () => {
+            regenBtn.onclick = event => {
                 get.reply(msgChain)
+                Object.assign(regenSVG.style, { animation: 'rotation 1.8s linear infinite', cursor: 'default' })
+                toggle.tooltip(event) // trigger tooltip update
 
                 // Hide/remove elems
-                regenBtn.style.display = 'none'
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove()
                 appDiv.querySelector('footer').textContent = ''
 
@@ -3669,6 +3674,7 @@
         },
 
         reply(answer) {
+            tooltipDiv.style.opacity = 0 // hide lingering tooltip if cursor was on corner button
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
