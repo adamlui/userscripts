@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.1.9
+// @version                2025.2.1.10
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1773,7 +1773,7 @@
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + `#${app.slug} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
               + `.${app.slug}-header-btns {
-                    --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ;
+                    --light-scheme-color: #6f6f6f ; --dark-scheme-color: white ; float: right ; margin-left: 5px ;
                     fill: var(--${env.ui.app.scheme}-scheme-color) ; stroke: var(--${env.ui.app.scheme}-scheme-color) }`
               + `.${app.slug}-header-btns + pre { margin-top: 25px }` // nudge top-code blocks down to expand full-width
               + `code #${app.slug}-copy-btn { position: relative ; top: -6px ; right: -9px }`
