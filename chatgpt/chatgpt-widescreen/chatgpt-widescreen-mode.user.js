@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.1.1
+// @version             2025.2.3
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -519,7 +519,7 @@
                     dark:  'color: #ef4848 ; text-shadow: rgba(255, 116, 116, 0.87) 3px 0 9px'
                 }
             }
-            const styledStateSpan = document.createElement('span')
+            const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
@@ -760,14 +760,11 @@
     else settings.load('fullWindow') // otherwise load CWM's saved state
 
     // Stylize ALERTS
-    if (!document.getElementById('chatgpt-alert-override-style')) {
-        const chatgptAlertStyle = dom.create.style()
-        chatgptAlertStyle.id = 'chatgpt-alert-override-style'
-        chatgptAlertStyle.innerText = (
-            ( env.ui.scheme == 'dark' ? '.chatgpt-modal > div { border: 1px solid white }' : '' )
-        )
-        document.head.append(chatgptAlertStyle)
-    }
+    if (!document.getElementById('chatgpt-alert-override-style'))
+        document.head.append(dom.create.style(
+            env.ui.scheme == 'dark' ? '.chatgpt-modal > div { border: 1px solid white }' : '',
+            { id: 'chatgpt-alert-override-style' }
+        ))
 
     // Stylize TOOLTIP div
     document.head.append(dom.create.style('.cwm-tooltip {'
@@ -795,17 +792,15 @@
     ['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create WIDESCREEN style
-    const wideScreenStyle = dom.create.style()
-    wideScreenStyle.id = 'wideScreen-mode' // for sync.mode()
+    const wideScreenStyle = dom.create.style(null, { id: 'wideScreen-mode' })
     if (!chatbar.get()) await dom.getLoadedElem(sites[env.site].selectors.input)
     if (env.site == 'chatgpt') // store native chatbar width for Wider Chatbox style
         chatbar.nativeWidth = /\d+/.exec(getComputedStyle(document.querySelector('main form')).width)[0]
     update.style.wideScreen()
 
     // Create FULL-WINDOW style
-    const fullWinStyle = dom.create.style()
-    fullWinStyle.id = 'fullWindow-mode' // for sync.mode()
-    fullWinStyle.innerText = sites[env.site].selectors.sidebar + '{ display: none }'
+    const fullWinStyle = dom.create.style(
+        sites[env.site].selectors.sidebar + '{ display: none }', { id: 'fullWindow-mode' })
 
     // Create/append CHATBAR style
     const chatbarStyle = dom.create.style()
