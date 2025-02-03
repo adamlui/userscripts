@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.1.2
+// @version             2025.2.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -472,7 +472,7 @@
                     dark:  'color: #ef4848 ; text-shadow: rgba(255, 116, 116, 0.87) 3px 0 9px'
                 }
             }
-            const styledStateSpan = document.createElement('span')
+            const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
@@ -502,12 +502,12 @@
         init(modal) {
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
-            addRisingParticles(modal)
+            dom.addRisingParticles(modal)
         },
 
         stylize() {
             if (!this.styles) {
-                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
@@ -734,29 +734,6 @@
             || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
     }
 
-    function createStyle(content) {
-        const style = document.createElement('style')
-        if (content) style.innerText = content
-        return style
-    }
-
-    function addRisingParticles(targetNode, { lightScheme = 'gray', darkScheme = 'white' } = {}) {
-    // Requires https://assets.aiwebextensions.com/styles/rising-particles/dist/<lightScheme|darkScheme>.min.css
-
-        if (targetNode.querySelector('[id*=particles]')) return
-        const particlesDivsWrapper = document.createElement('div')
-        particlesDivsWrapper.style.cssText = (
-            'position: absolute ; top: 0 ; left: 0 ;' // hug targetNode's top-left corner
-          + 'height: 100% ; width: 100% ; border-radius: 15px ; overflow: clip ;' // bound innards exactly by targetNode
-          + 'z-index: -1' ); // allow interactive elems to be clicked
-        ['sm', 'med', 'lg'].forEach(particleSize => {
-            const particlesDiv = document.createElement('div')
-            particlesDiv.id = `${ env.ui.scheme == 'dark' ? darkScheme : lightScheme }-particles-${particleSize}`
-            particlesDivsWrapper.append(particlesDiv)
-        })
-        targetNode.prepend(particlesDivsWrapper)
-    }
-
     const toggles = {
 
         sidebar: {
@@ -765,12 +742,12 @@
             create() {
 
                 // Init toggle elems
-                this.div = document.createElement('div') ; this.div.className = this.class
-                this.navicon = document.createElement('img')
-                this.toggleLabel = document.createElement('label')
-                this.toggleInput = document.createElement('input')
-                this.switchSpan = document.createElement('span')
-                this.knobSpan = document.createElement('span')
+                this.div = dom.create.elem('div', { class: this.class })
+                this.navicon = dom.create.elem('img')
+                this.toggleLabel = dom.create.elem('label')
+                this.toggleInput = dom.create.elem('input')
+                this.switchSpan = dom.create.elem('span')
+                this.knobSpan = dom.create.elem('span')
 
                 // Assemble elems into parent div
                 this.switchSpan.append(this.knobSpan)
@@ -801,7 +778,7 @@
             },
 
             stylize() {
-                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
                 this.styles.innerText = (
                     ':root {' // vars
                       + '--switch-enabled-bg-color: #ad68ff ; --switch-disabled-bg-color: #ccc ;'
@@ -915,7 +892,7 @@
     env.ui.firstLink = chatgpt.getNewChatLink();
 
     // Add RISING PARTICLES styles
-    ['rpg', 'rpw'].forEach(cssType => document.head.append(createStyle(GM_getResourceText(`${cssType}CSS`))))
+    ['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     toggles.sidebar.insert()
 
