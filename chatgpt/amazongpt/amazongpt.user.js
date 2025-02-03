@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.2
+// @version                2025.2.3.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2279,7 +2279,7 @@
             settings.save('minimized', toMinimize)
             const chevronBtn = appDiv.querySelector('[id$=chevron-btn]')
             if (chevronBtn) { // update icon
-                chevronBtn.firstChild.remove()
+                chevronBtn.textContent = ''
                 chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                 chevronBtn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
