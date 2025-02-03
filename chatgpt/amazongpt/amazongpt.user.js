@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.3
+// @version                2025.2.3.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1646,8 +1646,7 @@
               + '@keyframes btn-zoom-fade-out {'
                   + '0% { opacity: 1 } 55% { opacity: 0.25 ; transform: scale(1.85) }'
                   + '75% { opacity: 0.05 ; transform: scale(2.15) } 100% { opacity: 0 ; transform: scale(6.85) }}'
-              + '@keyframes icon-scroll-left { 0% { transform: translateX(0) } 100% { transform: translateX(-18px) }}'
-              + '@keyframes icon-scroll-right { 0% { transform: translateX(-18px) } 100% { transform: translateX(0) }}'
+              + '@keyframes icon-scroll { 0% { transform: translateX(0) } 100% { transform: translateX(-18px) }}'
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + '@keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
 
@@ -2856,7 +2855,7 @@
                 // Update/animate icon
                 speakSVGscroller.textContent = '' // rid Speak icon
                 speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1]) // add Generating icons
-                speakSVGscroller.style.animation = 'icon-scroll-left 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
+                speakSVGscroller.style.animation = 'icon-scroll 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
                 speakSVGwrapper.style.maskImage = ( // fade edges
                     'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
 
@@ -2904,7 +2903,7 @@
                         // Update icon, re-animate to be faster/smoother
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
-                        speakSVGscroller.style.animation = 'icon-scroll-left 0.5s linear infinite'
+                        speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
