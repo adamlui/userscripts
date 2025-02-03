@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.3
+// @version                  2025.2.3.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -840,8 +840,7 @@
     function appAlert(...alerts) {
         alerts = alerts.flat() // flatten array args nested by spread operator
         appDiv.textContent = ''
-        const alertP = document.createElement('p')
-        alertP.id = `${app.slug}-alert` ; alertP.className = 'no-user-select'
+        const alertP = dom.create.elem('p', { id: `${app.slug}-alert`, class: 'no-user-select' })
         if (!alerts.includes('waitingResponse')) alertP.style.marginBottom = '16px' // counteract #googlegpt p margins
 
         alerts.forEach((alert, idx) => { // process each alert for display
@@ -869,7 +868,7 @@
             }
 
             // Create/fill/append msg span
-            const msgSpan = document.createElement('span')
+            const msgSpan = dom.create.elem('span')
             msgSpan.innerHTML = msg ; alertP.append(msgSpan)
 
             // Activate toggle link if necessary
@@ -916,7 +915,7 @@
                     dark:  'color: #ef4848 ; text-shadow: rgba(255, 116, 116, 0.87) 3px 0 9px'
                 }
             }
-            const styledStateSpan = document.createElement('span')
+            const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[
                 foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
@@ -980,7 +979,7 @@
 
         stylize() {
             if (!this.styles) {
-                this.styles = document.createElement('style') ; this.styles.id = `${this.class}-styles`
+                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
                 document.head.append(this.styles)
             }
             this.styles.innerText = (
@@ -1389,8 +1388,8 @@
                 log.caller = 'modals.settings.createAppend()'
 
                 // Init master elems
-                const settingsContainer = document.createElement('div'),
-                      settingsModal = document.createElement('div') ; settingsModal.id = `${app.slug}-settings`
+                const settingsContainer = dom.create.elem('div'),
+                      settingsModal = dom.create.elem('div', { id: `${app.slug}-settings` })
                       settingsContainer.append(settingsModal)
 
                 // Init settings keys
@@ -1405,23 +1404,22 @@
                                             + `margin: 13px 0 ${ env.browser.isPortrait ? '-35' : '-27' }px ;`
                                             + `position: relative ; top: -42px ; ${ env.browser.isPortrait ? 'left: 6px' : '' }`
                 // Init title
-                const settingsTitleDiv = document.createElement('div')
-                settingsTitleDiv.id = `${app.slug}-settings-title`
-                const settingsTitleH4 = document.createElement('h4')
-                settingsTitleH4.textContent = app.msgs.menuLabel_settings
-                const settingsTitleIcon = icons.sliders.create()
+                const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
+                      settingsTitleIcon = icons.sliders.create(),
+                      settingsTitleH4 = dom.create.elem('h4')
                 settingsTitleIcon.style.cssText = 'width: 20px ; height: 20px ;'
                                                 + 'position: relative ; top: 1px ; right: 7px'
+                settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
                 // Init settings lists
                 log.debug('Initializing settings lists...')
                 const settingsLists = [], middleGap = 30 // px
-                const settingsListContainer = document.createElement('div')
+                const settingsListContainer = dom.create.elem('div')
                 const settingsListCnt = (
                     env.browser.isMobile && ( env.browser.isPortrait || settingsKeys.length < 8 )) ? 1 : 2
                 const settingItemCap = Math.floor(settingsKeys.length /2)
-                for (let i = 0 ; i < settingsListCnt ; i++) settingsLists.push(document.createElement('ul'))
+                for (let i = 0 ; i < settingsListCnt ; i++) settingsLists.push(dom.create.elem('ul'))
                 settingsListContainer.style.width = '95%' // pad vs. parent
                 if (settingsListCnt > 1) { // style multi-list landscape mode
                     settingsListContainer.style.cssText += ( // make/pad flexbox, add middle gap
@@ -1437,9 +1435,9 @@
                     const setting = settings.controls[key]
 
                     // Create/append item/label elems
-                    const settingItem = document.createElement('li')
-                    Object.assign(settingItem, { id: `${key}-settings-entry`, title: setting.helptip || '' })
-                    const settingLabel = document.createElement('label') ; settingLabel.textContent = setting.label
+                    const settingItem = dom.create.elem('li',
+                        { id: `${key}-settings-entry`, title: setting.helptip || '' })
+                    const settingLabel = dom.create.elem('label') ; settingLabel.textContent = setting.label
                     settingItem.append(settingLabel);
                     (settingsLists[env.browser.isPortrait ? 0 : +(idx >= settingItemCap)]).append(settingItem)
 
@@ -1467,15 +1465,13 @@
                     if (setting.type == 'toggle') {
 
                         // Init toggle input
-                        const settingToggle = document.createElement('input'),
-                              settingToggleAttrs = [['type', 'checkbox'], ['disabled', true]]
-                        settingToggleAttrs.forEach(([attr, value]) => settingToggle.setAttribute(attr, value))
+                        const settingToggle = dom.create.elem('input', { type: 'checkbox', disabled: true })
                         settingToggle.checked = config[key] ^ key.includes('Disabled') // init based on config/name
                             && !(key == 'streamingDisabled' && !config.proxyAPIenabled) // uncheck Streaming in OAI mode
                         settingToggle.style.display = 'none' // hide checkbox
 
                         // Create/stylize switch
-                        const switchSpan = document.createElement('span')
+                        const switchSpan = dom.create.elem('span')
                         Object.assign(switchSpan.style, {
                             position: 'relative', left: '-1px', bottom:'-5.5px', float: 'right',
                             backgroundColor: '#ccc', width: '26px', height: '13px', borderRadius: '28px',
@@ -1484,7 +1480,7 @@
                         })
 
                         // Create/stylize knob
-                        const knobSpan = document.createElement('span')
+                        const knobSpan = dom.create.elem('span')
                         Object.assign(knobSpan.style, {
                             position: 'absolute', left: '1px', bottom: '1px', content: '""',
                             backgroundColor: 'white', width: '11px', height: '11px', borderRadius: '28px',
@@ -1532,7 +1528,7 @@
                     // Add .active + config status + listeners to pop-up settings
                     } else {
                         settingItem.classList.add('active')
-                        const configStatusSpan = document.createElement('span')
+                        const configStatusSpan = dom.create.elem('span')
                         configStatusSpan.style.cssText = 'float: right ; font-size: 11px ; margin-top: '
                             + ( key.includes('about') ? '5px' : '3px ; text-transform: uppercase !important')
                         if (key.includes('replyLang')) {
@@ -1542,7 +1538,7 @@
                             modals.settings.updateSchemeStatus(configStatusSpan)
                             settingItem.onclick = () => modals.open('scheme')
                         } else if (key.includes('about')) {
-                            const innerDiv = document.createElement('div'),
+                            const innerDiv = dom.create.elem('div'),
                                   textGap = '&emsp;&emsp;&emsp;&emsp;&emsp;'
                             modals.settings.aboutContent = {}
                             modals.settings.aboutContent.short = `v${GM_info.script.version}`
@@ -1562,9 +1558,8 @@
                 settingsListContainer.append(...settingsLists)
 
                 // Create close button
-                const closeBtn = document.createElement('div')
-                closeBtn.classList.add(`${app.slug}-modal-close-btn`, 'no-mobile-tap-outline')
-                closeBtn.title = app.msgs.tooltip_close
+                const closeBtn = dom.create.elem('div',
+                    { title: app.msgs.tooltip_close, class: `${app.slug}-modal-close-btn no-mobile-tap-outline` })
                 const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
 
                 // Assemble/append elems
@@ -1691,9 +1686,8 @@
             },
 
             createAppend() {
-                const pinMenu = document.createElement('div') ; pinMenu.id = `${app.slug}-pin-menu`
-                pinMenu.classList.add(
-                    `${app.slug}-menu`, `${app.slug}-btn-tooltip`, 'fade-in-less', 'no-user-select')
+                const pinMenu = dom.create.elem('div', { id: `${app.slug}-pin-menu`,
+                    class: `${app.slug}-menu ${app.slug}-btn-tooltip fade-in-less no-user-select` })
                 menus.pin.update(pinMenu) ; appDiv.append(pinMenu)
                 return pinMenu
             },
@@ -1703,7 +1697,7 @@
 
                 // Init core elems
                 const pinMenuUL = document.querySelector(`#${app.slug}-pin-menu ul`)
-                               || document.createElement('ul')
+                               || dom.create.elem('ul')
                 const pinMenuItems = []
                 const pinMenulabels = [
                     `${app.msgs.menuLabel_pinTo}...`, app.msgs.menuLabel_top,
@@ -1720,9 +1714,8 @@
 
                 // Fill menu UL
                 for (let i = 0 ; i < 4 ; i++) {
-                    pinMenuItems.push(document.createElement('li'))
+                    pinMenuItems.push(dom.create.elem('li', { class: `${app.slug}-menu-item` }))
                     pinMenuItems[i].textContent = pinMenulabels[i]
-                    pinMenuItems[i].className = `${app.slug}-menu-item`
                     if (i == 0) { // format header item
                         pinMenuItems[i].innerHTML = `<b>${pinMenulabels[i]}</b>`
                         pinMenuItems[i].classList.add(`${app.slug}-menu-header`) // to not apply hover fx from app.styles
@@ -1935,7 +1928,7 @@
 
         googleGPT: {
             create(color = '') {
-                const icon = document.createElement('img') ; icon.id = `${app.slug}-icon`
+                const icon = dom.create.elem('img') ; icon.id = `${app.slug}-icon`
                 icons.googleGPT.update(icon, color)
                 return icon
             },
@@ -2161,8 +2154,7 @@
         googleGPT: {
 
             create() {
-                const googleGPTlogo = document.createElement('img')
-                googleGPTlogo.id = `${app.slug}-logo` ; googleGPTlogo.className = 'no-mobile-tap-outline'
+                const googleGPTlogo = dom.create.elem('img', { id: `${app.slug}-logo`, class: 'no-mobile-tap-outline' })
                 logos.googleGPT.update(googleGPTlogo)
                 return googleGPTlogo
             },
@@ -2802,14 +2794,12 @@
             log.debug('Creating/appending Font Size slider...')
 
             // Create/ID/classify slider elems
-            fontSizeSlider.cursorOverlay = document.createElement('div')
-            fontSizeSlider.cursorOverlay.classList.add('cursor-overlay') // for resize cursor
-            const slider = document.createElement('div') ; slider.id = `${app.slug}-font-size-slider-track`
-            slider.className = 'fade-in-less' ; slider.style.display = 'none'
-            const sliderThumb = document.createElement('div')
-            sliderThumb.id = `${app.slug}-font-size-slider-thumb`
-            sliderThumb.title = Math.floor(config.fontSize *10) /10 + 'px' // font size tooltip
-            const sliderTip = document.createElement('div') ; sliderTip.id = `${app.slug}-font-size-slider-tip`
+            fontSizeSlider.cursorOverlay = dom.create.elem('div', { class: 'cursor-overlay' })
+            const slider = dom.create.elem('div', { id: `${app.slug}-font-size-slider-track`, class: 'fade-in-less' })
+            slider.style.display = 'none'
+            const sliderThumb = dom.create.elem('div',
+                { title: Math.floor(config.fontSize *10) /10 + 'px', id: `${app.slug}-font-size-slider-thumb` })
+            const sliderTip = dom.create.elem('div', { id: `${app.slug}-font-size-slider-tip` })
 
             // Assemble/insert elems
             slider.append(sliderThumb, sliderTip)
@@ -3066,7 +3056,7 @@
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
-                    btnTextSpan = document.createElement('span')
+                    btnTextSpan = dom.create.elem('span')
                     btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
                     btn.append(btnTextSpan)
                 }
@@ -3705,12 +3695,12 @@
             const baseBtnStyles = 'float: right ; cursor: pointer ;'
 
             // Add top parent div
-            const cornerBtnsDiv = document.createElement('div') ; cornerBtnsDiv.id = `${app.slug}-reply-corner-btns`
+            const cornerBtnsDiv = dom.create.elem('div', { id: `${app.slug}-reply-corner-btns` })
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
 
             // Add Copy buttons
             appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
-                const copyBtn = document.createElement('btn') ; copyBtn.style.cssText = baseBtnStyles + 'display: flex'
+                const copyBtn = dom.create.elem('btn') ; copyBtn.style.cssText = baseBtnStyles + 'display: flex'
                 Object.assign(copyBtn, { id: `${app.slug}-copy-btn`, className: 'no-mobile-tap-outline' })
                 const copySVGs = { copy: icons.copy.create(parentElem), copied: icons.checkmarkDouble.create() }
                 Object.entries(copySVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
@@ -3719,7 +3709,7 @@
 
                 // Wrap code button in div for v-offset
                 if (parentElem.tagName == 'CODE') {
-                    elemToPrepend = document.createElement('div')
+                    elemToPrepend = dom.create.elem('div')
                     elemToPrepend.style.cssText = 'height: 11px ; margin: 4px 5px 0 0'
                     elemToPrepend.append(copyBtn)
                 }
@@ -3745,10 +3735,9 @@
             })
 
             // Add Regenerate button
-            const regenBtn = document.createElement('btn')
-            Object.assign(regenBtn, { id: `${app.slug}-regen-btn`, className: 'no-mobile-tap-outline' })
+            const regenBtn = dom.create.elem('btn', { id: `${app.slug}-regen-btn`, class: 'no-mobile-tap-outline' })
             regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px';
-            const regenSVGwrapper = document.createElement('div') // to rotate while respecting ini icon tilt
+            const regenSVGwrapper = dom.create.elem('div') // to rotate while respecting ini icon tilt
             regenSVGwrapper.style.display = 'flex' // wrap the icon tightly
             const regenSVG = icons.arrowsCycle.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
@@ -3774,12 +3763,11 @@
             }
 
             // Add Speak button
-            const speakBtn = document.createElement('btn')
-            Object.assign(speakBtn, { id: `${app.slug}-speak-btn`, className: 'no-mobile-tap-outline' })
+            const speakBtn = dom.create.elem('btn', { id: `${app.slug}-speak-btn`, class: 'no-mobile-tap-outline' })
             speakBtn.style.cssText = baseBtnStyles + 'margin: -1px 3px 0 0'
-            const speakSVGwrapper = document.createElement('div') // to show 1 icon at a time during scroll
+            const speakSVGwrapper = dom.create.elem('div') // to show 1 icon at a time during scroll
             Object.assign(speakSVGwrapper.style, { width: '22px', height: '22px', overflow: 'hidden' })
-            const speakSVGscroller = document.createElement('div') // to scroll the icons
+            const speakSVGscroller = dom.create.elem('div') // to scroll the icons
             Object.assign(speakSVGscroller.style, {
                 display: 'flex', // align the SVGs horizontally
                 width: '41px', height: '22px' // rectangle to fit both icons
@@ -3884,7 +3872,7 @@
                 appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
 
                 // Create/append title
-                const appPrefixSpan = document.createElement('span') ; appPrefixSpan.id = 'app-prefix'
+                const appPrefixSpan = dom.create.elem('span') ; appPrefixSpan.id = 'app-prefix'
                 appPrefixSpan.innerText = '🤖 ' ; appPrefixSpan.className = 'no-user-select'
                 appPrefixSpan.style.marginRight = '-2px'
                 appPrefixSpan.style.fontSize = env.browser.isMobile ? '1.7rem' : '1.1rem'
@@ -3899,70 +3887,62 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = document.createElement('div')
-                headerBtnsDiv.id = `${app.slug}-header-btns`
-                headerBtnsDiv.className = 'no-mobile-tap-outline'
+                const headerBtnsDiv = dom.create.elem('div',
+                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.browser.isMobile) {
-                    var chevronBtn = document.createElement('btn'),
-                        chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
-                    chevronBtn.id = `${app.slug}-chevron-btn` // for toggle.tooltip()
-                    chevronBtn.classList.add(`${app.slug}-header-btn`, 'anchored-only')
+                    var chevronBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
+                    var chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.style.margin = '-3.5px 1px 0 11px' // position
                     chevronBtn.append(chevronSVG) ; headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
-                const aboutBtn = document.createElement('btn'),
-                      aboutSVG = icons.questionMarkCircle.create()
-                aboutBtn.id = `${app.slug}-about-btn` // for toggle.tooltip()
-                aboutBtn.classList.add(`${app.slug}-header-btn`)
+                const aboutBtn = dom.create.elem('btn',
+                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
+                const aboutSVG = icons.questionMarkCircle.create()
                 aboutBtn.style.marginTop = `${ env.browser.isMobile ? 0.25 : -0.15 }rem` // position
                 aboutBtn.append(aboutSVG) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = document.createElement('btn'),
-                      settingsSVG = icons.sliders.create()
-                settingsBtn.id = `${app.slug}-settings-btn` // for toggle.tooltip()
-                settingsBtn.classList.add(`${app.slug}-header-btn`)
+                const settingsBtn = dom.create.elem('btn',
+                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
+                const settingsSVG = icons.sliders.create()
                 settingsBtn.style.margin = `${ env.browser.isMobile ? 4.5 : -2 }px 10px 0 2.5px` // position
                 settingsBtn.append(settingsSVG) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
-                    var fontSizeBtn = document.createElement('btn'),
-                        fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
-                    fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
+                    var fontSizeBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only` })
+                    var fontSizeSVG = icons.fontSize.create()
                     fontSizeBtn.style.margin = `${ env.browser.isMobile ? 5 : -2 }px 9px 0 0` // position
                     fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
                 // Create/append Pin button
                 if (!env.browser.isMobile) {
-                    var pinBtn = document.createElement('btn'),
-                        pinSVG = icons.pin.create()
-                    pinBtn.id = `${app.slug}-pin-btn` // for toggle.sidebar() + toggle.tooltip()
-                    pinBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
+                    var pinBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
+                    var pinSVG = icons.pin.create()
                     pinBtn.style.margin = '-1.55px 7.5px 0 0' // position
                     pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
-                    var wsbBtn = document.createElement('btn'),
-                        wsbSVG = icons.widescreen.create()
-                    wsbBtn.id = `${app.slug}-wsb-btn` // for toggle.sidebar() + toggle.tooltip()
-                    wsbBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only', 'anchored-hidden')
+                    var wsbBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
+                    var wsbSVG = icons.widescreen.create()
                     wsbBtn.style.margin = '-2px 12px 0 0' // position
                     wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
-                    var arrowsBtn = document.createElement('btn'),
-                        arrowsSVG = icons.arrowsDiagonal.create()
+                    var arrowsBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
+                    var arrowsSVG = icons.arrowsDiagonal.create()
                     arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.id = `${app.slug}-arrows-btn` // for toggle.tooltip()
-                    arrowsBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only', 'anchored-only')
                     arrowsBtn.style.margin = '-1.5px 12px 0 0' // position
                     arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
                 }
@@ -3975,8 +3955,8 @@
 
                 // Create/append 'by KudoAI' if it fits
                 if (!env.browser.isMobile) {
-                    const kudoAIspan = document.createElement('span')
-                    kudoAIspan.classList.add('kudoai', 'no-user-select') ; kudoAIspan.textContent = 'by '
+                    const kudoAIspan = dom.create.elem('span', { class: 'kudoai no-user-select' })
+                    kudoAIspan.textContent = 'by '
                     kudoAIspan.append(dom.create.anchor(app.urls.publisher, 'KudoAI'))
                     appDiv.querySelector(`.${app.slug}-name`).insertAdjacentElement('afterend', kudoAIspan)
                     update.bylineVisibility()
@@ -3984,8 +3964,8 @@
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
-                    const standbyBtn = document.createElement('button')
-                    standbyBtn.classList.add(`${app.slug}-standby-btn`, 'no-mobile-tap-outline')
+                    const standbyBtn = dom.create.elem('button',
+                        { class: `${app.slug}-standby-btn no-mobile-tap-outline` })
                     standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp || `Send search query to ${app.name}`
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
@@ -3998,9 +3978,8 @@
 
                 // Otherwise create/append answer bubble
                 } else {
-                    const answerPre = document.createElement('pre'),
-                          replyTipSpan = document.createElement('span')
-                    replyTipSpan.className = `${app.slug}-reply-tip`
+                    const answerPre = dom.create.elem('pre'),
+                          replyTipSpan = dom.create.elem('span', { class: `${app.slug}-reply-tip` })
                     appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
                 }
             }
@@ -4009,24 +3988,25 @@
             if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
 
                 // Init/clear reply section content/classes
-                const replySection = appDiv.querySelector('section') || document.createElement('section')
+                const replySection = appDiv.querySelector('section') || dom.create.elem('section')
                 replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
 
                 // Create/append section elems
-                const replyForm = document.createElement('form'),
-                      continueChatDiv = document.createElement('div'),
-                      chatTextarea = document.createElement('textarea')
-                chatTextarea.id = `${app.slug}-chatbar` ; chatTextarea.rows = '1'
-                chatTextarea.placeholder = ( answer == 'standby' ? app.msgs.placeholder_askSomethingElse
-                                                                 : app.msgs.tooltip_sendReply ) + '...'
+                const replyForm = dom.create.elem('form')
+                const continueChatDiv = dom.create.elem('div')
+                const chatTextarea = dom.create.elem('textarea', {
+                    id: `${app.slug}-chatbar`, rows: 1,
+                    placeholder: answer == 'standby' ? app.msgs.placeholder_askSomethingElse
+                                                     : `${app.msgs.tooltip_sendReply}...`
+                })
                 continueChatDiv.append(chatTextarea)
                 replyForm.append(continueChatDiv) ; replySection.append(replyForm)
                 appDiv.insertBefore(replySection, appDiv.querySelector('footer'));
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btn = document.createElement('button') ; btn.id = `${app.slug}-${btnType}-btn`
-                    btn.classList.add(`${app.slug}-chatbar-btn`, 'no-mobile-tap-outline')
+                    const btn = dom.create.elem('button',
+                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 7 : 5 )
                                                                 : ( env.browser.isFF ? 7 : 2 )}px` // Shuffle btn
                     btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
@@ -4034,7 +4014,7 @@
                 })
 
                 // Init/fill/append footer
-                const appFooter = appDiv.querySelector('footer') || document.createElement('footer')
+                const appFooter = appDiv.querySelector('footer') || dom.create.elem('footer')
                 appFooter.append(footerContent)
                 if (!appDiv.querySelector('footer')) appDiv.append(appFooter)
 
@@ -4122,13 +4102,12 @@
             else if (queries && !appDiv.querySelector(`.${app.slug}-related-queries`)) {
 
                 // Create/classify/append parent div
-                const rqsDiv = document.createElement('div')
-                rqsDiv.classList.add(`${app.slug}-related-queries`, 'anchored-hidden')
+                const rqsDiv = dom.create.elem('div', { class: `${app.slug}-related-queries anchored-hidden` })
                 appDiv.append(rqsDiv)
 
                 // Fill each child div, add attributes + icon + listener
                 queries.forEach((query, idx) => {
-                    const rqDiv = document.createElement('div'), rqSVG = icons.arrowDownRight.create()
+                    const rqDiv = dom.create.elem('div'), rqSVG = icons.arrowDownRight.create()
 
                     // Add attributes
                     Object.assign(rqDiv, { title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0 })
@@ -4179,8 +4158,7 @@
     }
 
     // Create/ID/classify/listenerize/stylize APP container
-    const appDiv = document.createElement('div') ; appDiv.id = app.slug
-    appDiv.classList.add('fade-in') ; addListeners.appDiv();
+    const appDiv = dom.create.elem('div', { id: app.slug, class: 'fade-in' }) ; addListeners.appDiv();
     ['anchored', 'expanded', 'sticky', 'wider'].forEach(mode =>
         (config[mode] || config[`${mode}Sidebar`]) && appDiv.classList.add(mode))
     app.styles = dom.create.style() ; update.appStyle() ; document.head.append(app.styles);
@@ -4189,8 +4167,7 @@
 
     // Create/stylize TOOLTIPs
     if (!env.browser.isMobile) {
-        var tooltipDiv = document.createElement('div')
-        tooltipDiv.classList.add(`${app.slug}-btn-tooltip`, 'no-user-select')
+        var tooltipDiv = dom.create.elem('div', { class: `${app.slug}-btn-tooltip no-user-select` })
         document.head.append(dom.create.style(`.${app.slug}-btn-tooltip {`
             + 'background-color: rgba(0,0,0,0.64) ; padding: 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;' // bubble style
             + 'font-size: 0.75rem ; color: white ; fill: white ; stroke: white ;' // font/icon style
@@ -4207,7 +4184,7 @@
     const appDivParent = env.browser.isMobile ? centerCol
         : document.getElementById('rhs') // sidebar container if side snippets exist
         || (() => { // create new one if no side snippets exist
-               const appDivParent = document.createElement('div')
+               const appDivParent = dom.create.elem('div')
                centerCol.insertAdjacentElement('afterend', appDivParent)
                return appDivParent
            })()
