@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.2.6
+// @version                  2025.2.3
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3870,9 +3870,8 @@
 
                 function handleAudioEnded() {
                     speakBtn.style.cursor = 'pointer' // restore cursor
-                    speakSVGscroller.textContent = '' // rid Playing icons
+                    speakSVGscroller.textContent = speakSVGscroller.style.animation = '' // rid Playing icons
                     speakSVGscroller.append(speakSVGs.speak) // restore Speak icon
-                    speakSVGscroller.style.animation = '' // end animation
                 }
             }
         },
