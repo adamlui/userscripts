@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.1
+// @version                2025.2.3.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1418,7 +1418,7 @@
                 // Create close button
                 const closeBtn = dom.create.elem('div',
                     { title: app.msgs.tooltip_close, class: `${app.slug}-modal-close-btn no-mobile-tap-outline` })
-                const closeSVG = icons.x.create() ; closeBtn.append(closeSVG)
+                closeBtn.append(icons.x.create())
 
                 // Assemble/append elems
                 settingsModal.append(settingsIcon, settingsTitleDiv, closeBtn, settingsListContainer)
@@ -2924,8 +2924,8 @@
             settings.save('minimized', toMinimize)
             const chevronBtn = appDiv.querySelector('[id$=chevron-btn]')
             if (chevronBtn) { // update icon
-                const chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
-                chevronBtn.firstChild.remove() ; chevronBtn.append(chevronSVG)
+                chevronBtn.firstChild.remove()
+                chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                 chevronBtn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
                         fontSizeSlider.toggle('off')
@@ -3713,23 +3713,21 @@
                 if (!env.ui.site.isCentered && !env.browser.isMobile) {
                     var chevronBtn = dom.create.elem('btn',
                         { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                    var chevronSVG = icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create()
                     chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
-                    chevronBtn.append(chevronSVG) ; headerBtnsDiv.append(chevronBtn)
+                    chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
+                    headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
                 const aboutBtn = dom.create.elem('btn',
                     { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
-                const aboutSVG = icons.questionMarkCircle.create()
-                aboutBtn.append(aboutSVG) ; headerBtnsDiv.append(aboutBtn)
+                aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                const settingsSVG = icons.sliders.create()
                 settingsBtn.style.margin = '0 10.5px 0 0.5px' // position
-                settingsBtn.append(settingsSVG) ; headerBtnsDiv.append(settingsBtn)
+                settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
