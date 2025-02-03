@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.2
+// @version                2025.2.2.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2043,7 +2043,7 @@
             const isParticlizedDS = env.ui.app.scheme == 'dark' && !config.bgAnimationsDisabled
             modals.stylize() // update modal styles
             app.styles.innerText = (
-                ':root {' // vars
+              ':root {' // vars
                   + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                   + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
                   + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
@@ -3680,7 +3680,7 @@
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
                         else {
-                            const audioContext = new (AudioContext || webkitAudioContext)()
+                            const audioContext = new (window.webkitAudioContext || window.AudioContext)()
                             audioContext.decodeAudioData(resp.response, buffer => {
                                 const audioSrc = audioContext.createBufferSource()
                                 audioSrc.buffer = buffer
