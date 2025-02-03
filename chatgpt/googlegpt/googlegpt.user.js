@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.2.5
+// @version                  2025.2.2.6
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3710,7 +3710,7 @@
 
             // Add Copy buttons
             appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
-                const copyBtn = document.createElement('btn') ; copyBtn.style.cssText = baseBtnStyles
+                const copyBtn = document.createElement('btn') ; copyBtn.style.cssText = baseBtnStyles + 'display: flex'
                 Object.assign(copyBtn, { id: `${app.slug}-copy-btn`, className: 'no-mobile-tap-outline' })
                 const copySVGs = { copy: icons.copy.create(parentElem), copied: icons.checkmarkDouble.create() }
                 Object.entries(copySVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
