@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.2
+// @version                2025.2.3.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2924,7 +2924,7 @@
             settings.save('minimized', toMinimize)
             const chevronBtn = appDiv.querySelector('[id$=chevron-btn]')
             if (chevronBtn) { // update icon
-                chevronBtn.firstChild.remove()
+                chevronBtn.textContent = ''
                 chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                 chevronBtn.onclick = () => {
                     if (appDiv.querySelector('[id$=font-size-slider-track]')?.classList.contains('active'))
