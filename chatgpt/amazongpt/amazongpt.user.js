@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.5
+// @version                2025.2.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2933,9 +2933,8 @@
 
                 function handleAudioEnded() {
                     speakBtn.style.cursor = 'pointer' // restore cursor
-                    speakSVGscroller.textContent = '' // rid Playing icons
+                    speakSVGscroller.textContent = speakSVGscroller.style.animation = '' // rid Playing icons
                     speakSVGscroller.append(speakSVGs.speak) // restore Speak icon
-                    speakSVGscroller.style.animation = '' // end animation
                 }
             }
         },
