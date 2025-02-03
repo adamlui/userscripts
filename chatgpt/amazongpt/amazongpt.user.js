@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.4
+// @version                2025.2.3.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1677,9 +1677,9 @@
               + `#${app.slug} .app-hover-only {` // hide app-hover-only elems
                   + 'position: absolute ; left: -9999px ; opacity: 0 ;' // using position to support transitions
                   + 'width: 0 }' // to support width calcs
-              + `#${app.slug}:hover .app-hover-only {` // show app-hover-only elems on hover
-                  + 'position: relative ; left: auto ; width: auto ; opacity: 1 }'
-              + `#${app.slug}:hover {` // show app shadow on hover
+              + `#${app.slug}:hover .app-hover-only, #${app.slug}:active .app-hover-only {
+                    position: relative ; left: auto ; width: auto ; opacity: 1 }` // show app-hover-only elems on hover
+              + `#${app.slug}:hover, #${app.slug}:active {` // show app shadow on hover
                   + 'box-shadow: var(--app-hover-shadow) ;'
                   + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
                       + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
