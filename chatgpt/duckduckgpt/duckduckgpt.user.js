@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.5
+// @version                2025.2.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3695,9 +3695,8 @@
 
                 function handleAudioEnded() {
                     speakBtn.style.cursor = 'pointer' // restore cursor
-                    speakSVGscroller.textContent = '' // rid Playing icons
+                    speakSVGscroller.textContent = speakSVGscroller.style.animation = '' // rid Playing icons
                     speakSVGscroller.append(speakSVGs.speak) // restore Speak icon
-                    speakSVGscroller.style.animation = '' // end animation
                 }
             }
         },
