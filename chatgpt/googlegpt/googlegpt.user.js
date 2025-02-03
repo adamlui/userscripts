@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.2.4
+// @version                  2025.2.2.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3755,9 +3755,10 @@
             regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
-                get.reply(msgChain) ; toggle.tooltip(event) // regenerate reply, update tooltip
+                get.reply(msgChain)
                 Object.assign(regenSVGwrapper.style, { // disable finger cursor, animate icon
                     cursor: 'default', animation: 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' })
+                toggle.tooltip(event) // update tooltip
 
                 // Hide/remove elems
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove()
