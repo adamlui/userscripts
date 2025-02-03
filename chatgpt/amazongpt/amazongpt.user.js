@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.3
+// @version                2025.2.2.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2822,9 +2822,10 @@
             regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
-                get.reply(msgChain) ; toggle.tooltip(event) // regenerate reply, update tooltip
+                get.reply(msgChain)
                 Object.assign(regenSVGwrapper.style, { // disable finger cursor, animate icon
                     cursor: 'default', animation: 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' })
+                toggle.tooltip(event) // update tooltip
 
                 // Show loading status
                 const replySection = appDiv.querySelector('section')
