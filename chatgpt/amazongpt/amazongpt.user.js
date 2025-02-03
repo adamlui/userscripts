@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.2.2
+// @version                2025.2.2.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2918,7 +2918,7 @@
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
                         else {
-                            const audioContext = new (AudioContext || webkitAudioContext)()
+                            const audioContext = new (window.AudioContext || window.webkitAudioContext)()
                             audioContext.decodeAudioData(resp.response, buffer => {
                                 const audioSrc = audioContext.createBufferSource()
                                 audioSrc.buffer = buffer
