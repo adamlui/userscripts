@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.4.1
+// @version                  2025.2.4.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3842,7 +3842,8 @@
                         // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
-                        speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
+                        if (!config.fgAnimationsDisabled) // animate icons
+                            speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
