@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.3.5
+// @version                2025.2.4
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3046,7 +3046,7 @@
                             app.msgs[`tooltip_${ btn.closest('code') ? 'code' : 'reply' }`].toLowerCase()}`
                   : `${app.msgs.notif_copiedToClipboard}!` )
               : btnType == 'regen' ? (
-                    btn.firstChild.style.animation ?
+                    btn.firstChild.style.animation || btn.firstChild.style.transform ?
                         `${app.msgs.tooltip_regenerating} ${app.msgs.tooltip_reply.toLowerCase()}...`
                       : `${app.msgs.tooltip_regenerate} ${app.msgs.tooltip_reply.toLowerCase()}` )
               : btnType == 'speak' ? (
@@ -3571,8 +3571,9 @@
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
                 get.reply(msgChain)
-                Object.assign(regenSVGwrapper.style, { // disable finger cursor, animate icon
-                    cursor: 'default', animation: 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' })
+                regenSVGwrapper.style.cursor = 'default' // disable finger cursor
+                if (config.fgAnimationsDisabled) regenSVGwrapper.style.transform = 'rotate(90deg)'
+                else regenSVGwrapper.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)'
                 toggle.tooltip(event) // update tooltip
 
                 // Hide/remove elems
@@ -3613,12 +3614,14 @@
                 if (!speakBtn.contains(speakSVGs.speak)) return // since clicking on Generating or Playing icon
                 speakBtn.style.cursor = 'default' // remove finger
 
-                // Update/animate icon
+                // Update icon to Generating ones
                 speakSVGscroller.textContent = '' // rid Speak icon
                 speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1]) // add Generating icons
-                speakSVGscroller.style.animation = 'icon-scroll 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
-                speakSVGwrapper.style.maskImage = ( // fade edges
-                    'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
+                if (!config.fgAnimationsDisabled) { // animate icons
+                    speakSVGscroller.style.animation = 'icon-scroll 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite'
+                    speakSVGwrapper.style.maskImage = ( // fade edges
+                        'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
+                }
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
@@ -3661,10 +3664,11 @@
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
 
-                        // Update icon, re-animate to be faster/smoother
+                        // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
-                        speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
+                        if (!config.fgAnimationsDisabled) // animate icons
+                            speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
