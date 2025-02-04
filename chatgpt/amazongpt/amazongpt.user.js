@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.7
+// @version                2025.2.4.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2382,11 +2382,12 @@
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
             // Update position
-            const elems = { appDiv, btn, tooltipDiv },
-                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
+            const elems = { appDiv, btn, tooltipDiv, fsSlider: appDiv.querySelector('[id*=font-size-slider]') },
+                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -22
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 38
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ?
+                   38 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -18 : 0 )
               : rects.btn.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 7 : 0 )
             }px`
             tooltipDiv.style.right = `${
