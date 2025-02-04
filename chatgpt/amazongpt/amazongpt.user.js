@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.1
+// @version                2025.2.4.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2907,7 +2907,8 @@
                         // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
-                        speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
+                        if (!config.fgAnimationsDisabled) // animate icons
+                            speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
