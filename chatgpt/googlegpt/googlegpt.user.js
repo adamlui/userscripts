@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.4.3
+// @version                  2025.2.4.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1104,6 +1104,8 @@
               + `#${app.slug}-settings ul {`
                   + 'list-style: none ; padding: 0 ; margin-bottom: 2px ;' // hide bullets, close bottom gap
                   + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
+              + ( env.browser.isPhone ? '' : ( `#${app.slug}-settings ul:first-of-type {` // color desktop middle separator
+                  + `border-right: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}` ))
               + `#${app.slug}-settings li {`
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for text
                   + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;` // for icons
@@ -1425,8 +1427,7 @@
                     settingsListContainer.style.cssText += ( // make/pad flexbox, add middle gap
                         `display: flex ; padding: 11px 0 13px ; gap: ${ middleGap /2 }px` )
                     settingsLists[0].style.cssText = ( // add vertical separator
-                        `padding-right: ${ middleGap /2 }px ; border-right: 1px dotted ${
-                            env.ui.app.scheme == 'dark' ? 'white' : 'black '}` )
+                        `padding-right: ${ middleGap /2 }px` )
                 }
                 log.debug(`Success! settingsListCnt = ${settingsListCnt}`)
 
