@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.4.4
+// @version                  2025.2.4.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3878,7 +3878,8 @@
         },
 
         reply(answer) {
-            tooltipDiv.style.opacity = 0 // hide lingering tooltip if cursor was on corner button
+            if (!env.browser.isMobile) // hide lingering tooltip if cursor was on corner button
+                tooltipDiv.style.opacity = 0
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
