@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.4.1
+// @version               2025.2.4.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3671,7 +3671,8 @@
                         // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
-                        speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
+                        if (!config.fgAnimationsDisabled) // animate icons
+                            speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
