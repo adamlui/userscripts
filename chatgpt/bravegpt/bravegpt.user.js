@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.4.7
+// @version               2025.2.4.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3066,11 +3066,12 @@
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
 
             // Update position
-            const elems = { appDiv, btn, tooltipDiv },
-                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
+            const elems = { appDiv, btn, tooltipDiv, fsSlider: appDiv.querySelector('[id*=font-size-slider]') },
+                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -13
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 46
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ?
+                   46 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -16 : 0 )
               : rects.btn.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 4 : 0 )
             }px`
             tooltipDiv.style.right = `${
