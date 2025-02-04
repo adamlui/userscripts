@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.6
+// @version                2025.2.4.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2003,8 +2003,7 @@
                     get.reply(msgChain)
 
                     // Hide/remove elems
-                    if (!env.browser.isMobile) // hide 'Send reply' tooltip post-send btn click
-                        tooltipDiv.style.opacity = 0
+                    tooltipDiv.style.opacity = 0 // hide chatbar button tooltips
 
                     // Show loading status
                     const replySection = appDiv.querySelector('section')
@@ -2296,7 +2295,7 @@
                 }
             }
             update.appBottomPos() // toggle visual minimization
-            if (!env.browser.isMobile) setTimeout(() => tooltipDiv.style.opacity = 0, 1) // remove lingering tooltip
+            setTimeout(() => tooltipDiv.style.opacity = 0, 1) // remove lingering tooltip
         },
 
         proxyMode() {
@@ -2349,6 +2348,7 @@
         },
 
         tooltip(event) {
+            if (env.browser.isMobile) return
             if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
 
             const btn = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
@@ -3122,20 +3122,18 @@
         document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Create/stylize TOOLTIPs
-    if (!env.browser.isMobile) {
-        var tooltipDiv = dom.create.elem('div', { class: `${app.slug}-btn-tooltip no-user-select` })
-        document.head.append(dom.create.style(`.${app.slug}-btn-tooltip {`
-            + 'background-color:' // bubble style
-                + 'rgba(0,0,0,0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
-            + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
-            + 'position: absolute ;' // for update.tooltip() calcs
-            + `--shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;
-                  box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
-            + 'opacity: 0 ; height: fit-content ; z-index: 1250 ;' // visibility
-            + 'transition: opacity 0.1s ; -webkit-transition: opacity 0.1s ; -moz-transition: opacity 0.1s ;'
-                + '-o-transition: opacity 0.1s ; -ms-transition: opacity 0.1s }'
-        ))
-    }
+    const tooltipDiv = dom.create.elem('div', { class: `${app.slug}-btn-tooltip no-user-select` })
+    document.head.append(dom.create.style(`.${app.slug}-btn-tooltip {`
+        + 'background-color:' // bubble style
+            + 'rgba(0,0,0,0.64) ; padding: 4px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
+        + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
+        + 'position: absolute ;' // for update.tooltip() calcs
+        + `--shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;
+                box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
+        + 'opacity: 0 ; height: fit-content ; z-index: 1250 ;' // visibility
+        + 'transition: opacity 0.1s ; -webkit-transition: opacity 0.1s ; -moz-transition: opacity 0.1s ;'
+            + '-o-transition: opacity 0.1s ; -ms-transition: opacity 0.1s }'
+    ))
 
     // APPEND AMAZONGPT to Amazon
     document.body.append(appDiv)
