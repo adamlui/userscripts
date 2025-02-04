@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.5
+// @version                2025.2.4.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2658,7 +2658,10 @@
                             log.debug('Text to show', textToShow)
                             const failMatch = reFailFlags?.exec(textToShow)
                             if (!textToShow || failMatch) {
-                                if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                if (textToShow) {
+                                    log.debug('Text to show', textToShow)
+                                    log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                }
                                 api.tryNew(caller)
                             } else {
                                 caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
