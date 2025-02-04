@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.4
+// @version                2025.2.4.5
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3345,7 +3345,10 @@
                             log.debug('Text to show', textToShow)
                             const failMatch = reFailFlags?.exec(textToShow)
                             if (!textToShow || failMatch) {
-                                if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                if (textToShow) {
+                                    log.debug('Text to show', textToShow)
+                                    log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                }
                                 api.tryNew(caller)
                             } else {
                                 caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
