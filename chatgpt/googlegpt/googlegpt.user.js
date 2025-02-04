@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.4.7
+// @version                  2025.2.4.8
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3238,11 +3238,12 @@
               : btnType == 'shuffle' ? app.msgs.tooltip_feelingLucky : '' )
 
             // Update position
-            const elems = { appDiv, btn, tooltipDiv },
-                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key].getBoundingClientRect())
+            const elems = { appDiv, btn, tooltipDiv, fsSlider: appDiv.querySelector('[id*=font-size-slider]') },
+                  rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -14
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ? 43
+              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ?
+                   43 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -16 : 0 )
               : rects.btn.top - rects.appDiv.top -35 - ( event.currentTarget.closest('code') ? 6 : 0 )
             }px`
             tooltipDiv.style.right = `${
