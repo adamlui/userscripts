@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.4
+// @version                2025.2.4.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2942,7 +2942,8 @@
         },
 
         reply(answer) {
-            tooltipDiv.style.opacity = 0 // hide lingering tooltip if cursor was on corner button
+            if (!env.browser.isMobile) // hide lingering tooltip if cursor was on corner button
+                tooltipDiv.style.opacity = 0
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
