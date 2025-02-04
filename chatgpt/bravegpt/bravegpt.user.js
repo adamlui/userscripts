@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.4.5
+// @version               2025.2.4.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3342,7 +3342,10 @@
                             log.debug('Text to show', textToShow)
                             const failMatch = reFailFlags?.exec(textToShow)
                             if (!textToShow || failMatch) {
-                                if (failMatch) log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                if (textToShow) {
+                                    log.debug('Text to show', textToShow)
+                                    log.error('Fail flag detected', `'${failMatch[0]}'`)
+                                }
                                 api.tryNew(caller)
                             } else {
                                 caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
