@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.1
+// @version                2025.2.4.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -877,11 +877,10 @@
 
               // Glowing modal btns
               + ':root { --glow-color: hsl(186 100% 69%) }'
-              + '.glowing-btn {'
-                  + 'perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;'
-                  + '-webkit-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
-                  + 'box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;'
-                  + '-moz-box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) }'
+              + `.glowing-btn {
+                    perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;
+                    --shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;
+                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
               + '.glowing-txt {'
                   + 'animation: text-flicker 3s linear infinite ;'
                   + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
@@ -909,10 +908,12 @@
                   + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
 
               // Settings modal
-              + `#${app.slug}-settings {`
-                  + `min-width: ${ env.browser.isPortrait ? 288 : 698 }px ; max-width: 75vw ;`
-                  + 'word-wrap: break-word ; border-radius: 15px ; box-shadow: 0 30px 60px rgba(0,0,0,0.12) ;'
-                  + `${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' }}` // icon color
+              + `#${app.slug}-settings {
+                    min-width: ${ env.browser.isPortrait ? 288 : 698 }px ; max-width: 75vw ;
+                    word-wrap: break-word ; border-radius: 15px ;
+                    ${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' };
+                    --shadow: 0 30px 60px rgba(0,0,0,0.12) ;
+                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
               + `#${app.slug}-settings-title {`
                   + 'font-weight: bold ; line-height: 19px ; text-align: center ; margin: 0 3px -3px 0 }'
               + `#${app.slug}-settings-title h4 {`
@@ -2073,28 +2074,31 @@
               + `#${app.slug} {`
                   + 'position: sticky ; z-index: 104 ; padding: 17px 26px 16px ; flex-basis: 0 ; border-radius: 8px ;'
                   + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #e5e5e5' } ; width: auto ;`
-                  + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ; box-shadow: var(--app-shadow) ;'
+                  + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
                   + ( config.bgAnimationsDisabled ? // classic flat bg
                         `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
                       + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                   : `background-image: linear-gradient(180deg, ${ // gradient bg to match rising particles
                         env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                     : '#b6ebff -163px, white 65px' }) ;` )
-                  + 'transition: var(--app-transition) ;'
-                      + '-webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;'
-                      + '-o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) }'
+                  + `transition: var(--app-transition) ;
+                        -webkit-transition: var(--app-transition) ; -moz-transition: var(--app-transition) ;
+                        -o-transition: var(--app-transition) ; -ms-transition: var(--app-transition) ;
+                    box-shadow: var(--app-shadow) ;
+                        -webkit-box-shadow: var(--app-shadow) ; -moz-box-shadow: var(--app-shadow) }`
               + `#${app.slug} .app-hover-only {` // hide app-hover-only elems
                   + 'position: absolute ; left: -9999px ; opacity: 0 ;' // using position to support transitions
                   + 'width: 0 }' // to support width calcs
               + `#${app.slug}:hover .app-hover-only, #${app.slug}:active .app-hover-only {
                     position: relative ; left: auto ; width: auto ; opacity: 1 }` // show app-hover-only elems on hover
               + `#${app.slug}:hover, #${app.slug}:active {` // show app shadow on hover
-                  + 'box-shadow: var(--app-hover-shadow) ;'
-                  + 'transition: var(--app-transition), var(--app-shadow-transition) ;'
-                      + '-webkit-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                      + '-moz-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                      + '-o-transition: var(--app-transition), var(--app-shadow-transition) ;'
-                      + '-ms-transition: var(--app-transition), var(--app-shadow-transition) }'
+                  + `box-shadow: var(--app-hover-shadow) ;
+                        -webkit-box-shadow: var(--app-hover-shadow) ; -moz-box-shadow: var(--app-hover-shadow) ;
+                    transition: var(--app-transition), var(--app-shadow-transition) ;
+                        -webkit-transition: var(--app-transition), var(--app-shadow-transition) ;
+                        -moz-transition: var(--app-transition), var(--app-shadow-transition) ;
+                        -o-transition: var(--app-transition), var(--app-shadow-transition) ;
+                        -ms-transition: var(--app-transition), var(--app-shadow-transition) }`
               + `#${app.slug} p { margin: 0 ; ${ env.ui.app.scheme == 'dark' ? 'color: #ccc' : '' }}`
               + `#${app.slug} .alert-link {`
                   + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
@@ -2141,16 +2145,17 @@
                   + 'z-index: 1 ; position: absolute ; bottom: 20px ;'
                   + 'border-left: 4.5px solid transparent ; border-right: 4.5px solid transparent ;'
                   + 'border-bottom: 16px solid #ccc }'
-              + `#${app.slug}-font-size-slider-thumb {`
-                  + 'z-index: 2 ; width: 10px ; height: 25px ; border-radius: 30% ; position: relative ;'
-                  + 'top: -7.65px ; cursor: ew-resize ;'
-                  + `background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;`
-                  + 'box-shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ;'
-                  + 'transition: var(--font-size-slider-thumb-transition) ;'
-                      + '-webkit-transition: var(--font-size-slider-thumb-transition) ;'
-                      + '-moz-transition: var(--font-size-slider-thumb-transition) ;'
-                      + '-o-transition: var(--font-size-slider-thumb-transition) ;'
-                      + '-ms-transition: var(--font-size-slider-thumb-transition) }'
+              + `#${app.slug}-font-size-slider-thumb {
+                    z-index: 2 ; width: 10px ; height: 25px ; border-radius: 30% ; position: relative ;
+                    top: -7.65px ; cursor: ew-resize ;
+                    background-color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#4a4a4a' } ;
+                    --shadow: rgba(0,0,0,0.21) 1px 1px 9px 0 ;
+                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) ;
+                    transition: var(--font-size-slider-thumb-transition) 
+                        -webkit-transition: var(--font-size-slider-thumb-transition) ;
+                        -moz-transition: var(--font-size-slider-thumb-transition) ;
+                        -o-transition: var(--font-size-slider-thumb-transition) ;
+                        -ms-transition: var(--font-size-slider-thumb-transition) }`
               + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                     '' : `#${app.slug}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
               + `.${app.slug}-standby-btn {`
@@ -2209,9 +2214,12 @@
                   + `position: relative ; z-index: 555 ; color: #${ env.ui.app.scheme == 'dark' ? 'eee' : '222' } ;`
                   + `background: ${ env.ui.app.scheme == 'light' ? '#eeeeee9e'
                         : `#515151${ config.bgAnimationsDisabled ? '' : '9e' }` } ;`
-                  + `${ env.ui.app.scheme == 'light' ? 'box-shadow: 0 1px 2px rgba(15,17,17,0.1) inset' : '' }}`
+                  + `${ env.ui.app.scheme == 'dark' ? '' :
+                        `--shadow: 0 1px 2px rgba(15,17,17,0.1) inset ; box-shadow: var(--shadow) ;
+                            -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)` }}`
               + `#${app.slug}-chatbar:focus-visible {
-                    outline: -webkit-focus-ring-color auto 1px ; box-shadow: 0 1px 2px rgba(0,0,0,0.3) inset }`
+                    outline: -webkit-focus-ring-color auto 1px ; --shadow: 0 1px 2px rgba(0,0,0,0.3) inset ;
+                    box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
               + `.${app.slug}-related-queries {`
                   + 'display: flex ; flex-wrap: wrap ; width: 100% ; position: relative ; overflow: visible ;'
                   + `${ env.browser.isFF ? 'top: -20px ; smargin: -3px 0 -10px' : 'top: -25px ; margin: -7px 0 -15px' }}`
@@ -2227,9 +2235,10 @@
                   + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? (
                         config.bgAnimationsDisabled ? '#5f5f5f' : '#777' ) : '#e1e1e1' } ;`
                   + 'border-radius: 0 13px 12px 13px ; flex: 0 0 auto ;'
-                  + `box-shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
+                  + `--shadow: 1px 4px ${ env.ui.app.scheme == 'dark' ?
                         `${ config.bgAnimationsDisabled ? 10 : 18 }px -8px lightgray`
-                            : '8px -6px rgba(169,169,169,0.75)' };`
+                            : '8px -6px rgba(169,169,169,0.75)' };
+                    box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) ;`
                   + `${ config.fgAnimationsDisabled ? '' : // smoothen hover-zoom
                         'transition: var(--rq-transition) ;'
                           + '-webkit-transition: var(--rq-transition) ; -moz-transition: var(--rq-transition) ;'
@@ -3977,7 +3986,8 @@
                 + 'rgba(0,0,0,0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
             + 'font-size: 0.87em ; color: white ; fill: white ; stroke: white ;' // font/icon style
             + 'position: absolute ;' // for update.tooltip() calcs
-            + 'box-shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;' // drop shadow
+            + `--shadow: 3px 5px 16px 0 rgb(0,0,0,0.21) ;
+                  box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
             + 'opacity: 0 ; height: fit-content ; z-index: 1250 ;' // visibility
             + 'transition: opacity 0.1s ; -webkit-transition: opacity 0.1s ; -moz-transition: opacity 0.1s ;'
                 + '-o-transition: opacity 0.1s ; -ms-transition: opacity 0.1s }'
