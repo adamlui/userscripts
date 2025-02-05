@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.5.1
+// @version               2025.2.5.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2033,7 +2033,7 @@
                 ':root {' // vars
                   + '--app-bg-color-light-scheme: #ffffff ; --app-bg-color-dark-scheme: #282828 ;'
                   + '--pre-bg-color-light-scheme: #e7e7e799 ; --pre-bg-color-dark-scheme: #3a3a3a ;'
-                  + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #f2f2f2 ;'
+                  + '--font-color-light-scheme: #282828 ; --font-color-dark-scheme: #e3e3e3 ;'
                   + '--app-hover-shadow: 0 9px 28px rgba(0,0,0,0.09) ;'
                   + '--app-transition: opacity 0.5s ease, transform 0.5s ease,' // for 1st fade-in
                                     + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
