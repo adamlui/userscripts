@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.4.8
+// @version                2025.2.5
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -562,7 +562,7 @@
     Object.assign(config, { minFontSize: 11, maxFontSize: 24, lineHeightRatio: 1.28 })
     settings.load([...Object.keys(settings.controls), 'expanded', 'fontSize', 'minimized', 'notFirstRun'])
     if (!config.replyLang) settings.save('replyLang', env.browser.language) // init reply language if unset
-    if (!config.fontSize) settings.save('fontSize', 14) // init reply font size if unset
+    if (!config.fontSize) settings.save('fontSize', 14.948771158854168) // init reply font size if unset
     if (!env.scriptManager.supportsStreaming) settings.save('streamingDisabled', true) // disable Streaming in unspported env
     if (!config.notFirstRun && env.browser.isMobile) settings.save('autoGet', true) // reverse default auto-get disabled if mobile
     settings.save('notFirstRun', true)
