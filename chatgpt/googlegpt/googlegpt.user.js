@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.5.2
+// @version                  2025.2.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2251,8 +2251,10 @@
               + `#${app.slug} .app-hover-only {` // hide app-hover-only elems
                   + 'position: absolute ; left: -9999px ; opacity: 0 ;' // using position to support transitions
                   + 'width: 0 }' // to support width calcs
-              + `#${app.slug}:hover .app-hover-only, #${app.slug}:active .app-hover-only {
-                    position: relative ; left: auto ; width: auto ; opacity: 1 }` // show app-hover-only elems on hover
+                // show app-hover-only elems on hover + Font Size button when slider visible
+              + `#${app.slug}:hover .app-hover-only, #${app.slug}:active .app-hover-only,
+                    #${app.slug}:has([id$=font-size-slider-track].active) [id$=font-size-btn] {
+                        position: relative ; left: auto ; width: auto ; opacity: 1 }`
               + `#${app.slug}:hover, #${app.slug}:active {` // show app shadow on hover
                   + `box-shadow: var(--app-hover-shadow) ;
                         -webkit-box-shadow: var(--app-hover-shadow) ; -moz-box-shadow: var(--app-hover-shadow) ;
