@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.7
+// @version                  2025.2.8
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1404,13 +1404,14 @@
                 const settingsIcon = icons.googleGPT.create()
                 settingsIcon.style.cssText += `width: ${ env.browser.isPortrait ? 64 : 65 }px ;`
                                             + `margin: 13px 0 ${ env.browser.isPortrait ? '-35' : '-27' }px ;`
-                                            + `position: relative ; top: -42px ; ${ env.browser.isPortrait ? 'left: 6px' : '' }`
+                                            + `position: relative ; top: -42px ; ${
+                                                   env.browser.isPortrait ? 'left: 6px' : '' }`
                 // Init title
                 const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
                       settingsTitleIcon = icons.sliders.create(),
                       settingsTitleH4 = dom.create.elem('h4')
-                settingsTitleIcon.style.cssText = 'width: 20px ; height: 20px ;'
-                                                + 'position: relative ; top: 1px ; right: 7px'
+                settingsTitleIcon.style.cssText += 'width: 18px ; height: 18px ;'
+                                                 + 'position: relative ; top: 0.5px ; right: 10px'
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
@@ -2031,10 +2032,20 @@
 
         sliders: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 24 24' })
-                const svgPath = dom.create.svgElem('path', {
-                    d: 'M13.82 19.333H3.834a.834.834 0 0 1 0-1.666h9.988A2.49 2.49 0 0 1 16.167 16c1.085 0 2 .698 2.346 1.667h1.654a.834.834 0 0 1 0 1.666h-1.654A2.5 2.5 0 0 1 16.167 21c-1.085 0-2.001-.7-2.346-1.667M17 18.5a.834.834 0 1 0-1.668.002A.834.834 0 0 0 17 18.5M5.487 12.833H3.833a.834.834 0 0 1 0-1.666h1.654A2.5 2.5 0 0 1 7.833 9.5c1.085 0 2.001.7 2.347 1.667h9.987a.834.834 0 0 1 0 1.666H10.18A2.5 2.5 0 0 1 7.833 14.5c-1.085 0-2-.698-2.346-1.667M8.667 12a.834.834 0 1 0-1.669.002A.834.834 0 0 0 8.667 12m.986-5.667h-5.82a.834.834 0 0 1 0-1.666h5.82A2.495 2.495 0 0 1 12 3c1.085 0 2.002.698 2.347 1.667h5.82a.834.834 0 0 1 0 1.666h-5.82A2.5 2.5 0 0 1 12 8c-1.085 0-2.002-.7-2.347-1.667m3.18-.833A.835.835 0 0 0 12 4.667a.835.835 0 0 0-.833.833.834.834 0 0 0 1.666 0' })
-                svg.append(svgPath) ; return svg
+                const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
+                    'stroke-width': 3.5, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
+                svg.append(
+                    dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
+                    dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 12, y1: 21, x2: 12, y2: 12 }),
+                    dom.create.svgElem('line', { x1: 12, y1: 8, x2: 12, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 20, y1: 21, x2: 20, y2: 16 }),
+                    dom.create.svgElem('line', { x1: 20, y1: 12, x2: 20, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 1, y1: 14, x2: 7, y2: 14 }),
+                    dom.create.svgElem('line', { x1: 9, y1: 8, x2: 15, y2: 8 }),
+                    dom.create.svgElem('line', { x1: 17, y1: 16, x2: 23, y2: 16 })
+                )
+                return svg
             }
         },
 
@@ -3929,7 +3940,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = `${ env.browser.isMobile ? 4.5 : -2 }px 10px 0 2.5px` // position
+                settingsBtn.style.margin = `${ env.browser.isMobile ? 6 : -0.5 }px 10px 0 3.5px` // position
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
