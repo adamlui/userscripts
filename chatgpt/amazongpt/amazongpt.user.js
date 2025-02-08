@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.7
+// @version                2025.2.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1049,8 +1049,8 @@
                 const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
                       settingsTitleIcon = icons.sliders.create(),
                       settingsTitleH4 = dom.create.elem('h4')
-                settingsTitleIcon.style.cssText = 'width: 21px ; height: 21px ; margin-right: 3px ;'
-                                                + 'position: relative ; top: 1.5px ; right: 3px'
+                settingsTitleIcon.style.cssText += 'width: 17.5px ; height: 17.5px ; margin-right: 8px ;'
+                                                 + 'position: relative ; right: 4px'
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
@@ -1508,10 +1508,20 @@
 
         sliders: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 18, height: 18, viewBox: '0 0 24 24' })
-                const svgPath = dom.create.svgElem('path', {
-                    d: 'M13.82 19.333H3.834a.834.834 0 0 1 0-1.666h9.988A2.49 2.49 0 0 1 16.167 16c1.085 0 2 .698 2.346 1.667h1.654a.834.834 0 0 1 0 1.666h-1.654A2.5 2.5 0 0 1 16.167 21c-1.085 0-2.001-.7-2.346-1.667M17 18.5a.834.834 0 1 0-1.668.002A.834.834 0 0 0 17 18.5M5.487 12.833H3.833a.834.834 0 0 1 0-1.666h1.654A2.5 2.5 0 0 1 7.833 9.5c1.085 0 2.001.7 2.347 1.667h9.987a.834.834 0 0 1 0 1.666H10.18A2.5 2.5 0 0 1 7.833 14.5c-1.085 0-2-.698-2.346-1.667M8.667 12a.834.834 0 1 0-1.669.002A.834.834 0 0 0 8.667 12m.986-5.667h-5.82a.834.834 0 0 1 0-1.666h5.82A2.495 2.495 0 0 1 12 3c1.085 0 2.002.698 2.347 1.667h5.82a.834.834 0 0 1 0 1.666h-5.82A2.5 2.5 0 0 1 12 8c-1.085 0-2.002-.7-2.347-1.667m3.18-.833A.835.835 0 0 0 12 4.667a.835.835 0 0 0-.833.833.834.834 0 0 0 1.666 0' })
-                svg.append(svgPath) ; return svg
+                const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
+                    'stroke-width': 3.5, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
+                svg.append(
+                    dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
+                    dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 12, y1: 21, x2: 12, y2: 12 }),
+                    dom.create.svgElem('line', { x1: 12, y1: 8, x2: 12, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 20, y1: 21, x2: 20, y2: 16 }),
+                    dom.create.svgElem('line', { x1: 20, y1: 12, x2: 20, y2: 3 }),
+                    dom.create.svgElem('line', { x1: 1, y1: 14, x2: 7, y2: 14 }),
+                    dom.create.svgElem('line', { x1: 9, y1: 8, x2: 15, y2: 8 }),
+                    dom.create.svgElem('line', { x1: 17, y1: 16, x2: 23, y2: 16 })
+                )
+                return svg
             }
         },
 
@@ -2982,7 +2992,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '0.5px 10.5px 0 0.5px' // position
+                settingsBtn.style.margin = '1px 10.5px 0 3px' // position
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
