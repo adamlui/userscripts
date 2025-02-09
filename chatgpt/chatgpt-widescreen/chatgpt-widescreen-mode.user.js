@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.5
+// @version             2025.2.9.6
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -255,10 +255,10 @@
 // @connect             gm.chatgptwidescreen.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@af6130a/chromium/extension/lib/chatbar.js#sha256-dgfGpagphQt0BNILo/OkZXHT1Hmqq5SFBNGAn5qYkC8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@81ad3bc/chromium/extension/lib/chatbar.js#sha256-Cex0Ct4qNaSsBedWJcjtssBgHez8BpCsKGSBWizfZFk=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7169777/chromium/extension/lib/dom.js#sha256-zQFtcjnL+yo1OGSqyN3YeV7f/lc9CFAmC/c01LywvCM=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea4/chromium/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@6cd06fe/chromium/extension/components/buttons.js#sha256-zJe2jecTqyQEZthXzULHOQMDIOBmqodL79oWUWu5B/s=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@81ad3bc/chromium/extension/components/buttons.js#sha256-gbp8l20xOdcDGGsDBD2DAO8UIWZY0tH1olnl57iK7dc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@57baed4/chromium/extension/components/modals.js#sha256-us4mcDuhl2YawwczexrMssCL1kOC70OVpdOjygm5Fc4=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
@@ -635,7 +635,7 @@
         async tooltip(btnType) { // text & position
             const visibleBtnTypes = buttons.getTypes.visible()
             const ctrAddend = (await buttons.getRightBtn()).getBoundingClientRect().width
-                            + ( env.site == 'perplexity' ? ( chatbar.isTall() ? 39 : 56 )
+                            + ( env.site == 'perplexity' ? ( chatbar.is.tall() ? 39 : 56 )
                               : env.site == 'poe' ? 28 : 0 )
             const spreadFactor = env.site == 'perplexity' ? 27.5 : env.site == 'poe' ? 28 : 31
             const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
@@ -808,7 +808,7 @@
         if (env.site == 'chatgpt') {
 
             // Update button colors on temp chat toggle
-            const chatbarIsDark = chatbar.isDark()
+            const chatbarIsDark = chatbar.is.dark()
             if (chatbarIsDark != isTempChat) { buttons.update.color() ; isTempChat = chatbarIsDark }
 
             // Add/remove Widescreen button on Canvas mode toggle
