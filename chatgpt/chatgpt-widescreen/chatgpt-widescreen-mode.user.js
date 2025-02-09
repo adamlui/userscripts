@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.8
+// @version             2025.2.9.9
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -617,7 +617,6 @@
                 wideScreenStyle.innerText = (
                     env.site == 'chatgpt' ? (
                         '.text-base { max-width: 100% !important }' // widen outer container
-                      + ( !env.tallChatbar ? '.text-base:nth-of-type(2) { max-width: 97% !important }' : '' )
                   ) : env.site == 'perplexity' ? (
                         `${sites.perplexity.selectors.header} ~ div,` // outer container
                       + `${sites.perplexity.selectors.header} ~ div > div` // inner container
@@ -638,7 +637,7 @@
                               : env.site == 'poe' ? 28 : 0 )
             const spreadFactor = env.site == 'perplexity' ? 27.5 : env.site == 'poe' ? 28 : 31
             const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
-                             + ( env.tallChatbar ? -2 : 4 )
+                             + ( env.site == 'chatgpt' && chatbar.is.tall() ? -2 : 4 )
             tooltipDiv.innerText = app.msgs[`tooltip_${btnType}${
                 !/full|wide/i.test(btnType) ? '' : (config[btnType] ? 'OFF' : 'ON')}`]
             tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width /2 }px` // x-pos
