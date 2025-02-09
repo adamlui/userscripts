@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.8.2
+// @version                2025.2.8.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2809,7 +2809,7 @@
 
                 // Add listeners
                 if (!env.browser.isMobile) copyBtn.onmouseenter = copyBtn.onmouseleave = toggle.tooltip
-                copyBtn.onclick = () => { // copy text, update icon + tooltip status
+                copyBtn.onclick = event => { // copy text, update icon + tooltip status
                     if (!copyBtn.contains(copySVGs.copy)) return // since clicking on Copied icon
                     const textContainer = (
                         copyBtn.parentNode.tagName == 'PRE' ? copyBtn.parentNode // reply container
@@ -2817,7 +2817,7 @@
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     copyBtn.style.cursor = 'default' // remove finger
                     copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
-                    copyBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
+                    toggle.tooltip(event) // update tooltip
                     setTimeout(() => { // restore icon/cursor/tooltip after a bit
                         copyBtn.replaceChild(copySVGs.copy, copySVGs.copied)
                         copyBtn.style.cursor = 'pointer' ; copyBtn.dispatchEvent(new Event('mouseenter'))
@@ -2877,11 +2877,11 @@
             speakSVGscroller.append(speakSVGs.speak) ; speakSVGwrapper.append(speakSVGscroller)
             speakBtn.append(speakSVGwrapper) ; cornerBtnsDiv.append(speakBtn)
             if (!env.browser.isMobile) speakBtn.onmouseenter = speakBtn.onmouseleave = toggle.tooltip
-            speakBtn.onclick = () => {
+            speakBtn.onclick = event => {
                 if (!speakBtn.contains(speakSVGs.speak)) return // since clicking on Generating or Playing icon
                 speakBtn.style.cursor = 'default' // remove finger
 
-                // Update/animate icon
+                // Update icon to Generating ones
                 speakSVGscroller.textContent = '' // rid Speak icon
                 speakSVGscroller.append(speakSVGs.generating[0], speakSVGs.generating[1]) // add Generating icons
                 if (!config.fgAnimationsDisabled) { // animate icons
@@ -2890,7 +2890,7 @@
                         'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
                 }
 
-                speakBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
+                toggle.tooltip(event) // update tooltip
 
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
@@ -2932,13 +2932,14 @@
                         + encodeURIComponent(securePayload),
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
-                        speakBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
 
                         // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
                         speakSVGscroller.append(speakSVGs.playing[0], speakSVGs.playing[1]) // add Playing icons
                         if (!config.fgAnimationsDisabled) // animate icons
                             speakSVGscroller.style.animation = 'icon-scroll 0.5s linear infinite'
+
+                        speakBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
 
                         // Play audio
                         if (resp.status != 200) chatgpt.speak(wholeAnswer, cjsSpeakConfig)
