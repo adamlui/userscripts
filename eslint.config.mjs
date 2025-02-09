@@ -18,7 +18,7 @@ export default [
                 chatgpt: 'readonly', config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly',
                 GM_cookie: 'readonly', hljs: 'readonly', ipv4: 'readonly', marked: 'readonly', modals: 'writable',
                 renderMathInElement: 'readonly', settings: 'writable', toggles: 'writable', tooltip: 'writable',
-                webkitAudioContext: 'readonly'
+                ui: 'readonly', webkitAudioContext: 'readonly'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
