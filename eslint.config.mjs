@@ -17,7 +17,7 @@ export default [
                 ...globals.browser, ...globals.greasemonkey, ...globals.node, buttons: 'writable', chatbar: 'readonly',
                 chatgpt: 'readonly', config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly',
                 GM_cookie: 'readonly', hljs: 'readonly', ipv4: 'readonly', marked: 'readonly', modals: 'writable',
-                renderMathInElement: 'readonly', settings: 'writable', toggles: 'writable',
+                renderMathInElement: 'readonly', settings: 'writable', toggles: 'writable', tooltip: 'writable',
                 webkitAudioContext: 'readonly'
             }
         },
