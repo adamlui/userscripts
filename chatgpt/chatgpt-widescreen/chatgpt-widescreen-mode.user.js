@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.19
+// @version             2025.2.9.20
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -258,6 +258,7 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/lib/chatbar.js#sha256-fbpoQYbaVx27CGx7VI3pO3Ldq+mKxT3OsEhBQ7srU3I=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/lib/dom.js#sha256-8nqguSfCQ/Y4BOsJGJaw4tmyy7aJR0sPMrHg3v5fca4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/lib/settings.js#sha256-t3r5PaenykyE2vBrzJthvGzWQUS48otTK7fe5NFgA2w=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@06648c4/chromium/extension/lib/ui.js#sha256-oQdxIGBfmKIZR9uUvMK6ZLUGX2TKwLEQYQuyKddQXQE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@90c6102/chromium/extension/components/buttons.js#sha256-MH1ciHvmU/Cpi9BxtgoYpdU84lUtnhIsMtLqhVgDa+w=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/components/modals.js#sha256-ZMowOxEA/X/ZpLlQaS0Bmj4QG8sY+tu6Q9mdjOT64U4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/components/tooltip.js#sha256-PsvDs//LOYViJeMvb9djxWeBHF1nOo2/SL2SqrmP09k=
@@ -296,7 +297,7 @@
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1], ui: {}
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.ui.scheme = getScheme()
+    env.ui.scheme = ui.getScheme()
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -425,6 +426,7 @@
     modals.imports.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
     settings.imports.import({ app }) // for app.<msgs.configKeyPrefix>
     tooltip.imports.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
+    ui.imports.import({ site: env.site, sites }) // for ui.isFullWin() logic
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
@@ -534,7 +536,7 @@
             case 'ON' : activateMode(mode) ; break
             case 'OFF' : deactivateMode(mode) ; break
             default : ( mode == 'wideScreen' ? document.head.contains(wideScreenStyle)
-                      : mode == 'fullWindow' ? isFullWin() : chatgpt.isFullScreen() ) ? deactivateMode(mode)
+                      : mode == 'fullWindow' ? ui.isFullWin() : chatgpt.isFullScreen() ) ? deactivateMode(mode)
                                                                                       : activateMode(mode)
         }
 
@@ -638,7 +640,7 @@
 
         mode(mode) { // setting + icon + tooltip + chatbar
             const state = ( mode == 'wideScreen' ? !!document.getElementById('wideScreen-mode')
-                          : mode == 'fullWindow' ? isFullWin()
+                          : mode == 'fullWindow' ? ui.isFullWin()
                                                  : chatgpt.isFullScreen() )
             settings.save(mode, state) ; buttons.update.svg(mode) ; tooltip.update(mode)
             if (mode == 'fullWindow') sync.fullerWin()
@@ -660,19 +662,6 @@
                 // ...to visually signal location + preview fx applied by Button Animations toggle-on
                 buttons.animate()
         }
-    }
-
-    function getScheme() {
-        const rootElem = document.documentElement
-        return env.site == 'perplexity' ? rootElem.dataset.colorScheme : rootElem.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
-    }
-
-    function isFullWin() {
-        return env.site == 'poe' ? !!document.getElementById('fullWindow-mode')
-            : !sites[env.site].hasSidebar // false if sidebar non-existent
-           || /\d+/.exec(getComputedStyle(document.querySelector(
-                  sites[env.site].selectors.sidebar))?.width || '')[0] < 100
     }
 
     chatgpt.canvasIsOpen = function() {
@@ -703,7 +692,7 @@
     // Init FULL-MODE states
     config.fullScreen = chatgpt.isFullScreen()
     if (sites[env.site].selectors.btns.sidebarToggle) // site has native FW state
-         config.fullWindow = isFullWin() // ...so match it
+         config.fullWindow = ui.isFullWin() // ...so match it
     else settings.load('fullWindow') // otherwise load CWM's saved state
 
     // Stylize ALERTS
@@ -782,7 +771,7 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
-        const displayedScheme = getScheme()
+        const displayedScheme = ui.getScheme()
         if (env.ui.scheme != displayedScheme) {
             env.ui.scheme = displayedScheme ; modals.stylize() ; buttons.update.color() }
     }
@@ -791,7 +780,7 @@
     if (sites[env.site].selectors.btns.sidebarToggle && sites[env.site].hasSidebar) {
         const sidebarObserver = new MutationObserver(async () => {
             await new Promise(resolve => setTimeout(resolve, env.site == 'perplexity' ? 500 : 0))
-            if ((config.fullWindow ^ isFullWin()) && !config.modeSynced) sync.mode('fullWindow')
+            if ((config.fullWindow ^ ui.isFullWin()) && !config.modeSynced) sync.mode('fullWindow')
         })
         setTimeout(() => { // delay half-sec before observing to avoid repeated toggles from node observer
             let obsTarget = document.querySelector(sites[env.site].selectors.sidebar)
