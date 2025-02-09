@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.8
+// @version             2025.2.9
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -228,9 +228,9 @@
 // @connect             gm.chatgptautocontinue.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@0dfd8f4/chromium/extension/components/modals.js#sha256-E7P7DhUGU2WbgfvfXVx2Dn7NPHnR+4shIBEwsX+Nqr0=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@2ff55a1/chromium/extension/lib/dom.js#sha256-lA5D6aeIcAIUVy+tzxQCKYkoshjbJzs6aQcd+Ke9xis=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@de9ac91/chromium/extension/lib/settings.js#sha256-GFfYLlKJcMMC+fFyDeQnZDcW2QV4VQfWXr2NV8izQZo=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@e4fef29/chromium/extension/components/modals.js#sha256-H9CVl7cOu2Iz2gBx0JLMP8uycSMyws+huXDJ/ZDcYkM=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@e4fef29/chromium/extension/lib/dom.js#sha256-jLpH6VqjnxYUGQ87F4lXBkrQuxCJqin0YtliiLfUSms=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@e4fef29/chromium/extension/lib/settings.js#sha256-GaCmK4E2XvcUztiB3SBI94LLvMX7Eahxed6hf58E8/s=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -357,9 +357,9 @@
     }
 
     // Export DEPENDENCIES to imported resources
-    dom.imports.import({ env }) // for env.ui.scheme
-    modals.imports.import({ app, env, updateCheck }) // for app data + env.ui.scheme + modals.about
-    settings.imports.import({ app }) // for app.msgs + app.configKeyPrefix refs
+    dom.imports.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
+    modals.imports.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
+    settings.imports.import({ app }) // for app.<msgs.configKeyPrefix>
 
     // Init SETTINGS
     settings.load(Object.keys(settings.controls))
