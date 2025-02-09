@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.9
+// @version             2025.2.9.10
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -634,7 +634,7 @@
             const visibleBtnTypes = buttons.getTypes.visible()
             const ctrAddend = (await buttons.getRightBtn()).getBoundingClientRect().width
                             + ( env.site == 'perplexity' ? ( chatbar.is.tall() ? 39 : 56 )
-                              : env.site == 'poe' ? 28 : 0 )
+                              : env.site == 'poe' ? 28 : 7 )
             const spreadFactor = env.site == 'perplexity' ? 27.5 : env.site == 'poe' ? 28 : 31
             const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
                              + ( env.site == 'chatgpt' && chatbar.is.tall() ? -2 : 4 )
