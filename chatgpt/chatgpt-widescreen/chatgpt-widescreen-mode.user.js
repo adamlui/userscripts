@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.7
+// @version             2025.2.8
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -532,6 +532,12 @@
             const lvlsToParent = env.site == 'chatgpt' ? 3 : 2
             for (let i = 0 ; i < lvlsToParent ; i++) chatbar = chatbar?.parentNode
             return chatbar
+        },
+
+        isDark() {
+            return env.site != 'chatgpt' ? undefined
+                : getComputedStyle(document.getElementById('composer-background') || document.documentElement)
+                    .style?.backgroundColor == 'rgb(48, 48, 48)'
         },
 
         tweak() {
@@ -831,8 +837,8 @@
         if (env.site == 'chatgpt') {
 
             // Update button colors on temp chat toggle
-            const chatbarIsBlack = !!document.querySelector('div[class*=bg-black]:not([id$=-btn])')
-            if (chatbarIsBlack != isTempChat) { buttons.update.color() ; isTempChat = chatbarIsBlack }
+            const chatbarIsDark = chatbar.isDark()
+            if (chatbarIsDark != isTempChat) { buttons.update.color() ; isTempChat = chatbarIsDark }
 
             // Add/remove Widescreen button on Canvas mode toggle
             if (canvasWasOpen ^ chatgpt.canvasIsOpen()) {
