@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9
+// @version             2025.2.9.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -257,7 +257,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7169777/chromium/extension/lib/dom.js#sha256-zQFtcjnL+yo1OGSqyN3YeV7f/lc9CFAmC/c01LywvCM=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea4/chromium/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@805b8bb/chromium/extension/components/buttons.js#sha256-R64V45xQ84hF19y9+n49h8eUOK0f0G0ZzI5oW4aDFqA=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@25bb22b/chromium/extension/components/buttons.js#sha256-eck+dX1ksS6kzUUYmdDGDt6hbDoRG+0uwlF3a/aqqaU=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@57baed4/chromium/extension/components/modals.js#sha256-us4mcDuhl2YawwczexrMssCL1kOC70OVpdOjygm5Fc4=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
@@ -304,7 +304,7 @@
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptwidescreen.com' },
-        latestResourceCommitHash: 'e0208e2' // for cached app.json + sites.json + messages.json
+        latestResourceCommitHash: '25bb22b' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -667,17 +667,17 @@
             }
         },
 
-        tooltip(btnType) { // text & position
+        async tooltip(btnType) { // text & position
             const visibleBtnTypes = buttons.getTypes.visible()
-            const ctrAddend = ( env.site == 'perplexity' ? ( location.pathname == '/' ? 94 : 105 )
-                              : env.site == 'poe' ? 35 : 13 ) +25
-            const spreadFactor = env.site == 'perplexity' ? 26.5 : env.site == 'poe' ? 28 : 30.55
+            const ctrAddend = (await buttons.getRightBtn()).getBoundingClientRect().width
+                            + ( env.site == 'perplexity' ? ( chatbar.isTall() ? 39 : 56 )
+                              : env.site == 'poe' ? 28 : 0 )
+            const spreadFactor = env.site == 'perplexity' ? 27.5 : env.site == 'poe' ? 28 : 31
             const iniRoffset = spreadFactor * ( visibleBtnTypes.indexOf(btnType) +1 ) + ctrAddend
                              + ( env.tallChatbar ? -2 : 4 )
-            tooltipDiv.innerText = app.msgs['tooltip_' + btnType + (
-                !/full|wide/i.test(btnType) ? '' : (config[btnType] ? 'OFF' : 'ON'))]
-            tooltipDiv.style.right = `${ // x-pos
-                iniRoffset - tooltipDiv.getBoundingClientRect().width /2 }px`
+            tooltipDiv.innerText = app.msgs[`tooltip_${btnType}${
+                !/full|wide/i.test(btnType) ? '' : (config[btnType] ? 'OFF' : 'ON')}`]
+            tooltipDiv.style.right = `${ iniRoffset - tooltipDiv.getBoundingClientRect().width /2 }px` // x-pos
             tooltipDiv.style.bottom = ( // y-pos
                 env.site == 'perplexity' ? (
                     location.pathname != '/' ? '64px' : ( // not homepage
@@ -685,7 +685,7 @@
                       : document.querySelector(sites.perplexity.selectors.btns.settings) ? 'revert-layer' // logged-in homepage
                       : '50.5vh' // logged-out homepage
                     )
-                ) : '50px' // non-Perplexity sites
+                ) : env.site == 'poe' ? '50px' : '59px'
             )
         }
     }
@@ -782,7 +782,7 @@
     // Stylize TOOLTIP div
     document.head.append(dom.create.style('.cwm-tooltip {'
         + 'background-color: rgba(0,0,0,0.71) ; padding: 5px 6px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;'
-        + 'font-size: 0.85rem ; color: white ;' // font style
+        + 'font-size: 0.85rem ; color: white ; white-space: nowrap ;' // text style
         + `--shadow: 4px 6px 16px 0 rgb(0 0 0 / 38%) ;
               box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) ;`
         + 'position: absolute ; bottom: 58px ; opacity: 0 ; z-index: 9999 ;' // visibility
