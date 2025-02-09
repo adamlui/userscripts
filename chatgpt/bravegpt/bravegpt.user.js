@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.8.1
+// @version               2025.2.8.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3576,8 +3576,11 @@
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     copyBtn.style.cursor = 'default' // remove finger
                     copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
-                    setTimeout(() => { // restore icon/cursor after a bit
-                        copyBtn.style.cursor = 'pointer' ; copyBtn.replaceChild(copySVGs.copy, copySVGs.copied) }, 1355)
+                    copyBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
+                    setTimeout(() => { // restore icon/cursor/tooltip after a bit
+                        copyBtn.replaceChild(copySVGs.copy, copySVGs.copied)
+                        copyBtn.style.cursor = 'pointer' ; copyBtn.dispatchEvent(new Event('mouseenter'))
+                    }, 1355)
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
                 }
 
@@ -3650,6 +3653,8 @@
                         'linear-gradient(to right, transparent, black 20%, black 81%, transparent)' )
                 }
 
+                speakBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
+
                 // Play reply
                 const wholeAnswer = appDiv.querySelector('pre').textContent
                 const cjsSpeakConfig = { voice: 2, pitch: 1, speed: 1.5, onend: handleAudioEnded }
@@ -3690,6 +3695,7 @@
                         + encodeURIComponent(securePayload),
                     method: 'GET', responseType: 'arraybuffer',
                     onload: async resp => {
+                        speakBtn.dispatchEvent(new Event('mouseenter')) // update tooltip
 
                         // Update icons to Playing ones
                         speakSVGscroller.textContent = '' // rid Generating icons
@@ -3716,6 +3722,7 @@
                     speakBtn.style.cursor = 'pointer' // restore cursor
                     speakSVGscroller.textContent = speakSVGscroller.style.animation = '' // rid Playing icons
                     speakSVGscroller.append(speakSVGs.speak) // restore Speak icon
+                    speakBtn.dispatchEvent(new Event('mouseenter')) // restore tooltip
                 }
             }
         },
