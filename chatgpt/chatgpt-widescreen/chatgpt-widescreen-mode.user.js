@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.4
+// @version             2025.2.9.5
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -255,6 +255,7 @@
 // @connect             gm.chatgptwidescreen.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@af6130a/chromium/extension/lib/chatbar.js#sha256-dgfGpagphQt0BNILo/OkZXHT1Hmqq5SFBNGAn5qYkC8=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7169777/chromium/extension/lib/dom.js#sha256-zQFtcjnL+yo1OGSqyN3YeV7f/lc9CFAmC/c01LywvCM=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bbd0ea4/chromium/extension/lib/settings.js#sha256-zmX98Pku2DFY9SI0KBy6Ix6lUJIh8FNtqbAO8nnFE6k=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@6cd06fe/chromium/extension/components/buttons.js#sha256-zJe2jecTqyQEZthXzULHOQMDIOBmqodL79oWUWu5B/s=
@@ -418,6 +419,7 @@
     })))
 
     // Export DEPENDENCIES to imported resources
+    chatbar.imports.import({ env, sites }) // for env.site + sites.selectors
     dom.imports.import({ env }) // for env.ui.scheme
     modals.imports.import({ app, env, updateCheck }) // for app data + env.ui.scheme + modals.about
     settings.imports.import({ app }) // for app.msgs + app.configKeyPrefix refs
@@ -522,47 +524,6 @@
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
-        }
-    }
-
-    const chatbar = {
-
-        get() {
-            let chatbar = document.querySelector(sites[env.site].selectors.input)
-            const lvlsToParent = env.site == 'chatgpt' ? 3 : 2
-            for (let i = 0 ; i < lvlsToParent ; i++) chatbar = chatbar?.parentNode
-            return chatbar
-        },
-
-        isDark() {
-            return env.site != 'chatgpt' ? undefined
-                : getComputedStyle(document.getElementById('composer-background') || document.documentElement)
-                    .style?.backgroundColor == 'rgb(48, 48, 48)'
-        },
-
-        isTall() {
-            return env.site == 'poe' ? true
-                : env.site == 'perplexity' ? this.get()?.getBoundingClientRect().height > 60
-                : /* chatgpt */ !!this.get()?.nextElementSibling
-        },
-
-        tweak() {
-            if (!env.site == 'chatgpt') return
-            const chatbarDiv = chatbar.get() ; if (!chatbarDiv) return
-            const inputArea = chatbarDiv.querySelector(sites[env.site].selectors.input) ; if (!inputArea) return
-            if (chatgpt.canvasIsOpen()) inputArea.parentNode.style.width = '100%'
-            else if (!env.tallChatbar) { // narrow it to not clash w/ buttons
-                const widths = { chatbar: chatbarDiv.getBoundingClientRect().width }
-                const visibleBtnTypes = [...buttons.getTypes.visible(), 'send']
-                visibleBtnTypes.forEach(type =>
-                    widths[type] = buttons[type]?.getBoundingClientRect().width
-                            || document.querySelector(`${sites[env.site].selectors.btns.send}, ${
-                                sites[env.site].selectors.btns.stop}`)?.getBoundingClientRect().width || 0 )
-                    const totalBtnWidths = visibleBtnTypes.reduce((sum, btnType) => sum + widths[btnType], 0)
-                inputArea.parentNode.style.width = `${ // expand to close gap w/ buttons
-                    widths.chatbar - totalBtnWidths -( env.browser.isFF ? 60 : 43 )}px`
-                inputArea.style.width = '100%' // rid h-scrollbar
-            }
         }
     }
 
