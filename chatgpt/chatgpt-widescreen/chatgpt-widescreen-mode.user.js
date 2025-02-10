@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.9.20
+// @version             2025.2.10
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -426,7 +426,6 @@
     modals.imports.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
     settings.imports.import({ app }) // for app.<msgs.configKeyPrefix>
     tooltip.imports.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
-    ui.imports.import({ site: env.site, sites }) // for ui.isFullWin() logic
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
@@ -688,6 +687,8 @@
             new Promise(resolve => setTimeout(() => resolve(null), 3000)) // null if 3s passed
         ])
     }
+
+    ui.imports.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
 
     // Init FULL-MODE states
     config.fullScreen = chatgpt.isFullScreen()
