@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.10.3
+// @version             2025.2.10.4
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -255,13 +255,13 @@
 // @connect             gm.chatgptwidescreen.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9f6064e/chromium/extension/lib/chatbar.js#sha256-ftFYEA4YHsBt2cETs1VCZPlcYYDr/c1YEYsy40H7ONM=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/lib/dom.js#sha256-8nqguSfCQ/Y4BOsJGJaw4tmyy7aJR0sPMrHg3v5fca4=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/lib/settings.js#sha256-t3r5PaenykyE2vBrzJthvGzWQUS48otTK7fe5NFgA2w=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9b6e7bf/chromium/extension/lib/ui.js#sha256-AKezF25kI3Bg+JvVfZsJ4IIRxBUSUVyEeb9D0QpuatA=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@90c6102/chromium/extension/components/buttons.js#sha256-MH1ciHvmU/Cpi9BxtgoYpdU84lUtnhIsMtLqhVgDa+w=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@b745be6/chromium/extension/components/modals.js#sha256-ZMowOxEA/X/ZpLlQaS0Bmj4QG8sY+tu6Q9mdjOT64U4=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9b6e7bf/chromium/extension/components/tooltip.js#sha256-oGsP6vUXxnJnSQtCPsQ9BS22zfCHXFvk9cfRj14FPpM=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/chatbar.js#sha256-CnwifwqxPCAbx1mpYKkL8tY7P9UXBQ8bQoXumuCbZCo=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/dom.js#sha256-kUp8brau8CqgxsDFPSToi4fyjYQovuUw8+tYQXurYT8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/settings.js#sha256-BJlYpWmpGdIFKtPAZ2rvleXI9GuWx5VmPe8+wi83FLs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/ui.js#sha256-Sp/JEpkGx5SO7TY5pkdirv+FUtTiUurrjcHVtwv+/u8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/components/buttons.js#sha256-lVZE+08FSlOGAr5tozL8Ph0KAg+We0KgCSTYGp2fo5Y=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/components/modals.js#sha256-HhGSKVB5mWwGoe2CTOgeE6EJOVnhModoIHvLwpXzP00=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/components/tooltip.js#sha256-ddv/ZN20DkZkTNyO5GsY1k3iFYLZpoR8QG9MxAf4VSA=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -421,11 +421,11 @@
     })))
 
     // Export DEPENDENCIES to imported resources
-    chatbar.imports.import({ site: env.site, sites }) // for conditional logic + sites.selectors
-    dom.imports.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
-    modals.imports.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
-    settings.imports.import({ app }) // for app.<msgs.configKeyPrefix>
-    tooltip.imports.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
+    chatbar.import({ site: env.site, sites }) // for conditional logic + sites.selectors
+    dom.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
+    modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
+    settings.import({ app }) // for app.<msgs.configKeyPrefix>
+    tooltip.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
@@ -564,7 +564,7 @@
     }
 
     const tweaksStyle = dom.create.style()
-    buttons.imports.import({ appName: app.name, chatbar, env, sites, toggleMode, tooltip, tweaksStyle })
+    buttons.import({ appName: app.name, chatbar, env, sites, toggleMode, tooltip, tweaksStyle })
 
     const update = {
 
@@ -688,7 +688,7 @@
         ])
     }
 
-    ui.imports.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
+    ui.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
 
     // Init FULL-MODE states
     config.fullScreen = chatgpt.isFullScreen()
