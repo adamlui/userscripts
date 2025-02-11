@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.10.5
+// @version             2025.2.10.6
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -299,6 +299,7 @@
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
+    ui.import({ site: env.site }) ; env.ui.scheme = ui.getScheme()
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -425,15 +426,12 @@
     modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
     settings.import({ app }) // for app.<msgs.configKeyPrefix>
     tooltip.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
-    ui.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
+    ui.import({ sites }) // for ui.isFullWin() sidebar selector/flag
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
         settings.save('wideScreen', true) ; settings.save('isFirstRun', false) }
     settings.load(sites[env.site].availFeatures)
-
-    // Init SCHEME
-    env.ui.scheme = ui.getScheme()
 
     // Define FUNCTIONS
 
