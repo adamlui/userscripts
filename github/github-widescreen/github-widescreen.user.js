@@ -13,12 +13,12 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.1
+// @version             2025.2.11
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
 // @connect             raw.githubusercontent.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.0/dist/chatgpt.min.js#sha256-Ca0xMG4FWRXlayhPaaSU1RufmmGt31xIF9WUKOwzkco=
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.2/dist/chatgpt.min.js#sha256-HqG1nZFxADY6Gqm39vyC5dWYebEYuyg2Gx35Z9D36F8=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM.xmlHttpRequest
