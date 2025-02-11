@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.10.4
+// @version             2025.2.10.5
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -297,7 +297,6 @@
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1], ui: {}
     }
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.ui.scheme = ui.getScheme()
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -426,11 +425,15 @@
     modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
     settings.import({ app }) // for app.<msgs.configKeyPrefix>
     tooltip.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
+    ui.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
         settings.save('wideScreen', true) ; settings.save('isFirstRun', false) }
     settings.load(sites[env.site].availFeatures)
+
+    // Init SCHEME
+    env.ui.scheme = ui.getScheme()
 
     // Define FUNCTIONS
 
@@ -687,8 +690,6 @@
             new Promise(resolve => setTimeout(() => resolve(null), 3000)) // null if 3s passed
         ])
     }
-
-    ui.import({ site: env.site, sites }) // for ui.isFullWin() logic + sidebar selector/flag
 
     // Init FULL-MODE states
     config.fullScreen = chatgpt.isFullScreen()
