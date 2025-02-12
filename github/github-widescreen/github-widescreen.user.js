@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12
+// @version             2025.2.12.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -41,6 +41,56 @@
             update: 'https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js'
         }
     }
+
+    // Define FUNCTIONS
+
+    function hideSidePanels() {
+        hideBtns.push(...document.querySelectorAll(
+            // File Tree + Symbols Panel buttons in editor
+            'button[aria-expanded="true"][data-testid], '
+            // Hide File Tree button in diff views
+            + 'button[id^="hide"]:not([hidden])'))
+        if (hideBtns.length > 0) // click if needed
+            hideBtns.forEach(btn => { btn.click() })
+    }
+
+    function safeWinOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+
+    function updateCheck() {
+
+        // Fetch latest meta
+        const currentVer = GM_info.script.version
+        GM.xmlHttpRequest({
+            method: 'GET', url: app.urls.update + '?t=' + Date.now(),
+            headers: { 'Cache-Control': 'no-cache' },
+            onload: response => { app.latestVer = /@version +(.*)/.exec(response.responseText)?.[1]
+
+                // Compare versions
+                if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
+                    if (currentSubVer > latestSubVer) break // out of comparison since not outdated
+                    else if (latestSubVer > currentSubVer) { // if outdated
+
+                        // Alert to update
+                        chatgpt.alert('Update available! 🚀', // title
+                            `A newer version of ${app.name} v${app.latestVer} is available!  `
+                                + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" href="'
+                                    + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}.user.js`
+                                + '">View changes</a>',
+                            function update() { // button
+                                GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
+                                    { active: true, insert: true } // focus, make adjacent
+                                ).onclose = () => location.reload() },
+                            '', 383 // width
+                        )
+                        return
+                }}
+
+                chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up-to-date!`)
+    }})}
+
+    // Run MAIN routine
 
     // Register ABOUT menu command
     GM_registerMenuCommand(`💡 About ${app.name}`, async () => {
@@ -88,53 +138,5 @@
                     } else hideSidePanels()
                     prevURL = location.href
     }}})}) ; sidePanelObserver.observe(document.documentElement, { childList: true, subtree: true })
-
-    // Define SCRIPT functions
-
-    function safeWinOpen(url) { window.open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
-
-    function updateCheck() {
-
-        // Fetch latest meta
-        const currentVer = GM_info.script.version
-        GM.xmlHttpRequest({
-            method: 'GET', url: app.urls.update + '?t=' + Date.now(),
-            headers: { 'Cache-Control': 'no-cache' },
-            onload: response => { app.latestVer = /@version +(.*)/.exec(response.responseText)?.[1]
-
-                // Compare versions
-                if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                    const currentSubVer = parseInt(currentVer.split('.')[i], 10) || 0,
-                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
-                    if (currentSubVer > latestSubVer) break // out of comparison since not outdated
-                    else if (latestSubVer > currentSubVer) { // if outdated
-
-                        // Alert to update
-                        chatgpt.alert('Update available! 🚀', // title
-                            `A newer version of ${app.name} v${app.latestVer} is available!  `
-                                + '<a target="_blank" rel="noopener" style="font-size: 0.9rem" href="'
-                                    + `${app.urls.gitHub}/commits/main/greasemonkey/${app.slug}.user.js`
-                                + '">View changes</a>',
-                            function update() { // button
-                                GM_openInTab(app.urls.update.replace('meta.js', 'user.js') + '?t=' + Date.now(),
-                                    { active: true, insert: true } // focus, make adjacent
-                                ).onclose = () => location.reload() },
-                            '', 383 // width
-                        )
-                        return
-                }}
-
-                chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up-to-date!`)
-    }})}
-
-    function hideSidePanels() {
-        hideBtns.push(...document.querySelectorAll(
-            // File Tree + Symbols Panel buttons in editor
-            'button[aria-expanded="true"][data-testid], '
-            // Hide File Tree button in diff views
-            + 'button[id^="hide"]:not([hidden])'))
-        if (hideBtns.length > 0) // click if needed
-            hideBtns.forEach(btn => { btn.click() })
-    }
 
 })()
