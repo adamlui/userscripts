@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12.1
+// @version             2025.2.12.2
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -366,7 +366,7 @@
 
     // Define MENU functions
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -374,33 +374,33 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
 
             // Show "Disabled (extension installed)"
             if (env.extensionInstalled)
-                GM_registerMenuCommand(`${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
+                GM_registerMenuCommand(`${this.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
                     () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
 
             // ...or add settings toggles
             else Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
-                                + menu.state.separator + menu.state.words[+settingIsEnabled]
-                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                                + this.state.separator + this.state.words[+settingIsEnabled]
+                this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
-                        menu.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
+                        this.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => {
                 if (entryType === 'donate' && env.extensionInstalled) return
-                menu.ids.push(GM_registerMenuCommand(
+                this.ids.push(GM_registerMenuCommand(
                     `${ entryType == 'about' ? '💡' : '💖' }`
                         + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                     () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
@@ -436,7 +436,7 @@
         if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -456,7 +456,8 @@
                 }
             }
             const styledStateSpan = dom.create.elem('span')
-            styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
+            styledStateSpan.style.cssText = stateStyles[
+                foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -483,7 +484,7 @@
             || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
     }
 
-    function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
+    function syncConfigToUI() { toolbarMenu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
 
@@ -495,7 +496,7 @@
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
 
-    menu.register() ; if (env.extensionInstalled) return
+    toolbarMenu.register() ; if (env.extensionInstalled) return
 
     // Add RISING PARTICLES styles
     ['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
