@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12.1
+// @version             2025.2.12.2
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -416,7 +416,7 @@
 
     // Define MENU functions
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -424,7 +424,7 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
@@ -435,16 +435,16 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
-                                + ( settings.controls[key].type == 'toggle' ? menu.state.separator
-                                                                            + menu.state.words[+settingIsEnabled]
+                                + ( settings.controls[key].type == 'toggle' ? this.state.separator
+                                                                            + this.state.words[+settingIsEnabled]
                                                                             : `— ${settings.controls[key].status}` )
-                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (settings.controls[key].type == 'toggle') {
                         settings.save(key, !config[key])
                         notify(`${settings.controls[key].label}: ${
-                            menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                            this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                     } else { // Refresh Interval prompt
                         while (true) {
                             const refreshInterval = prompt(
@@ -456,7 +456,7 @@
                                     chatgpt.autoRefresh.deactivate()
                                     chatgpt.autoRefresh.activate(refreshInterval)
                                 }
-                                menu.refresh()
+                                this.refresh()
                                 const minInterval = Math.max(2, config.refreshInterval - 10)
                                 const maxInterval = config.refreshInterval + 10
                                 modals.alert(`${app.msgs.alert_intUpdated}!`,
@@ -469,7 +469,7 @@
             });
 
             // Add About/Donate entries
-            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+            ['about', 'donate'].forEach(entryType => this.ids.push(GM_registerMenuCommand(
                 `${ entryType == 'about' ? '💡' : '💖' }`
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
@@ -503,7 +503,7 @@
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -523,7 +523,8 @@
                 }
             }
             const styledStateSpan = dom.create.elem('span')
-            styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
+            styledStateSpan.style.cssText = stateStyles[
+                foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -782,7 +783,7 @@
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'arDisabled') toggleAutoRefresh()
         if (/arDisabled|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.update.state()
-        menu.refresh() // prefixes/suffixes
+        toolbarMenu.refresh() // prefixes/suffixes
     }
 
     const toggles = {
@@ -823,7 +824,7 @@
                         `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
                 this.div.onclick = () => {
                     settings.save('arDisabled', this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
-                    notify(`${app.msgs.menuLabel_autoRefresh}: ${menu.state.words[+!config.arDisabled]}`)
+                    notify(`${app.msgs.menuLabel_autoRefresh}: ${toolbarMenu.state.words[+!config.arDisabled]}`)
                 }
             },
 
@@ -948,7 +949,7 @@
 
     // Run MAIN routine
 
-    menu.register() // create browser toolbar menu
+    toolbarMenu.register() // create browser toolbar menu
     toggles.sidebar.update.navicon({ preload: true }) // preload sidebar NAVICON variants
 
     // Init UI props
