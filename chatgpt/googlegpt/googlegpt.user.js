@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.12.3
+// @version                  2025.2.12.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -778,7 +778,7 @@
 
     // Define MENU functions
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -787,20 +787,20 @@
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
 
             // Add Proxy API Mode toggle
-            const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
+            const pmLabel = this.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
-                          + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
-            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
+                          + this.state.separator + this.state.words[+config.proxyAPIenabled]
+            this.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
                 env.scriptManager.supportsTooltips ? { title: settings.controls.proxyAPIenabled.helptip } : undefined));
 
             // Add About/Settings entries
-            ['about', 'settings'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+            ['about', 'settings'].forEach(entryType => this.ids.push(GM_registerMenuCommand(
                 entryType == 'about' ? `💡 ${settings.controls.about.label}` : `⚙️ ${app.msgs.menuLabel_settings}`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
@@ -880,7 +880,7 @@
     function notify(msg, pos = '', notifDuration = '', shadow = 'shadow') {
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -917,7 +917,7 @@
             }
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[
-                foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
+                foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -1350,7 +1350,7 @@
                                     key.includes('Disabled') ^ config[key] ? 'OFF' : 'ON' }...`)
                                 settings.save(key, !config[key]) // update config
                                 notify(`${settings.controls[key].label} ${
-                                    menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                                    toolbarMenu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                                 log[key.includes('debug') ? 'info' : 'debug'](`Success! config.${key} = ${config[key]}`)
                             }
                         }
@@ -3039,7 +3039,7 @@
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
             }
             menus.pin.topPos = menus.pin.rightPos = null
-            notify(`${app.msgs.mode_anchor} ${menu.state.words[+config.anchored]}`)
+            notify(`${app.msgs.mode_anchor} ${toolbarMenu.state.words[+config.anchored]}`)
         },
 
         animations(layer) {
@@ -3057,7 +3057,7 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            notify(`${settings.controls[configKey].label} ${menu.state.words[+!config[configKey]]}`)
+            notify(`${settings.controls[configKey].label} ${toolbarMenu.state.words[+!config[configKey]]}`)
         },
 
         autoGet() {
@@ -3065,7 +3065,7 @@
             if (appDiv.querySelector('[class*=standby-btn]')) show.reply.standbyBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
-            notify(`${settings.controls.autoGet.label} ${menu.state.words[+config.autoGet]}`)
+            notify(`${settings.controls.autoGet.label} ${toolbarMenu.state.words[+config.autoGet]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const autoGetToggle = document.querySelector('[id*=autoGet] input')
                 if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
@@ -3104,7 +3104,7 @@
             const modeKey = `${mode}Enabled`
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
-            notify(`${settings.controls[modeKey].label} ${menu.state.words[+config[modeKey]]}`)
+            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
@@ -3130,8 +3130,8 @@
 
         proxyMode() {
             settings.save('proxyAPIenabled', !config.proxyAPIenabled)
-            notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
-            menu.refresh()
+            notify(`${app.msgs.menuLabel_proxyAPImode} ${toolbarMenu.state.words[+config.proxyAPIenabled]}`)
+            toolbarMenu.refresh()
             if (modals.settings.get()) { // update visual states of Settings toggles
                 const proxyToggle = document.querySelector('[id*=proxy] input'),
                       streamingToggle = document.querySelector('[id*=streaming] input')
@@ -3153,7 +3153,7 @@
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
             update.answerPreMaxHeight()
-            notify(`${app.msgs.menuLabel_relatedQueries} ${menu.state.words[+!config.rqDisabled]}`)
+            notify(`${app.msgs.menuLabel_relatedQueries} ${toolbarMenu.state.words[+!config.rqDisabled]}`)
         },
 
         sidebar(mode, state = '') {
@@ -3180,7 +3180,7 @@
             if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
                     || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' } ${
-                       menu.state.words[+config[configKeyName]]}`)
+                       toolbarMenu.state.words[+config[configKeyName]]}`)
         },
 
 
@@ -3212,7 +3212,8 @@
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
                 settings.save('streamingDisabled', !config.streamingDisabled)
-                notify(`${settings.controls.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
+                notify(`${settings.controls.streamingDisabled.label} ${
+                          toolbarMenu.state.words[+!config.streamingDisabled]}`)
             }
         },
 
@@ -4186,7 +4187,7 @@
 
     // Run MAIN routine
 
-    menu.register()
+    toolbarMenu.register()
 
     if (location.search.includes('&udm=2')) return log.debug('Exited from Google Images')
 
