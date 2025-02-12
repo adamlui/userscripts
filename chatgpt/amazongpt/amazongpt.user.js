@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.12.2
+// @version                2025.2.12.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1100,10 +1100,9 @@
               + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + '.modal-buttons {'
                   + `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
-              + '.chatgpt-modal button {'
-                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
-                  + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
-                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+              + '.chatgpt-modal button {' // this.alert() buttons
+                  + `min-width: 121px ; padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
+                  + 'border-radius: 0 !important ; height: 39px ;'
                   + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
               + '.primary-modal-btn { background: black !important ; color: white !important }'
@@ -1131,7 +1130,7 @@
                   + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
                                              : 'justify-self: start' }}` // left-align on desktop
               + '[class*=-modal] p { justify-self: start ; font-size: 20px }'
-              + '[class*=-modal] button { font-size: 14px !important }'
+              + '[class*=-modal] button { font-size: 14px !important ; background: none }'
               + '[class*=-modal-bg] {'
                   + 'pointer-events: auto ;' // override any disabling from site modals
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
