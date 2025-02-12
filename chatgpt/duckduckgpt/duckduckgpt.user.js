@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.12.2
+// @version                2025.2.12.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1333,9 +1333,8 @@
               + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
               + '.modal-buttons {'
                   + `margin: 24px -5px -3px ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
-              + '.chatgpt-modal button {' // modal buttons
-                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
-                  + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
+              + '.chatgpt-modal button {' // this.alert() buttons
+                  + `min-width: 121px ; padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
                   + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
                   + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
@@ -1363,7 +1362,7 @@
                   + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
                                              : 'justify-self: start' }}` // left-align on desktop
               + '[class*=-modal] p { justify-self: start ; font-size: 20px }'
-              + '[class*=-modal] button { font-size: 13px !important }'
+              + '[class*=-modal] button { font-size: 13px !important ; background: none }'
               + '[class*=-modal-bg] {'
                   + 'pointer-events: auto ;' // override any disabling from site modals
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
