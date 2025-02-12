@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.2.12.1
+// @version           2025.2.12.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -70,7 +70,7 @@
 
     // Define FUNCTIONS
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: ['OFF', 'ON']
@@ -78,7 +78,7 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
@@ -86,16 +86,16 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
-                                + ( settings.controls[key].type == 'toggle' ? menu.state.separator
-                                                                            + menu.state.words[+settingIsEnabled]
+                                + ( settings.controls[key].type == 'toggle' ? this.state.separator
+                                                                            + this.state.words[+settingIsEnabled]
                                                                             : `— ${settings.controls[key].status}` )
-                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (settings.controls[key].type == 'toggle') {
                         settings.save(key, !config[key])
                         notify(`${settings.controls[key].label}: ${
-                            menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                            this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                     }
                     syncConfigToUI({ updatedKey: key })
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
@@ -107,7 +107,7 @@
         if (config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -119,7 +119,7 @@
         if (foundState) { // append styled state word
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
-                foundState == menu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                foundState == toolbarMenu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
                                                   : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
@@ -130,12 +130,12 @@
             shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
         else if (options?.updatedKey == 'adBlock')
             adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
-        menu.refresh() // prefixes/suffixes
+        toolbarMenu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
 
-    menu.register()
+    toolbarMenu.register()
 
     // Config keys
     const CONFIGS = { BUTTON_REWORK: false }
