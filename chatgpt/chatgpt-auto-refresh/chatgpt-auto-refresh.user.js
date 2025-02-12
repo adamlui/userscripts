@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12
+// @version             2025.2.12.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -422,6 +422,11 @@
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
+        refresh() {
+            if (typeof GM_unregisterMenuCommand == 'undefined') return
+            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+        },
+
         register() {
 
             // Init prompt setting status labels
@@ -469,11 +474,6 @@
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
-        },
-
-        refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
 
@@ -533,89 +533,6 @@
     const modals = {
         stack: [], // of types of undismissed modals
         class: `${app.slug}-modal`,
-
-        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
-            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
-                  alert = document.getElementById(alertID).firstChild
-            this.init(alert) // add classes + rising particles bg
-            return alert
-        },
-
-        open(modalType, modalSubType) {
-            const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
-            if (!modal) return // since no div returned
-            this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
-            this.init(modal) // add classes + rising particles bg
-            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-        },
-
-        init(modal) {
-            if (!this.styles) this.stylize() // to init/append stylesheet
-            modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
-            dom.addRisingParticles(modal)
-        },
-
-        stylize() {
-            if (!this.styles) {
-                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
-                document.head.append(this.styles)
-            }
-            this.styles.innerText = (
-                `.no-user-select {
-                    user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none }`
-              + `.${this.class} {` // modals
-                  + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
-                      + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
-                  + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
-                  + `color: ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
-                  + `background-image: linear-gradient(180deg, ${
-                       env.ui.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
-              + `.${this.class} [class*=modal-close-btn] {`
-                  + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
-                  + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-              + `.${this.class} [class*=modal-close-btn] svg { height: 10px }`
-              + `.${this.class} [class*=modal-close-btn] path {`
-                  + `${ env.ui.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-              + ( env.ui.scheme == 'dark' ?  // invert dark mode hover paths
-                    `.${this.class} [class*=modal-close-btn]:hover path { stroke: black ; fill: black }` : '' )
-              + `.${this.class} [class*=modal-close-btn]:hover { background-color: #f2f2f2 }` // hover underlay
-              + `.${this.class} [class*=modal-close-btn] svg { margin: 11.5px }` // center SVG for hover underlay
-              + `.${this.class} a { color: #${ env.ui.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-              + `.${this.class} h2 { font-weight: bold }`
-              + `.${this.class} button {`
-                  + '--btn-transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;'
-                  + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
-                  + 'border-radius: 0 !important ;' // square borders
-                  + 'transition: var(--btn-transition) ;' // smoothen hover fx
-                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) ;'
-                  + 'cursor: pointer !important ;' // add finger cursor
-                  + `border: 1px solid ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
-                  + 'padding: 8px !important ; min-width: 102px }' // resize
-              + `.${this.class} button:hover {` // add zoom, re-scheme
-                  + 'transform: scale(1.055) ; color: black !important ;'
-                  + `background-color: #${ env.ui.scheme == 'dark' ? '00cfff' : '9cdaff' } !important }`
-              + ( !env.browser.isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
-              + `.about-em { color: ${ env.ui.scheme == 'dark' ? 'white' : 'green' } !important }`
-            )
-        },
-
-        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
-            const modalBG = modal.parentNode
-            new MutationObserver(([mutation], obs) => {
-                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
-                        modals.stack.shift() // remove this modal type from stack 1st
-                        const prevModalType = modals.stack[0]
-                        if (prevModalType) { // open it
-                            modals.stack.shift() // remove type from stack since re-added on open
-                            modals.open(prevModalType)
-                        }
-                    }
-                    obs.disconnect()
-                }})
-            }).observe(modalBG.parentNode, { childList: true, subtree: true })
-        },
 
         about() {
 
@@ -678,6 +595,13 @@
             return aboutModal
         },
 
+        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
+            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
+                  alert = document.getElementById(alertID).firstChild
+            this.init(alert) // add classes + rising particles bg
+            return alert
+        },
+
         donate() {
 
             // Show modal
@@ -734,6 +658,84 @@
             return donateModal
         },
 
+        init(modal) {
+            if (!this.styles) this.stylize() // to init/append stylesheet
+            modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
+            dom.addRisingParticles(modal)
+        },
+
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        modals.stack.shift() // remove this modal type from stack 1st
+                        const prevModalType = modals.stack[0]
+                        if (prevModalType) { // open it
+                            modals.stack.shift() // remove type from stack since re-added on open
+                            modals.open(prevModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
+        },
+
+        open(modalType, modalSubType) {
+            const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
+            if (!modal) return // since no div returned
+            this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
+            this.init(modal) // add classes + rising particles bg
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+        },
+
+        safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
+
+        stylize() {
+            if (!this.styles) {
+                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
+                document.head.append(this.styles)
+            }
+            this.styles.innerText = (
+                `.no-user-select {
+                    user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none }`
+              + `.${this.class} {` // modals
+                  + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,'
+                      + 'Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;'
+                  + 'padding: 20px 25px 24px 25px !important ; font-size: 20px ;'
+                  + `color: ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
+                  + `background-image: linear-gradient(180deg, ${
+                       env.ui.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) }`
+              + `.${this.class} [class*=modal-close-btn] {`
+                  + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
+                  + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
+              + `.${this.class} [class*=modal-close-btn] svg { height: 10px }`
+              + `.${this.class} [class*=modal-close-btn] path {`
+                  + `${ env.ui.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + ( env.ui.scheme == 'dark' ?  // invert dark mode hover paths
+                    `.${this.class} [class*=modal-close-btn]:hover path { stroke: black ; fill: black }` : '' )
+              + `.${this.class} [class*=modal-close-btn]:hover { background-color: #f2f2f2 }` // hover underlay
+              + `.${this.class} [class*=modal-close-btn] svg { margin: 11.5px }` // center SVG for hover underlay
+              + `.${this.class} a { color: #${ env.ui.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + `.${this.class} h2 { font-weight: bold }`
+              + `.${this.class} button {`
+                  + '--btn-transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;'
+                  + 'font-size: 14px ; text-transform: uppercase ;' // shrink/uppercase labels
+                  + 'border-radius: 0 !important ;' // square borders
+                  + 'transition: var(--btn-transition) ;' // smoothen hover fx
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) ;'
+                  + 'cursor: pointer !important ;' // add finger cursor
+                  + `border: 1px solid ${ env.ui.scheme == 'dark' ? 'white' : 'black' } !important ;`
+                  + 'padding: 8px !important ; min-width: 102px }' // resize
+              + `.${this.class} button:hover {` // add zoom, re-scheme
+                  + 'transform: scale(1.055) ; color: black !important ;'
+                  + `background-color: #${ env.ui.scheme == 'dark' ? '00cfff' : '9cdaff' } !important }`
+              + ( !env.browser.isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
+              + `.about-em { color: ${ env.ui.scheme == 'dark' ? 'white' : 'green' } !important }`
+            )
+        },
+
         update: {
             width: 377,
 
@@ -767,22 +769,20 @@
                     '', '', modals.update.width
                 )
             }
-        },
-
-        safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+        }
     }
 
     // Define UI functions
+
+    function getScheme() {
+        return document.documentElement.className
+            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+    }
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'arDisabled') toggleAutoRefresh()
         if (/arDisabled|toggleHidden/.test(options?.updatedKey)) toggles.sidebar.update.state()
         menu.refresh() // prefixes/suffixes
-    }
-
-    function getScheme() {
-        return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
     }
 
     const toggles = {
