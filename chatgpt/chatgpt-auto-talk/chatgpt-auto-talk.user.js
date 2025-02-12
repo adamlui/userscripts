@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12.1
+// @version             2025.2.12.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -395,7 +395,7 @@
 
     // Define MENU functions
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -403,7 +403,7 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
@@ -411,18 +411,18 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
-                                + menu.state.separator + menu.state.words[+settingIsEnabled]
-                menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                                + this.state.separator + this.state.words[+settingIsEnabled]
+                this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
-                        menu.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                        this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
             // Add About/Donate entries
-            ['about', 'donate'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+            ['about', 'donate'].forEach(entryType => this.ids.push(GM_registerMenuCommand(
                 `${ entryType == 'about' ? '💡' : '💖' }`
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
@@ -456,7 +456,7 @@
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -476,7 +476,8 @@
                 }
             }
             const styledStateSpan = dom.create.elem('span')
-            styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
+            styledStateSpan.style.cssText = stateStyles[
+                foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -734,7 +735,7 @@
 
     function syncConfigToUI() {
         toggles.sidebar.update.state() // based on config.autoTalkDisabled + config.toggleHidden
-        menu.refresh() // prefixes/suffixes
+        toolbarMenu.refresh() // prefixes/suffixes
     }
 
     const toggles = {
@@ -776,7 +777,7 @@
                 this.div.onclick = () => {
                     settings.save('autoTalkDisabled', this.toggleInput.checked)
                     syncConfigToUI({ updatedKey: 'autoTalkDisabled' })
-                    notify(`${app.msgs.mode_autoTalk}: ${menu.state.words[+!config.autoTalkDisabled]}`)
+                    notify(`${app.msgs.mode_autoTalk}: ${toolbarMenu.state.words[+!config.autoTalkDisabled]}`)
                 }
             },
 
@@ -897,7 +898,7 @@
 
     // Run MAIN routine
 
-    menu.register() // create browser toolbar menu
+    toolbarMenu.register() // create browser toolbar menu
     toggles.sidebar.update.navicon({ preload: true }) // preload sidebar NAVICON variants
 
     // Init BROWSER/UI props
