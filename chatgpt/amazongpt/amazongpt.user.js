@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.12
+// @version                2025.2.12.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -421,6 +421,12 @@
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
+        refresh() {
+            if (typeof GM_unregisterMenuCommand == 'undefined') {
+                log.debug('GM_unregisterMenuCommand not supported.') ; return }
+            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+        },
+
         register() {
 
             // Add Proxy API Mode toggle
@@ -435,12 +441,6 @@
                 entryType == 'about' ? `💡 ${settings.controls.about.label}` : `⚙️ ${app.msgs.menuLabel_settings}`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
-        },
-
-        refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') {
-                log.debug('GM_unregisterMenuCommand not supported.') ; return }
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
 
@@ -566,300 +566,6 @@
         stack: [], // of types of undismissed modals
         class: `${app.slug}-modal`,
 
-        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
-            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
-                  alert = document.getElementById(alertID).firstChild
-            this.init(alert) // add classes/listeners/hack bg/glowup btns
-            return alert
-        },
-
-        open(modalType, modalSubType) { // custom ones
-            const modal = modalSubType ? modals[modalType][modalSubType]()
-                        : (modals[modalType].show || modals[modalType])()
-            if (!modal) return // since no div returned
-            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
-                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
-                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
-            }
-            this.init(modal) // add classes/listeners/hack bg/glowup btns
-            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
-            if (!modals.handlers.dismiss.key.added) { // add key listener to dismiss modals
-                document.addEventListener('keydown', modals.handlers.dismiss.key) ; modals.handlers.dismiss.key.added = true }
-        },
-
-        init(modal) {
-            if (!this.styles) this.stylize() // to init/append stylesheet
-
-            // Add classes
-            modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
-
-            // Add listeners
-            modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
-            modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
-            if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
-                const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
-                dismissElems.forEach(elem => elem.onclick = modals.handlers.dismiss.click)
-            }
-
-            // Hack BG
-            dom.addRisingParticles(modal)
-            setTimeout(() => { // dim bg
-                modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
-                    env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
-                modal.parentNode.classList.add('animated')
-            }, 100) // delay for transition fx
-
-            // Glowup btns
-            if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
-        },
-
-        stylize() {
-            if (!this.styles) {
-                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
-                document.head.append(this.styles)
-            }
-            this.styles.innerText = (
-                ':root {' // vars
-                    + '--transition: opacity 0.65s cubic-bezier(0.165,0.84,0.44,1),' // for modal fade-in
-                                  + 'transform 0.55s cubic-bezier(0.165,0.84,0.44,1) !important ;' // for modal move-in
-                    + '--bg-transition: background-color 0.25s ease !important ;' // for modal bg dim
-                    + '--btn-transition: transform 0.15s ease ;' // for modal button hover-zoom
-                    + '--settings-transition: transform 0.1s ease }' // for Settings entry hover-zoom
-
-                // Main modal styles
-              + '@keyframes modal-zoom-fade-out {'
-                  + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
-                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
-              + '.chatgpt-modal > div {'
-                  + 'padding: 20px 30px 24px 17px !important ;' // increase alert padding
-                  + 'background-color: white !important ; color: black }'
-              + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
-              + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
-              + '.modal-buttons {'
-                  + `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
-              + '.chatgpt-modal button {'
-                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
-                  + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
-                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
-                  + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
-                  + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
-              + '.primary-modal-btn { background: black !important ; color: white !important }'
-              + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
-              + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
-                  ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
-                      + 'background-color: black !important ; color: white !important }'
-                  + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
-                  + '.chatgpt-modal a { color: #00cfff !important }'
-                  + '.chatgpt-modal button:hover {'
-                      + 'background-color: #00cfff !important ; color: black !important }' ) : '' )
-              + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
-              + '[class*=modal-close-btn] {'
-                  + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
-                  + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
-              + `[class*=modal-close-btn] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
-                                                                             : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
-              + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
-                    '[class*=modal-close-btn]:hover path { stroke: black ; fill: black }' : '' )
-              + '[class*=modal-close-btn]:hover { background-color: #f2f2f2 }' // hover underlay
-              + '[class*=modal-close-btn] svg { margin: 11.5px }' // center SVG for hover underlay
-              + '[class*=-modal] h2 {'
-                  + 'font-size: 27px ; font-weight: bold ; line-height: 32px ; padding: 0 ;'
-                  + 'margin: 9px 0 22px !important ;'
-                  + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
-                                             : 'justify-self: start' }}` // left-align on desktop
-              + '[class*=-modal] p { justify-self: start ; font-size: 20px }'
-              + '[class*=-modal] button { font-size: 14px }'
-              + '[class*=-modal-bg] {'
-                  + 'pointer-events: auto ;' // override any disabling from site modals
-                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
-                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 ;' // align
-                  + 'transition: var(--bg-transition) ;' // for bg dim
-                      + '-webkit-transition: var(--bg-transition) ; -moz-transition: var(--bg-transition) ;'
-                      + '-o-transition: var(--bg-transition) ; -ms-transition: var(--bg-transition) }'
-              + '[class*=-modal-bg].animated > div {'
-                  + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
-              + '[class$=-modal] {' // native modals + chatgpt.alert()s
-                  + 'position: absolute ;' // to be click-draggable
-                  + 'opacity: 0 ;' // to fade-in
-                  + `background-image: linear-gradient(180deg, ${
-                       env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
-                  + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
-                  + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
-                  + 'transition: var(--transition) ;' // for fade-in + move-in
-                      + '-webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;'
-                      + '-o-transition: var(--transition) ; -ms-transition: var(--transition) }'
-              + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
-                    '[class$=-modal] button:hover { transform: scale(1.055) }'
-                  + '[class$=-modal] button { transition: var(--btn-transition) ;'
-                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }' ))
-
-              // Glowing modal btns
-              + ':root { --glow-color: hsl(186 100% 69%) }'
-              + `.glowing-btn {
-                    perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;
-                    --shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;
-                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
-              + '.glowing-txt {'
-                  + 'animation: text-flicker 3s linear infinite ;'
-                  + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
-                  + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
-                  + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
-              + '.faulty-letter {'
-                  + 'opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
-                  + ( !env.browser.isMobile ? 'background: var(--glow-color) ;'
-                        + 'transform: translateY(120%) rotateX(95deg) scale(1, 0.35)' : '' ) + '}'
-              + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
-              + '.glowing-btn:hover .glowing-txt { animation: none }'
-              + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
-              + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
-              + '.glowing-btn:hover:after { opacity: 1 }'
-              + '@keyframes faulty-flicker {'
-                  + '0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
-                  + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 }'
-                  + '87% { opacity: 1 }}'
-              + '@keyframes text-flicker {'
-                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
-                  + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 }'
-                  + '70% { opacity: 0.7 } 72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
-              + '@keyframes border-flicker {'
-                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
-                  + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
-
-              // Settings modal
-              + `#${app.slug}-settings {
-                    min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;
-                    word-wrap: break-word ; border-radius: 15px ;
-                    ${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' };
-                    --shadow: 0 30px 60px rgba(0,0,0,0.12) ;
-                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
-              + `#a${app.slug}-settings-title {`
-                  + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
-                  + `margin: 0 ${ env.browser.isMobile ? 6 : 24 }px 8px 0 }`
-              + `#${app.slug}-settings-title h4 {`
-                  + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -25px }`
-              + `#${app.slug}-settings ul {`
-                  + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
-                  + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
-              + ( env.browser.isPhone ? '' : ( `#${app.slug}-settings ul:first-of-type {` // color desktop middle separator
-                  + `border-right: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}` ))
-              + `#${app.slug}-settings li {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
-                  + 'height: 37px ; padding: 6px 10px 4px ; font-size: 15.5px ; list-style: none ;'
-                  + `border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add separators
-                  + 'border-radius: 3px ;' // slightly round highlight strip
-                  + 'transition: var(--settings-transition) ;' // for hover-zoom
-                      + '-webkit-transition: var(--settings-transition) ; -moz-transition: var(--settings-transition) ;'
-                      + '-o-transition: var(--settings-transition) ; -ms-transition: var(--settings-transition) }'
-              + `#${app.slug}-settings li.active {`
-                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
-                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
-                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}` // for icons
-              + `#${app.slug}-settings li label {`
-                  + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
-                  + 'font-weight: normal }' // override Amazon boldening
-              + `#${app.slug}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
-              + `#${app.slug}-settings li, #${app.slug}-settings li label { cursor: pointer }` // add finger on hover
-              + `#${app.slug}-settings li:hover {`
-                  + 'opacity: 1 ;'
-                  + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.15)' }}`
-              + `#${app.slug}-settings li > input { float: right }` // pos toggles
-              + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
-              + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
-                  + 'position: relative ; top: 3px ; margin-left: 4px }'
-              + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
-                  : ( '#scheme-settings-entry svg[id*=arrows-cycle],'
-                            + '.chatgpt-notif svg[id*=arrows-cycle] { animation: rotate 5s linear infinite }' ))
-              + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
-              + '#about-settings-entry > span {' // outer About status span
-                  + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
-                  + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
-                            'mask-image: linear-gradient('
-                                + 'to right, transparent, black 20%, black 89%, transparent) ;'
-                  + '-webkit-mask-image: linear-gradient('
-                                + 'to right, transparent, black 20%, black 89%, transparent)' )}}`
-              + '#about-settings-entry > span > div {'
-                  + `text-wrap: nowrap ; ${
-                        config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
-              + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
-              + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
-            )
-        },
-
-        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
-            const modalBG = modal.parentNode
-            new MutationObserver(([mutation], obs) => {
-                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
-                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
-                        modals.stack.shift() // remove this modal type from stack 1st
-                        const prevModalType = modals.stack[0]
-                        if (prevModalType) { // open it
-                            modals.stack.shift() // remove type from stack since re-added on open
-                            modals.open(prevModalType)
-                        }
-                    }
-                    obs.disconnect()
-                }})
-            }).observe(modalBG.parentNode, { childList: true, subtree: true })
-        },
-
-        hide(modal) {
-            const modalContainer = modal?.parentNode ; if (!modalContainer) return
-            modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
-            modalContainer.onanimationend = () => modalContainer.remove()
-        },
-
-        handlers: {
-
-            dismiss: { // to dismiss native modals
-                click(event) {
-                    const clickedElem = event.target
-                    if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]'))
-                        modals.hide((clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild)
-                },
-
-                key(event) {
-                    if (event.key.startsWith('Esc') || event.keyCode == 27)
-                        modals.hide(document.querySelector('[class$=-modal]'))
-                }
-            },
-
-            drag: {
-
-                mousedown(event) { // find modal, attach listeners, init XY offsets
-                    if (event.button != 0) return // prevent non-left-click drag
-                    if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
-                    modals.handlers.drag.draggableElem = event.currentTarget
-                    modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
-                    event.preventDefault(); // prevent sub-elems like icons being draggable
-                    ['mousemove', 'mouseup'].forEach(eventType =>
-                        document.addEventListener(eventType, modals.handlers.drag[eventType]))
-                    const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect()
-                    modals.handlers.drag.offsetX = event.clientX - draggableElemRect.left +21
-                    modals.handlers.drag.offsetY = event.clientY - draggableElemRect.top +12
-                },
-
-                mousemove(event) { // drag modal
-                    if (modals.handlers.drag.draggableElem) {
-                        const newX = event.clientX - modals.handlers.drag.offsetX,
-                              newY = event.clientY - modals.handlers.drag.offsetY
-                        Object.assign(modals.handlers.drag.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
-                    }
-                },
-
-                mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
-                    modals.handlers.drag.draggableElem.style.cursor = 'inherit';
-                    ['mousemove', 'mouseup'].forEach(eventType =>
-                        document.removeEventListener(eventType, modals.handlers.drag[eventType]))
-                    modals.handlers.drag.draggableElem = null
-                }
-            }
-        },
-
         about() {
             log.caller = 'modals.about()'
             log.debug('Showing About modal...')
@@ -929,6 +635,123 @@
             return aboutModal
         },
 
+        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from chatgpt.alert()
+            const alertID = chatgpt.alert(title, msg, btns, checkbox, width),
+                  alert = document.getElementById(alertID).firstChild
+            this.init(alert) // add classes/listeners/hack bg/glowup btns
+            return alert
+        },
+
+        handlers: {
+
+            dismiss: { // to dismiss native modals
+                click(event) {
+                    const clickedElem = event.target
+                    if (clickedElem == event.currentTarget || clickedElem.closest('[class*=-close-btn]'))
+                        modals.hide((clickedElem.closest('[class*=-modal-bg]') || clickedElem).firstChild)
+                },
+
+                key(event) {
+                    if (event.key.startsWith('Esc') || event.keyCode == 27)
+                        modals.hide(document.querySelector('[class$=-modal]'))
+                }
+            },
+
+            drag: {
+
+                mousedown(event) { // find modal, attach listeners, init XY offsets
+                    if (event.button != 0) return // prevent non-left-click drag
+                    if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
+                    modals.handlers.drag.draggableElem = event.currentTarget
+                    modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
+                    event.preventDefault(); // prevent sub-elems like icons being draggable
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.addEventListener(eventType, modals.handlers.drag[eventType]))
+                    const draggableElemRect = modals.handlers.drag.draggableElem.getBoundingClientRect()
+                    modals.handlers.drag.offsetX = event.clientX - draggableElemRect.left +21
+                    modals.handlers.drag.offsetY = event.clientY - draggableElemRect.top +12
+                },
+
+                mousemove(event) { // drag modal
+                    if (modals.handlers.drag.draggableElem) {
+                        const newX = event.clientX - modals.handlers.drag.offsetX,
+                              newY = event.clientY - modals.handlers.drag.offsetY
+                        Object.assign(modals.handlers.drag.draggableElem.style, { left: `${newX}px`, top: `${newY}px` })
+                    }
+                },
+
+                mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
+                    modals.handlers.drag.draggableElem.style.cursor = 'inherit';
+                    ['mousemove', 'mouseup'].forEach(eventType =>
+                        document.removeEventListener(eventType, modals.handlers.drag[eventType]))
+                    modals.handlers.drag.draggableElem = null
+                }
+            }
+        },
+
+        hide(modal) {
+            const modalContainer = modal?.parentNode ; if (!modalContainer) return
+            modalContainer.style.animation = 'modal-zoom-fade-out 0.165s ease-out'
+            modalContainer.onanimationend = () => modalContainer.remove()
+        },
+
+        init(modal) {
+            if (!this.styles) this.stylize() // to init/append stylesheet
+
+            // Add classes
+            modal.classList.add('no-user-select', this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
+
+            // Add listeners
+            modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
+            modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
+            if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
+                const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
+                dismissElems.forEach(elem => elem.onclick = modals.handlers.dismiss.click)
+            }
+
+            // Hack BG
+            dom.addRisingParticles(modal)
+            setTimeout(() => { // dim bg
+                modal.parentNode.style.backgroundColor = `rgba(67,70,72,${
+                    env.ui.app.scheme == 'dark' ? 0.62 : 0.33 })`
+                modal.parentNode.classList.add('animated')
+            }, 100) // delay for transition fx
+
+            // Glowup btns
+            if (env.ui.app.scheme == 'dark' && !config.fgAnimationsDisabled) toggle.btnGlow()
+        },
+
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (modals.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        modals.stack.shift() // remove this modal type from stack 1st
+                        const prevModalType = modals.stack[0]
+                        if (prevModalType) { // open it
+                            modals.stack.shift() // remove type from stack since re-added on open
+                            modals.open(prevModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
+        },
+
+        open(modalType, modalSubType) { // custom ones
+            const modal = modalSubType ? modals[modalType][modalSubType]()
+                        : (modals[modalType].show || modals[modalType])()
+            if (!modal) return // since no div returned
+            if (settings.controls[modalType]?.type != 'prompt') { // add to stack
+                this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType)
+                log.debug(`Modal stack: ${JSON.stringify(modals.stack)}`)
+            }
+            this.init(modal) // add classes/listeners/hack bg/glowup btns
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+            if (!modals.handlers.dismiss.key.added) { // add key listener to dismiss modals
+                document.addEventListener('keydown', modals.handlers.dismiss.key) ; modals.handlers.dismiss.key.added = true }
+        },
+
         replyLang() {
             log.caller = 'modals.replyLang()'
             while (true) {
@@ -952,6 +775,8 @@
                 }
             }
         },
+
+        safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
 
         scheme() {
             log.caller = 'modals.scheme()'
@@ -1251,6 +1076,183 @@
             }
         },
 
+        stylize() {
+            if (!this.styles) {
+                this.styles = dom.create.style(null, { id: `${this.class}-styles` })
+                document.head.append(this.styles)
+            }
+            this.styles.innerText = (
+                ':root {' // vars
+                    + '--transition: opacity 0.65s cubic-bezier(0.165,0.84,0.44,1),' // for modal fade-in
+                                  + 'transform 0.55s cubic-bezier(0.165,0.84,0.44,1) !important ;' // for modal move-in
+                    + '--bg-transition: background-color 0.25s ease !important ;' // for modal bg dim
+                    + '--btn-transition: transform 0.15s ease ;' // for modal button hover-zoom
+                    + '--settings-transition: transform 0.1s ease }' // for Settings entry hover-zoom
+
+                // Main modal styles
+              + '@keyframes modal-zoom-fade-out {'
+                  + '0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }'
+                  + '100% { opacity: 0 ; transform: scale(1.35) }}'
+              + '.chatgpt-modal > div {'
+                  + 'padding: 20px 30px 24px 17px !important ;' // increase alert padding
+                  + 'background-color: white !important ; color: black }'
+              + '.chatgpt-modal p { margin: -8px 0 -14px 4px ; font-size: 22px ; line-height: 31px }'
+              + `.chatgpt-modal a { color: #${ env.ui.app.scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }`
+              + '.modal-buttons {'
+                  + `margin: 35px -5px 2px ; ${ env.browser.isMobile ? -5 : -15 }px !important ; width: 100% }`
+              + '.chatgpt-modal button {'
+                  + 'font-size: 1rem ; text-transform: uppercase ; min-width: 121px ;'
+                  + `padding: ${ env.browser.isMobile ? '7px' : '4px 10px' } !important ;`
+                  + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
+                  + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + '!important ;'
+                  + `${ env.ui.app.scheme == 'dark' ? 'background: none ; color: white' : '' }}`
+              + '.primary-modal-btn { background: black !important ; color: white !important }'
+              + '.chatgpt-modal button:hover { background-color: #9cdaff !important ; color: black !important }'
+              + ( env.ui.app.scheme == 'dark' ? // darkmode chatgpt.alert() styles
+                  ( '.chatgpt-modal > div, .chatgpt-modal button:not(.primary-modal-btn) {'
+                      + 'background-color: black !important ; color: white !important }'
+                  + '.primary-modal-btn { background: hsl(186 100% 69%) !important ; color: black !important }'
+                  + '.chatgpt-modal a { color: #00cfff !important }'
+                  + '.chatgpt-modal button:hover {'
+                      + 'background-color: #00cfff !important ; color: black !important }' ) : '' )
+              + `.${modals.class} { display: grid ; place-items: center }` // for centered icon/logo
+              + '[class*=modal-close-btn] {'
+                  + 'position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;'
+                  + 'cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px }'
+              + `[class*=modal-close-btn] path {${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white'
+                                                                             : 'stroke: #9f9f9f ; fill: #9f9f9f' }}`
+              + ( env.ui.app.scheme == 'dark' ?  // invert dark mode hover paths
+                    '[class*=modal-close-btn]:hover path { stroke: black ; fill: black }' : '' )
+              + '[class*=modal-close-btn]:hover { background-color: #f2f2f2 }' // hover underlay
+              + '[class*=modal-close-btn] svg { margin: 11.5px }' // center SVG for hover underlay
+              + '[class*=-modal] h2 {'
+                  + 'font-size: 27px ; font-weight: bold ; line-height: 32px ; padding: 0 ;'
+                  + 'margin: 9px 0 22px !important ;'
+                  + `${ env.browser.isMobile ? 'text-align: center' // center on mobile
+                                             : 'justify-self: start' }}` // left-align on desktop
+              + '[class*=-modal] p { justify-self: start ; font-size: 20px }'
+              + '[class*=-modal] button { font-size: 14px }'
+              + '[class*=-modal-bg] {'
+                  + 'pointer-events: auto ;' // override any disabling from site modals
+                  + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;' // expand to full view-port
+                  + 'display: flex ; justify-content: center ; align-items: center ; z-index: 9999 ;' // align
+                  + 'transition: var(--bg-transition) ;' // for bg dim
+                      + '-webkit-transition: var(--bg-transition) ; -moz-transition: var(--bg-transition) ;'
+                      + '-o-transition: var(--bg-transition) ; -ms-transition: var(--bg-transition) }'
+              + '[class*=-modal-bg].animated > div {'
+                  + 'z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }'
+              + '[class$=-modal] {' // native modals + chatgpt.alert()s
+                  + 'position: absolute ;' // to be click-draggable
+                  + 'opacity: 0 ;' // to fade-in
+                  + `background-image: linear-gradient(180deg, ${
+                       env.ui.app.scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;`
+                  + `border: 1px solid ${ env.ui.app.scheme == 'dark' ? 'white' : '#b5b5b5' } !important ;`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;`
+                  + 'transform: translateX(-3px) translateY(7px) ;' // offset to move-in from
+                  + 'transition: var(--transition) ;' // for fade-in + move-in
+                      + '-webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;'
+                      + '-o-transition: var(--transition) ; -ms-transition: var(--transition) }'
+              + ( config.fgAnimationsDisabled || env.browser.isMobile ? '' : (
+                    '[class$=-modal] button:hover { transform: scale(1.055) }'
+                  + '[class$=-modal] button { transition: var(--btn-transition) ;'
+                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
+                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }' ))
+
+              // Glowing modal btns
+              + ':root { --glow-color: hsl(186 100% 69%) }'
+              + `.glowing-btn {
+                    perspective: 2em ; font-weight: 900 ; animation: border-flicker 2s linear infinite ;
+                    --shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color) ;
+                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
+              + '.glowing-txt {'
+                  + 'animation: text-flicker 3s linear infinite ;'
+                  + '-webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + '-moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) ;'
+                  + 'text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color) }'
+              + '.faulty-letter {'
+                  + 'opacity: 0.5 ; animation: faulty-flicker 2s linear infinite }'
+                  + ( !env.browser.isMobile ? 'background: var(--glow-color) ;'
+                        + 'transform: translateY(120%) rotateX(95deg) scale(1, 0.35)' : '' ) + '}'
+              + '.glowing-btn:hover { color: rgba(0,0,0,0.8) ; text-shadow: none ; animation: none }'
+              + '.glowing-btn:hover .glowing-txt { animation: none }'
+              + '.glowing-btn:hover .faulty-letter { animation: none ; text-shadow: none ; opacity: 1 }'
+              + '.glowing-btn:hover:before { filter: blur(1.5em) ; opacity: 1 }'
+              + '.glowing-btn:hover:after { opacity: 1 }'
+              + '@keyframes faulty-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 0.1 } 4% { opacity: 0.5 } 19% { opacity: 0.5 }'
+                  + '21% { opacity: 0.1 } 23% { opacity: 1 } 80% { opacity: 0.5 } 83% { opacity: 0.4 }'
+                  + '87% { opacity: 1 }}'
+              + '@keyframes text-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 8% { opacity: 0.1 } 9% { opacity: 1 }'
+                  + '12% { opacity: 0.1 } 20% { opacity: 1 } 25% { opacity: 0.3 } 30% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 72% { opacity: 0.2 } 77% { opacity: 0.9 } 100% { opacity: 0.9 }}'
+              + '@keyframes border-flicker {'
+                  + '0% { opacity: 0.1 } 2% { opacity: 1 } 4% { opacity: 0.1 } 8% { opacity: 1 }'
+                  + '70% { opacity: 0.7 } 100% { opacity: 1 }}'
+
+              // Settings modal
+              + `#${app.slug}-settings {
+                    min-width: ${ env.browser.isPortrait ? 288 : 755 }px ; max-width: 75vw ; margin: 12px 23px ;
+                    word-wrap: break-word ; border-radius: 15px ;
+                    ${ env.ui.app.scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: black ; fill: black' };
+                    --shadow: 0 30px 60px rgba(0,0,0,0.12) ;
+                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) }`
+              + `#a${app.slug}-settings-title {`
+                  + 'font-weight: bold ; line-height: 19px ; text-align: center ;'
+                  + `margin: 0 ${ env.browser.isMobile ? 6 : 24 }px 8px 0 }`
+              + `#${app.slug}-settings-title h4 {`
+                  + `font-size: ${ env.browser.isPortrait ? 26 : 31 }px ; font-weight: bold ; margin-top: -25px }`
+              + `#${app.slug}-settings ul {`
+                  + 'list-style: none ; padding: 0 ; margin: 0 0 2px -3px ;' // hide bullets, close bottom gap
+                  + `width: ${ env.browser.isPortrait ? 100 : 50 }% }` // set width based on column cnt
+              + ( env.browser.isPhone ? '' : ( `#${app.slug}-settings ul:first-of-type {` // color desktop middle separator
+                  + `border-right: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}` ))
+              + `#${app.slug}-settings li {`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' } ;`
+                  + 'height: 37px ; padding: 6px 10px 4px ; font-size: 15.5px ; list-style: none ;'
+                  + `border-bottom: 1px dotted ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' } ;` // add separators
+                  + 'border-radius: 3px ;' // slightly round highlight strip
+                  + 'transition: var(--settings-transition) ;' // for hover-zoom
+                      + '-webkit-transition: var(--settings-transition) ; -moz-transition: var(--settings-transition) ;'
+                      + '-o-transition: var(--settings-transition) ; -ms-transition: var(--settings-transition) }'
+              + `#${app.slug}-settings li.active {`
+                  + `color: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for text
+                  + `fill: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' } ;` // for icons
+                  + `stroke: ${ env.ui.app.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}` // for icons
+              + `#${app.slug}-settings li label {`
+                  + 'display: contents ; padding-right: 20px ;' // right-pad labels so toggles don't hug
+                  + 'font-weight: normal }' // override Amazon boldening
+              + `#${app.slug}-settings li:last-of-type { border-bottom: none }` // remove last bottom-border
+              + `#${app.slug}-settings li, #${app.slug}-settings li label { cursor: pointer }` // add finger on hover
+              + `#${app.slug}-settings li:hover {`
+                  + 'opacity: 1 ;'
+                  + 'background: rgba(100,149,237,0.88) ; color: white ; fill: white ; stroke: white ;'
+                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.15)' }}`
+              + `#${app.slug}-settings li > input { float: right }` // pos toggles
+              + '#scheme-settings-entry > span { margin: 0 -2px }' // align Scheme status
+              + '#scheme-settings-entry > span > svg {' // v-align/left-pad Scheme status icon
+                  + 'position: relative ; top: 3px ; margin-left: 4px }'
+              + ( config.fgAnimationsDisabled ? '' // spin cycle arrows icon when scheme is Auto
+                  : ( '#scheme-settings-entry svg[id*=arrows-cycle],'
+                            + '.chatgpt-notif svg[id*=arrows-cycle] { animation: rotate 5s linear infinite }' ))
+              + `#about-settings-entry span { color: ${ env.ui.app.scheme == 'dark' ? '#28ee28' : 'green' }}`
+              + '#about-settings-entry > span {' // outer About status span
+                  + `width: ${ env.browser.isPortrait ? '15vw' : '95px' } ; height: 20px ; overflow: hidden ;`
+                  + `${ config.fgAnimationsDisabled ? '' : ( // fade edges
+                            'mask-image: linear-gradient('
+                                + 'to right, transparent, black 20%, black 89%, transparent) ;'
+                  + '-webkit-mask-image: linear-gradient('
+                                + 'to right, transparent, black 20%, black 89%, transparent)' )}}`
+              + '#about-settings-entry > span > div {'
+                  + `text-wrap: nowrap ; ${
+                        config.fgAnimationsDisabled ? '' : 'animation: ticker linear 60s infinite' }}`
+              + '@keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-2000%) }}'
+              + `.about-em { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'green' } !important }`
+            )
+        },
+
         update: {
             width: 488,
 
@@ -1287,9 +1289,7 @@
                     '', '', modals.update.width
                 )
             }
-        },
-
-        safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
+        }
     }
 
     // Define ICON functions
@@ -1916,27 +1916,24 @@
             else if (!prefixNeeded && prefixExists) firstP.textContent = firstP.textContent.replace(/^>> /, '')
         },
 
-        scheme(newScheme) {
-            log.caller = `update.scheme('${newScheme}')`
-            log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
-            env.ui.app.scheme = newScheme ; logos.amzgpt.update() ; icons.amzgpt.update() ; update.appStyle()
-            update.risingParticles() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
-            log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
-        },
-
         risingParticles() {
             ['sm', 'med', 'lg'].forEach(size =>
                 document.querySelectorAll(`[id*=particles-${size}]`).forEach(particlesDiv =>
                     particlesDiv.id = config.bgAnimationsDisabled ? `particles-${size}-off`
                     : `${ env.ui.app.scheme == 'dark' ? 'white' : 'gray' }-particles-${size}`
             ))
+        },
+
+        scheme(newScheme) {
+            log.caller = `update.scheme('${newScheme}')`
+            log.debug(`Updating ${app.name} scheme to ${log.toTitleCase(newScheme)}...`)
+            env.ui.app.scheme = newScheme ; logos.amzgpt.update() ; icons.amzgpt.update() ; update.appStyle()
+            update.risingParticles() ; update.replyPrefix() ; toggle.btnGlow() ; modals.settings.updateSchemeStatus()
+            log.debug(`Success! ${app.name} updated to ${log.toTitleCase(newScheme)} scheme`)
         }
     }
 
     // Define UI functions
-
-    function getScheme() {
-        return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
 
     const addListeners = {
 
@@ -2168,6 +2165,9 @@
             }
         }
     }
+
+    function getScheme() {
+        return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
 
     // Define PROMPT functions
 
@@ -2784,6 +2784,163 @@
 
     const show = {
 
+        reply(answer) {
+            if (!env.browser.isMobile) // hide lingering tooltip if cursor was on corner button
+                tooltipDiv.style.opacity = 0
+
+            // Build answer interface up to reply section if missing
+            if (!appDiv.querySelector('pre')) {
+                appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
+
+                // Create/append title
+                const appHeaderLogo = logos.amzgpt.create()
+                appHeaderLogo.style.width = env.browser.isMobile ? '55%' : '181px'
+                const appTitleAnchor = dom.create.anchor(app.urls.app, appHeaderLogo)
+                appTitleAnchor.classList.add(`${app.slug}-name`, 'no-user-select')
+                appDiv.append(appTitleAnchor)
+
+                // Create/append header buttons div
+                const headerBtnsDiv = dom.create.elem('div',
+                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                appDiv.append(headerBtnsDiv)
+
+                // Create/append Chevron button
+                const chevronBtn = dom.create.elem('btn',
+                    { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
+                chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
+                chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
+                headerBtnsDiv.append(chevronBtn)
+
+                // Create/append About button
+                const aboutBtn = dom.create.elem('btn',
+                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
+                aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
+
+                // Create/append Settings button
+                const settingsBtn = dom.create.elem('btn',
+                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
+                settingsBtn.style.margin = '1px 10.5px 0 3px' // position
+                settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
+
+                // Create/append Font Size button
+                const fontSizeBtn = dom.create.elem('btn'),
+                      fontSizeSVG = icons.fontSize.create()
+                fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
+                fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
+                fontSizeBtn.style.marginRight = '10px' // position
+                fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+
+                if (!env.browser.isMobile) {
+
+                // Create/append Expand/Shrink button
+                    var arrowsBtn = dom.create.elem('btn',
+                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
+                    var arrowsSVG = icons.arrowsDiagonal.create()
+                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
+                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
+                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+
+                // Add tooltips
+                    appDiv.append(tooltipDiv)
+                }
+
+                // Add app header button listeners
+                addListeners.appHeaderBtns()
+
+                // Create/append 'by KudoAI'
+                const kudoAIspan = dom.create.elem('span', { class: 'kudoai no-user-select' })
+                kudoAIspan.textContent = 'by '
+                kudoAIspan.append(dom.create.anchor(app.urls.publisher, 'KudoAI'))
+                appDiv.querySelector(`.${app.slug}-name`).insertAdjacentElement('afterend', kudoAIspan)
+                update.bylineVisibility()
+
+                // Create/append answer bubble
+                const answerPre = dom.create.elem('pre'),
+                        replyTipSpan = dom.create.elem('span', { class: `${app.slug}-reply-tip` })
+                appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
+            }
+
+            // Build reply section if missing
+            if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
+
+                // Init/clear reply section content/classes
+                const replySection = appDiv.querySelector('section') || dom.create.elem('section')
+                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
+
+                // Create/append section elems
+                const replyForm = dom.create.elem('form')
+                const continueChatDiv = dom.create.elem('div')
+                const chatTextarea = dom.create.elem('textarea',
+                    { id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
+                continueChatDiv.append(chatTextarea)
+                replyForm.append(continueChatDiv) ; replySection.append(replyForm)
+                appDiv.append(replySection);
+
+                // Create/append chatbar buttons
+                ['send', 'shuffle'].forEach(btnType => {
+                    const btn = dom.create.elem('button',
+                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
+                                                                : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
+                    btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
+                    continueChatDiv.append(btn)
+                })
+
+                // Add listeners
+                addListeners.replySection()
+
+                // Scroll to top on mobile if user interacted
+                if (env.browser.isMobile && show.reply.userInteracted) {
+                    document.body.scrollTop = 0 // Safari
+                    document.documentElement.scrollTop = 0 // Chromium/FF/IE
+                }
+            }
+
+            // Render/show answer
+            const answerPre = appDiv.querySelector('pre')
+            try { // to render markdown
+                answerPre.innerHTML = marked.parse(answer) } catch (err) { log.error(err.message) }
+            hljs.highlightAll() // highlight code
+            update.replyPrefix() // prepend '>> ' if dark scheme w/ bg animations to emulate terminal
+
+            // Typeset math
+            answerPre.querySelectorAll('code').forEach(codeBlock => // add linebreaks after semicolons
+                codeBlock.innerHTML = codeBlock.innerHTML.replace(/;\s*/g, ';<br>'))
+            const elemsToRenderMathIn = [answerPre, ...answerPre.querySelectorAll('*')]
+            elemsToRenderMathIn.forEach(elem => { renderMathInElement(elem, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '\\begin{equation}', right: '\\end{equation}', display: true },
+                    { left: '\\begin{align}', right: '\\end{align}', display: true },
+                    { left: '\\begin{alignat}', right: '\\end{alignat}', display: true },
+                    { left: '\\begin{gather}', right: '\\end{gather}', display: true },
+                    { left: '\\begin{CD}', right: '\\end{CD}', display: true },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                throwOnError: false
+            })})
+
+            // Auto-scroll if active
+            if (config.autoScroll && !env.browser.isMobile && config.proxyAPIenabled && !config.streamingDisabled)
+                answerPre.scrollTop = answerPre.scrollHeight
+
+            // Focus chatbar conditionally
+            if (!show.reply.chatbarFocused // do only once
+                && !env.browser.isMobile // exclude mobile devices to not auto-popup OSD keyboard
+                && (!config.autoFocusChatbarDisabled // AF enabled
+                    || (  // ...or AF disabled & user interacted
+                        config.autoFocusChatbarDisabled && show.reply.userInteracted))
+            ) { appDiv.querySelector(`#${app.slug}-chatbar`).focus() ; show.reply.chatbarFocused = true }
+
+            // Update styles
+            update.appBottomPos() // restore minimized/restored state
+
+            show.reply.userInteracted = false
+        },
+
         replyCornerBtns() {
             if (!document.querySelector(`#${app.slug} > pre`) // reply bubble missing
               || document.getElementById(`${app.slug}-copy-btn`) // Copy button not missing
@@ -2966,163 +3123,6 @@
                     speakBtn.dispatchEvent(new Event('mouseenter')) // restore tooltip
                 }
             }
-        },
-
-        reply(answer) {
-            if (!env.browser.isMobile) // hide lingering tooltip if cursor was on corner button
-                tooltipDiv.style.opacity = 0
-
-            // Build answer interface up to reply section if missing
-            if (!appDiv.querySelector('pre')) {
-                appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
-
-                // Create/append title
-                const appHeaderLogo = logos.amzgpt.create()
-                appHeaderLogo.style.width = env.browser.isMobile ? '55%' : '181px'
-                const appTitleAnchor = dom.create.anchor(app.urls.app, appHeaderLogo)
-                appTitleAnchor.classList.add(`${app.slug}-name`, 'no-user-select')
-                appDiv.append(appTitleAnchor)
-
-                // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
-                appDiv.append(headerBtnsDiv)
-
-                // Create/append Chevron button
-                const chevronBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
-                chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
-                headerBtnsDiv.append(chevronBtn)
-
-                // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
-                aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
-
-                // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '1px 10.5px 0 3px' // position
-                settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
-
-                // Create/append Font Size button
-                const fontSizeBtn = dom.create.elem('btn'),
-                      fontSizeSVG = icons.fontSize.create()
-                fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
-                fontSizeBtn.style.marginRight = '10px' // position
-                fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
-
-                if (!env.browser.isMobile) {
-
-                // Create/append Expand/Shrink button
-                    var arrowsBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
-
-                // Add tooltips
-                    appDiv.append(tooltipDiv)
-                }
-
-                // Add app header button listeners
-                addListeners.appHeaderBtns()
-
-                // Create/append 'by KudoAI'
-                const kudoAIspan = dom.create.elem('span', { class: 'kudoai no-user-select' })
-                kudoAIspan.textContent = 'by '
-                kudoAIspan.append(dom.create.anchor(app.urls.publisher, 'KudoAI'))
-                appDiv.querySelector(`.${app.slug}-name`).insertAdjacentElement('afterend', kudoAIspan)
-                update.bylineVisibility()
-
-                // Create/append answer bubble
-                const answerPre = dom.create.elem('pre'),
-                        replyTipSpan = dom.create.elem('span', { class: `${app.slug}-reply-tip` })
-                appDiv.append(replyTipSpan, answerPre) ; update.answerPreMaxHeight()
-            }
-
-            // Build reply section if missing
-            if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
-
-                // Init/clear reply section content/classes
-                const replySection = appDiv.querySelector('section') || dom.create.elem('section')
-                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
-
-                // Create/append section elems
-                const replyForm = dom.create.elem('form')
-                const continueChatDiv = dom.create.elem('div')
-                const chatTextarea = dom.create.elem('textarea',
-                    { id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
-                continueChatDiv.append(chatTextarea)
-                replyForm.append(continueChatDiv) ; replySection.append(replyForm)
-                appDiv.append(replySection);
-
-                // Create/append chatbar buttons
-                ['send', 'shuffle'].forEach(btnType => {
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
-                    btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
-                                                                : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
-                    btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
-                    continueChatDiv.append(btn)
-                })
-
-                // Add listeners
-                addListeners.replySection()
-
-                // Scroll to top on mobile if user interacted
-                if (env.browser.isMobile && show.reply.userInteracted) {
-                    document.body.scrollTop = 0 // Safari
-                    document.documentElement.scrollTop = 0 // Chromium/FF/IE
-                }
-            }
-
-            // Render/show answer
-            const answerPre = appDiv.querySelector('pre')
-            try { // to render markdown
-                answerPre.innerHTML = marked.parse(answer) } catch (err) { log.error(err.message) }
-            hljs.highlightAll() // highlight code
-            update.replyPrefix() // prepend '>> ' if dark scheme w/ bg animations to emulate terminal
-
-            // Typeset math
-            answerPre.querySelectorAll('code').forEach(codeBlock => // add linebreaks after semicolons
-                codeBlock.innerHTML = codeBlock.innerHTML.replace(/;\s*/g, ';<br>'))
-            const elemsToRenderMathIn = [answerPre, ...answerPre.querySelectorAll('*')]
-            elemsToRenderMathIn.forEach(elem => { renderMathInElement(elem, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\(', right: '\\)', display: false },
-                    { left: '\\[', right: '\\]', display: true },
-                    { left: '\\begin{equation}', right: '\\end{equation}', display: true },
-                    { left: '\\begin{align}', right: '\\end{align}', display: true },
-                    { left: '\\begin{alignat}', right: '\\end{alignat}', display: true },
-                    { left: '\\begin{gather}', right: '\\end{gather}', display: true },
-                    { left: '\\begin{CD}', right: '\\end{CD}', display: true },
-                    { left: '\\[', right: '\\]', display: true }
-                ],
-                throwOnError: false
-            })})
-
-            // Auto-scroll if active
-            if (config.autoScroll && !env.browser.isMobile && config.proxyAPIenabled && !config.streamingDisabled)
-                answerPre.scrollTop = answerPre.scrollHeight
-
-            // Focus chatbar conditionally
-            if (!show.reply.chatbarFocused // do only once
-                && !env.browser.isMobile // exclude mobile devices to not auto-popup OSD keyboard
-                && (!config.autoFocusChatbarDisabled // AF enabled
-                    || (  // ...or AF disabled & user interacted
-                        config.autoFocusChatbarDisabled && show.reply.userInteracted))
-            ) { appDiv.querySelector(`#${app.slug}-chatbar`).focus() ; show.reply.chatbarFocused = true }
-
-            // Update styles
-            update.appBottomPos() // restore minimized/restored state
-
-            show.reply.userInteracted = false
         }
     }
 
