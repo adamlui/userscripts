@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12
+// @version             2025.2.12.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -372,6 +372,11 @@
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
         },
 
+        refresh() {
+            if (typeof GM_unregisterMenuCommand == 'undefined') return
+            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+        },
+
         register() {
 
             // Show "Disabled (extension installed)"
@@ -401,11 +406,6 @@
                     () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
                 ))
             })
-        },
-
-        refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
         }
     }
 
@@ -463,13 +463,6 @@
 
     // Define UI functions
 
-    function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
-
-    function getScheme() {
-        return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
-    }
-
     function checkBtnsToClick() {
         let continueBtnClicked = false // to increase delay before next check if true to avoid repeated clicks
         const btnTypesToCheck = ['Continue'] ; if (config.autoScroll) btnTypesToCheck.push('Scroll')
@@ -484,6 +477,13 @@
         }})
         setTimeout(checkBtnsToClick, continueBtnClicked ? 5000 : 500)
     }
+
+    function getScheme() {
+        return document.documentElement.className
+            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+    }
+
+    function syncConfigToUI() { menu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
 
