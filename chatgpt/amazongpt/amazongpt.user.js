@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.12.3
+// @version                2025.2.12.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -415,7 +415,7 @@
 
     // Define MENU functions
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -424,20 +424,20 @@
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') {
                 log.debug('GM_unregisterMenuCommand not supported.') ; return }
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
 
             // Add Proxy API Mode toggle
-            const pmLabel = menu.state.symbols[+config.proxyAPIenabled] + ' '
+            const pmLabel = this.state.symbols[+config.proxyAPIenabled] + ' '
                           + settings.controls.proxyAPIenabled.label + ' '
-                          + menu.state.separator + menu.state.words[+config.proxyAPIenabled]
-            menu.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
+                          + this.state.separator + this.state.words[+config.proxyAPIenabled]
+            this.ids.push(GM_registerMenuCommand(pmLabel, toggle.proxyMode,
                 env.scriptManager.supportsTooltips ? { title: settings.controls.proxyAPIenabled.helptip } : undefined));
 
             // Add About/Settings entries
-            ['about', 'settings'].forEach(entryType => menu.ids.push(GM_registerMenuCommand(
+            ['about', 'settings'].forEach(entryType => this.ids.push(GM_registerMenuCommand(
                 entryType == 'about' ? `💡 ${settings.controls.about.label}` : `⚙️ ${app.msgs.menuLabel_settings}`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
@@ -516,7 +516,7 @@
     function notify(msg, pos = '', notifDuration = '', shadow = 'shadow') {
 
         // Strip state word to append styled one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -555,7 +555,7 @@
             }
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
-                stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
+                stateStyles[foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
@@ -975,7 +975,7 @@
                                     key.includes('Disabled') ^ config[key] ? 'OFF' : 'ON' }...`)
                                 settings.save(key, !config[key]) // update config
                                 notify(`${settings.controls[key].label} ${
-                                    menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                                    toolbarMenu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                                 log[key.includes('debug') ? 'info' : 'debug'](`Success! config.${key} = ${config[key]}`)
                             }
                         }
@@ -2265,7 +2265,7 @@
                 // Toggle button glow
                 if (env.ui.app.scheme == 'dark') toggle.btnGlow()
             }
-            notify(`${settings.controls[configKey].label} ${menu.state.words[+!config[configKey]]}`)
+            notify(`${settings.controls[configKey].label} ${toolbarMenu.state.words[+!config[configKey]]}`)
         },
 
         btnGlow(state = '') {
@@ -2314,8 +2314,8 @@
 
         proxyMode() {
             settings.save('proxyAPIenabled', !config.proxyAPIenabled)
-            notify(`${app.msgs.menuLabel_proxyAPImode} ${menu.state.words[+config.proxyAPIenabled]}`)
-            menu.refresh()
+            notify(`${app.msgs.menuLabel_proxyAPImode} ${toolbarMenu.state.words[+config.proxyAPIenabled]}`)
+            toolbarMenu.refresh()
             if (modals.settings.get()) { // update visual states of Settings toggles
                 const proxyToggle = document.querySelector('[id*=proxy] input'),
                       streamingToggle = document.querySelector('[id*=streaming] input')
@@ -2357,7 +2357,8 @@
                     alert.querySelector('.modal-close-btn').click() ; toggle.proxyMode() }
             } else { // functional toggle
                 settings.save('streamingDisabled', !config.streamingDisabled)
-                notify(`${settings.controls.streamingDisabled.label} ${menu.state.words[+!config.streamingDisabled]}`)
+                notify(`${settings.controls.streamingDisabled.label} ${
+                          toolbarMenu.state.words[+!config.streamingDisabled]}`)
             }
         },
 
@@ -3127,7 +3128,7 @@
 
     // Run MAIN routine
 
-    menu.register()
+    toolbarMenu.register()
 
     // Exit on specific pages
     if (location.pathname == '/message-us')
