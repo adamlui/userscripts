@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12
+// @version             2025.2.12.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -56,6 +56,12 @@
 
     // Define SCRIPT functions
 
+    function isDarkMode() {
+        return document.documentElement.dataset.colorMode == 'dark'
+            || document.documentElement.dataset.darkreaderScheme == 'dark'
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    }
+
     function safeWinOpen(url) { open(url, '_blank', 'noopener') } // to prevent backdoor vulnerabilities
 
     function updateCheck() {
@@ -96,19 +102,7 @@
                 chatgpt.alert('Up to date!', `${app.name} (v${currentVer}) is up to date!`)
     }})}
 
-    function isDarkMode() {
-        return document.documentElement.dataset.colorMode == 'dark'
-            || document.documentElement.dataset.darkreaderScheme == 'dark'
-            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
-    }
-
     // Define CHART functions
-
-    function sanitizeImgURL(url) {
-        if (!url.startsWith('https://api.star-history.com/svg'))
-            throw new Error('>> Invalid URL')
-        return url
-    }
 
     function getUserAndRepoOfCurrentPage() {
         const reGitHubURL = /github\.com\/(?<user>[\w-]+)\/(?<repo>[\w.-]+)\/?/,
@@ -211,6 +205,12 @@
             for (const attr in attrs) elem.setAttributeNS(null, attr, attrs[attr])
             return elem
         }
+    }
+
+    function sanitizeImgURL(url) {
+        if (!url.startsWith('https://api.star-history.com/svg'))
+            throw new Error('>> Invalid URL')
+        return url
     }
 
     function zoomStarHistory(imgURL) {
