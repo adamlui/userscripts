@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12.1
+// @version             2025.2.12.2
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -435,7 +435,7 @@
 
     // Define FUNCTIONS
 
-    const menu = {
+    const toolbarMenu = {
         ids: [], state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -443,14 +443,14 @@
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of menu.ids) { GM_unregisterMenuCommand(id) } menu.register()
+            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
         register() {
 
             // Show "Disabled (extension installed)"
             if (env.extensionInstalled) GM_registerMenuCommand(
-                `${menu.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionInstalled})`,
+                `${this.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionInstalled})`,
                 () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )
 
@@ -458,13 +458,13 @@
             else Object.keys(settings.controls).forEach(key => {
                 if (sites[env.site].availFeatures.includes(key)) {
                     const settingIsEnabled = config[key] ^ key.includes('Disabled')
-                    const menuLabel = `${ settings.controls[key].symbol || menu.state.symbols[+settingIsEnabled] } `
+                    const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                     + settings.controls[key].label
-                                    + menu.state.separator + menu.state.words[+settingIsEnabled]
-                    menu.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                                    + this.state.separator + this.state.words[+settingIsEnabled]
+                    this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                         settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
                         notify(`${settings.controls[key].label}: ${
-                            menu.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                            this.state.words[+(key.includes('Disabled') ^ config[key])]}`)
                     }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
                 }
             });
@@ -472,7 +472,7 @@
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => {
                 if (entryType === 'donate' && env.extensionInstalled) return
-                menu.ids.push(GM_registerMenuCommand(
+                this.ids.push(GM_registerMenuCommand(
                     `${ entryType == 'about' ? '💡' : '💖' }`
                         + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                     () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
@@ -506,7 +506,7 @@
         if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
 
         // Strip state word to append colored one later
-        const foundState = menu.state.words.find(word => msg.includes(word))
+        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
         if (foundState) msg = msg.replace(foundState, '')
 
         // Show notification
@@ -526,7 +526,8 @@
                 }
             }
             const styledStateSpan = dom.create.elem('span')
-            styledStateSpan.style.cssText = stateStyles[foundState == menu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
+            styledStateSpan.style.cssText = stateStyles[
+                foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -657,7 +658,7 @@
             update.style.tweaks() // sync TCB/NCB/HH/HF/BA
             update.style.chatbar() // sync WCB
             chatbar.tweak() // update ChatGPT chatbar inner width + left-align Perplexity Attach File button
-            menu.refresh() // to update state symbol/suffix
+            toolbarMenu.refresh() // to update state symbol/suffix
             if (options?.updatedKey == 'btnAnimationsDisabled' && !config.btnAnimationsDisabled) // apply/remove fx
                 // ...to visually signal location + preview fx applied by Button Animations toggle-on
                 buttons.animate()
@@ -678,7 +679,7 @@
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
 
-    menu.register() ; if (env.extensionInstalled) return
+    toolbarMenu.register() ; if (env.extensionInstalled) return
 
     // Init UI props
     if (env.site == 'chatgpt') {
