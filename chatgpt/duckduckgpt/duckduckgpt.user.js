@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.2
+// @version                2025.2.13.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2596,7 +2596,7 @@
 
                     // Hide/remove elems
                     appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // remove related queries
-                    tooltipDiv.style.opacity = 0 // hide chatbar button tooltips
+                    toggle.tooltip('off') // hide chatbar button tooltips
 
                     // Show loading status
                     const replySection = appDiv.querySelector('section')
@@ -2929,7 +2929,7 @@
                     if (event.propertyName == 'width') {
                         update.bylineVisibility() ; appDiv.removeEventListener('transitionend', onTransitionEnd)
             }})
-            icons.arrowsDiagonal.update() ; tooltipDiv.style.opacity = 0 // update icon/tooltip
+            icons.arrowsDiagonal.update() ; toggle.tooltip('off') // update icon/tooltip
         },
 
         manualGet(mode) { // Prefix/Suffix modes
@@ -2957,7 +2957,7 @@
                 }
             }
             update.appBottomPos() // toggle visual minimization
-            setTimeout(() => tooltipDiv.style.opacity = 0, 1) // remove lingering tooltip
+            setTimeout(() => toggle.tooltip('off'), 1) // remove lingering tooltip
         },
 
         proxyMode() {
@@ -3048,11 +3048,14 @@
             }
         },
 
-        tooltip(event) {
-            if (env.browser.isMobile) return
-            if (event.type == 'mouseleave') { tooltipDiv.style.opacity = 0 ; return }
+        tooltip(actionOrEvent) {
+        // * actionOrEvent: 'on'|'off' or button `event`
 
-            const btn = event.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
+            if (env.browser.isMobile) return
+            if (actionOrEvent?.type == 'mouseleave' || typeof actionOrEvent == 'string')
+                return tooltipDiv.style.opacity = actionOrEvent == 'on' ? 1 : 0
+
+            const btn = actionOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
@@ -3089,9 +3092,9 @@
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -17
-              : replyCornerBtnTypes.includes(btnType) && !event.currentTarget.closest('code') ?
+              : replyCornerBtnTypes.includes(btnType) && !actionOrEvent.currentTarget.closest('code') ?
                    45 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -18 : 0 )
-              : rects.btn.top - rects.appDiv.top -36 - ( event.currentTarget.closest('code') ? 5 : 0 )
+              : rects.btn.top - rects.appDiv.top -36 - ( actionOrEvent.currentTarget.closest('code') ? 5 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btn.left + rects.btn.right )/2 - rects.tooltipDiv.width/2 }px`
@@ -3606,7 +3609,7 @@
         },
 
         reply(answer) {
-            tooltipDiv.style.opacity = 0 // hide lingering tooltip if cursor was on corner button
+            toggle.tooltip('off') // hide lingering tooltip if cursor was on corner button
 
             // Build answer interface up to reply section if missing
             if (!appDiv.querySelector('pre')) {
