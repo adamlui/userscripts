@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.7
+// @version                2025.2.13.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2368,14 +2368,14 @@
             }
         },
 
-        tooltip(actionOrEvent) {
-        // * actionOrEvent: 'on'|'off' or button `event`
+        tooltip(stateOrEvent) {
+        // * stateOrEvent: 'on'|'off' or button `event`
 
             if (env.browser.isMobile) return
-            if (actionOrEvent?.type == 'mouseleave' || typeof actionOrEvent == 'string')
-                return tooltipDiv.style.opacity = actionOrEvent == 'on' ? 1 : 0
+            if (stateOrEvent?.type == 'mouseleave' || typeof stateOrEvent == 'string')
+                return tooltipDiv.style.opacity = stateOrEvent == 'on' ? 1 : 0
 
-            const btn = actionOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
+            const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
@@ -2410,9 +2410,9 @@
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -22
-              : replyCornerBtnTypes.includes(btnType) && !actionOrEvent.currentTarget.closest('code') ?
+              : replyCornerBtnTypes.includes(btnType) && !stateOrEvent.currentTarget.closest('code') ?
                    38 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -18 : 0 )
-              : rects.btn.top - rects.appDiv.top -36 - ( actionOrEvent.currentTarget.closest('code') ? 7 : 0 )
+              : rects.btn.top - rects.appDiv.top -36 - ( stateOrEvent.currentTarget.closest('code') ? 7 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btn.left + rects.btn.right )/2 - rects.tooltipDiv.width/2 }px`
