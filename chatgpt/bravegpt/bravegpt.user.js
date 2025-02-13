@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.13.7
+// @version               2025.2.13.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3049,14 +3049,14 @@
             }
         },
 
-        tooltip(actionOrEvent) {
-        // * actionOrEvent: 'on'|'off' or button `event`
+        tooltip(stateOrEvent) {
+        // * stateOrEvent: 'on'|'off' or button `event`
 
             if (env.browser.isMobile) return
-            if (actionOrEvent?.type == 'mouseleave' || typeof actionOrEvent == 'string')
-                return tooltipDiv.style.opacity = actionOrEvent == 'on' ? 1 : 0
+            if (stateOrEvent?.type == 'mouseleave' || typeof stateOrEvent == 'string')
+                return tooltipDiv.style.opacity = stateOrEvent == 'on' ? 1 : 0
 
-            const btn = actionOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
+            const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
@@ -3093,9 +3093,9 @@
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -13
-              : replyCornerBtnTypes.includes(btnType) && !actionOrEvent.currentTarget.closest('code') ?
+              : replyCornerBtnTypes.includes(btnType) && !stateOrEvent.currentTarget.closest('code') ?
                    46 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -16 : 0 )
-              : rects.btn.top - rects.appDiv.top -36 - ( actionOrEvent.currentTarget.closest('code') ? 4 : 0 )
+              : rects.btn.top - rects.appDiv.top -36 - ( stateOrEvent.currentTarget.closest('code') ? 4 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btn.left + rects.btn.right )/2 - rects.tooltipDiv.width/2 }px`
