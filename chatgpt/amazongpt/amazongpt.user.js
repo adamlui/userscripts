@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.5
+// @version                2025.2.13.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -685,9 +685,7 @@
 
                 mouseup() { // restore styles/pointer events, remove listeners, reset modals.draggingModal
                     Object.assign(modals.draggingModal.style, { // restore styles
-                        pointerEvents: '', cursor: 'inherit', transition: 'inherit',
-                        willChange: 'auto', transform: 'scale(1)'
-                    });
+                        cursor: 'inherit', transition: 'inherit', willChange: 'auto', transform: 'scale(1)' });
                     [...modals.draggingModal.children] // restore pointer events
                         .forEach(child => child.style.pointerEvents = '');
                     ['mousemove', 'mouseup'].forEach(eventType => // remove listeners
