@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.13.7
+// @version                  2025.2.13.8
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3223,14 +3223,14 @@
             }
         },
 
-        tooltip(actionOrEvent) {
-        // * actionOrEvent: 'on'|'off' or button `event`
+        tooltip(stateOrEvent) {
+        // * stateOrEvent: 'on'|'off' or button `event`
 
             if (env.browser.isMobile) return
-            if (actionOrEvent?.type == 'mouseleave' || typeof actionOrEvent == 'string')
-                return tooltipDiv.style.opacity = actionOrEvent == 'on' ? 1 : 0
+            if (stateOrEvent?.type == 'mouseleave' || typeof stateOrEvent == 'string')
+                return tooltipDiv.style.opacity = stateOrEvent == 'on' ? 1 : 0
 
-            const btn = actionOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
+            const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'pin', 'wsb', 'arrows'],
                   replyCornerBtnTypes = ['copy', 'regen', 'speak']
 
@@ -3267,9 +3267,9 @@
                   rects = {} ; Object.keys(elems).forEach(key => rects[key] = elems[key]?.getBoundingClientRect())
             tooltipDiv.style.top = `${
                 appHeaderBtnTypes.includes(btnType) ? -14
-              : replyCornerBtnTypes.includes(btnType) && !actionOrEvent.currentTarget.closest('code') ?
+              : replyCornerBtnTypes.includes(btnType) && !stateOrEvent.currentTarget.closest('code') ?
                    43 + ( rects.fsSlider?.height > 0 ? rects.fsSlider.height -16 : 0 )
-              : rects.btn.top - rects.appDiv.top -35 - ( actionOrEvent.currentTarget.closest('code') ? 6 : 0 )
+              : rects.btn.top - rects.appDiv.top -35 - ( stateOrEvent.currentTarget.closest('code') ? 6 : 0 )
             }px`
             tooltipDiv.style.right = `${
                 rects.appDiv.right - ( rects.btn.left + rects.btn.right )/2 - rects.tooltipDiv.width/2 }px`
