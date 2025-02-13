@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.13.1
+// @version               2025.2.13.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -744,14 +744,14 @@
             // Show modal
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `🧠 ${app.msgs.about_author}: ` // msg
+                `<b>🧠 ${app.msgs.about_author}:</b> ` // msg
                     + `<a href="${app.author.url}">${app.author.name}</a> ${app.msgs.about_and}`
                         + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
-                + `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
-                + `📜 ${app.msgs.about_openSourceCode}: `
+                + `<b>🏷️ ${app.msgs.about_version}:</b> <span class="about-em">${app.version}</span>\n`
+                + `<b>📜 ${app.msgs.about_openSourceCode}:</b> `
                     + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a>\n'
-                + `⚡ ${app.msgs.about_poweredBy}: `
+                + `<b>⚡ ${app.msgs.about_poweredBy}:</b> `
                     + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                         + ` v${app.chatgptJSver}`,
                 [ // buttons
