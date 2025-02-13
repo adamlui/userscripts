@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.12.4
+// @version                  2025.2.13
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1025,7 +1025,8 @@
                     if (event.button != 0) return // prevent non-left-click drag
                     if (getComputedStyle(event.target).cursor == 'pointer') return // prevent drag on interactive elems
                     modals.handlers.drag.draggableElem = event.currentTarget
-                    modals.handlers.drag.draggableElem.style.cursor = 'grabbing'
+                    Object.assign(modals.handlers.drag.draggableElem.style, {
+                        cursor: 'grabbing', transition: '0.1s', willChange: 'transform', transform: 'scale(1.05)'  })
                     event.preventDefault(); // prevent sub-elems like icons being draggable
                     ['mousemove', 'mouseup'].forEach(eventType =>
                         document.addEventListener(eventType, modals.handlers.drag[eventType]))
@@ -1043,7 +1044,8 @@
                 },
 
                 mouseup() { // remove listeners, reset modals.handlers.drags.draggableElem
-                    modals.handlers.drag.draggableElem.style.cursor = 'inherit';
+                    Object.assign(modals.handlers.drag.draggableElem.style, {
+                        cursor: 'inherit', transition: 'inherit', willChange: 'auto', transform: 'scale(1)' });
                     ['mousemove', 'mouseup'].forEach(eventType =>
                         document.removeEventListener(eventType, modals.handlers.drag[eventType]))
                     modals.handlers.drag.draggableElem = null
@@ -1066,10 +1068,10 @@
 
             // Add listeners
             modal.onwheel = modal.ontouchmove = event => event.preventDefault() // disable wheel/swipe scrolling
-            modal.onmousedown = modals.handlers.drag.mousedown // enable click-dragging
+            modal.onmousedown = this.handlers.drag.mousedown // enable click-dragging
             if (!modal.parentNode.className.includes('chatgpt-modal')) { // enable click-dismissing native modals
                 const dismissElems = [modal.parentNode, modal.querySelector('[class*=-close-btn]')]
-                dismissElems.forEach(elem => elem.onclick = modals.handlers.dismiss.click)
+                dismissElems.forEach(elem => elem.onclick = this.handlers.dismiss.click)
             }
 
             // Hack BG
