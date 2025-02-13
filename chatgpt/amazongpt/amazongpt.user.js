@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13
+// @version                2025.2.13.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1510,7 +1510,7 @@
         sliders: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
-                    'stroke-width': 3.5, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
+                    'stroke-width': 3.1, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
                 svg.append(
                     dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
                     dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
