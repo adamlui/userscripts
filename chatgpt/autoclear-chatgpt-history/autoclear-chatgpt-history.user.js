@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.12.2
+// @version             2025.2.13
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -506,14 +506,14 @@
             // Show modal
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `🧠 ${app.msgs.about_author}: ` // msg
+                `<b>🧠 ${app.msgs.about_author}:</b> ` // msg
                     + `<a href="${app.author.url}">${app.msgs.appAuthor}</a> ${app.msgs.about_and}`
                         + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
-                + `🏷️ ${app.msgs.about_version}: <span class="about-em">${app.version}</span>\n`
-                + `📜 ${app.msgs.about_openSourceCode}: `
+                + `<b>🏷️ ${app.msgs.about_version}:</b> <span class="about-em">${app.version}</span>\n`
+                + `<b>📜 ${app.msgs.about_openSourceCode}:</b> `
                     + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a>\n'
-                + `⚡ ${app.msgs.about_poweredBy}: `
+                + `<b>⚡ ${app.msgs.about_poweredBy}:</b> `
                     + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                         + ` v${app.chatgptJSver}`,
                 [ // buttons
