@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.12
+// @version                2025.2.14
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1164,10 +1164,10 @@
                     if (setting.type == 'toggle') {
 
                         // Init toggle input
-                        const settingToggle = dom.create.elem('input', { type: 'checkbox', disabled: true })
+                        const settingToggle = dom.create.elem('input',
+                            { type: 'checkbox', disabled: true, style: 'display: none' })
                         settingToggle.checked = config[key] ^ key.includes('Disabled') // init based on config/name
                             && !(key == 'streamingDisabled' && !config.proxyAPIenabled) // uncheck Streaming in OAI mode
-                        settingToggle.style.display = 'none' // hide checkbox
 
                         // Create/stylize switch
                         const switchSpan = dom.create.elem('span')
@@ -2658,8 +2658,8 @@
 
             // Create/ID/classify slider elems
             fontSizeSlider.cursorOverlay = dom.create.elem('div', { class: 'cursor-overlay' })
-            const slider = dom.create.elem('div', { id: `${app.slug}-font-size-slider-track`, class: 'fade-in-less' })
-            slider.style.display = 'none'
+            const slider = dom.create.elem('div',
+                { id: `${app.slug}-font-size-slider-track`, class: 'fade-in-less', style: 'display: none' })
             const sliderThumb = dom.create.elem('div',
                 { title: Math.floor(config.fontSize *10) /10 + 'px', id: `${app.slug}-font-size-slider-thumb` })
             const sliderTip = dom.create.elem('div', { id: `${app.slug}-font-size-slider-tip` })
