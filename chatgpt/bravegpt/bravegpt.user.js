@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.13.9
+// @version               2025.2.13.10
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -742,16 +742,18 @@
             log.debug('Showing About modal...')
 
             // Show modal
+            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ; color: #494141'
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `<b>🧠 ${app.msgs.about_author}:</b> ` // msg
+                `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
                     + `<a href="${app.author.url}">${app.author.name}</a> ${app.msgs.about_and}`
                         + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
-                + `<b>🏷️ ${app.msgs.about_version}:</b> <span class="about-em">${app.version}</span>\n`
-                + `<b>📜 ${app.msgs.about_openSourceCode}:</b> `
+                + `<span style="${labelStyles}">🏷️ ${app.msgs.about_version}:</span> `
+                    + `<span class="about-em">${app.version}</span>\n`
+                + `<span style="${labelStyles}">📜 ${app.msgs.about_openSourceCode}:</span> `
                     + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a>\n'
-                + `<b>⚡ ${app.msgs.about_poweredBy}:</b> `
+                + `<span style="${labelStyles}">⚡ ${app.msgs.about_poweredBy}:</span> `
                     + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                         + ` v${app.chatgptJSver}`,
                 [ // buttons
@@ -770,9 +772,9 @@
 
             // Center text
             aboutModal.querySelector('h2').remove() // remove empty title h2
-            aboutModal.querySelector('p')
-                .style.cssText = 'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
-                               + `margin: ${ env.browser.isPortrait ? '15px 0 -21px' : '3px 0 -18px' }`
+            aboutModal.querySelector('p').style.cssText = (
+                'overflow-wrap: anywhere ; line-height: 1.55 ;'
+              + `margin: ${ env.browser.isPhone ? '15px 0 -21px' : '13px 0 -18px 11px' }` )
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
