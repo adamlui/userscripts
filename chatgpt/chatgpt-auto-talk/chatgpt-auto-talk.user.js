@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.13.2
+// @version             2025.2.13.3
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -491,7 +491,8 @@
         about() {
 
             // Show modal
-            const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ; color: #494141'
+            const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ;'
+                              + `color: ${ env.ui.scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
