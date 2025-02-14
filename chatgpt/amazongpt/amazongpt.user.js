@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.10
+// @version                2025.2.13.11
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -571,7 +571,8 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ; color: #494141'
+            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ;'
+                              + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
