@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14.6
+// @version             2025.2.14.7
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -492,8 +492,7 @@
 
                     // Create toggle per site
                     Object.keys(sites).forEach(site => {
-                        const siteHomeURL = sites[site].urls.homepage.replace(/^https?:\/\//, ''),
-                              configKey = `${site}Disabled`
+                        const siteHomeURL = sites[site].urls.homepage.replace(/^https?:\/\//, '')
 
                         // Create/append item/label elems
                         const settingItem = dom.create.elem('li', {
@@ -512,7 +511,7 @@
                         // Init toggle input
                         const settingToggle = dom.create.elem('input',
                             { type: 'checkbox', disabled: true, style: 'display: none' })
-                        settingToggle.checked = !config[configKey]
+                        settingToggle.checked = !config[`${site}Disabled`]
 
                         // Create/stylize switch
                         const switchSpan = dom.create.elem('span')
@@ -547,14 +546,15 @@
                             padding: '', transform: '', background: '', color: getTextColor() })
                         settingItem.onclick = () => {
                             switchToggle(settingToggle)
-                            settings.save(configKey, !config[configKey]) ; sync.configToUI({ updatedKey: configKey })
+                            settings.save(`${site}Disabled`, !config[`${site}Disabled`])
+                            sync.configToUI({ updatedKey: `${site}Disabled` })
                             if (env.site == site) // notify if setting of active site toggled
                                 notify(`${app.name} 🧩 ${
-                                    app.msgs[`state_${config[configKey] ? 'off' : 'on' }`].toUpperCase()}`)
+                                    app.msgs[`state_${config[`${site}Disabled`] ? 'off' : 'on' }`].toUpperCase()}`)
                         }
 
                         function getTextColor() {
-                            return config[configKey] ?
+                            return config[`${site}Disabled`] ?
                                 ( env.ui.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' ) // off
                               : ( env.ui.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' ) // on
                         }
