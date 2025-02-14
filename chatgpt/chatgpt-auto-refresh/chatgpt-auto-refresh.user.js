@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.13
+// @version             2025.2.13.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -900,7 +900,7 @@
                 if (this.status?.startsWith('insert') || document.querySelector(`.${this.class}`)) return
                 const sidebar = document.querySelectorAll('nav')[env.browser.isMobile ? 1 : 0] ; if (!sidebar) return
                 this.status = 'inserting' ; if (!this.div) this.create()
-                sidebar.insertBefore(this.div, sidebar.children[1]) ; this.status = 'inserted'
+                sidebar.children[1].before(this.div) ; this.status = 'inserted'
             },
 
             update: {
