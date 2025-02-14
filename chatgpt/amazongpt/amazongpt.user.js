@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.14.1
+// @version                2025.2.14.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -962,7 +962,7 @@
                         switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
 
                         // Update visual state w/ animation
-                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), +155)
+                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), 155)
 
                         // Add click listener
                         settingItem.onclick = () => {
