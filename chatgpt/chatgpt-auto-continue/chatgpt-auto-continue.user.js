@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14
+// @version             2025.2.14.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -359,7 +359,7 @@
     // Export DEPENDENCIES to imported resources
     dom.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
     modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
-    settings.import({ app }) // for app.<msgs.configKeyPrefix>
+    settings.import({ app }) // for app.configKeyPrefix
 
     // Init SETTINGS
     settings.load(Object.keys(settings.controls))
