@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14.4
+// @version             2025.2.14.5
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -427,7 +427,7 @@
     // Export DEPENDENCIES to imported resources
     chatbar.import({ site: env.site, sites }) // for conditional logic + sites.selectors
     dom.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
-    modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
+    modals.import({ app, env, updateCheck }) // for app data + env['<browser|ui>'] flags + modals.about() update btn
     settings.import({ app, site: env.site, sites }) // for app.configKeyPrefix + to load/save `${site}Disabled`
     tooltip.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
     ui.import({ sites }) // for ui.isFullWin() sidebar selector/flag
