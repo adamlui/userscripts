@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.13.1
+// @version             2025.2.13.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -491,16 +491,18 @@
         about() {
 
             // Show modal
+            const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ; color: #494141'
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `<b>🧠 ${app.msgs.about_author}:</b> ` // msg
+                `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
                     + `<a href="${app.author.url}">${app.msgs.appAuthor}</a> ${app.msgs.about_and}`
                         + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
-                + `<b>🏷️ ${app.msgs.about_version}:</b> <span class="about-em">${app.version}</span>\n`
-                + `<b>📜 ${app.msgs.about_openSourceCode}:</b> `
+                + `<span style="${labelStyles}">🏷️ ${app.msgs.about_version}:</span> `
+                    + `<span class="about-em">${app.version}</span>\n`
+                + `<span style="${labelStyles}">📜 ${app.msgs.about_openSourceCode}:</span> `
                     + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a>\n'
-                + `<b>⚡ ${app.msgs.about_poweredBy}:</b> `
+                + `<span style="${labelStyles}">⚡ ${app.msgs.about_poweredBy}:</span> `
                     + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                         + ` v${app.chatgptJSver}`,
                 [ // buttons
