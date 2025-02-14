@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.9
+// @version                2025.2.13.10
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -750,16 +750,18 @@
             log.debug('Showing About modal...')
 
             // Show modal
+            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ; color: #494141'
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
-                `<b>🧠 ${app.msgs.about_author}:</b> ` // msg
+                `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
                     + `<a href="${app.author.url}">${app.author.name}</a> ${app.msgs.about_and}`
                         + ` <a href="${app.urls.contributors}">${app.msgs.about_contributors}</a>\n`
-                + `<b>🏷️ ${app.msgs.about_version}:</b> <span class="about-em">${app.version}</span>\n`
-                + `<b>📜 ${app.msgs.about_openSourceCode}:</b> `
+                + `<span style="${labelStyles}">🏷️ ${app.msgs.about_version}:</span> `
+                    + `<span class="about-em">${app.version}</span>\n`
+                + `<span style="${labelStyles}">📜 ${app.msgs.about_openSourceCode}:</span> `
                     + `<a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                         + app.urls.gitHub + '</a>\n'
-                + `<b>⚡ ${app.msgs.about_poweredBy}:</b> `
+                + `<span style="${labelStyles}">⚡ ${app.msgs.about_poweredBy}:</span> `
                     + `<a href="${app.urls.chatgptJS}" target="_blank" rel="noopener">chatgpt.js</a>`
                         + ` v${app.chatgptJSver}`,
                 [ // buttons
@@ -776,11 +778,11 @@
                 + `margin: -1px ${ env.browser.isMobile ? 'auto' : '13.5%' } 1px`
             aboutModal.firstChild.nextSibling.before(aboutHeaderLogo) // after close btn
 
-            // Center text
+            // Format text
             aboutModal.querySelector('h2').remove() // remove empty title h2
             aboutModal.querySelector('p').style.cssText = (
-                'justify-self: center ; text-align: center ; overflow-wrap: anywhere ;'
-              + `margin: ${ env.browser.isPortrait ? '9px 0 -16px' : '3px 0 -10px' }`)
+                'overflow-wrap: anywhere ; line-height: 1.55 ;'
+              + `margin: ${ env.browser.isPhone ? '9px 0 -16px' : '3px 0 -10px 10px' }`)
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
