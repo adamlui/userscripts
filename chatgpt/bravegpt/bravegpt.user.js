@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.13.10
+// @version               2025.2.13.11
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -742,7 +742,8 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ; color: #494141'
+            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ;'
+                              + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
