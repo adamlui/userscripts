@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.11
+// @version                2025.2.13.12
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -750,7 +750,9 @@
             log.debug('Showing About modal...')
 
             // Show modal
-            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ; color: #494141'
+            const labelStyles = 'text-transform: uppercase ; font-size: 16px ; font-weight: bold ;'
+                              + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#494141' }`
+
             const aboutModal = modals.alert(
                 `${app.symbol} ${app.msgs.appName}`, // title
                 `<span style="${labelStyles}">🧠 ${app.msgs.about_author}:</span> `
