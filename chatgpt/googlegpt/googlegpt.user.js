@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.13.8
+// @version                  2025.2.13.9
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -918,7 +918,7 @@
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[
                 foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
-            styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
+            styledStateSpan.append(foundState) ; notif.children[2].before(styledStateSpan)
         }
     }
 
@@ -957,7 +957,7 @@
             const aboutHeaderLogo = logos.googleGPT.create() ; aboutHeaderLogo.width = 405
             aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 15px ${
                 env.browser.isMobile ? 'auto' : '14.5%' } -1px`
-            aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
+            aboutModal.firstChild.nextSibling.before(aboutHeaderLogo) // after close btn
 
             // Center text
             aboutModal.querySelector('h2').remove() // remove empty title h2
