@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.13.2
+// @version             2025.2.14
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -257,7 +257,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.6.3/dist/chatgpt.min.js#sha256-pqYk/Y2iYTPCeA6kM8vQXxzv55idgp9Q4Lcz82+0VIw=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/lib/chatbar.js#sha256-STZqqYBfqvTFYODZDMH3oXm5EzDeBvUsSwTJifW72ns=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/lib/dom.js#sha256-0Y8Pj/jzFlDOTFW6aEfOrUDGxok5/gWNhlcuTMZSKIk=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/settings.js#sha256-BJlYpWmpGdIFKtPAZ2rvleXI9GuWx5VmPe8+wi83FLs=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@7d7ef26/chromium/extension/lib/settings.js#sha256-5MZZ2UYmVAHgYA+UwEYmru5c0p7khyzGTvNoqODqX74=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/ui.js#sha256-Sp/JEpkGx5SO7TY5pkdirv+FUtTiUurrjcHVtwv+/u8=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/components/buttons.js#sha256-yT1pMAa7at753NK+VVRJPFT1vql2heTmZRvnXyw7SAE=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/components/modals.js#sha256-Gi04K42Nwcnq8wBeAPoYE8jnWtBWBdD4nUtQvVuH3q0=
@@ -307,7 +307,7 @@
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptwidescreen.com' },
-        latestResourceCommitHash: 'de7eee6' // for cached app.json + sites.json + messages.json
+        latestResourceCommitHash: '7d7ef26' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -328,6 +328,7 @@
         menuLabel_btnAnimations: 'Button Animations',
         menuLabel_modeNotifs: 'Mode Notifications',
         menuLabel_blockSpam: 'Spam Block',
+        menuLabel_siteSettings: 'Site Settings',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
         menuLabel_disabled: 'Disabled',
@@ -357,6 +358,9 @@
         helptip_btnAnimations: 'Animate chatbar buttons on hover',
         helptip_modeNotifs: 'Show notifications when toggling modes/settings',
         helptip_blockSpam: 'Hide spam banners from cluttering the page',
+        helptip_enableDisable: 'Enable/disable',
+        helptip_perSite: 'per site',
+        helptip_run: 'Run',
         alert_choosePlatform: 'Choose a platform',
         alert_updateAvail: 'Update available',
         alert_newerVer: 'An update to',
@@ -424,14 +428,15 @@
     chatbar.import({ site: env.site, sites }) // for conditional logic + sites.selectors
     dom.import({ scheme: env.ui.scheme }) // for dom.addRisingParticles()
     modals.import({ app, env, updateCheck }) // for app data + env.<browser|ui> flags + modals.about() update btn
-    settings.import({ app }) // for app.<msgs.configKeyPrefix>
+    settings.import({ app, site: env.site, sites }) // for app.<msgs.configKeyPrefix> + to load/save `${site}Disabled`
     tooltip.import({ msgs: app.msgs, site: env.site, sites }) // for tooltip.update() i18n + position logic
     ui.import({ sites }) // for ui.isFullWin() sidebar selector/flag
 
     // Init SETTINGS
     if (GM_getValue(`${app.configKeyPrefix}_isFirstRun`) == undefined) { // activate widescreen on install
         settings.save('wideScreen', true) ; settings.save('isFirstRun', false) }
-    settings.load(sites[env.site].availFeatures)
+    const siteDisabledKeys = Object.keys(sites).map(site => `${site}Disabled`)
+    settings.load(...siteDisabledKeys, sites[env.site].availFeatures)
 
     // Define FUNCTIONS
 
@@ -455,19 +460,125 @@
             )
 
             // ...or add settings toggles
-            else Object.keys(settings.controls).forEach(key => {
-                if (sites[env.site].availFeatures.includes(key)) {
-                    const settingIsEnabled = config[key] ^ key.includes('Disabled')
-                    const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
-                                    + settings.controls[key].label
-                                    + this.state.separator + this.state.words[+settingIsEnabled]
-                    this.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                        settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
-                        notify(`${settings.controls[key].label}: ${
-                            this.state.words[+(key.includes('Disabled') ^ config[key])]}`)
-                    }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
-                }
-            });
+            else {
+
+                // Create toggles for available features
+                Object.keys(settings.controls).forEach(key => {
+                    if (sites[env.site].availFeatures.includes(key)) {
+                        const settingIsEnabled = config[key] ^ key.includes('Disabled')
+                        const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
+                                        + settings.controls[key].label
+                                        + this.state.separator + this.state.words[+settingIsEnabled]
+                        this.ids.push(GM_registerMenuCommand(menuLabel, () => {
+                            settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
+                            notify(`${settings.controls[key].label}: ${
+                                this.state.words[+(key.includes('Disabled') ^ config[key])]}`)
+                        }, env.scriptManager.supportsTooltips ?
+                            { title: settings.controls[key].helptip || ' ' } : undefined ))
+                    }
+                });
+
+                // Create Site Settings
+                const siteSettingsLabel = `🌐 ${app.msgs.menuLabel_siteSettings}`
+                this.ids.push(GM_registerMenuCommand(siteSettingsLabel, () => {
+
+                    // Show modal
+                    const siteSettingsModal = modals.alert(siteSettingsLabel, '<ul></ul>', null, null, 365)
+
+                    // Stylize toggles container
+                    const siteSettingsUL = siteSettingsModal.querySelector('ul')
+                    Object.assign(siteSettingsUL.style,
+                        { cursor: 'pointer', margin: '12px 0 -15px', minHeight: '100px', listStyle: 'none' })
+
+                    // Create toggle per site
+                    Object.keys(sites).forEach(site => {
+                        const siteHomeURL = sites[site].urls.homepage.replace(/^https?:\/\//, ''),
+                              configKey = `${site}Disabled`
+
+                        // Create/append item/label elems
+                        const settingItem = dom.create.elem('li', {
+                            title: `${app.msgs.helptip_run} ${app.name} on ${siteHomeURL}`,
+                            style: `
+                                color: ${getTextColor()} ; /* based on config */
+                                border-radius: 3px ; /* slightly round highlight strip */
+                                transition: 0.1s ease ; /* for hover-zoom */
+                                    -webkit-transition: 0.1s ease ; -moz-transition: 0.1s ease ;
+                                    -o-transition: 0.1s ease ; -ms-transition: 0.1s ease`
+                        })
+                        const settingLabel = dom.create.elem('label', { style: 'cursor: pointer' })
+                        settingLabel.textContent = siteHomeURL
+                        settingItem.append(settingLabel) ; siteSettingsUL.append(settingItem)
+
+                        // Init toggle input
+                        const settingToggle = dom.create.elem('input',
+                            { type: 'checkbox', disabled: true, style: 'display: none' })
+                        settingToggle.checked = !config[configKey]
+
+                        // Create/stylize switch
+                        const switchSpan = dom.create.elem('span')
+                        Object.assign(switchSpan.style, {
+                            position: 'relative', left: '-1px', bottom:'-8.5px', float: 'right',
+                            backgroundColor: '#ccc', width: '26px', height: '13px', borderRadius: '28px',
+                            transition: '0.4s', '-webkit-transition': '0.4s', '-moz-transition': '0.4s',
+                                '-o-transition': '0.4s', '-ms-transition': '0.4s'
+                        })
+
+                        // Create/stylize knob
+                        const knobSpan = dom.create.elem('span')
+                        Object.assign(knobSpan.style, {
+                            position: 'absolute', left: '1px', bottom: '1px', content: '""',
+                            backgroundColor: 'white', width: '11px', height: '11px', borderRadius: '28px',
+                            transition: '0.2s', '-webkit-transition': '0.2s', '-moz-transition': '0.2s',
+                                '-o-transition': '0.2s', '-ms-transition': '0.2s'
+                        })
+
+                        // Append elems
+                        switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
+
+                        // Update visual state w/ animation
+                        setTimeout(() => updateStyles(settingToggle), +155)
+
+                        // Add listeners
+                        settingItem.onmouseenter = () => Object.assign(settingItem.style, {
+                            padding: '4px 10px', transform: 'scale(1.15)',
+                            background: 'rgba(100,149,237,0.88)', color: 'white'
+                        })
+                        settingItem.onmouseleave = () => Object.assign(settingItem.style, {
+                            padding: '', transform: '', background: '', color: getTextColor() })
+                        settingItem.onclick = () => {
+                            switchToggle(settingToggle)
+                            settings.save(configKey, !config[configKey]) ; sync.configToUI({ updatedKey: configKey })
+                            if (env.site == site) // notify if setting of active site toggled
+                                notify(`${app.name} 🧩 ${
+                                    app.msgs[`state_${config[configKey] ? 'off' : 'on' }`].toUpperCase()}`)
+                        }
+
+                        function getTextColor() {
+                            return config[configKey] ?
+                                ( env.ui.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' ) // off
+                              : ( env.ui.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' ) // on
+                        }
+
+                        function switchToggle(settingToggle) {
+                            settingToggle.checked = !settingToggle.checked ; updateStyles(settingToggle) }
+
+                        function updateStyles(settingToggle) { // toggle show + staggered switch animations in
+                            const settingLi = settingToggle.parentNode,
+                                  switchSpan = settingLi.querySelector('span'),
+                                  knobSpan = switchSpan.querySelector('span')
+                            setTimeout(() => {
+                                switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
+                                switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                                knobSpan.style.transform = settingToggle.checked ?
+                                    'translateX(14px) translateY(0)' : 'translateX(0)'
+                                settingLi.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
+                            }, 1) // min delay to trigger transition fx
+                        }
+                    })
+                }, env.scriptManager.supportsTooltips ?
+                    { title: `${app.msgs.helptip_enableDisable} ${app.name} ${app.msgs.helptip_perSite}` }
+                        : undefined ))
+            }
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => {
@@ -503,7 +614,7 @@
     }
 
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
-        if (config.notifDisabled && !msg.includes(app.msgs.menuLabel_modeNotifs)) return
+        if (config.notifDisabled && !new RegExp(`${app.msgs.menuLabel_modeNotifs}|🧩`).test(msg)) return
 
         // Strip state word to append colored one later
         const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
@@ -644,24 +755,47 @@
                           : mode == 'fullWindow' ? ui.isFullWin()
                                                  : chatgpt.isFullScreen() )
             settings.save(mode, state) ; buttons.update.svg(mode) ; tooltip.update(mode)
-            if (mode == 'fullWindow') sync.fullerWin()
-            if (env.site == 'chatgpt') setTimeout(() => chatbar.tweak(), // update inner width
-                mode == 'fullWindow' && ( config.wideScreen || config.fullerWindows )
-                    && config.widerChatbox ? 111 : 0) // delay if toggled to/from active WCB to avoid wrong width
-            else if (env.site == 'poe' && config.widerChatbox) update.style.chatbar() // sync WCB
-            notify(`${app.msgs[`mode_${mode}`]} ${app.msgs[`state_${ state ? 'on' : 'off' }`].toUpperCase()}`)
+            if (!config[`${env.site}Disabled`]) { // tweak UI
+                if (mode == 'fullWindow') sync.fullerWin()
+                if (env.site == 'chatgpt') setTimeout(() => chatbar.tweak(), // update inner width
+                    mode == 'fullWindow' && ( config.wideScreen || config.fullerWindows )
+                        && config.widerChatbox ? 111 : 0) // delay if toggled to/from active WCB to avoid wrong width
+                else if (env.site == 'poe' && config.widerChatbox) update.style.chatbar() // sync WCB
+                notify(`${app.msgs[`mode_${mode}`]} ${app.msgs[`state_${ state ? 'on' : 'off' }`].toUpperCase()}`)
+            }
             config.modeSynced = true ; setTimeout(() => config.modeSynced = false, 100) // prevent repetition
         },
 
         configToUI(options) { // from toolbar menu toggles
-            if (sites[env.site].hasSidebar) sync.fullerWin() // sync FW
-            update.style.tweaks() // sync TCB/NCB/HH/HF/BA
-            update.style.chatbar() // sync WCB
-            chatbar.tweak() // update ChatGPT chatbar inner width + left-align Perplexity Attach File button
-            toolbarMenu.refresh() // to update state symbol/suffix
-            if (options?.updatedKey == 'btnAnimationsDisabled' && !config.btnAnimationsDisabled) // apply/remove fx
-                // ...to visually signal location + preview fx applied by Button Animations toggle-on
-                buttons.animate()
+            const scriptWasDisabled = !config[`${env.site}Disabled`]
+            if (!scriptWasDisabled && config[`${env.site}Disabled`]) { // outright disable modes/tweaks/btns
+                wideScreenStyle.remove() ; fullWinStyle.remove()
+                tweaksStyle.innerText = '' ; buttons.remove()
+                if (/chatgpt|perplexity/.test(env.site)) chatbar.reset()
+            } else if (!config[`${env.site}Disabled`]) { // sync modes/tweaks/btns
+                if (config.wideScreen ^ document.head.contains(wideScreenStyle)) { // sync Widescreen
+                    supressNotifs() ; toggleMode('wideScreen') }
+                if (sites[env.site].hasSidebar) {
+                    if (config.fullWindow ^ ui.isFullWin()) { // sync Full-Window
+                        supressNotifs() ; toggleMode('fullWindow') }
+                    sync.fullerWin() // sync Fuller Windows
+                }
+                update.style.tweaks() // sync TCB/NCB/HH/HF/BA
+                update.style.chatbar() // sync WCB
+                chatbar.tweak() // update ChatGPT chatbar inner width + left-align Perplexity Attach File button
+                buttons.insert() // since .remove()'d when extension disabled
+                toolbarMenu.refresh() // to update state symbol/suffix
+                if (options?.updatedKey == 'btnAnimationsDisabled' && !config.btnAnimationsDisabled) // apply/remove fx
+                    // ...to visually signal location + preview fx applied by Button Animations toggle-on
+                    buttons.animate()
+            }
+
+            function supressNotifs() {
+                if (!config.notifDisabled) {
+                    settings.save('notifDisabled', true) // suppress notifs for cleaner UI
+                    setTimeout(() => settings.save('notifDisabled', false), 55) // ...temporarily
+                }
+            }
         }
     }
 
@@ -733,14 +867,17 @@
     update.style.chatbar() ; document.head.append(chatbarStyle)
 
     // Insert BUTTONS/TOOLTIPS
-    tooltip.createDiv() ; tooltip.stylize() ; buttons.insert()
+    tooltip.createDiv() ; tooltip.stylize()
+    if (!config[`${env.site}Disabled`]) {
+        buttons.insert()
 
     // Restore PREV SESSION's state
-    if (config.wideScreen) toggleMode('wideScreen', 'ON')
-    if (config.fullWindow && sites[env.site].hasSidebar) {
-        if (sites[env.site].selectors.btns.sidebarToggle) // site has own FW config
-             sync.mode('fullWindow') // ...so sync w/ it
-        else toggleMode('fullWindow', 'on') // otherwise self-toggle
+        if (config.wideScreen) toggleMode('wideScreen', 'ON')
+        if (config.fullWindow && sites[env.site].hasSidebar) {
+            if (sites[env.site].selectors.btns.sidebarToggle) // site has own FW config
+                sync.mode('fullWindow') // ...so sync w/ it
+            else toggleMode('fullWindow', 'on') // otherwise self-toggle
+        }
     }
 
     // Monitor NODE CHANGES to maintain button visibility + update colors
@@ -748,7 +885,8 @@
     new MutationObserver(() => {
 
         // Maintain button visibility on nav
-        if (!document.getElementById('fullScreen-btn') && chatbar.get() && buttons.state.status != 'inserting') {
+        if (config[`${env.site}Disabled`]) return
+        else if (!document.getElementById('fullScreen-btn') && chatbar.get() && buttons.state.status != 'inserting') {
             buttons.state.status = 'missing' ; buttons.insert() }
 
         // Maintain button colors + Widescreen button visibility on snowflake chatgpt.com
