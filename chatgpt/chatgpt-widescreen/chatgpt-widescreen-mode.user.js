@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14
+// @version             2025.2.14.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -488,7 +488,7 @@
                     // Stylize toggles container
                     const siteSettingsUL = siteSettingsModal.querySelector('ul')
                     Object.assign(siteSettingsUL.style,
-                        { cursor: 'pointer', margin: '12px 0 -15px', minHeight: '100px', listStyle: 'none' })
+                        { cursor: 'pointer', margin: '23px 0 -15px', minHeight: '100px', listStyle: 'none' })
 
                     // Create toggle per site
                     Object.keys(sites).forEach(site => {
@@ -563,15 +563,12 @@
                             settingToggle.checked = !settingToggle.checked ; updateStyles(settingToggle) }
 
                         function updateStyles(settingToggle) { // toggle show + staggered switch animations in
-                            const settingLi = settingToggle.parentNode,
-                                  switchSpan = settingLi.querySelector('span'),
-                                  knobSpan = switchSpan.querySelector('span')
                             setTimeout(() => {
                                 switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
                                 switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
                                 knobSpan.style.transform = settingToggle.checked ?
                                     'translateX(14px) translateY(0)' : 'translateX(0)'
-                                settingLi.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
+                                settingItem.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
                             }, 1) // min delay to trigger transition fx
                         }
                     })
