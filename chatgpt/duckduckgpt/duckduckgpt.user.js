@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.8
+// @version                2025.2.13.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -735,7 +735,7 @@
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
                 stateStyles[foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
-            styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
+            styledStateSpan.append(foundState) ; notif.children[2].before(styledStateSpan)
         }
     }
 
@@ -774,7 +774,7 @@
             const aboutHeaderLogo = logos.ddgpt.create() ; aboutHeaderLogo.width = 420
             aboutHeaderLogo.style.cssText = 'max-width: 98% ;'
                 + `margin: -1px ${ env.browser.isMobile ? 'auto' : '13.5%' } 1px`
-            aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
+            aboutModal.firstChild.nextSibling.before(aboutHeaderLogo) // after close btn
 
             // Center text
             aboutModal.querySelector('h2').remove() // remove empty title h2
