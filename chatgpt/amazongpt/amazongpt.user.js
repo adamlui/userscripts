@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.8
+// @version                2025.2.13.9
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -556,7 +556,7 @@
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = `font-weight: bold ; ${
                 stateStyles[foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
-            styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
+            styledStateSpan.append(foundState) ; notif.children[2].before(styledStateSpan)
         }
     }
 
@@ -595,7 +595,7 @@
             const aboutHeaderLogo = logos.amzgpt.create() ; aboutHeaderLogo.width = 420
             aboutHeaderLogo.style.cssText = `max-width: 98% ; margin: 15px ${
                 env.browser.isMobile ? 'auto' : '15.5%' } 17px`
-            aboutModal.insertBefore(aboutHeaderLogo, aboutModal.firstChild.nextSibling) // after close btn
+            aboutModal.firstChild.nextSibling.before(aboutHeaderLogo) // after close btn
 
             // Center text
             aboutModal.querySelector('h2').remove() // remove empty title h2
