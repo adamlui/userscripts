@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.13.10
+// @version                2025.2.13.11
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -782,7 +782,7 @@
             aboutModal.querySelector('h2').remove() // remove empty title h2
             aboutModal.querySelector('p').style.cssText = (
                 'overflow-wrap: anywhere ; line-height: 1.55 ;'
-              + `margin: ${ env.browser.isPhone ? '9px 0 -16px' : '3px 0 -10px 10px' }`)
+              + `margin: ${ env.browser.isPhone ? '9px 0 -16px' : '3px 0 -11px 10px' }`)
 
             // Hack buttons
             aboutModal.querySelectorAll('button').forEach(btn => {
