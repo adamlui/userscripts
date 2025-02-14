@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.14.1
+// @version               2025.2.14.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -1180,7 +1180,7 @@
                         switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
 
                         // Update visual state w/ animation
-                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), +155)
+                        setTimeout(() => modals.settings.toggle.updateStyles(settingToggle), 155)
 
                         // Add click listener
                         settingItem.onclick = () => {
