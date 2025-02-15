@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14.9
+// @version             2025.2.14.10
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -495,7 +495,7 @@
                         const siteHomeURL = sites[site].urls.homepage.replace(/^https?:\/\//, '')
 
                         // Create/append item/label elems
-                        const settingItem = dom.create.elem('li', {
+                        const toggleRow = dom.create.elem('li', {
                             title: `${app.msgs.helptip_run} ${app.name} on ${siteHomeURL}`,
                             style: `
                                 color: ${getTextColor()} ; /* based on config */
@@ -506,12 +506,12 @@
                         })
                         const settingLabel = dom.create.elem('label', { style: 'cursor: pointer' })
                         settingLabel.textContent = siteHomeURL
-                        settingItem.append(settingLabel) ; siteSettingsUL.append(settingItem)
+                        toggleRow.append(settingLabel) ; siteSettingsUL.append(toggleRow)
 
                         // Init toggle input
-                        const settingToggle = dom.create.elem('input',
+                        const toggleInput = dom.create.elem('input',
                             { type: 'checkbox', disabled: true, style: 'display: none' })
-                        settingToggle.checked = !config[`${site}Disabled`]
+                        toggleInput.checked = !config[`${site}Disabled`]
 
                         // Create/stylize switch
                         const switchSpan = dom.create.elem('span')
@@ -532,20 +532,20 @@
                         })
 
                         // Append elems
-                        switchSpan.append(knobSpan) ; settingItem.append(settingToggle, switchSpan)
+                        switchSpan.append(knobSpan) ; toggleRow.append(toggleInput, switchSpan)
 
                         // Update visual state w/ animation
-                        setTimeout(() => updateStyles(settingToggle), 155)
+                        setTimeout(() => updateStyles(toggleInput), 155)
 
                         // Add listeners
-                        settingItem.onmouseenter = () => Object.assign(settingItem.style, {
+                        toggleRow.onmouseenter = () => Object.assign(toggleRow.style, {
                             padding: '4px 10px', transform: 'scale(1.15)',
                             background: 'rgba(100,149,237,0.88)', color: 'white'
                         })
-                        settingItem.onmouseleave = () => Object.assign(settingItem.style, {
+                        toggleRow.onmouseleave = () => Object.assign(toggleRow.style, {
                             padding: '', transform: '', background: '', color: getTextColor() })
-                        settingItem.onclick = () => {
-                            switchToggle(settingToggle)
+                        toggleRow.onclick = () => {
+                            switchToggle(toggleInput)
                             settings.save(`${site}Disabled`, !config[`${site}Disabled`]) ; sync.configToUI()
                             if (env.site == site) // notify if setting of active site toggled
                                 notify(`${app.name} 🧩 ${
@@ -558,16 +558,16 @@
                               : ( env.ui.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' ) // on
                         }
 
-                        function switchToggle(settingToggle) {
-                            settingToggle.checked = !settingToggle.checked ; updateStyles(settingToggle) }
+                        function switchToggle(toggleInput) {
+                            toggleInput.checked = !toggleInput.checked ; updateStyles(toggleInput) }
 
-                        function updateStyles(settingToggle) { // toggle show + staggered switch animations in
+                        function updateStyles(toggleInput) { // toggle show + staggered switch animations in
                             setTimeout(() => {
-                                switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
-                                switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                                knobSpan.style.transform = settingToggle.checked ?
+                                switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+                                switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                                knobSpan.style.transform = toggleInput.checked ?
                                     'translateX(14px) translateY(0)' : 'translateX(0)'
-                                settingItem.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
+                                toggleRow.classList[toggleInput.checked ? 'add' : 'remove']('active') // dim/brighten entry
                             }, 1) // min delay to trigger transition fx
                         }
                     })
