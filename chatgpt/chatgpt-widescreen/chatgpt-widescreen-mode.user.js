@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.14.8
+// @version             2025.2.14.9
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -546,8 +546,7 @@
                             padding: '', transform: '', background: '', color: getTextColor() })
                         settingItem.onclick = () => {
                             switchToggle(settingToggle)
-                            settings.save(`${site}Disabled`, !config[`${site}Disabled`])
-                            sync.configToUI({ updatedKey: `${site}Disabled` })
+                            settings.save(`${site}Disabled`, !config[`${site}Disabled`]) ; sync.configToUI()
                             if (env.site == site) // notify if setting of active site toggled
                                 notify(`${app.name} 🧩 ${
                                     app.msgs[`state_${config[`${site}Disabled`] ? 'off' : 'on' }`].toUpperCase()}`)
