@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.16
+// @version             2025.2.16.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -448,7 +448,7 @@
             const stateStyles = {
                 on: {
                     light: 'color: #5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px',
-                    dark:  'color: #5cef48 ; text-shadow: rgb(55, 255, 0) 3px 0 10px'
+                    dark:  'color: #5cef48 ; text-shadow: rgb(55,255,0) 3px 0 10px'
                 },
                 off: {
                     light: 'color: #ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px',
