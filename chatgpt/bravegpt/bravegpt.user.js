@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.16.2
+// @version               2025.2.16.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -1062,7 +1062,8 @@
                 // Append scheme icon
                 const notifs = document.querySelectorAll('.chatgpt-notif')
                 const notif = notifs[notifs.length -1]
-                const schemeIcon = icons[scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCycle'].create()
+                const schemeIcon = icons[
+                    scheme == 'light' ? 'sun' : scheme == 'dark' ? 'moon' : 'arrowsCyclic'].create()
                 schemeIcon.style.cssText = 'width: 23px ; height: 23px ; position: relative ;'
                                          + 'top: 3px ; margin-left: 6px'
                 notif.append(schemeIcon)
@@ -1303,7 +1304,7 @@
                     schemeStatusSpan.append(...( // status txt + icon
                         config.scheme == 'dark' ? [document.createTextNode(app.msgs.scheme_dark), icons.moon.create()]
                       : config.scheme == 'light' ? [document.createTextNode(app.msgs.scheme_light), icons.sun.create()]
-                      : [document.createTextNode(app.msgs.menuLabel_auto), icons.arrowsCycle.create()] ))
+                      : [document.createTextNode(app.msgs.menuLabel_auto), icons.arrowsCyclic.create()] ))
                     schemeStatusSpan.style.cssText += `; margin-top: ${ !config.scheme ? 3 : 0 }px !important`
                 }
             }
@@ -1633,7 +1634,7 @@
             }
         },
 
-        arrowsCycle: {
+        arrowsCyclic: {
             create() {
                 const svg = dom.create.svgElem('svg', {
                     id: `${app.slug}-arrows-cycle-icon`, width: 13, height: 13,
@@ -3873,7 +3874,7 @@
             regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px';
             const regenSVGwrapper = dom.create.elem('div') // to rotate while respecting ini icon tilt
             regenSVGwrapper.style.display = 'flex' // wrap the icon tightly
-            const regenSVG = icons.arrowsCycle.create();
+            const regenSVG = icons.arrowsCyclic.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
