@@ -76,6 +76,23 @@
 
 <img height=6px width="100%" src="https://assets.googlegpt.io/images/separators/gradient-aqua.png">
 
+<div id="golden-sponsors" align="center">
+<br>
+
+### Golden Sponsor:
+
+<a href="https://www.burncloud.com/893.html">
+    <picture>
+        <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/white.png?v=610795b">
+        <img width=685 src="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/black.png?v=610795b">
+    </picture>
+</a>
+<br><br><br>
+
+</div>
+
+<img height=6px width="100%" src="https://assets.googlegpt.io/images/separators/gradient-aqua.png">
+
 ## 🚀 Installation
 
 1. Install a userscript manager:
