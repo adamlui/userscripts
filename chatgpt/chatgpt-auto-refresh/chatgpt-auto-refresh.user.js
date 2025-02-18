@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.18
+// @version             2025.2.18.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -435,10 +435,10 @@
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
                 const controlType = settings.controls[key].type
-                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled(key)] } `
                                 + settings.controls[key].label
-                                + ( controlType == 'toggle' ? this.state.separator + this.state.words[+settingIsEnabled]
+                                + ( controlType == 'toggle' ? this.state.separator
+                                                            + this.state.words[+settingIsEnabled(key)]
                                                             : `— ${settings.controls[key].status}` )
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (controlType == 'toggle') {
@@ -474,6 +474,8 @@
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
+
+            function settingIsEnabled(key) { return config[key] ^ /disabled|hidden/i.test(key) }
         }
     }
 
