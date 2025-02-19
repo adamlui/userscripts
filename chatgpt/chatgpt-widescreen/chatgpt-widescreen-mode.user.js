@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.18
+// @version             2025.2.19
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -379,6 +379,7 @@
         alert_tyForSupport: 'Thank you for your support',
         alert_pressF11: 'Press F11 to exit full screen',
         alert_f11reason: 'F11 was used to enter full screen, and due to browser security reasons, the same key must be used to exit it',
+        notif_chatStopped: 'Chat stopped',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
         btnLabel_discuss: 'Discuss',
@@ -937,7 +938,8 @@
     // Add KEY LISTENER to enable flag on F11 + stop generating text on ESC
     document.addEventListener('keydown', event => {
         if ((event.key == 'F11' || event.keyCode == 122) && !config.fullScreen) config.f11 = true
-        else if ((event.key.startsWith('Esc') || event.keyCode == 27)) try { chatgpt.stop() } catch (err) {}
+        else if ((event.key.startsWith('Esc') || event.keyCode == 27) && chatgpt.isTyping())
+            try { chatgpt.stop() ; notify(app.msgs.notif_chatStopped, 'bottom-right') } catch (err) {}
     })
 
 })()
