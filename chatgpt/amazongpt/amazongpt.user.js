@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.16.2
+// @version                2025.2.20
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1063,13 +1063,13 @@
                     const settingLi = settingToggle.parentNode,
                           switchSpan = settingLi.querySelector('span'),
                           knobSpan = switchSpan.querySelector('span')
-                    setTimeout(() => {
+                    requestAnimationFrame(() => {
                         switchSpan.style.backgroundColor = settingToggle.checked ? '#ad68ff' : '#ccc'
                         switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
                         knobSpan.style.transform = settingToggle.checked ?
                             'translateX(14px) translateY(0)' : 'translateX(0)'
                         settingLi.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
-                    }, 1) // min delay to trigger transition fx
+                    }) // to trigger 1st transition fx
                 }
             },
 
