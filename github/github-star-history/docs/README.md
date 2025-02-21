@@ -13,6 +13,9 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed GitHub Star History **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) (once)_
+
 <a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /

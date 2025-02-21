@@ -5,6 +5,9 @@
 
 Hides images/videos from XenForo, vBulletin & Discourse forums.
 
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed Hide Forum Images **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js) (once)_
+
 <a href="https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/userscripts/discussions) /
