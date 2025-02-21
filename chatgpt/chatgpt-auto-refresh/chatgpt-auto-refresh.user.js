@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.21
+// @version             2025.2.21.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -434,14 +434,15 @@
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
-                const controlType = settings.controls[key].type
+                const ctrlType = settings.controls[key].type
+                const ctrlStatus = settings.controls[key].status
                 const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled(key)] } `
                                 + settings.controls[key].label
-                                + ( controlType == 'toggle' ? this.state.separator
-                                                            + this.state.words[+settingIsEnabled(key)]
-                                                            : `— ${settings.controls[key].status}` )
+                                + ( ctrlType == 'toggle' ? this.state.separator
+                                                         + this.state.words[+settingIsEnabled(key)]
+                                                         : ctrlStatus ? `— ${settings.controls[key].status}` : '' )
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    if (controlType == 'toggle') {
+                    if (ctrlType == 'toggle') {
                         settings.save(key, !config[key])
                         notify(`${settings.controls[key].label}: ${
                             this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
