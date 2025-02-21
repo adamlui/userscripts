@@ -31,6 +31,13 @@
     <img height=31 alt="[jsDelivr stats]" src="https://img.shields.io/jsdelivr/gh/hm/adamlui/chatgpt-auto-continue?style=for-the-badge&logo=jsdelivr&logoColor=white&label=jsDelivr%20Requests&labelColor=464646&color=2bbbd8"></a>
 <br><br>
 
+</div>
+
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed ChatGPT Auto-Continue **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://gm.chatgptautocontinue.com) (once)_
+
+<div align="center">
+
 <a href="https://gm.chatgptautocontinue.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.chatgptautocontinue.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-continue/discussions) /
