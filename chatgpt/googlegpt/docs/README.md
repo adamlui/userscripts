@@ -31,6 +31,13 @@
     <img height=31 alt="[jsDelivr stats]" src="https://img.shields.io/jsdelivr/gh/hm/KudoAI/googlegpt?style=for-the-badge&logo=jsdelivr&logoColor=white&label=jsDelivr%20Requests&labelColor=464646&color=2bbbd8"></a>
 <br><br>
 
+</div>
+
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed GoogleGPT **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://gm.googlegpt.io) (once)_
+
+<div align="center">
+
 <img height=6px width="100%" src="https://assets.googlegpt.io/images/separators/gradient-aqua.png">
 
 <h3>🤖 Bring the magic of AI to Google Search (powered by Google Gemma + GPT-4o!)</h3>
