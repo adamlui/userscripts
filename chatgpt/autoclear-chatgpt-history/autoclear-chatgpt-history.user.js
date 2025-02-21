@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.21.1
+// @version             2025.2.21.2
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -419,14 +419,15 @@
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
-                const controlType = settings.controls[key].type
+                const ctrlType = settings.controls[key].type
+                const ctrlStatus = settings.controls[key].status
                 const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled(key)] } `
                                 + settings.controls[key].label
-                                + ( controlType == 'toggle' ? this.state.separator
-                                                            + this.state.words[+settingIsEnabled(key)]
-                                                            : `— ${settings.controls[key].status}` )
+                                + ( ctrlType == 'toggle' ? this.state.separator
+                                                         + this.state.words[+settingIsEnabled(key)]
+                                                         : ctrlStatus ? `— ${ctrlStatus}` : '' )
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    if (controlType == 'toggle') {
+                    if (ctrlType == 'toggle') {
                         settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                         notify(`${settings.controls[key].label}: ${this.state.words[+settingIsEnabled(key)]}`)
                     } else // Clear Now action
