@@ -28,6 +28,9 @@
 
 ### Automatically play ChatGPT responses.
 
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed ChatGPT Auto-Talk **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://gm.chatgptautotalk.com) (once)_
+
 <a href="https://gm.chatgptautotalk.com"><img height=45 alt="[Install this script]" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.chatgptautotalk.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/chatgpt-auto-talk/discussions) /
