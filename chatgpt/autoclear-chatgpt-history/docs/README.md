@@ -21,6 +21,9 @@
 
 ### Auto-clears chat history when visiting chatgpt.com for maximum privacy
 
+> [!IMPORTANT]
+> _**Greasy Fork users:** If you installed Autoclear ChatGPT History **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://gm.autoclearchatgpt.com) (once)_
+
 <a href="https://gm.autoclearchatgpt.com"><img height=45 alt="[Install this script]" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=45 alt="[How to install]" title="How to install" src="https://assets.autoclearchatgpt.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/autoclear-chatgpt-history/discussions) /
