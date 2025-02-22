@@ -48,7 +48,7 @@
 <br>
 <br>
 
-<img height=8px width="100%" src="https://assets.ddgpt.com/images/separators/gradient-aqua.png?v=50a6d43">
+<img height=8px width="100%" src="https://assets.ddgpt.com/images/separators/gradient-aqua.png">
 
 <div id="golden-sponsors" align="center">
 <br>
@@ -65,7 +65,7 @@
 
 </div>
 
-<img height=8px width="100%" src="https://assets.ddgpt.com/images/separators/gradient-aqua.png?v=50a6d43">
+<img height=8px width="100%" src="https://assets.ddgpt.com/images/separators/gradient-aqua.png">
 
 ## 🚀 Installation
 
