@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.22.2
+// @version             2025.2.22.3
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -254,7 +254,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             gm.chatgptwidescreen.com
 // @connect             raw.githubusercontent.com
-// @require             echo -e "\n${BY}Pushing bump${plural_suffix} https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=to Git...\n${NC}"
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@1d11593/chromium/extension/lib/chatbar.js#sha256-m1oLnMk4aFkV3C+x4ghyLt1bgUNhdEYzLI06+5Dg02o=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@1d11593/chromium/extension/lib/dom.js#sha256-XKFz0YmejScaKpdsiGXRt17zbSeDtsXQ4kW29VQc2w4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@45bcc91/chromium/extension/lib/settings.js#sha256-q7LX4Ep7jJuLTOkc4wxo/E8QzAjbB8/Gj5PjGYTcZ14=
