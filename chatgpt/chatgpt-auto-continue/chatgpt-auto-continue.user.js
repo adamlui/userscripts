@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.21
+// @version             2025.2.21.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -469,7 +469,10 @@
         const btnTypesToCheck = ['Continue'] ; if (config.autoScroll) btnTypesToCheck.push('Scroll')
         const btns = {} ; btnTypesToCheck.forEach(type => btns[type] = chatgpt[`get${type}Btn`]())
         Object.entries(btns).forEach(([btnType, btn]) => {
-            if (!btn || btnType == 'Scroll' && ( !config.autoScroll || !chatgpt.isTyping() )) return
+            if (!btn // no button found
+                || btnType == 'Scroll' && ( !config.autoScroll || !chatgpt.isTyping() ) // no need to scroll
+                || btnType == 'Continue' && document.querySelector(chatgpt.selectors.errors.txt) // conversation error
+            ) return
             btn.click()
             if (btnType == 'Continue') {
                 continueBtnClicked = true
