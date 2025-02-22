@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.21
+// @version             2025.2.21.1
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -24,7 +24,7 @@
 // @connect             api.star-history.com
 // @connect             cdn.jsdelivr.net
 // @connect             raw.githubusercontent.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.0/dist/chatgpt.min.js#sha256-nA09EuYRznD6U7PGAb4o8H/MhUwOsxA0EhdK/2ZuxpM=
+// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
 // @grant               GM_registerMenuCommand
 // @grant               GM_openInTab
 // @grant               GM_xmlhttpRequest
