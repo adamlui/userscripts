@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.21.3
+// @version             2025.2.21.4
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -242,7 +242,7 @@
 // @connect             cdn.jsdelivr.net
 // @connect             gm.autoclearchatgpt.com
 // @connect             raw.githubusercontent.com
-// @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.0/dist/chatgpt.min.js#sha256-nA09EuYRznD6U7PGAb4o8H/MhUwOsxA0EhdK/2ZuxpM=
+// @require             echo -e "\n${BY}Pushing bump${plural_suffix} https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=to Git...\n${NC}"
 // @require             https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=645ecc1#sha256-MlQDWKHt/z17PSfGBiSdR7fwQy/pe2EXJKIN7pjPdS8=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
