@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.13
+// @version                  2025.2.23.14
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1141,7 +1141,7 @@
                 else if (!/\d/.test(replyLang)) {
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
-                            : replyLang[0].toUpperCase() + replyLang.slice(1).toLowerCase() )
+                            : log.toTitleCase(replyLang) )
                     log.debug('Saving reply language...')
                     settings.save('replyLang', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLang = ${config.replyLang}`)
