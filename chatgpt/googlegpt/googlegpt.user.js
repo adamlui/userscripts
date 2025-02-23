@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.8
+// @version                  2025.2.23.9
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -919,7 +919,7 @@
             const styledStateSpan = dom.create.elem('span')
             styledStateSpan.style.cssText = stateStyles[
                 foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme]
-            styledStateSpan.append(foundState) ; notif.children[2].before(styledStateSpan)
+            styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
     }
 
