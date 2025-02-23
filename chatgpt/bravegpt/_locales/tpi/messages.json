@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Sais bilong leta" },
   "tooltip_sendReply": { "message": "Kirap bekim" },
   "tooltip_askRandQuestion": { "message": "Toksave long ol samting i no stret" },
+  "tooltip_summarizeResults": { "message": "Toktok bilong ol samting" },
   "tooltip_minimize": { "message": "Minimisim" },
   "tooltip_restore": { "message": "Ripim bek" },
   "tooltip_expand": { "message": "Wok long go bikpela" },

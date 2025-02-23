@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ފޮންޓް ސައިޒް" },
   "tooltip_sendReply": { "message": "ޖަވާބު ފޮނުއްވާ" },
   "tooltip_askRandQuestion": { "message": "ރެންޑަމް ސުވާލެއް ކުރާށެވެ" },
+  "tooltip_summarizeResults": { "message": "ނަތީޖާ ޚުލާޞާކުރުން" },
   "tooltip_minimize": { "message": "އެންމެ ކުޑަކުރުން" },
   "tooltip_restore": { "message": "ރީސްޓޯރ" },
   "tooltip_expand": { "message": "އިތުރުކުރުން" },

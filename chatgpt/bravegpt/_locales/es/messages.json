@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Tamaño de fuente" },
   "tooltip_sendReply": { "message": "Enviar respuesta" },
   "tooltip_askRandQuestion": { "message": "Pregunta aleatoria. " },
+  "tooltip_summarizeResults": { "message": "Resumir resultados" },
   "tooltip_minimize": { "message": "Minimizar" },
   "tooltip_restore": { "message": "Restaurar" },
   "tooltip_expand": { "message": "Expandir" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Skriftstørrelse" },
   "tooltip_sendReply": { "message": "Send svar" },
   "tooltip_askRandQuestion": { "message": "Still tilfeldige spørsmål" },
+  "tooltip_summarizeResults": { "message": "Oppsummer resultater" },
   "tooltip_minimize": { "message": "Minimer" },
   "tooltip_restore": { "message": "Gjenopprett" },
   "tooltip_expand": { "message": "Utvid" },

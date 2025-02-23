@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ਫੋਂਟ ਸਾਈਜ਼" },
   "tooltip_sendReply": { "message": "ਜਵਾਬ ਭੇਜੋ" },
   "tooltip_askRandQuestion": { "message": "ਬੇਤਰਤੀਬੇ ਸਵਾਲ ਪੁੱਛੋ" },
+  "tooltip_summarizeResults": { "message": "ਨਤੀਜਿਆਂ ਦਾ ਸਾਰ ਦਿਓ" },
   "tooltip_minimize": { "message": "ਘੱਟੋ- ਘੱਟ" },
   "tooltip_restore": { "message": "ਮੁੜ-ਸਟੋਰ" },
   "tooltip_expand": { "message": "ਫੈਲਾਓ" },

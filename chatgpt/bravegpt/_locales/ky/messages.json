@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Шрифттин кегли" },
   "tooltip_sendReply": { "message": "Жооп жөнөтүү" },
   "tooltip_askRandQuestion": { "message": "Кокус суроо берүү" },
+  "tooltip_summarizeResults": { "message": "Натыйжаларды жалпылоо" },
   "tooltip_minimize": { "message": "Кыскартуу" },
   "tooltip_restore": { "message": "Калыбына келтирүү" },
   "tooltip_expand": { "message": "Кеңейтүү" },

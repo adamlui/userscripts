@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Teckenstorlek" },
   "tooltip_sendReply": { "message": "Skicka svar" },
   "tooltip_askRandQuestion": { "message": "Ställ slumpmässiga frågor" },
+  "tooltip_summarizeResults": { "message": "Sammanfatta resultat" },
   "tooltip_minimize": { "message": "Minska" },
   "tooltip_restore": { "message": "Återställ" },
   "tooltip_expand": { "message": "Expandera" },

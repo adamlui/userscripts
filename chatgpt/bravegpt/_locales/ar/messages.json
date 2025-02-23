@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "حجم الخط" },
   "tooltip_sendReply": { "message": "أرسل رد" },
   "tooltip_askRandQuestion": { "message": "سؤال عشوائي" },
+  "tooltip_summarizeResults": { "message": "لخص النتائج:" },
   "tooltip_minimize": { "message": "التصغير" },
   "tooltip_restore": { "message": "استرجاع" },
   "tooltip_expand": { "message": "توسيع" },
