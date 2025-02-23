@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.23.10
+// @version               2025.2.23.11
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -261,7 +261,7 @@
             support: 'https://support.bravegpt.com',
             update: 'https://gm.bravegpt.com'
         },
-        latestResourceCommitHash: '0fce83e' // for cached messages.json
+        latestResourceCommitHash: '13e849b' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -269,6 +269,7 @@
         appDesc: 'Adds ChatGPT answers to Brave Search sidebar (powered by GPT-4o!)',
         menuLabel_proxyAPImode: 'Proxy API Mode',
         menuLabel_autoGetAnswers: 'Auto-Get Answers',
+        menuLabel_autoSummarizeResults: 'Auto-Summarize Results',
         menuLabel_autoFocusChatbar: 'Auto-Focus Chatbar',
         menuLabel_whenStreaming: 'when streaming',
         menuLabel_show: 'Show',
@@ -326,6 +327,7 @@
         helptip_proxyAPImode: 'Uses a Proxy API for no-login access to AI',
         helptip_streamingMode: 'Receive replies in a continuous text stream',
         helptip_autoGetAnswers: 'Auto-send queries to BraveGPT when using search engine',
+        helptip_autoSummarizeResults: 'Automatically summarize search results page',
         helptip_autoFocusChatbar: 'Auto-focus chatbar whenever it appears',
         helptip_autoScroll: 'Auto-scroll responses as they generate in Streaming Mode',
         helptip_showRelatedQueries: 'Show related queries below chatbar',
@@ -394,6 +396,7 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
+        isEnabled(key) { return config[key] ^ /disabled|hidden/i.test(key) },
         load(...keys) {
             keys.flat().forEach(key => {
                 config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
@@ -517,6 +520,9 @@
         autoGetDisabled: { type: 'toggle', icon: 'speechBalloonLasso', defaultVal: false,
             label: app.msgs.menuLabel_autoGetAnswers,
             helptip: app.msgs.helptip_autoGetAnswers },
+        autoSummarize: { type: 'toggle', icon: 'summarize', defaultVal: false,
+            label: app.msgs.menuLabel_autoSummarizeResults,
+            helptip: app.msgs.helptip_autoSummarizeResults },
         autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: true,
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
@@ -1137,6 +1143,7 @@
                         /proxy/i.test(key) ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
                       : /streaming/i.test(key) ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
                       : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
+                      : /summarize/i.test(key) ? 'top: 3.5px ; left: -5px ; margin-right: 3px ; height: 17.5px'
                       : /autoscroll/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
                       : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
                       : /prefix/i.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
@@ -1192,12 +1199,13 @@
                             )) modals.settings.toggle.switch(settingToggle)
 
                             // Call specialized toggle funcs
-                            const manualGetMatch = /(?:suf|pre)fix/.exec(key)
+                            const autoGenMatch = /get|summarize/i.exec(key),
+                                  manualGenMatch = /(?:suf|pre)fix/i.exec(key)
                             if (key.includes('proxy')) toggle.proxyMode()
                             else if (key.includes('streaming')) toggle.streaming()
-                            else if (/autoget/i.test(key)) toggle.autoGet()
                             else if (key.includes('rq')) toggle.relatedQueries()
-                            else if (manualGetMatch) toggle.manualGet(manualGetMatch[0])
+                            else if (autoGenMatch) toggle.autoGen(autoGenMatch[0].toLowerCase())
+                            else if (manualGenMatch) toggle.manualGen(manualGenMatch[0].toLowerCase())
                             else if (key.includes('Sidebar')) toggle.sidebar(/(.*?)Sidebar$/.exec(key)[1])
                             else if (key.includes('anchor')) toggle.anchorMode()
                             else if (key.includes('bgAnimation')) toggle.animations('bg')
@@ -2927,15 +2935,20 @@
             notify(`${settings.controls[configKey].label} ${toolbarMenu.state.words[+!config[configKey]]}`)
         },
 
-        autoGet() {
-            settings.save('autoGetDisabled', !config.autoGetDisabled)
-            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.queryBtnClickHandler()
-            if (!config.autoGetDisabled) // disable Prefix/Suffix mode if enabled
-                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
-            notify(`${settings.controls.autoGetDisabled.label} ${toolbarMenu.state.words[+!config.autoGetDisabled]}`)
+        autoGen(mode) {
+            const validModes = ['get', 'summarize'],
+                  modeKey = `auto${log.toTitleCase(mode)}${ mode == 'get' ? 'Disabled' : '' }`
+            settings.save(modeKey, !config[modeKey])
+            if (settings.isEnabled(modeKey)) { // disable conflicting modes if enabled
+                const otherMode = validModes[+(mode == validModes[0])],
+                      otherModeKey = `auto${log.toTitleCase(otherMode)}${ otherMode == 'get' ? 'Disabled' : '' }`
+                if (settings.isEnabled(otherModeKey)) toggle.autoGen(otherMode);
+                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGen(mode))
+            }
+            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+settings.isEnabled(modeKey)]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const autoGetToggle = document.querySelector('[id*=autoGet] input')
-                if (autoGetToggle.checked == config.autoGetDisabled) modals.settings.toggle.switch(autoGetToggle)
+                const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
+                if (modeToggle.checked != settings.isEnabled(modeKey)) modals.settings.toggle.switch(modeToggle)
             }
         },
 
@@ -2967,10 +2980,13 @@
             icons.arrowsDiagonal.update() ; toggle.tooltip('off') // update icon/tooltip
         },
 
-        manualGet(mode) { // Prefix/Suffix modes
+        manualGen(mode) { // Prefix/Suffix modes
             const modeKey = `${mode}Enabled`
             settings.save(modeKey, !config[modeKey])
-            if (config[modeKey] && !config.autoGetDisabled) toggle.autoGet() // disable Auto-Get mode if enabled
+            if (config[modeKey]) // disable Auto-Gen modes if enabled
+                ['get', 'summarize'].forEach(mode =>
+                    settings.isEnabled(`auto${log.toTitleCase(mode)}${ mode == 'get' ? 'Disabled' : '' }`)
+                        && toggle.autoGen(mode))
             notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
@@ -4115,7 +4131,7 @@
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
-    if ( config.autoGetDisabled // Auto-Get disabled
+    if ( config.autoGetDisabled && !config.autoSummarize // Auto-Gen disabled
         || config.prefixEnabled && !/.*q=%2F/.test(location.href) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
             show.reply('standby', footerContent)
@@ -4123,7 +4139,10 @@
                 get.related(msgChain[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
-    } else { appAlert('waitingResponse') ; get.reply(msgChain) }
+    } else {
+        if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+        appAlert('waitingResponse') ; get.reply(msgChain)
+    }
     saveAppDiv() // to fight Brave mutations
 
     // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
