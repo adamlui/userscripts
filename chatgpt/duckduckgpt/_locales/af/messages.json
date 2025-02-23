@@ -1,8 +1,8 @@
 {
   "appDesc": { "message": "Voeg ChatGPT-antwoorde by DuckDuckGo-sybalk (aangedryf deur GPT-4o!)" },
   "menuLabel_proxyAPImode": { "message": "Volmag-API-modus" },
-  "menuLabel_autoGetAnswers": { "message": "Outo- Kry Antwoorde" },
-  "menuLabel_autoSummarizeResults": { "message": "Outo- Opsomming Resultate" },
+  "menuLabel_autoGetAnswers": { "message": "Outo-Kry Antwoorde" },
+  "menuLabel_autoSummarizeResults": { "message": "Outo-Opsomming Resultate" },
   "menuLabel_autoFocusChatbar": { "message": "Outo-fokus kletsbalk" },
   "menuLabel_whenStreaming": { "message": "wanneer om te stroom" },
   "menuLabel_show": { "message": "Wys" },
