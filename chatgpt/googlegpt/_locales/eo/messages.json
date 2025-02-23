@@ -1,7 +1,7 @@
 {
   "appDesc": { "message": "Aldonas AI-respondojn al Google Search (funkciigita de Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Aŭtomate ricevi respondojn" },
-  "menuLabel_autoSummarizeResults": { "message": "@ info: whatsthis" },
+  "menuLabel_autoSummarizeResults": { "message": "Aŭtomate Resumi Rezultojn" },
   "menuLabel_autoFocusChatbar": { "message": "Aŭtomata Fokusa Babilejo" },
   "menuLabel_whenStreaming": { "message": "dum fluo" },
   "menuLabel_proxyAPImode": { "message": "Prokura API-Reĝimo" },
