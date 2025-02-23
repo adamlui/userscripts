@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.2
+// @version                2025.2.23.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2194,19 +2194,29 @@
                         -ms-transition: var(--font-size-slider-thumb-transition) }`
               + ( config.fgAnimationsDisabled || env.browser.isMobile ?
                     '' : `#${app.slug}-font-size-slider-thumb:hover { transform: scale(1.125) }` )
+              + `.${app.slug}-standby-btns { margin: 14px 0 5px }`
               + `.${app.slug}-standby-btn {`
-                  + 'width: 100% ; margin: 9px 0 9px ; padding: 11px 0 ; cursor: pointer ;'
+                  + `--content-color: ${ isParticlizedDS ? 'white' : 'black' };`
+                  + 'width: 100% ; margin-bottom: 9px ; padding: 10px 0 ; cursor: pointer ;'
                   + `background-color: #f0f0f0${ config.bgAnimationsDisabled ? '' : '00' };`
-                  + `color: ${ isParticlizedDS ? 'white' : 'black' };`
+                  + 'color: var(--content-color) ;'
                   + `border-radius: 4px ; border: 1px solid ${ isParticlizedDS ? '#fff' : '#888' };`
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
               + `.${app.slug}-standby-btn:hover {`
-                  + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: black'
-                                                    : 'background: black ; color: white' };`
+                  + `--content-color: ${ env.ui.app.scheme == 'dark' ? 'black' : 'white' };`
+                  + 'fill: var(--content-color) ; stroke: var(--content-color) ;'
+                  + `${ env.ui.app.scheme == 'dark' ? 'background: white ; color: var(--content-color)'
+                                                    : 'background: black ; color: var(--content-color)' };`
                   + `${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
                         : 'transform: scaleX(1.015) scaleY(1.03)' }}`
+              + `.${app.slug}-standby-btn svg {
+                    position: relative ; fill: var(--content-color) ; stroke: var(--content-color) }
+                .${app.slug}-standby-btn:first-of-type svg { /* Query button icon */
+                    width: 11px ; height: 11px ; margin-right: 4px ; top: -1px }
+                .${app.slug}-standby-btn:nth-of-type(2) svg { /* Summarize button icon */
+                    width: 12.5px ; height: 12.5px ; margin-right: 6px ; top: 1px }`
               + `.${app.slug}-reply-tip {`
                   + 'content: "" ; position: relative ; border: 7px solid transparent ;'
                   + 'float: left ; left: 9px ; margin: 33px -14px 0 0 ;' // positioning
@@ -2926,7 +2936,7 @@
 
         autoGet() {
             settings.save('autoGet', !config.autoGet)
-            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.standbyBtnClickHandler()
+            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.queryBtnClickHandler()
             if (config.autoGet) // disable Prefix/Suffix mode if enabled
                 ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
             notify(`${settings.controls.autoGet.label} ${toolbarMenu.state.words[+config.autoGet]}`)
@@ -3733,17 +3743,24 @@
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
-                    const standbyBtn = dom.create.elem('button',
-                        { class: `${app.slug}-standby-btn no-mobile-tap-outline` })
-                    standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp
-                    appDiv.append(standbyBtn)
-                    show.reply.standbyBtnClickHandler = function() {
-                        appAlert('waitingResponse')
-                        show.reply.userInteracted = true ; show.reply.chatbarFocused = false
-                        menus.pin.topPos = menus.pin.rightPos = null
-                        get.reply(msgChain)
-                    }
-                    standbyBtn.onclick = show.reply.standbyBtnClickHandler
+                    const standbyBtnsDiv = dom.create.elem('div', { class: `${app.slug}-standby-btns` });
+                    ['query', 'summarize'].forEach(btnType => {
+                        const standbyBtn = dom.create.elem('button', {
+                            class: `${app.slug}-standby-btn no-mobile-tap-outline` })
+                        standbyBtn.textContent = app.msgs[
+                            btnType == 'query' ? 'btnLabel_sendQueryToApp' : 'tooltip_summarizeResults']
+                        standbyBtn.prepend(icons[btnType == 'query' ? 'send' : 'summarize'].create())
+                        show.reply[`${btnType}BtnClickHandler`] = function() {
+                            appAlert('waitingResponse')
+                            show.reply.userInteracted = true ; show.reply.chatbarFocused = false
+                            menus.pin.topPos = menus.pin.rightPos = null
+                            if (btnType == 'summarize')
+                                msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+                            get.reply(msgChain)
+                        }
+                        standbyBtnsDiv.append(standbyBtn) ; standbyBtn.onclick = show.reply[`${btnType}BtnClickHandler`]
+                    })
+                    appDiv.append(standbyBtnsDiv)
 
                 // Otherwise create/append answer bubble
                 } else {
@@ -3774,6 +3791,8 @@
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
+                    if (btnType == 'summarize' && appDiv.querySelector('[class*=standby-btn]'))
+                        return // since big Summarize button exists
                     const btn = dom.create.elem('button',
                         { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ idx == 0 ? 5 : 0.3 }px`
