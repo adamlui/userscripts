@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.6
+// @version                  2025.2.23.7
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2398,13 +2398,13 @@
                   : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
                         'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                             : 'background: var(--pre-bg-color-light-scheme) ;'
-                                + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
+                                + 'color: var(--font-color-light-scheme) ; border: none' };` )
                   + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
                         'transition: var(--answer-pre-transition) ;'
                             + '-webkit-transition: var(--answer-pre-transition) ;'
                             + '-moz-transition: var(--answer-pre-transition) ;'
                             + '-o-transition: var(--answer-pre-transition) ;'
-                            + '-ms-transition: var(--answer-pre-transition) }' }}`
+                            + '-ms-transition: var(--answer-pre-transition)' }}`
               + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#28a017' }}`
               + `#${app.slug} section.loading { padding: 15px 0 14px 5px }` // left/top-pad loading status when sending replies
