@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.4
+// @version                2025.2.23.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1717,7 +1717,7 @@
                   + 'font-size: 1.5rem ; font-weight: 700 ; text-decoration: none ;'
                   + `color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + '.kudoai {' // header byline
-                  + `position: relative ; bottom: -1px ; margin-left: 8px ; color: #aaa
+                  + `position: relative ; bottom: -1px ; margin-left: 8px ; color: #aaa ;
                     --transition: 0.15s ease-in-out ; transition: var(--transition) ;
                         -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
@@ -1786,13 +1786,13 @@
                   : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
                         'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                             : 'background: var(--pre-bg-color-light-scheme) ;'
-                                + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
+                                + 'color: var(--font-color-light-scheme) ; border: none' };` )
                   + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
                         'transition: var(--answer-pre-transition) ;'
                             + '-webkit-transition: var(--answer-pre-transition) ;'
                             + '-moz-transition: var(--answer-pre-transition) ;'
                             + '-o-transition: var(--answer-pre-transition) ;'
-                            + '-ms-transition: var(--answer-pre-transition) }' }}`
+                            + '-ms-transition: var(--answer-pre-transition)' }}`
               + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + `#${app.slug} section.loading { padding-left: 5px }` // left-pad loading status when sending replies
