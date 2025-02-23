@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Dodaje odpowiedzi sztucznej inteligencji do wyszukiwarki Google (obsługiwanej przez Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Automatyczne uzyskiwanie odpowiedzi" },
+  "menuLabel_autoSummarizeResults": { "message": "Automatycznie podsumuj wyniki" },
   "menuLabel_autoFocusChatbar": { "message": "Automatycznie ustawiaj ostrość na czacie" },
   "menuLabel_whenStreaming": { "message": "podczas przesyłania strumieniowego" },
   "menuLabel_proxyAPImode": { "message": "Tryb proxy API" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Używa interfejsu API serwera proxy w celu uzyskania dostępu bez logowania do sztucznej inteligencji" },
   "helptip_streamingMode": { "message": "Otrzymuj odpowiedzi w ciągłym strumieniu tekstu" },
   "helptip_autoGetAnswers": { "message": "Automatyczne wysyłanie zapytań do GoogleGPT podczas korzystania z wyszukiwarki" },
+  "helptip_autoSummarizeResults": { "message": "Automatycznie podsumowuj stronę wyników wyszukiwania" },
   "helptip_autoFocusChatbar": { "message": "Automatycznie skupiaj pasek czatu za każdym razem, gdy się pojawi" },
   "helptip_autoScroll": { "message": "Automatyczne przewijanie odpowiedzi generowanych w trybie przesyłania strumieniowego" },
   "helptip_showRelatedQueries": { "message": "Pokaż powiązane zapytania poniżej paska czatu" },

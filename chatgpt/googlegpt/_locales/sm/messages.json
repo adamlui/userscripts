@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Faʻaopopo AI tali i Google Search (faʻamalosia e Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Tali Auto-Get" },
+  "menuLabel_autoSummarizeResults": { "message": "Faaiuga Auto-Summarize" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "pe a tafe" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Faʻaaoga se Proxy API mo le leai-login avanoa i AI" },
   "helptip_streamingMode": { "message": "Maua tali i se tafe mau faifai pea" },
   "helptip_autoGetAnswers": { "message": "Suʻesuʻega otometi i GoogleGPT pe a faʻaaogaina le search engine" },
+  "helptip_autoSummarizeResults": { "message": "Faʻamutaina otometi le itulau o iʻuga o sailiga" },
   "helptip_autoFocusChatbar": { "message": "Auto-focus chatbar i soo se taimi e foliga mai" },
   "helptip_autoScroll": { "message": "Auto-scroll tali a o latou gaosia i le Streaming Mode" },
   "helptip_showRelatedQueries": { "message": "Faaali atu fesili e fesootai i lalo chatbar" },

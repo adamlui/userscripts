@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Auto-Get Answers" },
+  "menuLabel_autoSummarizeResults": { "message": "Auto-Summarize Results" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "when streaming" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Uses a Proxy API for no-login access to AI" },
   "helptip_streamingMode": { "message": "Receive replies in a continuous text stream" },
   "helptip_autoGetAnswers": { "message": "Auto-send queries to GoogleGPT when using search engine" },
+  "helptip_autoSummarizeResults": { "message": "Automatically summarize search results page" },
   "helptip_autoFocusChatbar": { "message": "Auto-focus chatbar whenever it appears" },
   "helptip_autoScroll": { "message": "Auto-scroll responses as they generate in Streaming Mode" },
   "helptip_showRelatedQueries": { "message": "Show related queries below chatbar" },

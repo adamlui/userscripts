@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "מוסיף תשובות בינה מלאכותית לחיפוש Google (מופעל על ידי Google Gemma + GPT -4o!)" },
   "menuLabel_autoGetAnswers": { "message": "קבל תשובות אוטומטיות" },
+  "menuLabel_autoSummarizeResults": { "message": "סיכום אוטומטי של התוצאות" },
   "menuLabel_autoFocusChatbar": { "message": "פוקוס אוטומטי של סרגל הצ'אט" },
   "menuLabel_whenStreaming": { "message": "בזמן סטרימינג" },
   "menuLabel_proxyAPImode": { "message": "מצב API של שרת Proxy" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "משתמש ב - Proxy API לגישה ללא כניסה ל - AI" },
   "helptip_streamingMode": { "message": "קבלת תשובות בזרם טקסט רציף" },
   "helptip_autoGetAnswers": { "message": "שליחה אוטומטית של שאילתות ל - GoogleGPT בעת שימוש במנוע חיפוש" },
+  "helptip_autoSummarizeResults": { "message": "סיכום אוטומטי של דף תוצאות החיפוש" },
   "helptip_autoFocusChatbar": { "message": "מיקוד אוטומטי של סרגל הצ'אט בכל פעם שהוא מופיע" },
   "helptip_autoScroll": { "message": "תגובות גלילה אוטומטית כפי שהן יוצרות במצב הזרמה" },
   "helptip_showRelatedQueries": { "message": "הצג שאילתות קשורות מתחת לשורת הצ'אט" },

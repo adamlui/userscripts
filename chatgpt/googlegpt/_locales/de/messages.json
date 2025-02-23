@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Fügt KI-Antworten zur Google-Suche hinzu (unterstützt von Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Antworten automatisch abrufen" },
+  "menuLabel_autoSummarizeResults": { "message": "Ergebnisse zusammenfassen" },
   "menuLabel_autoFocusChatbar": { "message": "Autofokus-Chatbar" },
   "menuLabel_whenStreaming": { "message": "beim Streaming" },
   "menuLabel_proxyAPImode": { "message": "Proxy-API-Modus" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Verwendet eine Proxy-API für den No-Login-Zugriff auf KI" },
   "helptip_streamingMode": { "message": "Erhalten Sie Antworten in einem kontinuierlichen Textstrom" },
   "helptip_autoGetAnswers": { "message": "Automatisches Senden von Abfragen an GoogleGPT bei Verwendung der Suchmaschine" },
+  "helptip_autoSummarizeResults": { "message": "Suchergebnisseite automatisch zusammenfassen" },
   "helptip_autoFocusChatbar": { "message": "Autofokus-Chatbar, wann immer sie erscheint" },
   "helptip_autoScroll": { "message": "Automatisches Scrollen von Antworten, wie sie im Streaming-Modus generiert werden" },
   "helptip_showRelatedQueries": { "message": "Verwandte Abfragen unterhalb der Chatleiste anzeigen" },

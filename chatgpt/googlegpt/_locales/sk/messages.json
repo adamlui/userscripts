@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Pridáva odpovede AI do vyhľadávania Google (poháňané službou Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Automatické získavanie odpovedí" },
+  "menuLabel_autoSummarizeResults": { "message": "Automaticky zhrnúť výsledky" },
   "menuLabel_autoFocusChatbar": { "message": "Chatbar s automatickým zaostrovaním" },
   "menuLabel_whenStreaming": { "message": "pri streamovaní" },
   "menuLabel_proxyAPImode": { "message": "Režim proxy API" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Používa rozhranie Proxy API na prístup bez prihlásenia k umelej inteligencii" },
   "helptip_streamingMode": { "message": "Prijímať odpovede v nepretržitom textovom prúde" },
   "helptip_autoGetAnswers": { "message": "Automatické odosielanie dopytov do GoogleGPT pri používaní vyhľadávača" },
+  "helptip_autoSummarizeResults": { "message": "Automaticky zhrnúť stránku s výsledkami vyhľadávania" },
   "helptip_autoFocusChatbar": { "message": "Chatovací panel s automatickým zaostrovaním vždy, keď sa zobrazí" },
   "helptip_autoScroll": { "message": "Automatické posúvanie odpovedí pri ich generovaní v režime streamovania" },
   "helptip_showRelatedQueries": { "message": "Zobraziť súvisiace otázky pod chatovým panelom" },

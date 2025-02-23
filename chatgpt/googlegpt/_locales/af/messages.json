@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Voeg AI antwoorde op Google Search (aangedryf deur Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Outo- Kry Antwoorde" },
+  "menuLabel_autoSummarizeResults": { "message": "Outo- Opsomming Resultate" },
   "menuLabel_autoFocusChatbar": { "message": "Outo-fokus kletsbalk" },
   "menuLabel_whenStreaming": { "message": "wanneer om te stroom" },
   "menuLabel_proxyAPImode": { "message": "Volmag-API-modus" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Gebruik 'n Proxy API vir no-login toegang tot AI" },
   "helptip_streamingMode": { "message": "Ontvang antwoorde in 'n deurlopende teksstroom" },
   "helptip_autoGetAnswers": { "message": "Auto-send navrae na GoogleGPT wanneer die gebruik van soektog" },
+  "helptip_autoSummarizeResults": { "message": "Opsomming van soekresultate bladsy outomaties" },
   "helptip_autoFocusChatbar": { "message": "Outo-fokus kletsbalk wanneer dit verskyn" },
   "helptip_autoScroll": { "message": "Outo-rol antwoorde as hulle genereer in Streaming af" },
   "helptip_showRelatedQueries": { "message": "Wys verwante navrae onder kletsbalk" },

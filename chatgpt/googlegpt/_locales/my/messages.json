@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google Search သို့ AI အဖြေများကို ပေါင်းထည့်သည် (Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "အလိုအလျောက်-အဖြေများရယူပါ" },
+  "menuLabel_autoSummarizeResults": { "message": "အလိုအလျောက် အကျဉ်းချုပ်ရလဒ်များ" },
   "menuLabel_autoFocusChatbar": { "message": "အလိုအလျောက်အာရုံစူးစိုက်မှု စကားပြောဘား" },
   "menuLabel_whenStreaming": { "message": "စီးဆင်းနေချိန်တွင်" },
   "menuLabel_proxyAPImode": { "message": "ပရောက်စီ API မုဒ်" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI သို့ဝင်ရောက်ခြင်းမပြုရန် Proxy API ကိုအသုံးပြုသည်" },
   "helptip_streamingMode": { "message": "စဉ်ဆက်မပြတ်စာသားစီးဆင်းမှုတွင်အဖြေများကိုလက်ခံရရှိပါ" },
   "helptip_autoGetAnswers": { "message": "ရှာဖွေရေးအင်ဂျင်ကို အသုံးပြု. သောအခါ GoogleGPT မှအလိုအလျောက်စေလွှတ်မေးမြန်းချက်" },
+  "helptip_autoSummarizeResults": { "message": "ရှာဖွေမှု ရလဒ် စာမျက်နှာကို အလိုအလျောက် အကျဉ်းချုံးပါ" },
   "helptip_autoFocusChatbar": { "message": "အလိုအလျောက်-အာရုံစူးစိုက်မှု chatbar ပေါ်လာသည့်အခါတိုင်း" },
   "helptip_autoScroll": { "message": "စီးဆင်းမှု အနေအထားတွင် တုံ့ပြန်ချက်များ တစ်ခါတစ်ရံ ထွက်ပေါ်လာသောအခါ အလိုအလျောက် လှိမ့်စေပါ" },
   "helptip_showRelatedQueries": { "message": "စကားပြောဘားအောက်တွင် သက်ဆိုင်ရာမေးခွန်းများကို ပြပါ" },

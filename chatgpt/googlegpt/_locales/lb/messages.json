@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Füügt AI Äntwerten op Google Sich bäi (ugedriwwe vu Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Auto-Get Äntwerten" },
+  "menuLabel_autoSummarizeResults": { "message": "Fakten an Erënnerungen" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "wann streamen" },
   "menuLabel_proxyAPImode": { "message": "Proxy-API-Modus" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Benotzt e Proxy-API fir keen Login Zougang zu AI" },
   "helptip_streamingMode": { "message": "Kritt Äntwerten an engem kontinuéierlechen Textstroum" },
   "helptip_autoGetAnswers": { "message": "Auto-Send Ufroen op GoogleGPT wann Dir Sichmotor benotzt" },
+  "helptip_autoSummarizeResults": { "message": "Resuméiert d'Sichresultater Säit automatesch" },
   "helptip_autoFocusChatbar": { "message": "Autofokus chatbar wann immer es darstellt" },
   "helptip_autoScroll": { "message": "Autoscroll Äntwerte wéi se am Streaming Modus generéieren" },
   "helptip_showRelatedQueries": { "message": "Weis verwandte Ufroen ënnert der Chatbar" },

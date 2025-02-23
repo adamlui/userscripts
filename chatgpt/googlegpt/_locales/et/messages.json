@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Lisab tehisintellekti vastused Google 'i otsingusse (toetab Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Automaatne vastuste hankimine" },
+  "menuLabel_autoSummarizeResults": { "message": "Tulemuste automaatne summeerimine" },
   "menuLabel_autoFocusChatbar": { "message": "Automaatse teravustamise vestlusriba" },
   "menuLabel_whenStreaming": { "message": "voogesituse ajal" },
   "menuLabel_proxyAPImode": { "message": "Puhverserveri API-režiim" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Kasutab puhverserveri API-d sisselogimiseta juurdepääsuks tehisintellektile" },
   "helptip_streamingMode": { "message": "Saa vastused pidevas tekstivoos" },
   "helptip_autoGetAnswers": { "message": "Saada otsingumootori kasutamisel päringud automaatselt GoogleGPT-le" },
+  "helptip_autoSummarizeResults": { "message": "Otsingutulemuste lehe automaatne kokkuvõte" },
   "helptip_autoFocusChatbar": { "message": "Automaatse teravustamise vestlusriba alati, kui see ilmub" },
   "helptip_autoScroll": { "message": "Voogesituse režiimis genereeritud vastuste automaatne kerimine" },
   "helptip_showRelatedQueries": { "message": "Kuva seotud päringud vestlusriba all" },

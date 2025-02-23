@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Add AI answers to Google Search (powered by Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Ol bekim bilong ol askim" },
+  "menuLabel_autoSummarizeResults": { "message": "Ol samting i kamap long ol samting bilong ol yet" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "taim Streaming" },
   "menuLabel_proxyAPImode": { "message": "Proxy API mode" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Wokim wanpela Proxy API bilong no-login access long AI" },
   "helptip_streamingMode": { "message": "Kisim bekim long wanpela tok i stap oltaim" },
   "helptip_autoGetAnswers": { "message": "Ol i save salim ol askim long GoogleGPT taim ol i yusim search engine" },
+  "helptip_autoSummarizeResults": { "message": "Ol i save bungim ol samting bilong painim ol samting long rot bilong ol yet" },
   "helptip_autoFocusChatbar": { "message": "Auto-focus chatbar taim em i kamap" },
   "helptip_autoScroll": { "message": "Ol bekim bilong ol auto-scroll olsem ol i kamapim long streaming mode" },
   "helptip_showRelatedQueries": { "message": "Toksave long ol askim i stap daunbilo long chatbar" },

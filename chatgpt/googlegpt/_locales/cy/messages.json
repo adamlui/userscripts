@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Yn ychwanegu atebion AI at Google Search (wedi'i bweru gan Google Gemma + GPT -4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Atebion Auto - GET" },
+  "menuLabel_autoSummarizeResults": { "message": "Canlyniadau Hunan - Fformatio" },
   "menuLabel_autoFocusChatbar": { "message": "Bar Sgwrs Awtomatig - Ffocws" },
   "menuLabel_whenStreaming": { "message": "wrth ffrydio" },
   "menuLabel_proxyAPImode": { "message": "Modd API Dirprwy" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Defnyddio API Proxy ar gyfer mynediad dim login i AI" },
   "helptip_streamingMode": { "message": "Derbyn atebion mewn llif testun parhaus" },
   "helptip_autoGetAnswers": { "message": "Awtomatig - anfon ymholiadau i GoogleGPT wrth ddefnyddio peiriant chwilio" },
+  "helptip_autoSummarizeResults": { "message": "Crynhowch y dudalen canlyniadau chwilio yn awtomatig" },
   "helptip_autoFocusChatbar": { "message": "Bar sgwrsio sy'n canolbwyntio'n awtomatig pryd bynnag y mae'n ymddangos" },
   "helptip_autoScroll": { "message": "Ymatebion sgrolio awtomatig wrth iddynt gynhyrchu yn y Modd Ffrydio" },
   "helptip_showRelatedQueries": { "message": "Dangos ymholiadau cysylltiedig o dan y bar sgwrsio" },

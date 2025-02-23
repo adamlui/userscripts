@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google gözlegine AI jogaplaryny goş (Google Gemma + GPT-4o bilen işleýär!)" },
   "menuLabel_autoGetAnswers": { "message": "Auto-Get jogaplary" },
+  "menuLabel_autoSummarizeResults": { "message": "Auto-Summarize netijeleri" },
   "menuLabel_autoFocusChatbar": { "message": "Awto-Fokus Çatbary" },
   "menuLabel_whenStreaming": { "message": "ötýänçä" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI-de loginsiz giriş üçin proxy API-ni ulan" },
   "helptip_streamingMode": { "message": "Galyberse-de, bu soraglaryň jogabyny tapyp bilersiňiz" },
   "helptip_autoGetAnswers": { "message": "Garawul diňi we Garawul diňi" },
+  "helptip_autoSummarizeResults": { "message": "Arama netijeleriniň sahypasyny avtomatik gysgaça gysgaça gysgaça gys" },
   "helptip_autoFocusChatbar": { "message": "Autofocus chatbar her gezek görünýär" },
   "helptip_autoScroll": { "message": "Auto-Scroll jogaplary Streaming Mode-da döredilende" },
   "helptip_showRelatedQueries": { "message": "Çatbaryň aşagynda baglanyşykly soraglary görkez" },

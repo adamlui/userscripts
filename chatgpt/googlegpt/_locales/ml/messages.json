@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google തിരയലിലേക്ക് AI ഉത്തരങ്ങൾ ചേർക്കുന്നു (Google Gemma + GPT-4o നാൽ നയിക്കപ്പെടുന്നു!)" },
   "menuLabel_autoGetAnswers": { "message": "യാന്ത്രികമായി ലഭിക്കുന്ന ഉത്തരങ്ങൾ" },
+  "menuLabel_autoSummarizeResults": { "message": "യാന്ത്രികമായി സംഗ്രഹിക്കുന്ന ഫലങ്ങൾ" },
   "menuLabel_autoFocusChatbar": { "message": "ഓട്ടോ-ഫോക്കസ് ചാറ്റ്ബാർ" },
   "menuLabel_whenStreaming": { "message": "സ്ട്രീം ചെയ്യുമ്പോൾ" },
   "menuLabel_proxyAPImode": { "message": "പ്രോക്സി API മോഡ്" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI-ലേക്ക് നോ-ലോഗിൻ ആക്‌സസ് ചെയ്യുന്നതിന് ഒരു പ്രോക്സി API ഉപയോഗിക്കുന്നു" },
   "helptip_streamingMode": { "message": "തുടർച്ചയായ ടെക്സ്റ്റ് സ്ട്രീമിൽ മറുപടികൾ സ്വീകരിക്കുക" },
   "helptip_autoGetAnswers": { "message": "സെർച്ച് എഞ്ചിൻ ഉപയോഗിക്കുമ്പോൾ GoogleGPT-ലേക്ക് യാന്ത്രികമായി ചോദ്യങ്ങൾ അയയ്ക്കുക" },
+  "helptip_autoSummarizeResults": { "message": "തിരയൽ ഫലങ്ങളുടെ പേജ് യാന്ത്രികമായി സംഗ്രഹിക്കുക" },
   "helptip_autoFocusChatbar": { "message": "ദൃശ്യമാകുമ്പോഴെല്ലാം ഓട്ടോഫോക്കസ് ചാറ്റ്ബാർ" },
   "helptip_autoScroll": { "message": "സ്ട്രീമിംഗ് മോഡിൽ സൃഷ്ടിക്കുന്ന പ്രതികരണങ്ങൾ യാന്ത്രികമായി സ്ക്രോൾ ചെയ്യുക" },
   "helptip_showRelatedQueries": { "message": "ചാറ്റ്ബാറിൽ താഴെ ബന്ധപ്പെട്ട ചോദ്യങ്ങൾ കാണിക്കുക" },

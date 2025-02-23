@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Manampy ny valin-tenin'i AI amin'ny sisin'ny Google Search (azo avy amin'ny Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Mahazo Valiny ho azy" },
+  "menuLabel_autoSummarizeResults": { "message": "Auto-Mamaritra ny Vokatra" },
   "menuLabel_autoFocusChatbar": { "message": "Mifantoka ho azy amin'ny Chatbar" },
   "menuLabel_whenStreaming": { "message": "rehefa mikoriana" },
   "menuLabel_proxyAPImode": { "message": "Fomba Proxy API" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Mampiasa Proxy API ho an'ny fidirana tsy misy login amin'ny AI" },
   "helptip_streamingMode": { "message": "Mahazo valiny amin'ny fikoriana lahatsoratra mitohy" },
   "helptip_autoGetAnswers": { "message": "Alefaso fanontaniana ho azy amin'ny GoogleGPT rehefa mampiasa milina fitadiavana" },
+  "helptip_autoSummarizeResults": { "message": "Fintino avy hatrany ny valin'ny fikarohana" },
   "helptip_autoFocusChatbar": { "message": "Mifantoka ho azy amin'ny chatbar isaky ny miseho" },
   "helptip_autoScroll": { "message": "Mitohy ho azy ny valiny rehefa mamokatra amin'ny fomba fikoriana" },
   "helptip_showRelatedQueries": { "message": "Asehoy fanontaniana mifandraika etsy ambany chatbar" },

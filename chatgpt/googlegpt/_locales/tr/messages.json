@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google Arama'ya yapay zeka yanıtları ekler (Google Gemma + GPT -4o tarafından desteklenmektedir!)" },
   "menuLabel_autoGetAnswers": { "message": "Otomatik Yanıt Al" },
+  "menuLabel_autoSummarizeResults": { "message": "Sonuçları Otomatik Özetle" },
   "menuLabel_autoFocusChatbar": { "message": "Otomatik Odaklanma Sohbet Çubuğu" },
   "menuLabel_whenStreaming": { "message": "akış sırasında" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Modu" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Yapay zekaya giriş gerektirmeyen erişim için bir Proxy API'si kullanır" },
   "helptip_streamingMode": { "message": "Yanıtları sürekli bir metin akışında alın" },
   "helptip_autoGetAnswers": { "message": "Arama motorunu kullanırken sorguları GoogleGPT'ye otomatik olarak gönder" },
+  "helptip_autoSummarizeResults": { "message": "Arama sonuçları sayfasını otomatik olarak özetle" },
   "helptip_autoFocusChatbar": { "message": "Göründüğünde sohbet çubuğunu otomatik odakla" },
   "helptip_autoScroll": { "message": "Akış Modunda oluşturulan yanıtları otomatik olarak kaydır" },
   "helptip_showRelatedQueries": { "message": "İlgili sorguları sohbet çubuğunun altında göster" },

@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "د ګوګل لټون ته د AI ځوابونه اضافه کوي (د Google Gemma + GPT -4o لخوا پرمخ وړل شوی!)" },
   "menuLabel_autoGetAnswers": { "message": "په اوتومات ډول ځوابونه ورکړئ" },
+  "menuLabel_autoSummarizeResults": { "message": "په اتومات ډول د جمع کولو پایلې" },
   "menuLabel_autoFocusChatbar": { "message": "اتومات فوکس چیټبار" },
   "menuLabel_whenStreaming": { "message": "کله چې بهیر روان وي" },
   "menuLabel_proxyAPImode": { "message": "د پراکسي API حالت" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI ته د نه ننوتلو لاسرسي لپاره د پراکسي API کاروي" },
   "helptip_streamingMode": { "message": "په دوامداره متن جریان کې ځوابونه ترلاسه کړئ" },
   "helptip_autoGetAnswers": { "message": "کله چې د لټون ماشین کاروئ GoogleGPT ته د اتوماتیک پای پوښتنې واستوئ" },
+  "helptip_autoSummarizeResults": { "message": "د لټون پایلو پاڼه په اوتومات ډول لنډیز کړئ" },
   "helptip_autoFocusChatbar": { "message": "هرکله چې راښکاره شي، په اتومات ډول تمرکز وکړئ چیټ بار" },
   "helptip_autoScroll": { "message": "د اتومات سکور ځوابونه لکه څنګه چې دا د سټریمینګ حالت کې رامینځته کیږي" },
   "helptip_showRelatedQueries": { "message": "د چټپټې لاندې اړوند پوښتنې وښایاست" },

@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Tilføjer AI-svar til Google Søgning (drevet af Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Hent svar automatisk" },
+  "menuLabel_autoSummarizeResults": { "message": "Automatisk opsummering af resultater" },
   "menuLabel_autoFocusChatbar": { "message": "Chatbar med autofokus" },
   "menuLabel_whenStreaming": { "message": "når du streamer" },
   "menuLabel_proxyAPImode": { "message": "Proxy API-tilstand" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Bruger en proxy-API til nul-login-adgang til AI" },
   "helptip_streamingMode": { "message": "Modtag svar i en kontinuerlig tekststrøm" },
   "helptip_autoGetAnswers": { "message": "Send automatisk forespørgsler til GoogleGPT, når du bruger en søgemaskine" },
+  "helptip_autoSummarizeResults": { "message": "Opsummer søgeresultatsiden automatisk" },
   "helptip_autoFocusChatbar": { "message": "Chatbar med autofokus, når den vises" },
   "helptip_autoScroll": { "message": "Automatisk rulning af svar, når de genereres i streamingtilstand" },
   "helptip_showRelatedQueries": { "message": "Vis relaterede forespørgsler under chatbaren" },

@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Aggiunge le risposte AI alla Ricerca Google (con tecnologia Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Ottieni automaticamente risposte" },
+  "menuLabel_autoSummarizeResults": { "message": "Riepiloga automaticamente i risultati" },
   "menuLabel_autoFocusChatbar": { "message": "Messa a fuoco automatica della barra di chat" },
   "menuLabel_whenStreaming": { "message": "durante lo streaming" },
   "menuLabel_proxyAPImode": { "message": "Modalità API proxy" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Utilizza un'API proxy per l'accesso no-login all'IA" },
   "helptip_streamingMode": { "message": "Ricevi risposte in un flusso di testo continuo" },
   "helptip_autoGetAnswers": { "message": "Invio automatico di query a GoogleGPT quando si utilizza il motore di ricerca" },
+  "helptip_autoSummarizeResults": { "message": "Riepiloga automaticamente la pagina dei risultati di ricerca" },
   "helptip_autoFocusChatbar": { "message": "Messa a fuoco automatica della chatbar ogni volta che viene visualizzata" },
   "helptip_autoScroll": { "message": "Scorrimento automatico delle risposte man mano che vengono generate in modalità Streaming" },
   "helptip_showRelatedQueries": { "message": "Mostra le query correlate sotto la barra di chat" },

@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google Search-এ AI উত্তর যোগ করে (Google Gemma + GPT-4o দ্বারা চালিত!)" },
   "menuLabel_autoGetAnswers": { "message": "স্বয়ংক্রিয়ভাবে উত্তর পান" },
+  "menuLabel_autoSummarizeResults": { "message": "স্বতঃস্ফূর্ত ফলাফল" },
   "menuLabel_autoFocusChatbar": { "message": "অটো-ফোকাস চ্যাটবার" },
   "menuLabel_whenStreaming": { "message": "স্ট্রিমিং করার সময়" },
   "menuLabel_proxyAPImode": { "message": "প্রক্সি API মোড" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI-তে নো-লগিন অ্যাক্সেসের জন্য একটি প্রক্সি API ব্যবহার করে" },
   "helptip_streamingMode": { "message": "একটি অবিচ্ছিন্ন টেক্সট স্ট্রীমে উত্তরগুলি পান" },
   "helptip_autoGetAnswers": { "message": "সার্চ ইঞ্জিন ব্যবহার করার সময় স্বয়ংক্রিয়ভাবে GoogleGPT-কে প্রশ্ন পাঠান" },
+  "helptip_autoSummarizeResults": { "message": "অনুসন্ধানের ফলাফলের পৃষ্ঠাটি স্বয়ংক্রিয়ভাবে সারসংক্ষেপ করুন" },
   "helptip_autoFocusChatbar": { "message": "যখনই দেখা যায় অটো-ফোকাস চ্যাটবার" },
   "helptip_autoScroll": { "message": "স্ট্রিমিং মোডে উত্পন্ন প্রতিক্রিয়াগুলি স্বয়ংক্রিয়ভাবে স্ক্রোল করুন" },
   "helptip_showRelatedQueries": { "message": "চ্যাটবারের নিচে সম্পর্কিত প্রশ্নগুলি দেখান" },

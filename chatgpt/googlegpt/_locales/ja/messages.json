@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google 検索に AI の回答を追加（ Google Gemma + GPT-4o 搭載！）" },
   "menuLabel_autoGetAnswers": { "message": "回答を自動取得" },
+  "menuLabel_autoSummarizeResults": { "message": "結果を要約する" },
   "menuLabel_autoFocusChatbar": { "message": "オートフォーカスチャットバー" },
   "menuLabel_whenStreaming": { "message": "ストリーミング時" },
   "menuLabel_proxyAPImode": { "message": "プロキシ API モード" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI へのノーログインアクセスにプロキシ API を使用" },
   "helptip_streamingMode": { "message": "連続したテキストストリームで返信を受け取る" },
   "helptip_autoGetAnswers": { "message": "検索エンジンを使用しているときに GoogleGPT にクエリを自動送信する" },
+  "helptip_autoSummarizeResults": { "message": "検索結果ページを自動的に要約する" },
   "helptip_autoFocusChatbar": { "message": "チャットバーが表示されるたびに自動フォーカス" },
   "helptip_autoScroll": { "message": "ストリーミングモードで生成される自動スクロール応答" },
   "helptip_showRelatedQueries": { "message": "チャットバーの下に関連するクエリを表示" },

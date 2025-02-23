@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Aldonas AI-respondojn al Google Search (funkciigita de Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Aŭtomate ricevi respondojn" },
+  "menuLabel_autoSummarizeResults": { "message": "@ info: whatsthis" },
   "menuLabel_autoFocusChatbar": { "message": "Aŭtomata Fokusa Babilejo" },
   "menuLabel_whenStreaming": { "message": "dum fluo" },
   "menuLabel_proxyAPImode": { "message": "Prokura API-Reĝimo" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Uzas Proxy API por ne-login aliro al AI" },
   "helptip_streamingMode": { "message": "Ricevi respondojn en kontinua tekstfluo" },
   "helptip_autoGetAnswers": { "message": "Aŭtomate sendi demandojn al GoogleGPT dum uzado de serĉilo" },
+  "helptip_autoSummarizeResults": { "message": "Aŭtomate resumi la serĉrezultan paĝon" },
   "helptip_autoFocusChatbar": { "message": "Aŭtomate enfokusigi babilejon kiam ajn ĝi aperas" },
   "helptip_autoScroll": { "message": "Aŭtomate rulumi respondojn kiel ili generas en Streaming Mode" },
   "helptip_showRelatedQueries": { "message": "Montri rilatajn demandojn sub babilejo" },

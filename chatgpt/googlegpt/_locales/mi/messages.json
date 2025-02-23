@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Tāpirihia nga whakautu AI ki a Google Search (e whakahaerehia ana e Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Whakautu Auto-Get" },
+  "menuLabel_autoSummarizeResults": { "message": "Ngā hua Auto-Summarize" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "i te wa e rere ana" },
   "menuLabel_proxyAPImode": { "message": "Aratau API Proxy" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Whakamahia he API Proxy mo te urunga kore-login ki AI" },
   "helptip_streamingMode": { "message": "Whakautu i roto i te rere kuputuhi tonu" },
   "helptip_autoGetAnswers": { "message": "Ko nga uiui Auto-Send ki a GoogleGPT i te wa e whakamahi ana i te miihini rapu" },
+  "helptip_autoSummarizeResults": { "message": "Te whakarāpopototanga aunoa o te whārangi hua rapu" },
   "helptip_autoFocusChatbar": { "message": "Auto-focus chatbar i nga wa katoa e puta ana" },
   "helptip_autoScroll": { "message": "Ko nga whakautu tirotiro aunoa i a raatau e whakaputa ana i roto i te Aratau Streaming" },
   "helptip_showRelatedQueries": { "message": "Whakaatuhia nga paatai e pa ana ki raro i te chatbar" },

@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Magdagdag ng mga tugon sa AI sa Paghahanap ng Google (naaalaga ng Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Ҷавоби худкор" },
+  "menuLabel_autoSummarizeResults": { "message": "Худмаблағгузорӣ кардани натиҷаҳо" },
   "menuLabel_autoFocusChatbar": { "message": "Пайраҳаи чат бо фокуси худкор" },
   "menuLabel_whenStreaming": { "message": "ҳангоми ҷараён" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Mode" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Name" },
   "helptip_streamingMode": { "message": "Қабул кардани ҷавобҳо дар ҷараёни матнии доимӣ" },
   "helptip_autoGetAnswers": { "message": "Awtomatikong magpadala ng mga query sa GoogleGPT kapag gumagamit ng search engine" },
+  "helptip_autoSummarizeResults": { "message": "Awtomatikong sumali ang pahina ng mga resulta sa paghah" },
   "helptip_autoFocusChatbar": { "message": "Панели чат бо фокуси худкор ҳар вақте, ки пайдо мешавад" },
   "helptip_autoScroll": { "message": "Посухҳои худкор" },
   "helptip_showRelatedQueries": { "message": "Ipakita ang mga kaugnayan na query sa ibaba ng" },

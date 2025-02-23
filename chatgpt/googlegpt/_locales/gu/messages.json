@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google શોધમાં AI જવાબો ઉમેરે છે (Google Gemma + GPT-4o દ્વારા સંચાલિત!)" },
   "menuLabel_autoGetAnswers": { "message": "આપમેળે જવાબો મેળવો" },
+  "menuLabel_autoSummarizeResults": { "message": "પરિણામોને આપમેળે સારાંશ આપો" },
   "menuLabel_autoFocusChatbar": { "message": "આપમેળે ફોકસ ચેટબાર" },
   "menuLabel_whenStreaming": { "message": "સ્ટ્રીમ કરતી વખતે" },
   "menuLabel_proxyAPImode": { "message": "પ્રોક્સી API મોડ" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI ની નો-લોગિન ઍક્સેસ માટે પ્રોક્સી API નો ઉપયોગ કરે છે" },
   "helptip_streamingMode": { "message": "સતત ટેક્સ્ટ સ્ટ્રીમમાં જવાબો મેળવો" },
   "helptip_autoGetAnswers": { "message": "શોધ એન્જિનનો ઉપયોગ કરતી વખતે GoogleGPT ને પ્રશ્નો આપોઆપ મોકલો" },
+  "helptip_autoSummarizeResults": { "message": "આપમેળે શોધ પરિણામો પૃષ્ઠનો સારાંશ આપો" },
   "helptip_autoFocusChatbar": { "message": "જ્યારે પણ દેખાય ત્યારે આપોઆપ ફોકસ ચેટબાર" },
   "helptip_autoScroll": { "message": "સ્ટ્રીમિંગ મોડમાં ઉત્પન્ન થતાં સ્વતઃ-સ્ક્રોલ જવાબો" },
   "helptip_showRelatedQueries": { "message": "ચેટબારની નીચે સંબંધિત પ્રશ્નો બતાવો" },

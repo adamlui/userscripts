@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "ለGoogle ፍለጋ (በGoogle Gemma + GPT-4o የተጎላበተው" },
   "menuLabel_autoGetAnswers": { "message": "ራስ-ጌ መልሶች" },
+  "menuLabel_autoSummarizeResults": { "message": "Auto-Summarize ውጤቶች" },
   "menuLabel_autoFocusChatbar": { "message": "ራስ-ፎኩስ ቻትባር" },
   "menuLabel_whenStreaming": { "message": "ዥረት ጊዜ" },
   "menuLabel_proxyAPImode": { "message": "Proxy ኤፒአይ ሁነታ" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "ለ AI ምንም ምዝገባ መዳረሻ ፕሮክሲ ኤፒአይ ይጠቀማል" },
   "helptip_streamingMode": { "message": "በተከታታይ የጽሑፍ ዥረት ውስጥ ምላሾችን ይቀበሉ" },
   "helptip_autoGetAnswers": { "message": "የፍለጋ ሞተርን በሚጠቀሙበት ጊዜ ራስ-መጨረሻ ጥያቄዎች ለGoogleGPT" },
+  "helptip_autoSummarizeResults": { "message": "በራስ-ሰር የፍለጋ ውጤቶች ገጽ ማጠቃለያ" },
   "helptip_autoFocusChatbar": { "message": "ራስ-ፎኩስ ቻትባር በሚታይበት ጊዜ ሁሉ" },
   "helptip_autoScroll": { "message": "ራስ-ሽክርክሪት ምላሾች በዥረት ሁነታ ውስጥ ሲመነጩ" },
   "helptip_showRelatedQueries": { "message": "ከዚህ በታች ተዛማጅ ጥያቄዎችን ያሳዩ ቻትባር" },

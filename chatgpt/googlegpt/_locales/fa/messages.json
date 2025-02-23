@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "پاسخ‌های هوش مصنوعی را به جستجوی Google اضافه می‌کند (با Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "دریافت خودکار پاسخ" },
+  "menuLabel_autoSummarizeResults": { "message": "خلاصه خودکار نتایج" },
   "menuLabel_autoFocusChatbar": { "message": "نوار چت فوکوس خودکار" },
   "menuLabel_whenStreaming": { "message": "هنگام پخش جریانی" },
   "menuLabel_proxyAPImode": { "message": "حالت API پروکسی" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "از یک API پروکسی برای دسترسی بدون ورود به هوش مصنوعی استفاده می کند" },
   "helptip_streamingMode": { "message": "پاسخ ها را در یک جریان متنی مداوم دریافت کنید" },
   "helptip_autoGetAnswers": { "message": "هنگام استفاده از موتور جستجو، درخواست‌ها را به صورت خودکار به GoogleGPT ارسال کنید" },
+  "helptip_autoSummarizeResults": { "message": "خلاصه کردن خودکار صفحه نتایج جستجو" },
   "helptip_autoFocusChatbar": { "message": "فوکوس خودکار نوار چت هر زمان که ظاهر شد" },
   "helptip_autoScroll": { "message": "پیمایش خودکار پاسخ‌ها همانطور که در حالت استریم ایجاد می‌شوند" },
   "helptip_showRelatedQueries": { "message": "نمایش پرس و جوهای مرتبط در زیر نوار چت" },

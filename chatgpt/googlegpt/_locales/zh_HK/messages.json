@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "向 Google 搜索添加 AI 智能答案（由 Google Gemma + GPT-4o 提供支持！）" },
   "menuLabel_autoGetAnswers": { "message": "自動取得答案" },
+  "menuLabel_autoSummarizeResults": { "message": "自動摘要結果" },
   "menuLabel_autoFocusChatbar": { "message": "自動對焦聊天列" },
   "menuLabel_whenStreaming": { "message": "串流時" },
   "menuLabel_proxyAPImode": { "message": "代理 API 模式" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "使用 Proxy API 無需登入即可存取 AI" },
   "helptip_streamingMode": { "message": "接收連續文字串流的回覆" },
   "helptip_autoGetAnswers": { "message": "使用搜尋引擎時，自動將查詢傳送到GoogleGPT" },
+  "helptip_autoSummarizeResults": { "message": "自動摘要搜尋結果頁面" },
   "helptip_autoFocusChatbar": { "message": "每當聊天列出現時自動對焦" },
   "helptip_autoScroll": { "message": "在串流模式下產生的自動捲動回應" },
   "helptip_showRelatedQueries": { "message": "在聊天欄下方顯示相關查詢" },

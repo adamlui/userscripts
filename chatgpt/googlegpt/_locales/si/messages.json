@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google සෙවුම් සඳහා AI පිළිතුරු එක් කරයි (Google Gemma + GPT-4o විසින් බල ගැන්වේ!)" },
   "menuLabel_autoGetAnswers": { "message": "ස්වයංක් ‍ රීය පිළිතුරු ලබා ගන්න" },
+  "menuLabel_autoSummarizeResults": { "message": "ප් ‍ රතිඵල ස්වයංක් ‍ රීයව සාරාංශ කරන්න" },
   "menuLabel_autoFocusChatbar": { "message": "ස්වයංක් ‍ රීය නාභිගත සංවාද තීරුව" },
   "menuLabel_whenStreaming": { "message": "ප් ‍ රවාහනය කරන විට" },
   "menuLabel_proxyAPImode": { "message": "ප් ‍ රොක්සි API ප් ‍ රකාරය" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "AI වෙත ලොගින් නොවන ප්රවේශය සඳහා ප්රොක්සි API භාවිතා කරයි" },
   "helptip_streamingMode": { "message": "අඛණ්ඩ පෙළ ප් ‍ රවාහයක පිළිතුරු ලබා ගන්න" },
   "helptip_autoGetAnswers": { "message": "සෙවුම් යන්ත්රය භාවිතා කරන විට GoogleGPT වෙත ස්වයංක්රීයව යැවීම විමසුම්" },
+  "helptip_autoSummarizeResults": { "message": "සෙවුම් ප් ‍ රතිඵල පිටුව ස්වයංක් ‍ රීයව සාරාංශ කරන්න" },
   "helptip_autoFocusChatbar": { "message": "ස්වයංක් රීය කේන්ද් රීය චැට් තීරුව එය දිස්වන සෑම අවස්ථාවකම" },
   "helptip_autoScroll": { "message": "ප් ‍ රවාහ ප් ‍ රකාරයෙන් උත්පාදනය කරන විට ස්වයංක් ‍ රීය-ස්ක් ‍ රෝල් ප් ‍ රතිචාර" },
   "helptip_showRelatedQueries": { "message": "සංවාද තීරුවට පහළින් ආශ් ‍ රිත විමසුම් පෙන්වන්න" },

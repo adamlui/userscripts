@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Lägger till AI-svar i Google Sök (drivs av Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Få svar automatiskt" },
+  "menuLabel_autoSummarizeResults": { "message": "Auto-sammanfatta resultat" },
   "menuLabel_autoFocusChatbar": { "message": "Chatbar med autofokus" },
   "menuLabel_whenStreaming": { "message": "vid streaming" },
   "menuLabel_proxyAPImode": { "message": "Proxy API-läge" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Använder ett proxy-API för åtkomst utan inloggning till AI" },
   "helptip_streamingMode": { "message": "Ta emot svar i en kontinuerlig textström" },
   "helptip_autoGetAnswers": { "message": "Skicka automatiskt frågor till GoogleGPT när du använder sökmotorn" },
+  "helptip_autoSummarizeResults": { "message": "Sammanfatta sökresultatsidan automatiskt" },
   "helptip_autoFocusChatbar": { "message": "Autofokusera chattfältet närhelst det visas" },
   "helptip_autoScroll": { "message": "Automatisk bläddring av svar när de genereras i strömningsläge" },
   "helptip_showRelatedQueries": { "message": "Visa relaterade frågor under chattfältet" },

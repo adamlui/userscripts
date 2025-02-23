@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Afegeix respostes d'IA a la cerca de Google (amb la tecnologia de Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Obtenir respostes automàticament" },
+  "menuLabel_autoSummarizeResults": { "message": "Resum automàtic dels resultats" },
   "menuLabel_autoFocusChatbar": { "message": "Barra de xat amb enfocament automàtic" },
   "menuLabel_whenStreaming": { "message": "en transmetre" },
   "menuLabel_proxyAPImode": { "message": "Mode API de servidor intermediari" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Utilitza una API de proxy per accedir sense inici de sessió a la IA" },
   "helptip_streamingMode": { "message": "Rebre respostes en un flux de text continu" },
   "helptip_autoGetAnswers": { "message": "Envia consultes automàtiques a GoogleGPT quan utilitzis el motor de cerca" },
+  "helptip_autoSummarizeResults": { "message": "Resumeix automàticament la pàgina de resultats de cerca" },
   "helptip_autoFocusChatbar": { "message": "Enfoca automàticament la barra de xat sempre que aparegui" },
   "helptip_autoScroll": { "message": "Respostes de desplaçament automàtic a mesura que es generen en mode de transmissió" },
   "helptip_showRelatedQueries": { "message": "Mostra les consultes relacionades a sota de la barra de xat" },

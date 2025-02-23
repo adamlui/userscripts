@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Ifaka iimpendulo ze-AI ku-Google Search (zixhaswa yi-Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Fumana Iimpendulo Ngokuzenzekelayo" },
+  "menuLabel_autoSummarizeResults": { "message": "Zixabise Ngokuzenzekelayo Iziphumo" },
   "menuLabel_autoFocusChatbar": { "message": "I-Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "xa kusasazwa" },
   "menuLabel_proxyAPImode": { "message": "Imowudi ye-API ye-proxy" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Usebenzisa i-API yeProxy ukuze ungangeni kwiAI" },
   "helptip_streamingMode": { "message": "Fumana iimpendulo kumyalezo oqhubekayo" },
   "helptip_autoGetAnswers": { "message": "Thumela imibuzo ngokuzenzekelayo kuGoogleGPT xa usebenzisa injini yokukhangela" },
+  "helptip_autoSummarizeResults": { "message": "Shwankathela ngokuzenzekelayo iphepha leziphumo zokukhangela" },
   "helptip_autoFocusChatbar": { "message": "Ibha yokuncokola egxile ngokuzenzekelayo nanini na ivela" },
   "helptip_autoScroll": { "message": "Iimpendulo zee-autocroll njengoko ziveliswa Kwimowudi Yokusasaza" },
   "helptip_showRelatedQueries": { "message": "Bonisa imibuzo enxulumene noko ngezantsi kwendawo yokuncokola" },

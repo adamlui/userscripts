@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Додава AI одговори на Google Search (овозможено од Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Автоматско добивање одговори" },
+  "menuLabel_autoSummarizeResults": { "message": "Автоматско сумирање на резултатите" },
   "menuLabel_autoFocusChatbar": { "message": "Лента за разговор за автоматско фокусирање" },
   "menuLabel_whenStreaming": { "message": "при преносот" },
   "menuLabel_proxyAPImode": { "message": "Режим на прокси API" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Користи Proxy API за пристап без најава до AI" },
   "helptip_streamingMode": { "message": "Добијте одговори во континуиран текстуален поток" },
   "helptip_autoGetAnswers": { "message": "Автоматско испраќање барања до GoogleGPT при користење на пребарувачот" },
+  "helptip_autoSummarizeResults": { "message": "Автоматско сумирање на страницата со резултати од пребарувањето" },
   "helptip_autoFocusChatbar": { "message": "Лента за разговор за автоматско фокусирање кога и да се појави" },
   "helptip_autoScroll": { "message": "Автоматско лизгање на одговорите додека се генерираат во режимот за стриминг" },
   "helptip_showRelatedQueries": { "message": "Прикажи поврзани прашања подолу во лентата за разговор" },

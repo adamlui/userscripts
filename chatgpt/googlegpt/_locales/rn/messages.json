@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Google Search (Google Gemma + GPT-4o)" },
   "menuLabel_autoGetAnswers": { "message": "Auto-Get Ashura" },
+  "menuLabel_autoSummarizeResults": { "message": "Ingaruka za Auto-Summarize" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar None None" },
   "menuLabel_whenStreaming": { "message": "numa Numa Streaming" },
   "menuLabel_proxyAPImode": { "message": "Proxy API Mode None None" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Koresha API ya Proxy ngo ntihagire uwushobora kwinjira muri AI" },
   "helptip_streamingMode": { "message": "Rungika Rungika Kuronka inyishu mu gisomwa kibandanya" },
   "helptip_autoGetAnswers": { "message": "Ibibazo kuri GoogleGPT igihe ukoresha injineri yo kurondera" },
+  "helptip_autoSummarizeResults": { "message": "Kurondora mu buryo bwikora urupapuro rw'ivyavuye mu bushakashatsi" },
   "helptip_autoFocusChatbar": { "message": "Ikimonogakari Chatbar Anytime" },
   "helptip_autoScroll": { "message": "Nkurunziza yitabiriye ayo mashusho mu buryo bw'akaroruhore" },
   "helptip_showRelatedQueries": { "message": "Rungika Rungika Ibibazo bifitaniye isano n'ikinyamakuru Chatbar" },

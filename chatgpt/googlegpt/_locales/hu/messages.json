@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "AI válaszokat ad a Google Kereséshez (a Google Gemma + GPT-4o segítségével!)" },
   "menuLabel_autoGetAnswers": { "message": "Válaszok automatikus lekérése" },
+  "menuLabel_autoSummarizeResults": { "message": "Eredmények automatikus összegzése" },
   "menuLabel_autoFocusChatbar": { "message": "Automatikus fókuszálás a csevegősávon" },
   "menuLabel_whenStreaming": { "message": "streaming közben" },
   "menuLabel_proxyAPImode": { "message": "Proxy API mód" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Proxy API-t használ a mesterséges intelligenciához való bejelentkezés nélküli hozzáféréshez" },
   "helptip_streamingMode": { "message": "Válaszok fogadása folyamatos szöveges adatfolyamban" },
   "helptip_autoGetAnswers": { "message": "Lekérdezések automatikus küldése a GoogleGPT-nek a keresőmotor használatakor" },
+  "helptip_autoSummarizeResults": { "message": "Keresési találatok oldalának automatikus összegzése" },
   "helptip_autoFocusChatbar": { "message": "Automatikus fókuszálás a csevegősávra, amikor megjelenik" },
   "helptip_autoScroll": { "message": "Válaszok automatikus görgetése Streaming módban generálva" },
   "helptip_showRelatedQueries": { "message": "Kapcsolódó lekérdezések megjelenítése a csevegősáv alatt" },

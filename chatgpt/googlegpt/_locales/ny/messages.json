@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Imawonjezera mayankho a AI ku Google Search (yoyendetsedwa ndi Google Gemma + GPT-4o!)" },
   "menuLabel_autoGetAnswers": { "message": "Auto-Get Mayankho" },
+  "menuLabel_autoSummarizeResults": { "message": "Zotsatira za Auto-Summarize" },
   "menuLabel_autoFocusChatbar": { "message": "Auto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "pamene akukhamukira" },
   "menuLabel_proxyAPImode": { "message": "Njira ya Proxy API" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Gwiritsani ntchito Proxy API kuti musalowe mu AI" },
   "helptip_streamingMode": { "message": "Landirani mayankho mumtsinje wopitilira" },
   "helptip_autoGetAnswers": { "message": "Kutumiza mafunso ku GoogleGPT mukamagwiritsa ntchito makina osakira" },
+  "helptip_autoSummarizeResults": { "message": "Mwachidule tsamba la zotsatira zakusaka" },
   "helptip_autoFocusChatbar": { "message": "Auto-kuyang 'ana chatbar pamene izo zikuoneka" },
   "helptip_autoScroll": { "message": "Auto-scroll mayankho monga iwo kupanga mu Streaming mumalowedwe" },
   "helptip_showRelatedQueries": { "message": "Onetsani mafunso okhudzana pansipa chatbar" },

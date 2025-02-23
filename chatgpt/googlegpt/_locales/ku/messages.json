@@ -1,6 +1,7 @@
 {
   "appDesc": { "message": "Bersivên AI-ê li Lêgerîna Google-ê zêde dike (ji hêla Google Gemma + GPT-4o ve hatî hêz kirin!)" },
   "menuLabel_autoGetAnswers": { "message": "خۆکارانە وەڵامەکان وەربگرە" },
+  "menuLabel_autoSummarizeResults": { "message": "Encamên Xweser Bi Kurte Bikin" },
   "menuLabel_autoFocusChatbar": { "message": "Oto-Focus Chatbar" },
   "menuLabel_whenStreaming": { "message": "dema streaming" },
   "menuLabel_proxyAPImode": { "message": "شێوەی ڕاپرسی ئەپی" },
@@ -59,6 +60,7 @@
   "helptip_proxyAPImode": { "message": "Ji bo gihîştina ne-têketinê ya AI-ê Proxy API-ê bikar tîne" },
   "helptip_streamingMode": { "message": "Bersivên di pêvekek nivîsê ya domdar de bistînin" },
   "helptip_autoGetAnswers": { "message": "Dema ku motora lêgerînê bikar tînin, pirsan bixweber bişînin GoogleGPT" },
+  "helptip_autoSummarizeResults": { "message": "Rûpelê encamên lêgerînê bixweber kurt bikin" },
   "helptip_autoFocusChatbar": { "message": "Dema ku ew xuya bibe chatbara chatbarê bixweber-fokus bike" },
   "helptip_autoScroll": { "message": "Gava ku ew di Moda Streaming-ê de çêdikin, bersivên bixweber bigerin" },
   "helptip_showRelatedQueries": { "message": "Pirsên têkildar li jêr chatbarê nîşan bidin" },
