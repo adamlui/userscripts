@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.7
+// @version                2025.2.23.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -281,7 +281,7 @@
             .replace(/"/g, '\'') // replace " w/ '
         },
 
-        toTitleCase(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
+        toTitleCase(str) { return str[0].toUpperCase() + str.slice(1) }
 
     } ; ['info', 'error', 'debug'].forEach(logType =>
         log[logType] = function() {
@@ -770,7 +770,7 @@
                 else if (!/\d/.test(replyLang)) {
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
-                            : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
+                            : replyLang[0].toUpperCase() + replyLang.slice(1).toLowerCase() )
                     log.debug('Saving reply language...')
                     settings.save('replyLang', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLang = ${config.replyLang}`)
@@ -2208,7 +2208,7 @@
             const promptElems = [promptSrc.base || '', ...modsToApply].map((elem, idx, array) => {
                 if (elem && !/[\n,.!]$/.test(elem)) elem += '.' // append missing punctuation
                 if (idx > 0 && array[idx -1].endsWith(',')) // prev elem ended in comma...
-                    elem = elem.charAt(0).toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
+                    elem = elem[0].toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
                 return elem
             })
             return promptElems.join(' ').trim()
