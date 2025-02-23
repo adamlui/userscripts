@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.22.1
+// @version                2025.2.22.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -262,7 +262,7 @@
             support: 'https://support.ddgpt.com',
             update: 'https://gm.ddgpt.com'
         },
-        latestResourceCommitHash: '3f03b4f' // for cached messages.json
+        latestResourceCommitHash: '70dd706' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -309,6 +309,7 @@
         tooltip_fontSize: 'Font size',
         tooltip_sendReply: 'Send reply',
         tooltip_askRandQuestion: 'Ask random question',
+        tooltip_summarizeResults: 'Summarize results',
         tooltip_minimize: 'Minimize',
         tooltip_restore: 'Restore',
         tooltip_expand: 'Expand',
@@ -386,7 +387,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=ed6bcc5',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=2af4c2e',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
@@ -1692,7 +1693,7 @@
 
         arrowsTwistedRight: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '-1 -1 32 32' })
+                const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '0 0 32 32' })
                 const svgPath = dom.create.svgElem('path', {
                     d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' })
                 svg.append(svgPath) ; return svg
@@ -1949,6 +1950,19 @@
                 const svgPath = dom.create.svgElem('path', { stroke: 'none',
                     d: 'M350-212q-32.55 0-55.27-22.73Q272-257.45 272-290v-64h492v-342h63.67q33.33 0 55.83 22.72Q906-650.55 906-618v576L736-212H350ZM54-256v-582.4q0-32.38 22.72-54.99Q99.45-916 132-916h482q32.55 0 55.28 22.72Q692-870.55 692-838v334q0 32.55-22.72 55.27Q646.55-426 614-426H224L54-256Zm540-268v-294H152v294h442Zm-442 0v-294 294Z' })
                 svg.append(svgPath) ; return svg
+            }
+        },
+
+        summarize: {
+            create() {
+                const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '-6 -2 29 29',
+                    'stroke-linecap': 'round', 'stroke-width': 3 })
+                svg.append(
+                    dom.create.svgElem('line', { x1: 21, y1: 6, x2: 3, y2: 6 }),
+                    dom.create.svgElem('line', { x1: 21, y1: 12, x2: 9, y2: 12 }),
+                    dom.create.svgElem('line', { x1: 21, y1: 18, x2: 7, y2: 18 })
+                )
+                return svg
             }
         },
 
@@ -2635,12 +2649,15 @@
             chatTextarea.oninput = addListeners.replySection.chatbarAutoSizer
 
             // Add button listeners
-            appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
-                if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    show.reply.src = 'shuffle'
-                    chatTextarea.value = prompts.create('randomQA', { mods: 'all' })
-                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
-                        { key: 'Enter', bubbles: true, cancelable: true }))
+            appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn =>{
+                btn.onclick = () => {
+                    const btnType = /-(\w+)-btn$/.exec(btn.id)[1]
+                    if (btnType == 'send') return // since handled by form submit
+                    show.reply.src = btnType
+                    chatTextarea.value = prompts.create(
+                        btnType == 'shuffle' ? 'randomQA' : 'summarizeResults', { mods: 'all' })
+                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown', {
+                        key: 'Enter', bubbles: true, cancelable: true }))
                 }
                 if (!env.browser.isMobile) // add hover listener for tooltips
                     btn.onmouseenter = btn.onmouseleave = toggle.tooltip
@@ -2849,6 +2866,13 @@
                             + 'You must entice user to want to ask one of your related queries'
                     ]}
                 ]
+            }
+        },
+
+        summarizeResults: {
+            get base() {
+                return `Summarize these search results concisely: ${
+                    document.querySelector('[data-area*=mainline]').innerText}`
             }
         }
     }
@@ -3093,7 +3117,8 @@
                   : btn.querySelector('svg').id.includes('generating-') ? `${app.msgs.tooltip_generatingAudio}...`
                   : `${app.msgs.tooltip_playing} ${app.msgs.tooltip_reply.toLowerCase()}...` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
-              : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
+              : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion
+              : btnType == 'summarize' ? app.msgs.tooltip_summarizeResults : '' )
 
             // Update position
             const elems = { appDiv, btn, tooltipDiv, fsSlider: appDiv.querySelector('[id*=font-size-slider]') },
@@ -3230,14 +3255,18 @@
         pick(caller) {
             log.caller = `get.${caller.name}() » api.pick()`
             const untriedAPIs = Object.keys(apis).filter(api =>
-                    !caller.triedAPIs.some(entry => // exclude tried APIs
-                        Object.prototype.hasOwnProperty.call(entry, api))
-                 && ( caller == get.related || ( // handle get.reply exclusions
+                !caller.triedAPIs.some(entry => // exclude tried APIs
+                    Object.prototype.hasOwnProperty.call(entry, api))
+                    && ( caller == get.related || ( // handle get.reply exclusions
                         api != 'OpenAI' // exclude OpenAI since api.pick in get.reply only in Proxy Mode
-                     && ( // exclude unstreamable APIs if !config.streamingDisabled
+                        && ( // exclude unstreamable APIs if !config.streamingDisabled
                         config.streamingDisabled || apis[api].streamable)
-                     && !( // exclude GET APIs if msg history established while not shuffling
-                        apis[api].method == 'GET' && show.reply.src != 'shuffle' && msgChain.length > 2))))
+                        && !( // exclude GET APIs if msg history established while not shuffling
+                        apis[api].method == 'GET' && show.reply.src != 'shuffle' && msgChain.length > 2)
+                        && !( // exclude APIs that don't support long prompts while summarizing
+                        show.reply.src == 'summarize' && apis[api].supportsLongPrompts == false)
+                    ))
+            )
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
             if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
@@ -3744,12 +3773,14 @@
                 appDiv.append(replySection);
 
                 // Create/append chatbar buttons
-                ['send', 'shuffle'].forEach(btnType => {
+                ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
                     const btn = dom.create.elem('button',
                         { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
-                    btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 8 : 7 )
-                                                            : ( env.browser.isFF ? 8.5 : 7 )}px` // Shuffle btn
-                    btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
+                    btn.style.right = `${ idx == 0 ? 5 : 0.3 }px`
+                    if (env.browser.isFF && btnType == 'shuffle') btn.style.right = '1.4px'
+                    btn.append(icons[btnType == 'send' ? 'arrowUp'
+                                   : btnType == 'shuffle' ? 'arrowsTwistedRight'
+                                   : 'summarize'].create())
                     continueChatDiv.append(btn)
                 })
 
