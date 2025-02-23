@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.23.3
+// @version               2025.2.23.5
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2315,7 +2315,7 @@
                   + `#${app.slug} > pre ul { margin: -10px 0 -6px ; }` // reduce v-spacing
                   + `#${app.slug} > pre ol { margin: -33px 0 -6px ; }` // reduce v-spacing
                   + `#${app.slug} > pre li` // reduce v-spacing, show left symbols
-                      + '{ margin: -10px 0 ; list-style: inside }' )
+                      + '{ margin: -10px 0 ; list-style: circle }' )
               + '.katex-html { display: none }' // hide unrendered math
               + `#${app.slug} .feedback {`
                   + 'float: right ; font-family: var(--brand-font) ; font-size: .55rem; color: #aaa ;'
@@ -2873,7 +2873,9 @@
 
         summarizeResults: {
             get base() {
-                return `Summarize these search results concisely: ${ document.querySelector('#results').innerText}`
+                const strResults = document.querySelector('#results').innerText.trim()
+                return 'Summarize these search results in a markdown list of couple bullets,'
+                    + ` citing sources if appropriate: ${strResults.slice(0, Math.floor(strResults.length /2))} ...`
             }
         }
     }
