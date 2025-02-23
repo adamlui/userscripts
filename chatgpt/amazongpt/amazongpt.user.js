@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.2
+// @version                2025.2.23.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1681,12 +1681,12 @@
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                   + 'z-index: 9999 ; cursor: ew-resize }'
               + `#${app.slug} {`
+                  + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                   + 'z-index: 5555 ; border-radius: 8px ; padding: 17px 26px 16px ; flex-basis: 0 ;'
                   + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ;`
                   + 'border-radius: 15px ; flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
                   + ( config.bgAnimationsDisabled ? // classic flat bg
                         `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
-                      + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                   : `background-image: linear-gradient(180deg, ${ // gradient bg to match rising particles
                         env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                     : '#b6ebff -163px, white 65px' }) ;` )
