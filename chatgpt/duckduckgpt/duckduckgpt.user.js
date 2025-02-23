@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.8
+// @version                2025.2.23.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -437,7 +437,7 @@
             .replace(/"/g, '\'') // replace " w/ '
         },
 
-        toTitleCase(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
+        toTitleCase(str) { return str[0].toUpperCase() + str.slice(1) }
 
     } ; ['info', 'error', 'debug'].forEach(logType =>
         log[logType] = function() {
@@ -996,7 +996,7 @@
                 else if (!/\d/.test(replyLang)) {
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
-                            : replyLang.charAt(0).toUpperCase() + replyLang.slice(1).toLowerCase() )
+                            : replyLang[0].toUpperCase() + replyLang.slice(1).toLowerCase() )
                     log.debug('Saving reply language...')
                     settings.save('replyLang', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLang = ${config.replyLang}`)
@@ -2818,7 +2818,7 @@
             const promptElems = [promptSrc.base || '', ...modsToApply].map((elem, idx, array) => {
                 if (elem && !/[\n,.!]$/.test(elem)) elem += '.' // append missing punctuation
                 if (idx > 0 && array[idx -1].endsWith(',')) // prev elem ended in comma...
-                    elem = elem.charAt(0).toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
+                    elem = elem[0].toLowerCase() + elem.slice(1) // ...so lowercase 1st char of this one
                 return elem
             })
             let builtPrompt = promptElems.join(' ').trim()
@@ -3054,7 +3054,7 @@
             // Notify of mode change
             if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
             notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
-                    || mode.charAt(0).toUpperCase() + mode.slice(1) + ' Sidebar' } ${
+                    || mode[0].toUpperCase() + mode.slice(1) + ' Sidebar' } ${
                        toolbarMenu.state.words[+config[configKeyName]]}`)
         },
 
