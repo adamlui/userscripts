@@ -15,7 +15,7 @@
   "about_poweredBy": { "message": "Aangedryf deur" },
   "about_openSourceCode": { "message": "Oopbronkode" },
   "prompt_updateInt": { "message": "Opdateer verfris interval (in sek)" },
-  "helptip_toggleVis": { "message": "Vertoon Outo- Verfris skakelaar in sybalk" },
+  "helptip_toggleVis": { "message": "Vertoon Outo-Verfris skakelaar in sybalk" },
   "helptip_modeNotifs": { "message": "Wys kennisgewings wanneer modusse/instellings wissel" },
   "helptip_refreshInt": { "message": "Gemiddelde vertraging tussen verversings (in sekondes)" },
   "alert_intUpdated": { "message": "Interval opgedateer" },
