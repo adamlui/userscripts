@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23.1
+// @version                2025.2.23.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1372,27 +1372,6 @@
             }
         },
 
-        arrowsTwistedRight: {
-            create() {
-                const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '-1 -1 32 32' })
-                const svgPath = dom.create.svgElem('path', {
-                    d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' })
-                svg.append(svgPath) ; return svg
-            }
-        },
-
-        arrowUp: {
-            create() {
-                const svg = dom.create.svgElem('svg', {
-                    width: 16, height: 16, viewBox: '4 2 16 16', 'stroke-width': '2',
-                    'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
-                const svgPath = dom.create.svgElem('path', {
-                    fill: 'none', 'stroke-width': '2', linecap: 'round',
-                    'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
-                svg.append(svgPath) ; return svg
-            }
-        },
-
         bug: {
             create() {
                 const svg = dom.create.svgElem('svg', { width: 16, height: 16, viewBox: '0 0 17 17' })
@@ -1501,6 +1480,27 @@
                 const svg = dom.create.svgElem('svg', { width: 15, height: 15, viewBox: '0 -960 960 960' })
                 const svgPath = dom.create.svgElem('path', { stroke: 'none',
                     d: 'M479.92-34q-91.56 0-173.4-35.02t-142.16-95.34q-60.32-60.32-95.34-142.24Q34-388.53 34-480.08q0-91.56 35.02-173.4t95.34-142.16q60.32-60.32 142.24-95.34Q388.53-926 480.08-926q91.56 0 173.4 35.02t142.16 95.34q60.32 60.32 95.34 142.24Q926-571.47 926-479.92q0 91.56-35.02 173.4t-95.34 142.16q-60.32 60.32-142.24 95.34Q571.47-34 479.92-34ZM530-174q113-19 186.5-102.78T790-480q0-116.71-73.5-201.35Q643-766 530-785v611Z' })
+                svg.append(svgPath) ; return svg
+            }
+        },
+
+        send: {
+            create() {
+                const svg = dom.create.svgElem('svg', {
+                    width: 16, height: 16, viewBox: '4 2 16 16', 'stroke-width': '2',
+                    'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+                const svgPath = dom.create.svgElem('path', {
+                    fill: 'none', 'stroke-width': '2', linecap: 'round',
+                    'stroke-linejoin': 'round', d: 'M7 11L12 6L17 11M12 18V7' })
+                svg.append(svgPath) ; return svg
+            }
+        },
+
+        shuffle: {
+            create() {
+                const svg = dom.create.svgElem('svg', { width: 21, height: 21, viewBox: '-1 -1 32 32' })
+                const svgPath = dom.create.svgElem('path', {
+                    d: 'M23.707,16.293L28.414,21l-4.707,4.707l-1.414-1.414L24.586,22H23c-2.345,0-4.496-1.702-6.702-3.753c0.498-0.458,0.984-0.92,1.46-1.374C19.624,18.6,21.393,20,23,20h1.586l-2.293-2.293L23.707,16.293zM23,11h1.586l-2.293,2.293l1.414,1.414L28.414,10l-4.707-4.707l-1.414,1.414L24.586,9H23c-2.787,0-5.299,2.397-7.957,4.936C12.434,16.425,9.736,19,7,19H4v2h3c3.537,0,6.529-2.856,9.424-5.618C18.784,13.129,21.015,11,23,11zM11.843,14.186c0.5-0.449,0.995-0.914,1.481-1.377C11.364,11.208,9.297,10,7,10H4v2h3C8.632,12,10.25,12.919,11.843,14.186z' })
                 svg.append(svgPath) ; return svg
             }
         },
@@ -2896,7 +2896,7 @@
                         { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
                                                             : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
-                    btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
+                    btn.append(icons[btnType].create())
                     continueChatDiv.append(btn)
                 })
 
