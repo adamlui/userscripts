@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "字體大小" },
   "tooltip_sendReply": { "message": "發送回覆" },
   "tooltip_askRandQuestion": { "message": "隨機提問" },
+  "tooltip_summarizeResults": { "message": "摘要結果" },
   "tooltip_minimize": { "message": "最小化" },
   "tooltip_restore": { "message": "恢復" },
   "tooltip_expand": { "message": "展開" },

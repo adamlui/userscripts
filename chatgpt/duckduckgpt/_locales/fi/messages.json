@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Kirjasimen koko" },
   "tooltip_sendReply": { "message": "Vastaa" },
   "tooltip_askRandQuestion": { "message": "Esitä satunnainen kysymys" },
+  "tooltip_summarizeResults": { "message": "Tee yhteenveto tuloksista" },
   "tooltip_minimize": { "message": "MInimoi" },
   "tooltip_restore": { "message": "Palauta" },
   "tooltip_expand": { "message": "Laajenna" },

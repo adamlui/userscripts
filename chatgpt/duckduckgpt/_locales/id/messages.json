@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Ukuran fonta" },
   "tooltip_sendReply": { "message": "Kirim balasan" },
   "tooltip_askRandQuestion": { "message": "Ajukan pertanyaan acak" },
+  "tooltip_summarizeResults": { "message": "Ringkas hasil" },
   "tooltip_minimize": { "message": "Minimalkan" },
   "tooltip_restore": { "message": "Pulihkan" },
   "tooltip_expand": { "message": "Tampilkan" },

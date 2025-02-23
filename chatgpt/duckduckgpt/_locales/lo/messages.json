@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ຂະໜາດຕົວອັກສອນ" },
   "tooltip_sendReply": { "message": "ຕອບ ຕອບ" },
   "tooltip_askRandQuestion": { "message": "ຖາມຄຳຖາມແບບສຸ່ມ" },
+  "tooltip_summarizeResults": { "message": "ສະຫຼຸບຜົນ" },
   "tooltip_minimize": { "message": "ຫຍໍ້ນ້ອຍລົງສຸດ" },
   "tooltip_restore": { "message": "ຟື້ນຟູ" },
   "tooltip_expand": { "message": "ຂະຫຍາຍ" },

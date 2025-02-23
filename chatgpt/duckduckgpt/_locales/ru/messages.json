@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Размер шрифта" },
   "tooltip_sendReply": { "message": "Отправить ответ" },
   "tooltip_askRandQuestion": { "message": "Случайный вопрос " },
+  "tooltip_summarizeResults": { "message": "Подведение итогов" },
   "tooltip_minimize": { "message": "Свернуть" },
   "tooltip_restore": { "message": "Вернуть" },
   "tooltip_expand": { "message": "Развернуть" },
