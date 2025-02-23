@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Ingano y'Inyuguti" },
   "tooltip_sendReply": { "message": "Ohereza igisubizo" },
   "tooltip_feelingLucky": { "message": "Ndumva nishimye" },
+  "tooltip_summarizeResults": { "message": "Ibisubizo" },
   "tooltip_minimize": { "message": "Kugabanya ingano" },
   "tooltip_restore": { "message": "Kugarura" },
   "tooltip_expand": { "message": "Agura" },

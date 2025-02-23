@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ขนาดฟอนต์" },
   "tooltip_sendReply": { "message": "ส่งข้อความ" },
   "tooltip_feelingLucky": { "message": "ผมรู้สึกโชคดี" },
+  "tooltip_summarizeResults": { "message": "สรุปผลลัพธ์" },
   "tooltip_minimize": { "message": "% 1 à¸à¸´à¹à¸¥à¹à¸à¸à¹/ à¸§à¸´à¸à¸²à¸à¸µ" },
   "tooltip_restore": { "message": "กู้คืน" },
   "tooltip_expand": { "message": "ขยาย" },

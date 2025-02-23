@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Kakulidwe ka fonti" },
   "tooltip_sendReply": { "message": "Tumizani yankho" },
   "tooltip_feelingLucky": { "message": "Ine ndikumverera mwayi" },
+  "tooltip_summarizeResults": { "message": "Mwachidule zotsatira" },
   "tooltip_minimize": { "message": "Lumikizanani nafe" },
   "tooltip_restore": { "message": "Kubwezeretsa" },
   "tooltip_expand": { "message": "Kuchulukitsa" },

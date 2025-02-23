@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "גודל פונט" },
   "tooltip_sendReply": { "message": "שלח תגובה" },
   "tooltip_feelingLucky": { "message": "מיקס - אני מרגיש בר מזל" },
+  "tooltip_summarizeResults": { "message": "סיכום התוצאות" },
   "tooltip_minimize": { "message": "מזער" },
   "tooltip_restore": { "message": "שחזור" },
   "tooltip_expand": { "message": "הרחבה" },

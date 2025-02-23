@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Schriftgröße" },
   "tooltip_sendReply": { "message": "Antwort senden" },
   "tooltip_feelingLucky": { "message": "Auf gut Glück" },
+  "tooltip_summarizeResults": { "message": "Fasse Ergebnisse zusammen" },
   "tooltip_minimize": { "message": "Minimieren" },
   "tooltip_restore": { "message": "Wiederherstellen" },
   "tooltip_expand": { "message": "Ausklappen" },

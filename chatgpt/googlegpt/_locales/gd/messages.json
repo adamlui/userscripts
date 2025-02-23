@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Meud fonnt" },
   "tooltip_sendReply": { "message": "Cuir freagairt" },
   "tooltip_feelingLucky": { "message": "Tha mi a' faireachdainn fortanach" },
+  "tooltip_summarizeResults": { "message": "Thoir geàrr - chunntas air na toraidhean" },
   "tooltip_minimize": { "message": "Fìor-lùghdaich" },
   "tooltip_restore": { "message": "Aisig" },
   "tooltip_expand": { "message": "Leudaich " },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "フォントサイズ" },
   "tooltip_sendReply": { "message": "要返信" },
   "tooltip_feelingLucky": { "message": "ついてる気がしてさ" },
+  "tooltip_summarizeResults": { "message": "結果を要約する" },
   "tooltip_minimize": { "message": "最小化" },
   "tooltip_restore": { "message": "復元" },
   "tooltip_expand": { "message": "拡大する" },

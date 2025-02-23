@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Kirjasuurus" },
   "tooltip_sendReply": { "message": "Saada vastus" },
   "tooltip_feelingLucky": { "message": "Mul on vedanud" },
+  "tooltip_summarizeResults": { "message": "Tee tulemuste kokkuvõte" },
   "tooltip_minimize": { "message": "Vähenda" },
   "tooltip_restore": { "message": "Taasta" },
   "tooltip_expand": { "message": "Laienda" },

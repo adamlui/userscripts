@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Lettertypegrootte" },
   "tooltip_sendReply": { "message": "Reactie versturen" },
   "tooltip_feelingLucky": { "message": "Ik voel me gelukkig" },
+  "tooltip_summarizeResults": { "message": "Resultaten samenvatten" },
   "tooltip_minimize": { "message": "Minimaliseer" },
   "tooltip_restore": { "message": "Herstel" },
   "tooltip_expand": { "message": "Uitklappen" },

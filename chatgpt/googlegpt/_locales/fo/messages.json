@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Skriftstødd" },
   "tooltip_sendReply": { "message": "Sende svar" },
   "tooltip_feelingLucky": { "message": "Eg føli meg heppin" },
+  "tooltip_summarizeResults": { "message": "Summarið av úrslitunum" },
   "tooltip_minimize": { "message": "Minimalisera" },
   "tooltip_restore": { "message": "Endurstovna" },
   "tooltip_expand": { "message": "Útbyggja" },

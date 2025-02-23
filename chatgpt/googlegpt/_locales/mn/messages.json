@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Фонтын хэмжээ" },
   "tooltip_sendReply": { "message": "Хариулт илгээх" },
   "tooltip_feelingLucky": { "message": "Би азтай санагдаж байна" },
+  "tooltip_summarizeResults": { "message": "Үр дүнг нэгтгэн дүгнэх" },
   "tooltip_minimize": { "message": "Багасгах" },
   "tooltip_restore": { "message": "Сэргээх" },
   "tooltip_expand": { "message": "Өргөтгөх" },

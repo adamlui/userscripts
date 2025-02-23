@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Magnitudo Typographiae" },
   "tooltip_sendReply": { "message": "Mitto Responsum" },
   "tooltip_feelingLucky": { "message": "Ego sum felix" },
+  "tooltip_summarizeResults": { "message": "Vendum Summodum" },
   "tooltip_minimize": { "message": "Deminuere" },
   "tooltip_restore": { "message": "RECTRIUS" },
   "tooltip_expand": { "message": "Expandum" },

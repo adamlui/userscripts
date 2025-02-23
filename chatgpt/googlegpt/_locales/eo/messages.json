@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "grando de tiparo" },
   "tooltip_sendReply": { "message": "Sendi La Respondo" },
   "tooltip_feelingLucky": { "message": "I 'm Feeling Lucky" },
+  "tooltip_summarizeResults": { "message": "Resumi rezultojn" },
   "tooltip_minimize": { "message": "Minimumigi" },
   "tooltip_restore": { "message": "Restaŭri" },
   "tooltip_expand": { "message": "Etendi" },

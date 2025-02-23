@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "@ action boldify selected text" },
   "tooltip_sendReply": { "message": "Ուղարկել պատասխան" },
   "tooltip_feelingLucky": { "message": "Ես ինձ հաջողակ եմ զգում" },
+  "tooltip_summarizeResults": { "message": "Ամփոփել արդյունքները" },
   "tooltip_minimize": { "message": "Նվազեցնել" },
   "tooltip_restore": { "message": "Հաշվի չառնել" },
   "tooltip_expand": { "message": "Տարածել" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Μέγεθος γραμματοσειράς" },
   "tooltip_sendReply": { "message": "Αποστολή απάντησης" },
   "tooltip_feelingLucky": { "message": "Αισθάνομαι Τυχερός" },
+  "tooltip_summarizeResults": { "message": "Συνοψίστε τα αποτελέσματα" },
   "tooltip_minimize": { "message": "Ελαχιστοποίηση" },
   "tooltip_restore": { "message": "Επαναφορά" },
   "tooltip_expand": { "message": "Ανάπτυξη" },

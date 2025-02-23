@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "字体大小" },
   "tooltip_sendReply": { "message": "回复" },
   "tooltip_feelingLucky": { "message": "我觉得很幸运" },
+  "tooltip_summarizeResults": { "message": "汇总结果" },
   "tooltip_minimize": { "message": "最小化" },
   "tooltip_restore": { "message": "恢复" },
   "tooltip_expand": { "message": "展开" },

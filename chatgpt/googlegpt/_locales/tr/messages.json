@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Yazı boyutu" },
   "tooltip_sendReply": { "message": "Yanıt Gönder" },
   "tooltip_feelingLucky": { "message": "Şanslı hissediyorum" },
+  "tooltip_summarizeResults": { "message": "Sonuçları özetleyin" },
   "tooltip_minimize": { "message": "Alt Düzeyde" },
   "tooltip_restore": { "message": "Geri Yükle" },
   "tooltip_expand": { "message": "Aç" },

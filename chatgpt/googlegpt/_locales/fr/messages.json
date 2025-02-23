@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Taille police" },
   "tooltip_sendReply": { "message": "Envoyer une&#10; réponse" },
   "tooltip_feelingLucky": { "message": "Je me sens chanceux" },
+  "tooltip_summarizeResults": { "message": "<g id=\"1\"></g>" },
   "tooltip_minimize": { "message": "Minimiser" },
   "tooltip_restore": { "message": "Restaurer" },
   "tooltip_expand": { "message": "Agrandir" },

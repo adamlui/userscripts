@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Ubunini bwa Font" },
   "tooltip_sendReply": { "message": "Rungika Rungika" },
   "tooltip_feelingLucky": { "message": "Numva nishimye" },
+  "tooltip_summarizeResults": { "message": "Incamake y'ivyavuye mu matora" },
   "tooltip_minimize": { "message": "Minimise None" },
   "tooltip_restore": { "message": "Gusubiza ibintu mu buryo" },
   "tooltip_expand": { "message": "Guteza imbere" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Haben'ny endritsoratra" },
   "tooltip_sendReply": { "message": "Alefaso valiny" },
   "tooltip_feelingLucky": { "message": "Tsara vintana aho" },
+  "tooltip_summarizeResults": { "message": "FINTINO VOKATRA" },
   "tooltip_minimize": { "message": "Hanakely" },
   "tooltip_restore": { "message": "Avereno" },
   "tooltip_expand": { "message": "Manitatra" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Šrifto dydis" },
   "tooltip_sendReply": { "message": "Siųsti atsakymą" },
   "tooltip_feelingLucky": { "message": "Man pasisekė" },
+  "tooltip_summarizeResults": { "message": "Apibendrinti rezultatus" },
   "tooltip_minimize": { "message": "Suskleisti" },
   "tooltip_restore": { "message": "Atkurti" },
   "tooltip_expand": { "message": "Išskleisti" },

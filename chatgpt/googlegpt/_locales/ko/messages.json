@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "폰트 크기" },
   "tooltip_sendReply": { "message": "답변 필요" },
   "tooltip_feelingLucky": { "message": "운이 좋은 게 느껴져" },
+  "tooltip_summarizeResults": { "message": "결과 요약" },
   "tooltip_minimize": { "message": "최소화" },
   "tooltip_restore": { "message": "복원 " },
   "tooltip_expand": { "message": "펼치기" },

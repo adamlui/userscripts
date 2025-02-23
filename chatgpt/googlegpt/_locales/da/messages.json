@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Skriftsstørrelse" },
   "tooltip_sendReply": { "message": "Send svar" },
   "tooltip_feelingLucky": { "message": "Jeg føler mig heldig" },
+  "tooltip_summarizeResults": { "message": "Opsummer resultater" },
   "tooltip_minimize": { "message": "Minimer" },
   "tooltip_restore": { "message": "Genskab" },
   "tooltip_expand": { "message": "Vis" },

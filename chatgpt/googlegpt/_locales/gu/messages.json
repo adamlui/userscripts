@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ફોન્ટ માપ" },
   "tooltip_sendReply": { "message": "જવાબ મોકલો" },
   "tooltip_feelingLucky": { "message": "હું નસીબદાર અનુભવું છું" },
+  "tooltip_summarizeResults": { "message": "પરિણામોનો સારાંશ આપો" },
   "tooltip_minimize": { "message": "ઓછુ કરવુ" },
   "tooltip_restore": { "message": "પાછું લાવો" },
   "tooltip_expand": { "message": "એક્સપાન્ડ કરો" },

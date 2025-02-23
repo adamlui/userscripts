@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ചിഹ്ന വലിപ്പം" },
   "tooltip_sendReply": { "message": "മറുപടി അയയ്ക്കുക" },
   "tooltip_feelingLucky": { "message": "എനിക്ക് ഭാഗ്യമുണ്ടെന്ന് തോന്നുന്നു" },
+  "tooltip_summarizeResults": { "message": "ഫലങ്ങൾ സംഗ്രഹിക്കുക" },
   "tooltip_minimize": { "message": "ചുരുക്കുക" },
   "tooltip_restore": { "message": "പടിഞ്ഞാറന്‌" },
   "tooltip_expand": { "message": "വലുതാക്കുക" },

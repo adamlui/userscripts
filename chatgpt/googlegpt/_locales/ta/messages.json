@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "எறும்பு அளவு" },
   "tooltip_sendReply": { "message": "பதில் அனுப்பு" },
   "tooltip_feelingLucky": { "message": "நான் அதிர்ஷ்டசாலி போல் உணர்கிறேன்" },
+  "tooltip_summarizeResults": { "message": "முடிவுகளைச் சுருக்கவும்" },
   "tooltip_minimize": { "message": "சிறிதாக்கு" },
   "tooltip_restore": { "message": "மீட்டமை" },
   "tooltip_expand": { "message": "விரிக்கவும்" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "ཡིག་གཟུགས་ཆེ་ཆུང་།" },
   "tooltip_sendReply": { "message": "ལན་སློག ལན་སློག" },
   "tooltip_feelingLucky": { "message": "ང་ནི་བདེ་སྐྱིད་ལྡན་པ་ཞིག་ཡིན །" },
+  "tooltip_summarizeResults": { "message": "གྲུབ་འབྲས་མདོར་བསྡུས །" },
   "tooltip_minimize": { "message": "ཆེ་ཆུང་།" },
   "tooltip_restore": { "message": "བསྐྱར་གསོ།" },
   "tooltip_expand": { "message": "ཁ་སྐོང་།" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Azziz n tifrara" },
   "tooltip_sendReply": { "message": "Sselk yidles" },
   "tooltip_feelingLucky": { "message": "D-nessin ad t-ttufaḥ" },
+  "tooltip_summarizeResults": { "message": "Ssizdeg iferdisen" },
   "tooltip_minimize": { "message": "Semẓi" },
   "tooltip_restore": { "message": "Err-it-id" },
   "tooltip_expand": { "message": "Snefli" },

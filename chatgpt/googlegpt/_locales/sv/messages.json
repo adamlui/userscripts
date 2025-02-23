@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Teckenstorlek" },
   "tooltip_sendReply": { "message": "Skicka svar" },
   "tooltip_feelingLucky": { "message": "Jag känner mig lyckligt lottad" },
+  "tooltip_summarizeResults": { "message": "Sammanfatta resultat" },
   "tooltip_minimize": { "message": "Minska" },
   "tooltip_restore": { "message": "Återställ" },
   "tooltip_expand": { "message": "Expandera" },

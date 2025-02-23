@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Nui kikokiko" },
   "tooltip_sendReply": { "message": "Hoʻouna pane" },
   "tooltip_feelingLucky": { "message": "Laki wau" },
+  "tooltip_summarizeResults": { "message": "E hōʻuluʻulu i nā hopena" },
   "tooltip_minimize": { "message": "Hoemi" },
   "tooltip_restore": { "message": "Hoʻihoʻi" },
   "tooltip_expand": { "message": "Hoʻonui" },

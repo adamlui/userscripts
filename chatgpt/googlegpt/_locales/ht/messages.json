@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Gwosè Polis Karaktè" },
   "tooltip_sendReply": { "message": "Voye repons" },
   "tooltip_feelingLucky": { "message": "Mwen santi mwen gen chans/Mwen santi mwen gen chans/Je me" },
+  "tooltip_summarizeResults": { "message": "Rezime rezilta yo" },
   "tooltip_minimize": { "message": "réduire/misyon/pou minimize" },
   "tooltip_restore": { "message": "Restore" },
   "tooltip_expand": { "message": "agrandi" },

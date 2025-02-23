@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Letursstærð" },
   "tooltip_sendReply": { "message": "Senda svar" },
   "tooltip_feelingLucky": { "message": "Mér finnst ég heppinn" },
+  "tooltip_summarizeResults": { "message": "Draga saman niðurstöður" },
   "tooltip_minimize": { "message": "& Lágmarka" },
   "tooltip_restore": { "message": "Endurheimta" },
   "tooltip_expand": { "message": "Stækka" },

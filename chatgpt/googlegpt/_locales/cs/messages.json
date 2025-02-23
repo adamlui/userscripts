@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Velikost písma" },
   "tooltip_sendReply": { "message": "Odeslat odpověď" },
   "tooltip_feelingLucky": { "message": "I'm Feeling Lucky" },
+  "tooltip_summarizeResults": { "message": "Shrnout výsledky" },
   "tooltip_minimize": { "message": "Minimalizovat" },
   "tooltip_restore": { "message": "Obnovit" },
   "tooltip_expand": { "message": "Roztáhnout" },

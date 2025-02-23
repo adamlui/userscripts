@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Daqs tat-tipa" },
   "tooltip_sendReply": { "message": "Ibgħat tweġiba" },
   "tooltip_feelingLucky": { "message": "Qed Inħossni Xortikati" },
+  "tooltip_summarizeResults": { "message": "Qassar ir-riżultati" },
   "tooltip_minimize": { "message": "Imminimizza" },
   "tooltip_restore": { "message": "Irrestawra" },
   "tooltip_expand": { "message": "Stat Membru" },

@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "Saiz huruf" },
   "tooltip_sendReply": { "message": "Balas" },
   "tooltip_feelingLucky": { "message": "Saya Rasa Bertuah" },
+  "tooltip_summarizeResults": { "message": "Ringkaskan hasil" },
   "tooltip_minimize": { "message": "Minimum" },
   "tooltip_restore": { "message": "Pulihkan" },
   "tooltip_expand": { "message": "Mengembangkan" },

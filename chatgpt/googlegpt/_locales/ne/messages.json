@@ -41,6 +41,7 @@
   "tooltip_fontSize": { "message": "फन्ट" },
   "tooltip_sendReply": { "message": "जवाफ पठाउनुहोस्" },
   "tooltip_feelingLucky": { "message": "म भाग्यमानी महसुस गर्दैछु" },
+  "tooltip_summarizeResults": { "message": "परिणामहरूको सारांश दिनुहोस्" },
   "tooltip_minimize": { "message": "सानो पार्नुहोस्" },
   "tooltip_restore": { "message": "पूर्वावस्थामा ल्याउनुहोस्" },
   "tooltip_expand": { "message": "ठूलो बनाउनु" },
