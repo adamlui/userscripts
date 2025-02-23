@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.23.13
+// @version               2025.2.23.14
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -990,7 +990,7 @@
                 else if (!/\d/.test(replyLang)) {
                     replyLang = ( // auto-case for menu/alert aesthetics
                         replyLang.length < 4 || replyLang.includes('-') ? replyLang.toUpperCase()
-                            : replyLang[0].toUpperCase() + replyLang.slice(1).toLowerCase() )
+                            : log.toTitleCase(replyLang) )
                     log.debug('Saving reply language...')
                     settings.save('replyLang', replyLang || env.browser.language)
                     log.debug(`Success! config.replyLang = ${config.replyLang}`)
