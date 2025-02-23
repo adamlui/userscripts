@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.1
+// @version                  2025.2.23.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2266,6 +2266,7 @@
                   + 'position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ;'
                   + 'z-index: 9999 ; cursor: ew-resize }'
               + `#${app.slug} {`
+                  + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                   + `position: sticky ; z-index: 111 ; padding: ${ env.browser.isFF ? 20 : 22 }px 26px 6px 26px ;`
                   + 'flex-basis: 0 ; height: fit-content ;'
                   + `border: ${ env.ui.app.scheme == 'dark' ? 'none' : '1px solid #dadce0' } ; border-radius: 8px ;`
@@ -2274,7 +2275,6 @@
                   + 'flex-grow: 1 ; word-wrap: break-word ; white-space: pre-wrap ;'
                   + ( config.bgAnimationsDisabled ? // classic flat bg
                         `background: var(--app-bg-color-${env.ui.app.scheme}-scheme) ;`
-                      + `color: var(--font-color-${env.ui.app.scheme}-scheme) ;`
                   : `background-image: linear-gradient(180deg, ${ // gradient bg to match rising particles
                           env.ui.app.scheme == 'dark' ? '#99a8a6 -245px, black 185px'
                                                       : '#b6ebff -163px, white 65px' }) ;` )
