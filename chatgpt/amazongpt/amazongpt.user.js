@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.23
+// @version                2025.2.23.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2053,12 +2053,14 @@
             chatTextarea.oninput = addListeners.replySection.chatbarAutoSizer
 
             // Add button listeners
-            appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn => {
-                if (btn.id.endsWith('shuffle-btn')) btn.onclick = () => {
-                    show.reply.src = 'shuffle'
+            appDiv.querySelectorAll(`.${app.slug}-chatbar-btn`).forEach(btn =>{
+                btn.onclick = () => {
+                    const btnType = /-(\w+)-btn$/.exec(btn.id)[1]
+                    if (btnType == 'send') return // since handled by form submit
+                    show.reply.src = btnType
                     chatTextarea.value = prompts.create('randomQA', { mods: 'all' })
-                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown',
-                        { key: 'Enter', bubbles: true, cancelable: true }))
+                    chatTextarea.dispatchEvent(new KeyboardEvent('keydown', {
+                        key: 'Enter', bubbles: true, cancelable: true }))
                 }
                 if (!env.browser.isMobile) // add hover listener for tooltips
                     btn.onmouseenter = btn.onmouseleave = toggle.tooltip
@@ -2893,7 +2895,7 @@
                     const btn = dom.create.elem('button',
                         { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
-                                                                : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
+                                                            : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
                     btn.append(icons[btnType == 'send' ? 'arrowUp' : 'arrowsTwistedRight'].create())
                     continueChatDiv.append(btn)
                 })
