@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.23.6
+// @version               2025.2.23.7
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2229,13 +2229,13 @@
                   : `${ env.ui.app.scheme == 'dark' ? // slightly tranluscent bg
                         'background: #2b3a40cf ; color: var(--font-color-dark-scheme) ; border: 1px solid white'
                             : 'background: var(--pre-bg-color-light-scheme) ;'
-                                + 'color: var(--font-color-light-scheme) ; border: none' } ;` )
+                                + 'color: var(--font-color-light-scheme) ; border: none' };` )
                   + `${ config.fgAnimationsDisabled ? '' : // smoothen Anchor mode expand/shrink
                         'transition: var(--answer-pre-transition) ;'
                             + '-webkit-transition: var(--answer-pre-transition) ;'
                             + '-moz-transition: var(--answer-pre-transition) ;'
                             + '-o-transition: var(--answer-pre-transition) ;'
-                            + '-ms-transition: var(--answer-pre-transition) }' }}`
+                            + '-ms-transition: var(--answer-pre-transition)' }}`
               + `#${app.slug} > pre a, #${app.slug} > pre a:visited { color: #4495d4 }`
               + `#${app.slug} pre a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : '#ea7a28' }}`
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
