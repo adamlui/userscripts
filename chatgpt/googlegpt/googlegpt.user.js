@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.11
+// @version                  2025.2.23.13
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3056,7 +3056,8 @@
             get base() {
                 const strResults = centerCol.innerText.trim()
                 return 'Summarize these search results in a markdown list of couple bullets,'
-                    + ` citing sources if appropriate: ${strResults.slice(0, Math.floor(strResults.length /2))} ...`
+                    + ' citing hyperlinked sources if appropriate:\n\n'
+                    + ` ${strResults.slice(0, Math.floor(strResults.length /2))} ...`
             }
         }
     }
