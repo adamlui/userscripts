@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.10
+// @version                  2025.2.23.11
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -449,13 +449,14 @@
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: '3261929' // for cached messages.json
+        latestResourceCommitHash: '3124308' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
     app.msgs = {
         appDesc: 'Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)',
         menuLabel_autoGetAnswers: 'Auto-Get Answers',
+        menuLabel_autoSummarizeResults: 'Auto-Summarize Results',
         menuLabel_autoFocusChatbar: 'Auto-Focus Chatbar',
         menuLabel_whenStreaming: 'when streaming',
         menuLabel_proxyAPImode: 'Proxy API Mode',
@@ -514,6 +515,7 @@
         helptip_proxyAPImode: 'Uses a Proxy API for no-login access to AI',
         helptip_streamingMode: 'Receive replies in a continuous text stream',
         helptip_autoGetAnswers: 'Auto-send queries to GoogleGPT when using search engine',
+        helptip_autoSummarizeResults: 'Automatically summarize search results page',
         helptip_autoFocusChatbar: 'Auto-focus chatbar whenever it appears',
         helptip_autoScroll: 'Auto-scroll responses as they generate in Streaming Mode',
         helptip_showRelatedQueries: 'Show related queries below chatbar',
@@ -706,6 +708,9 @@
         autoGet: { type: 'toggle', icon: 'speechBalloonLasso', defaultVal: false,
             label: app.msgs.menuLabel_autoGetAnswers,
             helptip: app.msgs.helptip_autoGetAnswers },
+        autoSummarize: { type: 'toggle', icon: 'summarize', defaultVal: false,
+            label: app.msgs.menuLabel_autoSummarizeResults,
+            helptip: app.msgs.helptip_autoSummarizeResults },
         autoFocusChatbarDisabled: { type: 'toggle', mobile: false, icon: 'caretsInward', defaultVal: true,
             label: app.msgs.menuLabel_autoFocusChatbar,
             helptip: app.msgs.helptip_autoFocusChatbar },
@@ -1288,6 +1293,7 @@
                         /proxy/i.test(key) ? 'top: 3px ; left: -0.5px ; margin-right: 9px'
                       : /streaming/i.test(key) ? 'top: 3px ; left: 0.5px ; margin-right: 9px'
                       : /auto(?:get|focus)/i.test(key) ? 'top: 4.5px ; margin-right: 7px'
+                      : /summarize/i.test(key) ? 'top: 3.5px ; left: -5px ; margin-right: 3px ; height: 17.5px'
                       : /autoscroll/i.test(key) ? 'top: 3.5px ; left: -1.5px ; margin-right: 6px'
                       : /^rq/.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px ; transform: scaleY(-1)'
                       : /prefix/i.test(key) ? 'top: 2.5px ; left: 0.5px ; margin-right: 9px'
@@ -1343,12 +1349,13 @@
                             )) modals.settings.toggle.switch(settingToggle)
 
                             // Call specialized toggle funcs
-                            const manualGetMatch = /(?:suf|pre)fix/.exec(key)
+                            const autoGenMatch = /get|summarize/i.exec(key),
+                                  manualGenMatch = /(?:suf|pre)fix/i.exec(key)
                             if (key.includes('proxy')) toggle.proxyMode()
                             else if (key.includes('streaming')) toggle.streaming()
-                            else if (/autoget/i.test(key)) toggle.autoGet()
                             else if (key.includes('rq')) toggle.relatedQueries()
-                            else if (manualGetMatch) toggle.manualGet(manualGetMatch[0])
+                            else if (autoGenMatch) toggle.autoGen(autoGenMatch[0].toLowerCase())
+                            else if (manualGenMatch) toggle.manualGen(manualGenMatch[0].toLowerCase())
                             else if (key.includes('Sidebar')) toggle.sidebar(/(.*?)Sidebar$/.exec(key)[1])
                             else if (key.includes('anchor')) toggle.anchorMode()
                             else if (key.includes('bgAnimation')) toggle.animations('bg')
@@ -1929,8 +1936,8 @@
                 if (!Array.isArray(targetIcons)) targetIcons = [targetIcons]
                 if (!targetIcons.length) targetIcons = document.querySelectorAll(`#${app.slug}-icon`)
                 targetIcons.forEach(icon => {
-                    icon.src = GM_getResourceText(`ggptIcon${( color[0].toUpperCase() + color.slice(1) )
-                                                          || ( env.ui.app.scheme == 'dark' ? 'White' : 'Black' )}`)
+                    icon.src = GM_getResourceText(`ggptIcon${color ? color[0].toUpperCase() + color.slice(1)
+                        : env.ui.app.scheme == 'dark' ? 'White' : 'Black' }`)
                     icon.style.filter = icon.style.webkitFilter = (
                         'drop-shadow(5px 5px 15px rgba(0,0,0,0.3))' // drop shadow
                       + 'drop-shadow(2px 1px 0 #ff5b5b) drop-shadow(-1px -1px 0 rgb(73,215,73,0.75))' // RGB shift
@@ -3106,15 +3113,18 @@
             notify(`${settings.controls[configKey].label} ${toolbarMenu.state.words[+!config[configKey]]}`)
         },
 
-        autoGet() {
-            settings.save('autoGet', !config.autoGet)
-            if (appDiv.querySelector('[class*=standby-btn]')) show.reply.queryBtnClickHandler()
-            if (config.autoGet) // disable Prefix/Suffix mode if enabled
-                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGet(mode))
-            notify(`${settings.controls.autoGet.label} ${toolbarMenu.state.words[+config.autoGet]}`)
+        autoGen(mode) {
+            const validModes = ['get', 'summarize'], modeKey = `auto${log.toTitleCase(mode)}`
+            settings.save(modeKey, !config[modeKey])
+            if (config[modeKey]) { // disable conflicting modes if enabled
+                const otherMode = validModes[+(mode == validModes[0])]
+                if (config[`auto${log.toTitleCase(otherMode)}`]) toggle.autoGen(otherMode);
+                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGen(mode))
+            }
+            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
-                const autoGetToggle = document.querySelector('[id*=autoGet] input')
-                if (autoGetToggle.checked != config.autoGet) modals.settings.toggle.switch(autoGetToggle)
+                const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
+                if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
             }
         },
 
@@ -3146,10 +3156,11 @@
             icons.arrowsDiagonal.update() ; toggle.tooltip('off') // update icon/tooltip
         },
 
-        manualGet(mode) { // Prefix/Suffix modes
+        manualGen(mode) { // Prefix/Suffix modes
             const modeKey = `${mode}Enabled`
             settings.save(modeKey, !config[modeKey])
-            if (config[modeKey] && config.autoGet) toggle.autoGet() // disable Auto-Get mode if enabled
+            if (config[modeKey]) // disable Auto-Gen modes if enabled
+                ['get', 'summarize'].forEach(mode => config[`auto${log.toTitleCase(mode)}`] && toggle.autoGen(mode))
             notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
@@ -4340,7 +4351,7 @@
 
     // Show STANDBY mode or get/show ANSWER
     let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
-    if (!config.autoGet // Auto-Get disabled
+    if (!config.autoGet && !config.autoSummarize// Auto-Gen disabled
         || config.prefixEnabled && !/.*q=%2F/.test(location.href) // prefix required but not present
         || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
             show.reply('standby', footerContent)
@@ -4348,7 +4359,10 @@
                 get.related(msgChain[msgChain.length - 1].content)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
-    } else { appAlert('waitingResponse') ; get.reply(msgChain) }
+    } else {
+        if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+        appAlert('waitingResponse') ; get.reply(msgChain)
+    }
 
     // Observe DOM for new sidebar div#rhs created by other extensions to INSERT GoogleGPT to visually co-exist
     const sidebarObserver = new MutationObserver(() => {
