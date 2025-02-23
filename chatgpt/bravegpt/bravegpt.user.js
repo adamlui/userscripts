@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.23.1
+// @version               2025.2.23.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3729,7 +3729,7 @@
                 if (answer == 'standby') {
                     const standbyBtn = dom.create.elem('button',
                         { class: `${app.slug}-standby-btn no-mobile-tap-outline` })
-                    standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp || `Send search query to ${app.name}`
+                    standbyBtn.textContent = app.msgs.btnLabel_sendQueryToApp
                     appDiv.append(standbyBtn)
                     show.reply.standbyBtnClickHandler = function() {
                         appAlert('waitingResponse')
