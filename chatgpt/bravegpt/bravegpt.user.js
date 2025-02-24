@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.24.2
+// @version               2025.2.24.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2894,7 +2894,6 @@
     const toggle = {
 
         anchorMode(state = '') {
-            log.caller = `toggle.anchorMode(${ state ? `'${state}'` : '' })`
             const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
             let sidebarModeToggled = false // to extend this notif duration
 
