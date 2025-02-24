@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.24.1
+// @version                  2025.2.24.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3067,7 +3067,6 @@
     const toggle = {
 
         anchorMode(state = '') {
-            log.caller = `toggle.anchorMode(${ state ? `'${state}'` : '' })`
             const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
             let sidebarModeToggled = false // to extend this notif duration
 
