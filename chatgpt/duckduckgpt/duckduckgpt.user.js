@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.24
+// @version                2025.2.24.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2903,14 +2903,16 @@
         anchorMode(state = '') {
             log.caller = `toggle.anchorMode(${ state ? `'${state}'` : '' })`
             const prevState = config.anchored // for restraining notif if no change from Pin menu 'Sidebar' click
+            let sidebarModeToggled = false // to extend this notif duration
 
-            // Save new state + disable incompatible modes
+            // Save new state + disable incompatible Sidebar modes
             if (state == 'on' || !state && !config.anchored) {
                 settings.save('anchored', true);
-                ['sticky', 'wider'].forEach(mode => config[`${mode}Sidebar`] && toggle.sidebar(mode))
+                ['sticky', 'wider'].forEach(mode => {
+                    if (config[`${mode}Sidebar`]) { toggle.sidebar(mode) ; sidebarModeToggled = true }})
             } else {
                 settings.save('anchored', false)
-                if (config.expanded) toggle.expandedMode('off')
+                if (config.expanded) { toggle.expandedMode('off') ; sidebarModeToggled = true }
             }
             if (prevState == config.anchored) return
 
@@ -2922,7 +2924,8 @@
                 if (anchorToggle.checked != config.anchored) modals.settings.toggle.switch(anchorToggle)
             }
             menus.pin.topPos = menus.pin.rightPos = null
-            notify(`${app.msgs.mode_anchor} ${toolbarMenu.state.words[+config.anchored]}`)
+            notify(`${app.msgs.mode_anchor} ${toolbarMenu.state.words[+config.anchored]}`,
+                null, sidebarModeToggled ? 2.75 : null) // +1s duration if conflicting mode notif shown
         },
 
         animations(layer) {
@@ -2945,13 +2948,17 @@
 
         autoGen(mode) {
             const validModes = ['get', 'summarize'], modeKey = `auto${log.toTitleCase(mode)}`
+            let conflictingModeToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey]) { // disable conflicting modes if enabled
                 const otherMode = validModes[+(mode == validModes[0])]
-                if (config[`auto${log.toTitleCase(otherMode)}`]) toggle.autoGen(otherMode);
-                ['prefix', 'suffix'].forEach(mode => config[`${mode}Enabled`] && toggle.manualGen(mode))
+                if (config[`auto${log.toTitleCase(otherMode)}`]) {
+                    toggle.autoGen(otherMode) ; conflictingModeToggled = true }
+                ['prefix', 'suffix'].forEach(mode => {
+                    if (config[`${mode}Enabled`]) { toggle.manualGen(mode) ; conflictingModeToggled = true }})
             }
-            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
+            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`,
+                null, conflictingModeToggled ? 2.75 : null) // +1s duration if conflicting mode notif shown
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
@@ -2988,10 +2995,13 @@
 
         manualGen(mode) { // Prefix/Suffix modes
             const modeKey = `${mode}Enabled`
+            let autoGenToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
             if (config[modeKey]) // disable Auto-Gen modes if enabled
-                ['get', 'summarize'].forEach(mode => config[`auto${log.toTitleCase(mode)}`] && toggle.autoGen(mode))
-            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`)
+                ['get', 'summarize'].forEach(mode => {
+                    if (config[`auto${log.toTitleCase(mode)}`]) { toggle.autoGen(mode) ; autoGenToggled = true }})
+            notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`,
+                null, autoGenToggled ? 2.75 : null) // +1s duration if conflicting mode notif shown)
             if (modals.settings.get()) { // update visual state of Settings toggle
                 const modeToggle = document.querySelector(`[id*=${modeKey}] input`)
                 if (modeToggle.checked != config[modeKey]) modals.settings.toggle.switch(modeToggle)
@@ -3046,10 +3056,11 @@
         sidebar(mode, state = '') {
             const configKeyName = mode + 'Sidebar',
                   prevStickyState = config.stickySidebar // for hiding notif if no change from Pin menu 'Sidebar' click
+            let anchorModeDisabled = false // to extend this notif duration
 
-            // Save new state + disable incompatible modes
+            // Save new state + disable incompatible Anchor mode
             if (state == 'on' || !state && !config[configKeyName]) { // toggle on
-                if (mode == 'sticky' && config.anchored) toggle.anchorMode()
+                if (mode == 'sticky' && config.anchored) { toggle.anchorMode() ; anchorModeDisabled = true }
                 settings.save(configKeyName, true)
             } else settings.save(configKeyName, false)
 
@@ -3065,9 +3076,9 @@
 
             // Notify of mode change
             if (mode == 'sticky' && prevStickyState == config.stickySidebar) return
-            notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`]
-                    || mode[0].toUpperCase() + mode.slice(1) + ' Sidebar' } ${
-                       toolbarMenu.state.words[+config[configKeyName]]}`)
+            notify(`${ app.msgs[`menuLabel_${ mode }Sidebar`] || log.toTitleCase(mode) + ' Sidebar' } ${
+                       toolbarMenu.state.words[+config[configKeyName]]}`,
+                null, anchorModeDisabled ? 2.75 : null) // +1s duration if conflicting mode notif shown
         },
 
         streaming() {
