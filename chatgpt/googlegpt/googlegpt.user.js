@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.23.15
+// @version                  2025.2.24
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1450,7 +1450,7 @@
                         switchSpan.style.boxShadow = settingToggle.checked ? '2px 1px 9px #d8a9ff' : 'none'
                         knobSpan.style.transform = settingToggle.checked ?
                             'translateX(14px) translateY(0)' : 'translateX(0)'
-                        settingLi.classList[settingToggle.checked ? 'add' : 'remove']('active') // dim/brighten entry
+                        settingLi.classList.toggle('active', settingToggle.checked) // dim/brighten entry
                     }) // to trigger 1st transition fx
                 }
             },
@@ -3081,7 +3081,7 @@
             if (prevState == config.anchored) return
 
             // Apply changed state to UI
-            appDiv.classList[config.anchored ? 'add' : 'remove']('anchored')
+            appDiv.classList.toggle('anchored', config.anchored)
             update.rqVisibility() ; update.answerPreMaxHeight() ; update.chatbarWidth()
             if (getComputedStyle(appDiv).transitionProperty.includes('width')) // update byline visibility
                 appDiv.addEventListener('transitionend', function onTransitionEnd(event) { // ...after width transition
@@ -3132,7 +3132,7 @@
         btnGlow(state = '') {
             const toRemove = state == 'off' || env.ui.app.scheme != 'dark' || config.fgAnimationsDisabled
             document.querySelectorAll('[class*=-modal] button').forEach((btn, idx) => {
-                setTimeout(() => btn.classList[toRemove ? 'remove' : 'add']('glowing-btn'),
+                setTimeout(() => btn.classList.toggle('glowing-btn', !toRemove),
                     (idx +1) *50 *chatgpt.randomFloat()) // to unsync flickers
                 let btnTextSpan = btn.querySelector('span')
                 if (!btnTextSpan) { // wrap btn.textContent for .glowing-txt
@@ -3140,13 +3140,13 @@
                     btnTextSpan.textContent = btn.textContent ; btn.textContent = ''
                     btn.append(btnTextSpan)
                 }
-                btnTextSpan.classList[toRemove ? 'remove' : 'add']('glowing-txt')
+                btnTextSpan.classList.toggle('glowing-txt', !toRemove)
             })
         },
 
         expandedMode(state = '') {
             const toExpand = state == 'on' || !state && !config.expanded
-            settings.save('expanded', toExpand) ; appDiv.classList[ toExpand ? 'add' : 'remove' ]('expanded')
+            settings.save('expanded', toExpand) ; appDiv.classList.toggle('expanded', toExpand)
             if (config.minimized) toggle.minimized('off') // since user wants to see stuff
             update.chatbarWidth()
             if (getComputedStyle(appDiv).transitionProperty.includes('width')) // update byline visibility
@@ -3225,7 +3225,7 @@
             } else settings.save(configKeyName, false)
 
             // Apply new state to UI
-            appDiv.classList[config[configKeyName] ? 'add' : 'remove'](mode)
+            appDiv.classList.toggle(mode, config[configKeyName])
             update.answerPreMaxHeight() ; update.bylineVisibility() ; update.chatbarWidth()
             if (mode == 'wider') icons.widescreen.update() // toggle icons everywhere
             if (modals.settings.get()) { // update visual state of Settings toggle
