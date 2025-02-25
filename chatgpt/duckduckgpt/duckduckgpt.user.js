@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.25
+// @version                2025.2.25.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2329,7 +2329,7 @@
                   + `#${app.slug} > pre ol { margin: -26px 0 -20px 7px }`
                   + `#${app.slug} > pre ol > li { margin: -10px 0 -6px 1.6em ; list-style: decimal }`
                   + `#${app.slug} > pre ol > li::marker { font-size: 0.9em }` // shrink number markers
-                  + `#${app.slug} > pre ul { margin: -28px 0 -21px }` // reduce v-padding
+                  + `#${app.slug} > pre ul { margin: -14px 0 -21px }` // reduce v-padding
                   + `#${app.slug} > pre ul > li { margin: -10px 0 0 1.2em ; list-style: circle }` ) // reduce v-padding, show bullets
               + '.katex-html { display: none } ' // hide unrendered math
               + `#${app.slug} + footer {
