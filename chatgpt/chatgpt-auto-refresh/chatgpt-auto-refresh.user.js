@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25.1
+// @version             2025.2.25.2
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -444,7 +444,7 @@
                     if (ctrlType == 'toggle') {
                         settings.save(key, !config[key])
                         notify(`${settings.controls[key].label}: ${
-                            this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                            this.state.words[+(config[key] ^ /disabled/i.test(key))]}`)
                     } else { // Refresh Interval prompt
                         while (true) {
                             const refreshInterval = prompt(
@@ -475,7 +475,7 @@
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
 
-            function settingIsEnabled(key) { return config[key] ^ /disabled|hidden/i.test(key) }
+            function settingIsEnabled(key) { return config[key] ^ /disabled/i.test(key) }
         }
     }
 
