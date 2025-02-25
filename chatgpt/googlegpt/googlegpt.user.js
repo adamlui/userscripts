@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.25
+// @version                  2025.2.25.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3950,7 +3950,8 @@
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
-                    const standbyBtnsDiv = dom.create.elem('div', { class: `${app.slug}-standby-btns` });
+                    const standbyBtnsDiv = dom.create.elem('div', {
+                        class: `${app.slug}-standby-btns`, style: 'will-change: transform' });
                     ['query', 'summarize'].forEach(btnType => {
                         const standbyBtn = dom.create.elem('button', {
                             class: `${app.slug}-standby-btn no-mobile-tap-outline` })
