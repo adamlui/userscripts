@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.25.1
+// @version                2025.2.25.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3765,7 +3765,8 @@
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
-                    const standbyBtnsDiv = dom.create.elem('div', { class: `${app.slug}-standby-btns` });
+                    const standbyBtnsDiv = dom.create.elem('div', {
+                        class: `${app.slug}-standby-btns`, style: 'will-change: transform' });
                     ['query', 'summarize'].forEach(btnType => {
                         const standbyBtn = dom.create.elem('button', {
                             class: `${app.slug}-standby-btn no-mobile-tap-outline` })
