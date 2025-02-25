@@ -47,7 +47,6 @@
   "btnLabel_dismiss": { "message": "ຂ້າມໄປ" },
   "link_viewChanges": { "message": "ເບິ່ງການປ່ຽນແປງ" },
   "unit_secs": { "message": "ວິນາທີ" },
-  "state_enabled": { "message": "ເປີດໃຊ້ງານ" },
   "state_disabled": { "message": "ພິການ" },
   "state_on": { "message": "ເປີດ" },
   "state_off": { "message": "ປິດ" }

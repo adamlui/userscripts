@@ -47,7 +47,6 @@
   "btnLabel_dismiss": { "message": "Ofginn" },
   "link_viewChanges": { "message": "Ännerungen uweisen" },
   "unit_secs": { "message": "sekonnen" },
-  "state_enabled": { "message": "aktiviert" },
   "state_disabled": { "message": "deaktivéiert" },
   "state_on": { "message": "un" },
   "state_off": { "message": "aus" }

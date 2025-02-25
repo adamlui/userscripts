@@ -47,7 +47,6 @@
   "btnLabel_dismiss": { "message": "I-dismiss" },
   "link_viewChanges": { "message": "Tan-awa ang mga kausaban" },
   "unit_secs": { "message": "segundo" },
-  "state_enabled": { "message": "Mipahimo" },
   "state_disabled": { "message": "Baldado" },
   "state_on": { "message": "sa on" },
   "state_off": { "message": "off" }
