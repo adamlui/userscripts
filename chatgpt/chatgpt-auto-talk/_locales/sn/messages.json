@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "Kugadziridza" },
   "btnLabel_dismiss": { "message": "Dzinga" },
   "link_viewChanges": { "message": "Vonanyi cinjo" },
-  "state_enabled": { "message": "inogoneswa" },
   "state_disabled": { "message": "chakaremara" },
   "state_on": { "message": "pamusoro" },
   "state_off": { "message": "kure" }

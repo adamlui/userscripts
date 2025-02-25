@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Afwijzen" },
   "link_viewChanges": { "message": "Wijzigingen weergeven" },
-  "state_enabled": { "message": "enabled" },
   "state_disabled": { "message": "etkinleştirilmemiş" },
   "state_on": { "message": "aan" },
   "state_off": { "message": "uit" }

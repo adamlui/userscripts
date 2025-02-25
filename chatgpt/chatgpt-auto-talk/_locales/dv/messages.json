@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "އަޕްޑޭޓް" },
   "btnLabel_dismiss": { "message": "ދުރުކޮށްލުން" },
   "link_viewChanges": { "message": "ބަދަލުތައް ބަލާށެވެ" },
-  "state_enabled": { "message": "އެނޭބަލްކޮށްފައި" },
   "state_disabled": { "message": "ބޭނުންނުކުރެވޭ ގޮތަށް ހަދާފައި" },
   "state_on": { "message": "މަތީގައި" },
   "state_off": { "message": "އޮފް" }

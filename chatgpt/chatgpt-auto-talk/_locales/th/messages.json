@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "อัปเดต" },
   "btnLabel_dismiss": { "message": "ยกเลิก" },
   "link_viewChanges": { "message": "ดูการเปลี่ยนแปลง" },
-  "state_enabled": { "message": "เปิดการใช้งาน" },
   "state_disabled": { "message": "ปิดใช้งาน" },
   "state_on": { "message": "เมื่อ" },
   "state_off": { "message": "ปิด" }

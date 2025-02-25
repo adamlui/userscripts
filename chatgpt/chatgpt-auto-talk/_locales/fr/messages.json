@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Rejeter" },
   "link_viewChanges": { "message": "Afficher les modifications" },
-  "state_enabled": { "message": "activé" },
   "state_disabled": { "message": "désactivé" },
   "state_on": { "message": "actif" },
   "state_off": { "message": "désactivé" }

@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "Vaovao farany" },
   "btnLabel_dismiss": { "message": "Ario" },
   "link_viewChanges": { "message": "Hijery ireo fanovana" },
-  "state_enabled": { "message": "Mampandeha" },
   "state_disabled": { "message": "Natsahatra ; Najanona" },
   "state_on": { "message": "amin'ny" },
   "state_off": { "message": "Ajanona" }

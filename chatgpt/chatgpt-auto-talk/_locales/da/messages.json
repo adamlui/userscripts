@@ -38,7 +38,6 @@
   "btnLabel_update": { "message": "Opdatér" },
   "btnLabel_dismiss": { "message": "Afvis" },
   "link_viewChanges": { "message": "Se ændringer" },
-  "state_enabled": { "message": "aktiveret" },
   "state_disabled": { "message": "deaktiveret" },
   "state_on": { "message": "til" },
   "state_off": { "message": "slukket" }
