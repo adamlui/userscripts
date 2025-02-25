@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25.1
+// @version             2025.2.25.2
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -409,14 +409,14 @@
 
             // Add toggles
             Object.keys(settings.controls).forEach(key => {
-                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
+                const settingIsEnabled = config[key] ^ /disabled/i.test(key)
                 const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
                                 + this.state.separator + this.state.words[+settingIsEnabled]
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
-                        this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
+                        this.state.words[+(config[key] ^ /disabled/i.test(key))]}`)
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
