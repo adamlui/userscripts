@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.22
+// @version             2025.2.25
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -380,7 +380,7 @@
         register() {
 
             // Show "Disabled (extension installed)"
-            if (env.extensionInstalled)
+            if (env.extensionActive)
                 GM_registerMenuCommand(`${this.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
                     () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
 
@@ -399,7 +399,7 @@
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => {
-                if (entryType === 'donate' && env.extensionInstalled) return
+                if (entryType === 'donate' && env.extensionActive) return
                 this.ids.push(GM_registerMenuCommand(
                     `${ entryType == 'about' ? '💡' : '💖' }`
                         + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
@@ -488,15 +488,15 @@
 
     // Run MAIN routine
 
-    env.extensionInstalled = await Promise.race([
+    env.extensionActive = await Promise.race([
         new Promise(resolve => {
-            (function checkExtensionInstalled() {
+            (function checkextensionActive() {
                 if (document.documentElement.hasAttribute('chatgpt-auto-continue-extension-installed')) resolve(true)
-                else setTimeout(checkExtensionInstalled, 200)
+                else setTimeout(checkextensionActive, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
 
-    toolbarMenu.register() ; if (env.extensionInstalled) return
+    toolbarMenu.register() ; if (env.extensionActive) return
 
     // Add RISING PARTICLES styles
     ['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
