@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25
+// @version             2025.2.25.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -275,7 +275,7 @@
         version: GM_info.script.version, configKeyPrefix: 'chatGPTautoContinue',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptautocontinue.com' },
-        latestResourceCommitHash: '0353487' // for cached app.json + messages.json
+        latestResourceCommitHash: '624cf9e' // for cached app.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -291,7 +291,7 @@
         menuLabel_modeNotifs: 'Mode Notifications',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
-        menuLabel_disabled: 'Disabled (extension installed)',
+        menuLabel_extensionActive: 'extension active',
         about_author: 'Author',
         about_and: '&',
         about_contributors: 'contributors',
@@ -325,6 +325,7 @@
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         link_viewChanges: 'View changes',
+        state_disabled: 'disabled',
         state_on: 'on',
         state_off: 'off'
     }
@@ -379,9 +380,10 @@
 
         register() {
 
-            // Show "Disabled (extension installed)"
+            // Show "Disabled (extension active)"
             if (env.extensionActive)
-                GM_registerMenuCommand(`${this.state.symbols[0]} ${app.msgs.menuLabel_disabled}`,
+                GM_registerMenuCommand(`${this.state.symbols[0]} ${
+                        toTitleCase(app.msgs.state_disabled)} (${app.msgs.menuLabel_extensionActive})`,
                     () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
 
             // ...or add settings toggles
@@ -428,6 +430,14 @@
                 // Alert to no update found, nav back to About
                 modals.open('update', 'unavailable')
         }})
+    }
+
+    function toTitleCase(str) {
+        if (!str) return ''
+        const words = str.toLowerCase().split(' ')
+        for (let i = 0 ; i < words.length ; i++) // for each word
+            words[i] = words[i][0].toUpperCase() + words[i].slice(1) // title-case it
+        return words.join(' ') // join'em back together
     }
 
     // Define FEEDBACK functions
@@ -488,6 +498,7 @@
 
     // Run MAIN routine
 
+    // Create browser TOOLBAR MENU + DISABLE SCRIPT if extension active
     env.extensionActive = await Promise.race([
         new Promise(resolve => {
             (function checkextensionActive() {
