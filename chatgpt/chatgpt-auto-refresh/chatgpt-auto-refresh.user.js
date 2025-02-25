@@ -239,7 +239,7 @@
 // @connect             gm.chatgptautorefresh.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
-// @require             https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=607b343#sha256-p8+Cxb2EvM4F4H7nZbljakpZ+8H9wAgj6++MRErdXe8=
+// @require             https://assets.aiwebextensions.com/lib/dom.js/dist/dom.min.js?v=4560a49#sha256-qJAIsicU0TAxv6aO8+1XluVh39TZzUDWIXp52KkbVkc=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -923,8 +923,8 @@
                 },
 
                 scheme() { // to match UI scheme
+                    toggles.sidebar.div.classList.remove('dark', 'light')
                     toggles.sidebar.div.classList.add(env.ui.scheme)
-                    toggles.sidebar.div.classList.remove(env.ui.scheme == 'dark' ? 'light' : 'dark')
                     toggles.sidebar.update.navicon()
                 },
 
