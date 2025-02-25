@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.25
+// @version               2025.2.25.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3763,7 +3763,8 @@
 
                 // Show standby state if prefix/suffix mode on
                 if (answer == 'standby') {
-                    const standbyBtnsDiv = dom.create.elem('div', { class: `${app.slug}-standby-btns` });
+                    const standbyBtnsDiv = dom.create.elem('div', {
+                        class: `${app.slug}-standby-btns`, style: 'will-change: transform' });
                     ['query', 'summarize'].forEach(btnType => {
                         const standbyBtn = dom.create.elem('button', {
                             class: `${app.slug}-standby-btn no-mobile-tap-outline` })
