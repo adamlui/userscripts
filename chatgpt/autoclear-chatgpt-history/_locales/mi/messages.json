@@ -45,7 +45,6 @@
   "btnLabel_update": { "message": "Whakahou" },
   "btnLabel_dismiss": { "message": "Te whakahawea" },
   "link_viewChanges": { "message": "Tirohia nga huringa" },
-  "state_enabled": { "message": "Kua whakakāngia" },
   "state_disabled": { "message": "Kua whakawetoa" },
   "state_on": { "message": "runga" },
   "state_off": { "message": "..e whakaweto ana" }

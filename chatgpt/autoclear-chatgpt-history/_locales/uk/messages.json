@@ -45,7 +45,6 @@
   "btnLabel_update": { "message": "Оновити" },
   "btnLabel_dismiss": { "message": "Відхиляти" },
   "link_viewChanges": { "message": "Переглянути зміни" },
-  "state_enabled": { "message": "активовано" },
   "state_disabled": { "message": "вимкнено" },
   "state_on": { "message": "на" },
   "state_off": { "message": "геть" }

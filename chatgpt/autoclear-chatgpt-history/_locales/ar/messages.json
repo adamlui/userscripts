@@ -45,7 +45,6 @@
   "btnLabel_update": { "message": "تحديث" },
   "btnLabel_dismiss": { "message": "إغلاق" },
   "link_viewChanges": { "message": "عرض سجل التغييرات" },
-  "state_enabled": { "message": "تمكين" },
   "state_disabled": { "message": "معطّل" },
   "state_on": { "message": "على" },
   "state_off": { "message": "الإيقاف" }

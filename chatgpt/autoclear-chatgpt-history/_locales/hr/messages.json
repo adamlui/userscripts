@@ -45,7 +45,6 @@
   "btnLabel_update": { "message": "Ažuriraj" },
   "btnLabel_dismiss": { "message": "Odbaci" },
   "link_viewChanges": { "message": "Pregledaj promjene" },
-  "state_enabled": { "message": "omogućeno" },
   "state_disabled": { "message": "onemogućeno" },
   "state_on": { "message": "na" },
   "state_off": { "message": "popusta" }
