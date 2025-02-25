@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25
+// @version             2025.2.25.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -307,7 +307,7 @@
         version: GM_info.script.version, configKeyPrefix: `${env.site} Widescreen`,
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptwidescreen.com' },
-        latestResourceCommitHash: 'e2a3879' // for cached app.json + sites.json + messages.json
+        latestResourceCommitHash: 'ec24585' // for cached app.json + sites.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -331,8 +331,7 @@
         menuLabel_siteSettings: 'Site Settings',
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
-        menuLabel_disabled: 'Disabled',
-        menuLabel_extensionActive: 'extension installed',
+        menuLabel_extensionActive: 'extension active',
         about_author: 'Author',
         about_and: '&',
         about_contributors: 'contributors',
@@ -388,6 +387,7 @@
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         link_viewChanges: 'View changes',
+        state_disabled: 'disabled',
         state_on: 'on',
         state_off: 'off'
     }
@@ -439,7 +439,7 @@
     settings.siteDisabledKeys = Object.keys(sites).map(site => `${site}Disabled`)
     settings.load(...settings.siteDisabledKeys, sites[env.site].availFeatures)
 
-    // Define FUNCTIONS
+    // Define MENU functions
 
     const toolbarMenu = {
         ids: [], state: {
@@ -454,11 +454,11 @@
 
         register() {
 
-            // Show "Disabled (extension installed)"
-            if (env.extensionActive) GM_registerMenuCommand(
-                `${this.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionActive})`,
-                () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
-            )
+            // Show "Disabled (extension active)"
+            if (env.extensionActive)
+                GM_registerMenuCommand(`${this.state.symbols[0]} ${
+                        toTitleCase(app.msgs.state_disabled)} (${app.msgs.menuLabel_extensionActive})`,
+                    () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
 
             // ...or add settings toggles
             else {
@@ -612,6 +612,16 @@
         }})
     }
 
+    function toTitleCase(str) {
+        if (!str) return ''
+        const words = str.toLowerCase().split(' ')
+        for (let i = 0 ; i < words.length ; i++) // for each word
+            words[i] = words[i][0].toUpperCase() + words[i].slice(1) // title-case it
+        return words.join(' ') // join'em back together
+    }
+
+    // Define FEEDBACK functions
+
     function notify(msg, pos = '', notifDuration = '', shadow = '') {
         if (config.notifDisabled && !new RegExp(`${app.msgs.menuLabel_modeNotifs}|🧩`).test(msg)) return
 
@@ -641,6 +651,8 @@
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
+
+    // Define UI functions
 
     function toggleMode(mode, state = '') {
         switch (state.toUpperCase()) {
@@ -801,7 +813,7 @@
 
     // Run MAIN routine
 
-    // Create browser TOOLBAR MENU or DISABLE SCRIPT if extension installed
+    // Create browser TOOLBAR MENU + DISABLE SCRIPT if extension active
     env.extensionActive = await Promise.race([
         new Promise(resolve => {
             (function checkextensionActive() {
