@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25.1
+// @version             2025.2.25.2
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -388,14 +388,14 @@
 
             // ...or add settings toggles
             else Object.keys(settings.controls).forEach(key => {
-                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
+                const settingIsEnabled = config[key] ^ /disabled/i.test(key)
                 const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
                                 + settings.controls[key].label
                                 + this.state.separator + this.state.words[+settingIsEnabled]
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${settings.controls[key].label}: ${
-                        this.state.words[+(/disabled|hidden/i.test(key) ^ config[key])]}`)
+                        this.state.words[+(/disabled/i.test(key) ^ config[key])]}`)
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
             });
 
