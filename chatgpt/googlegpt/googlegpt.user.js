@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.24.5
+// @version                  2025.2.25
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3957,7 +3957,7 @@
                         standbyBtn.textContent = app.msgs[
                             btnType == 'query' ? 'btnLabel_sendQueryToApp' : 'tooltip_summarizeResults']
                         standbyBtn.prepend(icons[btnType == 'query' ? 'send' : 'summarize'].create())
-                        show.reply[`${btnType}BtnClickHandler`] = function() {
+                        standbyBtn.onclick = () => {
                             appAlert('waitingResponse')
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
@@ -3965,7 +3965,7 @@
                                 msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
                             get.reply(msgChain)
                         }
-                        standbyBtnsDiv.append(standbyBtn) ; standbyBtn.onclick = show.reply[`${btnType}BtnClickHandler`]
+                        standbyBtnsDiv.append(standbyBtn)
                     })
                     appDiv.append(standbyBtnsDiv)
 
