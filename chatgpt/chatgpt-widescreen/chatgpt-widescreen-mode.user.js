@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.24.2
+// @version             2025.2.25
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -332,7 +332,7 @@
         menuLabel_about: 'About',
         menuLabel_donate: 'Please send a donation',
         menuLabel_disabled: 'Disabled',
-        menuLabel_extensionInstalled: 'extension installed',
+        menuLabel_extensionActive: 'extension installed',
         about_author: 'Author',
         about_and: '&',
         about_contributors: 'contributors',
@@ -455,8 +455,8 @@
         register() {
 
             // Show "Disabled (extension installed)"
-            if (env.extensionInstalled) GM_registerMenuCommand(
-                `${this.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionInstalled})`,
+            if (env.extensionActive) GM_registerMenuCommand(
+                `${this.state.symbols[0]} ${app.msgs.menuLabel_disabled} (${app.msgs.menuLabel_extensionActive})`,
                 () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )
 
@@ -581,7 +581,7 @@
 
             // Add About/Donate entries
             ['about', 'donate'].forEach(entryType => {
-                if (entryType === 'donate' && env.extensionInstalled) return
+                if (entryType === 'donate' && env.extensionActive) return
                 this.ids.push(GM_registerMenuCommand(
                     `${ entryType == 'about' ? '💡' : '💖' }`
                         + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
@@ -802,15 +802,15 @@
     // Run MAIN routine
 
     // Create browser TOOLBAR MENU or DISABLE SCRIPT if extension installed
-    env.extensionInstalled = await Promise.race([
+    env.extensionActive = await Promise.race([
         new Promise(resolve => {
-            (function checkExtensionInstalled() {
+            (function checkextensionActive() {
                 if (document.documentElement.hasAttribute('chatgpt-widescreen-extension-installed')) resolve(true)
-                else setTimeout(checkExtensionInstalled, 200)
+                else setTimeout(checkextensionActive, 200)
             })()
         }), new Promise(resolve => setTimeout(() => resolve(false), 1500))])
 
-    toolbarMenu.register() ; if (env.extensionInstalled) return
+    toolbarMenu.register() ; if (env.extensionActive) return
 
     // Init UI props
     if (env.site == 'chatgpt') {
