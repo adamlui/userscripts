@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25.2
+// @version             2025.2.26
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -390,6 +390,8 @@
                 label: app.msgs.menuLabel_clearNow, helptip: app.msgs.helptip_clearNow }
         },
 
+        isEnabled(key) { return config[key] ^ /disabled/i.test(key) },
+
         load(...keys) {
             keys.flat().forEach(key => {
                 config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
@@ -420,15 +422,15 @@
             Object.keys(settings.controls).forEach(key => {
                 const ctrlType = settings.controls[key].type
                 const ctrlStatus = settings.controls[key].status
-                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled(key)] } `
+                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settings.isEnabled(key)] } `
                                 + settings.controls[key].label
                                 + ( ctrlType == 'toggle' ? this.state.separator
-                                                         + this.state.words[+settingIsEnabled(key)]
+                                                         + this.state.words[+settings.isEnabled(key)]
                                                          : ctrlStatus ? `— ${ctrlStatus}` : '' )
                 this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                     if (ctrlType == 'toggle') {
                         settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
-                        notify(`${settings.controls[key].label}: ${this.state.words[+settingIsEnabled(key)]}`)
+                        notify(`${settings.controls[key].label}: ${this.state.words[+settings.isEnabled(key)]}`)
                     } else // Clear Now action
                         clearChatsAndGoHome()
                 }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
@@ -440,8 +442,6 @@
                     + ` ${app.msgs[`menuLabel_${entryType}`]} ${ entryType == 'about' ? app.msgs.appName : '' }`,
                 () => modals.open(entryType), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
             )))
-
-            function settingIsEnabled(key) { return config[key] ^ /disabled/i.test(key) }
         }
     }
 
