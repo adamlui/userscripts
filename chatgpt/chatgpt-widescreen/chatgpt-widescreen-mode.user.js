@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.25.4
+// @version             2025.2.26
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -257,7 +257,7 @@
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2b47eb2/chromium/extension/lib/chatbar.js#sha256-SSJGd5Kd+6Oq8IctL8A/DVzSaZXymgq969eHpdTyLZs=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@58c2d29/chromium/extension/lib/dom.js#sha256-WXPxvMnJU6LGvINaENBbmvGXTAcAlXlBkyGwIDGXiC4=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2b47eb2/chromium/extension/lib/settings.js#sha256-vljMA+FSDq32OeQbu/hUcx3yqEJWnxJiz3NFC+JYfaE=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d392dfb/chromium/extension/lib/settings.js#sha256-4sWEls1YYZYb4u+Ch+Ihp9k1D5rhkeHBZG5HmXocHlo=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@97c86fb/chromium/extension/lib/ui.js#sha256-Sp/JEpkGx5SO7TY5pkdirv+FUtTiUurrjcHVtwv+/u8=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@d1e9f45/chromium/extension/components/buttons.js#sha256-AVGHLGzgiWvYtt0q04e5PtVWG4OIplqJAwD3VAsFkGc=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/components/modals.js#sha256-Gi04K42Nwcnq8wBeAPoYE8jnWtBWBdD4nUtQvVuH3q0=
@@ -466,10 +466,10 @@
                 // Create toggles for available features if script not disabled via Site Settings
                 if (!config[`${env.site}Disabled`]) Object.keys(settings.controls).forEach(key => {
                     if (sites[env.site].availFeatures.includes(key)) {
-                        const settingIsEnabled = config[key] ^ key.includes('Disabled')
-                        const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
+                        const menuLabel = `${ settings.controls[key].symbol
+                                           || this.state.symbols[+settings.isEnabled(key)] } `
                                         + settings.controls[key].label
-                                        + this.state.separator + this.state.words[+settingIsEnabled]
+                                        + this.state.separator + this.state.words[+settings.isEnabled(key)]
                         this.ids.push(GM_registerMenuCommand(menuLabel, () => {
                             settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
                             notify(`${settings.controls[key].label}: ${
