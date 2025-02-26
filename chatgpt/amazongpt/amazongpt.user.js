@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.26
+// @version                2025.2.26.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -668,7 +668,8 @@
                     modals.draggingModal = event.currentTarget
                     event.preventDefault() // prevent sub-elems like icons being draggable
                     Object.assign(modals.draggingModal.style, { // update styles
-                        cursor: 'grabbing', transition: '0.1s', willChange: 'transform', transform: 'scale(1.05)' });
+                        transition: '0.1s', willChange: 'transform', transform: 'scale(1.05)' })
+                    document.body.style.cursor = 'grabbing'; // update cursor
                     [...modals.draggingModal.children] // prevent hover FX if drag lags behind cursor
                         .forEach(child => child.style.pointerEvents = 'none');
                     ['mousemove', 'mouseup'].forEach(eventType => // add listeners
@@ -688,7 +689,8 @@
 
                 mouseup() { // restore styles/pointer events, remove listeners, reset modals.draggingModal
                     Object.assign(modals.draggingModal.style, { // restore styles
-                        cursor: 'inherit', transition: 'inherit', willChange: 'auto', transform: 'scale(1)' });
+                        cursor: 'inherit', transition: 'inherit', willChange: 'auto', transform: 'scale(1)' })
+                    document.body.style.cursor = ''; // restore cursor
                     [...modals.draggingModal.children] // restore pointer events
                         .forEach(child => child.style.pointerEvents = '');
                     ['mousemove', 'mouseup'].forEach(eventType => // remove listeners
