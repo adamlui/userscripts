@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.26
+// @version               2025.2.26.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2943,7 +2943,7 @@
                   modeKey = `auto${log.toTitleCase(mode)}${ mode == 'get' ? 'Disabled' : '' }`
             let conflictingModeToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
-            if (settings.isEnabled(modeKey)) { // disable conflicting modes if enabled
+            if (settings.isEnabled(modeKey)) { // this Auto-Gen mode toggled on, disable other one + Manual-Gen
                 const otherMode = validModes[+(mode == validModes[0])],
                       otherModeKey = `auto${log.toTitleCase(otherMode)}${ otherMode == 'get' ? 'Disabled' : '' }`
                 if (settings.isEnabled(otherModeKey)) { toggle.autoGen(otherMode) ; conflictingModeToggled = true }
@@ -2989,7 +2989,7 @@
             const modeKey = `${mode}Enabled`
             let autoGenToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
-            if (config[modeKey]) // disable Auto-Gen modes if enabled
+            if (config[modeKey]) // Manual-Gen toggled on, disable all Auto-Gen
                 ['get', 'summarize'].forEach(mode => {
                     if (settings.isEnabled(`auto${log.toTitleCase(mode)}${ mode == 'get' ? 'Disabled' : '' }`)) {
                         toggle.autoGen(mode) ; autoGenToggled = true }
@@ -4138,19 +4138,23 @@
         anchor.href = url.toString()
     }), 1500)
 
-    // Show STANDBY mode or get/show ANSWER
+    // AUTO-GEN reply or show STANDBY mode
     let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
-    if ( config.autoGetDisabled && !config.autoSummarize // Auto-Gen disabled
-        || config.prefixEnabled && !/.*q=%2F/.test(location.href) // prefix required but not present
-        || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
-            show.reply('standby', footerContent)
-            if (!config.rqDisabled)
-                get.related(msgChain[msgChain.length - 1].content)
-                    .then(queries => show.related(queries))
-                    .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
-    } else {
+    if (!config.autoGetDisabled || config.autoSummarize // Auto-Gen on
+        || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
+            && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
+                config.suffixEnabled // suffix required/present
+                    && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
+            ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
+    ) {
         if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
         appAlert('waitingResponse') ; get.reply(msgChain)
+    } else { // show Standby mode
+        show.reply('standby', footerContent)
+        if (!config.rqDisabled)
+            get.related(msgChain[msgChain.length - 1].content)
+                .then(queries => show.related(queries))
+                .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     }
     saveAppDiv() // to fight Brave mutations
 
