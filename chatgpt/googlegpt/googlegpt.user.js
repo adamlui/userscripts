@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.2.25.2
+// @version                  2025.2.26
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -577,7 +577,7 @@
 
     // Init API data
     const apis = Object.assign(Object.create(null), await new Promise(resolve => xhr({
-        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=2af4c2e',
+        method: 'GET', url: 'https://assets.aiwebextensions.com/data/ai-chat-apis.json?v=456ac92',
         onload: resp => resolve(JSON.parse(resp.responseText))
     })))
     apis.AIchatOS.userID = '#/chat/' + Date.now()
@@ -3120,7 +3120,7 @@
             const validModes = ['get', 'summarize'], modeKey = `auto${log.toTitleCase(mode)}`
             let conflictingModeToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
-            if (config[modeKey]) { // disable conflicting modes if enabled
+            if (config[modeKey]) { // this Auto-Gen mode toggled on, disable other one + Manual-Gen
                 const otherMode = validModes[+(mode == validModes[0])]
                 if (config[`auto${log.toTitleCase(otherMode)}`]) {
                     toggle.autoGen(otherMode) ; conflictingModeToggled = true }
@@ -3167,7 +3167,7 @@
             const modeKey = `${mode}Enabled`
             let autoGenToggled = false // to extend this notif duration
             settings.save(modeKey, !config[modeKey])
-            if (config[modeKey]) // disable Auto-Gen modes if enabled
+            if (config[modeKey]) // Manual-Gen toggled on, disable all Auto-Gen
                 ['get', 'summarize'].forEach(mode => {
                     if (config[`auto${log.toTitleCase(mode)}`]) { toggle.autoGen(mode) ; autoGenToggled = true }})
             notify(`${settings.controls[modeKey].label} ${toolbarMenu.state.words[+config[modeKey]]}`,
@@ -4359,19 +4359,23 @@
     // Init footer CTA to share feedback
     let footerContent = dom.create.anchor(app.urls.discuss, app.msgs.link_shareFeedback)
 
-    // Show STANDBY mode or get/show ANSWER
+    // AUTO-GEN reply or show STANDBY mode
     let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
-    if (!config.autoGet && !config.autoSummarize// Auto-Gen disabled
-        || config.prefixEnabled && !/.*q=%2F/.test(location.href) // prefix required but not present
-        || config.suffixEnabled && !/.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)) { // suffix required but not present
-            show.reply('standby', footerContent)
-            if (!config.rqDisabled)
-                get.related(msgChain[msgChain.length - 1].content)
-                    .then(queries => show.related(queries))
-                    .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
-    } else {
+    if (config.autoGet || config.autoSummarize // Auto-Gen on
+        || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
+            && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
+                config.suffixEnabled // suffix required/present
+                    && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
+            ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
+    ) {
         if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
         appAlert('waitingResponse') ; get.reply(msgChain)
+    } else { // show Standby mode
+        show.reply('standby', footerContent)
+        if (!config.rqDisabled)
+            get.related(msgChain[msgChain.length - 1].content)
+                .then(queries => show.related(queries))
+                .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     }
 
     // Observe DOM for new sidebar div#rhs created by other extensions to INSERT GoogleGPT to visually co-exist
