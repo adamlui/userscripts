@@ -45,6 +45,7 @@
   "btnLabel_update": { "message": "نوێ بکەرەوە" },
   "btnLabel_dismiss": { "message": "پارێزگا بکە" },
   "link_viewChanges": { "message": "گۆڕانکاریەکان بینەرە" },
+  "state_enabled": { "message": "چالاک کراوە" },
   "state_disabled": { "message": "کەم ئەندام" },
   "state_on": { "message": "vekirî" },
   "state_off": { "message": "girtî" }

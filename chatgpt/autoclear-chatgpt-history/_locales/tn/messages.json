@@ -45,6 +45,7 @@
   "btnLabel_update": { "message": "Ntshwafatso" },
   "btnLabel_dismiss": { "message": "TLOGELA" },
   "link_viewChanges": { "message": "Leba diphetogo" },
+  "state_enabled": { "message": "e kgontshiwe" },
   "state_disabled": { "message": "golafetse" },
   "state_on": { "message": "mo" },
   "state_off": { "message": "tswa go" }

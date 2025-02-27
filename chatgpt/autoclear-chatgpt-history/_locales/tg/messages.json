@@ -45,6 +45,7 @@
   "btnLabel_update": { "message": "Навсозӣ кардан" },
   "btnLabel_dismiss": { "message": "Рад кардан" },
   "link_viewChanges": { "message": "Tingnan ang mga pagbabago" },
+  "state_enabled": { "message": "ÐÐ°Ð±ÑÐ´" },
   "state_disabled": { "message": "хомӯш аст" },
   "state_on": { "message": "фаъол" },
   "state_off": { "message": "ғайри фаъол" }

@@ -45,6 +45,7 @@
   "btnLabel_update": { "message": "更新" },
   "btnLabel_dismiss": { "message": "取消" },
   "link_viewChanges": { "message": "查看修改" },
+  "state_enabled": { "message": "启用" },
   "state_disabled": { "message": "禁用" },
   "state_on": { "message": "开" },
   "state_off": { "message": "关" }
