@@ -38,6 +38,7 @@
   "btnLabel_update": { "message": "ਅੱਪਡੇਟ ਕਰੋ" },
   "btnLabel_dismiss": { "message": "ਬਰਖਾਸਤ ਕਰੋ" },
   "link_viewChanges": { "message": "ਤਬਦੀਲੀਆਂ ਵੇਖੋ" },
+  "state_enabled": { "message": "ਯੋਗ ਹੈ" },
   "state_disabled": { "message": "ਆਯੋਗ ਹੈ" },
   "state_on": { "message": "ਤੇ" },
   "state_off": { "message": "ਬੰਦ" }

@@ -38,6 +38,7 @@
   "btnLabel_update": { "message": "Cusboonaysiinta" },
   "btnLabel_dismiss": { "message": "Iska tuur" },
   "link_viewChanges": { "message": "Eeg isbeddellada" },
+  "state_enabled": { "message": "La daaray" },
   "state_disabled": { "message": "La damiyay" },
   "state_on": { "message": "korka" },
   "state_off": { "message": "Dami" }

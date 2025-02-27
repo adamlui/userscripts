@@ -38,6 +38,7 @@
   "btnLabel_update": { "message": "Aktualiséieren" },
   "btnLabel_dismiss": { "message": "Ofginn" },
   "link_viewChanges": { "message": "Ännerungen uweisen" },
+  "state_enabled": { "message": "Aktiviert" },
   "state_disabled": { "message": "Deaktivéiert" },
   "state_on": { "message": "un" },
   "state_off": { "message": "aus" }

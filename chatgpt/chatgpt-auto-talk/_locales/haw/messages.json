@@ -38,6 +38,7 @@
   "btnLabel_update": { "message": "Hōʻano hou" },
   "btnLabel_dismiss": { "message": "Hoʻokuʻu" },
   "link_viewChanges": { "message": "Nānā i nā hoʻololi" },
+  "state_enabled": { "message": "hiki" },
   "state_disabled": { "message": "kino kīnā" },
   "state_on": { "message": "ma" },
   "state_off": { "message": "hemo" }

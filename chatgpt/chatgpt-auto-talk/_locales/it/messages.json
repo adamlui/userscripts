@@ -38,6 +38,7 @@
   "btnLabel_update": { "message": "Aggiornare" },
   "btnLabel_dismiss": { "message": "Ignora" },
   "link_viewChanges": { "message": "Visualizza modifiche" },
+  "state_enabled": { "message": "abilitato" },
   "state_disabled": { "message": "disabled" },
   "state_on": { "message": "il" },
   "state_off": { "message": "spento" }
