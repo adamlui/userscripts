@@ -47,6 +47,7 @@
   "btnLabel_dismiss": { "message": "Tutup" },
   "link_viewChanges": { "message": "Lihat perubahan" },
   "unit_secs": { "message": "detik" },
+  "state_enabled": { "message": "diaktifkan" },
   "state_disabled": { "message": "dengan disabilitas" },
   "state_on": { "message": "tentang" },
   "state_off": { "message": "mati" }

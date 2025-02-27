@@ -47,6 +47,7 @@
   "btnLabel_dismiss": { "message": "Адхіліць" },
   "link_viewChanges": { "message": "Праглядзець змены" },
   "unit_secs": { "message": "сек" },
+  "state_enabled": { "message": "XYZ/ альфа- канал" },
   "state_disabled": { "message": "адключаны" },
   "state_on": { "message": "на" },
   "state_off": { "message": "выкл" }
