@@ -6,8 +6,6 @@
     <img height=31 alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/autoclear-chatgpt-history/blob/main/greasemonkey/autoclear-chatgpt-history.user.js">
     <img height=32 src="https://img.shields.io/github/size/adamlui/autoclear-chatgpt-history/greasemonkey/autoclear-chatgpt-history.user.js?label=Filesize&logo=databricks&logoColor=white&labelColor=464646&color=ff69b4&style=for-the-badge"></img></a>
-<a href="https://github.com/adamlui/autoclear-chatgpt-history/commits">
-    <img height=31 alt="[GitHub commits]" src="https://img.shields.io/github/commit-activity/m/adamlui/autoclear-chatgpt-history?label=Commits&logo=github&logoColor=white&labelColor=464646&color=7bb7fc&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/autoclear-chatgpt-history">
     <img height=31 alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/autoclear-chatgpt-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
 <a href="https://github.com/KudoAI/chatgpt.js?utm_source=autoclear_chatgpt_history&utm_content=github_shield">
