@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.28.1
+// @version             2025.2.28.2
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -498,11 +498,13 @@
     // Run MAIN routine
 
     // Init EXTENSION ACTIVE state
-    env.extensionActive = false
-    postMessage({ action: 'getExtensionInfo', source: `${app.slug}.user.js` })
+    postMessage({ action: 'getExtensionInfo', source: `${app.slug}.user.js` }, location.origin)
     addEventListener('message', handleMsgResp)
     function handleMsgResp(resp) {
-        const sender = resp.data.source ; env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender) }
+        if (resp.origin != location.origin) return
+        const sender = resp.data.source
+        env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender)
+    }
     await new Promise(resolve => setTimeout(resolve, 100)) // wait for extension response
     removeEventListener('message', handleMsgResp)
 
