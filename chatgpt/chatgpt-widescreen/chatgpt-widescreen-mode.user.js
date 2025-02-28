@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.28
+// @version             2025.2.28.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -822,9 +822,7 @@
     postMessage({ action: 'getExtensionInfo', source: 'chatgpt-widescreen-mode.user.js' })
     addEventListener('message', handleMsgResp)
     function handleMsgResp(resp) {
-        const sender = resp.data.source.toLowerCase()
-        env.extensionActive = sender.includes(app.slug.toLowerCase()) && sender.includes('extension')
-    }
+        const sender = resp.data.source ; env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender) }
     await new Promise(resolve => setTimeout(resolve, 100)) // wait for extension response
     removeEventListener('message', handleMsgResp)
 
