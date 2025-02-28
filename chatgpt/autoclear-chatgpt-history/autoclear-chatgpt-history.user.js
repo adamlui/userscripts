@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.2
+// @version             2025.2.28
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -391,7 +391,12 @@
                 label: app.msgs.menuLabel_clearNow, helptip: app.msgs.helptip_clearNow }
         },
 
-        isEnabled(key) { return config[key] ^ /disabled/i.test(key) },
+        isEnabled(key) {
+            const reInvertFlags = /disabled|hidden/i
+            return reInvertFlags.test(key) // flag in control key name
+                && !reInvertFlags.test(this.controls[key]?.label || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite state, else don't
+        },
 
         load(...keys) {
             keys.flat().forEach(key => {
