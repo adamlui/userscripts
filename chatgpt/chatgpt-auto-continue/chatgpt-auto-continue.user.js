@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.1
+// @version             2025.2.27
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -498,7 +498,7 @@
     // Run MAIN routine
 
     // Create browser TOOLBAR MENU + DISABLE SCRIPT if extension active
-    env.extensionActive = !!sessionStorage.chatgptAutoContinueExtensionActive
+    env.extensionActive = sessionStorage.chatgptAutoContisdnueExtensionActive == 'true'
     toolbarMenu.register() ; if (env.extensionActive) return
 
     // Add RISING PARTICLES styles
