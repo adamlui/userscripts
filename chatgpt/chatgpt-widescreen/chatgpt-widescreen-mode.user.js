@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.1.7
+// @version             2025.3.1.8
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -666,19 +666,31 @@
         function activateMode(mode) {
             if (mode == 'wideScreen') { document.head.append(wideScreenStyle) ; sync.mode('wideScreen') }
             else if (mode == 'fullWindow') {
-                const sidebarToggle = document.querySelector(sites[env.site].selectors.btns.sidebar)
-                if (sidebarToggle) sidebarToggle.click()
-                else { document.head.append(fullWinStyle) ; sync.mode('fullWindow') }
+                const selectors = sites[env.site].selectors,
+                      sidebarToggle = document.querySelector(selectors.btns.sidebar)
+                if (sidebarToggle) {
+                    const sidebars = { left: document.querySelector(selectors.sidebar) }, sidebarsToHide = []
+                    if (env.site === 'chatgpt') sidebars.right = document.querySelector(selectors.rightbar)
+                    Object.entries(sidebars).forEach(([side, bar]) => // push fat/visible ones to hide
+                        bar && dom.get.computedWidth(bar) > 100 && sidebarsToHide.push({ side, bar }))
+                    sidebarsToHide.forEach(({ side, bar }) => { // hide'em
+                        if (side == 'left') sidebarToggle.click() ; else bar.style.display = 'none' })
+                } else { document.head.append(fullWinStyle) ; sync.mode('fullWindow') }
             } else if (mode == 'fullScreen') document.documentElement.requestFullscreen()
         }
 
         function deactivateMode(mode) {
-            if (mode == 'wideScreen') {
-                wideScreenStyle.remove() ; sync.mode('wideScreen')
-            } else if (mode == 'fullWindow') {
-                const sidebarToggle = document.querySelector(sites[env.site].selectors.btns.sidebar)
-                if (sidebarToggle) sidebarToggle.click()
-                else { fullWinStyle.remove() ; sync.mode('fullWindow') }
+            if (mode == 'wideScreen') { wideScreenStyle.remove() ; sync.mode('wideScreen') }
+            else if (mode == 'fullWindow') {
+                const selectors = sites[env.site].selectors,
+                      sidebarToggle = document.querySelector(selectors.btns.sidebar)
+                if (sidebarToggle) {
+                    sidebarToggle.click()
+                    if (env.site == 'chatgpt') {
+                        const rightbar = document.querySelector(selectors.rightbar)
+                        if (rightbar) rightbar.style.display = ''
+                    }
+                } else { fullWinStyle.remove() ; sync.mode('fullWindow') }
             } else if (mode == 'fullScreen') {
                 if (config.f11) modals.alert(app.msgs.alert_pressF11, `${app.msgs.alert_f11reason}.`)
                 else document.exitFullscreen().catch(
@@ -934,25 +946,29 @@
             env.ui.scheme = displayedScheme ; modals.stylize() ; buttons.update.color() }
     }
 
-    // Monitor SIDEBAR to update config.fullWindow for sites w/ native toggle
+    // Monitor SIDEBARS to update config.fullWindow for sites w/ native toggle
     if (sites[env.site].selectors.btns.sidebar && sites[env.site].hasSidebar) {
         const sidebarObserver = new ResizeObserver(() => // sync config.fullWindow ⇆ sidebar width
             (config.fullWindow ^ ui.isFullWin()) && !config.modeSynced && sync.mode('fullWindow'))
-        observeSidebar()
-        if (env.site == 'chatgpt') new MutationObserver( // re-observeSidebar() on disconnect
-            () => getSidebar() != observeSidebar.target && observeSidebar()
+        observeSidebars()
+        if (env.site == 'chatgpt') new MutationObserver( // re-observeSidebars() on disconnect
+            () => getSidebars().some(bar => !observeSidebars.targets?.includes(bar)) && observeSidebars()
         ).observe(document.body, { childList: true, subtree: true })
 
-        function getSidebar() {
-            const sidebar = document.querySelector(sites[env.site].selectors.sidebar)
-            return env.site === 'perplexity' ? sidebar?.parentNode : sidebar
+        function getSidebars() {
+            const site = env.site, selectors = sites[site].selectors,
+                  sidebars = [document.querySelector(selectors.sidebar)]
+            if (site == 'chatgpt') sidebars.push(document.querySelector(selectors.rightbar))
+            else if (site == 'perplexity') sidebars[0] = sidebars[0]?.parentNode
+            return sidebars.filter(Boolean)
         }
 
-        function observeSidebar() {
-            const sidebar = getSidebar()
-            if (!sidebar || sidebar == observeSidebar.target) return
-            if (observeSidebar.target) sidebarObserver.unobserve(observeSidebar.target)
-            sidebarObserver.observe(sidebar) ; observeSidebar.target = sidebar
+        function observeSidebars() {
+            const sidebars = getSidebars() ; if (!sidebars.length) return
+            if (observeSidebars.targets)
+                observeSidebars.targets.forEach(target => sidebarObserver.unobserve(target))
+            sidebars.forEach(sidebar => sidebarObserver.observe(sidebar))
+            observeSidebars.targets = sidebars
         }
     }
 
