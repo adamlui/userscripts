@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.1.2
+// @version             2025.3.1.3
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -737,17 +737,17 @@
 
             wideScreen() {
                 wideScreenStyle.innerText = (
-                    env.site == 'chatgpt' ? (
+                    env.site == 'chatgpt' ?
                         '.text-base { max-width: 100% !important }' // widen outer container
-                  ) : env.site == 'perplexity' ? (
-                        `${sites.perplexity.selectors.header} ~ div,` // outer container
-                      + `${sites.perplexity.selectors.header} ~ div > div` // inner container
-                          + '{ max-width: 100% }' // ...widen them
-                      + '.col-span-8 { width: 154% }' // widen inner-left container
-                      + '.col-span-4 { width: 13.5% ; position: absolute ; right: 0 }' // narrow right-bar
-                  ) : env.site == 'poe' ? (
-                        '[class*=ChatMessagesView] { width: 100% !important }' // widen outer container
-                      + '[class^=Message] { max-width: 100% !important }' ) // widen speech bubbles
+                    : env.site == 'perplexity' ?
+                       `${sites.perplexity.selectors.header} ~ div, // outer container
+                        ${sites.perplexity.selectors.header} ~ div > div /* inner container */
+                            { max-width: 100% } /* ...widen them */
+                        .col-span-8 { width: 154% } /* widen inner-left container */
+                        .col-span-4 { width: 13.5% ; position: absolute ; right: 0 }` // narrow right-bar
+                    : env.site == 'poe' ?
+                       `[class*=ChatMessagesView] { width: 100% !important } /* widen outer container */
+                        [class^=Message] { max-width: 100% !important }` // widen speech bubbles
                   : '' )
             }
         }
