@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.1.3
+// @version             2025.3.1.4
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -697,10 +697,13 @@
             chatbar() {
                 chatbarStyle.innerText = (
                     env.site == 'chatgpt' ? ( config.widerChatbox ? ''
-                        : `main form { max-width: ${chatbar.nativeWidth}px !important ; margin: auto }` )
-                  : env.site == 'poe' ? ( config.widerChatbox && config.wideScreen ?
-                        '[class^=ChatPageMainFooter_footerInner] { width: 98% ; margin-right: 15px }' : '' )
-                  : '' )
+                          : `main form { max-width: ${chatbar.nativeWidth}px !important ; margin: auto }`
+                    ) : env.site == 'perplexity' && config.wideScreen ?
+                          `div[class*=col-span-8]:has(${sites[env.site].selectors.input}) { width: inherit }`
+                      : env.site == 'poe' ? ( config.widerChatbox && config.wideScreen ?
+                          '[class^=ChatPageMainFooter_footerInner] { width: 98% ; margin-right: 15px }' : ''
+                    ) : ''
+                )
             },
 
             tweaks() {
@@ -740,11 +743,9 @@
                     env.site == 'chatgpt' ?
                         '.text-base { max-width: 100% !important }' // widen outer container
                     : env.site == 'perplexity' ?
-                       `${sites.perplexity.selectors.header} ~ div, // outer container
-                        ${sites.perplexity.selectors.header} ~ div > div /* inner container */
-                            { max-width: 100% } /* ...widen them */
-                        .col-span-8 { width: 154% } /* widen inner-left container */
-                        .col-span-4 { width: 13.5% ; position: absolute ; right: 0 }` // narrow right-bar
+                       `div[class*=max-w-threadWidth] { max-width: 100% } /* widen limited containers */
+                        .col-span-8 { width: 151% } /* widen inner-left container */
+                        .col-span-4:has([data-icon=plus]) { display: none }` // hide right-bar
                     : env.site == 'poe' ?
                        `[class*=ChatMessagesView] { width: 100% !important } /* widen outer container */
                         [class^=Message] { max-width: 100% !important }` // widen speech bubbles
@@ -775,7 +776,8 @@
                 if (env.site == 'chatgpt') setTimeout(() => chatbar.tweak(), // update inner width
                     mode == 'fullWindow' && ( config.wideScreen || config.fullerWindows )
                         && config.widerChatbox ? 111 : 0) // delay if toggled to/from active WCB to avoid wrong width
-                else if (env.site == 'poe' && config.widerChatbox) update.style.chatbar() // sync WCB
+                else if (env.site == 'perplexity' || env.site == 'poe' && config.widerChatbox)
+                    update.style.chatbar() // toggle full-width Perplexity chatbar or sync Poe WCB
                 notify(`${app.msgs[`mode_${mode}`]} ${app.msgs[`state_${ state ? 'on' : 'off' }`].toUpperCase()}`)
             }
             config.modeSynced = true ; setTimeout(() => config.modeSynced = false, 100) // prevent repetition
