@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.1.11
+// @version             2025.3.1.12
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -735,12 +735,10 @@
                   + ( config.btnAnimationsDisabled ? '' : // zoom chatbar buttons on hover
                         `.${buttons.class} { will-change: transform } /* prevent wobble */
                          .${buttons.class}:hover { transform: scale(${ env.site == 'poe' ? 1.15 : 1.285 }) }` )
-                  + ( !config.blockSpamDisabled && selectors.spam ?
-                          Object.values(selectors.spam)
-                              .flatMap(val => typeof val == 'object' ? Object.values(val) : val)
-                              .join(', ') + '{ display: none }' : ''
-                    )
+                  + ( config.blockSpamDisabled ? '' : getAllSelectors(selectors.spam).join(',') + ' { display: none }' )
                 )
+                function getAllSelectors(obj) {
+                    return Object.values(obj).flatMap(val => typeof val == 'object' ? getAllSelectors(val) : val) }
             },
 
             wideScreen() {
