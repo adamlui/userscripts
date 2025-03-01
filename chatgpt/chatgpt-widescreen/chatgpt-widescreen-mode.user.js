@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.1.12
+// @version             2025.3.1.13
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -258,10 +258,10 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bb97858/chromium/extension/lib/chatbar.js#sha256-3esfRSxyedZny2/ooP2S/YR83WAP2bDuT9S9lHLTKcI=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@58c2d29/chromium/extension/lib/dom.js#sha256-WXPxvMnJU6LGvINaENBbmvGXTAcAlXlBkyGwIDGXiC4=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@cc1452d/chromium/extension/lib/settings.js#sha256-61hKRmY1j18By0lygK8mUqUHP0OP6czHrq4FFPJNxAY=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bb97858/chromium/extension/lib/ui.js#sha256-alnnwTrXK0sktnFVQEcs1RI2VGLAVkgLfBWpE3KRtJA=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@09c0127/chromium/extension/lib/ui.js#sha256-AJpia28K2ToAB0eNLVUd/Zrjc9UNF1eBCc+E9oLF3cU=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@bb97858/chromium/extension/components/buttons.js#sha256-nVICVv1L8HrA+qSBtCmFoNl6PpK9mPJfXIXaQppBslk=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@2d8a888/chromium/extension/components/modals.js#sha256-Gi04K42Nwcnq8wBeAPoYE8jnWtBWBdD4nUtQvVuH3q0=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9e34f52/chromium/extension/components/tooltip.js#sha256-NGHPCseSAjpK/8yF3A8M7eMotBra9N1CKY3I+7atazM=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@f9177f1/chromium/extension/components/tooltip.js#sha256-Ismskx5LdETYglLTsSR2gp9CmXMmihs709u7xPFiCtk=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -299,7 +299,7 @@
     env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-    ui.import({ site: env.site }) ; env.ui.scheme = ui.getScheme()
+    ui.import({ site: env.site }) ; ui.getScheme().then(scheme => env.ui.scheme = scheme)
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -931,8 +931,8 @@
         document.documentElement, { attributes: true, attributeFilter: ['class', 'data-color-scheme'] })
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
         'change', () => requestAnimationFrame(handleSchemePrefChange))
-    function handleSchemePrefChange() {
-        const displayedScheme = ui.getScheme()
+    async function handleSchemePrefChange() {
+        const displayedScheme = await ui.getScheme()
         if (env.ui.scheme != displayedScheme) {
             env.ui.scheme = displayedScheme ; modals.stylize() ; buttons.update.color() }
     }
