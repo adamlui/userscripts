@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.1
+// @version                2025.3.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -463,10 +463,11 @@
                 finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
                     const matched = (
-                        Object.values(log.regEx.greenVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: green', baseMsgStyle) ; return true }})
-                     || Object.values(log.regEx.redVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: red', baseMsgStyle) ;  return true }}))
+                        Object.values(log.regEx.greenVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: green', baseMsgStyle), true))
+                     || Object.values(log.regEx.redVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: red', baseMsgStyle), true))
+                    )
                     if (!matched && log.regEx.purpVals.test(match)) { msgStyles.push('color: #dd29f4', baseMsgStyle) }
                     return `%c${match}%c`
                 })
@@ -609,8 +610,8 @@
         },
 
         refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') {
-                log.debug('GM_unregisterMenuCommand not supported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined')
+                return log.debug('GM_unregisterMenuCommand not supported.')
             for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
@@ -3200,7 +3201,7 @@
                 return o.toString()
             }
             const gptflKey = fD(nn)
-            log.debug(gptflKey) ; return gptflKey
+            return log.debug(gptflKey) || gptflKey
         },
 
         getOAItoken() {
@@ -3212,14 +3213,13 @@
                 else {
                     log.debug(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
                     xhr({ url: apis.OpenAI.endpoints.session, onload: resp => {
-                        if (session.isBlockedByCF(resp.responseText)) {
-                            appAlert('checkCloudflare') ; return }
+                        if (session.isBlockedByCF(resp.responseText)) return appAlert('checkCloudflare')
                         try {
                             const newAccessToken = JSON.parse(resp.responseText).accessToken
                             GM_setValue(app.configKeyPrefix + '_openAItoken', newAccessToken)
                             log.debug(`Success! newAccessToken = ${newAccessToken}`)
                             resolve(newAccessToken)
-                        } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
+                        } catch { if (get.reply.api == 'OpenAI') return appAlert('login') }
             }})}})
         },
 
@@ -3229,8 +3229,7 @@
                       title = html.querySelector('title')
                 if (title.innerText == 'Just a moment...') {
                     log.caller = 'session.isBlockedByCF'
-                    log.debug('Blocked by CloudFlare')
-                    return true
+                    return log.debug('Blocked by CloudFlare') || true
                 }
             } catch (err) { return false }
         }
@@ -3285,7 +3284,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            log.debug(reqData) ; return reqData
+            return log.debug(reqData) || reqData
         },
 
         pick(caller) {
@@ -3305,7 +3304,7 @@
             )
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
-            if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
+            if (!chosenAPI) { return log.error('No proxy APIs left untried') || null }
             log.debug('Endpoint chosen', apis[chosenAPI].endpoints?.completions || apis[chosenAPI].endpoint)
             return chosenAPI
         },
@@ -3359,8 +3358,7 @@
                         if (failMatch) {
                             log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                             if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                            if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
-                            return
+                            if (caller.status != 'done' && !caller.sender) return api.tryNew(caller)
                         } else if (caller.status != 'done') { // app waiting or sending
                             if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
                             if (caller.sender == callerAPI // app is sending from this api
@@ -3564,8 +3562,8 @@
 
             // Pick API
             get.reply.api = config.proxyAPIenabled ? api.pick(get.reply) : 'OpenAI'
-            if (!get.reply.api) { // no more proxy APIs left untried
-                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+            if (!get.reply.api) // no more proxy APIs left untried
+                return appAlert('proxyNotWorking', 'suggestOpenAI')
 
             // Init OpenAI key
             if (!config.proxyAPIenabled)
@@ -3623,8 +3621,8 @@
 
         related(queries) {
             log.caller = 'show.related()'
-            if (get.reply.status == 'waiting') { // recurse until get.reply() finishes showing answer
-                setTimeout(() => show.related(queries), 500, queries) ; return }
+            if (get.reply.status == 'waiting') // recurse until get.reply() finishes showing answer
+                return setTimeout(() => show.related(queries), 500, queries)
 
             // Re-get.related() if current reply is question to suggest answers
             const currentReply = appDiv.querySelector(`#${app.slug} > pre`)?.textContent.trim()
