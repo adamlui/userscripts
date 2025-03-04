@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.3
+// @version             2025.3.3.1
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -819,9 +819,9 @@
                 this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
-                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
+                this.div.onmouseover = this.div.onmouseout = ({ type }) => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
-                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
+                        `var(--sidebar-surface-${ type == 'mouseover' ? 'secondary' : 'primary' })`)
                 this.div.onclick = () => {
                     settings.save('autoclear', !this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
                     notify(`${app.msgs.mode_autoclear}: ${toolbarMenu.state.words[+config.autoclear]}`)
