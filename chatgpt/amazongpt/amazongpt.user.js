@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.3.1
+// @version                2025.3.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -885,8 +885,8 @@
                 const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
                       settingsTitleIcon = icons.sliders.create(),
                       settingsTitleH4 = dom.create.elem('h4')
-                settingsTitleIcon.style.cssText += 'width: 17.5px ; height: 17.5px ; margin-right: 8px ;'
-                                                 + 'position: relative ; right: 4px'
+                settingsTitleIcon.style.cssText += 'width: 20.5px ; height: 20.5px ; margin-right: 8px ;'
+                                                 + 'position: relative ; right: 2px ; top: 2.5px'
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
@@ -1349,15 +1349,18 @@
             create() {
                 const svg = dom.create.svgElem('svg', {
                     id: 'arrows-diagonal-icon', width: 16, height: 16, viewBox: '0 0 16 16' })
-                icons.arrowsDiagonal.update(svg) ; return svg
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(-7deg)' }) // tilt slightly to hint expansions often horizontal
+                svg.append(g) ; icons.arrowsDiagonal.update(svg)
+                return svg
             },
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
                 if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
-                    icon.firstChild?.remove() // clear prev paths
-                    icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                    icon.firstChild.textContent = '' // clear prev paths
+                    icon.firstChild.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
                 })
             }
         },
@@ -1517,9 +1520,11 @@
 
         sliders: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
-                    'stroke-width': 3.1, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
-                svg.append(
+                const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 28',
+                    'stroke-width': 3.1, 'stroke-linecap': 'round' })
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(90deg) scaleY(1.35) ; transform-origin: 12px 12px' })
+                g.append(
                     dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
                     dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
                     dom.create.svgElem('line', { x1: 12, y1: 21, x2: 12, y2: 12 }),
@@ -1529,7 +1534,7 @@
                     dom.create.svgElem('line', { x1: 1, y1: 14, x2: 7, y2: 14 }),
                     dom.create.svgElem('line', { x1: 9, y1: 8, x2: 15, y2: 8 }),
                     dom.create.svgElem('line', { x1: 17, y1: 16, x2: 23, y2: 16 })
-                )
+                ) ; svg.append(g)
                 return svg
             }
         },
@@ -1656,7 +1661,7 @@
                                     + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
-                  + '--btn-transition: transform 0.15s ease,' // for hover-zoom
+                  + '--btn-transition: 0.15s ease,' // for hover-zoom
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
@@ -1728,14 +1733,16 @@
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
-                                                    : 'fill: #adadad ; stroke: #adadad' };` // color
-                  + 'transition: var(--btn-transition) ;'
-                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.slug}-header-btn:hover {`
-                  + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                    : 'fill: black ; stroke: black' } ;`
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
+                                                    : 'fill: #adadad ; stroke: #adadad' }}` // color
+              + `.${app.slug}-header-btn:hover svg { /* zoom header button on hover */
+                    ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                                                   : 'fill: black ; stroke: black' };
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'width: 128.5% ; height: 128.5% ; transform: translate(-10%, -10%)' }}`
+              + `.${app.slug}-header-btn, .${app.slug}-header-btn svg { /* smooth header button fade-in + hover-zoom */
+                    transition: var(--btn-transition) ;
+                        -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
+                        -o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }`
               + `.${app.slug}-header-btn:active {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                     : 'fill: #638ed4 ; stroke: #638ed4' }}`
@@ -2833,7 +2840,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '1px 10.5px 0 3px' // position
+                settingsBtn.style.margin = '2px 10.5px 0 3px' // position
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
@@ -2847,11 +2854,11 @@
                 if (!env.browser.isMobile) {
 
                 // Create/append Expand/Shrink button
-                    var arrowsBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
+                    var arrowsBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
+                        style: 'margin: 2.5px 13.5px 0 0'
+                    })
                     var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
                     arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
 
                 // Add tooltips
