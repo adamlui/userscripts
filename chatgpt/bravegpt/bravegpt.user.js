@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.3.2
+// @version               2025.3.3.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2155,12 +2155,12 @@
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-              + `#${app.slug}-header-btns { position: relative ; bottom: 3px ; float: right ;
-                    ${ !config.fgAnimationsDisabled ? 'will-change: transform' : '' }}`
+              + `#${app.slug}-header-btns { position: relative ; bottom: 3px ; float: right }`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
                                                     : 'fill: #adadad ; stroke: #adadad' };` // color
+                  + ( !config.fgAnimationsDisabled ? 'will-change: transform ;' : '' )
                   + 'transition: var(--btn-transition) ;'
                       + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
                       + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
@@ -3717,7 +3717,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '0 9.5px 0 1px' // position
+                settingsBtn.style.margin = '0 11.5px 0 3px' // position
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
@@ -3725,7 +3725,7 @@
                     var fontSizeBtn = dom.create.elem('btn',
                         { id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only` })
                     var fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.style.margin = '1px 10px 0 2px' // position
+                    fontSizeBtn.style.margin = '1px 10px 0 1px' // position
                     fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
@@ -3734,14 +3734,14 @@
                     var pinBtn = dom.create.elem('btn',
                         { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
                     var pinSVG = icons.pin.create()
-                    pinBtn.style.margin = '1px 9px 0 0' // position
+                    pinBtn.style.margin = '1px 8px 0 0' // position
                     pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
                     var wsbBtn = dom.create.elem('btn',
                         { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
                     var wsbSVG = icons.widescreen.create()
-                    wsbBtn.style.margin = '0.151em 11px 0 0' // position
+                    wsbBtn.style.margin = '2px 12px 0 0' // position
                     wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
