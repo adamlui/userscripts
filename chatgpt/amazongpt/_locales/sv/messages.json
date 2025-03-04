@@ -73,7 +73,7 @@
   "alert_parseFailed": { "message": "Det gick inte att tolka svaret JSON" },
   "alert_checkCloudflare": { "message": "Vänligen skicka Cloudflare säkerhetskontroll" },
   "alert_notWorking": { "message": "Det fungerar inte" },
-  "alert_ifIssuePersists": { "message": "Kvarstår problemet? " },
+  "alert_ifIssuePersists": { "message": "Kvarstår problemet?" },
   "alert_try": { "message": "Prova" },
   "alert_switchingOn": { "message": "Påslagning" },
   "alert_switchingOff": { "message": "Så här stänger man av" },

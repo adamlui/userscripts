@@ -20,7 +20,7 @@
   "scheme_light": { "message": "Claro" },
   "scheme_dark": { "message": "Escuro" },
   "mode_proxy": { "message": "Modo Proxy" },
-  "mode_streaming": { "message": "   Modo de transmissão " },
+  "mode_streaming": { "message": "   Modo de transmissão" },
   "mode_autoScroll": { "message": "Auto Scroll" },
   "mode_debug": { "message": "Modo de Debug" },
   "tooltip_fontSize": { "message": "Tamanho da fonte" },

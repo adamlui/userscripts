@@ -28,7 +28,7 @@
   "tooltip_askRandQuestion": { "message": "Cuir ceist air thuaiream" },
   "tooltip_minimize": { "message": "Fìor-lùghdaich" },
   "tooltip_restore": { "message": "Aisig" },
-  "tooltip_expand": { "message": "Leudaich " },
+  "tooltip_expand": { "message": "Leudaich" },
   "tooltip_shrink": { "message": "Crùb" },
   "tooltip_close": { "message": "Dùin" },
   "tooltip_copy": { "message": "Dèan lethbhreac" },

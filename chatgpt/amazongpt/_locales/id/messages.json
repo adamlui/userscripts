@@ -15,7 +15,7 @@
   "about_and": { "message": "dan" },
   "about_contributors": { "message": "konributor" },
   "about_version": { "message": "Versi" },
-  "about_poweredBy": { "message": "Didukung oleh " },
+  "about_poweredBy": { "message": "Didukung oleh" },
   "about_openSourceCode": { "message": "Sumber Terbuka" },
   "scheme_light": { "message": "Lampu" },
   "scheme_dark": { "message": "Gelap" },

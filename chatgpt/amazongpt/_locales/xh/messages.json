@@ -63,7 +63,7 @@
   "alert_isOnlyAvailFor": { "message": "ifumaneka kuphela" },
   "alert_and": { "message": "no" },
   "alert_userscriptMgrNoStream": { "message": "Umphathi wakho weskripti akaxhasi iimpendulo ezibuyayo" },
-  "alert_isCurrentlyOnlyAvailBy": { "message": "okwangoku ifumaneka kuphela ngo-" },
+  "alert_isCurrentlyOnlyAvailBy": { "message": "okwangoku ifumaneka kuphela ngo" },
   "alert_openAIsupportSoon": { "message": "Inkxaso ye-OpenAI API iza kufakwa kungekudala" },
   "alert_waitingFor": { "message": "Ilinde" },
   "alert_response": { "message": "Impendulo" },

@@ -12,9 +12,9 @@
   "menuLabel_about": { "message": "Haqqında" },
   "menuLabel_settings": { "message": "Parametrlər" },
   "about_author": { "message": "Müəllif" },
-  "about_and": { "message": "və " },
+  "about_and": { "message": "və" },
   "about_contributors": { "message": "Dəstəkçilər" },
-  "about_version": { "message": "Versiya " },
+  "about_version": { "message": "Versiya" },
   "about_poweredBy": { "message": "Ərsəyə gətirən" },
   "about_openSourceCode": { "message": "Mənbə kodunu açın" },
   "scheme_light": { "message": "İşıqlı" },
@@ -61,7 +61,7 @@
   "alert_isUpToDate": { "message": "yenilənir" },
   "alert_unavailable": { "message": "ƏLÇATAN DEYİL" },
   "alert_isOnlyAvailFor": { "message": "yalnız bunun üçün mövcuddur" },
-  "alert_and": { "message": "və " },
+  "alert_and": { "message": "və" },
   "alert_userscriptMgrNoStream": { "message": "İstifadəçilər üzrə meneceriniz axın cavablarının qaytarılmasını dəstəkləmir" },
   "alert_isCurrentlyOnlyAvailBy": { "message": "hazırda yalnız aşağıdakılar mövcuddur" },
   "alert_openAIsupportSoon": { "message": "OpenAI API üçün dəstək qısa zamanda əlavə ediləcək" },
@@ -87,6 +87,6 @@
   "btnLabel_update": { "message": "Yenilə" },
   "btnLabel_dismiss": { "message": "Bağla" },
   "link_viewChanges": { "message": "Dəyişikliklərə bax" },
-  "state_on": { "message": " " },
+  "state_on": { "message": "" },
   "state_off": { "message": "İŞLƏMİR" }
 }

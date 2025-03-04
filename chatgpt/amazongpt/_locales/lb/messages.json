@@ -32,7 +32,7 @@
   "tooltip_shrink": { "message": "Verréngeren" },
   "tooltip_close": { "message": "Zoumaachen" },
   "tooltip_copy": { "message": "Kopéieren" },
-  "tooltip_regenerate": { "message": "CAA -" },
+  "tooltip_regenerate": { "message": "CAA" },
   "tooltip_regenerating": { "message": "Regeneratioun" },
   "tooltip_play": { "message": "Ofspillen" },
   "tooltip_playing": { "message": "Spillt" },

@@ -82,7 +82,7 @@
   "btnLabel_leaveReview": { "message": "Ostavi recenziju" },
   "btnLabel_rateUs": { "message": "OCENITE NAS" },
   "btnLabel_discuss": { "message": "Diskusija" },
-  "btnLabel_getSupport": { "message": "Plaćena Podrška " },
+  "btnLabel_getSupport": { "message": "Plaćena Podrška" },
   "btnLabel_checkForUpdates": { "message": "Провери допуне" },
   "btnLabel_update": { "message": "Ažuriraj" },
   "btnLabel_dismiss": { "message": "Odbaci" },

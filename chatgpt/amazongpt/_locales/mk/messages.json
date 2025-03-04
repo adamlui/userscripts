@@ -3,7 +3,7 @@
   "menuLabel_proxyAPImode": { "message": "Режим на прокси API" },
   "menuLabel_autoFocusChatbar": { "message": "Лента за разговор за автоматско фокусирање" },
   "menuLabel_whenStreaming": { "message": "при преносот" },
-  "menuLabel_background": { "message": "Контекст " },
+  "menuLabel_background": { "message": "Контекст" },
   "menuLabel_foreground": { "message": "Текст" },
   "menuLabel_animations": { "message": "Анимации" },
   "menuLabel_replyLanguage": { "message": "Јазик на одговорот" },
