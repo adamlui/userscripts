@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.3
+// @version             2025.3.3.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -829,9 +829,9 @@
                 this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
-                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
+                this.div.onmouseover = this.div.onmouseout = ({ type }) => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
-                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
+                        `var(--sidebar-surface-${ type == 'mouseover' ? 'secondary' : 'primary' })`)
                 this.div.onclick = () => {
                     settings.save('arDisabled', this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
                     notify(`${app.msgs.menuLabel_autoRefresh}: ${toolbarMenu.state.words[+!config.arDisabled]}`)
