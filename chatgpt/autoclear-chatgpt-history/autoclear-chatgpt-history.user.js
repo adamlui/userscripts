@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.3.1
+// @version             2025.3.3.2
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -548,8 +548,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
@@ -615,8 +614,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
                         btn.textContent == 'Cash App' ? 'cashApp'
                       : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
