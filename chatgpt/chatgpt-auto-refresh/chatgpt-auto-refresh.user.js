@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.3.1
+// @version             2025.3.3.2
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -581,8 +581,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
@@ -648,8 +647,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
                         btn.textContent == 'Cash App' ? 'cashApp'
                       : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
