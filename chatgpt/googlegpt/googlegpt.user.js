@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.4
+// @version                  2025.3.4.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3867,11 +3867,10 @@
                 appDiv.textContent = '' ; dom.addRisingParticles(appDiv)
 
                 // Create/append title
-                const appPrefixSpan = dom.create.elem('span') ; appPrefixSpan.id = 'app-prefix'
-                appPrefixSpan.innerText = '🤖 ' ; appPrefixSpan.className = 'no-user-select'
-                appPrefixSpan.style.marginRight = '-2px'
-                appPrefixSpan.style.fontSize = env.browser.isMobile ? '1.7rem' : '1.1rem'
-                appDiv.append(appPrefixSpan)
+                const appPrefixSpan = dom.create.elem('span', {
+                    id: 'app-prefix', class: 'no-user-select',
+                    style: `margin-right: -2px ; font-size: ${ env.browser.isMobile ? '1.7rem' : '1.1rem' }` })
+                appPrefixSpan.innerText = '🤖 ' ; appDiv.append(appPrefixSpan)
                 const appHeaderLogo = logos.googleGPT.create()
                 appHeaderLogo.width = env.browser.isMobile ? 177 : env.browser.isFF ? 124 : 122
                 appHeaderLogo.style.cssText = (
@@ -3882,62 +3881,57 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                const headerBtnsDiv = dom.create.elem('div', {
+                    id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.browser.isMobile) {
-                    var chevronBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                    chevronBtn.style.margin = '-3.5px 1px 0 11px' // position
+                    var chevronBtn = dom.create.elem('btn', {
+                        d: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only`,
+                        style: 'margin: -3.5px 1px 0 11px' })
                     chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                     headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
-                aboutBtn.style.marginTop = `${ env.browser.isMobile ? 0.25 : -0.15 }rem` // position
+                const aboutBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn`,
+                    style: `margin-top: ${ env.browser.isMobile ? 0.25 : -0.15 }rem`})
                 aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = `${ env.browser.isMobile ? 6 : -0.5 }px 13px 0 4.5px` // position
+                const settingsBtn = dom.create.elem('btn',{
+                    id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn`,
+                    style: `margin: ${ env.browser.isMobile ? 6 : -0.5 }px 13px 0 4.5px` })
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
-                    var fontSizeBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.style.margin = `${ env.browser.isMobile ? 5 : -2 }px 9px 0 0` // position
-                    fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+                    var fontSizeBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: `margin: ${ env.browser.isMobile ? 5 : -2 }px 9px 0 0` })
+                    fontSizeBtn.append(icons.fontSize.create()) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
                 // Create/append Pin button
                 if (!env.browser.isMobile) {
-                    var pinBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var pinSVG = icons.pin.create()
-                    pinBtn.style.margin = '-1.55px 9.5px 0 0' // position
-                    pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
+                    var pinBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: 'margin: -1.55px 9.5px 0 0' })
+                    pinBtn.append(icons.pin.create()) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
-                    var wsbBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
-                    var wsbSVG = icons.widescreen.create()
-                    wsbBtn.style.margin = '-2px 12px 0 0' // position
-                    wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
+                    var wsbBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden`,
+                        style: 'margin: -2px 12px 0 0' })
+                    wsbBtn.append(icons.widescreen.create()) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
                     var arrowsBtn = dom.create.elem('btn', {
                         id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
-                        style: 'margin: 0.5px 13.5px 0 0'
-                    })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+                        style: 'margin: 0.5px 13.5px 0 0' })
+                    arrowsBtn.append(icons.arrowsDiagonal.create()) ; headerBtnsDiv.append(arrowsBtn)
                 }
 
                 // Add tooltips
@@ -4008,8 +4002,8 @@
                 ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
                     if (btnType == 'summarize' && appDiv.querySelector('[class*=standby-btn]'))
                         return // since big Summarize button exists
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = env.browser.isFF ? `${ idx == 0 ? 3 : idx == 1 ? -3 : -5 }px`
                                                        : `${ idx == 0 ? 3 : idx == 1 ? -7 : -12 }px`
                     btn.append(icons[btnType].create())
