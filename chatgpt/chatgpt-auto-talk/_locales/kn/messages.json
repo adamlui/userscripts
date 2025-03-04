@@ -9,7 +9,7 @@
   "about_and": { "message": "ಮತ್ತು" },
   "about_contributors": { "message": "ಕೊಡುಗೆದಾರರು" },
   "about_version": { "message": "ಆವೃತ್ತಿ" },
-  "about_poweredBy": { "message": "ಸಾಮರ್ಥ್ಯ ಇವರಿಂದ " },
+  "about_poweredBy": { "message": "ಸಾಮರ್ಥ್ಯ ಇವರಿಂದ" },
   "about_openSourceCode": { "message": "ಓಪನ್ ಸೋರ್ಸ್ ಕೋಡ್" },
   "mode_autoTalk": { "message": "ಆಟೋ-ಟಾಕ್" },
   "helptip_toggleVis": { "message": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಆಟೋ-ಟಾಕ್ ಟಾಗಲ್ ತೋರಿಸಿ" },
@@ -40,6 +40,6 @@
   "link_viewChanges": { "message": "ಬದಲಾವಣೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ" },
   "state_enabled": { "message": "à²à²¶à²à³à²¤à²à³à²³à²¿à²¸à²²à²¾à²à²¿à²¦à³" },
   "state_disabled": { "message": "à²¸à²à²à³à²¯à²¾à²¤à³à²®à² à²¸à²¹ à²¸à²à²¸à³à²à²¾à²°à² (FPU)" },
-  "state_on": { "message": "--" },
+  "state_on": { "message": "-" },
   "state_off": { "message": "ಆಫ್" }
 }

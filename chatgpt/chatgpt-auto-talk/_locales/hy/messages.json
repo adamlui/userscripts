@@ -3,7 +3,7 @@
   "appAuthor": { "message": "Adam Lui" },
   "appDesc": { "message": "Ավտոմատ կերպով խաղալ ChatGPT - ի պատասխանները" },
   "menuLabel_toggleVis": { "message": "Փոխել տեսանելիությունը" },
-  "menuLabel_about": { "message": "Մոտ " },
+  "menuLabel_about": { "message": "Մոտ" },
   "menuLabel_donate": { "message": "Խնդրում ենք նվիրատվություն ուղարկել" },
   "about_author": { "message": "Հեղինակ" },
   "about_and": { "message": "և" },
