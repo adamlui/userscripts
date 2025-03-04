@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.3
+// @version                  2025.3.3.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -981,8 +981,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions' ])
@@ -1175,10 +1174,9 @@
             schemeModal.querySelector('h2').style.justifySelf = 'center'
             schemeModal.querySelector('.modal-buttons').style.cssText = 'justify-content: center ; margin: 20px 0 9px !important'
 
-            // Re-format each button
-            const buttons = schemeModal.querySelectorAll('button'),
-                  schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
-            for (const btn of buttons) {
+            // Hack buttons
+            const schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+            schemeModal.querySelectorAll('button').forEach(btn => {
                 const btnScheme = btn.textContent.toLowerCase()
 
                 // Emphasize active scheme
@@ -1194,19 +1192,19 @@
                 else btn.style.display = 'none' // hide Dismiss button
 
                 // Clone button to replace listener to not dismiss modal on click
-                const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
-                newBtn.onclick = () => {
+                btn.replaceWith(btn = btn.cloneNode(true))
+                btn.onclick = () => {
                     const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
-                    newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
-                    newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
-                    setTimeout(() => { newBtn.style.pointerEvents = 'auto' }, // re-enable hover fx
+                    btn.classList = 'primary-modal-btn' // emphasize newly active scheme
+                    btn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
+                    setTimeout(() => { btn.style.pointerEvents = 'auto' }, // re-enable hover fx
                         100) // ...after 100ms to flicker emphasis
                     update.scheme(newScheme) ; schemeNotify(btnScheme)
                 }
-            }
+            })
 
             log.debug('Success! Scheme modal shown')
 
@@ -4117,10 +4115,10 @@
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     copyBtn.style.cursor = 'default' // remove finger
-                    copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
+                    copySVGs.copy.replaceWith(copySVGs.copied) // change to Copied icon
                     toggle.tooltip(event) // update tooltip
                     setTimeout(() => { // restore icon/cursor/tooltip after a bit
-                        copyBtn.replaceChild(copySVGs.copy, copySVGs.copied)
+                        copySVGs.copied.replaceWith(copySVGs.copy)
                         copyBtn.style.cursor = 'pointer' ; copyBtn.dispatchEvent(new Event('mouseenter'))
                     }, 1355)
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
