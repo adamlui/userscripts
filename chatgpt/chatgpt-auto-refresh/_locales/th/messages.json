@@ -13,7 +13,7 @@
   "about_contributors": { "message": "ผู้ให้ข้อมูล" },
   "about_version": { "message": "เวอร์ชัน" },
   "about_poweredBy": { "message": "สนับสนุนโดย" },
-  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ " },
+  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ" },
   "prompt_updateInt": { "message": "อัปเดตช่วงรีเฟรช (ในวินาที)" },
   "helptip_toggleVis": { "message": "แสดงการรีเฟรชอัตโนมัติในแถบด้านข้าง" },
   "helptip_modeNotifs": { "message": "แสดงการแจ้งเตือนเมื่อสลับโหมด/การตั้งค่า" },

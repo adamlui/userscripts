@@ -22,7 +22,7 @@
   "alert_willRefresh": { "message": "הפעלת ChatGPT תרענן אוטומטית כל" },
   "alert_choosePlatform": { "message": "בחירת פלטפורמה" },
   "alert_updateAvail": { "message": "עדכון זמין" },
-  "alert_newerVer": { "message": "עדכון ל -" },
+  "alert_newerVer": { "message": "עדכון ל" },
   "alert_isAvail": { "message": "is available" },
   "alert_upToDate": { "message": "מעודכן" },
   "alert_isUpToDate": { "message": "מעודכן" },
