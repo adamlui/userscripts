@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.3.1
+// @version                2025.3.3.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3712,7 +3712,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '0 10.5px 0 3px' // position
+                settingsBtn.style.margin = '1px 12.5px 0 3px' // position
                 settingsBtn.style.willChange = 'transform' // prevent y-shift on hover-off-zoom
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
@@ -3737,7 +3737,7 @@
                     var wsbBtn = dom.create.elem('btn',
                         { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
                     var wsbSVG = icons.widescreen.create()
-                    wsbBtn.style.margin = `${ env.browser.isFF ? 0.5 : 0 }px 13.5px 0 0` // position
+                    wsbBtn.style.margin = `${ env.browser.isFF ? 0.5 : 0 }px 12px 0 0` // position
                     wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
