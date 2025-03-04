@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.4
+// @version                2025.3.4.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2821,45 +2821,41 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                const headerBtnsDiv = dom.create.elem('div', {
+                    id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
-                const chevronBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
+                const chevronBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only`,
+                    style: 'margin: -1.5px 1px 0 11px' })
                 chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                 headerBtnsDiv.append(chevronBtn)
 
                 // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
+                const aboutBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
                 aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '2px 10.5px 0 3px' // position
+                const settingsBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn`,
+                    style: 'margin: 2px 10.5px 0 3px' })
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
-                const fontSizeBtn = dom.create.elem('btn'),
-                      fontSizeSVG = icons.fontSize.create()
-                fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
-                fontSizeBtn.style.marginRight = '10px' // position
-                fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+                const fontSizeBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                    style: 'margin-right: 10px' })
+                fontSizeBtn.append(icons.fontSize.create()) ; headerBtnsDiv.append(fontSizeBtn)
 
                 if (!env.browser.isMobile) {
 
                 // Create/append Expand/Shrink button
                     var arrowsBtn = dom.create.elem('btn', {
                         id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
-                        style: 'margin: 2.5px 13.5px 0 0'
-                    })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+                        style: 'margin: 2.5px 13.5px 0 0' })
+                    arrowsBtn.append(icons.arrowsDiagonal.create()) ; headerBtnsDiv.append(arrowsBtn)
 
                 // Add tooltips
                     appDiv.append(tooltipDiv)
@@ -2891,16 +2887,16 @@
                 // Create/append section elems
                 const replyForm = dom.create.elem('form')
                 const continueChatDiv = dom.create.elem('div')
-                const chatTextarea = dom.create.elem('textarea',
-                    { id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
+                const chatTextarea = dom.create.elem('textarea', {
+                    id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
                 continueChatDiv.append(chatTextarea)
                 replyForm.append(continueChatDiv) ; replySection.append(replyForm)
                 appDiv.append(replySection);
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
                                                             : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
                     btn.append(icons[btnType].create())
