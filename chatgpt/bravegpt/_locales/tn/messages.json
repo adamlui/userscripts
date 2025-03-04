@@ -54,7 +54,7 @@
   "tooltip_play": { "message": "Go tshameka" },
   "tooltip_playing": { "message": "Go tshameka" },
   "tooltip_reply": { "message": "RESPONSE" },
-  "tooltip_code": { "message": "Khoutu " },
+  "tooltip_code": { "message": "Khoutu" },
   "tooltip_generatingAudio": { "message": "E dira gore go nne le modumo" },
   "tooltip_sendRelatedQuery": { "message": "ROMELA DIPOTSO TSE DI AMAN" },
   "helptip_proxyAPImode": { "message": "O dirisa Proxy API gore o seka wa tsena mo tirong ya AI" },
