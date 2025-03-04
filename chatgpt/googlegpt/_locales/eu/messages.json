@@ -39,7 +39,7 @@
   "mode_suffix": { "message": "Atzizki modua" },
   "mode_anchor": { "message": "Aingura modua" },
   "mode_debug": { "message": "WP Arazketa Modua" },
-  "tooltip_fontSize": { "message": "Letra-tamaina " },
+  "tooltip_fontSize": { "message": "Letra-tamaina" },
   "tooltip_sendReply": { "message": "Erantzuna bidali" },
   "tooltip_feelingLucky": { "message": "Zortea sentitzen dut" },
   "tooltip_summarizeResults": { "message": "Emaitzak laburbildu" },

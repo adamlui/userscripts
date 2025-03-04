@@ -92,7 +92,7 @@
   "alert_userscriptMgrNoStream": { "message": "Ваш менеджер пользовательских скриптов не поддерживает возврат ответов потока" },
   "alert_isCurrentlyOnlyAvailBy": { "message": "в настоящее время доступен только" },
   "alert_openAIsupportSoon": { "message": "Поддержка OpenAI API будет добавлена в ближайшее время" },
-  "alert_waitingFor": { "message": "Ожидание " },
+  "alert_waitingFor": { "message": "Ожидание" },
   "alert_response": { "message": "ответ" },
   "alert_login": { "message": "Пожалуйста, войдите" },
   "alert_thenRefreshPage": { "message": "обновить эту страницу" },

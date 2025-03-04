@@ -53,7 +53,7 @@
   "tooltip_regenerating": { "message": "மறுபடிஜெநிப்பித்தல்" },
   "tooltip_play": { "message": "A button on a Remote Control" },
   "tooltip_playing": { "message": "இயக்குகிறது" },
-  "tooltip_reply": { "message": "பதில் " },
+  "tooltip_reply": { "message": "பதில்" },
   "tooltip_code": { "message": "குறியீடு" },
   "tooltip_generatingAudio": { "message": "ஆடியோவை உருவாக்குகிறது" },
   "tooltip_sendRelatedQuery": { "message": "தொடர்புடைய வினவலை அனுப்பவும்" },

@@ -104,7 +104,7 @@
   "alert_try": { "message": "ਕੋਸ਼ਿਸ ਕਰੋ" },
   "alert_switchingOn": { "message": "ਚਾਲੂ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ" },
   "alert_switchingOff": { "message": "ਬੰਦ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ" },
-  "notif_copiedToClipboard": { "message": "ਕਲਿੱਪਬੋਰਡ ਤੇ ਕਾਪੀ ਕੀਤਾ ਗਿਆ। " },
+  "notif_copiedToClipboard": { "message": "ਕਲਿੱਪਬੋਰਡ ਤੇ ਕਾਪੀ ਕੀਤਾ ਗਿਆ।" },
   "btnLabel_moreAIextensions": { "message": "ਹੋਰ AI ਐਕਸਟੈਂਸ਼ਨਾਂ" },
   "btnLabel_sendQueryToApp": { "message": "ਖੋਜ ਕਿਊਰੀ GoogleGPT ਨੂੰ ਭੇਜੋ" },
   "btnLabel_leaveReview": { "message": "ਸਮੀਖਿਆ ਛੱਡੋ" },
