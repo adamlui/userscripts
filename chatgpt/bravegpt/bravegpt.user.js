@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.4
+// @version               2025.3.4.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3705,62 +3705,56 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                const headerBtnsDiv = dom.create.elem('div', {
+                    id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.browser.isMobile) {
-                    var chevronBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                    chevronBtn.style.margin = '0.5px 1px 0 11px' // position
+                    var chevronBtn = dom.create.elem('btn', {
+                        d: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only`,
+                        style: 'margin: 0.5px 1px 0 11px' })
                     chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                     headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
-                aboutBtn.style.marginTop = '0.8px' // position
+                const aboutBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn`, style: 'margin-top: 0.8px' })
                 aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '2.5px 10.5px 0 3px' // position
+                const settingsBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn`,
+                    style: 'margin: 2.5px 10.5px 0 3px' })
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
-                    var fontSizeBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.style.margin = '1px 10px 0 1px' // position
-                    fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+                    var fontSizeBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: 'margin: 1px 10px 0 1px' })
+                    fontSizeBtn.append(icons.fontSize.create()) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
                 // Create/append Pin button
                 if (!env.browser.isMobile) {
-                    var pinBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var pinSVG = icons.pin.create()
-                    pinBtn.style.margin = '1px 9px 0 0' // position
-                    pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
+                    var pinBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: 'margin: 1px 9px 0 0' })
+                    pinBtn.append(icons.pin.create()) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
-                    var wsbBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
-                    var wsbSVG = icons.widescreen.create()
-                    wsbBtn.style.margin = '2px 12px 0 0' // position
-                    wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
+                    var wsbBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden`,
+                        style: 'margin: 2px 12px 0 0' })
+                    wsbBtn.append(icons.widescreen.create()) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
                     var arrowsBtn = dom.create.elem('btn', {
                         id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
-                        style: 'margin: 2.5px 13.5px 0 0'
-                    })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+                        style: 'margin: 2.5px 13.5px 0 0' })
+                    arrowsBtn.append(icons.arrowsDiagonal.create()) ; headerBtnsDiv.append(arrowsBtn)
                 }
 
                 // Add tooltips
@@ -3830,8 +3824,8 @@
                 ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
                     if (btnType == 'summarize' && appDiv.querySelector('[class*=standby-btn]'))
                         return // since big Summarize button exists
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ rOffset + idx * spreadFactor }px`
                     if (env.browser.isFF && btnType == 'shuffle') btn.style.right = '17px'
                     btn.append(icons[btnType].create())
