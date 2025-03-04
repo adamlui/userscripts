@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.3.1
+// @version                  2025.3.3.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3897,7 +3897,7 @@
                 // Create/append Settings button
                 const settingsBtn = dom.create.elem('btn',
                     { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = `${ env.browser.isMobile ? 6 : -0.5 }px 10px 0 3.5px` // position
+                settingsBtn.style.margin = `${ env.browser.isMobile ? 6 : 0 }px 13px 0 4.5px` // position
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
@@ -3914,7 +3914,7 @@
                     var pinBtn = dom.create.elem('btn',
                         { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
                     var pinSVG = icons.pin.create()
-                    pinBtn.style.margin = '-1.55px 7.5px 0 0' // position
+                    pinBtn.style.margin = '-1.55px 9.5px 0 0' // position
                     pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
