@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.3.4
+// @version             2025.3.4
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -296,7 +296,7 @@
         },
         site: /([^.]+)\.[^.]+$/.exec(location.hostname)[1], ui: {}
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     ui.import({ site: env.site }) ; ui.getScheme().then(scheme => env.ui.scheme = scheme)
@@ -960,7 +960,7 @@
     }
 
     // Add RESIZE LISTENER to update full screen setting/button + disable F11 flag
-    window.addEventListener('resize', () => {
+    addEventListener('resize', () => {
         const fullScreenState = chatgpt.isFullScreen()
         if (config.fullScreen && !fullScreenState) { // exiting full screen
             sync.mode('fullScreen') ; config.f11 = false }
