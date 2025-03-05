@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.4.3
+// @version                2025.3.4.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -109,8 +109,8 @@
     };
     ['Chromium', 'Firefox', 'Chrome', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
+    env.browser.isPhone = env.browser.isMobile && innerWidth <= 480
     env.scriptManager.supportsStreaming = /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
@@ -1047,7 +1047,7 @@
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
                     const settingsModal = settingsContainer.querySelector(`#${app.slug}-settings`),
-                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                          scaleRatio = 0.93 * innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
                 log.debug('Success! Settings modal shown')
@@ -1642,7 +1642,7 @@
 
         answerPreMaxHeight() { // for various mode toggles
             const answerPre = appDiv.querySelector('pre'),
-                  longerPreHeight = window.innerHeight - 255
+                  longerPreHeight = innerHeight - 255
             if (answerPre) answerPre.style.maxHeight = `${ longerPreHeight - ( config.expanded ? 115 : 365 )}px`
         },
 
@@ -1876,7 +1876,7 @@
               // Anchor Mode styles
               + `#${app.slug}.anchored {
                     position: fixed ; bottom: -7px ; right: 35px ; z-index: 8888 ;
-                    right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;
+                    right: ${ env.browser.isMobile ? innerWidth *0.01 : 35 }px ;
                     width: ${ env.browser.isMobile ? '98%' : '441px' }}`
               + `#${app.slug}.expanded { width: 528px }`
               + `#${app.slug}.anchored .anchored-hidden { display: none }` // hide non-Anchor elems in mode
