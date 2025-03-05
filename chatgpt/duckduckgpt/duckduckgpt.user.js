@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.4.1
+// @version                2025.3.4.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1685,7 +1685,7 @@
                 if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
                     icon.firstChild.textContent = '' // clear prev paths
-                    icon.firstChild.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                    icon.firstChild.append(icons.arrowsDiagonal[`${config.expanded ? 'in' : 'out' }wardSVGpath`]())
                 })
             }
         },
@@ -3817,8 +3817,8 @@
                 ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
                     if (btnType == 'summarize' && appDiv.querySelector('[class*=standby-btn]'))
                         return // since big Summarize button exists
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ idx == 0 ? 5 : 0.3 }px`
                     if (env.browser.isFF && btnType == 'shuffle') btn.style.right = '1.4px'
                     btn.append(icons[btnType].create())
