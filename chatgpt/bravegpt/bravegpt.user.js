@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.4.2
+// @version               2025.3.4.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -232,8 +232,8 @@
     };
     ['Chromium', 'Firefox', 'Chrome', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
+    env.browser.isPhone = env.browser.isMobile && innerWidth <= 480
     env.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     env.scriptManager.supportsStreaming = /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
@@ -1285,7 +1285,7 @@
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
                     const settingsModal = settingsContainer.querySelector(`#${app.slug}-settings`),
-                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                          scaleRatio = 0.93 * innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
                 log.debug('Success! Settings modal shown')
@@ -2065,8 +2065,8 @@
         answerPreMaxHeight() { // for various mode toggles
             const answerPre = appDiv.querySelector('pre'),
                   relatedQueries = appDiv.querySelector(`.${app.slug}-related-queries`),
-                  shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
-                  longerPreHeight = window.innerHeight - 278
+                  shorterPreHeight = innerHeight - relatedQueries?.offsetHeight - 304,
+                  longerPreHeight = innerHeight - 278
             if (answerPre) answerPre.style.maxHeight = (
                 config.stickySidebar ? (
                     relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
@@ -3884,8 +3884,8 @@
                 // Auto-scroll if active
                 if (config.autoScroll && !env.browser.isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
                     if (config.stickySidebar || config.anchored) answerPre.scrollTop = answerPre.scrollHeight
-                    window.scrollBy({
-                        top: appDiv.querySelector('footer').getBoundingClientRect().bottom - window.innerHeight + 13 })
+                    scrollBy({
+                        top: appDiv.querySelector('footer').getBoundingClientRect().bottom - innerHeight + 13 })
                 }
             }
 
@@ -3894,7 +3894,7 @@
                 && !env.browser.isMobile // exclude mobile devices to not auto-popup OSD keyboard
                 && ((!config.autoFocusChatbarDisabled && ( config.anchored // include Anchored mode if AF enabled
                         // ...or un-Anchored if fully above fold
-                        || ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )))
+                        || ( appDiv.offsetHeight < innerHeight - appDiv.getBoundingClientRect().top )))
                     // ...or Anchored if AF disabled & user interacted
                     || (config.autoFocusChatbarDisabled && config.anchored && show.reply.userInteracted))
             ) { appDiv.querySelector(`#${app.slug}-chatbar`).focus() ; show.reply.chatbarFocused = true }
