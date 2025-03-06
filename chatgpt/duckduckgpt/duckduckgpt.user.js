@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.6.1
+// @version                2025.3.6.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3559,6 +3559,7 @@
         },
 
         async reply(msgChain) {
+            appAlert('waitingResponse')
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -3776,7 +3777,6 @@
                             btnType == 'query' ? 'btnLabel_sendQueryToApp' : 'tooltip_summarizeResults']
                         standbyBtn.prepend(icons[btnType == 'query' ? 'send' : 'summarize'].create())
                         standbyBtn.onclick = () => {
-                            appAlert('waitingResponse')
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
                             msgChain.push({ role: 'user', content:
@@ -4153,7 +4153,7 @@
         msgChain.push({ role: 'user', content:
             config.autoSummarize ? prompts.create('summarizeResults')
                                  : new URL(location.href).searchParams.get('q') })
-        appAlert('waitingResponse') ; get.reply(msgChain)
+        get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby')
         if (!config.rqDisabled)
