@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.5
+// @version               2025.3.6
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3786,7 +3786,7 @@
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
                             if (btnType == 'summarize')
-                                msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+                                msgChain.push({ role: 'user', content: prompts.create('summarizeResults') })
                             get.reply(msgChain)
                         }
                         standbyBtnsDiv.append(standbyBtn) ; standbyBtn.onclick = show.reply[`${btnType}BtnClickHandler`]
@@ -4149,15 +4149,17 @@
     }), 1500)
 
     // AUTO-GEN reply or show STANDBY mode
-    let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
+    const msgChain = []
     if (!config.autoGetDisabled || config.autoSummarize // Auto-Gen on
         || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
             && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
                 config.suffixEnabled // suffix required/present
                     && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
             ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
-    ) {
-        if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+    ) { // auto-gen reply
+        msgChain.push({
+            role: 'user', content: config.autoSummarize ? prompts.create('summarizeResults')
+                                                        : new URL(location.href).searchParams.get('q') })
         appAlert('waitingResponse') ; get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby', footerContent)
@@ -4166,7 +4168,7 @@
                 .then(queries => show.related(queries))
                 .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     }
-    saveAppDiv() // to fight Brave mutations
+    saveAppDiv() // to fight Brave Svelte mutations
 
     // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
     new MutationObserver(handleSchemePrefChange).observe( // class changes from Brave Search theme settings
