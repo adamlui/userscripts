@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.6.3
+// @version                  2025.3.6.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2312,7 +2312,6 @@
                         -o-transition: var(--app-transition), var(--app-shadow-transition) ;
                         -ms-transition: var(--app-transition), var(--app-shadow-transition) }`
               + `#${app.slug} p { margin: 0 }`
-              + `#${app.slug} a:hover { transition: 0.15s ease-in }`
               + `#${app.slug} .alert-link {`
                   + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
               + `.${app.slug}-name {`
@@ -2324,7 +2323,8 @@
                         -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important }'
-              + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+              + `.kudoai a:hover {
+                    transition: 0.15s ease-in ; color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.slug}-header-btns { float: right }`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 6px ;'
