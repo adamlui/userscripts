@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.6
+// @version                2025.3.6.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2747,6 +2747,7 @@
         },
 
         async reply(msgChain) {
+            appAlert('waitingResponse')
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -3186,6 +3187,6 @@
                    : /\/b\//.test(location.href) ? 'Category' : 'Other'
     const firstQuery = pageType == 'Other' ? 'Hi there' : prompts.create(`inform${pageType}`, { mods: 'all' })
     const msgChain = [{ role: 'user', content: firstQuery }]
-    appAlert('waitingResponse') ; get.reply(msgChain)
+    get.reply(msgChain)
 
 })()
