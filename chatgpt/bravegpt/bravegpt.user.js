@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.6.2
+// @version               2025.3.6.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3564,6 +3564,7 @@
         },
 
         async reply(msgChain) {
+            appAlert('waitingResponse')
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -3782,7 +3783,6 @@
                             btnType == 'query' ? 'btnLabel_sendQueryToApp' : 'tooltip_summarizeResults']
                         standbyBtn.prepend(icons[btnType == 'query' ? 'send' : 'summarize'].create())
                         show.reply[`${btnType}BtnClickHandler`] = function() {
-                            appAlert('waitingResponse')
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
                             msgChain.push({ role: 'user', content:
@@ -4161,7 +4161,7 @@
         msgChain.push({ role: 'user', content:
             config.autoSummarize ? prompts.create('summarizeResults')
                                  : new URL(location.href).searchParams.get('q') })
-        appAlert('waitingResponse') ; get.reply(msgChain)
+        get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby', footerContent)
         if (!config.rqDisabled)
