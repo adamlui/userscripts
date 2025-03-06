@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.5
+// @version                2025.3.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3780,7 +3780,7 @@
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
                             if (btnType == 'summarize')
-                                msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+                                msgChain.push({ role: 'user', content: prompts.create('summarizeResults') })
                             get.reply(msgChain)
                         }
                         standbyBtnsDiv.append(standbyBtn)
@@ -4141,15 +4141,17 @@
     }), 1500)
 
     // AUTO-GEN reply or show STANDBY mode
-    let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
+    const msgChain = []
     if (config.autoGet || config.autoSummarize // Auto-Gen on
         || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
             && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
                 config.suffixEnabled // suffix required/present
                     && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
             ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
-    ) {
-        if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+    ) { // auto-gen reply
+        msgChain.push({
+            role: 'user', content: config.autoSummarize ? prompts.create('summarizeResults')
+                                                        : new URL(location.href).searchParams.get('q') })
         appAlert('waitingResponse') ; get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby')
