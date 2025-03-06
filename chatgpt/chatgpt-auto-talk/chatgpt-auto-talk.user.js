@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.1
+// @version             2025.3.4.1
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -268,7 +268,7 @@
         },
         ui: { scheme: getScheme() }
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -293,7 +293,7 @@
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
         },
-        latestResourceCommitHash: 'acb163c' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '85ceed1' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -527,8 +527,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
@@ -594,8 +593,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
                         btn.textContent == 'Cash App' ? 'cashApp'
                       : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
@@ -733,7 +731,7 @@
 
     function getScheme() {
         return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function syncConfigToUI() {
@@ -774,9 +772,9 @@
                 this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
-                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
+                this.div.onmouseover = this.div.onmouseout = ({ type }) => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
-                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
+                        `var(--sidebar-surface-${ type == 'mouseover' ? 'secondary' : 'primary' })`)
                 this.div.onclick = () => {
                     settings.save('autoTalkDisabled', this.toggleInput.checked)
                     syncConfigToUI({ updatedKey: 'autoTalkDisabled' })

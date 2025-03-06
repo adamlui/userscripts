@@ -9,7 +9,7 @@
   "about_and": { "message": "ו" },
   "about_contributors": { "message": "תורמים" },
   "about_version": { "message": "גירסה" },
-  "about_poweredBy": { "message": "באמצעות " },
+  "about_poweredBy": { "message": "באמצעות" },
   "about_openSourceCode": { "message": "קוד מקור" },
   "mode_autoTalk": { "message": "שיחה אוטומטית" },
   "helptip_toggleVis": { "message": "הצג את מתג הדיבור האוטומטי בסרגל הצידי" },

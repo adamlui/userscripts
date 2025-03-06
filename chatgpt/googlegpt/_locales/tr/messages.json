@@ -104,7 +104,7 @@
   "alert_try": { "message": "Try" },
   "alert_switchingOn": { "message": "Açma" },
   "alert_switchingOff": { "message": "Kapatma" },
-  "notif_copiedToClipboard": { "message": "Panoya kopyalandı " },
+  "notif_copiedToClipboard": { "message": "Panoya kopyalandı" },
   "btnLabel_moreAIextensions": { "message": "Daha Fazla Yapay Zeka Uzantısı" },
   "btnLabel_sendQueryToApp": { "message": "GoogleGPT'ye arama sorgusu gönder" },
   "btnLabel_leaveReview": { "message": "İncelemeyi bırak" },

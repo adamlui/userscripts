@@ -13,7 +13,7 @@
   "about_contributors": { "message": "συντελεστές" },
   "about_version": { "message": "Έκδοση" },
   "about_poweredBy": { "message": "Με την υποστήριξη" },
-  "about_openSourceCode": { "message": "Ανοιχτός κώδικας. " },
+  "about_openSourceCode": { "message": "Ανοιχτός κώδικας." },
   "mode_autoclear": { "message": "Αυτόματος καθαρισμός" },
   "helptip_clearNow": { "message": "Διαγραφή ιστορικού συνομιλίας τώρα" },
   "helptip_toggleVis": { "message": "Εμφάνιση αυτόματης εκκαθάρισης στην πλαϊνή γραμμή" },

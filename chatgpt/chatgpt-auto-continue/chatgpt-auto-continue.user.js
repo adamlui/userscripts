@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.1
+// @version             2025.3.4.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -228,9 +228,9 @@
 // @connect             gm.chatgptautocontinue.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@762a364/chromium/extension/components/modals.js#sha256-8fzds+ArFmEQI54xYPNBzzMqQ6xH/CKKBH+X/Exel6M=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@274036c/chromium/extension/components/modals.js#sha256-8r+vAOuNqGSqk71EI5DlGyXbTLtcD21v64naKRJF5RI=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@762a364/chromium/extension/lib/dom.js#sha256-U+SUWAkqLIY6krdR2WPhVy5/f+cTV03n3F8b+Y+/Py0=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@0f41b33/chromium/extension/lib/settings.js#sha256-VTgdpNswFMINRQuHbAutrurUiB+BOsIGZ+XWusb5NBI=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@c2aac90/chromium/extension/lib/settings.js#sha256-TuYeKA5lzdAQdgsZgR7TjlUamABhWwdfVgZsPM0+IJM=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -265,7 +265,7 @@
         },
         ui: { scheme: getScheme() }
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -275,7 +275,7 @@
         version: GM_info.script.version, configKeyPrefix: 'chatGPTautoContinue',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptautocontinue.com' },
-        latestResourceCommitHash: '624cf9e' // for cached app.json + messages.json
+        latestResourceCommitHash: 'e4cb6d1' // for cached app.json + messages.json
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -490,15 +490,25 @@
 
     function getScheme() {
         return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function syncConfigToUI() { toolbarMenu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
 
+    // Init EXTENSION ACTIVE state
+    postMessage({ action: 'getExtensionInfo', source: `${app.slug}.user.js` }, location.origin)
+    addEventListener('message', handleMsgResp)
+    function handleMsgResp(resp) {
+        if (resp.origin != location.origin) return
+        const sender = resp.data.source
+        env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender)
+    }
+    await new Promise(resolve => setTimeout(resolve, 100)) // wait for extension response
+    removeEventListener('message', handleMsgResp)
+
     // Create browser TOOLBAR MENU + DISABLE SCRIPT if extension active
-    env.extensionActive = !!sessionStorage.chatgptAutoContinueExtensionActive
     toolbarMenu.register() ; if (env.extensionActive) return
 
     // Add RISING PARTICLES styles

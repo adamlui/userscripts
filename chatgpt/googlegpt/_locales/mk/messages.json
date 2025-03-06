@@ -16,7 +16,7 @@
   "menuLabel_top": { "message": "Најгоре" },
   "menuLabel_sidebar": { "message": "Странична лента" },
   "menuLabel_bottom": { "message": "Долно" },
-  "menuLabel_background": { "message": "Контекст " },
+  "menuLabel_background": { "message": "Контекст" },
   "menuLabel_foreground": { "message": "Текст" },
   "menuLabel_animations": { "message": "Анимации" },
   "menuLabel_replyLanguage": { "message": "Јазик на одговор" },

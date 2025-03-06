@@ -7,7 +7,7 @@
   "menuLabel_foreground": { "message": "Forgrund" },
   "menuLabel_animations": { "message": "Animationer" },
   "menuLabel_replyLanguage": { "message": "Svarsprog" },
-  "menuLabel_colorScheme": { "message": "Farve skema " },
+  "menuLabel_colorScheme": { "message": "Farve skema" },
   "menuLabel_auto": { "message": "Auto" },
   "menuLabel_about": { "message": "Om" },
   "menuLabel_settings": { "message": "Indstillinger" },

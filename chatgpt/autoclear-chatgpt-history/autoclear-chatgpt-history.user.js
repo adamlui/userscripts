@@ -225,7 +225,7 @@
 // @description:zu      Ziba itshala lokucabanga okuzoshintshwa ngokuzenzakalelayo uma ukubuka chatgpt.com
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.2
+// @version             2025.3.4.1
 // @license             MIT
 // @icon                https://assets.autoclearchatgpt.com/images/icons/openai/black/icon48.png?v=f461c06
 // @icon64              https://assets.autoclearchatgpt.com/images/icons/openai/black/icon64.png?v=f461c06
@@ -276,7 +276,7 @@
         },
         ui: { scheme: getScheme() }
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -286,7 +286,7 @@
         version: GM_info.script.version, configKeyPrefix: 'autoclearChatGPThistory',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.autoclearchatgpt.com' },
-        latestResourceCommitHash: '0421e71' // for cached app.json + messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '1c3f3c1' // for cached app.json + messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = 'https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history'
                           + `@${app.latestResourceCommitHash}`
@@ -391,7 +391,12 @@
                 label: app.msgs.menuLabel_clearNow, helptip: app.msgs.helptip_clearNow }
         },
 
-        isEnabled(key) { return config[key] ^ /disabled/i.test(key) },
+        isEnabled(key) {
+            const reInvertFlags = /disabled|hidden/i
+            return reInvertFlags.test(key) // flag in control key name
+                && !reInvertFlags.test(this.controls[key]?.label || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite state, else don't
+        },
 
         load(...keys) {
             keys.flat().forEach(key => {
@@ -543,8 +548,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
@@ -610,8 +614,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
                         btn.textContent == 'Cash App' ? 'cashApp'
                       : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
@@ -772,7 +775,7 @@
 
     function getScheme() {
         return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function syncConfigToUI(options) {
@@ -814,9 +817,9 @@
                 this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
-                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
+                this.div.onmouseover = this.div.onmouseout = ({ type }) => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
-                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
+                        `var(--sidebar-surface-${ type == 'mouseover' ? 'secondary' : 'primary' })`)
                 this.div.onclick = () => {
                     settings.save('autoclear', !this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'autoclear' })
                     notify(`${app.msgs.mode_autoclear}: ${toolbarMenu.state.words[+config.autoclear]}`)

@@ -3,7 +3,7 @@
   "menuLabel_proxyAPImode": { "message": "Puhverserveri API-režiim" },
   "menuLabel_autoFocusChatbar": { "message": "Automaatse teravustamise vestlusriba" },
   "menuLabel_whenStreaming": { "message": "voogesituse ajal" },
-  "menuLabel_background": { "message": " " },
+  "menuLabel_background": { "message": "" },
   "menuLabel_foreground": { "message": "Teadmised" },
   "menuLabel_animations": { "message": "Animatsioonid" },
   "menuLabel_replyLanguage": { "message": "Vastuse keel" },

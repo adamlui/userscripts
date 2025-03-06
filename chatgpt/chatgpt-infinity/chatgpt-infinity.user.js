@@ -199,7 +199,7 @@
 // @description:zh-TW   從無所不知的 ChatGPT 生成無窮無盡的答案 (用任何語言!)
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.3
+// @version             2025.3.4.1
 // @license             MIT
 // @icon                https://assets.chatgptinfinity.com/images/icons/infinity-symbol/circled/with-robot/icon48.png?v=69e434b
 // @icon64              https://assets.chatgptinfinity.com/images/icons/infinity-symbol/circled/with-robot/icon64.png?v=69e434b
@@ -220,10 +220,10 @@
 // @connect             gm.chatgptinfinity.com
 // @connect             raw.githubusercontent.com
 // @require             https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@1ae4e33/chromium/extension/components/modals.js#sha256-7uMRCTHm/QvOmoh79h5IrcMmHIsWAR/BxCxfQrNjGkY=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@b12ceda/chromium/extension/components/toggles.js#sha256-sFL457jgLTfSpxhR0eKWvIJzlxc0NzPFlErBhbmxAAQ=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@4ec0a82/chromium/extension/components/modals.js#sha256-/WTJT4ykm9m003gIIZnvYnZNXSwsrc7FsqeEFIozRQ8=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@4ec0a82/chromium/extension/components/toggles.js#sha256-9Oc1cL75YDDVpJP9qt8htiYRz0uM8SUMH2uJrsm8DUw=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@1ae4e33/chromium/extension/lib/dom.js#sha256-U+SUWAkqLIY6krdR2WPhVy5/f+cTV03n3F8b+Y+/Py0=
-// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@4394539/chromium/extension/lib/settings.js#sha256-56/R5S/ocinOCsn6BGgJU9aZs39hvzDkVt1hWyFgzdY=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@2ec25ce/chromium/extension/lib/settings.js#sha256-cyRP9w9Di8RjzNZSJeah3ILK7dx57598Rn4BZL/eiv0=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -258,7 +258,7 @@
         },
         ui: { scheme: getScheme() }
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -268,7 +268,7 @@
         version: GM_info.script.version, configKeyPrefix: 'chatGPTinfinity',
         chatgptJSver: /chatgpt\.js@([\d.]+)/.exec(GM_info.scriptMetaStr)[1],
         urls: { update: 'https://gm.chatgptinfinity.com' },
-        latestResourceCommitHash: '9e3c78a' // for cached app.json + messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: 'd57d034' // for cached app.json + messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = `https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@${app.latestResourceCommitHash}`
     const remoteAppData = await new Promise(resolve => xhr({
@@ -559,7 +559,7 @@
 
     function getScheme() {
         return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function syncConfigToUI(options) {
@@ -623,8 +623,18 @@
     toggles.import({ app, env, notify, syncConfigToUI })
     toggles.sidebar.update.navicon({ preload: true })
 
+    // Init EXTENSION ACTIVE state
+    postMessage({ action: 'getExtensionInfo', source: `${app.slug}.user.js` }, location.origin)
+    addEventListener('message', handleMsgResp)
+    function handleMsgResp(resp) {
+        if (resp.origin != location.origin) return
+        const sender = resp.data.source
+        env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender)
+    }
+    await new Promise(resolve => setTimeout(resolve, 100)) // wait for extension response
+    removeEventListener('message', handleMsgResp)
+
     // Create browser TOOLBAR MENU + DISABLE SCRIPT if extension active
-    env.extensionActive = !!sessionStorage.chatgptInfinityExtensionActive
     toolbarMenu.register() ; if (env.extensionActive) return
 
     // Init BROWSER/UI props

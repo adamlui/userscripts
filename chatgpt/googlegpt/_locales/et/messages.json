@@ -16,7 +16,7 @@
   "menuLabel_top": { "message": "Üleval" },
   "menuLabel_sidebar": { "message": "Külgriba" },
   "menuLabel_bottom": { "message": "All" },
-  "menuLabel_background": { "message": " " },
+  "menuLabel_background": { "message": "" },
   "menuLabel_foreground": { "message": "Teadmised" },
   "menuLabel_animations": { "message": "Animatsioonid" },
   "menuLabel_replyLanguage": { "message": "Vastuse keel" },

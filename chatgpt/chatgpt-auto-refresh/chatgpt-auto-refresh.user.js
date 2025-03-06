@@ -220,7 +220,7 @@
 // @description:zu      *NGOKUPHEPHA* susa ukusetha kabusha ingxoxo yemizuzu eyi-10 + amaphutha enethiwekhi ahlala njalo + Ukuhlolwa kwe-Cloudflare ku-ChatGPT.
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.2.26.2
+// @version             2025.3.4.1
 // @license             MIT
 // @icon                https://assets.chatgptautorefresh.com/images/icons/openai/black/icon48.png?v=f11a0a8
 // @icon64              https://assets.chatgptautorefresh.com/images/icons/openai/black/icon64.png?v=f11a0a8
@@ -249,7 +249,6 @@
 // @grant               GM_getResourceText
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
-// @run-at              document-start
 // @noframes
 // @downloadURL         https://gm.chatgptautorefresh.com
 // @updateURL           https://gm.chatgptautorefresh.com
@@ -275,7 +274,7 @@
         },
         ui: { scheme: getScheme() }
     }
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
@@ -300,7 +299,7 @@
             support: 'https://support.chatgptautorefresh.com',
             update: 'https://gm.chatgptautorefresh.com'
         },
-        latestResourceCommitHash: '6ce52db' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '0ac4f2d' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -402,7 +401,12 @@
                 label: app.msgs.menuLabel_refreshInt, helptip: app.msgs.helptip_refreshInt }
         },
 
-        isEnabled(key) { return config[key] ^ /disabled/i.test(key) },
+        isEnabled(key) {
+            const reInvertFlags = /disabled|hidden/i
+            return reInvertFlags.test(key) // flag in control key name
+                && !reInvertFlags.test(this.controls[key]?.label || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite state, else don't
+        },
 
         load(...keys) {
             keys.flat().forEach(key => {
@@ -577,8 +581,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions'
@@ -644,8 +647,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (!/dismiss/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls.donate[
                         btn.textContent == 'Cash App' ? 'cashApp'
                       : btn.textContent == 'Github Sponsors' ? 'gitHub' : 'payPal'
@@ -783,7 +785,7 @@
 
     function getScheme() {
         return document.documentElement.className
-            || (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light')
+            || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
     }
 
     function syncConfigToUI(options) {
@@ -825,9 +827,9 @@
                 this.update.scheme() ; this.update.state()
 
                 // Add hover/click listeners
-                this.div.onmouseover = this.div.onmouseout = event => // trigger OpenAI hover overlay
+                this.div.onmouseover = this.div.onmouseout = ({ type }) => // trigger OpenAI hover overlay
                     this.div.style.setProperty('--item-background-color',
-                        `var(--sidebar-surface-${event.type == 'mouseover' ? 'secondary' : 'primary'})`)
+                        `var(--sidebar-surface-${ type == 'mouseover' ? 'secondary' : 'primary' })`)
                 this.div.onclick = () => {
                     settings.save('arDisabled', this.toggleInput.checked) ; syncConfigToUI({ updatedKey: 'arDisabled' })
                     notify(`${app.msgs.menuLabel_autoRefresh}: ${toolbarMenu.state.words[+!config.arDisabled]}`)

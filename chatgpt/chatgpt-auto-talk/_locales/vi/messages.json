@@ -9,7 +9,7 @@
   "about_and": { "message": "và" },
   "about_contributors": { "message": "Cộng sự" },
   "about_version": { "message": "Phiên bản" },
-  "about_poweredBy": { "message": "Cung cấp bởi " },
+  "about_poweredBy": { "message": "Cung cấp bởi" },
   "about_openSourceCode": { "message": "Nguồn mở" },
   "mode_autoTalk": { "message": "Tự động nói chuyện" },
   "helptip_toggleVis": { "message": "Hiển thị chuyển đổi Tự động nói chuyện trong thanh bên" },

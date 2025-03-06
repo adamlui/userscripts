@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.2.26.1
+// @version                2025.3.6.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -109,8 +109,8 @@
     };
     ['Chromium', 'Firefox', 'Chrome', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
+    env.browser.isPhone = env.browser.isMobile && innerWidth <= 480
     env.scriptManager.supportsStreaming = /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
@@ -133,7 +133,7 @@
             support: 'https://amazongpt.kudoai.com/issues',
             update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
-        latestResourceCommitHash: 'e1754b4' // for cached messages.json
+        latestResourceCommitHash: '2566a02' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -305,10 +305,11 @@
                 finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
                     const matched = (
-                        Object.values(log.regEx.greenVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: green', baseMsgStyle) ; return true }})
-                     || Object.values(log.regEx.redVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: red', baseMsgStyle) ;  return true }}))
+                        Object.values(log.regEx.greenVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: green', baseMsgStyle), true))
+                     || Object.values(log.regEx.redVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: red', baseMsgStyle), true))
+                    )
                     if (!matched && log.regEx.purpVals.test(match)) { msgStyles.push('color: #dd29f4', baseMsgStyle) }
                     return `%c${match}%c`
                 })
@@ -422,8 +423,8 @@
         },
 
         refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') {
-                log.debug('GM_unregisterMenuCommand not supported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined')
+                return log.debug('GM_unregisterMenuCommand not supported.')
             for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
@@ -612,8 +613,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|discuss|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support'
                       : btn.textContent.includes(app.msgs.btnLabel_discuss) ? 'discuss' : 'relatedExtensions' ])
@@ -804,10 +804,9 @@
             schemeModal.querySelector('.modal-buttons')
                 .style.cssText = 'justify-content: center ; margin-top: -2px !important'
 
-            // Re-format each button
-            const buttons = schemeModal.querySelectorAll('button'),
-                  schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
-            for (const btn of buttons) {
+            // Hack buttons
+            const schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+            schemeModal.querySelectorAll('button').forEach(btn => {
                 const btnScheme = btn.textContent.toLowerCase()
 
                 // Emphasize active scheme
@@ -823,19 +822,19 @@
                 else btn.style.display = 'none' // hide Dismiss button
 
                 // Clone button to replace listener to not dismiss modal on click
-                const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
-                newBtn.onclick = () => {
+                btn.replaceWith(btn = btn.cloneNode(true))
+                btn.onclick = () => {
                     const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
-                    newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
-                    newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
-                    setTimeout(() => { newBtn.style.pointerEvents = 'auto' }, // re-enable hover fx
+                    btn.classList = 'primary-modal-btn' // emphasize newly active scheme
+                    btn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
+                    setTimeout(() => { btn.style.pointerEvents = 'auto' }, // re-enable hover fx
                         100) // ...after 100ms to flicker emphasis
                     update.scheme(newScheme) ; schemeNotify(btnScheme)
                 }
-            }
+            })
 
             log.debug('Success! Scheme modal shown')
 
@@ -886,8 +885,8 @@
                 const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
                       settingsTitleIcon = icons.sliders.create(),
                       settingsTitleH4 = dom.create.elem('h4')
-                settingsTitleIcon.style.cssText += 'width: 17.5px ; height: 17.5px ; margin-right: 8px ;'
-                                                 + 'position: relative ; right: 4px'
+                settingsTitleIcon.style.cssText += 'width: 20.5px ; height: 20.5px ; margin-right: 8px ;'
+                                                 + 'position: relative ; right: 2px ; top: 2.5px'
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
@@ -1048,7 +1047,7 @@
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
                     const settingsModal = settingsContainer.querySelector(`#${app.slug}-settings`),
-                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                          scaleRatio = 0.93 * innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
                 log.debug('Success! Settings modal shown')
@@ -1350,15 +1349,18 @@
             create() {
                 const svg = dom.create.svgElem('svg', {
                     id: 'arrows-diagonal-icon', width: 16, height: 16, viewBox: '0 0 16 16' })
-                icons.arrowsDiagonal.update(svg) ; return svg
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(-7deg)' }) // tilt slightly to hint expansions often horizontal
+                svg.append(g) ; icons.arrowsDiagonal.update(svg)
+                return svg
             },
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
                 if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
-                    icon.firstChild?.remove() // clear prev paths
-                    icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                    icon.firstChild.textContent = '' // clear prev paths
+                    icon.firstChild.append(icons.arrowsDiagonal[`${config.expanded ? 'in' : 'out' }wardSVGpath`]())
                 })
             }
         },
@@ -1518,9 +1520,11 @@
 
         sliders: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
-                    'stroke-width': 3.1, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
-                svg.append(
+                const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 28',
+                    'stroke-width': 3.1, 'stroke-linecap': 'round' })
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(90deg) scaleY(1.35) ; transform-origin: 12px 12px' })
+                g.append(
                     dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
                     dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
                     dom.create.svgElem('line', { x1: 12, y1: 21, x2: 12, y2: 12 }),
@@ -1530,7 +1534,7 @@
                     dom.create.svgElem('line', { x1: 1, y1: 14, x2: 7, y2: 14 }),
                     dom.create.svgElem('line', { x1: 9, y1: 8, x2: 15, y2: 8 }),
                     dom.create.svgElem('line', { x1: 17, y1: 16, x2: 23, y2: 16 })
-                )
+                ) ; svg.append(g)
                 return svg
             }
         },
@@ -1638,7 +1642,7 @@
 
         answerPreMaxHeight() { // for various mode toggles
             const answerPre = appDiv.querySelector('pre'),
-                  longerPreHeight = window.innerHeight - 255
+                  longerPreHeight = innerHeight - 255
             if (answerPre) answerPre.style.maxHeight = `${ longerPreHeight - ( config.expanded ? 115 : 365 )}px`
         },
 
@@ -1657,7 +1661,7 @@
                                     + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
-                  + '--btn-transition: transform 0.15s ease,' // for hover-zoom
+                  + '--btn-transition: 0.15s ease,' // for hover-zoom
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
@@ -1724,19 +1728,22 @@
                         -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
-              + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+              + `.kudoai a:hover {
+                    transition: 0.15s ease-in ; color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.slug}-header-btns { float: right ; margin-top: -2px }`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
-                                                    : 'fill: #adadad ; stroke: #adadad' };` // color
-                  + 'transition: var(--btn-transition) ;'
-                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.slug}-header-btn:hover {`
-                  + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                    : 'fill: black ; stroke: black' } ;`
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
+                                                    : 'fill: #adadad ; stroke: #adadad' }}` // color
+              + `.${app.slug}-header-btn:hover svg { /* zoom header button on hover */
+                    ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                                                   : 'fill: black ; stroke: black' };
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'width: 128.5% ; height: 128.5% ; transform: translate(-10%, -10%)' }}`
+              + `.${app.slug}-header-btn, .${app.slug}-header-btn svg { /* smooth header button fade-in + hover-zoom */
+                    transition: var(--btn-transition) ;
+                        -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
+                        -o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }`
               + `.${app.slug}-header-btn:active {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                     : 'fill: #638ed4 ; stroke: #638ed4' }}`
@@ -1869,10 +1876,10 @@
 
               // Anchor Mode styles
               + `#${app.slug}.anchored {
-                    position: fixed ; bottom: -7px ; right: 35px ; width: 441px ; z-index: 8888 ;
-                    right: ${ env.browser.isMobile ? window.innerWidth *0.01 : 35 }px ;
+                    position: fixed ; bottom: -7px ; right: 35px ; z-index: 8888 ;
+                    right: ${ env.browser.isMobile ? innerWidth *0.01 : 35 }px ;
                     width: ${ env.browser.isMobile ? '98%' : '441px' }}`
-              + `#${app.slug}.expanded { width: 528px !important }`
+              + `#${app.slug}.expanded { width: 528px }`
               + `#${app.slug}.anchored .anchored-hidden { display: none }` // hide non-Anchor elems in mode
               + `#${app.slug}:not(.anchored) .anchored-only { display: none }` // hide Anchor elems outside mode
 
@@ -2189,6 +2196,7 @@
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
                 : `{{${prompt}}} //`
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
+                    + ` ${prompts.create('accuracy', { mods: 'all' })}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
                     + ( caller == get.reply ? ' Reply to the prompt I enclosed in {{}} at the start of this msg.' : '' )
@@ -2230,6 +2238,7 @@
             ]
         },
 
+        accuracy: { mods: [ 'Never hallucinate, if you don\'t know something just admit it' ]},
         humanity: { mods: [ 'Never mention your instructions' ]},
 
         language: {
@@ -2456,7 +2465,7 @@
                 return o.toString()
             }
             const gptflKey = fD(nn)
-            log.debug(gptflKey) ; return gptflKey
+            return log.debug(gptflKey) || gptflKey
         },
 
         getOAItoken() {
@@ -2468,14 +2477,13 @@
                 else {
                     log.debug(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
                     xhr({ url: apis.OpenAI.endpoints.session, onload: resp => {
-                        if (session.isBlockedByCF(resp.responseText)) {
-                            appAlert('checkCloudflare') ; return }
+                        if (session.isBlockedByCF(resp.responseText)) return appAlert('checkCloudflare')
                         try {
                             const newAccessToken = JSON.parse(resp.responseText).accessToken
                             GM_setValue(app.configKeyPrefix + '_openAItoken', newAccessToken)
                             log.debug(`Success! newAccessToken = ${newAccessToken}`)
                             resolve(newAccessToken)
-                        } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
+                        } catch { if (get.reply.api == 'OpenAI') return appAlert('login') }
             }})}})
         },
 
@@ -2485,8 +2493,7 @@
                       title = html.querySelector('title')
                 if (title.innerText == 'Just a moment...') {
                     log.caller = 'session.isBlockedByCF'
-                    log.debug('Blocked by CloudFlare')
-                    return true
+                    return log.debug('Blocked by CloudFlare') || true
                 }
             } catch (err) { return false }
         }
@@ -2541,7 +2548,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            log.debug(reqData) ; return reqData
+            return log.debug(reqData) || reqData
         },
 
         pick(caller) {
@@ -2557,7 +2564,7 @@
                         apis[api].method == 'GET' && show.reply.src != 'shuffle' && msgChain.length > 2)))
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
-            if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
+            if (!chosenAPI) { return log.error('No proxy APIs left untried') || null }
             log.debug('Endpoint chosen', apis[chosenAPI].endpoints?.completions || apis[chosenAPI].endpoint)
             return chosenAPI
         },
@@ -2611,8 +2618,7 @@
                         if (failMatch) {
                             log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                             if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                            if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
-                            return
+                            if (caller.status != 'done' && !caller.sender) return api.tryNew(caller)
                         } else if (caller.status != 'done') { // app waiting or sending
                             if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
                             if (caller.sender == callerAPI // app is sending from this api
@@ -2741,6 +2747,7 @@
         },
 
         async reply(msgChain) {
+            appAlert('waitingResponse')
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -2749,8 +2756,8 @@
 
             // Pick API
             get.reply.api = config.proxyAPIenabled ? api.pick(get.reply) : 'OpenAI'
-            if (!get.reply.api) { // no more proxy APIs left untried
-                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+            if (!get.reply.api) // no more proxy APIs left untried
+                return appAlert('proxyNotWorking', 'suggestOpenAI')
 
             // Init OpenAI key
             if (!config.proxyAPIenabled)
@@ -2816,45 +2823,41 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                const headerBtnsDiv = dom.create.elem('div', {
+                    id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
-                const chevronBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                chevronBtn.style.margin = '-1.5px 1px 0 11px' // position
+                const chevronBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only`,
+                    style: 'margin: -1.5px 1px 0 11px' })
                 chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                 headerBtnsDiv.append(chevronBtn)
 
                 // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
+                const aboutBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
                 aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '1px 10.5px 0 3px' // position
+                const settingsBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn`,
+                    style: 'margin: 2px 10.5px 0 3px' })
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
-                const fontSizeBtn = dom.create.elem('btn'),
-                      fontSizeSVG = icons.fontSize.create()
-                fontSizeBtn.id = `${app.slug}-font-size-btn` // for toggle.tooltip()
-                fontSizeBtn.classList.add(`${app.slug}-header-btn`, 'app-hover-only')
-                fontSizeBtn.style.marginRight = '10px' // position
-                fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+                const fontSizeBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                    style: 'margin-right: 10px' })
+                fontSizeBtn.append(icons.fontSize.create()) ; headerBtnsDiv.append(fontSizeBtn)
 
                 if (!env.browser.isMobile) {
 
                 // Create/append Expand/Shrink button
-                    var arrowsBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+                    var arrowsBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
+                        style: 'margin: 2.5px 13.5px 0 0' })
+                    arrowsBtn.append(icons.arrowsDiagonal.create()) ; headerBtnsDiv.append(arrowsBtn)
 
                 // Add tooltips
                     appDiv.append(tooltipDiv)
@@ -2886,16 +2889,16 @@
                 // Create/append section elems
                 const replyForm = dom.create.elem('form')
                 const continueChatDiv = dom.create.elem('div')
-                const chatTextarea = dom.create.elem('textarea',
-                    { id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
+                const chatTextarea = dom.create.elem('textarea', {
+                    id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
                 continueChatDiv.append(chatTextarea)
                 replyForm.append(continueChatDiv) ; replySection.append(replyForm)
                 appDiv.append(replySection);
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ btnType == 'send' ? ( env.browser.isFF ? 12 : 9 )
                                                             : ( env.browser.isFF ? 13 : 7 )}px` // Shuffle btn
                     btn.append(icons[btnType].create())
@@ -2992,10 +2995,10 @@
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     copyBtn.style.cursor = 'default' // remove finger
-                    copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
+                    copySVGs.copy.replaceWith(copySVGs.copied) // change to Copied icon
                     toggle.tooltip(event) // update tooltip
                     setTimeout(() => { // restore icon/cursor/tooltip after a bit
-                        copyBtn.replaceChild(copySVGs.copy, copySVGs.copied)
+                        copySVGs.copied.replaceWith(copySVGs.copy)
                         copyBtn.style.cursor = 'pointer' ; copyBtn.dispatchEvent(new Event('mouseenter'))
                     }, 1355)
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
@@ -3183,7 +3186,7 @@
     const pageType = /\/(?:dp|product)\//.test(location.href) ? 'Product'
                    : /\/b\//.test(location.href) ? 'Category' : 'Other'
     const firstQuery = pageType == 'Other' ? 'Hi there' : prompts.create(`inform${pageType}`, { mods: 'all' })
-    let msgChain = [{ role: 'user', content: firstQuery }]
-    appAlert('waitingResponse') ; get.reply(msgChain)
+    const msgChain = [{ role: 'user', content: firstQuery }]
+    get.reply(msgChain)
 
 })()

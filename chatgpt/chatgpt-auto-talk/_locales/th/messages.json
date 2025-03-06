@@ -10,7 +10,7 @@
   "about_contributors": { "message": "ผู้ให้ข้อมูล" },
   "about_version": { "message": "เวอร์ชัน" },
   "about_poweredBy": { "message": "สนับสนุนโดย" },
-  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ " },
+  "about_openSourceCode": { "message": "โปรแกรมโอเพนซอร์ซ" },
   "mode_autoTalk": { "message": "พูดอัตโนมัติ" },
   "helptip_toggleVis": { "message": "แสดงการสลับการพูดคุยอัตโนมัติในแถบด้านข้าง" },
   "alert_updateAvail": { "message": "มีอัพเดตให้ใช้งาน" },

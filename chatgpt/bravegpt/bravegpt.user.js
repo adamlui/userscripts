@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.2.26.5
+// @version               2025.3.6.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -232,8 +232,8 @@
     };
     ['Chromium', 'Firefox', 'Chrome', 'Edge', 'Brave', 'Mobile'].forEach(platform =>
         env.browser[`is${ platform == 'Firefox' ? 'FF' : platform }`] = chatgpt.browser['is' + platform]())
-    env.browser.isPortrait = env.browser.isMobile && (window.innerWidth < window.innerHeight)
-    env.browser.isPhone = env.browser.isMobile && window.innerWidth <= 480
+    env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
+    env.browser.isPhone = env.browser.isMobile && innerWidth <= 480
     env.userLocale = env.browser.language.includes('-') ? env.browser.language.split('-')[1].toLowerCase() : ''
     env.scriptManager.supportsStreaming = /Tampermonkey|ScriptCat/.test(env.scriptManager.name)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
@@ -261,7 +261,7 @@
             support: 'https://support.bravegpt.com',
             update: 'https://gm.bravegpt.com'
         },
-        latestResourceCommitHash: '046c74e' // for cached messages.json
+        latestResourceCommitHash: '67175b3' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -396,7 +396,12 @@
     // Init DEBUG mode
     const config = {}
     const settings = {
-        isEnabled(key) { return config[key] ^ /disabled/i.test(key) },
+        isEnabled(key) {
+            const reInvertFlags = /disabled|hidden/i
+            return reInvertFlags.test(key) // flag in control key name
+                && !reInvertFlags.test(this.controls[key]?.label || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite state, else don't
+        },
         load(...keys) {
             keys.flat().forEach(key => {
                 config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
@@ -463,10 +468,11 @@
                 finalMsg += idx > 0 ? (idx == 1 ? ': ' : ' ') : '' // separate multi-args
                 finalMsg += arg?.toString().replace(combinedPattern, match => {
                     const matched = (
-                        Object.values(log.regEx.greenVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: green', baseMsgStyle) ; return true }})
-                     || Object.values(log.regEx.redVals).some(val => {
-                            if (val.test(match)) { msgStyles.push('color: red', baseMsgStyle) ;  return true }}))
+                        Object.values(log.regEx.greenVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: green', baseMsgStyle), true))
+                     || Object.values(log.regEx.redVals).some(val =>
+                            val.test(match) && (msgStyles.push('color: red', baseMsgStyle), true))
+                    )
                     if (!matched && log.regEx.purpVals.test(match)) { msgStyles.push('color: #dd29f4', baseMsgStyle) }
                     return `%c${match}%c`
                 })
@@ -601,8 +607,8 @@
         },
 
         refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') {
-                log.debug('GM_unregisterMenuCommand not supported.') ; return }
+            if (typeof GM_unregisterMenuCommand == 'undefined')
+                return log.debug('GM_unregisterMenuCommand not supported.')
             for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
         },
 
@@ -790,8 +796,7 @@
 
                 // Replace link buttons w/ clones that don't dismiss modal
                 if (/support|extensions/i.test(btn.textContent)) {
-                    const btnClone = btn.cloneNode(true)
-                    btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                    btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => modals.safeWinOpen(app.urls[
                         btn.textContent.includes(app.msgs.btnLabel_getSupport) ? 'support' : 'relatedExtensions' ])
                 }
@@ -848,8 +853,7 @@
                 btn.style.marginTop = btn.style.marginBottom = '5px' // v-pad btns
 
                 // Replace buttons w/ clones that don't dismiss modal
-                const btnClone = btn.cloneNode(true)
-                btn.parentNode.replaceChild(btnClone, btn) ; btn = btnClone
+                btn.replaceWith(btn = btn.cloneNode(true))
                 btn.onclick = () => modals.safeWinOpen(
                     btn.textContent == 'Product Hunt' ? app.urls.review.productHunt
                   : btn.textContent == 'Alternativeto' ? app.urls.review.alternativeTo
@@ -1025,10 +1029,9 @@
             schemeModal.querySelector('.modal-buttons')
                 .style.cssText = 'justify-content: center ; margin: 18px 0 14px !important'
 
-            // Re-format each button
-            const buttons = schemeModal.querySelectorAll('button'),
-                  schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
-            for (const btn of buttons) {
+            // Hack buttons
+            const schemeEmojis = { 'light': '☀️', 'dark': '🌘', 'auto': '🌗'}
+            schemeModal.querySelectorAll('button').forEach(btn => {
                 const btnScheme = btn.textContent.toLowerCase()
 
                 // Emphasize active scheme
@@ -1044,19 +1047,19 @@
                 else btn.style.display = 'none' // hide Dismiss button
 
                 // Clone button to replace listener to not dismiss modal on click
-                const newBtn = btn.cloneNode(true) ; btn.parentNode.replaceChild(newBtn, btn)
-                newBtn.onclick = () => {
+                btn.replaceWith(btn = btn.cloneNode(true))
+                btn.onclick = () => {
                     const newScheme = btnScheme == 'auto' ? getScheme() : btnScheme
                     settings.save('scheme', btnScheme == 'auto' ? false : newScheme)
                     schemeModal.querySelectorAll('button').forEach(btn =>
                         btn.classList = '') // clear prev emphasized active scheme
-                    newBtn.classList = 'primary-modal-btn' // emphasize newly active scheme
-                    newBtn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
-                    setTimeout(() => { newBtn.style.pointerEvents = 'auto' }, // re-enable hover fx
+                    btn.classList = 'primary-modal-btn' // emphasize newly active scheme
+                    btn.style.cssText = 'pointer-events: none' // disable hover fx to show emphasis
+                    setTimeout(() => { btn.style.pointerEvents = 'auto' }, // re-enable hover fx
                         100) // ...after 100ms to flicker emphasis
                     update.scheme(newScheme) ; schemeNotify(btnScheme)
                 }
-            }
+            })
 
             log.debug('Success! Scheme modal shown')
 
@@ -1107,7 +1110,8 @@
                 const settingsTitleDiv = dom.create.elem('div', { id: `${app.slug}-settings-title` }),
                       settingsTitleIcon = icons.sliders.create(),
                       settingsTitleH4 = dom.create.elem('h4')
-                settingsTitleIcon.style.cssText += 'width: 18px ; height: 18px ; position: relative ; right: 10px'
+                settingsTitleIcon.style.cssText += 'width: 21px ; height: 21px ;'
+                                                 + 'position: relative ; right: 8px ; top: 2.5px'
                 settingsTitleH4.textContent = app.msgs.menuLabel_settings
                 settingsTitleH4.prepend(settingsTitleIcon) ; settingsTitleDiv.append(settingsTitleH4)
 
@@ -1281,7 +1285,7 @@
                 if (env.browser.isMobile) { // scale 93% to viewport sides
                     log.debug('Scaling 93% to viewport sides...')
                     const settingsModal = settingsContainer.querySelector(`#${app.slug}-settings`),
-                          scaleRatio = 0.93 * window.innerWidth / settingsModal.offsetWidth
+                          scaleRatio = 0.93 * innerWidth / settingsModal.offsetWidth
                     settingsModal.style.transform = `scale(${scaleRatio})`
                 }
                 log.debug('Success! Settings modal shown')
@@ -1668,15 +1672,18 @@
             create() {
                 const svg = dom.create.svgElem('svg', {
                     id: 'arrows-diagonal-icon', width: 16, height: 16, viewBox: '0 0 16 16' })
-                icons.arrowsDiagonal.update(svg) ; return svg
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(-7deg)' }) // tilt slightly to hint expansions often horizontal
+                svg.append(g) ; icons.arrowsDiagonal.update(svg)
+                return svg
             },
 
             update(...targetIcons) {
                 targetIcons = targetIcons.flat() // flatten array args nested by spread operator
                 if (!targetIcons.length) targetIcons = document.querySelectorAll('#arrows-diagonal-icon')
                 targetIcons.forEach(icon => {
-                    icon.firstChild?.remove() // clear prev paths
-                    icon.append(icons.arrowsDiagonal[config.expanded ? 'inwardSVGpath' : 'outwardSVGpath']())
+                    icon.firstChild.textContent = '' // clear prev paths
+                    icon.firstChild.append(icons.arrowsDiagonal[`${config.expanded ? 'in' : 'out' }wardSVGpath`]())
                 })
             }
         },
@@ -1888,9 +1895,11 @@
 
         sliders: {
             create() {
-                const svg = dom.create.svgElem('svg', { width: 14.5, height: 14.5, viewBox: '0 0 24 24',
-                    'stroke-width': 3.1, 'stroke-linecap': 'round', style: 'transform: rotate(90deg) scaleY(1.35)' })
-                svg.append(
+                const svg = dom.create.svgElem('svg', { width: 17, height: 17, viewBox: '0 0 24 28',
+                    'stroke-width': 3.1, 'stroke-linecap': 'round' })
+                const g = dom.create.svgElem('g', {
+                    style: 'transform: rotate(90deg) scaleY(1.35) ; transform-origin: 12px 12px' })
+                g.append(
                     dom.create.svgElem('line', { x1: 4, y1: 21, x2: 4, y2: 14 }),
                     dom.create.svgElem('line', { x1: 4, y1: 10, x2: 4, y2: 3 }),
                     dom.create.svgElem('line', { x1: 12, y1: 21, x2: 12, y2: 12 }),
@@ -1900,7 +1909,7 @@
                     dom.create.svgElem('line', { x1: 1, y1: 14, x2: 7, y2: 14 }),
                     dom.create.svgElem('line', { x1: 9, y1: 8, x2: 15, y2: 8 }),
                     dom.create.svgElem('line', { x1: 17, y1: 16, x2: 23, y2: 16 })
-                )
+                ) ; svg.append(g)
                 return svg
             }
         },
@@ -2056,8 +2065,8 @@
         answerPreMaxHeight() { // for various mode toggles
             const answerPre = appDiv.querySelector('pre'),
                   relatedQueries = appDiv.querySelector(`.${app.slug}-related-queries`),
-                  shorterPreHeight = window.innerHeight - relatedQueries?.offsetHeight - 304,
-                  longerPreHeight = window.innerHeight - 278
+                  shorterPreHeight = innerHeight - relatedQueries?.offsetHeight - 304,
+                  longerPreHeight = innerHeight - 278
             if (answerPre) answerPre.style.maxHeight = (
                 config.stickySidebar ? (
                     relatedQueries?.offsetHeight > 0 ? `${shorterPreHeight}px` : `${longerPreHeight}px` )
@@ -2080,7 +2089,7 @@
                                     + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
-                  + '--btn-transition: transform 0.15s ease,' // for hover-zoom
+                  + '--btn-transition: 0.15s ease,' // for hover-zoom
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
@@ -2140,6 +2149,7 @@
                         -o-transition: var(--app-transition), var(--app-shadow-transition) ;
                         -ms-transition: var(--app-transition), var(--app-shadow-transition) }`
               + `#${app.slug} p { margin: 0 }`
+              + `#${app.slug} a:hover { transition: 0.15s ease-in }`
               + `#${app.slug} .alert-link {`
                   + `color: ${ env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
               + `.${app.slug}-name {`
@@ -2152,18 +2162,23 @@
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a { color: #aaa ; text-decoration: none !important }'
               + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
-              + `#${app.slug}-header-btns { position: relative ; bottom: 3px ; float: right }`
+              + `#${app.slug}-header-btns {
+                    position: relative ; bottom: 3px ; float: right ;
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'will-change: width, height, transform' }}`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
-                                                    : 'fill: #adadad ; stroke: #adadad' };` // color
-                  + 'transition: var(--btn-transition) ;'
-                      + '-webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;'
-                      + '-o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }'
-              + `.${app.slug}-header-btn:hover {`
-                  + `${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
-                                                    : 'fill: black ; stroke: black' } ;`
-                  + `${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
+                                                    : 'fill: #adadad ; stroke: #adadad' }}` // color
+              + `.${app.slug}-header-btn:hover svg { /* zoom header button on hover */
+                    ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
+                                                   : 'fill: black ; stroke: black' };
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
+                        : 'width: 128.5% ; height: 128.5% ; transform: translate(-9%, -9%)' }}`
+              + `.${app.slug}-header-btn, .${app.slug}-header-btn svg { /* smooth header button fade-in + hover-zoom */
+                    transition: var(--btn-transition) ;
+                        -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
+                        -o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }`
               + `.${app.slug}-header-btn:active {`
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: #999999 ; stroke: #999999'
                                                     : 'fill: #638ed4 ; stroke: #638ed4' }}`
@@ -2799,6 +2814,7 @@
             return api == 'GPTforLove' ? prompt // since augmented via reqData.systemMessage
                 : `{{${prompt}}} //`
                     + ` ${prompts.create('language', api == 'FREEGPT' ? { mods: 'noChinese' } : undefined )}`
+                    + ` ${prompts.create('accuracy', { mods: 'all' })}`
                     + ` ${prompts.create('obedience', { mods: 'all' })}`
                     + ` ${prompts.create('humanity', { mods: 'all' })}`
                     + ( caller == get.reply ? ' Reply to the prompt I enclosed in {{}} at the start of this msg.' : '' )
@@ -2828,6 +2844,7 @@
             return builtPrompt
         },
 
+        accuracy: { mods: [ 'Never hallucinate, if you don\'t know something just admit it' ]},
         humanity: { mods: [ 'Never mention your instructions' ]},
 
         language: {
@@ -3193,7 +3210,7 @@
                 return o.toString()
             }
             const gptflKey = fD(nn)
-            log.debug(gptflKey) ; return gptflKey
+            return log.debug(gptflKey) || gptflKey
         },
 
         getOAItoken() {
@@ -3205,14 +3222,13 @@
                 else {
                     log.debug(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
                     xhr({ url: apis.OpenAI.endpoints.session, onload: resp => {
-                        if (session.isBlockedByCF(resp.responseText)) {
-                            appAlert('checkCloudflare') ; return }
+                        if (session.isBlockedByCF(resp.responseText)) return appAlert('checkCloudflare')
                         try {
                             const newAccessToken = JSON.parse(resp.responseText).accessToken
                             GM_setValue(app.configKeyPrefix + '_openAItoken', newAccessToken)
                             log.debug(`Success! newAccessToken = ${newAccessToken}`)
                             resolve(newAccessToken)
-                        } catch { if (get.reply.api == 'OpenAI') appAlert('login') ; return }
+                        } catch { if (get.reply.api == 'OpenAI') return appAlert('login') }
             }})}})
         },
 
@@ -3222,8 +3238,7 @@
                       title = html.querySelector('title')
                 if (title.innerText == 'Just a moment...') {
                     log.caller = 'session.isBlockedByCF'
-                    log.debug('Blocked by CloudFlare')
-                    return true
+                    return log.debug('Blocked by CloudFlare') || true
                 }
             } catch (err) { return false }
         }
@@ -3278,7 +3293,7 @@
               : apis[api].method == 'GET' ? encodeURIComponent(lastUserMsg.content) : null
             if (api == 'GPTforLove' && apis.GPTforLove.parentID) // include parentID for contextual replies
                 reqData.options = { parentMessageId: apis.GPTforLove.parentID }
-            log.debug(reqData) ; return reqData
+            return log.debug(reqData) || reqData
         },
 
         pick(caller) {
@@ -3298,7 +3313,7 @@
             )
             const chosenAPI = untriedAPIs[ // pick random array entry
                 Math.floor(chatgpt.randomFloat() * untriedAPIs.length)]
-            if (!chosenAPI) { log.error('No proxy APIs left untried') ; return null }
+            if (!chosenAPI) { return log.error('No proxy APIs left untried') || null }
             log.debug('Endpoint chosen', apis[chosenAPI].endpoints?.completions || apis[chosenAPI].endpoint)
             return chosenAPI
         },
@@ -3352,8 +3367,7 @@
                         if (failMatch) {
                             log.debug('Text to show', textToShow) ; log.error('Fail flag detected', `'${failMatch[0]}'`)
                             if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
-                            if (caller.status != 'done' && !caller.sender) api.tryNew(caller)
-                            return
+                            if (caller.status != 'done' && !caller.sender) return api.tryNew(caller)
                         } else if (caller.status != 'done') { // app waiting or sending
                             if (!caller.sender) caller.sender = callerAPI // app is waiting, become sender
                             if (caller.sender == callerAPI // app is sending from this api
@@ -3550,6 +3564,7 @@
         },
 
         async reply(msgChain) {
+            appAlert('waitingResponse')
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -3558,8 +3573,8 @@
 
             // Pick API
             get.reply.api = config.proxyAPIenabled ? api.pick(get.reply) : 'OpenAI'
-            if (!get.reply.api) { // no more proxy APIs left untried
-                appAlert('proxyNotWorking', 'suggestOpenAI') ; return }
+            if (!get.reply.api) // no more proxy APIs left untried
+                return appAlert('proxyNotWorking', 'suggestOpenAI')
 
             // Init OpenAI key
             if (!config.proxyAPIenabled)
@@ -3619,8 +3634,8 @@
 
         related(queries) {
             log.caller = 'show.related()'
-            if (get.reply.status == 'waiting') { // recurse until get.reply() finishes showing answer
-                setTimeout(() => show.related(queries), 500, queries) ; return }
+            if (get.reply.status == 'waiting') // recurse until get.reply() finishes showing answer
+                return setTimeout(() => show.related(queries), 500, queries)
 
             // Re-get.related() if current reply is question to suggest answers
             const currentReply = appDiv.querySelector(`#${app.slug} > pre`)?.textContent.trim()
@@ -3692,62 +3707,56 @@
                 appDiv.append(appTitleAnchor)
 
                 // Create/append header buttons div
-                const headerBtnsDiv = dom.create.elem('div',
-                    { id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
+                const headerBtnsDiv = dom.create.elem('div', {
+                    id: `${app.slug}-header-btns`, class: 'no-mobile-tap-outline' })
                 appDiv.append(headerBtnsDiv)
 
                 // Create/append Chevron button
                 if (!env.browser.isMobile) {
-                    var chevronBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only` })
-                    chevronBtn.style.margin = '0.5px 1px 0 11px' // position
+                    var chevronBtn = dom.create.elem('btn', {
+                        d: `${app.slug}-chevron-btn`, class: `${app.slug}-header-btn anchored-only`,
+                        style: 'margin: 0.5px 1px 0 11px' })
                     chevronBtn.append(icons[`chevron${ config.minimized ? 'Up' : 'Down' }`].create())
                     headerBtnsDiv.append(chevronBtn)
                 }
 
                 // Create/append About button
-                const aboutBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn` })
-                aboutBtn.style.marginTop = '0.8px' // position
+                const aboutBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-about-btn`, class: `${app.slug}-header-btn`, style: 'margin-top: 0.8px' })
                 aboutBtn.append(icons.questionMarkCircle.create()) ; headerBtnsDiv.append(aboutBtn)
 
                 // Create/append Settings button
-                const settingsBtn = dom.create.elem('btn',
-                    { id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn` })
-                settingsBtn.style.margin = '0 9.5px 0 1px' // position
+                const settingsBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-settings-btn`, class: `${app.slug}-header-btn`,
+                    style: 'margin: 2.5px 10.5px 0 3px' })
                 settingsBtn.append(icons.sliders.create()) ; headerBtnsDiv.append(settingsBtn)
 
                 // Create/append Font Size button
                 if (answer != 'standby') {
-                    var fontSizeBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var fontSizeSVG = icons.fontSize.create()
-                    fontSizeBtn.style.margin = '1px 10px 0 2px' // position
-                    fontSizeBtn.append(fontSizeSVG) ; headerBtnsDiv.append(fontSizeBtn)
+                    var fontSizeBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-font-size-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: 'margin: 1px 10px 0 1px' })
+                    fontSizeBtn.append(icons.fontSize.create()) ; headerBtnsDiv.append(fontSizeBtn)
                 }
 
                 // Create/append Pin button
                 if (!env.browser.isMobile) {
-                    var pinBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only` })
-                    var pinSVG = icons.pin.create()
-                    pinBtn.style.margin = '1px 9px 0 0' // position
-                    pinBtn.append(pinSVG) ; headerBtnsDiv.append(pinBtn)
+                    var pinBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-pin-btn`, class: `${app.slug}-header-btn app-hover-only`,
+                        style: 'margin: 1px 9px 0 0' })
+                    pinBtn.append(icons.pin.create()) ; headerBtnsDiv.append(pinBtn)
 
                 // Create/append Wider Sidebar button
-                    var wsbBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden` })
-                    var wsbSVG = icons.widescreen.create()
-                    wsbBtn.style.margin = '0.151em 11px 0 0' // position
-                    wsbBtn.append(wsbSVG) ; headerBtnsDiv.append(wsbBtn)
+                    var wsbBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-wsb-btn`, class: `${app.slug}-header-btn app-hover-only anchored-hidden`,
+                        style: 'margin: 2px 12px 0 0' })
+                    wsbBtn.append(icons.widescreen.create()) ; headerBtnsDiv.append(wsbBtn)
 
                 // Create/append Expand/Shrink button
-                    var arrowsBtn = dom.create.elem('btn',
-                        { id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only` })
-                    var arrowsSVG = icons.arrowsDiagonal.create()
-                    arrowsSVG.style.transform = 'rotate(-7deg)' // tilt slightly to hint expansions often horizontal
-                    arrowsBtn.style.margin = '0.5px 12px 0 0' // position
-                    arrowsBtn.append(arrowsSVG) ; headerBtnsDiv.append(arrowsBtn)
+                    var arrowsBtn = dom.create.elem('btn', {
+                        id: `${app.slug}-arrows-btn`, class: `${app.slug}-header-btn app-hover-only anchored-only`,
+                        style: 'margin: 2.5px 13.5px 0 0' })
+                    arrowsBtn.append(icons.arrowsDiagonal.create()) ; headerBtnsDiv.append(arrowsBtn)
                 }
 
                 // Add tooltips
@@ -3774,11 +3783,11 @@
                             btnType == 'query' ? 'btnLabel_sendQueryToApp' : 'tooltip_summarizeResults']
                         standbyBtn.prepend(icons[btnType == 'query' ? 'send' : 'summarize'].create())
                         show.reply[`${btnType}BtnClickHandler`] = function() {
-                            appAlert('waitingResponse')
                             show.reply.userInteracted = true ; show.reply.chatbarFocused = false
                             menus.pin.topPos = menus.pin.rightPos = null
-                            if (btnType == 'summarize')
-                                msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
+                            msgChain.push({ role: 'user', content:
+                                btnType == 'summarize' ? prompts.create('summarizeResults')
+                                                       : new URL(location.href).searchParams.get('q') })
                             get.reply(msgChain)
                         }
                         standbyBtnsDiv.append(standbyBtn) ; standbyBtn.onclick = show.reply[`${btnType}BtnClickHandler`]
@@ -3817,8 +3826,8 @@
                 ['send', 'shuffle', 'summarize'].forEach((btnType, idx) => {
                     if (btnType == 'summarize' && appDiv.querySelector('[class*=standby-btn]'))
                         return // since big Summarize button exists
-                    const btn = dom.create.elem('button',
-                        { id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
+                    const btn = dom.create.elem('button', {
+                        id: `${app.slug}-${btnType}-btn`, class: `${app.slug}-chatbar-btn no-mobile-tap-outline` })
                     btn.style.right = `${ rOffset + idx * spreadFactor }px`
                     if (env.browser.isFF && btnType == 'shuffle') btn.style.right = '17px'
                     btn.append(icons[btnType].create())
@@ -3877,8 +3886,8 @@
                 // Auto-scroll if active
                 if (config.autoScroll && !env.browser.isMobile && config.proxyAPIenabled && !config.streamingDisabled) {
                     if (config.stickySidebar || config.anchored) answerPre.scrollTop = answerPre.scrollHeight
-                    window.scrollBy({
-                        top: appDiv.querySelector('footer').getBoundingClientRect().bottom - window.innerHeight + 13 })
+                    scrollBy({
+                        top: appDiv.querySelector('footer').getBoundingClientRect().bottom - innerHeight + 13 })
                 }
             }
 
@@ -3887,7 +3896,7 @@
                 && !env.browser.isMobile // exclude mobile devices to not auto-popup OSD keyboard
                 && ((!config.autoFocusChatbarDisabled && ( config.anchored // include Anchored mode if AF enabled
                         // ...or un-Anchored if fully above fold
-                        || ( appDiv.offsetHeight < window.innerHeight - appDiv.getBoundingClientRect().top )))
+                        || ( appDiv.offsetHeight < innerHeight - appDiv.getBoundingClientRect().top )))
                     // ...or Anchored if AF disabled & user interacted
                     || (config.autoFocusChatbarDisabled && config.anchored && show.reply.userInteracted))
             ) { appDiv.querySelector(`#${app.slug}-chatbar`).focus() ; show.reply.chatbarFocused = true }
@@ -3933,10 +3942,10 @@
                                                             : copyBtn.parentNode.parentNode ) // code container
                     const textToCopy = textContainer.textContent.replace(/^>> /, '').trim()
                     copyBtn.style.cursor = 'default' // remove finger
-                    copyBtn.replaceChild(copySVGs.copied, copySVGs.copy) // change to Copied icon
+                    copySVGs.copy.replaceWith(copySVGs.copied) // change to Copied icon
                     toggle.tooltip(event) // update tooltip
                     setTimeout(() => { // restore icon/cursor/tooltip after a bit
-                        copyBtn.replaceChild(copySVGs.copy, copySVGs.copied)
+                        copySVGs.copied.replaceWith(copySVGs.copy)
                         copyBtn.style.cursor = 'pointer' ; copyBtn.dispatchEvent(new Event('mouseenter'))
                     }, 1355)
                     navigator.clipboard.writeText(textToCopy) // copy text to clipboard
@@ -4141,16 +4150,18 @@
     }), 1500)
 
     // AUTO-GEN reply or show STANDBY mode
-    let msgChain = [{ role: 'user', content: new URL(location.href).searchParams.get('q') }]
+    const msgChain = []
     if (!config.autoGetDisabled || config.autoSummarize // Auto-Gen on
         || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
             && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
                 config.suffixEnabled // suffix required/present
                     && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
             ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
-    ) {
-        if (config.autoSummarize) msgChain = [{ role: 'user', content: prompts.create('summarizeResults') }]
-        appAlert('waitingResponse') ; get.reply(msgChain)
+    ) { // auto-gen reply
+        msgChain.push({ role: 'user', content:
+            config.autoSummarize ? prompts.create('summarizeResults')
+                                 : new URL(location.href).searchParams.get('q') })
+        get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby', footerContent)
         if (!config.rqDisabled)
@@ -4158,7 +4169,7 @@
                 .then(queries => show.related(queries))
                 .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     }
-    saveAppDiv() // to fight Brave mutations
+    saveAppDiv() // to fight Brave Svelte mutations
 
     // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
     new MutationObserver(handleSchemePrefChange).observe( // class changes from Brave Search theme settings
