@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.6.2
+// @version                2025.3.6.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1717,7 +1717,6 @@
                         -o-transition: var(--app-transition), var(--app-shadow-transition) ;
                         -ms-transition: var(--app-transition), var(--app-shadow-transition) }`
               + `#${app.slug} p { margin: 0 }`
-              + `#${app.slug} a:hover { transition: 0.15s ease-in }`
               + `#${app.slug} .alert-link { color: ${
                     env.ui.app.scheme == 'light' ? '#190cb0' : 'white ; text-decoration: underline' }}`
               + `.${app.slug}-name, .${app.slug}-name:hover {`
@@ -1729,7 +1728,8 @@
                         -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
                         -o-transition: var(--transition) ; -ms-transition: var(--transition) }`
               + '.kudoai a, .kudoai a:visited { color: #aaa ; text-decoration: none !important } '
-              + `.kudoai a:hover { color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
+              + `.kudoai a:hover {
+                    transition: 0.15s ease-in ; color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.slug}-header-btns { float: right ; margin-top: -2px }`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
