@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.6.3
+// @version                2025.3.7
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -484,7 +484,6 @@
             let msg = app.alerts[alert] || alert // use string verbatim if not found in app.alerts
             if (idx > 0) msg = ' ' + msg // left-pad 2nd+ alerts
             if (msg.includes(app.alerts.login)) session.deleteOpenAIcookies()
-            if (msg.includes(app.alerts.waitingResponse)) alertP.classList.add('loading')
 
             // Add login link to login msgs
             if (msg.includes('@'))
@@ -1751,8 +1750,11 @@
                     `#${app.slug}-logo, .${app.slug}-header-btn svg {`
                       + `filter: drop-shadow(${ env.ui.app.scheme == 'dark' ? '#7171714d 10px'
                                                                             : '#aaaaaa21 7px' } 7px 3px) }` ))
-              + `#${app.slug} .loading {`
-                  + 'color: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }'
+              + `#${app.slug} .loading {
+                    color: #b6b8ba ; fill: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }`
+              + `#${app.slug} .loading svg { /* loading spinner */
+                    position: relative ; top: 2px ; margin-right: 6px ;
+                    animation: rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44) }`
               + `#${app.slug}.sidebar-free { margin-left: 60px ; height: fit-content }`
               + `#${app.slug}-font-size-slider-track {`
                   + 'width: 98% ; height: 7px ; margin: -6px auto -13px ; padding: 15px 0 ;'
@@ -2030,16 +2032,6 @@
                     msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
-
-                    // Hide/remove elems
-                    toggle.tooltip('off') // hide chatbar button tooltips
-
-                    // Show loading status
-                    const replySection = appDiv.querySelector('section')
-                    replySection.classList.add('loading', 'no-user-select')
-                    replySection.innerText = app.alerts.waitingResponse
-
-                    // Reset flags
                     show.reply.chatbarFocused = false ; show.reply.userInteracted = true
                 }
             }
@@ -2747,7 +2739,17 @@
         },
 
         async reply(msgChain) {
-            appAlert('waitingResponse')
+
+            // Show loading status
+            let loadingElem
+            if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
+                appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
+                loadingElem = appDiv.querySelector('section')
+                loadingElem.innerText = app.alerts.waitingResponse
+            } else { // fill whole app div
+                appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
+            loadingElem.classList.add('loading', 'no-user-select')
+            loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
 
             // Init API attempt props
             get.reply.status = 'waiting'
@@ -3024,13 +3026,6 @@
                 if (config.fgAnimationsDisabled) regenSVGwrapper.style.transform = 'rotate(90deg)'
                 else regenSVGwrapper.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)'
                 toggle.tooltip(event) // update tooltip
-
-                // Show loading status
-                const replySection = appDiv.querySelector('section')
-                replySection.classList.add('loading', 'no-user-select')
-                replySection.innerText = app.alerts.waitingResponse
-
-                // Reset flags
                 show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
             }
 
