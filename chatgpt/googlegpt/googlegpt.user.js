@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.8.3
+// @version                  2025.3.8.4
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3735,8 +3735,6 @@
                 appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
             loadingElem.classList.add('loading', 'no-user-select')
             loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
-
-            //if (src == 'regen') await new Promise(resolve => setTimeout(resolve, 11111000)) // delay regen for effect
 
             // Init API attempt props
             get.reply.status = 'waiting'
