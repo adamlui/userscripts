@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.8
+// @version               2025.3.8.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3644,7 +3644,8 @@
 
             // Re-get.related() if current reply is question to suggest answers
             const currentReply = appDiv.querySelector(`#${app.slug} > pre`)?.textContent.trim()
-            if (show.reply.src != 'shuffle' && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
+            if (!/shuffle|summarize/i.test(show.reply.src)
+                    && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
                 log.debug('Re-getting related queries to answer reply question...')
                 get.related.replyIsQuestion = true
                 get.related(currentReply).then(queries => show.related(queries))
