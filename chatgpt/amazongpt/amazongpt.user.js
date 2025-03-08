@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.7
+// @version                2025.3.8
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2746,7 +2746,7 @@
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.innerText = app.alerts.waitingResponse
-            } else { // fill whole app div
+            } else { // replace app div w/ alert
                 appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
             loadingElem.classList.add('loading', 'no-user-select')
             loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
@@ -2884,9 +2884,9 @@
             // Build reply section if missing
             if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
 
-                // Init/clear reply section content/classes
+                // Init/clear user reply section content/classes/style
                 const replySection = appDiv.querySelector('section') || dom.create.elem('section')
-                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
+                replySection.textContent = replySection.className = replySection.style = ''
 
                 // Create/append section elems
                 const replyForm = dom.create.elem('form')
@@ -2895,7 +2895,7 @@
                     id: `${app.slug}-chatbar`, rows: 1, placeholder: `${app.msgs.tooltip_sendReply}...` })
                 continueChatDiv.append(chatTextarea)
                 replyForm.append(continueChatDiv) ; replySection.append(replyForm)
-                appDiv.append(replySection);
+                appDiv.querySelector('pre').after(replySection);
 
                 // Create/append chatbar buttons
                 ['send', 'shuffle'].forEach(btnType => {
