@@ -219,7 +219,7 @@
 // @description:zu      ⚡ Terus menghasilkan imibuzo eminingi ye-ChatGPT ngokwesizulu
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.8
+// @version             2025.3.8.1
 // @license             MIT
 // @icon                https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon48.png?v=8b39fb4
 // @icon64              https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/with-robot/icon64.png?v=8b39fb4
@@ -231,6 +231,7 @@
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@274036c/chromium/extension/components/modals.js#sha256-8r+vAOuNqGSqk71EI5DlGyXbTLtcD21v64naKRJF5RI=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@762a364/chromium/extension/lib/dom.js#sha256-U+SUWAkqLIY6krdR2WPhVy5/f+cTV03n3F8b+Y+/Py0=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@c2aac90/chromium/extension/lib/settings.js#sha256-TuYeKA5lzdAQdgsZgR7TjlUamABhWwdfVgZsPM0+IJM=
+// @require             https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@80e800c/chromium/extension/lib/ui.js#sha256-/szI0bDpLL1aVTrc29iyToff58VMfeM/lSyjHWTipt0=
 // @resource rpgCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/gray.min.css?v=727feff#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://assets.aiwebextensions.com/styles/rising-particles/dist/white.min.css?v=727feff#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_setValue
@@ -263,7 +264,7 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        ui: { scheme: getScheme() }
+        ui: { scheme: ui.getScheme() }
     }
     env.browser.isPortrait = env.browser.isMobile && (innerWidth < innerHeight)
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
@@ -488,11 +489,6 @@
         setTimeout(checkBtnsToClick, continueBtnClicked ? 5000 : 500)
     }
 
-    function getScheme() {
-        return document.documentElement.className
-          || ( window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' )
-    }
-
     function syncConfigToUI() { toolbarMenu.refresh() /* prefixes/suffixes */ }
 
     // Run MAIN routine
@@ -526,7 +522,7 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
-        const displayedScheme = getScheme()
+        const displayedScheme = ui.getScheme()
         if (env.ui.scheme != displayedScheme) { env.ui.scheme = displayedScheme ;  modals.stylize() }
     }
 
