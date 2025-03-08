@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.7
+// @version               2025.3.8
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3478,7 +3478,7 @@
             if (caller.attemptCnt < Object.keys(apis).length -+(caller == get.reply)) {
                 log.debug('Trying another endpoint...')
                 caller.attemptCnt++
-                caller(caller == get.reply ? msgChain : get.related.query)
+                caller(caller == get.reply ? msgChain : get.related.query, caller.src ? { src: caller.src } : undefined)
                     .then(result => { if (caller == get.related) show.related(result) ; else return })
             } else {
                 log.debug('No remaining untried endpoints')
@@ -3553,16 +3553,18 @@
             })
         },
 
-        async reply(msgChain) {
+        async reply(msgChain, { src = null } = {}) {
 
             // Show loading status
             let loadingElem
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
-                appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
+                const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
+                if (!/regen|summarize/i.test(src)) rqDiv?.remove() // clear RQs to re-get later
                 appDiv.querySelector('footer').textContent = '' // clear footer
                 loadingElem = appDiv.querySelector('section')
+                loadingElem.style.margin = `13px 0 ${ rqDiv?.isConnected ? ( env.browser.isFF ? -19 : -10 ) : -55 }px`
                 loadingElem.innerText = app.alerts.waitingResponse
-            } else { // fill whole app div
+            } else { // replace app div w/ alert
                 appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
             loadingElem.classList.add('loading', 'no-user-select')
             loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
@@ -3590,7 +3592,7 @@
                         && get.reply.status != 'done' && !get.reply.sender // still no reply received
                         && get.reply.api == iniAPI // not already trying diff API from err
                         && get.reply.triedAPIs.length != Object.keys(apis).length -1 // untried APIs remain
-                    ) api.tryNew(get.reply, 'timeout')
+                    ) { get.reply.src = src ; api.tryNew(get.reply, 'timeout') }
                 }, config.streamingDisabled ? 10000 : 7000)
             }
 
@@ -3619,11 +3621,13 @@
             else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
             xhr(xhrConfig)
 
-            // Get/show related queries if enabled on 1st get.reply()
-            if (!config.rqDisabled && get.reply.attemptCnt == 1)
-                get.related(msgChain[msgChain.length - 1].content)
-                    .then(queries => show.related(queries))
-                    .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
+            // Get/show related queries
+            if (!config.rqDisabled // ...if enabled
+                && !appDiv.querySelector(`.${app.slug}-related-queries`) // + missing
+                && get.reply.attemptCnt == 1 // + on 1st get.reply() attempt only
+            ) get.related(msgChain[msgChain.length - 1].content)
+                .then(queries => show.related(queries))
+                .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
 
             update.footerContent()
         }
@@ -3789,7 +3793,7 @@
                             msgChain.push({ role: 'user', content:
                                 btnType == 'summarize' ? prompts.create('summarizeResults')
                                                        : new URL(location.href).searchParams.get('q') })
-                            get.reply(msgChain)
+                            get.reply(msgChain, { src: btnType })
                         }
                         standbyBtnsDiv.append(standbyBtn) ; standbyBtn.onclick = show.reply[`${btnType}BtnClickHandler`]
                     })
@@ -3806,9 +3810,9 @@
             // Build reply section if missing
             if (!appDiv.querySelector(`#${app.slug}-chatbar`)) {
 
-                // Init/clear reply section content/classes
+                // Init/clear user reply section content/classes/style
                 const replySection = appDiv.querySelector('section') || dom.create.elem('section')
-                replySection.textContent = '' ; replySection.classList.remove('loading', 'no-user-select')
+                replySection.textContent = replySection.className = replySection.style = ''
 
                 // Create/append section elems
                 const replyForm = dom.create.elem('form')
@@ -3967,7 +3971,7 @@
             regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
             if (!env.browser.isMobile) regenBtn.onmouseenter = regenBtn.onmouseleave = toggle.tooltip
             regenBtn.onclick = event => {
-                get.reply(msgChain)
+                get.reply(msgChain, { src: 'regen' })
                 regenSVGwrapper.style.cursor = 'default' // disable finger cursor
                 if (config.fgAnimationsDisabled) regenSVGwrapper.style.transform = 'rotate(90deg)'
                 else regenSVGwrapper.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)'
