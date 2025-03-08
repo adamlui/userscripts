@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.8.2
+// @version               2025.3.8.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2088,7 +2088,7 @@
                                     + 'bottom 0.1s cubic-bezier(0,0,0.2,1),' // smoothen Anchor Y min/restore
                                     + 'width 0.167s cubic-bezier(0,0,0.2,1) ;' // smoothen Anchor X expand/shrink
                   + '--app-shadow-transition: box-shadow 0.15s ease ;' // for app:hover to not trigger on hover-off
-                  + '--btn-transition: 0.15s ease,' // for hover-zoom
+                  + '--btn-transition: transform 0.15s ease,' // for hover-zoom
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
@@ -2163,8 +2163,7 @@
                     transition: 0.15s ease-in ; color: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }}`
               + `#${app.slug}-header-btns {
                     position: relative ; bottom: 3px ; float: right ;
-                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
-                        : 'will-change: width, height, transform' }}`
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'will-change: transform' }}`
               + `.${app.slug}-header-btn {`
                   + 'float: right ; cursor: pointer ; position: relative ; top: 4px ;'
                   + `${ env.ui.app.scheme == 'dark' ? 'fill: white ; stroke: white'
@@ -2172,8 +2171,7 @@
               + `.${app.slug}-header-btn:hover svg { /* zoom header button on hover */
                     ${ env.ui.app.scheme == 'dark' ? 'fill: #d9d9d9 ; stroke: #d9d9d9'
                                                    : 'fill: black ; stroke: black' };
-                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? ''
-                        : 'width: 128.5% ; height: 128.5% ; transform: translate(-9%, -9%)' }}`
+                    ${ config.fgAnimationsDisabled || env.browser.isMobile ? '' : 'transform: scale(1.285)' }}`
               + `.${app.slug}-header-btn, .${app.slug}-header-btn svg { /* smooth header button fade-in + hover-zoom */
                     transition: var(--btn-transition) ;
                         -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
