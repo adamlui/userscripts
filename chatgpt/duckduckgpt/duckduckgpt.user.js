@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.1
+// @version                2025.3.8.2
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3046,7 +3046,7 @@
             settings.save('rqDisabled', !config.rqDisabled)
             update.rqVisibility()
             if (!config.rqDisabled && !appDiv.querySelector(`.${app.slug}-related-queries`)) // get related queries for 1st time
-                get.related(msgChain[msgChain.length - 1].content)
+                get.related(msgChain[msgChain.length - 1]?.content || searchQuery)
                     .then(queries => show.related(queries))
                     .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
             update.answerPreMaxHeight()
@@ -4138,7 +4138,7 @@
     }), 1500)
 
     // AUTO-GEN reply or show STANDBY mode
-    const msgChain = []
+    const msgChain = [], searchQuery = new URL(location.href).searchParams.get('q')
     if (config.autoGet || config.autoSummarize // Auto-Gen on
         || (config.prefixEnabled || config.suffixEnabled) // or Manual-Gen on
             && [config.prefixEnabled && /.*q=%2F/.test(location.href), // prefix required/present
@@ -4146,14 +4146,13 @@
                     && /.*q=.*(?:%3F|？|%EF%BC%9F)(?:&|$)/.test(location.href)
             ].filter(Boolean).length == (config.prefixEnabled + config.suffixEnabled) // validate both Manual-Gen modes
     ) { // auto-gen reply
-        msgChain.push({ role: 'user', content:
-            config.autoSummarize ? prompts.create('summarizeResults')
-                                 : new URL(location.href).searchParams.get('q') })
+        msgChain.push({
+            role: 'user', content: config.autoSummarize ? prompts.create('summarizeResults') : searchQuery })
         get.reply(msgChain)
     } else { // show Standby mode
         show.reply('standby')
         if (!config.rqDisabled)
-            get.related(msgChain[msgChain.length - 1].content)
+            get.related(searchQuery)
                 .then(queries => show.related(queries))
                 .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
     }
