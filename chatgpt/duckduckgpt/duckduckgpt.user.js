@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8
+// @version                2025.3.8.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3637,7 +3637,8 @@
 
             // Re-get.related() if current reply is question to suggest answers
             const currentReply = appDiv.querySelector(`#${app.slug} > pre`)?.textContent.trim()
-            if (show.reply.src != 'shuffle' && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
+            if (!/shuffle|summarize/i.test(show.reply.src)
+                    && !get.related.replyIsQuestion && /[?？]/.test(currentReply)) {
                 log.debug('Re-getting related queries to answer reply question...')
                 get.related.replyIsQuestion = true
                 get.related(currentReply).then(queries => show.related(queries))
