@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.8
+// @version             2025.3.8.1
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -301,6 +301,8 @@
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     ui.import({ site: env.site }) ; ui.getScheme().then(scheme => env.ui.scheme = scheme)
+    if (env.site == 'chatgpt') // store native chatbar width for Wider Chatbox style
+        chatbar.nativeWidth = dom.get.computedWidth(document.querySelector('main form'))
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
     // Init APP data
@@ -700,7 +702,7 @@
         }
     }
 
-    const tweaksStyle = dom.create.style()
+    const tweaksStyle = dom.create.style() ; env.ui.hasTallChatbar = await chatbar.is.tall()
     buttons.import({ appName: app.name, chatbar, env, sites, toggleMode, tooltip, tweaksStyle })
 
     const update = {
@@ -877,8 +879,6 @@
     // Create WIDESCREEN style
     const wideScreenStyle = dom.create.style(null, { id: 'wideScreen-mode' })
     if (!chatbar.get()) await dom.get.loadedElem(sites[env.site].selectors.input)
-    if (env.site == 'chatgpt') // store native chatbar width for Wider Chatbox style
-        chatbar.nativeWidth = dom.get.computedWidth(document.querySelector('main form'))
     update.style.wideScreen()
 
     // Create FULL-WINDOW style
