@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.1
+// @version                2025.3.8.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -3150,6 +3150,8 @@
         return log.debug('Exited from Captcha page')
     else if (document.querySelector('a > img[src*="/error"]'))
         return log.debug('Exited from 404 page')
+    else if (location.pathname.startsWith('/ap/'))
+        return log.debug('Exited from account-related page')
 
     // Create/ID/classify/listenerize/stylize APP container
     const appDiv = dom.create.elem('div', { id: app.slug, class: 'anchored fade-in' })
