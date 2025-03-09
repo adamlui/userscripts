@@ -235,7 +235,7 @@
 // @description:zu      Thuthukisa iChatGPT ngemodi zesikrini ezibanzi/egcwele/ephezulu + imodi yokuvimbela i-spam. Futhi isebenza ku-perplexity.ai + poe.com!
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.9.1
+// @version             2025.3.9.2
 // @license             MIT
 // @icon                https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon48.png?v=844b16e
 // @icon64              https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon64.png?v=844b16e
@@ -714,7 +714,8 @@
                     env.site == 'chatgpt' ? ( config.widerChatbox ? ''
                           : `main form { max-width: ${chatbar.nativeWidth}px !important ; margin: auto }`
                     ) : env.site == 'perplexity' && config.wideScreen ?
-                          `div[class*=col-span-8]:has(${sites[env.site].selectors.input}) { width: inherit }`
+                          `@media (min-width: 768px) {
+                              div[class*=col-span-8]:has(${sites[env.site].selectors.input}) { width: 155% }}`
                       : env.site == 'poe' ? ( config.widerChatbox && config.wideScreen ?
                           '[class^=ChatPageMainFooter_footerInner] { width: 98% ; margin-right: 15px }' : ''
                     ) : ''
