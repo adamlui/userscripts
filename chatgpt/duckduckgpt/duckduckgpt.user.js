@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.5
+// @version                2025.3.8.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3907,8 +3907,9 @@
 
             // Add Copy buttons
             appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
-                const copyBtn = dom.create.elem('btn') ; copyBtn.style.cssText = baseBtnStyles + 'display: flex'
-                Object.assign(copyBtn, { id: `${app.slug}-copy-btn`, className: 'no-mobile-tap-outline' })
+                const copyBtn = dom.create.elem('btn', {
+                    id: `${app.slug}-copy-btn`, class: 'no-mobile-tap-outline',
+                    style: baseBtnStyles + 'display: flex' })
                 const copySVGs = { copy: icons.copy.create(parentElem), copied: icons.checkmarkDouble.create() }
                 Object.entries(copySVGs).forEach(([svgType, svg]) => svg.id = `${app.slug}-${svgType}-icon`)
                 copySVGs.copied.style.marginLeft = '1px' // set same left boundary as Copy icon to not shift other ones
@@ -3916,8 +3917,7 @@
 
                 // Wrap code button in div for v-offset
                 if (parentElem.tagName == 'CODE') {
-                    elemToPrepend = dom.create.elem('div')
-                    elemToPrepend.style.cssText = 'height: 11px ; margin: 2px 3px 0 0'
+                    elemToPrepend = dom.create.elem('div', { style: 'height: 11px ; margin: 2px 3px 0 0' })
                     elemToPrepend.append(copyBtn)
                 }
 
@@ -3945,10 +3945,11 @@
             })
 
             // Add Regenerate button
-            const regenBtn = dom.create.elem('btn', { id: `${app.slug}-regen-btn`, class: 'no-mobile-tap-outline' })
-            regenBtn.style.cssText = baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px';
-            const regenSVGwrapper = dom.create.elem('div') // to rotate while respecting ini icon tilt
-            regenSVGwrapper.style.display = 'flex' // wrap the icon tightly
+            const regenBtn = dom.create.elem('btn', {
+                id: `${app.slug}-regen-btn`, class: 'no-mobile-tap-outline',
+                style: baseBtnStyles + 'position: relative ; top: 1px ; margin: 0 9px 0 5px' })
+            const regenSVGwrapper = dom.create.elem('div', { // to spin while respecting ini icon tilt
+                style: 'display: flex' }) // wrap the icon tightly
             const regenSVG = icons.arrowsCyclic.create();
             ['width', 'height'].forEach(attr => regenSVG.setAttribute(attr, 17))
             regenSVGwrapper.append(regenSVG) ; regenBtn.append(regenSVGwrapper) ; cornerBtnsDiv.append(regenBtn)
@@ -3963,15 +3964,14 @@
             }
 
             // Add Speak button
-            const speakBtn = dom.create.elem('btn', { id: `${app.slug}-speak-btn`, class: 'no-mobile-tap-outline' })
-            speakBtn.style.cssText = baseBtnStyles + 'margin: -1px 3px 0 0'
-            const speakSVGwrapper = dom.create.elem('div') // to show 1 icon at a time during scroll
-            Object.assign(speakSVGwrapper.style, { width: '22px', height: '22px', overflow: 'hidden' })
-            const speakSVGscroller = dom.create.elem('div') // to scroll the icons
-            Object.assign(speakSVGscroller.style, {
-                display: 'flex', // align the SVGs horizontally
-                width: '41px', height: '22px' // rectangle to fit both icons
-            })
+            const speakBtn = dom.create.elem('btn', {
+                id: `${app.slug}-speak-btn`, class: 'no-mobile-tap-outline',
+                style: baseBtnStyles + 'margin: -1px 3px 0 0' })
+            const speakSVGwrapper = dom.create.elem('div', { // to show 1 icon at a time during scroll
+                style: 'width: 22px ; height: 22px ; overflow: hidden' })
+            const speakSVGscroller = dom.create.elem('div', { // to scroll the icons
+                style: `display: flex ; /* align the SVGs horizontally */
+                        width: 41px ; height: 22px /* rectangle to fit both icons */` })
             const speakSVGs = { speak: icons.soundwave.create() } ; speakSVGs.speak.id = `${app.slug}-speak-icon`;
             ['generating', 'playing'].forEach(state => {
                 speakSVGs[state] = []
