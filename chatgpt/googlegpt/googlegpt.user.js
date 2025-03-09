@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.8.4
+// @version                  2025.3.8.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -3723,9 +3723,8 @@
         async reply(msgChain, { src = null } = {}) {
 
             // Show loading status
-            let loadingElem
+            let loadingElem ; const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
-                const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
                 if (!/regen|summarize/i.test(src)) rqDiv?.remove() // clear RQs to re-get later
                 appDiv.querySelector('footer').textContent = '' // clear footer
                 loadingElem = appDiv.querySelector('section')
@@ -3788,13 +3787,11 @@
             else if (reqMethod == 'GET') xhrConfig.url += `?q=${reqData}`
             xhr(xhrConfig)
 
-            // Get/show related queries
-            if (!config.rqDisabled // ...if enabled
-                && !appDiv.querySelector(`.${app.slug}-related-queries`) // + missing
-                && get.reply.attemptCnt == 1 // + on 1st get.reply() attempt only
-            ) get.related(msgChain[msgChain.length - 1].content)
-                .then(queries => show.related(queries))
-                .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
+            // Get/show Related Queries if enabled/missing/on 1st get.reply() attempt only
+            if (!config.rqDisabled && !rqDiv && get.reply.attemptCnt == 1)
+                get.related(msgChain[msgChain.length - 1].content)
+                    .then(queries => show.related(queries))
+                    .catch(err => { log.error(err.message) ; api.tryNew(get.related) })
 
             update.footerContent()
         }
