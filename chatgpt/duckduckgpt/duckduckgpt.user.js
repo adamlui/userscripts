@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.6
+// @version                2025.3.8.7
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3803,7 +3803,8 @@
 
                 // Init/clear user reply section content/classes/style
                 const replySection = appDiv.querySelector('section') || dom.create.elem('section')
-                replySection.textContent = replySection.className = replySection.style = ''
+                if (replySection.className.includes('loading'))
+                    replySection.textContent = replySection.className = replySection.style = ''
 
                 // Create/append section elems
                 const replyForm = dom.create.elem('form')
