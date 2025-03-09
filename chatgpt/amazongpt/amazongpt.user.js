@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.2
+// @version                2025.3.8.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2745,10 +2745,10 @@
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.innerText = app.alerts.waitingResponse
+                loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
             } else { // replace app div w/ alert
                 appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
             loadingElem.classList.add('loading', 'no-user-select')
-            loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
 
             // Init API attempt props
             get.reply.status = 'waiting'
