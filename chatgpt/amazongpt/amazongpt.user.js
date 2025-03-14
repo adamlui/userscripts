@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.8.5
+// @version                2025.3.13
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1751,9 +1751,6 @@
                                                                             : '#aaaaaa21 7px' } 7px 3px) }` ))
               + `#${app.slug} .loading {
                     color: #b6b8ba ; fill: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }`
-              + `#${app.slug} .loading svg { /* loading spinner */
-                    position: relative ; top: 2px ; margin-right: 6px ;
-                    animation: rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44) }`
               + `#${app.slug}.sidebar-free { margin-left: 60px ; height: fit-content }`
               + `#${app.slug}-font-size-slider-track {`
                   + 'width: 98% ; height: 7px ; margin: -6px auto -13px ; padding: 15px 0 ;'
@@ -2740,15 +2737,20 @@
         async reply(msgChain) {
 
             // Show loading status
-            let loadingElem
+            const loadingSpinner = icons.arrowsCyclic.create() ; let loadingElem
+            loadingSpinner.style.cssText = 'position: relative ; top: 2px ; margin-right: 6px'
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
                 appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.innerText = app.alerts.waitingResponse
-                loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
+                loadingSpinner.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' // faster ver
             } else { // replace app div w/ alert
-                appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
+                appAlert('waitingResponse')
+                loadingElem = appDiv.querySelector(`#${app.slug}-alert`)
+                loadingSpinner.style.animation = 'rotate 2s infinite linear' // slower ver
+            }
             loadingElem.classList.add('loading', 'no-user-select')
+            loadingElem.prepend(loadingSpinner)
 
             // Init API attempt props
             get.reply.status = 'waiting'
