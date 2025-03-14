@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.8.8
+// @version                  2025.3.13
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2347,9 +2347,6 @@
               + `#${app.slug} .loading {
                     padding-bottom: 15px ; color: #b6b8ba ; fill: #b6b8ba ;
                     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }`
-              + `#${app.slug} .loading svg { /* loading spinner */
-                    position: relative ; top: 2px ; margin-right: 6px ;
-                    animation: rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44) }`
               + `#${app.slug}.sidebar-free { margin-left: 60px ; height: fit-content }`
               + `#${app.slug}-font-size-slider-track {`
                   + 'width: 98% ; height: 7px ; margin: 0 auto -15px ; padding: 15px 0 ;'
@@ -3723,17 +3720,24 @@
         async reply(msgChain, { src = null } = {}) {
 
             // Show loading status
-            let loadingElem ; const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
+            const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`),
+                  loadingSpinner = icons.arrowsCyclic.create()
+            let loadingElem
+            loadingSpinner.style.cssText = 'position: relative ; top: 2px ; margin-right: 6px'
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
                 if (!/regen|summarize/i.test(src)) rqDiv?.remove() // clear RQs to re-get later
                 appDiv.querySelector('footer').textContent = '' // clear footer
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.style.margin = `3px 0 -10px`
                 loadingElem.innerText = app.alerts.waitingResponse
-                loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
+                loadingSpinner.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' // faster ver
             } else { // replace app div w/ alert
-                appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
+                appAlert('waitingResponse')
+                loadingElem = appDiv.querySelector(`#${app.slug}-alert`)
+                loadingSpinner.style.animation = 'rotate 2s infinite linear' // slower ver
+            }
             loadingElem.classList.add('loading', 'no-user-select')
+            loadingElem.prepend(loadingSpinner)
 
             // Init API attempt props
             get.reply.status = 'waiting'
