@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.8.7
+// @version               2025.3.13
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -2186,9 +2186,6 @@
               + `#${app.slug} .loading {
                     margin-bottom: -55px ; /* offset vs. app div bottom-padding footer accomodation */
                     color: #b6b8ba ; fill: #b6b8ba ; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite }`
-              + `#${app.slug} .loading svg { /* loading spinner */
-                    position: relative ; top: 1px ; margin-right: 6px ;
-                    animation: rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44) }`
               + `#${app.slug} section.loading { padding: 0 0 14px 5px ; font-size: 90% }`
               + `#${app.slug}-font-size-slider-track {`
                   + 'width: 98% ; height: 7px ; margin: -8px auto -9px ; padding: 15px 0 ;'
@@ -3554,17 +3551,24 @@
         async reply(msgChain, { src = null } = {}) {
 
             // Show loading status
-            let loadingElem ; const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`)
+            const rqDiv = appDiv.querySelector(`.${app.slug}-related-queries`),
+                  loadingSpinner = icons.arrowsCyclic.create()
+            let loadingElem
+            loadingSpinner.style.cssText = 'position: relative ; top: 1px ; margin-right: 6px'
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
                 if (!/regen|summarize/i.test(src)) rqDiv?.remove() // clear RQs to re-get later
                 appDiv.querySelector('footer').textContent = '' // clear footer
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.style.margin = `13px 0 ${ rqDiv?.isConnected ? ( env.browser.isFF ? -19 : -10 ) : -55 }px`
                 loadingElem.innerText = app.alerts.waitingResponse
-                loadingElem.prepend(icons.arrowsCyclic.create()) // prepend spinner
+                loadingSpinner.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' // faster ver
             } else { // replace app div w/ alert
-                appAlert('waitingResponse') ; loadingElem = appDiv.querySelector(`#${app.slug}-alert`) }
+                appAlert('waitingResponse')
+                loadingElem = appDiv.querySelector(`#${app.slug}-alert`)
+                loadingSpinner.style.animation = 'rotate 2s infinite linear' // slower ver
+            }
             loadingElem.classList.add('loading', 'no-user-select')
+            loadingElem.prepend(loadingSpinner)
 
             // Init API attempt props
             get.reply.status = 'waiting'
