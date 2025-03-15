@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15
+// @version                2025.3.15.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -563,6 +563,10 @@
                 stateStyles[foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.site.scheme] }`
             styledStateSpan.append(foundState) ; notif.insertBefore(styledStateSpan, notif.children[2])
         }
+
+        // Overcome Amazon line-height off-centers text if no icon appended
+        if (!(notif.lastChild instanceof SVGElement))
+            Object.assign(notif.style, { lineHeight: 'normal', height: '61px' })
     }
 
     // Define MODAL functions
