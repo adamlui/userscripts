@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Праверыць абнаўленьні" },
   "btnLabel_update": { "message": "Абноўлена" },
   "btnLabel_dismiss": { "message": "Адхіліць" },
+  "btnLabel_visitPage": { "message": "Наведайце старонку даведкі" },
   "link_viewChanges": { "message": "Праглядзець змены" },
   "link_shareFeedback": { "message": "Падзяліцца зваротнай сувяззю" },
   "prefix_exit": { "message": "Выйсьці" },

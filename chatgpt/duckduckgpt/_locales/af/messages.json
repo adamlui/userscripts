@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Kontroleer vir bywerkings" },
   "btnLabel_update": { "message": "Opdateer" },
   "btnLabel_dismiss": { "message": "Laat vaar" },
+  "btnLabel_visitPage": { "message": "Besoek bladsy" },
   "link_viewChanges": { "message": "Besigtig veranderinge" },
   "link_shareFeedback": { "message": "Deel terugvoer" },
   "prefix_exit": { "message": "Gaan uit" },

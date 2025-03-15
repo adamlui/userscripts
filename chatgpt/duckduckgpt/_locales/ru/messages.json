@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Проверить наличие обновлений" },
   "btnLabel_update": { "message": "Обновить" },
   "btnLabel_dismiss": { "message": "Пропустить" },
+  "btnLabel_visitPage": { "message": "Посетите страницу" },
   "link_viewChanges": { "message": "Просмотреть изменения" },
   "link_shareFeedback": { "message": "Поделиться отзывом" },
   "prefix_exit": { "message": "Выход" },

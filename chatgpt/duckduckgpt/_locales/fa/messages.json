@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "بررسی به روز رسانی" },
   "btnLabel_update": { "message": "به‌روز‌رسانی" },
   "btnLabel_dismiss": { "message": "مخفی شود" },
+  "btnLabel_visitPage": { "message": "مشاهده صفحه" },
   "link_viewChanges": { "message": "نمایش تغییرات" },
   "link_shareFeedback": { "message": "نظرات خود را به اشتراک بگذارید" },
   "prefix_exit": { "message": "خروج" },

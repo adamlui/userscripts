@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "යාවත්කාලීන සඳහා පරීක් ‍ ෂා කරන්න" },
   "btnLabel_update": { "message": "යාවත් කාළීන" },
   "btnLabel_dismiss": { "message": "ඉවතලන්න" },
+  "btnLabel_visitPage": { "message": "පිවිසුම් පිටුව" },
   "link_viewChanges": { "message": "වෙනස්කම් බලන්න" },
   "link_shareFeedback": { "message": "ප්‍රතිපෝෂණය බෙදා ගන්න" },
   "prefix_exit": { "message": "පිට වන්න" },

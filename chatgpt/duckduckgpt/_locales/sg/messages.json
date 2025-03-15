@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Gbu li ti mo na ndo ti aye so asi laso" },
   "btnLabel_update": { "message": "Nduru tënëModifier" },
   "btnLabel_dismiss": { "message": "Gbenga Akinnagbe" },
+  "btnLabel_visitPage": { "message": "Visit Mbi Page" },
   "link_viewChanges": { "message": "Bâ achangement" },
   "link_shareFeedback": { "message": "Share Feedback na na" },
   "prefix_exit": { "message": "A yeke sigigi na ni" },

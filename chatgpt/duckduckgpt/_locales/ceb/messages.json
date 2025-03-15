@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Susiha ang mga Update" },
   "btnLabel_update": { "message": "Pag-update" },
   "btnLabel_dismiss": { "message": "Papas" },
+  "btnLabel_visitPage": { "message": "Bisitaha ang Panid" },
   "link_viewChanges": { "message": "Tan-awa ang mga kausaban" },
   "link_shareFeedback": { "message": "Ipakigbahin ang Feedback" },
   "prefix_exit": { "message": "Mogawas" },

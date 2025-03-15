@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Kontroli por novaj epizodoj" },
   "btnLabel_update": { "message": "Ĝisdatigi" },
   "btnLabel_dismiss": { "message": "Malakcepti" },
+  "btnLabel_visitPage": { "message": "Viziti paĝon" },
   "link_viewChanges": { "message": "Montri ŝanĝojn" },
   "link_shareFeedback": { "message": "Kunhavigi Rimarkojn" },
   "prefix_exit": { "message": "Eliri" },

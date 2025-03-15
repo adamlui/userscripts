@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Lukim ol eleksen" },
   "btnLabel_update": { "message": "UPDATE" },
   "btnLabel_dismiss": { "message": "Lusim" },
+  "btnLabel_visitPage": { "message": "Visitim pes" },
   "link_viewChanges": { "message": "Lukim ol senis" },
   "link_shareFeedback": { "message": "Toksave long ol samting" },
   "prefix_exit": { "message": "Kisim" },

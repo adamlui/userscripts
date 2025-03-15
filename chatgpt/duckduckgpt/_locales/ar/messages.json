@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "مرابة التحديثات" },
   "btnLabel_update": { "message": "تحديث" },
   "btnLabel_dismiss": { "message": "إغلاق" },
+  "btnLabel_visitPage": { "message": "زيارة الصفحة" },
   "link_viewChanges": { "message": "عرض سجل التغييرات" },
   "link_shareFeedback": { "message": "مشاركة الملاحظات" },
   "prefix_exit": { "message": "خروج" },

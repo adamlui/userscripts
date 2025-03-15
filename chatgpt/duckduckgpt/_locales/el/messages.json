@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Έλεγχος για ενημερώσεις" },
   "btnLabel_update": { "message": "Ενημέρωση" },
   "btnLabel_dismiss": { "message": "Κλείσιμο" },
+  "btnLabel_visitPage": { "message": "Αρχική σελίδα" },
   "link_viewChanges": { "message": "Εμφάνιση αλλαγών" },
   "link_shareFeedback": { "message": "Κοινοποίηση προτάσεων βελτίωσης" },
   "prefix_exit": { "message": "Έξοδος" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "檢查更新" },
   "btnLabel_update": { "message": "更新" },
   "btnLabel_dismiss": { "message": "返回" },
+  "btnLabel_visitPage": { "message": "瀏覽頁面" },
   "link_viewChanges": { "message": "查看變更" },
   "link_shareFeedback": { "message": "分享意見回饋" },
   "prefix_exit": { "message": "退出" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Tirohia nga whakahoutanga" },
   "btnLabel_update": { "message": "Whakahou" },
   "btnLabel_dismiss": { "message": "Te whakahawea" },
+  "btnLabel_visitPage": { "message": "Tirohia te whārangi" },
   "link_viewChanges": { "message": "Tirohia nga huringa" },
   "link_shareFeedback": { "message": "Whakawhitiwhiti kōrero" },
   "prefix_exit": { "message": "Whakawhiti" },

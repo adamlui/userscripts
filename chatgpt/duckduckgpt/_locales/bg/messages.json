@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Проверка за обновяване" },
   "btnLabel_update": { "message": "Актуализация" },
   "btnLabel_dismiss": { "message": "Отхвърли" },
+  "btnLabel_visitPage": { "message": "Към страницата" },
   "link_viewChanges": { "message": "Вижте Промените" },
   "link_shareFeedback": { "message": "Споделяне на отзиви" },
   "prefix_exit": { "message": "Изход" },

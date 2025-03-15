@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Jonga Izinto Ezihlaziyiweyo" },
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Gxotha" },
+  "btnLabel_visitPage": { "message": "Yiya Kwiphepha" },
   "link_viewChanges": { "message": "Jonga izinto ezitshintshiweyo" },
   "link_shareFeedback": { "message": "Yabelana ngengxelo yakho" },
   "prefix_exit": { "message": "Phuma" },

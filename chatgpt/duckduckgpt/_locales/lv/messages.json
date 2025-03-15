@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Pārbaudīt vai nav jauni atjauninājumi" },
   "btnLabel_update": { "message": "Atjauninināt" },
   "btnLabel_dismiss": { "message": "Noraidīt" },
+  "btnLabel_visitPage": { "message": "Apmeklēt lapu" },
   "link_viewChanges": { "message": "Skatīt izmaiņas" },
   "link_shareFeedback": { "message": "Dalieties savās atsauksmēs" },
   "prefix_exit": { "message": "Iziet" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Periksa Pemutakhiran" },
   "btnLabel_update": { "message": "Pembaruan" },
   "btnLabel_dismiss": { "message": "Tutup" },
+  "btnLabel_visitPage": { "message": "Kunjungi Halaman" },
   "link_viewChanges": { "message": "Lihat perubahan" },
   "link_shareFeedback": { "message": "Bagikan umpan balik" },
   "prefix_exit": { "message": "Keluar" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Провери за нова верзија" },
   "btnLabel_update": { "message": "Ажурирај" },
   "btnLabel_dismiss": { "message": "Отфрли" },
+  "btnLabel_visitPage": { "message": "Посети главна страница" },
   "link_viewChanges": { "message": "Прикажи ги промените" },
   "link_shareFeedback": { "message": "Споделете повратен коментар" },
   "prefix_exit": { "message": "Излези" },

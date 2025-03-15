@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Güncellemeleri Kontrol Et" },
   "btnLabel_update": { "message": "Güncelleme" },
   "btnLabel_dismiss": { "message": "Yok say" },
+  "btnLabel_visitPage": { "message": "Sayfayı Ziyaret Et" },
   "link_viewChanges": { "message": "Değişen Dosyalar" },
   "link_shareFeedback": { "message": "Geri Bildirim Paylaş" },
   "prefix_exit": { "message": "Çık" },
