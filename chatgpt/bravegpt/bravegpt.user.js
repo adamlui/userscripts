@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.15.2
+// @version               2025.3.15.3
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -1332,10 +1332,15 @@
         shareChat(shareURL) {
 
             // Show modal
-            const shareChatModal = modals.alert(app.msgs.alert_sharePageGenerated + '!', // title
+            const shareChatModal = modals.alert(
+                app.msgs.alert_sharePageGenerated + '!', // title
                 `<a target="_blank" rel="noopener" href="${shareURL}">${shareURL}</a>`, // link msg
-                [ function copyUrl(){ // button
-                    navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) }])
+                [ // buttons
+                    function copyUrl() {
+                        navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) },
+                    function visitPage() { modals.safeWinOpen(shareURL) }
+                ]
+            )
 
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
