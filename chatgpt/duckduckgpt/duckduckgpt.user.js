@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.3
+// @version                2025.3.15.4
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1345,9 +1345,16 @@
                 ]
             )
 
+            // Prefix icon to title
+            const modalTitle = shareChatModal.querySelector('h2'),
+                  titleIcon = icons.speechBalloons.create()
+            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px'
+                                    + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
+            modalTitle.prepend(titleIcon)
+
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
-            shareChatModal.querySelector('h2').style.justifySelf = 'center'
+            modalTitle.style.justifySelf = 'center'
             shareChatModal.querySelector('p').style.cssText = 'text-align: center ; margin: -10px 0'
             shareChatModal.querySelector('.modal-buttons').style.cssText = 'justify-content: center'
 
