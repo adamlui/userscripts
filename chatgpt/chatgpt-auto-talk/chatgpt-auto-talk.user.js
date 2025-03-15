@@ -225,7 +225,7 @@
 // @description:zu      Dlala izimpendulo ze-ChatGPT ngokuzenzakalela
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.3.8
+// @version             2025.3.15
 // @license             MIT
 // @icon                https://assets.chatgptautotalk.com/images/icons/openai/black/icon48.png?v=9f1ed3c
 // @icon64              https://assets.chatgptautotalk.com/images/icons/openai/black/icon64.png?v=9f1ed3c
@@ -293,7 +293,7 @@
             support: 'https://support.chatgptautotalk.com',
             update: 'https://gm.chatgptautotalk.com'
         },
-        latestResourceCommitHash: '85ceed1' // for cached messages.json + navicon in toggles.sidebar.insert()
+        latestResourceCommitHash: '68e520a' // for cached messages.json + navicon in toggles.sidebar.insert()
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
