@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Fufuzani Zosintha" },
   "btnLabel_update": { "message": "Sinthani" },
   "btnLabel_dismiss": { "message": "Mfundo zazinsinsi" },
+  "btnLabel_visitPage": { "message": "Tsamba Loyendera" },
   "link_viewChanges": { "message": "Onani zosintha" },
   "link_shareFeedback": { "message": "ZOKHUDZA" },
   "prefix_exit": { "message": "Lumikizanani nafe" },

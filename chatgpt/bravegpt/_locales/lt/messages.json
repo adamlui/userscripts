@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Ieškoti atnaujinimų" },
   "btnLabel_update": { "message": "Naujinti" },
   "btnLabel_dismiss": { "message": "Atšaukti" },
+  "btnLabel_visitPage": { "message": "Apsilankyti puslapyje" },
   "link_viewChanges": { "message": "Peržiūrėti failo pakeitimus" },
   "link_shareFeedback": { "message": "Grįžtamoji informacija" },
   "prefix_exit": { "message": "Išeiti" },

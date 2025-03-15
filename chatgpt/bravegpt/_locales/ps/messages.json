@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "د تازه معلوماتو لپاره وګورئ" },
   "btnLabel_update": { "message": "تازه کړئ" },
   "btnLabel_dismiss": { "message": "رد کردن" },
+  "btnLabel_visitPage": { "message": "د لیدنې پاڼه" },
   "link_viewChanges": { "message": "بدلونونه وګورئ" },
   "link_shareFeedback": { "message": "وړانديزونه اونيوکې" },
   "prefix_exit": { "message": "وتون" },

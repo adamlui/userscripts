@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Tlhatlhoba Diphetogo" },
   "btnLabel_update": { "message": "Ntshwafatso" },
   "btnLabel_dismiss": { "message": "Go leleka" },
+  "btnLabel_visitPage": { "message": "Etela Tsebe" },
   "link_viewChanges": { "message": "Leba diphetogo" },
   "link_shareFeedback": { "message": "Ditshwaelo" },
   "prefix_exit": { "message": "Tswa" },

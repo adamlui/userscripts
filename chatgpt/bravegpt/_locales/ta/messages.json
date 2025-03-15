@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "புதுப்பிப்புகளைத் தேடவும்" },
   "btnLabel_update": { "message": "புதுப்பிக்கவும்" },
   "btnLabel_dismiss": { "message": "நிராகரிக்கவும்" },
+  "btnLabel_visitPage": { "message": "முகப்புப் பக்கத்துக்கு செல்லவும்" },
   "link_viewChanges": { "message": "மாற்றங்களைக் காண்க" },
   "link_shareFeedback": { "message": "கருத்து" },
   "prefix_exit": { "message": "வெளியேறு" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Tarkista päivitykset" },
   "btnLabel_update": { "message": "Päivitä" },
   "btnLabel_dismiss": { "message": "Hylkää" },
+  "btnLabel_visitPage": { "message": "Vieraile sivulla" },
   "link_viewChanges": { "message": "Näytä muutokset" },
   "link_shareFeedback": { "message": "Palaute" },
   "prefix_exit": { "message": "Poistu" },

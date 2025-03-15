@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Hlola Izibuyekezo" },
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Susa" },
+  "btnLabel_visitPage": { "message": "Vakashela Ikhasi" },
   "link_viewChanges": { "message": "Buka ushintsho" },
   "link_shareFeedback": { "message": "Skill" },
   "prefix_exit": { "message": "Phuma" },

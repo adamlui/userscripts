@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "پشکنینی نوێکردنەوەکان" },
   "btnLabel_update": { "message": "نوێ بکەرەوە" },
   "btnLabel_dismiss": { "message": "پارێزگا بکە" },
+  "btnLabel_visitPage": { "message": "Serdana Rûpelê bikin" },
   "link_viewChanges": { "message": "گۆڕانکاریەکان بینەرە" },
   "link_shareFeedback": { "message": "پارساوی" },
   "prefix_exit": { "message": "دەرچوون" },

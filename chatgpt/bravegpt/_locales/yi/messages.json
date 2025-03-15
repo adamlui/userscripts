@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "זוך נייע ווערסיעס" },
   "btnLabel_update": { "message": "דערהייַנטיקן" },
   "btnLabel_dismiss": { "message": "אָפּזאָגן" },
+  "btnLabel_visitPage": { "message": "באַזוכן בלאַט" },
   "link_viewChanges": { "message": "קוק ענדערונגען" },
   "link_shareFeedback": { "message": "באַמערקונגען" },
   "prefix_exit": { "message": "אַרויסגאַנג" },

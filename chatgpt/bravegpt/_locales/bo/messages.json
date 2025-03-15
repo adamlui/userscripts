@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "ད་ལྟའི་གནས་ཚུལ་འཚོལ་བ །" },
   "btnLabel_update": { "message": "གསར་བསྒྱུར" },
   "btnLabel_dismiss": { "message": "འདོར་བ།" },
+  "btnLabel_visitPage": { "message": "ཤོག་ངོས་ལ་ཕེབས་པ །" },
   "link_viewChanges": { "message": "འགྱུར་བ་མཐོང་བ" },
   "link_shareFeedback": { "message": "དགོངས་མཆར།" },
   "prefix_exit": { "message": "ཐོན་ཐབས །" },

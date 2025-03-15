@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Revidere Renovationes" },
   "btnLabel_update": { "message": "Renovatio" },
   "btnLabel_dismiss": { "message": "Amove" },
+  "btnLabel_visitPage": { "message": "Pagina Retis" },
   "link_viewChanges": { "message": "Vide mutationes" },
   "link_shareFeedback": { "message": "Communica Feedback" },
   "prefix_exit": { "message": "Exitus" },

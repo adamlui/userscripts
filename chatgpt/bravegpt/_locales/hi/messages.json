@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "अद्यतन के लिए जाँचें" },
   "btnLabel_update": { "message": "अपडेट करें" },
   "btnLabel_dismiss": { "message": "खारिज करना" },
+  "btnLabel_visitPage": { "message": "पेज पर जाएँ" },
   "link_viewChanges": { "message": "बदलाव देखें" },
   "link_shareFeedback": { "message": "फ़ीडबैक" },
   "prefix_exit": { "message": "बाहर निकलें" },

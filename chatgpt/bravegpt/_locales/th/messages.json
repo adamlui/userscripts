@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "ตรวจสอบหาอัปเดต" },
   "btnLabel_update": { "message": "อัปเดต" },
   "btnLabel_dismiss": { "message": "ยกเลิก" },
+  "btnLabel_visitPage": { "message": "ไปที่หน้า" },
   "link_viewChanges": { "message": "ดูการเปลี่ยนแปลง" },
   "link_shareFeedback": { "message": "ข้อเสนอแนะ" },
   "prefix_exit": { "message": "ออก" },

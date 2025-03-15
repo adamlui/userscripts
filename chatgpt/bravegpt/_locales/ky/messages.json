@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Жаңы чыгаруулар бар экендигин текшерүү" },
   "btnLabel_update": { "message": "Жаңыртуу" },
   "btnLabel_dismiss": { "message": "Иштен бошотуу" },
+  "btnLabel_visitPage": { "message": "Баракчага кирүү" },
   "link_viewChanges": { "message": "Өзгөрүүлөрдү көрүү" },
   "link_shareFeedback": { "message": "Пикир" },
   "prefix_exit": { "message": "Чыгуу" },

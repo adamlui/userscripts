@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Dèan sgrùdadh airson Ùrachaidhean" },
   "btnLabel_update": { "message": "Ùrachadh" },
   "btnLabel_dismiss": { "message": "Gabh às" },
+  "btnLabel_visitPage": { "message": "Duilleag - tadhail" },
   "link_viewChanges": { "message": "Seall atharrachaidhean" },
   "link_shareFeedback": { "message": "Roinn Freagairtean" },
   "prefix_exit": { "message": "Fàg" },

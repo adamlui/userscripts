@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Revisá las actualizaciones" },
   "btnLabel_update": { "message": "Aktualidat" },
   "btnLabel_dismiss": { "message": "Disimulashon" },
+  "btnLabel_visitPage": { "message": "Visitá la página" },
   "link_viewChanges": { "message": "Bista riba kambionan" },
   "link_shareFeedback": { "message": "Feedback" },
   "prefix_exit": { "message": "Salida" },

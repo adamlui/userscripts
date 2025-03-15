@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Zjistit novější verzi" },
   "btnLabel_update": { "message": "Aktualizovat" },
   "btnLabel_dismiss": { "message": "Zamítnout" },
+  "btnLabel_visitPage": { "message": "Navštívit domovskou stránku" },
   "link_viewChanges": { "message": "Zobrazit změny" },
   "link_shareFeedback": { "message": "Zpětná vazba" },
   "prefix_exit": { "message": "Východ/výjezd" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "업데이트 확인" },
   "btnLabel_update": { "message": "업데이트" },
   "btnLabel_dismiss": { "message": "무시하기" },
+  "btnLabel_visitPage": { "message": "페이지 방문" },
   "link_viewChanges": { "message": "변경 보기" },
   "link_shareFeedback": { "message": "피드백" },
   "prefix_exit": { "message": "나가기" },

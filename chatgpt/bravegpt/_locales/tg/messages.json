@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Навсозиро тафтиш кунед" },
   "btnLabel_update": { "message": "Навсозӣ кардан" },
   "btnLabel_dismiss": { "message": "Рад кардан" },
+  "btnLabel_visitPage": { "message": "Pahina ng Pagbisita" },
   "link_viewChanges": { "message": "Тағиротро дидан" },
   "link_shareFeedback": { "message": "Mga Feedback" },
   "prefix_exit": { "message": "Баромад" },

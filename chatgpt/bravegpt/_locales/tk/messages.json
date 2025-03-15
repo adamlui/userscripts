@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Updates üçin täzelendir" },
   "btnLabel_update": { "message": "Täzele" },
   "btnLabel_dismiss": { "message": "Işden aýyrmak" },
+  "btnLabel_visitPage": { "message": "Sahypa serediň" },
   "link_viewChanges": { "message": "Özgertmeleri Gör" },
   "link_shareFeedback": { "message": "Jikme-jik" },
   "prefix_exit": { "message": "Çyk" },

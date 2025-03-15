@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Frissítések keresése" },
   "btnLabel_update": { "message": "Frissítés" },
   "btnLabel_dismiss": { "message": "Elvetés" },
+  "btnLabel_visitPage": { "message": "látogasd meg a honlapot" },
   "link_viewChanges": { "message": "Módosítások megtekintése" },
   "link_shareFeedback": { "message": "Visszajelzés" },
   "prefix_exit": { "message": "Kilépés" },

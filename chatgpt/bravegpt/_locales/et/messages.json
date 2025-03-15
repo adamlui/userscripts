@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Kontrolli uuendusi" },
   "btnLabel_update": { "message": "Uuenda" },
   "btnLabel_dismiss": { "message": "Loobu" },
+  "btnLabel_visitPage": { "message": "Külasta kodulehekülge" },
   "link_viewChanges": { "message": "Vaata muudatusi" },
   "link_shareFeedback": { "message": "Tagasiside" },
   "prefix_exit": { "message": "Väljumine" },

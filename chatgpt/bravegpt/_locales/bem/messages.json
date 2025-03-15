@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Lekeni ukuchilanda ifilayipo" },
   "btnLabel_update": { "message": "Chilanda" },
   "btnLabel_dismiss": { "message": "Ukufumishiwapo" },
+  "btnLabel_visitPage": { "message": "Tandalila pe bula" },
   "link_viewChanges": { "message": "Moneni ifyo ifintu fyayaluka" },
   "link_shareFeedback": { "message": "Ifingakwafwa" },
   "prefix_exit": { "message": "Fumenimo" },

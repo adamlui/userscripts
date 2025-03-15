@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "નવાં ભાગ(ઓ) માટે ચકાસો" },
   "btnLabel_update": { "message": "અદ્યતન બનાવો" },
   "btnLabel_dismiss": { "message": "કાઢી મૂકવું" },
+  "btnLabel_visitPage": { "message": "મદદ પાનાંની મુલાકાત લો" },
   "link_viewChanges": { "message": "ફેરફારો જુઓ" },
   "link_shareFeedback": { "message": "પ્રતિભાવ આપો" },
   "prefix_exit": { "message": "એક્ઝીટ" },

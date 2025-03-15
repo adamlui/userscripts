@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Provjeri za nadogradnje" },
   "btnLabel_update": { "message": "Ažuriraj" },
   "btnLabel_dismiss": { "message": "Odbaci" },
+  "btnLabel_visitPage": { "message": "Posjeti početnu stranicu" },
   "link_viewChanges": { "message": "Pregledaj promjene" },
   "link_shareFeedback": { "message": "Povratne informacije" },
   "prefix_exit": { "message": "Izlaz" },

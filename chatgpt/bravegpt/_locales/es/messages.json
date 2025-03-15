@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Buscar actualizaciones" },
   "btnLabel_update": { "message": "Actualizar" },
   "btnLabel_dismiss": { "message": "Descartar" },
+  "btnLabel_visitPage": { "message": "Visite la página" },
   "link_viewChanges": { "message": "Ver cambios" },
   "link_shareFeedback": { "message": "Comentarios" },
   "prefix_exit": { "message": "Salida" },

@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "အသစ်ထွက်ရှိမှု့ကိုစစ်ဆေးမည်" },
   "btnLabel_update": { "message": "နောက်ဆုံးသတင်း" },
   "btnLabel_dismiss": { "message": "ထုတ်ပယ်ပါ" },
+  "btnLabel_visitPage": { "message": "အလည်အပတ်စာမျက်နှာ" },
   "link_viewChanges": { "message": "အပြောင်းအလဲများကို ကြည့်ရန်" },
   "link_shareFeedback": { "message": "တုံ့ပြန်အကြံပြုချက်" },
   "prefix_exit": { "message": "ထြက္ရန္" },

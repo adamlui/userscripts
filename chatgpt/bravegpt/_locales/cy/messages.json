@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Dango_s diweddariadau" },
   "btnLabel_update": { "message": "Diweddaru" },
   "btnLabel_dismiss": { "message": "Cau" },
+  "btnLabel_visitPage": { "message": "Ewch i Dudalen" },
   "link_viewChanges": { "message": "Gweld newidiadau" },
   "link_shareFeedback": { "message": "Adborth" },
   "prefix_exit": { "message": "Man gadael" },

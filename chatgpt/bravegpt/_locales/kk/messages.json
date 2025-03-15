@@ -117,6 +117,7 @@
   "btnLabel_checkForUpdates": { "message": "Ережелерді жаңартып алу" },
   "btnLabel_update": { "message": "Жаңарту" },
   "btnLabel_dismiss": { "message": "Жұмыстан шығару" },
+  "btnLabel_visitPage": { "message": "Бетке кіру" },
   "link_viewChanges": { "message": "Өзгерістерді көру" },
   "link_shareFeedback": { "message": "Кері байланыс" },
   "prefix_exit": { "message": "Шығу" },
