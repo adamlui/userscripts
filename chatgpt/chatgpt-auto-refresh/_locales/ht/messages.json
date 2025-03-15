@@ -43,12 +43,12 @@
   "btnLabel_discuss": { "message": "diskite/diskite sou" },
   "btnLabel_getSupport": { "message": "Jwenn Sipò" },
   "btnLabel_checkForUpdates": { "message": "Tcheke pou Mizajou" },
-  "btnLabel_update": { "message": "Update" },
+  "btnLabel_update": { "message": "Mizajou" },
   "btnLabel_dismiss": { "message": "Demisyon" },
   "link_viewChanges": { "message": "Gade chanjman yo" },
   "unit_secs": { "message": "segonn" },
   "state_enabled": { "message": "pèmèt" },
   "state_disabled": { "message": "andikape" },
-  "state_on": { "message": "nan dat" },
-  "state_off": { "message": "etenn/koupe " }
+  "state_on": { "message": "Sou" },
+  "state_off": { "message": "Koupe " }
 }
