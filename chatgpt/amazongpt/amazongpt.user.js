@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.1
+// @version                2025.3.15.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2053,7 +2053,8 @@
                     chatTextarea.focus()
 
                 // Yes reply, submit it + transform to loading UI
-                } else {                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
+                } else {
+                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
                     show.reply.chatbarFocused = false ; show.reply.userInteracted = true
