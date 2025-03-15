@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.3
+// @version                2025.3.15.4
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1098,10 +1098,15 @@
         shareChat(shareURL) {
 
             // Show modal
-            const shareChatModal = modals.alert(app.msgs.alert_sharePageGenerated + '!', // title
+            const shareChatModal = modals.alert(
+                app.msgs.alert_sharePageGenerated + '!', // title
                 `<a target="_blank" rel="noopener" href="${shareURL}">${shareURL}</a>`, // link msg
-                [ function copyUrl(){ // button
-                    navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) }])
+                [ // buttons
+                    function copyUrl() {
+                        navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) },
+                    function visitPage() { modals.safeWinOpen(shareURL) }
+                ]
+            )
 
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
