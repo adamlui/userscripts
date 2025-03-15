@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.4
+// @version                2025.3.15.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1107,6 +1107,13 @@
                     function visitPage() { modals.safeWinOpen(shareURL) }
                 ]
             )
+
+            // Prefix icon to title
+            const modalTitle = shareChatModal.querySelector('h2'),
+                  titleIcon = icons.speechBalloons.create()
+            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px'
+                                    + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
+            modalTitle.prepend(titleIcon)
 
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
