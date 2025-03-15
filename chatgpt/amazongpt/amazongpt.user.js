@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.5
+// @version                2025.3.15.6
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -134,7 +134,7 @@
             support: 'https://amazongpt.kudoai.com/issues',
             update: 'https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js'
         },
-        latestResourceCommitHash: 'b00ac23' // for cached messages.json
+        latestResourceCommitHash: '0cd5afd' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -229,6 +229,7 @@
         btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
+        btnLabel_visitPage: 'Visit Page',
         link_viewChanges: 'View changes',
         state_on: 'On',
         state_off: 'Off'
@@ -1114,6 +1115,14 @@
             titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px'
                                     + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
+
+            // Localize button labels if needed
+            if (!env.browser.language.startsWith('en'))
+                shareChatModal.querySelectorAll('button').forEach(btn => {
+                    if (/copy/i.test(btn.textContent)) btn.textContent = `${app.msgs.tooltip_copy} URL`
+                    else if (/visit/i.test(btn.textContent)) btn.textContent = app.msgs.btnLabel_visitPage
+                    else btn.textContent = app.msgs.btnLabel_dismiss
+                })
 
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
