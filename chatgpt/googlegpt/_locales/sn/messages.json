@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Ongorora Updates" },
   "btnLabel_update": { "message": "Kugadziridza" },
   "btnLabel_dismiss": { "message": "Dzinga" },
+  "btnLabel_visitPage": { "message": "Kushanya Page" },
   "link_viewChanges": { "message": "Vonanyi cinjo" },
   "link_shareFeedback": { "message": "Taura nesu" },
   "prefix_exit": { "message": "Buda" },

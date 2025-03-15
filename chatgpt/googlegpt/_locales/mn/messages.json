@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Шинэчлэлтийг шинэчлэх" },
   "btnLabel_update": { "message": "Шинэчлэх" },
   "btnLabel_dismiss": { "message": "Дуусах" },
+  "btnLabel_visitPage": { "message": "Зочилсон хуудас" },
   "link_viewChanges": { "message": "Өөрчлөлтүүдийг харах" },
   "link_shareFeedback": { "message": "Санал хүсэлтийг хуваалцах" },
   "prefix_exit": { "message": "Гарах" },

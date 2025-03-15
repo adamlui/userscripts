@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Hubi Cusbooneysiinta" },
   "btnLabel_update": { "message": "Cusboonaysiinta" },
   "btnLabel_dismiss": { "message": "Xil ka qaad" },
+  "btnLabel_visitPage": { "message": "Booqo Bogga" },
   "link_viewChanges": { "message": "Eeg isbeddellada" },
   "link_shareFeedback": { "message": "Nala wadaag war-celintaada" },
   "prefix_exit": { "message": "Bixid" },

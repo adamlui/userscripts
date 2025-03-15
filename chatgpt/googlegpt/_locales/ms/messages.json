@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Semak Kemaskini" },
   "btnLabel_update": { "message": "Saya ingin membuat susulan" },
   "btnLabel_dismiss": { "message": "Singkir" },
+  "btnLabel_visitPage": { "message": "Lawati Halaman" },
   "link_viewChanges": { "message": "Lihat perubahan" },
   "link_shareFeedback": { "message": "Kongsi Maklum Balas" },
   "prefix_exit": { "message": "Keluar" },

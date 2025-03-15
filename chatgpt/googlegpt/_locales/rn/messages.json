@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Raba amakuru agezweho" },
   "btnLabel_update": { "message": "Update None None" },
   "btnLabel_dismiss": { "message": "Ukwirukana" },
+  "btnLabel_visitPage": { "message": "Gendera urupapuro" },
   "link_viewChanges": { "message": "Kubona impinduka" },
   "link_shareFeedback": { "message": "Gira ico ushikirije" },
   "prefix_exit": { "message": "Gusohoka" },

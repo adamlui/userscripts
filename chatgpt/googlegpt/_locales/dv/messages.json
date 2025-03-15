@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "އަޕްޑޭޓްތައް ބަލާށެވެ" },
   "btnLabel_update": { "message": "އަޕްޑޭޓް" },
   "btnLabel_dismiss": { "message": "މަގާމުން ވަކިކުރުން" },
+  "btnLabel_visitPage": { "message": "ވިޒިޓް ޕޭޖް" },
   "link_viewChanges": { "message": "ވިއު ޗޭންޖްސް" },
   "link_shareFeedback": { "message": "ފީޑްބެކް ޝެއާ ކުރޭ" },
   "prefix_exit": { "message": "ނުކުތުން" },

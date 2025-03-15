@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "ਨਵੇਂ ਐਪੀਸੋਡ ਲਈ ਚੈੱਕ ਕਰੋ" },
   "btnLabel_update": { "message": "ਅੱਪਡੇਟ ਕਰੋ" },
   "btnLabel_dismiss": { "message": "ਖਾਰਜ ਕਰੋ" },
+  "btnLabel_visitPage": { "message": "ਵਿਜ਼ਿਟ ਪੇਜ" },
   "link_viewChanges": { "message": "ਤਬਦੀਲੀਆਂ ਵੇਖੋ" },
   "link_shareFeedback": { "message": "ਫੀਡਬੈਕ ਸਾਂਝਾ ਕਰੋ" },
   "prefix_exit": { "message": "ਬਾਹਰ ਨਿਕਲੋ" },

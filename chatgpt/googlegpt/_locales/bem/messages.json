@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Check Kuli Kuli Updates" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Ukufumishiwapo" },
+  "btnLabel_visitPage": { "message": "Tandalila pe bula" },
   "link_viewChanges": { "message": "Moneni ifyo ifintu fyayaluka" },
   "link_shareFeedback": { "message": "Share Feedback" },
   "prefix_exit": { "message": "Fumenimo" },

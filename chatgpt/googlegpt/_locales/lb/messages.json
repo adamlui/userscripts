@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Fakten an Erënnerungen" },
   "btnLabel_update": { "message": "Aktualiséieren" },
   "btnLabel_dismiss": { "message": "Ofginn" },
+  "btnLabel_visitPage": { "message": "Ik ben heel benieuwd naar jouw mening laat het me" },
   "link_viewChanges": { "message": "Ännerungen uweisen" },
   "link_shareFeedback": { "message": "Feedback deelen" },
   "prefix_exit": { "message": "Zoumaachen" },

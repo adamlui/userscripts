@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "اپ ڈیٹس کی پڑتال کریں" },
   "btnLabel_update": { "message": "اپ ڈیٹ" },
   "btnLabel_dismiss": { "message": "برخاست" },
+  "btnLabel_visitPage": { "message": "صفحہ ملاحظہ کریں" },
   "link_viewChanges": { "message": "تبدیلیاں دیکھیں" },
   "link_shareFeedback": { "message": "تاثرات شیئر کریں" },
   "prefix_exit": { "message": "خارج ہوں" },

@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Tjek for Opdateringer" },
   "btnLabel_update": { "message": "Opdatér" },
   "btnLabel_dismiss": { "message": "Afvis" },
+  "btnLabel_visitPage": { "message": "Se site" },
   "link_viewChanges": { "message": "Se ændringer" },
   "link_shareFeedback": { "message": "Del din feedback" },
   "prefix_exit": { "message": "Afslut" },

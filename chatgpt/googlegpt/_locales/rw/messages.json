@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Reba niba hari ihinduka" },
   "btnLabel_update": { "message": "Hindura" },
   "btnLabel_dismiss": { "message": "Guhakana" },
+  "btnLabel_visitPage": { "message": "Gusura Ipaji" },
   "link_viewChanges": { "message": "Reba impinduka" },
   "link_shareFeedback": { "message": "Tanga Ibyo utekereza" },
   "prefix_exit": { "message": "Gusohoka" },

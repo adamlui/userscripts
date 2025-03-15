@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "ዝማኔዎችን ይመልከቱ" },
   "btnLabel_update": { "message": "አዘምን" },
   "btnLabel_dismiss": { "message": "መደምሰሻ" },
+  "btnLabel_visitPage": { "message": "ገጽ ይጎብኙ" },
   "link_viewChanges": { "message": "ለውጦችን ይመልከቱ" },
   "link_shareFeedback": { "message": "ግብረመልስ ያጋሩ" },
   "prefix_exit": { "message": "ይውጡ" },

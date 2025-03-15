@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "განახლებების შემოწმება" },
   "btnLabel_update": { "message": "განახლება" },
   "btnLabel_dismiss": { "message": "მოსილება" },
+  "btnLabel_visitPage": { "message": "საწყისი გვერდის მონახულება" },
   "link_viewChanges": { "message": "ცვლილებების ნახვა" },
   "link_shareFeedback": { "message": "Გამოხმაურების გაზიარება" },
   "prefix_exit": { "message": "გასვლა" },

@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "Навсозӣ кардан" },
   "btnLabel_dismiss": { "message": "Рад кардан" },
+  "btnLabel_visitPage": { "message": "Pahina ng Pagbisita" },
   "link_viewChanges": { "message": "Tingnan ang mga pagbabago" },
   "link_shareFeedback": { "message": "Share Feedback" },
   "prefix_exit": { "message": "Баромад" },

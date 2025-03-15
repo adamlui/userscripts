@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Caută actualizări" },
   "btnLabel_update": { "message": "Actualizare" },
   "btnLabel_dismiss": { "message": "Respingeți" },
+  "btnLabel_visitPage": { "message": "Vizitați pagina principală" },
   "link_viewChanges": { "message": "Vizualizează modificările" },
   "link_shareFeedback": { "message": "Trimite feedback" },
   "prefix_exit": { "message": "Ieșire" },

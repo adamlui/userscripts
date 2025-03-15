@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Siaki mo Faʻafouga" },
   "btnLabel_update": { "message": "Fa'afouga" },
   "btnLabel_dismiss": { "message": "Dismiss" },
+  "btnLabel_visitPage": { "message": "Asiasi i le Itulau" },
   "link_viewChanges": { "message": "Vaʻai suiga" },
   "link_shareFeedback": { "message": "Faasoa atu Feedback" },
   "prefix_exit": { "message": "Alu'ese" },

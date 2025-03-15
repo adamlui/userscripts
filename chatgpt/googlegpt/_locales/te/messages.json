@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "అప్‌డేట్" },
   "btnLabel_dismiss": { "message": "తీసివేయండి" },
+  "btnLabel_visitPage": { "message": "పేజీని సందర్శించండి" },
   "link_viewChanges": { "message": "మార్పులను చూడండి" },
   "link_shareFeedback": { "message": "Share Feedback" },
   "prefix_exit": { "message": "నిష్క్రమించండి" },

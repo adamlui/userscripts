@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "חפש עדכונים" },
   "btnLabel_update": { "message": "עדכון" },
   "btnLabel_dismiss": { "message": "שחרור" },
+  "btnLabel_visitPage": { "message": "לדף הביקור" },
   "link_viewChanges": { "message": "הצגת השינויים" },
   "link_shareFeedback": { "message": "שתפי משוב" },
   "prefix_exit": { "message": "יציאה" },

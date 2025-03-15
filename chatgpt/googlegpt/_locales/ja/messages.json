@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "更新を確認" },
   "btnLabel_update": { "message": "更新情報" },
   "btnLabel_dismiss": { "message": "解散" },
+  "btnLabel_visitPage": { "message": "ページへ移動" },
   "link_viewChanges": { "message": "変更を表示" },
   "link_shareFeedback": { "message": "フィードバックを送る" },
   "prefix_exit": { "message": "終了" },

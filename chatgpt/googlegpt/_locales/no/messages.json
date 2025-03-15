@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Se etter oppdateringer" },
   "btnLabel_update": { "message": "Oppdater" },
   "btnLabel_dismiss": { "message": "Ignorer" },
+  "btnLabel_visitPage": { "message": "Besøk siden" },
   "link_viewChanges": { "message": "Vis endringer" },
   "link_shareFeedback": { "message": "Gi en tilbakemelding" },
   "prefix_exit": { "message": "Utgang" },

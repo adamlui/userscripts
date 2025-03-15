@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "E nānā i nā mea hou" },
   "btnLabel_update": { "message": "Hōʻano hou" },
   "btnLabel_dismiss": { "message": "Hoʻokuʻu" },
+  "btnLabel_visitPage": { "message": "E kipa i ka ʻAoʻao" },
   "link_viewChanges": { "message": "Nānā i nā hoʻololi" },
   "link_shareFeedback": { "message": "Kaʻana Manaʻo" },
   "prefix_exit": { "message": "Puka" },

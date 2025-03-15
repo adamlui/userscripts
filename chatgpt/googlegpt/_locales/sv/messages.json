@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Kolla efter uppdateringar" },
   "btnLabel_update": { "message": "Uppdatera" },
   "btnLabel_dismiss": { "message": "Avfärda" },
+  "btnLabel_visitPage": { "message": "Besök sida" },
   "link_viewChanges": { "message": "Visa ändringar" },
   "link_shareFeedback": { "message": "Dela feedback" },
   "prefix_exit": { "message": "Avsluta" },

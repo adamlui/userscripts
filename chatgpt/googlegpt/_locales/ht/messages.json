@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Tcheke pou Updates" },
   "btnLabel_update": { "message": "Mizajou" },
   "btnLabel_dismiss": { "message": "Demisyon" },
+  "btnLabel_visitPage": { "message": "vizite paj sa a/visitez cette page" },
   "link_viewChanges": { "message": "Gade chanjman yo" },
   "link_shareFeedback": { "message": "Pataje kòmantè ou yo/Pataje fidbak ou yo/Faites part de vos commentaires" },
   "prefix_exit": { "message": "Sòti" },

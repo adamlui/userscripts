@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "ዝቕጽል ሓበሬታ ርአ" },
   "btnLabel_update": { "message": "ኣሐድስ" },
   "btnLabel_dismiss": { "message": "ምጥፋእ" },
+  "btnLabel_visitPage": { "message": "ገጽ ምብጻሕ" },
   "link_viewChanges": { "message": "ለውጢ ርአ" },
   "link_shareFeedback": { "message": "ግብረ መልሲ ምዝርጋሕ" },
   "prefix_exit": { "message": "ውጻእ" },

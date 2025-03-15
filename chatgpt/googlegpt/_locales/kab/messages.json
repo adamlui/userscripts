@@ -118,6 +118,7 @@
   "btnLabel_checkForUpdates": { "message": "Tserkit i tazwara" },
   "btnLabel_update": { "message": "Tserkit" },
   "btnLabel_dismiss": { "message": "Sser" },
+  "btnLabel_visitPage": { "message": "Asmel n usebter" },
   "link_viewChanges": { "message": "Sxur tazult" },
   "link_shareFeedback": { "message": "Amusn ad-yefk s" },
   "prefix_exit": { "message": "Aksum" },
