@@ -211,7 +211,7 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 [Readme](https://docs.chatgptwidescreen.com/#readme) /
 [ディスカッション](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
-### <img width=16 src="https://assets.chatgptautocontinue.com/images/icons/continue-symbol/circled/icon32.png?0909ea8"> [ChatGPT 自動継続](https://chatgptautocontinue.com) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://assets.chatgptautocontinue.com/images/badges/awesome/badge.svg"></a>
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautocontinue.com/images/icons/continue-symbol/white/icon32.png?v=1f9acd8"><img height=16 src="https://assets.chatgptautocontinue.com/images/icons/continue-symbol/black/icon32.png?v=1f9acd8"></picture> [ChatGPT 自動継続](https://chatgptautocontinue.com) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://assets.chatgptautocontinue.com/images/badges/awesome/badge.svg"></a>
 > 複数の ChatGPT 応答を自動的に生成します。<br>
 [インストール](https://docs.chatgptautocontinue.com/#-インストール) /
 [Readme](https://docs.chatgptautocontinue.com/#readme) /
