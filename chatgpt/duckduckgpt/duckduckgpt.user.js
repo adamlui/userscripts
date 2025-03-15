@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15
+// @version                2025.3.15.1
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1341,6 +1341,7 @@
                     navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) }])
 
             // Style elements
+            shareChatModal.style.wordBreak = 'break-all' // since URL really long
             shareChatModal.querySelector('h2').style.justifySelf = 'center'
             shareChatModal.querySelector('p').style.cssText = 'text-align: center ; margin: -10px 0'
             shareChatModal.querySelector('.modal-buttons').style.cssText = 'justify-content: center'
