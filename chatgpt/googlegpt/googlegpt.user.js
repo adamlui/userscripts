@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.15.4
+// @version                  2025.3.15.5
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -450,7 +450,7 @@
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: '0c96447' // for cached messages.json
+        latestResourceCommitHash: '0dbb8e1' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -573,6 +573,7 @@
         btnLabel_checkForUpdates: 'Check for Updates',
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
+        btnLabel_visitPage: 'Visit Page',
         link_viewChanges: 'View changes',
         link_shareFeedback: 'Share Feedback',
         prefix_exit: 'Exit',
@@ -1492,6 +1493,14 @@
             titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
                                     + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
+
+            // Localize button labels if needed
+            if (!env.browser.language.startsWith('en'))
+                shareChatModal.querySelectorAll('button').forEach(btn => {
+                    if (/copy/i.test(btn.textContent)) btn.textContent = `${app.msgs.tooltip_copy} URL`
+                    else if (/visit/i.test(btn.textContent)) btn.textContent = app.msgs.btnLabel_visitPage
+                    else btn.textContent = app.msgs.btnLabel_dismiss
+                })
 
             // Style elements
             shareChatModal.style.wordBreak = 'break-all' // since URL really long
