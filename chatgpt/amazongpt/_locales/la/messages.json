@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "opus" },
   "btnLabel_dismiss": { "message": "dimitto" },
+  "btnLabel_visitPage": { "message": "Pagina Retis" },
   "link_viewChanges": { "message": "Mutare" },
   "state_on": { "message": "mutare melius" },
   "state_off": { "message": "finis eum" }

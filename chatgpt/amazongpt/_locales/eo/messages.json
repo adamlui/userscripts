@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Kontroli por novaj epizodoj" },
   "btnLabel_update": { "message": "Ĝisdatigi" },
   "btnLabel_dismiss": { "message": "Malakcepti" },
+  "btnLabel_visitPage": { "message": "Viziti paĝon" },
   "link_viewChanges": { "message": "Vidi ŝanĝojn" },
   "state_on": { "message": "Oran" },
   "state_off": { "message": "Malŝaltita" }

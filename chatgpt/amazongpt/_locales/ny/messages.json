@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Fufuzani Zosintha" },
   "btnLabel_update": { "message": "Sinthani" },
   "btnLabel_dismiss": { "message": "Kuthamangitsidwa" },
+  "btnLabel_visitPage": { "message": "Tsamba Loyendera" },
   "link_viewChanges": { "message": "Onani zosintha" },
   "state_on": { "message": "ZOKHUD" },
   "state_off": { "message": "Kuzimitsa" }

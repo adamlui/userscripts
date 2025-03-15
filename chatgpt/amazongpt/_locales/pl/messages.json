@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Sprawdź aktualizacje" },
   "btnLabel_update": { "message": "Aktualizuj" },
   "btnLabel_dismiss": { "message": "Odrzuć" },
+  "btnLabel_visitPage": { "message": "Odwiedź stronę" },
   "link_viewChanges": { "message": "Przegląd zmian" },
   "state_on": { "message": "Wł" },
   "state_off": { "message": "Wył" }

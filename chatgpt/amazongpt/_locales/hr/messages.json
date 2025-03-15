@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Provjeri za nadogradnje" },
   "btnLabel_update": { "message": "Ažuriraj" },
   "btnLabel_dismiss": { "message": "Odbaci" },
+  "btnLabel_visitPage": { "message": "Posjeti početnu stranicu" },
   "link_viewChanges": { "message": "Pregledaj promjene" },
   "state_on": { "message": "On (Uključeno)" },
   "state_off": { "message": "Isključivanje" }

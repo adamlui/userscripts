@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "ད་ལྟོའི་དུས་ཚོད། བསྒྱུར་བཅོས་འབད་" },
   "btnLabel_update": { "message": "ད་ལྟོའི་དུས་ཚོད།" },
   "btnLabel_dismiss": { "message": "ཁ་འབྱལ་བ།" },
+  "btnLabel_visitPage": { "message": "བལྟ་བཤལཔ་གི་ཤོག་ལེབ་" },
   "link_viewChanges": { "message": "བསྒྱུར་བཅོས་ཚུ་བལྟ་" },
   "state_on": { "message": "སྤོ་བཤུད་འབད་" },
   "state_off": { "message": "སེལ་འཐུ་འབད།" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "检查更新" },
   "btnLabel_update": { "message": "更新" },
   "btnLabel_dismiss": { "message": "取消" },
+  "btnLabel_visitPage": { "message": "访问页面" },
   "link_viewChanges": { "message": "查看修改" },
   "state_on": { "message": "开" },
   "state_off": { "message": "关" }

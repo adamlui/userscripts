@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "مرابة التحديثات" },
   "btnLabel_update": { "message": "التحديث" },
   "btnLabel_dismiss": { "message": "تجاهل" },
+  "btnLabel_visitPage": { "message": "زيارة الصفحة" },
   "link_viewChanges": { "message": "عرض سجل التغييرات" },
   "state_on": { "message": "تشغيل" },
   "state_off": { "message": "إيقاف التشغيل" }

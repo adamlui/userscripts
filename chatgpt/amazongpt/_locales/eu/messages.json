@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Begiratu _eguneraketak" },
   "btnLabel_update": { "message": "Eguneratu" },
   "btnLabel_dismiss": { "message": "Bistatik kendu" },
+  "btnLabel_visitPage": { "message": "Bisitatu laguntzako orrialdea" },
   "link_viewChanges": { "message": "Ikusi aldaketak" },
   "state_on": { "message": "Piztuta" },
   "state_off": { "message": "Itzalita" }

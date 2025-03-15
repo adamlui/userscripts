@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Yangiliklarni tekshirish" },
   "btnLabel_update": { "message": "Yangilash" },
   "btnLabel_dismiss": { "message": "Rad etish" },
+  "btnLabel_visitPage": { "message": "Sahifaga tashrif buyuring" },
   "link_viewChanges": { "message": "O'zgarishlarni ko'rish" },
   "state_on": { "message": "Yoniq" },
   "state_off": { "message": "O'chirilgan" }

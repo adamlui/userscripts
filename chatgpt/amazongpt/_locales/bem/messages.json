@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Moneni Ifyebo Fyabamo Lyonse" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Ukufumishiwapo" },
+  "btnLabel_visitPage": { "message": "Tandalila pe bula" },
   "link_viewChanges": { "message": "Moneni ifyo ifintu fyayaluka" },
   "state_on": { "message": "Pali" },
   "state_off": { "message": "ukuleka" }

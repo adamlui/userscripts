@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Mitadiava fanavaozana" },
   "btnLabel_update": { "message": "Vaovao farany" },
   "btnLabel_dismiss": { "message": "Ario" },
+  "btnLabel_visitPage": { "message": "Tsidiho ny pejy" },
   "link_viewChanges": { "message": "Hijery ireo fanovana" },
   "state_on": { "message": "Tamin’I –" },
   "state_off": { "message": "Ajanona" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Se etter oppdateringer" },
   "btnLabel_update": { "message": "Oppdater" },
   "btnLabel_dismiss": { "message": "Ignorer" },
+  "btnLabel_visitPage": { "message": "Besøk siden" },
   "link_viewChanges": { "message": "Vis endringer" },
   "state_on": { "message": "På" },
   "state_off": { "message": "Av" }

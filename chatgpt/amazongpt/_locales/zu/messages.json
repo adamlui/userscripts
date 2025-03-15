@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Hlola Izilungiso" },
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Susa" },
+  "btnLabel_visitPage": { "message": "Vakashela Ikhasi" },
   "link_viewChanges": { "message": "Buka ushintsho" },
   "state_on": { "message": "ku" },
   "state_off": { "message": "Kuvaliwe" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "د تازه معلوماتو لپاره وګورئ" },
   "btnLabel_update": { "message": "تازه کړئ" },
   "btnLabel_dismiss": { "message": "رد کردن" },
+  "btnLabel_visitPage": { "message": "د لیدنې پاڼه" },
   "link_viewChanges": { "message": "بدلونونه وګورئ" },
   "state_on": { "message": "بل" },
   "state_off": { "message": "Property_BAR_NewPrefs_App_BAR_" }

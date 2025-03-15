@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Tarkista päivitykset" },
   "btnLabel_update": { "message": "Päivitä" },
   "btnLabel_dismiss": { "message": "Hylkää" },
+  "btnLabel_visitPage": { "message": "Vieraile sivulla" },
   "link_viewChanges": { "message": "Näytä muutokset" },
   "state_on": { "message": "Päällä" },
   "state_off": { "message": "Pois päältä" }

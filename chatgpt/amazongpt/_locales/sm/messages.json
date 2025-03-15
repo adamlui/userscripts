@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Siaki mo Faʻafouga" },
   "btnLabel_update": { "message": "Fa'afouga" },
   "btnLabel_dismiss": { "message": "Dismiss" },
+  "btnLabel_visitPage": { "message": "Asiasi i le Itulau" },
   "link_viewChanges": { "message": "Vaʻai suiga" },
   "state_on": { "message": "I luga o" },
   "state_off": { "message": "ALU" }

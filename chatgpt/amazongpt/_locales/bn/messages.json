@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "হালনাগাদের জন্য চেক করুন" },
   "btnLabel_update": { "message": "আপডেট করুন" },
   "btnLabel_dismiss": { "message": "খারিজ করুন" },
+  "btnLabel_visitPage": { "message": "ভিজিট পৃষ্ঠা" },
   "link_viewChanges": { "message": "পরিবর্তনগুলি দেখুন" },
   "state_on": { "message": "চালু" },
   "state_off": { "message": "বন্ধ" }

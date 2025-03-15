@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Caută actualizări" },
   "btnLabel_update": { "message": "Actualizare" },
   "btnLabel_dismiss": { "message": "Respingeți" },
+  "btnLabel_visitPage": { "message": "Vizitați pagina principală" },
   "link_viewChanges": { "message": "Vizualizează modificările" },
   "state_on": { "message": "pe" },
   "state_off": { "message": "oprit" }

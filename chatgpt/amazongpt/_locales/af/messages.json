@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Kontroleer vir bywerkings" },
   "btnLabel_update": { "message": "Opdateer" },
   "btnLabel_dismiss": { "message": "Laat vaar" },
+  "btnLabel_visitPage": { "message": "Besoek bladsy" },
   "link_viewChanges": { "message": "Besigtig veranderinge" },
   "state_on": { "message": "Op" },
   "state_off": { "message": "Af" }

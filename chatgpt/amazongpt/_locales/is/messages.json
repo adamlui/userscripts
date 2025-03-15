@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Leita að uppfærslum" },
   "btnLabel_update": { "message": "Uppfæra" },
   "btnLabel_dismiss": { "message": "Hafna" },
+  "btnLabel_visitPage": { "message": "Skoða síðu" },
   "link_viewChanges": { "message": "Skoða breytingar" },
   "state_on": { "message": "Á" },
   "state_off": { "message": "Óvirkt" }

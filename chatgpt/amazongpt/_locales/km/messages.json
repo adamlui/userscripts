@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "ពិនិត្យរកអាប់ដេត" },
   "btnLabel_update": { "message": "ធ្វើបច្ចុប្បន្នភាព" },
   "btnLabel_dismiss": { "message": "បោះបង់" },
+  "btnLabel_visitPage": { "message": "ទស្សនកិច្ចទំព័រ" },
   "link_viewChanges": { "message": "មើលការផ្លាស់ប្តូរ" },
   "state_on": { "message": "ស្តីពី" },
   "state_off": { "message": "បិទ" }

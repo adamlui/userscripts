@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Ережелерді жаңартып алу" },
   "btnLabel_update": { "message": "Жаңарту" },
   "btnLabel_dismiss": { "message": "Жұмыстан шығару" },
+  "btnLabel_visitPage": { "message": "Бетке кіру" },
   "link_viewChanges": { "message": "Өзгерістерді көру" },
   "state_on": { "message": "Болсын" },
   "state_off": { "message": "Өшіру" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Kiểm tra cập nhật" },
   "btnLabel_update": { "message": "Cập nhật" },
   "btnLabel_dismiss": { "message": "Bỏ qua" },
+  "btnLabel_visitPage": { "message": "Truy cập trang" },
   "link_viewChanges": { "message": "Xem thay đổi" },
   "state_on": { "message": "Bật" },
   "state_off": { "message": "Tắt" }

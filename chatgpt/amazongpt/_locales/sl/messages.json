@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Preveri stanje posodobitev" },
   "btnLabel_update": { "message": "Posodobi" },
   "btnLabel_dismiss": { "message": "Opusti" },
+  "btnLabel_visitPage": { "message": "Obišči stran" },
   "link_viewChanges": { "message": "Poglej spremembe" },
   "state_on": { "message": "Vklopljeno" },
   "state_off": { "message": "izklopljeno" }

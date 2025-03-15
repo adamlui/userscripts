@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Comprova si hi ha actualitzacions" },
   "btnLabel_update": { "message": "Actualització" },
   "btnLabel_dismiss": { "message": "Descarta" },
+  "btnLabel_visitPage": { "message": "Visita la pàgina" },
   "link_viewChanges": { "message": "Mostra els canvis" },
   "state_on": { "message": "Activat" },
   "state_off": { "message": "Desactivat" }

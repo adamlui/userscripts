@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Проверить наличие обновлений" },
   "btnLabel_update": { "message": "Обновить" },
   "btnLabel_dismiss": { "message": "Пропустить" },
+  "btnLabel_visitPage": { "message": "Посетите страницу" },
   "link_viewChanges": { "message": "Просмотреть изменения" },
   "state_on": { "message": "On (Вкл)" },
   "state_off": { "message": "Off (Выкл)" }

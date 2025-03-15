@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "నవీకరణల కోసం పరిశీలించు" },
   "btnLabel_update": { "message": "అప్‌డేట్" },
   "btnLabel_dismiss": { "message": "తీసివేయండి" },
+  "btnLabel_visitPage": { "message": "పేజీని సందర్శించండి" },
   "link_viewChanges": { "message": "మార్పులను చూడండి" },
   "state_on": { "message": "ఆన్" },
   "state_off": { "message": "ఆఫ్" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Senqed ma llan ileqman" },
   "btnLabel_update": { "message": "Leqqem" },
   "btnLabel_dismiss": { "message": "Agi" },
+  "btnLabel_visitPage": { "message": "Asmel n usebter" },
   "link_viewChanges": { "message": "Wali ibeddilen" },
   "state_on": { "message": "Yermed" },
   "state_off": { "message": "Yensa" }

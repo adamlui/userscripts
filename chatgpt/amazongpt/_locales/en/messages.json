@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Check for Updates" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Dismiss" },
+  "btnLabel_visitPage": { "message": "Visit Page" },
   "link_viewChanges": { "message": "View changes" },
   "state_on": { "message": "On" },
   "state_off": { "message": "Off" }

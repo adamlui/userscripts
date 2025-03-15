@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "بررسی به روز رسانی" },
   "btnLabel_update": { "message": "بروزرسانی" },
   "btnLabel_dismiss": { "message": "مخفی شود" },
+  "btnLabel_visitPage": { "message": "مشاهده صفحه" },
   "link_viewChanges": { "message": "نمایش تغییرات" },
   "state_on": { "message": "شما در" },
   "state_off": { "message": "خاموش" }

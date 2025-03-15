@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Yeniləmələri yoxla" },
   "btnLabel_update": { "message": "Yenilə" },
   "btnLabel_dismiss": { "message": "Bağla" },
+  "btnLabel_visitPage": { "message": "Səhifəyə daxil ol" },
   "link_viewChanges": { "message": "Dəyişikliklərə bax" },
   "state_on": { "message": "" },
   "state_off": { "message": "İŞLƏMİR" }

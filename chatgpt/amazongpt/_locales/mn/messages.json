@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Шинэчлэлтүүдийг шалгана уу" },
   "btnLabel_update": { "message": "Шинэчлэх" },
   "btnLabel_dismiss": { "message": "Татгалзах" },
+  "btnLabel_visitPage": { "message": "Зочилсон хуудас" },
   "link_viewChanges": { "message": "Өөрчлөлтүүдийг харах" },
   "state_on": { "message": "Асаах" },
   "state_off": { "message": "Хаах" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "अद्यावधिकहरूको लागि जाँच गर्नुहोस्" },
   "btnLabel_update": { "message": "अद्यावधिक गर्नुहोस्" },
   "btnLabel_dismiss": { "message": "खारेज" },
+  "btnLabel_visitPage": { "message": "पृष्ठमा जानुहोस्" },
   "link_viewChanges": { "message": "परिवर्तनहरू हेर्नुहोस्" },
   "state_on": { "message": "खुला" },
   "state_off": { "message": "बन्द" }

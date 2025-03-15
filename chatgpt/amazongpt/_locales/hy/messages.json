@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Ստուգել թարմացումները" },
   "btnLabel_update": { "message": "Այժմեականացնել / Արդիականացնել" },
   "btnLabel_dismiss": { "message": "Փակել" },
+  "btnLabel_visitPage": { "message": "Այցելել էջ" },
   "link_viewChanges": { "message": "Դիտել փոփոխությունները" },
   "state_on": { "message": "Միացնել" },
   "state_off": { "message": "Անջատել" }

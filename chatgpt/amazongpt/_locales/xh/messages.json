@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Khangela Izinto Ezintsha" },
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Gxotha" },
+  "btnLabel_visitPage": { "message": "Yiya Kwiphepha" },
   "link_viewChanges": { "message": "Jonga izinto ezitshintshiweyo" },
   "state_on": { "message": "Inye" },
   "state_off": { "message": "cima" }

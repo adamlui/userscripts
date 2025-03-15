@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Semak Kemaskini" },
   "btnLabel_update": { "message": "Kemas kini" },
   "btnLabel_dismiss": { "message": "Singkir" },
+  "btnLabel_visitPage": { "message": "Lawati Halaman" },
   "link_viewChanges": { "message": "Lihat perubahan" },
   "state_on": { "message": "Hidup" },
   "state_off": { "message": "Mati" }

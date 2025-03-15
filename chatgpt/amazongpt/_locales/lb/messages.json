@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Kuckt no Aktualiséierungen" },
   "btnLabel_update": { "message": "Aktualiséieren" },
   "btnLabel_dismiss": { "message": "Ofginn" },
+  "btnLabel_visitPage": { "message": "Ik ben heel benieuwd naar jouw mening laat het me" },
   "link_viewChanges": { "message": "Ännerungen uweisen" },
   "state_on": { "message": "Un" },
   "state_off": { "message": "Aus" }

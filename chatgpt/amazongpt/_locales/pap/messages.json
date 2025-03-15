@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Verificá las actualizaciones" },
   "btnLabel_update": { "message": "Aktualidat" },
   "btnLabel_dismiss": { "message": "Disimulashon" },
+  "btnLabel_visitPage": { "message": "Visitá la página" },
   "link_viewChanges": { "message": "Bista riba kambionan" },
   "state_on": { "message": "Riba" },
   "state_off": { "message": "For di" }

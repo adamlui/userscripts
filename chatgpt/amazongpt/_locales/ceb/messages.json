@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Susiha ang mga Update" },
   "btnLabel_update": { "message": "I-update" },
   "btnLabel_dismiss": { "message": "I-dismiss" },
+  "btnLabel_visitPage": { "message": "Bisitaha ang Panid" },
   "link_viewChanges": { "message": "Tan-awa ang mga kausaban" },
   "state_on": { "message": "sa" },
   "state_off": { "message": "off" }

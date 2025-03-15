@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "अद्यतन के लिए जाँचें" },
   "btnLabel_update": { "message": "अपडेट करें" },
   "btnLabel_dismiss": { "message": "खारिज करना" },
+  "btnLabel_visitPage": { "message": "पेज पर जाएँ" },
   "link_viewChanges": { "message": "बदलाव देखें" },
   "state_on": { "message": "चालू" },
   "state_off": { "message": "बंद" }

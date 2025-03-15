@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "ตรวจสอบหาอัปเดต" },
   "btnLabel_update": { "message": "อัปเดต" },
   "btnLabel_dismiss": { "message": "ยกเลิก" },
+  "btnLabel_visitPage": { "message": "ไปที่หน้า" },
   "link_viewChanges": { "message": "ดูการเปลี่ยนแปลง" },
   "state_on": { "message": "เปิด" },
   "state_off": { "message": "ปิด" }

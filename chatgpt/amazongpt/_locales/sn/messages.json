@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Ongorora nokuti Updates" },
   "btnLabel_update": { "message": "Kugadziridza" },
   "btnLabel_dismiss": { "message": "Dzinga" },
+  "btnLabel_visitPage": { "message": "Kushanya Page" },
   "link_viewChanges": { "message": "Vonanyi cinjo" },
   "state_on": { "message": "Pana" },
   "state_off": { "message": "ZVIMWE" }

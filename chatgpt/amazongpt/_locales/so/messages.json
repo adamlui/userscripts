@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Hubi Cusbooneysiinta" },
   "btnLabel_update": { "message": "Cusboonaysiinta" },
   "btnLabel_dismiss": { "message": "Iska tuur" },
+  "btnLabel_visitPage": { "message": "Booqo Bogga" },
   "link_viewChanges": { "message": "Eeg isbeddellada" },
   "state_on": { "message": "Shid" },
   "state_off": { "message": "Dami" }

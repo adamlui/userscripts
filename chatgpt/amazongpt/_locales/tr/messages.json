@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Güncellemeleri Kontrol Et" },
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Yok say" },
+  "btnLabel_visitPage": { "message": "Sayfayı Ziyaret Et" },
   "link_viewChanges": { "message": "Değişen Dosyalar" },
   "state_on": { "message": "Açık" },
   "state_off": { "message": "Kapalı" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Thoir sùil airson ùrachaidhean" },
   "btnLabel_update": { "message": "Ùraich" },
   "btnLabel_dismiss": { "message": "Cuir air falbh" },
+  "btnLabel_visitPage": { "message": "Duilleag - tadhail" },
   "link_viewChanges": { "message": "Seall na h-atharraichean" },
   "state_on": { "message": "air" },
   "state_off": { "message": "dheth" }

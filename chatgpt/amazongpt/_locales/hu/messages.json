@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Frissítések keresése" },
   "btnLabel_update": { "message": "Frissítés" },
   "btnLabel_dismiss": { "message": "Elvetés" },
+  "btnLabel_visitPage": { "message": "látogasd meg a honlapot" },
   "link_viewChanges": { "message": "Módosítások megtekintése" },
   "state_on": { "message": "Be" },
   "state_off": { "message": "Kikapcsolva" }

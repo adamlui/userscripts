@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "اپ ڈیٹس کی پڑتال کریں" },
   "btnLabel_update": { "message": "اپ ڈیٹ" },
   "btnLabel_dismiss": { "message": "برخاست" },
+  "btnLabel_visitPage": { "message": "صفحہ ملاحظہ کریں" },
   "link_viewChanges": { "message": "تبدیلیاں دیکھیں" },
   "state_on": { "message": "چالو کریں" },
   "state_off": { "message": "بند کریں" }

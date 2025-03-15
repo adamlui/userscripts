@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Gev gætur eftir dagføringum" },
   "btnLabel_update": { "message": "Dagfør" },
   "btnLabel_dismiss": { "message": "Avsakað" },
+  "btnLabel_visitPage": { "message": "Vitja síðuna" },
   "link_viewChanges": { "message": "Sí broytingar" },
   "state_on": { "message": "t" },
   "state_off": { "message": "Av" }

@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Vakaiʻi e Ngaahi Fakamatala Fakamuimuitahá" },
   "btnLabel_update": { "message": "Fakamatala Fakamuimuitahá" },
   "btnLabel_dismiss": { "message": "Tukuange" },
+  "btnLabel_visitPage": { "message": "Peesi ʻAʻahí" },
   "link_viewChanges": { "message": "Vakai ki he ngaahi liliú" },
   "state_on": { "message": "ʻI he" },
   "state_off": { "message": "ʻOsi" }

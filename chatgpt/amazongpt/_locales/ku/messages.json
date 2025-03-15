@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Ji bo Nûvekirinan kontrol bikin" },
   "btnLabel_update": { "message": "Rojane Bike" },
   "btnLabel_dismiss": { "message": "دەردەکات، دەرکردن، ڕێ پێنەدان، دەر کردن، رەدکردنەوەی گازندە(دادخوازی)\n[مافناسی]: دەر کردن، رەد کردنەوەی گازندە (دادخوازی)" },
+  "btnLabel_visitPage": { "message": "Serdana Rûpelê bikin" },
   "link_viewChanges": { "message": "Guhertinan bibînin" },
   "state_on": { "message": "Vekirî" },
   "state_off": { "message": "Girtî" }

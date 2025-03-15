@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "ກວດເບິ່ງການອັບເດດ" },
   "btnLabel_update": { "message": "ອັບເດດ" },
   "btnLabel_dismiss": { "message": "ຂ້າມໄປ" },
+  "btnLabel_visitPage": { "message": "ເຂົ້າເບິ່ງໜ້າ" },
   "link_viewChanges": { "message": "ເບິ່ງການປ່ຽນແປງ" },
   "state_on": { "message": "ເປີດ" },
   "state_off": { "message": "ປິດ" }

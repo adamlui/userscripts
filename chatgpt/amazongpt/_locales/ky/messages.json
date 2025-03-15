@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Жаңы чыгаруулар бар экендигин текшерүү" },
   "btnLabel_update": { "message": "Жаңыртуу" },
   "btnLabel_dismiss": { "message": "Иштен бошотуу" },
+  "btnLabel_visitPage": { "message": "Баракчага кирүү" },
   "link_viewChanges": { "message": "Өзгөртүүлөрдү көрүү" },
   "state_on": { "message": "БАР" },
   "state_off": { "message": "Өчүрүү" }

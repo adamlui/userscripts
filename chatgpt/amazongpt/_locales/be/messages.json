@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Праверыць абнаўленьні" },
   "btnLabel_update": { "message": "Абноўлена" },
   "btnLabel_dismiss": { "message": "Адхіліць" },
+  "btnLabel_visitPage": { "message": "Наведайце старонку даведкі" },
   "link_viewChanges": { "message": "Праглядзець змены" },
   "state_on": { "message": "Уключэнне" },
   "state_off": { "message": "Выключэнне" }

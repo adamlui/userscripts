@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "යාවත්කාලීන සඳහා පරීක් ‍ ෂා කරන්න" },
   "btnLabel_update": { "message": "යාවත් කාළීන" },
   "btnLabel_dismiss": { "message": "ඉවත් කරන්න" },
+  "btnLabel_visitPage": { "message": "පිවිසුම් පිටුව" },
   "link_viewChanges": { "message": "වෙනස්කම් බලන්න" },
   "state_on": { "message": "ක්‍රියාත්මකයි" },
   "state_off": { "message": "Property_BAR_NewPrefs_App_BAR_" }

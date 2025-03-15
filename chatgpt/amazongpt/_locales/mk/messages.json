@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Провери за нова верзија" },
   "btnLabel_update": { "message": "Ажурирај" },
   "btnLabel_dismiss": { "message": "Отфрли" },
+  "btnLabel_visitPage": { "message": "Посети главна страница" },
   "link_viewChanges": { "message": "Прикажи ги промените" },
   "state_on": { "message": "На" },
   "state_off": { "message": "Исклучено" }

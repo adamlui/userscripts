@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Täzeleşmeler üçin barlaň" },
   "btnLabel_update": { "message": "Täzele" },
   "btnLabel_dismiss": { "message": "Çykyş" },
+  "btnLabel_visitPage": { "message": "Sahypa serediň" },
   "link_viewChanges": { "message": "Özgertmeleri Gör" },
   "state_on": { "message": "% jeminden" },
   "state_off": { "message": "Çyk" }

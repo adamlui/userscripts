@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Tcheke pou Mizajou" },
   "btnLabel_update": { "message": "Mizajou" },
   "btnLabel_dismiss": { "message": "ranvwaye /rejte/revoke /abandone/elimine/rejeter /renvoyer/révoquer/éliminer/abandonner/annuler" },
+  "btnLabel_visitPage": { "message": "vizite paj sa a/visitez cette page" },
   "link_viewChanges": { "message": "Gade chanjman yo" },
   "state_on": { "message": "Sou" },
   "state_off": { "message": "Koupe " }

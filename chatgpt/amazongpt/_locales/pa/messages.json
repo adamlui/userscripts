@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "ਨਵੇਂ ਐਪੀਸੋਡ ਲਈ ਚੈੱਕ ਕਰੋ" },
   "btnLabel_update": { "message": "ਅੱਪਡੇਟ ਕਰੋ" },
   "btnLabel_dismiss": { "message": "ਬਰਖਾਸਤ ਕਰੋ" },
+  "btnLabel_visitPage": { "message": "ਵਿਜ਼ਿਟ ਪੇਜ" },
   "link_viewChanges": { "message": "ਤਬਦੀਲੀਆਂ ਵੇਖੋ" },
   "state_on": { "message": "ਚਾਲੂ" },
   "state_off": { "message": "ਬੰਦ" }

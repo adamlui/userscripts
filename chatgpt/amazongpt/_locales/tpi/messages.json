@@ -90,6 +90,7 @@
   "btnLabel_checkForUpdates": { "message": "Lukim ol nupela tok" },
   "btnLabel_update": { "message": "UPDATE" },
   "btnLabel_dismiss": { "message": "Lusim" },
+  "btnLabel_visitPage": { "message": "Visitim pes" },
   "link_viewChanges": { "message": "Lukim ol senis" },
   "state_on": { "message": "Long" },
   "state_off": { "message": "Kisim i go" }
