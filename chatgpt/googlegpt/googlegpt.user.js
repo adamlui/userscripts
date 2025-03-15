@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.13.1
+// @version                  2025.3.15
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -365,6 +365,7 @@
 // @connect                  api11.gptforlove.com
 // @connect                  assets.aiwebextensions.com
 // @connect                  cdn.jsdelivr.net
+// @connect                  chat-share.kudoai.workers.dev
 // @connect                  chatai.mixerbox.com
 // @connect                  chatgpt.com
 // @connect                  fanyi.sogou.com
@@ -449,7 +450,7 @@
             support: 'https://support.googlegpt.io',
             update: 'https://gm.googlegpt.io'
         },
-        latestResourceCommitHash: '4dced49' // for cached messages.json
+        latestResourceCommitHash: '0c96447' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -503,11 +504,14 @@
         tooltip_expand: 'Expand',
         tooltip_shrink: 'Shrink',
         tooltip_close: 'Close',
+        tooltip_shareConvo: 'Share conversation',
         tooltip_copy: 'Copy',
+        tooltip_generating: 'Generating',
         tooltip_regenerate: 'Regenerate',
         tooltip_regenerating: 'Regenerating',
         tooltip_play: 'Play',
         tooltip_playing: 'Playing',
+        tooltip_html: 'HTML',
         tooltip_reply: 'Reply',
         tooltip_code: 'Code',
         tooltip_generatingAudio: 'Generating audio',
@@ -559,6 +563,7 @@
         alert_try: 'Try',
         alert_switchingOn: 'switching on',
         alert_switchingOff: 'switching off',
+        alert_sharePageGenerated: 'Share Page generated',
         notif_copiedToClipboard: 'Copied to clipboard',
         btnLabel_sendQueryToApp: 'Send search query to GoogleGPT',
         btnLabel_moreAIextensions: 'More AI Extensions',
@@ -1468,6 +1473,22 @@
             }
         },
 
+        shareChat(shareURL) {
+
+            // Show modal
+            const shareChatModal = modals.alert(app.msgs.alert_sharePageGenerated + '!', // title
+                `<a target="_blank" rel="noopener" href="${shareURL}">${shareURL}</a>`, // link msg
+                [ function copyUrl(){ // button
+                    navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) }])
+
+            // Style elements
+            shareChatModal.querySelector('h2').style.justifySelf = 'center'
+            shareChatModal.querySelector('p').style.cssText = 'text-align: center ; margin: 10px 0 -22px'
+            shareChatModal.querySelector('.modal-buttons').style.cssText = 'justify-content: center'
+
+            return shareChatModal
+        },
+
         stylize() {
             if (!this.styles) {
                 this.styles = dom.create.style(null, { id: `${this.class}-styles` })
@@ -1790,6 +1811,15 @@
                     fill: 'currentColor', style: 'transform: rotate(180deg)' })
                 const svgPath = dom.create.svgElem('path', {
                     d: 'M16 10H6.83L9 7.83l1.41-1.41L9 5l-6 6 6 6 1.41-1.41L9 14.17 6.83 12H16c1.65 0 3 1.35 3 3v4h2v-4c0-2.76-2.24-5-5-5z' })
+                svg.append(svgPath) ; return svg
+            }
+        },
+
+        arrowShare: {
+            create() {
+                const svg = dom.create.svgElem('svg', { width: 19, height: 19, viewBox: '0 0 24 24', fill: 'none' })
+                const svgPath = dom.create.svgElem('path', { 'stroke-width': 2,
+                    d: 'M14.7441 16.4211C14.5876 16.7477 14.5 17.1136 14.5 17.5C14.5 18.8807 15.6193 20 17 20C18.3807 20 19.5 18.8807 19.5 17.5C19.5 16.1193 18.3807 15 17 15C16.0057 15 15.1469 15.5805 14.7441 16.4211ZM14.7441 16.4211L7.75586 13.0789M14.7441 7.57889C15.1469 8.41949 16.0057 9 17 9C18.3807 9 19.5 7.88071 19.5 6.5C19.5 5.11929 18.3807 4 17 4C15.6193 4 14.5 5.11929 14.5 6.5C14.5 6.88637 14.5876 7.25226 14.7441 7.57889ZM14.7441 7.57889L7.75586 10.9211M7.75586 10.9211C7.35311 10.0805 6.49435 9.5 5.5 9.5C4.11929 9.5 3 10.6193 3 12C3 13.3807 4.11929 14.5 5.5 14.5C6.49435 14.5 7.35311 13.9195 7.75586 13.0789M7.75586 10.9211C7.91235 11.2477 8 11.6136 8 12C8 12.3864 7.91235 12.7523 7.75586 13.0789' })
                 svg.append(svgPath) ; return svg
             }
         },
@@ -2261,6 +2291,7 @@
               + '@keyframes icon-scroll { 0% { transform: translateX(0) } 100% { transform: translateX(-18px) }}'
               + '@keyframes pulse { 0%, to { opacity: 1 } 50% { opacity: .5 }}'
               + '@keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) }}'
+              + '@keyframes spinY { 0% { transform: rotateY(0deg) } 100% { transform: rotateY(360deg) }}'
 
                 // Main styles
               + '.no-user-select {'
@@ -2793,13 +2824,7 @@
                     chatTextarea.focus()
 
                 // Yes reply, submit it + transform to loading UI
-                } else {
-
-                    // Modify/submit msg chain
-                    if (msgChain.length > 2) msgChain.splice(0, 2) // keep token usage maintainable
-                    const prevReplyTrimmed = appDiv.querySelector('pre')
-                        ?.textContent.substring(0, 250 - chatTextarea.value.length) || ''
-                    msgChain.push({ role: 'assistant', content: prevReplyTrimmed })
+                } else {                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
@@ -2992,6 +3017,15 @@
             let builtPrompt = promptElems.join(' ').trim()
             if (prevQuery) builtPrompt = builtPrompt.replace('%prevQuery%', prevQuery)
             return builtPrompt
+        },
+
+        stripAugments(msgChain) {
+            return msgChain.map(msg => {
+                if (msg.role == 'user' && msg.content.startsWith('{{')) {
+                    const match = msg.content.match(/\{\{(.*?)\}\}/)
+                    return match ? { ...msg, content: match[1] } : { ...msg }
+                } else return { ...msg }
+            })
         },
 
         accuracy: { mods: [ 'Never hallucinate, if you don\'t know something just admit it' ]},
@@ -3288,7 +3322,7 @@
 
             const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
                   appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'pin', 'wsb', 'arrows'],
-                  replyCornerBtnTypes = ['copy', 'regen', 'speak']
+                  replyCornerBtnTypes = ['share', 'copy', 'regen', 'speak']
 
             // Update text
             tooltipDiv.innerText = (
@@ -3298,9 +3332,12 @@
               : btnType == 'settings' ? app.msgs.menuLabel_settings
               : btnType == 'font-size' ? app.msgs.tooltip_fontSize
               : btnType == 'wsb' ? (( config.widerSidebar ? `${app.msgs.prefix_exit} ` :  '' )
-                                 + ( app.msgs.menuLabel_widerSidebar ))
+                                 +  ( app.msgs.menuLabel_widerSidebar ))
               : btnType == 'arrows' ? ( config.expanded ? `${app.msgs.tooltip_shrink}`
                                                         : `${app.msgs.tooltip_expand}` )
+              : btnType == 'share' ? (
+                    btn.style.animation ? `${app.msgs.tooltip_generating} ${app.msgs.tooltip_html}...`
+                                        : app.msgs.tooltip_shareConvo )
               : btnType == 'copy' ? (
                     btn.firstChild.id.includes('-copy-') ?
                         `${app.msgs.tooltip_copy} ${
@@ -3738,6 +3775,12 @@
             loadingElem.classList.add('loading', 'no-user-select')
             loadingElem.prepend(loadingSpinner)
 
+            // Init msgs
+            let msgs = [...msgChain]
+            if (msgs.length > 3) msgs = msgs.slice(-3) // keep last 3 only
+            msgs.forEach(msg => { // trim agent msgs
+                if (msg.role == 'assistant' && msg.content.length > 250) msg.content = msg.content.substring(0, 250) })
+
             // Init API attempt props
             get.reply.status = 'waiting'
             if (!get.reply.triedAPIs) get.reply.triedAPIs = []
@@ -3766,9 +3809,7 @@
             }
 
             // Augment query
-            const reqAPI = get.reply.api,
-                  msgs = structuredClone(msgChain), // avoid mutating global msgChain
-                  lastUserMsg = msgs[msgs.length - 1]
+            const reqAPI = get.reply.api, lastUserMsg = msgs[msgs.length - 1]
             lastUserMsg.content = prompts.augment(lastUserMsg.content, { api: reqAPI, caller: get.reply })
 
             // Get/show answer from AI
@@ -4098,6 +4139,30 @@
             // Add top parent div
             const cornerBtnsDiv = dom.create.elem('div', { id: `${app.slug}-reply-corner-btns` })
             appDiv.querySelector('pre').prepend(cornerBtnsDiv)
+
+            // Add Share button
+            const shareBtn = dom.create.elem('btn', {
+                id: `${app.slug}-share-btn`, class: 'no-mobile-tap-outline',
+                style: baseBtnStyles + 'margin-right: 10px' })
+            shareBtn.append(icons.arrowShare.create()) ; cornerBtnsDiv.append(shareBtn)
+            if (!env.browser.isMobile) shareBtn.onmouseenter = shareBtn.onmouseleave = toggle.tooltip
+            shareBtn.onclick = event => {
+                shareBtn.style.animation = 'spinY 1s linear infinite'
+                shareBtn.style.cursor = 'default' // remove finger
+                toggle.tooltip(event) // update tooltip
+                const msgs = [...prompts.stripAugments(msgChain)]
+                msgs.push( // displayed reply since unpushed till next get.reply()
+                    { role: 'assistant', content: appDiv.querySelector('pre')?.textContent })
+                xhr({
+                    method: 'POST', url: 'https://chat-share.kudoai.workers.dev',
+                    headers: { 'Content-Type': 'application/json', 'Referer': location.href },
+                    data: JSON.stringify({ messages: msgs }),
+                    onload: resp => {
+                        modals.shareChat(JSON.parse(resp.responseText).url)
+                        shareBtn.style.animation = '' ; shareBtn.style.cursor = 'pointer'
+                    }
+                })
+            }
 
             // Add Copy buttons
             appDiv.querySelectorAll(`#${app.slug} > pre, code`).forEach(parentElem => {
