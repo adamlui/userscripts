@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.15
+// @version                  2025.3.15.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -2824,7 +2824,8 @@
                     chatTextarea.focus()
 
                 // Yes reply, submit it + transform to loading UI
-                } else {                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
+                } else {
+                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
