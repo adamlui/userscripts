@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.16.2
+// @version                2025.3.16.3
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1369,7 +1369,7 @@
             // Prefix icon to title
             const modalTitle = shareChatModal.querySelector('h2'), titleIcon = icons.speechBalloons.create()
             titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
-                                    + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
+                                    + `fill: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
 
             // Hide Dismiss button, localize other labels
@@ -2415,7 +2415,7 @@
               + `#${app.slug} + footer {
                     font-size: 13px ; line-height: 1.25 ; text-align: right ;
                     display: block ; width: 100% ; margin: 14px 0 25px ; position: relative }`
-              + `#${app.slug} + footer, #${app.slug} + footer a { color: #${ env.ui.scheme == 'dark' ? 'ccc' : 'aaa' }}`
+              + `#${app.slug} + footer, #${app.slug} + footer a { color: #${ env.ui.app.scheme == 'dark' ? 'ccc' : 'aaa' }}`
               + `.chatgpt-notif {
                     fill: white ; stroke: white ; color: white ; padding: 7.5px 14px 6.5px 11.5px !important }`
               + '.notif-close-btn { display: none !important }' // hide notif close btn
