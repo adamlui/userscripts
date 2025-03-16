@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.16.1
+// @version               2025.3.16.2
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -172,13 +172,13 @@
 // @connect               api.binjie.fun
 // @connect               api.openai.com
 // @connect               api11.gptforlove.com
-// @connect               assets.aiwebextensions.com
+// @connect               aiwebextensions.com
+// @connect               bravegpt.com
 // @connect               cdn.jsdelivr.net
-// @connect               chat-share.kudoai.workers.dev
 // @connect               chatai.mixerbox.com
 // @connect               chatgpt.com
 // @connect               fanyi.sogou.com
-// @connect               gm.bravegpt.com
+// @connect               kudoai.workers.dev
 // @connect               raw.githubusercontent.com
 // @require               https://cdn.jsdelivr.net/npm/@kudoai/chatgpt.js@3.7.1/dist/chatgpt.min.js#sha256-uv1k2VxGy+ri3+2C+D/kTYSBCom5JzvrNCLxzItgD6M=
 // @require               https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js#sha256-dppVXeVTurw1ozOPNE3XqhYmDJPOosfbKQcHyQSE58w=
@@ -262,7 +262,7 @@
             support: 'https://support.bravegpt.com',
             update: 'https://gm.bravegpt.com'
         },
-        latestResourceCommitHash: '89673a9' // for cached messages.json
+        latestResourceCommitHash: 'aec952e' // for cached messages.json
     }
     app.urls.resourceHost = app.urls.gitHub.replace('github.com', 'cdn.jsdelivr.net/gh')
                           + `@${app.latestResourceCommitHash}`
@@ -377,6 +377,7 @@
         alert_switchingOff: 'switching off',
         alert_sharePageGenerated: 'Share Page generated',
         notif_copiedToClipboard: 'Copied to clipboard',
+        notif_downloaded: 'downloaded',
         btnLabel_sendQueryToApp: 'Send search query to BraveGPT',
         btnLabel_moreAIextensions: 'More AI Extensions',
         btnLabel_rateUs: 'Rate Us',
@@ -385,6 +386,8 @@
         btnLabel_update: 'Update',
         btnLabel_dismiss: 'Dismiss',
         btnLabel_visitPage: 'Visit Page',
+        btnLabel_download: 'Download',
+        btnLabel_convo: 'Chat',
         link_viewChanges: 'View changes',
         link_shareFeedback: 'Feedback',
         prefix_exit: 'Exit',
@@ -1339,23 +1342,42 @@
                 [ // buttons
                     function copyUrl() {
                         navigator.clipboard.writeText(shareURL).then(() => notify(app.msgs.notif_copiedToClipboard)) },
-                    function visitPage() { modals.safeWinOpen(shareURL) }
+                    function visitPage() { modals.safeWinOpen(shareURL) },
+                    function downloadChat() {
+                        xhr({
+                            method: 'GET', url: shareURL,
+                            onload: resp => {
+                                const html = resp.responseText, dlLink = document.createElement('a')
+                                dlLink.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }))
+                                dlLink.download /* filename */ = html.match(/<title>([^<]+)<\/title>/i)[1] // page title
+                                    .replace(/\s+—\s+/g, '—') // strip spaces around em dash of app name
+                                    .toLowerCase().trim().replace(/\s+/g, '-') // hyphen-case
+                                    + '.html'
+                                document.body.append(dlLink) ; dlLink.click() ; dlLink.remove() // download HTML
+                                URL.revokeObjectURL(dlLink.href) // prevent memory leaks
+                                notify(`${app.msgs.btnLabel_convo} ${app.msgs.notif_downloaded}`)
+                            },
+                            onerror: err => log.error('Failed to download chat:', err)
+                        })
+                    }
                 ]
             )
 
             // Prefix icon to title
-            const modalTitle = shareChatModal.querySelector('h2'),
-                  titleIcon = icons.speechBalloons.create()
+            const modalTitle = shareChatModal.querySelector('h2'), titleIcon = icons.speechBalloons.create()
             titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
                                     + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
 
-            // Localize button labels if needed
-            if (!env.browser.language.startsWith('en'))
-                shareChatModal.querySelectorAll('button').forEach(btn => {
+            // Hide Dismiss button, localize other labels
+            const modalBtns = shareChatModal.querySelectorAll('button')
+            modalBtns[0].style.display = 'none' // hide Dismiss button
+            if (!env.browser.language.startsWith('en')) // localize button labels
+                modalBtns.forEach(btn => {
                     if (/copy/i.test(btn.textContent)) btn.textContent = `${app.msgs.tooltip_copy} URL`
                     else if (/visit/i.test(btn.textContent)) btn.textContent = app.msgs.btnLabel_visitPage
-                    else btn.textContent = app.msgs.btnLabel_dismiss
+                    else if (/download/i.test(btn.textContent))
+                         btn.textContent = `${app.msgs.btnLabel_download} ${app.msgs.btnLabel_convo}`
                 })
 
             // Style elements
@@ -1390,7 +1412,7 @@
               + '.modal-buttons {'
                   + `margin: 38px 0 1px ${ env.browser.isMobile ? 0 : -7 }px !important ; width: 100% }`
               + '.chatgpt-modal button {' // this.alert() buttons
-                  + `min-width: 123px ; padding: ${ env.browser.isMobile ? '5px' : '4px 3px' } !important ;`
+                  + `min-width: 123px ; padding: ${ env.browser.isMobile ? '5px' : '4px 8px' } !important ;`
                   + 'cursor: pointer ; border-radius: 0 !important ; height: 39px ;'
                   + 'border: 1px solid ' + ( env.ui.app.scheme == 'dark' ? 'white' : 'black' ) + ' !important }'
               + '.primary-modal-btn { background: black !important ; color: white !important }'
