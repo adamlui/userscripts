@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.16
+// @version               2025.3.16.1
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3762,6 +3762,7 @@
         },
 
         reply(answer) {
+            show.reply.shareURL = null // reset to regen using longer msgChain
             if (!env.browser.isMobile) // hide lingering tooltip if cursor was on corner button
                 toggle.tooltip('off')
 
@@ -3994,6 +3995,7 @@
             shareBtn.append(icons.arrowShare.create()) ; cornerBtnsDiv.append(shareBtn)
             if (!env.browser.isMobile) shareBtn.onmouseenter = shareBtn.onmouseleave = toggle.tooltip
             shareBtn.onclick = event => {
+                if (show.reply.shareURL) return modals.shareChat(show.reply.shareURL)
                 shareBtn.style.animation = 'spinY 1s linear infinite'
                 shareBtn.style.cursor = 'default' // remove finger
                 toggle.tooltip(event) // update tooltip
@@ -4005,7 +4007,8 @@
                     headers: { 'Content-Type': 'application/json', 'Referer': location.href },
                     data: JSON.stringify({ messages: msgs }),
                     onload: resp => {
-                        modals.shareChat(JSON.parse(resp.responseText).url)
+                        const shareURL = JSON.parse(resp.responseText).url
+                        show.reply.shareURL = shareURL ; modals.shareChat(shareURL)
                         shareBtn.style.animation = '' ; shareBtn.style.cursor = 'pointer'
                     }
                 })
