@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.15.5
+// @version                2025.3.16
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -1349,7 +1349,7 @@
             // Prefix icon to title
             const modalTitle = shareChatModal.querySelector('h2'),
                   titleIcon = icons.speechBalloons.create()
-            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px'
+            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
                                     + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
 
