@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.16.1
+// @version                  2025.3.16.2
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1510,7 +1510,7 @@
             // Prefix icon to title
             const modalTitle = shareChatModal.querySelector('h2'), titleIcon = icons.speechBalloons.create()
             titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
-                                    + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
+                                    + `fill: ${ env.ui.app.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
 
             // Hide Dismiss button, localize other labels
