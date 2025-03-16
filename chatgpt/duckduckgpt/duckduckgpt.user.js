@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.16.7
+// @version                2025.3.16.8
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -3744,8 +3744,7 @@
                     const rqDiv = dom.create.elem('div', {
                         title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0,
                         class: `${app.slug}-related-query fade-in no-user-select no-mobile-tap-outline` })
-                    const rqSVG = icons.arrowDownRight.create()
-                    rqDiv.textContent = query ; rqDiv.prepend(rqSVG) ; rqsDiv.append(rqDiv)
+                    rqDiv.textContent = query ; rqDiv.prepend(icons.arrowDownRight.create()) ; rqsDiv.append(rqDiv)
                     setTimeout(() => { // add fade + listeners
                         rqDiv.classList.add('active')
                         rqDiv.onclick = rqDiv.onkeydown = event => {
