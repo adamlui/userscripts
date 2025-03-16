@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.15.5
+// @version               2025.3.16
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -1346,7 +1346,7 @@
             // Prefix icon to title
             const modalTitle = shareChatModal.querySelector('h2'),
                   titleIcon = icons.speechBalloons.create()
-            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px'
+            titleIcon.style.cssText = 'height: 28px ; width: 28px ; position: relative ; top: 7px ; right: 8px ;'
                                     + `fill: ${ env.ui.scheme == 'dark' ? 'white' : 'black' }`
             modalTitle.prepend(titleIcon)
 
