@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.16.5
+// @version                2025.3.16.6
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2169,7 +2169,7 @@
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
-                  + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
+                  + '--rq-transition: opacity 0.55s ease, transform 0.1s ease !important ;' // for fade-in + hover-zoom
                   + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider + Pin menu
 
                 // Animations
@@ -3741,20 +3741,12 @@
 
                 // Fill each child div, add attributes + icon + listener
                 queries.forEach((query, idx) => {
-                    const rqDiv = dom.create.elem('div'), rqSVG = icons.arrowDownRight.create()
-
-                    // Add attributes
-                    Object.assign(rqDiv, { title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0 })
-                    rqDiv.title = app.msgs.tooltip_sendRelatedQuery ; rqDiv.setAttribute('tabindex', 0)
-                    rqDiv.classList.add(
-                        `${app.slug}-related-query`, 'fade-in', 'no-user-select', 'no-mobile-tap-outline')
-                    rqDiv.textContent = query
-
-                    // Assemble/insert elems
-                    rqDiv.prepend(rqSVG) ; rqsDiv.append(rqDiv)
-
-                    // Add fade + listeners
-                    setTimeout(() => {
+                    const rqDiv = dom.create.elem('div', {
+                        title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0,
+                        class: `${app.slug}-related-query fade-in no-user-select no-mobile-tap-outline` })
+                    const rqSVG = icons.arrowDownRight.create()
+                    rqDiv.textContent = query ; rqDiv.prepend(rqSVG) ; rqsDiv.append(rqDiv)
+                    setTimeout(() => { // add fade + listeners
                         rqDiv.classList.add('active')
                         rqDiv.onclick = rqDiv.onkeydown = event => {
                             const keys = [' ', 'Spacebar', 'Enter', 'Return'], keyCodes = [32, 13]
@@ -3771,7 +3763,7 @@
                                         { key: 'Enter', bubbles: true, cancelable: true }))
                             }
                         }
-                    }, idx * 100)
+                    }, (idx+1) *50)
                 })
 
                 update.answerPreMaxHeight() ; get.related.replyIsQuestion = null
