@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.16.4
+// @version                2025.3.16.5
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -1743,7 +1743,6 @@
                                     + 'opacity 0.25s ease-in-out ;' // + btn-zoom-fade-out + .app-hover-only shows
                   + '--font-size-slider-thumb-transition: transform 0.05s ease ;' // for hover-zoom
                   + '--answer-pre-transition: max-height 0.167s cubic-bezier(0, 0, 0.2, 1) ;' // for Anchor changes
-                  + '--rq-transition: transform 0.1s ease !important ;' // for hover-zoom
                   + '--fade-in-less-transition: opacity 0.2s ease }' // used by Font Size slider
 
                 // Animations
@@ -2828,7 +2827,6 @@
             const loadingSpinner = icons.arrowsCyclic.create() ; let loadingElem
             loadingSpinner.style.cssText = 'position: relative ; top: 2px ; margin-right: 6px'
             if (appDiv.querySelector('pre')) { // reply exists, show where chatbar was
-                appDiv.querySelector(`.${app.slug}-related-queries`)?.remove() // clear RQs
                 loadingElem = appDiv.querySelector('section')
                 loadingElem.innerText = app.alerts.waitingResponse
                 loadingSpinner.style.animation = 'rotate 1s infinite cubic-bezier(0, 1.05, 0.79, 0.44)' // faster ver
