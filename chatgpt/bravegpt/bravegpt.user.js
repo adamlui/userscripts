@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.16.6
+// @version               2025.3.16.7
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3751,8 +3751,7 @@
                     const rqDiv = dom.create.elem('div', {
                         title: app.msgs.tooltip_sendRelatedQuery, tabindex: 0,
                         class: `${app.slug}-related-query fade-in no-user-select no-mobile-tap-outline` })
-                    const rqSVG = icons.arrowDownRight.create()
-                    rqDiv.textContent = query ; rqDiv.prepend(rqSVG) ; rqsDiv.append(rqDiv)
+                    rqDiv.textContent = query ; rqDiv.prepend(icons.arrowDownRight.create()) ; rqsDiv.append(rqDiv)
                     setTimeout(() => { // add fade + listeners
                         rqDiv.classList.add('active')
                         rqDiv.onclick = rqDiv.onkeydown = event => {
