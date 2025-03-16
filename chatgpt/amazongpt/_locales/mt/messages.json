@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Kif titfi" },
   "alert_sharePageGenerated": { "message": "Aqsam il-paġna ġġenerata" },
   "notif_copiedToClipboard": { "message": "Kopjati lill-clipboard" },
+  "notif_downloaded": { "message": "niżżel" },
   "btnLabel_moreAIextensions": { "message": "Iktar Estensjonijiet tal-IA" },
   "btnLabel_leaveReview": { "message": "Ħalli r-Review" },
   "btnLabel_rateUs": { "message": "Rata us" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aġġorna" },
   "btnLabel_dismiss": { "message": "Neħħi" },
   "btnLabel_visitPage": { "message": "Paġna taż-Żjara" },
+  "btnLabel_download": { "message": "Niżżel" },
+  "btnLabel_convo": { "message": "Konverżazzjoni:" },
   "link_viewChanges": { "message": "Ara l-bidliet" },
   "state_on": { "message": "fil" },
   "state_off": { "message": "Diżattivata" }

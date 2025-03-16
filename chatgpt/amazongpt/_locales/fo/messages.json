@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "at venda sær" },
   "alert_sharePageGenerated": { "message": "Dela síðuna, sum er skapt" },
   "notif_copiedToClipboard": { "message": "Avritað til klippborð" },
+  "notif_downloaded": { "message": "niðurlagdur" },
   "btnLabel_moreAIextensions": { "message": "Fleiri AI útbyggingar" },
   "btnLabel_leaveReview": { "message": "Loyvi endurskoðan" },
   "btnLabel_rateUs": { "message": "Rætta okkum" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Dagfør" },
   "btnLabel_dismiss": { "message": "Avsakað" },
   "btnLabel_visitPage": { "message": "Vitja síðuna" },
+  "btnLabel_download": { "message": "Tak niður" },
+  "btnLabel_convo": { "message": "Samrøða" },
   "link_viewChanges": { "message": "Sí broytingar" },
   "state_on": { "message": "t" },
   "state_off": { "message": "Av" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "bidakora" },
   "alert_sharePageGenerated": { "message": "< B B" },
   "notif_copiedToClipboard": { "message": "Kuri Ububikokoporora" },
+  "notif_downloaded": { "message": "Iyimura" },
   "btnLabel_moreAIextensions": { "message": "Umigereka" },
   "btnLabel_leaveReview": { "message": "Isubiramo" },
   "btnLabel_rateUs": { "message": "Gupima" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Kuvugurura" },
   "btnLabel_dismiss": { "message": "Kureka" },
   "btnLabel_visitPage": { "message": "Gusura Ipaji" },
+  "btnLabel_download": { "message": "Iyimura" },
+  "btnLabel_convo": { "message": "Ikiganiro" },
   "link_viewChanges": { "message": "Amahinduka" },
   "state_on": { "message": "Gufungura" },
   "state_off": { "message": "Gufunga" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "قَطْعُ التّيّارِ الكَهْرَبَائِيّ" },
   "alert_sharePageGenerated": { "message": "تم إنشاء صفحة المشاركة" },
   "notif_copiedToClipboard": { "message": "نسخ إلى الحافظة" },
+  "notif_downloaded": { "message": "تم التنزيل" },
   "btnLabel_moreAIextensions": { "message": "المزيد من ملحقات الذكاء الاصطناعي" },
   "btnLabel_leaveReview": { "message": "اترك مراجعة" },
   "btnLabel_rateUs": { "message": "التقييم" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "التحديث" },
   "btnLabel_dismiss": { "message": "تجاهل" },
   "btnLabel_visitPage": { "message": "زيارة الصفحة" },
+  "btnLabel_download": { "message": "التحميل" },
+  "btnLabel_convo": { "message": "المحادثة" },
   "link_viewChanges": { "message": "عرض سجل التغييرات" },
   "state_on": { "message": "تشغيل" },
   "state_off": { "message": "إيقاف التشغيل" }

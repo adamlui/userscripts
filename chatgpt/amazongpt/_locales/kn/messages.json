@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ಸ್ವಿಚ್ ಆಫ್ ಮಾಡಲಾಗುತ್ತಿದೆ" },
   "alert_sharePageGenerated": { "message": "ಪುಟವನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗಿದೆ" },
   "notif_copiedToClipboard": { "message": "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ" },
+  "notif_downloaded": { "message": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ" },
   "btnLabel_moreAIextensions": { "message": "ಹೆಚ್ಚಿನ AI ವಿಸ್ತರಣೆಗಳು" },
   "btnLabel_leaveReview": { "message": "ವಿಮರ್ಶೆಯನ್ನು ಬಿಡಿ" },
   "btnLabel_rateUs": { "message": "ನಮಗೆ ರೇಟಿಂಗ್ ನೀಡಿ" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "ನವೀಕರಿಸಿ" },
   "btnLabel_dismiss": { "message": "ವಜಾಗೊಳಿಸಿ" },
   "btnLabel_visitPage": { "message": "ಪುಟಕ್ಕೆ ಭೇಟಿ ನೀಡಿ" },
+  "btnLabel_download": { "message": "ಡೌನ್‌ಲೋಡ್" },
+  "btnLabel_convo": { "message": "ಸಂಭಾಷಣೆ, " },
   "link_viewChanges": { "message": "ಬದಲಾವಣೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ" },
   "state_on": { "message": "ರಂದು" },
   "state_off": { "message": "ಆಫ್" }

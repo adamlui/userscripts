@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "بندول، بندول" },
   "alert_sharePageGenerated": { "message": "د شریکولو پاڼه جوړه شوه" },
   "notif_copiedToClipboard": { "message": "د ټوټې دړې ته کاپي شوی" },
+  "notif_downloaded": { "message": "رالېښلي" },
   "btnLabel_moreAIextensions": { "message": "د AI نور تمدیدونه" },
   "btnLabel_leaveReview": { "message": "د رخصتۍ بیاکتنه" },
   "btnLabel_rateUs": { "message": "موږ ته رتبه راکړئ" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "تازه کړئ" },
   "btnLabel_dismiss": { "message": "رد کردن" },
   "btnLabel_visitPage": { "message": "د لیدنې پاڼه" },
+  "btnLabel_download": { "message": "بارگیری" },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "بدلونونه وګورئ" },
   "state_on": { "message": "بل" },
   "state_off": { "message": "Property_BAR_NewPrefs_App_BAR_" }

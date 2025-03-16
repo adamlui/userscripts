@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "söndürülür" },
   "alert_sharePageGenerated": { "message": "Səhifəni paylaşın" },
   "notif_copiedToClipboard": { "message": "Mübadilə buferinə kopyal" },
+  "notif_downloaded": { "message": "endirildi" },
   "btnLabel_moreAIextensions": { "message": "Daha çox AI Uzantısı" },
   "btnLabel_leaveReview": { "message": "Rəy bildirin" },
   "btnLabel_rateUs": { "message": "Bizi qiymətləndirin" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Yenilə" },
   "btnLabel_dismiss": { "message": "Bağla" },
   "btnLabel_visitPage": { "message": "Səhifəyə daxil ol" },
+  "btnLabel_download": { "message": "Endir" },
+  "btnLabel_convo": { "message": "Bağlan" },
   "link_viewChanges": { "message": "Dəyişikliklərə bax" },
   "state_on": { "message": "" },
   "state_off": { "message": "İŞLƏMİR" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "commutilio" },
   "alert_sharePageGenerated": { "message": "Pagina Partis" },
   "notif_copiedToClipboard": { "message": "Clipboard" },
+  "notif_downloaded": { "message": "download" },
   "btnLabel_moreAIextensions": { "message": "Extensionsum AI" },
   "btnLabel_leaveReview": { "message": "REVISORUM EXAMINATIS" },
   "btnLabel_rateUs": { "message": "Próximo Us" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "opus" },
   "btnLabel_dismiss": { "message": "dimitto" },
   "btnLabel_visitPage": { "message": "Pagina Retis" },
+  "btnLabel_download": { "message": "Discipuli" },
+  "btnLabel_convo": { "message": "Transeamus" },
   "link_viewChanges": { "message": "Mutare" },
   "state_on": { "message": "mutare melius" },
   "state_off": { "message": "finis eum" }

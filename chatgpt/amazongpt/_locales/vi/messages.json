@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Tắt" },
   "alert_sharePageGenerated": { "message": "Đã tạo trang chia sẻ" },
   "notif_copiedToClipboard": { "message": "Đã sao chép vào bộ nhớ đệm" },
+  "notif_downloaded": { "message": "Đã tải xuống" },
   "btnLabel_moreAIextensions": { "message": "Tiện ích mở rộng AI khác" },
   "btnLabel_leaveReview": { "message": "Gửi phản hồi" },
   "btnLabel_rateUs": { "message": "Đánh giá chúng tôi" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Cập nhật" },
   "btnLabel_dismiss": { "message": "Bỏ qua" },
   "btnLabel_visitPage": { "message": "Truy cập trang" },
+  "btnLabel_download": { "message": "Tải xuống" },
+  "btnLabel_convo": { "message": "Cuộc trò chuyện" },
   "link_viewChanges": { "message": "Xem thay đổi" },
   "state_on": { "message": "Bật" },
   "state_off": { "message": "Tắt" }

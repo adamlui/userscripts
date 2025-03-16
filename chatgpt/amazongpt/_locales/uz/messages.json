@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "o'chirish" },
   "alert_sharePageGenerated": { "message": "Ulashish sahifasi yaratildi" },
   "notif_copiedToClipboard": { "message": "Buferga nusxa olindi" },
+  "notif_downloaded": { "message": "Yozib olish davom ettrildi" },
   "btnLabel_moreAIextensions": { "message": "Ko'proq AI kengaytmalari" },
   "btnLabel_leaveReview": { "message": "Sharh qoldiring" },
   "btnLabel_rateUs": { "message": "Bizni baholash" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Yangilash" },
   "btnLabel_dismiss": { "message": "Rad etish" },
   "btnLabel_visitPage": { "message": "Sahifaga tashrif buyuring" },
+  "btnLabel_download": { "message": "Yuklash" },
+  "btnLabel_convo": { "message": "СуҳбатEscher Cat (SMS)" },
   "link_viewChanges": { "message": "O'zgarishlarni ko'rish" },
   "state_on": { "message": "Yoniq" },
   "state_off": { "message": "O'chirilgan" }

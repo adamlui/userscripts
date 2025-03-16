@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Uitschakelen" },
   "alert_sharePageGenerated": { "message": "Pagina delen gegenereerd" },
   "notif_copiedToClipboard": { "message": "Gekopieerd naar klembord" },
+  "notif_downloaded": { "message": "gedownload" },
   "btnLabel_moreAIextensions": { "message": "Meer AI-extensies" },
   "btnLabel_leaveReview": { "message": "Beoordeling Plaatsen" },
   "btnLabel_rateUs": { "message": "Beoordeel Ons" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Afwijzen" },
   "btnLabel_visitPage": { "message": "Bezoek Pagina" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "Gesprek" },
   "link_viewChanges": { "message": "Wijzigingen weergeven" },
   "state_on": { "message": "Aan" },
   "state_off": { "message": "Uit" }

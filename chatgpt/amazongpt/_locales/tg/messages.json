@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "хомӯш кардан" },
   "alert_sharePageGenerated": { "message": "Ibahagi ang Pahina na n" },
   "notif_copiedToClipboard": { "message": "URL дар буфери тағйирот копӣ карда шудааст" },
+  "notif_downloaded": { "message": "Боргирӣ шуд" },
   "btnLabel_moreAIextensions": { "message": "Васеъсозии бештари AI" },
   "btnLabel_leaveReview": { "message": "Баромадан аз тафсир" },
   "btnLabel_rateUs": { "message": "Баҳои мо" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Навсозӣ кардан" },
   "btnLabel_dismiss": { "message": "Рад кардан" },
   "btnLabel_visitPage": { "message": "Pahina ng Pagbisita" },
+  "btnLabel_download": { "message": "Username for logins to Magnatune" },
+  "btnLabel_convo": { "message": "МуколамаEscher Cat (SMS)" },
   "link_viewChanges": { "message": "Tingnan ang mga pagbabago" },
   "state_on": { "message": "Оран" },
   "state_off": { "message": "& Ғайри фаъол" }

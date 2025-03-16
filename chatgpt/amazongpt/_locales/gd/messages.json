@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "a 'cur dheth" },
   "alert_sharePageGenerated": { "message": "Chaidh an duilleag co - roinn a chruthachadh" },
   "notif_copiedToClipboard": { "message": "Chaidh a chopaigeadh dhan stòr-bhòrd" },
+  "notif_downloaded": { "message": "Air a luchdadh a-nuas" },
   "btnLabel_moreAIextensions": { "message": "Barrachd leudachain" },
   "btnLabel_leaveReview": { "message": "Fàg Lèirmheas" },
   "btnLabel_rateUs": { "message": "Rèitich sinn" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Ùraich" },
   "btnLabel_dismiss": { "message": "Cuir air falbh" },
   "btnLabel_visitPage": { "message": "Duilleag - tadhail" },
+  "btnLabel_download": { "message": "Luchdadh a-nuas" },
+  "btnLabel_convo": { "message": "Còmhradh" },
   "link_viewChanges": { "message": "Seall na h-atharraichean" },
   "state_on": { "message": "air" },
   "state_off": { "message": "dheth" }

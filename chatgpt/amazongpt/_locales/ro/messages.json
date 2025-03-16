@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "DECONECTAREA" },
   "alert_sharePageGenerated": { "message": "Distribuie pagina generată" },
   "notif_copiedToClipboard": { "message": "Copiat în clipboard" },
+  "notif_downloaded": { "message": "Descărcat" },
   "btnLabel_moreAIextensions": { "message": "Mai multe extensii AI" },
   "btnLabel_leaveReview": { "message": "Lasă o recenzie" },
   "btnLabel_rateUs": { "message": "Evaluați-ne" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Actualizare" },
   "btnLabel_dismiss": { "message": "Respingeți" },
   "btnLabel_visitPage": { "message": "Vizitați pagina principală" },
+  "btnLabel_download": { "message": "Descărcare" },
+  "btnLabel_convo": { "message": "Conversație" },
   "link_viewChanges": { "message": "Vizualizează modificările" },
   "state_on": { "message": "pe" },
   "state_off": { "message": "oprit" }

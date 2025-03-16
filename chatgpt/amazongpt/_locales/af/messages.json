@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "afskakel" },
   "alert_sharePageGenerated": { "message": "Deel Bladsy gegenereer" },
   "notif_copiedToClipboard": { "message": "Knyp gekopiëerde aan knipbord" },
+  "notif_downloaded": { "message": "afgelaai" },
   "btnLabel_moreAIextensions": { "message": "Meer AI-uitbreidings" },
   "btnLabel_leaveReview": { "message": "Los Kommentaar" },
   "btnLabel_rateUs": { "message": "Gradeer ons" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Opdateer" },
   "btnLabel_dismiss": { "message": "Laat vaar" },
   "btnLabel_visitPage": { "message": "Besoek bladsy" },
+  "btnLabel_download": { "message": "Laai af" },
+  "btnLabel_convo": { "message": "Gesprek" },
   "link_viewChanges": { "message": "Besigtig veranderinge" },
   "state_on": { "message": "Op" },
   "state_off": { "message": "Af" }

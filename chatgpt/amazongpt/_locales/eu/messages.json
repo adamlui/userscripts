@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "itzaltzea" },
   "alert_sharePageGenerated": { "message": "Sortutako orrialdea partekatu" },
   "notif_copiedToClipboard": { "message": "URLa arbelean kopiatuta" },
+  "notif_downloaded": { "message": "Deskargatua" },
   "btnLabel_moreAIextensions": { "message": "AI luzapen gehiago" },
   "btnLabel_leaveReview": { "message": "Utzi Iritzia" },
   "btnLabel_rateUs": { "message": "Baloratu gaitzazu" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Eguneratu" },
   "btnLabel_dismiss": { "message": "Bistatik kendu" },
   "btnLabel_visitPage": { "message": "Bisitatu laguntzako orrialdea" },
+  "btnLabel_download": { "message": "Jaitsi" },
+  "btnLabel_convo": { "message": "Berriketa" },
   "link_viewChanges": { "message": "Ikusi aldaketak" },
   "state_on": { "message": "Piztuta" },
   "state_off": { "message": "Itzalita" }

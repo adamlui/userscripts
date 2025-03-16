@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "kudzima" },
   "alert_sharePageGenerated": { "message": "Goverana Peji yakagadzirwa" },
   "notif_copiedToClipboard": { "message": "Yakakopwa kune clipboard" },
+  "notif_downloaded": { "message": "kurodha pasi" },
   "btnLabel_moreAIextensions": { "message": "Zvimwe AI Extensions" },
   "btnLabel_leaveReview": { "message": "Taura nesu" },
   "btnLabel_rateUs": { "message": "Taura nesu" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Kugadziridza" },
   "btnLabel_dismiss": { "message": "Dzinga" },
   "btnLabel_visitPage": { "message": "Kushanya Page" },
+  "btnLabel_download": { "message": "kushusha" },
+  "btnLabel_convo": { "message": "Kukurukurirana" },
   "link_viewChanges": { "message": "Vonanyi cinjo" },
   "state_on": { "message": "Pana" },
   "state_off": { "message": "ZVIMWE" }

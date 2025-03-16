@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "സ്വിച്ച് ഓഫ്" },
   "alert_sharePageGenerated": { "message": "പേജ് പങ്കിടൽ ജനറേറ്റുചെയ്‌തു" },
   "notif_copiedToClipboard": { "message": "%@ ക്ലിപ്പ്ബോർഡിലേക്കു പകർത്തി" },
+  "notif_downloaded": { "message": "ഡൗൺലോഡ് ചെയ്തു" },
   "btnLabel_moreAIextensions": { "message": "കൂടുതൽ AI എക്സ്റ്റെൻഷനുകൾ" },
   "btnLabel_leaveReview": { "message": "അവലോകനം ഉപേക്ഷിക്കുക" },
   "btnLabel_rateUs": { "message": "ഞങ്ങളെ റേറ്റുചെയ്യുക" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "അപ്ഡേറ്റ് ചെയ്യുക" },
   "btnLabel_dismiss": { "message": "നിരസിക്കുക" },
   "btnLabel_visitPage": { "message": "പേജ് സന്ദർശിക്കുക" },
+  "btnLabel_download": { "message": "ഡൗൺലോഡ് ചെയ്യുക" },
+  "btnLabel_convo": { "message": "സംഭാഷണം" },
   "link_viewChanges": { "message": "മാറ്റങ്ങൾ കാണുക" },
   "state_on": { "message": "ഓണ്‍" },
   "state_off": { "message": "ഓഫ്" }

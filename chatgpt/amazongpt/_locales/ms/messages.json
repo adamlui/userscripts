@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "mematikan" },
   "alert_sharePageGenerated": { "message": "Kongsi Halaman dijana" },
   "notif_copiedToClipboard": { "message": "Disalin ke papan klip" },
+  "notif_downloaded": { "message": "Dimuat turun" },
   "btnLabel_moreAIextensions": { "message": "Lebih Banyak Sambungan AI" },
   "btnLabel_leaveReview": { "message": "Tinggalkan ulasan" },
   "btnLabel_rateUs": { "message": "Nilaikan kami" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Kemas kini" },
   "btnLabel_dismiss": { "message": "Singkir" },
   "btnLabel_visitPage": { "message": "Lawati Halaman" },
+  "btnLabel_download": { "message": "Muat turun" },
+  "btnLabel_convo": { "message": "Per_bualan" },
   "link_viewChanges": { "message": "Lihat perubahan" },
   "state_on": { "message": "Hidup" },
   "state_off": { "message": "Mati" }

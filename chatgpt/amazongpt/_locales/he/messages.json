@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "הפסקת פעולה" },
   "alert_sharePageGenerated": { "message": "דף השיתוף נוצר" },
   "notif_copiedToClipboard": { "message": "קוד הועתק ללוח" },
+  "notif_downloaded": { "message": "הורדה" },
   "btnLabel_moreAIextensions": { "message": "הרחבות נוספות של בינה מלאכותית" },
   "btnLabel_leaveReview": { "message": "השארת חוות דעת" },
   "btnLabel_rateUs": { "message": "דרג אותנו" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "עדכון" },
   "btnLabel_dismiss": { "message": "שחרור" },
   "btnLabel_visitPage": { "message": "לדף הביקור" },
+  "btnLabel_download": { "message": "הורדה" },
+  "btnLabel_convo": { "message": "שיחה" },
   "link_viewChanges": { "message": "הצגת השינויים" },
   "state_on": { "message": "פועל" },
   "state_off": { "message": "כבוי" }

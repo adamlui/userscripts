@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "خاموش کردن" },
   "alert_sharePageGenerated": { "message": "اشتراک گذاری صفحه ایجاد شد" },
   "notif_copiedToClipboard": { "message": "در کلیپ بورد کپی شد" },
+  "notif_downloaded": { "message": "دانلود" },
   "btnLabel_moreAIextensions": { "message": "افزونه های بیشتر هوش مصنوعی" },
   "btnLabel_leaveReview": { "message": "بررسی را ترک کنید" },
   "btnLabel_rateUs": { "message": "به طراح افشان رای دهید" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "بروزرسانی" },
   "btnLabel_dismiss": { "message": "مخفی شود" },
   "btnLabel_visitPage": { "message": "مشاهده صفحه" },
+  "btnLabel_download": { "message": "دانلود" },
+  "btnLabel_convo": { "message": "گفتگو" },
   "link_viewChanges": { "message": "نمایش تغییرات" },
   "state_on": { "message": "شما در" },
   "state_off": { "message": "خاموش" }

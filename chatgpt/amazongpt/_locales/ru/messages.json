@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Выключение" },
   "alert_sharePageGenerated": { "message": "Создана страница «Поделиться»" },
   "notif_copiedToClipboard": { "message": "Скопировано в буфер обмена" },
+  "notif_downloaded": { "message": "загружено" },
   "btnLabel_moreAIextensions": { "message": "Больше расширений ИИ" },
   "btnLabel_leaveReview": { "message": "Оставить Отзыв" },
   "btnLabel_rateUs": { "message": "Оцените нас" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Обновить" },
   "btnLabel_dismiss": { "message": "Пропустить" },
   "btnLabel_visitPage": { "message": "Посетите страницу" },
+  "btnLabel_download": { "message": "Загрузить" },
+  "btnLabel_convo": { "message": "Общение" },
   "link_viewChanges": { "message": "Просмотреть изменения" },
   "state_on": { "message": "On (Вкл)" },
   "state_off": { "message": "Off (Выкл)" }

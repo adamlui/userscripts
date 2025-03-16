@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "auszeschalten" },
   "alert_sharePageGenerated": { "message": "Deelen Säit generéiert" },
   "notif_copiedToClipboard": { "message": "Op Clipboard kopéieren" },
+  "notif_downloaded": { "message": "erofgelueden" },
   "btnLabel_moreAIextensions": { "message": "Méi AI Extensiounen" },
   "btnLabel_leaveReview": { "message": "Ik ben heel benieuwd naar jouw mening laat het me" },
   "btnLabel_rateUs": { "message": "Bewäert eis" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aktualiséieren" },
   "btnLabel_dismiss": { "message": "Ofginn" },
   "btnLabel_visitPage": { "message": "Ik ben heel benieuwd naar jouw mening laat het me" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "Gespréich" },
   "link_viewChanges": { "message": "Ännerungen uweisen" },
   "state_on": { "message": "Un" },
   "state_off": { "message": "Aus" }

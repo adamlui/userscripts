@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "spegnimento" },
   "alert_sharePageGenerated": { "message": "Pagina di condivisione generata" },
   "notif_copiedToClipboard": { "message": "Copiato negli appunti" },
+  "notif_downloaded": { "message": "scaricati" },
   "btnLabel_moreAIextensions": { "message": "Altre estensioni AI" },
   "btnLabel_leaveReview": { "message": "Lascia la recensione" },
   "btnLabel_rateUs": { "message": "Valutaci" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aggiornare" },
   "btnLabel_dismiss": { "message": "Ignora" },
   "btnLabel_visitPage": { "message": "Visita la Pagina" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "Conversazione" },
   "link_viewChanges": { "message": "Visualizza modifiche" },
   "state_on": { "message": "su" },
   "state_off": { "message": "Spento" }

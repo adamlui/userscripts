@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "chanje koupe" },
   "alert_sharePageGenerated": { "message": "Pataje Paj ki te pwodwi" },
   "notif_copiedToClipboard": { "message": "Kopi nan clipboard" },
+  "notif_downloaded": { "message": "telechaje" },
   "btnLabel_moreAIextensions": { "message": "Plis Ekstansyon AI" },
   "btnLabel_leaveReview": { "message": "Kite Revizyon" },
   "btnLabel_rateUs": { "message": "Evalye nou" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Mizajou" },
   "btnLabel_dismiss": { "message": "ranvwaye /rejte/revoke /abandone/elimine/rejeter /renvoyer/révoquer/éliminer/abandonner/annuler" },
   "btnLabel_visitPage": { "message": "vizite paj sa a/visitez cette page" },
+  "btnLabel_download": { "message": "Telechaje" },
+  "btnLabel_convo": { "message": "konvèzasyon" },
   "link_viewChanges": { "message": "Gade chanjman yo" },
   "state_on": { "message": "Sou" },
   "state_off": { "message": "Koupe " }

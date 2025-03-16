@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "go tima" },
   "alert_sharePageGenerated": { "message": "Tsebe ya Share e e tlhagisitsweng" },
   "notif_copiedToClipboard": { "message": "E kopolotswe go clipboard" },
+  "notif_downloaded": { "message": " E taoneloutilwe " },
   "btnLabel_moreAIextensions": { "message": "Di-AI Extensions tse Dintsi" },
   "btnLabel_leaveReview": { "message": "Tlogela Tlhatlhobo" },
   "btnLabel_rateUs": { "message": "Maemo a Rona" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Ntshwafatso" },
   "btnLabel_dismiss": { "message": "TLOGELA" },
   "btnLabel_visitPage": { "message": "Etela Tsebe" },
+  "btnLabel_download": { "message": "Tapolola" },
+  "btnLabel_convo": { "message": "Puisano" },
   "link_viewChanges": { "message": "Leba diphetogo" },
   "state_on": { "message": "mo" },
   "state_off": { "message": "tswa go" }

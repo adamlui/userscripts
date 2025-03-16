@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "გამორთვა" },
   "alert_sharePageGenerated": { "message": "Შექმნილია გვერდის გაზიარება" },
   "notif_copiedToClipboard": { "message": "დაკოპირდა გაცვლის ბაფერში" },
+  "notif_downloaded": { "message": "გადმოწერილია" },
   "btnLabel_moreAIextensions": { "message": "Სხვა AI გაფართოებები" },
   "btnLabel_leaveReview": { "message": "შეფასების დატოვება" },
   "btnLabel_rateUs": { "message": "Შეფასება" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "განახლება" },
   "btnLabel_dismiss": { "message": "მოსილება" },
   "btnLabel_visitPage": { "message": "საწყისი გვერდის მონახულება" },
+  "btnLabel_download": { "message": "გადმოწერა" },
+  "btnLabel_convo": { "message": "საუბარი" },
   "link_viewChanges": { "message": "ცვლილებების ნახვა" },
   "state_on": { "message": "ჩართულია" },
   "state_off": { "message": "გამორთ" }

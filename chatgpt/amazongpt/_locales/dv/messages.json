@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ސްވިޗް އޮފް ކުރުމެވެ" },
   "alert_sharePageGenerated": { "message": "ޝެއާ ޕޭޖް ޖެނެރޭޓް ކުރެވިއްޖެއެވެ" },
   "notif_copiedToClipboard": { "message": "ކްލިޕްބޯޑަށް ކޮޕީކޮށްފައިވެއެވެ" },
+  "notif_downloaded": { "message": "ޑައުންލޯޑް ކޮށްފިއެވެ" },
   "btnLabel_moreAIextensions": { "message": "އިތުރު އެއައި އެކްސްޓެންޝަންސް" },
   "btnLabel_leaveReview": { "message": "ރިވިއު ދޫކޮށްލާށެވެ" },
   "btnLabel_rateUs": { "message": "ރޭޓް އަސް" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "އަޕްޑޭޓް" },
   "btnLabel_dismiss": { "message": "ދުރުކޮށްލުން" },
   "btnLabel_visitPage": { "message": "ވިޒިޓް ޕޭޖް" },
+  "btnLabel_download": { "message": "ޑައުންލޯޑް" },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "ބަދަލުތައް ބަލާށެވެ" },
   "state_on": { "message": "މަތީގައި" },
   "state_off": { "message": "އޮފް" }

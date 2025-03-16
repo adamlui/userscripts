@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Isključivanje" },
   "alert_sharePageGenerated": { "message": "Stranica za dijeljenje je generirana" },
   "notif_copiedToClipboard": { "message": "Kopirano" },
+  "notif_downloaded": { "message": "skinut" },
   "btnLabel_moreAIextensions": { "message": "Više AI ekstenzija" },
   "btnLabel_leaveReview": { "message": "Ostavite recenziju" },
   "btnLabel_rateUs": { "message": "Ocijenite nas" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Ažuriraj" },
   "btnLabel_dismiss": { "message": "Odbaci" },
   "btnLabel_visitPage": { "message": "Posjeti početnu stranicu" },
+  "btnLabel_download": { "message": "Preuzimanje" },
+  "btnLabel_convo": { "message": "Razgovor" },
   "link_viewChanges": { "message": "Pregledaj promjene" },
   "state_on": { "message": "On (Uključeno)" },
   "state_off": { "message": "Isključivanje" }

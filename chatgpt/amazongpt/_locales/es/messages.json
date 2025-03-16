@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Apagado" },
   "alert_sharePageGenerated": { "message": "Compartir página generada" },
   "notif_copiedToClipboard": { "message": "Copiado al portapapeles" },
+  "notif_downloaded": { "message": "descargado" },
   "btnLabel_moreAIextensions": { "message": "Más extensiones de IA" },
   "btnLabel_leaveReview": { "message": "Deje opinión" },
   "btnLabel_rateUs": { "message": "Valóranos" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Actualizar" },
   "btnLabel_dismiss": { "message": "Descartar" },
   "btnLabel_visitPage": { "message": "Visite la página" },
+  "btnLabel_download": { "message": "Descargar" },
+  "btnLabel_convo": { "message": "Conversación" },
   "link_viewChanges": { "message": "Ver cambios" },
   "state_on": { "message": "Activado" },
   "state_off": { "message": "Apagado" }

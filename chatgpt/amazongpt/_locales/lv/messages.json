@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Svaru Izslēgšana" },
   "alert_sharePageGenerated": { "message": "Kopīgošanas lapa ģenerēta" },
   "notif_copiedToClipboard": { "message": "Kopēt uz starpliktuvi" },
+  "notif_downloaded": { "message": "Lejupielādēts" },
   "btnLabel_moreAIextensions": { "message": "Citi MI paplašinājumi" },
   "btnLabel_leaveReview": { "message": "Atstāt atsauksmi?" },
   "btnLabel_rateUs": { "message": "Novērtē mūs" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Atjauninināt" },
   "btnLabel_dismiss": { "message": "Noraidīt" },
   "btnLabel_visitPage": { "message": "Apmeklēt lapu" },
+  "btnLabel_download": { "message": "Lejupielādēt" },
+  "btnLabel_convo": { "message": "Saruna" },
   "link_viewChanges": { "message": "Skatīt izmaiņas" },
   "state_on": { "message": "Ieslēgt" },
   "state_off": { "message": "Izslēgta" }

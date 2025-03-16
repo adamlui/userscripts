@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "անջատում" },
   "alert_sharePageGenerated": { "message": "Կիսվել էջը ստեղծվել է" },
   "notif_copiedToClipboard": { "message": "Պատճենված է շապիկի մեջ" },
+  "notif_downloaded": { "message": "ներբեռնված է" },
   "btnLabel_moreAIextensions": { "message": "Լրացուցիչ արհեստական ինտելեկտի ընդլայնումներ" },
   "btnLabel_leaveReview": { "message": "Թողնել ակնարկ" },
   "btnLabel_rateUs": { "message": "Գնահատեք մեզ" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Այժմեականացնել / Արդիականացնել" },
   "btnLabel_dismiss": { "message": "Փակել" },
   "btnLabel_visitPage": { "message": "Այցելել էջ" },
+  "btnLabel_download": { "message": "Բեռնել" },
+  "btnLabel_convo": { "message": "Զրույցներ" },
   "link_viewChanges": { "message": "Դիտել փոփոխությունները" },
   "state_on": { "message": "Միացնել" },
   "state_off": { "message": "Անջատել" }

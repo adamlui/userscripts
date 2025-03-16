@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Wyłączanie" },
   "alert_sharePageGenerated": { "message": "Wygenerowano udostępnienie strony" },
   "notif_copiedToClipboard": { "message": "Skopiowano do schowka" },
+  "notif_downloaded": { "message": "pobrany" },
   "btnLabel_moreAIextensions": { "message": "Więcej rozszerzeń AI" },
   "btnLabel_leaveReview": { "message": "Zostaw opinię" },
   "btnLabel_rateUs": { "message": "Wystaw nam ocenę" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aktualizuj" },
   "btnLabel_dismiss": { "message": "Odrzuć" },
   "btnLabel_visitPage": { "message": "Odwiedź stronę" },
+  "btnLabel_download": { "message": "Pobierz" },
+  "btnLabel_convo": { "message": "Rozmowa" },
   "link_viewChanges": { "message": "Przegląd zmian" },
   "state_on": { "message": "Wł" },
   "state_off": { "message": "Wył" }

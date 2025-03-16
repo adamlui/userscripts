@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "vypnutí" },
   "alert_sharePageGenerated": { "message": "Sdílet stránku vygenerovanou" },
   "notif_copiedToClipboard": { "message": "Zkopírováno do schránky" },
+  "notif_downloaded": { "message": "staženo" },
   "btnLabel_moreAIextensions": { "message": "Další rozšíření AI" },
   "btnLabel_leaveReview": { "message": "Přidat Hodnocení" },
   "btnLabel_rateUs": { "message": "Ohodnoťte nás" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aktualizovat" },
   "btnLabel_dismiss": { "message": "Zamítnout" },
   "btnLabel_visitPage": { "message": "Navštívit domovskou stránku" },
+  "btnLabel_download": { "message": "Stáhnout" },
+  "btnLabel_convo": { "message": "Konverzace" },
   "link_viewChanges": { "message": "Zobrazit změny" },
   "state_on": { "message": "Zapnuto" },
   "state_off": { "message": "Vypnuto" }

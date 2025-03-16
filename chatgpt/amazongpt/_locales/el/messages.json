@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Απενεργοποιήση" },
   "alert_sharePageGenerated": { "message": "Δημιουργήθηκε σελίδα κοινοποίησης" },
   "notif_copiedToClipboard": { "message": "Αντιγράφηκε στο πρόχειρο" },
+  "notif_downloaded": { "message": "ληφθέντα" },
   "btnLabel_moreAIextensions": { "message": "Περισσότερες επεκτάσεις τεχνητής νοημοσύνης" },
   "btnLabel_leaveReview": { "message": "Αφήστε μια Kριτική" },
   "btnLabel_rateUs": { "message": "Βαθμολογήστε μας" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Ενημέρωση" },
   "btnLabel_dismiss": { "message": " Κλείσιμο" },
   "btnLabel_visitPage": { "message": "Αρχική σελίδα" },
+  "btnLabel_download": { "message": "Λήψη" },
+  "btnLabel_convo": { "message": "Συζήτηση" },
   "link_viewChanges": { "message": "Εμφάνιση αλλαγών" },
   "state_on": { "message": "επί" },
   "state_off": { "message": "μακριά από" }

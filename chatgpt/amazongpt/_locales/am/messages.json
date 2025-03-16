@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ማጥፋት" },
   "alert_sharePageGenerated": { "message": "ያጋሩ ገጽ የተፈጠረ" },
   "notif_copiedToClipboard": { "message": "ወደ ክሊፕቦርድ ይቀዳጃል" },
+  "notif_downloaded": { "message": "የወረዱ" },
   "btnLabel_moreAIextensions": { "message": "ተጨማሪ የ AI ቅጥያዎች" },
   "btnLabel_leaveReview": { "message": "ግምገማ ይተው" },
   "btnLabel_rateUs": { "message": "ደረጃ ይስጡን" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "አዘምን" },
   "btnLabel_dismiss": { "message": "መደምሰሻ" },
   "btnLabel_visitPage": { "message": "ገጽ ይጎብኙ" },
+  "btnLabel_download": { "message": "አውርድ " },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "ለውጦችን ይመልከቱ" },
   "state_on": { "message": "በላይ" },
   "state_off": { "message": "አጥፋ" }

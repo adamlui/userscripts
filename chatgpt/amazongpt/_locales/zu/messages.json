@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ukuvala" },
   "alert_sharePageGenerated": { "message": "Ikhasi Lokwabelana lenziwe" },
   "notif_copiedToClipboard": { "message": "Ikopishiwe ebhodini lokunamathisela" },
+  "notif_downloaded": { "message": "idawunilodiwe" },
   "btnLabel_moreAIextensions": { "message": "Izandiso Ezengeziwe ze-AI" },
   "btnLabel_leaveReview": { "message": "Shiya Okushiwo Abanye" },
   "btnLabel_rateUs": { "message": "Silinganise" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Susa" },
   "btnLabel_visitPage": { "message": "Vakashela Ikhasi" },
+  "btnLabel_download": { "message": "Dawuniloda" },
+  "btnLabel_convo": { "message": "Ingxoxo" },
   "link_viewChanges": { "message": "Buka ushintsho" },
   "state_on": { "message": "ku" },
   "state_off": { "message": "Kuvaliwe" }

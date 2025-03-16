@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Vypnutie" },
   "alert_sharePageGenerated": { "message": "Vygenerovaná stránka zdieľania" },
   "notif_copiedToClipboard": { "message": "Skopírované do schránky" },
+  "notif_downloaded": { "message": "Stiahnuté" },
   "btnLabel_moreAIextensions": { "message": "Ďalšie rozšírenia umelej inteligencie" },
   "btnLabel_leaveReview": { "message": "Nechať recenziu" },
   "btnLabel_rateUs": { "message": "Ohodnoťte nás" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aktualizovať" },
   "btnLabel_dismiss": { "message": "Odmietnuť" },
   "btnLabel_visitPage": { "message": "Prejsť na stránku" },
+  "btnLabel_download": { "message": "Stiahnuť" },
+  "btnLabel_convo": { "message": "Rozhovor" },
   "link_viewChanges": { "message": "Zobraziť zmeny" },
   "state_on": { "message": "Zapnuté" },
   "state_off": { "message": "Vypnuté" }

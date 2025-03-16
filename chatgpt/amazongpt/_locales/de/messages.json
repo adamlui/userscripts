@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Abschaltung" },
   "alert_sharePageGenerated": { "message": "Seite teilen generiert" },
   "notif_copiedToClipboard": { "message": "In Zwischenablage kopiert" },
+  "notif_downloaded": { "message": "heruntergeladen" },
   "btnLabel_moreAIextensions": { "message": "Weitere KI-Erweiterungen" },
   "btnLabel_leaveReview": { "message": "Hinterlasse eine Bewertung" },
   "btnLabel_rateUs": { "message": "Bewerten Sie uns" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Aktualisieren" },
   "btnLabel_dismiss": { "message": "Verwerfen" },
   "btnLabel_visitPage": { "message": "Seite besuchen" },
+  "btnLabel_download": { "message": "Herunterladen" },
+  "btnLabel_convo": { "message": "Unterhaltung" },
   "link_viewChanges": { "message": "Änderungen anzeigen" },
   "state_on": { "message": "Auf" },
   "state_off": { "message": "Aus" }

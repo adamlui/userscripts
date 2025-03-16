@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "سوئچ آف کرنا" },
   "alert_sharePageGenerated": { "message": "تیار کردہ صفحہ کا اشتراک کریں" },
   "notif_copiedToClipboard": { "message": "کلپ بورڈ پر کاپی" },
+  "notif_downloaded": { "message": "ڈاؤن لوڈ" },
   "btnLabel_moreAIextensions": { "message": "مزید AI ایکسٹینشنز" },
   "btnLabel_leaveReview": { "message": "جائزہ دیں" },
   "btnLabel_rateUs": { "message": "ہمیں درجہ دیں" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "اپ ڈیٹ" },
   "btnLabel_dismiss": { "message": "برخاست" },
   "btnLabel_visitPage": { "message": "صفحہ ملاحظہ کریں" },
+  "btnLabel_download": { "message": "ڈاؤن لوڈ" },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "تبدیلیاں دیکھیں" },
   "state_on": { "message": "چالو کریں" },
   "state_off": { "message": "بند کریں" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "liliu" },
   "alert_sharePageGenerated": { "message": "Vahevahe ʻa e peesi ʻoku ʻoatu" },
   "notif_copiedToClipboard": { "message": "Hiki tatau ki he Papafakamaʻú" },
+  "notif_downloaded": { "message": "ʻosi download" },
   "btnLabel_moreAIextensions": { "message": "Toe lahi ange ʻa e fakaloloaʻi" },
   "btnLabel_leaveReview": { "message": "Tuku Hono Toe Vakaiʻí" },
   "btnLabel_rateUs": { "message": "Fakafuofuaʻi Kimautolu" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Fakamatala Fakamuimuitahá" },
   "btnLabel_dismiss": { "message": "Tukuange" },
   "btnLabel_visitPage": { "message": "Peesi ʻAʻahí" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "Fepotalanoaʻaki" },
   "link_viewChanges": { "message": "Vakai ki he ngaahi liliú" },
   "state_on": { "message": "ʻI he" },
   "state_off": { "message": "ʻOsi" }

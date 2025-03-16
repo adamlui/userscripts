@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Slukning" },
   "alert_sharePageGenerated": { "message": "Del side genereret" },
   "notif_copiedToClipboard": { "message": "Kopieret til udklipsholder" },
+  "notif_downloaded": { "message": "downloadet" },
   "btnLabel_moreAIextensions": { "message": "Flere AI-udvidelser" },
   "btnLabel_leaveReview": { "message": "Skriv en anmeldelse" },
   "btnLabel_rateUs": { "message": "Bedøm os" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Opdatér" },
   "btnLabel_dismiss": { "message": "Afvis" },
   "btnLabel_visitPage": { "message": "Se site" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "Samtale" },
   "link_viewChanges": { "message": "Se ændringer" },
   "state_on": { "message": "Til" },
   "state_off": { "message": "Fra" }

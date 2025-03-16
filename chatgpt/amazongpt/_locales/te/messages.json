@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "స్విచ్ ఆఫ్ చేస్తోంది" },
   "alert_sharePageGenerated": { "message": "పేజీని పంచుకోవడం జనరేట్ చేయబడింది" },
   "notif_copiedToClipboard": { "message": "క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది" },
+  "notif_downloaded": { "message": "డౌన్‌లోడ్అయినది" },
   "btnLabel_moreAIextensions": { "message": "మరిన్ని AI పొడిగింపులు" },
   "btnLabel_leaveReview": { "message": "సమీక్షను వదిలివేయండి" },
   "btnLabel_rateUs": { "message": "మాకు రేటింగ్ ఇవ్వండి" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "అప్‌డేట్" },
   "btnLabel_dismiss": { "message": "తీసివేయండి" },
   "btnLabel_visitPage": { "message": "పేజీని సందర్శించండి" },
+  "btnLabel_download": { "message": "డౌన్‌లోడ్ చేయండి" },
+  "btnLabel_convo": { "message": "సంభాషణ" },
   "link_viewChanges": { "message": "మార్పులను చూడండి" },
   "state_on": { "message": "ఆన్" },
   "state_off": { "message": "ఆఫ్" }

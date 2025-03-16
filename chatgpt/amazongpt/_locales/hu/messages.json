@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Kikapcsolás" },
   "alert_sharePageGenerated": { "message": "Oldal megosztása létrehozva" },
   "notif_copiedToClipboard": { "message": "Vágólapra másolva" },
+  "notif_downloaded": { "message": "letöltve" },
   "btnLabel_moreAIextensions": { "message": "További MI-kiterjesztések" },
   "btnLabel_leaveReview": { "message": "Írj értékelést" },
   "btnLabel_rateUs": { "message": "Értékeljen minket" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Frissítés" },
   "btnLabel_dismiss": { "message": "Elvetés" },
   "btnLabel_visitPage": { "message": "látogasd meg a honlapot" },
+  "btnLabel_download": { "message": "Letöltés" },
+  "btnLabel_convo": { "message": "Kommentek" },
   "link_viewChanges": { "message": "Módosítások megtekintése" },
   "state_on": { "message": "Be" },
   "state_off": { "message": "Kikapcsolva" }

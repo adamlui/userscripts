@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "apagón de conmutación" },
   "alert_sharePageGenerated": { "message": "Compartir Páxina xerada" },
   "notif_copiedToClipboard": { "message": "Copiado ao  portapapeis" },
+  "notif_downloaded": { "message": "Recibido" },
   "btnLabel_moreAIextensions": { "message": "Máis extensións de IA" },
   "btnLabel_leaveReview": { "message": "Deixa unha opinión" },
   "btnLabel_rateUs": { "message": "Valóranos" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Actualizar" },
   "btnLabel_dismiss": { "message": "Rexeitar" },
   "btnLabel_visitPage": { "message": "Visitar a páxina" },
+  "btnLabel_download": { "message": "Descarga" },
+  "btnLabel_convo": { "message": "Mostrar a conversa" },
   "link_viewChanges": { "message": "Ver cambios" },
   "state_on": { "message": "Activado" },
   "state_off": { "message": "Apagado" }

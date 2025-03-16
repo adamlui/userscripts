@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "স্যুইচ অফ করা" },
   "alert_sharePageGenerated": { "message": "শেয়ার পৃষ্ঠা তৈরি করা হয়েছে" },
   "notif_copiedToClipboard": { "message": "ক্লিপবোর্ড-এ কপি করা হয়েছে" },
+  "notif_downloaded": { "message": "ডাউনলোড করা হয়েছে:" },
   "btnLabel_moreAIextensions": { "message": "আরও AI এক্সটেনশন" },
   "btnLabel_leaveReview": { "message": "একটি রিভিউ লিখুন" },
   "btnLabel_rateUs": { "message": "আমাদের রেটিং দিন" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "আপডেট করুন" },
   "btnLabel_dismiss": { "message": "খারিজ করুন" },
   "btnLabel_visitPage": { "message": "ভিজিট পৃষ্ঠা" },
+  "btnLabel_download": { "message": "ডাউনলোড করুন" },
+  "btnLabel_convo": { "message": "কথোপকথন" },
   "link_viewChanges": { "message": "পরিবর্তনগুলি দেখুন" },
   "state_on": { "message": "চালু" },
   "state_off": { "message": "বন্ধ" }

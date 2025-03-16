@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "whakawhiti" },
   "alert_sharePageGenerated": { "message": "Whārangi tohatoha i hangaia" },
   "notif_copiedToClipboard": { "message": "Tārua ki te papapātuhi" },
+  "notif_downloaded": { "message": "tikiake" },
   "btnLabel_moreAIextensions": { "message": "Ētahi atu whakawhitinga AI" },
   "btnLabel_leaveReview": { "message": "Waiho i te arotake" },
   "btnLabel_rateUs": { "message": "Te utu ki a tatou" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Whakahou" },
   "btnLabel_dismiss": { "message": "Te whakahawea" },
   "btnLabel_visitPage": { "message": "Tirohia te whārangi" },
+  "btnLabel_download": { "message": "Tiki ake" },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "Tirohia nga huringa" },
   "state_on": { "message": "runga" },
   "state_off": { "message": "..e whakaweto ana" }

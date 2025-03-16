@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ການປິດການໃຊ້ງານ" },
   "alert_sharePageGenerated": { "message": "ແບ່ງປັນໜ້າທີ່ສ້າງຂື້ນ" },
   "notif_copiedToClipboard": { "message": "ສຳເນົາໄປທີ່ຄລິບບອດ" },
+  "notif_downloaded": { "message": "ດາວໂຫຼດແລ້ວ" },
   "btnLabel_moreAIextensions": { "message": "ການຂະຫຍາຍ AI ເພີ່ມເຕີມ" },
   "btnLabel_leaveReview": { "message": "ໃຫ້ການທົບທວນຄືນ" },
   "btnLabel_rateUs": { "message": "ປະເມີນພວກເຮົາ" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "ອັບເດດ" },
   "btnLabel_dismiss": { "message": "ຂ້າມໄປ" },
   "btnLabel_visitPage": { "message": "ເຂົ້າເບິ່ງໜ້າ" },
+  "btnLabel_download": { "message": "ດາວໂຫຼດ" },
+  "btnLabel_convo": { "message": "ການສົນທະນາ" },
   "link_viewChanges": { "message": "ເບິ່ງການປ່ຽນແປງ" },
   "state_on": { "message": "ເປີດ" },
   "state_off": { "message": "ປິດ" }

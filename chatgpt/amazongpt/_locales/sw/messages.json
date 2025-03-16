@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "kuzima" },
   "alert_sharePageGenerated": { "message": "Ukurasa wa Kushiriki umetengenezwa" },
   "notif_copiedToClipboard": { "message": "Msimbo umenakiliwa kwenye ubao klipu" },
+  "notif_downloaded": { "message": "imepakuliwa" },
   "btnLabel_moreAIextensions": { "message": "Viendelezi zaidi vya AI" },
   "btnLabel_leaveReview": { "message": "Acha Tathmini" },
   "btnLabel_rateUs": { "message": "Tupe kadirio" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Sasisho" },
   "btnLabel_dismiss": { "message": "Puuza" },
   "btnLabel_visitPage": { "message": "Tembelea Ukurasa" },
+  "btnLabel_download": { "message": "Pakua" },
+  "btnLabel_convo": { "message": "Escher Cat (SMS)" },
   "link_viewChanges": { "message": "Angalia mabadiliko" },
   "state_on": { "message": "Washa" },
   "state_off": { "message": "Zima" }

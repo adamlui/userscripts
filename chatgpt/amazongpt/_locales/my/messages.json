@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ခလုတ်ပိတ်ခြင်း" },
   "alert_sharePageGenerated": { "message": "စာမျက်နှာကို မျှဝေပါ" },
   "notif_copiedToClipboard": { "message": "ကလစ်ဘုတ်သို့ကူးယူပြီး" },
+  "notif_downloaded": { "message": "ဒေါင်းလုဒ်လုပ်ထားသည်" },
   "btnLabel_moreAIextensions": { "message": "ပိုများသော AI Extensions" },
   "btnLabel_leaveReview": { "message": "ပြန်လည်သုံးသပ်မှုကိုစွန့်ခွာပါ" },
   "btnLabel_rateUs": { "message": "ကြှနျုပျတို့ကို Rate" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "နောက်ဆုံးသတင်း" },
   "btnLabel_dismiss": { "message": "ထုတ်ပယ်ပါ" },
   "btnLabel_visitPage": { "message": "အလည်အပတ်စာမျက်နှာ" },
+  "btnLabel_download": { "message": "ဆွဲချရန်" },
+  "btnLabel_convo": { "message": "စကားပြောဆိုမှု" },
   "link_viewChanges": { "message": "အပြောင်းအလဲများကို ကြည့်ရန်" },
   "state_on": { "message": "(ျဖစ္စဥ္)" },
   "state_off": { "message": "ပိတ်" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "SL\\xC5 AV" },
   "alert_sharePageGenerated": { "message": "Delside generert" },
   "notif_copiedToClipboard": { "message": "Kopiert til utklippstavlen" },
+  "notif_downloaded": { "message": "lastet ned" },
   "btnLabel_moreAIextensions": { "message": "Flere AI-utvidelser" },
   "btnLabel_leaveReview": { "message": "Skriv en omtale" },
   "btnLabel_rateUs": { "message": "Vurder oss" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Oppdater" },
   "btnLabel_dismiss": { "message": "Ignorer" },
   "btnLabel_visitPage": { "message": "Besøk siden" },
+  "btnLabel_download": { "message": "Last ned" },
+  "btnLabel_convo": { "message": "Samtale" },
   "link_viewChanges": { "message": "Vis endringer" },
   "state_on": { "message": "På" },
   "state_off": { "message": "Av" }

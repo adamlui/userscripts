@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Så här stänger man av" },
   "alert_sharePageGenerated": { "message": "Dela sida genererad" },
   "notif_copiedToClipboard": { "message": "Kopierat till urklipp" },
+  "notif_downloaded": { "message": "nedladdad" },
   "btnLabel_moreAIextensions": { "message": "Fler AI-tillägg" },
   "btnLabel_leaveReview": { "message": "Lämna recension" },
   "btnLabel_rateUs": { "message": "betygsätt oss" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Uppdatera" },
   "btnLabel_dismiss": { "message": "Avfärda" },
   "btnLabel_visitPage": { "message": "Besök sida" },
+  "btnLabel_download": { "message": "Ladda ner" },
+  "btnLabel_convo": { "message": "Konversation" },
   "link_viewChanges": { "message": "Visa ändringar" },
   "state_on": { "message": "På" },
   "state_off": { "message": "Av" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "Kapatma" },
   "alert_sharePageGenerated": { "message": "Paylaşım Sayfası oluşturuldu" },
   "notif_copiedToClipboard": { "message": "Panoya kopyalandı" },
+  "notif_downloaded": { "message": "İndirilmiş" },
   "btnLabel_moreAIextensions": { "message": "Daha Fazla Yapay Zeka Uzantısı" },
   "btnLabel_leaveReview": { "message": "İncelemeyi bırak" },
   "btnLabel_rateUs": { "message": "Bize oy verin" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Yok say" },
   "btnLabel_visitPage": { "message": "Sayfayı Ziyaret Et" },
+  "btnLabel_download": { "message": "İndir" },
+  "btnLabel_convo": { "message": "Konuşma" },
   "link_viewChanges": { "message": "Değişen Dosyalar" },
   "state_on": { "message": "Açık" },
   "state_off": { "message": "Kapalı" }

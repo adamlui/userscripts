@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "исклучување" },
   "alert_sharePageGenerated": { "message": "Страницата за споделување е генерирана" },
   "notif_copiedToClipboard": { "message": "URL е копиран на таблата со исечоци" },
+  "notif_downloaded": { "message": "Преземено" },
   "btnLabel_moreAIextensions": { "message": "Повеќе екстензии на вештачка интелигенција" },
   "btnLabel_leaveReview": { "message": "Остави еден преглед" },
   "btnLabel_rateUs": { "message": "Оценете не" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Ажурирај" },
   "btnLabel_dismiss": { "message": "Отфрли" },
   "btnLabel_visitPage": { "message": "Посети главна страница" },
+  "btnLabel_download": { "message": "Преземи" },
+  "btnLabel_convo": { "message": "Разговор" },
   "link_viewChanges": { "message": "Прикажи ги промените" },
   "state_on": { "message": "На" },
   "state_off": { "message": "Исклучено" }

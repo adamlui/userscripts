@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "fa-instagram" },
   "alert_sharePageGenerated": { "message": "Namboarina ny pejin'ny fizarana" },
   "notif_copiedToClipboard": { "message": "Dika mitovy mankany anaty fanindri-taratasy" },
+  "notif_downloaded": { "message": "sintonina" },
   "btnLabel_moreAIextensions": { "message": "More AI Extensions" },
   "btnLabel_leaveReview": { "message": "Fandaozana ny famerenana" },
   "btnLabel_rateUs": { "message": "Omeo isa izahay" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Vaovao farany" },
   "btnLabel_dismiss": { "message": "Ario" },
   "btnLabel_visitPage": { "message": "Tsidiho ny pejy" },
+  "btnLabel_download": { "message": "Alaivo" },
+  "btnLabel_convo": { "message": "Fifanakalozan-kevitra" },
   "link_viewChanges": { "message": "Hijery ireo fanovana" },
   "state_on": { "message": "Tamin’I –" },
   "state_off": { "message": "Ajanona" }

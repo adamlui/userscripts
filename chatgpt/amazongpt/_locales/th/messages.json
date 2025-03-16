@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "การปิดสวิตช์" },
   "alert_sharePageGenerated": { "message": "สร้างหน้าแชร์แล้ว" },
   "notif_copiedToClipboard": { "message": "คัดลอกไปที่คลิปบอร์ด" },
+  "notif_downloaded": { "message": "ดาวน์โหลด " },
   "btnLabel_moreAIextensions": { "message": "ส่วนขยาย AI เพิ่มเติม" },
   "btnLabel_leaveReview": { "message": "ให้รีวิว" },
   "btnLabel_rateUs": { "message": "ให้คะแนนเรา" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "อัปเดต" },
   "btnLabel_dismiss": { "message": "ยกเลิก" },
   "btnLabel_visitPage": { "message": "ไปที่หน้า" },
+  "btnLabel_download": { "message": "ดาวน์โหลด" },
+  "btnLabel_convo": { "message": "การสนทนา" },
   "link_viewChanges": { "message": "ดูการเปลี่ยนแปลง" },
   "state_on": { "message": "เปิด" },
   "state_off": { "message": "ปิด" }

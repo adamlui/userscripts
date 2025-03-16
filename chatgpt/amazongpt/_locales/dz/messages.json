@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ཕྱིར་འབུད་འབད་" },
   "alert_sharePageGenerated": { "message": "པ་ ཐོན་ཡོདཔ་ཨིན་པས།" },
   "notif_copiedToClipboard": { "message": "གློག་ཐག་ར་བ་ལུ་འདྲ་བཤུས་འབད།" },
+  "notif_downloaded": { "message": "ཌ་ལོཌ་" },
   "btnLabel_moreAIextensions": { "message": "རྒྱང་སྒྲིལ་ཚུ་" },
   "btnLabel_leaveReview": { "message": "བསྐྱར་ཞིབ་བཀོག་བཞག་" },
   "btnLabel_rateUs": { "message": "ང་བཅས་ལུ་བཀག་སྡོམ་འབད་" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "ད་ལྟོའི་དུས་ཚོད།" },
   "btnLabel_dismiss": { "message": "ཁ་འབྱལ་བ།" },
   "btnLabel_visitPage": { "message": "བལྟ་བཤལཔ་གི་ཤོག་ལེབ་" },
+  "btnLabel_download": { "message": "ཌ་ནོཌ་" },
+  "btnLabel_convo": { "message": "གྲོས་བསྡུར་" },
   "link_viewChanges": { "message": "བསྒྱུར་བཅོས་ཚུ་བལྟ་" },
   "state_on": { "message": "སྤོ་བཤུད་འབད་" },
   "state_off": { "message": "སེལ་འཐུ་འབད།" }

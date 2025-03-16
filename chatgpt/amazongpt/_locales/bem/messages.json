@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ukuleka" },
   "alert_sharePageGenerated": { "message": "Share Pepala lyapangwa" },
   "notif_copiedToClipboard": { "message": "Yalili Yalila clipboard" },
+  "notif_downloaded": { "message": "ukukopolola" },
   "btnLabel_moreAIextensions": { "message": "More Awkwafina" },
   "btnLabel_leaveReview": { "message": "Lekeni ukupituluka" },
   "btnLabel_rateUs": { "message": "Rate Twine" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Ukufumishiwapo" },
   "btnLabel_visitPage": { "message": "Tandalila pe bula" },
+  "btnLabel_download": { "message": "Kopololeni" },
+  "btnLabel_convo": { "message": "Ukulanshanya" },
   "link_viewChanges": { "message": "Moneni ifyo ifintu fyayaluka" },
   "state_on": { "message": "Pali" },
   "state_off": { "message": "ukuleka" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "स्विच ऑफ किया जा रहा है" },
   "alert_sharePageGenerated": { "message": "जनरेट किया गया पेज शेयर करें" },
   "notif_copiedToClipboard": { "message": "क्लिपबोर्ड पर कॉपी कर लिया गया है" },
+  "notif_downloaded": { "message": "डाउनलोड हो गया" },
   "btnLabel_moreAIextensions": { "message": "और AI एक्सटेंशन" },
   "btnLabel_leaveReview": { "message": "समीक्षा छोड़ें" },
   "btnLabel_rateUs": { "message": "हमें रेटिंग दें" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "अपडेट करें" },
   "btnLabel_dismiss": { "message": "खारिज करना" },
   "btnLabel_visitPage": { "message": "पेज पर जाएँ" },
+  "btnLabel_download": { "message": "डाउनलोड " },
+  "btnLabel_convo": { "message": "संवाद" },
   "link_viewChanges": { "message": "बदलाव देखें" },
   "state_on": { "message": "चालू" },
   "state_off": { "message": "बंद" }

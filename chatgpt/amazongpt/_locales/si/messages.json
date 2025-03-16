@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ක් ‍ රියා විරහිත කරමින්" },
   "alert_sharePageGenerated": { "message": "පිටුව බෙදාගන්න උත්පාදනය කරන ලදි" },
   "notif_copiedToClipboard": { "message": "@ info" },
+  "notif_downloaded": { "message": "බාගත කර ඇත" },
   "btnLabel_moreAIextensions": { "message": "තවත් AI දිගු" },
   "btnLabel_leaveReview": { "message": "සමාලෝචනයක් එක් කරන්න" },
   "btnLabel_rateUs": { "message": "අපව අගයන්න" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "යාවත් කාළීන" },
   "btnLabel_dismiss": { "message": "ඉවත් කරන්න" },
   "btnLabel_visitPage": { "message": "පිවිසුම් පිටුව" },
+  "btnLabel_download": { "message": "Username for logins to Magnatune" },
+  "btnLabel_convo": { "message": "සංවාදය" },
   "link_viewChanges": { "message": "වෙනස්කම් බලන්න" },
   "state_on": { "message": "ක්‍රියාත්මකයි" },
   "state_off": { "message": "Property_BAR_NewPrefs_App_BAR_" }

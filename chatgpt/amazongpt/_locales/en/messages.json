@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "switching off" },
   "alert_sharePageGenerated": { "message": "Share Page generated" },
   "notif_copiedToClipboard": { "message": "Copied to clipboard" },
+  "notif_downloaded": { "message": "downloaded" },
   "btnLabel_moreAIextensions": { "message": "More AI Extensions" },
   "btnLabel_leaveReview": { "message": "Leave Review" },
   "btnLabel_rateUs": { "message": "Rate Us" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Update" },
   "btnLabel_dismiss": { "message": "Dismiss" },
   "btnLabel_visitPage": { "message": "Visit Page" },
+  "btnLabel_download": { "message": "Download" },
+  "btnLabel_convo": { "message": "chat" },
   "link_viewChanges": { "message": "View changes" },
   "state_on": { "message": "On" },
   "state_off": { "message": "Off" }

@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "nag-turn off" },
   "alert_sharePageGenerated": { "message": "Ipakigbahin ang Panid nga namugna" },
   "notif_copiedToClipboard": { "message": "Kopyahin sa clipboard" },
+  "notif_downloaded": { "message": "gi-download" },
   "btnLabel_moreAIextensions": { "message": "Dugang nga mga Extension sa AI" },
   "btnLabel_leaveReview": { "message": "Biyai ang Review" },
   "btnLabel_rateUs": { "message": "I-rate Kanato" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "I-update" },
   "btnLabel_dismiss": { "message": "I-dismiss" },
   "btnLabel_visitPage": { "message": "Bisitaha ang Panid" },
+  "btnLabel_download": { "message": "Pag-download" },
+  "btnLabel_convo": { "message": "Panag-istoryahanay" },
   "link_viewChanges": { "message": "Tan-awa ang mga kausaban" },
   "state_on": { "message": "sa" },
   "state_off": { "message": "off" }

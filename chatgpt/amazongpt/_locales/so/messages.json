@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "badiyadka to badar" },
   "alert_sharePageGenerated": { "message": "La wadaag Bogga la soo saaray" },
   "notif_copiedToClipboard": { "message": "Nuqul ka mid ah clipboard" },
+  "notif_downloaded": { "message": "La soo dejiyay" },
   "btnLabel_moreAIextensions": { "message": "Kordhinta AI dheeraad ah" },
   "btnLabel_leaveReview": { "message": "Dib u eegista Ka tag" },
   "btnLabel_rateUs": { "message": "Nagu Qiimee" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Cusboonaysiinta" },
   "btnLabel_dismiss": { "message": "Iska tuur" },
   "btnLabel_visitPage": { "message": "Booqo Bogga" },
+  "btnLabel_download": { "message": "Soo daji" },
+  "btnLabel_convo": { "message": "wada sheekaysi" },
   "link_viewChanges": { "message": "Eeg isbeddellada" },
   "state_on": { "message": "Shid" },
   "state_off": { "message": "Dami" }

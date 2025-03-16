@@ -82,6 +82,7 @@
   "alert_switchingOff": { "message": "ukucima" },
   "alert_sharePageGenerated": { "message": "Iphepha lokuthumela lenziwe" },
   "notif_copiedToClipboard": { "message": "URL ikhutshelwa kwibhodi eqhotyoshwayo. @ info" },
+  "notif_downloaded": { "message": "ikhutshelwe" },
   "btnLabel_moreAIextensions": { "message": "Izongezo Ezingakumbi zeAI" },
   "btnLabel_leaveReview": { "message": "Shiya Uluvo" },
   "btnLabel_rateUs": { "message": "Silinganise" },
@@ -91,6 +92,8 @@
   "btnLabel_update": { "message": "Lungisa" },
   "btnLabel_dismiss": { "message": "Gxotha" },
   "btnLabel_visitPage": { "message": "Yiya Kwiphepha" },
+  "btnLabel_download": { "message": "Khuphela" },
+  "btnLabel_convo": { "message": "Incoko" },
   "link_viewChanges": { "message": "Jonga izinto ezitshintshiweyo" },
   "state_on": { "message": "Inye" },
   "state_off": { "message": "cima" }
