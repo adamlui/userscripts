@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.16.7
+// @version               2025.3.17
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -3655,10 +3655,11 @@
             loadingElem.prepend(loadingSpinner)
 
             // Init msgs
-            let msgs = [...msgChain]
+            let msgs = structuredClone(msgChain) // deep copy to not affect global chain
             if (msgs.length > 3) msgs = msgs.slice(-3) // keep last 3 only
             msgs.forEach(msg => { // trim agent msgs
-                if (msg.role == 'assistant' && msg.content.length > 250) msg.content = msg.content.substring(0, 250) })
+                if (msg.role == 'assistant' && msg.content.length > 250)
+                    msg.content = msg.content.substring(0, 250) + '...' })
 
             // Init API attempt props
             get.reply.status = 'waiting'
