@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.17
+// @version                  2025.3.17.1
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -1494,7 +1494,7 @@
                                 const html = resp.responseText, dlLink = document.createElement('a')
                                 dlLink.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }))
                                 dlLink.download /* filename */ = html.match(/<title>([^<]+)<\/title>/i)[1] // page title
-                                    .replace(/\s+—\s+/g, '—') // strip spaces around em dash of app name
+                                    .replace(/\s+(?:—|\/)+\s+/g, ' ') // convert suffix sep to space for hyphen-casing
                                     .toLowerCase().trim().replace(/\s+/g, '-') // hyphen-case
                                     + '.html'
                                 document.body.append(dlLink) ; dlLink.click() ; dlLink.remove() // download HTML
