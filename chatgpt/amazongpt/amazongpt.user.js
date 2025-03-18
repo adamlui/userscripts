@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.16.5
+// @version                2025.3.17
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2839,10 +2839,11 @@
             loadingElem.prepend(loadingSpinner)
 
             // Init msgs
-            let msgs = [...msgChain]
+            let msgs = structuredClone(msgChain) // deep copy to not affect global chain
             if (msgs.length > 3) msgs = msgs.slice(-3) // keep last 3 only
             msgs.forEach(msg => { // trim agent msgs
-                if (msg.role == 'assistant' && msg.content.length > 250) msg.content = msg.content.substring(0, 250) })
+                if (msg.role == 'assistant' && msg.content.length > 250)
+                    msg.content = msg.content.substring(0, 250) + '...' })
 
             // Init API attempt props
             get.reply.status = 'waiting'
