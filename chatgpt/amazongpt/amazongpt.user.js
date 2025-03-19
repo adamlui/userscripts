@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.19.1
+// @version                2025.3.19.2
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2660,8 +2660,7 @@
                     const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                     if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
                         return handleProcessCompletion()
-                    if (env.browser.isChromium && caller.sender == callerAPI) { // clear/add timeout
-                    // ...since Chromium stream reader doesn't signal done
+                    if (env.browser.isChromium) { // clear/add timeout since Chromium stream reader doesn't signal done
                         clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                     // Process/accumulate reply chunk
@@ -3080,8 +3079,6 @@
                 shareBtn.style.cursor = 'default' // remove finger
                 toggle.tooltip(event) // update tooltip
                 const msgs = [...prompts.stripAugments(msgChain)]
-                msgs.push( // displayed reply since unpushed till next get.reply()
-                    { role: 'assistant', content: appDiv.querySelector('pre')?.textContent })
                 xhr({
                     method: 'POST', url: 'https://chat-share.kudoai.workers.dev',
                     headers: { 'Content-Type': 'application/json', 'Referer': location.href },
