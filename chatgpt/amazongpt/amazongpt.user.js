@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.19.2
+// @version                2025.3.19.3
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2459,15 +2459,13 @@
         // * stateOrEvent: 'on'|'off' or button `event`
 
             if (env.browser.isMobile) return
-            if (stateOrEvent?.type == 'mouseleave' || typeof stateOrEvent == 'string')
-                return tooltipDiv.style.opacity = stateOrEvent == 'on' ? 1 : 0
+            if (stateOrEvent?.type == 'mouseleave' || stateOrEvent == 'off')
+                return tooltipDiv.style.opacity = 0
 
-            const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1],
-                  appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'arrows'],
-                  replyCornerBtnTypes = ['share', 'copy', 'regen', 'speak']
-
-            // Update text
-            tooltipDiv.innerText = (
+            const btn = stateOrEvent.currentTarget, btnType = /[^-]+-([\w-]+)-btn/.exec(btn.id)[1]
+            const appHeaderBtnTypes = ['chevron', 'about', 'settings', 'font-size', 'arrows']
+            const replyCornerBtnTypes = ['share', 'copy', 'regen', 'speak']
+            const baseText = (
                 btnType == 'chevron' ? ( config.minimized ? `${app.msgs.tooltip_restore}`
                                                           : `${app.msgs.tooltip_minimize}` )
               : btnType == 'about' ? app.msgs.menuLabel_about
@@ -2494,6 +2492,22 @@
                   : `${app.msgs.tooltip_playing} ${app.msgs.tooltip_reply.toLowerCase()}...` )
               : btnType == 'send' ? app.msgs.tooltip_sendReply
               : btnType == 'shuffle' ? app.msgs.tooltip_askRandQuestion : '' )
+
+              // Update text
+              tooltipDiv.innerText = baseText
+              toggle.tooltip.nativeRpadding = toggle.tooltip.nativeRpadding
+                  || parseFloat(window.getComputedStyle(tooltipDiv).paddingRight)
+              clearInterval(toggle.tooltip.dotCycler)
+              if (baseText.endsWith('...')) { // animate the dots
+                  const noDotText = baseText.slice(0, -3), dotWidth = 2.75 ; let dotCnt = 3
+                  toggle.tooltip.dotCycler = setInterval(() => {
+                      dotCnt = (dotCnt % 3) + 1 // cycle thru 1 → 2 → 3
+                      tooltipDiv.innerText = noDotText + '.'.repeat(dotCnt)
+                      tooltipDiv.style.paddingRight = `${ // adjust based on dotCnt
+                          toggle.tooltip.nativeRpadding + (3 - dotCnt) * dotWidth }px`
+                  }, 350)
+              } else // restore native right-padding
+                  tooltipDiv.style.paddingRight = toggle.tooltip.nativeRpadding
 
             // Update position
             const elems = { appDiv, btn, tooltipDiv, fsSlider: appDiv.querySelector('[id*=font-size-slider]') },
