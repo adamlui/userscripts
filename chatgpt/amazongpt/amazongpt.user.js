@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.19
+// @version                2025.3.19.1
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2709,7 +2709,8 @@
                         else { // text was shown
                             caller.status = 'done' ; caller.attemptCnt = null
                             show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
-                            msgChain.push({ role: 'assistant', content: textToShow })
+                            if (msgChain[msgChain.length -1]?.role != 'assistant')
+                                msgChain.push({ role: 'assistant', content: textToShow })
                         }
                     }
 
@@ -2780,6 +2781,7 @@
                                 caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
                                 textToShow = textToShow.replace(apis[callerAPI].respPatterns?.watermark, '').trim()
                                 show.reply(textToShow) ; show.replyCornerBtns()
+                                msgChain.push({ role: 'assistant', content: textToShow })
                     }}}
 
                     function handleProcessError(err) { // suggest proxy or try diff API
