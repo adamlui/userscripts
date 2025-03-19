@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.17.1
+// @version                2025.3.19
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -2100,7 +2100,6 @@
 
                 // Yes reply, submit it + transform to loading UI
                 } else {
-                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
                     show.reply.chatbarFocused = false ; show.reply.userInteracted = true
@@ -2661,7 +2660,8 @@
                     const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                     if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
                         return handleProcessCompletion()
-                    if (env.browser.isChromium) { // clear/add timeout since Chromium stream reader doesn't signal done
+                    if (env.browser.isChromium && caller.sender == callerAPI) { // clear/add timeout
+                    // ...since Chromium stream reader doesn't signal done
                         clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                     // Process/accumulate reply chunk
@@ -2702,22 +2702,22 @@
                         }
                     } catch (err) { log.error('Error showing stream', err.message) }
 
+                    function handleProcessCompletion() {
+                        caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
+                        if (appDiv.querySelector('.loading')) // no text shown
+                            api.tryNew(caller)
+                        else { // text was shown
+                            caller.status = 'done' ; caller.attemptCnt = null
+                            show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
+                            msgChain.push({ role: 'assistant', content: textToShow })
+                        }
+                    }
+
                     // handleProcessCompletion() or read next chunk
                     return isDone ? handleProcessCompletion() // from API's custom signal
                         : reader.read().then(nextChunk => {
                             if (caller.sender == callerAPI) handleChunk(nextChunk, callerAPI) // recurse
-                            else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         }).catch(err => log.error('Error reading stream', err.message))
-                }
-
-                function handleProcessCompletion() {
-                    caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
-                    if (appDiv.querySelector('.loading')) // no text shown
-                        api.tryNew(caller)
-                    else { // text was shown
-                        caller.status = 'done' ; caller.attemptCnt = null
-                        show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
-                    }
                 }
             },
 
