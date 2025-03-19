@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.17.1
+// @version                2025.3.19
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -2706,7 +2706,6 @@
 
                 // Yes reply, submit it + transform to loading UI
                 } else {
-                    msgChain.push({ role: 'assistant', content: appDiv.querySelector('pre')?.textContent || '' })
                     msgChain.push({ role: 'user', content: chatTextarea.value })
                     get.reply(msgChain)
                     show.reply.src = null ; show.reply.chatbarFocused = false ; show.reply.userInteracted = true
@@ -3401,7 +3400,8 @@
                     const respChunk = new TextDecoder('utf8').decode(new Uint8Array(value))
                     if (done || respChunk.includes(apis[callerAPI].respPatterns?.watermark))
                         return handleProcessCompletion()
-                    if (env.browser.isChromium) { // clear/add timeout since Chromium stream reader doesn't signal done
+                    if (env.browser.isChromium && caller.sender == callerAPI) { // clear/add timeout
+                    // ...since Chromium stream reader doesn't signal done
                         clearTimeout(this.timeout) ; this.timeout = setTimeout(handleProcessCompletion, 1500) }
 
                     // Process/accumulate reply chunk
@@ -3442,22 +3442,23 @@
                         }
                     } catch (err) { log.error('Error showing stream', err.message) }
 
+                    function handleProcessCompletion() {
+                        caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
+                        if (appDiv.querySelector('.loading')) // no text shown
+                            api.tryNew(caller)
+                        else { // text was shown
+                            caller.status = 'done' ; caller.attemptCnt = null
+                            if (msgChain[msgChain.length -1]?.role != 'assistant')
+                                msgChain.push({ role: 'assistant', content: textToShow })
+                            show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
+                        }
+                    }
+
                     // handleProcessCompletion() or read next chunk
                     return isDone ? handleProcessCompletion() // from API's custom signal
                         : reader.read().then(nextChunk => {
                             if (caller.sender == callerAPI) handleChunk(nextChunk, callerAPI) // recurse
-                            else if (env.browser.isChromium) clearTimeout(this.timeout) // skip handleProcessCompletion()
                         }).catch(err => log.error('Error reading stream', err.message))
-                }
-
-                function handleProcessCompletion() {
-                    caller.sender = null ; if (env.browser.isChromium) clearTimeout(this.timeout)
-                    if (appDiv.querySelector('.loading')) // no text shown
-                        api.tryNew(caller)
-                    else { // text was shown
-                        caller.status = 'done' ; caller.attemptCnt = null
-                        show.replyCornerBtns() ; api.clearTimedOut(caller.triedAPIs)
-                    }
                 }
             },
 
@@ -3519,8 +3520,10 @@
                             } else {
                                 caller.status = 'done' ; api.clearTimedOut(caller.triedAPIs) ; caller.attemptCnt = null
                                 textToShow = textToShow.replace(apis[callerAPI].respPatterns?.watermark, '').trim()
-                                if (caller == get.reply) { show.reply(textToShow) ; show.replyCornerBtns() }
-                                else resolve(arrayify(textToShow))
+                                if (caller == get.reply) {
+                                    show.reply(textToShow) ; show.replyCornerBtns()
+                                    msgChain.push({ role: 'assistant', content: textToShow })
+                                } else resolve(arrayify(textToShow))
                             }
                         }
                     }
