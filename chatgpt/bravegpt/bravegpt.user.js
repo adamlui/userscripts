@@ -148,7 +148,7 @@
 // @description:zu        Yengeza izimpendulo ze-AI ku-Brave Search (inikwa amandla yi-GPT-4o!)
 // @author                KudoAI
 // @namespace             https://kudoai.com
-// @version               2025.3.19.4
+// @version               2025.3.20
 // @license               MIT
 // @icon                  https://assets.bravegpt.com/images/icons/bravegpt/icon48.png?v=df624b0
 // @icon64                https://assets.bravegpt.com/images/icons/bravegpt/icon64.png?v=df624b0
@@ -4030,11 +4030,10 @@
                 shareBtn.style.animation = 'spinY 1s linear infinite'
                 shareBtn.style.cursor = 'default' // remove finger
                 toggle.tooltip(event) // update tooltip
-                const msgs = [...prompts.stripAugments(msgChain)]
                 xhr({
                     method: 'POST', url: 'https://chat-share.kudoai.workers.dev',
                     headers: { 'Content-Type': 'application/json', 'Referer': location.href },
-                    data: JSON.stringify({ messages: msgs }),
+                    data: JSON.stringify({ messages: [...prompts.stripAugments(msgChain)] }),
                     onload: resp => {
                         const shareURL = JSON.parse(resp.responseText).url
                         show.reply.shareURL = shareURL ; modals.shareChat(shareURL)
