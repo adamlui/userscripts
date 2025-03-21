@@ -33,7 +33,7 @@
 ### 背景リクエストを介して ChatGPT セッションを最新の状態に保ち、ネットワーク エラーと Cloudflare チェックを排除します。
 
 > [!IMPORTANT]
-> _**Greasy Fork ユーザー:** ChatGPT 自動更新 を **2025 年 1 月 18 日より前に** インストールした場合、スクリプトの更新メカニズムが GitHub に移行したため、自動更新は機能しなくなりました。更新を引き続き受信するには、下の緑色の [このスクリプトをインストール] ボタンをクリックするか (1 回)、[このリンク](https://gm.chatgptautorefresh.com) を (1 回) クリックしてください。_
+> _**Greasy Fork ユーザー:** ChatGPT 自動更新 を **2025 年 1 月 18 日より前に** インストールした場合、スクリプトの更新メカニズムが GitHub に移行したため、自動更新は機能しなくなりました。更新を引き続き受信するには、下の緑色の "Install this script" ボタンをクリックするか (1 回)、[このリンク](https://gm.chatgptautorefresh.com) を (1 回) クリックしてください。_
 
 <a href="https://gm.chatgptautorefresh.com"><img height=45 alt="[このスクリプトをインストール]" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/install-button.svg"></a><a href="#-インストール"><img height=45 alt="[インストール方法]" title="インストール方法" src="https://assets.chatgptautorefresh.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
@@ -191,6 +191,27 @@ ChatGPT 自動更新 は、[ScriptCat](https://docs.scriptcat.org)、[Violentmon
 <a href="https://github.com/ImgBotApp"><img width=50 title="@ImgBotApp" src="https://avatars.githubusercontent.com/u/31427850"></img></a>
 <a href="https://github.com/dependabot"><img width=50 title="Dependabot" src="https://avatars.githubusercontent.com/in/29110"></img></a>
 <a href="https://chatgpt.com"><picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptautorefresh.com/images/icons/platforms/chatgpt/black-on-white/icon50.png"><img title="ChatGPT" src="https://assets.chatgptautorefresh.com/images/icons/platforms/chatgpt/white-on-gray/icon50.png"></img></picture></a>
+
+</div>
+
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+
+<div id="sponsors" align="center">
+<br>
+
+### サポート対象:
+
+<div id="warp">
+    <br><br>
+    <a href="https://www.warp.dev/chatgptjs" target="_blank">
+        <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
+    </a>
+    <h3><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        ターミナルで使える AI 開発ツール Warp</a></h3>
+    <i><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        MacOS、Linux、Windows で利用可能</a></i>
+</div>
+<br><br>
 
 </div>
 

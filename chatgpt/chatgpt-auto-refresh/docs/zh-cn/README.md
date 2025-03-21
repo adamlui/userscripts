@@ -198,6 +198,27 @@ ChatGPT 自动刷新 与使用 [ScriptCat](https://docs.scriptcat.org)、[Violen
 
 <img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
 
+<div id="sponsors" align="center">
+<br>
+
+### 支持：
+
+<div id="warp">
+    <br><br>
+    <a href="https://www.warp.dev/chatgptjs" target="_blank">
+        <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
+    </a>
+    <h3><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        Warp，存在于您的终端中的 AI Devtool</a></h3>
+    <i><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        适用于 MacOS、Linux 和 Windows</a></i>
+</div>
+<br><br>
+
+</div>
+
+<img height=6px width="100%" src="https://assets.chatgptautorefresh.com/images/separators/gradient-aqua.png">
+
 ## 🤖 更多 ChatGPT 应用
 
 如需更多精彩的 ChatGPT 应用程序，请访问：https://github.com/adamlui/ai-web-extensions
