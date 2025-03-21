@@ -55,8 +55,19 @@
 <div id="golden-sponsors" align="center">
 <br>
 
-### Golden Sponsor:
+### Golden Sponsors:
 
+<div id="warp">
+    <br><br>
+    <a href="https://www.warp.dev/chatgptjs" target="_blank">
+        <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
+    </a>
+    <h3><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        Warp, the AI Devtool that lives in your terminal</a></h3>
+    <i><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        Available for MacOS, Linux, & Windows</a></i>
+</div>
+<br><br>
 <a href="https://www.burncloud.com/893.html">
     <picture>
         <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.chatgptjs.org/images/logos/partners/burncloud/with-description/white.png?v=610795b">
