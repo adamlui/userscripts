@@ -55,6 +55,21 @@
 [自述文件](../../youtube-classic/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
+<!-- WARP BANNER -->
+
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+
+<div id="warp" align="center">
+    <h5>支持：</h5>
+    <a href="https://www.warp.dev/chatgptjs" target="_blank">
+        <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
+    </a>
+    <h3><a href="https://www.warp.dev/chatgptjs" target="_blank">
+        Warp，存在于您的终端中的 AI Devtool</a></h3>
+</div>
+
+<!-- FOOTER -->
+
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> /
