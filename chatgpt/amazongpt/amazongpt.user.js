@@ -3,7 +3,7 @@
 // @description            Adds the magic of AI to Amazon shopping
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.3.20
+// @version                2025.3.21
 // @license                MIT
 // @icon                   https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png?v=0fddfc7
 // @icon64                 https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon64.png?v=0fddfc7
@@ -3095,7 +3095,7 @@
                 xhr({
                     method: 'POST', url: 'https://chat-share.kudoai.workers.dev',
                     headers: { 'Content-Type': 'application/json', 'Referer': location.href },
-                    data: JSON.stringify({ messages: [...prompts.stripAugments(msgChain)] }),
+                    data: JSON.stringify({ messages: prompts.stripAugments(msgChain) }),
                     onload: resp => {
                         const shareURL = JSON.parse(resp.responseText).url
                         show.reply.shareURL = shareURL ; modals.shareChat(shareURL)
