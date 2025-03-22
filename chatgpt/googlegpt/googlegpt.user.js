@@ -149,7 +149,7 @@
 // @description:zu           Yengeza izimpendulo ze-AI ku-Google Search (inikwa amandla yi-Google Gemma + GPT-4o!)
 // @author                   KudoAI
 // @namespace                https://kudoai.com
-// @version                  2025.3.20
+// @version                  2025.3.21
 // @license                  MIT
 // @icon                     https://assets.googlegpt.io/images/icons/googlegpt/black/icon48.png?v=59409b2
 // @icon64                   https://assets.googlegpt.io/images/icons/googlegpt/black/icon64.png?v=59409b2
@@ -4209,7 +4209,7 @@
                 xhr({
                     method: 'POST', url: 'https://chat-share.kudoai.workers.dev',
                     headers: { 'Content-Type': 'application/json', 'Referer': location.href },
-                    data: JSON.stringify({ messages: [...prompts.stripAugments(msgChain)] }),
+                    data: JSON.stringify({ messages: prompts.stripAugments(msgChain) }),
                     onload: resp => {
                         const shareURL = JSON.parse(resp.responseText).url
                         show.reply.shareURL = shareURL ; modals.shareChat(shareURL)
