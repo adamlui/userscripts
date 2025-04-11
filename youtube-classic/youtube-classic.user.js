@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.2.21.1
+// @version           2025.4.11
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -12,6 +12,7 @@
 // @compatible        opera
 // @compatible        safari
 // @compatible        edge
+// @match             *://github.com/*/youtube-classic*
 // @match             *://*.youtube.com/*
 // @connect           gm.ytclassic.com
 // @connect           raw.githubusercontent.com
@@ -29,6 +30,13 @@
 // ==/UserScript==
 
 (() => {
+
+    // Hide GF alert on GitHub if found
+    if (location.host == 'github.com' && location.pathname.includes('youtube-classic')) {
+        const gfAlert = [...document.querySelectorAll('.markdown-alert')]
+                .find(alert => alert.textContent.includes('Greasy Fork'))
+        return !gfAlert ? undefined : gfAlert.style.display = 'none'
+    }
 
     // Init ENV context
     const env = {

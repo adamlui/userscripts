@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Highlight Radio Bubbles
-// @version           2025.1.20
+// @version           2025.4.11
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Makes radio bubbles bigger & more colorful when brought to focus.
@@ -19,6 +19,13 @@
 // @supportURL        https://github.com/adamlui/userscripts/issues
 // @contributionURL   https://github.com/sponsors/adamlui
 // ==/UserScript==
+
+// Hide GF alert on GitHub if found
+if (location.host == 'github.com' && location.pathname.includes('highlight-radio-bubbles')) {
+    const gfAlert = [...document.querySelectorAll('.markdown-alert')]
+            .find(alert => alert.textContent.includes('Greasy Fork'))
+    if (gfAlert) gfAlert.style.display = 'none'
+}
 
 const styleNode = document.createElement('style')
 styleNode.innerHTML = 'input[type=radio]:focus { outline-color: red !important ; width: 25px !important ; height: 25px !important ; }'
