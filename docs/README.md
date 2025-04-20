@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <div align="right">
     <h6>
         <picture>
@@ -540,4 +542,4 @@ Greasemonkey userscripts can be used w/ the following browsers:
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> /
-<a href="#english--简体中文">Back to top ↑</a>
+<a href="#top">Back to top ↑</a>

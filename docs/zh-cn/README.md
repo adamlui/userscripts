@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <div align="right">
     <h6>
         <picture>
@@ -540,4 +542,4 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> /
-<a href="#简体中文--english">回到顶部 ↑</a>
+<a href="#top">回到顶部 ↑</a>
