@@ -63,10 +63,10 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 <div id="warp" align="center">
     <h5>Supported by:</h5>
-    <a href="https://www.warp.dev/chatgptjs" target="_blank">
+    <a href="https://www.warp.dev/chatgptjs">
         <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
     </a>
-    <h3><a href="https://www.warp.dev/chatgptjs" target="_blank">
+    <h3><a href="https://www.warp.dev/chatgptjs">
         Warp, the AI Devtool that lives in your terminal</a></h3>
 </div>
 
