@@ -24,7 +24,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 ### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://amazongpt.kudoai.com/assets/images/icons/app/white/icon48.png"><img width=21 src="https://amazongpt.kudoai.com/assets/images/icons/app/black-gold-teal/icon48.png"></picture> [AmazonGPT](../amazongpt) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/gold-badge.png">
 
-> Add AI to Amazon shopping.
+> Add AI chat & product/category summaries to Amazon shopping, powered by the latest LLMs!
 <br>[Install](https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js) /
 [Readme](../amazongpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
@@ -38,7 +38,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 ### <img src="https://assets.bravegpt.com/images/icons/app/icon48.png" width=24> [BraveGPT](../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
-> Adds AI answers to Brave Search (powered by GPT-4o!)
+> Add AI chat & search summaries to Brave Search, powered by the latest LLMs!
 <br>[Install](https://gm.bravegpt.com) /
 [Readme](../bravegpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
@@ -80,14 +80,14 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 ### <img src="https://assets.ddgpt.com/images/icons/app/icon48.png" width=23> [DuckDuckGPT](../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="Featured on Product Hunt" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
-> Adds AI answers to DuckDuckGo (powered by GPT-4o!)
+> Add AI chat & search summaries to DuckDuckGo, powered by the latest LLMs!
 <br>[Install](https://gm.ddgpt.com) /
 [Readme](../duckduckgpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/app/white/icon32.png"><img width=21 src="https://assets.googlegpt.io/images/icons/app/black/icon32.png"></picture> [GoogleGPT](../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://assets.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
-> Adds AI answers to Google Search (powered by Google Gemma + GPT-4o!)
+> Add AI chat & search summaries to Google Search, powered by the latest LLMs!
 <br>[Install](https://gm.googlegpt.io) /
 [Readme](../googlegpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)

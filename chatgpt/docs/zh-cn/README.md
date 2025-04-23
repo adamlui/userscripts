@@ -24,7 +24,7 @@
 
 ### <img src="https://amazongpt.kudoai.com/assets/images/icons/amazongpt/black-gold-teal/icon48.png" width=21> [AmazonGPT](../../amazongpt) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/gold-badge.png">
 
-> 将 AI 添加到 Amazon 购物.
+> 在亚马逊购物中添加 AI 聊天和产品/类别摘要，由最新的法学硕士提供支持！
 <br>[Install](https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js) /
 [自述文件](../../amazongpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
@@ -38,7 +38,7 @@
 
 ### <img src="https://assets.bravegpt.com/images/icons/app/icon48.png" width=24> [BraveGPT](../../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
-> 为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
+> 在 Brave 搜索中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://gm.bravegpt.com) /
 [自述文件](../../bravegpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
@@ -80,14 +80,14 @@
 
 ### <img src="https://assets.ddgpt.com/images/icons/app/icon48.png" width=23> [DuckDuckGPT](../../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
-> 为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
+> 在 DuckDuckGo 中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://gm.ddgpt.com) /
 [自述文件](../../duckduckgpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/app/white/icon32.png"><img width=21 src="https://assets.googlegpt.io/images/icons/app/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://assets.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
-> 为 Google Search 添加 AI 答案（由 Google Gemma + GPT-4o 提供支持！）
+> 在 Google 搜索中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://gm.googlegpt.io) /
 [自述文件](../../googlegpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
