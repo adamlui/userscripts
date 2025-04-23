@@ -36,7 +36,7 @@
 [自述文件](../../autoclear-chatgpt-history/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://assets.bravegpt.com/images/icons/bravegpt/icon48.png" width=24> [BraveGPT](../../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
+### <img src="https://assets.bravegpt.com/images/icons/app/icon48.png" width=24> [BraveGPT](../../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
 > 为 Brave Search 添加 AI 答案（由 GPT-4o 提供支持！）
 <br>[安装](https://gm.bravegpt.com) /
@@ -78,14 +78,14 @@
 [自述文件](../../chatgpt-widescreen/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png" width=23> [DuckDuckGPT](../../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
+### <img src="https://assets.ddgpt.com/images/icons/app/icon48.png" width=23> [DuckDuckGPT](../../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
 > 为 DuckDuckGo 添加 AI 答案（由 GPT-4o 提供支持！）
 <br>[安装](https://gm.ddgpt.com) /
 [自述文件](../../duckduckgpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/googlegpt/white/icon32.png"><img width=21 src="https://assets.googlegpt.io/images/icons/googlegpt/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://assets.googlegpt.io/images/badges/awesome/badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.googlegpt.io/images/icons/app/white/icon32.png"><img width=21 src="https://assets.googlegpt.io/images/icons/app/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://assets.googlegpt.io/images/badges/awesome/badge.svg"></a>
 
 > 为 Google Search 添加 AI 答案（由 Google Gemma + GPT-4o 提供支持！）
 <br>[安装](https://gm.googlegpt.io) /
