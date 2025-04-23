@@ -3,7 +3,7 @@
 # <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> GitHub Star History ⭐ &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Add%20GitHub%20star%20history%20to%20all%20repo%20sidebars%21&url=https://github.com/adamlui/github-star-history&hashtags=greasemonkey,github,javascript)
 
 <a href="https://github.com/adamlui/github-star-history/blob/main/LICENSE.md">
-    <img alt = "[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+    <img alt = "[License: MIT]" src="https://img.shields.io/badge/License-MIT-fc4f2d.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/github-star-history">
     <img alt = "[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
 <a href="https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_github-star-history">
