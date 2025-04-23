@@ -71,7 +71,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](../chatgpt-infinity/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=21 src="https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://assets.chatgptwidescreen.com/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
+### <img width=21 src="https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen](../chatgpt-widescreen) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://assets.chatgptwidescreen.com/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
 
 > Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on perplexity.ai + poe.com!
 <br>[Install](https://gm.chatgptwidescreen.com) /
