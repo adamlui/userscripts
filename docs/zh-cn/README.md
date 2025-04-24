@@ -95,12 +95,6 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        Violentmonkey</a><sup>2</sup>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
@@ -399,12 +393,6 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        Violentmonkey</a><sup>2</sup>
                 或者
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
@@ -430,13 +418,6 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 Lemur (Android, iOS)
             </td>
             <td> <!-- Userscript manager -->
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        Violentmonkey</a><sup>2</sup>
-                或者
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
@@ -461,13 +442,6 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 Quetta (Android, iOS, iPadOS)
             </td>
             <td> <!-- Userscript manager -->
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        Violentmonkey</a><sup>2</sup>
-                或者
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
@@ -498,12 +472,6 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
-                <a href="https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag"
-                   title="在 Chrome 上安装 Violentmonkey">
-                        Violentmonkey</a><sup>2</sup>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
