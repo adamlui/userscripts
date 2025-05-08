@@ -20,7 +20,7 @@ export default [
                 ipv4: 'readonly', JSON5: 'readonly', marked: 'readonly', modals: 'writable', notify: 'readonly',
                 renderMathInElement: 'readonly', settings: 'writable', sites: 'writable', styles: 'readonly',
                 syncConfigToUI: 'readonly', toggleMode: 'readonly', toggles: 'writable', tooltip: 'writable',
-                ui: 'readonly', webkitAudioContext: 'readonly'
+                ui: 'readonly', updateCheck: 'readonly', webkitAudioContext: 'readonly'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
