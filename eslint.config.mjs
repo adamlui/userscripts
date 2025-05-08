@@ -14,11 +14,13 @@ export default [
             languageOptions: {
             ecmaVersion: 'latest', sourceType: 'script',
             globals: {
-                ...globals.browser, ...globals.greasemonkey, ...globals.node, buttons: 'writable', chatbar: 'writable',
-                chatgpt: 'readonly', config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly',
-                GM_cookie: 'readonly', hljs: 'readonly', ipv4: 'readonly', JSON5: 'readonly', marked: 'readonly',
-                modals: 'writable', renderMathInElement: 'readonly', settings: 'writable', styles: 'readonly',
-                toggles: 'writable', tooltip: 'writable', ui: 'readonly', webkitAudioContext: 'readonly'
+                ...globals.browser, ...globals.greasemonkey, ...globals.node, app: 'writable', buttons: 'writable',
+                chatbar: 'writable', chatgpt: 'readonly', config: 'writable', CryptoJS: 'readonly',
+                cryptoUtils: 'readonly', dom: 'readonly', env: 'writable', GM_cookie: 'readonly', hljs: 'readonly',
+                ipv4: 'readonly', JSON5: 'readonly', marked: 'readonly', modals: 'writable', notify: 'readonly',
+                renderMathInElement: 'readonly', settings: 'writable', sites: 'writable', styles: 'readonly',
+                syncConfigToUI: 'readonly', toggleMode: 'readonly', toggles: 'writable', tooltip: 'writable',
+                ui: 'readonly', webkitAudioContext: 'readonly'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
