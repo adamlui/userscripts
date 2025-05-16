@@ -19,7 +19,7 @@ export default [
                 config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly', env: 'writable',
                 feedback: 'readonly', get: 'readonly', GM_cookie: 'readonly', hljs: 'readonly', icons: 'writable',
                 infinity: 'readonly', ipv4: 'readonly', JSON5: 'readonly', log: 'readonly', marked: 'readonly',
-                modals: 'writable', msgChain: 'writable', notify: 'readonly', prompts: 'readonly',
+                menus: 'writable', modals: 'writable', msgChain: 'writable', notify: 'readonly', prompts: 'readonly',
                 renderMathInElement: 'readonly', replyBubble: 'writable', session: 'readonly', settings: 'writable',
                 show: 'readonly', sites: 'writable', styles: 'writable', sync: 'readonly', syncConfigToUI: 'readonly',
                 toggle: 'readonly', toggleMode: 'readonly', toggles: 'writable', toolbarMenu: 'writable',
