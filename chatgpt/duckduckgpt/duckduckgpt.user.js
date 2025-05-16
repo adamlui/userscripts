@@ -148,7 +148,7 @@
 // @description:zu         Yengeza izimpendulo ze-AI ku-DuckDuckGo (inikwa amandla yi-GPT-4o!)
 // @author                 KudoAI
 // @namespace              https://kudoai.com
-// @version                2025.5.16.7
+// @version                2025.5.16.9
 // @license                MIT
 // @icon                   https://assets.ddgpt.com/images/icons/duckduckgpt/icon48.png?v=06af076
 // @icon64                 https://assets.ddgpt.com/images/icons/duckduckgpt/icon64.png?v=06af076
@@ -203,6 +203,7 @@
 // @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@2a51ece/assets/components/chatbot/icons.js#sha256-ENowwKW3K2TJqb0YmO7/SgHb0ya3rktSJHQniS0kFSc=
 // @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@8c9dbab/assets/components/chatbot/menus.js#sha256-haahzD2p9veWAtcInyrSApyj4Gzge4Xq0jsyutN/Mww=
 // @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@6a85faa/assets/lib/chatbot/feedback.js#sha256-a6Be+zJb84ObSOVjDIB4FmoRYRhWviZHHXLJ7RmX7So=
+// @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@51cbb87/assets/lib/chatbot/session.js#sha256-4eaIZJ1i0PwMY3g6oJQTac2eof7tjxXCcgHrFBBzgDQ=
 // @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@37e0d7d/assets/lib/crypto-utils.js/dist/crypto-utils.min.js#sha256-xRkis9u0tYeTn/GBN4sqVRqcCdEhDUN16/PlCy9wNnk=
 // @require                https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@5fc8863/assets/lib/dom.js/dist/dom.min.js#sha256-IGNj9Eoecq7QgY7SAs75wONajgN9Wg0NmCjKTCfu9CY=
 // @require                https://cdn.jsdelivr.net/npm/generate-ip@2.4.4/dist/generate-ip.min.js#sha256-aQQKAQcMgCu8IpJp9HKs387x0uYxngO+Fb4pc5nSF4I=
@@ -1633,67 +1634,6 @@
         }
     }
 
-    // Define SESSION functions
-
-    const session = {
-
-        deleteOpenAIcookies() {
-            log.caller = 'session.deleteOpenAIcookies()'
-            log.debug('Deleting OpenAI cookies...')
-            GM_deleteValue(app.configKeyPrefix + '_openAItoken')
-            if (env.scriptManager.name != 'Tampermonkey') return
-            GM_cookie.list({ url: apis.OpenAI.endpoints.auth }, (cookies, error) => {
-                if (!error) { for (const cookie of cookies) {
-                    GM_cookie.delete({ url: apis.OpenAI.endpoints.auth, name: cookie.name })
-            }}})
-        },
-
-        generateGPTFLkey() {
-            log.caller = 'session.generateGPTFLkey()'
-            log.debug('Generating GPTforLove key...')
-            let nn = Math.floor(new Date().getTime() / 1e3)
-            const fD = e => {
-                let t = CryptoJS.enc.Utf8.parse(e),
-                    o = CryptoJS.AES.encrypt(t, 'vrewbhjvbrejhbevwjh156645', {
-                        mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7
-                })
-                return o.toString()
-            }
-            const gptflKey = fD(nn)
-            return log.debug(gptflKey) || gptflKey
-        },
-
-        getOAItoken() {
-            log.caller = 'session.getOAItoken()'
-            log.debug('Getting OpenAI token...')
-            return new Promise(resolve => {
-                const accessToken = GM_getValue(app.configKeyPrefix + '_openAItoken')
-                if (accessToken) { log.debug(accessToken) ; resolve(accessToken) }
-                else {
-                    log.debug(`No token found. Fetching from ${apis.OpenAI.endpoints.session}...`)
-                    xhr({ url: apis.OpenAI.endpoints.session, onload: resp => {
-                        if (session.isBlockedByCF(resp.responseText)) return feedback.appAlert('checkCloudflare')
-                        try {
-                            const newAccessToken = JSON.parse(resp.responseText).accessToken
-                            GM_setValue(app.configKeyPrefix + '_openAItoken', newAccessToken)
-                            log.debug(`Success! newAccessToken = ${newAccessToken}`)
-                            resolve(newAccessToken)
-                        } catch { if (get.reply.api == 'OpenAI') return feedback.appAlert('login') }
-            }})}})
-        },
-
-        isBlockedByCF(resp) {
-            try {
-                const html = new DOMParser().parseFromString(resp, 'text/html'),
-                      title = html.querySelector('title')
-                if (title.textContent == 'Just a moment...') {
-                    log.caller = 'session.isBlockedByCF'
-                    return log.debug('Blocked by CloudFlare') || true
-                }
-            } catch (err) { return false }
-        }
-    }
-
     // Define API functions
 
     const api = {
@@ -2484,11 +2424,11 @@
 
     // Define COMPONENTS
 
-    const fontSizeSlider = {
+    const fontSizeSlider = { // requires dom.js + <app|config|inputEvents>
         fadeInDelay: 5, // ms
         hWheelDistance: 10, // px
 
-        createAppend() {
+        createAppend() { // requires dom.js + <app|config|inputEvents>
 
             // Create/ID/classify slider elems
             fontSizeSlider.cursorOverlay = dom.create.elem('div', { class: 'cursor-overlay' })
@@ -2564,7 +2504,7 @@
             return slider
         },
 
-        toggle(state = '') {
+        toggle(state = '') { // requires app
             const slider = document.getElementById(`${app.slug}-font-size-slider-track`)
                          || fontSizeSlider.createAppend()
             const replyTip = app.div.querySelector('.reply-tip')
@@ -2591,16 +2531,16 @@
         }
     }
 
-    const logos = {
+    const logos = { // requires dom.js + <app|env> + GM_getResourceText()
         ddgpt: {
 
-            create() {
+            create() { // requires dom.js + app
                 const ddgptLogo = dom.create.elem('img', { id: `${app.slug}-logo`, class: 'no-mobile-tap-outline' })
                 logos.ddgpt.update(ddgptLogo)
                 return ddgptLogo
             },
 
-            update(...targetLogos) {
+            update(...targetLogos) { // requires <app|env> + GM_getResourceText()
                 targetLogos = targetLogos.flat() // flatten array args nested by spread operator
                 if (!targetLogos.length) targetLogos = document.querySelectorAll(`#${app.slug}-logo`)
                 targetLogos.forEach(logo =>
@@ -3450,9 +3390,9 @@
         }
     }
 
-    window.replyBubble = {
+    window.replyBubble = { // requires dom.js + update
 
-        create() {
+        create() { // requires dom.js
             if (this.bubbleDiv) return
             this.replyTip = dom.create.elem('span', { class: 'reply-tip' })
             this.bubbleDiv = dom.create.elem('div', { class: 'reply-bubble bubble-elem' })
@@ -3463,15 +3403,15 @@
             this.bubbleDiv.append(this.preHeader, this.replyPre)
         },
 
-        insert() {
+        insert() { // requires update
             if (!this.bubbleDiv) this.create()
             app.div.append(this.replyTip, this.bubbleDiv) ; update.replyPreMaxHeight()
         }
     }
 
-    window.tooltip = {
+    window.tooltip = { // requires dom.js + <app|config|env>
 
-        stylize() {
+        stylize() { // requires dom.js
             document.head.append(this.styles = dom.create.style(`.${app.slug}-tooltip {
                 background-color: /* bubble style */
                     rgba(0,0,0,0.64) ; padding: 5px 6px 3px ; border-radius: 6px ; border: 1px solid #d9d9e3 ;
@@ -3485,7 +3425,7 @@
             ))
         },
 
-        toggle(stateOrEvent) { // visibility
+        toggle(stateOrEvent) { // requires dom.js + <app|env>
             if (env.browser.isMobile) return
             tooltip.div ||= dom.create.elem('div', { class: `${app.slug}-tooltip no-user-select` })
             if (!tooltip.div.isConnected) app.div.append(tooltip.div)
@@ -3495,7 +3435,7 @@
             tooltip.div.style.opacity = +( stateOrEvent?.type == 'mouseenter' || stateOrEvent == 'on' )
         },
 
-        update(btn) { // text & position
+        update(btn) { // requires <app|config>
             if (!this.div) return // since nothing to update
             const btnType = /-([\w-]+)-btn$/.exec(btn.id)?.[1]
             const baseText = {
@@ -3557,7 +3497,7 @@
         }
     }
 
-    window.updateCheck = () => {
+    window.updateCheck = () => { // requires <app|modals|log>
         log.caller = 'updateCheck()'
         log.debug(`currentVer = ${app.version}`)
 
