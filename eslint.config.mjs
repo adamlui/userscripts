@@ -14,11 +14,11 @@ export default [
             languageOptions: {
             ecmaVersion: 'latest', sourceType: 'script',
             globals: {
-                ...globals.browser, ...globals.greasemonkey, ...globals.node, app: 'writable', appDiv: 'writable',
-                buttons: 'writable', chatbar: 'writable', chatgpt: 'readonly', checkBtnsToClick: 'readonly',
-                config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly', env: 'writable',
-                feedback: 'readonly', GM_cookie: 'readonly', hljs: 'readonly', icons: 'writable', infinity: 'readonly',
-                ipv4: 'readonly', JSON5: 'readonly', marked: 'readonly', modals: 'writable', notify: 'readonly',
+                ...globals.browser, ...globals.greasemonkey, ...globals.node, app: 'writable', buttons: 'writable',
+                chatbar: 'writable', chatgpt: 'readonly', checkBtnsToClick: 'readonly', config: 'writable',
+                CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly', env: 'writable', feedback: 'readonly',
+                GM_cookie: 'readonly', hljs: 'readonly', icons: 'writable', infinity: 'readonly', ipv4: 'readonly',
+                JSON5: 'readonly', marked: 'readonly', modals: 'writable', notify: 'readonly',
                 renderMathInElement: 'readonly', session: 'readonly', settings: 'writable', sites: 'writable',
                 styles: 'writable', sync: 'readonly', syncConfigToUI: 'readonly', toggle: 'readonly',
                 toggleMode: 'readonly', toggles: 'writable', toolbarMenu: 'writable', tooltip: 'writable',
