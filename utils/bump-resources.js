@@ -145,11 +145,9 @@
     // Collect resources
     log.working('\nCollecting resources...\n')
     const urlMap = {} ; let resCnt = 0
-    const reResURL = new RegExp( // eslint-disable-next-line
-        `(?:${rePatterns.url.css.source})|(?:${rePatterns.url.js.source})`, 'gm')
     userJSfiles.forEach(userJSfilePath => {
         const userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
-              resURLs = [...userJScontent.matchAll(reResURL)].map(match => match[1] || match[2])
+              resURLs = [...userJScontent.matchAll(new RegExp(rePatterns.jsURL.source, 'gm'))].map(match => match[1])
         if (resURLs.length > 0) { urlMap[userJSfilePath] = resURLs ; resCnt += resURLs.length }
     })
     log.success(`${resCnt} potentially bumpable resource(s) found.`)
