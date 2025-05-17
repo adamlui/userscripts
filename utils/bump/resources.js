@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Bumps @require'd JS + rising-particles CSS @resource's in userscripts
+// Bumps @require'd JS in userscripts
 
 // NOTE: Doesn't git commit to allow script editing from breaking changes
 // NOTE: Pass --cache to use cacheFilePath for faster init
@@ -27,11 +27,8 @@
     // Init REGEX
     const regEx = {
         hash: { commit: /(@|\?v=)([^/#]+)/, sri: /[^#]+$/ },
-        resName: /[^/]+\/(?:css|dist)?\/?[^/]+\.(?:css|js)(?=[?#]|$)/,
-        url: {
-            css: /^\/\/ @resource.+(https:\/\/assets.+\.css.+)$/,
-            js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/
-        }
+        resName: /[^/]+\/(?:dist)?\/?[^/]+\.js(?=[?#]|$)/,
+        url: { js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/ }
     }
 
     // Define FUNCTIONS
