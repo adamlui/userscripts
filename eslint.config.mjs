@@ -23,8 +23,8 @@ export default [
                 renderMathInElement: 'readonly', replyBubble: 'writable', session: 'readonly', settings: 'writable',
                 show: 'readonly', sites: 'writable', styles: 'writable', sync: 'readonly', syncConfigToUI: 'readonly',
                 toggle: 'readonly', toggleMode: 'readonly', toggles: 'writable', toolbarMenu: 'writable',
-                tooltip: 'writable', ui: 'readonly', updateCheck: 'readonly', webkitAudioContext: 'readonly',
-                xhr: 'readonly'
+                tooltip: 'writable', ui: 'readonly', updateCheck: 'readonly', userscript: 'readonly',
+                webkitAudioContext: 'readonly', xhr: 'readonly'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
