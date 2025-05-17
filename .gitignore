@@ -1,3 +1,2 @@
-.cache/
+*cache
 node_modules/
-.eslintcache
