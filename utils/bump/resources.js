@@ -149,11 +149,9 @@
     })
     log.success(`${resCnt} potentially bumpable resource(s) found.`)
 
-    // Fetch latest commit hash for adamlui/ai-web-extensions/assets/styles/rising-particles
-    const risingParticlesPath = 'assets/styles/rising-particles'
-    log.working(`\nFetching latest commit hash for ${risingParticlesPath}...\n`)
-    const latestCommitHashes = {
-        risingParticles: await getLatestCommitHash('adamlui/ai-web-extensions', risingParticlesPath) }
+    // Fetch latest commit hash for adamlui/ai-web-extensions
+    log.working('\nFetching latest commit hash for adamlui/ai-web-extensions...\n')
+    const latestCommitHashes = { aiweb: await getLatestCommitHash('adamlui/ai-web-extensions') }
 
     // Process each userscript
     let urlsUpdatedCnt = 0 ; let filesUpdatedCnt = 0
@@ -178,7 +176,7 @@
             const resName = regEx.resName.exec(resURL)?.[0] || 'resource' // dir/filename for logs
 
             // Compare/update commit hash
-            let resLatestCommitHash = latestCommitHashes[resURL.includes(repoName) ? 'chromium' : 'risingParticles']
+            let resLatestCommitHash = latestCommitHashes[resURL.includes(repoName) ? 'chromium' : 'aiweb']
             if (resLatestCommitHash.startsWith( // compare hashes
                 regEx.hash.commit.exec(resURL)?.[2] || '')) { // commit hash didn't change...
                     console.log(`${resName} already up-to-date!`) ; log.endedWithLineBreak = false
