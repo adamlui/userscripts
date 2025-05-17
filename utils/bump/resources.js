@@ -40,6 +40,40 @@
         console.log(formattedMsg) ; log.endedWithLineBreak = msg.toString().endsWith('\n')
     })
 
+    function bumpUserJSver(userJSfilePath) {
+        const date = new Date(),
+              today = `${date.getFullYear()}.${date.getMonth() +1}.${date.getDate()}`, // YYYY.M.D format
+              reVersion = /(@version\s+)([\d.]+)/,
+              userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
+              currentVer = userJScontent.match(reVersion)[2]
+        let newVer
+        if (currentVer.startsWith(today)) { // bump sub-ver
+            const verParts = currentVer.split('.'),
+                  subVer = verParts.length > 3 ? parseInt(verParts[3], 10) +1 : 1
+            newVer = `${today}.${subVer}`
+        } else // bump to today
+            newVer = today
+        fs.writeFileSync(userJSfilePath, userJScontent.replace(reVersion, `$1${newVer}`), 'utf-8')
+        console.log(`Updated: ${bw}v${currentVer}${nc} → ${bg}v${newVer}${nc}`)
+    }
+
+    function fetchData(url) {
+        if (typeof fetch == 'undefined') // polyfill for Node.js < v21
+            return new Promise((resolve, reject) => {
+                try { // to use http or https module
+                    const protocol = url.match(/^([^:]+):\/\//)[1]
+                    if (!/^https?$/.test(protocol)) reject(new Error('Invalid fetchData() URL.'))
+                    require(protocol).get(url, resp => {
+                        let rawData = ''
+                        resp.on('data', chunk => rawData += chunk)
+                        resp.on('end', () => resolve({ json: () => JSON.parse(rawData) }))
+                    }).on('error', err => reject(new Error(err.message)))
+                } catch (err) { reject(new Error('Environment not supported.'))
+            }})
+        else // use fetch() from Node.js v21+
+            return fetch(url)
+    }
+
     async function findUserJS(dir = findUserJS.monorepoRoot) {
         const userJSfiles = []
         if (!dir && !findUserJS.monorepoRoot) { // no arg passed, init monorepo root
@@ -60,21 +94,18 @@
         return userJSfiles
     }
 
-    function fetchData(url) {
-        if (typeof fetch == 'undefined') // polyfill for Node.js < v21
-            return new Promise((resolve, reject) => {
-                try { // to use http or https module
-                    const protocol = url.match(/^([^:]+):\/\//)[1]
-                    if (!/^https?$/.test(protocol)) reject(new Error('Invalid fetchData() URL.'))
-                    require(protocol).get(url, resp => {
-                        let rawData = ''
-                        resp.on('data', chunk => rawData += chunk)
-                        resp.on('end', () => resolve({ json: () => JSON.parse(rawData) }))
-                    }).on('error', err => reject(new Error(err.message)))
-                } catch (err) { reject(new Error('Environment not supported.'))
-            }})
-        else // use fetch() from Node.js v21+
-            return fetch(url)
+    async function generateSRIhash(resURL, algorithm = 'sha256') {
+        const sriHash = ssri.fromData(
+            Buffer.from(await (await fetchData(resURL)).arrayBuffer()), { algorithms: [algorithm] }).toString()
+        log.hash(`${sriHash}\n`)
+        return sriHash
+    }
+
+    async function getLatestCommitHash(repo, path) {
+        const endpoint = `https://api.github.com/repos/${repo}/commits`,
+              latestCommitHash = (await (await fetchData(`${endpoint}?path=${ path || '' }`)).json())[0]?.sha
+        if (latestCommitHash) log.hash(`${latestCommitHash}\n`)
+        return latestCommitHash
     }
 
     async function isValidResource(resURL) {
@@ -86,37 +117,6 @@
             log.error(`\nCannot validate resource: ${resURL}\n`)
             return null
         }
-    }
-
-    async function getLatestCommitHash(repo, path) {
-        const endpoint = `https://api.github.com/repos/${repo}/commits`,
-              latestCommitHash = (await (await fetchData(`${endpoint}?path=${ path || '' }`)).json())[0]?.sha
-        if (latestCommitHash) log.hash(`${latestCommitHash}\n`)
-        return latestCommitHash
-    }
-
-    async function generateSRIhash(resURL, algorithm = 'sha256') {
-        const sriHash = ssri.fromData(
-            Buffer.from(await (await fetchData(resURL)).arrayBuffer()), { algorithms: [algorithm] }).toString()
-        log.hash(`${sriHash}\n`)
-        return sriHash
-    }
-
-    function bumpUserJSver(userJSfilePath) {
-        const date = new Date(),
-              today = `${date.getFullYear()}.${date.getMonth() +1}.${date.getDate()}`, // YYYY.M.D format
-              reVersion = /(@version\s+)([\d.]+)/,
-              userJScontent = fs.readFileSync(userJSfilePath, 'utf-8'),
-              currentVer = userJScontent.match(reVersion)[2]
-        let newVer
-        if (currentVer.startsWith(today)) { // bump sub-ver
-            const verParts = currentVer.split('.'),
-                  subVer = verParts.length > 3 ? parseInt(verParts[3], 10) +1 : 1
-            newVer = `${today}.${subVer}`
-        } else // bump to today
-            newVer = today
-        fs.writeFileSync(userJSfilePath, userJScontent.replace(reVersion, `$1${newVer}`), 'utf-8')
-        console.log(`Updated: ${bw}v${currentVer}${nc} → ${bg}v${newVer}${nc}`)
     }
 
     // Run MAIN routine
