@@ -28,7 +28,7 @@
     const regEx = {
         hash: { commit: /(@|\?v=)([^/#]+)/, sri: /[^#]+$/ },
         resName: /[^/]+\/(?:dist)?\/?[^/]+\.js(?=[?#]|$)/,
-        url: { js: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/ }
+        jsURL: /^\/\/ @require\s+(https:\/\/cdn\.jsdelivr\.net\/gh\/.+)$/
     }
 
     // Define FUNCTIONS
