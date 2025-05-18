@@ -14,18 +14,18 @@ export default [
             languageOptions: {
             ecmaVersion: 'latest', sourceType: 'script',
             globals: {
-                ...globals.browser, ...globals.greasemonkey, ...globals.node, apis: 'writable', app: 'writable',
-                buttons: 'writable', chatbar: 'writable', chatgpt: 'readonly', checkBtnsToClick: 'readonly',
-                config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly', dom: 'readonly', env: 'writable',
-                feedback: 'readonly', fontSizeSlider: 'writable', get: 'readonly', GM_cookie: 'readonly',
-                hljs: 'readonly', icons: 'writable', infinity: 'readonly', inputEvents: 'readonly', ipv4: 'readonly',
-                JSON5: 'readonly', log: 'readonly', marked: 'readonly', menus: 'writable', modals: 'writable',
-                msgChain: 'writable', notify: 'readonly', prompts: 'readonly', renderMathInElement: 'readonly',
-                replyBubble: 'writable', session: 'readonly', settings: 'writable', show: 'readonly', sites: 'writable',
-                styles: 'writable', sync: 'readonly', syncConfigToUI: 'readonly', toggle: 'readonly',
-                toggleMode: 'readonly', toggles: 'writable', toolbarMenu: 'writable', tooltip: 'writable',
-                ui: 'readonly', update: 'readonly', updateCheck: 'readonly', userscript: 'readonly',
-                webkitAudioContext: 'readonly', xhr: 'readonly'
+                ...globals.browser, ...globals.greasemonkey, ...globals.node, api: 'readonly', apis: 'writable',
+                app: 'writable', buttons: 'writable', chatbar: 'writable', chatgpt: 'readonly',
+                checkBtnsToClick: 'readonly', config: 'writable', CryptoJS: 'readonly', cryptoUtils: 'readonly',
+                dom: 'readonly', env: 'writable', feedback: 'readonly', fontSizeSlider: 'writable', get: 'readonly',
+                GM_cookie: 'readonly', hljs: 'readonly', icons: 'writable', infinity: 'readonly',
+                inputEvents: 'readonly', ipv4: 'readonly', JSON5: 'readonly', log: 'readonly', marked: 'readonly',
+                menus: 'writable', modals: 'writable', msgChain: 'writable', notify: 'readonly', prompts: 'readonly',
+                renderMathInElement: 'readonly', replyBubble: 'writable', session: 'readonly', settings: 'writable',
+                show: 'readonly', sites: 'writable', styles: 'writable', sync: 'readonly', syncConfigToUI: 'readonly',
+                toggle: 'readonly', toggleMode: 'readonly', toggles: 'writable', toolbarMenu: 'writable',
+                tooltip: 'writable', ui: 'readonly', update: 'readonly', updateCheck: 'readonly',
+                userscript: 'readonly', webkitAudioContext: 'readonly', xhr: 'readonly'
             }
         },
         plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
