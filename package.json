@@ -26,8 +26,8 @@
     "bump:resources-find": "node utils/bump/resources"
   },
   "devDependencies": {
-    "@eslint/json": "^0.13.0",
-    "@eslint/markdown": "^7.0.0",
+    "@eslint/json": "^0.13.1",
+    "@eslint/markdown": "^7.1.0",
     "@stylistic/eslint-plugin": "^5.2.2",
     "eslint": "^9.31.0",
     "eslint-plugin-import": "^2.32.0",
