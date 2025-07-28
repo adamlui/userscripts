@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.7.28.1
+// @version             2025.7.28.2
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -182,7 +182,10 @@
                       transition: var(--transition) ; /* for fade-in + move-in */
                          -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
                          -o-transition: var(--transition) ; -ms-transition: var(--transition) }
-                  .chatgpt-modal h2 { font-weight: bold ; font-size: 24px ; margin-bottom: 9px }
+                  .chatgpt-modal h2 {
+                      text-align: center ; font-weight: bold ; font-size: 44px ;
+                      line-height: 46px ; margin: 0 0 14px 15px }
+                  .chatgpt-modal p { text-align: center ; font-size: 16px ; line-height: 28px }
                   .chatgpt-modal a { color: ${ scheme == 'dark' ? '#00cfff' : '#1e9ebb' }}
                   .chatgpt-modal a:hover { text-decoration: underline }
                   .chatgpt-modal.animated > div {
@@ -461,21 +464,18 @@
     GM_registerMenuCommand(`💡 About ${app.name}`, async () => {
 
         // Show alert
-        const headingStyle = 'font-size: 1.15rem ; font-weight: bold',
-              pStyle = 'font-size: 1rem ; position: relative ; left: 3px',
-              pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px '
+        const pStyle = 'font-size: 1rem ; position: relative ; left: 3px ;',
+              pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px ;'
         const aboutAlertID = ghAlert(
             app.name, // title
-            `<span style="${headingStyle}">🏷️ <i>Version</i>: </span>`
-                + `<span style="${pStyle}">${GM_info.script.version}</span>\n`
-            + `<span style="${headingStyle}">📜 <i>Source code</i>:</span>\n`
-                + `<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
+            `🏷️ Version: <span style="${pStyle} color: green">${GM_info.script.version}</span>\n`
+            + `📜 Source code:\n<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
                 + app.urls.gitHub + '</a></span>',
             [ // buttons
                 function checkForUpdates() { updateCheck() },
                 function getSupport() { safeWinOpen(app.urls.support) },
                 function discuss() { safeWinOpen(app.urls.discuss) }
-            ])
+            ], null, 501)
 
         // Re-format buttons to include emojis + re-case + hide 'Dismiss'
         for (const button of document.getElementById(aboutAlertID).querySelectorAll('button')) {
