@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.7.28.3
+// @version             2025.7.28.4
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -24,8 +24,12 @@
 // @connect             api.star-history.com
 // @connect             cdn.jsdelivr.net
 // @connect             raw.githubusercontent.com
-// @grant               GM_registerMenuCommand
+// @require             https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@9b048ff/assets/js/lib/dom.js/dist/dom.min.js#sha256-IGNj9Eoecq7QgY7SAs75wONajgN9Wg0NmCjKTCfu9CY=
+// @resource rpgCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@727feff/assets/styles/rising-particles/dist/gray.min.css#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
+// @resource rpwCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@727feff/assets/styles/rising-particles/dist/white.min.css#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
+// @grant               GM_getResourceText
 // @grant               GM_openInTab
+// @grant               GM_registerMenuCommand
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @downloadURL         https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js
@@ -37,7 +41,7 @@
 
 (async () => {
 
-    localStorage.alertQueue = '[]'
+    localStorage.alertQueue = '[]' ; window.config = { bgAnimationsDisabled: false }
 
     // Hide GF alert on GitHub if found
     if (location.pathname.includes('github-star-history')) {
@@ -47,8 +51,11 @@
     }
 
     // Init ENV context
-    const env = { browser: { isMobile:
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) }}
+    window.env = {
+        browser: {
+            isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) },
+        ui: { scheme: isDarkMode() ? 'dark' : 'light' }
+    }
     env.browser.isPhone = env.browser.isMobile && ( window.innerWidth <= 480 )
     const xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
 
@@ -71,7 +78,7 @@
     // * Spaces are inserted into button labels by parsing function names in camel/kebab/snake case
 
         // Init env context
-        const scheme = isDarkMode() ? 'dark' : 'light',
+        const scheme = env.ui.scheme,
               isMobile = env.browser.isMobile
 
         // Define event handlers
@@ -181,7 +188,8 @@
                                    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;
                       padding: 20px ; margin: 12px 23px ; font-size: 20px ;
                       color: ${ scheme == 'dark' ? 'white' : 'black' };
-                      background-color: ${ scheme == 'dark' ? 'black' : 'white' };
+                      background-image: linear-gradient(180deg, ${
+                          scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;
                       border: 1px solid ${ scheme == 'dark' ? 'white' : '#b5b5b5' };
                       transform: translateX(-3px) translateY(7px) ; /* offset to move-in from */
                       max-width: 75vw ; word-wrap: break-word ; border-radius: 15px ;
@@ -355,6 +363,7 @@
                 }
             }
         }
+        dom.addRisingParticles(modal)
 
         return modalContainer.id // if assignment used
     }
@@ -609,7 +618,8 @@
               pBrStyle = 'font-size: 1rem ; position: relative ; left: 9px ; bottom: 3px ;'
         const aboutAlertID = ghAlert(
             app.name, // title
-            `🏷️ Version: <span style="${pStyle} color: green">${GM_info.script.version}</span>\n`
+            `🏷️ Version: <span style="${pStyle} color: ${ env.ui.scheme == 'dark' ? '#00cd00' : 'green' }">${
+                GM_info.script.version}</span>\n`
             + `📜 Source code:\n<span style="${pBrStyle}"><a href="${app.urls.gitHub}" target="_blank" rel="nopener">`
             + app.urls.gitHub + '</a></span>',
             [ // buttons
@@ -629,6 +639,9 @@
             else button.style.display = 'none' // hide Dismiss button
         }
     })
+
+    ;['rpg', 'rpw'].forEach(cssType => // rising particles
+        document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Observe DOM for need to insert star history
     let starHistoryAdded = false, prevURL = location.href
