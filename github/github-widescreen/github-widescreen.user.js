@@ -13,7 +13,7 @@
 // @description:zh-TW   自動隱藏 GitHub 上引人注目的側面板
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.7.28.3
+// @version             2025.7.31
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @match               *://github.com/*
@@ -35,13 +35,6 @@
 (async () => {
 
     localStorage.alertQueue = '[]' ; window.config = { bgAnimationsDisabled: false }
-
-    // Hide GF alert on GitHub if found
-    if (location.pathname.includes('github-widescreen')) {
-        const gfAlert = [...document.querySelectorAll('.markdown-alert')]
-                .find(alert => alert.textContent.includes('Greasy Fork'))
-        if (gfAlert) gfAlert.style.display = 'none'
-    }
 
     // Init ENV context
     window.env = {

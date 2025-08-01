@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Hide Forum Images
-// @version           2025.4.11
+// @version           2025.7.31
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -19,13 +19,6 @@
 // @supportURL        https://github.com/adamlui/userscripts/issues
 // @contributionURL   https://github.com/sponsors/adamlui
 // ==/UserScript==
-
-// Hide GF alert on GitHub if found
-if (location.host == 'github.com' && location.pathname.includes('hide-forum-images')) {
-    const gfAlert = [...document.querySelectorAll('.markdown-alert')]
-            .find(alert => alert.textContent.includes('Greasy Fork'))
-    if (gfAlert) gfAlert.style.display = 'none'
-}
 
 if (document.querySelector('[src*="vbulletin"], [src*="discourse"]') || /xenforo/i.test(document.querySelector('.copyright').textContent)) {
     const css = 'img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }'

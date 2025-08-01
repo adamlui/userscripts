@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.7.28.4
+// @version             2025.7.31
 // @license             MIT
 // @icon                https://github.githubassets.com/favicons/favicon.png
 // @compatible          chrome
@@ -42,13 +42,6 @@
 (async () => {
 
     localStorage.alertQueue = '[]' ; window.config = { bgAnimationsDisabled: false }
-
-    // Hide GF alert on GitHub if found
-    if (location.pathname.includes('github-star-history')) {
-        const gfAlert = [...document.querySelectorAll('.markdown-alert')]
-                .find(alert => alert.textContent.includes('Greasy Fork'))
-        if (gfAlert) gfAlert.style.display = 'none'
-    }
 
     // Init ENV context
     window.env = {
