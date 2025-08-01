@@ -13,9 +13,6 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
-> [!IMPORTANT]
-> _**Greasy Fork users:** If you installed YouTube Classic **before January 18, 2025**, auto-updates no longer work because the script's update mechanism has migrated to GitHub. To continue receiving updates, click the green 'Install this script' button below (once) or click [this link](https://gm.ytclassic.com) (once)_
-
 <a href="https://gm.ytclassic.com"><img alt="[Install this script]" height=42 src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img height=42 alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
