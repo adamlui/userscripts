@@ -30,7 +30,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 <br>[View scripts](../chatgpt) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/github/icon32.png"> [GitHub scripts](../github)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/github/icon32.png"> [GitHub scripts](../github)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](../github) /

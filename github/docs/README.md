@@ -9,7 +9,7 @@
     </h6>
 </div>
 
-# <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/github/icon32.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
+# <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/github/icon32.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
 
@@ -17,14 +17,14 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> [GitHub Star History ⭐](../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](../github-star-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
 
 > Adds star history chart to sidebar of GitHub repos.
 <br>[Install](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
 [Readme](../github-star-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](../github-widescreen)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/icons/sites/github/icon32.png"> [GitHub Widescreen 🖥️](../github-widescreen)
 
 > Auto-hides obtrusive side panels on GitHub.
 <br>[Install](https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js) /

@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> GitHub Star History ⭐
+# <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/sites/github/icon32.png"> GitHub Star History ⭐
 
 <a href="https://github.com/adamlui/github-star-history/blob/main/LICENSE.md">
     <img height=31 alt = "[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
@@ -56,7 +56,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
 
 ## 📜 Related scripts
 
-### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
+### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/sites/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/github-widescreen)
 
 Auto-hides obtrusive side panels on GitHub.<br>
 [Install](https://github.com/adamlui/github-widescreen#-installation) /
