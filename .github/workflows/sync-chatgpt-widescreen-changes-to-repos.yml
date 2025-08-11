@@ -18,21 +18,21 @@ jobs:
     steps:
 
       - name: Checkout adamlui/userscripts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/userscripts
           path: adamlui/userscripts
 
       - name: Checkout adamlui/chatgpt-widescreen
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/chatgpt-widescreen
           path: adamlui/chatgpt-widescreen
 
       - name: Checkout adamlui/ai-web-extensions
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/ai-web-extensions
