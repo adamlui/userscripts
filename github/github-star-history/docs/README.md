@@ -45,13 +45,20 @@
 
 This project exists thanks to code, translations, issues & ideas from the following contributors:
 
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?h=50&w=50&mask=circle&maxage=7d "@adamlui")](https://github.com/adamlui)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/1401086?first-contrib=2024.4.8-gm.xhr-implementation-vm-failure-report&h=50&w=50&mask=circle&maxage=7d "@jesus2099")](https://github.com/jesus2099)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/72725910?first-contrib=2024.4.27-trailing-slash-bug-fix&h=50&w=50&mask=circle&maxage=7d "@ramikg")](https://github.com/ramikg)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.8.31-nav-from-repo-to-repo-doesnt-insert-graph-bug-report&h=50&w=50&mask=circle&maxage=7d "@ChinaGodMan")](https://github.com/ChinaGodMan)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/99261160?first-contrib=2024.10.25-new-ui-sidebar-fix&h=50&w=50&mask=circle&maxage=7d "@Night-stars-1")](https://github.com/Night-stars-1)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
-[![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
+<a href="https://github.com/adamlui">
+    <img title="@adamlui" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/10906554?h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/jesus2099">
+    <img title="@jesus2099" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/1401086?first-contrib=2024.4.8-gm.xhr-implementation-vm-failure-report&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/ramikg">
+    <img title="@ramikg" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/72725910?first-contrib=2024.4.27-trailing-slash-bug-fix&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/ChinaGodMan">
+    <img title="@ChinaGodMan" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.8.31-nav-from-repo-to-repo-doesnt-insert-graph-bug-report&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/Night-stars-1">
+    <img title="@Night-stars-1" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/99261160?first-contrib=2024.10.25-new-ui-sidebar-fix&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/dependabot">
+    <img title="Dependabot" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/ImgBotApp">
+    <img title="@ImgBotApp" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d"></a>
 <a href="https://https://chat.deepseek.com/">
     <picture>
         <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/white/icon64.png">
