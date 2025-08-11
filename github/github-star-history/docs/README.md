@@ -52,6 +52,11 @@ This project exists thanks to code, translations, issues & ideas from the follow
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/99261160?first-contrib=2024.10.25-new-ui-sidebar-fix&h=50&w=50&mask=circle&maxage=7d "@Night-stars-1")](https://github.com/Night-stars-1)
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d "Dependabot")](https://github.com/dependabot)
 [![](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d "@ImgBotApp")](https://github.com/ImgBotApp)
+<a href="https://https://chat.deepseek.com/">
+    <picture>
+        <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/white/icon64.png">
+        <img width=50 title="DeepSeek AI" src="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/black/icon64.png"></img>
+    </picture></a>
 <br><br>
 
 ## 📜 Related scripts
