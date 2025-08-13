@@ -1,4 +1,4 @@
-name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/ & adamlui/ai-web-extensions/autoclear-chatgpt-history/greasemonkey/, then root to GitLab
+name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/ & adamlui/ai-web-extensions/autoclear-chatgpt-history/greasemonkey/
 
 on:
   push:
@@ -88,9 +88,3 @@ jobs:
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history]" || true
           git push
-
-      - name: Push changes to gitlab.com/adamlui/userscripts
-        run: |
-          cd ${{ github.workspace }}/adamlui/userscripts
-          git fetch --unshallow # since shallow update not allowed by GitLab
-          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git main
