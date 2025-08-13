@@ -84,4 +84,4 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           git fetch --unshallow # since shallow update not allowed by GitLab
-          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git master
+          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git main
