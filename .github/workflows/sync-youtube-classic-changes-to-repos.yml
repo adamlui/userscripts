@@ -1,4 +1,4 @@
-name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/
+name: Sync youtube-classic/ to adamlui/youtube-classic/greasemonkey/, then root to GitLab
 
 on:
   push:
@@ -65,3 +65,9 @@ jobs:
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/youtube-classic]" || true
           git push
+
+      - name: Push changes to gitlab.com/adamlui/userscripts
+        run: |
+          cd ${{ github.workspace }}/adamlui/userscripts
+          git fetch --unshallow # since shallow update not allowed by GitLab
+          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git main

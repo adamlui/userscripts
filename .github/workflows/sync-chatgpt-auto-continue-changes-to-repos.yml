@@ -1,4 +1,4 @@
-name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/ & adamlui/ai-web-extensions/chatgpt-auto-continue/greasemonkey/
+name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/ & adamlui/ai-web-extensions/chatgpt-auto-continue/greasemonkey/, then root to GitLab
 
 on:
   push:
@@ -79,3 +79,9 @@ jobs:
           git add .
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue]" || true
           git push
+
+      - name: Push changes to gitlab.com/adamlui/userscripts
+        run: |
+          cd ${{ github.workspace }}/adamlui/userscripts
+          git fetch --unshallow # since shallow update not allowed by GitLab
+          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git main
