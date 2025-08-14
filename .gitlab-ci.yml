@@ -3,6 +3,6 @@ sync_to_github:
     - if: $CI_COMMIT_BRANCH == "master" && $CI_PROJECT_PATH == "adamlui/userscripts"
   image: alpine
   script:
+    - apk add --no-cache git
     - git clone https://gitlab.com/adamlui/userscripts.git
-    - cd userscripts
     - git push https://${GITHUB_SYNC_PAT}@github.com/adamlui/userscripts.git HEAD:master --force -o ci.skip
