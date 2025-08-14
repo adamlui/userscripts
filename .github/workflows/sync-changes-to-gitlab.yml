@@ -22,5 +22,4 @@ jobs:
           fetch-depth: 0
 
       - name: Push changes to gitlab.com/adamlui/userscripts
-        run: |
-          git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git master
+        run: git push --force https://oauth2:${{ secrets.GITLAB_SYNC_PAT }}@gitlab.com/adamlui/userscripts.git master
