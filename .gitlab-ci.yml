@@ -1,10 +1,9 @@
-stages:
-  - sync
-
 sync_to_github:
-  stage: sync
   rules:
     - if: $CI_COMMIT_BRANCH == "master" && $CI_PROJECT_PATH == "adamlui/userscripts"
-  image: alpine/git
+  image: alpine
   script:
-    - git push https://${GITHUB_SYNC_PAT}@github.com/adamlui/userscripts.git master --force -o ci.skip
+    - apk add --no-cache git
+    - git clone https://gitlab.com/adamlui/userscripts.git
+    - cd userscripts
+    - git push https://${GITHUB_SYNC_PAT}@github.com/adamlui/userscripts.git HEAD:master --force -o ci.skip
