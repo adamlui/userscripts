@@ -1,0 +1,10 @@
+stages:
+  - sync
+
+sync_to_github:
+  stage: sync
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PROJECT_PATH == "adamlui/userscripts"
+  image: alpine/git
+  script:
+    - git push --force -o ci.skip https://$GITHUB_SYNC_PAT@github.com/adamlui/userscripts.git master
