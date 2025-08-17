@@ -24,6 +24,13 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
+### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](block-quora-poe)
+
+> 屏蔽 Quora 上的低质量 AI 答案。
+<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js) /
+[自述文件](block-quora-poe/#readme) /
+[讨论](https://github.com/adamlui/userscripts/discussions)
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
