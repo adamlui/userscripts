@@ -24,13 +24,6 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
-### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](quora-xui)
-
-> 屏蔽 Quora 上的低质量 AI 答案。
-<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js) /
-[自述文件](quora-xui/#readme) /
-[讨论](https://github.com/adamlui/userscripts/discussions)
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](../../chatgpt)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
@@ -55,6 +48,13 @@
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [自述文件](../../highlight-radio-bubbles/#readme) /
+[讨论](https://github.com/adamlui/userscripts/discussions)
+
+### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Quora XUI](quora-xui)
+
+> 阻止 AI + Quora 的推广/赞助答案。
+<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js) /
+[自述文件](quora-xui/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>

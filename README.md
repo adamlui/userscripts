@@ -24,13 +24,6 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
 
-### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Quora XUI](quora-xui)
-
-> Blocks low-quality AI answers from appearing on Quora.
-<br>[Install](https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js) /
-[Readme](quora-xui/#readme) /
-[Discuss](https://github.com/adamlui/userscripts/discussions)
-
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](chatgpt)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
@@ -55,6 +48,13 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://raw.githubusercontent.com/adamlui/userscripts/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
 [Readme](highlight-radio-bubbles/#readme) /
+[Discuss](https://github.com/adamlui/userscripts/discussions)
+
+### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Quora XUI](quora-xui)
+
+> Blocks low-quality AI answers from appearing on Quora.
+<br>[Install](https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js) /
+[Readme](quora-xui/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube Classic](youtube-classic) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
