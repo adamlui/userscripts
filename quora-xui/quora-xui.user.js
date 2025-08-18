@@ -13,7 +13,7 @@
 // @description:zh-TW   屏蔽 Quora 上的低品質 AI 答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.17.2
+// @version             2025.8.17.3
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -599,7 +599,7 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
     // Add RISING PARTICLES styles
     ;['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
-    // Monitor SCHEME PREF changes to update app scheme if auto-scheme mode
+    // Monitor SCHEME PREF changes to update modal scheme
     new MutationObserver(handleSchemePrefChange).observe( // for site scheme pref changes
         document.documentElement, { attributes: true, attributeFilter: ['style'] })
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener( // for browser/system scheme pref changes
