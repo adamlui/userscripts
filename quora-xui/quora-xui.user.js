@@ -13,7 +13,7 @@
 // @description:zh-TW   屏蔽 Quora 上的低品質 AI 答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.18
+// @version             2025.8.18.1
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -23,6 +23,8 @@
 // @resource rpgCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@4a657b1/assets/styles/rising-particles/dist/gray.min.css#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@4a657b1/assets/styles/rising-particles/dist/white.min.css#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_addStyle
+// @grant               GM_setValue
+// @grant               GM_getValue
 // @grant               GM_registerMenuCommand
 // @grant               GM_unregisterMenuCommand
 // @grant               GM_getResourceText
@@ -36,11 +38,10 @@
 // @contributionURL     https://github.com/sponsors/adamlui
 // ==/UserScript==
 
-GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }')
+(async () => {
 
-;(async () => {
-
-    localStorage.alertQueue = '[]' ; window.config = { bgAnimationsDisabled: false }
+    localStorage.alertQueue = '[]'
+    localStorage.notifyProps = JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }})
 
     // Init ENV context
     window.env = {
@@ -56,7 +57,7 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     // Init APP data
     window.app = {
-        name: 'Quora XUI', version: GM_info.script.version,
+        name: 'Quora XUI', version: GM_info.script.version, configKeyPrefix: 'quoraXUI',
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             donate: { 'ko-fi': 'https://ko-fi.com/adamlui' },
@@ -65,6 +66,31 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
             support: 'https://github.com/adamlui/userscripts/issues'
         }
     }
+
+    // Init SETTINGS
+    window.config = {}
+    window.settings = {
+        load(...keys) {
+            keys.flat().forEach(key => config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`, initDefaultVal(key)))
+            function initDefaultVal(key) {
+                const ctrlData = settings.controls?.[key]
+                return ctrlData?.defaultVal ?? ( ctrlData?.type == 'slider' ? 100 : ctrlData?.type == 'toggle' )
+            }
+        },
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val },
+        typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF for type w/o suffix
+            const reInvertFlags = /disabled|hidden/i
+            return reInvertFlags.test(key) // flag in control key name
+                && !reInvertFlags.test(this.msgKeys.get(this.controls[key]?.label) || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite type state, else don't
+        }
+    }
+    settings.controls = {
+        poeBlock: { type: 'toggle', defaultVal: true,
+            label: 'Poe Block',
+            helptip: 'Block AI answers by Poe from appearing' }
+    }
+    settings.load(Object.keys(settings.controls))
 
     // Define MENU functions
 
@@ -81,17 +107,34 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
         },
 
         register() {
-            this.entryIDs = [GM_registerMenuCommand(
+
+            // Add toggles
+            this.entryIDs = Object.keys(settings.controls).map(key => {
+                if (!settings.controls[key].excludes?.env?.includes('greasemonkey')) {
+                    const ctrl = settings.controls[key]
+                    const menuLabel = `${
+                        ctrl.symbol || this.state.symbols[+settings.typeIsEnabled(key)] } ${ctrl.label} ${
+                            ctrl.type == 'toggle' ? this.state.separator
+                                                  + this.state.words[+settings.typeIsEnabled(key)]
+                                                  : ctrl.status ? ` — ${ctrl.status}` : '' }`
+                    return GM_registerMenuCommand(menuLabel, () => {
+                        settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
+                        feedback.notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
+                    }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined )
+                }
+            })
+
+            // Add About entry
+            this.entryIDs.push(GM_registerMenuCommand(
                 `💡 About ${app.name}`, () => modals.open('about'),
                 env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
-            )]
+            ))
         }
     }
 
     // Define FEEDBACK functions
 
     window.feedback = {
-
         alert(title, msg, btns, checkbox, width) {
         // [ title/msg = strings, btns = [named functions], checkbox = named function, width (px) = int ] = optional
         // * Spaces are inserted into button labels by parsing function names in camel/kebab/snake case
@@ -430,6 +473,162 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
             }
 
             return modalContainer.id // if assignment used
+        },
+
+        notify(...args) {
+            const { ui: { scheme }} = env
+            let msg, position, notifDuration, shadow, toast
+            if (typeof args[0] == 'object' && !Array.isArray(args[0]))
+                ({ msg, position, notifDuration, shadow, toast } = args[0])
+            else [msg, position, notifDuration, shadow] = args
+            notifDuration = notifDuration ? +notifDuration : 1.75; // sec duration to maintain notification visibility
+            const fadeDuration = 0.35, // sec duration of fade-out
+                vpYoffset = 23, vpXoffset = 27 // px offset from viewport border
+
+            // Strip state word to append colored one later
+            const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
+            if (foundState) msg = msg.replace(foundState, '')
+
+            // Create/append notification div
+            const notificationDiv = document.createElement('div') // make div
+            notificationDiv.id = Math.floor(Math.random() * 1000000) + Date.now()
+            notificationDiv.classList.add('quora-notif')
+            notificationDiv.textContent = msg // insert msg
+            document.body.append(notificationDiv) // insert into DOM
+
+            // Create/append close button
+            const closeBtn = document.createElement('div')
+            closeBtn.title = 'Dismiss'; closeBtn.classList.add('notif-close-btn', 'no-mobile-tap-outline')
+            const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+            closeSVG.setAttribute('height', '8px')
+            closeSVG.setAttribute('viewBox', '0 0 14 14')
+            closeSVG.setAttribute('fill', 'none')
+            closeSVG.style.height = closeSVG.style.width = '8px' // override SVG styles on non-OpenAI sites
+            const closeSVGpath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+            closeSVGpath.setAttribute('fill-rule', 'evenodd')
+            closeSVGpath.setAttribute('clip-rule', 'evenodd')
+            closeSVGpath.setAttribute('fill', 'white')
+            closeSVGpath.setAttribute('d', 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z');
+            closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG) ; notificationDiv.append(closeBtn)
+
+            // Determine div position/quadrant
+            notificationDiv.isTop = !position || !/low|bottom/i.test(position)
+            notificationDiv.isRight = !position || !/left/i.test(position)
+            notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
+                                    + (notificationDiv.isRight ? 'Right' : 'Left')
+
+            // Create/append/update notification style (if missing or outdated)
+            const thisUpdated = 1746996635555 // timestamp of last edit for this file's `notifStyle`
+            let notifStyle = document.querySelector('#quora-notif-style') // try to select existing style
+            if (!notifStyle || parseInt(notifStyle.getAttribute('last-updated'), 10) < thisUpdated) { // if missing or outdated
+                if (!notifStyle) { // outright missing, create/id/attr/append it first
+                    notifStyle = document.createElement('style') ; notifStyle.id = 'quora-notif-style'
+                    notifStyle.setAttribute('last-updated', thisUpdated.toString())
+                    document.head.append(notifStyle)
+                }
+                notifStyle.textContent = ( // update prev/new style contents
+                    '.quora-notif {'
+                        + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",'
+                            + '"Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif ;'
+                        + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
+                        + 'background-color: black ; padding: 10px 13px 10px 18px ;' // bubble style
+                            + 'border-radius: 11px ; border: 1px solid #f5f5f7 ;'
+                        + 'opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white ;' // visibility
+                        + 'user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -o-user-select: none ;'
+                            + '-ms-user-select: none ;'
+                        + `transform: translateX(${ // init off-screen for transition fx
+                            !notificationDiv.isRight ? '-' : '' }35px) ;`
+                        + ( shadow ? `--shadow: -8px 13px 25px 0 ${ /\b(?:shadow|on)\b/i.test(shadow) ? 'gray' : shadow };
+                            box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
+                                : '' ) + '}'
+                    + `.notif-close-btn {
+                        cursor: pointer ; float: right ; position: relative ; right: -4px ; margin-left: -3px ;`
+                        + 'display: grid }' // top-align for non-OpenAI sites
+                    + '@keyframes notif-zoom-fade-out { 0% { opacity: 1 ; transform: scale(1) }' // transition out keyframes
+                        + '15% { opacity: 0.35 ; transform: rotateX(-27deg) scale(1.05) }'
+                        + '45% { opacity: 0.05 ; transform: rotateX(-81deg) }'
+                        + '100% { opacity: 0 ; transform: rotateX(-180deg) scale(1.15) }}'
+                )
+                if (toast) notifStyle.textContent += `
+                    div.quora-notif {
+                        position: absolute ; left: 50% ; right: 21% !important ; text-align: center ;
+                        ${ scheme == 'dark' ? 'border: 2px solid white ;' : '' }
+                        margin-${ !notificationDiv.isTop ? 'bottom: 105px' : 'top: 42px' };
+                        transform: translate(-50%, -50%) scale(0.6) !important }
+                    div.quora-notif > div.notif-close-btn { top: 18px ; right: 7px ; transform: scale(2) }`
+            }
+
+            // Enqueue notification
+            let notifyProps = JSON.parse(localStorage.notifyProps)
+            notifyProps.queue[notificationDiv.quadrant].push(notificationDiv.id)
+            localStorage.notifyProps = JSON.stringify(notifyProps)
+
+            // Position notification (defaults to top-right)
+            notificationDiv.style.top = notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
+            notificationDiv.style.bottom = !notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
+            notificationDiv.style.right = notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
+            notificationDiv.style.left = !notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
+
+            // Re-position old notifications
+            const thisQuadrantQueue = notifyProps.queue[notificationDiv.quadrant]
+            if (thisQuadrantQueue.length > 1) {
+                try { // to move old notifications
+                    for (const divId of thisQuadrantQueue.slice(0, -1)) { // exclude new div
+                        const oldDiv = document.getElementById(divId),
+                            offsetProp = oldDiv.style.top ? 'top' : 'bottom', // pick property to change
+                            vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
+                        oldDiv.style[offsetProp] = `${vOffset}px` // change prop
+                    }
+                } catch (err) { console.warn('Failed to re-position notification:', err) }
+            }
+
+            // Show notification
+            setTimeout(() => {
+                notificationDiv.style.opacity = env.ui.scheme == 'dark' ? 0.8 : 0.67 // show msg
+                notificationDiv.style.transform = 'translateX(0)' // bring from off-screen
+                notificationDiv.style.transition = 'transform 0.15s ease, opacity 0.15s ease'
+            }, 10)
+            const notif = document.querySelector('.quora-notif:last-child')
+
+            // Append styled state word
+            if (foundState) {
+                const stateStyles = {
+                    on: {
+                        light: 'color: #5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px',
+                        dark:  'color: #5cef48 ; text-shadow: rgb(55,255,0) 3px 0 10px'
+                    },
+                    off: {
+                        light: 'color: #ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px',
+                        dark:  'color: #ef4848 ; text-shadow: rgba(255, 116, 116, 0.87) 3px 0 9px'
+                    }
+                }
+                const styledStateSpan = dom.create.elem('span')
+                styledStateSpan.style.cssText = stateStyles[
+                    foundState == toolbarMenu.state.words[0] ? 'off' : 'on'][env.ui.scheme]
+                styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
+            }
+
+            // Init delay before hiding
+            const hideDelay = fadeDuration > notifDuration ? 0 // don't delay if fade exceeds notification duration
+                            : notifDuration - fadeDuration // otherwise delay for difference
+
+            // Add notification dismissal to timeout schedule + button clicks
+            const dismissNotif = () => {
+                notificationDiv.style.animation = `notif-zoom-fade-out ${fadeDuration}s ease-out`;
+                clearTimeout(dismissFuncTID)
+            }
+            const dismissFuncTID = setTimeout(dismissNotif, hideDelay * 1000) // maintain visibility for `hideDelay` secs, then dismiss
+            closeSVG.onclick = dismissNotif // add to close button clicks
+
+            // Destroy notification
+            notificationDiv.onanimationend = () => {
+                notificationDiv.remove() // remove from DOM
+                notifyProps = JSON.parse(localStorage.notifyProps)
+                notifyProps.queue[notificationDiv.quadrant].shift() // + memory
+                localStorage.notifyProps = JSON.stringify(notifyProps) // + storage
+            }
+
+            return notificationDiv
         }
     }
 
@@ -593,12 +792,32 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
         }
     }
 
+    window.styles = {
+
+        update({ key, autoAppend }) { // requires lib/dom.js
+            if (!key) return console.error('Option \'key\' required by styles.update()')
+            const style = this[key] ; style.node ||= dom.create.style()
+            if (( autoAppend ?? style.autoAppend ) && !style.node.isConnected) document.head.append(style.node)
+            style.node.textContent = style.css
+        },
+
+        tweaks: {
+            autoAppend: true,
+            get css() { return !config.poeBlock ? ''
+                : 'div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }' }
+        }
+    }
+
+    window.sync = { configToUI() { styles.update({ key: 'tweaks' }) ; toolbarMenu.refresh() }}
+
     // Run MAIN routine
 
     toolbarMenu.register()
 
-    // Add RISING PARTICLES styles
-    ;['rpg', 'rpw'].forEach(cssType => document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
+    // Create/append STYLES
+    styles.update({ key: 'tweaks' })
+    ;['rpg', 'rpw'].forEach(cssType => // rising particles
+        document.head.append(dom.create.style(GM_getResourceText(`${cssType}CSS`))))
 
     // Monitor SCHEME PREF changes to update modal scheme
     new MutationObserver(handleSchemePrefChange).observe( // for site scheme pref changes
