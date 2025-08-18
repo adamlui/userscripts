@@ -13,7 +13,7 @@
 // @description:zh-TW   屏蔽 Quora 上的低品質 AI 答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.17.3
+// @version             2025.8.18
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -76,7 +76,8 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of this.entryIDs) { GM_unregisterMenuCommand(id) } this.register()
+            this.entryIDs.forEach(id => GM_unregisterMenuCommand(id))
+            this.register()
         },
 
         register() {
