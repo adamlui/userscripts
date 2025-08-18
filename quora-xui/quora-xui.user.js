@@ -13,7 +13,7 @@
 // @description:zh-TW   屏蔽 Quora 上的低品質 AI 答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.17.1
+// @version             2025.8.17.2
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -96,7 +96,7 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
         // * Spaces are inserted into button labels by parsing function names in camel/kebab/snake case
 
             // Init env context
-            const scheme = getScheme(), isMobile = env.browser.isMobile
+            const { browser: { isMobile }, ui: { scheme }} = env
 
             // Define event handlers
             const handlers = {
@@ -606,7 +606,7 @@ GM_addStyle('div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"
         'change', () => requestAnimationFrame(handleSchemePrefChange))
     function handleSchemePrefChange() {
         const displayedScheme = getScheme()
-        if (env.ui.scheme != displayedScheme) env.ui.scheme = displayedScheme
+        if (env.ui.scheme != displayedScheme) { env.ui.scheme = displayedScheme ; modals.stylize() }
     }
 
 })()
