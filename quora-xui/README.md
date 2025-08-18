@@ -2,7 +2,7 @@
 
 # <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png"> Quora XUI
 
-### Blocks low-quality AI answers from appearing on Quora.
+### Blocks low-quality AI & Promoted/Sponsored answers from appearing on Quora.
 
 <a href="https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
@@ -26,7 +26,7 @@
 
 2. Install [Quora XUI](ps://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js) (will load in userscript manager installed above)
 
-3. Visit [quora.com](https://quora.com) as normal, and AI answers by Poe will be blocked from appearing!
+3. Visit [quora.com](https://quora.com) as normal, and AI answers by Poe will be blocked from appearing! To tweak settings further, click toolbar icon.
 
 <br>
 

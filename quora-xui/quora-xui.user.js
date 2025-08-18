@@ -5,15 +5,15 @@
 // @name:zh-HK          Quora XUI
 // @name:zh-SG          Quora XUI
 // @name:zh-TW          Quora XUI
-// @description         Block low-quality AI answers from Quora
-// @description:zh      屏蔽 Quora 上的低质量 AI 答案
-// @description:zh-CN   屏蔽 Quora 上的低质量 AI 答案
-// @description:zh-HK   屏蔽 Quora 上的低品質 AI 答案
-// @description:zh-SG   屏蔽 Quora 上的低质量 AI 答案
-// @description:zh-TW   屏蔽 Quora 上的低品質 AI 答案
+// @description         Block AI + Promoted/Sponsored answers from Quora
+// @description:zh      阻止 AI + Quora 的推广/赞助答案
+// @description:zh-CN   阻止 AI + Quora 的推广/赞助答案
+// @description:zh-HK   阻止 AI + Quora 的推廣/贊助答案
+// @description:zh-SG   阻止 AI + Quora 的推广/赞助答案
+// @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.18.1
+// @version             2025.8.18.2
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -86,6 +86,9 @@
         }
     }
     settings.controls = {
+        adBlock: { type: 'toggle', defaultVal: false,
+            label: 'Ad Block',
+            helptip: 'Block Sponsored and Promoted answers from appearing' },
         poeBlock: { type: 'toggle', defaultVal: true,
             label: 'Poe Block',
             helptip: 'Block AI answers by Poe from appearing' }
@@ -803,8 +806,12 @@
 
         tweaks: {
             autoAppend: true,
-            get css() { return !config.poeBlock ? ''
-                : 'div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }' }
+            get css() { return `${
+                !config.poeBlock ? ''
+                    : 'div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }' }${
+                !config.adBlock ? ''
+                    : 'div[class*=question_page_ad] { display: none }' }`
+            }
         }
     }
 
