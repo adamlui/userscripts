@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name                Quora XUI
-// @name:zh             Quora XUI
-// @name:zh-CN          Quora XUI
-// @name:zh-HK          Quora XUI
-// @name:zh-SG          Quora XUI
-// @name:zh-TW          Quora XUI
+// @name                Block Quora Poe
+// @name:zh             屏蔽 Quora Poe
+// @name:zh-CN          屏蔽 Quora Poe
+// @name:zh-HK          屏蔽 Quora Poe
+// @name:zh-SG          屏蔽 Quora Poe
+// @name:zh-TW          屏蔽 Quora Poe
 // @description         Block AI + Promoted/Sponsored answers from Quora
 // @description:zh      阻止 AI + Quora 的推广/赞助答案
 // @description:zh-CN   阻止 AI + Quora 的推广/赞助答案
@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.18.2
+// @version             2025.8.19
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -31,9 +31,9 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @run-at              document-start
-// @downloadURL         https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js
-// @updateURL           https://raw.githubusercontent.com/adamlui/userscripts/master/quora-xui/quora-xui.user.js
-// @homepageURL         https://github.com/adamlui/userscripts/tree/master/quora-xui
+// @downloadURL         https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js
+// @updateURL           https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js
+// @homepageURL         https://github.com/adamlui/userscripts/tree/master/block-quora-poe
 // @supportURL          https://github.com/adamlui/userscripts/issues
 // @contributionURL     https://github.com/sponsors/adamlui
 // ==/UserScript==
@@ -57,11 +57,11 @@
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     // Init APP data
     window.app = {
-        name: 'Quora XUI', version: GM_info.script.version, configKeyPrefix: 'quoraXUI',
+        name: 'Block Quora Poe', version: GM_info.script.version, configKeyPrefix: 'quoraXUI',
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             donate: { 'ko-fi': 'https://ko-fi.com/adamlui' },
-            github: 'https://github.com/adamlui/userscripts/tree/master/quora-xui',
+            github: 'https://github.com/adamlui/userscripts/tree/master/block-quora-poe',
             relatedUserscripts: 'https://github.com/adamlui/userscripts',
             support: 'https://github.com/adamlui/userscripts/issues'
         }
@@ -661,7 +661,7 @@
             const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ;'
                               + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
-                'Quora XUI', // title
+                'Block Quora Poe', // title
                 `<span style="${labelStyles}">🧠 Author:</span> `
                     + `<a href="${app.author.url}">${app.author.name}</a>\n`
                 + `<span style="${labelStyles}">🏷️ Version:</span> `
@@ -670,9 +670,9 @@
                     + `<a href="${app.urls.github}" target="_blank" rel="nopener">`
                         + app.urls.github + '</a>\n'
                 + `<span style="${labelStyles}">🚀 Latest changes:</span> `
-                    + '<a href="https://github.com/adamlui/userscripts/commits/master/quora-xui"'
+                    + '<a href="https://github.com/adamlui/userscripts/commits/master/block-quora-poe"'
                       + ' target="_blank" rel="nopener">'
-                            + 'https://github.com/adamlui/userscripts/commits/master/quora-xui</a>\n',
+                            + 'https://github.com/adamlui/userscripts/commits/master/block-quora-poe</a>\n',
                 modalBtns, '', 681
             )
 
