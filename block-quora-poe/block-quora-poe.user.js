@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.19
+// @version             2025.8.20
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -119,7 +119,8 @@
                         ctrl.symbol || this.state.symbols[+settings.typeIsEnabled(key)] } ${ctrl.label} ${
                             ctrl.type == 'toggle' ? this.state.separator
                                                   + this.state.words[+settings.typeIsEnabled(key)]
-                                                  : ctrl.status ? ` — ${ctrl.status}` : '' }`
+                          : ctrl.type == 'slider' ? ': ' + config[key] + ctrl.labelSuffix || ''
+                          : ctrl.status ? ` — ${ctrl.status}` : '' }`
                     return GM_registerMenuCommand(menuLabel, () => {
                         settings.save(key, !config[key]) ; sync.configToUI({ updatedKey: key })
                         feedback.notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
