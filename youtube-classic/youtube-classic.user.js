@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.8.20.1
+// @version           2025.8.20.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -29,6 +29,8 @@
 // ==/UserScript==
 
 (() => {
+
+    localStorage.notifyProps = JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }})
 
     // Init ENV context
     const env = {
@@ -84,7 +86,9 @@
     // Define FUNCTIONS
 
     function cjsNotify(...args) {
-        const scheme = chatgpt.isDarkMode() ? 'dark' : 'light'
+        const scheme = document.querySelector('html[dark]')
+            || window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
         let msg, position, notifDuration, shadow, toast
         if (typeof args[0] == 'object' && !Array.isArray(args[0]))
             ({ msg, position, notifDuration, shadow, toast } = args[0])
@@ -95,7 +99,7 @@
 
         // Create/append notification div
         const notificationDiv = document.createElement('div') // make div
-        notificationDiv.id = Math.floor(chatgpt.randomFloat() * 1000000) + Date.now()
+        notificationDiv.id = Math.floor(Math.random() * 1000000) + Date.now()
         notificationDiv.classList.add('chatgpt-notif')
         notificationDiv.textContent = msg // insert msg
         document.body.append(notificationDiv) // insert into DOM
@@ -188,7 +192,7 @@
 
         // Show notification
         setTimeout(() => {
-            notificationDiv.style.opacity = chatgpt.isDarkMode() ? 0.8 : 0.67 // show msg
+            notificationDiv.style.opacity = scheme == 'dark' ? 0.8 : 0.67 // show msg
             notificationDiv.style.transform = 'translateX(0)' // bring from off-screen
             notificationDiv.style.transition = 'transform 0.15s ease, opacity 0.15s ease'
         }, 10)
