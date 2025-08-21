@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.7.31
+// @version           2025.8.20
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -58,10 +58,16 @@
         },
 
         load(...keys) {
-            keys.flat().forEach(key => {
-                config[key] = GM_getValue(`${app.configKeyPrefix}_${key}`,
-                    this.controls[key]?.defaultVal ?? this.controls[key]?.type == 'toggle')
-            })
+            keys.flat().forEach(key =>
+                config[key] = processKey(key, GM_getValue(`${app.configKeyPrefix}_${key}`, undefined)))
+            function processKey(key, val) {
+                const ctrl = settings.controls?.[key]
+                if (val != undefined && ( // validate stored val
+                        (ctrl?.type == 'toggle' && typeof val != 'boolean')
+                     || (ctrl?.type == 'slider' && isNaN(parseFloat(val)))
+                )) val = undefined
+                return val ?? (ctrl?.defaultVal ?? (ctrl?.type == 'slider' ? 100 : false))
+            }
         },
 
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
