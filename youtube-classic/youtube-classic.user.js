@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.8.20
+// @version           2025.8.20.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -70,7 +70,14 @@
             }
         },
 
-        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val }
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val },
+
+        typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF
+            const reInvertSuffixes = /disabled|hidden/i
+            return reInvertSuffixes.test(key) // flag in control key name
+                && !reInvertSuffixes.test(this.controls[key]?.label || '') // but not in label msg key name
+                    ? !config[key] : config[key] // so invert since flag reps opposite type state, else don't
+        }
     }
     settings.load(Object.keys(settings.controls))
 
@@ -210,34 +217,29 @@
     }
 
     const toolbarMenu = {
-        ids: [], state: {
+        state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: ['OFF', 'ON']
         },
 
         refresh() {
             if (typeof GM_unregisterMenuCommand == 'undefined') return
-            for (const id of this.ids) { GM_unregisterMenuCommand(id) } this.register()
+            this.entryIDs.forEach(id => GM_unregisterMenuCommand(id))
+            this.register()
         },
 
         register() {
-
-            // Add toggles
-            Object.keys(settings.controls).forEach(key => {
-                const settingIsEnabled = config[key] ^ /disabled|hidden/i.test(key)
-                const menuLabel = `${ settings.controls[key].symbol || this.state.symbols[+settingIsEnabled] } `
-                                + settings.controls[key].label
-                                + ( settings.controls[key].type == 'toggle' ? this.state.separator
-                                                                            + this.state.words[+settingIsEnabled]
-                                                                            : `— ${settings.controls[key].status}` )
-                this.ids.push(GM_registerMenuCommand(menuLabel, () => {
-                    if (settings.controls[key].type == 'toggle') {
-                        settings.save(key, !config[key])
-                        notify(`${settings.controls[key].label}: ${
-                            this.state.words[+(config[key] ^ /disabled|hidden/i.test(key))]}`)
-                    }
-                    syncConfigToUI({ updatedKey: key })
-                }, env.scriptManager.supportsTooltips ? { title: settings.controls[key].helptip || ' ' } : undefined))
+            this.entryIDs = Object.keys(settings.controls).map(key => {
+                const ctrl = settings.controls[key]
+                const menuLabel = `${
+                    ctrl.symbol || this.state.symbols[+settings.typeIsEnabled(key)] } ${ctrl.label} ${
+                        ctrl.type == 'toggle' ? this.state.separator + this.state.words[+settings.typeIsEnabled(key)]
+                      : ctrl.type == 'slider' ? ': ' + config[key] + ctrl.labelSuffix || ''
+                      : ctrl.status ? ` — ${ctrl.status}` : '' }`
+                return GM_registerMenuCommand(menuLabel, () => {
+                    settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
+                    notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
+                }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined)
             })
         }
     }
