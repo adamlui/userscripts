@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.8.20
+// @version             2025.8.20.1
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -78,7 +78,7 @@
             }
         },
         save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val },
-        typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF for type w/o suffix
+        typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF
             const reInvertFlags = /disabled|hidden/i
             return reInvertFlags.test(key) // flag in control key name
                 && !reInvertFlags.test(this.msgKeys.get(this.controls[key]?.label) || '') // but not in label msg key name
