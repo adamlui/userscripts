@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.8.24
+// @version           2025.8.24.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -52,8 +52,10 @@
         controls: { // displays top-to-bottom in toolbar menu
             disableShorts: { type: 'toggle', label: 'Redirect Shorts', defaultVal: true,
                 helptip: 'Redirect Shorts to classic wide player' },
-            adBlock: { type: 'toggle', label: 'Ad Block', defaultVal: false,
+            adBlock: { type: 'toggle', label: 'Block Ads', defaultVal: false,
                 helptip: 'Hide ad thumbnails from homepage layouts' },
+            aiBlock: { type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
+                helptip: 'Hide AI summaries from video pages' },
             notifDisabled: { type: 'toggle', label: 'Mode Notifications', defaultVal: false,
                 helptip: 'Show notifications when toggling mode/settings' }
         },
@@ -81,6 +83,9 @@
         }
     }
     settings.load(Object.keys(settings.controls))
+
+    // Init SELECTORS for optionos
+    const configSelectors = { aiSummary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])' }
 
     // Define FUNCTIONS
 
@@ -274,6 +279,8 @@
             shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
         else if (options?.updatedKey == 'adBlock')
             adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
+        else if (options?.updatedKey == 'aiBlock')
+            window.configStyle.textContent = !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`
         toolbarMenu.refresh() // prefixes/suffixes
     }
 
@@ -2182,6 +2189,8 @@
         }, 1000);
     }
 
+    // CONFIG hacks
+
     // Redirect Shorts to classic player
     let locationPath = location.pathname // to track nav
     const obsConfig = { childList: true, subtree: true }
@@ -2208,5 +2217,9 @@
         }
     })
     if (config.adBlock) getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+
+    // Block AI
+    document.head.append(window.configStyle ??= document.createElement('style'))
+    window.configStyle.textContent = !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`
 
 })()
