@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.8.24.1
+// @version           2025.8.24.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -85,7 +85,10 @@
     settings.load(Object.keys(settings.controls))
 
     // Init SELECTORS for optionos
-    const configSelectors = { aiSummary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])' }
+    const configSelectors = {
+        aiSummary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83]),' // AI summary
+                 + 'button:has(path[d*=M480-80q0-83])' // Ask AI button
+    }
 
     // Define FUNCTIONS
 
