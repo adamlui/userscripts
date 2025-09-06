@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.9.6
+// @version             2025.9.6.1
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -415,7 +415,7 @@
                     document.removeEventListener('keydown', handlers.dismiss.key) // prevent memory leaks
 
                     // Check for pending alerts in queue
-                    if (alertQueue.length > 0) {
+                    if (alertQueue.length) {
                         const nextAlert = document.getElementById(alertQueue[0])
                         setTimeout(() => {
                             nextAlert.style.display = ''
@@ -445,7 +445,7 @@
                             elems = [...text.matchAll(reTags)]
 
                         // Process 1st element to render
-                        if (elems.length > 0) {
+                        if (elems.length) {
                             const elem = elems[0],
                                 [tagContent, tagName, tagAttrs, tagText] = elem.slice(0, 4),
                                 tagNode = document.createElement(tagName) ; tagNode.textContent = tagText
