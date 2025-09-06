@@ -3,7 +3,7 @@
 // Bumps @require'd JS in userscripts
 
 // NOTE: Doesn't git commit to allow script editing from breaking changes
-// NOTE: Pass --cache to use cacheFilePath for faster init
+// NOTE: Pass --cache to use cache.filePath for faster init
 
 (async () => {
 
@@ -17,8 +17,7 @@
     const bump = await import(require('url').pathToFileURL(bumpUtilsFilePath))
 
     // Init CACHE vars
-    const cacheMode = process.argv.includes('--cache'),
-          cacheFilePath = path.join(__dirname, '.cache/userJSpaths.json')
+    const cache = { mode: process.argv.includes('--cache'), filePath: path.join(__dirname, '.cache/userJSpaths.json') }
 
     // Init REGEX
     const regEx = {
@@ -28,18 +27,18 @@
     }
 
     // Collect userscripts
-    bump.log.working(`\n${ cacheMode ? 'Collecting' : 'Searching for' } userscripts...\n`)
+    bump.log.working(`\n${ cache.mode ? 'Collecting' : 'Searching for' } userscripts...\n`)
     let userJSfiles = []
-    if (cacheMode) {
+    if (cache.mode) {
         try { // create missing cache file
-            fs.mkdirSync(path.dirname(cacheFilePath), { recursive: true })
-            const fd = fs.openSync(cacheFilePath, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR)
-            bump.log.error(`Cache file missing. Generating ${cacheFilePath}...\n`)
+            fs.mkdirSync(path.dirname(cache.filePath), { recursive: true })
+            const fd = fs.openSync(cache.filePath, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR)
+            bump.log.error(`Cache file missing. Generating ${cache.filePath}...\n`)
             userJSfiles = await bump.findUserJS() ; console.log('')
             fs.writeFileSync(fd, JSON.stringify(userJSfiles, null, 2), 'utf-8')
-            bump.log.success(`\nCache file created @ ${cacheFilePath}`)
+            bump.log.success(`\nCache file created @ ${cache.filePath}`)
         } catch (err) { // use existing cache file
-            userJSfiles = JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'))
+            userJSfiles = JSON.parse(fs.readFileSync(cache.filePath, 'utf-8'))
             console.log(userJSfiles) ; console.log('')
         }
     } else { // use findUserJS()
