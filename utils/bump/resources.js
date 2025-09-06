@@ -41,7 +41,7 @@
             userJSfiles = JSON.parse(fs.readFileSync(cache.filePath, 'utf-8'))
             console.log(userJSfiles) ; console.log('')
         }
-    } else { // use findUserJS()
+    } else { // use bump.findUserJS()
         userJSfiles = await bump.findUserJS() ; console.log('') }
 
     // Collect resources
@@ -92,7 +92,7 @@
             if (!await bump.isValidResource(updatedURL)) continue // to next resource
 
             // Generate/compare/update SRI hash
-            console.log(`${ !log.endedWithLineBreak ? '\n' : '' }Generating SRI (SHA-256) hash for ${resName}...`)
+            console.log(`${ !bump.log.endedWithLineBreak ? '\n' : '' }Generating SRI (SHA-256) hash for ${resName}...`)
             const newSRIhash = await bump.generateSRIhash(updatedURL)
             if (regEx.hash.sri.exec(resURL)?.[0] == newSRIhash) { // SRI hash didn't change
                 console.log(`${resName} already up-to-date!`) ; bump.log.endedWithLineBreak = false
@@ -108,7 +108,7 @@
             bump.log.success(`${resName} bumped!\n`) ; urlsUpdatedCnt++ ; fileUpdated = true
         }
         if (fileUpdated) {
-            console.log(`${ !log.endedWithLineBreak ? '\n' : '' }Bumping userscript version...`)
+            console.log(`${ !bump.log.endedWithLineBreak ? '\n' : '' }Bumping userscript version...`)
             bump.bumpUserJSver(userJSfilePath) ; filesUpdatedCnt++
         }
     }
