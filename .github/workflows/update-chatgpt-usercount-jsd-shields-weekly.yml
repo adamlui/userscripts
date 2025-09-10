@@ -18,6 +18,7 @@ jobs:
       - name: Checkout adamlui/userscripts
         uses: actions/checkout@v5
         with:
+          token: ${{ secrets.REPO_SYNC_PAT }}
           path: adamlui/userscripts
 
       - name: Fetch/sum GF script user + JSD request counts
