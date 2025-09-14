@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-// Bumps @version in chatbot userscripts
+// Bumps @version in chatbot userscripts.
 
-// NOTE: Doesn't git commit to allow script editing from breaking changes
 // NOTE: Pass --cache to use cachePaths.chatbotPaths for faster init
 // NOTE: Pass --dev to not use cachePaths.bumpUtils for latest ver
 // NOTE: Pass --no-<commit|push> to skip git commit/push
