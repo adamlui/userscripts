@@ -4,6 +4,7 @@
 
 // NOTE: Doesn't git commit to allow script editing from breaking changes
 // NOTE: Pass --cache to use cachePaths.chatbotPaths for faster init
+// NOTE: Pass --dev to not use cachePaths.bumpUtils for latest ver
 // NOTE: Pass --no-<commit|push> to skip git commit/push
 
 (async () => {
@@ -14,6 +15,7 @@
     const args = process.argv.slice(2)
     const config = {
         cacheMode: args.some(arg => arg.startsWith('--cache')),
+        devMode:  args.some(arg => arg.startsWith('--dev')),
         noCommit: args.some(arg => ['--no-commit', '-nc'].includes(arg)),
         noPush: args.some(arg => ['--no-push', '-np'].includes(arg))
     }
@@ -29,10 +31,15 @@
     cachePaths.chatbotPaths = path.join(__dirname, `${cachePaths.root}chatbot-paths.json`)
 
     // Import BUMP UTILS
-    fs.mkdirSync(path.dirname(cachePaths.bumpUtils), { recursive: true })
-    fs.writeFileSync(cachePaths.bumpUtils, (await (await fetch(
-        'https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@latest/utils/bump/bump-utils.min.mjs')).text()))
-    const bump = await import(`file://${cachePaths.bumpUtils}`) ; fs.unlinkSync(cachePaths.bumpUtils)
+    let bump
+    if (config.devMode) // bypass cache for latest bump-utils.mjs
+        bump = await import('./bump-utils.mjs')
+    else { // import remote bump-utils.min.mjs updated every ~12h
+        fs.mkdirSync(path.dirname(cachePaths.bumpUtils), { recursive: true })
+        fs.writeFileSync(cachePaths.bumpUtils, (await (await fetch(
+            'https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@latest/utils/bump/bump-utils.min.mjs')).text()))
+        bump = await import(`file://${cachePaths.bumpUtils}`) ; fs.unlinkSync(cachePaths.bumpUtils)
+    }
 
     // COLLECT chatbot userscripts
     bump.log.working(`\n${ config.cacheMode ? 'Collecting' : 'Searching for' } chatbot userscripts...\n`)
