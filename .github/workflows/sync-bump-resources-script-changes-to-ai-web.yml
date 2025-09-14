@@ -1,15 +1,15 @@
-name: Sync utils/bump/resources.js to adamlui/ai-web-extensions
+name: Sync utils/bump scripts to adamlui/ai-web-extensions
 
 on:
   push:
     branches: [master]
-    paths: [utils/bump/resources.js]
+    paths: [utils/bump/chatbots.js, utils/bump/resources.js]
 
 permissions:
   contents: read
 
 jobs:
-  sync-resources:
+  sync-bump-scripts:
     if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
     runs-on: ubuntu-latest
     env:
@@ -29,10 +29,12 @@ jobs:
           repository: adamlui/ai-web-extensions
           path: adamlui/ai-web-extensions
 
-      - name: Sync resources.js
+      - name: Sync bump scripts
         run: |
-          cp -f ${{ github.workspace }}/adamlui/userscripts/utils/bump/resources.js \
-                ${{ github.workspace }}/adamlui/ai-web-extensions/utils/bump/resources.js
+          for filename in "chatbots.js" "resources.js" ; do
+            cp -f ${{ github.workspace }}/adamlui/userscripts/utils/bump/${filename} \
+                  ${{ github.workspace }}/adamlui/ai-web-extensions/utils/bump/${filename}
+          done
 
       - name: Escape backticks in commit msg
         env:
@@ -54,6 +56,6 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/ai-web-extensions
           git pull # sync w/ concurrent updates
-          git add utils/bump/resources.js
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/blob/master/utils/bump/resources.js]" || true
+          git add utils/bump/chatbots.js utils/bump/resources.js
+          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/utils/bump]" || true
           git push
