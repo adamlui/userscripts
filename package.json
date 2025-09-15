@@ -20,12 +20,8 @@
     "lint:fix-all": "eslint . --fix",
     "bump:chatbots": "node utils/bump/chatbots --cache",
     "bump:chatbots-nc": "node utils/bump/chatbots --cache --no-commit",
-    "bump:res": "node utils/bump/resources --cache",
-    "bump:resources": "node utils/bump/resources --cache",
-    "bump:res-search": "node utils/bump/resources",
-    "bump:resources-search": "node utils/bump/resources",
-    "bump:res-find": "node utils/bump/resources",
-    "bump:resources-find": "node utils/bump/resources"
+    "bump:chatbots-np": "node utils/bump/chatbots --cache --no-push",
+    "bump:res": "node utils/bump/resources --cache"
   },
   "devDependencies": {
     "@eslint/json": "^0.13.2",
