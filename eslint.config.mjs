@@ -23,8 +23,8 @@ export default [
                 menus: 'writable', modals: 'writable', msgChain: 'writable', notify: 'readonly', prompts: 'readonly',
                 renderMathInElement: 'readonly', replyBubble: 'writable', session: 'readonly', settings: 'writable',
                 show: 'readonly', sites: 'writable', string: 'readonly', styles: 'writable', sync: 'readonly',
-                syncConfigToUI: 'readonly', toggle: 'readonly', toggleMode: 'readonly', toggles: 'writable',
-                toolbarMenu: 'writable', tooltip: 'writable', ui: 'readonly', update: 'readonly',
+                syncConfigToUI: 'readonly', themes: 'readonly', toggle: 'readonly', toggleMode: 'readonly',
+                toggles: 'writable', toolbarMenu: 'writable', tooltip: 'writable', ui: 'readonly', update: 'readonly',
                 updateCheck: 'readonly', userscript: 'readonly', webkitAudioContext: 'readonly', xhr: 'readonly'
             }
         },
