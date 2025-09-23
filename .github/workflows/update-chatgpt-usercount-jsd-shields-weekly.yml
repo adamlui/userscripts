@@ -182,5 +182,5 @@ jobs:
         run: |
           cd ${{ github.workspace }}/adamlui/userscripts
           git add .
-          git commit -n -m "${{ env.COMMIT_MSG }}" || true
+          git commit -n -m "$COMMIT_MSG" || true
           git push
