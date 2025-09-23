@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.9.6
+// @version           2025.9.23
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -84,8 +84,9 @@
     }
     settings.load(Object.keys(settings.controls))
 
-    // Init SELECTORS for optionos
+    // Init SELECTORS for options
     const configSelectors = {
+        ads: { masthead: 'div#masthead-ad' }, // https://imgur.com/a/kOWzh3O
         aiSummary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83]),' // AI summary
                  + 'button:has(path[d*=M480-80q0-83])' // Ask AI button
     }
@@ -282,8 +283,10 @@
             shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
         else if (options?.updatedKey == 'adBlock')
             adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
-        else if (options?.updatedKey == 'aiBlock')
-            window.configStyle.textContent = !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`
+        if (options?.updatedKey.includes('Block'))
+            window.configStyle.textContent = `
+                ${ !config.adBlock ? '' : `${configSelectors.ads.masthead} { display: none }`}
+                ${ !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`}`
         toolbarMenu.refresh() // prefixes/suffixes
     }
 
@@ -2223,8 +2226,10 @@
     })
     if (config.adBlock) getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
 
-    // Block AI
+    // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
-    window.configStyle.textContent = !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`
+    window.configStyle.textContent = `
+        ${ !config.adBlock ? '' : `${configSelectors.ads.masthead} { display: none }`}
+        ${ !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`}`
 
 })()
