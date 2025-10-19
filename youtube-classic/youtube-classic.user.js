@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.18
+// @version           2025.10.18.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -54,6 +54,8 @@
                 helptip: 'Redirect Shorts to classic wide player' },
             shortsBlock: { type: 'toggle', label: 'Hide Shorts', defaultVal: true,
                 helptip: 'Hide Shorts from appearing in home page + results' },
+            playablesBlock: { type: 'toggle', label: 'Hide Playables', defaultVal: true,
+                helptip: 'Hide Playables from appearing in home page' },
             adBlock: { type: 'toggle', label: 'Block Ads', defaultVal: false,
                 helptip: 'Hide ad thumbnails from homepage layouts' },
             aiBlock: { type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
@@ -294,9 +296,9 @@
             homeObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = `
-                ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }`}
-                ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }`}
-                ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }`}`
+                ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }` }
+                ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }` }
+                ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }` }`
         toolbarMenu.refresh() // prefixes/suffixes
     }
 
@@ -2227,19 +2229,21 @@
         } else if (locationPath == '/') { // remove homepage stuff
             const adSlot = document.querySelector('ytd-ad-slot-renderer')
             const richSection = document.querySelector(
-                `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }`)
+                `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
+                                             !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
+            )
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    if (config.shortsBlock || config.adBlock)
+    if (config.shortsBlock || config.playablesBlock || config.adBlock)
         getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
     window.configStyle.textContent = `
-        ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }`}
-        ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }`}
-        ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }`}`
+        ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }` }
+        ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }` }
+        ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }` }`
     function extractSelectors(obj) {
         return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
