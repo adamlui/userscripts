@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.9.23
+// @version           2025.10.18
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -52,6 +52,8 @@
         controls: { // displays top-to-bottom in toolbar menu
             disableShorts: { type: 'toggle', label: 'Redirect Shorts', defaultVal: true,
                 helptip: 'Redirect Shorts to classic wide player' },
+            shortsBlock: { type: 'toggle', label: 'Hide Shorts', defaultVal: true,
+                helptip: 'Hide Shorts from appearing in home page + results' },
             adBlock: { type: 'toggle', label: 'Block Ads', defaultVal: false,
                 helptip: 'Hide ad thumbnails from homepage layouts' },
             aiBlock: { type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
@@ -85,8 +87,15 @@
     settings.load(Object.keys(settings.controls))
 
     // Init SELECTORS for options
-    const configSelectors = {
+    const domSelectors = {
         ads: { masthead: 'div#masthead-ad' }, // https://imgur.com/a/kOWzh3O
+        shorts: {
+            navEntry: 'a#endpoint[title=Shorts]',
+            shelf: {
+                homepage: 'div.ytd-rich-shelf-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
+                results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
+            }
+        },
         aiSummary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83]),' // AI summary
                  + 'button:has(path[d*=M480-80q0-83])' // Ask AI button
     }
@@ -282,11 +291,12 @@
         if (options?.updatedKey == 'disableShorts')
             shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
         else if (options?.updatedKey == 'adBlock')
-            adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
+            homeObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = `
-                ${ !config.adBlock ? '' : `${configSelectors.ads.masthead} { display: none }`}
-                ${ !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`}`
+                ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }`}
+                ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }`}
+                ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }`}`
         toolbarMenu.refresh() // prefixes/suffixes
     }
 
@@ -1597,10 +1607,6 @@
       font-weight: 500 !important;
     }
     
-    #endpoint.yt-simple-endpoint.ytd-mini-guide-entry-renderer.style-scope[title="Shorts"] {
-      display: none !important;
-    }
-    
     #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Trending"] {
       display: none !important;
     }
@@ -2214,22 +2220,27 @@
     if (config.disableShorts) getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
 
     // Remove homepage ads/rich sections
-    const adObserver = new MutationObserver(() => {
+    const homeObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe
-            locationPath = location.pathname ; adObserver.disconnect()
-            getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+            locationPath = location.pathname ; homeObserver.disconnect()
+            getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
         } else if (locationPath == '/') { // remove homepage stuff
-            const adSlot = document.querySelector('ytd-ad-slot-renderer'),
-                  richSection = document.querySelector('ytd-rich-section-renderer')
+            const adSlot = document.querySelector('ytd-ad-slot-renderer')
+            const richSection = document.querySelector(
+                `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }`)
             adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
         }
     })
-    if (config.adBlock) getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+    if (config.shortsBlock || config.adBlock)
+        getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
     window.configStyle.textContent = `
-        ${ !config.adBlock ? '' : `${configSelectors.ads.masthead} { display: none }`}
-        ${ !config.aiBlock ? '' : `${configSelectors.aiSummary} { display: none }`}`
+        ${ !config.shortsBlock ? '' : `${extractSelectors(domSelectors.shorts).join(',')} { display: none }`}
+        ${ !config.adBlock ? '' : `${extractSelectors(domSelectors.ads).join(',')} { display: none }`}
+        ${ !config.aiBlock ? '' : `${domSelectors.aiSummary} { display: none }`}`
+    function extractSelectors(obj) {
+        return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
 })()
