@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.18.3
+// @version           2025.10.18.4
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -299,7 +299,7 @@
         if (options?.updatedKey == 'disableShorts')
             shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
         else if (options?.updatedKey == 'adBlock')
-            adObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
+            homeObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = Object.entries(domSelectors)
                 .map(([key, selectors]) => !config[`${key}Block`] ? ''
@@ -2228,15 +2228,21 @@
     if (config.disableShorts) getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
 
     // Remove homepage ads/rich sections
-    const adObserver = new MutationObserver(() => {
+    const homeObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe
-            locationPath = location.pathname ; adObserver.disconnect()
-            getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
-        } else if (locationPath == '/') // remove ads
-            document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
+            locationPath = location.pathname ; homeObserver.disconnect()
+            getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
+        } else if (locationPath == '/') { // remove homepage shelves (for no gaps) + ads
+            const adSlot = document.querySelector('ytd-ad-slot-renderer')
+            const richSection = document.querySelector(
+                `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
+                                             !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
+            )
+            adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
+        }
     })
     if (config.shortsBlock || config.playablesBlock || config.adBlock)
-        getLoadedElem('html').then(() => adObserver.observe(document.documentElement, obsConfig))
+        getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
