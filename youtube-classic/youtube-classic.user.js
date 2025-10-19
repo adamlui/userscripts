@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.18.2
+// @version           2025.10.18.3
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -241,6 +241,9 @@
 
         return notificationDiv
     }
+
+    function extractSelectors(obj) {
+        return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
     const toolbarMenu = {
         state: {
@@ -2241,7 +2244,5 @@
         .map(([key, selectors]) => !config[`${key}Block`] ? ''
             : `${extractSelectors(selectors).join(',')} { display: none }`
         ).join('')
-    function extractSelectors(obj) {
-        return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
 })()
