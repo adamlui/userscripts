@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Hide Forum Images
-// @version           2025.10.19
+// @version           2025.10.19.1
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -29,4 +29,4 @@
         const styleNode = document.createElement('style') ; styleNode.innerText = css
         document.head.appendChild(styleNode)
     }
-})
+})()
