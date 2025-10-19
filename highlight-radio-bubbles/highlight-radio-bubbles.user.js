@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Highlight Radio Bubbles
-// @version           2025.7.31
+// @version           2025.10.19
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Makes radio bubbles bigger & more colorful when brought to focus.
@@ -20,6 +20,9 @@
 // @contributionURL   https://github.com/sponsors/adamlui
 // ==/UserScript==
 
-const styleNode = document.createElement('style')
-styleNode.innerHTML = 'input[type=radio]:focus { outline-color: red !important ; width: 25px !important ; height: 25px !important ; }'
-document.head.appendChild(styleNode)
+(() => {
+    'use strict'
+    const styleNode = document.createElement('style')
+    styleNode.innerHTML = 'input[type=radio]:focus { outline-color: red !important ; width: 25px !important ; height: 25px !important ; }'
+    document.head.appendChild(styleNode)
+})

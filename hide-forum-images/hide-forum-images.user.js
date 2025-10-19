@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Hide Forum Images
-// @version           2025.7.31
+// @version           2025.10.19
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -20,8 +20,13 @@
 // @contributionURL   https://github.com/sponsors/adamlui
 // ==/UserScript==
 
-if (document.querySelector('[src*="vbulletin"], [src*="discourse"]') || /xenforo/i.test(document.querySelector('.copyright').textContent)) {
-    const css = 'img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }'
-    const styleNode = document.createElement('style') ; styleNode.innerText = css
-    document.head.appendChild(styleNode)
-}
+(() => {
+    'use strict'
+    if (document.querySelector('[src*="vbulletin"], [src*="discourse"]')
+        || /xenforo/i.test(document.querySelector('.copyright').textContent)
+    ) {
+        const css = 'img, [style*="background-image"], [class*="avatar"], [class*="player"] { display:none !important; }'
+        const styleNode = document.createElement('style') ; styleNode.innerText = css
+        document.head.appendChild(styleNode)
+    }
+})
