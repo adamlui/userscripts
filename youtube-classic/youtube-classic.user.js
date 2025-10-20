@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.19
+// @version           2025.10.19.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -297,9 +297,7 @@
     }
 
     function syncConfigToUI(options) {
-        if (options?.updatedKey == 'disableShorts')
-            shortsObserver[config.disableShorts ? 'observe' : 'disconnect'](document.body, obsConfig)
-        else if (options?.updatedKey == 'adBlock')
+        if (options?.updatedKey == 'adBlock')
             homeObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = Object.entries(domSelectors)
@@ -2214,19 +2212,16 @@
 
     // CONFIG hacks
 
-    // Redirect Shorts to classic player
     let locationPath = location.pathname // to track nav
     const obsConfig = { childList: true, subtree: true }
-    const shortsObserver = new MutationObserver(() => {
-        if (location.pathname != locationPath) { // nav'd to diff page, re-observe if no redir
-            locationPath = location.pathname ; shortsObserver.disconnect()
-            getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
-        } else if (location.pathname.startsWith('/shorts')) {
-            const vidID = location.pathname.split('/')[2]
-            if (vidID && /^[\w-]{11}$/.test(vidID)) location.replace(`https://www.youtube.com/watch?v=${vidID}`)
-        }
-    })
-    if (config.disableShorts) getLoadedElem('body').then(() => shortsObserver.observe(document.body, obsConfig))
+
+    // Redirect Shorts to classic player
+    if (config.disableShorts)
+        (function checkShorts() {
+            if (location.pathname.startsWith('/shorts/'))
+                return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
+            requestAnimationFrame(checkShorts)
+        })()
 
     // Remove homepage ads/rich sections
     const homeObserver = new MutationObserver(() => {
