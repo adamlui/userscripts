@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.19.1
+// @version           2025.10.19.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -297,8 +297,6 @@
     }
 
     function syncConfigToUI(options) {
-        if (options?.updatedKey == 'adBlock')
-            homeObserver[config.adBlock ? 'observe' : 'disconnect'](document.documentElement, obsConfig)
         if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = Object.entries(domSelectors)
                 .map(([key, selectors]) => !config[`${key}Block`] ? ''
@@ -2228,17 +2226,18 @@
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe
             locationPath = location.pathname ; homeObserver.disconnect()
             getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
-        } else if (locationPath == '/') { // remove homepage shelves (for no gaps) + ads
-            const adSlot = document.querySelector('ytd-ad-slot-renderer')
-            const richSection = document.querySelector(
-                `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
-                                             !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
-            )
-            adSlot?.closest('[rendered-from-rich-grid]')?.remove() ; richSection?.remove()
+        } else if (locationPath == '/') { // remove regenerating homepage stuff
+            if (config.adBlock) // remove ads
+                document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
+            if (config.shortsBlock || config.playablesBlock) { // remove shelves
+                document.querySelector(
+                    `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
+                                                 !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
+                )?.remove()
+            }
         }
     })
-    if (config.shortsBlock || config.playablesBlock || config.adBlock)
-        getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
+    getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
