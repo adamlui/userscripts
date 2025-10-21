@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.20
+// @version           2025.10.20.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -297,7 +297,12 @@
     }
 
     function syncConfigToUI(options) {
-        if (options?.updatedKey.includes('Block'))
+        if (options?.updatedKey == 'disableShorts') {
+            if (config.disableShorts && !checkShortsToRedir.id)
+                checkShortsToRedir()
+            else if (!config.disableShorts && checkShortsToRedir.id) {
+                cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
+        } else if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = Object.entries(domSelectors)
                 .map(([key, selectors]) => !config[`${key}Block`] ? ''
                     : `${extractSelectors(selectors).join(',')} { display: none }`
@@ -2214,12 +2219,12 @@
     const obsConfig = { childList: true, subtree: true }
 
     // Redirect Shorts to classic player
-    if (config.disableShorts)
-        (function checkShorts() {
-            if (location.pathname.startsWith('/shorts/'))
-                return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
-            requestAnimationFrame(checkShorts)
-        })()
+    if (config.disableShorts) checkShortsToRedir()
+    function checkShortsToRedir() {
+        if (location.pathname.startsWith('/shorts/'))
+            return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
+        checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
+    }
 
     // Remove homepage ads/rich sections
     const homeObserver = new MutationObserver(() => {
