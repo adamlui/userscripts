@@ -18,19 +18,19 @@ jobs:
     steps:
 
       - name: Checkout adamlui/userscripts
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
         with:
           path: adamlui/userscripts
 
       - name: Checkout KudoAI/bravegpt
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: KudoAI/bravegpt
           path: KudoAI/bravegpt
 
       - name: Checkout adamlui/ai-web-extensions
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/ai-web-extensions
