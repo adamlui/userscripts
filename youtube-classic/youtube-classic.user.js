@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.20
+// @version           2026.1.17.21
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -2142,20 +2142,14 @@
         let colorString
         switch (extConfig.colorTheme) {
             case 'accessible':
-                if (voteIsLike == true) {
-                    colorString = 'dodgerblue'
-                } else { colorString = 'gold' }
+                colorString = voteIsLike ? 'dodgerblue' : 'gold'
                 break
             case 'neon':
-                if (voteIsLike == true) {
-                    colorString = 'aqua'
-                } else { colorString = 'magenta' }
+                colorString = voteIsLike ? 'aqua' : 'magenta'
                 break
             case 'classic':
             default:
-                if (voteIsLike == true) {
-                    colorString = 'lime'
-                } else { colorString = 'red' }
+                colorString = voteIsLike ? 'lime' : 'red'
         }
         return colorString
     }
