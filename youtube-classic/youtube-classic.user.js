@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.17
+// @version           2026.1.17.18
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -369,7 +369,7 @@
         static observer = new MutationObserver(this.onNewScript)
         static _config = {}
         static isObject(item) {
-            return (item && typeof item === 'object' && !Array.isArray(item))
+            return (item && typeof item == 'object' && !Array.isArray(item))
         }
         static mergeDeep(target, ...sources) {
             if (!sources.length) return target
@@ -1742,7 +1742,7 @@
     let mobileDislikes = 0
 
     function cLog(text, subtext = '') {
-        subtext = subtext.trim() === '' ? '' : `(${subtext})`
+        subtext = subtext.trim() == '' ? '' : `(${subtext})`
         console.log(`[Return YouTube Dislikes] ${text} ${subtext}`)
     }
 
@@ -1780,7 +1780,7 @@
                 document.querySelector('.slim-video-action-bar-actions')
             )
         }
-        if (document.getElementById('menu-container')?.offsetParent === null) {
+        if (document.getElementById('menu-container')?.offsetParent == null) {
             return (
                 document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div') ??
                 document.querySelector('ytd-menu-renderer.ytd-video-primary-info-renderer > div')
@@ -1793,7 +1793,7 @@
     }
 
     function getLikeButton() {
-        return getButtons().children[0].tagName ===
+        return getButtons().children[0].tagName ==
             'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
             ? getButtons().children[0].children[0]
             : getButtons().children[0]
@@ -1808,7 +1808,7 @@
     }
 
     function getDislikeButton() {
-        return getButtons().children[0].tagName ===
+        return getButtons().children[0].tagName ==
             'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
             ? getButtons().children[0].children[1]
             : getButtons().children[1]
@@ -1819,7 +1819,7 @@
             getDislikeButton().querySelector('#text') ??
             getDislikeButton().getElementsByTagName('yt-formatted-string')[0] ??
             getDislikeButton().querySelector('span[role="text"]')
-        if (result === null) {
+        if (result == null) {
             let textSpan = document.createElement('span')
             textSpan.id = 'text'
             textSpan.style.marginLeft = '2px'
@@ -1832,7 +1832,7 @@
 
     let mutationObserver = new Object()
 
-    if (isShorts() && mutationObserver.exists !== true) {
+    if (isShorts() && mutationObserver.exists != true) {
         cLog('initializing mutation observer')
         mutationObserver.options = {
             childList: false,
@@ -1843,14 +1843,14 @@
         mutationObserver.observer = new MutationObserver(function(mutationList) {
             mutationList.forEach((mutation) => {
                 if (
-                    mutation.type === 'attributes' &&
-                    mutation.target.nodeName === 'TP-YT-PAPER-BUTTON' &&
-                    mutation.target.id === 'button'
+                    mutation.type == 'attributes' &&
+                    mutation.target.nodeName == 'TP-YT-PAPER-BUTTON' &&
+                    mutation.target.id == 'button'
                 ) {
                     cLog('Short thumb button status changed')
-                    if (mutation.target.getAttribute('aria-pressed') === 'true') {
+                    if (mutation.target.getAttribute('aria-pressed') == 'true') {
                         mutation.target.style.color =
-                            mutation.target.parentElement.parentElement.id === 'like-button'
+                            mutation.target.parentElement.parentElement.id == 'like-button'
                         ? getColorFromTheme(true)
                         : getColorFromTheme(false)
                     } else {
@@ -1984,12 +1984,12 @@
                     likesvalue = likes
                     dislikesvalue = dislikes
                     setDislikes(numberFormat(dislikes))
-                    if (extConfig.numberDisplayReformatLikes === true) {
+                    if (extConfig.numberDisplayReformatLikes == true) {
                         const nativeLikes = getLikeCountFromButton()
                         if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                     }
                     createRateBar(likes, dislikes)
-                    if (extConfig.coloredThumbs === true) {
+                    if (extConfig.coloredThumbs == true) {
                         if (isShorts()) {
                             // for shorts, leave deactived buttons in default color
                             let shortLikeButton = getLikeButton().querySelector(
@@ -1998,10 +1998,10 @@
                             let shortDislikeButton = getDislikeButton().querySelector(
                                 'tp-yt-paper-button#button'
                             )
-                            if (shortLikeButton.getAttribute('aria-pressed') === 'true') {
+                            if (shortLikeButton.getAttribute('aria-pressed') == 'true') {
                                 shortLikeButton.style.color = getColorFromTheme(true)
                             }
-                            if (shortDislikeButton.getAttribute('aria-pressed') === 'true') {
+                            if (shortDislikeButton.getAttribute('aria-pressed') == 'true') {
                                 shortDislikeButton.style.color = getColorFromTheme(false)
                             }
                             mutationObserver.observer.observe(
@@ -2040,7 +2040,7 @@
                 createRateBar(likesvalue, dislikesvalue)
                 previousState = 1
             }
-            if (extConfig.numberDisplayReformatLikes === true) {
+            if (extConfig.numberDisplayReformatLikes == true) {
                 const nativeLikes = getLikeCountFromButton()
                 if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
             }
@@ -2065,7 +2065,7 @@
                 setDislikes(numberFormat(dislikesvalue))
                 createRateBar(likesvalue, dislikesvalue)
                 previousState = 2
-                if (extConfig.numberDisplayReformatLikes === true) {
+                if (extConfig.numberDisplayReformatLikes == true) {
                     const nativeLikes = getLikeCountFromButton()
                     if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                 }
@@ -2088,7 +2088,7 @@
     function isVideoLoaded() {
         if (isMobile) { return document.getElementById('player').getAttribute('loading') == 'false' }
         const videoId = getVideoId()
-        return ( document.querySelector(`ytd-watch-flexy[video-id='${videoId}']`) !== null )
+        return ( document.querySelector(`ytd-watch-flexy[video-id='${videoId}']`) != null )
     }
 
     function roundDown(num) {
@@ -2101,7 +2101,7 @@
 
     function numberFormat(numberState) {
         let numberDisplay
-        if (extConfig.numberDisplayRoundDown === false) { numberDisplay = numberState
+        if (extConfig.numberDisplayRoundDown == false) { numberDisplay = numberState
         } else { numberDisplay = roundDown(numberState) }
         return getNumberFormatter(extConfig.numberDisplayFormat).format(numberDisplay)
     }
@@ -2149,18 +2149,18 @@
         let colorString
         switch (extConfig.colorTheme) {
             case 'accessible':
-                if (voteIsLike === true) {
+                if (voteIsLike == true) {
                     colorString = 'dodgerblue'
                 } else { colorString = 'gold' }
                 break
             case 'neon':
-                if (voteIsLike === true) {
+                if (voteIsLike == true) {
                     colorString = 'aqua'
                 } else { colorString = 'magenta' }
                 break
             case 'classic':
             default:
-                if (voteIsLike === true) {
+                if (voteIsLike == true) {
                     colorString = 'lime'
                 } else { colorString = 'red' }
         }
@@ -2202,7 +2202,7 @@
             return originalPush.apply(history, args)
         }
         setInterval(() => {
-            if (getDislikeButton().querySelector('.button-renderer-text') === null) {
+            if (getDislikeButton().querySelector('.button-renderer-text') == null) {
                 getDislikeTextContainer().innerText = mobileDislikes
             } else { getDislikeButton().querySelector('.button-renderer-text').innerText = mobileDislikes }
         }, 1000)
