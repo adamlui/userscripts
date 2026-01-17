@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.1
+// @version           2026.1.17.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -387,11 +387,8 @@
             return this.mergeDeep(target, ...sources);
         }
         static onNewScript(mutations) {
-            for (var mut of mutations) {
-                for (var node of mut.addedNodes) { // eslint-disable-line no-unused-vars
-                    YTP.bruteforce();
-                }
-            }
+            for (const mut of mutations) for (const node of mut.addedNodes) // eslint-disable-line no-unused-vars
+                YTP.bruteforce()
         }
         static start() { this.observer.observe(document, {childList: true, subtree: true}); }
         static stop() { this.observer.disconnect(); }
@@ -411,35 +408,30 @@
             this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps);
         }
         static decodePlyrFlags(flags) {
-            var obj = {},
-                dflags = flags.split('&');
-            for (var i = 0; i < dflags.length; i++) {
-                var dflag = dflags[i].split('=');
-                obj[dflag[0]] = dflag[1];
-            }
-            return obj;
+            const obj = {}, dflags = flags.split('&')
+            for (let i = 0 ; i < dflags.length ; i++) {
+                const dflag = dflags[i].split('=') ; obj[dflag[0]] = dflag[1] }
+            return obj
         }
         static encodePlyrFlags(flags) {
-            var keys = Object.keys(flags),
-                response = '';
-            for (var i = 0; i < keys.length; i++) {
-                if (i > 0) { response += '&'; }
-                response += keys[i] + '=' + flags[keys[i]];
+            const keys = Object.keys(flags) ; let response = ''
+            for (let i = 0 ; i < keys.length ; i++) {
+                if (i > 0) response += '&'
+                response += keys[i] + '=' + flags[keys[i]]
             }
-            return response;
+            return response
         }
         static setPlyrFlags(flags) {
-            if (!unsafeWindow.yt) return;
-            if (!unsafeWindow.yt.config_) return;
-            if (!unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS) return;
-            var conCfgs = unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS;
-            if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {};
-            for (var cfg in conCfgs) {
-                var dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags);
-                this.mergeDeep(dflags, flags);
+            if (!unsafeWindow.yt) return
+            if (!unsafeWindow.yt.config_) return
+            if (!unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS) return
+            const conCfgs = unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS
+            if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {}
+            for (const cfg in conCfgs) {
+                const dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags)
+                this.mergeDeep(dflags, flags)
                 this._config.WEB_PLAYER_CONTEXT_CONFIGS[cfg] = {
-                    serializedExperimentFlags: this.encodePlyrFlags(dflags)
-                }
+                    serializedExperimentFlags: this.encodePlyrFlags(dflags) }
             }
         }
     }
@@ -456,7 +448,7 @@
             : 'https://i.imgur.com/rHLcxEs.png' // Light mode
         ytLogo.textContent = '' ; ytLogo.append(classicLogo)
         YTP.stop()
-        for (var i = 0; i < ATTRS.length; i++) { document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i]) }
+        for (let i = 0 ; i < ATTRS.length ; i++) document.getElementsByTagName('html')[0].removeAttribute(ATTRS[i])
         unsafeWindow.removeEventListener('yt-page-date-updated', tmp)
     })
 
@@ -481,7 +473,7 @@
     }
 
     function restoreTrending() {
-        var trendingData = {
+        const trendingData = {
             'navigationEndpoint': {
                 'clickTrackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
                 'commandMetadata': {
@@ -510,9 +502,9 @@
     // Fix YouTube dislikes
     addEventListener('yt-page-data-updated', function() {
         if(!location.pathname.startsWith('/watch')) return;
-        var lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed');
-        var like = $('ytd-video-primary-info-renderer div#segmented-like-button > ytd-toggle-button-renderer');
-        var share = $('ytd-video-primary-info-renderer div#top-level-buttons-computed > ytd-segmented-like-dislike-button-renderer + ytd-button-renderer');
+        const lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed'),
+              like = $('ytd-video-primary-info-renderer div#segmented-like-button > ytd-toggle-button-renderer'),
+              share = $('ytd-video-primary-info-renderer div#top-level-buttons-computed > ytd-segmented-like-dislike-button-renderer + ytd-button-renderer')
         lds.insertBefore(like, share);
         like.setAttribute('class', like.getAttribute('class').replace('ytd-segmented-like-dislike-button-renderer', 'ytd-menu-renderer force-icon-button'));
         like.removeAttribute('is-paper-button-with-icon');
@@ -521,7 +513,7 @@
         like.setAttribute('is-icon-button', '');
         like.querySelector('a').insertBefore(like.querySelector('yt-formatted-string'), like.querySelector('tp-yt-paper-tooltip'));
         try { like.querySelector('paper-ripple').remove(); } catch(e) {}
-        var paper = like.querySelector('tp-yt-paper-button');
+        let paper = like.querySelector('tp-yt-paper-button');
         paper.removeAttribute('style-target');
         paper.removeAttribute('animated');
         paper.removeAttribute('elevation');
@@ -529,13 +521,13 @@
         paper.outerHTML = paper.outerHTML.replace('<tp-yt-paper-button ', '<yt-icon-button ').replace('</tp-yt-paper-button>', '</yt-icon-button>');
         paper = like.querySelector('yt-icon-button');
         paper.querySelector('button#button').appendChild(like.querySelector('yt-icon'));
-        var dislike = $('ytd-video-primary-info-renderer div#segmented-dislike-button > ytd-toggle-button-renderer');
+        const dislike = $('ytd-video-primary-info-renderer div#segmented-dislike-button > ytd-toggle-button-renderer');
         lds.insertBefore(dislike, share);
         $('ytd-video-primary-info-renderer ytd-segmented-like-dislike-button-renderer').remove();
         dislike.setAttribute('class', dislike.getAttribute('class').replace('ytd-segmented-like-dislike-button-renderer', 'ytd-menu-renderer force-icon-button'));
         dislike.removeAttribute('has-no-text');
         dislike.setAttribute('style-action-button', '');
-        var dlabel = document.createElement('yt-formatted-stringx');
+        const dlabel = document.createElement('yt-formatted-stringx');
         dlabel.setAttribute('id', 'text');
         if (dislike.getAttribute('class').includes('style-default-active')) {
             dlabel.setAttribute('class', dlabel.getAttribute('class').replace('style-default', 'style-default-active')) }
@@ -544,8 +536,8 @@
     });
 
     // Restore classic comments UI
-    var hl;
-    const cfconfig = { unicodeEmojis: false };
+    let hl
+    const cfconfig = { unicodeEmojis: false }
     const cfi18n = {
         en: {
             viewSingular: 'View reply',
@@ -558,48 +550,45 @@
         }
     }
     function getString(string, hl = 'en', ...args) {
-        if (!string) return;
-        var str;
+        if (!string) return
+        let str
         if (cfi18n[hl]) {
-            if (cfi18n[hl][string]) {
-                str = cfi18n[hl][string];
-            } else if (cfi18n.en[string]) {
-                str = cfi18n.en[string];
-            } else {
-                return;
-            }
-        } else { if (cfi18n.en[string]) str = cfi18n.en[string]; }
-        for (var i = 0; i < args.length; i++) {
-            str = str.replace(/%s/, args[i]);
-        }
-        return str;
+            if (cfi18n[hl][string])
+                str = cfi18n[hl][string]
+            else if (cfi18n.en[string])
+                str = cfi18n.en[string]
+            else return
+        } else if (cfi18n.en[string])
+            str = cfi18n.en[string]
+        for (let i = 0 ; i < args.length ; i++)
+            str = str.replace(/%s/, args[i])
+        return str
     }
     function getSimpleString(object) {
-        if (object.simpleText) return object.simpleText;
-        var str = '';
-        for (var i = 0; i < object.runs.length; i++) {
-            str += object.runs[i].text;
-        }
-        return str;
+        if (object.simpleText) return object.simpleText
+        let str = ''
+        for (let i = 0 ; i < object.runs.length ; i++)
+            str += object.runs[i].text
+        return str
     }
     function formatComment(comment) {
         if (cfconfig.unicodeEmojis) {
-            var runs;
+            let runs
             try {
                 runs = comment.contentText.runs
-                for (var i = 0; i < runs.length; i++) {
-                    delete runs[i].emoji;
-                    delete runs[i].loggingDirectives;
+                for (let i = 0 ; i < runs.length ; i++) {
+                    delete runs[i].emoji
+                    delete runs[i].loggingDirectives
                 }
             } catch(err) {}
         }
-        return comment;
+        return comment
     }
     async function formatCommentThread(thread) {
         if (thread.comment.commentRenderer) {
             thread.comment.commentRenderer = formatComment(thread.comment.commentRenderer);
         }
-        var replies;
+        let replies
         try {
             replies = thread.replies.commentRepliesRenderer;
             if (replies.viewRepliesIcon) {
@@ -610,15 +599,15 @@
                 replies.hideReplies.buttonRenderer.icon = replies.hideRepliesIcon.buttonRenderer.icon;
                 delete replies.hideRepliesIcon;
             }
-            var creatorName;
+            let creatorName
             try {
                 creatorName = replies.viewRepliesCreatorThumbnail.accessibility.accessibilityData.label;
                 delete replies.viewRepliesCreatorThumbnail;
             } catch(err) {}
-            var replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text);
+            let replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text)
             replyCount = +replyCount.replace(getString('replyCountIsolator', hl), '');
-            var viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti';
-            var viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular';
+            const viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti',
+                  viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular'
             replies.viewReplies.buttonRenderer.text = {
                 runs: [{
                     text: (replyCount > 1) ? getString(viewMultiString, hl, replyCount, creatorName)
@@ -632,36 +621,36 @@
         return thread;
     }
     function refreshData(element) {
-        var clone = element.cloneNode();
-        clone.data = element.data;
-        clone.data.fixedByCF = true;
-        for (var i in element.properties) { clone[i] = element[i]; }
-        element.insertAdjacentElement('afterend', clone);
-        element.remove();
+        const clone = element.cloneNode()
+        clone.data = element.data
+        clone.data.fixedByCF = true
+        for (const i in element.properties) clone[i] = element[i]
+        element.insertAdjacentElement('afterend', clone)
+        element.remove()
     }
-    var commentObserver = new MutationObserver((list) => {
+    const commentObserver = new MutationObserver((list) => {
         list.forEach(async(mutation) => {
             if (mutation.addedNodes) {
-                for (var i = 0; i < mutation.addedNodes.length; i++) {
-                    var elm = mutation.addedNodes[i];
+                for (let i = 0 ; i < mutation.addedNodes.length ; i++) {
+                    const elm = mutation.addedNodes[i]
                     if (elm.classList && elm.data && !elm.data.fixedByCF) {
                         if (elm.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
-                            elm.data = await formatCommentThread(elm.data);
-                            refreshData(elm);
+                            elm.data = await formatCommentThread(elm.data)
+                            refreshData(elm)
                         } else if (elm.tagName == 'YTD-COMMENT-RENDERER') {
                             if (!elm.classList.contains('ytd-comment-thread-renderer')) {
-                                elm.data = formatComment(elm.data);
-                                refreshData(elm);
+                                elm.data = formatComment(elm.data)
+                                refreshData(elm)
                             }
                         }
                     }
                 }
             }
-        });
-    });
+        })
+    })
     document.addEventListener('yt-page-data-updated', async() => {
-        commentObserver.observe(document.querySelector('ytd-app'),  { childList: true, subtree: true });
-    });
+        commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true })
+    })
 
     // CSS adjustments and UI fixes
     const fixesStyle = document.createElement('style')
@@ -1923,10 +1912,10 @@
             getButtons().children[1].clientWidth +
             8;
         const widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) * 100 : 50;
-        var likePercentage = parseFloat(widthPercent.toFixed(1));
-        const dislikePercentage = (100 - likePercentage).toLocaleString();
-        likePercentage = likePercentage.toLocaleString();
-        var tooltipInnerHTML;
+        let likePercentage = parseFloat(widthPercent.toFixed(1))
+        const dislikePercentage = (100 - likePercentage).toLocaleString()
+        likePercentage = likePercentage.toLocaleString()
+        let tooltipInnerHTML
         switch (extConfig.tooltipPercentageMode) {
             case 'dash_like':
                 tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercentage}%`;
