@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17
+// @version           2026.1.17.1
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1702,8 +1702,6 @@
         background-color: #cc0000 !important ; color: #fff !important ; border-radius: 2px !important ;
         text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
     }
-    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--filled:hover {
-        background-color: #cc0000 !important }
     #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
         background-color: #f2f2f2 !important ; color: #606060 !important ; border-radius: 2px !important ;
         text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
