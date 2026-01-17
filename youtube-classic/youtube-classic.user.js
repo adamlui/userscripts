@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.22
+// @version           2026.1.17.23
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1775,18 +1775,16 @@
             return document.getElementById('menu-container')?.querySelector('#top-level-buttons-computed')
     }
 
-    function getLikeButton() {
-        return getBtns().children[0].tagName ==
-            'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
-            ? getBtns().children[0].children[0]
-            : getBtns().children[0]
+    function getLikeBtn() {
+        let firstBtn = getBtns().children[0]
+        return firstBtn.tagName == 'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER' ? firstBtn.children[0] : firstBtn
     }
 
     function getLikeTextContainer() {
         return (
-            getLikeButton().querySelector('#text') ??
-            getLikeButton().getElementsByTagName('yt-formatted-string')[0] ??
-            getLikeButton().querySelector('span[role="text"]')
+            getLikeBtn().querySelector('#text') ??
+            getLikeBtn().getElementsByTagName('yt-formatted-string')[0] ??
+            getLikeBtn().querySelector('span[role="text"]')
         )
     }
 
@@ -1867,8 +1865,8 @@
     function getLikeCountFromButton() {
         try {
             if (isShorts()) return null
-            const likeBtn = getLikeButton().querySelector('yt-formatted-string#text')
-                         ?? getLikeButton().querySelector('button')
+            const likeBtn = getLikeBtn().querySelector('yt-formatted-string#text')
+                         ?? getLikeBtn().querySelector('button')
             const likesStr = likeBtn.getAttribute('aria-label').replace(/\D/g, '')
             return likesStr.length ? parseInt(likesStr) : null
         }
@@ -1971,7 +1969,7 @@
                     if (extConfig.coloredThumbs) {
                         if (isShorts()) {
                             // for shorts, leave deactived buttons in default color
-                            let shortLikeButton = getLikeButton().querySelector(
+                            let shortLikeButton = getLikeBtn().querySelector(
                                 'tp-yt-paper-button#button'
                             )
                             let shortDislikeButton = getDislikeButton().querySelector(
@@ -1992,7 +1990,7 @@
                                 mutationObserver.options
                             )
                         } else {
-                            getLikeButton().style.color = getColorFromTheme(true)
+                            getLikeBtn().style.color = getColorFromTheme(true)
                             getDislikeButton().style.color = getColorFromTheme(false)
                         }
                     }
