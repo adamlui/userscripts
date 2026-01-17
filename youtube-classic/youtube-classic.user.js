@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2025.10.20.1
+// @version           2026.1.17
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -348,7 +348,7 @@
         web_modern_collections_v2: false,
         web_modern_dialogs: false,
         web_modern_playlists: false,
-        web_modern_subscribe: true,
+        web_modern_subscribe: false,
         web_modern_tabs: false,
         web_rounded_containers: false,
         web_rounded_thumbnails: false,
@@ -1695,7 +1695,25 @@
     /* Fix disappearing bar in masthead */
     #background.ytd-masthead {
       opacity: 1 !important;
-    }`
+    }
+    
+    /* Subscribe button */
+    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--filled {
+        background-color: #cc0000 !important ; color: #fff !important ; border-radius: 2px !important ;
+        text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
+    }
+    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--filled:hover {
+        background-color: #cc0000 !important }
+    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
+        background-color: #f2f2f2 !important ; color: #606060 !important ; border-radius: 2px !important ;
+        text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
+    }
+    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal:hover {
+        background-color: #e5e5e5 !important }
+    yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content { display: flex !important }
+    #notification-preference-button.ytd-subscribe-button-renderer { margin-left: 4px !important }
+    #notification-preference-button.ytd-subscribe-button-renderer button { border-radius: 16px !important }
+    `
 
     getLoadedElem('head').then(() => document.head.append(fixesStyle));
 
