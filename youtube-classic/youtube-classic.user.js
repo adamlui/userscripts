@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.26
+// @version           2026.1.17.27
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1807,7 +1807,7 @@
         return result
     }
 
-    let mutationObserver = new Object()
+    const mutationObserver = new Object()
 
     if (isShorts() && !mutationObserver.exists) {
         cLog('initializing mutation observer')
@@ -1871,40 +1871,35 @@
 
     function createRateBar(likes, dislikes) {
         if (isMobile) { return }
-        let rateBar = document.getElementById('return-youtube-dislike-bar-container')
-        const widthPx =
-            getBtns().children[0].clientWidth +
-            getBtns().children[1].clientWidth +
-            8
-        const widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) * 100 : 50
-        let likePercentage = parseFloat(widthPercent.toFixed(1))
-        const dislikePercentage = (100 - likePercentage).toLocaleString()
-        likePercentage = likePercentage.toLocaleString()
+        const rateBar = document.getElementById('return-youtube-dislike-bar-container'),
+              widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8,
+              widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50,
+              likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString(),
+              dislikePercent = (100 - likePercent).toLocaleString()
         let tooltipInnerHTML
         switch (extConfig.tooltipPercentageMode) {
             case 'dash_like':
-                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercentage}%`
+                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercent}%`
                 break
             case 'dash_dislike':
-                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${dislikePercentage}%`
+                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${dislikePercent}%`
                 break
             case 'both':
-                tooltipInnerHTML = `${likePercentage}%&nbsp;/&nbsp;${dislikePercentage}%`
+                tooltipInnerHTML = `${likePercent}%&nbsp;/&nbsp;${dislikePercent}%`
                 break
             case 'only_like':
-                tooltipInnerHTML = `${likePercentage}%`
+                tooltipInnerHTML = `${likePercent}%`
                 break
             case 'only_dislike':
-                tooltipInnerHTML = `${dislikePercentage}%`
+                tooltipInnerHTML = `${dislikePercent}%`
                 break
             default:
                 tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}`
         }
         if (!rateBar && !isMobile) {
             let colorDislikeStyle = ''
-            if (extConfig.coloredBar) {
+            if (extConfig.coloredBar)
                 colorDislikeStyle = '; background-color: ' + getColorFromTheme(false)
-            }
             document.getElementById('menu-container').insertAdjacentHTML(
                 'beforeend',
                 `
@@ -1965,26 +1960,14 @@
                     if (extConfig.coloredThumbs) {
                         if (isShorts()) {
                             // for shorts, leave deactived buttons in default color
-                            let shortLikeButton = getLikeBtn().querySelector(
-                                'tp-yt-paper-button#button'
-                            )
-                            let shortDislikeButton = getDislikeBtn().querySelector(
-                                'tp-yt-paper-button#button'
-                            )
-                            if (shortLikeButton.getAttribute('aria-pressed') == 'true') {
-                                shortLikeButton.style.color = getColorFromTheme(true)
-                            }
-                            if (shortDislikeButton.getAttribute('aria-pressed') == 'true') {
-                                shortDislikeButton.style.color = getColorFromTheme(false)
-                            }
-                            mutationObserver.observer.observe(
-                                shortLikeButton,
-                                mutationObserver.options
-                            )
-                            mutationObserver.observer.observe(
-                                shortDislikeButton,
-                                mutationObserver.options
-                            )
+                            const shortLikeBtn = getLikeBtn().querySelector('tp-yt-paper-button#button'),
+                                  shortDislikeBtn = getDislikeBtn().querySelector('tp-yt-paper-button#button')
+                            if (shortLikeBtn.getAttribute('aria-pressed') == 'true')
+                                shortLikeBtn.style.color = getColorFromTheme(true)
+                            if (shortDislikeBtn.getAttribute('aria-pressed') == 'true')
+                                shortDislikeBtn.style.color = getColorFromTheme(false)
+                            mutationObserver.observer.observe(shortLikeBtn, mutationObserver.options)
+                            mutationObserver.observer.observe(shortDislikeBtn, mutationObserver.options)
                         } else {
                             getLikeBtn().style.color = getColorFromTheme(true)
                             getDislikeBtn().style.color = getColorFromTheme(false)
@@ -2160,7 +2143,7 @@
         setEventListeners()
     })()
     if (isMobile) {
-        let originalPush = history.pushState
+        const originalPush = history.pushState
         history.pushState = function(...args) {
             unsafeWindow.returnDislikeButtonlistenersSet = false
             setEventListeners()
