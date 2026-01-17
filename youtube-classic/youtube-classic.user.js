@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.23
+// @version           2026.1.17.25
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1776,37 +1776,34 @@
     }
 
     function getLikeBtn() {
-        let firstBtn = getBtns().children[0]
+        const firstBtn = getBtns().children[0]
         return firstBtn.tagName == 'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER' ? firstBtn.children[0] : firstBtn
     }
 
     function getLikeTextContainer() {
-        return (
-            getLikeBtn().querySelector('#text') ??
-            getLikeBtn().getElementsByTagName('yt-formatted-string')[0] ??
-            getLikeBtn().querySelector('span[role="text"]')
-        )
+        const likeBtn = getLikeBtn() ; if (!likeBtn) return null
+        return likeBtn.querySelector('#text')
+            ?? likeBtn.getElementsByTagName('yt-formatted-string')[0]
+            ?? likeBtn.querySelector('span[role="text"]')
     }
 
-    function getDislikeButton() {
-        return getBtns().children[0].tagName ==
-            'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
-            ? getBtns().children[0].children[1]
-            : getBtns().children[1]
+    function getDislikeBtn() {
+        const [firstBtn, secondBtn] = getBtns().children
+        return firstBtn.tagName == 'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER' ? firstBtn.children[1] : secondBtn
     }
 
     function getDislikeTextContainer() {
         let result =
-            getDislikeButton().querySelector('#text') ??
-            getDislikeButton().getElementsByTagName('yt-formatted-string')[0] ??
-            getDislikeButton().querySelector('span[role="text"]')
+            getDislikeBtn().querySelector('#text') ??
+            getDislikeBtn().getElementsByTagName('yt-formatted-string')[0] ??
+            getDislikeBtn().querySelector('span[role="text"]')
         if (result == null) {
             let textSpan = document.createElement('span')
             textSpan.id = 'text'
             textSpan.style.marginLeft = '2px'
-            getDislikeButton().querySelector('button').appendChild(textSpan)
-            getDislikeButton().querySelector('button').style.width = 'auto'
-            result = getDislikeButton().querySelector('#text')
+            getDislikeBtn().querySelector('button').appendChild(textSpan)
+            getDislikeBtn().querySelector('button').style.width = 'auto'
+            result = getDislikeBtn().querySelector('#text')
         }
         return result
     }
@@ -1972,7 +1969,7 @@
                             let shortLikeButton = getLikeBtn().querySelector(
                                 'tp-yt-paper-button#button'
                             )
-                            let shortDislikeButton = getDislikeButton().querySelector(
+                            let shortDislikeButton = getDislikeBtn().querySelector(
                                 'tp-yt-paper-button#button'
                             )
                             if (shortLikeButton.getAttribute('aria-pressed') == 'true') {
@@ -1991,7 +1988,7 @@
                             )
                         } else {
                             getLikeBtn().style.color = getColorFromTheme(true)
-                            getDislikeButton().style.color = getColorFromTheme(false)
+                            getDislikeBtn().style.color = getColorFromTheme(false)
                         }
                     }
                 }
@@ -2171,9 +2168,9 @@
             return originalPush.apply(history, args)
         }
         setInterval(() => {
-            if (getDislikeButton().querySelector('.button-renderer-text') == null) {
+            if (getDislikeBtn().querySelector('.button-renderer-text') == null) {
                 getDislikeTextContainer().innerText = mobileDislikes
-            } else { getDislikeButton().querySelector('.button-renderer-text').innerText = mobileDislikes }
+            } else { getDislikeBtn().querySelector('.button-renderer-text').innerText = mobileDislikes }
         }, 1000)
     }
 
