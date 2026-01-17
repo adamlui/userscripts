@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.16
+// @version           2026.1.17.17
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -574,7 +574,7 @@
                     delete run.emoji
                     delete run.loggingDirectives
                 }
-            } catch(err) {}
+            } catch (err) {}
         }
         return comment
     }
@@ -597,7 +597,7 @@
             try {
                 creatorName = replies.viewRepliesCreatorThumbnail.accessibility.accessibilityData.label
                 delete replies.viewRepliesCreatorThumbnail
-            } catch(err) {}
+            } catch (err) {}
             let replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text)
             replyCount = +replyCount.replace(getString('replyCountIsolator', hl), '')
             const viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti',
@@ -611,7 +611,7 @@
             replies.hideReplies.buttonRenderer.text = {
                 runs: [{ text: (replyCount > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
             }
-        } catch(err) {}
+        } catch (err) {}
         return thread
     }
     function refreshData(element) {
@@ -1893,7 +1893,7 @@
             const likesStr = likeBtn.getAttribute('aria-label').replace(/\D/g, '')
             return likesStr.length ? parseInt(likesStr) : null
         }
-        catch { return null }
+        catch (err) { return null }
     }
 
     function createRateBar(likes, dislikes) {
@@ -2117,7 +2117,7 @@
                         ?.find((n) => n?.getAttribute('href')?.includes('?locale='))
                         ?.getAttribute('href')
                 )?.searchParams?.get('locale')
-            } catch {
+            } catch (err) {
                 cLog('Cannot find browser locale. Use en as default for number formatting.')
                 userLocales = 'en'
             }
@@ -2179,7 +2179,7 @@
                         buttons.children[1].addEventListener('click', dislikeClicked)
                         buttons.children[0].addEventListener('touchstart', likeClicked)
                         buttons.children[1].addEventListener('touchstart', dislikeClicked)
-                    } catch { return }
+                    } catch (err) { return }
                     unsafeWindow.returnDislikeButtonlistenersSet = true
                 }
                 setInitialState()
