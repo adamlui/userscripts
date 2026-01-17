@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.18
+// @version           2026.1.17.19
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -419,8 +419,7 @@
             return response
         }
         static setPlyrFlags(flags) {
-            if (!unsafeWindow.yt || !unsafeWindow.yt.config_ || !unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS)
-                return
+            if (!unsafeWindow.yt?.config_?.WEB_PLAYER_CONTEXT_CONFIGS) return
             const conCfgs = unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS
             if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {}
             for (const cfg in conCfgs) {
