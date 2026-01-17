@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.15
+// @version           2026.1.17.16
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -507,7 +507,7 @@
         like.setAttribute('style-action-button', '')
         like.setAttribute('is-icon-button', '')
         like.querySelector('a').insertBefore(like.querySelector('yt-formatted-string'), like.querySelector('tp-yt-paper-tooltip'))
-        try { like.querySelector('paper-ripple').remove() } catch(e) {}
+        like?.querySelector('paper-ripple')?.remove()
         let paper = like.querySelector('tp-yt-paper-button')
         paper.removeAttribute('style-target')
         paper.removeAttribute('animated')
