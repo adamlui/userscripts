@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.25
+// @version           2026.1.17.26
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1793,17 +1793,16 @@
     }
 
     function getDislikeTextContainer() {
-        let result =
-            getDislikeBtn().querySelector('#text') ??
-            getDislikeBtn().getElementsByTagName('yt-formatted-string')[0] ??
-            getDislikeBtn().querySelector('span[role="text"]')
-        if (result == null) {
-            let textSpan = document.createElement('span')
-            textSpan.id = 'text'
-            textSpan.style.marginLeft = '2px'
-            getDislikeBtn().querySelector('button').appendChild(textSpan)
-            getDislikeBtn().querySelector('button').style.width = 'auto'
-            result = getDislikeBtn().querySelector('#text')
+        const dislikeBtn = getDislikeBtn() ; if (!dislikeBtn) return null
+        let result = dislikeBtn.querySelector('#text')
+                  ?? dislikeBtn.getElementsByTagName('yt-formatted-string')[0]
+                  ?? dislikeBtn.querySelector('span[role="text"]')
+        if (!result) {
+            const textSpan = document.createElement('span')
+            textSpan.id = 'text' ; textSpan.style.marginLeft = '2px'
+            dislikeBtn.querySelector('button').append(textSpan)
+            dislikeBtn.querySelector('button').style.width = 'auto'
+            result = dislikeBtn.querySelector('#text')
         }
         return result
     }
