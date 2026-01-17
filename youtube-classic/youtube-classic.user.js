@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.21
+// @version           2026.1.17.22
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1760,42 +1760,26 @@
         )
     }
 
-    function getButtons() {
+    function getBtns() {
         if (isShorts()) {
-            let elements = document.querySelectorAll(
-                isMobile
-                    ? 'ytm-like-button-renderer'
-                    : '#like-button > ytd-like-button-renderer'
-            )
-            for (let element of elements) {
-                if (isInViewport(element)) {
-                    return element
-                }
-            }
+            const elems = document.querySelectorAll(`${ !isMobile ? '#like-button > ' : '' }ytm-like-button-renderer`)
+            for (const elem of elems) if (isInViewport(elem)) return elem
         }
-        if (isMobile) {
-            return (
-                document.querySelector('.slim-video-action-bar-actions .segmented-buttons') ??
-                document.querySelector('.slim-video-action-bar-actions')
-            )
-        }
-        if (document.getElementById('menu-container')?.offsetParent == null) {
-            return (
-                document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div') ??
-                document.querySelector('ytd-menu-renderer.ytd-video-primary-info-renderer > div')
-            )
-        } else {
-            return document
-                .getElementById('menu-container')
-                ?.querySelector('#top-level-buttons-computed')
-        }
+        if (isMobile)
+            return document.querySelector('.slim-video-action-bar-actions .segmented-buttons')
+                ?? document.querySelector('.slim-video-action-bar-actions')
+        else if (!document.getElementById('menu-container')?.offsetParent)
+            return document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div')
+                ?? document.querySelector('ytd-menu-renderer.ytd-video-primary-info-renderer > div')
+        else
+            return document.getElementById('menu-container')?.querySelector('#top-level-buttons-computed')
     }
 
     function getLikeButton() {
-        return getButtons().children[0].tagName ==
+        return getBtns().children[0].tagName ==
             'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
-            ? getButtons().children[0].children[0]
-            : getButtons().children[0]
+            ? getBtns().children[0].children[0]
+            : getBtns().children[0]
     }
 
     function getLikeTextContainer() {
@@ -1807,10 +1791,10 @@
     }
 
     function getDislikeButton() {
-        return getButtons().children[0].tagName ==
+        return getBtns().children[0].tagName ==
             'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER'
-            ? getButtons().children[0].children[1]
-            : getButtons().children[1]
+            ? getBtns().children[0].children[1]
+            : getBtns().children[1]
     }
 
     function getDislikeTextContainer() {
@@ -1864,7 +1848,7 @@
 
     function setLikes(likesCount) {
         if (isMobile) {
-            getButtons().children[0].querySelector('.button-renderer-text').innerText =
+            getBtns().children[0].querySelector('.button-renderer-text').innerText =
                 likesCount
             return
         }
@@ -1895,8 +1879,8 @@
         if (isMobile) { return }
         let rateBar = document.getElementById('return-youtube-dislike-bar-container')
         const widthPx =
-            getButtons().children[0].clientWidth +
-            getButtons().children[1].clientWidth +
+            getBtns().children[0].clientWidth +
+            getBtns().children[1].clientWidth +
             8
         const widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) * 100 : 50
         let likePercentage = parseFloat(widthPercent.toFixed(1))
@@ -2157,8 +2141,8 @@
     function setEventListeners() {
         let jsInitChecktimer
         function checkForJS_Finish() {
-            if (isShorts() || (getButtons()?.offsetParent && isVideoLoaded())) {
-                const buttons = getButtons()
+            if (isShorts() || (getBtns()?.offsetParent && isVideoLoaded())) {
+                const buttons = getBtns()
                 if (!unsafeWindow.returnDislikeButtonlistenersSet) {
                     cLog('Registering button listeners...')
                     try {
