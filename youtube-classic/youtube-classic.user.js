@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.6
+// @version           2026.1.17.7
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1860,7 +1860,7 @@
                     }
                     return;
                 }
-                cLog('unexpected mutation observer event: ' + mutation.target + mutation.type);
+                cLog(`unexpected mutation observer event: ${mutation.target.nodeName} ${mutation.type}`)
         })})
     }
 
