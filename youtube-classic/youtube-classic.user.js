@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.3
+// @version           2026.1.17.4
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -406,15 +406,15 @@
         }
         static decodePlyrFlags(flags) {
             const obj = {}, dflags = flags.split('&')
-            for (let i = 0 ; i < dflags.length ; i++) {
-                const dflag = dflags[i].split('=') ; obj[dflag[0]] = dflag[1] }
+            for (const dflagStr of dflags) {
+                const dflag = dflagStr.split('=') ; obj[dflag[0]] = dflag[1] }
             return obj
         }
         static encodePlyrFlags(flags) {
             const keys = Object.keys(flags) ; let response = ''
-            for (let i = 0 ; i < keys.length ; i++) {
+            for (const [i, key] of keys.entries()) {
                 if (i > 0) response += '&'
-                response += keys[i] + '=' + flags[keys[i]]
+                response += key + '=' + flags[key]
             }
             return response
         }
@@ -557,15 +557,14 @@
             else return
         } else if (cfi18n.en[string])
             str = cfi18n.en[string]
-        for (let i = 0 ; i < args.length ; i++)
-            str = str.replace(/%s/, args[i])
+        for (const arg of args)
+            str = str.replace(/%s/, arg)
         return str
     }
     function getSimpleString(object) {
         if (object.simpleText) return object.simpleText
         let str = ''
-        for (let i = 0 ; i < object.runs.length ; i++)
-            str += object.runs[i].text
+        for (const run of object.runs) str += run.text
         return str
     }
     function formatComment(comment) {
@@ -573,9 +572,9 @@
             let runs
             try {
                 runs = comment.contentText.runs
-                for (let i = 0 ; i < runs.length ; i++) {
-                    delete runs[i].emoji
-                    delete runs[i].loggingDirectives
+                for (const run of runs) {
+                    delete run.emoji
+                    delete run.loggingDirectives
                 }
             } catch(err) {}
         }
@@ -628,8 +627,7 @@
     const commentObserver = new MutationObserver((list) => {
         list.forEach(async(mutation) => {
             if (mutation.addedNodes) {
-                for (let i = 0 ; i < mutation.addedNodes.length ; i++) {
-                    const elm = mutation.addedNodes[i]
+                for (const elm of mutation.addedNodes) {
                     if (elm.classList && elm.data && !elm.data.fixedByCF) {
                         if (elm.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
                             elm.data = await formatCommentThread(elm.data)
