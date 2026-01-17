@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.19
+// @version           2026.1.17.20
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1831,16 +1831,12 @@
 
     let mutationObserver = new Object()
 
-    if (isShorts() && mutationObserver.exists != true) {
+    if (isShorts() && !mutationObserver.exists) {
         cLog('initializing mutation observer')
-        mutationObserver.options = {
-            childList: false,
-            attributes: true,
-            subtree: false
-        }
+        mutationObserver.options = { childList: false, attributes: true, subtree: false }
         mutationObserver.exists = true
         mutationObserver.observer = new MutationObserver(function(mutationList) {
-            mutationList.forEach((mutation) => {
+            mutationList.forEach(mutation => {
                 if (
                     mutation.type == 'attributes' &&
                     mutation.target.nodeName == 'TP-YT-PAPER-BUTTON' &&
@@ -1983,12 +1979,12 @@
                     likesvalue = likes
                     dislikesvalue = dislikes
                     setDislikes(numberFormat(dislikes))
-                    if (extConfig.numberDisplayReformatLikes == true) {
+                    if (extConfig.numberDisplayReformatLikes) {
                         const nativeLikes = getLikeCountFromButton()
                         if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                     }
                     createRateBar(likes, dislikes)
-                    if (extConfig.coloredThumbs == true) {
+                    if (extConfig.coloredThumbs) {
                         if (isShorts()) {
                             // for shorts, leave deactived buttons in default color
                             let shortLikeButton = getLikeButton().querySelector(
@@ -2039,7 +2035,7 @@
                 createRateBar(likesvalue, dislikesvalue)
                 previousState = 1
             }
-            if (extConfig.numberDisplayReformatLikes == true) {
+            if (extConfig.numberDisplayReformatLikes) {
                 const nativeLikes = getLikeCountFromButton()
                 if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
             }
@@ -2064,7 +2060,7 @@
                 setDislikes(numberFormat(dislikesvalue))
                 createRateBar(likesvalue, dislikesvalue)
                 previousState = 2
-                if (extConfig.numberDisplayReformatLikes == true) {
+                if (extConfig.numberDisplayReformatLikes) {
                     const nativeLikes = getLikeCountFromButton()
                     if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                 }
@@ -2098,18 +2094,16 @@
         return value * 10 ** decimal
     }
 
-    function numberFormat(numberState) {
-        let numberDisplay
-        if (extConfig.numberDisplayRoundDown == false) { numberDisplay = numberState
-        } else { numberDisplay = roundDown(numberState) }
-        return getNumberFormatter(extConfig.numberDisplayFormat).format(numberDisplay)
+    function numberFormat(numState) {
+        const numDisplay = !extConfig.numberDisplayRoundDown ? numState : roundDown(numState)
+        return getNumberFormatter(extConfig.numberDisplayFormat).format(numDisplay)
     }
 
     function getNumberFormatter(optionSelect) {
         let userLocales
-        if (document.documentElement.lang) { userLocales = document.documentElement.lang
-        } else if (navigator.language) { userLocales = navigator.language
-        } else {
+        if (document.documentElement.lang) userLocales = document.documentElement.lang
+        else if (navigator.language) userLocales = navigator.language
+        else {
             try {
                 userLocales = new URL(
                     Array.from(document.querySelectorAll('head > link[rel="search"]'))
