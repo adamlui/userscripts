@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.36
+// @version           2026.1.17.37
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1343,7 +1343,7 @@
         dislikeTextContainer.removeAttribute('is-empty') ; dislikeTextContainer.innerText = dislikesCnt
     }
 
-    function getLikeCountFromButton() {
+    function getLikeCntFromBtn() {
         try {
             if (isShorts()) return null
             const likeBtn = getLikeBtn().querySelector('yt-formatted-string#text')
@@ -1417,7 +1417,7 @@
                     dislikesvalue = dislikes
                     setDislikes(numberFormat(dislikes))
                     if (extConfig.numberDisplayReformatLikes) {
-                        const nativeLikes = getLikeCountFromButton()
+                        const nativeLikes = getLikeCntFromBtn()
                         if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                     }
                     createRateBar(likes, dislikes)
@@ -1461,7 +1461,7 @@
                 previousState = 1
             }
             if (extConfig.numberDisplayReformatLikes) {
-                const nativeLikes = getLikeCountFromButton()
+                const nativeLikes = getLikeCntFromBtn()
                 if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
             }
         }
@@ -1486,7 +1486,7 @@
                 createRateBar(likesvalue, dislikesvalue)
                 previousState = 2
                 if (extConfig.numberDisplayReformatLikes) {
-                    const nativeLikes = getLikeCountFromButton()
+                    const nativeLikes = getLikeCntFromBtn()
                     if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
                 }
             }
