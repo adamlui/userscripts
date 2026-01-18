@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.51
+// @version           2026.1.17.52
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1373,15 +1373,12 @@
     function setState() {
         cLog('Fetching votes...')
         let statsSet = false
-        fetch(
-            `https://returnyoutubedislikeapi.com/votes?videoId=${getVideoID()}`
-        ).then((response) => {
-            response.json().then((json) => {
-                if (json && !('traceId' in response) && !statsSet) {
+        fetch(`https://returnyoutubedislikeapi.com/votes?videoId=${getVideoID()}`).then(resp =>
+            resp.json().then(json => {
+                if (json && !('traceId' in resp) && !statsSet) {
                     const { dislikes, likes } = json
                     cLog(`Received count: ${dislikes}`)
-                    likesVal = likes
-                    dislikesVal = dislikes
+                    likesVal = likes ; dislikesVal = dislikes
                     setDislikes(numberFormat(dislikes))
                     if (extConfig.numberDisplayReformatLikes) {
                         const nativeLikes = getLikeCntFromBtn()
@@ -1406,7 +1403,7 @@
                     }
                 }
             })
-        })
+        )
     }
 
     function likeClicked() {
