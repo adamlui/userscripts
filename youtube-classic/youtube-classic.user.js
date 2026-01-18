@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.44
+// @version           2026.1.17.45
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -604,13 +604,13 @@
         } catch (err) {}
         return thread
     }
-    function refreshData(element) {
-        const clone = element.cloneNode()
-        clone.data = element.data
+    function refreshData(elem) {
+        const clone = elem.cloneNode()
+        clone.data = elem.data
         clone.data.fixedByCF = true
-        for (const i in element.properties) clone[i] = element[i]
-        element.insertAdjacentElement('afterend', clone)
-        element.remove()
+        for (const i in elem.properties) clone[i] = elem[i]
+        elem.insertAdjacentElement('afterend', clone)
+        elem.remove()
     }
     const commentObserver = new MutationObserver(mutations => mutations.forEach(async mutation => {
         if (mutation.addedNodes) for (const elem of mutation.addedNodes) if (elem.classList && !elem.data?.fixedByCF)
@@ -1217,12 +1217,12 @@
         console.log(`[Return YouTube Dislikes] ${text} ${subtext}`)
     }
 
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect()
+    function isInViewport(elem) {
+        const rect = elem.getBoundingClientRect()
         const height = innerHeight || document.documentElement.clientHeight
         const width = innerWidth || document.documentElement.clientWidth
         return (
-            // When short (channel) is ignored, the element (like/dislike AND short itself) is
+            // When short (channel) is ignored, the elem (like/dislike AND short itself) is
             // hidden with a 0 DOMRect. In this case, consider it outside of Viewport
             !(rect.top == 0 && rect.left == 0 && rect.bottom == 0 && rect.right == 0) &&
             rect.top >= 0 &&
