@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.28
+// @version           2026.1.17.29
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -290,8 +290,10 @@
         if (foundState) { // append styled state word
             const styledStateSpan = document.createElement('span')
             styledStateSpan.style.cssText = `color: ${
-                foundState == toolbarMenu.state.words[0] ? '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
-                                                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px' }`
+                foundState == toolbarMenu.state.words[0] ?
+                    '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px'
+            }`
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
