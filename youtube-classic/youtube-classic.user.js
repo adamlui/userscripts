@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.34
+// @version           2026.1.17.35
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1362,71 +1362,50 @@
     }
 
     function createRateBar(likes, dislikes) {
-        if (isMobile) { return }
-        const rateBar = document.getElementById('return-youtube-dislike-bar-container'),
-              widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8,
-              widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50,
-              likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString(),
-              dislikePercent = (100 - likePercent).toLocaleString()
-        let tooltipInnerHTML
-        switch (extConfig.tooltipPercentageMode) {
-            case 'dash_like':
-                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercent}%`
-                break
-            case 'dash_dislike':
-                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${dislikePercent}%`
-                break
-            case 'both':
-                tooltipInnerHTML = `${likePercent}%&nbsp;/&nbsp;${dislikePercent}%`
-                break
-            case 'only_like':
-                tooltipInnerHTML = `${likePercent}%`
-                break
-            case 'only_dislike':
-                tooltipInnerHTML = `${dislikePercent}%`
-                break
-            default:
-                tooltipInnerHTML = `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}`
-        }
+        if (isMobile) return
+        const rateBar = document.getElementById('return-youtube-dislike-bar-container')
+        const widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8
+        const widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50
+        const likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString()
+        const dislikePercent = (100 - likePercent).toLocaleString()
+        const tooltipInnerHTML = {
+            dash_like: `${likes.toLocaleString()}&nbsp;/&nbsp;${
+                dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercent}%`,
+            dash_dislike: `${likes.toLocaleString()}&nbsp;/&nbsp;${
+                dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${dislikePercent}%`,
+            both: `${likePercent}%&nbsp;/&nbsp;${dislikePercent}%`,
+            only_like: `${likePercent}%`,
+            only_dislike: `${dislikePercent}%`
+        }[extConfig.tooltipPercentageMode] || `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}`
         if (!rateBar && !isMobile) {
-            let colorDislikeStyle = ''
-            if (extConfig.coloredBar)
-                colorDislikeStyle = '; background-color: ' + getColorFromTheme(false)
-            document.getElementById('menu-container').insertAdjacentHTML(
-                'beforeend',
-                `
-                    <div class="ryd-tooltip" style="width: ${widthPx}px">
-                    <div class="ryd-tooltip-bar-container">
+            const colorDislikeStyle = extConfig.coloredBar ? `; background-color: ${getColorFromTheme(false)}` : ''
+            document.getElementById('menu-container').insertAdjacentHTML('beforeend', `
+                <div class="ryd-tooltip" style="width: ${widthPx}px">
+                <div class="ryd-tooltip-bar-container">
+                    <div
+                        id="return-youtube-dislike-bar-container"
+                        style="width: 100%; height: 2px;${colorDislikeStyle}"
+                        >
                         <div
-                            id="return-youtube-dislike-bar-container"
-                            style="width: 100%; height: 2px;${colorDislikeStyle}"
-                            >
-                            <div
-                                id="return-youtube-dislike-bar"
-                                style="width: ${widthPercent}%; height: 100%${colorDislikeStyle}"
-                                ></div>
-                        </div>
+                            id="return-youtube-dislike-bar"
+                            style="width: ${widthPercent}%; height: 100%${colorDislikeStyle}"
+                            ></div>
                     </div>
-                    <tp-yt-paper-tooltip position="top" id="ryd-dislike-tooltip" class="style-scope ytd-sentiment-bar-renderer" role="tooltip" tabindex="-1">
-                        <!--css-build:shady-->${tooltipInnerHTML}
-                    </tp-yt-paper-tooltip>
-                    </div>`
-            )
+                </div>
+                <tp-yt-paper-tooltip position="top" id="ryd-dislike-tooltip" class="style-scope ytd-sentiment-bar-renderer" role="tooltip" tabindex="-1">
+                    <!--css-build:shady-->${tooltipInnerHTML}
+                </tp-yt-paper-tooltip>
+                </div>
+            `)
         } else {
-            document.getElementById(
-                'return-youtube-dislike-bar-container'
-            ).style.width = widthPx + 'px'
-            document.getElementById('return-youtube-dislike-bar').style.width =
-                widthPercent + '%'
-            document.querySelector('#ryd-dislike-tooltip > #tooltip').innerHTML =
-                tooltipInnerHTML
+            const rydBar = document.getElementById('return-youtube-dislike-bar'),
+                  rydBarContainer = document.getElementById('return-youtube-dislike-bar-container'),
+                  rydTooltip = document.querySelector('#ryd-dislike-tooltip > #tooltip')
+            rydBar.style.width = `${widthPercent}%` ; rydBarContainer.style.width = `${widthPx}px`
+            rydTooltip.innerHTML = tooltipInnerHTML
             if (extConfig.coloredBar) {
-                document.getElementById(
-                    'return-youtube-dislike-bar-container'
-                ).style.backgroundColor = getColorFromTheme(false)
-                document.getElementById(
-                    'return-youtube-dislike-bar'
-                ).style.backgroundColor = getColorFromTheme(true)
+                rydBarContainer.style.backgroundColor = getColorFromTheme(false)
+                rydBar.style.backgroundColor = getColorFromTheme(true)
             }
         }
     }
