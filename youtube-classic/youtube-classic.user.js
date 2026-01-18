@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.37
+// @version           2026.1.17.38
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -516,7 +516,7 @@
         like.querySelector('a').insertBefore(paper.querySelector('yt-icon'), like.querySelector('yt-formatted-string'))
         paper.outerHTML = paper.outerHTML.replace('<tp-yt-paper-button ', '<yt-icon-button ').replace('</tp-yt-paper-button>', '</yt-icon-button>')
         paper = like.querySelector('yt-icon-button')
-        paper.querySelector('button#button').appendChild(like.querySelector('yt-icon'))
+        paper.querySelector('button#button').append(like.querySelector('yt-icon'))
         const dislike = $('ytd-video-primary-info-renderer div#segmented-dislike-button > ytd-toggle-button-renderer')
         lds.insertBefore(dislike, share)
         $('ytd-video-primary-info-renderer ytd-segmented-like-dislike-button-renderer').remove()
@@ -1201,7 +1201,7 @@
         btnStyle.textContent = css
         const heads = document.getElementsByTagName('head'),
               btnStyleParent = heads.length ? heads[0] : document.documentElement
-        btnStyleParent.appendChild(btnStyle)
+        btnStyleParent.append(btnStyle)
     })()
 
     Object.defineProperties(document, { 'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'}, 'webkitVisibilityState': {value: 'visible'} })
