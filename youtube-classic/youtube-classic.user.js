@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.46
+// @version           2026.1.17.47
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -204,8 +204,8 @@
         const thisQuadrantQueue = notifyProps.queue[notificationDiv.quadrant]
         if (thisQuadrantQueue.length > 1) {
             try { // to move old notifications
-                for (const divId of thisQuadrantQueue.slice(0, -1)) { // exclude new div
-                    const oldDiv = document.getElementById(divId),
+                for (const divID of thisQuadrantQueue.slice(0, -1)) { // exclude new div
+                    const oldDiv = document.getElementById(divID),
                           offsetProp = oldDiv.style.top ? 'top' : 'bottom', // pick property to change
                           vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
                     oldDiv.style[offsetProp] = `${vOffset}px` // change prop
@@ -1384,7 +1384,7 @@
         cLog('Fetching votes...')
         let statsSet = false
         fetch(
-            `https://returnyoutubedislikeapi.com/votes?videoId=${getVideoId()}`
+            `https://returnyoutubedislikeapi.com/votes?videoId=${getVideoID()}`
         ).then((response) => {
             response.json().then((json) => {
                 if (json && !('traceId' in response) && !statsSet) {
@@ -1472,20 +1472,16 @@
 
     function setInitialState() { setState() }
 
-    function getVideoId() {
-        const urlObject = new URL(unsafeWindow.location.href)
-        const pathname = urlObject.pathname
-        if (pathname.startsWith('/clip')) { return document.querySelector('meta[itemprop="videoId"]').content
-        } else {
-            if (pathname.startsWith('/shorts')) { return pathname.slice(8) }
-            return urlObject.searchParams.get('v')
-        }
+    function getVideoID() {
+        const urlObj = new URL(unsafeWindow.location.href), pathname = urlObj.pathname
+        return pathname.startsWith('/clip') ? document.querySelector('meta[itemprop="videoId"]')?.content
+             : pathname.startsWith('/shorts') ? pathname.slice(8)
+             : urlObj.searchParams.get('v')
     }
 
     function isVideoLoaded() {
-        if (isMobile) { return document.getElementById('player').getAttribute('loading') == 'false' }
-        const videoId = getVideoId()
-        return ( document.querySelector(`ytd-watch-flexy[video-id='${videoId}']`) != null )
+        return isMobile ? document.getElementById('player').getAttribute('loading') == 'false'
+             : document.querySelector(`ytd-watch-flexy[video-id='${getVideoID()}']`)
     }
 
     function roundDown(num) {
