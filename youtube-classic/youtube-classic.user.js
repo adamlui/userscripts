@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.40
+// @version           2026.1.17.41
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -549,15 +549,11 @@
         if (!string) return
         let str
         if (cfi18n[hl]) {
-            if (cfi18n[hl][string])
-                str = cfi18n[hl][string]
-            else if (cfi18n.en[string])
-                str = cfi18n.en[string]
+            if (cfi18n[hl][string]) str = cfi18n[hl][string]
+            else if (cfi18n.en[string]) str = cfi18n.en[string]
             else return
-        } else if (cfi18n.en[string])
-            str = cfi18n.en[string]
-        for (const arg of args)
-            str = str.replace(/%s/, arg)
+        } else if (cfi18n.en[string]) str = cfi18n.en[string]
+        for (const arg of args) str = str.replace(/%s/, arg)
         return str
     }
     function getSimpleString(object) {
