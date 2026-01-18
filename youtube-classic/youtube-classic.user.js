@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.35
+// @version           2026.1.17.36
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1332,22 +1332,15 @@
         return !!document.querySelector('#avatar-btn')
     }
 
-    function setLikes(likesCount) {
-        if (isMobile) {
-            getBtns().children[0].querySelector('.button-renderer-text').innerText =
-                likesCount
-            return
-        }
-        getLikeTextContainer().innerText = likesCount
+    function setLikes(likesCnt) {
+        if (isMobile) return getBtns().children[0].querySelector('.button-renderer-text').innerText = likesCnt
+        getLikeTextContainer().innerText = likesCnt
     }
 
-    function setDislikes(dislikesCount) {
-        if (isMobile) {
-            mobileDislikes = dislikesCount
-            return
-        }
-        getDislikeTextContainer()?.removeAttribute('is-empty')
-        getDislikeTextContainer().innerText = dislikesCount
+    function setDislikes(dislikesCnt) {
+        if (isMobile) return mobileDislikes = dislikesCnt
+        const dislikeTextContainer = getDislikeTextContainer() ; if (!dislikeTextContainer) return
+        dislikeTextContainer.removeAttribute('is-empty') ; dislikeTextContainer.innerText = dislikesCnt
     }
 
     function getLikeCountFromButton() {
