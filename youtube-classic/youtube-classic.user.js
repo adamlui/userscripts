@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.42
+// @version           2026.1.17.43
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -619,28 +619,17 @@
         element.insertAdjacentElement('afterend', clone)
         element.remove()
     }
-    const commentObserver = new MutationObserver((list) => {
-        list.forEach(async(mutation) => {
-            if (mutation.addedNodes) {
-                for (const elm of mutation.addedNodes) {
-                    if (elm.classList && elm.data && !elm.data.fixedByCF) {
-                        if (elm.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
-                            elm.data = await formatCommentThread(elm.data)
-                            refreshData(elm)
-                        } else if (elm.tagName == 'YTD-COMMENT-RENDERER') {
-                            if (!elm.classList.contains('ytd-comment-thread-renderer')) {
-                                elm.data = formatComment(elm.data)
-                                refreshData(elm)
-                            }
-                        }
-                    }
-                }
-            }
-        })
-    })
-    document.addEventListener('yt-page-data-updated', async() => {
-        commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true })
-    })
+    const commentObserver = new MutationObserver(mutations => mutations.forEach(async mutation => {
+        if (mutation.addedNodes) for (const elem of mutation.addedNodes) if (elem.classList && !elem.data?.fixedByCF)
+            if (elem.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
+                elem.data = await formatCommentThread(elem.data)
+                refreshData(elem)
+            } else if (elem.tagName == 'YTD-COMMENT-RENDERER'
+                && !elem.classList.contains('ytd-comment-thread-renderer')
+            ) { elem.data = formatComment(elem.data) ; refreshData(elem) }
+    }))
+    document.addEventListener('yt-page-data-updated', async () =>
+        commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true }))
 
     // CSS adjustments and UI fixes
     const fixesStyle = document.createElement('style')
