@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.38
+// @version           2026.1.17.39
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1204,11 +1204,13 @@
         btnStyleParent.append(btnStyle)
     })()
 
-    Object.defineProperties(document, { 'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'}, 'webkitVisibilityState': {value: 'visible'} })
+    Object.defineProperties(document, {
+        'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'},
+        'webkitVisibilityState': {value: 'visible'}
+    })
 
-    setInterval(function(){
-        document.dispatchEvent( new KeyboardEvent( 'keyup', { bubbles: true, cancelable: true, keyCode: 143, which: 143 } ) )
-    }, 60000)
+    setInterval(() => document.dispatchEvent(new KeyboardEvent('keyup', {
+        bubbles: true, cancelable: true, keyCode: 143, which: 143 })), 60000)
 
     const extConfig = {
         // BEGIN USER OPTIONS
