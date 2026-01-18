@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.48
+// @version           2026.1.17.49
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1479,7 +1479,7 @@
 
     function isVideoLoaded() {
         return isMobile ? document.getElementById('player').getAttribute('loading') == 'false'
-             : document.querySelector(`ytd-watch-flexy[video-id='${getVideoID()}']`)
+             : !!document.querySelector(`ytd-watch-flexy[video-id='${getVideoID()}']`)
     }
 
     function roundDown(num) {
