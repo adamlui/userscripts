@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.45
+// @version           2026.1.17.46
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1490,10 +1490,10 @@
 
     function roundDown(num) {
         if (num < 1000) return num
-        const int = Math.floor(Math.log10(num) - 2)
-        const decimal = int + (int % 3 ? 1 : 0)
-        const value = Math.floor(num / 10 ** decimal)
-        return value * 10 ** decimal
+        const int = Math.floor(Math.log10(num) -2),
+              decimal = int +( int % 3 != 0 ),
+              val = Math.floor(num /10 ** decimal)
+        return val *10 ** decimal
     }
 
     function numberFormat(numState) {
