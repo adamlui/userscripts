@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.49
+// @version           2026.1.17.50
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -606,11 +606,9 @@
     }
     function refreshData(elem) {
         const clone = elem.cloneNode()
-        clone.data = elem.data
-        clone.data.fixedByCF = true
+        clone.data = elem.data ; clone.data.fixedByCF = true
         for (const i in elem.properties) clone[i] = elem[i]
-        elem.insertAdjacentElement('afterend', clone)
-        elem.remove()
+        elem.insertAdjacentElement('afterend', clone) ; elem.remove()
     }
     const commentObserver = new MutationObserver(mutations => mutations.forEach(async mutation => {
         if (mutation.addedNodes) for (const elem of mutation.addedNodes) if (elem.classList && !elem.data?.fixedByCF)
