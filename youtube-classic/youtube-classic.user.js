@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.41
+// @version           2026.1.17.42
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1223,9 +1223,9 @@
         // END USER OPTIONS
     }
 
-    let previousState = 3 // 1=LIKED, 2=DISLIKED, 3=NEUTRAL
-    let likesvalue = 0
-    let dislikesvalue = 0
+    let prevState = 3 // 1=LIKED, 2=DISLIKED, 3=NEUTRAL
+    let likesVal = 0
+    let dislikesVal = 0
     let isMobile = location.hostname == 'm.youtube.com'
     let isShorts = () => location.pathname.startsWith('/shorts')
     let mobileDislikes = 0
@@ -1408,8 +1408,8 @@
                 if (json && !('traceId' in response) && !statsSet) {
                     const { dislikes, likes } = json
                     cLog(`Received count: ${dislikes}`)
-                    likesvalue = likes
-                    dislikesvalue = dislikes
+                    likesVal = likes
+                    dislikesVal = dislikes
                     setDislikes(numberFormat(dislikes))
                     if (extConfig.numberDisplayReformatLikes) {
                         const nativeLikes = getLikeCntFromBtn()
@@ -1439,21 +1439,21 @@
 
     function likeClicked() {
         if (checkForUserAvatarButton()) {
-            if (previousState == 1) {
-                likesvalue--
-                createRateBar(likesvalue, dislikesvalue)
-                setDislikes(numberFormat(dislikesvalue))
-                previousState = 3
-            } else if (previousState == 2) {
-                likesvalue++
-                dislikesvalue--
-                setDislikes(numberFormat(dislikesvalue))
-                createRateBar(likesvalue, dislikesvalue)
-                previousState = 1
-            } else if (previousState == 3) {
-                likesvalue++
-                createRateBar(likesvalue, dislikesvalue)
-                previousState = 1
+            if (prevState == 1) {
+                likesVal--
+                createRateBar(likesVal, dislikesVal)
+                setDislikes(numberFormat(dislikesVal))
+                prevState = 3
+            } else if (prevState == 2) {
+                likesVal++
+                dislikesVal--
+                setDislikes(numberFormat(dislikesVal))
+                createRateBar(likesVal, dislikesVal)
+                prevState = 1
+            } else if (prevState == 3) {
+                likesVal++
+                createRateBar(likesVal, dislikesVal)
+                prevState = 1
             }
             if (extConfig.numberDisplayReformatLikes) {
                 const nativeLikes = getLikeCntFromBtn()
@@ -1464,22 +1464,22 @@
 
     function dislikeClicked() {
         if (checkForUserAvatarButton()) {
-            if (previousState == 3) {
-                dislikesvalue++
-                setDislikes(numberFormat(dislikesvalue))
-                createRateBar(likesvalue, dislikesvalue)
-                previousState = 2
-            } else if (previousState == 2) {
-                dislikesvalue--
-                setDislikes(numberFormat(dislikesvalue))
-                createRateBar(likesvalue, dislikesvalue)
-                previousState = 3
-            } else if (previousState == 1) {
-                likesvalue--
-                dislikesvalue++
-                setDislikes(numberFormat(dislikesvalue))
-                createRateBar(likesvalue, dislikesvalue)
-                previousState = 2
+            if (prevState == 3) {
+                dislikesVal++
+                setDislikes(numberFormat(dislikesVal))
+                createRateBar(likesVal, dislikesVal)
+                prevState = 2
+            } else if (prevState == 2) {
+                dislikesVal--
+                setDislikes(numberFormat(dislikesVal))
+                createRateBar(likesVal, dislikesVal)
+                prevState = 3
+            } else if (prevState == 1) {
+                likesVal--
+                dislikesVal++
+                setDislikes(numberFormat(dislikesVal))
+                createRateBar(likesVal, dislikesVal)
+                prevState = 2
                 if (extConfig.numberDisplayReformatLikes) {
                     const nativeLikes = getLikeCntFromBtn()
                     if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
