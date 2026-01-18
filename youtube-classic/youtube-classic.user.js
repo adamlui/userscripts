@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.50
+// @version           2026.1.17.51
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -370,30 +370,22 @@
     class YTP {
         static observer = new MutationObserver(this.onNewScript)
         static _config = {}
-        static isObject(item) {
-            return (item && typeof item == 'object' && !Array.isArray(item))
-        }
+        static isObject(item) { return (item && typeof item == 'object' && !Array.isArray(item)) }
         static mergeDeep(target, ...sources) {
             if (!sources.length) return target
             const source = sources.shift()
-            if (this.isObject(target) && this.isObject(source)) {
-                for (const key in source) {
-                    if (this.isObject(source[key])) {
-                        if (!target[key]) Object.assign(target, { [key]: {} })
-                        this.mergeDeep(target[key], source[key])
-                    } else {
-                        Object.assign(target, { [key]: source[key] })
-                    }
-                }
-            }
+            if (this.isObject(target) && this.isObject(source)) for (const key in source)
+                if (this.isObject(source[key])) {
+                    if (!target[key]) Object.assign(target, { [key]: {} })
+                    this.mergeDeep(target[key], source[key])
+                } else Object.assign(target, { [key]: source[key] })
             return this.mergeDeep(target, ...sources)
         }
         static onNewScript(mutations) { if (mutations.some(mut => mut.addedNodes.length)) YTP.bruteforce() }
         static start() { this.observer.observe(document, {childList: true, subtree: true}) }
         static stop() { this.observer.disconnect() }
         static bruteforce() {
-            if (!unsafeWindow.yt) return
-            if (!unsafeWindow.yt.config_) return
+            if (!unsafeWindow.yt?.config_) return
             this.mergeDeep(unsafeWindow.yt.config_, this._config)
         }
         static setCfg(name, value) { this._config[name] = value }
