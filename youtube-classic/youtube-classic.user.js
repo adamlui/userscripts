@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.54
+// @version           2026.1.17.55
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1272,32 +1272,24 @@
         return result
     }
 
-    const mutationObserver = new Object()
-
-    if (isShorts() && !mutationObserver.exists) {
+    const shortsObs = new Object()
+    if (isShorts() && !shortsObs.exists) {
         cLog('initializing mutation observer')
-        mutationObserver.options = { childList: false, attributes: true, subtree: false }
-        mutationObserver.exists = true
-        mutationObserver.observer = new MutationObserver(function(mutationList) {
-            mutationList.forEach(mutation => {
-                if (
-                    mutation.type == 'attributes' &&
-                    mutation.target.nodeName == 'TP-YT-PAPER-BUTTON' &&
-                    mutation.target.id == 'button'
-                ) {
-                    cLog('Short thumb button status changed')
-                    if (mutation.target.getAttribute('aria-pressed') == 'true') {
-                        mutation.target.style.color =
-                            mutation.target.parentElement.parentElement.id == 'like-button'
-                        ? getColorFromTheme(true)
-                        : getColorFromTheme(false)
-                    } else {
-                        mutation.target.style.color = 'unset'
-                    }
-                    return
-                }
-                cLog(`unexpected mutation observer event: ${mutation.target.nodeName} ${mutation.type}`)
-        })})
+        shortsObs.options = { childList: false, attributes: true, subtree: false }
+        shortsObs.exists = true
+        shortsObs.observer = new MutationObserver(mutations => mutations.forEach(mutation => {
+            if (mutation.type == 'attributes'
+                && mutation.target.nodeName == 'TP-YT-PAPER-BUTTON'
+                && mutation.target.id == 'button'
+            ) {
+                cLog('Short thumb button status changed')
+                return mutation.target.style.color =
+                    mutation.target.getAttribute('aria-pressed') == 'true' ?
+                        getColorFromTheme(mutation.target.parentElement.parentElement.id == 'like-button')
+                  : 'unset'
+            }
+            cLog(`unexpected mutation observer event: ${mutation.target.nodeName} ${mutation.type}`)
+        }))
     }
 
     function checkForUserAvatarButton() {
@@ -1397,8 +1389,8 @@
                                 shortLikeBtn.style.color = getColorFromTheme(true)
                             if (shortDislikeBtn.getAttribute('aria-pressed') == 'true')
                                 shortDislikeBtn.style.color = getColorFromTheme(false)
-                            mutationObserver.observer.observe(shortLikeBtn, mutationObserver.options)
-                            mutationObserver.observer.observe(shortDislikeBtn, mutationObserver.options)
+                            shortsObs.observer.observe(shortLikeBtn, shortsObs.options)
+                            shortsObs.observer.observe(shortDislikeBtn, shortsObs.options)
                         } else {
                             getLikeBtn().style.color = getColorFromTheme(true)
                             getDislikeBtn().style.color = getColorFromTheme(false)
