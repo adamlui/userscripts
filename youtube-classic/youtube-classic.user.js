@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.43
+// @version           2026.1.17.44
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -564,21 +564,14 @@
     }
     function formatComment(comment) {
         if (cfconfig.unicodeEmojis) {
-            let runs
-            try {
-                runs = comment.contentText.runs
-                for (const run of runs) {
-                    delete run.emoji
-                    delete run.loggingDirectives
-                }
-            } catch (err) {}
+            try { for (const run of comment.contentText.runs) { delete run.emoji ; delete run.loggingDirectives }}
+            catch (err) {}
         }
         return comment
     }
     async function formatCommentThread(thread) {
-        if (thread.comment.commentRenderer) {
+        if (thread.comment.commentRenderer)
             thread.comment.commentRenderer = formatComment(thread.comment.commentRenderer)
-        }
         let replies
         try {
             replies = thread.replies.commentRepliesRenderer
