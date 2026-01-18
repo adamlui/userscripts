@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.39
+// @version           2026.1.17.40
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1376,20 +1376,17 @@
             const colorDislikeStyle = extConfig.coloredBar ? `; background-color: ${getColorFromTheme(false)}` : ''
             document.getElementById('menu-container').insertAdjacentHTML('beforeend', `
                 <div class="ryd-tooltip" style="width: ${widthPx}px">
-                <div class="ryd-tooltip-bar-container">
-                    <div
-                        id="return-youtube-dislike-bar-container"
-                        style="width: 100%; height: 2px;${colorDislikeStyle}"
-                        >
-                        <div
-                            id="return-youtube-dislike-bar"
-                            style="width: ${widthPercent}%; height: 100%${colorDislikeStyle}"
-                            ></div>
+                    <div class="ryd-tooltip-bar-container">
+                        <div id="return-youtube-dislike-bar-container"
+                             style="width: 100% ; height: 2px ; ${colorDislikeStyle}">
+                            <div id="return-youtube-dislike-bar"
+                                 style="width: ${widthPercent}%; height: 100%${colorDislikeStyle}"></div>
+                        </div>
                     </div>
-                </div>
-                <tp-yt-paper-tooltip position="top" id="ryd-dislike-tooltip" class="style-scope ytd-sentiment-bar-renderer" role="tooltip" tabindex="-1">
-                    <!--css-build:shady-->${tooltipInnerHTML}
-                </tp-yt-paper-tooltip>
+                    <tp-yt-paper-tooltip position="top" id="ryd-dislike-tooltip"
+                                         class="style-scope ytd-sentiment-bar-renderer" role="tooltip" tabindex="-1">
+                        <!--css-build:shady-->${tooltipInnerHTML}
+                    </tp-yt-paper-tooltip>
                 </div>
             `)
         } else {
