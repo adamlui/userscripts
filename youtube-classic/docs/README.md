@@ -3,7 +3,6 @@
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.ytclassic.com/images/logos/youtube-classic/darkmode.png">
     <img height=53 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png">
   </picture>
-  <a href="https://twitter.com/intent/tweet?text=Nostalgic%20for%20classic%20YouTube%3F%20This%20userscript%20is%20just%20the%20fix!&url=https://github.com/adamlui/userscripts/tree/master/youtube-classic&hashtags=greasemonkey,userscripts,javascript"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </h1>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
