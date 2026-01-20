@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.4
+// @version           2026.1.20.5
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -633,8 +633,8 @@
       --yt-spec-10-percent-layer: rgba(0,0,0,0.1) !important
     }
     :where(segmented-like-dislike-button-view-model, yt-button-view-model) button {
-        /* Un-segment engagement buttons below vid https://github.com/adamlui/youtube-classic/issues/10 */
-            background: none !important }
+    /* Un-segment engagement buttons below vid https://github.com/adamlui/youtube-classic/issues/10 */
+        background: none !important }
 
     ytd-masthead { background: var(--yt-spec-brand-background-solid) !important }
     ytd-app { background: var(--yt-spec-general-background-a) !important }
