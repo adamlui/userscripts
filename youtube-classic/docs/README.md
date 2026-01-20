@@ -51,7 +51,6 @@
 [![](https://img.shields.io/badge/Follow%20@adamllui-2.2k-blue?logo=x&style=social "Follow @adamllui on X")](https://x.com/intent/user?screen_name=adamllui)
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @AdamLuiTube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 [![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
-[![](https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social "Follow @Anarios on GitHub")](https://github.com/Anarios)
 
 
 <a href="#--------------">Back to top ↑</a>
