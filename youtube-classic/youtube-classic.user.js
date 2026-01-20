@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.8
+// @version           2026.1.20.9
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -290,6 +290,19 @@
     function extractSelectors(obj) {
         return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
+    function getLoadedElem(selector, timeout = null) {
+        const timeoutPromise = timeout ? new Promise(resolve => setTimeout(() => resolve(null), timeout)) : null
+        const isLoadedPromise = new Promise(resolve => {
+            const elem = document.querySelector(selector)
+            if (elem) resolve(elem)
+            else new MutationObserver((_, obs) => {
+                const elem = document.querySelector(selector)
+                if (elem) { obs.disconnect() ; resolve(elem) }
+            }).observe(document.documentElement, { childList: true, subtree: true })
+        })
+        return ( timeoutPromise ? Promise.race([isLoadedPromise, timeoutPromise]) : isLoadedPromise )
+    }
+
     const toolbarMenu = {
         state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
@@ -438,20 +451,8 @@
     YTP.setExpMulti(EXPFLAGS)
     YTP.setPlyrFlags(PLYRFLAGS)
 
-    function $(q) { return document.querySelector(q) }
-
-    function getLoadedElem(selector, timeout = null) {
-        const timeoutPromise = timeout ? new Promise(resolve => setTimeout(() => resolve(null), timeout)) : null
-        const isLoadedPromise = new Promise(resolve => {
-            const elem = document.querySelector(selector)
-            if (elem) resolve(elem)
-            else new MutationObserver((_, obs) => {
-                const elem = document.querySelector(selector)
-                if (elem) { obs.disconnect() ; resolve(elem) }
-            }).observe(document.documentElement, { childList: true, subtree: true })
-        })
-        return ( timeoutPromise ? Promise.race([isLoadedPromise, timeoutPromise]) : isLoadedPromise )
-    }
+    getLoadedElem('#items.ytd-guide-section-renderer').then(restoreTrending)
+    getLoadedElem('#items.ytd-mini-guide-section-renderer').then(restoreTrending)
 
     function restoreTrending() {
         const trendingData = {
@@ -476,45 +477,6 @@
         document.querySelector('#items > ytd-guide-entry-renderer:nth-child(2)').data = trendingData
         document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
     }
-
-    getLoadedElem('#items.ytd-guide-section-renderer').then(() => { restoreTrending() })
-    getLoadedElem('#items.ytd-mini-guide-section-renderer').then(() => { restoreTrending() })
-
-    // Fix YouTube dislikes
-    addEventListener('yt-page-data-updated', function() {
-        if(!location.pathname.startsWith('/watch')) return
-        const lds = $('ytd-video-primary-info-renderer div#top-level-buttons-computed'),
-              like = $('ytd-video-primary-info-renderer div#segmented-like-button > ytd-toggle-button-renderer'),
-              share = $('ytd-video-primary-info-renderer div#top-level-buttons-computed > ytd-segmented-like-dislike-button-renderer + ytd-button-renderer')
-        lds.insertBefore(like, share)
-        like.setAttribute('class', like.getAttribute('class').replace('ytd-segmented-like-dislike-button-renderer', 'ytd-menu-renderer force-icon-button'))
-        like.removeAttribute('is-paper-button-with-icon')
-        like.removeAttribute('is-paper-button')
-        like.setAttribute('style-action-button', '')
-        like.setAttribute('is-icon-button', '')
-        like.querySelector('a').insertBefore(like.querySelector('yt-formatted-string'), like.querySelector('tp-yt-paper-tooltip'))
-        like?.querySelector('paper-ripple')?.remove()
-        let paper = like.querySelector('tp-yt-paper-button')
-        paper.removeAttribute('style-target')
-        paper.removeAttribute('animated')
-        paper.removeAttribute('elevation')
-        like.querySelector('a').insertBefore(paper.querySelector('yt-icon'), like.querySelector('yt-formatted-string'))
-        paper.outerHTML = paper.outerHTML.replace('<tp-yt-paper-button ', '<yt-icon-button ').replace('</tp-yt-paper-button>', '</yt-icon-button>')
-        paper = like.querySelector('yt-icon-button')
-        paper.querySelector('button#button').append(like.querySelector('yt-icon'))
-        const dislike = $('ytd-video-primary-info-renderer div#segmented-dislike-button > ytd-toggle-button-renderer')
-        lds.insertBefore(dislike, share)
-        $('ytd-video-primary-info-renderer ytd-segmented-like-dislike-button-renderer').remove()
-        dislike.setAttribute('class', dislike.getAttribute('class').replace('ytd-segmented-like-dislike-button-renderer', 'ytd-menu-renderer force-icon-button'))
-        dislike.removeAttribute('has-no-text')
-        dislike.setAttribute('style-action-button', '')
-        const dlabel = document.createElement('yt-formatted-stringx')
-        dlabel.setAttribute('id', 'text')
-        if (dislike.getAttribute('class').includes('style-default-active')) {
-            dlabel.setAttribute('class', dlabel.getAttribute('class').replace('style-default', 'style-default-active')) }
-        dislike.querySelector('a').insertBefore(dlabel, dislike.querySelector('tp-yt-paper-tooltip'))
-        $('ytd-video-primary-info-renderer').removeAttribute('flex-menu-enabled')
-    })
 
     // Restore classic comments UI
     let hl
