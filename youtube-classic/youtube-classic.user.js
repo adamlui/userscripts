@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.2
+// @version           2026.1.20.3
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -632,6 +632,9 @@
       --yt-spec-brand-background-primary: rgba(255,255,255,0.98) !important ;
       --yt-spec-10-percent-layer: rgba(0,0,0,0.1) !important
     }
+    :where(segmented-like-dislike-button-view-model, yt-button-view-model) button {
+        /* Un-segment engagement buttons below vid https://github.com/adamlui/youtube-classic/issues/10 */
+            background: none !important }
 
     ytd-masthead { background: var(--yt-spec-brand-background-solid) !important }
     ytd-app { background: var(--yt-spec-general-background-a) !important }
@@ -1156,8 +1159,9 @@
     /* Hide Edit your custom feed chip */
     yt-chip-cloud-chip-renderer:has(path[d^="M5 0a5 5"]) { display: none }
 
-    /* Un-segment engagement buttons https://github.com/adamlui/youtube-classic/issues/10 */
-    :where(segmented-like-dislike-button-view-model, yt-button-view-model) button { background: none !important }
+    @media only screen and (min-width: 768px) {
+        div#subscribe-button { position: absolute ; right: 0 } div#actions { padding-right: 125px } /* align right */
+    }
     `
 
     getLoadedElem('head').then(() => document.head.append(fixesStyle))
