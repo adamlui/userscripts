@@ -31,11 +31,9 @@
       "url": "https://paypal.me/adamlui"
     }
   ],
-  {
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/adamlui/userscripts.git"
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamlui/userscripts.git"
   },
   "scripts": {
     "prepare": "husky",
