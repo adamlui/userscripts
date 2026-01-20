@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.17.55
+// @version           2026.1.20
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1168,8 +1168,7 @@
             'd: path("M12.7,12l6.6,6.6l-0.7,0.7L12,12.7l-6.6,6.6l-0.7-0.7l6.6-6.6L4.6,5.4l0.7-0.7l6.6,6.6l6.6-6.6l0.7,0.7L12.7,12z")',
             '}'
         ].join('\n')
-        const btnStyle = document.createElement('style')
-        btnStyle.textContent = css
+        const btnStyle = document.createElement('style') ; btnStyle.textContent = css
         const heads = document.getElementsByTagName('head'),
               btnStyleParent = heads.length ? heads[0] : document.documentElement
         btnStyleParent.append(btnStyle)
@@ -1321,11 +1320,13 @@
 
     function createRateBar(likes, dislikes) {
         if (isMobile) return
-        const rateBar = document.getElementById('return-youtube-dislike-bar-container')
-        const widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8
-        const widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50
-        const likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString()
-        const dislikePercent = (100 - likePercent).toLocaleString()
+
+        const rateBar = document.getElementById('return-youtube-dislike-bar-container'),
+              widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8,
+              widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50,
+              likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString(),
+              dislikePercent = (100 - likePercent).toLocaleString()
+
         const tooltipInnerHTML = {
             dash_like: `${likes.toLocaleString()}&nbsp;/&nbsp;${
                 dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercent}%`,
@@ -1335,6 +1336,7 @@
             only_like: `${likePercent}%`,
             only_dislike: `${dislikePercent}%`
         }[extConfig.tooltipPercentageMode] || `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}`
+
         if (!rateBar && !isMobile) {
             const colorDislikeStyle = extConfig.coloredBar ? `; background-color: ${getColorFromTheme(false)}` : ''
             document.getElementById('menu-container').insertAdjacentHTML('beforeend', `
@@ -1352,6 +1354,7 @@
                     </tp-yt-paper-tooltip>
                 </div>
             `)
+
         } else {
             const rydBar = document.getElementById('return-youtube-dislike-bar'),
                   rydBarContainer = document.getElementById('return-youtube-dislike-bar-container'),
@@ -1368,16 +1371,16 @@
     function setState() {
         cLog('Fetching votes...')
         let statsSet = false
-        fetch(`https://returnyoutubedislikeapi.com/votes?videoId=${getVideoID()}`).then(resp =>
+        fetch(`https://returnyoutubedislikeapi.com/votes?videoId=${getVidID()}`).then(resp =>
             resp.json().then(json => {
                 if (json && !('traceId' in resp) && !statsSet) {
                     const { dislikes, likes } = json
                     cLog(`Received count: ${dislikes}`)
                     likesVal = likes ; dislikesVal = dislikes
-                    setDislikes(numberFormat(dislikes))
+                    setDislikes(numFormat(dislikes))
                     if (extConfig.numberDisplayReformatLikes) {
                         const nativeLikes = getLikeCntFromBtn()
-                        if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
+                        if (nativeLikes != null) setLikes(numFormat(nativeLikes))
                     }
                     createRateBar(likes, dislikes)
                     if (extConfig.coloredThumbs) {
@@ -1406,12 +1409,12 @@
             if (prevState == 1) {
                 likesVal--
                 createRateBar(likesVal, dislikesVal)
-                setDislikes(numberFormat(dislikesVal))
+                setDislikes(numFormat(dislikesVal))
                 prevState = 3
             } else if (prevState == 2) {
                 likesVal++
                 dislikesVal--
-                setDislikes(numberFormat(dislikesVal))
+                setDislikes(numFormat(dislikesVal))
                 createRateBar(likesVal, dislikesVal)
                 prevState = 1
             } else if (prevState == 3) {
@@ -1421,7 +1424,7 @@
             }
             if (extConfig.numberDisplayReformatLikes) {
                 const nativeLikes = getLikeCntFromBtn()
-                if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
+                if (nativeLikes != null) setLikes(numFormat(nativeLikes))
             }
         }
     }
@@ -1430,38 +1433,37 @@
         if (checkForUserAvatarButton()) {
             if (prevState == 3) {
                 dislikesVal++
-                setDislikes(numberFormat(dislikesVal))
+                setDislikes(numFormat(dislikesVal))
                 createRateBar(likesVal, dislikesVal)
                 prevState = 2
             } else if (prevState == 2) {
                 dislikesVal--
-                setDislikes(numberFormat(dislikesVal))
+                setDislikes(numFormat(dislikesVal))
                 createRateBar(likesVal, dislikesVal)
                 prevState = 3
             } else if (prevState == 1) {
-                likesVal--
-                dislikesVal++
-                setDislikes(numberFormat(dislikesVal))
+                likesVal-- ; dislikesVal++
+                setDislikes(numFormat(dislikesVal))
                 createRateBar(likesVal, dislikesVal)
                 prevState = 2
                 if (extConfig.numberDisplayReformatLikes) {
                     const nativeLikes = getLikeCntFromBtn()
-                    if (nativeLikes != null) setLikes(numberFormat(nativeLikes))
+                    if (nativeLikes != null) setLikes(numFormat(nativeLikes))
                 }
             }
         }
     }
 
-    function getVideoID() {
+    function getVidID() {
         const urlObj = new URL(unsafeWindow.location.href), pathname = urlObj.pathname
         return pathname.startsWith('/clip') ? document.querySelector('meta[itemprop="videoId"]')?.content
              : pathname.startsWith('/shorts') ? pathname.slice(8)
              : urlObj.searchParams.get('v')
     }
 
-    function isVideoLoaded() {
+    function isVidLoaded() {
         return isMobile ? document.getElementById('player').getAttribute('loading') == 'false'
-             : !!document.querySelector(`ytd-watch-flexy[video-id='${getVideoID()}']`)
+             : !!document.querySelector(`ytd-watch-flexy[video-id='${getVidID()}']`)
     }
 
     function roundDown(num) {
@@ -1472,12 +1474,12 @@
         return val *10 ** decimal
     }
 
-    function numberFormat(numState) {
+    function numFormat(numState) {
         const numDisplay = !extConfig.numberDisplayRoundDown ? numState : roundDown(numState)
-        return getNumberFormatter(extConfig.numberDisplayFormat).format(numDisplay)
+        return getNumFormatter(extConfig.numberDisplayFormat).format(numDisplay)
     }
 
-    function getNumberFormatter(optionSelect) {
+    function getNumFormatter(optionSelect) {
         let userLocales
         if (document.documentElement.lang) userLocales = document.documentElement.lang
         else if (navigator.language) userLocales = navigator.language
@@ -1528,7 +1530,7 @@
     function setEventListeners() {
         let jsInitChecktimer
         function checkForJS_Finish() {
-            if (isShorts() || (getBtns()?.offsetParent && isVideoLoaded())) {
+            if (isShorts() || (getBtns()?.offsetParent && isVidLoaded())) {
                 const buttons = getBtns()
                 if (!unsafeWindow.returnDislikeButtonlistenersSet) {
                     cLog('Registering button listeners...')
