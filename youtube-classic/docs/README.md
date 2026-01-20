@@ -5,10 +5,11 @@
   </picture>
 </h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
-![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome|Firefox|Edge|Safari|Opera-989898.svg?style=flat-square)
-[![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=flat-square)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
-[![Mentioned in Awesome](https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rectangle-badge.svg)](https://github.com/awesome-scripts/awesome-userscripts#youtube)
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
+![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge)
+[![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
+<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
+    <img src="https://img.shields.io/badge/Mentioned_in-Awesome-cca8c4?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
 
