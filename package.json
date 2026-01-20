@@ -12,11 +12,7 @@
     "email": "adam@kudoai.com"
   },
   "license": "MIT",
- {
-    "name": "Adam Lui",
-    "email": "adam@kudoai.com",
-    "url": "http://github.com/adamlui"
-  },
+  "author": "Adam Lui <adam@kudoai.com> (https://github.com/adamlui)",
   "funding": [
     {
       "type": "cashapp",
