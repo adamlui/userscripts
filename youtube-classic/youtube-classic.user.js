@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.5
+// @version           2026.1.20.6
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -32,7 +32,6 @@
 
     localStorage.notifyProps = JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }})
 
-    // Init ENV context
     const env = {
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
@@ -43,10 +42,8 @@
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-    // Init APP data
     const app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
 
-    // Init SETTINGS
     const config = {}
     const settings = {
 
@@ -89,7 +86,6 @@
     }
     settings.load(Object.keys(settings.controls))
 
-    // Init SELECTORS for options
     const domSelectors = {
         ad: { masthead: 'div#masthead-ad' }, // https://imgur.com/a/kOWzh3O
         ai: {
@@ -104,6 +100,54 @@
                 results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
             }
         }
+    }
+
+    const CONFIGS = { BUTTON_REWORK: false }
+
+    const EXPFLAGS = {
+        enable_channel_page_header_profile_section: false,
+        enable_header_channel_handler_ui: false,
+        kevlar_unavailable_video_error_ui_client: false,
+        kevlar_refresh_on_theme_change: false,
+        kevlar_modern_sd_v2: false,
+        kevlar_watch_cinematics: false,
+        kevlar_watch_comments_panel_button: false,
+        kevlar_watch_grid: false,
+        kevlar_watch_grid_hide_chips: false,
+        kevlar_watch_metadata_refresh: false,
+        kevlar_watch_metadata_refresh_no_old_secondary_data: false,
+        kevlar_watch_modern_metapanel: false,
+        kevlar_watch_modern_panels: false,
+        kevlar_watch_panel_height_matches_player: false,
+        smartimation_background: false,
+        web_amsterdam_playlists: false,
+        web_animated_actions: false,
+        web_animated_like: false,
+        web_button_rework: false,
+        web_button_rework_with_live: false,
+        web_darker_dark_theme: false,
+        web_enable_youtab: false,
+        web_guide_ui_refresh: false,
+        web_modern_ads: false,
+        web_modern_buttons: false,
+        web_modern_chips: false,
+        web_modern_collections_v2: false,
+        web_modern_dialogs: false,
+        web_modern_playlists: false,
+        web_modern_subscribe: false,
+        web_modern_tabs: false,
+        web_rounded_containers: false,
+        web_rounded_thumbnails: false,
+        web_searchbar_style: 'default',
+        web_segmented_like_dislike_button: false,
+        web_sheets_ui_refresh: false,
+        web_snackbar_ui_refresh: false,
+        web_watch_rounded_player_large: false
+    }
+
+    const PLYRFLAGS = {
+        web_rounded_containers: 'false',
+        web_rounded_thumbnails: 'false'
     }
 
     // Define FUNCTIONS
@@ -315,57 +359,6 @@
     // Run MAIN routine
 
     toolbarMenu.register()
-
-    // Config keys
-    const CONFIGS = { BUTTON_REWORK: false }
-
-    // Experiment flags
-    const EXPFLAGS = {
-        enable_channel_page_header_profile_section: false,
-        enable_header_channel_handler_ui: false,
-        kevlar_unavailable_video_error_ui_client: false,
-        kevlar_refresh_on_theme_change: false,
-        kevlar_modern_sd_v2: false,
-        kevlar_watch_cinematics: false,
-        kevlar_watch_comments_panel_button: false,
-        kevlar_watch_grid: false,
-        kevlar_watch_grid_hide_chips: false,
-        kevlar_watch_metadata_refresh: false,
-        kevlar_watch_metadata_refresh_no_old_secondary_data: false,
-        kevlar_watch_modern_metapanel: false,
-        kevlar_watch_modern_panels: false,
-        kevlar_watch_panel_height_matches_player: false,
-        smartimation_background: false,
-        web_amsterdam_playlists: false,
-        web_animated_actions: false,
-        web_animated_like: false,
-        web_button_rework: false,
-        web_button_rework_with_live: false,
-        web_darker_dark_theme: false,
-        web_enable_youtab: false,
-        web_guide_ui_refresh: false,
-        web_modern_ads: false,
-        web_modern_buttons: false,
-        web_modern_chips: false,
-        web_modern_collections_v2: false,
-        web_modern_dialogs: false,
-        web_modern_playlists: false,
-        web_modern_subscribe: false,
-        web_modern_tabs: false,
-        web_rounded_containers: false,
-        web_rounded_thumbnails: false,
-        web_searchbar_style: 'default',
-        web_segmented_like_dislike_button: false,
-        web_sheets_ui_refresh: false,
-        web_snackbar_ui_refresh: false,
-        web_watch_rounded_player_large: false
-    }
-
-    // Player flags
-    const PLYRFLAGS = {
-        web_rounded_containers: 'false',
-        web_rounded_thumbnails: 'false'
-    }
 
     class YTP {
         static observer = new MutationObserver(this.onNewScript)
@@ -1185,392 +1178,6 @@
 
     setInterval(() => document.dispatchEvent(new KeyboardEvent('keyup', {
         bubbles: true, cancelable: true, keyCode: 143, which: 143 })), 60000)
-
-    const extConfig = {
-        // BEGIN USER OPTIONS
-        // You may change the following variables to allowed values listed in the corresponding brackets (* means default). Keep the style and keywords intact.
-        showUpdatePopup: false, // [true, false*] Show a popup tab after extension update (See what's new)
-        disableVoteSubmission: false, // [true, false*] Disable like/dislike submission (Stops counting your likes and dislikes)
-        coloredThumbs: false, // [true, false*] Colorize thumbs (Use custom colors for thumb icons)
-        coloredBar: false, // [true, false*] Colorize ratio bar (Use custom colors for ratio bar)
-        colorTheme: 'classic', // [classic*, accessible, neon] Color theme (red/green, blue/yellow, pink/cyan)
-        numberDisplayFormat: 'compactShort', // [compactShort*, compactLong, standard] Number format (For non-English locale users, you may be able to improve appearance with a different option. Please file a feature request if your locale is not covered)
-        numberDisplayRoundDown: true, // [true*, false] Round down numbers (Show rounded down numbers)
-        tooltipPercentageMode: 'none', // [none*, dash_like, dash_dislike, both, only_like, only_dislike] Mode of showing percentage in like/dislike bar tooltip.
-        numberDisplayReformatLikes: false // [true, false*] Re-format like numbers (Make likes and dislikes format consistent)
-        // END USER OPTIONS
-    }
-
-    let prevState = 3 // 1=LIKED, 2=DISLIKED, 3=NEUTRAL
-    let likesVal = 0
-    let dislikesVal = 0
-    let isMobile = location.hostname == 'm.youtube.com'
-    let isShorts = () => location.pathname.startsWith('/shorts')
-    let mobileDislikes = 0
-
-    function cLog(text, subtext = '') {
-        subtext = subtext.trim() == '' ? '' : `(${subtext})`
-        console.log(`[Return YouTube Dislikes] ${text} ${subtext}`)
-    }
-
-    function isInViewport(elem) {
-        const rect = elem.getBoundingClientRect()
-        const height = innerHeight || document.documentElement.clientHeight
-        const width = innerWidth || document.documentElement.clientWidth
-        return (
-            // When short (channel) is ignored, the elem (like/dislike AND short itself) is
-            // hidden with a 0 DOMRect. In this case, consider it outside of Viewport
-            !(rect.top == 0 && rect.left == 0 && rect.bottom == 0 && rect.right == 0) &&
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= height &&
-            rect.right <= width
-        )
-    }
-
-    function getBtns() {
-        if (isShorts()) {
-            const elems = document.querySelectorAll(`${ !isMobile ? '#like-button > ' : '' }ytm-like-button-renderer`)
-            for (const elem of elems) if (isInViewport(elem)) return elem
-        }
-        if (isMobile)
-            return document.querySelector('.slim-video-action-bar-actions .segmented-buttons')
-                ?? document.querySelector('.slim-video-action-bar-actions')
-        else if (!document.getElementById('menu-container')?.offsetParent)
-            return document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div')
-                ?? document.querySelector('ytd-menu-renderer.ytd-video-primary-info-renderer > div')
-        else
-            return document.getElementById('menu-container')?.querySelector('#top-level-buttons-computed')
-    }
-
-    function getLikeBtn() {
-        const firstBtn = getBtns().children[0]
-        return firstBtn.tagName == 'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER' ? firstBtn.children[0] : firstBtn
-    }
-
-    function getLikeTextContainer() {
-        const likeBtn = getLikeBtn() ; if (!likeBtn) return null
-        return likeBtn.querySelector('#text')
-            ?? likeBtn.getElementsByTagName('yt-formatted-string')[0]
-            ?? likeBtn.querySelector('span[role="text"]')
-    }
-
-    function getDislikeBtn() {
-        const [firstBtn, secondBtn] = getBtns().children
-        return firstBtn.tagName == 'YTD-SEGMENTED-LIKE-DISLIKE-BUTTON-RENDERER' ? firstBtn.children[1] : secondBtn
-    }
-
-    function getDislikeTextContainer() {
-        const dislikeBtn = getDislikeBtn() ; if (!dislikeBtn) return null
-        let result = dislikeBtn.querySelector('#text')
-                  ?? dislikeBtn.getElementsByTagName('yt-formatted-string')[0]
-                  ?? dislikeBtn.querySelector('span[role="text"]')
-        if (!result) {
-            const textSpan = document.createElement('span')
-            textSpan.id = 'text' ; textSpan.style.marginLeft = '2px'
-            dislikeBtn.querySelector('button').append(textSpan)
-            dislikeBtn.querySelector('button').style.width = 'auto'
-            result = dislikeBtn.querySelector('#text')
-        }
-        return result
-    }
-
-    const shortsObs = new Object()
-    if (isShorts() && !shortsObs.exists) {
-        cLog('initializing mutation observer')
-        shortsObs.options = { childList: false, attributes: true, subtree: false }
-        shortsObs.exists = true
-        shortsObs.observer = new MutationObserver(mutations => mutations.forEach(mutation => {
-            if (mutation.type == 'attributes'
-                && mutation.target.nodeName == 'TP-YT-PAPER-BUTTON'
-                && mutation.target.id == 'button'
-            ) {
-                cLog('Short thumb button status changed')
-                return mutation.target.style.color =
-                    mutation.target.getAttribute('aria-pressed') == 'true' ?
-                        getColorFromTheme(mutation.target.parentElement.parentElement.id == 'like-button')
-                  : 'unset'
-            }
-            cLog(`unexpected mutation observer event: ${mutation.target.nodeName} ${mutation.type}`)
-        }))
-    }
-
-    function checkForUserAvatarButton() {
-        if (isMobile) return false
-        return !!document.querySelector('#avatar-btn')
-    }
-
-    function setLikes(likesCnt) {
-        if (isMobile) return getBtns().children[0].querySelector('.button-renderer-text').innerText = likesCnt
-        getLikeTextContainer().innerText = likesCnt
-    }
-
-    function setDislikes(dislikesCnt) {
-        if (isMobile) return mobileDislikes = dislikesCnt
-        const dislikeTextContainer = getDislikeTextContainer() ; if (!dislikeTextContainer) return
-        dislikeTextContainer.removeAttribute('is-empty') ; dislikeTextContainer.innerText = dislikesCnt
-    }
-
-    function getLikeCntFromBtn() {
-        try {
-            if (isShorts()) return null
-            const likeBtn = getLikeBtn().querySelector('yt-formatted-string#text')
-                         ?? getLikeBtn().querySelector('button')
-            const likesStr = likeBtn.getAttribute('aria-label').replace(/\D/g, '')
-            return likesStr.length ? parseInt(likesStr) : null
-        }
-        catch (err) { return null }
-    }
-
-    function createRateBar(likes, dislikes) {
-        if (isMobile) return
-
-        const rateBar = document.getElementById('return-youtube-dislike-bar-container'),
-              widthPx = getBtns().children[0].clientWidth + getBtns().children[1].clientWidth +8,
-              widthPercent = likes + dislikes > 0 ? (likes / (likes + dislikes)) *100 : 50,
-              likePercent = parseFloat(widthPercent.toFixed(1)).toLocaleString(),
-              dislikePercent = (100 - likePercent).toLocaleString()
-
-        const tooltipInnerHTML = {
-            dash_like: `${likes.toLocaleString()}&nbsp;/&nbsp;${
-                dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${likePercent}%`,
-            dash_dislike: `${likes.toLocaleString()}&nbsp;/&nbsp;${
-                dislikes.toLocaleString()}&nbsp;&nbsp;-&nbsp;&nbsp;${dislikePercent}%`,
-            both: `${likePercent}%&nbsp;/&nbsp;${dislikePercent}%`,
-            only_like: `${likePercent}%`,
-            only_dislike: `${dislikePercent}%`
-        }[extConfig.tooltipPercentageMode] || `${likes.toLocaleString()}&nbsp;/&nbsp;${dislikes.toLocaleString()}`
-
-        if (!rateBar && !isMobile) {
-            const colorDislikeStyle = extConfig.coloredBar ? `; background-color: ${getColorFromTheme(false)}` : ''
-            document.getElementById('menu-container').insertAdjacentHTML('beforeend', `
-                <div class="ryd-tooltip" style="width: ${widthPx}px">
-                    <div class="ryd-tooltip-bar-container">
-                        <div id="return-youtube-dislike-bar-container"
-                             style="width: 100% ; height: 2px ; ${colorDislikeStyle}">
-                            <div id="return-youtube-dislike-bar"
-                                 style="width: ${widthPercent}%; height: 100%${colorDislikeStyle}"></div>
-                        </div>
-                    </div>
-                    <tp-yt-paper-tooltip position="top" id="ryd-dislike-tooltip"
-                                         class="style-scope ytd-sentiment-bar-renderer" role="tooltip" tabindex="-1">
-                        <!--css-build:shady-->${tooltipInnerHTML}
-                    </tp-yt-paper-tooltip>
-                </div>
-            `)
-
-        } else {
-            const rydBar = document.getElementById('return-youtube-dislike-bar'),
-                  rydBarContainer = document.getElementById('return-youtube-dislike-bar-container'),
-                  rydTooltip = document.querySelector('#ryd-dislike-tooltip > #tooltip')
-            rydBar.style.width = `${widthPercent}%` ; rydBarContainer.style.width = `${widthPx}px`
-            rydTooltip.innerHTML = tooltipInnerHTML
-            if (extConfig.coloredBar) {
-                rydBarContainer.style.backgroundColor = getColorFromTheme(false)
-                rydBar.style.backgroundColor = getColorFromTheme(true)
-            }
-        }
-    }
-
-    function setState() {
-        cLog('Fetching votes...')
-        let statsSet = false
-        fetch(`https://returnyoutubedislikeapi.com/votes?videoId=${getVidID()}`).then(resp =>
-            resp.json().then(json => {
-                if (json && !('traceId' in resp) && !statsSet) {
-                    const { dislikes, likes } = json
-                    cLog(`Received count: ${dislikes}`)
-                    likesVal = likes ; dislikesVal = dislikes
-                    setDislikes(numFormat(dislikes))
-                    if (extConfig.numberDisplayReformatLikes) {
-                        const nativeLikes = getLikeCntFromBtn()
-                        if (nativeLikes != null) setLikes(numFormat(nativeLikes))
-                    }
-                    createRateBar(likes, dislikes)
-                    if (extConfig.coloredThumbs) {
-                        if (isShorts()) {
-                            // for shorts, leave deactived buttons in default color
-                            const shortLikeBtn = getLikeBtn().querySelector('tp-yt-paper-button#button'),
-                                  shortDislikeBtn = getDislikeBtn().querySelector('tp-yt-paper-button#button')
-                            if (shortLikeBtn.getAttribute('aria-pressed') == 'true')
-                                shortLikeBtn.style.color = getColorFromTheme(true)
-                            if (shortDislikeBtn.getAttribute('aria-pressed') == 'true')
-                                shortDislikeBtn.style.color = getColorFromTheme(false)
-                            shortsObs.observer.observe(shortLikeBtn, shortsObs.options)
-                            shortsObs.observer.observe(shortDislikeBtn, shortsObs.options)
-                        } else {
-                            getLikeBtn().style.color = getColorFromTheme(true)
-                            getDislikeBtn().style.color = getColorFromTheme(false)
-                        }
-                    }
-                }
-            })
-        )
-    }
-
-    function likeClicked() {
-        if (checkForUserAvatarButton()) {
-            if (prevState == 1) {
-                likesVal--
-                createRateBar(likesVal, dislikesVal)
-                setDislikes(numFormat(dislikesVal))
-                prevState = 3
-            } else if (prevState == 2) {
-                likesVal++
-                dislikesVal--
-                setDislikes(numFormat(dislikesVal))
-                createRateBar(likesVal, dislikesVal)
-                prevState = 1
-            } else if (prevState == 3) {
-                likesVal++
-                createRateBar(likesVal, dislikesVal)
-                prevState = 1
-            }
-            if (extConfig.numberDisplayReformatLikes) {
-                const nativeLikes = getLikeCntFromBtn()
-                if (nativeLikes != null) setLikes(numFormat(nativeLikes))
-            }
-        }
-    }
-
-    function dislikeClicked() {
-        if (checkForUserAvatarButton()) {
-            if (prevState == 3) {
-                dislikesVal++
-                setDislikes(numFormat(dislikesVal))
-                createRateBar(likesVal, dislikesVal)
-                prevState = 2
-            } else if (prevState == 2) {
-                dislikesVal--
-                setDislikes(numFormat(dislikesVal))
-                createRateBar(likesVal, dislikesVal)
-                prevState = 3
-            } else if (prevState == 1) {
-                likesVal-- ; dislikesVal++
-                setDislikes(numFormat(dislikesVal))
-                createRateBar(likesVal, dislikesVal)
-                prevState = 2
-                if (extConfig.numberDisplayReformatLikes) {
-                    const nativeLikes = getLikeCntFromBtn()
-                    if (nativeLikes != null) setLikes(numFormat(nativeLikes))
-                }
-            }
-        }
-    }
-
-    function getVidID() {
-        const urlObj = new URL(unsafeWindow.location.href), pathname = urlObj.pathname
-        return pathname.startsWith('/clip') ? document.querySelector('meta[itemprop="videoId"]')?.content
-             : pathname.startsWith('/shorts') ? pathname.slice(8)
-             : urlObj.searchParams.get('v')
-    }
-
-    function isVidLoaded() {
-        return isMobile ? document.getElementById('player').getAttribute('loading') == 'false'
-             : !!document.querySelector(`ytd-watch-flexy[video-id='${getVidID()}']`)
-    }
-
-    function roundDown(num) {
-        if (num < 1000) return num
-        const int = Math.floor(Math.log10(num) -2),
-              decimal = int +( int % 3 != 0 ),
-              val = Math.floor(num /10 ** decimal)
-        return val *10 ** decimal
-    }
-
-    function numFormat(numState) {
-        const numDisplay = !extConfig.numberDisplayRoundDown ? numState : roundDown(numState)
-        return getNumFormatter(extConfig.numberDisplayFormat).format(numDisplay)
-    }
-
-    function getNumFormatter(optionSelect) {
-        let userLocales
-        if (document.documentElement.lang) userLocales = document.documentElement.lang
-        else if (navigator.language) userLocales = navigator.language
-        else {
-            try {
-                userLocales = new URL(
-                    Array.from(document.querySelectorAll('head > link[rel="search"]'))
-                        ?.find((n) => n?.getAttribute('href')?.includes('?locale='))
-                        ?.getAttribute('href')
-                )?.searchParams?.get('locale')
-            } catch (err) {
-                cLog('Cannot find browser locale. Use en as default for number formatting.')
-                userLocales = 'en'
-            }
-        }
-        let formatterNotation
-        let formatterCompactDisplay
-        switch (optionSelect) {
-            case 'compactLong':
-                formatterNotation = 'compact'
-                formatterCompactDisplay = 'long'
-                break
-            case 'standard':
-                formatterNotation = 'standard'
-                formatterCompactDisplay = 'short'
-                break
-            case 'compactShort':
-            default:
-                formatterNotation = 'compact'
-                formatterCompactDisplay = 'short'
-        }
-        const formatter = Intl.NumberFormat(userLocales, {
-            notation: formatterNotation,
-            compactDisplay: formatterCompactDisplay
-        })
-        return formatter
-    }
-
-    function getColorFromTheme(voteIsLike) {
-        const themeColors = {
-            accessible: voteIsLike ? 'dodgerblue' : 'gold',
-            neon: voteIsLike ? 'aqua' : 'magenta',
-            classic: voteIsLike ? 'lime' : 'red'
-        }
-        return themeColors[extConfig.colorTheme] || themeColors.classic
-    }
-
-    function setEventListeners() {
-        let jsInitChecktimer
-        function checkForJS_Finish() {
-            if (isShorts() || (getBtns()?.offsetParent && isVidLoaded())) {
-                const buttons = getBtns()
-                if (!unsafeWindow.returnDislikeButtonlistenersSet) {
-                    cLog('Registering button listeners...')
-                    try {
-                        buttons.children[0].addEventListener('click', likeClicked)
-                        buttons.children[1].addEventListener('click', dislikeClicked)
-                        buttons.children[0].addEventListener('touchstart', likeClicked)
-                        buttons.children[1].addEventListener('touchstart', dislikeClicked)
-                    } catch (err) { return }
-                    unsafeWindow.returnDislikeButtonlistenersSet = true
-                }
-                setState()
-                clearInterval(jsInitChecktimer)
-            }
-        }
-        cLog('Setting up...')
-        jsInitChecktimer = setInterval(checkForJS_Finish, 111)
-    }
-
-    (function() {
-        unsafeWindow.addEventListener('yt-navigate-finish', setEventListeners, true)
-        setEventListeners()
-    })()
-    if (isMobile) {
-        const originalPush = history.pushState
-        history.pushState = function(...args) {
-            unsafeWindow.returnDislikeButtonlistenersSet = false
-            setEventListeners()
-            return originalPush.apply(history, args)
-        }
-        setInterval(() => {
-            if (getDislikeBtn().querySelector('.button-renderer-text') == null) {
-                getDislikeTextContainer().innerText = mobileDislikes
-            } else { getDislikeBtn().querySelector('.button-renderer-text').innerText = mobileDislikes }
-        }, 1000)
-    }
 
     // CONFIG hacks
 
