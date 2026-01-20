@@ -1,17 +1,46 @@
 {
-  "author": {
+  "name": "@adamlui/userscripts",
+  "description": "Greasemonkey userscripts",
+  "keywords": [
+    "greasemonkey",
+    "javascript",
+    "userscripts"
+  ],
+  "homepage": "https://github.com/adamlui/userscripts",
+  "bugs": {
+    "url": "https://github.com/adamlui/userscripts/issues",
+    "email": "adam@kudoai.com"
+  },
+  "license": "MIT",
+ {
     "name": "Adam Lui",
     "email": "adam@kudoai.com",
-    "url": "https://github.com/adamlui"
+    "url": "http://github.com/adamlui"
   },
-  "homepage": "https://github.com/adamlui/userscripts",
-  "license": "MIT",
   "funding": [
-    { "type": "cashapp", "url": "https://cash.app/$AdamLui" },
-    { "type": "github", "url": "http://github.com/sponsors/adamlui" },
-    { "type": "ko-fi", "url": "https://ko-fi.com/adamlui" },
-    { "type": "paypal", "url": "https://paypal.me/adamlui" }
+    {
+      "type": "cashapp",
+      "url": "https://cash.app/$AdamLui"
+    },
+    {
+      "type": "github",
+      "url": "http://github.com/sponsors/adamlui"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/adamlui"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/adamlui"
+    }
   ],
+  {
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/adamlui/userscripts.git"
+    }
+  },
   "scripts": {
     "prepare": "husky",
     "lint": "eslint . --cache",
