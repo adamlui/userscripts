@@ -1,4 +1,4 @@
-<h1>
+<h1 id="top">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.ytclassic.com/images/logos/youtube-classic/darkmode.png">
     <img height=88 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png">
@@ -56,4 +56,4 @@
 [![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
 
 
-<a href="#--------------">Back to top ↑</a>
+<a href="#top">Back to top ↑</a>
