@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.7
+// @version           2026.1.20.8
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1185,21 +1185,17 @@
         } else if (locationPath == '/') { // remove regenerating homepage stuff
             if (config.adBlock) // remove ads
                 document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
-            if (config.shortsBlock || config.playablesBlock) { // remove shelves
+            if (config.shortsBlock || config.playablesBlock) // remove shelves
                 document.querySelector(
                     `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
                                                  !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
                 )?.remove()
-            }
         }
     })
     getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
     document.head.append(window.configStyle ??= document.createElement('style'))
-    window.configStyle.textContent = Object.entries(domSelectors)
-        .map(([key, selectors]) => !config[`${key}Block`] ? ''
-            : `${extractSelectors(selectors).join(',')} { display: none }`
-        ).join('')
-
+    window.configStyle.textContent = Object.entries(domSelectors).map(([key, selectors]) =>
+        !config[`${key}Block`] ? '' : `${extractSelectors(selectors).join(',')} { display: none }`).join('')
 })()
