@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.1
+// @version           2026.1.21.2
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -24,7 +24,7 @@
 // @downloadURL       https://gm.ytclassic.com
 // @updateURL         https://gm.ytclassic.com
 // @homepageURL       https://www.ytclassic.com
-// @supportURL        https://support.ytclassic.com
+// @supportURL        https://github.com/adamlui/youtube-classic/issues
 // @contributionURL   https://github.com/sponsors/adamlui
 // ==/UserScript==
 
