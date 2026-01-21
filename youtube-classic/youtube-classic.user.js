@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.9
+// @version           2026.1.20.10
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -570,8 +570,8 @@
         commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true }))
 
     // CSS adjustments and UI fixes
-    const fixesStyle = document.createElement('style')
-    fixesStyle.innerText = `
+    app.style = document.createElement('style')
+    app.style.innerText = `
     yt-thumbnail-view-model { border-radius: 0 !important } /* square homepage thumbs */
 
     /* Revert old background color and buttons */
@@ -1115,8 +1115,7 @@
         div#subscribe-button { position: absolute ; right: 0 } div#actions { padding-right: 125px } /* align right */
     }
     `
-
-    getLoadedElem('head').then(() => document.head.append(fixesStyle))
+    getLoadedElem('head').then(() => document.head.append(app.style))
 
     Object.defineProperties(document, {
         'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'},
