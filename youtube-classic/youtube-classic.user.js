@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.12
+// @version           2026.1.21
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -15,6 +15,7 @@
 // @match             *://*.youtube.com/*
 // @connect           gm.ytclassic.com
 // @connect           raw.githubusercontent.com
+// @require           https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@2063df6/assets/js/lib/dom.js/dist/dom.min.js#sha256-xovdxRnmYD/eCgBiGCu5+Vd3+WWIvLUKVtU/MnRueeU=
 // @grant             GM_registerMenuCommand
 // @grant             GM_unregisterMenuCommand
 // @grant             GM_getValue
@@ -290,19 +291,6 @@
     function extractSelectors(obj) {
         return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
 
-    function getLoadedElem(selector, timeout = null) {
-        const timeoutPromise = timeout ? new Promise(resolve => setTimeout(() => resolve(null), timeout)) : null
-        const isLoadedPromise = new Promise(resolve => {
-            const elem = document.querySelector(selector)
-            if (elem) resolve(elem)
-            else new MutationObserver((_, obs) => {
-                const elem = document.querySelector(selector)
-                if (elem) { obs.disconnect() ; resolve(elem) }
-            }).observe(document.documentElement, { childList: true, subtree: true })
-        })
-        return ( timeoutPromise ? Promise.race([isLoadedPromise, timeoutPromise]) : isLoadedPromise )
-    }
-
     const toolbarMenu = {
         state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
@@ -331,7 +319,7 @@
         }
     }
 
-    function notify(msg, pos = '', notifDuration = '', shadow = '') {
+    function notify(msg, pos = '', notifDuration = '', shadow = '') { // requires dom.js
         if (config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
 
         // Strip state word to append colored one later
@@ -345,12 +333,11 @@
         // Tweak styles
         notif.style.fontSize = '385%'
         if (foundState) { // append styled state word
-            const styledStateSpan = document.createElement('span')
-            styledStateSpan.style.cssText = `color: ${
+            const styledStateSpan = dom.create.elem('span', { style: `color: ${
                 foundState == toolbarMenu.state.words[0] ?
                     '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
                   : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px'
-            }`
+            }`})
             styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
         }
     }
@@ -435,8 +422,7 @@
         'darker-dark-theme', 'darker-dark-theme-deprecate' ]
     unsafeWindow.addEventListener('yt-page-data-updated', function tmp() {
         const ytLogo = document.getElementById('logo-icon'),
-              classicLogo = document.createElement('img')
-        classicLogo.style.marginLeft = '5px' ; classicLogo.height = 65
+              classicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
         classicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
             ? 'https://i.imgur.com/brCETJj.png' // Dark mode
             : 'https://i.imgur.com/rHLcxEs.png' // Light mode
@@ -451,8 +437,8 @@
     YTP.setExpMulti(EXPFLAGS)
     YTP.setPlyrFlags(PLYRFLAGS)
 
-    getLoadedElem('#items.ytd-guide-section-renderer').then(restoreTrending)
-    getLoadedElem('#items.ytd-mini-guide-section-renderer').then(restoreTrending)
+    dom.get.loadedElem('#items.ytd-guide-section-renderer').then(restoreTrending)
+    dom.get.loadedElem('#items.ytd-mini-guide-section-renderer').then(restoreTrending)
 
     function restoreTrending() {
         const trendingData = {
@@ -570,7 +556,7 @@
         commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true }))
 
     // CSS adjustments and UI fixes
-    app.styles = { fixes: document.createElement('style') }
+    app.styles = { fixes: dom.create.style() }
     app.styles.fixes.innerText = `
     yt-thumbnail-view-model { border-radius: 0 !important } /* square homepage thumbs */
 
@@ -1115,7 +1101,7 @@
         div#subscribe-button { position: absolute ; right: 0 } div#actions { padding-right: 125px } /* align right */
     }
     `
-    getLoadedElem('head').then(() => document.head.append(app.styles.fixes))
+    dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
     Object.defineProperties(document, {
         'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'},
@@ -1142,7 +1128,7 @@
     const homeObserver = new MutationObserver(() => {
         if (location.pathname != locationPath) { // nav'd to diff page, re-observe
             locationPath = location.pathname ; homeObserver.disconnect()
-            getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
+            dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
         } else if (locationPath == '/') { // remove regenerating homepage stuff
             if (config.adBlock) // remove ads
                 document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
@@ -1153,10 +1139,10 @@
                 )?.remove()
         }
     })
-    getLoadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
+    dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
-    document.head.append(window.configStyle ??= document.createElement('style'))
+    document.head.append(window.configStyle ??= dom.create.style())
     window.configStyle.textContent = Object.entries(domSelectors).map(([key, selectors]) =>
         !config[`${key}Block`] ? '' : `${extractSelectors(selectors).join(',')} { display: none }`).join('')
 })()
