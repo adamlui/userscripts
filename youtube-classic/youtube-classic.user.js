@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.2
+// @version           2026.1.21.3
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -38,8 +38,10 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        ui: { scheme: document.documentElement.hasAttribute('dark')
-                   || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light' }
+        ui: {
+            scheme: document.documentElement.hasAttribute('dark')
+                 || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
+        }
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
