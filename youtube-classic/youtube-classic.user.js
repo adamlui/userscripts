@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.20.11
+// @version           2026.1.20.12
 // @author            Adam Lui, Magma_Craft, Anarios, JRWR, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -489,7 +489,7 @@
             viewMultiOwner: 'View %s replies from %s and others',
             hideSingular: 'Hide reply',
             hideMulti: 'Hide replies',
-            replyCountIsolator: /( REPLIES)|( REPLY)/
+            replyCntIsolator: /( REPLIES)|( REPLY)/
         }
     }
     function getString(string, hl = 'en', ...args) {
@@ -535,18 +535,18 @@
                 creatorName = replies.viewRepliesCreatorThumbnail.accessibility.accessibilityData.label
                 delete replies.viewRepliesCreatorThumbnail
             } catch (err) {}
-            let replyCount = getSimpleString(replies.viewReplies.buttonRenderer.text)
-            replyCount = +replyCount.replace(getString('replyCountIsolator', hl), '')
+            let replyCnt = getSimpleString(replies.viewReplies.buttonRenderer.text)
+            replyCnt = +replyCnt.replace(getString('replyCntIsolator', hl), '')
             const viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti',
                   viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular'
             replies.viewReplies.buttonRenderer.text = {
                 runs: [{
-                    text: (replyCount > 1) ? getString(viewMultiString, hl, replyCount, creatorName)
+                    text: (replyCnt > 1) ? getString(viewMultiString, hl, replyCnt, creatorName)
                                            : getString(viewSingleString, hl, creatorName)
                 }]
             }
             replies.hideReplies.buttonRenderer.text = {
-                runs: [{ text: (replyCount > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
+                runs: [{ text: (replyCnt > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
             }
         } catch (err) {}
         return thread
