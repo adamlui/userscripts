@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.9
+// @version           2026.1.21.10
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -562,16 +562,16 @@
 
         /* Revert old background color and buttons */
         html[dark] {
-        --yt-spec-general-background-a: #181818 !important ;
-        --yt-spec-general-background-b: #0f0f0f !important ;
-        --yt-spec-brand-background-primary: rgba(33,33,33,0.98) !important ;
-        --yt-spec-10-percent-layer: rgba(255,255,255,0.1) !important
+          --yt-spec-general-background-a: #181818 !important ;
+          --yt-spec-general-background-b: #0f0f0f !important ;
+          --yt-spec-brand-background-primary: rgba(33,33,33,0.98) !important ;
+          --yt-spec-10-percent-layer: rgba(255,255,255,0.1) !important
         }
         html:not([dark]) {
-        --yt-spec-general-background-a: #f9f9f9 !important ;
-        --yt-spec-general-background-b: #f1f1f1 !important ;
-        --yt-spec-brand-background-primary: rgba(255,255,255,0.98) !important ;
-        --yt-spec-10-percent-layer: rgba(0,0,0,0.1) !important
+          --yt-spec-general-background-a: #f9f9f9 !important ;
+          --yt-spec-general-background-b: #f1f1f1 !important ;
+          --yt-spec-brand-background-primary: rgba(255,255,255,0.98) !important ;
+          --yt-spec-10-percent-layer: rgba(0,0,0,0.1) !important
         }
 
         /* Un-segment engagement buttons below vid https://github.com/adamlui/youtube-classic/issues/10 */
@@ -581,7 +581,7 @@
         ytd-app { background: var(--yt-spec-general-background-a) !important }
         ytd-browse[page-subtype="channels"] { background: var(--yt-spec-general-background-b) !important }
         ytd-c4-tabbed-header-renderer {
-            --yt-lightsource-section1-color: var(--yt-spec-general-background-a) !important }
+          --yt-lightsource-section1-color: var(--yt-spec-general-background-a) !important }
         ytd-mini-guide-renderer, ytd-mini-guide-entry-renderer {
             background-color: var(--yt-spec-brand-background-solid) !important }
         #cinematics.ytd-watch-flexy { display: none !important }
@@ -642,11 +642,10 @@
 
         /* Remove rounded corners on buttons and boxes */
         #container.ytd-searchbox {
-        background-color: var(--ytd-searchbox-background) !important;
-        border-radius: 2px 0 0 2px !important;
-        box-shadow: inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color) !important;
-        color: var(--ytd-searchbox-text-color) !important;
-        padding: 2px 6px !important;
+            background-color: var(--ytd-searchbox-background) !important ;
+            border-radius: 2px 0 0 2px !important ;
+            box-shadow: inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color) !important ;
+            color: var(--ytd-searchbox-text-color) !important ; padding: 2px 6px !important
         }
 
         ytd-searchbox[desktop-searchbar-style="rounded_corner_dark_btn"] #searchbox-button.ytd-searchbox {
@@ -1013,7 +1012,7 @@
             ytd-text-inline-expander.ytd-playlist-header-renderer
         {
             color: var(--yt-spec-text-primary) !important ;
-        --ytd-text-inline-expander-button-color: var(--yt-spec-text-primary) !important
+          --ytd-text-inline-expander-button-color: var(--yt-spec-text-primary) !important
         }
         ytd-dropdown-renderer[no-underline] tp-yt-paper-dropdown-menu-light
             .tp-yt-paper-dropdown-menu-light[style-target=input],
@@ -1025,8 +1024,8 @@
             border-radius: 2px !important ; text-transform: uppercase
         }    
         .metadata-text-wrapper.ytd-playlist-header-renderer {
-        --yt-endpoint-color: var(--yt-spec-text-primary) !important ;
-        --yt-endpoint-hover-color: var(--yt-spec-text-primary) !important
+          --yt-endpoint-color: var(--yt-spec-text-primary) !important ;
+          --yt-endpoint-hover-color: var(--yt-spec-text-primary) !important
         }    
         div.immersive-header-background-wrapper.style-scope.ytd-playlist-header-renderer > div {
             background: var(--yt-spec-general-background-a) !important }
