@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.13
+// @version           2026.1.21.14
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -33,8 +33,8 @@
 (() => {
     'use strict'
 
-    const app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
-    const env = {
+    window.app = { symbol: '📺', configKeyPrefix: 'ytClassic', config: {} }
+    window.env = {
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -46,27 +46,38 @@
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-    const config = {}
     const settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            disableShorts: { type: 'toggle', label: 'Redirect Shorts', defaultVal: true,
-                helptip: 'Redirect Shorts to classic wide player' },
-            shortsBlock: { type: 'toggle', label: 'Hide Shorts', defaultVal: true,
-                helptip: 'Hide Shorts from appearing in home page + results' },
-            playablesBlock: { type: 'toggle', label: 'Hide Playables', defaultVal: true,
-                helptip: 'Hide Playables from appearing in home page' },
-            adBlock: { type: 'toggle', label: 'Block Ads', defaultVal: false,
-                helptip: 'Hide ad thumbnails from homepage layouts' },
-            aiBlock: { type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
-                helptip: 'Hide AI summaries from video pages' },
-            notifDisabled: { type: 'toggle', label: 'Mode Notifications', defaultVal: false,
-                helptip: 'Show notifications when toggling mode/settings' }
+            disableShorts: {
+                type: 'toggle', label: 'Redirect Shorts', defaultVal: true,
+                helptip: 'Redirect Shorts to classic wide player'
+            },
+            shortsBlock: {
+                type: 'toggle', label: 'Hide Shorts', defaultVal: true,
+                helptip: 'Hide Shorts from appearing in home page + results'
+            },
+            playablesBlock: {
+                type: 'toggle', label: 'Hide Playables', defaultVal: true,
+                helptip: 'Hide Playables from appearing in home page'
+            },
+            adBlock: {
+                type: 'toggle', label: 'Block Ads', defaultVal: false,
+                helptip: 'Hide ad thumbnails from homepage layouts'
+            },
+            aiBlock: {
+                type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
+                helptip: 'Hide AI summaries from video pages'
+            },
+            notifDisabled: {
+                type: 'toggle', label: 'Mode Notifications', defaultVal: false,
+                helptip: 'Show notifications when toggling mode/settings'
+            }
         },
 
         load(...keys) {
             keys.flat().forEach(key =>
-                config[key] = processKey(key, GM_getValue(`${app.configKeyPrefix}_${key}`, undefined)))
+                app.config[key] = processKey(key, GM_getValue(`${app.configKeyPrefix}_${key}`, undefined)))
             function processKey(key, val) {
                 const ctrl = settings.controls?.[key]
                 if (val != undefined && ( // validate stored val
@@ -77,18 +88,18 @@
             }
         },
 
-        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; config[key] = val },
+        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; app.config[key] = val },
 
         typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF
             const reInvertSuffixes = /disabled|hidden/i
             return reInvertSuffixes.test(key) // flag in control key name
                 && !reInvertSuffixes.test(this.controls[key]?.label || '') // but not in label msg key name
-                    ? !config[key] : config[key] // so invert since flag reps opposite type state, else don't
+                    ? !app.config[key] : app.config[key] // so invert since flag reps opposite type state, else don't
         }
     }
     settings.load(Object.keys(settings.controls))
 
-    const domSelectors = {
+    app.selectors = { site: {
         ad: { masthead: 'div#masthead-ad' }, // https://imgur.com/a/kOWzh3O
         ai: {
             askBtn: 'button:has(path[d*=M480-80q0-83])',
@@ -102,7 +113,7 @@
                 results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
             }
         }
-    }
+    }}
 
     const CONFIGS = { BUTTON_REWORK: false }
 
@@ -308,10 +319,10 @@
                 const menuLabel = `${
                     ctrl.symbol || this.state.symbols[+settings.typeIsEnabled(key)] } ${ctrl.label} ${
                         ctrl.type == 'toggle' ? this.state.separator + this.state.words[+settings.typeIsEnabled(key)]
-                      : ctrl.type == 'slider' ? ': ' + config[key] + ctrl.labelSuffix || ''
+                      : ctrl.type == 'slider' ? ': ' + app.config[key] + ctrl.labelSuffix || ''
                       : ctrl.status ? ` — ${ctrl.status}` : '' }`
                 return GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !config[key]) ; syncConfigToUI({ updatedKey: key })
+                    settings.save(key, !app.config[key]) ; syncConfigToUI({ updatedKey: key })
                     notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
                 }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined)
             })
@@ -319,7 +330,7 @@
     }
 
     function notify(msg, pos = '', notifDuration = '', shadow = '') { // requires dom.js
-        if (config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
+        if (app.config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
 
         // Strip state word to append colored one later
         const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
@@ -343,13 +354,13 @@
 
     function syncConfigToUI(options) {
         if (options?.updatedKey == 'disableShorts') {
-            if (config.disableShorts && !checkShortsToRedir.id)
+            if (app.config.disableShorts && !checkShortsToRedir.id)
                 checkShortsToRedir()
-            else if (!config.disableShorts && checkShortsToRedir.id) {
+            else if (!app.config.disableShorts && checkShortsToRedir.id) {
                 cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
         } else if (options?.updatedKey.includes('Block'))
-            window.configStyle.textContent = Object.entries(domSelectors)
-                .map(([key, selectors]) => !config[`${key}Block`] ? ''
+            app.styles.config.textContent = Object.entries(app.selectors.site)
+                .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
                     : `${css.selectors.extract(selectors).join(',')} { display: none }`
                 ).join('')
         toolbarMenu.refresh() // prefixes/suffixes
@@ -461,95 +472,6 @@
         document.querySelector('#items > ytd-guide-entry-renderer:nth-child(2)').data = trendingData
         document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
     }
-
-    // Restore classic comments UI
-    let hl
-    const cfconfig = { unicodeEmojis: false }
-    const cfi18n = { en: {
-        viewSingular: 'View reply',
-        viewMulti: 'View %s replies',
-        viewSingularOwner: 'View reply from %s',
-        viewMultiOwner: 'View %s replies from %s and others',
-        hideSingular: 'Hide reply',
-        hideMulti: 'Hide replies',
-        replyCntIsolator: /( REPLIES)|( REPLY)/
-    }}
-    function getString(string, hl = 'en', ...args) {
-        if (!string) return
-        let str
-        if (cfi18n[hl]) {
-            if (cfi18n[hl][string]) str = cfi18n[hl][string]
-            else if (cfi18n.en[string]) str = cfi18n.en[string]
-            else return
-        } else if (cfi18n.en[string]) str = cfi18n.en[string]
-        for (const arg of args) str = str.replace(/%s/, arg)
-        return str
-    }
-    function getSimpleString(object) {
-        if (object.simpleText) return object.simpleText
-        let str = ''
-        for (const run of object.runs) str += run.text
-        return str
-    }
-    function formatComment(comment) {
-        if (cfconfig.unicodeEmojis) {
-            try { for (const run of comment.contentText.runs) { delete run.emoji ; delete run.loggingDirectives }}
-            catch (err) {}
-        }
-        return comment
-    }
-    async function formatCommentThread(thread) {
-        if (thread.comment.commentRenderer)
-            thread.comment.commentRenderer = formatComment(thread.comment.commentRenderer)
-        let replies
-        try {
-            replies = thread.replies.commentRepliesRenderer
-            if (replies.viewRepliesIcon) {
-                replies.viewReplies.buttonRenderer.icon = replies.viewRepliesIcon.buttonRenderer.icon
-                delete replies.viewRepliesIcon
-            }
-            if (replies.hideRepliesIcon) {
-                replies.hideReplies.buttonRenderer.icon = replies.hideRepliesIcon.buttonRenderer.icon
-                delete replies.hideRepliesIcon
-            }
-            let creatorName
-            try {
-                creatorName = replies.viewRepliesCreatorThumbnail.accessibility.accessibilityData.label
-                delete replies.viewRepliesCreatorThumbnail
-            } catch (err) {}
-            let replyCnt = getSimpleString(replies.viewReplies.buttonRenderer.text)
-            replyCnt = +replyCnt.replace(getString('replyCntIsolator', hl), '')
-            const viewMultiStr = creatorName ? 'viewMultiOwner' : 'viewMulti',
-                  viewSingleStr = creatorName ? 'viewSingularOwner' : 'viewSingular'
-            replies.viewReplies.buttonRenderer.text = {
-                runs: [{
-                    text: (replyCnt > 1) ? getString(viewMultiStr, hl, replyCnt, creatorName)
-                                         : getString(viewSingleStr, hl, creatorName)
-                }]
-            }
-            replies.hideReplies.buttonRenderer.text = {
-                runs: [{ text: (replyCnt > 1) ? getString('hideMulti', hl) :  getString('hideSingular', hl) }]
-            }
-        } catch (err) {}
-        return thread
-    }
-    function refreshData(elem) {
-        const clone = elem.cloneNode()
-        clone.data = elem.data ; clone.data.fixedByCF = true
-        for (const i in elem.properties) clone[i] = elem[i]
-        elem.insertAdjacentElement('afterend', clone) ; elem.remove()
-    }
-    const commentObserver = new MutationObserver(mutations => mutations.forEach(async mutation => {
-        if (mutation.addedNodes) for (const elem of mutation.addedNodes) if (elem.classList && !elem.data?.fixedByCF)
-            if (elem.tagName == 'YTD-COMMENT-THREAD-RENDERER') {
-                elem.data = await formatCommentThread(elem.data)
-                refreshData(elem)
-            } else if (elem.tagName == 'YTD-COMMENT-RENDERER'
-                && !elem.classList.contains('ytd-comment-thread-renderer')
-            ) { elem.data = formatComment(elem.data) ; refreshData(elem) }
-    }))
-    document.addEventListener('yt-page-data-updated', async () =>
-        commentObserver.observe(document.querySelector('ytd-app'), { childList: true, subtree: true }))
 
     // CSS adjustments and UI fixes
     app.styles = { fixes: dom.create.style(`
@@ -1122,7 +1044,7 @@
     const obsConfig = { childList: true, subtree: true }
 
     // Redirect Shorts to classic player
-    if (config.disableShorts) checkShortsToRedir()
+    if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
         if (location.pathname.startsWith('/shorts/'))
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
@@ -1135,19 +1057,19 @@
             locationPath = location.pathname ; homeObserver.disconnect()
             dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
         } else if (locationPath == '/') { // remove regenerating homepage stuff
-            if (config.adBlock) // remove ads
+            if (app.config.adBlock) // remove ads
                 document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
-            if (config.shortsBlock || config.playablesBlock) // remove shelves
+            if (app.config.shortsBlock || app.config.playablesBlock) // remove shelves
                 document.querySelector(
-                    `ytd-rich-section-renderer${ !config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
-                                                 !config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
+                    `ytd-rich-section-renderer${ !app.config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
+                                                 !app.config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
                 )?.remove()
         }
     })
     dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Block stuff
-    document.head.append(window.configStyle ??= dom.create.style())
-    window.configStyle.textContent = Object.entries(domSelectors).map(([key, selectors]) =>
-        !config[`${key}Block`] ? '' : `${css.selectors.extract(selectors).join(',')} { display: none }`).join('')
+    document.head.append(app.styles.config ??= dom.create.style())
+    app.styles.config.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
+        !app.config[`${key}Block`] ? '' : `${css.selectors.extract(selectors).join(',')} { display: none }`).join('')
 })()
