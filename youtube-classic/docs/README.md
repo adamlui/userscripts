@@ -52,7 +52,12 @@
 
 [![](https://img.shields.io/mastodon/follow/109387703022229926?domain=https%3A%2F%2Felonsucks.org&style=social)](https://elonsucks.org/@adam?utm_source=youtube_classic&utm_content=github_shield "Follow @adam on ElonSucks.org")
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @AdamLuiTube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
-[![](https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social "Follow @adamlui on GitHub")](https://github.com/adamlui)
+<a href="https://github.com/adamlui">
+    <img title="Follow @adamlui on GitHub" src="https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social"></a>
+<a href="https://github.com/Anarios">
+    <img title="Follow @Anarios on GitHub" src="https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social"></a>
+<a href="https://github.com/hoothin">
+    <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
 
 
 <a href="#top">Back to top ↑</a>
