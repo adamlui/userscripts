@@ -41,12 +41,14 @@
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
     "lint:fix-all": "eslint . --fix",
+    "build:js": "minify-js assets/js dist --relative-output",
     "bump:chatbots": "node utils/bump/chatbots --cache",
     "bump:chatbots-nc": "node utils/bump/chatbots --cache --no-commit",
     "bump:chatbots-np": "node utils/bump/chatbots --cache --no-push",
     "bump:res": "node utils/bump/resources --cache"
   },
   "devDependencies": {
+    "@adamlui/minify.js": "^2.1.0",
     "@eslint/json": "^0.14.0",
     "@eslint/markdown": "^7.5.1",
     "@stylistic/eslint-plugin": "^5.7.0",
