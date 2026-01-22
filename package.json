@@ -1,13 +1,17 @@
 {
   "name": "@adamlui/userscripts",
   "description": "Greasemonkey userscripts",
+  "author": {
+    "name": "Adam Lui",
+    "email": "adam@kudoai.com",
+    "url": "https://github.com/adamlui"
+  },
   "homepage": "https://github.com/adamlui/userscripts",
   "bugs": {
     "url": "https://github.com/adamlui/userscripts/issues",
     "email": "adam@kudoai.com"
   },
   "license": "MIT",
-  "author": "Adam Lui <adam@kudoai.com> (https://github.com/adamlui)",
   "funding": [
     {
       "type": "cashapp",
