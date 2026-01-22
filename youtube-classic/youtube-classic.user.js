@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.5
+// @version           2026.1.21.6
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -469,17 +469,15 @@
     // Restore classic comments UI
     let hl
     const cfconfig = { unicodeEmojis: false }
-    const cfi18n = {
-        en: {
-            viewSingular: 'View reply',
-            viewMulti: 'View %s replies',
-            viewSingularOwner: 'View reply from %s',
-            viewMultiOwner: 'View %s replies from %s and others',
-            hideSingular: 'Hide reply',
-            hideMulti: 'Hide replies',
-            replyCntIsolator: /( REPLIES)|( REPLY)/
-        }
-    }
+    const cfi18n = { en: {
+        viewSingular: 'View reply',
+        viewMulti: 'View %s replies',
+        viewSingularOwner: 'View reply from %s',
+        viewMultiOwner: 'View %s replies from %s and others',
+        hideSingular: 'Hide reply',
+        hideMulti: 'Hide replies',
+        replyCntIsolator: /( REPLIES)|( REPLY)/
+    }}
     function getString(string, hl = 'en', ...args) {
         if (!string) return
         let str
@@ -525,12 +523,12 @@
             } catch (err) {}
             let replyCnt = getSimpleString(replies.viewReplies.buttonRenderer.text)
             replyCnt = +replyCnt.replace(getString('replyCntIsolator', hl), '')
-            const viewMultiString = creatorName ? 'viewMultiOwner' : 'viewMulti',
-                  viewSingleString = creatorName ? 'viewSingularOwner' : 'viewSingular'
+            const viewMultiStr = creatorName ? 'viewMultiOwner' : 'viewMulti',
+                  viewSingleStr = creatorName ? 'viewSingularOwner' : 'viewSingular'
             replies.viewReplies.buttonRenderer.text = {
                 runs: [{
-                    text: (replyCnt > 1) ? getString(viewMultiString, hl, replyCnt, creatorName)
-                                           : getString(viewSingleString, hl, creatorName)
+                    text: (replyCnt > 1) ? getString(viewMultiStr, hl, replyCnt, creatorName)
+                                         : getString(viewSingleStr, hl, creatorName)
                 }]
             }
             replies.hideReplies.buttonRenderer.text = {
