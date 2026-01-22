@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.12
+// @version           2026.1.21.13
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -15,6 +15,7 @@
 // @match             *://*.youtube.com/*
 // @connect           gm.ytclassic.com
 // @connect           raw.githubusercontent.com
+// @require           https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@6412760/assets/js/lib/css.js/dist/css.min.js#sha256-NPFbv/zlZBXfPJAMHFAkqB7wIGT/faDwz1RH4ZEshd0=
 // @require           https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@3683a79/assets/js/lib/dom.js/dist/dom.min.js#sha256-Xl5ghi373aMe12nN4vOKB+C5IJQY43AtjVAdB0K3Dag=
 // @require           https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@c0c3a2e/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @grant             GM_registerMenuCommand
@@ -289,9 +290,6 @@
         return notificationDiv
     }
 
-    function extractSelectors(obj) {
-        return Object.values(obj).flatMap(val => typeof val == 'object' ? extractSelectors(val) : val) }
-
     const toolbarMenu = {
         state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
@@ -352,7 +350,7 @@
         } else if (options?.updatedKey.includes('Block'))
             window.configStyle.textContent = Object.entries(domSelectors)
                 .map(([key, selectors]) => !config[`${key}Block`] ? ''
-                    : `${extractSelectors(selectors).join(',')} { display: none }`
+                    : `${css.selectors.extract(selectors).join(',')} { display: none }`
                 ).join('')
         toolbarMenu.refresh() // prefixes/suffixes
     }
@@ -1151,5 +1149,5 @@
     // Block stuff
     document.head.append(window.configStyle ??= dom.create.style())
     window.configStyle.textContent = Object.entries(domSelectors).map(([key, selectors]) =>
-        !config[`${key}Block`] ? '' : `${extractSelectors(selectors).join(',')} { display: none }`).join('')
+        !config[`${key}Block`] ? '' : `${css.selectors.extract(selectors).join(',')} { display: none }`).join('')
 })()
