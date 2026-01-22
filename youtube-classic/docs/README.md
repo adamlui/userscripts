@@ -24,7 +24,7 @@
 <h2>What it does</h2>
 <ul>
   <li><b>Restores dislike counter</b> so you can judge the quality of content before watching<br>
-    (based on Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
+    (using Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
     <p><img width=400px src="https://assets.ytclassic.com/images/screenshots/dislike-counter.png"></li><br>
   <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round<br>
     (based on magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
