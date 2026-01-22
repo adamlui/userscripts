@@ -1,11 +1,6 @@
 {
   "name": "@adamlui/userscripts",
   "description": "Greasemonkey userscripts",
-  "keywords": [
-    "greasemonkey",
-    "javascript",
-    "userscripts"
-  ],
   "homepage": "https://github.com/adamlui/userscripts",
   "bugs": {
     "url": "https://github.com/adamlui/userscripts/issues",
