@@ -54,8 +54,6 @@
 [![](https://img.shields.io/youtube/channel/subscribers/UCgBMqK7SRL5R__3qM-YAcSg?label=Follow%20%40adamluitube&style=social "Follow @AdamLuiTube on YouTube")](https://www.youtube.com/AdamLuiTube?sub_confirmation=1)
 <a href="https://github.com/adamlui">
     <img title="Follow @adamlui on GitHub" src="https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social"></a>
-<a href="https://github.com/Anarios">
-    <img title="Follow @Anarios on GitHub" src="https://img.shields.io/github/followers/Anarios?label=Follow%20%40Anarios&style=social"></a>
 <a href="https://github.com/hoothin">
     <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
 
