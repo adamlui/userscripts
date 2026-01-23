@@ -17,19 +17,19 @@ jobs:
     steps:
 
       - name: Checkout adamlui/userscripts
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           path: adamlui/userscripts
 
       - name: Checkout adamlui/chatgpt-auto-continue
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/chatgpt-auto-continue
           path: adamlui/chatgpt-auto-continue
 
       - name: Checkout adamlui/ai-web-extensions
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/ai-web-extensions
