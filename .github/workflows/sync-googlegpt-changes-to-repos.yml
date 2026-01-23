@@ -17,19 +17,19 @@ jobs:
     steps:
 
       - name: Checkout adamlui/userscripts
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           path: adamlui/userscripts
 
       - name: Checkout KudoAI/googlegpt
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: KudoAI/googlegpt
           path: KudoAI/googlegpt
 
       - name: Checkout adamlui/ai-web-extensions
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           token: ${{ secrets.REPO_SYNC_PAT }}
           repository: adamlui/ai-web-extensions
