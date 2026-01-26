@@ -14,9 +14,10 @@ window.css = {
           + 'z-index: -1' ) // allow interactive elems to be clicked
         ;['sm', 'med', 'lg'].forEach(particleSize => {
             const particlesDiv = document.createElement('div')
-            particlesDiv.id = config?.bgAnimationsDisabled ? `particles-${particleSize}-off`
-                : `${( env?.ui?.scheme || env?.ui?.app?.scheme ) == 'dark' ? darkScheme
-                    : lightScheme }-particles-${particleSize}`
+            particlesDiv.id =
+                typeof app != 'undefined' && app.config?.bgAnimationsDisabled ? `particles-${particleSize}-off`
+                : `${ typeof env != 'undefined' && ( env.ui?.scheme || env.ui?.app?.scheme ) == 'dark' ?
+                    darkScheme : lightScheme }-particles-${particleSize}`
             particlesDivsWrapper.append(particlesDiv)
         })
         targetNode.prepend(particlesDivsWrapper)
