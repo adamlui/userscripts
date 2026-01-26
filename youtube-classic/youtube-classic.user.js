@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.21.16
+// @version           2026.1.26
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -15,8 +15,8 @@
 // @match             *://*.youtube.com/*
 // @connect           gm.ytclassic.com
 // @connect           raw.githubusercontent.com
-// @require           https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@6412760/assets/js/lib/css.js/dist/css.min.js#sha256-NPFbv/zlZBXfPJAMHFAkqB7wIGT/faDwz1RH4ZEshd0=
-// @require           https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@3683a79/assets/js/lib/dom.js/dist/dom.min.js#sha256-Xl5ghi373aMe12nN4vOKB+C5IJQY43AtjVAdB0K3Dag=
+// @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
+// @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
 // @require           https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@c0c3a2e/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @grant             GM_registerMenuCommand
 // @grant             GM_unregisterMenuCommand
