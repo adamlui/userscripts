@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.26
+// @version           2026.1.26.1
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -46,7 +46,7 @@
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-    window.app = { symbol: '📺', configKeyPrefix: 'ytClassic', config: {} }
+    window.app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
 
     // Init SETTINGS
     window.settings = {
@@ -79,6 +79,7 @@
         },
 
         load(...keys) {
+            app.config ??= {}
             keys.flat().forEach(key =>
                 app.config[key] = processKey(key, GM_getValue(`${app.configKeyPrefix}_${key}`, undefined)))
             function processKey(key, val) {
@@ -91,7 +92,8 @@
             }
         },
 
-        save(key, val) { GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; app.config[key] = val },
+        save(key, val) {
+            app.config ??= {} ; GM_setValue(`${app.configKeyPrefix}_${key}`, val) ; app.config[key] = val },
 
         typeIsEnabled(key) { // for menu labels + notifs to return ON/OFF
             const reInvertSuffixes = /disabled|hidden/i
