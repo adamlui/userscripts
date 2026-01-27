@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.27.7
+// @version           2026.1.27.8
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1086,7 +1086,7 @@
                   bellWidth = parseInt(getComputedStyle(bellIcon).width),
                   primaryWidth = parseInt(getComputedStyle(primaryDiv).width),
                   idealActionsRpadding = primaryWidth < 768 ? '' : `${ 125 +( bellWidth == 100 ? 0 : bellWidth )}px`
-            Object.assign(subBtn.style,
+            Object.assign(subBtn.style, // right-align if primary div wide enough
                 primaryWidth > 768 ? { position: 'absolute', right: 0 } : { position: '', right: '' })
             if (getComputedStyle(actionsDiv).paddingRight != idealActionsRpadding)
                 actionsDiv.style.paddingRight = idealActionsRpadding
