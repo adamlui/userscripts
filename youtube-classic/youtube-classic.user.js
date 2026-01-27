@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.27
+// @version           2026.1.27.2
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1030,7 +1030,7 @@
         yt-chip-cloud-chip-renderer:has(path[d^="M5 0a5 5"]) { display: none }
 
         @media only screen and (min-width: 768px) { /* align sub btn right */
-            div#subscribe-button { position: absolute ; right: 0 } div#actions { padding-right: 125px }}
+            div#subscribe-button { position: absolute ; right: 0 }}
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
@@ -1071,6 +1071,25 @@
         }
     })
     dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
+
+    // Set actions div padding + update when needed
+    dom.get.loadedElem('ytd-subscribe-button-renderer button').then(subBtn => {
+        setTimeout(updateActionsDivPadding, 5000)
+        new MutationObserver(updateActionsDivPadding).observe(subBtn, { childList: true, subtree: true })
+        window.addEventListener('resize', updateActionsDivPadding)
+    })
+    function updateActionsDivPadding() {
+        if (updateActionsDivPadding.timeout) clearTimeout(updateActionsDivPadding.timeout)
+        updateActionsDivPadding.timeout = setTimeout(async () => {
+            const actionsDiv = await dom.get.loadedElem('div#actions'),
+                  bellIcon = await dom.get.loadedElem('[animated-icon-type=NOTIFICATION_BELL] svg'),
+                  bellWidth = getComputedStyle(bellIcon).width,
+                  idealActionsRpadding = !window.matchMedia('(min-width: 768px)').matches ? ''
+                    : `${125 + (bellWidth.endsWith('px') ? parseInt(bellWidth.slice(0, -2)) : 0)}px`
+            if (getComputedStyle(actionsDiv).paddingRight != idealActionsRpadding)
+                actionsDiv.style.paddingRight = idealActionsRpadding
+        }, 50)
+    }
 
     // Block stuff
     document.head.append(app.styles.config ??= dom.create.style())
