@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.27.5
+// @version           2026.1.27.6
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1074,10 +1074,10 @@
     dom.get.loadedElem('ytd-subscribe-button-renderer button').then(subBtn => {
         requestAnimationFrame(updateSubBtnPos)
         new MutationObserver(updateSubBtnPos).observe(subBtn, { childList: true, subtree: true })
-        window.addEventListener('resize', updateSubBtnPos)
+        addEventListener('resize', updateSubBtnPos)
     })
     function updateSubBtnPos() {
-        if (updateSubBtnPos.timeout) clearTimeout(updateSubBtnPos.timeout)
+        clearTimeout(updateSubBtnPos.timeout)
         updateSubBtnPos.timeout = setTimeout(async () => {
             const primaryDiv = await dom.get.loadedElem('div#primary'),
                   actionsDiv = await dom.get.loadedElem('div#actions'),
