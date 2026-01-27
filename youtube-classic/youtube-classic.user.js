@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.27.4
+// @version           2026.1.27.5
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1029,9 +1029,6 @@
 
         /* Hide Edit your custom feed chip */
         yt-chip-cloud-chip-renderer:has(path[d^="M5 0a5 5"]) { display: none }
-
-        @media only screen and (min-width: 768px) { /* align sub btn right */
-            div#subscribe-button { position: absolute ; right: 0 }}
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
@@ -1073,20 +1070,24 @@
     })
     dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
-    // Set actions div padding + update when needed
+    // Set/update subscribe button pos
     dom.get.loadedElem('ytd-subscribe-button-renderer button').then(subBtn => {
-        setTimeout(updateActionsDivPadding, 5000)
-        new MutationObserver(updateActionsDivPadding).observe(subBtn, { childList: true, subtree: true })
-        window.addEventListener('resize', updateActionsDivPadding)
+        requestAnimationFrame(updateSubBtnPos)
+        new MutationObserver(updateSubBtnPos).observe(subBtn, { childList: true, subtree: true })
+        window.addEventListener('resize', updateSubBtnPos)
     })
-    function updateActionsDivPadding() {
-        if (updateActionsDivPadding.timeout) clearTimeout(updateActionsDivPadding.timeout)
-        updateActionsDivPadding.timeout = setTimeout(async () => {
-            const actionsDiv = await dom.get.loadedElem('div#actions'),
+    function updateSubBtnPos() {
+        if (updateSubBtnPos.timeout) clearTimeout(updateSubBtnPos.timeout)
+        updateSubBtnPos.timeout = setTimeout(async () => {
+            const primaryDiv = await dom.get.loadedElem('div#primary'),
+                  actionsDiv = await dom.get.loadedElem('div#actions'),
+                  subBtn = await dom.get.loadedElem('div#subscribe-button'),
                   bellIcon = await dom.get.loadedElem('[animated-icon-type=NOTIFICATION_BELL] svg'),
-                  bellWidth = getComputedStyle(bellIcon).width,
-                  idealActionsRpadding = !window.matchMedia('(min-width: 768px)').matches ? ''
-                    : `${125 + (bellWidth.endsWith('px') ? parseInt(bellWidth.slice(0, -2)) : 0)}px`
+                  bellWidth = parseInt(getComputedStyle(bellIcon).width),
+                  primaryWidth = parseInt(getComputedStyle(primaryDiv).width),
+                  idealActionsRpadding = primaryWidth < 768 ? '' : `${ 125 +( bellWidth == 100 ? 0 : bellWidth )}px`
+            Object.assign(subBtn.style,
+                primaryWidth > 768 ? { position: 'absolute', right: 0 } : { position: '', right: '' })
             if (getComputedStyle(actionsDiv).paddingRight != idealActionsRpadding)
                 actionsDiv.style.paddingRight = idealActionsRpadding
         }, 50)
