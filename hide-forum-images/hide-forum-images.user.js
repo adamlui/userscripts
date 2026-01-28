@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Hide Forum Images
-// @version           2025.10.19.2
+// @version           2026.1.28
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Hides images/videos from XenForo, vBulletin & Discourse forums.
@@ -17,7 +17,7 @@
 // @updateURL         https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js
 // @homepageURL       https://github.com/adamlui/userscripts
 // @supportURL        https://github.com/adamlui/userscripts/issues
-// @contributionURL   https://github.com/sponsors/adamlui
+// @contributionURL   https://ko-fi.com/adamlui
 // ==/UserScript==
 
 (() => {

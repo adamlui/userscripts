@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2025.10.19
+// @version             2026.1.28
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -35,7 +35,7 @@
 // @updateURL           https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js
 // @homepageURL         https://github.com/adamlui/userscripts/tree/master/block-quora-poe
 // @supportURL          https://github.com/adamlui/userscripts/issues
-// @contributionURL     https://github.com/sponsors/adamlui
+// @contributionURL     https://ko-fi.com/adamlui
 // ==/UserScript==
 
 (async () => {
