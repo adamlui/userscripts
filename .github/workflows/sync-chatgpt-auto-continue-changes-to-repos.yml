@@ -37,13 +37,13 @@ jobs:
 
       - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/chatgpt-auto-continue/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
             ${{ github.workspace }}/adamlui/chatgpt-auto-continue/greasemonkey/
 
       - name: Sync chatgpt/chatgpt-auto-continue/ to adamlui/ai-web-extensions/chatgpt-auto-continue/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-auto-continue/ \
             ${{ github.workspace }}/adamlui/ai-web-extensions/chatgpt-auto-continue/greasemonkey/
 

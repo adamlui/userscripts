@@ -46,13 +46,13 @@ jobs:
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/autoclear-chatgpt-history/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
             ${{ github.workspace }}/adamlui/autoclear-chatgpt-history/greasemonkey/
 
       - name: Sync chatgpt/autoclear-chatgpt-history/ to adamlui/ai-web-extensions/autoclear-chatgpt-history/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/autoclear-chatgpt-history/ \
             ${{ github.workspace }}/adamlui/ai-web-extensions/autoclear-chatgpt-history/greasemonkey/
 

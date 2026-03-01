@@ -46,13 +46,13 @@ jobs:
 
       - name: Sync chatgpt/bravegpt/ to KudoAI/bravegpt/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
             ${{ github.workspace }}/KudoAI/bravegpt/greasemonkey/
 
       - name: Sync chatgpt/bravegpt/ to adamlui/ai-web-extensions/bravegpt/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/bravegpt/ \
             ${{ github.workspace }}/adamlui/ai-web-extensions/bravegpt/greasemonkey/
 

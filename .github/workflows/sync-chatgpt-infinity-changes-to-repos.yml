@@ -37,13 +37,13 @@ jobs:
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/chatgpt-infinity/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
             ${{ github.workspace }}/adamlui/chatgpt-infinity/greasemonkey/
 
       - name: Sync chatgpt/chatgpt-infinity/ to adamlui/ai-web-extensions/chatgpt-infinity/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/chatgpt/chatgpt-infinity/ \
             ${{ github.workspace }}/adamlui/ai-web-extensions/chatgpt-infinity/greasemonkey/
 

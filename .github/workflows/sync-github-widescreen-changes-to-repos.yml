@@ -36,7 +36,7 @@ jobs:
 
       - name: Sync github/github-widescreen/ to adamlui/github-widescreen/greasemonkey/
         run: |
-          rsync -avhr --delete \
+          rsync -avhc --delete \
             ${{ github.workspace }}/adamlui/userscripts/github/github-widescreen/ \
             ${{ github.workspace }}/adamlui/github-widescreen/greasemonkey/
 
