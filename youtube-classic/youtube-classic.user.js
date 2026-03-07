@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.3.6
+// @version           2026.3.6.1
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -839,10 +839,6 @@
             height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ;
             text-transform: uppercase !important
         }
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-            color: #fff !important ; background: var(--yt-spec-brand-button-background) !important ;
-            border-radius: 2px !important ; text-transform: uppercase !important ; letter-spacing: 0.5px !important
-        }
         button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m {
             height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ;
             text-transform: uppercase !important
@@ -1013,7 +1009,9 @@
         #play.ytd-moving-thumbnail-renderer { color: #fff !important }
         
         /* Subscribe button */
-        #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--filled {
+        :is(ytd-subscribe-button-renderer, /* channel page */
+            yt-subscribe-button-view-model /* video page */
+        ) button {
             background-color: #cc0000 !important ; color: #fff !important ; border-radius: 2px !important ;
             text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
         }
