@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.1.28
+// @version           2026.3.6
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -513,11 +513,11 @@
             background-color: var(--yt-spec-brand-background-primary) !important ;
             border-top: 1px solid var(--yt-spec-10-percent-layer) !important ;
             border-bottom: 1px solid var(--yt-spec-10-percent-layer) !important
-        }    
+        }
         ytd-feed-filter-chip-bar-renderer[is-dark-theme] #left-arrow.ytd-feed-filter-chip-bar-renderer::after {
             background: linear-gradient(
                 to right, var(--yt-spec-brand-background-primary) 20%, rgba(33,33,33,0) 80%) !important
-        }    
+        }
         ytd-feed-filter-chip-bar-renderer[is-dark-theme] #right-arrow.ytd-feed-filter-chip-bar-renderer::before {
             background: linear-gradient(
                 to left, var(--yt-spec-brand-background-primary) 20%, rgba(33,33,33,0) 80%) !important
@@ -528,13 +528,13 @@
         yt-chip-cloud-renderer[is-dark-theme] #right-arrow.yt-chip-cloud-renderer::before {
             background: linear-gradient(to left, var(--ytd-chip-cloud-background,
                 var(--yt-spec-general-background-a)) 10%, rgba(24,24,24,0) 90%) !important
-        }    
+        }
         yt-chip-cloud-renderer :where(#left-arrow-button, #right-arrow-button).yt-chip-cloud-renderer {
             background: var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) !important }
         yt-chip-cloud-renderer[is-dark-theme] #left-arrow.yt-chip-cloud-renderer::after {
             background: linear-gradient(to right, var(--ytd-chip-cloud-background,
                 var(--yt-spec-general-background-a)) 10%, rgba(24,24,24,0) 90%) !important
-        }    
+        }
         yt-chip-cloud-renderer #left-arrow.yt-chip-cloud-renderer::after {
             background: linear-gradient(
                 to right, var(--ytd-chip-cloud-background, var(--yt-spec-general-background-a)) 10%,
@@ -601,7 +601,7 @@
             font-weight: var(--ytd-tab-system-font-weight) !important ;
             letter-spacing: var(--ytd-tab-system-letter-spacing) !important ;
             text-transform: var(--ytd-tab-system-text-transform) !important
-        }    
+        }
         .style-scope.ytd-rich-item-renderer { border-radius: 2px !important }
         .style-scope.ytd-item-section-renderer { border-radius: 0px !important }
         #tooltip.tp-yt-paper-tooltip { border-radius: 2px !important }
@@ -613,7 +613,7 @@
         ytd-multi-page-menu-renderer {
             border-radius: 0px !important ; border: 1px solid var(--yt-spec-10-percent-layer) !important ;
             border-top: none !important ; box-shadow: none !important
-        }    
+        }
         yt-dropdown-menu { --paper-menu-button-content-border-radius:  2px !important }
         ytd-menu-popup-renderer { border-radius: 2px !important }
         .style-scope.ytd-shared-post-renderer { border-radius: 0px !important }
@@ -711,7 +711,7 @@
         div#owner-name.text-shell.skeleton-bg-color { border-radius: 2px !important }
         div#published-date.text-shell.skeleton-bg-color { border-radius: 2px !important }
         div#subscribe-button.skeleton-bg-color { border-radius: 4px !important }
-        div.rich-thumbnail.skeleton-bg-color { border-radius: 0px !important }    
+        div.rich-thumbnail.skeleton-bg-color { border-radius: 0px !important }
         div.rich-video-title.text-shell.skeleton-bg-color { border-radius: 2px !important }
         div.rich-video-meta.text-shell.skeleton-bg-color { border-radius: 2px !important }
         ytd-video-view-count-renderer { font-size: 1.4rem !important }
@@ -722,7 +722,7 @@
         ytd-merch-shelf-renderer { background-color: transparent !important }
         div#clarify-box.attached-message.style-scope.ytd-watch-flexy { margin-top: 0px !important }
         ytd-clarification-renderer.style-scope:where(.ytd-item-section-renderer, .ytd-watch-flexy) {
-        border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }    
+        border: 1px solid !important ; border-color: #0000001a !important ; border-radius: 0px !important }
         yt-formatted-string.description.style-scope.ytd-clarification-renderer { font-size: 1.4rem !important }
         div.content-title.style-scope.ytd-clarification-renderer { padding-bottom: 4px !important }
         ytd-rich-metadata-renderer[rounded] { border-radius: 0px !important }
@@ -744,11 +744,11 @@
         ytd-playlist-panel-renderer[modern-panels]:not([hide-header-text]) .title.ytd-playlist-panel-renderer {
             font-family: Roboto !important ; font-size: 1.4rem !important ; line-height: 2rem !important ;
             font-weight: 500 !important
-        }    
+        }
         ytd-tvfilm-offer-module-renderer[modern-panels] #header.ytd-tvfilm-offer-module-renderer {
             border-radius: 0px !important ; font-family: Roboto !important ; font-size: 1.6rem !important ;
             line-height: 2.2rem !important ; font-weight: 400 !important
-        }    
+        }
         ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
             font-family: Roboto !important ; font-size: 1.6rem !important ; font-weight: 500 !important }
         ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,
@@ -761,21 +761,21 @@
             border-radius: 2px !important ; box-shadow: 0 1px 0 rgba(0,0,0,.05) !important ;
             font-size: 11px !important ; font-weight: 500 !important ; height: 28px !important ;
             margin: 0 8px 0 0 !important ; max-width: 140px !important ; padding: 0 10px !important
-        }    
+        }
         .ytp-ad-action-interstitial-action-button.ytp-ad-action-interstitial-action-button-rounded {
             background-color: #167ac6 !important ; border: none !important ; border-radius: 2px ;
             font-family: Roboto !important ; font-size: 23px !important ; height: 46px !important ;
             line-height: 46px !important ; min-width: 164px !important ; padding: 0 20px !important
-        }    
+        }
         .ytp-settings-menu { border-radius: 2px !important }
         .ytp-sb-subscribe {
             border-radius: 2px !important ; background-color: #f00 !important ; color: #fff !important ;
             text-transform: uppercase !important
-        }    
+        }
         .ytp-sb-unsubscribe {
             border-radius: 2px !important ; background-color: #eee !important ; color: #606060 !important ;
             text-transform: uppercase !important
-        }    
+        }
         .ytp-sb-subscribe.ytp-sb-disabled { background-color: #f3908b !important }
         .branding-context-container-inner.ytp-rounded-branding-context { border-radius: 2px !important }
         .ytp-tooltip.ytp-rounded-tooltip:not(.ytp-preview) .ytp-tooltip-text { border-radius: 2px !important }
@@ -842,20 +842,20 @@
         .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
             color: #fff !important ; background: var(--yt-spec-brand-button-background) !important ;
             border-radius: 2px !important ; text-transform: uppercase !important ; letter-spacing: 0.5px !important
-        }    
+        }
         button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m {
             height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ;
             text-transform: uppercase !important
-        }    
+        }
         #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
             background-color: var(--yt-spec-badge-chip-background) !important ;
             color: var(--yt-spec-text-secondary) !important
-        }    
+        }
         button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-s {
             background-color: var(--yt-spec-badge-chip-background) !important ;
             color: var(--yt-spec-text-secondary) !important ; height: 25px !important ; letter-spacing: 0.5px !important ;
             border-radius: 2px !important ; text-transform: uppercase !important
-        }    
+        }
         div#notification-preference-button.style-scope.ytd-subscribe-button-renderer
             > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer
             > yt-button-shape > .yt-spec-button-shape-next--size-m
@@ -882,7 +882,7 @@
         #avatar.ytd-c4-tabbed-header-renderer {
             width: 80px !important ; height: 80px !important ; margin: 0 24px 0 0 !important ; flex: none !important ;
             overflow: hidden !important
-        }    
+        }
         #avatar-editor.ytd-c4-tabbed-header-renderer { --ytd-channel-avatar-editor-size: 80px !important }
         #channel-name.ytd-c4-tabbed-header-renderer { margin-bottom: 0 !important }
         #channel-header-container.ytd-c4-tabbed-header-renderer {
@@ -899,7 +899,7 @@
         ytd-c4-tabbed-header-renderer[use-page-header-style] #channel-name.ytd-c4-tabbed-header-renderer {
             font-size: 2.4em !important ; font-weight: 400 !important ;
             line-height: var(--yt-channel-title-line-height, 3rem) !important
-        }    
+        }
         span.delimiter.style-scope.ytd-c4-tabbed-header-renderer { display: none !important }
         div#meta.style-scope.ytd-c4-tabbed-header-renderer { width: auto !important }
         ytd-c4-tabbed-header-renderer[use-page-header-style] #inner-header-container.ytd-c4-tabbed-header-renderer {
@@ -944,11 +944,11 @@
         .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
             background: transparent !important ; color: var(--yt-spec-text-primary) !important ;
             border-radius: 2px !important ; text-transform: uppercase
-        }    
+        }
         .metadata-text-wrapper.ytd-playlist-header-renderer {
           --yt-endpoint-color: var(--yt-spec-text-primary) !important ;
           --yt-endpoint-hover-color: var(--yt-spec-text-primary) !important
-        }    
+        }
         div.immersive-header-background-wrapper.style-scope.ytd-playlist-header-renderer > div {
             background: var(--yt-spec-general-background-a) !important }
         #contents > ytd-playlist-video-list-renderer {
@@ -973,7 +973,7 @@
             margin-top: 24px !important ; margin-bottom: 8px !important ;
             color: var(--yt-spec-text-primary) !important ;
             font-size: 1.6em !important ; line-height: 1.4em !important ; font-weight: 500 !important
-        }    
+        }
         #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Trending"] { display: none !important }
         #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer.style-scope[title="Podcasts"] { display: none !important }
         ytd-guide-entry-renderer > a[href*="/channel/UCkYQyvc_i9hXEo4xic9Hh2g"] { display: none !important }
@@ -981,7 +981,7 @@
         .yt-tab-shape-wiz__tab {
             font-size: 14px !important ; font-weight: 500 !important ;
             letter-spacing: var(--ytd-tab-system-letter-spacing) !important ; text-transform: uppercase !important
-        }    
+        }
         .yt-tab-group-shape-wiz__slider { display: none !important }
         .yt-tab-shape-wiz__tab-bar { display: none !important }
         yt-formatted-string.style-scope.yt-chip-cloud-chip-renderer, span.style-scope.ytd-rich-shelf-renderer {
@@ -1005,7 +1005,7 @@
         button.ytp-button.ytp-jump-button.ytp-jump-button-enabled {display: none !important}
         ytd-player#ytd-player.style-scope.ytd-watch-flexy > div#container.style-scope.ytd-player > .html5-video-player
             > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-left-controls > a.ytp-next-button.ytp-button\
-                { display: block !important }    
+                { display: block !important }
         div#chip-bar.style-scope.ytd-search-header-renderer
             > yt-chip-cloud-renderer.style-scope.ytd-search-header-renderer
             > div#container.style-scope.yt-chip-cloud-renderer
