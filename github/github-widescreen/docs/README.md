@@ -6,7 +6,7 @@
     <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-fc4f2d.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/github-widescreen">
     <img alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/github-widescreen?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
-<a href="https://sonarcloud.io/component_measures?metric=new_vulnerabilities&id=adamlui_github-widescreen">
+<a href="https://sonarcloud.io/component_measures?metric=vulnerabilities&id=adamlui_github-widescreen">
     <img alt="[SonarCloud vulnerabilities]" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_github-widescreen%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonar&logoColor=white&labelColor=464646&label=Vulnerabilities&color=gold"></a>
 
 ### Auto-hides obtrusive side panels from GitHub
