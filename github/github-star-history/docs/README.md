@@ -35,7 +35,7 @@
 
 <br>
 
-<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Get support](https://github.com/adamlui/github-star-history/issues) /
@@ -63,7 +63,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
     <img title="Dependabot" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d"></a>
 <a href="https://github.com/ImgBotApp">
     <img title="@ImgBotApp" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/31427850?h=50&w=50&mask=circle&maxage=7d"></a>
-<a href="https://https://chat.deepseek.com/">
+<a href="https://chat.deepseek.com/">
     <picture>
         <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/white/icon64.png">
         <img title="DeepSeek AI" src="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/black/icon64.png">
