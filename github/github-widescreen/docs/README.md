@@ -44,12 +44,12 @@ Adds star history chart to sidebar of GitHub repos.<br>
 [Readme](https://github.com/adamlui/github-star-history#readme) /
 [Discuss](https://github.com/adamlui/github-star-history/discussions)
 
-### <img width=17 src="https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptwidescreen.com/github) <img src="https://assets.chatgptwidescreen.com/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942" width="auto" height="24" />
+### <img width=17 src="https://assets.chatgptwidescreen.com/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://github.com/adamlui/chatgpt-widescreen/#readme) <img src="https://assets.chatgptwidescreen.com/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
 <br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
 [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
-[Discuss](https://chatgptwidescreen.com/discuss)
+[Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-widescreen/assets/images/separators/aqua-gradient.png">
   
