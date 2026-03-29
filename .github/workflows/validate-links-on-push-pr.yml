@@ -1,12 +1,6 @@
 name: Validate links on push + PR
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
   workflow_dispatch:
 
 permissions:
@@ -33,6 +27,7 @@ jobs:
           # Check all files, ignore ok/redir/blocked/rate-limited/anti-botted, exclude commonly down domains
           args: >-
             . --no-progress --include-mail
+            --include-fragments --index-files README.md,docs/README.md --exclude "#readme"
             --accept 200..299,300..399,403,429,999
             --cache --max-cache-age 3d
             --exclude ghostbrowser\.com --exclude elonsucks\.org
