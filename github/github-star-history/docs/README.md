@@ -55,6 +55,10 @@ This project exists thanks to code, translations, issues & ideas from the follow
     <img title="@ChinaGodMan" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/96548841?first-contrib=2024.8.31-nav-from-repo-to-repo-doesnt-insert-graph-bug-report&h=50&w=50&mask=circle&maxage=7d"></a>
 <a href="https://github.com/Night-stars-1">
     <img title="@Night-stars-1" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/99261160?first-contrib=2024.10.25-new-ui-sidebar-fix&h=50&w=50&mask=circle&maxage=7d"></a>
+<a href="https://github.com/bvolpato" target="_blank" rel="noopener">
+    <img title="@bvolpato" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/3207647?first-contrib=2026.3.27-created-lychee-workflow&h=47&w=47&mask=circle&maxage=7d"></a>
+<a href="https://github.com/MichaIng" target="_blank" rel="noopener">
+    <img title="@MichaIng" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/28480705?first-contrib=2026.3.29-add-index-files-to-lychee-workflow&h=47&w=47&mask=circle&maxage=7d"></a>
 <a href="https://github.com/dependabot">
     <img title="Dependabot" src="https://images.weserv.nl/?url=https://avatars.githubusercontent.com/in/29110&h=50&w=50&mask=circle&maxage=7d"></a>
 <a href="https://github.com/ImgBotApp">
@@ -62,7 +66,7 @@ This project exists thanks to code, translations, issues & ideas from the follow
 <a href="https://https://chat.deepseek.com/">
     <picture>
         <source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/white/icon64.png">
-        <img width=50 title="DeepSeek AI" src="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/black/icon64.png">
+        <img title="DeepSeek AI" src="https://assets.aiwebextensions.com/images/icons/chatbots/deepseek/black/icon64.png">
     </picture></a>
 <br><br>
 
