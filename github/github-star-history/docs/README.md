@@ -13,7 +13,7 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
-<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/github-star-history/discussions) /
 [Get support](https://github.com/adamlui/github-star-history/issues) /
