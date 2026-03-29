@@ -57,5 +57,4 @@
 <a href="https://github.com/hoothin">
     <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
 
-
 <a href="#top">Back to top ↑</a>
