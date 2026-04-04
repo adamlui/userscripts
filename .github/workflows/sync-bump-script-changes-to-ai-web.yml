@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync-bump-scripts:
-    if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
+    if: (github.repository == 'adamlui/userscripts') && !contains(github.event.head_commit.message, '[auto-sync]')
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -58,7 +58,7 @@ jobs:
       - name: Push changes to adamlui/ai-web-extensions
         run: |
           cd ${{ github.workspace }}/adamlui/ai-web-extensions
-          git pull # sync w/ concurrent updates
           git add utils/bump/chatbots.js utils/bump/resources.js
           git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/utils/bump]" || true
+          git pull --rebase 
           git push

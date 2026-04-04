@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: (github.repository == 'adamlui/userscripts') && (github.event.commits[0].committer.username != 'kudo-sync-bot')
+    if: (github.repository == 'adamlui/userscripts') && !contains(github.event.head_commit.message, '[auto-sync]')
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -63,6 +63,6 @@ jobs:
       - name: Push changes to adamlui/github-widescreen
         run: |
           cd ${{ github.workspace }}/adamlui/github-widescreen
-          git add .
-          git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/github/github-widescreen]" || true
+          git add . && git commit -n -m "$ESCAPED_MSG ↞ [auto-sync from https://github.com/adamlui/userscripts/tree/master/github/github-widescreen]" || true
+          git pull --rebase 
           git push
