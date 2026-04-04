@@ -5,6 +5,9 @@ on:
     branches: [master]
     paths: [utils/bump/chatbots.js, utils/bump/resources.js]
 
+concurrency:
+  group: sync-changes-to-repos
+
 jobs:
   sync-bump-scripts:
     if: (github.repository == 'adamlui/userscripts') && !contains(github.event.head_commit.message, '[auto-sync')

@@ -5,6 +5,9 @@ on:
     branches: [master]
     paths: [chatgpt/chatgpt-widescreen/**]
 
+concurrency:
+  group: sync-changes-to-repos
+
 jobs:
   build:
     if: (github.repository == 'adamlui/userscripts') && !contains(github.event.head_commit.message, '[auto-sync')
