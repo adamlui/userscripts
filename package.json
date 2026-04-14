@@ -47,7 +47,7 @@
     "bump:res": "node utils/bump/resources --cache"
   },
   "devDependencies": {
-    "@adamlui/minify.js": "^2.5.2",
+    "@adamlui/minify.js": "^2.5.3",
     "@eslint/json": "^1.2.0",
     "@eslint/markdown": "^8.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
