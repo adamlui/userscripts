@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.3.6.1
+// @version           2026.4.14
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -104,17 +104,22 @@
     settings.load(Object.keys(settings.controls))
 
     app.selectors = { site: {
-        ad: { masthead: 'div#masthead-ad' }, // https://imgur.com/a/kOWzh3O
+        ad: {
+            masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
+            thumbnail: 'ytd-rich-item-renderer:has(ytd-ad-slot-renderer)'
+        },
         ai: {
             askBtn: 'button:has(path[d*=M480-80q0-83])',
             askSection: 'yt-video-description-youchat-section-view-model',
             summary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])'
         },
-        playables: { shelf: 'ytd-rich-section-renderer:has(a[href*="/playables/"])' },
+        playables: {
+            shelf: 'ytd-rich-section-renderer:has(a[href*="/playables/"])'
+        },
         shorts: {
             navEntry: 'a#endpoint[title=Shorts]',
             shelf: {
-                homepage: 'div.ytd-rich-shelf-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
+                homepage: 'ytd-rich-section-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
                 results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
             }
         }
@@ -1040,9 +1045,6 @@
 
     // CONFIG hacks
 
-    let locationPath = location.pathname // to track nav
-    const obsConfig = { childList: true, subtree: true }
-
     // Redirect Shorts to classic player
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
@@ -1050,23 +1052,6 @@
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
-
-    // Remove homepage ads/rich sections
-    const homeObserver = new MutationObserver(() => {
-        if (location.pathname != locationPath) { // nav'd to diff page, re-observe
-            locationPath = location.pathname ; homeObserver.disconnect()
-            dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
-        } else if (locationPath == '/') { // remove regenerating homepage stuff
-            if (app.config.adBlock) // remove ads
-                document.querySelector('ytd-ad-slot-renderer')?.closest('[rendered-from-rich-grid]')?.remove()
-            if (app.config.shortsBlock || app.config.playablesBlock) // remove shelves
-                document.querySelector(`ytd-rich-section-renderer${
-                    !app.config.shortsBlock ? ':not(:has(a[href*="/shorts/"]))' : '' }${
-                    !app.config.playablesBlock ? ':not(:has(a[href*="/playables/"]))' : '' }`
-                )?.remove()
-        }
-    })
-    dom.get.loadedElem('html').then(() => homeObserver.observe(document.documentElement, obsConfig))
 
     // Set/update subscribe button pos
     dom.get.loadedElem('ytd-subscribe-button-renderer button').then(subBtn => {
