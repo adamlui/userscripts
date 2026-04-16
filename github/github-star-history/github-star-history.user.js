@@ -595,9 +595,22 @@
             : 'Chart settings restored to defaults.\n\nOpen any repo page to see the updated chart.')
     }
 
+    function createSelectControl(values, labels, selectedValue, onChange) {
+        const select = document.createElement('select')
+        values.forEach(value => {
+            const option = document.createElement('option')
+            option.value = value
+            option.textContent = labels[value]
+            option.selected = value == selectedValue
+            select.append(option)
+        })
+        select.onchange = event => onChange(event.target.value)
+        return select
+    }
+
     function createHoverSettingsPanel(starHistoryDiv, options = {}) {
         if (starHistoryDiv.querySelector('#star-history-settings-btn')) return
-          const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0,
               alwaysVisible = !!options.alwaysVisible,
               disableAutoHide = !!options.disableAutoHide,
               keepPanelOpenOnSave = !!options.keepPanelOpenOnSave
@@ -612,8 +625,9 @@
             logscale: !!settings.logscale
         }
 
-        if (!options.preserveContainerStyles)
+        if (!options.preserveContainerStyles) {
             Object.assign(starHistoryDiv.style, { position: 'relative', overflow: 'visible' })
+        }
 
         const settingsBtn = document.createElement('button')
         settingsBtn.id = 'star-history-settings-btn'
@@ -663,34 +677,22 @@
             row.append(label, controlElem) ; panel.append(row)
         }
 
-        const typeSelect = document.createElement('select')
-        for (const value of chartConfig.values.type) {
-            const option = document.createElement('option')
-            option.value = value ; option.textContent = chartConfig.labels.type[value]
-            if (value == settings.type) option.selected = true
-            typeSelect.append(option)
-        }
-        typeSelect.onchange = event => { draftSettings.type = event.target.value }
+        const typeSelect = createSelectControl(
+            chartConfig.values.type, chartConfig.labels.type, settings.type,
+            value => { draftSettings.type = value }
+        )
         addField('Type', typeSelect)
 
-        const legendSelect = document.createElement('select')
-        for (const value of chartConfig.values.legend) {
-            const option = document.createElement('option')
-            option.value = value ; option.textContent = chartConfig.labels.legend[value]
-            if (value == settings.legend) option.selected = true
-            legendSelect.append(option)
-        }
-        legendSelect.onchange = event => { draftSettings.legend = event.target.value }
+        const legendSelect = createSelectControl(
+            chartConfig.values.legend, chartConfig.labels.legend, settings.legend,
+            value => { draftSettings.legend = value }
+        )
         addField('Legend', legendSelect)
 
-        const themeSelect = document.createElement('select')
-        for (const value of chartConfig.values.theme) {
-            const option = document.createElement('option')
-            option.value = value ; option.textContent = chartConfig.labels.theme[value]
-            if (value == settings.theme) option.selected = true
-            themeSelect.append(option)
-        }
-        themeSelect.onchange = event => { draftSettings.theme = event.target.value }
+        const themeSelect = createSelectControl(
+            chartConfig.values.theme, chartConfig.labels.theme, settings.theme,
+            value => { draftSettings.theme = value }
+        )
         addField('Theme', themeSelect)
 
         const logscaleToggle = document.createElement('input')
@@ -768,7 +770,10 @@
         const togglePanel = event => {
             event.stopPropagation()
             const opening = panel.style.display == 'none'
-            if (!opening) return panel.style.display = 'none'
+            if (!opening) {
+                panel.style.display = 'none'
+                return
+            }
             panel.style.display = 'block'
             panel.style.visibility = 'hidden'
             positionPanel()
