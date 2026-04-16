@@ -98,20 +98,20 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         ScriptCat</a>
                 或者
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
                         OrangeMonkey</a><sup>1,2</sup>
@@ -162,14 +162,14 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://apps.apple.com/app/stay-for-safari/id1591620171"
                    title="在 Safari 上安装 Stay">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/stay/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/stay/icon16.png"></a>
                 <a href="https://apps.apple.com/app/stay-for-safari/id1591620171"
                    title="在 Safari 上安装 Stay">
                         Stay</a>
                 或者
                 <a href="https://apps.apple.com/app/userscripts/id1463298887"
                    title="在 Safari 上安装 Userscripts">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/userscripts/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/userscripts/icon16.png"></a>
                 <a href="https://apps.apple.com/app/userscripts/id1463298887"
                    title="在 Safari 上安装 Userscripts">
                         Userscripts</a>
@@ -190,26 +190,26 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd"
                    title="在 Edge 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd"
                    title="在 Edge 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao"
                    title="在 Edge 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao"
                    title="在 Edge 上安装 Violentmonkey">
                         Violentmonkey</a><sup>2</sup>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh"
                    title="在 Edge 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/scriptcat/liilgpjgabokdklappibcjfablkpcekh"
                    title="在 Edge 上安装 ScriptCat">
                         ScriptCat</a>
                 或者
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
                         OrangeMonkey</a><sup>1,2</sup>
@@ -237,12 +237,12 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 Edge 或开发版本 (Android)
             </td>
             <td> <!-- Userscript manager -->
-                <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png">
+                <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png">
                     Tampermonkey
-                <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png">
+                <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/violentmonkey/icon25.png">
                     Violentmonkey
                 或者
-                <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png">
+                <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png">
                     ScriptCat
                 <i>(从 ≡ > Extensions 安装)</i>
             </td>
@@ -275,20 +275,20 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/"
                    title="在 Firefox 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/"
                    title="在 Firefox 上安装 Tampermonkey">
                         Tampermonkey</a>
                 <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/"
                    title="在 Firefox 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/"
                    title="在 Firefox 上安装 Violentmonkey">
                         Violentmonkey</a><sup>2</sup>
                 或者
                 <a href="https://addons.mozilla.org/firefox/addon/scriptcat/"
                    title="在 Firefox 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/scriptcat/"
                    title="在 Firefox 上安装 ScriptCat">
                         ScriptCat</a>
@@ -321,20 +321,20 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/"
                    title="在 Firefox 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/"
                    title="在 Firefox 上安装 Tampermonkey">
                         Tampermonkey</a>
                 <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/"
                    title="在 Firefox 上安装 Violentmonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/violentmonkey/icon25.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/"
                    title="在 Firefox 上安装 Violentmonkey">
                         Violentmonkey</a><sup>2</sup>
                 或者
                 <a href="https://addons.mozilla.org/firefox/addon/scriptcat/"
                    title="在 Firefox 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://addons.mozilla.org/firefox/addon/scriptcat/"
                    title="在 Firefox 上安装 ScriptCat">
                         ScriptCat</a>
@@ -396,14 +396,14 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
                 或者
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         ScriptCat</a>
@@ -427,7 +427,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         ScriptCat</a>
@@ -451,7 +451,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         ScriptCat</a>
@@ -475,20 +475,20 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Userscript manager -->
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/tampermonkey/icon28.png"></a>
                 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"
                    title="在 Chrome 上安装 Tampermonkey">
                         Tampermonkey</a><sup>1</sup>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/scriptcat/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/scriptcat/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf"
                    title="在 Chrome 上安装 ScriptCat">
                         ScriptCat</a>
                 或者
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
-                        <img width=16 src="https://assets.aiwebextensions.com/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
+                        <img width=16 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@2793398/assets/images/icons/userscript-managers/orangemonkey/icon16.png"></a>
                 <a href="https://chromewebstore.google.com/detail/orangemonkey/ekmeppjgajofkpiofbebgcbohbmfldaf"
                    title="在 Chrome 上安装 OrangeMonkey">
                         OrangeMonkey</a><sup>1,2</sup>
