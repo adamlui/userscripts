@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.4.18
+// @version           2026.4.18.1
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -70,8 +70,8 @@
                 helptip: 'Hide ad thumbnails from homepage layouts'
             },
             aiBlock: {
-                type: 'toggle', label: 'Block AI Summaries', defaultVal: true,
-                helptip: 'Hide AI summaries from video pages'
+                type: 'toggle', label: 'Block AI Elements', defaultVal: true,
+                helptip: 'Hide AI elements from video pages'
             },
             notifDisabled: {
                 type: 'toggle', label: 'Mode Notifications', defaultVal: false,
@@ -1080,5 +1080,6 @@
     // Block stuff
     document.head.append(app.styles.config ??= dom.create.style())
     app.styles.config.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
-        !app.config[`${key}Block`] ? '' : `${css.selectors.extract(selectors).join(',')} { display: none }`).join('')
+        !app.config[`${key}Block`] ? ''
+      : `${css.selectors.extract(selectors).join(',')} { display: none !important }`).join('')
 })()
