@@ -13,7 +13,7 @@
 // @description:zh-TW   將明星曆史圖表添加到 GitHub 存儲庫的側邊欄
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.4.14.1
+// @version             2026.4.16.1
 // @license             MIT
 // @icon                data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2248%22%20height=%2248%22%20viewBox=%220%200%2048%2048%22%3E%3Cstyle%3E:root%7B--fill:%23000%7D@media%20(prefers-color-scheme:dark)%7B:root%7B--fill:%23fff%7D%7D%3C/style%3E%3Cpath%20fill=%22var(--fill)%22%20d=%22M24%201.9a21.6%2021.6%200%200%200-6.8%2042.2c1%20.2%201.8-.9%201.8-1.8v-2.9c-6%201.3-7.9-2.9-7.9-2.9a6.5%206.5%200%200%200-2.2-3.2c-2-1.4.1-1.3.1-1.3a4.3%204.3%200%200%201%203.3%202c1.7%202.9%205.5%202.6%206.7%202.1a5.4%205.4%200%200%201%20.5-2.9C12.7%2032%209%2028%209%2022.6a10.7%2010.7%200%200%201%202.9-7.6%206.2%206.2%200%200%201%20.3-6.4%208.9%208.9%200%200%201%206.4%202.9%2015.1%2015.1%200%200%201%205.4-.8%2017.1%2017.1%200%200%201%205.4.7%209%209%200%200%201%206.4-2.8%206.5%206.5%200%200%201%20.4%206.4%2010.7%2010.7%200%200%201%202.8%207.6c0%205.4-3.7%209.4-10.5%2010.6a5.4%205.4%200%200%201%20.5%202.9v6.2a1.8%201.8%200%200%200%201.9%201.8A21.7%2021.7%200%200%200%2024%201.9Z%22/%3E%3C/svg%3E
 // @icon64              data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2264%22%20height=%2264%22%20viewBox=%220%200%2048%2048%22%3E%3Cstyle%3E:root%7B--fill:%23000%7D@media%20(prefers-color-scheme:dark)%7B:root%7B--fill:%23fff%7D%7D%3C/style%3E%3Cpath%20fill=%22var(--fill)%22%20d=%22M24%201.9a21.6%2021.6%200%200%200-6.8%2042.2c1%20.2%201.8-.9%201.8-1.8v-2.9c-6%201.3-7.9-2.9-7.9-2.9a6.5%206.5%200%200%200-2.2-3.2c-2-1.4.1-1.3.1-1.3a4.3%204.3%200%200%201%203.3%202c1.7%202.9%205.5%202.6%206.7%202.1a5.4%205.4%200%200%201%20.5-2.9C12.7%2032%209%2028%209%2022.6a10.7%2010.7%200%200%201%202.9-7.6%206.2%206.2%200%200%201%20.3-6.4%208.9%208.9%200%200%201%206.4%202.9%2015.1%2015.1%200%200%201%205.4-.8%2017.1%2017.1%200%200%201%205.4.7%209%209%200%200%201%206.4-2.8%206.5%206.5%200%200%201%20.4%206.4%2010.7%2010.7%200%200%201%202.8%207.6c0%205.4-3.7%209.4-10.5%2010.6a5.4%205.4%200%200%201%20.5%202.9v6.2a1.8%201.8%200%200%200%201.9%201.8A21.7%2021.7%200%200%200%2024%201.9Z%22/%3E%3C/svg%3E
@@ -29,8 +29,10 @@
 // @resource rpgCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@727feff/assets/styles/rising-particles/dist/gray.min.css#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@727feff/assets/styles/rising-particles/dist/white.min.css#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
 // @grant               GM_getResourceText
+// @grant               GM_getValue
 // @grant               GM_openInTab
 // @grant               GM_registerMenuCommand
+// @grant               GM_setValue
 // @grant               GM_xmlhttpRequest
 // @grant               GM.xmlHttpRequest
 // @downloadURL         https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js
@@ -468,6 +470,328 @@
 
     // Define CHART functions
 
+    const chartConfig = (() => {
+        const values = {
+            type: ['Date', 'timeline'],
+            legend: ['top-left', 'bottom-right'],
+            theme: ['auto', 'light', 'dark']
+        }
+        const labels = {
+            type: { Date: 'Date', timeline: 'Timeline' },
+            legend: { 'top-left': 'Top left', 'bottom-right': 'Bottom right' },
+            theme: { auto: 'Auto', light: 'Light', dark: 'Dark' }
+        }
+        const defaults = { type: 'Date', legend: 'top-left', logscale: false, theme: 'auto' }
+        return { values, labels, defaults }
+    })()
+
+    const canPersistViaGM = typeof GM_getValue == 'function' && typeof GM_setValue == 'function',
+          localStoragePrefix = `${ app.slug || 'github-star-history' }-chartSetting-`
+
+    const settings = {
+        type: getSetting('type', chartConfig.defaults.type),
+        legend: getSetting('legend', chartConfig.defaults.legend),
+        logscale: getSetting('logscale', chartConfig.defaults.logscale),
+        theme: getSetting('theme', chartConfig.defaults.theme)
+    }
+
+    function getSetting(key, defaultValue) {
+        let value = defaultValue
+        if (canPersistViaGM) value = GM_getValue(key, defaultValue)
+        else {
+            const localValue = localStorage.getItem(localStoragePrefix + key)
+            if (localValue != null) value = JSON.parse(localValue)
+        }
+
+        // Sanitize setting values
+        if (key == 'logscale') return !!value
+        if (key == 'type')
+            return chartConfig.values.type.includes(value) ? value : chartConfig.defaults.type
+        if (key == 'legend')
+            return chartConfig.values.legend.includes(value) ? value : chartConfig.defaults.legend
+        if (key == 'theme')
+            return chartConfig.values.theme.includes(value) ? value : chartConfig.defaults.theme
+
+        return value
+    }
+
+    function setSetting(key, value) {
+        if (canPersistViaGM) GM_setValue(key, value)
+        else localStorage.setItem(localStoragePrefix + key, JSON.stringify(value))
+        settings[key] = value
+    }
+
+    function getChartTheme() {
+        return settings.theme == 'auto' ? (isDarkMode() ? 'dark' : 'light') : settings.theme
+    }
+
+    function buildStarHistoryImgURL(user, repo) {
+        const query = [
+            `repos=${encodeURIComponent(`${user}/${repo}`)}`,
+            `type=${settings.type}`
+        ]
+        if (settings.logscale) query.push('logscale')
+        if (settings.legend != 'top-left') query.push(`legend=${settings.legend}`)
+        if (getChartTheme() == 'dark') query.push('theme=dark')
+        return sanitizeImgURL(`https://api.star-history.com/svg?${query.join('&')}`)
+    }
+
+    function buildStarHistorySiteURL(user, repo) {
+        const params = [`type=${settings.type}`]
+        if (settings.logscale) params.push('logscale')
+        if (settings.legend != 'top-left') params.push(`legend=${settings.legend}`)
+        return `https://star-history.com/#${user}/${repo}&${params.join('&')}`
+    }
+
+    function blobToDataURL(blob) {
+        return new Promise(resolve => {
+            const reader = new FileReader()
+            reader.onload = () => resolve(reader.result)
+            reader.readAsDataURL(blob)
+        })
+    }
+
+    async function fetchStarHistoryImgDataURL(user, repo) {
+        const imgURL = buildStarHistoryImgURL(user, repo)
+        const response = await new Promise((resolve, reject) => xhr({
+            method: 'GET', url: imgURL, responseType: 'blob', onload: resolve, onerror: reject
+        }))
+        if (response.status != 200) throw new Error('>> Failed to fetch image')
+        return blobToDataURL(response.response)
+    }
+
+    function updateChartElemsWithImgData(imgDataURL) {
+        const starHistoryDiv = document.getElementById('star-history'),
+              starHistoryImg = starHistoryDiv?.querySelector('img'),
+              zoomBtn = document.getElementById('zoomStarHistoryBtn')
+        if (starHistoryImg) starHistoryImg.src = imgDataURL
+        if (starHistoryDiv) starHistoryDiv.onclick = () => zoomStarHistory(imgDataURL)
+        if (zoomBtn) zoomBtn.onclick = () => zoomStarHistory(imgDataURL)
+    }
+
+    async function refreshStarHistory() {
+        const onRepoPage = !!document.querySelector('meta[name="route-pattern"][content*="/:repository"]')
+        if (!onRepoPage) return false
+        const starHistoryDiv = document.getElementById('star-history')
+        if (starHistoryDiv?.querySelector('img')) {
+            const { user, repo } = getUserAndRepoOfCurrentPage(),
+                  imgDataURL = await fetchStarHistoryImgDataURL(user, repo)
+            updateChartElemsWithImgData(imgDataURL)
+            return true
+        }
+        document.getElementById('star-history')?.remove()
+        document.getElementById('zoomStarHistoryBtn')?.remove()
+        await insertStarHistory()
+        return true
+    }
+
+    async function resetSettingsAndRefresh() {
+        setSetting('type', chartConfig.defaults.type)
+        setSetting('legend', chartConfig.defaults.legend)
+        setSetting('logscale', chartConfig.defaults.logscale)
+        setSetting('theme', chartConfig.defaults.theme)
+        const refreshed = await refreshStarHistory()
+        ghAlert('Settings reset!', refreshed ? 'Chart settings restored to defaults.'
+            : 'Chart settings restored to defaults.\n\nOpen any repo page to see the updated chart.')
+    }
+
+    function createSelectControl(values, labels, selectedValue, onChange) {
+        const select = document.createElement('select')
+        values.forEach(value => {
+            const option = document.createElement('option')
+            option.value = value
+            option.textContent = labels[value]
+            option.selected = value == selectedValue
+            select.append(option)
+        })
+        select.onchange = event => onChange(event.target.value)
+        return select
+    }
+
+    function createHoverSettingsPanel(starHistoryDiv, options = {}) {
+        if (starHistoryDiv.querySelector('#star-history-settings-btn')) return
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+              alwaysVisible = !!options.alwaysVisible,
+              disableAutoHide = !!options.disableAutoHide,
+              keepPanelOpenOnSave = !!options.keepPanelOpenOnSave
+        const buttonBottom = options.buttonBottom || '0px',
+              buttonRight = options.buttonRight || '10px',
+              panelBottom = options.panelBottom || '32px',
+              panelRight = options.panelRight || buttonRight
+        const draftSettings = {
+            type: settings.type,
+            legend: settings.legend,
+            theme: settings.theme,
+            logscale: !!settings.logscale
+        }
+
+        if (!options.preserveContainerStyles) {
+            Object.assign(starHistoryDiv.style, { position: 'relative', overflow: 'visible' })
+        }
+
+        const settingsBtn = document.createElement('button')
+        settingsBtn.id = 'star-history-settings-btn'
+        settingsBtn.title = 'Chart settings'
+        settingsBtn.textContent = '⚙️'
+        Object.assign(settingsBtn.style, {
+            position: 'absolute', bottom: buttonBottom, right: buttonRight, zIndex: '3',
+            border: '1px solid #8b949e', borderRadius: '6px', padding: '2px 6px',
+            cursor: 'pointer', fontSize: '13px', background: isDarkMode() ? '#0d1117f0' : '#fffffff0',
+            color: isDarkMode() ? '#e6edf3' : '#24292f',
+            opacity: (isTouchDevice || alwaysVisible) ? '1' : '0', transition: 'opacity 0.15s ease-in-out'
+        })
+
+        const panel = document.createElement('div')
+        panel.id = 'star-history-settings-panel'
+        Object.assign(panel.style, {
+            position: 'absolute', bottom: panelBottom, right: panelRight, zIndex: '4', width: '230px',
+            border: `1px solid ${isDarkMode() ? '#30363d' : '#d0d7de'}`,
+            borderRadius: '8px', padding: '10px',
+            background: isDarkMode() ? '#161b22f5' : '#fffffffa',
+            boxShadow: isDarkMode()
+                ? '0 6px 20px rgba(1,4,9,0.8)'
+                : '0 6px 20px rgba(31,35,40,0.2)',
+            display: 'none', fontSize: '12px', cursor: 'default'
+        })
+
+        const closePanelBtn = document.createElement('button')
+        closePanelBtn.textContent = '✕'
+        closePanelBtn.title = 'Close settings'
+        closePanelBtn.style.cssText = 'position: absolute; top: 5px; right: 7px; border: none; background: transparent; color: #f85149; font-size: 13px; cursor: pointer; padding: 2px 4px;'
+        closePanelBtn.onclick = event => {
+            event.stopPropagation()
+            panel.style.display = 'none'
+        }
+        panel.append(closePanelBtn)
+
+        const panelTitle = document.createElement('div')
+        panelTitle.textContent = 'Chart Settings'
+        panelTitle.style.cssText = 'font-weight: 600; margin-bottom: 9px;'
+        panel.append(panelTitle)
+
+        const addField = (labelText, controlElem) => {
+            const row = document.createElement('label')
+            row.style.cssText = 'display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px;'
+            const label = document.createElement('span')
+            label.textContent = labelText
+            row.append(label, controlElem) ; panel.append(row)
+        }
+
+        const typeSelect = createSelectControl(
+            chartConfig.values.type, chartConfig.labels.type, settings.type,
+            value => { draftSettings.type = value }
+        )
+        addField('Type', typeSelect)
+
+        const legendSelect = createSelectControl(
+            chartConfig.values.legend, chartConfig.labels.legend, settings.legend,
+            value => { draftSettings.legend = value }
+        )
+        addField('Legend', legendSelect)
+
+        const themeSelect = createSelectControl(
+            chartConfig.values.theme, chartConfig.labels.theme, settings.theme,
+            value => { draftSettings.theme = value }
+        )
+        addField('Theme', themeSelect)
+
+        const logscaleToggle = document.createElement('input')
+        logscaleToggle.type = 'checkbox' ; logscaleToggle.checked = !!settings.logscale
+        logscaleToggle.onchange = event => { draftSettings.logscale = event.target.checked }
+        addField('Log scale', logscaleToggle)
+
+        const btnRow = document.createElement('div')
+        btnRow.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px;'
+
+        const resetBtn = document.createElement('button')
+        resetBtn.textContent = 'Reset'
+        resetBtn.style.cssText = 'border: 1px solid #8b949e; border-radius: 6px; padding: 4px; cursor: pointer;'
+        resetBtn.onclick = event => {
+            event.stopPropagation()
+            Object.assign(draftSettings, {
+                type: chartConfig.defaults.type,
+                legend: chartConfig.defaults.legend,
+                theme: chartConfig.defaults.theme,
+                logscale: !!chartConfig.defaults.logscale
+            })
+            typeSelect.value = draftSettings.type
+            legendSelect.value = draftSettings.legend
+            themeSelect.value = draftSettings.theme
+            logscaleToggle.checked = draftSettings.logscale
+        }
+
+        const saveBtn = document.createElement('button')
+        saveBtn.textContent = 'Save'
+        saveBtn.style.cssText = 'border: 1px solid #8b949e; border-radius: 6px; padding: 4px; cursor: pointer; font-weight: 600;'
+
+        const saveStatus = document.createElement('div')
+        saveStatus.style.cssText = 'margin-top: 6px; min-height: 14px; font-size: 11px; text-align: right; opacity: 0.9;'
+
+        saveBtn.onclick = async event => {
+            event.stopPropagation()
+            setSetting('type', draftSettings.type)
+            setSetting('legend', draftSettings.legend)
+            setSetting('theme', draftSettings.theme)
+            setSetting('logscale', draftSettings.logscale)
+            saveStatus.textContent = 'Saving...'
+            if (typeof options.onSave == 'function') await options.onSave(draftSettings)
+            else {
+                const refreshed = await refreshStarHistory()
+                const msg = refreshed ? 'Chart settings updated.' : 'Chart settings updated.\n\nOpen any repo page to see the updated chart.'
+                ghAlert('Settings saved!', msg)
+            }
+            saveStatus.textContent = 'Saved ✓'
+            setTimeout(() => { saveStatus.textContent = '' }, 1400)
+            if (!keepPanelOpenOnSave) panel.style.display = 'none'
+        }
+
+        btnRow.append(resetBtn, saveBtn)
+        panel.append(btnRow)
+        panel.append(saveStatus)
+
+        const positionPanel = () => {
+            panel.style.top = 'auto'
+            panel.style.bottom = panelBottom // preferred: above settings button
+            const panelRect = panel.getBoundingClientRect()
+
+            // If clipped above viewport, pin to top
+            if (panelRect.top < 8) {
+                panel.style.top = '8px'
+                panel.style.bottom = 'auto'
+            }
+
+            // If clipped below viewport, pin to bottom
+            if (panel.getBoundingClientRect().bottom > window.innerHeight - 8) {
+                panel.style.top = 'auto'
+                panel.style.bottom = '8px'
+            }
+        }
+
+        const togglePanel = event => {
+            event.stopPropagation()
+            const opening = panel.style.display == 'none'
+            if (!opening) {
+                panel.style.display = 'none'
+                return
+            }
+            panel.style.display = 'block'
+            panel.style.visibility = 'hidden'
+            positionPanel()
+            panel.style.visibility = 'visible'
+        }
+        settingsBtn.onclick = togglePanel
+        panel.onclick = event => event.stopPropagation()
+        if (!isTouchDevice && !disableAutoHide) {
+            starHistoryDiv.onmouseleave = () => {
+                settingsBtn.style.opacity = '0'
+                panel.style.display = 'none'
+            }
+            starHistoryDiv.onmouseenter = () => { settingsBtn.style.opacity = '1' }
+        }
+
+        starHistoryDiv.append(settingsBtn, panel)
+    }
+
     function getUserAndRepoOfCurrentPage() {
         const reGitHubURL = /github\.com\/(?<user>[\w-]+)\/(?<repo>[\w.-]+)\/?/,
             currentURL = location.href,
@@ -478,26 +802,12 @@
     }
 
     async function insertStarHistory() {
-        const { user, repo } = getUserAndRepoOfCurrentPage()
-
         try { // to load/insert star history chart
+            const { user, repo } = getUserAndRepoOfCurrentPage()
 
-            // Fetch image as blob
-            const imgURL = sanitizeImgURL('https://api.star-history.com/svg?repos='
-                + `${user}/${repo}&type=Date` + (isDarkMode() ? '&theme=dark' : ''))
-            const response = await new Promise((resolve, reject) => xhr({
-                method: 'GET', url: imgURL, responseType: 'blob', onload: resolve, onerror: reject
-            }))
-            if (response.status != 200) throw new Error('>> Failed to fetch image')
+            const imgDataURL = await fetchStarHistoryImgDataURL(user, repo)
 
             if (!document.querySelector('#star-history')) {
-
-                // Convert blob to data URL
-                const imgDataURL = await new Promise(resolve => {
-                    const reader = new FileReader()
-                    reader.onload = () => resolve(reader.result)
-                    reader.readAsDataURL(response.response)
-                })
 
                 // Create/size/pad star history img
                 const starHistoryImg = document.createElement('img')
@@ -509,6 +819,7 @@
                 starHistoryDiv.id = 'star-history'; starHistoryDiv.style.cursor = 'crosshair'
                 starHistoryDiv.append(starHistoryImg)
                 starHistoryDiv.onclick = () => zoomStarHistory(imgDataURL)
+                createHoverSettingsPanel(starHistoryDiv)
 
                 // Insert div
                 const aboutSection = document.querySelector('.BorderGrid-row:has(a[href$="/stargazers"])')
@@ -589,22 +900,53 @@
         overlay.style.alignItems = 'center'; overlay.style.justifyContent = 'center'
         overlay.style.zIndex = '9999'
 
+        // Create centered chart wrapper for enlarged mode controls
+        const chartWrapper = document.createElement('div')
+        chartWrapper.style.position = 'relative'
+        chartWrapper.style.width = 'fit-content'
+        chartWrapper.style.height = 'fit-content'
+        chartWrapper.style.maxWidth = '90vw'
+        chartWrapper.style.maxHeight = '90vh'
+        chartWrapper.style.display = 'block'
+
         // Stylize zoomed img
         const zoomedImg = new Image()
         zoomedImg.title = 'View on star-history.com'; zoomedImg.src = imgURL
-        zoomedImg.style.maxWidth = '90%'; zoomedImg.style.maxHeight = '90%'
+        zoomedImg.style.display = 'block'
+        zoomedImg.style.maxWidth = '90vw'; zoomedImg.style.maxHeight = '90vh'
         zoomedImg.style.cursor = 'pointer'
+
+        const refreshZoomedImg = async () => {
+            const imgDataURL = await fetchStarHistoryImgDataURL(user, repo)
+            zoomedImg.src = imgDataURL
+        }
 
         // Add listeners
         zoomedImg.onclick = () => // view on star-history.com
-            safeWinOpen(`https://star-history.com/#${user}/${repo}&Date`)
+            safeWinOpen(buildStarHistorySiteURL(user, repo))
+        chartWrapper.onclick = event => event.stopPropagation() // keep clicks in chart from closing overlay
         overlay.onclick = () => document.body.removeChild(overlay)
 
+        // Add settings controls to enlarged view
+        createHoverSettingsPanel(chartWrapper, {
+            preserveContainerStyles: true,
+            buttonBottom: '-30px', buttonRight: '0px', panelBottom: '6px', panelRight: '0px',
+            alwaysVisible: true, disableAutoHide: true, keepPanelOpenOnSave: true,
+            onSave: async () => {
+                await Promise.allSettled([ refreshZoomedImg(), refreshStarHistory() ])
+            }
+        })
+
         // Append elements
-        overlay.append(zoomedImg); document.body.append(overlay)
+        chartWrapper.append(zoomedImg)
+        overlay.append(chartWrapper)
+        document.body.append(overlay)
     }
 
     // Run MAIN routine
+
+    // Register CHART settings menu commands
+    GM_registerMenuCommand('♻️ Reset Chart Settings', async () => resetSettingsAndRefresh())
 
     // Register ABOUT menu command
     GM_registerMenuCommand(`💡 About ${app.name}`, async () => {
