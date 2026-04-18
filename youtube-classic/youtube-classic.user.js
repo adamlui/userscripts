@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.4.18.1
+// @version           2026.4.18.2
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -71,7 +71,7 @@
             },
             aiBlock: {
                 type: 'toggle', label: 'Block AI Elements', defaultVal: true,
-                helptip: 'Hide AI elements from video pages'
+                helptip: 'Hide AI elements from home + video pages'
             },
             notifDisabled: {
                 type: 'toggle', label: 'Mode Notifications', defaultVal: false,
