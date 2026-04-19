@@ -511,6 +511,18 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
     <i>3. 如果您正在为 Opera 浏览器安装用户脚本管理器，则必须允许其访问 opera://extensions 中的搜索页面结果，以使搜索页面用户脚本能够正常工作</i>
 </h5>
 
+<!-- CONTRIBUTORS -->
+
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+
+## 🧠 Contributors
+
+<a href="https://github.com/adamlui/userscripts/graphs/contributors">
+    <img height=45 width="auto" src="https://contrib.rocks/image?repo=adamlui/userscripts" /></a>
+<br><br>
+
+非常欢迎一切贡献！
+
 <!-- FOOTER -->
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">

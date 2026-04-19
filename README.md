@@ -511,6 +511,18 @@ Greasemonkey userscripts can be used w/ the following browsers:
     <i>3. If you are installing a userscript manager for an Opera browser, you must allow it access to search page results in opera://extensions for search page userscripts to function</i>
 </h5>
 
+<!-- CONTRIBUTORS -->
+
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+
+## 🧠 Contributors
+
+<a href="https://github.com/adamlui/userscripts/graphs/contributors">
+    <img height=45 width="auto" src="https://contrib.rocks/image?repo=adamlui/userscripts" /></a>
+<br><br>
+
+All contributions are very welcome!
+
 <!-- FOOTER -->
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
