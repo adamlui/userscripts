@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.6.2
+// @version           2026.5.6.3
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -35,6 +35,7 @@
 
     // Init DATA
     window.env = {
+        browser: { isFF: navigator.userAgent.includes('Firefox') },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
@@ -1020,6 +1021,10 @@
 
         /* Hide Edit your custom feed chip */
         yt-chip-cloud-chip-renderer:has(path[d^="M5 0a5 5"]) { display: none }
+
+        /* Fix Verified badge super big in FF vid pages (even w/o this script) */
+        ${ !env.browser.isFF ? ''
+            : 'yt-metadata-badge-renderer span > div { height: 12px !important ; width: 12px !important }' }
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
