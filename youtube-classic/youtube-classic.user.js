@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.6
+// @version           2026.5.6.1
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -1011,7 +1011,8 @@
         yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content { display: flex !important }
 
         /* Notif bell */
-        div.ytSmartImationsContent:has(yt-animated-action) { display: flex } /* display bell right of sub btn */
+        div.ytSmartImationsContent:has(#notification-preference-toggle-button) { /* sub/bell container */
+            display: flex } /* display bell right of sub btn */
         div#notification-preference-button button { background: none !important }
         div#notification-preference-button div.ytSpecButtonShapeNextSecondaryIcon { display: none } /* hide down caret */
 
@@ -1053,7 +1054,7 @@
                   bellIcon = await dom.get.loadedElem('[animated-icon-type=NOTIFICATION_BELL] svg'),
                   bellWidth = parseInt(getComputedStyle(bellIcon).width),
                   primaryWidth = parseInt(getComputedStyle(primaryDiv).width),
-                  idealActionsRpadding = primaryWidth < 768 ? '' : `${ 125 +( bellWidth == 100 ? 0 : bellWidth )}px`
+                  idealActionsRpadding = primaryWidth < 768 ? '' : `${ 135 +( bellWidth == 100 ? 0 : bellWidth )}px`
             Object.assign(subBtn.style, // right-align if primary div wide enough
                 primaryWidth > 768 ? { position: 'absolute', right: 0 } : { position: '', right: '' })
             if (getComputedStyle(actionsDiv).paddingRight != idealActionsRpadding)
