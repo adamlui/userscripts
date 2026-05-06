@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.4.20
+// @version           2026.5.6
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts
@@ -860,27 +860,6 @@
             color: var(--yt-spec-text-secondary) !important ; height: 25px !important ; letter-spacing: 0.5px !important ;
             border-radius: 2px !important ; text-transform: uppercase !important
         }
-        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer
-            > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer
-            > yt-button-shape > .yt-spec-button-shape-next--size-m
-        {
-            background-color: transparent !important ; border-radius: 16px !important ; padding-left: 14px !important ;
-            padding-right: 2px !important ; margin-left: 4px !important
-        }
-        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer
-            > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer
-            > yt-button-shape > .yt-spec-button-shape-next--size-m
-            > div.cbox.yt-spec-button-shape-next--button-text-content,
-        div#notification-preference-button.style-scope.ytd-subscribe-button-renderer
-            > ytd-subscription-notification-toggle-button-renderer-next.style-scope.ytd-subscribe-button-renderer
-            > yt-button-shape > .yt-spec-button-shape-next--size-m > div.yt-spec-button-shape-next__secondary-icon,
-        button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading-trailing
-            > div.yt-spec-button-shape-next__button-text-content
-                { display: none !important }
-        #notification-preference-toggle-button:not([hidden])
-            + yt-animated-action #notification-preference-button.ytd-subscribe-button-renderer[invisible],
-        #subscribe-button-shape.ytd-subscribe-button-renderer[invisible]
-                { pointer-events: auto ; visibility: visible ; position: static }
         yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content > __slot-el { display: flex !important }
         ytd-channel-tagline-renderer { display: none !important }
         #avatar.ytd-c4-tabbed-header-renderer {
@@ -1030,8 +1009,11 @@
         #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal:hover {
             background-color: #e5e5e5 !important }
         yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content { display: flex !important }
-        #notification-preference-button.ytd-subscribe-button-renderer { margin-left: 4px !important }
-        #notification-preference-button.ytd-subscribe-button-renderer button { border-radius: 16px !important }
+
+        /* Notif bell */
+        div.ytSmartImationsContent:has(yt-animated-action) { display: flex } /* display bell right of sub btn */
+        div#notification-preference-button button { background: none !important }
+        div#notification-preference-button div.ytSpecButtonShapeNextSecondaryIcon { display: none } /* hide down caret */
 
         /* Hide Edit your custom feed chip */
         yt-chip-cloud-chip-renderer:has(path[d^="M5 0a5 5"]) { display: none }
