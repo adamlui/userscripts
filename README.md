@@ -63,19 +63,6 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](youtube-classic/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-<!-- WARP BANNER -->
-
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
-
-<div id="warp" align="center">
-    <h5>Supported by:</h5>
-    <a href="https://www.warp.dev/chatgptjs">
-        <img width="600" src="https://assets.chatgptjs.org/images/banners/warp/banner-1500x500.png?v=476e837">
-    </a>
-    <h3><a href="https://www.warp.dev/chatgptjs">
-        Warp, the AI Devtool that lives in your terminal</a></h3>
-</div>
-
 <!-- COMPATIBILITY -->
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
