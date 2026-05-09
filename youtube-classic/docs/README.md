@@ -38,7 +38,8 @@
   <li><b>Hides sneaky recommendations</b> from search for more accurate results<br>
     (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search">
       YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>
-  <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li>
+  <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li><br>
+  <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos</li>
 </ul>
 
 ## Script links
