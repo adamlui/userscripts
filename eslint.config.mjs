@@ -48,7 +48,7 @@ export default [
             'no-useless-escape': 'off', // allow all escape chars cause ESLint sucks at detecting truly useless ones
             'no-unused-vars': ['error', { 'caughtErrors': 'none' }], // allow unused named args in catch blocks
             'import/no-named-as-default-member': 'off', // allow accessing named exports via default import
-            'import/no-unresolved': ['error', { ignore: ['bump-utils'] }] // ignore missing bump-utils in --dev mode
+            'import/no-unresolved': ['error', { ignore: ['bump'] }] // ignore missing bump in --dev mode
         }
     },
     { files: ['**/*.json'], language: 'json/json', ...json.configs.recommended },
