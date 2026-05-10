@@ -68,7 +68,7 @@
     <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
 <br><br>
 
-<hr>
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@6b4fcd2/assets/images/separators/gradient-aqua.png">
 
 [<picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/white/icon32x27.png"><img height=13 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/dark-gray/icon32x27.png"></picture>][userscripts]
 [**More userscripts**][userscripts] /
