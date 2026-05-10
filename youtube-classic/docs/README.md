@@ -48,12 +48,17 @@
   <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos</li>
 </ul>
 
-## Script links
+<br>
 
-[Install this script](https://gm.ytclassic.com) /
+<div align="center">
+
+<a href="https://gm.ytclassic.com"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
+<br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Get support](https://support.ytclassic.com) /
 [More userscripts](https://github.com/adamlui/userscripts)
+
+</div>
 
 ## Authors
 
@@ -61,6 +66,7 @@
     <img title="Follow @adamlui on GitHub" src="https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social"></a>
 <a href="https://github.com/hoothin">
     <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
+<br><br>
 
 <hr>
 
