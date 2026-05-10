@@ -1,4 +1,6 @@
-<h1 id="top">
+<a id="top"></a>
+
+<h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.ytclassic.com/images/logos/youtube-classic/darkmode.png">
     <img height=75 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png">
