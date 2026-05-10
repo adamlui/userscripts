@@ -1,5 +1,7 @@
 <a id="top"></a>
 
+<div align="center">
+
 <h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.ytclassic.com/images/logos/youtube-classic/darkmode.png">
@@ -22,6 +24,8 @@
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Get support](https://support.ytclassic.com) /
 [Contact author](https://github.com/adamlui)
+
+</div>
 
 <h2>What it does</h2>
 <ul>
