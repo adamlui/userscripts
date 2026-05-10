@@ -49,7 +49,7 @@
 [Get support](https://support.ytclassic.com) /
 [More userscripts](https://github.com/adamlui/userscripts)
 
-## Author links:
+## Authors
 
 <a href="https://github.com/adamlui">
     <img title="Follow @adamlui on GitHub" src="https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social"></a>
