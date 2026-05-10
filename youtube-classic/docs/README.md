@@ -56,7 +56,7 @@
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
 [Get support](https://support.ytclassic.com) /
-[More userscripts](https://github.com/adamlui/userscripts)
+[More userscripts][userscripts]
 
 </div>
 
@@ -70,4 +70,8 @@
 
 <hr>
 
+[<picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/white/icon32x27.png"><img height=13 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/dark-gray/icon32x27.png"></picture>][userscripts]
+[**More userscripts**][userscripts] /
 <a href="#top">Back to top ↑</a>
+
+[userscripts]: https://github.com/adamlui/userscripts/#readme
