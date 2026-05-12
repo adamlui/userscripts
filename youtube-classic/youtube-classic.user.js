@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.12.1
+// @version           2026.5.12.2
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1034,6 +1034,7 @@
         function setGridTo4() {
             if (innerWidth < 768) return
             dom.get.loadedElem(mainGridSelector).then(grid => {
+                if (grid.getAttribute('elements-per-row') != 3) return
                 grid.setAttribute('elements-per-row', '4')
                 grid.style.setProperty('--ytd-rich-grid-items-per-row', '4')
             })
