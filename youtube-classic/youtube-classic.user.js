@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.12.2
+// @version           2026.5.12.3
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1028,24 +1028,6 @@
             : 'yt-metadata-badge-renderer span > div { height: 12px !important ; width: 12px !important }' }
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
-
-    if (location.pathname == '/') { // increase item per row to 4
-        const mainGridSelector = 'div#primary > ytd-rich-grid-renderer'
-        function setGridTo4() {
-            if (innerWidth < 768) return
-            dom.get.loadedElem(mainGridSelector).then(grid => {
-                if (grid.getAttribute('elements-per-row') != 3) return
-                grid.setAttribute('elements-per-row', '4')
-                grid.style.setProperty('--ytd-rich-grid-items-per-row', '4')
-            })
-        }
-        setGridTo4()
-        new MutationObserver(() => {
-            const grid = document.querySelector(mainGridSelector)
-            if (grid) setGridTo4()
-        }).observe(document.body, { childList: true, subtree: true })
-        addEventListener('resize', () => setGridTo4())
-    }
 
     Object.defineProperties(document, {
         'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'},
