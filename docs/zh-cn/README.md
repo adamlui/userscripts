@@ -21,7 +21,7 @@
 
 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/).
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](../../block-quora-poe/#readme)
 
@@ -65,7 +65,7 @@
 
 <!-- COMPATIBILITY -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ## 🌐 兼容性
 
@@ -500,7 +500,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
 
 <!-- CONTRIBUTORS -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ## 🧠 Contributors
 
@@ -512,7 +512,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
 
 <!-- FOOTER -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">讨论</a> /
 <a href="#top">回到顶部 ↑</a>

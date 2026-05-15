@@ -21,7 +21,7 @@
 
 A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
-<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Block Quora Poe](/block-quora-poe/#readme)
 
@@ -65,7 +65,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 <!-- COMPATIBILITY -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ## 🌐 Compatibility
 
@@ -500,7 +500,7 @@ Greasemonkey userscripts can be used w/ the following browsers:
 
 <!-- CONTRIBUTORS -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 ## 🧠 Contributors
 
@@ -512,7 +512,7 @@ All contributions are very welcome!
 
 <!-- FOOTER -->
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/separators/gradient-aqua.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts/discussions">Discuss</a> /
 <a href="#top">Back to top ↑</a>
