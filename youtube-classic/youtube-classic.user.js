@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.17
+// @version           2026.5.15.18
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -13,8 +13,10 @@
 // @compatible        safari
 // @compatible        edge
 // @match             *://*.youtube.com/*
+// @connect           cdn.jsdelivr.net
 // @connect           gm.ytclassic.com
 // @connect           raw.githubusercontent.com
+// @require           https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js#sha256-S7ltnVPzgKyAGBlBG4wQhorJqYTehj5WQCrADCKJufE=
 // @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
 // @require           https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
@@ -22,6 +24,8 @@
 // @grant             GM_unregisterMenuCommand
 // @grant             GM_getValue
 // @grant             GM_setValue
+// @grant             GM_xmlhttpRequest
+// @grant             GM.xmlHttpRequest
 // @run-at            document-end
 // @downloadURL       https://gm.ytclassic.com
 // @updateURL         https://gm.ytclassic.com
@@ -30,7 +34,7 @@
 // @contributionURL   https://ko-fi.com/adamlui
 // ==/UserScript==
 
-(() => {
+(async () => {
     'use strict'
 
     // Init DATA
@@ -47,31 +51,16 @@
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
-    window.app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
-    app.selectors = { block: {
-        ad: {
-            masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
-            renderer: 'ytd-ad-slot-renderer, [class*="ads-renderer"]'
-        },
-        ai: {
-            askBtn: 'yt-button-view-model:has(path[d^="M480-80q0-83-31.5-156T363"])',
-            askSection: {
-                homepage: 'ytd-rich-section-renderer:has(yt-talk-to-recs-view-model)',
-                videoPage: 'yt-video-description-youchat-section-view-model'
-            },
-            summary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])'
-        },
-        playables: {
-            shelf: 'ytd-rich-section-renderer:has(a[href*="/playables/"])'
-        },
-        shorts: {
-            navEntry: 'a#endpoint[title=Shorts]',
-            shelf: {
-                homepage: 'ytd-rich-section-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
-                results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
-            }
-        }
-    }}
+    window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
+    window.app = {
+        symbol: '📺', configKeyPrefix: 'ytClassic',
+        commitHashes: { data: '7756476' } // for cached selectors.json5
+    }
+    app.urls = { data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data` }
+    app.selectors = await new Promise(resolve => xhr({ // used in show.reply()
+        method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
+        url: `${app.urls.data}/selectors.json5`
+    }))
 
     // Init SETTINGS
     app.config ??= {}
