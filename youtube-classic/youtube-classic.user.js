@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.16
+// @version           2026.5.15.17
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -134,143 +134,169 @@
 
     // Define FUNCTIONS
 
-    function cjsNotify(...args) {
-        const scheme = document.querySelector('html[dark]')
-            || window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    window.feedback = {
 
-        let msg, position, notifDuration, shadow, toast
-        if (typeof args[0] == 'object' && !Array.isArray(args[0]))
-            ({ msg, position, notifDuration, shadow, toast } = args[0])
-        else [msg, position, notifDuration, shadow] = args
-        notifDuration = notifDuration ? +notifDuration : 1.75 // sec duration to maintain notification visibility
-        const fadeDuration = 0.35, // sec duration of fade-out
-              vpYoffset = 23, vpXoffset = 27 // px offset from viewport border
+        cjsNotify(...args) {
+            const scheme = document.querySelector('html[dark]')
+                || window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
-        // Create/append notification div
-        const notificationDiv = document.createElement('div') // make div
-        notificationDiv.id = Math.floor(Math.random() * 1000000) + Date.now()
-        notificationDiv.classList.add('chatgpt-notif')
-        notificationDiv.textContent = msg // insert msg
-        document.body.append(notificationDiv) // insert into DOM
+            let msg, position, notifDuration, shadow, toast
+            if (typeof args[0] == 'object' && !Array.isArray(args[0]))
+                ({ msg, position, notifDuration, shadow, toast } = args[0])
+            else [msg, position, notifDuration, shadow] = args
+            notifDuration = notifDuration ? +notifDuration : 1.75 // sec duration to maintain notification visibility
+            const fadeDuration = 0.35, // sec duration of fade-out
+                vpYoffset = 23, vpXoffset = 27 // px offset from viewport border
 
-        // Create/append close button
-        const closeBtn = document.createElement('div')
-        closeBtn.title = 'Dismiss' ; closeBtn.classList.add('notif-close-btn', 'no-mobile-tap-outline')
-        const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        closeSVG.setAttribute('height', '8px')
-        closeSVG.setAttribute('viewBox', '0 0 14 14')
-        closeSVG.setAttribute('fill', 'none')
-        closeSVG.style.height = closeSVG.style.width = '8px' // override SVG styles on non-OpenAI sites
-        const closeSVGpath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-        closeSVGpath.setAttribute('fill-rule', 'evenodd')
-        closeSVGpath.setAttribute('clip-rule', 'evenodd')
-        closeSVGpath.setAttribute('fill', 'white')
-        closeSVGpath.setAttribute('d', 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z')
-        closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG) ; notificationDiv.append(closeBtn)
+            // Create/append notification div
+            const notificationDiv = document.createElement('div') // make div
+            notificationDiv.id = Math.floor(Math.random() * 1000000) + Date.now()
+            notificationDiv.classList.add('chatgpt-notif')
+            notificationDiv.textContent = msg // insert msg
+            document.body.append(notificationDiv) // insert into DOM
 
-        // Determine div position/quadrant
-        notificationDiv.isTop = !position || !/low|bottom/i.test(position)
-        notificationDiv.isRight = !position || !/left/i.test(position)
-        notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
-                                 + (notificationDiv.isRight ? 'Right' : 'Left')
+            // Create/append close button
+            const closeBtn = document.createElement('div')
+            closeBtn.title = 'Dismiss' ; closeBtn.classList.add('notif-close-btn', 'no-mobile-tap-outline')
+            const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+            closeSVG.setAttribute('height', '8px')
+            closeSVG.setAttribute('viewBox', '0 0 14 14')
+            closeSVG.setAttribute('fill', 'none')
+            closeSVG.style.height = closeSVG.style.width = '8px' // override SVG styles on non-OpenAI sites
+            const closeSVGpath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+            closeSVGpath.setAttribute('fill-rule', 'evenodd')
+            closeSVGpath.setAttribute('clip-rule', 'evenodd')
+            closeSVGpath.setAttribute('fill', 'white')
+            closeSVGpath.setAttribute('d', 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z')
+            closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG) ; notificationDiv.append(closeBtn)
 
-        // Create/append/update notification style (if missing or outdated)
-        const thisUpdated = 1746996635555 // timestamp of last edit for this file's `notifStyle`
-        let notifStyle = document.querySelector('#chatgpt-notif-style') // try to select existing style
-        if (!notifStyle || parseInt(notifStyle.getAttribute('last-updated'), 10) < thisUpdated) { // if missing or outdated
-            if (!notifStyle) { // outright missing, create/id/attr/append it first
-                notifStyle = document.createElement('style') ; notifStyle.id = 'chatgpt-notif-style'
-                notifStyle.setAttribute('last-updated', thisUpdated.toString())
-                document.head.append(notifStyle)
-            }
-            notifStyle.textContent = ( // update prev/new style contents
-                '.chatgpt-notif {'
-                    + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",'
-                        + '"Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif ;'
-                    + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
-                    + 'background-color: black ; padding: 10px 13px 10px 18px ;' // bubble style
-                        + 'border-radius: 11px ; border: 1px solid #f5f5f7 ;'
-                    + 'opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white ;' // visibility
-                    + 'user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -o-user-select: none ;'
-                        + '-ms-user-select: none ;'
-                    + `transform: translateX(${ // init off-screen for transition fx
-                          !notificationDiv.isRight ? '-' : '' }35px) ;`
-                    + ( shadow ? `--shadow: -8px 13px 25px 0 ${ /\b(?:shadow|on)\b/i.test(shadow) ? 'gray' : shadow };
-                        box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
-                            : '' ) + '}'
-                + `.notif-close-btn {
-                      cursor: pointer ; float: right ; position: relative ; right: -4px ; margin-left: -3px ;`
-                    + 'display: grid }' // top-align for non-OpenAI sites
-                + '@keyframes notif-zoom-fade-out { 0% { opacity: 1 ; transform: scale(1) }' // transition out keyframes
-                    + '15% { opacity: 0.35 ; transform: rotateX(-27deg) scale(1.05) }'
-                    + '45% { opacity: 0.05 ; transform: rotateX(-81deg) }'
-                    + '100% { opacity: 0 ; transform: rotateX(-180deg) scale(1.15) }}'
-            )
-            if (toast) notifStyle.textContent += `
-                div.chatgpt-notif {
-                    position: absolute ; left: 50% ; right: 21% !important ; text-align: center ;
-                    ${ scheme == 'dark' ? 'border: 2px solid white ;' : '' }
-                    margin-${ !notificationDiv.isTop ? 'bottom: 105px' : 'top: 42px' };
-                    transform: translate(-50%, -50%) scale(0.6) !important }
-                div.chatgpt-notif > div.notif-close-btn { top: 18px ; right: 7px ; transform: scale(2) }`
-        }
+            // Determine div position/quadrant
+            notificationDiv.isTop = !position || !/low|bottom/i.test(position)
+            notificationDiv.isRight = !position || !/left/i.test(position)
+            notificationDiv.quadrant = (notificationDiv.isTop ? 'top' : 'bottom')
+                                    + (notificationDiv.isRight ? 'Right' : 'Left')
 
-        // Enqueue notification
-        let notifyProps = JSON.parse(localStorage.notifyProps
-            ??= JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }}))
-        notifyProps.queue[notificationDiv.quadrant].push(notificationDiv.id)
-        localStorage.notifyProps = JSON.stringify(notifyProps)
-
-        // Position notification (defaults to top-right)
-        notificationDiv.style.top = notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
-        notificationDiv.style.bottom = !notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
-        notificationDiv.style.right = notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
-        notificationDiv.style.left = !notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
-
-        // Re-position old notifications
-        const thisQuadrantQueue = notifyProps.queue[notificationDiv.quadrant]
-        if (thisQuadrantQueue.length > 1) {
-            try { // to move old notifications
-                for (const divID of thisQuadrantQueue.slice(0, -1)) { // exclude new div
-                    const oldDiv = document.getElementById(divID),
-                          offsetProp = oldDiv.style.top ? 'top' : 'bottom', // pick property to change
-                          vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
-                    oldDiv.style[offsetProp] = `${vOffset}px` // change prop
+            // Create/append/update notification style (if missing or outdated)
+            const thisUpdated = 1746996635555 // timestamp of last edit for this file's `notifStyle`
+            let notifStyle = document.querySelector('#chatgpt-notif-style') // try to select existing style
+            if (!notifStyle || parseInt(notifStyle.getAttribute('last-updated'), 10) < thisUpdated) { // if missing or outdated
+                if (!notifStyle) { // outright missing, create/id/attr/append it first
+                    notifStyle = document.createElement('style') ; notifStyle.id = 'chatgpt-notif-style'
+                    notifStyle.setAttribute('last-updated', thisUpdated.toString())
+                    document.head.append(notifStyle)
                 }
-            } catch (err) { console.warn('Failed to re-position notification:', err) }
+                notifStyle.textContent = ( // update prev/new style contents
+                    '.chatgpt-notif {'
+                        + 'font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",'
+                            + '"Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif ;'
+                        + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
+                        + 'background-color: black ; padding: 10px 13px 10px 18px ;' // bubble style
+                            + 'border-radius: 11px ; border: 1px solid #f5f5f7 ;'
+                        + 'opacity: 0 ; position: fixed ; z-index: 9999 ; font-size: 1.8rem ; color: white ;' // visibility
+                        + 'user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -o-user-select: none ;'
+                            + '-ms-user-select: none ;'
+                        + `transform: translateX(${ // init off-screen for transition fx
+                            !notificationDiv.isRight ? '-' : '' }35px) ;`
+                        + ( shadow ? `--shadow: -8px 13px 25px 0 ${ /\b(?:shadow|on)\b/i.test(shadow) ? 'gray' : shadow };
+                            box-shadow: var(--shadow) ; -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow)`
+                                : '' ) + '}'
+                    + `.notif-close-btn {
+                        cursor: pointer ; float: right ; position: relative ; right: -4px ; margin-left: -3px ;`
+                        + 'display: grid }' // top-align for non-OpenAI sites
+                    + '@keyframes notif-zoom-fade-out { 0% { opacity: 1 ; transform: scale(1) }' // transition out keyframes
+                        + '15% { opacity: 0.35 ; transform: rotateX(-27deg) scale(1.05) }'
+                        + '45% { opacity: 0.05 ; transform: rotateX(-81deg) }'
+                        + '100% { opacity: 0 ; transform: rotateX(-180deg) scale(1.15) }}'
+                )
+                if (toast) notifStyle.textContent += `
+                    div.chatgpt-notif {
+                        position: absolute ; left: 50% ; right: 21% !important ; text-align: center ;
+                        ${ scheme == 'dark' ? 'border: 2px solid white ;' : '' }
+                        margin-${ !notificationDiv.isTop ? 'bottom: 105px' : 'top: 42px' };
+                        transform: translate(-50%, -50%) scale(0.6) !important }
+                    div.chatgpt-notif > div.notif-close-btn { top: 18px ; right: 7px ; transform: scale(2) }`
+            }
+
+            // Enqueue notification
+            let notifyProps = JSON.parse(localStorage.notifyProps
+                ??= JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }}))
+            notifyProps.queue[notificationDiv.quadrant].push(notificationDiv.id)
+            localStorage.notifyProps = JSON.stringify(notifyProps)
+
+            // Position notification (defaults to top-right)
+            notificationDiv.style.top = notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
+            notificationDiv.style.bottom = !notificationDiv.isTop ? vpYoffset.toString() + 'px' : ''
+            notificationDiv.style.right = notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
+            notificationDiv.style.left = !notificationDiv.isRight ? vpXoffset.toString() + 'px' : ''
+
+            // Re-position old notifications
+            const thisQuadrantQueue = notifyProps.queue[notificationDiv.quadrant]
+            if (thisQuadrantQueue.length > 1) {
+                try { // to move old notifications
+                    for (const divID of thisQuadrantQueue.slice(0, -1)) { // exclude new div
+                        const oldDiv = document.getElementById(divID),
+                            offsetProp = oldDiv.style.top ? 'top' : 'bottom', // pick property to change
+                            vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
+                        oldDiv.style[offsetProp] = `${vOffset}px` // change prop
+                    }
+                } catch (err) { console.warn('Failed to re-position notification:', err) }
+            }
+
+            // Show notification
+            setTimeout(() => {
+                notificationDiv.style.opacity = scheme == 'dark' ? 0.8 : 0.67 // show msg
+                notificationDiv.style.transform = 'translateX(0)' // bring from off-screen
+                notificationDiv.style.transition = 'transform 0.15s ease, opacity 0.15s ease'
+            }, 10)
+
+            // Init delay before hiding
+            const hideDelay = fadeDuration > notifDuration ? 0 // don't delay if fade exceeds notification duration
+                            : notifDuration - fadeDuration // otherwise delay for difference
+
+            // Add notification dismissal to timeout schedule + button clicks
+            const dismissNotif = () => {
+                notificationDiv.style.animation = `notif-zoom-fade-out ${fadeDuration}s ease-out`
+                clearTimeout(dismissFuncTID)
+            }
+            const dismissFuncTID = setTimeout(dismissNotif, hideDelay * 1000) // maintain visibility for `hideDelay` secs, then dismiss
+            closeSVG.onclick = dismissNotif // add to close button clicks
+
+            // Destroy notification
+            notificationDiv.onanimationend = () => {
+                notificationDiv.remove() // remove from DOM
+                notifyProps = JSON.parse(localStorage.notifyProps)
+                notifyProps.queue[notificationDiv.quadrant].shift() // + memory
+                localStorage.notifyProps = JSON.stringify(notifyProps) // + storage
+            }
+
+            return notificationDiv
+        },
+
+        notify(msg, pos = '', notifDuration = '', shadow = '') { // requires dom.js
+            if (app.config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
+
+            // Strip state word to append colored one later
+            const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
+            if (foundState) msg = msg.replace(foundState, '')
+
+            // Show notification
+            this.cjsNotify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
+            const notif = document.querySelector('.chatgpt-notif:last-child')
+
+            // Tweak styles
+            notif.style.fontSize = '385%'
+            if (foundState) { // append styled state word
+                const styledStateSpan = dom.create.elem('span', { style: `color: ${
+                    foundState == toolbarMenu.state.words[0] ?
+                        '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
+                    : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px'
+                }`})
+                styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
+            }
         }
-
-        // Show notification
-        setTimeout(() => {
-            notificationDiv.style.opacity = scheme == 'dark' ? 0.8 : 0.67 // show msg
-            notificationDiv.style.transform = 'translateX(0)' // bring from off-screen
-            notificationDiv.style.transition = 'transform 0.15s ease, opacity 0.15s ease'
-        }, 10)
-
-        // Init delay before hiding
-        const hideDelay = fadeDuration > notifDuration ? 0 // don't delay if fade exceeds notification duration
-                        : notifDuration - fadeDuration // otherwise delay for difference
-
-        // Add notification dismissal to timeout schedule + button clicks
-        const dismissNotif = () => {
-            notificationDiv.style.animation = `notif-zoom-fade-out ${fadeDuration}s ease-out`
-            clearTimeout(dismissFuncTID)
-        }
-        const dismissFuncTID = setTimeout(dismissNotif, hideDelay * 1000) // maintain visibility for `hideDelay` secs, then dismiss
-        closeSVG.onclick = dismissNotif // add to close button clicks
-
-        // Destroy notification
-        notificationDiv.onanimationend = () => {
-            notificationDiv.remove() // remove from DOM
-            notifyProps = JSON.parse(localStorage.notifyProps)
-            notifyProps.queue[notificationDiv.quadrant].shift() // + memory
-            localStorage.notifyProps = JSON.stringify(notifyProps) // + storage
-        }
-
-        return notificationDiv
     }
 
-    const toolbarMenu = {
+    window.toolbarMenu = {
         state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: ['OFF', 'ON']
@@ -291,59 +317,38 @@
                       : ctrl.type == 'slider' ? ': ' + app.config[key] + ctrl.labelSuffix || ''
                       : ctrl.status ? ` — ${ctrl.status}` : '' }`
                 return GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !app.config[key]) ; syncConfigToUI({ updatedKey: key })
-                    notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
+                    settings.save(key, !app.config[key]) ; sync.configToUI({ updatedKey: key })
+                    feedback.notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
                 }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined)
             })
         }
     }
 
-    function notify(msg, pos = '', notifDuration = '', shadow = '') { // requires dom.js
-        if (app.config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
-
-        // Strip state word to append colored one later
-        const foundState = toolbarMenu.state.words.find(word => msg.includes(word))
-        if (foundState) msg = msg.replace(foundState, '')
-
-        // Show notification
-        cjsNotify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
-        const notif = document.querySelector('.chatgpt-notif:last-child')
-
-        // Tweak styles
-        notif.style.fontSize = '385%'
-        if (foundState) { // append styled state word
-            const styledStateSpan = dom.create.elem('span', { style: `color: ${
-                foundState == toolbarMenu.state.words[0] ?
-                    '#ef4848 ; text-shadow: rgba(255,169,225,0.44) 2px 1px 5px'
-                  : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px'
-            }`})
-            styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
-        }
-    }
-
-    function syncConfigToUI(options) {
-        if (options?.updatedKey == 'disableShorts') {
-            if (app.config.disableShorts && !checkShortsToRedir.id)
-                checkShortsToRedir()
-            else if (!app.config.disableShorts && checkShortsToRedir.id) {
-                cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
-        } else if (options?.updatedKey.includes('Block'))
-            app.styles.block.textContent = Object.entries(app.selectors.block)
-                .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
-                    : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
-                ).join('')
-        else if (options?.updatedKey == 'idlePrevention') {
-            if (app.config.idlePrevention && !preventIdle.id) preventIdle()
-            else if (!app.config.idlePrevention && preventIdle.id) {
-                clearInterval(preventIdle.id)
-                preventIdle.id = null
-                delete document.hidden
-                delete document.webkitHidden
-                delete document.visibilityState
-                delete document.webkitVisibilityState
+    window.sync = {
+        configToUI(options) {
+            if (options?.updatedKey == 'disableShorts') {
+                if (app.config.disableShorts && !checkShortsToRedir.id)
+                    checkShortsToRedir()
+                else if (!app.config.disableShorts && checkShortsToRedir.id) {
+                    cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
+            } else if (options?.updatedKey.includes('Block'))
+                app.styles.block.textContent = Object.entries(app.selectors.block)
+                    .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
+                        : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
+                    ).join('')
+            else if (options?.updatedKey == 'idlePrevention') {
+                if (app.config.idlePrevention && !preventIdle.id) preventIdle()
+                else if (!app.config.idlePrevention && preventIdle.id) {
+                    clearInterval(preventIdle.id)
+                    preventIdle.id = null
+                    delete document.hidden
+                    delete document.webkitHidden
+                    delete document.visibilityState
+                    delete document.webkitVisibilityState
+                }
             }
+            toolbarMenu.refresh() // prefixes/suffixes
         }
-        toolbarMenu.refresh() // prefixes/suffixes
     }
 
     // Run MAIN routine
