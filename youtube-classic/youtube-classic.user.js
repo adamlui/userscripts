@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.10
+// @version           2026.5.15.11
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -108,7 +108,7 @@
     }
     settings.load(Object.keys(settings.controls))
 
-    app.selectors = { site: {
+    app.selectors = { block: {
         ad: {
             masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
             sidebar: '[target-id="engagement-panel-ads"]', // https://imgur.com/a/keWmqdR
@@ -378,7 +378,7 @@
             else if (!app.config.disableShorts && checkShortsToRedir.id) {
                 cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
         } else if (options?.updatedKey.includes('Block'))
-            app.styles.block.textContent = Object.entries(app.selectors.site)
+            app.styles.block.textContent = Object.entries(app.selectors.block)
                 .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
                     : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
                 ).join('')
@@ -1026,7 +1026,7 @@
     }
 
     document.head.append(app.styles.block ??= dom.create.style())
-    app.styles.block.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
+    app.styles.block.textContent = Object.entries(app.selectors.block).map(([key, selectors]) =>
         !app.config[`${key}Block`] ? ''
             : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
     ).join('')
