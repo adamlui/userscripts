@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.2
+// @version           2026.5.15.3
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -865,7 +865,7 @@
             margin-top: 0 !important ; align-items: center !important }
         yt-formatted-string#channel-handle.style-scope.ytd-c4-tabbed-header-renderer { display: none !important }
         ytd-c4-tabbed-header-renderer[use-page-header-style] #channel-pronouns.ytd-c4-tabbed-header-renderer,
-            yt-formatted-string#channel-pronouns.style-scope.ytd-c4-tabbed-header-renderer 
+            yt-formatted-string#channel-pronouns.style-scope.ytd-c4-tabbed-header-renderer
                 { display: none !important }
         #videos-count { display: none !important }
         .meta-item.ytd-c4-tabbed-header-renderer { display: block !important }
@@ -985,7 +985,7 @@
             > div#container.style-scope.yt-chip-cloud-renderer
                 { display: none !important }
         #play.ytd-moving-thumbnail-renderer { color: #fff !important }
-        
+
         /* Subscribe button */
         :is(ytd-subscribe-button-renderer, /* channel page */
             yt-subscribe-button-view-model /* video page */
@@ -1021,6 +1021,13 @@
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
+    if (app.config.disableShorts) checkShortsToRedir()
+    function checkShortsToRedir() {
+        if (location.pathname.startsWith('/shorts/'))
+            return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
+        checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
+    }
+
     if (app.config.idlePrevention) preventIdle()
     function preventIdle() {
         Object.defineProperties(document, { // force page visibility
@@ -1033,13 +1040,6 @@
             document.dispatchEvent(new KeyboardEvent('keyup', {
                 bubbles: true, cancelable: true, keyCode: 143, which: 143 }))
         , 60000)
-    }
-
-    if (app.config.disableShorts) checkShortsToRedir()
-    function checkShortsToRedir() {
-        if (location.pathname.startsWith('/shorts/'))
-            return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
-        checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
 
     document.head.append(app.styles.config ??= dom.create.style())
