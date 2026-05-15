@@ -33,7 +33,7 @@
     (using Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
     <p><img width=400px src="https://assets.ytclassic.com/images/screenshots/dislike-counter.png"></li><br>
   <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round<br>
-    (based on magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
+    (evolved from magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
     <p><i>&nbsp;Before:</i><br>
       <img src="https://assets.ytclassic.com/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;After:</i><br>
@@ -41,9 +41,7 @@
   <li><b>Redirects YouTube Shorts</b> to classic player for increased usability<br>
     (based on fuim's <a href="https://greasyfork.org/scripts/439993-youtube-shorts-redirect">YouTube Shorts Redirect</a>)
     <p><img width=400 src="https://assets.ytclassic.com/images/screenshots/shorts-redir.png"></li><br>
-  <li><b>Hides sneaky recommendations</b> from search for more accurate results<br>
-    (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search">
-      YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>
+  <li><b>Hides sneaky recommendations</b> from search for more accurate results</li><br>
   <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li><br>
   <li><b>Prevents idling</b> to keep tabs from falling asleep for infinite auto-play</li><br>
   <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos</li>
@@ -61,13 +59,7 @@
 
 </div>
 
-## Authors
-
-<a href="https://github.com/adamlui">
-    <img title="Follow @adamlui on GitHub" src="https://img.shields.io/github/followers/adamlui?label=Follow%20%40adamlui&style=social"></a>
-<a href="https://github.com/hoothin">
-    <img title="Follow @hoothin on GitHub" src="https://img.shields.io/github/followers/hoothin?label=Follow%20%40hoothin&style=social"></a>
-<br><br>
+<br>
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@6b4fcd2/assets/images/separators/gradient-aqua.png">
 
