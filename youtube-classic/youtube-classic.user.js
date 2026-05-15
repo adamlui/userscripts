@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.13
+// @version           2026.5.15.14
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -51,7 +51,10 @@
     app.selectors = { block: {
         ad: {
             masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
-            sidebar: '[target-id="engagement-panel-ads"]', // https://imgur.com/a/keWmqdR
+            sidebar: {
+                tall: 'ytd-ad-slot-renderer', // https://imgur.com/a/hWb7NDV
+                short: '[class*="ads-renderer"]' // https://imgur.com/a/keWmqdR
+            },
             thumbnail: 'ytd-rich-item-renderer:has(ytd-ad-slot-renderer)'
         },
         ai: {
@@ -132,54 +135,6 @@
         }
     }
     settings.load(Object.keys(settings.controls))
-
-    const CONFIGS = { BUTTON_REWORK: false }
-
-    const EXPFLAGS = {
-        enable_channel_page_header_profile_section: false,
-        enable_header_channel_handler_ui: false,
-        kevlar_unavailable_video_error_ui_client: false,
-        kevlar_refresh_on_theme_change: false,
-        kevlar_modern_sd_v2: false,
-        kevlar_watch_cinematics: false,
-        kevlar_watch_comments_panel_button: false,
-        kevlar_watch_grid: false,
-        kevlar_watch_grid_hide_chips: false,
-        kevlar_watch_metadata_refresh: false,
-        kevlar_watch_metadata_refresh_no_old_secondary_data: false,
-        kevlar_watch_modern_metapanel: false,
-        kevlar_watch_modern_panels: false,
-        kevlar_watch_panel_height_matches_player: false,
-        smartimation_background: false,
-        web_amsterdam_playlists: false,
-        web_animated_actions: false,
-        web_animated_like: false,
-        web_button_rework: false,
-        web_button_rework_with_live: false,
-        web_darker_dark_theme: false,
-        web_enable_youtab: false,
-        web_guide_ui_refresh: false,
-        web_modern_ads: false,
-        web_modern_buttons: false,
-        web_modern_chips: false,
-        web_modern_collections_v2: false,
-        web_modern_dialogs: false,
-        web_modern_playlists: false,
-        web_modern_subscribe: false,
-        web_modern_tabs: false,
-        web_rounded_containers: false,
-        web_rounded_thumbnails: false,
-        web_searchbar_style: 'default',
-        web_segmented_like_dislike_button: false,
-        web_sheets_ui_refresh: false,
-        web_snackbar_ui_refresh: false,
-        web_watch_rounded_player_large: false
-    }
-
-    const PLYRFLAGS = {
-        web_rounded_containers: 'false',
-        web_rounded_thumbnails: 'false'
-    }
 
     // Define FUNCTIONS
 
@@ -399,64 +354,6 @@
 
     toolbarMenu.register()
 
-    class YTP {
-        static observer = new MutationObserver(this.onNewScript)
-        static _config = {}
-        static isObject(item) { return (item && typeof item == 'object' && !Array.isArray(item)) }
-        static mergeDeep(target, ...sources) {
-            if (!sources.length) return target
-            const source = sources.shift()
-            if (this.isObject(target) && this.isObject(source)) for (const key in source)
-                if (this.isObject(source[key])) {
-                    if (!target[key]) Object.assign(target, { [key]: {} })
-                    this.mergeDeep(target[key], source[key])
-                } else Object.assign(target, { [key]: source[key] })
-            return this.mergeDeep(target, ...sources)
-        }
-        static onNewScript(mutations) { if (mutations.some(mut => mut.addedNodes.length)) YTP.bruteforce() }
-        static start() { this.observer.observe(document, { childList: true, subtree: true }) }
-        static stop() { this.observer.disconnect() }
-        static bruteforce() {
-            if (!window.yt?.config_) return
-            this.mergeDeep(window.yt.config_, this._config)
-        }
-        static setCfg(name, value) { this._config[name] = value }
-        static setCfgMulti(configs) { this.mergeDeep(this._config, configs) }
-        static setExp(name, value) {
-            if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {}
-            this._config.EXPERIMENT_FLAGS[name] = value
-        }
-        static setExpMulti(exps) {
-            if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {}
-            this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps)
-        }
-        static decodePlyrFlags(flags) {
-            const obj = {}, dflags = flags.split('&')
-            for (const dflagStr of dflags) {
-                const dflag = dflagStr.split('=') ; obj[dflag[0]] = dflag[1] }
-            return obj
-        }
-        static encodePlyrFlags(flags) {
-            const keys = Object.keys(flags) ; let resp = ''
-            for (const [i, key] of keys.entries()) {
-                if (i > 0) resp += '&'
-                resp += key + '=' + flags[key]
-            }
-            return resp
-        }
-        static setPlyrFlags(flags) {
-            if (!window.yt?.config_?.WEB_PLAYER_CONTEXT_CONFIGS) return
-            const conCfgs = window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS
-            if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {}
-            for (const cfg in conCfgs) {
-                const dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags)
-                this.mergeDeep(dflags, flags)
-                this._config.WEB_PLAYER_CONTEXT_CONFIGS[cfg] = {
-                    serializedExperimentFlags: this.encodePlyrFlags(dflags) }
-            }
-        }
-    }
-
     const ATTRS = [ // to remove from <html>
         'darker-dark-theme', 'darker-dark-theme-deprecate' ]
     addEventListener('yt-page-data-updated', function tmp() {
@@ -466,15 +363,9 @@
             ? 'https://i.imgur.com/brCETJj.png' // Dark mode
             : 'https://i.imgur.com/rHLcxEs.png' // Light mode
         ytLogo.textContent = '' ; ytLogo.append(classicLogo)
-        YTP.stop()
         ATTRS.forEach(attr => document.getElementsByTagName('html')[0].removeAttribute(attr))
         removeEventListener('yt-page-date-updated', tmp)
     })
-
-    YTP.start()
-    YTP.setCfgMulti(CONFIGS)
-    YTP.setExpMulti(EXPFLAGS)
-    YTP.setPlyrFlags(PLYRFLAGS)
 
     app.styles = { fixes: dom.create.style(`
 
