@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.7
+// @version           2026.5.15.8
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -478,8 +478,13 @@
 
     app.styles = { fixes: dom.create.style(`
         yt-thumbnail-view-model, /* homepage thumb */
+        yt-image-banner-view-model, /* channel banner */
+        div.ytPageHeaderViewModelBackground, /* playlist sidebar */
+        yt-content-preview-image-view-model, /* playlist sidebar thumb */
         :where(div#sponsor-button, div.ytPageHeaderViewModelHeadline) button,
-        :where(div#buttons.ytd-masthead, div#action-buttons) :is(button, a[class*=Button]),
+        :where(div#buttons.ytd-masthead, div#action-buttons, yt-flexible-actions-view-model) :is(
+            button, a[class*=Button]),
+        yt-video-metadata-carousel-view-model,
         ytd-player {
             border-radius: 0 !important
         }
@@ -831,19 +836,8 @@
             transform: translateY(0) !important }
         .ytp-chrome-bottom { height: auto !important }
         .ytp-tooltip-edu { display: none !important }
-
-        /* Subscribe button fixes + Old compact channel header UI and non-amsterdam playlists */
         #buttons.ytd-c4-tabbed-header-renderer { flex-direction: row-reverse !important }
-
         yt-button-shape.style-scope.ytd-subscribe-button-renderer { display: flex !important }
-        #subscribe-button ytd-subscribe-button-renderer button {
-            height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ;
-            text-transform: uppercase !important
-        }
-        button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m {
-            height: 37px !important ; letter-spacing: 0.5px !important ; border-radius: 2px !important ;
-            text-transform: uppercase !important
-        }
         #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
             background-color: var(--yt-spec-badge-chip-background) !important ;
             color: var(--yt-spec-text-secondary) !important
