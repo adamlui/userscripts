@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.9
+// @version           2026.5.15.10
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -378,7 +378,7 @@
             else if (!app.config.disableShorts && checkShortsToRedir.id) {
                 cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
         } else if (options?.updatedKey.includes('Block'))
-            app.styles.config.textContent = Object.entries(app.selectors.site)
+            app.styles.block.textContent = Object.entries(app.selectors.site)
                 .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
                     : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
                 ).join('')
@@ -1025,6 +1025,12 @@
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
 
+    document.head.append(app.styles.block ??= dom.create.style())
+    app.styles.block.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
+        !app.config[`${key}Block`] ? ''
+            : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
+    ).join('')
+
     if (app.config.idlePrevention) preventIdle()
     function preventIdle() {
         Object.defineProperties(document, { // force page visibility
@@ -1039,9 +1045,4 @@
         , 60000)
     }
 
-    document.head.append(app.styles.config ??= dom.create.style())
-    app.styles.config.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
-        !app.config[`${key}Block`] ? ''
-            : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
-    ).join('')
 })()
