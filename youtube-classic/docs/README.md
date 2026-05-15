@@ -56,6 +56,14 @@
 
 </div>
 
+## 🧠 Contributors
+
+<a href="https://github.com/adamlui/youtube-classic/graphs/contributors">
+    <img height=45 width="auto" src="https://contrib.rocks/image?repo=adamlui/youtube-classic" /></a>
+<br><br>
+
+All contributions are very welcome!
+
 <br>
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@6b4fcd2/assets/images/separators/gradient-aqua.png">
