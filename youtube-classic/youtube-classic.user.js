@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.3
+// @version           2026.5.15.4
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -17,7 +17,7 @@
 // @connect           raw.githubusercontent.com
 // @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require           https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
-// @require           https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.min.js#sha256-7SFUGiNHxngJmsFarSyOs+99hOHmx30VZ8Of8lU4uEw=
+// @require           https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @grant             GM_registerMenuCommand
 // @grant             GM_unregisterMenuCommand
 // @grant             GM_getValue
