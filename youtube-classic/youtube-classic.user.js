@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.14.3
+// @version           2026.5.14.4
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1047,29 +1047,6 @@
         if (location.pathname.startsWith('/shorts/'))
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
-    }
-
-    // Set/update subscribe button pos
-    dom.get.loadedElem('ytd-subscribe-button-renderer button').then(subBtn => {
-        requestAnimationFrame(updateSubBtnPos)
-        new MutationObserver(updateSubBtnPos).observe(subBtn, { childList: true, subtree: true })
-        addEventListener('resize', updateSubBtnPos)
-    })
-    function updateSubBtnPos() {
-        clearTimeout(updateSubBtnPos.timeout)
-        updateSubBtnPos.timeout = setTimeout(async () => {
-            const primaryDiv = await dom.get.loadedElem('div#primary'),
-                  actionsDiv = await dom.get.loadedElem('div#actions'),
-                  subBtn = await dom.get.loadedElem('div#subscribe-button'),
-                  bellIcon = await dom.get.loadedElem('[animated-icon-type=NOTIFICATION_BELL] svg'),
-                  bellWidth = parseInt(getComputedStyle(bellIcon).width),
-                  primaryWidth = parseInt(getComputedStyle(primaryDiv).width),
-                  idealActionsRpadding = primaryWidth < 768 ? '' : `${ 135 +( bellWidth == 100 ? 0 : bellWidth )}px`
-            Object.assign(subBtn.style, // right-align if primary div wide enough
-                primaryWidth > 768 ? { position: 'absolute', right: 0 } : { position: '', right: '' })
-            if (getComputedStyle(actionsDiv).paddingRight != idealActionsRpadding)
-                actionsDiv.style.paddingRight = idealActionsRpadding
-        }, 50)
     }
 
     // Block stuff
