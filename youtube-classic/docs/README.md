@@ -17,7 +17,7 @@
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
     <img src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr+Requests&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
 
-<h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics.</h3>
+<h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics</h3>
 
 <a href="https://gm.ytclassic.com"><img alt="[Install this script]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
