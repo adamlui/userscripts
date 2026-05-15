@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.18
+// @version           2026.5.15.19
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -57,7 +57,7 @@
         commitHashes: { data: '7756476' } // for cached selectors.json5
     }
     app.urls = { data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data` }
-    app.selectors = await new Promise(resolve => xhr({ // used in show.reply()
+    app.selectors = await new Promise(resolve => xhr({ // used in *block modes
         method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
         url: `${app.urls.data}/selectors.json5`
     }))
