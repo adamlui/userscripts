@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.19
+// @version           2026.5.15.20
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -344,17 +344,14 @@
 
     toolbarMenu.register()
 
-    const ATTRS = [ // to remove from <html>
-        'darker-dark-theme', 'darker-dark-theme-deprecate' ]
-    addEventListener('yt-page-data-updated', function tmp() {
+    addEventListener('yt-page-data-updated', function updateLogo() {
         const ytLogo = document.getElementById('logo-icon'),
-              classicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
-        classicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
+              ytClassicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
+        ytClassicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
             ? 'https://i.imgur.com/brCETJj.png' // Dark mode
             : 'https://i.imgur.com/rHLcxEs.png' // Light mode
-        ytLogo.textContent = '' ; ytLogo.append(classicLogo)
-        ATTRS.forEach(attr => document.getElementsByTagName('html')[0].removeAttribute(attr))
-        removeEventListener('yt-page-date-updated', tmp)
+        ytLogo.textContent = '' ; ytLogo.append(ytClassicLogo)
+        removeEventListener('yt-page-date-updated', updateLogo)
     })
 
     app.styles = { fixes: dom.create.style(`
