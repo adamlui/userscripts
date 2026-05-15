@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.14.1
+// @version           2026.5.14.2
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -490,7 +490,7 @@
     // CSS adjustments and UI fixes
     app.styles = { fixes: dom.create.style(`
         /* Square homepage thumb, vid Join button, channel Join/Sub buttons */
-        yt-thumbnail-view-model, div#sponsor-button button, div.ytPageHeaderViewModelHeadline button {
+        yt-thumbnail-view-model, :where(div#sponsor-button, div.ytPageHeaderViewModelHeadline) button {
             border-radius: 0 !important }
 
         /* Revert old background color and buttons */
