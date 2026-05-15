@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.6
+// @version           2026.5.15.7
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -477,9 +477,12 @@
     YTP.setPlyrFlags(PLYRFLAGS)
 
     app.styles = { fixes: dom.create.style(`
-        /* Square homepage thumb, vid Join button, channel Join/Sub buttons */
-        yt-thumbnail-view-model, :where(div#sponsor-button, div.ytPageHeaderViewModelHeadline) button {
-            border-radius: 0 !important }
+        yt-thumbnail-view-model, /* homepage thumb */
+        :where(div#sponsor-button, div.ytPageHeaderViewModelHeadline) button,
+        :where(div#buttons.ytd-masthead, div#action-buttons) :is(button, a[class*=Button]),
+        ytd-player {
+            border-radius: 0 !important
+        }
 
         /* Revert old background color and buttons */
         html[dark] {
@@ -753,7 +756,6 @@
         ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,
             ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer
                 { border-radius: 0px !important }
-        ytd-player { border-radius: 0 !important } /* square player */
         .ytp-flyout-cta .ytp-flyout-cta-action-button.ytp-flyout-cta-action-button-rounded {
             font-family: Arial !important ; background: #167ac6 !important ;
             border: solid 1px transparent !important ; border-color: #167ac6 !important ;
