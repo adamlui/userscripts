@@ -9,7 +9,7 @@
   </picture>
 </h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md)
 ![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge)
 [![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
