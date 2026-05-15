@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.11
+// @version           2026.5.15.12
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -478,6 +478,8 @@
     YTP.setPlyrFlags(PLYRFLAGS)
 
     app.styles = { fixes: dom.create.style(`
+
+        /* Square elems */
         yt-thumbnail-view-model, /* homepage thumb */
         yt-image-banner-view-model, /* channel banner */
         div.ytPageHeaderViewModelBackground, /* playlist sidebar */
