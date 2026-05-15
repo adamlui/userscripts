@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.14.5
+// @version           2026.5.15
 // @author            Adam Lui, Magma_Craft, Fuim & hoothin
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -73,6 +73,10 @@
             aiBlock: {
                 type: 'toggle', label: 'Block AI Elements', defaultVal: true,
                 helptip: 'Hide AI elements from home + video pages'
+            },
+            idlePrevention: {
+                type: 'toggle', label: 'Idle Prevention', defaultVal: true,
+                helptip: 'Prevent tab from falling asleep'
             },
             notifDisabled: {
                 type: 'toggle', label: 'Mode Notifications', defaultVal: false,
@@ -377,6 +381,17 @@
                 .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
                     : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
                 ).join('')
+        else if (options?.updatedKey == 'idlePrevention') {
+            if (app.config.idlePrevention && !preventIdle.id) preventIdle()
+            else if (!app.config.idlePrevention && preventIdle.id) {
+                clearInterval(preventIdle.id)
+                preventIdle.id = null
+                delete document.hidden
+                delete document.webkitHidden
+                delete document.visibilityState
+                delete document.webkitVisibilityState
+            }
+        }
         toolbarMenu.refresh() // prefixes/suffixes
     }
 
@@ -461,33 +476,6 @@
     YTP.setExpMulti(EXPFLAGS)
     YTP.setPlyrFlags(PLYRFLAGS)
 
-    dom.get.loadedElem('#items.ytd-guide-section-renderer').then(restoreTrending)
-    dom.get.loadedElem('#items.ytd-mini-guide-section-renderer').then(restoreTrending)
-    function restoreTrending() {
-        const trendingData = {
-            'navigationEndpoint': {
-                'clickTrackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
-                'commandMetadata': {
-                    'webCommandMetadata': {
-                        'url': '/feed/explore',
-                        'webPageType': 'WEB_PAGE_TYPE_BROWSE',
-                        'rootVe': 6827,
-                        'apiUrl': '/youtubei/v1/browse'
-                    }
-                },
-                'browseEndpoint': { 'browseId': 'FEtrending' }
-            },
-            'icon': { 'iconType': 'EXPLORE' },
-            'trackingParams': 'CBwQtSwYASITCNqYh-qO_fACFcoRrQYdP44D9Q==',
-            'formattedTitle': { 'simpleText': 'Explore' },
-            'accessibility': { 'accessibilityData': { 'label': 'Explore' }},
-            'isPrimary': true
-        }
-        document.querySelector('#items > ytd-guide-entry-renderer:nth-child(2)').data = trendingData
-        document.querySelector('#items > ytd-mini-guide-entry-renderer:nth-child(2)').data = trendingData
-    }
-
-    // CSS adjustments and UI fixes
     app.styles = { fixes: dom.create.style(`
         /* Square homepage thumb, vid Join button, channel Join/Sub buttons */
         yt-thumbnail-view-model, :where(div#sponsor-button, div.ytPageHeaderViewModelHeadline) button {
@@ -1033,15 +1021,20 @@
     `)}
     dom.get.loadedElem('head').then(() => document.head.append(app.styles.fixes))
 
-    Object.defineProperties(document, {
-        'hidden': {value: false}, 'webkitHidden': {value: false}, 'visibilityState': {value: 'visible'},
-        'webkitVisibilityState': {value: 'visible'}
-    })
+    if (app.config.idlePrevention) preventIdle()
+    function preventIdle() {
+        Object.defineProperties(document, { // force page visibility
+            hidden: { configurable: true, value: false },
+            webkitHidden: { configurable: true, value: false },
+            visibilityState: { configurable: true, value: 'visible' },
+            webkitVisibilityState: { configurable: true, value: 'visible' }
+        })
+        preventIdle.id = setInterval(() => // send pulse
+            document.dispatchEvent(new KeyboardEvent('keyup', {
+                bubbles: true, cancelable: true, keyCode: 143, which: 143 }))
+        , 60000)
+    }
 
-    setInterval(() => document.dispatchEvent(new KeyboardEvent('keyup', {
-        bubbles: true, cancelable: true, keyCode: 143, which: 143 })), 60000)
-
-    // Redirect Shorts to classic player
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
         if (location.pathname.startsWith('/shorts/'))
@@ -1049,7 +1042,6 @@
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
 
-    // Block stuff
     document.head.append(app.styles.config ??= dom.create.style())
     app.styles.config.textContent = Object.entries(app.selectors.site).map(([key, selectors]) =>
         !app.config[`${key}Block`] ? ''

@@ -45,6 +45,7 @@
     (based on hoothin's <a href="https://greasyfork.org/scripts/441189-youtube-hide-for-you-suggestion-when-search">
       YouTube Hide FOR YOU Suggestion When Search</a>)</li><br>
   <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li><br>
+  <li><b>Prevents idling</b> to keep tabs from falling asleep for infinite auto-play</li><br>
   <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos</li>
 </ul>
 
