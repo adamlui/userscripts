@@ -1,13 +1,13 @@
-import js from '@eslint/js'
 import globals from 'globals'
-import importPlugin from 'eslint-plugin-import'
+import importPlugin from 'eslint-plugin-import-x'
+import js from '@eslint/js'
 import json from '@eslint/json'
 import markdown from '@eslint/markdown'
 import regexp from 'eslint-plugin-regexp'
 import stylisticJS from '@stylistic/eslint-plugin'
 
 export default [
-    { ignores: ['**/*cache', '**/*.min.{js,mjs}', '**/package-lock.json'] },
+    { ignores: ['**/*cache*', '**/*.min.{js,mjs}', '**/package-lock.json'] },
     {
         files: ['**/*.{js,mjs}'],
             languageOptions: {
@@ -28,7 +28,7 @@ export default [
                 xhr: 'readonly'
             }
         },
-        plugins: { 'import': importPlugin, 'js-styles': stylisticJS, regexp },
+        plugins: { 'import-x': importPlugin, 'js-styles': stylisticJS, regexp },
         rules: {
             ...js.configs.recommended.rules,
             ...importPlugin.flatConfigs.recommended.rules,
@@ -47,8 +47,9 @@ export default [
             'no-inner-declarations': 'off', // allow function declarations anywhere
             'no-useless-escape': 'off', // allow all escape chars cause ESLint sucks at detecting truly useless ones
             'no-unused-vars': ['error', { 'caughtErrors': 'none' }], // allow unused named args in catch blocks
-            'import/no-named-as-default-member': 'off', // allow accessing named exports via default import
-            'import/no-unresolved': ['error', { ignore: ['bump'] }] // ignore missing bump in --dev mode
+            'preserve-caught-error': 'off', // allow omit pass caught err as cause
+            'import-x/no-named-as-default-member': 'off', // allow accessing named exports via default import
+            'import-x/no-unresolved': ['error', { ignore: ['bump'] }] // ignore missing bump in --dev mode
         }
     },
     { files: ['**/*.json'], language: 'json/json', ...json.configs.recommended },
