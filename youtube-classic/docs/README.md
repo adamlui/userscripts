@@ -38,9 +38,7 @@
       <img src="https://assets.ytclassic.com/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;After:</i><br>
       <img src="https://assets.ytclassic.com/images/screenshots/youtube-classic-ui.png"></li><br>
-  <li><b>Redirects YouTube Shorts</b> to classic player for increased usability<br>
-    (based on fuim's <a href="https://greasyfork.org/scripts/439993-youtube-shorts-redirect">YouTube Shorts Redirect</a>)
-    <p><img width=400 src="https://assets.ytclassic.com/images/screenshots/shorts-redir.png"></li><br>
+  <li><b>Redirects YouTube Shorts</b> to classic player for increased usability</li><br>
   <li><b>Hides sneaky recommendations</b> from search for more accurate results</li><br>
   <li><b>Reduces excessive animations & lazy-loads</b> for faster navigation thus enjoyment of videos</li><br>
   <li><b>Prevents idling</b> to keep tabs from falling asleep for infinite auto-play</li><br>
