@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.15.12
+// @version           2026.5.15.13
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -48,6 +48,31 @@
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     window.app = { symbol: '📺', configKeyPrefix: 'ytClassic' }
+    app.selectors = { block: {
+        ad: {
+            masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
+            sidebar: '[target-id="engagement-panel-ads"]', // https://imgur.com/a/keWmqdR
+            thumbnail: 'ytd-rich-item-renderer:has(ytd-ad-slot-renderer)'
+        },
+        ai: {
+            askBtn: 'yt-button-view-model:has(path[d^="M480-80q0-83-31.5-156T363"])',
+            askSection: {
+                homepage: 'ytd-rich-section-renderer:has(yt-talk-to-recs-view-model)',
+                videoPage: 'yt-video-description-youchat-section-view-model'
+            },
+            summary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])'
+        },
+        playables: {
+            shelf: 'ytd-rich-section-renderer:has(a[href*="/playables/"])'
+        },
+        shorts: {
+            navEntry: 'a#endpoint[title=Shorts]',
+            shelf: {
+                homepage: 'ytd-rich-section-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
+                results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
+            }
+        }
+    }}
 
     // Init SETTINGS
     app.config ??= {}
@@ -107,32 +132,6 @@
         }
     }
     settings.load(Object.keys(settings.controls))
-
-    app.selectors = { block: {
-        ad: {
-            masthead: 'div#masthead-ad', // https://imgur.com/a/kOWzh3O
-            sidebar: '[target-id="engagement-panel-ads"]', // https://imgur.com/a/keWmqdR
-            thumbnail: 'ytd-rich-item-renderer:has(ytd-ad-slot-renderer)'
-        },
-        ai: {
-            askBtn: 'yt-button-view-model:has(path[d^="M480-80q0-83-31.5-156T363"])',
-            askSection: {
-                homepage: 'ytd-rich-section-renderer:has(yt-talk-to-recs-view-model)',
-                videoPage: 'yt-video-description-youchat-section-view-model'
-            },
-            summary: 'div#header[class*=expandable-metadata]:has(path[d*=M480-80q0-83])'
-        },
-        playables: {
-            shelf: 'ytd-rich-section-renderer:has(a[href*="/playables/"])'
-        },
-        shorts: {
-            navEntry: 'a#endpoint[title=Shorts]',
-            shelf: {
-                homepage: 'ytd-rich-section-renderer:has(a[href*="/shorts/"])', // https://imgur.com/a/LMdO92M
-                results: 'grid-shelf-view-model:has(a[href*="/shorts/"])' // https://imgur.com/a/vVzoEfH
-            }
-        }
-    }}
 
     const CONFIGS = { BUTTON_REWORK: false }
 
@@ -418,8 +417,8 @@
         static start() { this.observer.observe(document, { childList: true, subtree: true }) }
         static stop() { this.observer.disconnect() }
         static bruteforce() {
-            if (!unsafeWindow.yt?.config_) return
-            this.mergeDeep(unsafeWindow.yt.config_, this._config)
+            if (!window.yt?.config_) return
+            this.mergeDeep(window.yt.config_, this._config)
         }
         static setCfg(name, value) { this._config[name] = value }
         static setCfgMulti(configs) { this.mergeDeep(this._config, configs) }
@@ -438,16 +437,16 @@
             return obj
         }
         static encodePlyrFlags(flags) {
-            const keys = Object.keys(flags) ; let response = ''
+            const keys = Object.keys(flags) ; let resp = ''
             for (const [i, key] of keys.entries()) {
-                if (i > 0) response += '&'
-                response += key + '=' + flags[key]
+                if (i > 0) resp += '&'
+                resp += key + '=' + flags[key]
             }
-            return response
+            return resp
         }
         static setPlyrFlags(flags) {
-            if (!unsafeWindow.yt?.config_?.WEB_PLAYER_CONTEXT_CONFIGS) return
-            const conCfgs = unsafeWindow.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS
+            if (!window.yt?.config_?.WEB_PLAYER_CONTEXT_CONFIGS) return
+            const conCfgs = window.yt.config_.WEB_PLAYER_CONTEXT_CONFIGS
             if (!('WEB_PLAYER_CONTEXT_CONFIGS' in this._config)) this._config.WEB_PLAYER_CONTEXT_CONFIGS = {}
             for (const cfg in conCfgs) {
                 const dflags = this.decodePlyrFlags(conCfgs[cfg].serializedExperimentFlags)
@@ -460,7 +459,7 @@
 
     const ATTRS = [ // to remove from <html>
         'darker-dark-theme', 'darker-dark-theme-deprecate' ]
-    unsafeWindow.addEventListener('yt-page-data-updated', function tmp() {
+    addEventListener('yt-page-data-updated', function tmp() {
         const ytLogo = document.getElementById('logo-icon'),
               classicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
         classicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
@@ -469,7 +468,7 @@
         ytLogo.textContent = '' ; ytLogo.append(classicLogo)
         YTP.stop()
         ATTRS.forEach(attr => document.getElementsByTagName('html')[0].removeAttribute(attr))
-        unsafeWindow.removeEventListener('yt-page-date-updated', tmp)
+        removeEventListener('yt-page-date-updated', tmp)
     })
 
     YTP.start()
