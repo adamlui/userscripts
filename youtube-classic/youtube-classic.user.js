@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.16.2
+// @version           2026.5.16.3
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -357,75 +357,6 @@
             })
         }
     }
-
-    window.sync = {
-        configToUI(options) {
-            if (options?.updatedKey == 'disableShorts') {
-                if (app.config.disableShorts && !checkShortsToRedir.id)
-                    checkShortsToRedir()
-                else if (!app.config.disableShorts && checkShortsToRedir.id) {
-                    cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
-            } else if (options?.updatedKey.endsWith('Block'))
-                styles.update({ key: 'block' })
-            else if (options?.updatedKey == 'unroundCorners')
-                styles.update({ key: 'tweaks' })
-            else if (options?.updatedKey == 'idlePrevention') {
-                if (app.config.idlePrevention && !preventIdle.id) preventIdle()
-                else if (!app.config.idlePrevention && preventIdle.id) {
-                    clearInterval(preventIdle.id)
-                    preventIdle.id = null
-                    delete document.hidden
-                    delete document.webkitHidden
-                    delete document.visibilityState
-                    delete document.webkitVisibilityState
-                }
-            }
-            toolbarMenu.refresh() // prefixes/suffixes
-        }
-    }
-
-    // Run MAIN routine
-
-    toolbarMenu.register()
-
-    class YTP {
-        static observer = new MutationObserver(this.onNewScript)
-        static _config = {}
-        static isObject(item) { return (item && typeof item == 'object' && !Array.isArray(item)) }
-        static mergeDeep(target, ...sources) {
-            if (!sources.length) return target
-            const source = sources.shift()
-            if (this.isObject(target) && this.isObject(source)) for (const key in source)
-                if (this.isObject(source[key])) {
-                    if (!target[key]) Object.assign(target, { [key]: {} })
-                    this.mergeDeep(target[key], source[key])
-                } else Object.assign(target, { [key]: source[key] })
-            return this.mergeDeep(target, ...sources)
-        }
-        static onNewScript(mutations) { if (mutations.some(mut => mut.addedNodes.length)) YTP.bruteforce() }
-        static start() { this.observer.observe(document, { childList: true, subtree: true }) }
-        static stop() { this.observer.disconnect() }
-        static bruteforce() {
-            if (!unsafeWindow.yt?.config_) return
-            this.mergeDeep(unsafeWindow.yt.config_, this._config)
-        }
-        static setExpMulti(exps) {
-            if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {}
-            this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps)
-        }
-    }
-    YTP.start()
-    YTP.setExpMulti(EXPFLAGS)
-    addEventListener('yt-page-data-updated', function handleDataUpdated() {
-        const ytLogo = document.getElementById('logo-icon'),
-              ytClassicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
-        ytClassicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
-            ? 'https://i.imgur.com/brCETJj.png' // Dark mode
-            : 'https://i.imgur.com/rHLcxEs.png' // Light mode
-        ytLogo.textContent = '' ; ytLogo.append(ytClassicLogo)
-        YTP.stop()
-        removeEventListener('yt-page-date-updated', handleDataUpdated)
-    })
 
     window.styles = {
         update({ key, keys, autoAppend }) { // requires dom.js
@@ -989,6 +920,76 @@
             }
         }
     }
+
+    window.sync = {
+        configToUI(options) {
+            if (options?.updatedKey == 'disableShorts') {
+                if (app.config.disableShorts && !checkShortsToRedir.id)
+                    checkShortsToRedir()
+                else if (!app.config.disableShorts && checkShortsToRedir.id) {
+                    cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
+            } else if (options?.updatedKey.endsWith('Block'))
+                styles.update({ key: 'block' })
+            else if (options?.updatedKey == 'unroundCorners')
+                styles.update({ key: 'tweaks' })
+            else if (options?.updatedKey == 'idlePrevention') {
+                if (app.config.idlePrevention && !preventIdle.id) preventIdle()
+                else if (!app.config.idlePrevention && preventIdle.id) {
+                    clearInterval(preventIdle.id)
+                    preventIdle.id = null
+                    delete document.hidden
+                    delete document.webkitHidden
+                    delete document.visibilityState
+                    delete document.webkitVisibilityState
+                }
+            }
+            toolbarMenu.refresh() // prefixes/suffixes
+        }
+    }
+
+    class YTP {
+        static observer = new MutationObserver(this.onNewScript)
+        static _config = {}
+        static isObject(item) { return (item && typeof item == 'object' && !Array.isArray(item)) }
+        static mergeDeep(target, ...sources) {
+            if (!sources.length) return target
+            const source = sources.shift()
+            if (this.isObject(target) && this.isObject(source)) for (const key in source)
+                if (this.isObject(source[key])) {
+                    if (!target[key]) Object.assign(target, { [key]: {} })
+                    this.mergeDeep(target[key], source[key])
+                } else Object.assign(target, { [key]: source[key] })
+            return this.mergeDeep(target, ...sources)
+        }
+        static onNewScript(mutations) { if (mutations.some(mut => mut.addedNodes.length)) YTP.bruteforce() }
+        static start() { this.observer.observe(document, { childList: true, subtree: true }) }
+        static stop() { this.observer.disconnect() }
+        static bruteforce() {
+            if (!unsafeWindow.yt?.config_) return
+            this.mergeDeep(unsafeWindow.yt.config_, this._config)
+        }
+        static setExpMulti(exps) {
+            if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {}
+            this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps)
+        }
+    }
+
+    // Run MAIN routine
+
+    toolbarMenu.register()
+
+    YTP.start()
+    YTP.setExpMulti(EXPFLAGS)
+    addEventListener('yt-page-data-updated', function handleDataUpdated() {
+        const ytLogo = document.getElementById('logo-icon'),
+              ytClassicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
+        ytClassicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
+            ? 'https://i.imgur.com/brCETJj.png' // Dark mode
+            : 'https://i.imgur.com/rHLcxEs.png' // Light mode
+        ytLogo.textContent = '' ; ytLogo.append(ytClassicLogo)
+        YTP.stop()
+        removeEventListener('yt-page-date-updated', handleDataUpdated)
+    })
 
     styles.update({ keys: ['block', 'tweaks'] })
 
