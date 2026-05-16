@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.16.1
+// @version           2026.5.16.2
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -365,7 +365,9 @@
                     checkShortsToRedir()
                 else if (!app.config.disableShorts && checkShortsToRedir.id) {
                     cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
-            } else if (/(?:^unroundCorners|Block)$/.test(options?.updatedKey))
+            } else if (options?.updatedKey.endsWith('Block'))
+                styles.update({ key: 'block' })
+            else if (options?.updatedKey == 'unroundCorners')
                 styles.update({ key: 'tweaks' })
             else if (options?.updatedKey == 'idlePrevention') {
                 if (app.config.idlePrevention && !preventIdle.id) preventIdle()
@@ -433,6 +435,16 @@
                 if ((autoAppend ?? style.autoAppend) && !style.node.isConnected) document.head.append(style.node)
                 style.node.textContent = style.css
             })
+        },
+
+        block: {
+            autoAppend: true,
+            get css () {
+                return Object.entries(app.selectors.block)
+                    .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
+                        : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
+                    ).join('')
+            }
         },
 
         tweaks: {
@@ -978,7 +990,7 @@
         }
     }
 
-    styles.update({ key: 'tweaks' })
+    styles.update({ keys: ['block', 'tweaks'] })
 
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
@@ -986,12 +998,6 @@
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
-
-    document.head.append(app.styles.block ??= dom.create.style())
-    app.styles.block.textContent = Object.entries(app.selectors.block).map(([key, selectors]) =>
-        !app.config[`${key}Block`] ? ''
-            : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
-    ).join('')
 
     if (app.config.idlePrevention) preventIdle()
     function preventIdle() {
