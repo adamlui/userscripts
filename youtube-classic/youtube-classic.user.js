@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.16.3
+// @version           2026.5.16.4
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -90,6 +90,10 @@
             aiBlock: {
                 type: 'toggle', label: 'Block AI Elements', defaultVal: true,
                 helptip: 'Hide AI elements from home + video pages'
+            },
+            reduceAnimations: {
+                type: 'toggle',  label: 'Reduce Animations',  defaultVal: true,
+                helptip: 'Reduce UI animations'
             },
             idlePrevention: {
                 type: 'toggle', label: 'Idle Prevention', defaultVal: true,
@@ -979,6 +983,8 @@
     toolbarMenu.register()
 
     YTP.start()
+    Object.keys(EXPFLAGS).filter(key => /_animated_/.test(key))
+        .forEach(animationKey => EXPFLAGS[animationKey] = !app.config.reduceAnimations)
     YTP.setExpMulti(EXPFLAGS)
     addEventListener('yt-page-data-updated', function handleDataUpdated() {
         const ytLogo = document.getElementById('logo-icon'),
