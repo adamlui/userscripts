@@ -22,7 +22,7 @@
 <a href="https://gm.ytclassic.com"><img alt="[Install this script]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Get support](https://support.ytclassic.com) /
+[Get support](https://github.com/adamlui/youtube-classic/issues) /
 [Contact author](https://github.com/adamlui)
 
 </div>
@@ -51,7 +51,7 @@
 <a href="https://gm.ytclassic.com"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Get support](https://support.ytclassic.com) /
+[Get support](https://github.com/adamlui/youtube-classic/issues) /
 [More userscripts][userscripts]
 
 </div>
