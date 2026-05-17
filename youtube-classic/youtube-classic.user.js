@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.16.5
+// @version           2026.5.16.6
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -67,6 +67,10 @@
     window.settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
+            restoreDislikes: {
+                type: 'toggle', label: 'Restore Dislikes', defaultVal: true,
+                helptip: 'Show dislike counts using Return YouTube Dislike data'
+            },
             unroundCorners: {
                 type: 'toggle', label: 'Unround Corners', defaultVal: true,
                 helptip: 'Unround corners around UI elements'
@@ -374,7 +378,7 @@
 
         block: {
             autoAppend: true,
-            get css () {
+            get css() {
                 return Object.entries(app.selectors.block)
                     .map(([key, selectors]) => !app.config[`${key}Block`] ? ''
                         : `${css.selectors.extract(selectors).join(',')} { display: none !important }`
@@ -382,11 +386,20 @@
             }
         },
 
+        dislikes: {
+            autoAppend: true,
+            get css() {
+                return app.config.restoreDislikes ? '' : `
+                    dislike-button-view-model,
+                    like-button-view-model button::after { /* Like btn right sep */
+                        display: none !important }`
+            }
+        },
+
         tweaks: {
             autoAppend: true,
             get css() {
                 return  `
-
                     ${ !app.config.unroundCorners ? '' : `
                         yt-thumbnail-view-model, /* homepage thumb */
                         yt-image-banner-view-model, /* channel banner */
@@ -927,15 +940,17 @@
 
     window.sync = {
         configToUI(options) {
-            if (options?.updatedKey == 'disableShorts') {
+            if (options?.updatedKey == 'restoreDislikes')
+                styles.update({ key: 'dislikes' })
+            else if (options?.updatedKey == 'unroundCorners')
+                styles.update({ key: 'tweaks' })
+            else if (options?.updatedKey == 'disableShorts') {
                 if (app.config.disableShorts && !checkShortsToRedir.id)
                     checkShortsToRedir()
                 else if (!app.config.disableShorts && checkShortsToRedir.id) {
                     cancelAnimationFrame(checkShortsToRedir.id) ; checkShortsToRedir.id = null }
             } else if (options?.updatedKey.endsWith('Block'))
                 styles.update({ key: 'block' })
-            else if (options?.updatedKey == 'unroundCorners')
-                styles.update({ key: 'tweaks' })
             else if (options?.updatedKey == 'idlePrevention') {
                 if (app.config.idlePrevention && !preventIdle.id) preventIdle()
                 else if (!app.config.idlePrevention && preventIdle.id) {
@@ -997,7 +1012,7 @@
         removeEventListener('yt-page-date-updated', handleDataUpdated)
     })
 
-    styles.update({ keys: ['block', 'tweaks'] })
+    styles.update({ keys: ['block', 'dislikes', 'tweaks'] })
 
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
