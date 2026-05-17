@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              YouTube™ Classic 📺 — (Remove rounded design + Return YouTube dislikes)
-// @version           2026.5.16.6
+// @version           2026.5.16.7
 // @author            Adam Lui, magma_craft
 // @namespace         https://github.com/adamlui
 // @description       Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -367,6 +367,7 @@
     }
 
     window.styles = {
+
         update({ key, keys, autoAppend }) { // requires dom.js
             if (!key && !keys) return console.error('Option \'key\' or \'keys\' required by styles.update()')
             ;[].concat(keys || key).forEach(key => {
@@ -400,119 +401,6 @@
             autoAppend: true,
             get css() {
                 return  `
-                    ${ !app.config.unroundCorners ? '' : `
-                        yt-thumbnail-view-model, /* homepage thumb */
-                        yt-image-banner-view-model, /* channel banner */
-                        div.ytPageHeaderViewModelBackground, /* playlist sidebar */
-                        yt-content-preview-image-view-model, /* playlist sidebar thumb */
-                        :where(div#sponsor-button, div#purchase-button, div.ytPageHeaderViewModelHeadline) button,
-                        :where(div#buttons.ytd-masthead, div#action-buttons, yt-flexible-actions-view-model) :is(
-                            button, a[class*=Button]),
-                        yt-video-metadata-carousel-view-model,
-                        ytd-player,
-                        ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-guide-entry-renderer,
-                        ytd-mini-guide-entry-renderer,
-                        ytd-guide-entry-renderer:hover,
-                        .style-scope.ytd-item-section-renderer,
-                        div.style-scope.yt-tooltip-renderer,
-                        .style-scope.ytd-shared-post-renderer,
-                        div#repost-context.style-scope.ytd-shared-post-renderer,
-                        ytd-post-renderer.style-scope.ytd-shared-post-renderer,
-                        div#dismissed.style-scope.ytd-compact-video-renderer,
-                        .style-scope.ytd-brand-video-shelf-renderer,
-                        div#dismissible.style-scope.ytd-brand-video-singleton-renderer,
-                        #inline-survey-compact-video-renderer,
-                        ytd-thumbnail[size="medium"] a.ytd-thumbnail,
-                        ytd-thumbnail[size="medium"]::before,
-                        ytd-playlist-thumbnail[size="medium"] a.ytd-playlist-thumbnail,
-                        ytd-playlist-thumbnail[size="medium"]::before,
-                        ytd-playlist-thumbnail[size="large"] a.ytd-playlist-thumbnail,
-                        ytd-playlist-thumbnail[size="large"]::before,
-                        ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer,
-                        div#dismissed.style-scope.ytd-rich-grid-media,
-                        ytd-thumbnail[size="large"] a.ytd-thumbnail,
-                        ytd-thumbnail[size="large"]::before,
-                        ytd-compact-link-renderer[compact-link-style=compact-link-style-type-settings-sidebar][active],
-                        tp-yt-paper-item.style-scope.ytd-compact-link-renderer::before,
-                        div.rich-thumbnail.skeleton-bg-color,
-                        ytd-rich-metadata-renderer[rounded],
-                        ytd-live-chat-frame[rounded-container],
-                        ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame,
-                        iframe.style-scope.ytd-live-chat-frame,
-                        ytd-playlist-panel-renderer,
-                        ytd-tvfilm-offer-module-renderer[modern-panels],
-                        ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy,
-                        ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer,
-                        .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-overlay-image img,
-                        .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-text-overlay,
-                        .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-enhanced-overlay,
-                        .ytp-ce-video.ytp-ce-medium-round,
-                        .ytp-ce-playlist.ytp-ce-medium-round,
-                        .ytp-ce-medium-round .ytp-ce-expanding-overlay-background,
-                        .ytp-autonav-endscreen-upnext-thumbnail,
-                        .iv-card,
-                        .ytp-ce-video.ytp-ce-large-round,
-                        .ytp-ce-playlist.ytp-ce-large-round,
-                        .ytp-ce-large-round .ytp-ce-expanding-overlay-background,
-                        .ytp-flyout-cta .ytp-flyout-cta-icon.ytp-flyout-cta-icon-rounded,
-                        .ytp-player-minimized .html5-main-video,
-                        .ytp-player-minimized .ytp-miniplayer-scrim,
-                        .ytp-player-minimized.html5-video-player,
-                        ytd-miniplayer #player-container.ytd-miniplayer,
-                        ytd-miniplayer #video-container.ytd-miniplayer .video.ytd-miniplayer,
-                        ytd-miniplayer #card.ytd-miniplayer,
-                        ytd-miniplayer,
-                        ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer,
-                        ytd-c4-tabbed-header-renderer[use-page-header-style] .page-header-banner.ytd-c4-tabbed-header-renderer,
-                        .image-wrapper.ytd-hero-playlist-thumbnail-renderer
-                        {
-                            border-radius: 0 !important
-                        }
-
-                        /* Subscribe button */
-                        :is(ytd-subscribe-button-renderer, /* channel page */
-                            yt-subscribe-button-view-model /* video page */
-                        ) button {
-                            background-color: #cc0000 !important ; color: #fff !important ; border-radius: 2px !important ;
-                            text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
-                        }
-                        #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
-                            background-color: #f2f2f2 !important ; color: #606060 !important ; border-radius: 2px !important ;
-                            text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
-                        }
-                        #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal:hover {
-                            background-color: #e5e5e5 !important }
-                        yt-button-shape.style-scope.ytd-subscribe-button-renderer,
-                        yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content,
-                        yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content > __slot-el {
-                            display: flex !important
-                        }
-                        .ytp-sb-subscribe {
-                            border-radius: 2px !important ; background-color: #f00 !important ; color: #fff !important ;
-                            text-transform: uppercase !important
-                        }
-                        .ytp-sb-unsubscribe {
-                            border-radius: 2px !important ; background-color: #eee !important ; color: #606060 !important ;
-                            text-transform: uppercase !important
-                        }
-                        .ytp-sb-subscribe.ytp-sb-disabled { background-color: #f3908b !important }
-                        div#subscribe-button.skeleton-bg-color { border-radius: 4px !important }
-                        #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
-                            background-color: var(--yt-spec-badge-chip-background) !important ;
-                            color: var(--yt-spec-text-secondary) !important
-                        }
-
-                        /* Notif bell */
-                        div.ytSmartImationsContent:has(#notification-preference-toggle-button) { /* sub/bell container */
-                            display: flex } /* display bell right of sub btn */
-                        div#notification-preference-button button { background: none !important }
-                        div#notification-preference-button div.ytSpecButtonShapeNextSecondaryIcon {
-                            display: none } /* hide down caret */
-                        div#notification-preference-button span.ytIconWrapperHost div { /* color All/None */
-                            fill: var(--yt-sys-color-baseline--mono-filled-hover) !important }
-                        div.ytSubscribeButtonViewModelContainer svg:has(path[d*="20.104999542236328"]) {
-                            filter: invert(100%) } /* whiten Personalized bell on channel */`
-                    }
 
                     /* Revert old background color and buttons */
                     html[dark] {
@@ -935,6 +823,125 @@
                         : 'yt-metadata-badge-renderer span > div { height: 12px !important ; width: 12px !important }' }
                 `
             }
+        },
+
+        unround: {
+            autoAppend: true,
+            get css() {
+                return !app.config.unroundCorners ? '' : `
+                    yt-thumbnail-view-model, /* homepage thumb */
+                    yt-image-banner-view-model, /* channel banner */
+                    div.ytPageHeaderViewModelBackground, /* playlist sidebar */
+                    yt-content-preview-image-view-model, /* playlist sidebar thumb */
+                    :where(div#sponsor-button, div#purchase-button, div.ytPageHeaderViewModelHeadline) button,
+                    :where(div#buttons.ytd-masthead, div#action-buttons, yt-flexible-actions-view-model) :is(
+                        button, a[class*=Button]),
+                    yt-video-metadata-carousel-view-model,
+                    ytd-player,
+                    ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-guide-entry-renderer,
+                    ytd-mini-guide-entry-renderer,
+                    ytd-guide-entry-renderer:hover,
+                    .style-scope.ytd-item-section-renderer,
+                    div.style-scope.yt-tooltip-renderer,
+                    .style-scope.ytd-shared-post-renderer,
+                    div#repost-context.style-scope.ytd-shared-post-renderer,
+                    ytd-post-renderer.style-scope.ytd-shared-post-renderer,
+                    div#dismissed.style-scope.ytd-compact-video-renderer,
+                    .style-scope.ytd-brand-video-shelf-renderer,
+                    div#dismissible.style-scope.ytd-brand-video-singleton-renderer,
+                    #inline-survey-compact-video-renderer,
+                    ytd-thumbnail[size="medium"] a.ytd-thumbnail,
+                    ytd-thumbnail[size="medium"]::before,
+                    ytd-playlist-thumbnail[size="medium"] a.ytd-playlist-thumbnail,
+                    ytd-playlist-thumbnail[size="medium"]::before,
+                    ytd-playlist-thumbnail[size="large"] a.ytd-playlist-thumbnail,
+                    ytd-playlist-thumbnail[size="large"]::before,
+                    ytd-playlist-panel-renderer[modern-panels]:not([within-miniplayer]) #container.ytd-playlist-panel-renderer,
+                    div#dismissed.style-scope.ytd-rich-grid-media,
+                    ytd-thumbnail[size="large"] a.ytd-thumbnail,
+                    ytd-thumbnail[size="large"]::before,
+                    ytd-compact-link-renderer[compact-link-style=compact-link-style-type-settings-sidebar][active],
+                    tp-yt-paper-item.style-scope.ytd-compact-link-renderer::before,
+                    div.rich-thumbnail.skeleton-bg-color,
+                    ytd-rich-metadata-renderer[rounded],
+                    ytd-live-chat-frame[rounded-container],
+                    ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame,
+                    iframe.style-scope.ytd-live-chat-frame,
+                    ytd-playlist-panel-renderer,
+                    ytd-tvfilm-offer-module-renderer[modern-panels],
+                    ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy,
+                    ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer,
+                    .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-overlay-image img,
+                    .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-text-overlay,
+                    .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-enhanced-overlay,
+                    .ytp-ce-video.ytp-ce-medium-round,
+                    .ytp-ce-playlist.ytp-ce-medium-round,
+                    .ytp-ce-medium-round .ytp-ce-expanding-overlay-background,
+                    .ytp-autonav-endscreen-upnext-thumbnail,
+                    .iv-card,
+                    .ytp-ce-video.ytp-ce-large-round,
+                    .ytp-ce-playlist.ytp-ce-large-round,
+                    .ytp-ce-large-round .ytp-ce-expanding-overlay-background,
+                    .ytp-flyout-cta .ytp-flyout-cta-icon.ytp-flyout-cta-icon-rounded,
+                    .ytp-player-minimized .html5-main-video,
+                    .ytp-player-minimized .ytp-miniplayer-scrim,
+                    .ytp-player-minimized.html5-video-player,
+                    ytd-miniplayer #player-container.ytd-miniplayer,
+                    ytd-miniplayer #video-container.ytd-miniplayer .video.ytd-miniplayer,
+                    ytd-miniplayer #card.ytd-miniplayer,
+                    ytd-miniplayer,
+                    ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer,
+                    ytd-c4-tabbed-header-renderer[use-page-header-style] .page-header-banner.ytd-c4-tabbed-header-renderer,
+                    .image-wrapper.ytd-hero-playlist-thumbnail-renderer
+                    {
+                        border-radius: 0 !important
+                    }
+
+                    /* Subscribe button */
+                    :is(ytd-subscribe-button-renderer, /* channel page */
+                        yt-subscribe-button-view-model /* video page */
+                    ) button {
+                        background-color: #cc0000 !important ; color: #fff !important ; border-radius: 2px !important ;
+                        text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
+                    }
+                    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
+                        background-color: #f2f2f2 !important ; color: #606060 !important ; border-radius: 2px !important ;
+                        text-transform: uppercase !important ; font-weight: 500 !important ; letter-spacing: 0.5px !important
+                    }
+                    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal:hover {
+                        background-color: #e5e5e5 !important }
+                    yt-button-shape.style-scope.ytd-subscribe-button-renderer,
+                    yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content,
+                    yt-smartimation.ytd-subscribe-button-renderer, .smartimation__content > __slot-el {
+                        display: flex !important
+                    }
+                    .ytp-sb-subscribe {
+                        border-radius: 2px !important ; background-color: #f00 !important ; color: #fff !important ;
+                        text-transform: uppercase !important
+                    }
+                    .ytp-sb-unsubscribe {
+                        border-radius: 2px !important ; background-color: #eee !important ; color: #606060 !important ;
+                        text-transform: uppercase !important
+                    }
+                    .ytp-sb-subscribe.ytp-sb-disabled { background-color: #f3908b !important }
+                    div#subscribe-button.skeleton-bg-color { border-radius: 4px !important }
+                    #subscribe-button ytd-subscribe-button-renderer button.yt-spec-button-shape-next--tonal {
+                        background-color: var(--yt-spec-badge-chip-background) !important ;
+                        color: var(--yt-spec-text-secondary) !important
+                    }
+
+                    /* Notif bell */
+                    div.ytSmartImationsContent:has(#notification-preference-toggle-button) { /* sub/bell container */
+                        display: flex } /* display bell right of sub btn */
+                    div#notification-preference-button button { background: none !important }
+                    div#notification-preference-button div.ytSpecButtonShapeNextSecondaryIcon {
+                        display: none } /* hide down caret */
+                    div#notification-preference-button span.ytIconWrapperHost div { /* color All/None */
+                        fill: var(--yt-sys-color-baseline--mono-filled-hover) !important }
+                    div.ytSubscribeButtonViewModelContainer svg:has(path[d*="20.104999542236328"]) {
+                        filter: invert(100%) } /* whiten Personalized bell on channel */
+                `
+            }
         }
     }
 
@@ -943,7 +950,7 @@
             if (options?.updatedKey == 'restoreDislikes')
                 styles.update({ key: 'dislikes' })
             else if (options?.updatedKey == 'unroundCorners')
-                styles.update({ key: 'tweaks' })
+                styles.update({ key: 'unround' })
             else if (options?.updatedKey == 'disableShorts') {
                 if (app.config.disableShorts && !checkShortsToRedir.id)
                     checkShortsToRedir()
@@ -1012,7 +1019,7 @@
         removeEventListener('yt-page-date-updated', handleDataUpdated)
     })
 
-    styles.update({ keys: ['block', 'dislikes', 'tweaks'] })
+    styles.update({ keys: ['block', 'dislikes', 'tweaks', 'unround'] })
 
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
