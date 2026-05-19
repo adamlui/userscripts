@@ -11,7 +11,9 @@
     </h6>
 </div>
 
-# 🐵 Greasemonkey userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Just%20discovered%20these%20epic%20userscripts!&url=https://github.com/adamlui/userscripts&hashtags=greasemonkey,userscripts,javascript)
+<div align="center">
+
+# 🐵 adamlui / userscripts
 
 ![](https://img.shields.io/badge/Users-200,000+-af68ff?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](/docs/LICENSE.md)
@@ -20,6 +22,8 @@
 <img src="https://img.shields.io/badge/jsDelivr_Requests-1,000,000+/month-7bb7fc.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
 A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
+
+</div>
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
