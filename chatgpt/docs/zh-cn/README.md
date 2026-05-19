@@ -5,7 +5,7 @@
             <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;简体中文 |
-        <a href="../#readme">English</a>
+        <a href="https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme">English</a>
     </h6>
 </div>
 
@@ -22,74 +22,74 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
-### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://amazongpt.kudoai.com/assets/images/icons/app/white/icon48.png"><img width=21 src="https://amazongpt.kudoai.com/assets/images/icons/app/black-gold-teal/icon48.png"></picture> [AmazonGPT](../../amazongpt) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/gold-badge.png">
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://amazongpt.kudoai.com/assets/images/icons/app/white/icon48.png"><img width=21 src="https://amazongpt.kudoai.com/assets/images/icons/app/black-gold-teal/icon48.png"></picture> [AmazonGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt/#readme) &nbsp;<img height=20 src="https://amazongpt.kudoai.com/assets/images/badges/wolfram-award/zh-cn/gold-badge.png">
 
 > 在亚马逊购物中添加 AI 聊天和产品/类别摘要，由最新的法学硕士提供支持！
 <br>[Install](https://raw.githubusercontent.com/KudoAI/amazongpt/main/greasemonkey/amazongpt.user.js) /
-[自述文件](../../amazongpt/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/amazongpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/icons/openai/black/icon32.png"></picture> [自动清除 ChatGPT 历史记录](../../autoclear-chatgpt-history) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/icons/openai/black/icon32.png"></picture> [自动清除 ChatGPT 历史记录](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://cdn.jsdelivr.net/gh/adamlui/autoclear-chatgpt-history@13b6a5d/assets/images/badges/awesome/badge.svg"></a>
 
 > 自动清除您的 ChatGPT 查询历史记录以获得最大的隐私。
 <br>[安装](https://raw.githubusercontent.com/adamlui/autoclear-chatgpt-history/refs/heads/main/greasemonkey/autoclear-chatgpt-history.user.js) /
-[自述文件](../../autoclear-chatgpt-history/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/autoclear-chatgpt-history/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://assets.bravegpt.com/images/icons/app/icon48.png" width=24> [BraveGPT](../../bravegpt) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
+### <img src="https://assets.bravegpt.com/images/icons/app/icon48.png" width=24> [BraveGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt/#readme) &nbsp;<a href="https://www.producthunt.com/posts/bravegpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bravegpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=385630&theme=light"></a>
 
 > 在 Brave 搜索中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://gm.bravegpt.com) /
-[自述文件](../../bravegpt/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/bravegpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动继续 ⏩](../../chatgpt-auto-continue) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动继续 ⏩](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue/docs/zh-cn/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-continue@dc6aae7/assets/images/badges/awesome/badge.svg"></a>
 
 > 自动继续生成多个 ChatGPT 响应。
 <br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-auto-continue/refs/heads/main/greasemonkey/chatgpt-auto-continue.user.js) /
-[自述文件](../../chatgpt-auto-continue/docs/zh-cn/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-continue/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动刷新 ↻](../../chatgpt-auto-refresh) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动刷新 ↻](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/docs/zh-cn/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-refresh@2514e1c/assets/images/badges/awesome/badge.svg"></a>
 
 > 保持 ChatGPT 会话新鲜，消除聊天时间限制 + 网络错误 + Cloudflare 检查。
 <br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-auto-refresh/refs/heads/main/greasemonkey/chatgpt-auto-refresh.user.js) /
-[自述文件](../../chatgpt-auto-refresh/docs/zh-cn/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-refresh/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动谈话 📣](../../chatgpt-auto-talk) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source type="image/png" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 自动谈话 📣](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk/docs/zh-cn/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#chatgpt"><img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-auto-talk@13d5f7b/assets/images/badges/awesome/badge.svg"></a>
 
 > 自动播放 ChatGPT 的回复。
 <br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-auto-talk/refs/heads/main/greasemonkey/chatgpt-auto-talk.user.js) /
-[自述文件](../../chatgpt-auto-talk/docs/zh-cn/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT无限 ∞](../../chatgpt-infinity) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="在 Google 上推荐" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT无限 ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="在 Google 上推荐" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > 从无所不知的 ChatGPT 生成无穷无尽的答案 (用任何语言!)
 <br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-infinity/refs/heads/main/greasemonkey/chatgpt-infinity.user.js) /
-[自述文件](../../chatgpt-infinity/docs/zh-cn/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT 宽屏模式 🖥️](../../chatgpt-widescreen) <img alt="在 Product Hunt 上被评为本周 UX 产品第 2 名" width="auto" height="24" src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
+### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT 宽屏模式 🖥️](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/docs/zh-cn/#readme) <img alt="在 Product Hunt 上被评为本周 UX 产品第 2 名" width="auto" height="24" src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
 
 > 通过宽屏/全屏/高屏 + 垃圾邮件拦截模式增强 ChatGPT。也适用于 perplexity.ai + poe.com！
 <br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/refs/heads/main/greasemonkey/chatgpt-widescreen.user.js) /
-[自述文件](../../chatgpt-widescreen/docs/zh-cn/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://assets.ddgpt.com/images/icons/app/icon48.png" width=23> [DuckDuckGPT](../../duckduckgpt) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
+### <img src="https://assets.ddgpt.com/images/icons/app/icon48.png" width=23> [DuckDuckGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/#readme) &nbsp;<a href="https://www.producthunt.com/posts/duckduckgpt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-duckduckgpt"><img alt="在 Product Hunt 上推荐" width="112" height="24" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379261&theme=light"></a>
 
 > 在 DuckDuckGo 中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://gm.ddgpt.com) /
-[自述文件](../../duckduckgpt/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/duckduckgpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/black/icon32.png"></picture> [GoogleGPT](../../googlegpt) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/badges/awesome/badge.svg"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/black/icon32.png"></picture> [GoogleGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/badges/awesome/badge.svg"></a>
 
 > 在 Google 搜索中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
 <br>[安装](https://raw.githubusercontent.com/KudoAI/googlegpt/refs/heads/main/greasemonkey/googlegpt.user.js) /
-[自述文件](../../googlegpt/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">

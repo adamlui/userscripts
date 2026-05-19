@@ -7,7 +7,7 @@
             <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;简体中文 |
-        <a href="../#readme">English</a>
+        <a href="https://github.com/adamlui/userscripts/tree/master/#readme">English</a>
     </h6>
 </div>
 
@@ -27,44 +27,44 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
-### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](../../block-quora-poe/#readme)
+### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme)
 
 > 阻止 AI + Quora 的推广/赞助答案。
 <br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js) /
-[自述文件](../../block-quora-poe/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](../../chatgpt/docs/zh-cn/#readme)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT 脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt/docs/zh-cn/#readme)
 
 > 利用 ChatGPT 惊人的 AI 的用户脚本。
-<br>[查看脚本](../../chatgpt/docs/zh-cn/#readme) /
+<br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/github/icon32.png"> [GitHub 脚本](../../github/docs/zh-cn/#readme)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/github/icon32.png"> [GitHub 脚本](https://github.com/adamlui/userscripts/tree/master/github/docs/zh-cn/#readme)
 
 > 增强 GitHub 体验的用户脚本。
-<br>[查看脚本](../../github/docs/zh-cn/#readme) /
+<br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/github/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](../../hide-forum-images/#readme)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
 <br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js) /
-[自述文件](../../hide-forum-images/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [突出单选气泡](../../highlight-radio-bubbles/#readme)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [突出单选气泡](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
 <br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
-[自述文件](../../highlight-radio-bubbles/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](../../youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#youtube"><img alt="在 Awesome 中提及" src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
+### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube 经典版](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#youtube"><img alt="在 Awesome 中提及" src="https://assets.ytclassic.com/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://gm.ytclassic.com) /
-[自述文件](../../youtube-classic/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 <!-- COMPATIBILITY -->
