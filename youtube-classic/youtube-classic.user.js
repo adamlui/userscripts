@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.19.3
+// @version              2026.5.19.4
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1273,6 +1273,7 @@
         ytLogo.textContent = '' ; ytLogo.append(app.logo)
     }
 
+    // Tweak EXPFLAGS
     YTP.start()
     Object.keys(EXPFLAGS).filter(key => /_animated_/.test(key))
         .forEach(animationKey => EXPFLAGS[animationKey] = !app.config.reduceAnimations)
