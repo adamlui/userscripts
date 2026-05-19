@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.19
+// @version              2026.5.19.1
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1250,23 +1250,14 @@
 
     toolbarMenu.register()
 
-    YTP.start()
-    Object.keys(EXPFLAGS).filter(key => /_animated_/.test(key))
-        .forEach(animationKey => EXPFLAGS[animationKey] = !app.config.reduceAnimations)
-    YTP.setExpMulti(EXPFLAGS)
-    addEventListener('yt-page-data-updated', function handleDataUpdated() {
-        YTP.stop()
-        removeEventListener('yt-page-data-updated', handleDataUpdated)
-    })
-
-    styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend == true) })
-
     if (app.config.disableShorts) checkShortsToRedir()
     function checkShortsToRedir() {
         if (location.pathname.startsWith('/shorts/'))
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
+
+    styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend == true) })
 
     // Update header logo
     app.logo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
@@ -1279,6 +1270,15 @@
         app.logo.src = `${app.urls.images}/logos/youtube/${ytScheme}mode.png`
         ytLogo.textContent = '' ; ytLogo.append(app.logo)
     }
+
+    YTP.start()
+    Object.keys(EXPFLAGS).filter(key => /_animated_/.test(key))
+        .forEach(animationKey => EXPFLAGS[animationKey] = !app.config.reduceAnimations)
+    YTP.setExpMulti(EXPFLAGS)
+    addEventListener('yt-page-data-updated', function handleDataUpdated() {
+        YTP.stop()
+        removeEventListener('yt-page-data-updated', handleDataUpdated)
+    })
 
     if (app.config.idlePrevention) preventIdle()
     function preventIdle() {
