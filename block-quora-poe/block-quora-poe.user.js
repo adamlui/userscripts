@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.1.28
+// @version             2026.5.19
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -721,7 +721,7 @@
             return alert
         },
 
-        init(modal) { // requires lib/dom.js
+        init(modal) { // requires dom.js
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
             dom.addRisingParticles(modal)
@@ -754,7 +754,7 @@
 
         safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
 
-        stylize() { // requires lib/dom.js + env
+        stylize() { // requires dom.js + env
             const { browser: { isMobile }, ui: { scheme }} = env
             if (!this.styles) document.head.append(this.styles = dom.create.elem('style'))
             this.styles.textContent = (
@@ -799,10 +799,10 @@
 
     window.styles = {
 
-        update({ key, autoAppend }) { // requires lib/dom.js
+        update({ key, append }) { // requires dom.js
             if (!key) return console.error('Option \'key\' required by styles.update()')
             const style = this[key] ; style.node ||= dom.create.style()
-            if (( autoAppend ?? style.autoAppend ) && !style.node.isConnected) document.head.append(style.node)
+            if (( append ?? style.autoAppend ) && !style.node.isConnected) document.head.append(style.node)
             style.node.textContent = style.css
         },
 
