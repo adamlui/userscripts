@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.18.2
+// @version              2026.5.18.3
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -290,7 +290,7 @@
     window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     window.app = {
         symbol: '📺', configKeyPrefix: 'ytClassic',
-        commitHashes: { data: '8db7f61' } // for cached messages.json + selectors.json5
+        commitHashes: { data: '1b6e5d3' } // for cached messages.json + selectors.json5
     }
     app.urls = { data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data` }
     app.msgs = await new Promise(resolve => {
@@ -322,6 +322,13 @@
 
     // Init SETTINGS
     app.config ??= {}
+    window.i18n = {
+        getMsg(key) {
+            return typeof GM_info == 'undefined' ?
+                browserAPI.i18n.getMessage(key) // from ./_locales/*/messages.json
+                    : app.msgs[key] // from userscript
+        }
+    }
     window.settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
@@ -593,14 +600,6 @@
                 }`})
                 styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
             }
-        }
-    }
-
-    window.i18n = {
-        getMsg(key) {
-            return typeof GM_info == 'undefined' ?
-                browserAPI.i18n.getMessage(key) // from ./_locales/*/messages.json
-                    : app.msgs[key] // from userscript
         }
     }
 
