@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.18.3
+// @version              2026.5.18.4
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -290,9 +290,14 @@
     window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     window.app = {
         symbol: '📺', configKeyPrefix: 'ytClassic',
-        commitHashes: { data: '1b6e5d3' } // for cached messages.json + selectors.json5
+        commitHashes: {
+            data: '1b6e5d3', // for messages.json + selectors.json5
+            images: '1b6e5d3' // for header logo
+        }
     }
-    app.urls = { data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data` }
+    app.urls = { jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic' }
+    app.urls.data = `${app.urls.jsd}@${app.commitHashes.data}/assets/data`
+    app.urls.images = `${app.urls.jsd}@${app.commitHashes.images}/assets/images`
     app.msgs = await new Promise(resolve => {
         const msgBaseURL = `${app.urls.data}/_locales`,
               locale = `${ env.browser.language ? env.browser.language.replace('-', '_') : 'en' }`
@@ -1276,12 +1281,6 @@
         .forEach(animationKey => EXPFLAGS[animationKey] = !app.config.reduceAnimations)
     YTP.setExpMulti(EXPFLAGS)
     addEventListener('yt-page-data-updated', function handleDataUpdated() {
-        const ytLogo = document.getElementById('logo-icon'),
-              ytClassicLogo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
-        ytClassicLogo.src = document.querySelector('ytd-masthead').getAttribute('dark') != null
-            ? 'https://i.imgur.com/brCETJj.png' // Dark mode
-            : 'https://i.imgur.com/rHLcxEs.png' // Light mode
-        ytLogo.textContent = '' ; ytLogo.append(ytClassicLogo)
         YTP.stop()
         removeEventListener('yt-page-date-updated', handleDataUpdated)
     })
@@ -1293,6 +1292,18 @@
         if (location.pathname.startsWith('/shorts/'))
             return location.replace(`https://www.youtube.com/watch?v=${location.pathname.split('/')[2]}`)
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
+    }
+
+    // Update header logo
+    app.logo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
+    new MutationObserver(updateYTlogo).observe(document.documentElement, {
+        attributes: true, subtree: true, attributeFilter: ['dark'] })
+    updateYTlogo()
+    function updateYTlogo() {
+        const ytLogo = document.getElementById('logo-icon'),
+              isDarkMode = !!document.querySelector('ytd-masthead[dark]')
+        app.logo.src = `${app.urls.images}/logos/youtube/${ isDarkMode ? 'dark' : 'light' }mode.png`
+        ytLogo.textContent = '' ; ytLogo.append(app.logo)
     }
 
     if (app.config.idlePrevention) preventIdle()
