@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.19.4
+// @version              2026.5.19.5
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -1257,7 +1257,7 @@
         checkShortsToRedir.id = requestAnimationFrame(checkShortsToRedir)
     }
 
-    styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend == true) })
+    styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
 
     // Update header logo
     app.logo = dom.create.elem('img', { style: 'margin-left: 5px', height: 65 })
