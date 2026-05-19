@@ -36,6 +36,8 @@
   },
   "scripts": {
     "prepare": "husky",
+    "dev:chatbots": "node utils/dev/chatbots",
+    "dev:chatbot": "npm run dev:chatbots",
     "lint": "eslint . --cache",
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
@@ -52,6 +54,7 @@
     "@eslint/json": "^1.2.0",
     "@eslint/markdown": "^8.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
+    "cross-spawn": "^7.0.6",
     "eslint": "^10.3.0",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-regexp": "^3.1.0",
