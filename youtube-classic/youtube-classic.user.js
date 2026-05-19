@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.18.5
+// @version              2026.5.18.6
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -337,46 +337,16 @@
     window.settings = {
 
         controls: { // displays top-to-bottom in toolbar menu
-            get restoreDislikes() { return {
-                type: 'toggle', label: i18n.getMsg('mode_restoreDislikes'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_restoreDislikes')
-            }},
-            get unroundCorners() { return {
-                type: 'toggle', label: i18n.getMsg('mode_unroundCorners'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_unroundCorners')
-            }},
-            get disableShorts() { return {
-                type: 'toggle', label: i18n.getMsg('mode_disableShorts'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_disableShorts')
-            }},
-            get shortsBlock() { return {
-                type: 'toggle', label: i18n.getMsg('mode_shortsBlock'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_shortsBlock')
-            }},
-            get playablesBlock() { return {
-                type: 'toggle', label: i18n.getMsg('mode_playablesBlock'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_playablesBlock')
-            }},
-            get adBlock() { return {
-                type: 'toggle', label: i18n.getMsg('mode_adBlock'), defaultVal: false,
-                helptip: i18n.getMsg('helptip_adBlock')
-            }},
-            get aiBlock() { return {
-                type: 'toggle', label: i18n.getMsg('mode_aiBlock'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_aiBlock')
-            }},
-            get reduceAnimations() { return {
-                type: 'toggle', label: i18n.getMsg('mode_reduceAnimations'),  defaultVal: true,
-                helptip: i18n.getMsg('helptip_reduceAnimations')
-            }},
-            get idlePrevention() { return {
-                type: 'toggle', label: i18n.getMsg('mode_idlePrevention'), defaultVal: true,
-                helptip: i18n.getMsg('helptip_idlePrevention')
-            }},
-            get notifDisabled() { return {
-                type: 'toggle', label: i18n.getMsg('mode_notifDisabled'), defaultVal: false,
-                helptip: i18n.getMsg('helptip_notifDisabled')
-            }}
+            restoreDislikes: { type: 'toggle', defaultVal: true },
+            unroundCorners: { type: 'toggle', defaultVal: true },
+            disableShorts: { type: 'toggle', defaultVal: true },
+            shortsBlock: { type: 'toggle', defaultVal: true },
+            playablesBlock: { type: 'toggle', defaultVal: true },
+            adBlock: { type: 'toggle', defaultVal: false },
+            aiBlock: { type: 'toggle', defaultVal: true },
+            reduceAnimations: { type: 'toggle',  defaultVal: true },
+            idlePrevention: { type: 'toggle', defaultVal: true },
+            notifDisabled: { type: 'toggle', defaultVal: false }
         },
 
         load(...keys) {
@@ -400,6 +370,10 @@
                 && !reInvertSuffixes.test(this.controls[key]?.label || '') // but not in label msg key name
                     ? !app.config[key] : app.config[key] // so invert since flag reps opposite type state, else don't
         }
+    }
+    for (const [key, ctrl] of Object.entries(settings.controls)) {
+        ctrl.label = i18n.getMsg(`mode_${key}`)
+        ctrl.helptip = i18n.getMsg(`helptip_${key}`)
     }
     settings.load(Object.keys(settings.controls))
 
