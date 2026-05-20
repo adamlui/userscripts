@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.19.6
+// @version              2026.5.19.7
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -873,7 +873,7 @@
                         font-weight: 500 !important
                     }
                     ytd-tvfilm-offer-module-renderer[modern-panels] #header.ytd-tvfilm-offer-module-renderer {
-                        border-radius: 0px !important ; font-family: Roboto !important ; font-size: 1.6rem !important ;
+                        font-family: Roboto !important ; font-size: 1.6rem !important ;
                         line-height: 2.2rem !important ; font-weight: 400 !important
                     }
                     ytd-donation-shelf-renderer[modern-panels] #header-text.ytd-donation-shelf-renderer {
@@ -1080,7 +1080,6 @@
                     :where(div#sponsor-button, div#purchase-button, div.ytPageHeaderViewModelHeadline) button,
                     :where(div#buttons.ytd-masthead, div#action-buttons, yt-flexible-actions-view-model) :is(
                         button, a[class*=Button]),
-                    ytd-tvfilm-offer-module-renderer, /* https://imgur.com/a/Idjdwno */
                     [class*=CollectionsStackCollectionStack], /* https://imgur.com/a/b221rzJ */
                     yt-video-metadata-carousel-view-model,
                     ytd-player,
@@ -1114,7 +1113,6 @@
                     ytd-live-chat-frame[rounded-container] #show-hide-button.ytd-live-chat-frame ytd-toggle-button-renderer.ytd-live-chat-frame,
                     iframe.style-scope.ytd-live-chat-frame,
                     ytd-playlist-panel-renderer,
-                    ytd-tvfilm-offer-module-renderer[modern-panels],
                     ytd-donation-shelf-renderer.style-scope.ytd-watch-flexy,
                     ytd-universal-watch-card-renderer[rounded] #header.ytd-universal-watch-card-renderer,ytd-universal-watch-card-renderer[rounded] #hero.ytd-universal-watch-card-renderer,
                     .ytp-ad-overlay-container.ytp-rounded-overlay-ad .ytp-ad-overlay-image img,
