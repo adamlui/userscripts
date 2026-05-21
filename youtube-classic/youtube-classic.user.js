@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.21.2
+// @version              2026.5.21.3
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -247,7 +247,7 @@
 // @match                *://*.youtube.com/*
 // @connect              cdn.jsdelivr.net
 // @connect              gm.ytclassic.com
-// @connect              raw.githubusercontent.com
+// @connect              scriptcat.org
 // @require              https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js#sha256-S7ltnVPzgKyAGBlBG4wQhorJqYTehj5WQCrADCKJufE=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
@@ -274,28 +274,34 @@
         browser: {
             language: navigator.languages[0] || navigator.language || navigator.browserLanguage
                    || navigator.systemLanguage || navigator.userLanguage || '',
-            isFF: navigator.userAgent.includes('Firefox')
+            isFF: navigator.userAgent.includes('Firefox'),
+            isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         },
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
-        },
-        ui: {
-            scheme: document.documentElement.hasAttribute('dark')
-                 || window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
         }
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     window.app = {
-        symbol: '📺', configKeyPrefix: 'ytClassic',
+        name: 'YouTube Classic', symbol: '📺', slug: 'youtube-classic', configKeyPrefix: 'ytClassic',
+        version: GM_info.script.version,
+        author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         commitHashes: {
-            data: '7a97c63', // for messages.json + selectors.json5
+            data: '2c46666', // for messages.json + selectors.json5
             images: '1b6e5d3' // for header logo
         }
     }
-    app.urls = { jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic' }
+    app.urls = {
+        github: 'https://github.com/adamlui/youtube-classic',
+        jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic',
+        review: { scriptcat: 'https://scriptcat.org/script-show-page/6345/comment' },
+        support: 'https://support.ytclassic.com',
+        update: { gm: 'https://scriptcat.org/scripts/code/6345/youtube-classic.meta.js' },
+        userscripts: 'https://github.com/adamlui/userscripts'
+    }
     app.urls.data = `${app.urls.jsd}@${app.commitHashes.data}/assets/data`
     app.urls.images = `${app.urls.jsd}@${app.commitHashes.images}/assets/images`
     app.msgs = await new Promise(resolve => {
@@ -420,12 +426,310 @@
 
     // Define FUNCTIONS
 
+    localStorage.alertQueue = '[]'
     window.feedback = {
 
-        cjsNotify(...args) {
-            const scheme = document.querySelector('html[dark]')
-                || window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        cjsAlert(title, msg, btns, checkbox, width) {
+        // [ title/msg = strings, btns = [named functions], checkbox = named function, width (px) = int ] = optional
+        // * Spaces are inserted into button labels by parsing function names in camel/kebab/snake case
 
+            // Init env context
+            const scheme = ui.getScheme(),
+                  isMobile = env.browser.isMobile
+
+            // Define event handlers
+            const handlers = {
+
+                dismiss: {
+                    click(event) {
+                        if (event.target == event.currentTarget || event.target.closest('[class*=-close-btn]'))
+                            dismissAlert()
+                    },
+
+                    key(event) {
+                        if (!/^(?: |Space|Enter|Return|Esc)/.test(event.key) || ![32, 13, 27].includes(event.keyCode))
+                            return
+                        for (const alertId of alertQueue) { // look to handle only if triggering alert is active
+                            const alert = document.getElementById(alertId)
+                            if (!alert || alert.style.display == 'none') return
+                            if (event.key.startsWith('Esc') || event.keyCode == 27) dismissAlert() // and do nothing
+                            else { // Space/Enter pressed
+                                const mainBtn = alert.querySelector('.modal-buttons').lastChild // look for main button
+                                if (mainBtn) { mainBtn.click() ; event.preventDefault() } // click if found
+                            }
+                        }
+                    }
+                },
+
+                drag: {
+                    mousedown(event) { // find modal, update styles, attach listeners, init XY offsets
+                        if ( // prevent drag when...
+                            event.button != 0 // non-left-click
+                            || !/auto|default/.test(getComputedStyle(event.target).cursor) // cursor changed
+                        ) return
+                        feedback.draggingModal = event.currentTarget
+                        event.preventDefault() // prevent sub-elems like icons being draggable
+                        Object.assign(feedback.draggingModal.style, {
+                            transition: 'transform 0.1s ease', transform: 'scale(1.05)' })
+                        document.body.style.cursor = 'grabbing' // update cursor
+                        ;[...feedback.draggingModal.children] // prevent hover FX if drag lags behind cursor
+                            .forEach(child => child.style.pointerEvents = 'none')
+                        ;['mousemove', 'mouseup'].forEach(eventType => // add listeners
+                            document.addEventListener(eventType, handlers.drag[eventType]))
+                        const draggingModalRect = feedback.draggingModal.getBoundingClientRect()
+                        handlers.drag.offsetX = event.clientX - draggingModalRect.left +21
+                        handlers.drag.offsetY = event.clientY - draggingModalRect.top +12
+                    },
+
+                    mousemove(event) { // drag modal
+                        if (!feedback.draggingModal) return
+                        const newX = event.clientX - handlers.drag.offsetX,
+                            newY = event.clientY - handlers.drag.offsetY
+                        Object.assign(feedback.draggingModal.style, { left: `${newX}px`, top: `${newY}px` })
+                    },
+
+                    mouseup() { // restore styles/pointer events, remove listeners, reset feedback.draggingModal
+                        Object.assign(feedback.draggingModal.style, { // restore styles
+                            cursor: 'inherit', transition: 'inherit', transform: 'scale(1)' })
+                        document.body.style.cursor = '' // restore cursor
+                        ;[...feedback.draggingModal.children] // restore pointer events
+                            .forEach(child => child.style.pointerEvents = '')
+                        ;['mousemove', 'mouseup'].forEach(eventType => // remove listeners
+                            document.removeEventListener(eventType, handlers.drag[eventType]))
+                        feedback.draggingModal = null
+                    }
+                }
+            }
+
+            // Create modal parent/children elems
+            const modalContainer = document.createElement('div')
+            modalContainer.id = Math.floor(randomFloat() * 1000000) + Date.now()
+            modalContainer.classList.add('chatgpt-modal') // add class to main div
+            const modal = document.createElement('div'),
+                  modalTitle = document.createElement('h2'),
+                  modalMsg = document.createElement('p')
+
+            // Create/append/update modal style (if missing or outdated)
+            const thisUpdated = 1739338889852 // timestamp of last edit for this file's `modalStyle`
+            let modalStyle = document.querySelector('#chatgpt-modal-style') // try to select existing style
+            if (!modalStyle || parseInt(modalStyle.getAttribute('last-updated'), 10) < thisUpdated) { // if missing or outdated
+                if (!modalStyle) { // outright missing, create/id/attr/append it first
+                    modalStyle = document.createElement('style') ; modalStyle.id = 'chatgpt-modal-style'
+                    modalStyle.setAttribute('last-updated', thisUpdated.toString())
+                    document.head.append(modalStyle)
+                }
+                modalStyle.textContent = ( // update prev/new style contents
+                    `.chatgpt-modal { /* vars */
+                        --transition: opacity 0.65s cubic-bezier(.165,.84,.44,1), /* for fade-in */
+                                    transform 0.55s cubic-bezier(.165,.84,.44,1) ; /* for move-in */
+                        --bg-transition: background-color 0.25s ease ; /* for bg dim */
+                        --btn-transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ; /* for smooth zoom */
+                        --btn-shadow: 2px 1px ${ scheme == 'dark' ? '54px #00cfff' : '30px #9cdaff' }}`
+
+                    + '.no-mobile-tap-outline { outline: none ; -webkit-tap-highlight-color: transparent }'
+
+                    // Background styles
+                    + `.chatgpt-modal {
+                        pointer-events: auto ; /* override any disabling from site modals (like guest login spam) */
+                        position: fixed ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; /* expand to full view-port */
+                        display: flex ; justify-content: center ; align-items: center ; z-index: 9999 ; /* align */
+                        transition: var(--bg-transition) ; /* for bg dim */
+                            -webkit-transition: var(--bg-transition) ; -moz-transition: var(--bg-transition) ;
+                            -o-transition: var(--bg-transition) ; -ms-transition: var(--bg-transition) }`
+
+                    // Alert styles
+                    + `.chatgpt-modal > div {
+                        border-radius: 0 ;
+                        position: absolute ; /* to be click-draggable */
+                        opacity: 0 ; /* to fade-in */
+                        font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,
+                                    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif ;
+                        padding: 20px ; margin: 12px 23px ; font-size: 20px ;
+                        color: ${ scheme == 'dark' ? 'white' : 'black' };
+                        background-color: ${ scheme == 'dark' ? 'black' : 'white' };
+                        border: 1px solid ${ scheme == 'dark' ? 'white' : '#b5b5b5' };
+                        transform: translateX(-3px) translateY(7px) ; /* offset to move-in from */
+                        max-width: 75vw ; word-wrap: break-word ; border-radius: 15px ;
+                        --shadow: 0 30px 60px rgba(0,0,0,0.12) ; box-shadow: var(--shadow) ;
+                            -webkit-box-shadow: var(--shadow) ; -moz-box-shadow: var(--shadow) ;
+                        user-select: none ; -webkit-user-select: none ; -moz-user-select: none ;
+                            -o-user-select: none ; -ms-user-select: none ;
+                        transition: var(--transition) ; /* for fade-in + move-in */
+                            -webkit-transition: var(--transition) ; -moz-transition: var(--transition) ;
+                            -o-transition: var(--transition) ; -ms-transition: var(--transition) }
+                    .chatgpt-modal h2 { font-weight: bold ; font-size: 24px ; margin-bottom: 9px }
+                    .chatgpt-modal a { color: ${ scheme == 'dark' ? '#00cfff' : '#1e9ebb' }}
+                    .chatgpt-modal a:hover { text-decoration: underline }
+                    .chatgpt-modal.animated > div {
+                        z-index: 13456 ; opacity: 0.98 ; transform: translateX(0) translateY(0) }
+                    @keyframes alert-zoom-fade-out {
+                        0% { opacity: 1 } 50% { opacity: 0.25 ; transform: scale(1.05) }
+                        100% { opacity: 0 ; transform: scale(1.35) }}`
+
+                    // Button styles
+                    + `.modal-buttons {
+                            display: flex ; justify-content: flex-end ; margin: 20px -5px -3px 0 ;
+                            ${ isMobile ? 'flex-direction: column-reverse' : '' }}
+                    .chatgpt-modal button {
+                        font-size: 14px ; text-transform: uppercase ; cursor: crosshair ;
+                        margin-left: ${ isMobile ? 0 : 10 }px ; padding: ${ isMobile ? 15 : 8 }px 18px ;
+                        ${ isMobile ? 'margin-top: 5px ; margin-bottom: 3px ;' : '' }
+                        border-radius: 0 ; border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' };
+                        transition: var(--btn-transition) ;
+                            -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
+                            -o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) }
+                    .chatgpt-modal button:hover {
+                        transform: scale(1.055) ; color: black ;
+                        background-color: #${ scheme == 'dark' ? '00cfff' : '9cdaff' };
+                        box-shadow: var(--btn-shadow) ;
+                            -webkit-box-shadow: var(--btn-shadow) ; -moz-box-shadow: var(--btn-shadow) }
+                    .primary-modal-btn {
+                        border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' };
+                        background: ${ scheme == 'dark' ? 'white' : 'black' };
+                        color: ${ scheme == 'dark' ? 'black' : 'white' }}
+                    .modal-close-btn {
+                        cursor: pointer ; width: 29px ; height: 29px ; border-radius: 17px ;
+                        float: right ; position: relative ; right: -6px ; top: -5px }
+                    .modal-close-btn svg { margin: 10px } /* center SVG for hover underlay */
+                    .modal-close-btn:hover { background-color: #f2f2f2${ scheme == 'dark' ? '00' : '' }}`
+
+                    // Checkbox styles
+                    + `.chatgpt-modal .checkbox-group { margin: 5px 0 -8px 5px }
+                    .chatgpt-modal input[type=checkbox] {
+                        cursor: pointer ; transform: scale(0.7) ; margin-right: 5px ;
+                        border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' }}
+                    .chatgpt-modal input[type=checkbox]:checked {
+                        background-color: black ; position: inherit ;
+                        border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' }}
+                    .chatgpt-modal input[type=checkbox]:focus {
+                        outline: none ; box-shadow: none ; -webkit-box-shadow: none ; -moz-box-shadow: none }
+                    .chatgpt-modal .checkbox-group label {
+                        cursor: pointer ; font-size: 14px ; color: ${ scheme == 'dark' ? '#e1e1e1' : '#1e1e1e' }}`
+                )
+            }
+
+            // Insert text into elems
+            modalTitle.textContent = title || '' ; modalMsg.innerText = msg || ''
+            feedback.cjsRenderHTML(modalMsg)
+
+            // Create/append buttons (if provided) to buttons div
+            const modalButtons = document.createElement('div')
+            modalButtons.classList.add('modal-buttons', 'no-mobile-tap-outline')
+            if (btns) { // are supplied
+                if (!Array.isArray(btns)) btns = [btns] // convert single button to array if necessary
+                btns.forEach((buttonFn) => { // create title-cased labels + attach listeners
+                    const button = document.createElement('button')
+                    button.textContent = buttonFn.name
+                        .replace(/[_-]\w/g, match => match.slice(1).toUpperCase()) // convert snake/kebab to camel case
+                        .replace(/([A-Z])/g, ' $1') // insert spaces
+                        .replace(/^\w/, firstChar => firstChar.toUpperCase()) // capitalize first letter
+                    button.onclick = () => { dismissAlert() ; buttonFn() }
+                    modalButtons.insertBefore(button, modalButtons.firstChild)
+                })
+            }
+
+            // Create/append OK/dismiss button to buttons div
+            const dismissBtn = document.createElement('button')
+            dismissBtn.textContent = btns ? 'Dismiss' : 'OK'
+            modalButtons.insertBefore(dismissBtn, modalButtons.firstChild)
+
+            // Highlight primary button
+            modalButtons.lastChild.classList.add('primary-modal-btn')
+
+            // Create/append checkbox (if provided) to checkbox group div
+            const checkboxDiv = document.createElement('div')
+            if (checkbox) { // is supplied
+                checkboxDiv.classList.add('checkbox-group')
+                const checkboxFn = checkbox, // assign the named function to checkboxFn
+                      checkboxInput = document.createElement('input')
+                checkboxInput.type = 'checkbox' ; checkboxInput.onchange = checkboxFn
+
+                // Create/show label
+                const checkboxLabel = document.createElement('label')
+                checkboxLabel.onclick = () => { checkboxInput.checked = !checkboxInput.checked ; checkboxFn() }
+                checkboxLabel.textContent = checkboxFn.name[0].toUpperCase() // capitalize first char
+                    + checkboxFn.name.slice(1) // format remaining chars
+                        .replace(/([A-Z])/g, (match, letter) => ' ' + letter.toLowerCase()) // insert spaces, convert to lowercase
+                        .replace(/\b(\w+)nt\b/gi, '$1n\'t') // insert apostrophe in 'nt' suffixes
+                        .trim() // trim leading/trailing spaces
+
+                checkboxDiv.append(checkboxInput) ; checkboxDiv.append(checkboxLabel)
+            }
+
+            // Create close button
+            const closeBtn = document.createElement('div')
+            closeBtn.title = 'Close' ; closeBtn.classList.add('modal-close-btn', 'no-mobile-tap-outline')
+            const closeSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+            closeSVG.setAttribute('height', '10px')
+            closeSVG.setAttribute('viewBox', '0 0 14 14')
+            closeSVG.setAttribute('fill', 'none')
+            const closeSVGpath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+            closeSVGpath.setAttribute('fill-rule', 'evenodd')
+            closeSVGpath.setAttribute('clip-rule', 'evenodd')
+            closeSVGpath.setAttribute('fill', ui.getScheme() == 'dark' ? 'white' : 'black')
+            closeSVGpath.setAttribute('d', 'M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976312 12.6834 -0.0976312 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976312 0.683417 -0.0976312 0.292893 0.292893C-0.0976312 0.683417 -0.0976312 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976312 12.6834 -0.0976312 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z')
+            closeSVG.append(closeSVGpath) ; closeBtn.append(closeSVG)
+
+            // Assemble/append div
+            modal.append(closeBtn, modalTitle, modalMsg, checkboxDiv, modalButtons)
+            modal.style.width = `${ width || 458 }px`
+            modalContainer.append(modal) ; document.body.append(modalContainer)
+
+            // Enqueue alert
+            let alertQueue = JSON.parse(localStorage.alertQueue ??= JSON.stringify([]))
+            alertQueue.push(modalContainer.id)
+            localStorage.alertQueue = JSON.stringify(alertQueue)
+
+            // Show alert if none active
+            modalContainer.style.display = 'none'
+            if (alertQueue.length == 1) {
+                modalContainer.style.display = ''
+                setTimeout(() => { // dim bg
+                    modal.parentNode.style.backgroundColor = `rgba(67,70,72,${ scheme == 'dark' ? 0.62 : 0.33 })`
+                    modal.parentNode.classList.add('animated')
+                }, 100) // delay for transition fx
+            }
+
+            // Add listeners
+            [modalContainer, closeBtn, closeSVG, dismissBtn].forEach(elem => elem.onclick = handlers.dismiss.click)
+            document.addEventListener('keydown', handlers.dismiss.key)
+            modal.onmousedown = handlers.drag.mousedown // enable click-dragging
+
+            // Define alert dismisser
+            const dismissAlert = () => {
+                modalContainer.style.backgroundColor = 'transparent'
+                modal.style.animation = 'alert-zoom-fade-out 0.165s ease-out'
+                modal.onanimationend = () => {
+
+                    // Remove alert
+                    modalContainer.remove() // ...from DOM
+                    alertQueue = JSON.parse(localStorage.alertQueue)
+                    alertQueue.shift() // + memory
+                    localStorage.alertQueue = JSON.stringify(alertQueue) // + storage
+                    document.removeEventListener('keydown', handlers.dismiss.key) // prevent memory leaks
+
+                    // Check for pending alerts in queue
+                    if (alertQueue.length) {
+                        const nextAlert = document.getElementById(alertQueue[0])
+                        setTimeout(() => {
+                            nextAlert.style.display = ''
+                            setTimeout(() => nextAlert.classList.add('animated'), 100)
+                        }, 500)
+                    }
+                }
+            }
+
+            function randomFloat() {
+            // * Generates a random, cryptographically secure value between 0 (inclusive) & 1 (exclusive)
+                const crypto = window.crypto || window.msCrypto
+                return crypto?.getRandomValues(new Uint32Array(1))[0] / 0xFFFFFFFF || Math.random()
+            }
+
+            return modalContainer.id // if assignment used
+        },
+
+        cjsNotify(...args) {
+            const scheme = ui.getScheme()
             let msg, position, notifDuration, shadow, toast
             if (typeof args[0] == 'object' && !Array.isArray(args[0]))
                 ({ msg, position, notifDuration, shadow, toast } = args[0])
@@ -520,9 +824,9 @@
             if (thisQuadrantQueue.length > 1) {
                 try { // to move old notifications
                     for (const divID of thisQuadrantQueue.slice(0, -1)) { // exclude new div
-                        const oldDiv = document.getElementById(divID),
-                            offsetProp = oldDiv.style.top ? 'top' : 'bottom', // pick property to change
-                            vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
+                        const oldDiv = document.getElementById(divID) ; if (!oldDiv) break
+                        const offsetProp = oldDiv.style.top ? 'top' : 'bottom' // pick property to change
+                        const vOffset = +parseInt(oldDiv.style[offsetProp]) +5 + oldDiv.getBoundingClientRect().height
                         oldDiv.style[offsetProp] = `${vOffset}px` // change prop
                     }
                 } catch (err) { console.warn('Failed to re-position notification:', err) }
@@ -558,6 +862,57 @@
             return notificationDiv
         },
 
+        cjsRenderHTML(node) {
+            const reTags = /<([a-z\d]+)\b([^>]*)>([\s\S]*?)<\/\1>/g,
+                  reAttrs = /(\S+)=['"]?((?:.(?!['"]?\s+\S+=|[>']))+.)['"]?/g, // eslint-disable-line
+                  nodeContent = node.childNodes
+
+            // Preserve consecutive spaces + line breaks
+            if (!feedback.cjsRenderHTML.preWrapSet) {
+                node.style.whiteSpace = 'pre-wrap' ; feedback.cjsRenderHTML.preWrapSet = true
+                setTimeout(() => feedback.cjsRenderHTML.preWrapSet = false, 100)
+            }
+
+            // Process child nodes
+            for (const childNode of nodeContent) {
+
+                // Process text node
+                if (childNode.nodeType == Node.TEXT_NODE) {
+                    const text = childNode.nodeValue,
+                          elems = [...text.matchAll(reTags)]
+
+                    // Process 1st element to render
+                    if (elems.length) {
+                        const elem = elems[0],
+                             [tagContent, tagName, tagAttrs, tagText] = elem.slice(0, 4),
+                              tagNode = document.createElement(tagName) ; tagNode.textContent = tagText
+
+                        // Extract/set attributes
+                        const attrs = [...tagAttrs.matchAll(reAttrs)]
+                        attrs.forEach(attr => {
+                            const name = attr[1], val = attr[2].replace(/['"]/g, '')
+                            tagNode.setAttribute(name, val)
+                        })
+
+                        const renderedNode = feedback.cjsRenderHTML(tagNode) // render child elems of newly created node
+
+                        // Insert newly rendered node
+                        const beforeTextNode = document.createTextNode(text.substring(0, elem.index)),
+                              afterTextNode = document.createTextNode(text.substring(elem.index + tagContent.length))
+
+                        // Replace text node with processed nodes
+                        node.replaceChild(beforeTextNode, childNode)
+                        node.insertBefore(renderedNode, beforeTextNode.nextSibling)
+                        node.insertBefore(afterTextNode, renderedNode.nextSibling)
+                    }
+
+                // Process element nodes recursively
+                } else if (childNode.nodeType == Node.ELEMENT_NODE) feedback.cjsRenderHTML(childNode)
+            }
+
+            return node // if assignment used
+        },
+
         notify(msg, pos = '', notifDuration = '', shadow = '') { // requires dom.js
             if (app.config.notifDisabled && !msg.includes(settings.controls.notifDisabled.label)) return
 
@@ -566,7 +921,7 @@
             if (foundState) msg = msg.replace(foundState, '')
 
             // Show notification
-            this.cjsNotify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || env.ui.scheme == 'dark' ? '' : 'shadow')
+            this.cjsNotify(`${app.symbol} ${msg}`, pos, notifDuration, shadow || ui.getScheme() == 'dark' ? '' : 'shadow')
             const notif = document.querySelector('.chatgpt-notif:last-child')
 
             // Tweak styles
@@ -578,6 +933,213 @@
                     : '#5cef48 ; text-shadow: rgba(255,250,169,0.38) 2px 1px 5px'
                 }`})
                 styledStateSpan.append(foundState) ; notif.append(styledStateSpan)
+            }
+        }
+    }
+
+    window.modals = { // requires <chatgpt|css|dom>.js + <app|env>
+
+        stack: [], // of types of undismissed modals
+        get class() { return `${app.slug}-modal` },
+
+        get runtime() {
+            return typeof GM_info != 'undefined' ? 'greasemonkey'
+                : navigator.userAgent.includes('Firefox') ? 'firefox'
+                : 'chromium'
+        },
+
+        about() { // requires <app|env|i18n>
+            const { browser: { isCompact }} = env, scheme = ui.getScheme()
+
+            // Init buttons
+            const modalBtns = [
+                function getSupport(){},
+                function rateUs(){},
+                function moreUserscripts(){}
+            ]
+            if (this.runtime == 'greasemonkey') // add Check for Updates
+                modalBtns.unshift(function checkForUpdates(){ updateCheck() })
+
+            // Show modal
+            const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ;'
+                              + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
+            const aboutModal = modals.alert(
+                `${app.symbol} ${i18n.getMsg('appName')}`, // title
+                `<span style="${labelStyles}">🧠 ${i18n.getMsg('about_author')}:</span> `
+                    + `<a href="${app.author.url}" target="_blank" rel="nopener">${i18n.getMsg('appAuthor')}</a> `
+                        + `${i18n.getMsg('about_and')} ${i18n.getMsg('about_contributors')}\n`
+                + `<span style="${labelStyles}">🏷️ ${i18n.getMsg('about_version')}:</span> `
+                    + `<span class="about-em">${app.version}</span>\n`
+                + `<span style="${labelStyles}">📜 ${i18n.getMsg('about_openSourceCode')}:</span> `
+                    + `<a href="${app.urls.github}" target="_blank" rel="nopener">`
+                        + app.urls.github + '</a>\n'
+                + `<span style="${labelStyles}">🚀 ${i18n.getMsg('about_latestChanges')}:</span> `
+                    + `<a href="${app.urls.github}/commits/main/${this.runtime}" target="_blank" rel="nopener">`
+                        + `${app.urls.github}/commits/main/${this.runtime}</a>`,
+                modalBtns, '', 747
+            )
+
+            // Format text
+            aboutModal.querySelector('h2').style.cssText = `
+                text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0`
+            aboutModal.querySelector('p').style.cssText = `
+                text-align: center ; overflow-wrap: anywhere ; margin: ${ isCompact ? '6px 0 -16px' : '3px 0 29px' }`
+
+            // Hack buttons
+            aboutModal.querySelector('.modal-buttons').style.justifyContent = 'center'
+            aboutModal.querySelectorAll('button').forEach(btn => {
+                btn.style.cssText = 'min-width: 136px ; text-align: center ;'
+                    + `height: ${ this.runtime == 'greasemonkey' ? 58 : 55 }px`
+
+                // Replace link buttons w/ clones that don't dismiss modal
+                if (/support|rateus|userscripts/i.test(btn.textContent)) {
+                    btn.replaceWith(btn = btn.cloneNode(true))
+                    btn.onclick = () => this.safeWinOpen(
+                        btn.textContent.includes(i18n.getMsg('btnLabel_getSupport')) ? app.urls.support
+                      : btn.textContent.includes(i18n.getMsg('btnLabel_rateUs')) ? app.urls.review.scriptcat
+                      : app.urls.userscripts
+                    )
+                }
+
+                // Prepend emoji + localize labels
+                if (/updates/i.test(btn.textContent))
+                    btn.textContent = `🚀 ${i18n.getMsg('btnLabel_checkForUpdates')}`
+                else if (/support/i.test(btn.textContent))
+                    btn.textContent = `🧠 ${i18n.getMsg('btnLabel_getSupport')}`
+                else if (/rateus/i.test(btn.textContent))
+                    btn.textContent = `⭐ ${i18n.getMsg('btnLabel_rateUs')}`
+                else if (/userscripts/i.test(btn.textContent))
+                    btn.textContent = `🤖 ${i18n.getMsg('btnLabel_moreUserscripts')}`
+
+                // Hide Dismiss button
+                else btn.style.display = 'none'
+            })
+
+            return aboutModal
+        },
+
+        alert(title = '', msg = '', btns = '', checkbox = '', width = '') { // generic one from feedback.cjsAlert()
+            const alertID = feedback.cjsAlert(title, msg, btns, checkbox, width),
+                  alert = document.getElementById(alertID).firstChild
+            this.init(alert) // add classes + rising particles bg
+            return alert
+        },
+
+        init(modal) { // requires lib/<css|dom>.js
+            this.stylize()
+            modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
+            css.addRisingParticles(modal)
+        },
+
+        observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
+            const modalBG = modal.parentNode
+            new MutationObserver(([mutation], obs) => {
+                mutation.removedNodes.forEach(removedNode => { if (removedNode == modalBG) {
+                    if (this.stack[0].includes(modalSubType || modalType)) { // new modal not launched so nav back
+                        this.stack.shift() // remove this modal type from stack 1st
+                        const prevModalType = this.stack[0]
+                        if (prevModalType) { // open it
+                            this.stack.shift() // remove type from stack since re-added on open
+                            this.open(prevModalType)
+                        }
+                    }
+                    obs.disconnect()
+                }})
+            }).observe(modalBG.parentNode, { childList: true, subtree: true })
+        },
+
+        open(modalType, modalSubType) {
+            const modal = modalSubType ? this[modalType][modalSubType]() : this[modalType]() // show modal
+            if (!modal) return // since no div returned
+            this.stack.unshift(modalSubType ? `${modalType}_${modalSubType}` : modalType) // add to stack
+            this.init(modal) // add classes + rising particles bg
+            this.observeRemoval(modal, modalType, modalSubType) // to maintain stack for proper nav
+        },
+
+        safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
+
+        stylize() { // requires lib/dom.js + env
+            const { browser: { isMobile }} = env, scheme = ui.getScheme()
+            if (!this.styles?.isConnected) document.head.append(this.styles ||= dom.create.style())
+            this.styles.textContent = `
+                .${this.class} { /* modals */
+                    user-select: none ; -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ;
+                    font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu,
+                        Cantarell, Helvetica Neue, sans-serif ;
+                    padding: 20px 25px 24px 25px !important ; font-size: 20px ;
+                    color: ${ scheme == 'dark' ? 'white' : 'black' } !important ;
+                    background-image: linear-gradient(180deg, ${
+                        scheme == 'dark' ? '#99a8a6 -200px, black 200px' : '#b6ebff -296px, white 171px' }) ;
+                    border-radius: 0
+                }
+                .${this.class} [class*=modal-close-btn] {
+                    position: absolute !important ; float: right ; top: 14px !important ; right: 16px !important ;
+                    cursor: pointer ; width: 33px ; height: 33px ; border-radius: 20px
+                }
+                .${this.class} [class*=modal-close-btn] svg { height: 10px }
+                .${this.class} [class*=modal-close-btn] path {
+                    ${ scheme == 'dark' ? 'stroke: white ; fill: white' : 'stroke: #9f9f9f ; fill: #9f9f9f' }}
+                ${ scheme == 'dark' ?  // invert dark mode hover paths
+                    `.${this.class} [class*=modal-close-btn]:hover path { stroke: black ; fill: black }` : '' }
+                .${this.class} [class*=modal-close-btn]:hover { background-color: #f2f2f2 } /* hover underlay */
+                .${this.class} [class*=modal-close-btn] svg { margin: 11.5px } /* center SVG for hover underlay */
+                .${this.class} a { color: #${ scheme == 'dark' ? '00cfff' : '1e9ebb' } !important }
+                .${this.class} a:hover { text-decoration: none ; opacity: 0.7 ; transition: 0.15s ease }
+                .${this.class} h2 { font-weight: bold }
+                .${this.class} button {
+                --btn-transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out ;
+                    font-size: 14px ; text-transform: uppercase ; /* shrink/uppercase labels */
+                    border-radius: 0 !important ; /* square borders */
+                    transition: var(--btn-transition) ; /* smoothen hover fx */
+                    -webkit-transition: var(--btn-transition) ; -moz-transition: var(--btn-transition) ;
+                    -o-transition: var(--btn-transition) ; -ms-transition: var(--btn-transition) ;
+                    cursor: pointer !important ; /* add finger cursor */
+                    border: 1px solid ${ scheme == 'dark' ? 'white' : 'black' } !important ;
+                    padding: 8px !important ; min-width: 102px /* resize */
+                }
+                .${this.class} button:not([class*=primary]) { background: none }
+                .${this.class} button:hover {
+                    ${ scheme == 'light' ? // reduce intensity of light scheme hover glow
+                        '--btn-shadow: 2px 1px 43px #00cfff70 ;' : '' }
+                    color: inherit !important ; /* remove color hack */
+                    background-color: rgb(${ scheme == 'light' ? '192 223 227 / 5%' : '43 156 171 / 43%' })
+                }
+                ${ !isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' }
+                .about-em { color: ${ scheme == 'dark' ? 'white' : 'green' } !important }`
+        },
+
+        update: {
+            width: 377,
+
+            available() {
+
+                // Show modal
+                const updateAvailModal = modals.alert(`🚀 ${app.msgs.alert_updateAvail}!`, // title
+                    `${app.msgs.alert_newerVer} ${app.msgs.appName} ` // msg
+                        + `(v${app.latestVer}) ${app.msgs.alert_isAvail}!  `
+                        + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
+                            + `${app.urls.github}/commits/main/greasemonkey/${app.slug}.user.js`
+                        + `">${app.msgs.link_viewChanges}</a>`,
+                    function update() { // button
+                        modals.safeWinOpen(`${app.urls.update.gm}?t=${Date.now()}`)
+                    }, '', modals.update.width
+                )
+
+                // Localize button labels if needed
+                if (!env.browser.language.startsWith('en')) {
+                    const updateBtns = updateAvailModal.querySelectorAll('button')
+                    updateBtns[1].textContent = app.msgs.btnLabel_update
+                    updateBtns[0].textContent = app.msgs.btnLabel_dismiss
+                }
+
+                return updateAvailModal
+            },
+
+            unavailable() {
+                return modals.alert(`${app.msgs.alert_upToDate}!`, // title
+                    `${app.msgs.appName} (v${app.version}) ${app.msgs.alert_isUpToDate}!`, // msg
+                    '', '', modals.update.width
+                )
             }
         }
     }
@@ -595,6 +1157,8 @@
         },
 
         register() {
+
+            // Add mode/settings toggles
             this.entryIDs = Object.keys(settings.controls).map(key => {
                 const ctrl = settings.controls[key]
                 const menuLabel = `${
@@ -607,6 +1171,12 @@
                     feedback.notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
                 }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined)
             })
+
+            // Add About entry
+            this.entryIDs.push(GM_registerMenuCommand(
+                `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`, () => modals.open('about'),
+                env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
+            ))
         }
     }
 
@@ -1216,6 +1786,33 @@
             toolbarMenu.refresh() // prefixes/suffixes
         }
     }
+
+    window.ui = {
+        getScheme() {
+            return document.querySelector('ytd-masthead[dark]')
+                || window.matchMedia?.('(prefers-color-scheme: dark)').matches
+                    ? 'dark' : 'light'
+        }
+    }
+
+    window.updateCheck = () => xhr({
+        method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
+        headers: { 'Cache-Control': 'no-cache' },
+        onload: ({ responseText }) => {
+
+            // Compare versions, alert if update found
+            app.latestVer = /@version +(.*)/.exec(responseText)?.[1]
+            if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                      latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
+                if (currentSubVer > latestSubVer) break // out of comparison since not outdated
+                else if (latestSubVer > currentSubVer) // if outdated
+                    return modals.open('update', 'available')
+            }
+
+            // Alert to no update found, nav back to About
+            modals.open('update', 'unavailable') ; modals.open('about')
+    }})
 
     class YTP {
         static observer = new MutationObserver(this.onNewScript)
