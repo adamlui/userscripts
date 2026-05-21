@@ -2,10 +2,7 @@
 
 <div align="right">
     <h6>
-        <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
-        </picture>
+        <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
         &nbsp;English |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-cn/#readme">簡體中文</a> |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-tw/#readme">繁体中文</a>
@@ -14,12 +11,7 @@
 
 <div align="center">
 
-<h1>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://assets.ytclassic.com/images/logos/youtube-classic/darkmode.png">
-    <img height=75 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png">
-  </picture>
-</h1>
+<h1><img height=75 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png"></h1>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md)
 ![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge)
@@ -31,11 +23,9 @@
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics</h3>
 
-<a href="https://gm.ytclassic.com"><img alt="[Install this script]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
-[Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Get support](https://github.com/adamlui/youtube-classic/issues) /
-[Contact author](https://github.com/adamlui)
+<a href="https://gm.ytclassic.com"><img style="height: 45px" alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@8841371/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="[#-installation](https://greasyfork.org/help/installing-user-scripts)"><img style="height: 45px" alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@8841371/assets/images/buttons/greasy-fork/help-button.svg"></a>
+
+[Discuss][discuss] / [Get support][support] / [Contact author][author]
 
 </div>
 
@@ -61,11 +51,9 @@
 
 <div align="center">
 
-<a href="https://gm.ytclassic.com"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[How to install]" title="How to install" src="https://assets.ytclassic.com/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
-[Discuss](https://github.com/adamlui/youtube-classic/discussions) /
-[Get support](https://github.com/adamlui/youtube-classic/issues) /
-[More userscripts][userscripts]
+<a href="https://gm.ytclassic.com"><img style="height: 45px" alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@8841371/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="[#-installation](https://greasyfork.org/help/installing-user-scripts)"><img style="height: 45px" alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@8841371/assets/images/buttons/greasy-fork/help-button.svg"></a>
+
+[Discuss][discuss] / [Get support][support] / [Contact author][author]
 
 </div>
 
@@ -73,8 +61,11 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@6b4fcd2/assets/images/separators/gradient-aqua.png">
 
-[<picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/white/icon32x27.png"><img height=13 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/dark-gray/icon32x27.png"></picture>][userscripts]
+[<img height=13 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/dark-gray/icon32x27.png">][userscripts]
 [**More userscripts**][userscripts] /
 <a href="#top">Back to top ↑</a>
 
+[author]: https://github.com/adamlui
+[discuss]: https://github.com/adamlui/youtube-classic/discussions
+[support]: https://github.com/adamlui/youtube-classic/issues
 [userscripts]: https://github.com/adamlui/userscripts/#readme
