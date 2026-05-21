@@ -1,9 +1,7 @@
 <a id="top"></a>
 
 <div align="right">
-    <h6>
-        <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
-        &nbsp;English |
+    <h6>English |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-cn/#readme">簡體中文</a> |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-tw/#readme">繁体中文</a>
     </h6>
@@ -11,15 +9,18 @@
 
 <div align="center">
 
-<h1><img height=75 src="https://assets.ytclassic.com/images/logos/youtube-classic/lightmode.png"></h1>
+<h1><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@51652c0/assets/images/logos/youtube-classic/lightmode/logo535x75.png"></h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md)
-![Support: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge)
-[![CodeFactor grade](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
+<a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">
+    <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge"></a>
+<a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">
+    <img alt="[Support: Chrome/Firefox/Edge/Safari/Opera]" src="https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge"></a>
+<a href="https://www.codefactor.io/repository/github/adamlui/youtube-classic">
+    <img alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=for-the-badge"></a>
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
-    <img src="https://img.shields.io/badge/Mentioned_in-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+    <img alt="[Mentioned in Awesome]" src="https://img.shields.io/badge/Mentioned_in-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
-    <img src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr+Requests&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
+    <img alt="[jsDelivr requests]" src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr+Requests&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
 
 <h3><b>YouTube Classic</b> restores YouTube back to its glory days of classic aesthetics</h3>
 
@@ -61,9 +62,7 @@
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@6b4fcd2/assets/images/separators/gradient-aqua.png">
 
-[<img height=13 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@511d533/assets/images/icons/home/dark-gray/icon32x27.png">][userscripts]
-[**More userscripts**][userscripts] /
-<a href="#top">Back to top ↑</a>
+[**More userscripts**][userscripts] / [Back to top ↑](#top)
 
 [author]: https://github.com/adamlui
 [discuss]: https://github.com/adamlui/youtube-classic/discussions
