@@ -6,7 +6,7 @@
         </picture>
         &nbsp;简体中文 |
         <a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">English</a> |
-        <a href=".https://github.com/adamlui/youtube-classic/blob/main/docs/zh-tw/LICENSE.md">繁体中文</a>
+        <a href="https://github.com/adamlui/youtube-classic/blob/main/docs/zh-tw/LICENSE.md">繁体中文</a>
     </h6>
 </div>
 
