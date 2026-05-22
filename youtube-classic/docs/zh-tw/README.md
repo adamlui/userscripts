@@ -27,7 +27,7 @@
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
     <img src="https://img.shields.io/badge/提及於-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
-    <img src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr+請求&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
+    <img src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr%20%E8%AB%8B%E6%B1%82&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
 
 <h3><b>YouTube 經典</b> 讓 YouTube 重返經典美學的輝煌歲月</h3>
 
