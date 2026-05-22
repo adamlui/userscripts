@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.1
+// @version              2026.5.22.2
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -519,7 +519,7 @@
                                 app.msgs[`state_${ app.config[key] ? 'off' : 'on' }`].toUpperCase()}`)
                         else if (ctgKey != 'siteSettings')
                             feedback.notify(`${entryData.label}: ${
-                                toolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
+                                gmToolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
 
                         // Enable/disable dependent entries
                         for (const [ctrlKey, ctrlData] of Object.entries(
@@ -640,7 +640,7 @@
 
     })
 
-    window.toolbarMenu = {
+    window.gmToolbarMenu = {
         state: {
             symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
             words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
@@ -719,7 +719,7 @@
 
     // Run MAIN routine
 
-    toolbarMenu.register()
+    gmToolbarMenu.register()
     if (app.config.disableShorts) sync.checkShortsToRedir()
     styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
     sync.update.headerLogo()
