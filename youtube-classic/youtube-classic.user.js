@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.21.4
+// @version              2026.5.21.5
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -290,7 +290,7 @@
         version: GM_info.script.version,
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         commitHashes: {
-            data: '2c46666', // for messages.json + selectors.json5
+            data: 'fa559e2', // for messages.json + selectors.json5
             images: '1b6e5d3' // for header logo
         }
     }
@@ -342,17 +342,44 @@
     }
     window.settings = {
 
+        categories: {
+            get restoreModes() { return {
+                symbol: '🔧', autoExpand: true,
+                color: '1e5919', // green
+                label: i18n.getMsg(`menuLabel_restoreModes`),
+                helptip: i18n.getMsg('helptip_restoreModes')
+            }},
+            get blockModes() { return {
+                symbol: '⛔',
+                color: 'a80104', // red
+                label: i18n.getMsg(`menuLabel_blockModes`),
+                helptip: i18n.getMsg('helptip_blockModes')
+            }},
+            get perfModes() { return {
+                symbol: '🏁',
+                color: '856cb7', // purple
+                label: i18n.getMsg(`menuLabel_perfModes`),
+                helptip: i18n.getMsg('helptip_perfModes')
+            }},
+            get notifSettings() { return {
+                symbol: '📣',
+                color: '16e4f7', // teal
+                label: i18n.getMsg(`menuLabel_notifSettings`),
+                helptip: i18n.getMsg('helptip_notifSettings')
+            }}
+        },
+
         controls: { // displays top-to-bottom in toolbar menu
-            restoreDislikes: { type: 'toggle', defaultVal: true },
-            unroundCorners: { type: 'toggle', defaultVal: true },
-            disableShorts: { type: 'toggle', defaultVal: true },
-            shortsBlock: { type: 'toggle', defaultVal: true },
-            playablesBlock: { type: 'toggle', defaultVal: true },
-            adBlock: { type: 'toggle', defaultVal: false },
-            aiBlock: { type: 'toggle', defaultVal: true },
-            reduceAnimations: { type: 'toggle',  defaultVal: true },
-            idlePrevention: { type: 'toggle', defaultVal: true },
-            notifDisabled: { type: 'toggle', defaultVal: false }
+            restoreDislikes: { type: 'toggle', defaultVal: true, category: 'restoreModes' },
+            unroundCorners: { type: 'toggle', defaultVal: true, category: 'restoreModes' },
+            disableShorts: { type: 'toggle', defaultVal: true, category: 'blockModes' },
+            shortsBlock: { type: 'toggle', defaultVal: true, category: 'blockModes' },
+            playablesBlock: { type: 'toggle', defaultVal: true, category: 'blockModes' },
+            adBlock: { type: 'toggle', defaultVal: false, category: 'blockModes' },
+            aiBlock: { type: 'toggle', defaultVal: true, category: 'blockModes' },
+            reduceAnimations: { type: 'toggle',  defaultVal: true, category: 'perfModes' },
+            idlePrevention: { type: 'toggle', defaultVal: true, category: 'perfModes' },
+            notifDisabled: { type: 'toggle', defaultVal: false, category: 'notifSettings' }
         },
 
         load(...keys) {
@@ -377,10 +404,9 @@
                     ? !app.config[key] : app.config[key] // so invert since flag reps opposite type state, else don't
         }
     }
-    for (const [key, ctrl] of Object.entries(settings.controls)) {
-        ctrl.label = i18n.getMsg(`mode_${key}`)
-        ctrl.helptip = i18n.getMsg(`helptip_${key}`)
-    }
+    for (const [group, prefix] of Object.entries({ categories: 'menuLabel', controls: 'mode' }))
+        for (const [key, obj] of Object.entries(settings[group]))
+            Object.assign(obj, { label: i18n.getMsg(`${prefix}_${key}`), helptip: i18n.getMsg(`helptip_${key}`) })
     settings.load(Object.keys(settings.controls))
 
     const EXPFLAGS = {
@@ -1057,6 +1083,205 @@
 
         safeWinOpen(url) { open(url, '_blank', 'noopener') }, // to prevent backdoor vulnerabilities
 
+        settings(ctgKey) { // for categories
+
+            // Stylize
+            if (!modals.settings.style?.isConnected) document.head.append(modals.settings.style ||= dom.create.style())
+            modals.scheme = ui.getScheme()
+            modals.settings.style.textContent = `
+                :root {
+                  --entry-highlighted-bg: rgba(100,149,237,0.88) ;
+                    ${ modals.scheme == 'dark' ? `
+                      --track-filled-color: white ; --track-empty-color: #b2b2b2 ;
+                      --thumb-color: white ; --thumb-border: black`
+                        : ` /* light scheme */
+                      --track-filled-color: #000 ; --track-empty-color: #e0e0e0 ;
+                      --thumb-color: #000 ; --thumb-border: #fff`
+                    }
+                }
+                .${app.slug}-settings-modal h2 { text-align: center }
+                .${app.slug}-settings-modal ul { /* entries list */
+                    cursor: pointer ; font-size: 18px ; margin: 16px 0 -10px ; list-style: none }
+                .${app.slug}-settings-modal li { /* entry row */
+                    color: ${ modals.scheme == 'dark' ? 'rgb(255,255,255,0.65)' : 'rgba(0,0,0,0.45)' };
+                    height: 37px ; padding: 6px 10px 4px ; font-size: 15.5px ; align-content: center ;
+                    border-bottom: 1px dotted ${ modals.scheme == 'dark' ? 'white' : 'black' };
+                    border-radius: 3px ; /* slightly round highlight strip */
+                    transition: 0.1s ease ; /* for hover-zoom */
+                       -webkit-transition: 0.1s ease ; -moz-transition: 0.1s ease ;
+                        o-transition: 0.1s ease ; -ms-transition: 0.1s ease
+                }
+                .${app.slug}-settings-modal li.active {
+                    color: ${ modals.scheme == 'dark' ? 'rgb(255,255,255)' : 'rgba(0,0,0)' }}
+                .${app.slug}-settings-modal li:not(:has(input[type=range])):hover {
+                    padding: 4px 10px ; transform: scale(1.15) ; background: var(--entry-highlighted-bg) ; color: white }
+                .${app.slug}-settings-modal li:last-of-type { border-bottom: none } // remove last bottom-border
+                .${app.slug}-settings-modal li > label { cursor: pointer }
+                .${app.slug}-settings-modal li > input[type=checkbox] { display: none }
+                .${app.slug}-settings-modal .toggle-switch {
+                    position: relative ; left: -1px ; bottom: -4px ; float: right ;
+                    background-color: #ccc ; width: 26px ; height: 13px ; border-radius: 28px ;
+                    transition: 0.4s ; -webkit-transition: 0.4s ; -moz-transition: 0.4s ;
+                       -o-transition: 0.4s ; -ms-transition: 0.4s
+                }
+                .${app.slug}-settings-modal .toggle-knob {
+                    position: absolute ; left: 1px ; bottom: 1px ; content: "" ;
+                    background-color: white ; width: 11px ; height: 11px ; border-radius: 28px ;
+                    transition: 0.2s ; -webkit-transition: 0.2s ; -moz-transition: 0.2s ;
+                       -o-transition: 0.2s ; -ms-transition: 0.2s
+                }
+                .${app.slug}-settings-modal li:has(input[type=range]) { display: flex ; flex-wrap: wrap; padding: 32px 8px   }
+                .${app.slug}-settings-modal li > input[type=range] {
+                  --track-fill-percent: 100% ; width: 100% ; cursor: pointer ; margin: 7px 0 ;
+                   -webkit-appearance: none ; appearance: none ; background: none
+                }
+                .${app.slug}-settings-modal li > input[type=range]::-webkit-slider-runnable-track {
+                    height: 5px ; border-radius: 10px ;
+                    background: linear-gradient(to right,
+                        var(--track-filled-color) 0%, var(--track-filled-color) var(--track-fill-percent),
+                        var(--track-empty-color) var(--track-fill-percent), var(--track-empty-color) 100%
+                    )
+                }
+                .${app.slug}-settings-modal li > input[type=range]::-moz-range-track {
+                    height: 5px ; border-radius: 10px ;
+                    background: linear-gradient(to right,
+                        var(--track-filled-color) 0%, var(--track-filled-color) var(--track-fill-percent),
+                        var(--track-empty-color) var(--track-fill-percent), var(--track-empty-color) 100%
+                    )
+                }
+                .${app.slug}-settings-modal li > input[type=range]::-webkit-slider-thumb {
+                   -webkit-appearance: none ; width: 12px ; height: 26.5px ; background: var(--thumb-color) ;
+                    margin-top: -10.5px ; border: 4px solid var(--thumb-border) ; border-radius: 16px ;
+                    cursor: ew-resize ; transition: transform 0.05s ease
+                }
+                .${app.slug}-settings-modal li > input[type=range]::-moz-range-thumb {
+                    width: 4px ; height: 19px ; background: var(--thumb-color) ;
+                    margin-top: -11px ; border: 4px solid var(--thumb-border) ; border-radius: 16px ;
+                    cursor: ew-resize ; transition: transform 0.05s ease
+                }
+                .${app.slug}-settings-modal li > input[type=range]::-webkit-slider-thumb:hover {
+                    transform: scaleX(1.325) }
+                .${app.slug}-settings-modal li > input[type=range]::-moz-range-thumb:hover { transform: scaleX(1.325) }
+                .${app.slug}-settings-modal button { display: none }
+                .${app.slug}-settings-modal .edit-link {
+                    text-transform: uppercase ; font-size: 0.65em ; margin-left: 0.75em ;
+                    opacity: 0.7 ; cursor: pointer
+                }
+                .${app.slug}-settings-modal .edit-link:hover { opacity: 1 }`
+
+            // Create modal
+            const category = settings.categories[ctgKey]
+            const settingsModal = modals.alert(
+                `${category.symbol} ${category.label}`, '<ul></ul>', undefined, undefined, 365)
+            settingsModal.classList.add(`${app.slug}-settings-modal`)
+            settingsModal.style.cssText += 'padding-bottom: 10px !important'
+
+            // Create entries
+            const settingsUL = settingsModal.querySelector('ul')
+            Object.entries(settings.controls).forEach(([key, entryData]) => {
+                if (entryData.category != ctgKey) return
+
+                // Create/append entry/label elems
+                const entry = {
+                    row: dom.create.elem('li', { id: key, title: entryData.helptip || '' }),
+                    label: dom.create.elem('label')
+                }
+                entry.label.textContent = `${entryData.label}`
+                entry.row.append(entry.label) ; settingsUL.append(entry.row)
+
+                // Create/append toggles/listeners
+                if (entryData.type == 'toggle') {
+
+                    // Create/append toggle elems
+                    entry.toggle = {
+                        input: dom.create.elem('input', { class: 'toggle-input', type: 'checkbox', disabled: true }),
+                        switch: dom.create.elem('span', { class: 'toggle-switch' }),
+                        knob: dom.create.elem('span', { class: 'toggle-knob' })
+                    }
+                    entry.toggle.input.checked =
+                        ctgKey == 'siteSettings' ? !app.config[key] : settings.typeIsEnabled(key)
+                    entry.toggle.switch.append(entry.toggle.knob)
+                    entry.row.append(entry.toggle.input, entry.toggle.switch)
+
+                    // Update visual state w/ animation
+                    setTimeout(() => modals.toggleUtils.updateStyles(entry.toggle.input), 155)
+
+                    // Add click listener
+                    entry.row.onclick = () => {
+                        modals.toggleUtils.switchToggle(entry.toggle.input)
+                        settings.save(key, !app.config[key])
+                        sync.configToUI({ updatedKey: key })
+                        if (ctgKey == 'siteSettings' && env.site == key) // notify if setting of active site toggled
+                             feedback.notify(`${app.name} 🧩 ${
+                                app.msgs[`state_${ app.config[key] ? 'off' : 'on' }`].toUpperCase()}`)
+                        else if (ctgKey != 'siteSettings')
+                            feedback.notify(`${entryData.label}: ${
+                                toolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
+
+                        // Enable/disable dependent entries
+                        for (const [ctrlKey, ctrlData] of Object.entries(
+                                { ...settings.categories, ...settings.controls }))
+                            if (Object.values(ctrlData.dependencies || {}).flat().includes(key)) {
+                                const depDiv = document.querySelector(`li#${ctrlKey}`) ; if (!depDiv) continue
+                                depDiv.style.display = !settings.typeIsEnabled(key) ? 'none' : ''
+                            }
+                    }
+
+                } else if (entryData.type == 'slider') {
+                    const minVal = entryData.min ?? 0, maxVal = entryData.max ?? 100
+
+                    // Create/append slider elems
+                    entry.row.classList.add('active')
+                    entry.row.append(entry.slider = dom.create.elem('input',
+                        { type: 'range', min: minVal, max: maxVal, value: app.config[key] }))
+                    if (entryData.step || env.browser.isFF) // use val from ctrl data or default to 2% in FF for being laggy
+                        entry.slider.step = entryData.step || (0.02 * entry.slider.max - entry.slider.min)
+                    entry.label.textContent += `: ${entry.slider.value}${ entryData.labelSuffix || '' }`
+                    entry.label.append(entry.editLink = dom.create.elem('span',
+                        { class: 'edit-link', role: 'button', tabindex: '0', 'aria-label': entryData.helptip }))
+                    entry.editLink.textContent = app.msgs.promptLabel_edit
+                    entry.slider.style.setProperty(
+                        '--track-fill-percent', `${ entry.slider.value / entry.slider.max *100 }%`)
+
+                    // Add listeners
+                    entry.editLink.onclick = () => {
+                        const promptMsg = `${app.msgs.prompt_enterNewVal} ${entryData.label} (${
+                            app.msgs.error_between} ${minVal}–${maxVal}):`
+                        const userVal = prompt(promptMsg, entry.slider.value)
+                        if (userVal == null) return // user cancelled so do nothing
+                        if (!/\d/.test(userVal)) return alert(`${
+                            app.msgs.error_enterValidNum} ${app.msgs.error_between} ${
+                                minVal} ${app.msgs.error_and} ${maxVal}!`)
+                        let validVal = parseInt(userVal.replace(/\D/g, '')) ; if (isNaN(validVal)) return
+                        validVal = Math.max(minVal, Math.min(maxVal, validVal))
+                        entry.slider.value = validVal ; settings.save(entryData.key, validVal)
+                        sync.configToUI({ updatedKey: entryData.key })
+                        entry.label.textContent = `${entryData.label}: ${validVal}${ entryData.labelSuffix || '' }`
+                        entry.label.append(entry.editLink)
+                        entry.slider.style.setProperty('--track-fill-percent', `${ validVal / entry.slider.max *100 }%`)
+                    }
+                    entry.slider.oninput = ({ target: { value }}) => { // update UI
+                        settings.save(key, parseInt(value)) ; sync.configToUI({ updatedKey: key })
+                        entry.label.textContent = `${entryData.label}: ${value}${ entryData.labelSuffix || '' }`
+                        entry.label.append(entry.editLink)
+                        entry.slider.style.setProperty('--track-fill-percent', `${ value / entry.slider.max *100 }%`)
+                    }
+                    entry.row.onwheel = ({ deltaY }) => { // move slider by 2 steps
+                        entry.slider.value = parseInt(entry.slider.value) - Math.sign(deltaY) *2
+                        entry.slider.dispatchEvent(new Event('input'))
+                    }
+                }
+
+                if (entryData.dependencies) {
+                    const toDisable = Object.values(entryData.dependencies).flat()
+                        .some(dep => !settings.typeIsEnabled(dep))
+                    entry.row.style.display = toDisable ? 'none' : ''
+                }
+            })
+
+            return settingsModal
+        },
+
         stylize() { // requires lib/dom.js + env
             const { browser: { isMobile }} = env, scheme = ui.getScheme()
             if (!this.styles?.isConnected) document.head.append(this.styles ||= dom.create.style())
@@ -1105,6 +1330,24 @@
                 }
                 ${ !isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' }
                 .about-em { color: ${ scheme == 'dark' ? 'white' : 'green' } !important }`
+        },
+
+        toggleUtils: {
+            switchToggle(toggleInput) {
+                toggleInput.checked = !toggleInput.checked ; modals.toggleUtils.updateStyles(toggleInput) },
+
+            updateStyles(toggleInput) { // toggle show + staggered switch animations in
+                const switchSpan = toggleInput.nextElementSibling,
+                      knobSpan = switchSpan.querySelector('span'),
+                      toggleRow = toggleInput.parentNode
+                requestAnimationFrame(() => {
+                    switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
+                    switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
+                    knobSpan.style.transform = toggleInput.checked ?
+                        'translateX(14px) translateY(0)' : 'translateX(0)'
+                    toggleRow.classList.toggle('active', toggleInput.checked) // dim/brighten entry
+                }) // to trigger 1st transition fx
+            }
         },
 
         update: {
@@ -1157,19 +1400,13 @@
 
         register() {
 
-            // Add mode/settings toggles
-            this.entryIDs = Object.keys(settings.controls).map(key => {
-                const ctrl = settings.controls[key]
-                const menuLabel = `${
-                    ctrl.symbol || this.state.symbols[+settings.typeIsEnabled(key)] } ${ctrl.label} ${
-                        ctrl.type == 'toggle' ? this.state.separator + this.state.words[+settings.typeIsEnabled(key)]
-                      : ctrl.type == 'slider' ? ': ' + app.config[key] + ctrl.labelSuffix || ''
-                      : ctrl.status ? ` — ${ctrl.status}` : '' }`
-                return GM_registerMenuCommand(menuLabel, () => {
-                    settings.save(key, !app.config[key]) ; sync.configToUI({ updatedKey: key })
-                    feedback.notify(`${ctrl.label}: ${this.state.words[+settings.typeIsEnabled(key)]}`)
-                }, env.scriptManager.supportsTooltips ? { title: ctrl.helptip || ' ' } : undefined)
-            })
+            // Add mode/settings categories
+            this.entryIDs = Object.entries(settings.categories)
+                .filter(([key]) => !app.config[`${env.site}Disabled`] || key == 'siteSettings')
+                .map(([key, category]) => GM_registerMenuCommand(
+                    `${ category.symbol ? category.symbol + ' ' : '' }${category.label}`, () => modals.settings(key),
+                    env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
+                ))
 
             // Add About entry
             this.entryIDs.push(GM_registerMenuCommand(
