@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.21.5
+// @version              2026.5.21.6
 // @author               Adam Lui, magma_craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -343,30 +343,10 @@
     window.settings = {
 
         categories: {
-            get restoreModes() { return {
-                symbol: '🔧', autoExpand: true,
-                color: '1e5919', // green
-                label: i18n.getMsg(`menuLabel_restoreModes`),
-                helptip: i18n.getMsg('helptip_restoreModes')
-            }},
-            get blockModes() { return {
-                symbol: '⛔',
-                color: 'a80104', // red
-                label: i18n.getMsg(`menuLabel_blockModes`),
-                helptip: i18n.getMsg('helptip_blockModes')
-            }},
-            get perfModes() { return {
-                symbol: '🏁',
-                color: '856cb7', // purple
-                label: i18n.getMsg(`menuLabel_perfModes`),
-                helptip: i18n.getMsg('helptip_perfModes')
-            }},
-            get notifSettings() { return {
-                symbol: '📣',
-                color: '16e4f7', // teal
-                label: i18n.getMsg(`menuLabel_notifSettings`),
-                helptip: i18n.getMsg('helptip_notifSettings')
-            }}
+            restoreModes: { symbol: '🔧', autoExpand: true, color: '1e5919' /* green */ },
+            blockModes: { symbol: '⛔', color: 'a80104' /* red */ },
+            perfModes: { symbol: '🏁', color: '856cb7' /* purple */ },
+            notifSettings: { symbol: '📣', color: '16e4f7' /* teal */ }
         },
 
         controls: { // displays top-to-bottom in toolbar menu
