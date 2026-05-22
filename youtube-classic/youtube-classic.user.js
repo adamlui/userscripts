@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.3
+// @version              2026.5.22.4
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -384,6 +384,36 @@
 
     app.config ??= {} ; settings.load(Object.keys(settings.controls))
 
+    window.gmToolbarMenu = {
+        state: {
+            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
+            words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
+        },
+
+        refresh() {
+            if (typeof GM_unregisterMenuCommand == 'undefined') return
+            this.entryIDs.forEach(id => GM_unregisterMenuCommand(id))
+            this.register()
+        },
+
+        register() {
+
+            // Add mode/settings categories
+            this.entryIDs = Object.entries(settings.categories)
+                .filter(([key]) => !app.config[`${env.site}Disabled`] || key == 'siteSettings')
+                .map(([key, category]) => GM_registerMenuCommand(
+                    `${ category.symbol ? category.symbol + ' ' : '' }${category.label}`, () => modals.settings(key),
+                    env.scriptManager.supportsTooltips ? { title: app.msgs[`helptip_${key}`] } : undefined
+                ))
+
+            // Add About entry
+            this.entryIDs.push(GM_registerMenuCommand(
+                `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`, () => modals.open('about'),
+                env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
+            ))
+        }
+    }
+
     Object.assign(modals, { // userscript modals/utils
 
         settings(ctgKey) { // for categories
@@ -639,36 +669,6 @@
         }
 
     })
-
-    window.gmToolbarMenu = {
-        state: {
-            symbols: ['❌', '✔️'], separator: env.scriptManager.name == 'Tampermonkey' ? ' — ' : ': ',
-            words: [app.msgs.state_off.toUpperCase(), app.msgs.state_on.toUpperCase()]
-        },
-
-        refresh() {
-            if (typeof GM_unregisterMenuCommand == 'undefined') return
-            this.entryIDs.forEach(id => GM_unregisterMenuCommand(id))
-            this.register()
-        },
-
-        register() {
-
-            // Add mode/settings categories
-            this.entryIDs = Object.entries(settings.categories)
-                .filter(([key]) => !app.config[`${env.site}Disabled`] || key == 'siteSettings')
-                .map(([key, category]) => GM_registerMenuCommand(
-                    `${ category.symbol ? category.symbol + ' ' : '' }${category.label}`, () => modals.settings(key),
-                    env.scriptManager.supportsTooltips ? { title: app.msgs[`helptip_${key}`] } : undefined
-                ))
-
-            // Add About entry
-            this.entryIDs.push(GM_registerMenuCommand(
-                `💡 ${app.msgs.menuLabel_about} ${app.msgs.appName}`, () => modals.open('about'),
-                env.scriptManager.supportsTooltips ? { title: ' ' } : undefined
-            ))
-        }
-    }
 
     window.updateCheck = () => xhr({
         method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
