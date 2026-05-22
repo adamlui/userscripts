@@ -12,11 +12,11 @@
 <h1><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/lightmode/logo535x75.png"></h1>
 
 <a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">
-    <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge"></a>
+    <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&style=for-the-badge"></a>
 <a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">
-    <img alt="[Support: Chrome/Firefox/Edge/Safari/Opera]" src="https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge"></a>
+    <img alt="[Support: Chrome/Firefox/Edge/Safari/Opera]" src="https://img.shields.io/badge/Support-Chrome/Firefox/Edge/Safari/Opera-989898.svg?logo=osf&logoColor=white&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/youtube-classic">
-    <img alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=Code%20Quality&style=for-the-badge"></a>
+    <img alt="[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?logo=codefactor&logoColor=white&label=Code%20Quality&style=for-the-badge"></a>
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
     <img alt="[Mentioned in Awesome]" src="https://img.shields.io/badge/Mentioned_in-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">

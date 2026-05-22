@@ -21,9 +21,9 @@
   </picture>
 </h1>
 
-[![执照: MIT](https://img.shields.io/badge/执照-MIT-orange.svg?style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/docs/zh-cn/LICENSE.md)
-![支持: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/支持-Chrome/Firefox/Edge/Safari/Opera-989898.svg?style=for-the-badge)
-[![CodeFactor 年级](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?label=代码质量&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
+[![执照: MIT](https://img.shields.io/badge/执照-MIT-orange.svg?logo=internetarchive&logoColor=white&style=for-the-badge)](https://github.com/adamlui/youtube-classic/blob/main/docs/zh-cn/LICENSE.md)
+![支持: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/支持-Chrome/Firefox/Edge/Safari/Opera-989898.svg?logo=osf&logoColor=white&style=for-the-badge)
+[![CodeFactor 年级](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?logo=codefactor&logoColor=whitelabel=代码质量&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
     <img src="https://img.shields.io/badge/提及于-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
