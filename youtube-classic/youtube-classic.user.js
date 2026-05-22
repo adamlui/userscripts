@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.4
+// @version              2026.5.22.5
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -626,8 +626,7 @@
                 requestAnimationFrame(() => {
                     switchSpan.style.backgroundColor = toggleInput.checked ? '#ad68ff' : '#ccc'
                     switchSpan.style.boxShadow = toggleInput.checked ? '2px 1px 9px #d8a9ff' : 'none'
-                    knobSpan.style.transform = toggleInput.checked ?
-                        'translateX(14px) translateY(0)' : 'translateX(0)'
+                    knobSpan.style.transform = toggleInput.checked ? 'translateX(14px) translateY(0)' : 'translateX(0)'
                     toggleRow.classList.toggle('active', toggleInput.checked) // dim/brighten entry
                 }) // to trigger 1st transition fx
             }
