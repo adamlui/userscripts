@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.6
+// @version              2026.5.22.7
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -676,14 +676,15 @@
 
             // Compare versions, alert if update found
             app.latestVer = /@version +(.*)/.exec(responseText)?.[1]
-            if (app.latestVer) for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
-                const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
-                      latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
-                if (currentSubVer > latestSubVer)
-                    break // out of comparison since not outdated
-                else if (currentSubVer < latestSubVer) // if outdated
-                    return modals.open('update', 'available')
-            }
+            if (app.latestVer)
+                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                    const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
+                    if (currentSubVer > latestSubVer)
+                        break // out of comparison since not outdated
+                    else if (currentSubVer < latestSubVer) // if outdated
+                        return modals.open('update', 'available')
+                }
 
             // Alert to no update found, nav back to About
             modals.open('update', 'unavailable') ; modals.open('about')
