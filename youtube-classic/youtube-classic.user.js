@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.5
+// @version              2026.5.22.6
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -265,7 +265,7 @@
 // @grant                GM_setValue
 // @grant                GM_xmlhttpRequest
 // @grant                GM.xmlHttpRequest
-// @run-at               document-end
+// @run-at               document-start
 // @downloadURL          https://gm.ytclassic.com
 // @updateURL            https://scriptcat.org/scripts/code/6345/youtube-classic.meta.js
 // @homepageURL          https://www.ytclassic.com
