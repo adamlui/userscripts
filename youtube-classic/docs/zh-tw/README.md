@@ -50,7 +50,8 @@
       <img src="https://assets.ytclassic.com/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;後：</i><br>
       <img src="https://assets.ytclassic.com/images/screenshots/youtube-classic-ui.png"></li><br>
-  <li><b>將 YouTube Shorts 重新導向</b>至經典播放器，以提升使用體驗</li><br>
+  <li><b>將 YouTube Shorts 重新導向</b>至經典播放器，以提升使用體驗
+    <p><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@19ab985/assets/images/screenshots/shorts-redir.png"></li><br>
   <li><b>遮蔽搜尋結果中的隱匿推薦</b>，從而呈現更精準的搜尋結果</li><br>
   <li><b>精簡冗餘動畫效果</b>，加快頁面導覽速度，助您更流暢地欣賞影片</li><br>
   <li><b>防止頁面進入空閒休眠狀態</b>，確保分頁持續活躍，實現無限自動播放</li><br>
