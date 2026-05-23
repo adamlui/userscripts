@@ -48,7 +48,12 @@
   <li><b>Hides sneaky recommendations</b> from search for more accurate results</li><br>
   <li><b>Reduces excessive animations</b> for faster navigation thus enjoyment of videos</li><br>
   <li><b>Prevents idling</b> to keep tabs from falling asleep for infinite auto-play</li><br>
-  <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos</li>
+  <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos
+    <p><i>&nbsp;Before:</i><br><br>
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/before.png">
+    <p><i>&nbsp;After:</i><br><br>
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/after.png"></li><br>
+
 </ul>
 
 <br>
