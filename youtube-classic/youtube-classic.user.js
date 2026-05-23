@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.10
+// @version              2026.5.22.11
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -257,7 +257,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/settings.js#sha256-AybZWDxw7XbZt1gkJmBJD/i/QeGs+YCGMP75/HOv12k=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/styles.js#sha256-3qQwhekyQmzd8oUNJmA8iEW/0zvK8HyflNOhq1VwOys=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@0101b2d/firefox/extension/lib/sync.js#sha256-XSiHZv8WBkc3VnEF3z2alFaFEBwDHq/y9wezwaHGap4=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e177985/firefox/extension/lib/sync.js#sha256-rPSsFndKtny/ED6zleRwXNReBmCplJ+nQfeHB7jz8P0=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/ui.js#sha256-jvubqzwniEJQQA8uyVbq8H3FVYBK3mPxjJxsnw5TwIs=
 // @grant                GM_registerMenuCommand
 // @grant                GM_unregisterMenuCommand
@@ -541,7 +541,7 @@
                     entry.row.onclick = () => {
                         modals.toggleUtils.switchToggle(entry.toggle.input)
                         settings.save(key, !app.config[key])
-                        sync.configToUI({ updatedKey: key })
+                        sync.configToUI({ key })
                         feedback.notify(`${entryData.label}: ${
                             gmToolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
 
@@ -582,13 +582,13 @@
                         let validVal = parseInt(userVal.replace(/\D/g, '')) ; if (isNaN(validVal)) return
                         validVal = Math.max(minVal, Math.min(maxVal, validVal))
                         entry.slider.value = validVal ; settings.save(entryData.key, validVal)
-                        sync.configToUI({ updatedKey: entryData.key })
+                        sync.configToUI({ key: entryData.key })
                         entry.label.textContent = `${entryData.label}: ${validVal}${ entryData.labelSuffix || '' }`
                         entry.label.append(entry.editLink)
                         entry.slider.style.setProperty('--track-fill-percent', `${ validVal / entry.slider.max *100 }%`)
                     }
                     entry.slider.oninput = ({ target: { value }}) => { // update UI
-                        settings.save(key, parseInt(value)) ; sync.configToUI({ updatedKey: key })
+                        settings.save(key, parseInt(value)) ; sync.configToUI({ key })
                         entry.label.textContent = `${entryData.label}: ${value}${ entryData.labelSuffix || '' }`
                         entry.label.append(entry.editLink)
                         entry.slider.style.setProperty('--track-fill-percent', `${ value / entry.slider.max *100 }%`)
