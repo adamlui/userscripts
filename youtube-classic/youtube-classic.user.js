@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.23.1
+// @version              2026.5.23.2
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -252,12 +252,12 @@
 // @require              https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/components/modals.js#sha256-4iwF4PoLSZC3hB9WnnwXI5kJ+FkzzKPTIVEefZXG/64=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@0101b2d/firefox/extension/lib/feedback.js#sha256-vOjy50gX+2neUSL3Cw7IzEoDBoVFu0JKFrBD+a5MpJg=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/components/modals.js#sha256-Lkt/UBhkO4IjKnlc5S6wnHlPdcA8/d53lJyQij9KfzA=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/lib/feedback.js#sha256-FGTL/tld4cDq1qPalE2ExN/OZ6TSx8BR3xr3DhmduiU=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/settings.js#sha256-AybZWDxw7XbZt1gkJmBJD/i/QeGs+YCGMP75/HOv12k=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@424e4a5/firefox/extension/lib/settings.js#sha256-UXX6rJPMzxuPhJA2CEAWCTU4hFjhTUiG0n1n5ATA0ZQ=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1e645cc/firefox/extension/lib/styles.js#sha256-t5xeI85sVNdpbf2lOmpkbnuL+YNoEljMxa5LGalxujo=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@9a1a22e/firefox/extension/lib/sync.js#sha256-GOCSq9bR84wsygpvDMF/7pMXtGVmhWVYr7P9gzqJ+5I=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/lib/sync.js#sha256-xZP12HxKT/1FrNE+ZqXUXCRyvd8hQJY94TSLKCPD+ls=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/ui.js#sha256-jvubqzwniEJQQA8uyVbq8H3FVYBK3mPxjJxsnw5TwIs=
 // @grant                GM_registerMenuCommand
 // @grant                GM_unregisterMenuCommand
@@ -302,7 +302,7 @@
         commitHashes: {
             data: 'fa559e2', // for selectors.json5
             images: '1b6e5d3', // for header logo
-            locales: 'fbe770f' // for messages.json
+            locales: '4fccd9f' // for messages.json
         }
     }
     app.urls = {
@@ -382,7 +382,7 @@
         web_watch_rounded_player_large: false
     }}
 
-    app.config ??= {} ; settings.load(Object.keys(settings.controls))
+    settings.load(Object.keys(settings.controls))
 
     window.gmToolbarMenu = {
         state: {
@@ -714,7 +714,7 @@
     // Run MAIN routine
 
     gmToolbarMenu.register()
-    if (app.config.disableShorts) sync.redir.shorts()
+    if (app.config.disableShorts) sync.shorts.redir()
     styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
     sync.headerLogo()
     dom.get.loadedElem('ytd-masthead').then(masthead => {
