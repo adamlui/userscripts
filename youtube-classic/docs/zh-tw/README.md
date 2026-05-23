@@ -16,8 +16,8 @@
 
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
-    <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
+    <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
   </picture>
 </h1>
 
@@ -59,9 +59,9 @@
   <li><b>防止頁面進入空閒休眠狀態</b>，確保分頁持續活躍，實現無限自動播放</li><br>
   <li><b>攔截縮圖廣告</b>，讓您在瀏覽影片時介面更加整潔清爽
     <p><i>&nbsp;前：</i><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/before.png">
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;後：</i><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/after.png"></li><br>
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/after.png"></li><br>
 </ul>
 
 <br>

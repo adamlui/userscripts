@@ -16,8 +16,8 @@
 
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
-    <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
+    <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
   </picture>
 </h1>
 
@@ -59,9 +59,9 @@
   <li><b>防止页面进入空闲休眠状态</b>，确保标签页持续活跃，实现无限自动播放</li><br>
   <li><b>拦截缩略图广告</b>，让您在浏览视频时界面更加整洁清爽
     <p><i>&nbsp;前：</i><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/before.png">
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;后：</i><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/after.png"></li><br>
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/after.png"></li><br>
 </ul>
 
 <br>

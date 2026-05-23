@@ -9,7 +9,7 @@
 
 <div align="center">
 
-<h1><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fd144ef/assets/images/logos/youtube-classic/lightmode/logo535x75.png"></h1>
+<h1><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/lightmode/logo535x75.png"></h1>
 
 <a href="https://github.com/adamlui/youtube-classic/blob/main/docs/LICENSE.md">
     <img alt="[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&style=for-the-badge"></a>
@@ -50,9 +50,9 @@
   <li><b>Prevents idling</b> to keep tabs from falling asleep for infinite auto-play</li><br>
   <li><b>Blocks thumbnail ads</b> for less clutter when browsing videos
     <p><i>&nbsp;Before:</i><br><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/before.png">
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;After:</i><br><br>
-      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/after.png"></li><br>
+      <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/after.png"></li><br>
 </ul>
 
 <br>
