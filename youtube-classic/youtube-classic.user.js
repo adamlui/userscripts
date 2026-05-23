@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.11
+// @version              2026.5.22.12
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -257,7 +257,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/settings.js#sha256-AybZWDxw7XbZt1gkJmBJD/i/QeGs+YCGMP75/HOv12k=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/styles.js#sha256-3qQwhekyQmzd8oUNJmA8iEW/0zvK8HyflNOhq1VwOys=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e177985/firefox/extension/lib/sync.js#sha256-rPSsFndKtny/ED6zleRwXNReBmCplJ+nQfeHB7jz8P0=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@9a1a22e/firefox/extension/lib/sync.js#sha256-GOCSq9bR84wsygpvDMF/7pMXtGVmhWVYr7P9gzqJ+5I=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/ui.js#sha256-jvubqzwniEJQQA8uyVbq8H3FVYBK3mPxjJxsnw5TwIs=
 // @grant                GM_registerMenuCommand
 // @grant                GM_unregisterMenuCommand
@@ -714,11 +714,11 @@
     // Run MAIN routine
 
     gmToolbarMenu.register()
-    if (app.config.disableShorts) sync.checkShortsToRedir()
+    if (app.config.disableShorts) sync.redir.shorts()
     styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
-    sync.update.headerLogo()
+    sync.headerLogo()
     dom.get.loadedElem('ytd-masthead').then(masthead => {
-        new MutationObserver(sync.update.headerLogo).observe(masthead, {
+        new MutationObserver(sync.headerLogo).observe(masthead, {
             attributes: true, subtree: true, attributeFilter: ['dark'] })
     })
 
