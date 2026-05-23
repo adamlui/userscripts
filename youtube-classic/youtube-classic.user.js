@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.23.7
+// @version              2026.5.23.8
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -255,7 +255,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/components/modals.js#sha256-Lkt/UBhkO4IjKnlc5S6wnHlPdcA8/d53lJyQij9KfzA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/feedback.js#sha256-qDLZ6PVjOi83bbnOJrx1lMGF7j61Af53ywe1C3FQTRg=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@2fdf3fd/firefox/extension/lib/settings.js#sha256-VJDNSb3qu6IIIadzwZ1Efzwx7rxyjfgR31oMtjLfoWQ=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b04c07d/firefox/extension/lib/settings.js#sha256-6MyitRBSxKw/qV2mw6QqmQSXyWaFbCzsEHj1IDHkeug=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@2fdf3fd/firefox/extension/lib/styles.js#sha256-Tul9DItVz6dXQgzzfc+SsTADBYuwCRM7cQe1JQ2wxtg=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/sync.js#sha256-XA5zTN18aihmcmIqQuWAdOyUUueWAJ8sLeeR+6Wym4A=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/ui.js#sha256-jvubqzwniEJQQA8uyVbq8H3FVYBK3mPxjJxsnw5TwIs=
@@ -302,7 +302,7 @@
         commitHashes: {
             data: 'fa559e2', // for selectors.json5
             images: '1b6e5d3', // for header logo
-            locales: '01ca949' // for messages.json
+            locales: 'b04c07d' // for messages.json
         }
     }
     app.urls = {
