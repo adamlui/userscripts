@@ -26,6 +26,8 @@
 [![CodeFactor 年级](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?logo=codefactor&logoColor=white&label=代码质量&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
     <img src="https://img.shields.io/badge/提及于-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+<a href="https://sonarcloud.io/component_measures?metric=vulnerabilities&id=adamlui_youtube-classic">
+    <img alt="[SonarCloud vulnerabilities]" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_youtube-classic%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonar&logoColor=white&labelColor=464646&label=%E6%BC%8F%E6%B4%9E&color=ffef00"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
     <img src="https://img.shields.io/jsdelivr/gh/hm/adamlui/youtube-classic?label=jsDelivr%20%E8%AF%B7%E6%B1%82&logo=jsdelivr&logoColor=white&color=2bbbd8&labelColor=464646&style=for-the-badge"></a>
 
