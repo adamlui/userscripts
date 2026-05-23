@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.22.9
+// @version              2026.5.22.10
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -400,7 +400,6 @@
 
             // Add mode/settings categories
             this.entryIDs = Object.entries(settings.categories)
-                .filter(([key]) => !app.config[`${env.site}Disabled`] || key == 'siteSettings')
                 .map(([key, category]) => GM_registerMenuCommand(
                     `${ category.symbol ? category.symbol + ' ' : '' }${category.label}`, () => modals.settings(key),
                     env.scriptManager.supportsTooltips ? { title: app.msgs[`helptip_${key}`] } : undefined
@@ -531,8 +530,7 @@
                         switch: dom.create.elem('span', { class: 'toggle-switch' }),
                         knob: dom.create.elem('span', { class: 'toggle-knob' })
                     }
-                    entry.toggle.input.checked =
-                        ctgKey == 'siteSettings' ? !app.config[key] : settings.typeIsEnabled(key)
+                    entry.toggle.input.checked = settings.typeIsEnabled(key)
                     entry.toggle.switch.append(entry.toggle.knob)
                     entry.row.append(entry.toggle.input, entry.toggle.switch)
 
@@ -544,12 +542,8 @@
                         modals.toggleUtils.switchToggle(entry.toggle.input)
                         settings.save(key, !app.config[key])
                         sync.configToUI({ updatedKey: key })
-                        if (ctgKey == 'siteSettings' && env.site == key) // notify if setting of active site toggled
-                            feedback.notify(`${app.name} 🧩 ${
-                                app.msgs[`state_${ app.config[key] ? 'off' : 'on' }`].toUpperCase()}`)
-                        else if (ctgKey != 'siteSettings')
-                            feedback.notify(`${entryData.label}: ${
-                                gmToolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
+                        feedback.notify(`${entryData.label}: ${
+                            gmToolbarMenu.state.words[+settings.typeIsEnabled(key)]}`)
 
                         // Enable/disable dependent entries
                         for (const [ctrlKey, ctrlData] of Object.entries(
