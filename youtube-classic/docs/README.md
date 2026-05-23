@@ -53,7 +53,6 @@
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;After:</i><br><br>
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@77e7f6b/assets/images/screenshots/ad-block/after.png"></li><br>
-
 </ul>
 
 <br>
