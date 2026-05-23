@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.23.5
+// @version              2026.5.23.6
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -253,11 +253,11 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/components/modals.js#sha256-Lkt/UBhkO4IjKnlc5S6wnHlPdcA8/d53lJyQij9KfzA=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/lib/feedback.js#sha256-FGTL/tld4cDq1qPalE2ExN/OZ6TSx8BR3xr3DhmduiU=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/feedback.js#sha256-qDLZ6PVjOi83bbnOJrx1lMGF7j61Af53ywe1C3FQTRg=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@424e4a5/firefox/extension/lib/settings.js#sha256-UXX6rJPMzxuPhJA2CEAWCTU4hFjhTUiG0n1n5ATA0ZQ=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1e645cc/firefox/extension/lib/styles.js#sha256-t5xeI85sVNdpbf2lOmpkbnuL+YNoEljMxa5LGalxujo=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@d3afab2/firefox/extension/lib/sync.js#sha256-xZP12HxKT/1FrNE+ZqXUXCRyvd8hQJY94TSLKCPD+ls=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/settings.js#sha256-kGD8FDJSqCBOpGPGVx8UEOem4DULkNLZaodzOyca2js=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/styles.js#sha256-Gs8CuDyVmt2wTcCGjDxBixyU5leRm7ub0zxrLfsx8Xw=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/sync.js#sha256-XA5zTN18aihmcmIqQuWAdOyUUueWAJ8sLeeR+6Wym4A=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/ui.js#sha256-jvubqzwniEJQQA8uyVbq8H3FVYBK3mPxjJxsnw5TwIs=
 // @grant                GM_registerMenuCommand
 // @grant                GM_unregisterMenuCommand
@@ -302,7 +302,7 @@
         commitHashes: {
             data: 'fa559e2', // for selectors.json5
             images: '1b6e5d3', // for header logo
-            locales: '4fccd9f' // for messages.json
+            locales: '01ca949' // for messages.json
         }
     }
     app.urls = {
