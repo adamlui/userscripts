@@ -258,7 +258,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b04c07d/firefox/extension/lib/settings.js#sha256-6MyitRBSxKw/qV2mw6QqmQSXyWaFbCzsEHj1IDHkeug=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fb8e748/firefox/extension/lib/styles.js#sha256-JdVqwjuB8aSJ4baT3VScK+dsNYojkrj5itDTmt5DT2E=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/sync.js#sha256-XA5zTN18aihmcmIqQuWAdOyUUueWAJ8sLeeR+6Wym4A=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7a4e5c3/firefox/extension/lib/sync.js#sha256-6MuK8nd1/Wo3Ybfnr+gRNWZwg0BhHvPjXHUQ5HH1SRs=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fb8e748/firefox/extension/lib/ui.js#sha256-gdlOFS1OBrbx9EfV134xFhy7AYJDQ7YPjKRwlxJMpik=
 // @grant                GM_registerMenuCommand
 // @grant                GM_unregisterMenuCommand
@@ -294,54 +294,53 @@
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     window.app = {
-        name: 'YouTube Classic', symbol: '📺', slug: 'youtube-classic', configKeyPrefix: 'ytClassic',
         version: GM_info.script.version,
-        authors: [
-            { name: 'Adam Lui', email: 'adam@kudoai.com', url: 'https://github.com/adamlui' },
-            { name: 'Magma_Craft', url: 'https://userstyles.org/user-profile/3460957' }
-        ],
         commitHashes: {
-            data: '7d03081', // for selectors.json5
+            data: 'd686d00', // for app.json + selectors.json5
             images: '1b6e5d3', // for header logo
             locales: 'b04c07d' // for messages.json
         }
     }
     app.urls = {
-        download: { gm: 'https://gm.ytclassic.com' },
-        github: 'https://github.com/adamlui/youtube-classic',
-        jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic',
-        review: { scriptcat: 'https://scriptcat.org/script-show-page/6345/comment' },
-        support: 'https://support.ytclassic.com',
-        update: { gm: 'https://update-gm.ytclassic.com' },
-        userscripts: 'https://github.com/adamlui/userscripts'
-    }
-    app.urls.data = `${app.urls.jsd}@${app.commitHashes.data}/assets/data`
-    app.urls.images = `${app.urls.jsd}@${app.commitHashes.images}/assets/images`
-    app.urls.locales = `${app.urls.jsd}@${app.commitHashes.locales}/firefox/extension/_locales`
-    app.msgs = await new Promise(resolve => {
-        const localeDir = `${ env.browser.language ? env.browser.language.replace('-', '_') : 'en' }`
-        let msgURL = `${app.urls.locales}/${localeDir}/messages.json`, msgFetchesTried = 0
-        function fetchMsgs() { xhr({ method: 'GET', url: msgURL, onload: handleMsgs })}
-        function handleMsgs(resp) {
-            try { // to return localized messages.json
-                const msgs = JSON.parse(resp.responseText), flatMsgs = {}
-                for (const key in msgs)  // remove need to ref nested keys
-                    if (typeof msgs[key] == 'object' && 'message' in msgs[key])
-                        flatMsgs[key] = msgs[key].message
-                resolve(flatMsgs)
-            } catch (err) {
-                msgFetchesTried++ ; if (msgFetchesTried == 3) return resolve({}) // try og/region-stripped/EN only
-                msgURL = env.browser.language.includes('-') && msgFetchesTried == 1 ? // if regional lang on 1st try...
-                    msgURL.replace(/(_locales\/[^_]+)_[^_]+(\/)/, '$1$2') // ...strip region before retrying
-                        : `${app.urls.locales}/en/messages.json` // else use default English messages
-                fetchMsgs()
-            }
+        assets: {
+            data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data`,
+            locales: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.locales}/firefox/extension/_locales`
         }
-        fetchMsgs()
-    })
+    }
+    const remoteData = {
+        app: await new Promise(resolve => xhr({
+            method: 'GET', url: `${app.urls.assets.data}/app.json`,
+            onload: ({ responseText }) => resolve(JSON.parse(responseText))
+        })),
+        msgs: await new Promise(resolve => {
+            const msgBaseURL = app.urls.assets.locales,
+                  localeDir = `${ env.browser.language ? env.browser.language.replace('-', '_') : 'en' }`
+            let msgURL = `${msgBaseURL}/${localeDir}/messages.json`, msgFetchesTried = 0
+            function fetchMsgs() { xhr({ method: 'GET', url: msgURL, onload: handleMsgs })}
+            function handleMsgs(resp) {
+                try { // to return localized messages.json
+                    const msgs = JSON.parse(resp.responseText), flatMsgs = {}
+                    for (const key in msgs)  // remove need to ref nested keys
+                        if (typeof msgs[key] == 'object' && 'message' in msgs[key])
+                            flatMsgs[key] = msgs[key].message
+                    resolve(flatMsgs)
+                } catch (err) { // if bad response
+                    msgFetchesTried++ ; if (msgFetchesTried == 3) return resolve({}) // try original/region-stripped/EN only
+                    msgURL = env.browser.language.includes('-') && msgFetchesTried == 1 ? // if regional lang on 1st try...
+                        msgURL.replace(/(_locales\/[^_]+)_[^_]+(\/)/, '$1$2') // ...strip region before retrying
+                            : `${msgBaseURL}/en/messages.json` // else use default English messages
+                    fetchMsgs()
+                }
+            }
+            fetchMsgs()
+        })
+    }
+    for (const [key, hash] of Object.entries(app.commitHashes)) // hash URLs
+        app.urls.assets[key] = remoteData.app.urls.assets[key].replace('@latest', `@${hash}`)
+    Object.assign(app, { ...remoteData.app, urls: { ...remoteData.app.urls, ...app.urls }, msgs: remoteData.msgs })
     app.selectors = await new Promise(resolve => xhr({ // used in block modes
         method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
-        url: `${app.urls.data}/selectors.json5`
+        url: `${app.urls.assets.data}/selectors.json5`
     }))
     app.ui = { expFlags: { // used to apply overrides
         enable_channel_page_header_profile_section: false,
