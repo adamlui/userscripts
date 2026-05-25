@@ -25,7 +25,7 @@
 ![支援: Chrome/Firefox/Edge/Safari/Opera](https://img.shields.io/badge/支援-Chrome/Firefox/Edge/Safari/Opera-989898.svg?logo=osf&logoColor=white&style=for-the-badge)
 [![CodeFactor 等級](https://img.shields.io/codefactor/grade/github/adamlui/youtube-classic?logo=codefactor&logoColor=white&label=程式碼品質&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/youtube-classic)
 <a href="https://github.com/awesome-scripts/awesome-userscripts#youtube">
-    <img src="https://img.shields.io/badge/提及於-Awesome-af68ff?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
+    <img src="https://img.shields.io/badge/提及於-Awesome-ff69b4?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://sonarcloud.io/component_measures?metric=vulnerabilities&id=adamlui_youtube-classic">
     <img alt="[SonarCloud vulnerabilities]" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_youtube-classic%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonar&logoColor=white&labelColor=464646&label=%E6%BC%8F%E6%B4%9E&color=ffef00"></a>
 <a href="https://www.jsdelivr.com/package/gh/adamlui/youtube-classic?tab=stats">
