@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.23.12
+// @version              2026.5.24
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -246,6 +246,7 @@
 // @compatible           edge
 // @match                *://*.youtube.com/*
 // @connect              cdn.jsdelivr.net
+// @connect              gm.ytclassic.com
 // @connect              scriptcat.org
 // @connect              update-gm.ytclassic.com
 // @require              https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js#sha256-S7ltnVPzgKyAGBlBG4wQhorJqYTehj5WQCrADCKJufE=
@@ -306,6 +307,7 @@
         }
     }
     app.urls = {
+        download: { gm: 'https://gm.ytclassic.com' },
         github: 'https://github.com/adamlui/youtube-classic',
         jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic',
         review: { scriptcat: 'https://scriptcat.org/script-show-page/6345/comment' },
@@ -639,7 +641,7 @@
                             + `${app.urls.github}/commits/main/greasemonkey/${app.slug}.user.js`
                         + `">${app.msgs.link_viewChanges}</a>`,
                     function update() { // button
-                        modals.safeWinOpen(`${app.urls.update.gm}?t=${Date.now()}`)
+                        modals.safeWinOpen(`${app.urls.download.gm}?t=${Date.now()}`)
                     }, '', modals.update.width
                 )
 
