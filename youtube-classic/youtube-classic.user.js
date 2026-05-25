@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.25.2
+// @version              2026.5.25.3
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -296,16 +296,16 @@
     window.app = {
         version: GM_info.script.version,
         commitHashes: {
-            data: 'd686d00', // for app.json + selectors.json5
+            data: 'ea6e2c5', // for app.json + selectors.json5
             images: '1b6e5d3', // for header logo
             locales: 'b04c07d' // for messages.json
-        }
+        },
+        urls: { jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic' }
     }
-    app.urls = {
-        assets: {
-            data: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.data}/assets/data`,
-            locales: `https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@${app.commitHashes.locales}/firefox/extension/_locales`
-        }
+    app.urls.assets = {
+        data: `${app.urls.jsd}@${app.commitHashes.data}/assets/data`,
+        images: `${app.urls.jsd}@${app.commitHashes.images}/assets/images`,
+        locales: `${app.urls.jsd}@${app.commitHashes.locales}/firefox/extension/_locales`
     }
     const remoteData = {
         app: await new Promise(resolve => xhr({
@@ -335,8 +335,6 @@
             fetchMsgs()
         })
     }
-    for (const [key, hash] of Object.entries(app.commitHashes)) // hash URLs
-        app.urls.assets[key] = remoteData.app.urls.assets[key].replace('@latest', `@${hash}`)
     Object.assign(app, { ...remoteData.app, urls: { ...remoteData.app.urls, ...app.urls }, msgs: remoteData.msgs })
     app.selectors = await new Promise(resolve => xhr({ // used in block modes
         method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
