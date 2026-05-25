@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.25
+// @version              2026.5.25.1
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -257,7 +257,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@01ca949/firefox/extension/lib/feedback.js#sha256-qDLZ6PVjOi83bbnOJrx1lMGF7j61Af53ywe1C3FQTRg=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@6212e59/firefox/extension/lib/i18n.js#sha256-x61c8yPOFawdFi+loDFZ8FGxzi5BqR3VZvboUyOtfgM=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b04c07d/firefox/extension/lib/settings.js#sha256-6MyitRBSxKw/qV2mw6QqmQSXyWaFbCzsEHj1IDHkeug=
-// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fb8e748/firefox/extension/lib/styles.js#sha256-JdVqwjuB8aSJ4baT3VScK+dsNYojkrj5itDTmt5DT2E=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@c70eb82/firefox/extension/lib/styles.js#sha256-lb3k/MqwPro3x8UYI9hGz7K445yfBXOFw7XAzP66o1Q=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7a4e5c3/firefox/extension/lib/sync.js#sha256-6MuK8nd1/Wo3Ybfnr+gRNWZwg0BhHvPjXHUQ5HH1SRs=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@fb8e748/firefox/extension/lib/ui.js#sha256-gdlOFS1OBrbx9EfV134xFhy7AYJDQ7YPjKRwlxJMpik=
 // @grant                GM_registerMenuCommand
