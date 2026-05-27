@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.25.4
+// @version              2026.5.26
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -296,7 +296,7 @@
     window.app = {
         version: GM_info.script.version,
         commitHashes: {
-            data: 'e707c12', // for app.json + selectors.json5
+            data: 'd02e303', // for <app|selectors|yt-exp-flags>.json
             images: '1b6e5d3', // for header logo
             locales: 'b04c07d' // for messages.json
         },
@@ -340,46 +340,10 @@
         method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
         url: `${app.urls.assets.data}/selectors.json5`
     }))
-    app.ui = { expFlags: { // used to apply overrides
-        enable_channel_page_header_profile_section: false,
-        enable_header_channel_handler_ui: false,
-        kevlar_unavailable_video_error_ui_client: false,
-        kevlar_refresh_on_theme_change: false,
-        kevlar_modern_sd_v2: false,
-        kevlar_watch_cinematics: false,
-        kevlar_watch_comments_panel_button: false,
-        kevlar_watch_grid: false,
-        kevlar_watch_grid_hide_chips: false,
-        kevlar_watch_metadata_refresh: false,
-        kevlar_watch_metadata_refresh_no_old_secondary_data: false,
-        kevlar_watch_modern_metapanel: false,
-        kevlar_watch_modern_panels: false,
-        kevlar_watch_panel_height_matches_player: false,
-        smartimation_background: false,
-        web_amsterdam_playlists: false,
-        web_animated_actions: false,
-        web_animated_like: false,
-        web_button_rework: false,
-        web_button_rework_with_live: false,
-        web_darker_dark_theme: false,
-        web_enable_youtab: false,
-        web_guide_ui_refresh: false,
-        web_modern_ads: false,
-        web_modern_buttons: false,
-        web_modern_chips: false,
-        web_modern_collections_v2: false,
-        web_modern_dialogs: false,
-        web_modern_playlists: false,
-        web_modern_subscribe: false,
-        web_modern_tabs: false,
-        web_rounded_containers: false,
-        web_rounded_thumbnails: false,
-        web_searchbar_style: 'default',
-        web_segmented_like_dislike_button: false,
-        web_sheets_ui_refresh: false,
-        web_snackbar_ui_refresh: false,
-        web_watch_rounded_player_large: false
-    }}
+    app.ui = { expFlags: await new Promise(resolve => xhr({ // used in block modes
+        method: 'GET', onload: ({ responseText }) => resolve(JSON.parse(responseText)),
+        url: `${app.urls.assets.data}/yt-exp-flags.json`
+    }))}
 
     window.gmToolbarMenu = {
         state: {
