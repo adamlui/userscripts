@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.27.2
+// @version              2026.5.28.1
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -254,6 +254,7 @@
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@870a74a/firefox/extension/components/modals.js#sha256-/SjxvaJMIA1LUu6RDbzIfO+d4SinP3JKzXelk+mPVtA=
+// @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@870a74a/firefox/extension/lib/exp-flags.js#sha256-b5Z1oGEHzc0wXdB6GHGYLM4uAryl8gqg3Oo8SVz2WZU=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@870a74a/firefox/extension/lib/feedback.js#sha256-utx0ggsy4fzZsMpmtNlgGpdXDwZc6mUIMnJvoPu1uvA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@870a74a/firefox/extension/lib/i18n.js#sha256-ZPCeVQvdtsbrWSv4tXwqi9QFsM+83Xtu06JzL42JPfE=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@870a74a/firefox/extension/lib/settings.js#sha256-UBQqvBB8HsYT0pfowNAYBCN7I9Z46895B+JjS9fQuvY=
@@ -645,33 +646,6 @@
         }
     })
 
-    class YTP {
-        static observer = new MutationObserver(this.onNewScript)
-        static _config = {}
-        static isObject(item) { return (item && typeof item == 'object' && !Array.isArray(item)) }
-        static mergeDeep(target, ...sources) {
-            if (!sources.length) return target
-            const source = sources.shift()
-            if (this.isObject(target) && this.isObject(source)) for (const key in source)
-                if (this.isObject(source[key])) {
-                    if (!target[key]) Object.assign(target, { [key]: {} })
-                    this.mergeDeep(target[key], source[key])
-                } else Object.assign(target, { [key]: source[key] })
-            return this.mergeDeep(target, ...sources)
-        }
-        static onNewScript(mutations) { if (mutations.some(mut => mut.addedNodes.length)) YTP.bruteforce() }
-        static start() { this.observer.observe(document, { childList: true, subtree: true }) }
-        static stop() { this.observer.disconnect() }
-        static bruteforce() {
-            if (!unsafeWindow.yt?.config_) return
-            this.mergeDeep(unsafeWindow.yt.config_, this._config)
-        }
-        static setExpMulti(exps) {
-            if (!('EXPERIMENT_FLAGS' in this._config)) this._config.EXPERIMENT_FLAGS = {}
-            this.mergeDeep(this._config.EXPERIMENT_FLAGS, exps)
-        }
-    }
-
     // Run MAIN routine
 
     settings.load(Object.keys(settings.controls))
@@ -683,15 +657,7 @@
         new MutationObserver(sync.headerLogo).observe(masthead, {
             attributes: true, subtree: true, attributeFilter: ['dark'] })
     })
-
-    // Tweak experimental flags
-    YTP.start()
-    Object.keys(app.ui.expFlags).filter(key => /_animated_/.test(key))
-        .forEach(animationKey => app.ui.expFlags[animationKey] = !app.config.reduceAnimations)
-    YTP.setExpMulti(app.ui.expFlags)
-    addEventListener('yt-page-data-updated', function handleDataUpdated() {
-        YTP.stop() ; removeEventListener('yt-page-data-updated', handleDataUpdated) })
-
+    expFlags.init({ reduceAnimations: app.config.reduceAnimations, presetFlags: app.ui.expFlags })
     if (app.config.idlePrevention) sync.idle.prevent()
 
 })()
