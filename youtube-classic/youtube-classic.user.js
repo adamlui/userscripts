@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.5.28.1
+// @version              2026.5.28.2
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -299,7 +299,7 @@
         commitHashes: {
             data: '0ec8662', // for <app|selectors|yt-exp-flags>.json
             images: '1b6e5d3', // for header logo
-            locales: 'b04c07d' // for messages.json
+            locales: '3f88803' // for messages.json
         },
         urls: { jsd: 'https://cdn.jsdelivr.net/gh/adamlui/youtube-classic' }
     }
@@ -360,8 +360,15 @@
 
         register() {
 
-            // Add mode/settings categories
-            this.entryIDs = Object.entries(settings.categories)
+            // Show "Disabled (extension active)"
+            this.entryIDs = env.extensionActive ? [
+                GM_registerMenuCommand(`${this.state.symbols[0]} ${
+                        toTitleCase(app.msgs.state_disabled)} (${app.msgs.menuLabel_extensionActive})`,
+                    () => modals.open('about'), env.scriptManager.supportsTooltips ? { title: ' ' } : undefined )
+            ]
+
+            // ...or add mode/settings categories
+            : Object.entries(settings.categories)
                 .map(([key, category]) => GM_registerMenuCommand(
                     `${ category.symbol ? category.symbol + ' ' : '' }${category.label}`, () => modals.settings(key),
                     env.scriptManager.supportsTooltips ? { title: app.msgs[`helptip_${key}`] } : undefined
@@ -624,6 +631,14 @@
         }
     })
 
+    function toTitleCase(str) {
+        if (!str) return ''
+        const words = str.toLowerCase().split(' ')
+        for (let i = 0 ; i < words.length ; i++) // for each word
+            words[i] = words[i][0].toUpperCase() + words[i].slice(1) // title-case it
+        return words.join(' ') // join'em back together
+    }
+
     window.updateCheck = () => xhr({
         method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
         headers: { 'Cache-Control': 'no-cache' },
@@ -648,8 +663,19 @@
 
     // Run MAIN routine
 
+    // Init EXTENSION ACTIVE state
+    postMessage({ action: 'getExtensionInfo', source: 'youtube-classic.user.js' }, location.origin)
+    addEventListener('message', handleMsgResp)
+    function handleMsgResp(resp) {
+        if (resp.origin != location.origin) return
+        const sender = resp.data.source
+        env.extensionActive = sender.includes(app.slug) && /extension/i.test(sender)
+    }
+    await new Promise(resolve => setTimeout(resolve, 100)) // wait for extension response
+    removeEventListener('message', handleMsgResp)
+
     settings.load(Object.keys(settings.controls))
-    gmToolbarMenu.register()
+    gmToolbarMenu.register() ; if (env.extensionActive) return
     if (app.config.disableShorts) sync.shorts.redir()
     styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
     sync.headerLogo()
