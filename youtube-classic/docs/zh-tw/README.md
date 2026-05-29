@@ -38,7 +38,7 @@
 
 <h3><b>YouTube 經典</b> 讓 YouTube 重返經典美學的輝煌歲月</h3>
 
-<a href="https://gm.ytclassic.com"><img alt="[安裝此腳本]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[如何安裝]" title="如何安裝" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://scriptcat.org/script-show-page/6345"><img alt="[安裝此腳本]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[如何安裝]" title="如何安裝" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [討論](https://github.com/adamlui/youtube-classic/discussions) /
 [獲取支援](https://github.com/adamlui/youtube-classic/issues) /
@@ -73,7 +73,7 @@
 
 <div align="center">
 
-<a href="https://gm.ytclassic.com"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[如何安裝]" title="如何安裝" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://scriptcat.org/script-show-page/6345"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[如何安裝]" title="如何安裝" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [討論](https://github.com/adamlui/youtube-classic/discussions) /
 [獲取支援](https://github.com/adamlui/youtube-classic/issues) /
