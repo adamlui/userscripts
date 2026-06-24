@@ -19,7 +19,7 @@
 [![许可证: MIT](https://img.shields.io/badge/许可证-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](./LICENSE.md)
 [![CodeFactor 等级](https://img.shields.io/codefactor/grade/github/adamlui/userscripts?label=代码质量&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge)](https://www.codefactor.io/repository/github/adamlui/userscripts)
 [![SonarCloud 漏洞](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsonarcloud.io%2Fapi%2Fmeasures%2Fcomponent%3Fcomponent%3Dadamlui_userscripts%26metricKeys%3Dvulnerabilities&query=%24.component.measures.0.value&style=for-the-badge&logo=sonar&logoColor=white&labelColor=464646&label=Vulnerabilities&color=ffef00)](https://sonarcloud.io/component_measures?metric=vulnerabilities&id=adamlui_userscripts)
-<img src="https://img.shields.io/badge/jsDelivr_请求-450,000+/month-7bb7fc.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
+<img src="https://img.shields.io/badge/jsDelivr_请求-2,200,000+/month-7bb7fc.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
 运行这些脚本需要一个用户脚本管理器,例如 [Tampermonkey](https://www.tampermonkey.net/)。
 
