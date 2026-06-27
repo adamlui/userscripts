@@ -43,7 +43,7 @@
     "bump:chatbots": "node utils/bump/chatbots --cache",
     "bump:chatbots-nc": "node utils/bump/chatbots --cache --no-commit",
     "bump:chatbots-np": "node utils/bump/chatbots --cache --no-push",
-    "bump:res": "node utils/bump/resources --cache"
+    "bump:res": "node utils/bump/userscript-requires --cache"
   },
   "devDependencies": {
     "@adamlui/minify.js": "^2.5.3",
