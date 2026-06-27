@@ -4,7 +4,7 @@
 
 'use strict'
 
-(() => {
+;(() => {
     const chatbots = ['amazongpt', 'bravegpt', 'duckduckgpt', 'googlegpt'],
         { dirname, resolve } = require('path'),
           fs = require('fs'),

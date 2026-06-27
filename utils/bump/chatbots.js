@@ -8,7 +8,7 @@
 
 'use strict'
 
-(async () => {
+;(async () => {
 
     const { execSync, spawnSync } = require('child_process'),
             fs = require('fs'),

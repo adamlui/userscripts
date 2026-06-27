@@ -8,7 +8,7 @@
 
 'use strict'
 
-(async () => {
+;(async () => {
 
     const fs = require('fs'),
           path = require('path')
