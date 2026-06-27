@@ -1,5 +1,6 @@
 {
   "name": "@adamlui/userscripts",
+  "private": true,
   "description": "Greasemonkey userscripts",
   "author": {
     "name": "Adam Lui",
@@ -13,10 +14,6 @@
   },
   "license": "MIT",
   "funding": [
-    {
-      "type": "cashapp",
-      "url": "https://cash.app/$AdamLui"
-    },
     {
       "type": "github",
       "url": "http://github.com/sponsors/adamlui"
