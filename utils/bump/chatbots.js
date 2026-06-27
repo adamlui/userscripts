@@ -10,8 +10,6 @@
     'use strict'
 
     const chatbots = ['amazongpt', 'bravegpt', 'duckduckgpt', 'googlegpt']
-
-    // Parse ARGS
     const args = process.argv.slice(2)
     const config = {
         cacheMode: args.some(arg => arg.startsWith('--cache')),
@@ -22,23 +20,20 @@
         noPush: args.some(arg => ['--no-push', '-np'].includes(arg))
     }
 
-    // Import LIBS
-    const fs = require('fs'), // to read/write files
-          path = require('path'), // to manipulate paths
-        { execSync, spawnSync } = require('child_process') // for git cmds
+    const { execSync, spawnSync } = require('child_process'),
+            fs = require('fs'),
+            path = require('path')
 
-    // Init CACHE paths
     const cachePaths = { root: '.cache' }
     cachePaths.bumpUtils = path.join(__dirname, `${cachePaths.root}/bump.min.mjs`)
     cachePaths.chatbotPaths = path.join(__dirname, `${cachePaths.root}/chatbot-paths.json`)
 
-    // Import BUMP UTILS
+    // Import bump.mjs
     fs.mkdirSync(path.dirname(cachePaths.bumpUtils), { recursive: true })
     fs.writeFileSync(cachePaths.bumpUtils, (await (await fetch(
         'https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@f63b650/utils/bump/lib/bump.min.mjs')).text()))
     const bump = await import(`file://${cachePaths.bumpUtils}`) ; fs.unlinkSync(cachePaths.bumpUtils)
 
-    // COLLECT chatbot userscripts
     bump.log.working(`\n${ config.cacheMode ? 'Collecting' : 'Searching for' } chatbot userscripts...\n`)
     let chatbotFiles = []
     if (config.cacheMode)
@@ -61,9 +56,7 @@
         console.log('')
     }
 
-    // PROCESS each userscript
-    let filesUpdatedCnt = 0
-    const bumpedChatbots = {}
+    let filesUpdatedCnt = 0 ; const bumpedChatbots = {}
     for (const chatbotFile of chatbotFiles) {
         const chatbotName = path.basename(chatbotFile, '.user.js')
         bump.log.working(`\nProcessing ${chatbotName}...\n`)
@@ -79,13 +72,12 @@
         }
     }
 
-    // LOG chatbots bumped
     const pluralSuffix = filesUpdatedCnt > 1 ? 's' : ''
     if (filesUpdatedCnt == 0) {
-           bump.log.info('Completed. No chatbots bumped.') ; process.exit(0)
-    } else bump.log.success(`${filesUpdatedCnt} chatbot${pluralSuffix} bumped!`)
+        bump.log.info('Completed. No chatbots bumped.') ; process.exit(0)
+    } else
+        bump.log.success(`${filesUpdatedCnt} chatbot${pluralSuffix} bumped!`)
 
-    // ADD/COMMIT/PUSH bump(s)
     if (config.commitMsg) {
         bump.log.working(`\nCommitting bump${pluralSuffix} to Git...\n`)
         try {
@@ -107,8 +99,7 @@
         bump.log.info(`TIP: Use --commit-msg "msg" or -m "msg" to commit changes.`)
     }
 
-    // Final SUMMARY log
-    console.log('') // line break
+    console.log('')
     Object.entries(bumpedChatbots).forEach(([chatbotFile, { oldVer, newVer }]) =>
         console.log(`  ± ${path.basename(chatbotFile)} ${
             bump.colors.bw}v${oldVer}${bump.colors.nc} → ${bump.colors.bg}v${newVer}${bump.colors.nc}`)
