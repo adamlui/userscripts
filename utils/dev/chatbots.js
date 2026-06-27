@@ -2,8 +2,9 @@
 
 // Opens KudoAI chatbots in VS Code
 
+'use strict'
+
 (() => {
-    'use strict'
     const { dirname, resolve } = require('path'),
             spawn = require('cross-spawn'),
             chatbots = ['amazongpt', 'bravegpt', 'duckduckgpt', 'googlegpt'],
