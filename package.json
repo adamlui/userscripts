@@ -34,15 +34,14 @@
   "scripts": {
     "prepare": "husky",
     "dev:chatbots": "node utils/dev/chatbots",
-    "dev:chatbot": "npm run dev:chatbots",
     "lint": "eslint . --cache",
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
     "lint:fix-all": "eslint . --fix",
     "build:js": "minify-js assets/js dist --relative-output",
     "bump:chatbots": "node utils/bump/chatbots --cache",
-    "bump:chatbots-nc": "node utils/bump/chatbots --cache --no-commit",
-    "bump:chatbots-np": "node utils/bump/chatbots --cache --no-push",
+    "bump:chatbots-nc": "npm run bump:chatbots --no-commit",
+    "bump:chatbots-np": "npm run bump:chatbots --no-push",
     "bump:res": "node utils/bump/userscript-requires --cache"
   },
   "devDependencies": {
