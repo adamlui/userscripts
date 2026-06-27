@@ -4,7 +4,7 @@
 
 'use strict'
 
-function run() {
+(() => {
     const { dirname, resolve } = require('path'),
             spawn = require('cross-spawn'),
             chatbots = ['amazongpt', 'bravegpt', 'duckduckgpt', 'googlegpt'],
@@ -17,8 +17,4 @@ function run() {
         .filter(path => require('fs').existsSync(path))
     spawn('code', ['-r', repoRoot, ...filePaths], { stdio: 'inherit' })
         .on('error', err => console.error(`${br}Failed to open VS Code: ${err.message}${nc}`))
-}
-
-if (require.main == module) run()
-
-module.exports = { run }
+})()
