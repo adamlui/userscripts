@@ -84,7 +84,7 @@
             execSync('git add ./*.user.js')
             bump.initKudoSyncBot()
             spawnSync('git', ['commit', '-n', '-m', config.commitMsg], { stdio: 'inherit', encoding: 'utf-8' })
-            console.log('') // line break
+            console.log('')
             if (!config.noPush) {
                 bump.log.working('\nPulling latest changes from remote to sync local repository...\n')
                 execSync('git pull')
