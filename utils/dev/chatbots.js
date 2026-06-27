@@ -10,7 +10,9 @@
           fs = require('fs'),
           spawn = require('cross-spawn')
     const repoRoot = (dir => {
-        while (dir != '/' && !fs.existsSync(resolve(dir, 'package.json'))) dir = dirname(dir) ; return dir })(__dirname)
+        while (dir != '/' && !fs.existsSync(resolve(dir, 'package.json'))) dir = dirname(dir)
+        return dir
+    })(__dirname)
     const filePaths = chatbots
         .map(chatbot => resolve(repoRoot, `chatgpt/${chatbot}/${chatbot}.user.js`))
         .filter(path => fs.existsSync(path))
