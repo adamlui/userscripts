@@ -13,7 +13,8 @@
     const repoRoot = (dir => {
         while (dir != '/' && !require('fs').existsSync(resolve(dir, 'package.json'))) dir = dirname(dir) ; return dir
     })(__dirname)
-    const filePaths = chatbots.map(chatbot => resolve(repoRoot, `chatgpt/${chatbot}/${chatbot}.user.js`))
+    const filePaths = chatbots
+        .map(chatbot => resolve(repoRoot, `chatgpt/${chatbot}/${chatbot}.user.js`))
         .filter(path => require('fs').existsSync(path))
     spawn('code', ['-r', repoRoot, ...filePaths], { stdio: 'inherit' })
         .on('error', err => console.error(`${br}Failed to open VS Code: ${err.message}${nc}`))
