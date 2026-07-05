@@ -49,7 +49,7 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
 
 > 隐藏来自 XenForo、vBulletin 和 Discourse 论坛的图像/视频。
-<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/hide-forum-images/hide-forum-images.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6907/hide-forum-images.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 

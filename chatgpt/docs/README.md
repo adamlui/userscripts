@@ -67,14 +67,14 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Infinity ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/#readme) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="Featured by Google" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > Generate endless answers from all-knowing ChatGPT (in any language!)
-<br>[Install](https://raw.githubusercontent.com/adamlui/chatgpt-infinity/refs/heads/main/greasemonkey/chatgpt-infinity.user.js) /
+<br>[Install](https://scriptcat.org/scripts/code/6419/chatgpt-infinity.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/#readme) <img alt="#2 UX Product of the Week on Product Hunt" width="auto" height="24" src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
 
 > Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on perplexity.ai + poe.com!
-<br>[Install](https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/refs/heads/main/greasemonkey/chatgpt-widescreen.user.js) /
+<br>[Install](https://scriptcat.org/scripts/code/6328/chatgpt-widescreen.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
@@ -88,7 +88,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/black/icon32.png"></picture> [GoogleGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/badges/awesome/badge.svg"></a>
 
 > Add AI chat & search summaries to Google Search, powered by the latest LLMs!
-<br>[Install](https://raw.githubusercontent.com/KudoAI/googlegpt/refs/heads/main/greasemonkey/googlegpt.user.js) /
+<br>[Install](https://scriptcat.org/scripts/code/6371/googlegpt.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 

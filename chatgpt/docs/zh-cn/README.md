@@ -67,14 +67,14 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT无限 ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="在 Google 上推荐" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > 从无所不知的 ChatGPT 生成无穷无尽的答案 (用任何语言!)
-<br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-infinity/refs/heads/main/greasemonkey/chatgpt-infinity.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6419/chatgpt-infinity.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT 宽屏模式 🖥️](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/docs/zh-cn/#readme) <img alt="在 Product Hunt 上被评为本周 UX 产品第 2 名" width="auto" height="24" src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942">
 
 > 通过宽屏/全屏/高屏 + 垃圾邮件拦截模式增强 ChatGPT。也适用于 perplexity.ai + poe.com！
-<br>[安装](https://raw.githubusercontent.com/adamlui/chatgpt-widescreen/refs/heads/main/greasemonkey/chatgpt-widescreen.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6328/chatgpt-widescreen.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-widescreen/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
@@ -88,7 +88,7 @@
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/icons/app/black/icon32.png"></picture> [GoogleGPT](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#privacy"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/KudoAI/googlegpt/assets/images/badges/awesome/badge.svg"></a>
 
 > 在 Google 搜索中添加 AI 聊天和搜索摘要，由最新的法学硕士提供支持！
-<br>[安装](https://raw.githubusercontent.com/KudoAI/googlegpt/refs/heads/main/greasemonkey/googlegpt.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6371/googlegpt.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/googlegpt/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
