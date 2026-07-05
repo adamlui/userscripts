@@ -56,7 +56,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
-<br>[Install](https://raw.githubusercontent.com/adamlui/userscripts/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
+<br>[Install](https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 

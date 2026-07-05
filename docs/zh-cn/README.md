@@ -56,7 +56,7 @@
 ### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [突出单选气泡](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme)
 
 > 使用 Tab 键聚焦时使气泡更大、颜色更鲜艳。
-<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/highlight-radio-bubbles/highlight-radio-bubbles.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
