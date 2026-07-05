@@ -30,7 +30,7 @@
 ### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [屏蔽 Quora Poe](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme)
 
 > 阻止 AI + Quora 的推广/赞助答案。
-<br>[安装](https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js) /
+<br>[安装](https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js) /
 [自述文件](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 

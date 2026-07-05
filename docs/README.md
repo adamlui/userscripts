@@ -30,7 +30,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 ### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Block Quora Poe](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme)
 
 > Blocks low-quality AI answers from appearing on Quora.
-<br>[Install](https://raw.githubusercontent.com/adamlui/userscripts/master/block-quora-poe/block-quora-poe.user.js) /
+<br>[Install](https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
