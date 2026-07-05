@@ -5,7 +5,7 @@
 ### Blocks low-quality AI & Promoted/Sponsored answers from appearing on Quora.
 
 <a href="https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
+
 [Discuss](https://github.com/adamlui/userscripts/discussions) / [Get support](https://github.com/adamlui/userscripts/issues) / [Contact author](https://github.com/adamlui)
 
 <br>
@@ -29,7 +29,7 @@
 <br>
 
 <a href="https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
+
 [Discuss](https://github.com/adamlui/userscripts/discussions) / [Get support](https://github.com/adamlui/userscripts/issues) / [More userscripts](https://github.com/adamlui/userscripts)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/separators/aqua-gradient.png">
