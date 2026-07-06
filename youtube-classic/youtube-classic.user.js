@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.7.2.1
+// @version              2026.7.6
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -246,9 +246,7 @@
 // @compatible           edge
 // @match                *://*.youtube.com/*
 // @connect              cdn.jsdelivr.net
-// @connect              gm.ytclassic.com
 // @connect              scriptcat.org
-// @connect              update-gm.ytclassic.com
 // @require              https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js#sha256-S7ltnVPzgKyAGBlBG4wQhorJqYTehj5WQCrADCKJufE=
 // @require              https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
@@ -268,10 +266,10 @@
 // @grant                GM_xmlhttpRequest
 // @grant                GM.xmlHttpRequest
 // @run-at               document-start
-// @downloadURL          https://gm.ytclassic.com
-// @updateURL            https://update-gm.ytclassic.com
-// @homepageURL          https://ytclassic.com
-// @supportURL           https://support.ytclassic.com
+// @downloadURL          https://scriptcat.org/scripts/code/6345/youtube-classic.user.js
+// @updateURL            https://scriptcat.org/scripts/code/6345/youtube-classic.meta.js
+// @homepageURL          https://github.com/adamlui/youtube-classic/#readme
+// @supportURL           https://github.com/adamlui/youtube-classic/issues
 // @contributionURL      https://ko-fi.com/adamlui
 // ==/UserScript==
 

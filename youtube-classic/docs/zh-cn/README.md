@@ -38,7 +38,7 @@
 
 <h3><b>YouTube 经典</b> 让 YouTube 重返经典美学的辉煌岁月</h3>
 
-<a href="https://scriptcat.org/scripts/code/6345/youtube-classic.user.js"><img alt="[安装此脚本]" style="height: 42px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[如何安装]" title="如何安装" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://scriptcat.org/scripts/code/6345/youtube-classic.user.js"><img alt="[安装此脚本]" style="height: 42px" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 42px" alt="[如何安装]" title="如何安装" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/youtube-classic/discussions) /
 [获取支持](https://github.com/adamlui/youtube-classic/issues) /
@@ -50,13 +50,13 @@
 <ul>
   <li><b>恢复“踩”数显示</b>，助你在观看前判断内容质量<br>
     （使用 Anarios 的 <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>）
-    <p><img width=400px src="https://assets.ytclassic.com/images/screenshots/dislike-counter.png"></li><br>
+    <p><img width=400px src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/dislike-counter.png"></li><br>
   <li><b>移除那些</b>看似纯粹为了“圆”而无处不在的圆角。<br>
     （基于 magma_craft 的 <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">非圆角 YouTube 设计</a> 演变而来）
     <p><i>&nbsp;前：</i><br>
-      <img src="https://assets.ytclassic.com/images/screenshots/youtube-modern-ui.png">
+      <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;后：</i><br>
-      <img src="https://assets.ytclassic.com/images/screenshots/youtube-classic-ui.png"></li><br>
+      <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/youtube-classic-ui.png"></li><br>
   <li><b>将 YouTube Shorts 重定向</b>至经典播放器，以提升使用体验
     <p><img width=555 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@19ab985/assets/images/screenshots/shorts-redir.png"></li><br>
   <li><b>屏蔽搜索结果中的隐匿推荐</b>，从而呈现更精准的搜索结果</li><br>
@@ -73,7 +73,7 @@
 
 <div align="center">
 
-<a href="https://scriptcat.org/scripts/code/6345/youtube-classic.user.js"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://assets.ytclassic.com/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[如何安装]" title="如何安装" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://scriptcat.org/scripts/code/6345/youtube-classic.user.js"><img alt="[Install YouTube Classic]" style="height: 45px" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img style="height: 45px" alt="[如何安装]" title="如何安装" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@b524084/assets/images/buttons/greasy-fork/help-button.svg"></a>
 <br>
 [讨论](https://github.com/adamlui/youtube-classic/discussions) /
 [获取支持](https://github.com/adamlui/youtube-classic/issues) /

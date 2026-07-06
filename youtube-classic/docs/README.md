@@ -38,13 +38,13 @@
 <ul>
   <li><b>Restores dislike counter</b> so you can judge the quality of content before watching<br>
     (using Anarios' <a href="https://github.com/Anarios/return-youtube-dislike">Return YouTube Dislike</a>)
-    <p><img width=400px src="https://assets.ytclassic.com/images/screenshots/dislike-counter.png"></li><br>
+    <p><img width=400px src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/dislike-counter.png"></li><br>
   <li><b>Removes rounded corners</b> that seemingly abound for the sake of being round<br>
     (evolved from magma_craft's <a href="https://userstyles.world/style/7243/css-adjustments-fixes-for-non-rounded-youtube-design">Non-Rounded YouTube Design</a>)
     <p><i>&nbsp;Before:</i><br>
-      <img src="https://assets.ytclassic.com/images/screenshots/youtube-modern-ui.png">
+      <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/youtube-modern-ui.png">
     <p><i>&nbsp;After:</i><br>
-      <img src="https://assets.ytclassic.com/images/screenshots/youtube-classic-ui.png"></li><br>
+      <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/screenshots/youtube-classic-ui.png"></li><br>
   <li><b>Redirects YouTube Shorts</b> to classic player for increased usability
     <p><img width=555 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@19ab985/assets/images/screenshots/shorts-redir.png"></li><br>
   <li><b>Hides sneaky recommendations</b> from search for more accurate results</li><br>
