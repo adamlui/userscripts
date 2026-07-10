@@ -67,6 +67,8 @@
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;后：</i><br>
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/after.png"></li><br>
+  <li><b>跳过视频广告</b>，让您更快地观看视频<br>
+    （使用 Tran Quang Tien 的 <a href="https://github.com/tientq64/userscripts/tree/main/scripts/Auto-Skip-YouTube-Ads">Auto Skip YouTube Ads</a>）</li><br>
 </ul>
 
 <br>

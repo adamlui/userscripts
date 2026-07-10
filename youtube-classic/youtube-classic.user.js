@@ -116,127 +116,126 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.7.9.1
+// @version              2026.7.9.2
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
-// @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
-// @description:af       Keer YouTube terug na sy klassieke ontwerp (voor al die geronde hoeke en verborge dislikes) + herlei YouTube Shorts + blokkeer miniatuur advertensies
-// @description:am       YouTubeን ወደ ክላሲክ ዲዛይኑ ይመልሳል (የተጠጋጉ ማዕዘኖች እና የተደበቁ አለመውደዶች በፊት) + YouTube Shortsን ያዛውራል + ድንክዬ ማስታወቂያዎችን ያግዳል
-// @description:ar       يعيد YouTube إلى تصميمه الكلاسيكي (قبل كل الزوايا المستديرة وعدم الإعجابات المخفية) + إعادة توجيه YouTube Shorts + حظر إعلانات الصور المصغرة
-// @description:az       YouTube-u klassik dizaynına qaytarır (bütün yuvarlaq künclər və gizli bəyənməmələrdən əvvəl) + YouTube Shorts-u yönləndirir + miniatür reklamlarını bloklayır
-// @description:be       Вяртае YouTube да класічнага дызайну (да ўсіх закругленых кутоў і схаваных дызлайкаў) + перанакіроўвае YouTube Shorts + блакуе мініяцюрныя рэкламы
-// @description:bem      Yubwekesha YouTube ku mushobo wayo wakale (pansela ya ma angle yonse ayendaula ne ma dislikes afisama) + ilolo kwa YouTube Shorts + blockinga ama thumbnail ads
-// @description:bg       Връща YouTube към класическия му дизайн (преди всички заоблени ъгли и скрити нехаресвания) + пренасочва YouTube Shorts + блокира реклами с миниатюри
-// @description:bn       ইউটিউবকে তার ক্লাসিক ডিজাইনে ফিরিয়ে আনে (সব গোলাকার কোণ এবং লুকানো ডিসলাইকের আগে) + ইউটিউব শর্টস রিডাইরেক্ট করে + থাম্বনেইল বিজ্ঞাপন ব্লক করে
-// @description:bo       YouTubeའདི་དེའི་སྲོལ་རྒྱུན་དབྱིབས་དབྱངས་ལུང་བརྗེད་ཀྱི་སྐོར་ལ་སླར་གསོ་བྱེད་ཀྱིན་འདུག (ཟུར་ཟླུམ་མམ་བཞིན་དང་གསང་བའི་མི་འདོད་པ་རྣམས་ཀྱི་སྔོན་ལ) + YouTube Shortsབསྐྱར་ཁྲིད་བྱེད་ཀྱིན་འདུག + མཚོན་ཐུང་ཚོང་རྟགས་འགོག་བྱེད་ཀྱིན་འདུག
-// @description:bs       Vraća YouTube na njegov klasični dizajn (prije svih zaobljenih uglova i skrivenih dislajkova) + preusmjerava YouTube Shorts + blokira minijaturne reklame
-// @description:ca       Retorna YouTube al seu disseny clàssic (abans de totes les cantonades arrodonides i els dislikes amagats) + redirigeix YouTube Shorts + bloqueja anuncis de miniatures
-// @description:ceb      Ibalik ang YouTube sa klasiko nga disenyo (sa wala pa ang tanang lingin nga mga suok ug gitago nga mga dislikes) + gi-redirect ang YouTube Shorts + gibabagan ang mga thumbnail ads
-// @description:ckb      یوتیوب بۆ دیزاینی کلاسیکی خۆی دەگەڕێنێتەوە (پێش هەموو گۆشە خڕەکان و دڵنەکردنە شاراوەکان) + یوتیوب شۆرتس ڕەوانە دەکات + ڕیکلامی وێنە بچووکەکان بلۆک دەکات
-// @description:cs       Vrací YouTube do klasického designu (před všemi zaoblenými rohy a skrytými dislikes) + přesměrovává YouTube Shorts + blokuje miniaturní reklamy
-// @description:cy       Yn dychwelyd YouTube i'w ddyluniad clasurol (cyn yr holl gorneli crwn a dislikes cudd) + ailgyfeirio YouTube Shorts + blocio hysbysebion mân-luniau
-// @description:da       Gendanner YouTube til dets klassiske design (før alle de afrundede hjørner og skjulte dislikes) + omdirigerer YouTube Shorts + blokerer miniatureannoncer
-// @description:de       Stellt das klassische Design von YouTube wieder her (vor all den abgerundeten Ecken und versteckten Dislikes) + leitet YouTube Shorts um + blockiert Thumbnail-Werbung
-// @description:dv       ޔޫޓިއުބް އޭގެ ކްލަސިކް ޑިޒައިން އަށް ރީޑިސައިން ކުރުން (ހުރިހާ ވަށްކޯނާއި ފޮރުވި ޑިސްލައިކްސް ގެ ކުރިން) + ޔޫޓިއުބް ޝޯޓްސް ރީޑައިރެކްޓް + ތަމްބްނެއިލް އިޝްތިހާރު ބްލޮކް
-// @description:dz       ཡུ་ཊུབ་མོའི་སྲོལ་རྒྱུན་གྱི་དབྱིབས་རྩ་ལུ་སླར་ལོག་གཏང་དགོ (ཟུར་ཟླུམ་རང་བཞིན་མ་བྱུང་གོང་དང་གསང་བའི་མི་འདོད་པ་རྣམས་ཀྱི་སྔོན་ལ) + ཡུ་ཊུབ་ཐུང་ཐུང་དེ་ཚུ་ཁ་ཕྱོགས་བསྒྱུར་བ་ + མཚོན་ཐུང་ཚོང་རྟགས་དེ་ཚུ་འགོག་པ།
-// @description:el       Επαναφέρει το YouTube στον κλασικό του σχεδιασμό (πριν από όλες τις στρογγυλεμένες γωνίες και τα κρυφά dislikes) + ανακατευθύνει τα YouTube Shorts + μπλοκάρει τις διαφημίσεις μικρογραφιών
-// @description:eo       Reakiras YouTube al sia klasika dezajno (antaŭ ĉiuj rondigitaj anguloj kaj kaŝitaj mallaŭkoj) + alidirektas YouTube Shorts + blokas miniaturajn reklamojn
-// @description:es       Revierte YouTube a su diseño clásico (antes de todas las esquinas redondeadas y dislikes ocultos) + redirige YouTube Shorts + bloquea anuncios en miniaturas
-// @description:et       Taastab YouTube'i klassikalise disaini (enne kõiki ümaraid nurki ja peidetud dislikesid) + suunab YouTube Shorts ümber + blokeerib pisipildireklaamid
-// @description:eu       YouTube bere diseinu klasikora itzultzen du (izkin biribildu guztiak eta ezkutuko dislikes-en aurretik) + YouTube Shorts berbideratzen du + miniaturazko iragarkiak blokeatzen ditu
-// @description:fa       یوتیوب را به طراحی کلاسیک خود برمی‌گرداند (قبل از تمام گوشه‌های گرد و دیسلایک‌های پنهان) + یوتیوب شورتز را هدایت می‌کند + تبلیغات تصویر کوچک را مسدود می‌کند
-// @description:fi       Palauttaa YouTuben klassiseen muotoiluun (ennen kaikkia pyöristettyjä kulmia ja piilotettuja dislikes) + ohjaa YouTube Shortsit uudelleen + estää pikkukuvamainokset
-// @description:fo       Vendir YouTube aftur til sína klassiska snið (áðrenn øll rundu hornini og fjaldu dislikesini) + umstjórnar YouTube Shorts + forðar smámyndalýsingum
-// @description:fr       Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures
-// @description:fr-CA    Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures
-// @description:gd       Tillidh YouTube chun a dhealbhachd clasaigeach (ro na h-uile ceàrnan cruinn agus dislikes falaichte) + ath-stiùiridh YouTube Shorts + bacadh shanasan dealbhagan
-// @description:gl       Reverte YouTube ao seu deseño clásico (antes de todas as esquinas redondeadas e dislikes ocultos) + redirixe YouTube Shorts + bloquea anuncios en miniaturas
-// @description:gu       યુટ્યુબને તેની ક્લાસિક ડિઝાઇનમાં પરત લાવે છે (બધા ગોળાકાર ખૂણા અને છુપાયેલા ડિસલાઇક્સ પહેલા) + યુટ્યુબ શોર્ટ્સ રીડાયરેક્ટ કરે છે + થંબનેઇલ જાહેરાતો બ્લોક કરે છે
-// @description:haw      Hoʻihoʻi i YouTube i kona hoʻolālā kuʻuna (ma mua o nā kihi pōʻai a me nā dislikes huna) + hoʻihoʻi hou i YouTube Shorts + pāpā i nā hoʻolaha thumbnail
-// @description:he       מחזיר את YouTube לעיצוב הקלאסי שלו (לפני כל הפינות המעוגלות והדיסלייקים המוסתרים) + מפנה מחדש YouTube Shorts + חוסם מודעות תמונות ממוזערות
-// @description:hi       YouTube को उसके क्लासिक डिज़ाइन में वापस लाता है (सभी गोल कोनों और छिपे हुए डिसलाइक से पहले) + YouTube शॉर्ट्स को रीडायरेक्ट करता है + थंबनेल विज्ञापनों को ब्लॉक करता है
-// @description:hr       Vraća YouTube na njegov klasični dizajn (prije svih zaobljenih uglova i skrivenih dislajkova) + preusmjerava YouTube Shorts + blokira minijaturne oglase
-// @description:ht       Retounen YouTube nan konsepsyon klasik li (anvan tout kwen awondi ak dislikes kache yo) + redireksyon YouTube Shorts + bloke piblisite ti imaj yo
-// @description:hu       Visszaállítja a YouTube-ot a klasszikus dizájnjára (az összes lekerekített sarok és a rejtett dislikes előtt) + átirányítja a YouTube Shorts-ot + blokkolja a miniatűr hirdetéseket
-// @description:hy       YouTube-ը վերադարձնում է իր դասական ձևավորմանը (մինչ բոլոր կլորացված անկյունները և թաքցված դիզլայքերը) + վերաուղղորդում է YouTube Shorts-ը + արգելափակում է մանրապատկերի գովազդները
-// @description:id       Mengembalikan YouTube ke desain klasiknya (sebelum semua sudut melengkung dan dislikes tersembunyi) + mengalihkan YouTube Shorts + memblokir iklan thumbnail
-// @description:is       Endurheimtir YouTube í sína klassísku hönnun (fyrir öll rúnuðu hornin og földu dislikes) + endurbeina YouTube Shorts + lokar á smámyndaauglýsingar
-// @description:it       Ripristina YouTube al suo design classico (prima di tutti gli angoli arrotondati e i dislikes nascosti) + reindirizza YouTube Shorts + blocca gli annunci miniatura
-// @description:ja       YouTubeをクラシックデザインに戻します（丸みを帯びた角と非表示の低評価の前の状態）+ YouTubeショートをリダイレクト + サムネイル広告をブロック
-// @description:jv       Mbalikake YouTube menyang desain klasik (sadurunge kabeh sudhut bunder lan dislikes sing didhelikake) + ngalihake YouTube Shorts + mblokir iklan gambar cilik
-// @description:ka       YouTube-ს უბრუნებს კლასიკურ დიზაინს (ყველა მომრგვალებულ კუთხემდე და დამალულ dislikes-მდე) + გადამისამართებს YouTube Shorts-ს + ბლოკავს მინიატურულ რეკლამებს
-// @description:kab      Yernu YouTube ɣer usebter-nnes aklasik (uqbel akk teɣmert iqejjiren akked dislikes ifferen) + yezzi YouTube Shorts + yessewḥal ads n thumbnail
-// @description:kk       YouTube-ты классикалық дизайнына қайтарады (барлық дөңгеленген бұрыштар мен жасырын дизлайктарға дейін) + YouTube Shorts-ты қайта бағыттайды + нобай жарнамаларын бұғаттайды
-// @description:km       ធ្វើអោយ YouTube ត្រឡប់ទៅរចនាបទបុរាណវិញ (មុនពេលជ្រុងមូលទាំងអស់ និង dislikes លាក់) + បញ្ជូនបន្ត YouTube Shorts + រារាំងពាណិជ្ជកម្មរូបភាពតូច
-// @description:kn       YouTube ಅನ್ನು ಅದರ ಕ್ಲಾಸಿಕ್ ವಿನ್ಯಾಸಕ್ಕೆ ಹಿಂತಿರುಗಿಸುತ್ತದೆ (ಎಲ್ಲಾ ದುಂಡಾದ ಮೂಲೆಗಳು ಮತ್ತು ಅಡಗಿರುವ ಡಿಸ್‌ಲೈಕ್‌ಗಳ ಮೊದಲು) + YouTube ಶಾರ್ಟ್ಸ್‌ಗಳನ್ನು ಮರುನಿರ್ದೇಶಿಸುತ್ತದೆ + ಥಂಬ್‌ನೇಲ್ ಜಾಹೀರಾತುಗಳನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ
-// @description:ko       YouTube를 클래식 디자인으로 되돌립니다 (둥근 모서리와 숨겨진 싫어요 이전) + YouTube 쇼츠를 리디렉션 + 썸네일 광고 차단
-// @description:ku       YouTube-ê vedigerîne sêwirana xwe ya klasîk (berî hemî quncikên girover û dislikesên veşartî) + YouTube Shorts-ê rêve dike + reklamên thumbnail asteng dike
-// @description:ky       YouTube'ду классикалык дизайнына кайтарат (бардык тегеректелген бурчтар жана жашырылган дизлайктарга чейин) + YouTube Shorts'ду багыттайт + эскиз жарнамаларын бөгөттөйт
-// @description:la       YouTube ad classicum consilium suum revertit (ante omnes angulos rotundos et dislikes occultos) + YouTube Shorts redirigit + minutas tabulas impedit
-// @description:lb       Setzt YouTube op säi klasseschen Design zréck (virun all de ronnen Ecker a verstoppten Dislikes) + leet YouTube Shorts ëm + blockéiert Miniatur Annoncen
-// @description:lo       ເຮັດໃຫ້ YouTube ກັບຄືນສູ່ການອອກແບບຄລາສສິກ (ກ່ອນທີ່ຈະມີມຸມມົນທັງໝົດ ແລະການບໍ່ມັກທີ່ເຊື່ອງໄວ້) + ປ່ຽນເສັ້ນທາງ YouTube Shorts + ບລັອກໂຄສະນາຮູບພາບນ້ອຍ
-// @description:lt       Grąžina YouTube į klasikinį dizainą (prieš visus užapvalintus kampus ir paslėptus dislikes) + nukreipia YouTube Shorts + blokuoja miniatiūrines reklamas
-// @description:lv       Atgriež YouTube klasiskajā dizainā (pirms visiem noapaļotajiem stūriem un slēptajiem dislikes) + pārvirza YouTube Shorts + bloķē sīktēlu reklāmas
-// @description:mg       Mamerina an'i YouTube amin'ny endriny klasika (alohan'ny zoro boribory rehetra sy ny dislikes miafina) + mamerina ny YouTube Shorts + manakana ny dokambarotra saritapaka
-// @description:mi       Whakahokia a YouTube ki tana hoahoa matarohanga (i mua i ngā kokonga porowhita katoa me ngā dislikes huna) + whakaararua YouTube Shorts + aukati i ngā whakatairanga karakōnui
-// @description:mk       Го враќа YouTube на неговиот класичен дизајн (пред сите заоблени агли и скриени dislikes) + пренасочува YouTube Shorts + блокира реклами со минијатури
-// @description:ml       YouTube-നെ അതിന്റെ ക്ലാസിക് ഡിസൈനിലേക്ക് തിരികെ കൊണ്ടുവരുന്നു (എല്ലാ ഉരുണ്ട കോണുകളും മറഞ്ഞിരിക്കുന്ന ഡിസ്‌ലൈക്കുകളും മുമ്പ്) + YouTube ഷോർട്ട്സ് റീഡയറക്ട് ചെയ്യുന്നു + തംബ്നെയിൽ പരസ്യങ്ങൾ ബ്ലോക്ക് ചെയ്യുന്നു
-// @description:mn       YouTube-г сонгодог загварт нь буцаана (бүх дугуйрсан булан болон нуугдсан дургүй байдлын өмнө) + YouTube Shorts-г дахин чиглүүлнэ + өнгөц зураг сурталчилгааг блоклоно
-// @description:mr       YouTube ला त्याच्या क्लासिक डिझाइनवर परत आणते (सर्व गोलाकार कोपरे आणि लपविलेल्या डिसलाइकच्या आधी) + YouTube शॉर्ट्स रीडायरेक्ट करते + थंबनेल जाहिराती ब्लॉक करते
-// @description:ms       Mengembalikan YouTube kepada reka bentuk klasiknya (sebelum semua sudut bulat dan dislikes tersembunyi) + mengalihkan YouTube Shorts + menyekat iklan lakaran kecil
-// @description:mt       Ireġġa' lura YouTube għad-disinn klassiku tiegħu (qabel l-irkejjen kollha ttundjati u d-dislikes moħbija) + tirridirieġi YouTube Shorts + timblokka r-reklami tal-minjaturi
-// @description:my       YouTube ကို ၎င်း၏ ဂန္ထဝင် ဒီဇိုင်းသို့ ပြန်ပြောင်းသည် (အဝိုင်းထောင့်များနှင့် ဝှက်ထားသော dislikes များ မတိုင်မီ) + YouTube Shorts ကို ပြန်ညွှန်းသည် + နမူနာပုံငယ် ကြော်ငြာများကို ပိတ်ဆို့သည်
-// @description:ne       YouTube लाई यसको क्लासिक डिजाइनमा फर्काउँछ (सबै गोलाकार कुनाहरू र लुकाइएको डिसलाइकहरू अघि) + YouTube शर्ट्स रिडाइरेक्ट गर्दछ + थम्बनेल विज्ञापनहरू ब्लक गर्दछ
-// @description:nl       Zet YouTube terug naar zijn klassieke ontwerp (vóór alle afgeronde hoeken en verborgen dislikes) + leidt YouTube Shorts om + blokkeert miniatuuradvertenties
-// @description:no       Gjenoppretter YouTube til sitt klassiske design (før alle de avrundede hjørnene og skjulte dislikes) + omdirigerer YouTube Shorts + blokkerer miniatyrannonser
-// @description:ny       Imabwezera YouTube ku mapangidwe ake akale (pamaso pa ngodya zonse zozungulira ndi dislikes zobisika) + imalowetsa YouTube Shorts + imatseka zotsatsa za thumbnail
-// @description:pa       YouTube ਨੂੰ ਇਸਦੇ ਕਲਾਸਿਕ ਡਿਜ਼ਾਈਨ 'ਤੇ ਵਾਪਸ ਲਿਆਉਂਦਾ ਹੈ (ਸਾਰੇ ਗੋਲ ਕੋਨਿਆਂ ਅਤੇ ਲੁਕਵੇਂ ਡਿਸਲਾਈਕਸ ਤੋਂ ਪਹਿਲਾਂ) + YouTube ਸ਼ਾਰਟਸ ਨੂੰ ਰੀਡਾਇਰੈਕਟ ਕਰਦਾ ਹੈ + ਥੰਬਨੇਲ ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਬਲਾਕ ਕਰਦਾ ਹੈ
-// @description:pl       Przywraca YouTube do klasycznego wyglądu (sprzed wszystkich zaokrąglonych rogów i ukrytych dislikes) + przekierowuje YouTube Shorts + blokuje reklamy miniatur
-// @description:ps       YouTube خپل کلاسیک ډیزاین ته بیرته ګرځوي (د ټولو ګردو کونجونو او پټو dislikes څخه مخکې) + YouTube Shorts ته لارښوونه کوي + د تمبنېل اعلانونه بلاک کوي
-// @description:pt       Reverte o YouTube para o seu design clássico (antes de todos os cantos arredondados e dislikes ocultos) + redireciona YouTube Shorts + bloqueia anúncios em miniaturas
-// @description:pt-BR    Reverte o YouTube para o seu design clássico (antes de todos os cantos arredondados e dislikes ocultos) + redireciona YouTube Shorts + bloqueia anúncios em miniaturas
-// @description:ro       Revine YouTube la designul său clasic (înainte de toate colțurile rotunjite și dislikes ascunse) + redirecționează YouTube Shorts + blochează reclamele miniaturale
-// @description:ru       Возвращает YouTube к классическому дизайну (до всех закругленных углов и скрытых дизлайков) + перенаправляет YouTube Shorts + блокирует миниатюрные рекламы
-// @description:rw       Isubiza YouTube mu ishusho ryayo rya kera (mbere y'inguni zose z'umuzingi na dislikes zihishe) + yerekeza YouTube Shorts + ihagarika amatangazo ya thumbnail
-// @description:sg       Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures
-// @description:si       YouTube එහි සම්භාව්‍ය නිර්මාණයට ආපසු හරවයි (සියලු වටකුරු කොන් සහ සැඟවුණු dislikes වලට පෙර) + YouTube Shorts නැවත හරවා යවයි + සිඟිති රූප දැන්වීම් අවහිර කරයි
-// @description:sk       Vracia YouTube do klasického dizajnu (pred všetkými zaoblenými rohmi a skrytými dislikes) + presmerováva YouTube Shorts + blokuje miniatúrne reklamy
-// @description:sl       Povrne YouTube v klasično obliko (pred vsemi zaobljenimi vogali in skritimi dislikes) + preusmeri YouTube Shorts + blokira miniaturne oglase
-// @description:sm       Toe fa'afo'i YouTube i lona fa'atusa masani (a'o le'i o'o i tulimanu lapotopoto uma ma dislikes natia) + toe fa'asino YouTube Shorts + poloka fa'asalalauga ata laiti
-// @description:sn       Inodzosera YouTube kune dhizaini yayo yekare (pamberi pemakona ese akatenderera uye dislikes dzakavanzwa) + inodzosera YouTube Shorts + inodzivisa kushambadza kwemifananidzo midiki
-// @description:so       Ku soo celinta YouTube qaabkeedii qadiiciga ahaa (ka hor dhammaan geesaha wareegsan iyo dislikes qarsoon) + u jiheeya YouTube Shorts + xannibaysa xayeysiisyada thumbnail
-// @description:sq       E kthen YouTube në dizajnin e tij klasik (para të gjitha qosheve të rrumbullakosura dhe dislikes të fshehura) + ridrejton YouTube Shorts + bllokon reklamat e miniaturave
-// @description:sr       Враћа YouTube на његов класични дизајн (пре свих заобљених углова и скривених дислајкова) + преусмерава YouTube Shorts + блокира рекламе са минијатурама
-// @description:st       E khutlisetsa YouTube moetlong oa eona oa khale (pele ho li-angles tsohle tse chitja le dislikes tse patiloeng) + e lebisa YouTube Shorts + e thibela lipapatso tsa thumbnail
-// @description:sv       Återställer YouTube till sin klassiska design (före alla rundade hörn och dolda dislikes) + omdirigerar YouTube Shorts + blockerar miniatyrannonser
-// @description:sw       Inarejesha YouTube kwenye muundo wake wa awali (kabla ya pembe zote za mviringo na dislikes zilizofichwa) + inaelekeza YouTube Shorts + inazuia matangazo ya thumbnail
-// @description:ta       YouTube-ஐ அதன் கிளாசிக் வடிவமைப்பிற்கு மாற்றியமைக்கிறது (அனைத்து வட்டமான மூலைகளும் மறைக்கப்பட்ட விருப்பமின்மைகளும் முன்பு) + YouTube Shorts-ஐ திருப்பிவிடுகிறது + சிறுபட விளம்பரங்களைத் தடுக்கிறது
-// @description:te       YouTube ను దాని క్లాసిక్ డిజైన్‌కు తిరిగి మారుస్తుంది (అన్ని గుండ్రని మూలలు మరియు దాచిన డిస్‌లైక్‌ల ముందు) + YouTube షార్ట్‌లను రీడైరెక్ట్ చేస్తుంది + థంబ్‌నెయిల్ ప్రకటనలను బ్లాక్ చేస్తుంది
-// @description:tg       YouTube-ро ба тарроҳии классикии худ бармегардонад (пеш аз ҳама гӯшаҳои мудаввар ва dislikes пинҳон) + YouTube Shorts-ро равона мекунад + рекламаҳои эскизиро манъ мекунад
-// @description:th       คืน YouTube กลับสู่ดีไซน์คลาสสิก (ก่อนจะมีมุมโค้งมนและซ่อนดิสไลก์) + เปลี่ยนเส้นทาง YouTube Shorts + บล็อกโฆษณารูปขนาดย่อ
-// @description:ti       ንYouTube ናብቲ ክላሲካዊ ዲዛይኑ ይመልሶ (ቅድሚ ኩለን እተዀረኻ ኩርናዕቲን ተሓቢኡ ዘሎ dislikesን) + ንYouTube Shorts ይመርሕ + ንምካንያዊ ረክላማታት ይዓግት
-// @description:tk       YouTube-y öz klassiki dizaýnyna gaýtaryp berýär (ähli tegelek burçlardan we gizlenen dislikes-lerden öň) + YouTube Shorts-y gönükdirýär + miniatýura mahabatlaryny bloklaýar
-// @description:tl       Ibinabalik ang YouTube sa klasikong disenyo nito (bago ang lahat ng bilugang sulok at nakatagong dislikes) + nire-redirect ang YouTube Shorts + hinaharang ang mga thumbnail ad
-// @description:tn       E busetsa YouTube mo tlhamong ya yone ya bogologolo (pele ga dikhutlo tsotlhe tse di kgolokwe le dislikes tse di fitlhilweng) + e kganela YouTube Shorts + e thibela dipapatso tsa ditshwantsho tse dinnye
-// @description:to       Fakafoki'i YouTube ki hono fa'u 'o e founga motu'a (ki mu'a 'a e ngaahi tuliki potupotu tatau mo e dislikes fufuu) + toe 'oatu YouTube Shorts + poloka'i e ngaahi fakamatala'i ki'i fakatata
-// @description:tr       YouTube'u klasik tasarımına döndürür (tüm yuvarlatılmış köşeler ve gizlenmiş dislikelardan önce) + YouTube Shorts'u yönlendirir + küçük resim reklamlarını engeller
-// @description:tt       YouTube'ны классик дизайнына кайтара (барлык түгәрәкләнгән почмаклар һәм яшерелгән dislikesлар алдыннан) + YouTube Shorts'ны юнәлтә + миниатюра рекламаларын блоклый
-// @description:ug       YouTube نى كلاسسىك لايىھىسىگە قايتۇرىدۇ (بارلىق يۇمىلاق بۇلۇڭلار ۋە يوشۇرۇن dislikes دىن بۇرۇن) + YouTube Shorts نى قايتا نىشانلايدۇ + كىچىك رەسىملىك ئېلانلارنى بلوكلايدۇ
-// @description:uk       Повертає YouTube до класичного дизайну (до всіх закруглених кутів і прихованих дизлайків) + перенаправляє YouTube Shorts + блокує мініатюрні реклами
-// @description:ur       یوٹیوب کو اس کے کلاسک ڈیزائن پر واپس لاتا ہے (تمام گول کونوں اور چھپے ہوئے ڈس لائکس سے پہلے) + یوٹیوب شارٹس کو ری ڈائریکٹ کرتا ہے + تھمب نیل اشتہارات کو بلاک کرتا ہے
-// @description:uz       YouTube'ni klassik dizayniga qaytaradi (barcha yumaloq burchaklar va yashirin dislikeslardan oldin) + YouTube Shorts'ni qayta yo'naltiradi + kichik rasmli reklamalarni bloklaydi
-// @description:vi       Đưa YouTube trở lại thiết kế cổ điển (trước khi có tất cả các góc bo tròn và lượt không thích bị ẩn) + chuyển hướng YouTube Shorts + chặn quảng cáo hình thu nhỏ
-// @description:wo       Jël YouTube ci nosukaayam bu xóot (laata ñu tase ko ak dislikes yu nëbbu) + yóbbu YouTube Shorts + fajj far
-// @description:xh       Ibuyisela i-YouTube kuyilo lwayo lwakudala (phambi kwazo zonke iikona ezingqukuva kunye nee-dislikes ezifihliweyo) + yalathisa kwakhona i-YouTube Shorts + ivale iintengiso ze-thumbnail
-// @description:yi       ברענגט YouTube צוריק צו זיין קלאַסישן דיזיין (פֿאַר אַלע די ראַונדיד עקן און באַהאַלטענע דיסלייקס) + רידערעקץ YouTube שאָרץ + בלאַקירט מיניאַטורע אַדס
-// @description:yo       Mu YouTube pada si apẹrẹ ayeraye rẹ (ṣaaju gbogbo awọn igun yika ati awọn aifẹ ti o farapamọ) + awọn YouTube Shorts pada + dènà awọn ipolowo eekanna atampako
-// @description:zh       将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告
-// @description:zh-CN    将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告
-// @description:zh-HK    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告
-// @description:zh-SG    将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告
-// @description:zh-TW    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告
-// @description:zu       Ibuyisela i-YouTube kumklamo wayo wakudala (ngaphambi kwawo wonke amakhona ayindilinga nama-dislikes afihliwe) + iqondisa kabusha i-YouTube Shorts + ivimba izikhangisi ze-thumbnail
-// @license              MIT
+// @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads + skips video ads
+// @description:af       Keer YouTube terug na sy klassieke ontwerp (voor al die geronde hoeke en verborge dislikes) + herlei YouTube Shorts + blokkeer miniatuur advertensies + skips video ads
+// @description:am       YouTubeን ወደ ክላሲክ ዲዛይኑ ይመልሳል (የተጠጋጉ ማዕዘኖች እና የተደበቁ አለመውደዶች በፊት) + YouTube Shortsን ያዛውራል + ድንክዬ ማስታወቂያዎችን ያግዳል + skips video ads
+// @description:ar       يعيد YouTube إلى تصميمه الكلاسيكي (قبل كل الزوايا المستديرة وعدم الإعجابات المخفية) + إعادة توجيه YouTube Shorts + حظر إعلانات الصور المصغرة + skips video ads
+// @description:az       YouTube-u klassik dizaynına qaytarır (bütün yuvarlaq künclər və gizli bəyənməmələrdən əvvəl) + YouTube Shorts-u yönləndirir + miniatür reklamlarını bloklayır + skips video ads
+// @description:be       Вяртае YouTube да класічнага дызайну (да ўсіх закругленых кутоў і схаваных дызлайкаў) + перанакіроўвае YouTube Shorts + блакуе мініяцюрныя рэкламы + skips video ads
+// @description:bem      Yubwekesha YouTube ku mushobo wayo wakale (pansela ya ma angle yonse ayendaula ne ma dislikes afisama) + ilolo kwa YouTube Shorts + blockinga ama thumbnail ads + skips video ads
+// @description:bg       Връща YouTube към класическия му дизайн (преди всички заоблени ъгли и скрити нехаресвания) + пренасочва YouTube Shorts + блокира реклами с миниатюри + skips video ads
+// @description:bn       ইউটিউবকে তার ক্লাসিক ডিজাইনে ফিরিয়ে আনে (সব গোলাকার কোণ এবং লুকানো ডিসলাইকের আগে) + ইউটিউব শর্টস রিডাইরেক্ট করে + থাম্বনেইল বিজ্ঞাপন ব্লক করে + skips video ads
+// @description:bo       YouTubeའདི་དེའི་སྲོལ་རྒྱུན་དབྱིབས་དབྱངས་ལུང་བརྗེད་ཀྱི་སྐོར་ལ་སླར་གསོ་བྱེད་ཀྱིན་འདུག (ཟུར་ཟླུམ་མམ་བཞིན་དང་གསང་བའི་མི་འདོད་པ་རྣམས་ཀྱི་སྔོན་ལ) + YouTube Shortsབསྐྱར་ཁྲིད་བྱེད་ཀྱིན་འདུག + མཚོན་ཐུང་ཚོང་རྟགས་འགོག་བྱེད་ཀྱིན་འདུག + skips video ads
+// @description:bs       Vraća YouTube na njegov klasični dizajn (prije svih zaobljenih uglova i skrivenih dislajkova) + preusmjerava YouTube Shorts + blokira minijaturne reklame + skips video ads
+// @description:ca       Retorna YouTube al seu disseny clàssic (abans de totes les cantonades arrodonides i els dislikes amagats) + redirigeix YouTube Shorts + bloqueja anuncis de miniatures + skips video ads
+// @description:ceb      Ibalik ang YouTube sa klasiko nga disenyo (sa wala pa ang tanang lingin nga mga suok ug gitago nga mga dislikes) + gi-redirect ang YouTube Shorts + gibabagan ang mga thumbnail ads + skips video ads
+// @description:ckb      یوتیوب بۆ دیزاینی کلاسیکی خۆی دەگەڕێنێتەوە (پێش هەموو گۆشە خڕەکان و دڵنەکردنە شاراوەکان) + یوتیوب شۆرتس ڕەوانە دەکات + ڕیکلامی وێنە بچووکەکان بلۆک دەکات + skips video ads
+// @description:cs       Vrací YouTube do klasického designu (před všemi zaoblenými rohy a skrytými dislikes) + přesměrovává YouTube Shorts + blokuje miniaturní reklamy + skips video ads
+// @description:cy       Yn dychwelyd YouTube i'w ddyluniad clasurol (cyn yr holl gorneli crwn a dislikes cudd) + ailgyfeirio YouTube Shorts + blocio hysbysebion mân-luniau + skips video ads
+// @description:da       Gendanner YouTube til dets klassiske design (før alle de afrundede hjørner og skjulte dislikes) + omdirigerer YouTube Shorts + blokerer miniatureannoncer + skips video ads
+// @description:de       Stellt das klassische Design von YouTube wieder her (vor all den abgerundeten Ecken und versteckten Dislikes) + leitet YouTube Shorts um + blockiert Thumbnail-Werbung + skips video ads
+// @description:dv       ޔޫޓިއުބް އޭގެ ކްލަސިކް ޑިޒައިން އަށް ރީޑިސައިން ކުރުން (ހުރިހާ ވަށްކޯނާއި ފޮރުވި ޑިސްލައިކްސް ގެ ކުރިން) + ޔޫޓިއުބް ޝޯޓްސް ރީޑައިރެކްޓް + ތަމްބްނެއިލް އިޝްތިހާރު ބްލޮކް + skips video ads
+// @description:dz       ཡུ་ཊུབ་མོའི་སྲོལ་རྒྱུན་གྱི་དབྱིབས་རྩ་ལུ་སླར་ལོག་གཏང་དགོ (ཟུར་ཟླུམ་རང་བཞིན་མ་བྱུང་གོང་དང་གསང་བའི་མི་འདོད་པ་རྣམས་ཀྱི་སྔོན་ལ) + ཡུ་ཊུབ་ཐུང་ཐུང་དེ་ཚུ་ཁ་ཕྱོགས་བསྒྱུར་བ་ + མཚོན་ཐུང་ཚོང་རྟགས་དེ་ཚུ་འགོག་པ། + skips video ads
+// @description:el       Επαναφέρει το YouTube στον κλασικό του σχεδιασμό (πριν από όλες τις στρογγυλεμένες γωνίες και τα κρυφά dislikes) + ανακατευθύνει τα YouTube Shorts + μπλοκάρει τις διαφημίσεις μικρογραφιών + skips video ads
+// @description:eo       Reakiras YouTube al sia klasika dezajno (antaŭ ĉiuj rondigitaj anguloj kaj kaŝitaj mallaŭkoj) + alidirektas YouTube Shorts + blokas miniaturajn reklamojn + skips video ads
+// @description:es       Revierte YouTube a su diseño clásico (antes de todas las esquinas redondeadas y dislikes ocultos) + redirige YouTube Shorts + bloquea anuncios en miniaturas + skips video ads
+// @description:et       Taastab YouTube'i klassikalise disaini (enne kõiki ümaraid nurki ja peidetud dislikesid) + suunab YouTube Shorts ümber + blokeerib pisipildireklaamid + skips video ads
+// @description:eu       YouTube bere diseinu klasikora itzultzen du (izkin biribildu guztiak eta ezkutuko dislikes-en aurretik) + YouTube Shorts berbideratzen du + miniaturazko iragarkiak blokeatzen ditu + skips video ads
+// @description:fa       یوتیوب را به طراحی کلاسیک خود برمی‌گرداند (قبل از تمام گوشه‌های گرد و دیسلایک‌های پنهان) + یوتیوب شورتز را هدایت می‌کند + تبلیغات تصویر کوچک را مسدود می‌کند + skips video ads
+// @description:fi       Palauttaa YouTuben klassiseen muotoiluun (ennen kaikkia pyöristettyjä kulmia ja piilotettuja dislikes) + ohjaa YouTube Shortsit uudelleen + estää pikkukuvamainokset + skips video ads
+// @description:fo       Vendir YouTube aftur til sína klassiska snið (áðrenn øll rundu hornini og fjaldu dislikesini) + umstjórnar YouTube Shorts + forðar smámyndalýsingum + skips video ads
+// @description:fr       Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures + skips video ads
+// @description:fr-CA    Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures + skips video ads
+// @description:gd       Tillidh YouTube chun a dhealbhachd clasaigeach (ro na h-uile ceàrnan cruinn agus dislikes falaichte) + ath-stiùiridh YouTube Shorts + bacadh shanasan dealbhagan + skips video ads
+// @description:gl       Reverte YouTube ao seu deseño clásico (antes de todas as esquinas redondeadas e dislikes ocultos) + redirixe YouTube Shorts + bloquea anuncios en miniaturas + skips video ads
+// @description:gu       યુટ્યુબને તેની ક્લાસિક ડિઝાઇનમાં પરત લાવે છે (બધા ગોળાકાર ખૂણા અને છુપાયેલા ડિસલાઇક્સ પહેલા) + યુટ્યુબ શોર્ટ્સ રીડાયરેક્ટ કરે છે + થંબનેઇલ જાહેરાતો બ્લોક કરે છે + skips video ads
+// @description:haw      Hoʻihoʻi i YouTube i kona hoʻolālā kuʻuna (ma mua o nā kihi pōʻai a me nā dislikes huna) + hoʻihoʻi hou i YouTube Shorts + pāpā i nā hoʻolaha thumbnail + skips video ads
+// @description:he       מחזיר את YouTube לעיצוב הקלאסי שלו (לפני כל הפינות המעוגלות והדיסלייקים המוסתרים) + מפנה מחדש YouTube Shorts + חוסם מודעות תמונות ממוזערות + skips video ads
+// @description:hi       YouTube को उसके क्लासिक डिज़ाइन में वापस लाता है (सभी गोल कोनों और छिपे हुए डिसलाइक से पहले) + YouTube शॉर्ट्स को रीडायरेक्ट करता है + थंबनेल विज्ञापनों को ब्लॉक करता है + skips video ads
+// @description:hr       Vraća YouTube na njegov klasični dizajn (prije svih zaobljenih uglova i skrivenih dislajkova) + preusmjerava YouTube Shorts + blokira minijaturne oglase + skips video ads
+// @description:ht       Retounen YouTube nan konsepsyon klasik li (anvan tout kwen awondi ak dislikes kache yo) + redireksyon YouTube Shorts + bloke piblisite ti imaj yo + skips video ads
+// @description:hu       Visszaállítja a YouTube-ot a klasszikus dizájnjára (az összes lekerekített sarok és a rejtett dislikes előtt) + átirányítja a YouTube Shorts-ot + blokkolja a miniatűr hirdetéseket + skips video ads
+// @description:hy       YouTube-ը վերադարձնում է իր դասական ձևավորմանը (մինչ բոլոր կլորացված անկյունները և թաքցված դիզլայքերը) + վերաուղղորդում է YouTube Shorts-ը + արգելափակում է մանրապատկերի գովազդները + skips video ads
+// @description:id       Mengembalikan YouTube ke desain klasiknya (sebelum semua sudut melengkung dan dislikes tersembunyi) + mengalihkan YouTube Shorts + memblokir iklan thumbnail + skips video ads
+// @description:is       Endurheimtir YouTube í sína klassísku hönnun (fyrir öll rúnuðu hornin og földu dislikes) + endurbeina YouTube Shorts + lokar á smámyndaauglýsingar + skips video ads
+// @description:it       Ripristina YouTube al suo design classico (prima di tutti gli angoli arrotondati e i dislikes nascosti) + reindirizza YouTube Shorts + blocca gli annunci miniatura + skips video ads
+// @description:ja       YouTubeをクラシックデザインに戻します（丸みを帯びた角と非表示の低評価の前の状態）+ YouTubeショートをリダイレクト + サムネイル広告をブロック + skips video ads
+// @description:jv       Mbalikake YouTube menyang desain klasik (sadurunge kabeh sudhut bunder lan dislikes sing didhelikake) + ngalihake YouTube Shorts + mblokir iklan gambar cilik + skips video ads
+// @description:ka       YouTube-ს უბრუნებს კლასიკურ დიზაინს (ყველა მომრგვალებულ კუთხემდე და დამალულ dislikes-მდე) + გადამისამართებს YouTube Shorts-ს + ბლოკავს მინიატურულ რეკლამებს + skips video ads
+// @description:kab      Yernu YouTube ɣer usebter-nnes aklasik (uqbel akk teɣmert iqejjiren akked dislikes ifferen) + yezzi YouTube Shorts + yessewḥal ads n thumbnail + skips video ads
+// @description:kk       YouTube-ты классикалық дизайнына қайтарады (барлық дөңгеленген бұрыштар мен жасырын дизлайктарға дейін) + YouTube Shorts-ты қайта бағыттайды + нобай жарнамаларын бұғаттайды + skips video ads
+// @description:km       ធ្វើអោយ YouTube ត្រឡប់ទៅរចនាបទបុរាណវិញ (មុនពេលជ្រុងមូលទាំងអស់ និង dislikes លាក់) + បញ្ជូនបន្ត YouTube Shorts + រារាំងពាណិជ្ជកម្មរូបភាពតូច + skips video ads
+// @description:kn       YouTube ಅನ್ನು ಅದರ ಕ್ಲಾಸಿಕ್ ವಿನ್ಯಾಸಕ್ಕೆ ಹಿಂತಿರುಗಿಸುತ್ತದೆ (ಎಲ್ಲಾ ದುಂಡಾದ ಮೂಲೆಗಳು ಮತ್ತು ಅಡಗಿರುವ ಡಿಸ್‌ಲೈಕ್‌ಗಳ ಮೊದಲು) + YouTube ಶಾರ್ಟ್ಸ್‌ಗಳನ್ನು ಮರುನಿರ್ದೇಶಿಸುತ್ತದೆ + ಥಂಬ್‌ನೇಲ್ ಜಾಹೀರಾತುಗಳನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ + skips video ads
+// @description:ko       YouTube를 클래식 디자인으로 되돌립니다 (둥근 모서리와 숨겨진 싫어요 이전) + YouTube 쇼츠를 리디렉션 + 썸네일 광고 차단 + skips video ads
+// @description:ku       YouTube-ê vedigerîne sêwirana xwe ya klasîk (berî hemî quncikên girover û dislikesên veşartî) + YouTube Shorts-ê rêve dike + reklamên thumbnail asteng dike + skips video ads
+// @description:ky       YouTube'ду классикалык дизайнына кайтарат (бардык тегеректелген бурчтар жана жашырылган дизлайктарга чейин) + YouTube Shorts'ду багыттайт + эскиз жарнамаларын бөгөттөйт + skips video ads
+// @description:la       YouTube ad classicum consilium suum revertit (ante omnes angulos rotundos et dislikes occultos) + YouTube Shorts redirigit + minutas tabulas impedit + skips video ads
+// @description:lb       Setzt YouTube op säi klasseschen Design zréck (virun all de ronnen Ecker a verstoppten Dislikes) + leet YouTube Shorts ëm + blockéiert Miniatur Annoncen + skips video ads
+// @description:lo       ເຮັດໃຫ້ YouTube ກັບຄືນສູ່ການອອກແບບຄລາສສິກ (ກ່ອນທີ່ຈະມີມຸມມົນທັງໝົດ ແລະການບໍ່ມັກທີ່ເຊື່ອງໄວ້) + ປ່ຽນເສັ້ນທາງ YouTube Shorts + ບລັອກໂຄສະນາຮູບພາບນ້ອຍ + skips video ads
+// @description:lt       Grąžina YouTube į klasikinį dizainą (prieš visus užapvalintus kampus ir paslėptus dislikes) + nukreipia YouTube Shorts + blokuoja miniatiūrines reklamas + skips video ads
+// @description:lv       Atgriež YouTube klasiskajā dizainā (pirms visiem noapaļotajiem stūriem un slēptajiem dislikes) + pārvirza YouTube Shorts + bloķē sīktēlu reklāmas + skips video ads
+// @description:mg       Mamerina an'i YouTube amin'ny endriny klasika (alohan'ny zoro boribory rehetra sy ny dislikes miafina) + mamerina ny YouTube Shorts + manakana ny dokambarotra saritapaka + skips video ads
+// @description:mi       Whakahokia a YouTube ki tana hoahoa matarohanga (i mua i ngā kokonga porowhita katoa me ngā dislikes huna) + whakaararua YouTube Shorts + aukati i ngā whakatairanga karakōnui + skips video ads
+// @description:mk       Го враќа YouTube на неговиот класичен дизајн (пред сите заоблени агли и скриени dislikes) + пренасочува YouTube Shorts + блокира реклами со минијатури + skips video ads
+// @description:ml       YouTube-നെ അതിന്റെ ക്ലാസിക് ഡിസൈനിലേക്ക് തിരികെ കൊണ്ടുവരുന്നു (എല്ലാ ഉരുണ്ട കോണുകളും മറഞ്ഞിരിക്കുന്ന ഡിസ്‌ലൈക്കുകളും മുമ്പ്) + YouTube ഷോർട്ട്സ് റീഡയറക്ട് ചെയ്യുന്നു + തംബ്നെയിൽ പരസ്യങ്ങൾ ബ്ലോക്ക് ചെയ്യുന്നു + skips video ads
+// @description:mn       YouTube-г сонгодог загварт нь буцаана (бүх дугуйрсан булан болон нуугдсан дургүй байдлын өмнө) + YouTube Shorts-г дахин чиглүүлнэ + өнгөц зураг сурталчилгааг блоклоно + skips video ads
+// @description:mr       YouTube ला त्याच्या क्लासिक डिझाइनवर परत आणते (सर्व गोलाकार कोपरे आणि लपविलेल्या डिसलाइकच्या आधी) + YouTube शॉर्ट्स रीडायरेक्ट करते + थंबनेल जाहिराती ब्लॉक करते + skips video ads
+// @description:ms       Mengembalikan YouTube kepada reka bentuk klasiknya (sebelum semua sudut bulat dan dislikes tersembunyi) + mengalihkan YouTube Shorts + menyekat iklan lakaran kecil + skips video ads
+// @description:mt       Ireġġa' lura YouTube għad-disinn klassiku tiegħu (qabel l-irkejjen kollha ttundjati u d-dislikes moħbija) + tirridirieġi YouTube Shorts + timblokka r-reklami tal-minjaturi + skips video ads
+// @description:my       YouTube ကို ၎င်း၏ ဂန္ထဝင် ဒီဇိုင်းသို့ ပြန်ပြောင်းသည် (အဝိုင်းထောင့်များနှင့် ဝှက်ထားသော dislikes များ မတိုင်မီ) + YouTube Shorts ကို ပြန်ညွှန်းသည် + နမူနာပုံငယ် ကြော်ငြာများကို ပိတ်ဆို့သည် + skips video ads
+// @description:ne       YouTube लाई यसको क्लासिक डिजाइनमा फर्काउँछ (सबै गोलाकार कुनाहरू र लुकाइएको डिसलाइकहरू अघि) + YouTube शर्ट्स रिडाइरेक्ट गर्दछ + थम्बनेल विज्ञापनहरू ब्लक गर्दछ + skips video ads
+// @description:nl       Zet YouTube terug naar zijn klassieke ontwerp (vóór alle afgeronde hoeken en verborgen dislikes) + leidt YouTube Shorts om + blokkeert miniatuuradvertenties + skips video ads
+// @description:no       Gjenoppretter YouTube til sitt klassiske design (før alle de avrundede hjørnene og skjulte dislikes) + omdirigerer YouTube Shorts + blokkerer miniatyrannonser + skips video ads
+// @description:ny       Imabwezera YouTube ku mapangidwe ake akale (pamaso pa ngodya zonse zozungulira ndi dislikes zobisika) + imalowetsa YouTube Shorts + imatseka zotsatsa za thumbnail + skips video ads
+// @description:pa       YouTube ਨੂੰ ਇਸਦੇ ਕਲਾਸਿਕ ਡਿਜ਼ਾਈਨ 'ਤੇ ਵਾਪਸ ਲਿਆਉਂਦਾ ਹੈ (ਸਾਰੇ ਗੋਲ ਕੋਨਿਆਂ ਅਤੇ ਲੁਕਵੇਂ ਡਿਸਲਾਈਕਸ ਤੋਂ ਪਹਿਲਾਂ) + YouTube ਸ਼ਾਰਟਸ ਨੂੰ ਰੀਡਾਇਰੈਕਟ ਕਰਦਾ ਹੈ + ਥੰਬਨੇਲ ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਬਲਾਕ ਕਰਦਾ ਹੈ + skips video ads
+// @description:pl       Przywraca YouTube do klasycznego wyglądu (sprzed wszystkich zaokrąglonych rogów i ukrytych dislikes) + przekierowuje YouTube Shorts + blokuje reklamy miniatur + skips video ads
+// @description:ps       YouTube خپل کلاسیک ډیزاین ته بیرته ګرځوي (د ټولو ګردو کونجونو او پټو dislikes څخه مخکې) + YouTube Shorts ته لارښوونه کوي + د تمبنېل اعلانونه بلاک کوي + skips video ads
+// @description:pt       Reverte o YouTube para o seu design clássico (antes de todos os cantos arredondados e dislikes ocultos) + redireciona YouTube Shorts + bloqueia anúncios em miniaturas + skips video ads
+// @description:pt-BR    Reverte o YouTube para o seu design clássico (antes de todos os cantos arredondados e dislikes ocultos) + redireciona YouTube Shorts + bloqueia anúncios em miniaturas + skips video ads
+// @description:ro       Revine YouTube la designul său clasic (înainte de toate colțurile rotunjite și dislikes ascunse) + redirecționează YouTube Shorts + blochează reclamele miniaturale + skips video ads
+// @description:ru       Возвращает YouTube к классическому дизайну (до всех закругленных углов и скрытых дизлайков) + перенаправляет YouTube Shorts + блокирует миниатюрные рекламы + skips video ads
+// @description:rw       Isubiza YouTube mu ishusho ryayo rya kera (mbere y'inguni zose z'umuzingi na dislikes zihishe) + yerekeza YouTube Shorts + ihagarika amatangazo ya thumbnail + skips video ads
+// @description:sg       Ramène YouTube à son design classique (avant tous les coins arrondis et les dislikes cachés) + redirige YouTube Shorts + bloque les publicités miniatures + skips video ads
+// @description:si       YouTube එහි සම්භාව්‍ය නිර්මාණයට ආපසු හරවයි (සියලු වටකුරු කොන් සහ සැඟවුණු dislikes වලට පෙර) + YouTube Shorts නැවත හරවා යවයි + සිඟිති රූප දැන්වීම් අවහිර කරයි + skips video ads
+// @description:sk       Vracia YouTube do klasického dizajnu (pred všetkými zaoblenými rohmi a skrytými dislikes) + presmerováva YouTube Shorts + blokuje miniatúrne reklamy + skips video ads
+// @description:sl       Povrne YouTube v klasično obliko (pred vsemi zaobljenimi vogali in skritimi dislikes) + preusmeri YouTube Shorts + blokira miniaturne oglase + skips video ads
+// @description:sm       Toe fa'afo'i YouTube i lona fa'atusa masani (a'o le'i o'o i tulimanu lapotopoto uma ma dislikes natia) + toe fa'asino YouTube Shorts + poloka fa'asalalauga ata laiti + skips video ads
+// @description:sn       Inodzosera YouTube kune dhizaini yayo yekare (pamberi pemakona ese akatenderera uye dislikes dzakavanzwa) + inodzosera YouTube Shorts + inodzivisa kushambadza kwemifananidzo midiki + skips video ads
+// @description:so       Ku soo celinta YouTube qaabkeedii qadiiciga ahaa (ka hor dhammaan geesaha wareegsan iyo dislikes qarsoon) + u jiheeya YouTube Shorts + xannibaysa xayeysiisyada thumbnail + skips video ads
+// @description:sq       E kthen YouTube në dizajnin e tij klasik (para të gjitha qosheve të rrumbullakosura dhe dislikes të fshehura) + ridrejton YouTube Shorts + bllokon reklamat e miniaturave + skips video ads
+// @description:sr       Враћа YouTube на његов класични дизајн (пре свих заобљених углова и скривених дислајкова) + преусмерава YouTube Shorts + блокира рекламе са минијатурама + skips video ads
+// @description:st       E khutlisetsa YouTube moetlong oa eona oa khale (pele ho li-angles tsohle tse chitja le dislikes tse patiloeng) + e lebisa YouTube Shorts + e thibela lipapatso tsa thumbnail + skips video ads
+// @description:sv       Återställer YouTube till sin klassiska design (före alla rundade hörn och dolda dislikes) + omdirigerar YouTube Shorts + blockerar miniatyrannonser + skips video ads
+// @description:sw       Inarejesha YouTube kwenye muundo wake wa awali (kabla ya pembe zote za mviringo na dislikes zilizofichwa) + inaelekeza YouTube Shorts + inazuia matangazo ya thumbnail + skips video ads
+// @description:ta       YouTube-ஐ அதன் கிளாசிக் வடிவமைப்பிற்கு மாற்றியமைக்கிறது (அனைத்து வட்டமான மூலைகளும் மறைக்கப்பட்ட விருப்பமின்மைகளும் முன்பு) + YouTube Shorts-ஐ திருப்பிவிடுகிறது + சிறுபட விளம்பரங்களைத் தடுக்கிறது + skips video ads
+// @description:te       YouTube ను దాని క్లాసిక్ డిజైన్‌కు తిరిగి మారుస్తుంది (అన్ని గుండ్రని మూలలు మరియు దాచిన డిస్‌లైక్‌ల ముందు) + YouTube షార్ట్‌లను రీడైరెక్ట్ చేస్తుంది + థంబ్‌నెయిల్ ప్రకటనలను బ్లాక్ చేస్తుంది + skips video ads
+// @description:tg       YouTube-ро ба тарроҳии классикии худ бармегардонад (пеш аз ҳама гӯшаҳои мудаввар ва dislikes пинҳон) + YouTube Shorts-ро равона мекунад + рекламаҳои эскизиро манъ мекунад + skips video ads
+// @description:th       คืน YouTube กลับสู่ดีไซน์คลาสสิก (ก่อนจะมีมุมโค้งมนและซ่อนดิสไลก์) + เปลี่ยนเส้นทาง YouTube Shorts + บล็อกโฆษณารูปขนาดย่อ + skips video ads
+// @description:ti       ንYouTube ናብቲ ክላሲካዊ ዲዛይኑ ይመልሶ (ቅድሚ ኩለን እተዀረኻ ኩርናዕቲን ተሓቢኡ ዘሎ dislikesን) + ንYouTube Shorts ይመርሕ + ንምካንያዊ ረክላማታት ይዓግት + skips video ads
+// @description:tk       YouTube-y öz klassiki dizaýnyna gaýtaryp berýär (ähli tegelek burçlardan we gizlenen dislikes-lerden öň) + YouTube Shorts-y gönükdirýär + miniatýura mahabatlaryny bloklaýar + skips video ads
+// @description:tl       Ibinabalik ang YouTube sa klasikong disenyo nito (bago ang lahat ng bilugang sulok at nakatagong dislikes) + nire-redirect ang YouTube Shorts + hinaharang ang mga thumbnail ad + skips video ads
+// @description:tn       E busetsa YouTube mo tlhamong ya yone ya bogologolo (pele ga dikhutlo tsotlhe tse di kgolokwe le dislikes tse di fitlhilweng) + e kganela YouTube Shorts + e thibela dipapatso tsa ditshwantsho tse dinnye + skips video ads
+// @description:to       Fakafoki'i YouTube ki hono fa'u 'o e founga motu'a (ki mu'a 'a e ngaahi tuliki potupotu tatau mo e dislikes fufuu) + toe 'oatu YouTube Shorts + poloka'i e ngaahi fakamatala'i ki'i fakatata + skips video ads
+// @description:tr       YouTube'u klasik tasarımına döndürür (tüm yuvarlatılmış köşeler ve gizlenmiş dislikelardan önce) + YouTube Shorts'u yönlendirir + küçük resim reklamlarını engeller + skips video ads
+// @description:tt       YouTube'ны классик дизайнына кайтара (барлык түгәрәкләнгән почмаклар һәм яшерелгән dislikesлар алдыннан) + YouTube Shorts'ны юнәлтә + миниатюра рекламаларын блоклый + skips video ads
+// @description:ug       YouTube نى كلاسسىك لايىھىسىگە قايتۇرىدۇ (بارلىق يۇمىلاق بۇلۇڭلار ۋە يوشۇرۇن dislikes دىن بۇرۇن) + YouTube Shorts نى قايتا نىشانلايدۇ + كىچىك رەسىملىك ئېلانلارنى بلوكلايدۇ + skips video ads
+// @description:uk       Повертає YouTube до класичного дизайну (до всіх закруглених кутів і прихованих дизлайків) + перенаправляє YouTube Shorts + блокує мініатюрні реклами + skips video ads
+// @description:ur       یوٹیوب کو اس کے کلاسک ڈیزائن پر واپس لاتا ہے (تمام گول کونوں اور چھپے ہوئے ڈس لائکس سے پہلے) + یوٹیوب شارٹس کو ری ڈائریکٹ کرتا ہے + تھمب نیل اشتہارات کو بلاک کرتا ہے + skips video ads
+// @description:uz       YouTube'ni klassik dizayniga qaytaradi (barcha yumaloq burchaklar va yashirin dislikeslardan oldin) + YouTube Shorts'ni qayta yo'naltiradi + kichik rasmli reklamalarni bloklaydi + skips video ads
+// @description:vi       Đưa YouTube trở lại thiết kế cổ điển (trước khi có tất cả các góc bo tròn và lượt không thích bị ẩn) + chuyển hướng YouTube Shorts + chặn quảng cáo hình thu nhỏ + skips video ads
+// @description:wo       Jël YouTube ci nosukaayam bu xóot (laata ñu tase ko ak dislikes yu nëbbu) + yóbbu YouTube Shorts + fajj far + skips video ads
+// @description:xh       Ibuyisela i-YouTube kuyilo lwayo lwakudala (phambi kwazo zonke iikona ezingqukuva kunye nee-dislikes ezifihliweyo) + yalathisa kwakhona i-YouTube Shorts + ivale iintengiso ze-thumbnail + skips video ads
+// @description:yi       ברענגט YouTube צוריק צו זיין קלאַסישן דיזיין (פֿאַר אַלע די ראַונדיד עקן און באַהאַלטענע דיסלייקס) + רידערעקץ YouTube שאָרץ + בלאַקירט מיניאַטורע אַדס + skips video ads
+// @description:yo       Mu YouTube pada si apẹrẹ ayeraye rẹ (ṣaaju gbogbo awọn igun yika ati awọn aifẹ ti o farapamọ) + awọn YouTube Shorts pada + dènà awọn ipolowo eekanna atampako + skips video ads
+// @description:zh       将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告 + skips video ads
+// @description:zh-CN    将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告 + skips video ads
+// @description:zh-HK    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告 + skips video ads
+// @description:zh-SG    将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告 + skips video ads
+// @description:zh-TW    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告 + skips video ads
+// @description:zu       Ibuyisela i-YouTube kumklamo wayo wakudala (ngaphambi kwawo wonke amakhona ayindilinga nama-dislikes afihliwe) + iqondisa kabusha i-YouTube Shorts + ivimba izikhangisi ze-thumbnail + skips video ads// @license              MIT
 // @icon                 https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@3bd207d/assets/images/icons/app/icon48.png
 // @icon64               https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@3bd207d/assets/images/icons/app/icon64.png
 // @compatible           chrome
@@ -248,6 +247,7 @@
 // @connect              cdn.jsdelivr.net
 // @connect              scriptcat.org
 // @require              https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js#sha256-S7ltnVPzgKyAGBlBG4wQhorJqYTehj5WQCrADCKJufE=
+// @require              https://cdn.jsdelivr.net/gh/tientq64/userscripts@f5c085ad02b7947c5c3a251d7ba2254aa029064d/scripts/Auto-Skip-YouTube-Ads/script.user.js#sha256-jAHmnUrUvyEzpYXVTa20wRp1e7haoEbETcp5PGzZ65E=
 // @require              https://cdn.jsdelivr.net/gh/Anarios/return-youtube-dislike@v4.0.4/Extensions/UserScript/Return%20Youtube%20Dislike.user.js#sha256-BPRgJOQfxTUmr09fqGi1dlZ14jtZfdKHhKltqmf5B+Y=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=

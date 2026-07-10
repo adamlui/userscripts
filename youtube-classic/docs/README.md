@@ -60,6 +60,8 @@
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
     <p><i>&nbsp;After:</i><br><br>
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/after.png"></li><br>
+  <li><b>Skips video ads</b> so you can watch videos faster<br>
+    (using Tran Quang Tien's <a href="https://github.com/tientq64/userscripts/tree/main/scripts/Auto-Skip-YouTube-Ads">Auto Skip YouTube Ads</a>)</li><br>
 </ul>
 
 <br>
