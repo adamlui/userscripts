@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.7.9
+// @version              2026.7.9.1
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads
@@ -673,14 +673,15 @@
     removeEventListener('message', handleMsgResp)
 
     settings.load(Object.keys(settings.controls))
-    gmToolbarMenu.register() ; if (env.extensionActive) return
+    gmToolbarMenu.register()
+    if (env.extensionActive) return
     if (app.config.disableShorts) sync.shorts.redir()
     styles.update({ keys: Object.keys(styles).filter(key => styles[key].autoAppend) })
     sync.headerLogo()
-    dom.get.loadedElem(app.selectors.yt.masthead).then(masthead => {
+    dom.get.loadedElem(app.selectors.yt.masthead).then(masthead =>
         new MutationObserver(sync.headerLogo).observe(masthead, {
             attributes: true, subtree: true, attributeFilter: ['dark'] })
-    })
+    )
     expFlags.init({ reduceAnimations: app.config.reduceAnimations, presetFlags: app.ui.expFlags })
     if (app.config.idlePrevention) sync.idle.prevent()
 
