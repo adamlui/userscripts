@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.7.10.5
+// @version              2026.7.10.6
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail ads + skips video ads
@@ -235,7 +235,8 @@
 // @description:zh-HK    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告 + skips video ads
 // @description:zh-SG    将 YouTube 恢复为经典设计（在圆角和隐藏的不喜欢之前）+ 重定向 YouTube Shorts + 屏蔽缩略图广告 + skips video ads
 // @description:zh-TW    將 YouTube 還原為經典設計（在圓角與隱藏的不喜歡之前）+ 重新導向 YouTube Shorts + 封鎖縮圖廣告 + skips video ads
-// @description:zu       Ibuyisela i-YouTube kumklamo wayo wakudala (ngaphambi kwawo wonke amakhona ayindilinga nama-dislikes afihliwe) + iqondisa kabusha i-YouTube Shorts + ivimba izikhangisi ze-thumbnail + skips video ads// @license              MIT
+// @description:zu       Ibuyisela i-YouTube kumklamo wayo wakudala (ngaphambi kwawo wonke amakhona ayindilinga nama-dislikes afihliwe) + iqondisa kabusha i-YouTube Shorts + ivimba izikhangisi ze-thumbnail + skips video ads
+// @license              MIT
 // @icon                 https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@3bd207d/assets/images/icons/app/icon48.png
 // @icon64               https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@3bd207d/assets/images/icons/app/icon64.png
 // @compatible           chrome
