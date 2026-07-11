@@ -458,7 +458,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
         <tr> <!-- ORION iOS/iPadOS -->
             <td> <!-- Browser -->
                 <a href="https://apps.apple.com/app/orion-browser-by-kagi/id1484498200" title="Orion">
-                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browse4rs/orion/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/orion/icon16.png"
                          width=16 alt="[安装]"></a>
                 Orion (iOS, iPadOS)
             </td>
