@@ -14,7 +14,7 @@
 ### Userscripts that utilize the astounding AI of ChatGPT or enhances its UX.
 
 ![](https://img.shields.io/badge/Users-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
-[![License: MIT](https://img.shields.io/badge/License-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](../LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/docs/LICENSE.md)
 [![Powered by chatgpt.js](https://img.shields.io/badge/Powered_by-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/KudoAI/chatgpt.js?utm_source=userscripts&utm_content=github_shield)
 <img src="https://img.shields.io/badge/jsDelivr_Requests-600,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
@@ -64,7 +64,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Infinity ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/#readme) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="Featured by Google" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT Infinity ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/#readme) &nbsp;<a href="https://chromewebstore.google.com/detail/chatgpt-infinity/amikeononomkhphopbflomhnmdijjpmb?utm_source=github&utm_medium=referral&utm_content=userscripts-readme"><img alt="Featured by Google" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > Generate endless answers from all-knowing ChatGPT (in any language!)
 <br>[Install](https://scriptcat.org/scripts/code/6419/chatgpt-infinity.user.js) /

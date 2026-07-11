@@ -81,7 +81,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
         <tr> <!-- CHROME/CHROMIUM desktop -->
             <td> <!-- Browser -->
                 <a href="https://www.chrome.com" title="Chrome">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/chrome/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/chrome/icon16.png"
                          width=16 alt="[安装]"></a>
                 Chrome、开发版本或基于 Chromium 的浏览器 (Windows, macOS, Linux)
             </td>
@@ -108,44 +108,44 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             </td>
             <td> <!-- Install browser -->
                 <a href="https://www.chrome.com" title="Chrome">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/chrome/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/chrome/icon16.png"
                          width=16 alt="[Chrome]"></a>
                 <a href="https://www.google.com/chrome/beta/" title="Chrome Beta">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/chrome/beta/icon16.svg"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/chrome/beta/icon16.svg"
                          width=16 alt="[Chrome Beta]"></a>
                 <a href="https://www.google.com/chrome/dev/" title="Chrome Dev">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/chrome/dev/icon16.svg"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/chrome/dev/icon16.svg"
                          width=16 alt="[Chrome Dev]"></a>
                 <a href="https://www.google.com/chrome/canary/" title="Chrome Canary">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/chrome/canary/icon16.svg"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/chrome/canary/icon16.svg"
                          width=16 alt="[Chrome Canary]"></a>
                 <a href="https://www.opera.com" title="Opera">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/opera/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/opera/icon16.png"
                          width=16 alt="[Opera]"></a><sup>3</sup>
                 <a href="https://www.opera.com/gx" title="Opera GX">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/opera/gx/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/opera/gx/icon16.png"
                          width=16 alt="[Opera GX]"></a><sup>3</sup>
                 <a href="https://www.opera.com/air" title="Opera Air">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/opera/air/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/opera/air/icon16.png"
                          width=16 alt="[Opera Air]"></a><sup>3</sup>
                 <a href="https://brave.com" title="Brave">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/brave/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/brave/icon16.png"
                          width=16 alt="[Brave]"></a>
                 <a href="https://vivaldi.com" title="Vivaldi">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/vivaldi/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/vivaldi/icon16.png"
                          width=16 alt="[Vivaldi]"></a>
                 <a href="https://ghostbrowser.com" title="Ghost Browser">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/ghost/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/ghost/icon16.png"
                          width=16 alt="[Ghost Browser]"></a>
                 <a href="https://whale.naver.com" title="Whale">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/whale/tiled/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/whale/tiled/icon16.png"
                          width=16 alt="[Whale]"></a>
             </td>
         </tr>
         <tr> <!-- SAFARI -->
             <td> <!-- Browser -->
                 <a href="https://www.apple.com/safari/" title="Safari">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/safari/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/safari/icon16.png"
                          width=16 alt="[安装]"></a>
                 Safari (macOS, iOS, iPadOS, visionOS)
             </td>
@@ -166,14 +166,14 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             </td>
             <td> <!-- Install browser -->
                 <a href="https://www.apple.com/safari/" title="Safari">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/safari/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/safari/icon16.png"
                          width=16 alt="[Safari]"></a>
             </td>
         </tr>
         <tr> <!-- EDGE desktop -->
             <td> <!-- Browser -->
                 <a href="https://www.microsoft.com/edge" title="Edge">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/icon16.png"
                          width=16 alt="[安装]"></a>
                 Edge 或开发版本 (Windows, macOS, Linux)
             </td>
@@ -206,23 +206,23 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             </td>
             <td> <!-- Install browser -->
                 <a href="https://www.microsoft.com/edge/download" title="Edge">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/icon16.png"
                          width=16 alt="[Edge]"></a>
                 <a href="https://www.microsoft.com/edge/download/insider" title="Edge Beta">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/beta/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/beta/icon16.png"
                          width=16 alt="[Edge Beta]"></a>
                 <a href="https://www.microsoft.com/edge/download/insider" title="Edge Dev">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/dev/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/dev/icon16.png"
                          width=16 alt="[Edge Dev]"></a>
                 <a href="https://www.microsoft.com/edge/download/insider" title="Edge Canary">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/canary/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/canary/icon16.png"
                          width=16 alt="[Edge Canary]"></a>
             </td>
         </tr>
         <tr> <!-- EDGE Android -->
             <td> <!-- Browser -->
                 <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx" title="Android 版 Edge">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/icon16.png"
                          width=16 alt="[安装]"></a>
                 Edge 或开发版本 (Android)
             </td>
@@ -239,26 +239,26 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Install browser -->
                 <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx"
                    title="Android 版 Edge">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/icon16.png"
                              width=16 alt="[Android 版 Edge]"></a>
                 <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx.beta"
                    title="Android 版 Edge Beta">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/beta/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/beta/icon16.png"
                              width=16 alt="[Android 版 Edge Beta]"></a>
                 <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx.dev"
                    title="Android 版 Edge Dev">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/dev/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/dev/icon16.png"
                              width=16 alt="[Android 版 Edge Dev]"></a>
                 <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx.canary"
                    title="Android 版 Edge Canary">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/edge/canary/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/edge/canary/icon16.png"
                              width=16 alt="[Android 版 Edge Canary]"></a>
             </td>
         </tr>
         <tr> <!-- FIREFOX/GECKO desktop -->
             <td> <!-- Browser -->
                 <a href="https://www.firefox.com" title="Firefox">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/icon16.png"
                          width=16 alt="[安装]"></a>
                 Firefox、开发版本或基于 Gecko 的浏览器 (Windows, macOS, Linux)
             </td>
@@ -285,26 +285,26 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             </td>
             <td> <!-- Install browser -->
                 <a href="https://www.firefox.com" title="Firefox">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/icon16.png"
                          width=16 alt="[Firefox]"></a>
                 <a href="https://download.mozilla.org/?product=firefox-beta-stub" title="Firefox Beta">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/beta/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/beta/icon16.png"
                          width=16 alt="[Firefox Beta]"></a>
                 <a href="https://download.mozilla.org/?product=firefox-nightly-stub" title="Firefox Nightly">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/nightly/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/nightly/icon16.png"
                          width=16 alt="[Firefox Nightly]"></a>
                 <a href="https://www.waterfox.net" title="Waterfox">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/waterfox/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/waterfox/icon16.png"
                          width=16 alt="[Waterfox]"></a>
                 <a href="https://librewolf.net" title="LibreWolf">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/librewolf/icon16.svg"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/librewolf/icon16.svg"
                          width=16 alt="[LibreWolf]"></a>
             </td>
         </tr>
         <tr> <!-- FIREFOX/GECKO Android -->
             <td> <!-- Browser -->
                 <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox" title="Android 版 Firefox">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/icon16.png"
                          width=16 alt="[安装]"></a>
                 Firefox、开发版本或基于 Gecko 的浏览器 (Android)
             </td>
@@ -332,38 +332,38 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             <td> <!-- Install browser -->
                 <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox"
                    title="Android 版 Firefox">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/icon16.png"
                              width=16 alt="[Android 版 Firefox]"></a>
                 <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta"
                    title="Android 版 Firefox Beta">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/beta/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/beta/icon16.png"
                              width=16 alt="[Android 版 Firefox Beta]"></a>
                 <a href="https://play.google.com/store/apps/details?id=org.mozilla.fenix"
                    title="Android 版 Firefox Nightly">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/firefox/nightly/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/firefox/nightly/icon16.png"
                              width=16 alt="[Android 版 Firefox Nightly]"></a>
                 <a href="https://play.google.com/store/apps/details?id=net.waterfox.android.release"
                    title="Android 版 Waterfox">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/waterfox/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/waterfox/icon16.png"
                              width=16 alt="[Android 版 Waterfox]"></a>
                 <a href="https://f-droid.org/packages/org.mozilla.fennec_fdroid/"
                    title="Fennec">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/fennec/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/fennec/icon16.png"
                              width=16 alt="[Fennec]"></a>
                 <a href="https://github.com/fork-maintainers/iceraven-browser/releases"
                    title="Iceraven">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/iceraven/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/iceraven/icon16.png"
                              width=16 alt="[Iceraven]"></a>
                 <a href="https://gitlab.com/ironfox-oss/IronFox/-/releases"
                    title="IronFox">
-                        <img src="https://assets.aiwebextensions.com/images/icons/browsers/ironfox/icon16.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/ironfox/icon16.png"
                              width=16 alt="[IronFox]"></a>
             </td>
         </tr>
         <tr> <!-- QQ BROWSER desktop -->
             <td> <!-- Browser -->
                 <a href="https://browser.qq.com" title="QQ Browser">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/qq/gradient-bg/bluer/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/qq/gradient-bg/bluer/icon16.png"
                          width=16 alt="[安装]"></a>
                 QQ浏览器 (Windows, macOS)
             </td>
@@ -372,14 +372,14 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
             </td>
             <td> <!-- Install browser -->
                 <a href="https://browser.qq.com" title="QQ浏览器">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/qq/gradient-bg/bluer/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/qq/gradient-bg/bluer/icon16.png"
                          width=16 alt="[QQ浏览器]"></a>
             </td>
         </tr>
         <tr> <!-- MISES mobile -->
             <td> <!-- Browser -->
                 <a href="https://www.mises.site" title="Mises">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/mises/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/mises/icon16.png"
                          width=16 alt="[安装]"></a>
                 Mises (Android, iOS, iPadOS)
             </td>
@@ -402,7 +402,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <details>
                     <summary>显示二维码</summary>
                     <a href="https://www.mises.site/download" title="下载 Mises">
-                        <img src="https://assets.aiwebextensions.com/images/qr-codes/browsers/mises/download-page/with-icon/purple.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/qr-codes/browsers/mises/download-page/with-icon/purple.png"
                              width=125 alt="[下载 Mises]"></a>
                 </detail>
             </td>
@@ -410,7 +410,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
         <tr> <!-- LEMUR Android/iOS -->
             <td> <!-- Browser -->
                 <a href="https://www.lemurbrowser.com" title="Lemur">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/lemur/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/lemur/icon16.png"
                          width=16 alt="[安装]"></a>
                 Lemur (Android, iOS)
             </td>
@@ -426,7 +426,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <details>
                     <summary>显示二维码</summary>
                     <a href="https://www.lemurbrowser.com" title="Lemur">
-                        <img src="https://assets.aiwebextensions.com/images/qr-codes/browsers/lemur/homepage/with-icon/teal.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/qr-codes/browsers/lemur/homepage/with-icon/teal.png"
                              width=125 alt="[Lemur]"></a>
                 </details>
             </td>
@@ -434,7 +434,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
         <tr> <!-- QUETTA mobile -->
             <td> <!-- Browser -->
                 <a href="https://www.quetta.net" title="Quetta">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browsers/quetta/circled/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browsers/quetta/circled/icon16.png"
                          width=16 alt="[安装]"></a>
                 Quetta (Android, iOS, iPadOS)
             </td>
@@ -450,7 +450,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                 <details>
                     <summary>显示二维码</summary>
                     <a href="https://www.quetta.net" title="Quetta">
-                        <img src="https://assets.aiwebextensions.com/images/qr-codes/browsers/quetta/homepage/with-icon/red.png"
+                        <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/qr-codes/browsers/quetta/homepage/with-icon/red.png"
                              width=125 alt="[Quetta]"></a>
                 </detail>
             </td>
@@ -458,7 +458,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
         <tr> <!-- ORION iOS/iPadOS -->
             <td> <!-- Browser -->
                 <a href="https://apps.apple.com/app/orion-browser-by-kagi/id1484498200" title="Orion">
-                    <img src="https://assets.aiwebextensions.com/images/icons/browse4rs/orion/icon16.png"
+                    <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/icons/browse4rs/orion/icon16.png"
                          width=16 alt="[安装]"></a>
                 Orion (iOS, iPadOS)
             </td>
@@ -488,7 +488,7 @@ Greasemonkey 用户脚本可与以下浏览器一起使用：
                     <summary>显示二维码</summary>
                     <a href="https://apps.apple.com/app/orion-browser-by-kagi/id1484498200"
                        title="Apple App Store 上的 Orion">
-                            <img src="https://assets.aiwebextensions.com/images/qr-codes/browsers/orion/apple-app-store/with-icon/purple.png"
+                            <img src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@23126f5/assets/images/qr-codes/browsers/orion/apple-app-store/with-icon/purple.png"
                                  width=125 alt="[Apple App Store 上的 Orion]"></a>
                 </details>
             </td>

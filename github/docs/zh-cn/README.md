@@ -11,7 +11,7 @@
 
 # <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/sites/github/icon32.png"> GitHub 用户脚本 &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=检查这些%20GitHub%20用户脚本%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
 
-[![许可证: MIT](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](./LICENSE.md)
+[![许可证: MIT](https://img.shields.io/badge/许可证-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/docs/zh-cn/LICENSE.md)
 
 增強 GitHub 用戶體驗的用戶腳本。 运行这些脚本需要一个用户脚本管理器，例如 [Tampermonkey](https://www.tampermonkey.net/)。
 

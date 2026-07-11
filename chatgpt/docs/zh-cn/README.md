@@ -14,7 +14,7 @@
 ### 利用 ChatGPT 惊人的 AI 或增强其 UX 的用户脚本。
 
 ![](https://img.shields.io/badge/用户-200,000+-blue?logo=weightsandbiases&logoColor=white&labelColor=464646&style=for-the-badge)
-[![许可证: MIT](https://img.shields.io/badge/许可证-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](LICENSE.md)
+[![许可证: MIT](https://img.shields.io/badge/许可证-MIT-f99b27.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/docs/zh-cn/LICENSE.md)
 [![供电 chatgpt.js](https://img.shields.io/badge/供电-chatgpt.js-black?logo=gamejolt&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/KudoAI/chatgpt.js?utm_source=userscripts&utm_content=github_shield)
 <img src="https://img.shields.io/badge/jsDelivr_请求-600,000+/month-2bbbd8.svg?logo=jsdelivr&logoColor=white&labelColor=464646&style=for-the-badge">
 
@@ -64,7 +64,7 @@
 [自述文件](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-auto-talk/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT无限 ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) &nbsp;<a href="https://chrome.chatgptinfinity.com"><img alt="在 Google 上推荐" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT无限 ∞](https://github.com/adamlui/userscripts/tree/master/chatgpt/chatgpt-infinity/docs/zh-cn/#readme) &nbsp;<a href="https://chromewebstore.google.com/detail/chatgpt-infinity/amikeononomkhphopbflomhnmdijjpmb?utm_source=github&utm_medium=referral&utm_content=userscripts-readme"><img alt="在 Google 上推荐" height=20 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-infinity@7bc796d/assets/images/badges/chrome-web-store/featured-by-google/badge500x91.png"></a>
 
 > 从无所不知的 ChatGPT 生成无穷无尽的答案 (用任何语言!)
 <br>[安装](https://scriptcat.org/scripts/code/6419/chatgpt-infinity.user.js) /

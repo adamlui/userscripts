@@ -11,7 +11,7 @@
 
 # <img width=25 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/sites/github/icon32.png"> GitHub userscripts &nbsp;[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20these%20%23GitHub%20userscripts%20out%21&url=https://github.com/adamlui/userscripts/tree/master/github&hashtags=greasemonkey,userscript,javascript,github)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](./LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge)](https://github.com/adamlui/userscripts/blob/master/docs/LICENSE.md)
 
 Userscripts that enhance the GitHub user experience. A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is required to run these scripts.
 
