@@ -40,7 +40,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#-github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
 
 > Adds star history chart to sidebar of GitHub repos.
 <br>[Install](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
@@ -61,7 +61,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7072ae4/assets/images/icons/app/icon32.png"> [YouTube Classic](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#youtube"><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
+### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7072ae4/assets/images/icons/app/icon32.png"> [YouTube Classic](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#-youtube"><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://scriptcat.org/scripts/code/6345/youtube-classic.user.js) /

@@ -40,7 +40,7 @@
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#-github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
 
 > 在 GitHub 仓库的侧边栏添加 Star 历史图表。
 <br>[安装](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
@@ -61,7 +61,7 @@
 [自述文件](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7072ae4/assets/images/icons/app/icon32.png"> [YouTube 经典版](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#youtube"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
+### <img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7072ae4/assets/images/icons/app/icon32.png"> [YouTube 经典版](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#-youtube"><img alt="在 Awesome 中提及" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > 将 YouTube 恢复为经典设计 (在所有圆角和隐藏的不喜欢之前) + 重定向 YouTube Shorts。
 <br>[安装](https://scriptcat.org/scripts/code/6345/youtube-classic.user.js) /
