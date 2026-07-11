@@ -40,11 +40,11 @@
 <br>[查看脚本](https://github.com/adamlui/userscripts/tree/master/chatgpt/docs/zh-cn/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
 
 > 在 GitHub 仓库的侧边栏添加 Star 历史图表。
 <br>[安装](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) /
+[自述文件](https://github.com/adamlui/userscripts/tree/master/github-star-history/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [隐藏论坛图片](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
