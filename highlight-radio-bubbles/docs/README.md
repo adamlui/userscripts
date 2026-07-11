@@ -4,7 +4,7 @@
 
 Makes bubbles bigger and more colorful when brought to focus using Tab key.
 
-<a href="https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts @50c7ad3/assets/images/buttons/greasy-fork/help-button.svg"></a>
+<a href="https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="https://greasyfork.org/help/installing-user-scripts"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/buttons/greasy-fork/help-button.svg"></a>
 
 [Discuss](https://github.com/adamlui/userscripts/discussions) / [Get support](https://github.com/adamlui/userscripts/issues) / [Contact author](https://github.com/adamlui)
 
