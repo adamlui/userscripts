@@ -60,7 +60,7 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 [Readme](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img src="https://i.imgur.com/9vzrMBf.png" width=23> [YouTube Classic](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#youtube"><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
+### <img width=23 src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@7072ae4/assets/images/icons/app/icon32.png"> [YouTube Classic](https://github.com/adamlui/userscripts/tree/master/youtube-classic/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts/#youtube"><img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@e8fc12f/assets/images/badges/awesome/mentioned-in/rounded-badge.svg"></a>
 
 > Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts.
 <br>[Install](https://scriptcat.org/scripts/code/6345/youtube-classic.user.js) /
