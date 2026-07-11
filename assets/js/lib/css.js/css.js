@@ -1,5 +1,5 @@
 // Copyright © 2026 Adam Lui (https://github.com/adamlui) under the MIT license
-// Source: https://github.com/adamlui/ai-web-extensions/blob/main/assets/js/lib/css.js/css.js
+// Source: https://github.com/adamlui/userscripts/blob/master/assets/js/lib/css.js/css.js
 
 window.css = {
 
