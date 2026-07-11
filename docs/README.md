@@ -40,10 +40,11 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/sites/github/icon32.png"> [GitHub scripts](https://github.com/adamlui/userscripts/tree/master/github/#readme)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Star History ⭐](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) &nbsp;<a href="https://github.com/awesome-scripts/awesome-userscripts#github"><img src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/badges/awesome/mentioned-badge.svg"></a>
 
-> Userscripts that enhance the GitHub experience.
-<br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github/#readme) /
+> Adds star history chart to sidebar of GitHub repos.
+<br>[Install](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) /
+[Readme](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
