@@ -2,7 +2,7 @@
 
 # <img width=28 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/icons/github/icon32.png"> GitHub Star History ⭐
 
-<a href="https://github.com/adamlui/github-star-history/blob/main/LICENSE.md">
+<a href="https://github.com/adamlui/github-star-history/blob/main/docs/LICENSE.md">
     <img height=31 alt = "[License: MIT]" src="https://img.shields.io/badge/License-MIT-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
 <a href="https://www.codefactor.io/repository/github/adamlui/github-star-history">
     <img height=31 alt = "[CodeFactor grade]" src="https://img.shields.io/codefactor/grade/github/adamlui/github-star-history?label=Code+Quality&logo=codefactor&logoColor=white&labelColor=464646&color=b5fc7b&style=for-the-badge"></a>
