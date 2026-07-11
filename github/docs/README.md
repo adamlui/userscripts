@@ -24,13 +24,6 @@ Userscripts that enhance the GitHub user experience. A userscript manager such a
 [Readme](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub Widescreen 🖥️](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen/#readme)
-
-> Auto-hides obtrusive side panels on GitHub.
-<br>[Install](https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js) /
-[Readme](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen/#readme) /
-[Discuss](https://github.com/adamlui/userscripts/discussions)
-
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a>

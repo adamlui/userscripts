@@ -24,13 +24,6 @@
 [自述文件](https://github.com/adamlui/userscripts/tree/master/github/github-star-history/#readme) /
 [讨论](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@ec8ad87/assets/images/icons/sites/github/icon32.png"> [GitHub 宽银幕 🖥️](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen/#readme)
-
-> 自动隐藏 GitHub 上引人注目的侧面板。
-<br>[安装](https://raw.githubusercontent.com/adamlui/github-widescreen/main/greasemonkey/github-widescreen.user.js) /
-[自述文件](https://github.com/adamlui/userscripts/tree/master/github/github-widescreen/#readme) /
-[讨论](https://github.com/adamlui/userscripts/discussions)
-
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
 <a href="https://github.com/adamlui/userscripts">**更多用户脚本**</a>
