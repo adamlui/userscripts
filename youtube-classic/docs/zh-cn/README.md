@@ -4,7 +4,7 @@
     <h6>
         <picture>
             <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
+            <img width=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;简体中文 |
         <a href="https://github.com/adamlui/youtube-classic/#readme">English</a> |
