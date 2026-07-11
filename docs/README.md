@@ -3,8 +3,8 @@
 <div align="right">
     <h6>
         <picture>
-            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/white/icon32.svg">
-            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/earth/black/icon32.svg">
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/earth/white/icon32.svg">
+            <img height=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/earth/black/icon32.svg">
         </picture>
         &nbsp;English |
         <a href="https://github.com/adamlui/userscripts/tree/master/docs/zh-cn/#readme">简体中文</a>
@@ -27,33 +27,33 @@ A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) is re
 
 <img height=10px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@becd6e1/assets/images/separators/gradient-aqua.png">
 
-### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/quora/icon32.png" width=23> [Block Quora Poe](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme)
+### <img src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/sites/quora/icon32.png" width=23> [Block Quora Poe](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme)
 
 > Blocks low-quality AI answers from appearing on Quora.
 <br>[Install](https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/block-quora-poe/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/openai/white/icon32.png"><img width=21 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/openai/black/icon32.png"></picture> [ChatGPT scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme)
 
 > Userscripts that utilize the astounding AI of ChatGPT.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/chatgpt/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/assets/images/icons/sites/github/icon32.png"> [GitHub scripts](https://github.com/adamlui/userscripts/tree/master/github/#readme)
+### <img width=20 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/sites/github/icon32.png"> [GitHub scripts](https://github.com/adamlui/userscripts/tree/master/github/#readme)
 
 > Userscripts that enhance the GitHub experience.
 <br>[View scripts](https://github.com/adamlui/userscripts/tree/master/github/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/white/icon32.png"><img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/hide-forum-images/assets/images/icons/private-eye/black/icon32.png"></picture> [Hide Forum Images](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme)
 
 > Hides images/videos from XenForo, vBulletin & Discourse forums.
 <br>[Install](https://scriptcat.org/scripts/code/6907/hide-forum-images.user.js) /
 [Readme](https://github.com/adamlui/userscripts/tree/master/hide-forum-images/#readme) /
 [Discuss](https://github.com/adamlui/userscripts/discussions)
 
-### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme)
+### <img width=22 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon32.png"> [Highlight Radio Bubbles](https://github.com/adamlui/userscripts/tree/master/highlight-radio-bubbles/#readme)
 
 > Makes bubbles bigger and more colorful when brought to focus using Tab key.
 <br>[Install](https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js) /
