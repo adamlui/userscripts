@@ -1,7 +1,12 @@
 <a id="top"></a>
 
 <div align="right">
-    <h6>English |
+    <h6>
+        <picture>
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/earth/white/icon32.svg">
+            <img width=14 src="https://cdn.jsdelivr.net/gh/adamlui/userscripts@50c7ad3/assets/images/icons/earth/black/icon32.svg">
+        </picture>
+        &nbsp;English |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-cn/#readme">簡體中文</a> |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-tw/#readme">繁体中文</a>
     </h6>
