@@ -2,6 +2,10 @@
 
 <div align="right">
     <h6>
+        <picture>
+            <source type="image/svg+xml" media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/white/icon32.svg">
+            <img width=14 src="https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@d11d2ee/assets/images/icons/earth/black/icon32.svg">
+        </picture>
         &nbsp;简体中文 |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/#readme">English</a> |
         <a href="https://github.com/adamlui/youtube-classic/tree/main/docs/zh-tw/#readme">繁体中文</a>
@@ -11,10 +15,10 @@
 <div align="center">
 
 <h1>
-    <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
-        <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
-    </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/darkmode/logo535x75.png">
+    <img src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/logos/youtube-classic/lightmode/logo535x75.png">
+  </picture>
 </h1>
 
 <a href="https://scriptcat.org/script-show-page/6345">
