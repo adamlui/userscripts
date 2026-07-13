@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.7.12.1
+// @version             2026.7.12.2
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -687,8 +687,8 @@
             )
 
             // Format text
-            aboutModal.querySelector('h2').style.cssText = `
-                text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0`
+            aboutModal.querySelector('h2').style.cssText =
+                'text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0'
             aboutModal.querySelector('p').style.cssText = `
                 text-align: center ; overflow-wrap: anywhere ; margin: ${ isCompact ? '6px 0 -16px' : '3px 0 29px' }`
 
