@@ -13,12 +13,14 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.7.12
+// @version             2026.7.12.1
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
 // @exclude             *://*.quora.com/answer/*
 // @exclude             *://*.quora.com/profile/*
+// @connect             scriptcat.org
+// @require             https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/css.js/dist/css.min.js#sha256-zf9s8C0cZ/i+gnaTIUxa0+RpDYpsJVlyuV5L2q4KUdA=
 // @require             https://cdn.jsdelivr.net/gh/adamlui/userscripts@ff2baba/assets/js/lib/dom.js/dist/dom.min.js#sha256-nTc2by3ZAz6AR7B8fOqjloJNETvjAepe15t2qlghMDo=
 // @resource rpgCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@4a657b1/assets/styles/rising-particles/dist/gray.min.css#sha256-48sEWzNUGUOP04ur52G5VOfGZPSnZQfrF3szUr4VaRs=
 // @resource rpwCSS     https://cdn.jsdelivr.net/gh/adamlui/ai-web-extensions@4a657b1/assets/styles/rising-particles/dist/white.min.css#sha256-6xBXczm7yM1MZ/v0o1KVFfJGehHk47KJjq8oTktH4KE=
@@ -41,6 +43,8 @@
 (async () => {
     'use strict'
 
+    window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
+
     localStorage.alertQueue = '[]'
     localStorage.notifyProps = JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }})
 
@@ -58,14 +62,16 @@
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
     // Init APP data
     window.app = {
-        name: 'Block Quora Poe', version: GM_info.script.version, configKeyPrefix: 'quoraXUI',
+        name: 'Block Quora Poe', version: GM_info.script.version, configKeyPrefix: 'quoraXUI', slug: 'block-quora-poe',
         author: { name: 'Adam Lui', url: 'https://github.com/adamlui' },
         urls: {
             donate: { 'ko-fi': 'https://ko-fi.com/adamlui' },
+            download: { gm: 'https://scriptcat.org/scripts/code/6906/block-quora-poe.user.js' },
             github: 'https://github.com/adamlui/userscripts/tree/master/block-quora-poe',
-            relatedUserscripts: 'https://github.com/adamlui/userscripts',
             review: { scriptcat: 'https://scriptcat.org/script-show-page/6906/comment' },
-            support: 'https://github.com/adamlui/userscripts/issues'
+            support: 'https://github.com/adamlui/userscripts/issues',
+            update: { gm: 'https://scriptcat.org/scripts/code/6906/block-quora-poe.meta.js' },
+            userscripts: 'https://github.com/adamlui/userscripts'
         }
     }
 
@@ -651,62 +657,66 @@
         get class() { return `${app.slug}-modal` },
 
         about() { // requires <app|env>
-            const { browser: { isPortrait }, ui: { scheme }} = env
+            const { browser: { isCompact }, ui: { scheme }} = env
 
             // Init buttons
             const modalBtns = [
                 function getSupport(){},
-                function donate(){},
-                function moreUserscripts(){}
+                function rateUs(){},
+                function moreUserscripts(){},
+                function checkForUpdates(){ updateCheck() }
             ]
 
             // Show modal
             const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ;'
-                              + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
+                            + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
-                'Block Quora Poe', // title
+                `${app.name}`, // title
                 `<span style="${labelStyles}">🧠 Author:</span> `
-                    + `<a href="${app.author.url}">${app.author.name}</a>\n`
+                    + `<a href="${ app.author?.url || app.authors[0]?.url }" target="_blank" rel="nopener">${
+                        app.author.name}</a> & contributors\n`
                 + `<span style="${labelStyles}">🏷️ Version:</span> `
                     + `<span class="about-em">${app.version}</span>\n`
-                + `<span style="${labelStyles}">📜 Open source code:</span> `
+                + `<span style="${labelStyles}">📜 Open Source code:</span> `
                     + `<a href="${app.urls.github}" target="_blank" rel="nopener">`
                         + app.urls.github + '</a>\n'
                 + `<span style="${labelStyles}">🚀 Latest changes:</span> `
-                    + '<a href="https://github.com/adamlui/userscripts/commits/master/block-quora-poe"'
-                      + ' target="_blank" rel="nopener">'
-                            + 'https://github.com/adamlui/userscripts/commits/master/block-quora-poe</a>\n',
-                modalBtns, '', 681
+                    + `<a href="${app.urls.userscripts}/commits/master/${app.slug}" target="_blank" rel="nopener">`
+                        + `${app.urls.userscripts}/commits/master/${app.slug}</a>`,
+                modalBtns, '', 747
             )
 
             // Format text
-            aboutModal.querySelector('h2').style.cssText = (
-                'text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0' )
+            aboutModal.querySelector('h2').style.cssText = `
+                text-align: center ; font-size: 51px ; line-height: 46px ; padding: 15px 0`
             aboutModal.querySelector('p').style.cssText = `
-                text-align: center ; overflow-wrap: anywhere ; margin: ${ isPortrait ? '6px 0 -16px' : '3px 0 29px' }`
+                text-align: center ; overflow-wrap: anywhere ; margin: ${ isCompact ? '6px 0 -16px' : '3px 0 29px' }`
 
             // Hack buttons
             aboutModal.querySelector('.modal-buttons').style.justifyContent = 'center'
             aboutModal.querySelectorAll('button').forEach(btn => {
-                btn.style.cssText = 'min-width: 136px ; text-align: center ; height: 58px'
+                btn.style.cssText =
+                    `min-width: 136px ; text-align: center ; height: ${ this.runtime == 'greasemonkey' ? 58 : 55 }px`
 
                 // Replace link buttons w/ clones that don't dismiss modal
-                if (/support|donate|userscripts/i.test(btn.textContent)) {
+                if (/support|rate|userscripts/i.test(btn.textContent)) {
                     btn.replaceWith(btn = btn.cloneNode(true))
                     btn.onclick = () => this.safeWinOpen(
-                        /support/i.test(btn.textContent) ? app.urls.support
-                      : /donate/i.test(btn.textContent) ? app.urls.donate['ko-fi']
-                      : app.urls.relatedUserscripts
+                        btn.textContent.includes('Get Support') ? app.urls.support
+                      : btn.textContent.includes('Rate Us') ? app.urls.review.scriptcat
+                      : app.urls.userscripts
                     )
                 }
 
                 // Prepend emoji + localize labels
-                if (/support/i.test(btn.textContent))
-                    btn.textContent = `🧠 Get Support`
-                else if (/donate/i.test(btn.textContent))
-                    btn.textContent = `🤝 Donate`
+                if (/updates/i.test(btn.textContent))
+                    btn.textContent = '🚀 Check for Updates'
+                else if (/support/i.test(btn.textContent))
+                    btn.textContent = '🧠 Get Support'
+                else if (/rate/i.test(btn.textContent))
+                    btn.textContent = '⭐ Rate Us'
                 else if (/userscripts/i.test(btn.textContent))
-                    btn.textContent = `🤖 More Userscripts`
+                    btn.textContent = '🤖 More Userscripts'
 
                 // Hide Dismiss button
                 else btn.style.display = 'none'
@@ -722,10 +732,10 @@
             return alert
         },
 
-        init(modal) { // requires dom.js
+        init(modal) { // requires css.js
             if (!this.styles) this.stylize() // to init/append stylesheet
             modal.classList.add(this.class) ; modal.parentNode.classList.add(`${this.class}-bg`)
-            dom.addRisingParticles(modal)
+            css.addRisingParticles(modal)
         },
 
         observeRemoval(modal, modalType, modalSubType) { // to maintain stack for proper nav
@@ -795,6 +805,41 @@
             + ( !isMobile ? `.${this.class} .modal-buttons { margin-left: -13px !important }` : '' )
             + `.about-em { color: ${ scheme == 'dark' ? 'white' : 'green' } !important }`
             )
+        },
+
+        update: {
+            width: 377,
+
+            available() {
+
+                // Show modal
+                const updateAvailModal = modals.alert('🚀 Update available!', // title
+                    `An update to ${app.name} ` // msg
+                        + `(v${app.latestVer}) is available!  `
+                        + '<a target="_blank" rel="noopener" style="font-size: 0.7rem" href="'
+                            + `${app.urls.userscripts}/commits/master/${app.slug}/${app.slug}.user.js`
+                        + '">View changes</a>',
+                    function update() { // button
+                        modals.safeWinOpen(`${app.urls.download.gm}?t=${Date.now()}`)
+                    }, '', modals.update.width
+                )
+
+                // Localize button labels if needed
+                if (!env.browser.language.startsWith('en')) {
+                    const updateBtns = updateAvailModal.querySelectorAll('button')
+                    updateBtns[1].textContent = 'Update'
+                    updateBtns[0].textContent = 'Dismiss'
+                }
+
+                return updateAvailModal
+            },
+
+            unavailable() {
+                return modals.alert('Up-to-date!', // title
+                    `${app.name} (v${app.version}) is up-to-date!`, // msg
+                    '', '', modals.update.width
+                )
+            }
         }
     }
 
@@ -822,6 +867,28 @@
     }
 
     window.sync = { configToUI() { styles.update({ key: 'tweaks' }) ; toolbarMenu.refresh() }}
+
+    window.updateCheck = () => xhr({
+        method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
+        headers: { 'Cache-Control': 'no-cache' },
+        onload: ({ responseText }) => {
+
+            // Compare versions, alert if update found
+            app.latestVer = /@version +(.*)/.exec(responseText)?.[1]
+            if (app.latestVer)
+                for (let i = 0 ; i < 4 ; i++) { // loop thru subver's
+                    const currentSubVer = parseInt(app.version.split('.')[i], 10) || 0,
+                          latestSubVer = parseInt(app.latestVer.split('.')[i], 10) || 0
+                    if (currentSubVer > latestSubVer)
+                        break // out of comparison since not outdated
+                    else if (currentSubVer < latestSubVer) // if outdated
+                        return modals.open('update', 'available')
+                }
+
+            // Alert to no update found, nav back to About
+            modals.open('update', 'unavailable') ; modals.open('about')
+        }
+    })
 
     // Run MAIN routine
 
