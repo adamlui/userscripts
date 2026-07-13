@@ -13,11 +13,9 @@
 
 ### Adds star history chart to sidebar of GitHub repos.
 
-<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
-[Discuss](https://github.com/adamlui/github-star-history/discussions) /
-[Get support](https://github.com/adamlui/github-star-history/issues) /
-[Contact author](https://github.com/adamlui)
+<a href="https://scriptcat.org/scripts/code/7016/github-star-history.user.js"><img alt="[Install this script]" height=42 src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img height=42 alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
+
+[Discuss](https://github.com/adamlui/github-star-history/discussions) / [Get support](https://github.com/adamlui/github-star-history/issues) / [Contact author](https://github.com/adamlui)
 
 <br>
 
@@ -33,17 +31,15 @@
 
 1. Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/), [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd), [Opera](https://addons.opera.com/extensions/details/tampermonkey-beta/))
 
-2. Install [GitHub Star History](https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js) (will load in userscript manager installed above)
+2. Install [GitHub Star History](https://scriptcat.org/scripts/code/7016/github-star-history.user.js) (will load in userscript manager installed above)
 
 3. Visit [github.com](https://github.com) as normal, and star history chart will show in sidebar of repos!
 
 <br>
 
-<a href="https://raw.githubusercontent.com/adamlui/github-star-history/main/greasemonkey/github-star-history.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
-<br>
-[Discuss](https://github.com/adamlui/github-star-history/discussions) /
-[Get support](https://github.com/adamlui/github-star-history/issues) /
-[More userscripts](https://github.com/adamlui/userscripts)
+<a href="https://scriptcat.org/scripts/code/7016/github-star-history.user.js"><img alt="[Install this script]" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/install-button.svg"></a><a href="#-installation"><img alt="[How to install]" title="How to install" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/buttons/greasy-fork/help-button.svg"></a>
+
+[Discuss](https://github.com/adamlui/github-star-history/discussions) / [Get support](https://github.com/adamlui/github-star-history/issues) / [More userscripts](https://github.com/adamlui/userscripts)
 
 <hr>
 
@@ -62,11 +58,8 @@ All contributions are very welcome!
 ### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen Mode](https://chatgptevo.com/widescreen/github) <img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg?v=02d9942" width="auto" height="24" />
 
 Adds Widescren + Fullscreen modes to ChatGPT for enhanced viewing + reduced scrolling.
-<br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / 
-[Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / 
-[Discuss](https://chatgptevo.com/widescreen/discussions)
+<br>[Install](https://github.com/adamlui/chatgpt-widescreen#installation) / [Readme](https://github.com/adamlui/chatgpt-widescreen#readme) / [Discuss](https://chatgptevo.com/widescreen/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/separators/aqua-gradient.png">
   
-<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / 
-<a href="#top">Back to top ↑</a>
+<a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / <a href="#top">Back to top ↑</a>
