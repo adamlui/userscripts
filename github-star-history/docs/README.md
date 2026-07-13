@@ -57,8 +57,7 @@ All contributions are very welcome!
 
 ### <img width=17 src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@82ef9ab/assets/images/icons/widescreen-robot-emoji/icon32.png"> [ChatGPT Widescreen](https://github.com/adamlui/chatgpt-widescreen/#readme) &nbsp;<img src="https://cdn.jsdelivr.net/gh/adamlui/chatgpt-widescreen@9925794/assets/images/badges/product-hunt/product-of-the-week-2-larger-centered-rounded-light.svg" width="102" height="auto" />
 
-> Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on poe.com!
-<br>[Install](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#-installation) / [Readme](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#readme) / [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
+> Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on poe.com!<br>[Install](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#-installation) / [Readme](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#readme) / [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
 <img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/separators/aqua-gradient.png">
   
