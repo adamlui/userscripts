@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.7.12.2
+// @version             2026.7.12.3
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -43,8 +43,6 @@
 (async () => {
     'use strict'
 
-    window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
-
     localStorage.alertQueue = '[]'
     localStorage.notifyProps = JSON.stringify({ queue: { topRight: [], bottomRight: [], bottomLeft: [], topLeft: [] }})
 
@@ -56,7 +54,8 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        ui: { scheme: getScheme() }
+        ui: { scheme: getScheme() },
+        xhr: typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
@@ -868,7 +867,7 @@
 
     window.sync = { configToUI() { styles.update({ key: 'tweaks' }) ; toolbarMenu.refresh() }}
 
-    window.updateCheck = () => xhr({
+    window.updateCheck = () => env.xhr({
         method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
         headers: { 'Cache-Control': 'no-cache' },
         onload: ({ responseText }) => {

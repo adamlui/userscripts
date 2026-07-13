@@ -116,7 +116,7 @@
 // @name:zh-SG           YouTube 经典
 // @name:zh-TW           YouTube 經典
 // @name:zu              YouTube Yakudala
-// @version              2026.7.12.7
+// @version              2026.7.12.8
 // @author               Adam Lui, Magma_Craft
 // @namespace            https://github.com/adamlui
 // @description          Reverts YouTube to its classic design (before all the rounded corners & hidden dislikes) + redirects YouTube Shorts + blocks thumbnail/video ads
@@ -277,8 +277,6 @@
 (async () => {
     'use strict'
 
-    window.xhr = typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
-
     window.env = {
         browser: {
             language: navigator.languages[0] || navigator.language || navigator.browserLanguage
@@ -289,7 +287,8 @@
         scriptManager: {
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
-        }
+        },
+        xhr: typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     }
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
                                       && parseInt(env.scriptManager.version.split('.')[0]) >= 5
@@ -308,7 +307,7 @@
         locales: `${app.urls.jsd}@${app.commitHashes.locales}/firefox/extension/_locales`
     }
     const remoteData = {
-        app: await new Promise(resolve => xhr({
+        app: await new Promise(resolve => env.xhr({
             method: 'GET', url: `${app.urls.assets.data}/app.json`,
             onload: ({ responseText }) => resolve(JSON.parse(responseText))
         })),
@@ -316,7 +315,7 @@
             const msgBaseURL = app.urls.assets.locales,
                   localeDir = `${ env.browser.language ? env.browser.language.replace('-', '_') : 'en' }`
             let msgURL = `${msgBaseURL}/${localeDir}/messages.json`, msgFetchesTried = 0
-            function fetchMsgs() { xhr({ method: 'GET', url: msgURL, onload: handleMsgs })}
+            function fetchMsgs() { env.xhr({ method: 'GET', url: msgURL, onload: handleMsgs })}
             function handleMsgs(resp) {
                 try { // to return localized messages.json
                     const msgs = JSON.parse(resp.responseText), flatMsgs = {}
@@ -336,11 +335,11 @@
         })
     }
     Object.assign(app, { ...remoteData.app, urls: { ...remoteData.app.urls, ...app.urls }, msgs: remoteData.msgs })
-    app.selectors = await new Promise(resolve => xhr({ // used in block modes
+    app.selectors = await new Promise(resolve => env.xhr({ // used in block modes
         method: 'GET', onload: ({ responseText }) => resolve(JSON5.parse(responseText)),
         url: `${app.urls.assets.data}/selectors.json5`
     }))
-    app.ui = { expFlags: await new Promise(resolve => xhr({ // used in block modes
+    app.ui = { expFlags: await new Promise(resolve => env.xhr({ // used in block modes
         method: 'GET', onload: ({ responseText }) => resolve(JSON.parse(responseText)),
         url: `${app.urls.assets.data}/yt-exp-flags.json`
     }))}
@@ -638,7 +637,7 @@
         return words.join(' ') // join'em back together
     }
 
-    window.updateCheck = () => xhr({
+    window.updateCheck = () => env.xhr({
         method: 'GET', url: `${app.urls.update.gm}?t=${Date.now()}`,
         headers: { 'Cache-Control': 'no-cache' },
         onload: ({ responseText }) => {
