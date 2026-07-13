@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.7.11
+// @version             2026.7.12
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -809,11 +809,14 @@
 
         tweaks: {
             autoAppend: true,
-            get css() { return `${
-                !config.poeBlock ? ''
-                    : 'div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }' }${
-                !config.adBlock ? ''
-                    : 'div[class*=question_page_ad] { display: none }' }`
+            get css() { return `
+                ${ !config.poeBlock ? ''
+                    : 'div[class*="dom_annotate"]:has(img.q-image[src*="assets.images.poe"]) { display: none }' }
+                ${ !config.adBlock ? ''
+                    : `div[class*=question_page_ad],
+                       div.q-sticky:has([id^=google_ads_iframe]) /* sidebar ads https://imgur.com/a/XwTtJKM */
+                           { display: none }`
+                }`
             }
         }
     }
