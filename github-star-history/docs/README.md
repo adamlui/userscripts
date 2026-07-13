@@ -59,6 +59,6 @@ All contributions are very welcome!
 
 > Enhances ChatGPT with wide/full/tall-screen + spamblock modes. Also works on poe.com!<br>[Install](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#-installation) / [Readme](https://github.com/adamlui/chatgpt-widescreen/tree/main/docs/#readme) / [Discuss](https://github.com/adamlui/chatgpt-widescreen/discussions)
 
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history/assets/images/separators/aqua-gradient.png">
+<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/adamlui/github-star-history@5dd2737/assets/images/separators/aqua-gradient.png">
   
 <a href="https://github.com/adamlui/userscripts">**More userscripts**</a> / <a href="#top">Back to top ↑</a>
