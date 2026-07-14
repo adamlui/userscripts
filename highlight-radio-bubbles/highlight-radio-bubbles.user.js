@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name              Highlight Radio Bubbles
-// @version           2026.7.4
+// @version           2026.7.14
 // @author            Adam Lui
 // @namespace         https://adamlui.com
 // @description       Makes radio bubbles bigger & more colorful when brought to focus.
@@ -8,10 +8,10 @@
 // @icon              https://cdn.jsdelivr.net/gh/adamlui/userscripts@ccc23a5/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon48.png
 // @icon64            https://cdn.jsdelivr.net/gh/adamlui/userscripts@ccc23a5/highlight-radio-bubbles/assets/images/icons/radio-bubble/icon64.png
 // @compatible        chrome
+// @compatible        edge
 // @compatible        firefox
 // @compatible        opera
 // @compatible        safari
-// @compatible        edge
 // @match             *://*/*
 // @downloadURL       https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.user.js
 // @updateURL         https://scriptcat.org/scripts/code/6908/highlight-radio-bubbles.meta.js
