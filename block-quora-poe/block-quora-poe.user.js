@@ -13,7 +13,7 @@
 // @description:zh-TW   阻止 AI + Quora 的推廣/贊助答案
 // @author              Adam Lui
 // @namespace           https://github.com/adamlui
-// @version             2026.7.12.3
+// @version             2026.7.22
 // @license             MIT
 // @icon                https://cdn.jsdelivr.net/gh/adamlui/userscripts@f3e6bf0/assets/images/icons/sites/quora/icon64.png
 // @match               *://*.quora.com/*
@@ -668,9 +668,9 @@
 
             // Show modal
             const labelStyles = 'text-transform: uppercase ; font-size: 17px ; font-weight: bold ;'
-                            + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
+                              + `color: ${ scheme == 'dark' ? 'white' : '#494141' }`
             const aboutModal = modals.alert(
-                `${app.name}`, // title
+                app.name, // title
                 `<span style="${labelStyles}">🧠 Author:</span> `
                     + `<a href="${ app.author?.url || app.authors[0]?.url }" target="_blank" rel="nopener">${
                         app.author.name}</a> & contributors\n`
