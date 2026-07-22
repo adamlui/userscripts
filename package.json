@@ -46,7 +46,7 @@
     "bump:chatbot": "npm run bump:chatbots",
     "bump:chatbot-nc": "npm run bump:chatbots-nc",
     "bump:chatbot-np": "npm run bump:chatbots-np",
-    "bump:res": "node utils/bump/userscript-requires --cache"
+    "bump:res": "node utils/bump/userscript-requires.mjs --cache"
   },
   "devDependencies": {
     "@adamlui/minify.js": "^2.5.4",
