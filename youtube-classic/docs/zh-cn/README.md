@@ -62,8 +62,6 @@
   <li><b>屏蔽搜索结果中的隐匿推荐</b>，从而呈现更精准的搜索结果</li><br>
   <li><b>精简冗余动画效果</b>，加快页面导航速度，助您更流畅地欣赏视频</li><br>
   <li><b>防止页面进入空闲休眠状态</b>，确保标签页持续活跃，实现无限自动播放</li><br>
-  <li><b>跳过视频广告</b>，让您更快地观看视频<br>
-    （使用 Tran Quang Tien 的 <a href="https://github.com/tientq64/userscripts/tree/main/scripts/Auto-Skip-YouTube-Ads">Auto Skip YouTube Ads</a>）</li><br>
   <li><b>拦截缩略图广告</b>，让您在浏览视频时界面更加整洁清爽
     <p><i>&nbsp;前：</i><br>
       <img width=535 height="auto" src="https://cdn.jsdelivr.net/gh/adamlui/youtube-classic@1c92f98/assets/images/screenshots/ad-block/before.png">
