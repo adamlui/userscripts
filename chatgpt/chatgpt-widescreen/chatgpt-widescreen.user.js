@@ -300,7 +300,8 @@
             name: (() => { try { return GM_info.scriptHandler } catch (err) { return 'unknown' }})(),
             version: (() => { try { return GM_info.version } catch (err) { return 'unknown' }})()
         },
-        site: location.hostname.split('.').slice(-2, -1)[0], ui: {}
+        site: location.hostname.split('.').slice(-2, -1)[0], ui: {},
+        xhr: typeof GM != 'undefined' && GM.xmlHttpRequest || GM_xmlhttpRequest
     }
     Object.assign(env.browser, { get isCompact() { return innerWidth <= 480 }})
     env.scriptManager.supportsTooltips = env.scriptManager.name == 'Tampermonkey'
