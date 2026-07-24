@@ -164,7 +164,7 @@ for (const userJSfilePath of userscripts) {
               newFullURL = `${baseNewURL}#${sriHash}`,
               oldSRI = match[4] || ''
         if (oldSRI === `#${sriHash}`) {
-            console.log(`SRI hash unchanged for ${path.basename(userJSfilePath)}, skipping bump.`)
+            console.log(`SRI hash unchanged for ${path.basename(userJSfilePath)}! Skipping bump...`)
             continue
         }
         const freshContent = fs.readFileSync(userJSfilePath, 'utf-8')
