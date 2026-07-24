@@ -35,6 +35,7 @@
     "prepare": "husky",
     "dev:chatbots": "node utils/dev/chatbots",
     "dev:chatbot": "npm run dev:chatbots",
+    "build:css": "scss-to-css . dist",
     "lint": "eslint . --cache",
     "lint:all": "eslint .",
     "lint:fix": "eslint . --fix --cache",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@adamlui/minify.js": "^2.5.4",
+    "@adamlui/scss-to-css": "^2.4.5",
     "@eslint/js": "^10.0.1",
     "@eslint/json": "^2.0.1",
     "@eslint/markdown": "^8.0.3",
