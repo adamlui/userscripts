@@ -162,7 +162,12 @@ for (const userJSfilePath of userscripts) {
         bump.log.working(`\nGenerating SRI for v${latestCJSver}...\n`)
         const sriHash = await bump.generateSRIhash({ resURL: baseNewURL, verbose: false }),
               newFullURL = `${baseNewURL}#${sriHash}`,
-              freshContent = fs.readFileSync(userJSfilePath, 'utf-8')
+              oldSRI = match[4] || ''
+        if (oldSRI === `#${sriHash}`) {
+            console.log(`SRI hash unchanged for ${path.basename(userJSfilePath)}, skipping bump.`)
+            continue
+        }
+        const freshContent = fs.readFileSync(userJSfilePath, 'utf-8')
         fs.writeFileSync(userJSfilePath, freshContent.replace(oldFullURL, newFullURL), 'utf-8')
         bump.log.success(`Updated @require in ${path.basename(userJSfilePath)}`)
         fileChanged = true ; urlsUpdatedCnt++
